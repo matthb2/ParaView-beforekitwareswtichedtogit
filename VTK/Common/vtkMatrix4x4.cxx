@@ -157,7 +157,7 @@ void vtkMatrix4x4::Invert(const double inElements[16],
   det = vtkMatrix4x4::Determinant(inElements);
   if ( det == 0.0 ) 
     {
-    vtkDebugMacro(<< "Singular matrix, no inverse!" );
+    vtkWarningMacro(<< "Singular matrix, no inverse!" );
     return;
     }
 
