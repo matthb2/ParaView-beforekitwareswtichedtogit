@@ -384,7 +384,7 @@ char* vtkString::RemoveAllButUpperHex(const char* str)
 }
 
 //----------------------------------------------------------------------------
-unsigned int vtkString::CountChar(const char* str, const char c)
+unsigned int vtkString::CountChar(const char* str, char c)
 {
   int count = 0;
 
