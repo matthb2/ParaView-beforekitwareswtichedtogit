@@ -438,7 +438,6 @@ void ReadTiledImage(vtkTIFFReader *self, void *out,
   TIFF *tiff;
   uint32 tileWidth, tileLength, x, y, yi, rows, cols, tileSize;
   int xx,yy;
-  double oneRow;
   int pixelDepth = self->GetInternalImage()->SamplesPerPixel;
   T *image;
   uint32 imagepos;
@@ -447,7 +446,6 @@ void ReadTiledImage(vtkTIFFReader *self, void *out,
   tiff = self->GetInternalImage()->Image;
   TIFFGetField(tiff, TIFFTAG_TILEWIDTH, &tileWidth);
   TIFFGetField(tiff, TIFFTAG_TILELENGTH, &tileLength);
-  oneRow = (double) tileLength / (double) height;
   tileSize = TIFFTileSize(tiff);
   tdata_t buffer = _TIFFmalloc(tileSize);
 
