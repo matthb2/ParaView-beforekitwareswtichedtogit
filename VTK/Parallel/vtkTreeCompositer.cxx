@@ -174,9 +174,9 @@ static inline int vtkTCLog2(int j, int& exact)
 }
 
 void vtkTreeCompositer::CompositeBuffer(vtkDataArray *pBuf, 
-                                                               vtkFloatArray *zBuf,
-                                                               vtkDataArray *pTmp, 
-                                                               vtkFloatArray *zTmp)
+                                        vtkFloatArray *zBuf,
+                                        vtkDataArray *pTmp, 
+                                        vtkFloatArray *zTmp)
 {
   int myId = this->Controller->GetLocalProcessId();
   int numProcs = this->NumberOfProcesses;
