@@ -20,6 +20,9 @@
 #include "vtkDataSet.h"
 #include "vtkObjectFactory.h"
 #include "vtkSource.h"
+#include "vtkImageData.h"
+#include "vtkStructuredGrid.h"
+#include "vtkRectilinearGrid.h"
 
 vtkCxxRevisionMacro(vtkPDataSetWriter, "$Revision$");
 vtkStandardNewMacro(vtkPDataSetWriter);

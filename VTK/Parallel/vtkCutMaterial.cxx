@@ -20,6 +20,7 @@
 #include "vtkThreshold.h"
 #include "vtkMath.h"
 #include "vtkObjectFactory.h"
+#include "vtkPlane.h"
 
 vtkCxxRevisionMacro(vtkCutMaterial, "$Revision$");
 vtkStandardNewMacro(vtkCutMaterial);

@@ -18,9 +18,13 @@
 #include "vtkTransmitUnstructuredGridPiece.h"
 #include "vtkExtractUnstructuredGridPiece.h"
 #include "vtkObjectFactory.h"
+#include "vtkMultiProcessController.h"
 
 vtkCxxRevisionMacro(vtkTransmitUnstructuredGridPiece, "$Revision$");
 vtkStandardNewMacro(vtkTransmitUnstructuredGridPiece);
+
+vtkCxxSetObjectMacro(vtkTransmitUnstructuredGridPiece,Controller,
+                     vtkMultiProcessController);
 
 //----------------------------------------------------------------------------
 vtkTransmitUnstructuredGridPiece::vtkTransmitUnstructuredGridPiece()

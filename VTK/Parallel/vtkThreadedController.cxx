@@ -22,6 +22,7 @@
 #include "vtkImageData.h"
 #include "vtkOutputWindow.h"
 #include "vtkCriticalSection.h"
+#include "vtkSharedMemoryCommunicator.h"
 
 #ifdef VTK_USE_SPROC
 #include <sys/prctl.h>

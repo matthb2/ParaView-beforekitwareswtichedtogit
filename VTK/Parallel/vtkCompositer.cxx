@@ -19,9 +19,13 @@
 #include "vtkCompositer.h"
 #include "vtkObjectFactory.h"
 #include "vtkToolkits.h"
+#include "vtkDataArray.h"
+#include "vtkMultiProcessController.h"
 
 vtkCxxRevisionMacro(vtkCompositer, "$Revision$");
 vtkStandardNewMacro(vtkCompositer);
+
+vtkCxxSetObjectMacro(vtkCompositer,Controller,vtkMultiProcessController);
 
 //-------------------------------------------------------------------------
 vtkCompositer::vtkCompositer()

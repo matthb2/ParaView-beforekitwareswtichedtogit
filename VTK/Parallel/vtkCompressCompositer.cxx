@@ -51,6 +51,7 @@
 #include "vtkToolkits.h"
 #include "vtkFloatArray.h"
 #include "vtkUnsignedCharArray.h"
+#include "vtkMultiProcessController.h"
 
 #include "vtkTimerLog.h"
 
