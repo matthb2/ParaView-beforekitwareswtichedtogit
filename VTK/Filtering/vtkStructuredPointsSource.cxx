@@ -1,13 +1,11 @@
 /*=========================================================================
 
   Program:   Visualization Library
-  Module:    SPtsSrc.cc
+  Module:    $RCSfile$
   Language:  C++
-  Date:      7/13/94
-  Version:   1.1
+  Date:      $Date$
+  Version:   $Revision$
 
-Description:
----------------------------------------------------------------------------
 This file is part of the Visualization Library. No part of this file
 or its contents may be copied, reproduced or altered in any way
 without the express written consent of the authors.
