@@ -136,6 +136,13 @@ unsigned int vtkSMDoubleVectorProperty::GetNumberOfElements()
 }
 
 //---------------------------------------------------------------------------
+double* vtkSMDoubleVectorProperty::GetElements()
+{
+  return (this->Internals->Values.size() > 0) ?
+    &this->Internals->Values[0] : NULL;
+}
+
+//---------------------------------------------------------------------------
 double vtkSMDoubleVectorProperty::GetElement(unsigned int idx)
 {
   return this->Internals->Values[idx];

@@ -132,6 +132,14 @@ int vtkSMIntVectorProperty::GetElement(unsigned int idx)
 }
 
 //---------------------------------------------------------------------------
+int *vtkSMIntVectorProperty::GetElements()
+{
+  
+  return (this->Internals->Values.size() > 0)?
+    &this->Internals->Values[0] : NULL;
+}
+
+//---------------------------------------------------------------------------
 int vtkSMIntVectorProperty::GetUncheckedElement(unsigned int idx)
 {
   return this->Internals->UncheckedValues[idx];
