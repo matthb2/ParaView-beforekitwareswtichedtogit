@@ -730,6 +730,8 @@ void vtkArrayCalculator::RemoveAllVariables()
     this->SelectedVectorComponents = NULL;
     }
   this->NumberOfVectorArrays = 0;
+
+  this->FunctionParser->RemoveAllVariables();
 }
 
 char* vtkArrayCalculator::GetScalarArrayName(int i)
