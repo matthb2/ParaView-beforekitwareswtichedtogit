@@ -1071,6 +1071,7 @@ void vtkXdmfReader::ExecuteInformation()
         }
       if( Name && strcmp(Name, this->DomainName) == 0)
         {
+        str.rdbuf()->freeze(0);
         break;
         }      
       str.rdbuf()->freeze(0);
