@@ -76,7 +76,7 @@ vtkGenericEnSightReader::vtkGenericEnSightReader()
   
   this->ReadAllVariables = 1;
 
-  this->ByteOrder = FILE_BIG_ENDIAN;
+  this->ByteOrder = FILE_UNKNOWN_ENDIAN;
   
   this->EnSightVersion = -1;
   
