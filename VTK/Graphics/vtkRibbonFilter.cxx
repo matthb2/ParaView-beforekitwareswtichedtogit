@@ -92,7 +92,6 @@ void vtkRibbonFilter::Execute()
       !(inLines = input->GetLines()) || 
        (numLines = inLines->GetNumberOfCells()) < 1 )
     {
-    vtkWarningMacro(<< " No input data!");
     return;
     }
 
