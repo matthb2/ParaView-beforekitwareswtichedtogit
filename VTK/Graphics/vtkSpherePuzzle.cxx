@@ -123,7 +123,6 @@ int vtkSpherePuzzle::RequestData(
   vtkTransformFilter *tf = vtkTransformFilter::New();
   vtkUnsignedCharArray *scalars = vtkUnsignedCharArray::New();
   vtkPolyData *tmp;
-  vtkPolyData *originalSphereOutput;
   int count = 0;
   unsigned char r, g, b;
 
@@ -134,7 +133,6 @@ int vtkSpherePuzzle::RequestData(
 
   tf->SetTransform(this->Transform);
   tf->SetInput(sphere->GetOutput());
-  originalSphereOutput = sphere->GetOutput();
 
   for (j = 0; j < 4; ++j)
     {
