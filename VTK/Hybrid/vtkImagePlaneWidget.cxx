@@ -510,6 +510,16 @@ void vtkImagePlaneWidget::PrintSelf(ostream& os, vtkIndent indent)
     os << indent << "TexturePlane Property: (none)\n";
     }
 
+  if ( this->ColorMap )
+    {
+    os << indent << "ColorMap:\n";
+    this->ColorMap->PrintSelf(os,indent.GetNextIndent());
+    }
+  else
+    {
+    os << indent << "ColorMap: (none)\n";
+    }      
+
   float *o = this->PlaneSource->GetOrigin();
   float *pt1 = this->PlaneSource->GetPoint1();
   float *pt2 = this->PlaneSource->GetPoint2();
