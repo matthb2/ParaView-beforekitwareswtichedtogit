@@ -36,8 +36,8 @@ vtkStandardNewMacro(vtkOpenGLPolyDataMapper2D);
 #include "vtkMath.h"
 
 
-void vtkOpenGLPolyDataMapper2D::RenderOpaqueGeometry(vtkViewport* viewport,
-                                                     vtkActor2D* actor)
+void vtkOpenGLPolyDataMapper2D::RenderOverlay(vtkViewport* viewport,
+                                              vtkActor2D* actor)
 {
   int            numPts;
   vtkPolyData    *input= (vtkPolyData *)this->Input;
