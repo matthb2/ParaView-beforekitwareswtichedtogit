@@ -59,7 +59,6 @@ vtkCompleteArrays::~vtkCompleteArrays()
     this->Controller->UnRegister(this);
     this->Controller = NULL;
     }
-
 }
 
 //-----------------------------------------------------------------------------
