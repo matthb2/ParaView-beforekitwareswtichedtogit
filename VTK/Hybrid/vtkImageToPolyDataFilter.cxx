@@ -20,10 +20,12 @@
 #include "vtkAppendPolyData.h"
 #include "vtkEdgeTable.h"
 #include "vtkLine.h"
+#include "vtkObjectFactory.h"
 #include "vtkScalarsToColors.h"
 #include "vtkUnsignedCharArray.h"
 
 vtkCxxRevisionMacro(vtkImageToPolyDataFilter, "$Revision$");
+vtkStandardNewMacro(vtkImageToPolyDataFilter);
 
 vtkCxxSetObjectMacro(vtkImageToPolyDataFilter,LookupTable,vtkScalarsToColors);
 
