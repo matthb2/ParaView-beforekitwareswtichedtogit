@@ -36,9 +36,9 @@
 #include "MangleMesaInclude/osmesa.h"
 #endif
 
-
-#include "vtkObjectFactory.h"
 #include "vtkIdList.h"
+#include "vtkObjectFactory.h"
+#include "vtkRendererCollection.h"
 
 class vtkXOpenGLRenderWindow;
 class vtkRenderWindow;

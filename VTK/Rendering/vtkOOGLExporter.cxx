@@ -26,6 +26,7 @@
 #include "vtkPolyDataMapper.h"
 #include "vtkProperty.h"
 #include "vtkRenderWindow.h"
+#include "vtkRendererCollection.h"
 #include "vtkSystemIncludes.h"
 #include "vtkTexture.h"
 #include "vtkTriangleStrip.h"

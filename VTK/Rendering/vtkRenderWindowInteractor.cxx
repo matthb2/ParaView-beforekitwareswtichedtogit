@@ -24,6 +24,8 @@
 #include "vtkOldStyleCallbackCommand.h"
 #include "vtkPropPicker.h"
 #include "vtkRenderWindow.h"
+#include "vtkRenderer.h"
+#include "vtkRendererCollection.h"
 
 vtkCxxRevisionMacro(vtkRenderWindowInteractor, "$Revision$");
 

@@ -21,6 +21,7 @@
 #include "vtkGraphicsFactory.h"
 #include "vtkLargeInteger.h"
 #include "vtkRenderWindow.h"
+#include "vtkRenderer.h"
 
 #define VTK_PLUS_X_MAJOR_DIRECTION  0
 #define VTK_MINUS_X_MAJOR_DIRECTION 1

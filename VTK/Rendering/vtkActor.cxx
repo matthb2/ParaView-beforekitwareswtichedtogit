@@ -20,11 +20,11 @@
 #include "vtkAssemblyPaths.h"
 #include "vtkGraphicsFactory.h"
 #include "vtkMapper.h"
+#include "vtkPropCollection.h"
 #include "vtkProperty.h"
 #include "vtkRenderWindow.h"
 #include "vtkTexture.h"
 
-#include <stdlib.h>
 #include <math.h>
 
 vtkCxxRevisionMacro(vtkActor, "$Revision$");

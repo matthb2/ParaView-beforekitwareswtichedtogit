@@ -20,6 +20,7 @@
 #include "vtkCamera.h"
 #include "vtkObjectFactory.h"
 #include "vtkRenderWindow.h"
+#include "vtkRendererCollection.h"
 
 vtkCxxRevisionMacro(vtkWindowToImageFilter, "$Revision$");
 vtkStandardNewMacro(vtkWindowToImageFilter);

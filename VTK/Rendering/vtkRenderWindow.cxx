@@ -22,6 +22,7 @@
 #include "vtkGraphicsFactory.h"
 #include "vtkMath.h"
 #include "vtkRenderWindowInteractor.h"
+#include "vtkRendererCollection.h"
 #include "vtkTransform.h"
 
 vtkCxxRevisionMacro(vtkRenderWindow, "$Revision$");
