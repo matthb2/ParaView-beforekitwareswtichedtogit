@@ -115,7 +115,7 @@ void vtkGenericContourFilter::Execute()
   //
   numCells = input->GetNumberOfCells();
   
-  estimatedSize = (vtkIdType) pow ((double) numCells, .75);
+  //estimatedSize = (vtkIdType) pow ((double) numCells, .75);
 //  estimatedSize *= numContours;
 
   estimatedSize = input->GetEstimatedSize();
