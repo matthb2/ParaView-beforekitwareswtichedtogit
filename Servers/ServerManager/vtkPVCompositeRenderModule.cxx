@@ -265,10 +265,11 @@ void vtkPVCompositeRenderModule::InteractiveRender()
     {
     localRender = 1;
     }
-  if (useLOD)
-    {
-    localRender = 1;
-    }
+  // A feature that Sandia did not like.
+  //if (useLOD)
+  //  {
+  //  localRender = 1;
+  //  }
 
   // Change the collection flags and update.
   this->Displays->InitTraversal();
