@@ -240,8 +240,8 @@ void vtkLine::Contour(float value, vtkDataArray *cellScalars,
       {
       if ( outPd ) 
         {
-        int p1 = this->PointIds->GetId(vert[0]);
-        int p2 = this->PointIds->GetId(vert[1]);
+        vtkIdType p1 = this->PointIds->GetId(vert[0]);
+        vtkIdType p2 = this->PointIds->GetId(vert[1]);
         outPd->InterpolateEdge(inPd,pts[0],p1,p2,t);
         }
       }
@@ -557,8 +557,8 @@ void vtkLine::Clip(float value, vtkDataArray *cellScalars,
 
         if ( locator->InsertUniquePoint(x, pts[i]) )
           {
-          int p1 = this->PointIds->GetId(0);
-          int p2 = this->PointIds->GetId(1);
+          vtkIdType p1 = this->PointIds->GetId(0);
+          vtkIdType p2 = this->PointIds->GetId(1);
           outPd->InterpolateEdge(inPd,pts[i],p1,p2,t);
           }
         }
