@@ -298,7 +298,8 @@ void vtkInteractorStyleFlight::OnTimer(void) {
         else 
           {
             // Make sure CurrentCamera variable is initialized
-            this->FindPokedCamera(this->OldX, this->OldY);
+            this->FindPokedCamera(static_cast<int>(this->OldX), 
+                                  static_cast<int>(this->OldY));
             this->SetupMotionVars();
             // What sort of motion do we want
             if (this->AzimuthScanning) 

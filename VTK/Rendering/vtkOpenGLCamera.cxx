@@ -67,7 +67,8 @@ void vtkOpenGLCamera::Render(vtkRenderer *ren)
   vport = ren->GetViewport();
 
   float *tileViewPort = ren->GetVTKWindow()->GetTileViewport();
-  int scale = ren->GetVTKWindow()->GetTileScale();
+  //int scale = 
+  ren->GetVTKWindow()->GetTileScale();
   
   float vpu, vpv;
   vpu = (vport[0] - tileViewPort[0]);
@@ -204,7 +205,8 @@ void vtkOpenGLCamera::UpdateViewport(vtkRenderer *ren)
   vport = ren->GetViewport();
 
   float *tileViewPort = ren->GetVTKWindow()->GetTileViewport();
-  int scale = ren->GetVTKWindow()->GetTileScale();
+  //int scale = 
+  ren->GetVTKWindow()->GetTileScale();
   
   float vpu, vpv;
   vpu = (vport[0] - tileViewPort[0]);
