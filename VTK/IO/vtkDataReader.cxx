@@ -91,6 +91,8 @@ vtkDataReader::vtkDataReader()
   this->IS = NULL;
   this->Header = NULL;
 
+  this->InputArray = 0;
+
   this->NumberOfScalarsInFile = 0;
   this->ScalarsNameInFile = NULL;
   this->ScalarsNameAllocSize = 0;
@@ -158,6 +160,7 @@ vtkDataReader::~vtkDataReader()
     delete [] this->Header;
     }
 
+  this->SetInputArray(0);
   this->InitializeCharacteristics();
 }
 
@@ -360,7 +363,15 @@ int vtkDataReader::OpenVTKFile()
 {
   if (this->ReadFromInputString)
     {
-    if (this->InputString)
+    if (this->InputArray)
+      {
+      vtkDebugMacro(<< "Reading from InputArray");
+      this->IS = new istrstream(this->InputArray->GetPointer(0), 
+                                this->InputArray->GetNumberOfTuples()*
+        this->InputArray->GetNumberOfComponents());
+      return 1;
+      }
+    else if (this->InputString)
       {
       vtkDebugMacro(<< "Reading from InputString");
       this->IS = new istrstream(this->InputString, this->InputStringLength);
