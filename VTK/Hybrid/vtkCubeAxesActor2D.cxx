@@ -631,15 +631,15 @@ void vtkCubeAxesActor2D::GetBounds(float bounds[6])
   if ( this->Input )
     {
     this->Input->Update();
-    this->Input->GetBounds(bounds);
+    double *dbounds = this->Input->GetBounds();
     for (i=0; i< 6; i++)
       {
+      bounds[i] = static_cast<float>(dbounds[i]);
       this->Bounds[i] = bounds[i];
       }
     }
-
   else if ( this->Prop && 
-  ((propBounds = this->Prop->GetBounds()) && propBounds != NULL) )
+            ((propBounds = this->Prop->GetBounds()) && propBounds != NULL) )
     {
     for (i=0; i< 6; i++)
       {

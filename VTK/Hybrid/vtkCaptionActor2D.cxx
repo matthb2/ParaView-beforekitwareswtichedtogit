@@ -49,7 +49,8 @@ vtkCaptionActor2D::vtkCaptionActor2D()
   this->PositionCoordinate->SetCoordinateSystemToDisplay();
   this->PositionCoordinate->SetReferenceCoordinate(
     this->AttachmentPointCoordinate);
-  this->PositionCoordinate->SetValue(10,10);
+  this->PositionCoordinate->SetValue(static_cast<float>(10),
+                                     static_cast<float>(10));
   
   // This sets up the Position2Coordinate
   this->vtkActor2D::SetWidth(0.25);

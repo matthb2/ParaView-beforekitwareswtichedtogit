@@ -1522,8 +1522,11 @@ void vtkPlaneWidget::GetPlane(vtkPlane *plane)
     return;
     }
   
-  plane->SetNormal(this->GetNormal());
-  plane->SetOrigin(this->GetCenter());
+  // TODO: cleanupo
+  plane->SetNormal(this->GetNormal()[0],
+                   this->GetNormal()[1], this->GetNormal()[2]);
+  plane->SetOrigin(this->GetCenter()[0],
+                   this->GetCenter()[1], this->GetCenter()[2]);
 }
 
 void vtkPlaneWidget::UpdatePlacement(void)
