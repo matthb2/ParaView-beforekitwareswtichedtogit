@@ -213,7 +213,7 @@ void vtkDesktopDeliveryClient::PostRenderProcessing()
         //   }
         // }
 
-//        this->SetRenderWindowPixelData(this->FullImage, this->FullImageSize);
+        this->SetRenderWindowPixelData(this->FullImage, this->FullImageSize);
         }
       else
         {
