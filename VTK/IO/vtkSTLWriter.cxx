@@ -61,6 +61,8 @@ void vtkSTLWriter::WriteData()
     this->WriteBinarySTL(pts,polys);
     if (this->ErrorCode == vtkErrorCode::OutOfDiskSpaceError)
       {
+      vtkErrorMacro("Ran out of disk space; deleting file: "
+                    << this->FileName);
       unlink(this->FileName);
       }
     }
@@ -69,6 +71,8 @@ void vtkSTLWriter::WriteData()
     this->WriteAsciiSTL(pts,polys);
     if (this->ErrorCode == vtkErrorCode::OutOfDiskSpaceError)
       {
+      vtkErrorMacro("Ran out of disk space; deleting file: "
+                    << this->FileName);
       unlink(this->FileName);
       }
     }
