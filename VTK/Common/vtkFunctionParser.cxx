@@ -1270,7 +1270,7 @@ int vtkFunctionParser::BuildInternalFunctionStructure()
 void vtkFunctionParser::BuildInternalSubstringStructure(int beginIndex,
                                                         int endIndex)
 {
-  int mathFunctionNum, mathConstantNum, beginIndex2;
+  int mathFunctionNum, beginIndex2;
   int opNum, parenthesisCount, i;
   static const char* const elementaryMathOps = "+-.*/^";
   
