@@ -1230,6 +1230,7 @@ vtkIdType vtkOrderedTriangulator::GetTetras(int classification,
     points->SetPoint(p->InsertionId,p->X);
     }
   ugrid->SetPoints(points);
+  points->Delete();
   
   ugrid->Allocate(1000);
   TetraListIterator t;
