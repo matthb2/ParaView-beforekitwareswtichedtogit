@@ -17,3 +17,9 @@
 
 vtkCxxRevisionMacro(vtkPlaneCollection, "$Revision$");
 vtkStandardNewMacro(vtkPlaneCollection);
+
+vtkPlane *vtkPlaneCollection::GetNextPlane(
+  vtkCollectionSimpleIterator &cookie) 
+{
+  return static_cast<vtkPlane *>(this->GetNextItemAsObject(cookie));
+}
