@@ -192,6 +192,7 @@ void vtkInteractorStyleSwitch::SetInteractor(vtkRenderWindowInteractor *iren)
   if(iren)
     {
     iren->AddObserver(vtkCommand::CharEvent, this->EventCallbackCommand);
+        iren->AddObserver(vtkCommand::DeleteEvent, this->EventCallbackCommand);
     }
   this->SetCurrentStyle();
 }
