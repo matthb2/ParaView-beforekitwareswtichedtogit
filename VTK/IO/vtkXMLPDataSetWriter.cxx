@@ -120,6 +120,7 @@ int vtkXMLPDataSetWriter::WriteInternal()
   // Copy the settings to the writer.
   writer->SetDebug(this->GetDebug());
   writer->SetFileName(this->GetFileName());
+  writer->SetStream(this->GetStream());
   writer->SetByteOrder(this->GetByteOrder());
   writer->SetCompressor(this->GetCompressor());
   writer->SetBlockSize(this->GetBlockSize());
