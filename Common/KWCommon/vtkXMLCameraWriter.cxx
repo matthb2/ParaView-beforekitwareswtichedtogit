@@ -73,6 +73,8 @@ int vtkXMLCameraWriter::Write(ostream &os, vtkIndent vtkNotUsed(indent))
 
   os << "<Camera Version=\"$Revision$\"";
 
+  os << " ParallelProjection=\"" << this->Camera->GetParallelProjection()<< "\"";
+
   dptr = this->Camera->GetPosition();
   if (dptr)
     {
@@ -101,8 +103,6 @@ int vtkXMLCameraWriter::Write(ostream &os, vtkIndent vtkNotUsed(indent))
   os << " ViewAngle=\"" << this->Camera->GetViewAngle() << "\"";
 
   os << " ParallelScale=\"" << this->Camera->GetParallelScale() << "\"";
-
-  os << " ParallelProjection=\"" << this->Camera->GetParallelProjection()<< "\"";
 
   os << "/>";
 
