@@ -691,7 +691,7 @@ int vtkHexagonalPrism::IntersectWithLine(double p1[3], double p2[3], double tol,
   return intersection;
 }
 //----------------------------------------------------------------------------
-int vtkHexagonalPrism::Triangulate(int index, vtkIdList *ptIds, vtkPoints *pts)
+int vtkHexagonalPrism::Triangulate(int vtkNotUsed(index), vtkIdList *ptIds, vtkPoints *pts)
 {
   ptIds->Reset();
   pts->Reset();
