@@ -361,7 +361,6 @@ void vtkExtractRectilinearGrid::Execute()
     }
   output->SetYCoordinates(outCoords);
   outCoords->Delete();
-  outCoords = NULL;
   // Z
   inCoords = input->GetZCoordinates();
   if (inCoords->GetNumberOfComponents() > 1)
