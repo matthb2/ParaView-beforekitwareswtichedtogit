@@ -817,7 +817,7 @@ void vtkWin32OpenGLRenderWindow::Finalize (void)
       this->CleanUpOffScreenRendering();
     }
 
-  if (this->WindowId && this->OwnWindow)
+  if (this->WindowId)
     {
       this->Clean();
       ReleaseDC(this->WindowId, this->DeviceContext);
@@ -826,7 +826,10 @@ void vtkWin32OpenGLRenderWindow::Finalize (void)
     
       // clear the extra data before calling destroy
       vtkSetWindowLong(this->WindowId,4,(LONG)0);
-      DestroyWindow(this->WindowId);
+      if(this->OwnWindow)
+        {
+        DestroyWindow(this->WindowId);
+        }
     }
 }
 
