@@ -27,6 +27,8 @@
 vtkCxxRevisionMacro(vtkMergeCells, "$Revision$");
 vtkStandardNewMacro(vtkMergeCells);
 
+vtkCxxSetObjectMacro(vtkMergeCells, UnstructuredGrid, vtkUnstructuredGrid);
+
 vtkMergeCells::vtkMergeCells()
 {
   this->TotalCells = 0;
@@ -40,12 +42,15 @@ vtkMergeCells::vtkMergeCells()
   this->UnstructuredGrid = NULL;
   this->Inputs = vtkCollection::New();
 }
+
 vtkMergeCells::~vtkMergeCells()
 {
   this->FreeLists();
   this->Inputs->Delete();
   this->Inputs = NULL;
+  this->SetUnstructuredGrid(0);
 }
+
 void vtkMergeCells::FreeLists()
 {
   if (this->GlobalIdArrayName){
@@ -54,8 +59,6 @@ void vtkMergeCells::FreeLists()
   }
 
   this->GlobalIdMap.clear();
-
-  return;
 }
 
 
@@ -181,6 +184,7 @@ void vtkMergeCells::StartUGrid(vtkDataSetAttributes::FieldList *ptList,
   vtkPoints *pts = vtkPoints::New();
   pts->SetNumberOfPoints(this->TotalPoints);
   output->SetPoints(pts);
+  pts->Delete();
 
   int numPts = 0;
   int numCells = 0;
@@ -239,8 +243,6 @@ void vtkMergeCells::StartUGrid(vtkDataSetAttributes::FieldList *ptList,
   // Now can allocate arrays.
   output->GetPointData()->CopyAllocate(*ptList,numPts);
   output->GetCellData()->CopyAllocate(*cellList,numCells);
-
-  return;
 }
 
 void vtkMergeCells::Finish()
