@@ -45,11 +45,13 @@ vtkRibbonFilter::vtkRibbonFilter()
   this->TextureLength = 1.0;
 
   this->InputVectorsSelection = NULL;
+  this->InputScalarsSelection = NULL;
 }
 
 vtkRibbonFilter::~vtkRibbonFilter()
 {
   this->SetInputVectorsSelection(NULL);
+  this->SetInputScalarsSelection(NULL);
 }
 
 
@@ -63,7 +65,7 @@ void vtkRibbonFilter::Execute()
   vtkCellData *outCD=output->GetCellData();
   vtkCellArray *inLines = NULL;
   vtkDataArray *inNormals;
-  vtkDataArray *inScalars=pd->GetScalars();
+  vtkDataArray *inScalars=pd->GetScalars(this->InputScalarsSelection);
 
   vtkPoints *inPts;
   vtkIdType numPts = 0;
@@ -519,5 +521,7 @@ void vtkRibbonFilter::PrintSelf(ostream& os, vtkIndent indent)
   os << indent << "Texture Length: " << this->TextureLength << endl;
   os << indent << "InputVectorsSelection: " 
      << (this->InputVectorsSelection ? InputVectorsSelection : "(null)") << endl;
+  os << indent << "InputScalarsSelection: " 
+     << (this->InputScalarsSelection ? InputScalarsSelection : "(null)") << endl;
 }
 
