@@ -231,7 +231,7 @@ void vtkQuadraticQuad::InterpolateAttributes(vtkPointData *inPd, vtkCellData *in
   this->CellData->CopyAllocate(inCd,4);
   
   // copy the point data over into point ids 0->7
-  for (int i=0; i<8; i++)
+  for (i=0; i<8; i++)
     {
     this->PointData->CopyData(inPd,this->PointIds->GetId(i),i);
     this->CellScalars->SetValue( i, cellScalars->GetTuple1(i));
