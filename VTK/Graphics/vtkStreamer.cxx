@@ -482,7 +482,7 @@ void vtkStreamer::Integrate()
   if (inScalars)
     {
     cellScalars = inScalars->NewInstance();
-    cellScalars->SetNumberOfComponents(cellScalars->GetNumberOfComponents());
+    cellScalars->SetNumberOfComponents(inScalars->GetNumberOfComponents());
     cellScalars->Allocate(cellScalars->GetNumberOfComponents()*VTK_CELL_SIZE);
     }
   
