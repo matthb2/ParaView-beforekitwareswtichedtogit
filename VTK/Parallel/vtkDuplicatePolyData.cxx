@@ -205,7 +205,7 @@ void vtkDuplicatePolyData::Execute()
 {
   vtkPolyData *input = this->GetInput();
   vtkPolyData *output = this->GetOutput();
-  int numProcs, myId, partner;
+  int myId, partner;
   int idx;
 
   if (this->SocketController && this->ClientFlag)
@@ -233,7 +233,6 @@ void vtkDuplicatePolyData::Execute()
     }
   
   myId = this->Controller->GetLocalProcessId();
-  numProcs = this->Controller->GetNumberOfProcesses();
 
   // Collect.
   vtkPolyData *pd = NULL;;
