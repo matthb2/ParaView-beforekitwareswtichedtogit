@@ -77,3 +77,11 @@ vtkXMLPStructuredGridWriter::CreateStructuredPieceWriter()
   pWriter->SetInput(this->GetInput());
   return pWriter;
 }
+
+//----------------------------------------------------------------------------
+void vtkXMLPStructuredGridWriter::WritePData(vtkIndent indent)
+{
+  this->Superclass::WritePData(indent);
+  vtkStructuredGrid* input = this->GetInput();  
+  this->WritePPoints(input->GetPoints(), indent);
+}
