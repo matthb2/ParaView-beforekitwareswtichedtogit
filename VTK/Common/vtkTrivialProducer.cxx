@@ -33,7 +33,6 @@ vtkTrivialProducer::vtkTrivialProducer()
   this->SetNumberOfInputPorts(0);
   this->SetNumberOfOutputPorts(1);
   this->Output = 0;
-  this->DebugOn();
 }
 
 //----------------------------------------------------------------------------
