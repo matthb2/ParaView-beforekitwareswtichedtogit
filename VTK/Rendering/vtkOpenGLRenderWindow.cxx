@@ -239,6 +239,7 @@ int vtkOpenGLRenderWindow::GetPixelData(int x1, int y1,
 
   if ( data->GetMaxId()+1 != size)
     {
+    vtkDebugMacro("Resizing array.");
     data->SetNumberOfComponents(3);
     data->SetNumberOfValues(size);
     }
@@ -584,6 +585,7 @@ int vtkOpenGLRenderWindow::GetRGBAPixelData(int x1, int y1, int x2, int y2,
   
   if ( data->GetMaxId()+1 != size)
     {
+    vtkDebugMacro("Resizing array.");
     data->SetNumberOfComponents(4);
     data->SetNumberOfValues(size);
     }
@@ -869,6 +871,7 @@ int vtkOpenGLRenderWindow::GetRGBACharPixelData(int x1, int y1,
 
   if ( data->GetMaxId()+1 != size)
     {
+    vtkDebugMacro("Resizing array.");
     data->SetNumberOfComponents(4);
     data->SetNumberOfValues(size);
     }
@@ -1166,6 +1169,7 @@ int vtkOpenGLRenderWindow::GetZbufferData( int x1, int y1, int x2, int y2,
   int size = width*height;
   if ( buffer->GetMaxId()+1 != size)
     {
+    vtkDebugMacro("Resizing array.");
     buffer->SetNumberOfComponents(1);
     buffer->SetNumberOfValues(size);
     }

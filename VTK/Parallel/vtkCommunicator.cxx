@@ -40,23 +40,23 @@ static int SendDataArray(T* data, int length, int handle, int tag, vtkCommunicat
   return 1;
 }
 
-template <class T>
-static int ReceiveDataArray(T* data, int length, int handle, int tag, vtkDataArray *array)
-{
-  return 1;
-}
 
 vtkCommunicator::vtkCommunicator()
 {
   this->MarshalString = 0;
   this->MarshalStringLength = 0;
   this->MarshalDataLength = 0;
- 
 }
 
 vtkCommunicator::~vtkCommunicator()
 {
   this->DeleteAndSetMarshalString(0, 0);
+}
+
+int vtkCommunicator::UseCopy = 0;
+void vtkCommunicator::SetUseCopy(int useCopy)
+{
+  vtkCommunicator::UseCopy = useCopy;
 }
 
 void vtkCommunicator::PrintSelf(ostream& os, vtkIndent indent)

@@ -51,6 +51,10 @@
 vtkCxxRevisionMacro(vtkTreeComposite, "$Revision$");
 vtkStandardNewMacro(vtkTreeComposite);
 
+#ifdef VTK_USE_MPI
+ #include <mpi.h>
+#endif
+
 //-------------------------------------------------------------------------
 vtkTreeComposite::vtkTreeComposite()
 {
@@ -164,7 +168,9 @@ void vtkTreeComposite::CompositeBuffer(int width, int height, int useCharFlag,
   zSize = totalPixels;
   pSize = 4*totalPixels;
 
-
+#ifdef MPIPROALLOC
+  vtkCommunicator::SetUseCopy(0);
+#endif
   for (i = 0; i < logProcs; i++) 
     {
     if ((myId % (int)vtkTCPow2(i)) == 0) 
@@ -219,13 +225,12 @@ void vtkTreeComposite::CompositeBuffer(int width, int height, int useCharFlag,
         }
       }
     }
+
+#ifdef MPIPROALLOC
+  vtkCommunicator::SetUseCopy(1);
+#endif
+
 }
-
-
-
-
-
-
 
 void vtkTreeComposite::PrintSelf(ostream& os, vtkIndent indent)
 {
