@@ -69,6 +69,7 @@
 #include "vtkMesaLight.h"
 #include "vtkMesaProperty.h"
 #include "vtkMesaPolyDataMapper.h"
+#include "vtkMesaRayCastImageDisplayHelper.h"
 #include "vtkMesaRenderer.h"
 #include "vtkMesaTexture.h"
 #include "vtkMesaVolumeTextureMapper2D.h"
