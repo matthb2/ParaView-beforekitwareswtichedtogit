@@ -758,6 +758,18 @@ int vtkStreamingDemandDrivenPipeline::NeedToExecuteData(int outputPort)
       }
     }
 
+  // if we are requesting a particular update time index, check
+  // if we have the desired time index
+  if ( outInfo->Has(UPDATE_TIME_INDEX()) )
+    {
+    if (!dataInfo->Has(vtkDataObject::DATA_TIME_INDEX()) ||
+      dataInfo->Get(vtkDataObject::DATA_TIME_INDEX()) !=
+      outInfo->Get(UPDATE_TIME_INDEX()))
+      {
+      return 1;
+      }
+    }
+
   // We do not need to execute.
   return 0;
 }
