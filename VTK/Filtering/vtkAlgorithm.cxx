@@ -240,10 +240,10 @@ void vtkAlgorithm::SetNumberOfOutputPorts(int n)
     vtkExecutive** consumers = info->GetExecutives(vtkExecutive::CONSUMERS());
     int* consumerPorts = info->GetPorts(vtkExecutive::CONSUMERS());
     int consumerCount = info->Length(vtkExecutive::CONSUMERS());
-    for(int i=0; i < consumerCount; ++i)
+    for(int j=0; j < consumerCount; ++j)
       {
       vtkInformationVector* inputs =
-        consumers[i]->GetInputInformation(consumerPorts[i]);
+        consumers[j]->GetInputInformation(consumerPorts[j]);
       inputs->Remove(info);
       }
 
