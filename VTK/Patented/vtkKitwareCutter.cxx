@@ -29,7 +29,6 @@
 #include "vtkStreamingDemandDrivenPipeline.h"
 #include "vtkStructuredGrid.h"
 #include "vtkImageData.h"
-#include "vtkSynchronizedTemplates2D.h"
 #include "vtkSynchronizedTemplates3D.h"
 
 vtkCxxRevisionMacro(vtkKitwareCutter, "$Revision$");
