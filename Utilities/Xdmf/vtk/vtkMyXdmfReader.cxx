@@ -565,8 +565,10 @@ void vtkMyXdmfReader::Execute()
       XdmfArray *values = this->FormatMulti->ElementToArray( 
         dataNode, this->DataDescription );
       */
-    if( !XDMF_WORD_CMP(NodeType, "DataTransform") &&
-        ( this->Grid->GetTopologyType() == XDMF_3DRECTMESH ) ){
+    // if( !XDMF_WORD_CMP(NodeType, "DataTransform") &&
+    //   ( this->Grid->GetTopologyType() == XDMF_3DRECTMESH ) ){
+    if( XDMF_WORD_CMP(NodeType, "DataStructure") &&
+	( this->Grid->GetTopologyType() == XDMF_3DRECTMESH )){
 	// Only works for the CTH-like special case
         values = this->FormatMulti->ElementToArray(dataNode, this->DataDescription);
     } else {
