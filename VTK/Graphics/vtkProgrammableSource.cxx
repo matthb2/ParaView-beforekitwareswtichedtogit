@@ -182,7 +182,7 @@ int vtkProgrammableSource::RequestData(
   return 1;
 }
 
-int vtkProgrammableSource::CreateOutput(
+int vtkProgrammableSource::RequestDataObject(
   vtkInformation *,
   vtkInformationVector **,
   vtkInformationVector *outputVector)
