@@ -280,7 +280,6 @@ void vtkPVGeometryFilter::ExecuteCellNormals(vtkPolyData *output)
     return;
     }
 
-  vtkIdType idx, numCells;
   vtkIdType* endCellPtr;
   vtkIdType* cellPtr;
   vtkIdType *pts = 0;
