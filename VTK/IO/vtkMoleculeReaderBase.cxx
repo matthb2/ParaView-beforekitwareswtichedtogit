@@ -197,6 +197,7 @@ void vtkMoleculeReaderBase::Execute()
   vtkDebugMacro(<< "opening base file " << this->FileName);
   this->ReadMolecule(fp);
   fclose(fp);
+  this->GetOutput()->Print();
 
   this->GetOutput()->Squeeze();
 }
@@ -228,13 +229,13 @@ int vtkMoleculeReaderBase::ReadMolecule(FILE *fp)
     this->Points->Reset();
     }
 
-  newBonds = vtkCellArray::New();
-  newBonds->Allocate(500);
-
   this->ReadSpecificMolecule(fp);
 
   vtkDebugMacro(<< "End of scanning");
   output->SetPoints(this->Points);
+
+  newBonds = vtkCellArray::New();
+  newBonds->Allocate(500);
 
   this->MakeBonds(this->Points, this->AtomType, newBonds);
 
