@@ -98,7 +98,7 @@ void vtkMetaImageWriter::Write()
     delete [] rfname;
     }
 
-  ofstream ofs(this->MHDFileName);
+  ofstream ofs(this->MHDFileName, ios::out);
   if ( !ofs )
     {
     vtkErrorMacro("Cannot open file: " << this->MHDFileName << " for writing");
