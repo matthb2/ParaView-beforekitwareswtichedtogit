@@ -382,6 +382,12 @@ int vtkSMDoubleVectorProperty::ReadXMLAttributes(vtkSMProxy* proxy,
         }
       this->SetElements(initVal);
       }
+    else
+      {
+      vtkErrorMacro("No default value is specified for property: "
+                    << this->GetXMLName()
+                    << ". This might lead to stability problems");
+      }
     delete[] initVal;
     }
     
