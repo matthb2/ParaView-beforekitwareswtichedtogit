@@ -410,14 +410,12 @@ void vtkCocoaRenderWindow::WindowInitialize ()
   vtkCocoaGLView *glView;
 #undef id
 #define id Id
+  NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
   // create our own window if not already set
   this->OwnWindow = 0;
   // get the application instance if we don't have one already
   if (!this->ApplicationInitialized)
     {
-//temporary remove the autorelease pool until a better solution is found
-//    NSAutoreleasePool *pool = (NSAutoreleasePool *)(this->AutoreleasePool);
-//    pool = [[NSAutoreleasePool alloc] init];
     [NSApplication sharedApplication];
     this->ApplicationInitialized=1;
     }
@@ -472,6 +470,7 @@ void vtkCocoaRenderWindow::WindowInitialize ()
 
   this->OpenGLInit();
   this->Mapped = 1;
+  [pool release];
 }
 
 //----------------------------------------------------------------------------
