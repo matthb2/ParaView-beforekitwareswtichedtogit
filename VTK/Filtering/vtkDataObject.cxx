@@ -692,6 +692,18 @@ int vtkDataObject::UpdateExtentIsOutsideOfTheExtent()
         {
         return 1;
         }
+      if (   this->RequestExactExtent )
+        {
+        if ( this->UpdateExtent[0] != extent[0] ||
+             this->UpdateExtent[1] != extent[1] ||
+             this->UpdateExtent[2] != extent[2] ||
+             this->UpdateExtent[3] != extent[3] ||
+             this->UpdateExtent[4] != extent[4] ||
+             this->UpdateExtent[5] != extent[5] )
+          {
+          return 1;
+          }
+        }
       } break;
 
     // We should never have this case occur
