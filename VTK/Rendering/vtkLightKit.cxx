@@ -41,6 +41,19 @@ static const char *vtkLightKitSubTypeStrings[] = {
   NULL
 };
 
+// These are the same as vtkLightKitSubTypeStrings but shorter
+// usefull for a GUI with minimum space
+static const char *vtkLightKitSubTypeShortStrings[] = {
+  "Warm.",
+  "Int. ",
+  "Elev.",
+  "Azim.",
+  "K:F",
+  "K:B",
+  "K:H",
+  NULL
+};
+
 
 //----------------------------------------------------------------------------
 vtkLightKit::vtkLightKit()
@@ -428,6 +441,20 @@ const char *vtkLightKit::GetStringFromSubType(int subtype)
   if( subtype < n )
     {
     return vtkLightKitSubTypeStrings[subtype];
+    }
+  else
+    {
+    return NULL;
+    }
+}
+
+//----------------------------------------------------------------------------
+const char *vtkLightKit::GetShortStringFromSubType(int subtype)
+{
+  static const int n = sizeof(vtkLightKitSubTypeShortStrings)/sizeof(char*);
+  if( subtype < n )
+    {
+    return vtkLightKitSubTypeShortStrings[subtype];
     }
   else
     {
