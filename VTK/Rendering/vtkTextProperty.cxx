@@ -82,7 +82,7 @@ vtkTextProperty::vtkTextProperty()
   this->VerticalJustification = VTK_TEXT_BOTTOM;
 
   this->LineOffset = 0.0;
-  this->LineSpacing = 1.0;
+  this->LineSpacing = 1.1;
 
   this->FaceFileName = NULL;
 }
