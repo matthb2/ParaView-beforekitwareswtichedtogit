@@ -497,8 +497,6 @@ void vtkPVGeometryFilter::UnstructuredGridExecute(vtkUnstructuredGrid* input)
     return;
     }
   
-  vtkPolyData *output = this->GetOutput();
-  
   this->OutlineFlag = 1;
 
   this->DataSetExecute(input);

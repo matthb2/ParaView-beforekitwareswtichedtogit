@@ -357,7 +357,6 @@ void vtkPickFilter::GatherPoints(vtkPoints*)
     }
   int idx, sum;
   int numProcs = this->Controller->GetNumberOfProcesses();
-  int myId = this->Controller->GetLocalProcessId();
   int size = pts->GetNumberOfPoints() * 3;
   int* recvLengths = new int[numProcs * 2];
   int* recvOffsets = recvLengths+numProcs;
