@@ -15,7 +15,7 @@
 #include "vtkAlgorithm.h"
 
 #include "vtkAlgorithmOutput.h"
-#include "vtkDistributedExecutive.h"
+#include "vtkStreamingDemandDrivenPipeline.h"
 #include "vtkGarbageCollector.h"
 #include "vtkInformation.h"
 #include "vtkInformationVector.h"
@@ -632,7 +632,7 @@ void vtkAlgorithm::Update()
 //----------------------------------------------------------------------------
 vtkExecutive* vtkAlgorithm::CreateDefaultExecutive()
 {
-  return vtkDistributedExecutive::New();
+  return vtkStreamingDemandDrivenPipeline::New();
 }
 
 //----------------------------------------------------------------------------
