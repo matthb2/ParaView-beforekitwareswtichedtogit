@@ -439,6 +439,7 @@ char* vtkString::CropString(char* str, size_t max_len)
     {
     dst[cc] = src[cc];
     }
+  dst[cc] = 0;
 
   // Add the ellipsis
 
