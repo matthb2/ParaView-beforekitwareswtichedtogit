@@ -42,6 +42,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "vtkPVConnectivityFilter.h"
 
 #include "vtkObjectFactory.h"
+#include "vtkPointData.h"
 #include "vtkUnstructuredGrid.h"
 
 vtkCxxRevisionMacro(vtkPVConnectivityFilter, "$Revision$");

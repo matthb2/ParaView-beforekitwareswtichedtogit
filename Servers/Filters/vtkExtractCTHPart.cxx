@@ -16,16 +16,19 @@
 
 =========================================================================*/
 #include "vtkExtractCTHPart.h"
-#include "vtkObjectFactory.h"
-#include "vtkRectilinearGrid.h"
-#include "vtkPolyData.h"
-#include "vtkClipPolyData.h"
-#include "vtkCutter.h"
+
 #include "vtkAppendPolyData.h"
-#include "vtkDataSetSurfaceFilter.h"
-#include "vtkPlane.h"
-#include "vtkFloatArray.h"
+#include "vtkCellData.h"
+#include "vtkClipPolyData.h"
 #include "vtkContourFilter.h"
+#include "vtkCutter.h"
+#include "vtkDataSetSurfaceFilter.h"
+#include "vtkFloatArray.h"
+#include "vtkObjectFactory.h"
+#include "vtkPlane.h"
+#include "vtkPointData.h"
+#include "vtkPolyData.h"
+#include "vtkRectilinearGrid.h"
 
 #include <math.h>
 
