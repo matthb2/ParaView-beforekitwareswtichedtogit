@@ -28,7 +28,6 @@ vtkStandardNewMacro(vtkImageBlend);
 //----------------------------------------------------------------------------
 vtkImageBlend::vtkImageBlend()
 {
-  this->Stencil = 0;
   this->Opacity = 0;
   this->OpacityArrayLength = 0;
   this->BlendMode = VTK_IMAGE_BLEND_MODE_NORMAL;
@@ -42,7 +41,6 @@ vtkImageBlend::vtkImageBlend()
 //----------------------------------------------------------------------------
 vtkImageBlend::~vtkImageBlend()
 {
-  this->SetStencil(0);
   if (this->Opacity)
     {
     delete [] this->Opacity;
