@@ -977,6 +977,10 @@ void vtkPVClientServerModule::PrintSelf(ostream& os, vtkIndent indent)
   os << indent << "RenderServerSocket: " << this->RenderServerSocket << endl;;
   os << indent << "ClientMode: " << this->ClientMode << endl;
   os << indent << "RenderServerMode: " << this->RenderServerMode << endl;
+  os << indent << "NumberOfProcesses: " << this->NumberOfProcesses << endl;
+  os << indent << "MultiProcessMode: " << this->MultiProcessMode << endl;
+  os << indent << "RenderServerMode: " << this->RenderServerMode << endl;
+  os << indent << "NumberOfServerProcesses: " << this->NumberOfServerProcesses << endl;
 }
 
 //----------------------------------------------------------------------------
