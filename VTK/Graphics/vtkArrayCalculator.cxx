@@ -229,7 +229,7 @@ void vtkArrayCalculator::Execute()
       }
     else
       {
-      vtkErrorMacro("Invalid array name: " << this->ScalarArrayNames[i]);
+      vtkErrorMacro("Invalid array name: " << this->VectorArrayNames[i]);
       return;
       }
     }
