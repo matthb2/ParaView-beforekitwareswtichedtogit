@@ -16,12 +16,15 @@
 
 =========================================================================*/
 #include "vtkImageDataStreamer.h"
+
+#include "vtkCommand.h"
+#include "vtkExtentTranslator.h"
 #include "vtkImageData.h"
 #include "vtkObjectFactory.h"
-#include "vtkCommand.h"
 
 vtkCxxRevisionMacro(vtkImageDataStreamer, "$Revision$");
 vtkStandardNewMacro(vtkImageDataStreamer);
+vtkCxxSetObjectMacro(vtkImageDataStreamer,ExtentTranslator,vtkExtentTranslator);
 
 //----------------------------------------------------------------------------
 vtkImageDataStreamer::vtkImageDataStreamer()

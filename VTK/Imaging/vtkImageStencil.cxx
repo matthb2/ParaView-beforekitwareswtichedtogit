@@ -18,6 +18,7 @@
 #include "vtkImageStencil.h"
 
 #include "vtkImageData.h"
+#include "vtkImageStencilData.h"
 #include "vtkObjectFactory.h"
 
 #include <math.h>

@@ -16,7 +16,10 @@
 
 =========================================================================*/
 #include "vtkImageSeedConnectivity.h"
+
+#include "vtkImageConnector.h"
 #include "vtkObjectFactory.h"
+#include "vtkImageData.h"
 
 vtkCxxRevisionMacro(vtkImageSeedConnectivity, "$Revision$");
 vtkStandardNewMacro(vtkImageSeedConnectivity);

@@ -19,9 +19,11 @@
 
 #include "vtkImageData.h"
 #include "vtkObjectFactory.h"
+#include "vtkScalarsToColors.h"
 
 vtkCxxRevisionMacro(vtkImageMapToColors, "$Revision$");
 vtkStandardNewMacro(vtkImageMapToColors);
+vtkCxxSetObjectMacro(vtkImageMapToColors,LookupTable,vtkScalarsToColors);
 
 //----------------------------------------------------------------------------
 // Constructor sets default values

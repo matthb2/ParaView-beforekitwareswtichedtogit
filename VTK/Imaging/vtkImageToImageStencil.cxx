@@ -16,8 +16,11 @@
 
 =========================================================================*/
 #include "vtkImageToImageStencil.h"
-#include "vtkPolyData.h"
+
+#include "vtkImageData.h"
+#include "vtkImageStencilData.h"
 #include "vtkObjectFactory.h"
+#include "vtkPolyData.h"
 
 #include <math.h>
 

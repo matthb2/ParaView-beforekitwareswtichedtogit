@@ -16,8 +16,10 @@
 
 =========================================================================*/
 #include "vtkImageOpenClose3D.h"
-#include "vtkObjectFactory.h"
+
 #include "vtkImageData.h"
+#include "vtkImageDilateErode3D.h"
+#include "vtkObjectFactory.h"
 
 #include <math.h>
 

@@ -19,6 +19,7 @@
 
 #include "vtkImageData.h"
 #include "vtkObjectFactory.h"
+#include "vtkScalarsToColors.h"
 
 vtkCxxRevisionMacro(vtkImageMapToWindowLevelColors, "$Revision$");
 vtkStandardNewMacro(vtkImageMapToWindowLevelColors);

@@ -18,10 +18,12 @@
 #include "vtkImageBlend.h"
 
 #include "vtkImageData.h"
+#include "vtkImageStencilData.h"
 #include "vtkObjectFactory.h"
 
 vtkCxxRevisionMacro(vtkImageBlend, "$Revision$");
 vtkStandardNewMacro(vtkImageBlend);
+vtkCxxSetObjectMacro(vtkImageBlend,Stencil, vtkImageStencilData);
 
 //----------------------------------------------------------------------------
 vtkImageBlend::vtkImageBlend()

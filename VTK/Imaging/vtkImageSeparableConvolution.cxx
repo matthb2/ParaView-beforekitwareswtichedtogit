@@ -19,9 +19,14 @@
 
 #include "vtkImageData.h"
 #include "vtkObjectFactory.h"
+#include "vtkFloatArray.h"
 
 vtkCxxRevisionMacro(vtkImageSeparableConvolution, "$Revision$");
 vtkStandardNewMacro(vtkImageSeparableConvolution);
+vtkCxxSetObjectMacro(vtkImageSeparableConvolution,XKernel,vtkFloatArray);
+vtkCxxSetObjectMacro(vtkImageSeparableConvolution,YKernel,vtkFloatArray);
+vtkCxxSetObjectMacro(vtkImageSeparableConvolution,ZKernel,vtkFloatArray);
+
 
 // Actually do the convolution
 void ExecuteConvolve ( float* kernel, int kernelSize, float* image, float* outImage, int imageSize )
