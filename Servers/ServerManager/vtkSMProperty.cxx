@@ -317,7 +317,7 @@ int vtkSMProperty::ReadXMLAttributes(vtkSMProxy* proxy,
 }
 
 //---------------------------------------------------------------------------
-void vtkSMProperty::SaveState(const char* name, ofstream* file, vtkIndent indent)
+void vtkSMProperty::SaveState(const char* name, ostream* file, vtkIndent indent)
 {
   this->DomainIterator->Begin();
   while(!this->DomainIterator->IsAtEnd())

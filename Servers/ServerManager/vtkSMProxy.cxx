@@ -879,7 +879,7 @@ int vtkSMProxy::ReadXMLAttributes(
 }
 
 //---------------------------------------------------------------------------
-void vtkSMProxy::SaveState(const char* name, ofstream* file, vtkIndent indent)
+void vtkSMProxy::SaveState(const char* name, ostream* file, vtkIndent indent)
 {
   *file << indent
         << "<Proxy group=\"" 
