@@ -25,6 +25,7 @@ vtkInitialValueProblemSolver::vtkInitialValueProblemSolver()
   this->Vals = 0;
   this->Derivs = 0;
   this->Initialized = 0;
+  this->Adaptive = 0;
 }
 
 vtkInitialValueProblemSolver::~vtkInitialValueProblemSolver() 
