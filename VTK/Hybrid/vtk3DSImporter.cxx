@@ -1135,7 +1135,7 @@ static void cleanup_name (char *name)
   strcpy (tmp, &name[i]);
 
     /* Remove any trailing blanks or quotes */
-  for (i = strlen(tmp)-1; i >= 0; i--)
+  for (i = static_cast<int>(strlen(tmp))-1; i >= 0; i--)
     {
     if (isprint(tmp[i]) && !isspace(tmp[i]) && tmp[i] != '"')
       {

@@ -96,7 +96,7 @@ void vtkPDataSetWriter::Write()
 
 
   // Lets compute the file root from the file name supplied by the user.
-  length = strlen(this->FileName);
+  length = static_cast<int>(strlen(this->FileName));
   fileRoot = new char [length+1];
   fileName = new char [length+strlen(this->FilePattern)+20];
   strncpy(fileRoot, this->FileName, length);

@@ -229,7 +229,8 @@ void vtkPVGeometryFilter::RectilinearGridExecute(vtkRectilinearGrid *input)
 
 
 //----------------------------------------------------------------------------
-void vtkPVGeometryFilter::UnstructuredGridExecute(vtkUnstructuredGrid *input)
+void vtkPVGeometryFilter::UnstructuredGridExecute(
+  vtkUnstructuredGrid* vtkNotUsed(input))
 {
   this->OutlineFlag = 0;
   this->vtkDataSetSurfaceFilter::Execute();

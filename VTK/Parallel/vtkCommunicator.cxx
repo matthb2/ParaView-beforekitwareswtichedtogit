@@ -149,7 +149,7 @@ int vtkCommunicator::Send(vtkDataArray* data, int remoteHandle, int tag)
   int len = 0;
   if (name)
     {
-    len = strlen(name) + 1;
+    len = static_cast<int>(strlen(name)) + 1;
     }
 
   // send length of name

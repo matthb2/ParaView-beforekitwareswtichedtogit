@@ -163,8 +163,10 @@ void vtkWin32TextMapper::GetSize(vtkViewport* viewport, int *size)
                      DT_CALCRECT|DT_LEFT|DT_NOPREFIX);
         delete [] wtxt;
 #else
-  size[1] = DrawText(hdc, this->Input, strlen(this->Input), &rect, 
-                     DT_CALCRECT|DT_LEFT|DT_NOPREFIX);
+  size[1] = static_cast<int>(DrawText(hdc, this->Input, 
+                                      static_cast<int>(strlen(this->Input)), 
+                                      &rect, 
+                                      DT_CALCRECT|DT_LEFT|DT_NOPREFIX));
 #endif
   size[0] = rect.right - rect.left + 1;
   this->LastSize[0] = size[0];
