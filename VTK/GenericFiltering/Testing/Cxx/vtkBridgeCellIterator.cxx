@@ -162,9 +162,13 @@ void vtkBridgeCellIterator::InitWithDataSetBoundaries(vtkBridgeDataSet *ds,
                                                       int dim,
                                                       int exterior_only)
 {
-  (void)exterior_only;
   assert("pre: ds_exists" && ds!=0);
   assert("pre: valid_dim_range" && (dim>=-1) && (dim<=3));
+  
+  (void)ds;
+  (void)dim;
+  (void)exterior_only;
+  
   assert("check: TODO" && 0);
 }
 
