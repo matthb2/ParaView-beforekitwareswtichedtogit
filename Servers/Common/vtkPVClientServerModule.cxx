@@ -293,7 +293,7 @@ void vtkPVClientServerModule::Initialize()
     if(this->Options->GetRenderServerMode())
       { 
       // The client sends the connect id to data server
-      int cid = this->Options->GetConnectID();
+      cid = this->Options->GetConnectID();
       this->RenderServerSocket->Send(&cid, 1, 1, 8843);
       // Check if it matched
       this->RenderServerSocket->Receive(&rsmatch, 1, 1, 8843);
