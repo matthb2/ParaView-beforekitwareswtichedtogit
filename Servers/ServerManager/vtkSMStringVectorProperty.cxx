@@ -133,55 +133,6 @@ void vtkSMStringVectorProperty::AppendCommandToStream(
 }
 
 //---------------------------------------------------------------------------
-void vtkSMStringVectorProperty::UpdateInformation( 
-  int serverIds, vtkClientServerID objectId )
-{
-  if (!this->InformationOnly)
-    {
-    return;
-    }
-
-  vtkClientServerStream str;
-  str << vtkClientServerStream::Invoke 
-      << objectId << this->Command
-      << vtkClientServerStream::End;
-
-  vtkProcessModule* pm = vtkProcessModule::GetProcessModule();
-  pm->SendStream(vtkProcessModule::GetRootId(serverIds), str, 0);
-
-  const vtkClientServerStream& res =     
-    pm->GetLastResult(vtkProcessModule::GetRootId(serverIds));
-
-
-  int numMsgs = res.GetNumberOfMessages();
-  if (numMsgs < 1)
-    {
-    return;
-    }
-
-  int numArgs = res.GetNumberOfArguments(0);
-  if (numArgs < 1)
-    {
-    return;
-    }
-
-  int argType = res.GetArgumentType(0, 0);
-
-  if (argType == vtkClientServerStream::string_value)
-    {
-    const char* sres;
-    int retVal = res.GetArgument(0, 0, &sres);
-    if (!retVal)
-      {
-      vtkErrorMacro("Error getting argument.");
-      return;
-      }
-    this->SetNumberOfElements(1);
-    this->SetElement(0, sres);
-    }
-}
-
-//---------------------------------------------------------------------------
 void vtkSMStringVectorProperty::SetNumberOfUncheckedElements(unsigned int num)
 {
   this->Internals->UncheckedValues.resize(num);
