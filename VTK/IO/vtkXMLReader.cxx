@@ -102,6 +102,12 @@ int vtkXMLReader::OpenVTKFile()
     vtkErrorMacro("File already open.");
     return 1;
     }
+
+  if (!this->FileName)
+    {
+    vtkErrorMacro("File name not specified");
+    return 0;
+    }
   
   // First make sure the file exists.  This prevents an empty file
   // from being created on older compilers.
