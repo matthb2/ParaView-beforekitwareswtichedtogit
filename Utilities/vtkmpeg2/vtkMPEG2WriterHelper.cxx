@@ -171,7 +171,6 @@ vtkMPEG2WriterHelper::~vtkMPEG2WriterHelper()
 {
   delete this->Internals;
   this->SetFileName(0);
-  this->SetInput(0);
 }
 
 //----------------------------------------------------------------------------
