@@ -499,6 +499,7 @@ LRESULT vtkWin32OpenGLRenderWindow::MessageProc(HWND hWnd, UINT message,
     case WM_ERASEBKGND:
       return TRUE;
     default:
+      this->InvokeEvent(vtkCommand::RenderWindowMessageEvent, &message);
       break;
     }
   return DefWindowProc(hWnd, message, wParam, lParam);
