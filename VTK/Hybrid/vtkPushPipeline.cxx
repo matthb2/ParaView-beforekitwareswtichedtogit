@@ -139,6 +139,8 @@ vtkPushPipeline::~vtkPushPipeline()
     }
   dmi->Delete();
   this->DataMap->Delete();
+
+  this->Windows->Delete();
 }
 
 void vtkPushPipeline::AddPusher(vtkProcessObject* pusher)
