@@ -1153,6 +1153,7 @@ void vtkOrderedTriangulator::PrintSelf(ostream& os, vtkIndent indent)
   this->Superclass::PrintSelf(os,indent);
 
   os << indent << "PreSorted: " << (this->PreSorted ? "On\n" : "Off\n");
+  os << indent << "UseTwoSortIds: " << (this->UseTwoSortIds ? "On\n" : "Off\n");
 
 }
 
