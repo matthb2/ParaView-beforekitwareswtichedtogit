@@ -258,8 +258,11 @@ void vtkFeatureEdges::Execute()
       else if ( this->FeatureEdges && 
                 numNei == 1 && (nei=neighbors->GetId(0)) > cellId ) 
         {
-        if ( vtkMath::Dot(polyNormals->GetTuple(nei),
-                          polyNormals->GetTuple(cellId)) <= cosAngle ) 
+        float neiTuple[3];
+        float cellTuple[3];
+        polyNormals->GetTuple(nei, neiTuple);
+        polyNormals->GetTuple(cellId, cellTuple);
+        if ( vtkMath::Dot(neiTuple, cellTuple) <= cosAngle ) 
           {
           if (ghostLevels && ghostLevels[cellId] > updateLevel)
             {

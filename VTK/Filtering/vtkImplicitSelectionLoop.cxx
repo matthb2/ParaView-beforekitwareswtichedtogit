@@ -129,8 +129,10 @@ float vtkImplicitSelectionLoop::EvaluateFunction(float x[3])
   // determine distance to boundary
   for (minDist2=VTK_LARGE_FLOAT,i=0; i<numPts; i++)
     {
-    dist2 = vtkLine::DistanceToLine(xProj,this->Polygon->Points->GetPoint(i),
-                        this->Polygon->Points->GetPoint((i+1)%numPts),t,closest);
+    float p1[3], p2[3];
+    this->Polygon->Points->GetPoint(i, p1);
+    this->Polygon->Points->GetPoint((i+1)%numPts, p2);
+    dist2 = vtkLine::DistanceToLine(xProj, p1, p2, t, closest);
     if ( dist2 < minDist2 )
       {
       minDist2 = dist2;
