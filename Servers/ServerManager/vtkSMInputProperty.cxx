@@ -39,6 +39,7 @@ vtkSMInputProperty::vtkSMInputProperty()
 //---------------------------------------------------------------------------
 vtkSMInputProperty::~vtkSMInputProperty()
 {
+  this->SetCleanCommand(0);
 }
 
 //---------------------------------------------------------------------------
