@@ -25,6 +25,7 @@
 #include "vtkClientServerStream.h"
 #include "vtkPVServerInformation.h"
 
+#define DUPLICATE_CODE 0
 
 //----------------------------------------------------------------------------
 vtkStandardNewMacro(vtkPVMultiDisplayRenderModule);
@@ -121,6 +122,8 @@ void vtkPVMultiDisplayRenderModule::SetProcessModule(vtkProcessModule *pm)
     << vtkClientServerStream::End;
   pm->SendStream(vtkProcessModule::CLIENT|vtkProcessModule::RENDER_SERVER);
 }
+
+#ifdef DUPLICATE_CODE
 
 //----------------------------------------------------------------------------
 vtkPVPartDisplay* vtkPVMultiDisplayRenderModule::CreatePartDisplay()
@@ -401,6 +404,7 @@ void vtkPVMultiDisplayRenderModule::InteractiveRender()
 
 
 }
+#endif //DUPLICATE_CODE
 
 //----------------------------------------------------------------------------
 void vtkPVMultiDisplayRenderModule::SetUseCompositeCompression(int val)
