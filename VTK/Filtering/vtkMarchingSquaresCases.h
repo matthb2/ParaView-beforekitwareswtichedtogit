@@ -12,21 +12,17 @@
      PURPOSE.  See the above copyright notice for more information.
 
 =========================================================================*/
-#ifndef __vtkMarchingCubesCases_h
-#define __vtkMarchingCubesCases_h
+#ifndef __vtkMarchingSquaresCases_h
+#define __vtkMarchingSquaresCases_h
 //
-// marching cubes case table for generating isosurfaces
+// marching squares cases for generating isolines
 //
+
 typedef int EDGE_LIST;
-struct VTK_COMMON_EXPORT vtkMarchingCubesTriangleCases 
+struct VTK_FILTERING_EXPORT vtkMarchingSquaresLineCases 
 {
-  EDGE_LIST edges[16];
-  static vtkMarchingCubesTriangleCases* GetCases();
+  EDGE_LIST edges[5];
+  static vtkMarchingSquaresLineCases* GetCases();
 };
- 
-//
-// Edges to intersect.  Three at a time form a triangle. Comments at 
-// end of line indicate case number (0->255) and base case number (0->15).
-//
 
 #endif
