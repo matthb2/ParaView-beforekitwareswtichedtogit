@@ -136,7 +136,6 @@ void vtkPVGeometryFilter::Execute()
     vtkDataSet *ds = static_cast<vtkDataSet*>(input);
     if (!ds->GetNumberOfPoints())
       {
-      vtkErrorMacro("No input points");
       return;
       }
     }
