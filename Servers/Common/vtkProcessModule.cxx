@@ -738,6 +738,23 @@ int vtkProcessModule::SetupRenderModule()
 }
 
 //----------------------------------------------------------------------------
+void vtkProcessModule::SetOptions(vtkPVOptions* op)
+{
+  this->Options = op;
+  if ( op ) 
+    {
+    if ( op->GetServerMode() )
+      {
+      this->GetProgressHandler()->SetServerMode(1);
+      }
+    if ( op->GetClientMode() )
+      {
+      this->GetProgressHandler()->SetClientMode(1);
+      }
+    }
+}
+
+//----------------------------------------------------------------------------
 vtkCommand* vtkProcessModule::GetObserver()
 {
   return this->Observer;
