@@ -163,16 +163,7 @@ void vtkHierarchicalDataSet::InitializeNode(unsigned int level,
     }
 
   ldataSets[id] = 0;
-//   if (ldataSets[id])
-//     {
-//     ldataSets[id]->DisconnectAll(vtkHDSNodeRef(level, id), 
-//                                  this->Internal->DataSets);
-//     ldataSets[id]->DataSet = 0;
-//     }
-//   else
-//     {
-//     ldataSets[id] = this->NewNode();
-//     }
+
   this->Modified();
 }
 
