@@ -27,6 +27,7 @@
 #include <ctype.h>
 
 #include "vtkAVSucdReader.h"
+#include "vtkDataArraySelection.h"
 #include "vtkErrorCode.h"
 #include "vtkUnstructuredGrid.h"
 #include "vtkObjectFactory.h"
