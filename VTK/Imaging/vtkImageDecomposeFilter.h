@@ -38,38 +38,48 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 
 
 =========================================================================*/
-// .NAME vtkImageFFT -  Fast Fourier Transform.
+// .NAME vtkImageDecomposeFilter - Filters that execute axes in series.
 // .SECTION Description
-// vtkImageFFT implements a  fast Fourier transform.  The input
-// can have real or imaginary data in any components and data types, but
-// the output is always float with real values in component0, and
-// imaginary values in component1.  The filter is faster for images that
-// have power of two sizes.  The one dimension filter exists in case
-// the user wants to decompose higher dimensional FFTs themself.
-// (For Streaming or threaded execution) 
-// (However, for these to work properly, we need control over how
-// the output is broken up (avoid filtered axis))
+// This superclass molds the vtkImageIterateFilter superclass so
+// it iterates over the axes.  The filter uses dimensionality to 
+// determine how many axes to execute (starting from x).  
+// Full filtered axes is not supported (but could be).
+// The filter also provides convenience methods for permuting information
+// retrieved from input, output and vtkImageData.
+
+#ifndef __vtkImageDecomposeFilter_h
+#define __vtkImageDecomposeFilter_h
 
 
-#ifndef __vtkImageFFT_h
-#define __vtkImageFFT_h
+#include "vtkImageIterateFilter.h"
 
-
-#include "vtkImageFourierFilter.h"
-
-class VTK_EXPORT vtkImageFFT : public vtkImageFourierFilter
+class VTK_EXPORT vtkImageDecomposeFilter : public vtkImageIterateFilter
 {
 public:
-  static vtkImageFFT *New() {return new vtkImageFFT;};
-  const char *GetClassName() {return "vtkImageFFT";};
+  vtkImageDecomposeFilter();
+  static vtkImageDecomposeFilter *New() {return new vtkImageDecomposeFilter;};
+  const char *GetClassName() {return "vtkImageDecomposeFilter";};
+  void PrintSelf(ostream& os, vtkIndent indent);
 
-  int SplitExtent(int splitExt[6], int startExt[6], 
-		  int num, int total);
+  void SetDimensionality(int dim);
+  vtkGetMacro(Dimensionality,int);
+
+  // Description:
+  // for compatability
+  void SetFilteredAxes(int axis0);
+  void SetFilteredAxes(int axis0, int axis2);
+  void SetFilteredAxes(int axis0, int axis2, int axis3);
+
+  // Description:
+  // public for template execute functions
+  void PermuteIncrements(int *increments, int &inc0, int &inc1, int &inc2);
+  void PermuteExtent(int *extent, int &min0, int &max0, int &min1, int &max1,
+		     int &min2, int &max2);
+  
 protected:
-  void ExecuteImageInformation();
-  void ComputeRequiredInputUpdateExtent(int inExt[6], int outExt[6]);
-  void ThreadedExecute(vtkImageData *inData, vtkImageData *outData,
-		       int outExt[6], int threadId);
+  int Dimensionality;
+
+
 };
 
 #endif
