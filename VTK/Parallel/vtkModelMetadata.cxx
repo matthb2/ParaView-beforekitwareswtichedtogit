@@ -483,7 +483,7 @@ int vtkModelMetadata::GetBlockLocalIndex(int id)
       {
       int gid = this->BlockIds[i];
 
-      blockIdIndex.insert(vtkstd::pair<int,int>(gid, i));
+      blockIdIndex.insert(vtkstd::map<int,int>::value_type(gid, i));
       }
     }
 
