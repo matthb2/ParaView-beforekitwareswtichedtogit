@@ -400,6 +400,7 @@ void vtkIceTClientCompositeManager::SatelliteStartRender()
         cam->SetPosition(renInfo.CameraPosition);
         cam->SetFocalPoint(renInfo.CameraFocalPoint);
         cam->SetViewUp(renInfo.CameraViewUp);
+        cam->SetViewAngle(renInfo.CameraViewAngle);
         cam->SetClippingRange(renInfo.CameraClippingRange);
         if (renInfo.ParallelScale != 0.0)
           {
