@@ -831,7 +831,7 @@ float vtkTetra::GetParametricDistance(float pcoords[3])
 
   pc[0] = pcoords[0];
   pc[1] = pcoords[1];
-  pc[2] = pcoords[1];
+  pc[2] = pcoords[2];
   pc[3] = 1.0 - pcoords[0] - pcoords[1] - pcoords[2];
 
   for (i=0; i<4; i++)
