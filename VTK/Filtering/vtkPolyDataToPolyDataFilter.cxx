@@ -44,6 +44,12 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 vtkCxxRevisionMacro(vtkPolyDataToPolyDataFilter, "$Revision$");
 
 //----------------------------------------------------------------------------
+vtkPolyDataToPolyDataFilter::vtkPolyDataToPolyDataFilter() 
+{
+  this->vtkProcessObject::SetNumberOfInputs(1);
+  this->NumberOfRequiredInputs = 1;
+}
+//----------------------------------------------------------------------------
 // Specify the input data or filter.
 void vtkPolyDataToPolyDataFilter::SetInput(vtkPolyData *input)
 {
