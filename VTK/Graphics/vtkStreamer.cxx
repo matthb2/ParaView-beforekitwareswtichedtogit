@@ -465,7 +465,11 @@ void vtkStreamer::Integrate()
   this->NumberOfStreamers = 0;
 
 // reexecuting - delete old stuff
-  delete [] this->Streamers;
+  if( this->Streamers )
+    {
+    // C++ does not define behavior of delete[] NULL
+    delete [] this->Streamers;
+    }
   this->Streamers = NULL;
 
   if ( ! (inVectors=pd->GetVectors()) )
