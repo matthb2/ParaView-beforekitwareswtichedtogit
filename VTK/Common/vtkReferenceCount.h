@@ -38,68 +38,60 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 
 
 =========================================================================*/
-// .NAME vtkPointSet - abstract class for specifying dataset behavior
+// .NAME vtkReferenceCount - subclasses of this object are reference counted
 // .SECTION Description
-// vtkPointSet is an abstract class that specifies the interface for 
-// datasets that explicitly use "point" arrays to represent geometry.
-// For example, vtkPolyData and vtkUnstructuredGrid require point arrays
-// to specify point position, while vtkStructuredPoints generates point
-// positions implicitly.
+// vtkReferenceCount is the base class for objects that are reference counted. 
+// Objects that are reference counted exist as long as another object
+// uses them. Once the last reference to a reference counted object is 
+// removed, the object will spontaneously destruct. Typically only data
+// objects that are passed between objects are reference counted.
+
+// .SECTION Caveats
+// Note: in vtk objects are generally created with combinations of 
+// new/Delete() methods. This works great until you want to allocate
+// objects off the stack (i.e., automatic objects). Automatic objects,
+// when automatically deleted (by exiting scope), will cause warnings to
+// occur. You can avoid this by turing reference counting off (i.e., use
+// the method ReferenceCountingOff()).
 
 // .SECTION See Also
-// vtkPolyData vtkStructuredGrid vtkUnstructuredGrid
+// vtkLookupTable vtkTCoords vtkCellList vtkLinkList vtkNormals vtkPoints
+// vtkScalars vtkTensors vtkUserDefined vtkVectors
 
-#ifndef __vtkPointSet_h
-#define __vtkPointSet_h
+#ifndef __vtkReferenceCount_h
+#define __vtkReferenceCount_h
 
-#include "vtkDataSet.h"
-#include "vtkPointLocator.h"
+#include "vtkObject.h"
 
-class VTK_EXPORT vtkPointSet : public vtkDataSet
+class VTK_EXPORT vtkReferenceCount : public vtkObject
 {
 public:
-  vtkPointSet();
-  ~vtkPointSet();
-  vtkPointSet(const vtkPointSet& ps);
-  char *GetClassName() {return "vtkPointSet";};
+  vtkReferenceCount();
+  void Delete();
+  ~vtkReferenceCount();
   void PrintSelf(ostream& os, vtkIndent indent);
+  static vtkReferenceCount *New() {return new vtkReferenceCount;};
+  char *GetClassName() {return "vtkReferenceCount";};
 
-  // dataset interface
-  void Initialize();
-  void CopyStructure(vtkDataSet *pd);
-  int GetNumberOfPoints();
-  float *GetPoint(int ptId) {return this->Points->GetPoint(ptId);};
-  void GetPoint(int ptId, float x[3]) {this->Points->GetPoint(ptId,x);};
-  int FindPoint(float x[3]);
-  int FindCell(float x[3], vtkCell *cell, int cellId, float tol2, int& subId, 
-               float pcoords[3], float *weights);
+  void Register(vtkObject* o);
+  void UnRegister(vtkObject* o);
+  int  GetReferenceCount() {return this->ReferenceCount;};
+  void ReferenceCountingOff();
 
-  unsigned long int GetMTime();
-
-  // compute bounds of data
-  void ComputeBounds();
-  
-  // reclaim memory
-  void Squeeze();
-
-  // Description:
-  // Specify point array to define point coordinates.
-  vtkSetReferenceCountedObjectMacro(Points,vtkPoints);
-  vtkGetObjectMacro(Points,vtkPoints);
-
-protected:
-  vtkPoints *Points;
-  vtkPointLocator *Locator;
-
+private:
+  int ReferenceCount;      // Number of uses of this object by other objects
+  int ReferenceCounting; // Turn on/off reference counting mechanism
 };
 
-inline int vtkPointSet::GetNumberOfPoints()
+// Description:
+// Turn off reference counting for this object. This allows you to create
+// automatic reference counted objects and avoid warning messages when scope
+// is existed. (Note: It is preferable to use the combination new/Delete() 
+// to create and delete vtk objects.)
+inline void vtkReferenceCount::ReferenceCountingOff()
 {
-  if (this->Points) return this->Points->GetNumberOfPoints();
-  else return 0;
+  this->ReferenceCounting = 0;
 }
 
-
 #endif
-
 
