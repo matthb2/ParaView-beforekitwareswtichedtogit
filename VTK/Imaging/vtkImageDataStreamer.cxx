@@ -96,7 +96,8 @@ void vtkImageDataStreamer::UpdateData(vtkDataObject *vtkNotUsed(out))
   this->Progress = 0.0;
   this->InvokeEvent(vtkCommand::StartEvent,NULL);
   output->SetExtent(output->GetUpdateExtent());
-  output->AllocateScalars();
+  //output->AllocateScalars();
+  AllocateOutputData(output);
   
   // now start the loop over the number of pieces
   translator->SetWholeExtent(output->GetUpdateExtent());
