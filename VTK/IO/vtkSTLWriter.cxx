@@ -24,7 +24,9 @@
 #include "vtkPolyData.h"
 #include "vtkTriangle.h"
 
-#include <stdio.h>
+#if !defined(_WIN32) || defined(__CYGWIN__)
+# include <unistd.h> /* unlink */
+#endif
 
 vtkCxxRevisionMacro(vtkSTLWriter, "$Revision$");
 vtkStandardNewMacro(vtkSTLWriter);

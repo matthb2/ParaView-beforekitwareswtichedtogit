@@ -20,7 +20,9 @@
 #include "vtkObjectFactory.h"
 #include "vtkRectilinearGrid.h"
 
-#include <stdio.h>
+#if !defined(_WIN32) || defined(__CYGWIN__)
+# include <unistd.h> /* unlink */
+#endif
 
 vtkCxxRevisionMacro(vtkRectilinearGridWriter, "$Revision$");
 vtkStandardNewMacro(vtkRectilinearGridWriter);
