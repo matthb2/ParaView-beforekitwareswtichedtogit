@@ -37,14 +37,14 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 
 
 =========================================================================*/
-#include "vtkImageShiftScaleFilter.h"
+#include "vtkImageShiftScale.h"
 
 
 
 //----------------------------------------------------------------------------
 // Description:
 // Constructor sets default values
-vtkImageShiftScaleFilter::vtkImageShiftScaleFilter()
+vtkImageShiftScale::vtkImageShiftScale()
 {
   this->Shift = 0.0;
   this->Scale = 1.0;
@@ -57,7 +57,7 @@ vtkImageShiftScaleFilter::vtkImageShiftScaleFilter()
 // Description:
 // This templated function executes the filter for any type of data.
 template <class T>
-void vtkImageShiftScaleFilterExecute2d(vtkImageShiftScaleFilter *self,
+void vtkImageShiftScaleExecute2d(vtkImageShiftScale *self,
 				   vtkImageRegion *inRegion, T *inPtr,
 				   vtkImageRegion *outRegion, T *outPtr)
 {
@@ -104,7 +104,7 @@ void vtkImageShiftScaleFilterExecute2d(vtkImageShiftScaleFilter *self,
 // algorithm to fill the output from the input.
 // It just executes a switch statement to call the correct function for
 // the regions data types.
-void vtkImageShiftScaleFilter::Execute2d(vtkImageRegion *inRegion, 
+void vtkImageShiftScale::Execute2d(vtkImageRegion *inRegion, 
 					     vtkImageRegion *outRegion)
 {
   void *inPtr = inRegion->GetVoidPointer2d();
@@ -124,27 +124,27 @@ void vtkImageShiftScaleFilter::Execute2d(vtkImageRegion *inRegion,
   switch (inRegion->GetDataType())
     {
     case VTK_IMAGE_FLOAT:
-      vtkImageShiftScaleFilterExecute2d(this, 
+      vtkImageShiftScaleExecute2d(this, 
 			  inRegion, (float *)(inPtr), 
 			  outRegion, (float *)(outPtr));
       break;
     case VTK_IMAGE_INT:
-      vtkImageShiftScaleFilterExecute2d(this, 
+      vtkImageShiftScaleExecute2d(this, 
 			  inRegion, (int *)(inPtr), 
 			  outRegion, (int *)(outPtr));
       break;
     case VTK_IMAGE_SHORT:
-      vtkImageShiftScaleFilterExecute2d(this, 
+      vtkImageShiftScaleExecute2d(this, 
 			  inRegion, (short *)(inPtr), 
 			  outRegion, (short *)(outPtr));
       break;
     case VTK_IMAGE_UNSIGNED_SHORT:
-      vtkImageShiftScaleFilterExecute2d(this, 
+      vtkImageShiftScaleExecute2d(this, 
 			  inRegion, (unsigned short *)(inPtr), 
 			  outRegion, (unsigned short *)(outPtr));
       break;
     case VTK_IMAGE_UNSIGNED_CHAR:
-      vtkImageShiftScaleFilterExecute2d(this, 
+      vtkImageShiftScaleExecute2d(this, 
 			  inRegion, (unsigned char *)(inPtr), 
 			  outRegion, (unsigned char *)(outPtr));
       break;

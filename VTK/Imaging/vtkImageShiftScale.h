@@ -37,24 +37,24 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 
 
 =========================================================================*/
-// .NAME vtkImageShiftScaleFilter - Upper threshold on pixel values
+// .NAME vtkImageShiftScale - Upper threshold on pixel values
 // .SECTION Description
-// vtkImageShiftScaleFilter is a pixel filter class that implements a 
+// vtkImageShiftScale is a pixel filter class that implements a 
 // nonlinear upper threshold.  If a pixel is above Threshold, it is replaced
 // with Replace.
 
 
-#ifndef __vtkImageShiftScaleFilter_h
-#define __vtkImageShiftScaleFilter_h
+#ifndef __vtkImageShiftScale_h
+#define __vtkImageShiftScale_h
 
 
 #include "vtkImageFilter.h"
 
-class vtkImageShiftScaleFilter : public vtkImageFilter
+class vtkImageShiftScale : public vtkImageFilter
 {
 public:
-  vtkImageShiftScaleFilter();
-  char *GetClassName() {return "vtkImageShiftScaleFilter";};
+  vtkImageShiftScale();
+  char *GetClassName() {return "vtkImageShiftScale";};
 
   // Description:
   // Set/Get the Shift
