@@ -144,7 +144,7 @@ void vtkPickFilter::PointExecute()
   int numInputs = this->GetNumberOfInputs();
   int inputIdx;
   vtkDataSet* input;
-  vtkIdType numPts, ptId;
+  vtkIdType numPts = 0, ptId;
 
   if (numInputs == 0)
     {
@@ -565,7 +565,7 @@ void vtkPickFilter::IdExecute()
 int vtkPickFilter::PointIdExecute(vtkDataSet* input, int inputIdx, 
                                   vtkAppendFilter* append)
 {
-  vtkIdType bestId;
+  vtkIdType bestId = -1;
   vtkIdType pointId, numPoints;
 
   vtkDataArray* globalIds;
