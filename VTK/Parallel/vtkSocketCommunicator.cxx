@@ -301,7 +301,7 @@ int vtkSocketCommunicator::ReceiveMessage(char *data, int *length,
     }
 #endif
 
-  if ( length < 0 )
+  if ( *length < 0 )
     {
     return VTK_ERROR;
     }
