@@ -221,3 +221,29 @@ void vtkPNMReader::ExecuteInformation()
 }
 
 
+static inline bool iseol(int c)
+{
+  return c == 10 || c == 13;
+}
+
+
+
+int vtkPNMReader::CanReadFile(const char* fname)
+{
+  FILE *fp = fopen(fname, "rb");
+  if(!fp)
+    {
+    return 0;
+    } 
+  unsigned char magic[3];
+  if(fread(magic, 1, 3, fp) != 1)
+    {
+    fclose(fp);
+    return 0;
+    }
+  int ok = ((magic[0] == 'P') &&
+            iseol(magic[2]) &&
+            (magic[1] >= '1' && magic[1] <= '6'));
+  fclose(fp);
+  return ok;
+}
