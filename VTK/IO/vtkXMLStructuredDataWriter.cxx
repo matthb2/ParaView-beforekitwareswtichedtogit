@@ -73,7 +73,7 @@ int vtkXMLStructuredDataWriter::WriteData()
   // Prepare the extent translator to create the set of pieces.
   this->SetupExtentTranslator();
   
-  int result = 0;
+  int result;
 
   // Write the file.
   if (!this->StartFile())

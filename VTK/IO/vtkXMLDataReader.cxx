@@ -393,7 +393,7 @@ int vtkXMLDataReader::ReadData(vtkXMLDataElement* da, void* data, int wordType,
   
   this->InReadData = 1;
   unsigned long num = numWords;
-  int result = 0;
+  int result;
   if(da->GetAttribute("offset"))
     {
     int offset = 0;

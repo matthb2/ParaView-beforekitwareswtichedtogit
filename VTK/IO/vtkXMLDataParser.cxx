@@ -733,7 +733,7 @@ unsigned long vtkXMLDataParser::ReadBinaryData(void* in_buffer, int startWord,
 
   // Read the data.
   unsigned char* d = reinterpret_cast<unsigned char*>(buffer);
-  unsigned long actualWords = 0;
+  unsigned long actualWords;
   if(this->Compressor)
     {
     this->ReadCompressionHeader();

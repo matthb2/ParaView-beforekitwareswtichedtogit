@@ -400,7 +400,7 @@ int vtkPLOT3DReader::VerifySettings(char* buf, int vtkNotUsed(bufSize))
 int vtkPLOT3DReader::GetNumberOfOutputsInternal(FILE* xyzFp, int verify)
 {
   int numGrid=0;
-  int numOutputs=0;
+  int numOutputs;
 
   if ( this->MultiGrid )
     {

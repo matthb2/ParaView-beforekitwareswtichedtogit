@@ -290,7 +290,7 @@ void vtkVolume16Reader::ReadVolume(int first, int last,
   FILE *fp;
   int numPts;
   int fileNumber;
-  int status=0;
+  int status;
   int numberSlices = last - first + 1;
   char filename[1024];
   int dimensions[3];

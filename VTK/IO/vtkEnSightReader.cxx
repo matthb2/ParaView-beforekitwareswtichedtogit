@@ -1017,7 +1017,6 @@ int vtkEnSightReader::ReadCaseFile()
           }
         this->TimeSetFileNameNumbers->AddItem(filenameNumbers);
         filenameNumbers->Delete();
-        filenameNumbers = NULL;
         this->ReadLine(line);
         }
       vtkFloatArray *timeValues = vtkFloatArray::New();
@@ -1063,7 +1062,6 @@ int vtkEnSightReader::ReadCaseFile()
         }
       this->TimeSets->AddItem(timeValues);
       timeValues->Delete();
-      timeValues = NULL;
       }
     }
   
@@ -1105,7 +1103,6 @@ int vtkEnSightReader::ReadCaseFile()
       filenameNums->Delete();
       filenameNums = NULL;
       numSteps->Delete();
-      numSteps = NULL;
       }
     }
 

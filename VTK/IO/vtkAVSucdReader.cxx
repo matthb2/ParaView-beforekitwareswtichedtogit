@@ -391,7 +391,7 @@ void vtkAVSucdReader::ExecuteInformation()
       this->FileStream->read(buffer1, sizeof(buffer1));
       vtkDebugMacro(<< buffer1 << endl);
 
-      offset += 1024 + 1024 + 4 + 3 * 4 * this->NumberOfFields;
+      //offset += 1024 + 1024 + 4 + 3 * 4 * this->NumberOfFields;
 
       for(i=0; i < this->NumberOfFields; i++)
         {

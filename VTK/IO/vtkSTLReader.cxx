@@ -134,13 +134,12 @@ void vtkSTLReader::Execute()
   //
   // If merging is on, create hash table and merge points/triangles.
   //
-//  if (0)
   if ( this->Merging )  
     {
     int i;
     vtkIdType *pts = 0;
     vtkIdType nodes[3];
-    vtkIdType npts = 0;
+    vtkIdType npts;
     double x[3];
     int nextCell=0;
 

@@ -340,7 +340,6 @@ void vtkImageWriter::RecursiveWrite(int axis, vtkImageData *cache,
       }
     file->close();
     delete file;
-    file = NULL;
     }
   return;
 }

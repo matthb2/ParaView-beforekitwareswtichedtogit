@@ -66,7 +66,7 @@ vtkMCubesReader::~vtkMCubesReader()
 void vtkMCubesReader::Execute()
 {
   FILE *fp;
-  FILE *limitp = NULL;
+  FILE *limitp;
   vtkPoints *newPts;
   vtkCellArray *newPolys;
   vtkFloatArray *newNormals = NULL;

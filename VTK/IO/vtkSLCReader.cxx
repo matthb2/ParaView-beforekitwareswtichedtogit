@@ -161,8 +161,8 @@ void vtkSLCReader::ExecuteData(vtkDataObject* )
   int   icon_width, icon_height;
   int   compressed_size;
 
-  unsigned char *icon_ptr = NULL;
-  unsigned char *compressed_ptr = NULL;
+  unsigned char *icon_ptr;
+  unsigned char *compressed_ptr;
   unsigned char *scan_ptr = NULL;
 
   this->Error = 1;

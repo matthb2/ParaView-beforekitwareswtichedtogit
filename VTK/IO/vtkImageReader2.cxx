@@ -685,7 +685,7 @@ void vtkImageReader2::ExecuteData(vtkDataObject *output)
 {
   vtkImageData *data = this->AllocateOutputData(output);
   
-  void *ptr = NULL;
+  void *ptr;
   int *ext;
   
   if (!this->FileName && !this->FilePattern)
