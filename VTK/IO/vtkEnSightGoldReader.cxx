@@ -1592,6 +1592,10 @@ int vtkEnSightGoldReader::CreateUnstructuredGridOutput(int partId,
       delete [] nodeIds;
       delete [] intIds;
       }
+    else if (strncmp(line, "END TIME STEP", 13) == 0)
+      {
+      return 1;
+      }
     else
       {
       vtkErrorMacro("undefined geometry file line");
