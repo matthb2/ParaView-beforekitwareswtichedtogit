@@ -35,6 +35,7 @@ vtkGarbageCollector::vtkGarbageCollector(vtkGarbageCollectorQueue* q,
 //----------------------------------------------------------------------------
 vtkGarbageCollector::~vtkGarbageCollector()
 {
+  this->SetReferenceCount(0);
 }
 
 //----------------------------------------------------------------------------
