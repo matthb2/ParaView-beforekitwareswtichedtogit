@@ -15,6 +15,7 @@
 #include "vtkSMAnimationCueManipulatorProxy.h"
 
 #include "vtkObjectFactory.h"
+#include "vtkClientServerID.h"
 
 vtkCxxRevisionMacro(vtkSMAnimationCueManipulatorProxy, "$Revision$");
 

@@ -17,6 +17,7 @@
 #include "vtkObjectFactory.h"
 #include "vtkSMKeyFrameProxy.h"
 #include "vtkCommand.h"
+#include "vtkClientServerID.h"
 
 #include <vtkstd/vector>
 vtkCxxRevisionMacro(vtkSMKeyFrameAnimationCueManipulatorProxy, "$Revision$");
