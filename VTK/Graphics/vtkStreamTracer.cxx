@@ -541,7 +541,6 @@ void vtkStreamTracer::Integrate(vtkDataArray* seedSource, vtkIdList* seedIds)
     seedSource->GetTuple(seedIds->GetId(currentLine), point1);
     if (!func->FunctionValues(point1, velocity))
       {
-      vtkWarningMacro("The initial position is not in the input data set.");
       continue;
       }
 
