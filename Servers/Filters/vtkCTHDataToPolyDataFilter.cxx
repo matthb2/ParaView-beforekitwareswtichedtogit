@@ -18,7 +18,6 @@
 #include "vtkObjectFactory.h"
 
 vtkCxxRevisionMacro(vtkCTHDataToPolyDataFilter, "$Revision$");
-vtkStandardNewMacro(vtkCTHDataToPolyDataFilter);
 
 //----------------------------------------------------------------------------
 // Specify the input data or filter.
