@@ -373,6 +373,7 @@ void vtkTempTessellatorFilter::Teardown()
     delete [] this->OutputAttributeIndices;
     }
   this->Subdivider->ResetFieldList();
+  this->Subdivider->SetMesh(0);
 }
 
 // ========================================
