@@ -30,7 +30,7 @@
 vtkCxxRevisionMacro(vtkQuadraticPyramid, "$Revision$");
 vtkStandardNewMacro(vtkQuadraticPyramid);
 
-// Construct the wedge with 14 points + 1 extra point for internal
+// Construct the wedge with 13 points + 1 extra point for internal
 // computation.
 vtkQuadraticPyramid::vtkQuadraticPyramid()
 {
