@@ -24,6 +24,7 @@
 #include "vtkClientServerStream.h"
 #include "vtkCompositeRenderManager.h"
 #include "vtkPVOptions.h"
+#include "vtkPVServerInformation.h"
 
 //----------------------------------------------------------------------------
 vtkStandardNewMacro(vtkPVDeskTopRenderModule);
@@ -195,6 +196,12 @@ void vtkPVDeskTopRenderModule::SetProcessModule(vtkProcessModule *pm)
   stream << vtkClientServerStream::Invoke << this->CompositeID
                   << "UseCompositingOff"
                   << vtkClientServerStream::End;
+  if ( this->ProcessModule->GetServerInformation()->GetUseOffscreenRendering() )
+    {
+    stream
+      << vtkClientServerStream::Invoke << this->CompositeID
+      << "InitializeOffScreen" << vtkClientServerStream::End;
+    }
   tmp = stream;
   pvm->SendStream(vtkProcessModule::CLIENT);
   stream = tmp;
