@@ -145,8 +145,18 @@ void vtkDataSetAlgorithm::AddInput(int index, vtkDataSet* input)
 }
 
 //----------------------------------------------------------------------------
+vtkDataObject* vtkDataSetAlgorithm::GetInput()
+{
+  return this->GetInput(0);
+}
+
+//----------------------------------------------------------------------------
 vtkDataObject* vtkDataSetAlgorithm::GetInput(int port)
 {
+  if (this->GetNumberOfInputConnections(port) < 1)
+    {
+    return 0;
+    }
   return this->GetExecutive()->GetInputData(port, 0);
 }
 
