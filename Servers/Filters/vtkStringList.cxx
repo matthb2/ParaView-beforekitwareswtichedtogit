@@ -100,6 +100,17 @@ void vtkStringList::AddString(const char* str)
 }
 
 //----------------------------------------------------------------------------
+void vtkStringList::AddUniqueString(const char* str)
+{
+  if ( this->GetIndex(str) >= 0 )
+    {
+    return;
+    }
+  this->AddString(str);
+}
+
+
+//----------------------------------------------------------------------------
 void vtkStringList::AddFormattedString(const char* format, ...)
 {
   static char event[16000];
