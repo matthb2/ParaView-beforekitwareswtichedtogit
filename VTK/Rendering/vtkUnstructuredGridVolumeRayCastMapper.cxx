@@ -561,7 +561,7 @@ void vtkUnstructuredGridVolumeRayCastMapper::PrintSelf(ostream& os, vtkIndent in
   
   os << indent << "Number Of Threads: " << this->NumberOfThreads << "\n";
   
-  // Do not want to print ImageOrigin, ImageViewportSize or ImageInUseSize
+  // Do not want to print this->ImageOrigin, this->ImageViewportSize or this->ImageInUseSize
   // since these are just internal variables with Get methods for access
   // from the ray cast function (not part of the public API)
 }
