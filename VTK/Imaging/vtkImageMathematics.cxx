@@ -141,7 +141,7 @@ static void vtkImageMathematicsExecute1(vtkImageMathematics *self,
                 }
               else
                 {
-                *outPtr = 1e5;
+                *outPtr = (T)outData->GetScalarTypeMax();
                 }
               }
             break;
