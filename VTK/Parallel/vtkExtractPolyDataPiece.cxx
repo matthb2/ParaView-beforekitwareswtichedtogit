@@ -250,6 +250,7 @@ void vtkExtractPolyDataPiece::Execute()
           {
           pointGhostLevels->InsertNextValue(0);
           }
+        outPD->CopyData(pd,idx,newId);
         }
       }
     }

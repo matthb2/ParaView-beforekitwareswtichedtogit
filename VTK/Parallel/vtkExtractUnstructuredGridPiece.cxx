@@ -231,7 +231,39 @@ void vtkExtractUnstructuredGridPiece::Execute()
       newCellPts->Reset();
       } // satisfied thresholding
     } // for all cells
-
+  
+  // Split up points that are not used by cells, 
+  // and have not been assigned to any piece. 
+  // Count the number of unassigned points.  This is an extra pass through
+  // the points, but the pieces will be better load balanced and
+  // more spatially coherent.
+  vtkIdType count = 0;
+  vtkIdType idx;
+  for (idx = 0; idx < input->GetNumberOfPoints(); ++idx)
+    {
+    if (pointOwnership->GetId(idx) == -1)
+      {
+      ++count;
+      }
+    }
+  vtkIdType count2 = 0;
+  for (idx = 0; idx < input->GetNumberOfPoints(); ++idx)
+    {
+    if (pointOwnership->GetId(idx) == -1)
+      {
+      if ((count2 * numPieces / count) == piece)
+        {
+        x = input->GetPoint(idx);
+        newId = newPoints->InsertNextPoint(x);
+        if (pointGhostLevels)
+          {
+          pointGhostLevels->InsertNextValue(0);
+          }
+        outPD->CopyData(pd,idx,newId);
+        }
+      }
+    }  
+  
   vtkDebugMacro(<< "Extracted " << output->GetNumberOfCells() 
                 << " number of cells.");
 
