@@ -66,6 +66,12 @@ vtkImageData* vtkXMLPImageDataReader::GetOutput()
 }
 
 //----------------------------------------------------------------------------
+vtkImageData* vtkXMLPImageDataReader::GetOutput(int idx)
+{
+  return static_cast<vtkImageData*>(this->Superclass::GetOutput(idx));
+}
+
+//----------------------------------------------------------------------------
 vtkImageData* vtkXMLPImageDataReader::GetPieceInput(int index)
 {
   vtkXMLImageDataReader* reader =

@@ -65,6 +65,12 @@ vtkRectilinearGrid* vtkXMLPRectilinearGridReader::GetOutput()
 }
 
 //----------------------------------------------------------------------------
+vtkRectilinearGrid* vtkXMLPRectilinearGridReader::GetOutput(int idx)
+{
+  return static_cast<vtkRectilinearGrid*>(this->Superclass::GetOutput(idx));
+}
+
+//----------------------------------------------------------------------------
 vtkRectilinearGrid* vtkXMLPRectilinearGridReader::GetPieceInput(int index)
 {
   vtkXMLRectilinearGridReader* reader =

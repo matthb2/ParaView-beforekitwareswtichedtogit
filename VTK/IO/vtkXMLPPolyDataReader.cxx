@@ -65,6 +65,12 @@ vtkPolyData* vtkXMLPPolyDataReader::GetOutput()
 }
 
 //----------------------------------------------------------------------------
+vtkPolyData* vtkXMLPPolyDataReader::GetOutput(int idx)
+{
+  return static_cast<vtkPolyData*>(this->Superclass::GetOutput(idx));
+}
+
+//----------------------------------------------------------------------------
 const char* vtkXMLPPolyDataReader::GetDataSetName()
 {
   return "PPolyData";

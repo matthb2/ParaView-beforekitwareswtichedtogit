@@ -67,6 +67,12 @@ vtkUnstructuredGrid* vtkXMLPUnstructuredGridReader::GetOutput()
 }
 
 //----------------------------------------------------------------------------
+vtkUnstructuredGrid* vtkXMLPUnstructuredGridReader::GetOutput(int idx)
+{
+  return static_cast<vtkUnstructuredGrid*>(this->Superclass::GetOutput(idx));
+}
+
+//----------------------------------------------------------------------------
 const char* vtkXMLPUnstructuredGridReader::GetDataSetName()
 {
   return "PUnstructuredGrid";
