@@ -19,6 +19,7 @@
 
 #include "vtkCommand.h"
 #include "vtkObjectFactory.h"
+#include "vtkPolyData.h"
 
 vtkCxxRevisionMacro(vtkPVUpdateSuppressor, "$Revision$");
 vtkStandardNewMacro(vtkPVUpdateSuppressor);
