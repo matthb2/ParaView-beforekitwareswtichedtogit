@@ -239,6 +239,8 @@ unsigned int vtkSMProxy::GetNumberOfIDs()
 //---------------------------------------------------------------------------
 vtkClientServerID vtkSMProxy::GetID(unsigned int idx)
 {
+  this->CreateVTKObjects(idx+1);
+
   return this->Internals->IDs[idx];
 }
 
