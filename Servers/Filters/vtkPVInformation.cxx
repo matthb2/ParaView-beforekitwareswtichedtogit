@@ -60,7 +60,7 @@ void vtkPVInformation::CopyFromMessage(unsigned char*)
 }
 
 //----------------------------------------------------------------------------
-void vtkPVInformation::AddInformation(vtkPVInformation* info)
+void vtkPVInformation::AddInformation(vtkPVInformation* vtkNotUsed(info))
 {
   vtkErrorMacro("AddInformation not implemented.");
 }
