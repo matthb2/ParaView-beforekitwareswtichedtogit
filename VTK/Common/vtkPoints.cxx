@@ -226,6 +226,8 @@ void vtkPoints::SetDataType(int dataType)
       vtkErrorMacro(<<"Unsupported data type! Setting to VTK_FLOAT");
       this->SetDataType(VTK_FLOAT);
     }
+
+  this->Data->SetNumberOfComponents(3);
 }
 
 // Set the data for this object. The tuple dimension must be consistent with
