@@ -17,7 +17,6 @@
 =========================================================================*/
 #include "vtkXMLPStructuredGridReader.h"
 
-#include "vtkFloatArray.h"
 #include "vtkObjectFactory.h"
 #include "vtkPoints.h"
 #include "vtkStructuredGrid.h"
