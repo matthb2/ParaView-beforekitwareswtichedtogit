@@ -2053,12 +2053,15 @@ public:
       this->Valid = 1;
       }
     }
-private:
+
+protected:
   vtkXdmfReaderTester()
     {
     this->Valid = 0;
     this->Done = 0;
     }
+
+private:
   void ReportStrayAttribute(const char*, const char*, const char*) {}
   void ReportMissingAttribute(const char*, const char*) {}
   void ReportBadAttribute(const char*, const char*, const char*) {}
