@@ -332,7 +332,7 @@ void vtkPLOT3DReader::SkipByteCountV(char** buf)
     }
 }
 
-int vtkPLOT3DReader::VerifySettings(char* buf, int bufSize)
+int vtkPLOT3DReader::VerifySettings(char* buf, int vtkNotUsed(bufSize))
 {
   int numGrid=0;
 
