@@ -99,6 +99,10 @@ vtkSphereWidget::~vtkSphereWidget()
 
   this->SpherePicker->Delete();
 
+  this->HandleSource->Delete();
+  this->HandleMapper->Delete();
+  this->HandleActor->Delete();
+
   if ( this->SphereProperty )
     {
     this->SphereProperty->Delete();
