@@ -102,12 +102,12 @@ vtkLibHandle vtkDynamicLoader::OpenLibrary(const char* libname )
   return NSLinkModule(image, libname, TRUE);
 }
 
-int vtkDynamicLoader::CloseLibrary(vtkLibHandle lib)
+int vtkDynamicLoader::CloseLibrary(vtkLibHandle)
 {
   return 0;
 }
 
-void* vtkDynamicLoader::GetSymbolAddress(vtkLibHandle lib, const char* sym)
+void* vtkDynamicLoader::GetSymbolAddress(vtkLibHandle, const char* sym)
 {
     void *result=0;
     if(NSIsSymbolNameDefined(sym)){
