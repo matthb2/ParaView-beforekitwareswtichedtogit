@@ -49,6 +49,12 @@ void vtkXMLPStructuredGridReader::PrintSelf(ostream& os, vtkIndent indent)
 }
 
 //----------------------------------------------------------------------------
+vtkStructuredGrid* vtkXMLPStructuredGridReader::GetOutput(int idx)
+{
+  return static_cast<vtkStructuredGrid*>(this->Superclass::GetOutput(idx));
+}
+
+//----------------------------------------------------------------------------
 void vtkXMLPStructuredGridReader::SetOutput(vtkStructuredGrid *output)
 {
   this->Superclass::SetNthOutput(0, output);
