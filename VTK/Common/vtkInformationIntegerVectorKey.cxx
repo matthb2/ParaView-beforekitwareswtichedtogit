@@ -105,3 +105,10 @@ int vtkInformationIntegerVectorKey::Has(vtkInformation* info)
       this->GetAsObjectBase(info));
   return v?1:0;
 }
+
+//----------------------------------------------------------------------------
+void vtkInformationIntegerVectorKey::Copy(vtkInformation* from,
+                                          vtkInformation* to)
+{
+  this->Set(to, this->Get(from), this->Length(from));
+}

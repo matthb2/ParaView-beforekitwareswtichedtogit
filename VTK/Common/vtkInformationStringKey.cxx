@@ -75,3 +75,9 @@ int vtkInformationStringKey::Has(vtkInformation* info)
     vtkInformationStringValue::SafeDownCast(this->GetAsObjectBase(info));
   return v?1:0;
 }
+
+//----------------------------------------------------------------------------
+void vtkInformationStringKey::Copy(vtkInformation* from, vtkInformation* to)
+{
+  this->Set(to, this->Get(from));
+}
