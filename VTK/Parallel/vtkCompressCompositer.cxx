@@ -575,7 +575,7 @@ void vtkCompressCompositer::CompositeBuffer(vtkDataArray *pBuf,
       }
     this->InternalZData = vtkFloatArray::New();
     vtkCompositeManager::ResizeFloatArray(
-                             static_cast<vtkFloatArray*>(this->InternalPData),
+                             static_cast<vtkFloatArray*>(this->InternalZData),
                              1, zBuf->GetSize());
     }
 
