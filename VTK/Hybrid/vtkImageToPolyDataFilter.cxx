@@ -16,12 +16,16 @@
 
 =========================================================================*/
 #include "vtkImageToPolyDataFilter.h"
-#include "vtkUnsignedCharArray.h"
-#include "vtkLine.h"
-#include "vtkEdgeTable.h"
+
 #include "vtkAppendPolyData.h"
+#include "vtkEdgeTable.h"
+#include "vtkLine.h"
+#include "vtkScalarsToColors.h"
+#include "vtkUnsignedCharArray.h"
 
 vtkCxxRevisionMacro(vtkImageToPolyDataFilter, "$Revision$");
+
+vtkCxxSetObjectMacro(vtkImageToPolyDataFilter,LookupTable,vtkScalarsToColors);
 
 vtkImageToPolyDataFilter::vtkImageToPolyDataFilter()
 {
