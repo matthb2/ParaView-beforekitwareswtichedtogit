@@ -858,6 +858,15 @@ void vtkMPICommunicator::Request::Cancel()
     vtkGenericWarningMacro("MPI error occured: " << msg);
     delete[] msg;
     }
+
+  err = MPI_Request_free(&this->Req->Handle);
+
+  if ( err != MPI_SUCCESS )
+    {
+    char *msg = vtkMPIController::ErrorString(err);
+    vtkGenericWarningMacro("MPI error occured: " << msg);
+    delete[] msg;
+    }
 }
 
 //----------------------------------------------------------------------------
