@@ -445,7 +445,7 @@ void vtkImageMedian3D::ExecuteData(vtkDataObject *out)
   outArray->SetNumberOfTuples(output->GetNumberOfPoints());
   outArray->SetName(inArray->GetName());
   output->GetPointData()->SetScalars(outArray);
-
+  outArray->Delete();
 
   this->MultiThread(this->GetInput(),output);
 }
