@@ -101,7 +101,6 @@ vtkSphereWidget::vtkSphereWidget()
 
 vtkSphereWidget::~vtkSphereWidget()
 {
-  this->SetEnabled(0);
   this->SphereActor->Delete();
   this->SphereMapper->Delete();
   this->SphereSource->Delete();

@@ -40,7 +40,6 @@ vtkScalarBarWidget::vtkScalarBarWidget()
 
 vtkScalarBarWidget::~vtkScalarBarWidget()
 {
-  this->SetCurrentRenderer(0);
   this->SetScalarBarActor(0);
 }
 
