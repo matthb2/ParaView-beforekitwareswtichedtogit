@@ -48,7 +48,7 @@ vtkStandardNewMacro(vtkDecimate);
 #ifdef __APPLE_CC__
 extern "C"
 {
-  void oft_initPat() 
+  void oft_initPatented() 
   {
   extern void _ZNSt8ios_base4InitC4Ev();
   _ZNSt8ios_base4InitC4Ev();

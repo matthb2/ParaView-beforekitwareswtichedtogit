@@ -30,7 +30,7 @@ vtkCxxSetObjectMacro(vtkBranchExtentTranslator,OriginalSource,vtkImageData);
 #ifdef __APPLE_CC__
 extern "C"
 {
-  void oft_initPar() 
+  void oft_initParallel() 
   {
   extern void _ZNSt8ios_base4InitC4Ev();
   _ZNSt8ios_base4InitC4Ev();
