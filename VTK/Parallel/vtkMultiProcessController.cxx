@@ -264,6 +264,22 @@ void vtkMultiProcessController::SetMultipleMethod( int index,
 }
 
 //----------------------------------------------------------------------------
+int vtkMultiProcessController::RemoveFirstRMI(int tag)
+{
+  vtkMultiProcessControllerRMI *rmi = NULL;
+  this->RMIs->InitTraversal();
+  while ( (rmi = (vtkMultiProcessControllerRMI*)(this->RMIs->GetNextItemAsObject())) )
+    {
+    if (rmi->Tag == tag)
+      {
+      this->RMIs->RemoveItem(rmi);
+      return 1;
+      }
+    }
+  return 0;
+}
+
+//----------------------------------------------------------------------------
 void vtkMultiProcessController::AddRMI(vtkRMIFunctionType f, 
                                        void *localArg, int tag)
 {
