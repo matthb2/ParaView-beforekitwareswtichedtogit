@@ -336,9 +336,9 @@ float vtkStreamTracer::ConvertToUnit(vtkStreamTracer::IntervalInformation& inter
   return retVal;
 }
 
-void vtkStreamTracer::ConvertIntervals(float& step, float& minStep, 
-				       float& maxStep, int direction,
-				       float cellLength, float speed)
+void vtkStreamTracer::ConvertIntervals(float& step, float& minStep,
+                                       float& maxStep, int direction,
+                                       float cellLength, float speed)
 {
   step = direction * this->ConvertToTime(
     this->InitialIntegrationStep, cellLength, speed);
@@ -912,7 +912,6 @@ void vtkStreamTracer::PrintSelf(ostream& os, vtkIndent indent)
   os << endl;
 
   os << indent << "Integrator: " << this->Integrator << endl;
-  os << indent << "Integrator type: " << this->IntegratorType << endl;
   os << indent << "Maximum error: " << this->MaximumError << endl;
   os << indent << "Max. number of steps: " << this->MaximumNumberOfSteps 
      << endl;
