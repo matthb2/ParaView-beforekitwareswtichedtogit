@@ -24,7 +24,7 @@ vtkCxxRevisionMacro(vtkUnstructuredGridTestRayIntegrator, "$Revision$");
 vtkStandardNewMacro(vtkUnstructuredGridTestRayIntegrator);
 
 template<class T>
-static void TemplateIntegrateColor(
+void TemplateIntegrateColor(
                         vtkIdType numIntersections,
                         int numComponents,
                         const double *intersectionLengths,
@@ -361,7 +361,7 @@ void vtkUnstructuredGridTestRayIntegrator::Initialize(
 //-----------------------------------------------------------------------------
 
 template<class T>
-static void TemplateIntegrateColor(
+void TemplateIntegrateColor(
                         vtkIdType numIntersections,
                         int numComponents,
                         const double *intersectionLengths,
