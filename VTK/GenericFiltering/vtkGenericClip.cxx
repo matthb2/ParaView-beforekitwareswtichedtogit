@@ -32,6 +32,7 @@
 #include "vtkGenericAttribute.h"
 #include "vtkGenericAttributeCollection.h"
 #include "vtkGenericPointIterator.h"
+#include "vtkGenericCellTessellator.h"
 
 #include <math.h>
 
@@ -275,6 +276,9 @@ void vtkGenericClip::Execute()
   int numNew[2]; numNew[0]=numNew[1]=0;
   vtkIdType cellId;
 
+  
+  input->GetTessellator()->InitErrorMetrics(input);
+  
   for (cellId = 0, cellIt->Begin(); !cellIt->IsAtEnd() && !abort; cellId++, cellIt->Next())
     {
     cell = cellIt->GetCell();
