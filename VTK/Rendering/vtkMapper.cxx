@@ -155,7 +155,7 @@ void vtkMapper::SetResolveCoincidentTopologyPolygonOffsetParameters(
     return;
     }
   vtkMapperGlobalResolveCoincidentTopologyPolygonOffsetFactor = factor;
-  vtkMapperGlobalResolveCoincidentTopologyPolygonOffsetFactor = units;
+  vtkMapperGlobalResolveCoincidentTopologyPolygonOffsetUnits = units;
 }
 
 void vtkMapper::GetResolveCoincidentTopologyPolygonOffsetParameters(
