@@ -1065,6 +1065,48 @@ void vtkImplicitPlaneWidget::SetDrawPlane(int drawPlane)
     }
 }
 
+void vtkImplicitPlaneWidget::SetNormalToXAxis (int var)
+{
+  if (this->NormalToXAxis != var)
+    {
+    this->NormalToXAxis = var;
+    this->Modified();
+    }
+  if (var)
+    {
+    this->NormalToYAxisOff();
+    this->NormalToZAxisOff();
+    }
+}
+
+void vtkImplicitPlaneWidget::SetNormalToYAxis (int var)
+{
+  if (this->NormalToYAxis != var)
+    {
+    this->NormalToYAxis = var;
+    this->Modified();
+    }
+  if (var)
+    {
+    this->NormalToXAxisOff();
+    this->NormalToZAxisOff();
+    }
+}
+
+void vtkImplicitPlaneWidget::SetNormalToZAxis (int var)
+{
+  if (this->NormalToZAxis != var)
+    {
+    this->NormalToZAxis = var;
+    this->Modified();
+    }
+  if (var)
+    {
+    this->NormalToXAxisOff();
+    this->NormalToYAxisOff();
+    }
+}
+
 void vtkImplicitPlaneWidget::GetPolyData(vtkPolyData *pd)
 { 
   pd->ShallowCopy(this->Cutter->GetOutput()); 
