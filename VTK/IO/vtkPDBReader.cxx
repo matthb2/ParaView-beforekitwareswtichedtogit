@@ -65,6 +65,7 @@ void vtkPDBReader::ReadSpecificMolecule(FILE* fp)
   int i, j;
   float x[3];
 
+  this->NumberOfAtoms = 0;
   this->Points->Allocate(500);
   this->AtomType->Allocate(500);
 
