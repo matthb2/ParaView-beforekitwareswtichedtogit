@@ -25,7 +25,7 @@ vtkCxxRevisionMacro(vtkMergePoints2D, "$Revision$");
 
 vtkMergePoints2D* vtkMergePoints2D::New() 
 { 
-  vtkGenericWarningMacro("MergePoints2D is being deprecated in VTK 4.1. There is no replacement for it.");
+  vtkGenericWarningMacro("MergePoints2D is being deprecated in VTK 4.2. There is no replacement for it.");
   vtkObject* ret = vtkObjectFactory::CreateInstance("vtkMergePoints2D"); 
   if(ret) 
       { 
