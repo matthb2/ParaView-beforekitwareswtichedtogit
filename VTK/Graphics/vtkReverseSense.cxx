@@ -90,7 +90,7 @@ void vtkReverseSense::Execute()
     vtkDataArray *outNormals=normals->NewInstance();
     outNormals->SetNumberOfComponents(normals->GetNumberOfComponents());
     outNormals->SetNumberOfTuples(numPoints);
-    float n[3];
+    double n[3];
 
     progressInterval=numPoints/5+1;
     for ( int ptId=0; ptId < numPoints; ptId++ )
@@ -116,7 +116,7 @@ void vtkReverseSense::Execute()
     vtkDataArray *outNormals=cellNormals->NewInstance();
     outNormals->SetNumberOfComponents(cellNormals->GetNumberOfComponents());
     outNormals->SetNumberOfTuples(numCells);
-    float n[3];
+    double n[3];
 
     progressInterval=numCells/5+1;
     for (vtkIdType cellId=0; cellId < numCells; cellId++ )

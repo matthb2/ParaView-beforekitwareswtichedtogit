@@ -62,8 +62,8 @@ vtkOutlineSource::vtkOutlineSource()
 //----------------------------------------------------------------------------
 void vtkOutlineSource::Execute()
 {
-  float *bounds;
-  float x[3];
+  double *bounds;
+  double x[3];
   vtkIdType pts[2];
   vtkPoints *newPts;
   vtkCellArray *newLines;

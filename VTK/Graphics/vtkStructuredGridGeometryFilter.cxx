@@ -47,7 +47,7 @@ void vtkStructuredGridGeometryFilter::Execute()
   vtkCellArray *newPolys=0;
   vtkIdType totPoints, pos, cellPos;
   int offset[3], cellOffset[3], numPolys;
-  float x[3];
+  double x[3];
   vtkPointData *pd, *outPD;
   vtkCellData *cd, *outCD;
   vtkStructuredGrid *input = this->GetInput();

@@ -49,7 +49,7 @@ void vtkRectilinearGridGeometryFilter::Execute()
   vtkCellArray *newPolys=0;
   vtkIdType totPoints, pos;
   int offset[3], numPolys;
-  float x[3];
+  double x[3];
   vtkPointData *pd, *outPD;
   vtkCellData *cd, *outCD;
   vtkRectilinearGrid *input = this->GetInput();

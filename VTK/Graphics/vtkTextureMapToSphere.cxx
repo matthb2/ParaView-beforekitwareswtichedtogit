@@ -41,7 +41,7 @@ void vtkTextureMapToSphere::Execute()
   vtkDataSet *output = this->GetOutput();
   vtkIdType numPts=input->GetNumberOfPoints();
   vtkIdType ptId;
-  float x[3], rho, r, tc[2], phi=0.0, thetaX, thetaY;
+  double x[3], rho, r, tc[2], phi=0.0, thetaX, thetaY;
   double diff, PiOverTwo=vtkMath::Pi()/2.0;
 
   vtkDebugMacro(<<"Generating Spherical Texture Coordinates");

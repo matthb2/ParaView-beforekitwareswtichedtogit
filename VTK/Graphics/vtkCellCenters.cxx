@@ -43,8 +43,8 @@ void vtkCellCenters::Execute()
   vtkPointData *outPD;
   vtkPoints *newPts;
   vtkCell *cell;
-  float x[3], pcoords[3];
-  float *weights = NULL;
+  double x[3], pcoords[3];
+  double *weights = NULL;
 
   if (input == NULL)
     {
@@ -65,7 +65,7 @@ void vtkCellCenters::Execute()
 
   newPts = vtkPoints::New();
   newPts->SetNumberOfPoints(numCells);
-  weights = new float [input->GetMaxCellSize()];
+  weights = new double [input->GetMaxCellSize()];
 
   int abort=0;
   vtkIdType progressInterval = numCells/10 + 1;

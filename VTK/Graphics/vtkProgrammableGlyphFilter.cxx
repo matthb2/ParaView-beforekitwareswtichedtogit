@@ -160,7 +160,7 @@ void vtkProgrammableGlyphFilter::Execute()
     {
     if ( ! (this->PointId % 10000) ) 
       {
-      this->UpdateProgress ((float)this->PointId/numPts);
+      this->UpdateProgress ((double)this->PointId/numPts);
       if (this->GetAbortExecute())
         {
         break;
