@@ -270,6 +270,19 @@ const char *vtkTesting::GetValidImageFileName()
   return this->ValidImageFileName;
 }
 
+int vtkTesting::IsInteractiveModeSpecified()
+{
+  unsigned int i;
+  for (i = 0; i < this->Args.size(); ++i)
+    {
+    if ( this->Args[i] == "-I")
+      {
+      return 1;
+      }
+    }
+  return 0;
+}
+
 int vtkTesting::IsValidImageSpecified()
 {
   unsigned int i;
