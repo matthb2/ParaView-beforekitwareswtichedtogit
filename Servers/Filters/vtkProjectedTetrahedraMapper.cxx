@@ -210,7 +210,6 @@ void vtkProjectedTetrahedraMapper::Render(vtkRenderer *renderer,
                                           vtkVolume *volume)
 {
   vtkUnstructuredGrid *input = this->GetInput();
-  vtkIdType numcells = input->GetNumberOfCells();
 
   float last_max_cell_size = this->MaxCellSize;
 
