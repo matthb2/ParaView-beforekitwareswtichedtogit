@@ -227,6 +227,9 @@ void vtkPVUpdateSuppressor::CacheUpdate(int idx, int num)
     this->ForceUpdate();
     pd = output->NewInstance();
     pd->ShallowCopy(output);
+    //  Compositing seems to update the input properly.
+    //  But this update is needed when doing animation without compositing.
+    pd->Update(); 
     this->CachedGeometry[idx] = pd;
     pd->Register(this);
     pd->Delete();
