@@ -289,6 +289,11 @@ int vtkPVOptions::WrongArgument(const char* argument)
       }
     return 1;
     }
+  if(kwsys::SystemTools::GetFilenameLastExtension(argument) == ".pvb")
+    {
+    this->SetErrorMessage("Batch file argument to ParaView executable is deprecated. Please use \"pvbatch\".");
+    return 0;
+    }
 
   return 0;
 }
