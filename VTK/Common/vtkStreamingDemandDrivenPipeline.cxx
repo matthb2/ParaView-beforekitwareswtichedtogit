@@ -123,6 +123,13 @@ int vtkStreamingDemandDrivenPipeline::PropagateUpdateExtent(int outputPort)
                   "Returning failure to algorithm "
                   << this->Algorithm->GetClassName() << "("
                   << this->Algorithm << ").");
+
+    // Tests should fail when this happens because there is a bug in
+    // the code.
+    if(getenv("DASHBOARD_TEST_FROM_CTEST") || getenv("DART_TEST_FROM_DART"))
+      {
+      abort();
+      }
     return 0;
     }
 
