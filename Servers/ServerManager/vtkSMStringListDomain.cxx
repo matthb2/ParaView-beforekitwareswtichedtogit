@@ -139,6 +139,22 @@ int vtkSMStringListDomain::IsInDomain(const char* val, unsigned int& idx)
 }
 
 //---------------------------------------------------------------------------
+void vtkSMStringListDomain::Update(vtkSMProperty* prop)
+{
+  vtkSMStringVectorProperty* svp = vtkSMStringVectorProperty::SafeDownCast(prop);
+  if (svp && svp->GetInformationOnly())
+    {
+    this->RemoveAllStrings();
+    unsigned int numStrings = svp->GetNumberOfElements();
+    for (unsigned int i=0; i<numStrings; i++)
+      {
+      this->AddString(svp->GetElement(i));
+      }
+    }
+}
+
+
+//---------------------------------------------------------------------------
 int vtkSMStringListDomain::ReadXMLAttributes(vtkSMProperty* prop, vtkPVXMLElement* element)
 {
   this->Superclass::ReadXMLAttributes(prop, element);
