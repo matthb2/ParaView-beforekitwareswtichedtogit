@@ -25,6 +25,7 @@
 
 vtkCxxRevisionMacro(vtkSplineFilter, "$Revision$");
 vtkStandardNewMacro(vtkSplineFilter);
+vtkCxxSetObjectMacro(vtkSplineFilter,Spline,vtkSpline);
 
 vtkSplineFilter::vtkSplineFilter()
 {

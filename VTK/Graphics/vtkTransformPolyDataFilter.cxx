@@ -23,6 +23,8 @@
 
 vtkCxxRevisionMacro(vtkTransformPolyDataFilter, "$Revision$");
 vtkStandardNewMacro(vtkTransformPolyDataFilter);
+vtkCxxSetObjectMacro(vtkTransformPolyDataFilter,
+                     Transform,vtkAbstractTransform);
 
 vtkTransformPolyDataFilter::vtkTransformPolyDataFilter()
 {

@@ -23,6 +23,7 @@
 
 vtkCxxRevisionMacro(vtkExtractGeometry, "$Revision$");
 vtkStandardNewMacro(vtkExtractGeometry);
+vtkCxxSetObjectMacro(vtkExtractGeometry,ImplicitFunction,vtkImplicitFunction);
 
 // Construct object with ExtractInside turned on.
 vtkExtractGeometry::vtkExtractGeometry(vtkImplicitFunction *f)

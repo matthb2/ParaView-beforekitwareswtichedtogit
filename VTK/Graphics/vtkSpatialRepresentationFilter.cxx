@@ -22,6 +22,8 @@
 
 vtkCxxRevisionMacro(vtkSpatialRepresentationFilter, "$Revision$");
 vtkStandardNewMacro(vtkSpatialRepresentationFilter);
+vtkCxxSetObjectMacro(vtkSpatialRepresentationFilter,
+                     SpatialRepresentation,vtkLocator);
 
 vtkSpatialRepresentationFilter::vtkSpatialRepresentationFilter()
 {

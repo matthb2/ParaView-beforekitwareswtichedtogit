@@ -30,6 +30,7 @@
 
 vtkCxxRevisionMacro(vtkStreamTracer, "$Revision$");
 vtkStandardNewMacro(vtkStreamTracer);
+vtkCxxSetObjectMacro(vtkStreamTracer,Integrator,vtkInitialValueProblemSolver);
 
 const float vtkStreamTracer::EPSILON = 1.0E-12;
 

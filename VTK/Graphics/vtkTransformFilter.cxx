@@ -26,6 +26,7 @@
 
 vtkCxxRevisionMacro(vtkTransformFilter, "$Revision$");
 vtkStandardNewMacro(vtkTransformFilter);
+vtkCxxSetObjectMacro(vtkTransformFilter,Transform,vtkAbstractTransform);
 
 vtkTransformFilter::vtkTransformFilter()
 {

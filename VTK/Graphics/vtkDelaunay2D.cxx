@@ -27,6 +27,7 @@
 
 vtkCxxRevisionMacro(vtkDelaunay2D, "$Revision$");
 vtkStandardNewMacro(vtkDelaunay2D);
+vtkCxxSetObjectMacro(vtkDelaunay2D,Transform,vtkAbstractTransform);
 
 // Construct object with Alpha = 0.0; Tolerance = 0.00001; Offset = 1.25;
 // BoundingTriangulation turned off.

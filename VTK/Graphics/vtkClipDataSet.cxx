@@ -28,6 +28,7 @@
 
 vtkCxxRevisionMacro(vtkClipDataSet, "$Revision$");
 vtkStandardNewMacro(vtkClipDataSet);
+vtkCxxSetObjectMacro(vtkClipDataSet,ClipFunction,vtkImplicitFunction);
 
 //----------------------------------------------------------------------------
 // Construct with user-specified implicit function; InsideOut turned off; value

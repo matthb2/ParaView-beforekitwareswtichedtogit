@@ -17,6 +17,7 @@
 =========================================================================*/
 #include "vtkAppendFilter.h"
 
+#include "vtkDataSetCollection.h"
 #include "vtkObjectFactory.h"
 #include "vtkUnstructuredGrid.h"
 

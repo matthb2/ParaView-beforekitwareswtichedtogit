@@ -31,6 +31,7 @@
 
 vtkCxxRevisionMacro(vtkContourFilter, "$Revision$");
 vtkStandardNewMacro(vtkContourFilter);
+vtkCxxSetObjectMacro(vtkContourFilter,ScalarTree,vtkScalarTree);
 
 // Construct object with initial range (0,1) and single contour value
 // of 0.0.

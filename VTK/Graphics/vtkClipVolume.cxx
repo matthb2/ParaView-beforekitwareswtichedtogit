@@ -27,6 +27,7 @@
 
 vtkCxxRevisionMacro(vtkClipVolume, "$Revision$");
 vtkStandardNewMacro(vtkClipVolume);
+vtkCxxSetObjectMacro(vtkClipVolume,ClipFunction,vtkImplicitFunction);
 
 // Construct with user-specified implicit function; InsideOut turned off; value
 // set to 0.0; and generate clip scalars turned off. The merge tolerance is set

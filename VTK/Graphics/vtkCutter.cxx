@@ -30,6 +30,7 @@
 
 vtkCxxRevisionMacro(vtkCutter, "$Revision$");
 vtkStandardNewMacro(vtkCutter);
+vtkCxxSetObjectMacro(vtkCutter,CutFunction,vtkImplicitFunction);
 
 // Construct with user-specified implicit function; initial value of 0.0; and
 // generating cut scalars turned off.

@@ -23,6 +23,8 @@
 
 vtkCxxRevisionMacro(vtkExtractPolyDataGeometry, "$Revision$");
 vtkStandardNewMacro(vtkExtractPolyDataGeometry);
+vtkCxxSetObjectMacro(vtkExtractPolyDataGeometry,
+                     ImplicitFunction,vtkImplicitFunction);
 
 // Construct object with ExtractInside turned on.
 vtkExtractPolyDataGeometry::vtkExtractPolyDataGeometry(vtkImplicitFunction *f)
