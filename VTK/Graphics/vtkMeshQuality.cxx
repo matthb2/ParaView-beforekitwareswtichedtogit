@@ -158,6 +158,7 @@ void vtkMeshQuality::Execute()
       break;
     case VTK_QUALITY_EDGE_RATIO:
       TetQuality = TetEdgeRatio;
+      break;
     default:
       TetQuality = NULL;
       break;
