@@ -73,7 +73,7 @@ static int vtkTclEventProc(XtPointer clientData,XEvent *event)
 
 extern "C"
 {
-  static void vtkXTclTimerProc(ClientData clientData)
+  void vtkXTclTimerProc(ClientData clientData)
   {
     XtIntervalId id;
     
