@@ -248,7 +248,7 @@ int vtkExtentSplitter::ComputeSubExtents()
   
   vtkExtentSplitterInternals::SubExtentsType subExtents;
   int bestPriority;
-  int dimensionality;
+  int dimensionality = 0;
   
   while(!this->Internal->Queue.empty())
     {
