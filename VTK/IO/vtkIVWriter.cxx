@@ -133,8 +133,9 @@ void vtkIVWriter::WritePolyData(vtkPolyData *pd, FILE *fp)
       }
     fprintf(fp, "\n\t\t]\n");
     fprintf(fp,"\t}\n");
+    colors->Delete();        
     }
-  colors->Delete();
+
   
   // write out polys if any
   if (pd->GetNumberOfPolys() > 0)
