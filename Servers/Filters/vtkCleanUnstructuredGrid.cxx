@@ -12,13 +12,6 @@
      PURPOSE.  See the above copyright notice for more information.
 
 =========================================================================*/
-
-// .NAME vtkCleanUnstructuredGrid
-//
-// .SECTION Description
-//
-// .SECTION See Also
-
 #include "vtkCleanUnstructuredGrid.h"
 
 #include "vtkUnstructuredGrid.h"
@@ -34,23 +27,26 @@
 vtkCxxRevisionMacro(vtkCleanUnstructuredGrid, "$Revision$");
 vtkStandardNewMacro(vtkCleanUnstructuredGrid);
 
+//----------------------------------------------------------------------------
 vtkCleanUnstructuredGrid::vtkCleanUnstructuredGrid()
 {
   this->Locator = vtkPointLocator::New();
 }
 
+//----------------------------------------------------------------------------
 vtkCleanUnstructuredGrid::~vtkCleanUnstructuredGrid()
 {
   this->Locator->Delete();
   this->Locator = NULL;
 }
 
+//----------------------------------------------------------------------------
 void vtkCleanUnstructuredGrid::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os, indent);
 }
 
-
+//----------------------------------------------------------------------------
 void vtkCleanUnstructuredGrid::Execute()
 {
   vtkDataSet *input = this->GetInput();
