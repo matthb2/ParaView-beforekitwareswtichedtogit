@@ -38,7 +38,7 @@
 // Until we trigger LOD from AllocatedRenderTime ...
 #include "vtkPVApplication.h"
 #include "vtkByteSwap.h"
-#include "vtkIceTRenderManager.h"
+#include "vtkParallelRenderManager.h"
 
 
 #ifdef _WIN32
@@ -51,7 +51,7 @@
 vtkCxxRevisionMacro(vtkIceTClientCompositeManager, "$Revision$");
 vtkStandardNewMacro(vtkIceTClientCompositeManager);
 
-vtkCxxSetObjectMacro(vtkIceTClientCompositeManager,IceTManager,vtkIceTRenderManager);
+vtkCxxSetObjectMacro(vtkIceTClientCompositeManager,IceTManager,vtkParallelRenderManager);
 
 // Structures to communicate render info.
 struct vtkClientRenderWindowInfo 
