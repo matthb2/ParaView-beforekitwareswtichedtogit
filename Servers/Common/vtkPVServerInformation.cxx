@@ -25,6 +25,8 @@ vtkCxxRevisionMacro(vtkPVServerInformation, "$Revision$");
 vtkPVServerInformation::vtkPVServerInformation()
 {
   this->RemoteRendering = 1;
+  this->TileDimensions[0] = this->TileDimensions[1] = 1;
+  this->UseOffscreenRendering = 0;
 }
 
 //----------------------------------------------------------------------------
@@ -37,6 +39,9 @@ void vtkPVServerInformation::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os,indent);
   os << indent << "RemoteRendering: " << this->RemoteRendering << endl;
+  os << indent << "UseOffscreenRendering: " << this->UseOffscreenRendering << endl;
+  os << indent << "TileDimensions: " << this->TileDimensions[0]
+     << ", " << this->TileDimensions[1] << endl;
 }
 
 //----------------------------------------------------------------------------
