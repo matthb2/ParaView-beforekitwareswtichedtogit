@@ -46,7 +46,7 @@ void vtkImageTranslateExtent::PrintSelf(ostream& os, vtkIndent indent)
 
 //----------------------------------------------------------------------------
 // Change the WholeExtent
-void vtkImageTranslateExtent::ExecuteInformation (
+void vtkImageTranslateExtent::RequestInformation (
   vtkInformation * vtkNotUsed(request),
   vtkInformationVector **inputVector,
   vtkInformationVector *outputVector)

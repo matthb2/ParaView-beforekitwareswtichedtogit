@@ -99,7 +99,7 @@ double vtkShepardMethod::ComputeModelBounds(double origin[3],
   return maxDist;  
 }
 
-void vtkShepardMethod::ExecuteInformation (
+void vtkShepardMethod::RequestInformation (
   vtkInformation * vtkNotUsed(request),
   vtkInformationVector ** vtkNotUsed( inputVector ),
   vtkInformationVector *outputVector)

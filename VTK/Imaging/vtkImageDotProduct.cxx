@@ -32,7 +32,7 @@ vtkImageDotProduct::vtkImageDotProduct()
 
 //----------------------------------------------------------------------------
 // Colapse the first axis
-void vtkImageDotProduct::ExecuteInformation (
+void vtkImageDotProduct::RequestInformation (
   vtkInformation * vtkNotUsed(request),
   vtkInformationVector ** vtkNotUsed( inputVector ),
   vtkInformationVector *outputVector)

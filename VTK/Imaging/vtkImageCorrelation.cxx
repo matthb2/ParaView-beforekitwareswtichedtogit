@@ -33,7 +33,7 @@ vtkImageCorrelation::vtkImageCorrelation()
 
 //----------------------------------------------------------------------------
 // Grow the output image 
-void vtkImageCorrelation::ExecuteInformation (
+void vtkImageCorrelation::RequestInformation (
   vtkInformation * vtkNotUsed(request),
   vtkInformationVector ** vtkNotUsed( inputVector ),
   vtkInformationVector *outputVector)

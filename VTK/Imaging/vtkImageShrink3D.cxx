@@ -162,7 +162,7 @@ void vtkImageShrink3D::RequestUpdateExtent (
 //----------------------------------------------------------------------------
 // Computes any global image information associated with regions.
 // Any problems with roundoff or negative numbers ???
-void vtkImageShrink3D::ExecuteInformation (
+void vtkImageShrink3D::RequestInformation (
   vtkInformation * vtkNotUsed(request),
   vtkInformationVector **inputVector,
   vtkInformationVector *outputVector)

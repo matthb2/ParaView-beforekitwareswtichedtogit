@@ -34,7 +34,7 @@ vtkImageNormalize::vtkImageNormalize()
 }
 
 //----------------------------------------------------------------------------
-void vtkImageNormalize::ExecuteInformation(
+void vtkImageNormalize::RequestInformation (
   vtkInformation       * vtkNotUsed( request ),
   vtkInformationVector ** vtkNotUsed( inputVector ),
   vtkInformationVector * outputVector)

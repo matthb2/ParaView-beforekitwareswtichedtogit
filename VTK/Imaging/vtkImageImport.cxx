@@ -193,7 +193,7 @@ void vtkImageImport::RequestUpdateExtent(
 }
 
 //----------------------------------------------------------------------------
-void vtkImageImport::ExecuteInformation (
+void vtkImageImport::RequestInformation (
   vtkInformation * vtkNotUsed(request),
   vtkInformationVector ** vtkNotUsed( inputVector ),
   vtkInformationVector *outputVector)

@@ -115,7 +115,7 @@ void vtkImageClip::GetOutputWholeExtent(int extent[6])
 
 //----------------------------------------------------------------------------
 // Change the WholeExtent
-void vtkImageClip::ExecuteInformation (
+void vtkImageClip::RequestInformation (
   vtkInformation * vtkNotUsed(request),
   vtkInformationVector **inputVector,
   vtkInformationVector *outputVector)

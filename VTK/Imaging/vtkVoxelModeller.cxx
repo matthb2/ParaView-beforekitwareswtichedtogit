@@ -73,7 +73,7 @@ void vtkVoxelModeller::SetModelBounds(double xmin, double xmax, double ymin,
     }
 }
 
-void vtkVoxelModeller::ExecuteInformation (
+void vtkVoxelModeller::RequestInformation (
   vtkInformation * vtkNotUsed(request),
   vtkInformationVector ** vtkNotUsed( inputVector ),
   vtkInformationVector *outputVector)

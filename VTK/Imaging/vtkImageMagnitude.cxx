@@ -34,7 +34,7 @@ vtkImageMagnitude::vtkImageMagnitude()
   this->SetNumberOfOutputPorts(1);
 }
 
-void vtkImageMagnitude::ExecuteInformation(
+void vtkImageMagnitude::RequestInformation (
   vtkInformation       * vtkNotUsed( request ),
   vtkInformationVector ** vtkNotUsed( inputVector ),
   vtkInformationVector * outputVector)

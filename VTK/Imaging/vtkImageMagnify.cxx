@@ -36,7 +36,7 @@ vtkImageMagnify::vtkImageMagnify()
 
 //----------------------------------------------------------------------------
 // Computes any global image information associated with regions.
-void vtkImageMagnify::ExecuteInformation (
+void vtkImageMagnify::RequestInformation (
   vtkInformation * vtkNotUsed(request),
   vtkInformationVector **inputVector,
   vtkInformationVector *outputVector)

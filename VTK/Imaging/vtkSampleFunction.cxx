@@ -91,7 +91,7 @@ void vtkSampleFunction::SetSampleDimensions(int dim[3])
     }
 }
 
-void vtkSampleFunction::ExecuteInformation (
+void vtkSampleFunction::RequestInformation (
   vtkInformation * vtkNotUsed(request),
   vtkInformationVector ** vtkNotUsed( inputVector ),
   vtkInformationVector *outputVector)

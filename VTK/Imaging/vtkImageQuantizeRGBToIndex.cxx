@@ -617,7 +617,7 @@ void vtkImageQuantizeRGBToIndex::RequestData(
 }
 
 // Change the output type and number of components
-void vtkImageQuantizeRGBToIndex::ExecuteInformation(
+void vtkImageQuantizeRGBToIndex::RequestInformation (
   vtkInformation * vtkNotUsed(request),
   vtkInformationVector **vtkNotUsed(inputVector),
   vtkInformationVector *outputVector)

@@ -39,7 +39,7 @@ vtkImageShiftScale::vtkImageShiftScale()
 
 
 //----------------------------------------------------------------------------
-void vtkImageShiftScale::ExecuteInformation (
+void vtkImageShiftScale::RequestInformation (
   vtkInformation * vtkNotUsed(request),
   vtkInformationVector ** vtkNotUsed( inputVector ), 
   vtkInformationVector * outputVector)

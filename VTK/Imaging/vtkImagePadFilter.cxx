@@ -86,7 +86,7 @@ void vtkImagePadFilter::GetOutputWholeExtent(int extent[6])
 
 //----------------------------------------------------------------------------
 // Just change the Image extent.
-void vtkImagePadFilter::ExecuteInformation (
+void vtkImagePadFilter::RequestInformation (
   vtkInformation* vtkNotUsed(request),
   vtkInformationVector** inputVector,
   vtkInformationVector* outputVector)

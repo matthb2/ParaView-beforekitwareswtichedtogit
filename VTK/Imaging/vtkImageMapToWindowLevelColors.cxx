@@ -82,7 +82,7 @@ void vtkImageMapToWindowLevelColors::RequestData(
 }
 
 //----------------------------------------------------------------------------
-void vtkImageMapToWindowLevelColors::ExecuteInformation(
+void vtkImageMapToWindowLevelColors::RequestInformation (
   vtkInformation *vtkNotUsed(request),
   vtkInformationVector **inputVector,
   vtkInformationVector *outputVector)

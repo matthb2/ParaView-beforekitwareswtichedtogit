@@ -54,7 +54,7 @@ void vtkImageGradient::PrintSelf(ostream& os, vtkIndent indent)
 
 
 //----------------------------------------------------------------------------
-void vtkImageGradient::ExecuteInformation (
+void vtkImageGradient::RequestInformation (
   vtkInformation* vtkNotUsed(request),
   vtkInformationVector** inputVector,
   vtkInformationVector* outputVector)

@@ -279,7 +279,7 @@ unsigned long vtkRendererSource::GetMTime()
 
 
 //----------------------------------------------------------------------------
-void vtkRendererSource::ExecuteInformation (
+void vtkRendererSource::RequestInformation (
   vtkInformation * vtkNotUsed(request),
   vtkInformationVector** vtkNotUsed( inputVector ),
   vtkInformationVector *outputVector)
@@ -369,7 +369,7 @@ int vtkRendererSource::ProcessRequest(vtkInformation* request,
   // execute information
   if(request->Has(vtkDemandDrivenPipeline::REQUEST_INFORMATION()))
     {
-    this->ExecuteInformation(request, inputVector, outputVector);
+    this->RequestInformation(request, inputVector, outputVector);
     // after executing set the origin and spacing from the
     // info
     int i;

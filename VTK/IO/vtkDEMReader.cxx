@@ -85,7 +85,7 @@ vtkDEMReader::~vtkDEMReader()
 }
 
 //----------------------------------------------------------------------------
-void vtkDEMReader::ExecuteInformation (
+void vtkDEMReader::RequestInformation (
   vtkInformation * vtkNotUsed(request),
   vtkInformationVector ** vtkNotUsed( inputVector ),
   vtkInformationVector *outputVector)

@@ -79,7 +79,7 @@ void vtkPointLoad::SetSampleDimensions(int dim[3])
     }
 }
 
-void vtkPointLoad::ExecuteInformation (
+void vtkPointLoad::RequestInformation (
   vtkInformation * vtkNotUsed(request),
   vtkInformationVector ** vtkNotUsed( inputVector ),
   vtkInformationVector *outputVector)

@@ -51,7 +51,7 @@ vtkImageGridSource::vtkImageGridSource()
 }
 
 //----------------------------------------------------------------------------
-void vtkImageGridSource::ExecuteInformation (
+void vtkImageGridSource::RequestInformation (
   vtkInformation * vtkNotUsed(request),
   vtkInformationVector ** vtkNotUsed( inputVector ),
   vtkInformationVector *outputVector)

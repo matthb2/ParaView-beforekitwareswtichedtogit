@@ -84,7 +84,7 @@ vtkImageData *vtkImageStencil::GetBackgroundInput()
 }
 
 //----------------------------------------------------------------------------
-void vtkImageStencil::ExecuteInformation (
+void vtkImageStencil::RequestInformation (
   vtkInformation * vtkNotUsed(request),
   vtkInformationVector **inputVector,
   vtkInformationVector *vtkNotUsed(outputVector))

@@ -141,7 +141,7 @@ void vtkOpaqueAtVertices (int XSize, int YSize, double ScaleFactor,
 }
 
 //----------------------------------------------------------------------------
-void vtkTriangularTexture::ExecuteInformation (
+void vtkTriangularTexture::RequestInformation (
   vtkInformation * vtkNotUsed(request),
   vtkInformationVector** vtkNotUsed( inputVector ),
   vtkInformationVector *outputVector)

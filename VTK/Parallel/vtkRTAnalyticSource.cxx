@@ -94,7 +94,7 @@ void vtkRTAnalyticSource::SetWholeExtent(int xMin, int xMax,
 }
 
 //----------------------------------------------------------------------------
-void vtkRTAnalyticSource::ExecuteInformation (
+void vtkRTAnalyticSource::RequestInformation (
   vtkInformation * vtkNotUsed(request),
   vtkInformationVector ** vtkNotUsed( inputVector ),
   vtkInformationVector *outputVector)

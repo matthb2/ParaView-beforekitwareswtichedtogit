@@ -67,7 +67,7 @@ void vtkExtractVOI::RequestUpdateExtent (
 
 //-----------------------------------------------------------------------------
 void 
-vtkExtractVOI::ExecuteInformation (
+vtkExtractVOI::RequestInformation (
   vtkInformation* vtkNotUsed(request),
   vtkInformationVector** inputVector,
   vtkInformationVector* outputVector)

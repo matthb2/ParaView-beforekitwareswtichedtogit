@@ -97,7 +97,7 @@ void vtkImageThreshold::ThresholdBetween(double lower, double upper)
 }
 
 //----------------------------------------------------------------------------
-void vtkImageThreshold::ExecuteInformation (
+void vtkImageThreshold::RequestInformation (
   vtkInformation * vtkNotUsed(request),
   vtkInformationVector **inputVector,
   vtkInformationVector *outputVector)

@@ -80,7 +80,7 @@ void vtkImageNoiseSource::SetWholeExtent(int xMin, int xMax,
     }
 }
 //----------------------------------------------------------------------------
-void vtkImageNoiseSource::ExecuteInformation (
+void vtkImageNoiseSource::RequestInformation (
   vtkInformation * vtkNotUsed(request),
   vtkInformationVector** vtkNotUsed( inputVector ),
   vtkInformationVector *outputVector)

@@ -38,7 +38,7 @@ vtkImageMathematics::vtkImageMathematics()
 
 //----------------------------------------------------------------------------
 // The output extent is the intersection.
-void vtkImageMathematics::ExecuteInformation (
+void vtkImageMathematics::RequestInformation (
   vtkInformation * vtkNotUsed(request),
   vtkInformationVector **inputVector,
   vtkInformationVector *outputVector)

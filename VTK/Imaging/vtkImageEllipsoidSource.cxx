@@ -105,7 +105,7 @@ void vtkImageEllipsoidSource::GetWholeExtent(int extent[6])
 }
 
 //----------------------------------------------------------------------------
-void vtkImageEllipsoidSource::ExecuteInformation (
+void vtkImageEllipsoidSource::RequestInformation (
   vtkInformation * vtkNotUsed(request),
   vtkInformationVector** vtkNotUsed( inputVector ),
   vtkInformationVector *outputVector)

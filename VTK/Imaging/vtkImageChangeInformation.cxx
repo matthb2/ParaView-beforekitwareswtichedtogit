@@ -114,7 +114,7 @@ void vtkImageChangeInformation::PrintSelf(ostream& os, vtkIndent indent)
 
 //----------------------------------------------------------------------------
 // Change the information
-void vtkImageChangeInformation::ExecuteInformation (
+void vtkImageChangeInformation::RequestInformation (
   vtkInformation * vtkNotUsed(request),
   vtkInformationVector **inputVector,
   vtkInformationVector *outputVector)

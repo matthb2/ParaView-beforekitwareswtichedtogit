@@ -361,7 +361,7 @@ void vtkImageDifference::ThreadedRequestData(
 //----------------------------------------------------------------------------
 //Make the output the intersection of the inputs, of course the inputs better
 //be the same size
-void vtkImageDifference::ExecuteInformation (
+void vtkImageDifference::RequestInformation (
   vtkInformation * vtkNotUsed(request),
   vtkInformationVector **inputVector,
   vtkInformationVector *outputVector)

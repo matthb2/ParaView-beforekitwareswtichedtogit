@@ -59,7 +59,7 @@ vtkGaussianSplatter::vtkGaussianSplatter()
   this->NullValue = 0.0;
 }
 
-void vtkGaussianSplatter::ExecuteInformation (
+void vtkGaussianSplatter::RequestInformation (
   vtkInformation * vtkNotUsed(request),
   vtkInformationVector ** vtkNotUsed( inputVector ),
   vtkInformationVector *outputVector)

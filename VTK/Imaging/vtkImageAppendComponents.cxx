@@ -26,7 +26,7 @@ vtkStandardNewMacro(vtkImageAppendComponents);
 
 //----------------------------------------------------------------------------
 // This method tells the ouput it will have more components
-void vtkImageAppendComponents::ExecuteInformation (
+void vtkImageAppendComponents::RequestInformation (
   vtkInformation * vtkNotUsed(request),
   vtkInformationVector **inputVector,
   vtkInformationVector *outputVector)

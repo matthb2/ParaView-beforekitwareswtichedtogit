@@ -122,7 +122,7 @@ double vtkImageBlend::GetOpacity(int idx)
 }    
 
 //----------------------------------------------------------------------------
-void vtkImageBlend::ExecuteInformation (
+void vtkImageBlend::RequestInformation (
   vtkInformation * vtkNotUsed(request),
   vtkInformationVector **inputVector,
   vtkInformationVector *vtkNotUsed( outputVector ))

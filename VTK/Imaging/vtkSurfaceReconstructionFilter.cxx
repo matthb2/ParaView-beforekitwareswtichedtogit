@@ -116,7 +116,7 @@ int vtkSurfaceReconstructionFilter::FillInputPortInformation(
   return 1;
 }
 
-void vtkSurfaceReconstructionFilter::ExecuteInformation (
+void vtkSurfaceReconstructionFilter::RequestInformation (
   vtkInformation * vtkNotUsed(request),
   vtkInformationVector ** vtkNotUsed( inputVector ),
   vtkInformationVector *outputVector)

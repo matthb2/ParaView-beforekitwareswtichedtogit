@@ -61,7 +61,7 @@ void vtkImageSpatialAlgorithm::PrintSelf(ostream& os, vtkIndent indent)
 }
 
 //----------------------------------------------------------------------------
-void vtkImageSpatialAlgorithm::ExecuteInformation(
+void vtkImageSpatialAlgorithm::RequestInformation (
   vtkInformation *vtkNotUsed(request),
   vtkInformationVector **inputVector,
   vtkInformationVector *outputVector)

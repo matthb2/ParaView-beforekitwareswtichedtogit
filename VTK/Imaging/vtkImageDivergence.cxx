@@ -33,7 +33,7 @@ vtkImageDivergence::vtkImageDivergence()
 
 //----------------------------------------------------------------------------
 // This method tells the superclass that the first axis will collapse.
-void vtkImageDivergence::ExecuteInformation(
+void vtkImageDivergence::RequestInformation (
   vtkInformation* vtkNotUsed(request),
   vtkInformationVector** vtkNotUsed(inputVector),
   vtkInformationVector* outputVector)

@@ -234,7 +234,7 @@ void vtkImageMandelbrotSource::GetSizeCX(double s[4])
 }
 
 //----------------------------------------------------------------------------
-void vtkImageMandelbrotSource::ExecuteInformation (
+void vtkImageMandelbrotSource::RequestInformation (
   vtkInformation * vtkNotUsed(request),
   vtkInformationVector** vtkNotUsed( inputVector ),
   vtkInformationVector *outputVector)

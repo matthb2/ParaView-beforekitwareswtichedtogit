@@ -101,7 +101,7 @@ void vtkImageMapToColors::RequestData(vtkInformation *request,
 }
 
 //----------------------------------------------------------------------------
-void vtkImageMapToColors::ExecuteInformation (
+void vtkImageMapToColors::RequestInformation (
   vtkInformation * vtkNotUsed(request),
   vtkInformationVector **inputVector,
   vtkInformationVector *outputVector)

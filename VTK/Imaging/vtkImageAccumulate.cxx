@@ -328,7 +328,7 @@ void vtkImageAccumulate::RequestData(
 
 
 //----------------------------------------------------------------------------
-void vtkImageAccumulate::ExecuteInformation (
+void vtkImageAccumulate::RequestInformation (
   vtkInformation* vtkNotUsed(request),
   vtkInformationVector** inputVector,
   vtkInformationVector* outputVector)
