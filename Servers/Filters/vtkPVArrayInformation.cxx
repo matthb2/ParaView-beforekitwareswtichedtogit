@@ -265,6 +265,10 @@ void vtkPVArrayInformation::CopyFromArray(vtkDataArray *array)
 //----------------------------------------------------------------------------
 int vtkPVArrayInformation::Compare(vtkPVArrayInformation *info)
 {
+  if (info == NULL)
+    {
+    return 0;
+    }
   if (strcmp(info->GetName(), this->Name) == 0 && 
       info->GetNumberOfComponents() == this->NumberOfComponents)
     {
