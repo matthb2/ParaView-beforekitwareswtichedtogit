@@ -15,7 +15,6 @@
 #include "vtkCompositeDataSet.h"
 
 #include "vtkCompositeDataIterator.h"
-#include "vtkCompositeDataVisitor.h"
 #include "vtkDataSet.h"
 
 vtkCxxRevisionMacro(vtkCompositeDataSet, "$Revision$");

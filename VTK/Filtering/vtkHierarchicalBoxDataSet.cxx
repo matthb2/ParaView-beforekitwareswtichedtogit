@@ -15,7 +15,6 @@
 #include "vtkHierarchicalBoxDataSet.h"
 
 #include "vtkHierarchicalBoxDataSetInternal.h"
-#include "vtkHierarchicalBoxVisitor.h"
 
 #include "vtkObjectFactory.h"
 #include "vtkUniformGrid.h"
@@ -34,14 +33,6 @@ vtkHierarchicalBoxDataSet::vtkHierarchicalBoxDataSet()
 vtkHierarchicalBoxDataSet::~vtkHierarchicalBoxDataSet()
 {
   delete this->BoxInternal;
-}
-
-//----------------------------------------------------------------------------
-vtkCompositeDataVisitor* vtkHierarchicalBoxDataSet::NewVisitor()
-{
-  vtkHierarchicalBoxVisitor* vis = vtkHierarchicalBoxVisitor::New();
-  vis->SetDataSet(this);
-  return vis;
 }
 
 //----------------------------------------------------------------------------
