@@ -44,7 +44,7 @@ vtkCubeSource::vtkCubeSource(double xL, double yL, double zL)
 
 int vtkCubeSource::RequestData(
   vtkInformation *vtkNotUsed(request),
-  vtkInformationVector **inputVector,
+  vtkInformationVector **vtkNotUsed(inputVector),
   vtkInformationVector *outputVector)
 {
   // get the info object
