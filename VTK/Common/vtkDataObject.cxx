@@ -261,6 +261,9 @@ void vtkDataObject::Update()
       sddp->GetOutputInformation(index)
         ->Set(vtkStreamingDemandDrivenPipeline::UPDATE_EXTENT(),
               this->UpdateExtent, 6);
+      sddp->GetOutputInformation(index)
+        ->Set(vtkStreamingDemandDrivenPipeline::UPDATE_EXTENT_INITIALIZED(),
+              1);
       }
 
     // Update this output.
