@@ -57,7 +57,6 @@ void vtkMaskPoints::Execute()
 
   if ( numPts < 1 )
     {
-    vtkErrorMacro(<<"No data to mask!");
     return;
     }
 
