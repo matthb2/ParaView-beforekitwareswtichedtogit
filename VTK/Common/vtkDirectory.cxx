@@ -19,6 +19,8 @@
 
 #include "vtkDebugLeaks.h"
 
+#include <sys/stat.h>
+
 vtkCxxRevisionMacro(vtkDirectory, "$Revision$");
 
 //----------------------------------------------------------------------------
@@ -83,7 +85,6 @@ void vtkDirectory::PrintSelf(ostream& os, vtkIndent indent)
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <sys/stat.h>
 #include <sys/types.h>
 
 int vtkDirectory::Open(const char* name)
@@ -197,6 +198,15 @@ const char* vtkDirectory::GetCurrentWorkingDirectory(char* buf,
 }
 
 #endif
+
+int vtkDirectory::CreateDirectory(const char* dir)
+{
+#if defined(_WIN32) && (defined(_MSC_VER) || defined(__BORLANDC__))
+  return _mkdir(dir) == 0;
+#else 
+  return mkdir(dir, 00777) == 0;
+#endif
+}
 
 
 const char* vtkDirectory::GetFile(int index)
