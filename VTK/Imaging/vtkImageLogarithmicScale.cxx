@@ -5,7 +5,7 @@
   Language:  C++
   Date:      $Date$
   Version:   $Revision$
-  Thanks:    Thanks to Abdalmajeid M. Alyassin who developed this class.
+  Thanks:    Thanks to C. Charles Law who developed this class.
 
 Copyright (c) 1993-1995 Ken Martin, Will Schroeder, Bill Lorensen.
 
@@ -38,63 +38,39 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 
 
 =========================================================================*/
+#include <math.h>
 #include "vtkImageRegion.h"
-#include "vtkImageCache.h"
-#include "vtkImageCast.h"
+#include "vtkImageLogarithmicScale.h"
+
+
 
 //----------------------------------------------------------------------------
 // Description:
 // Constructor sets default values
-vtkImageCast::vtkImageCast()
+vtkImageLogarithmicScale::vtkImageLogarithmicScale()
 {
-  this->SetExecutionAxes(VTK_IMAGE_X_AXIS, VTK_IMAGE_Y_AXIS);
+  // For better performance, the execute function was written as a 2d.
+  this->NumberOfExecutionAxes = 2;
+  this->Constant = 10.0;
 }
 
 
-//----------------------------------------------------------------------------
-// Description:
-// The update method first checks to see is a cast is necessary.
-void vtkImageCast::InternalUpdate()
-{
-  
-  if (! this->Input || ! this->Output)
-    {
-    vtkErrorMacro("Update: Input or output is not set.");
-    return;
-    }
-  
-  // Do the scalar types already match
-  if (this->Input->GetScalarType() == this->Output->GetScalarType())
-    {
-    int bypassSave = this->Bypass;
-    // just copy by reference. (use Bypass)
-    vtkDebugMacro("Update: Cast is not necessary.");
-    this->Bypass = 1;
-    this->vtkImageFilter::InternalUpdate();
-    this->Bypass = bypassSave;
-    return;
-    }
-  
-  // call the superclass update which will cause an execute.
-  this->vtkImageFilter::InternalUpdate();
-}
 
 //----------------------------------------------------------------------------
 // Description:
 // This templated function executes the filter for any type of data.
-template <class IT, class OT>
-static void vtkImageCastExecute(vtkImageCast *self,
-				vtkImageRegion *inRegion, IT *inPtr,
-				vtkImageRegion *outRegion, OT *outPtr)
+template <class T>
+static void vtkImageLogarithmicScaleExecute(vtkImageLogarithmicScale *self,
+					 vtkImageRegion *inRegion, T *inPtr,
+					 vtkImageRegion *outRegion, T *outPtr)
 {
   int min0, max0, min1, max1;
   int idx0, idx1;
   int inInc0, inInc1;
   int outInc0, outInc1;
-  IT  *inPtr0, *inPtr1;
-  OT  *outPtr0, *outPtr1;
-
-  self = self;
+  T *inPtr0, *inPtr1;
+  T *outPtr0, *outPtr1;
+  float c = self->GetConstant();
   
   // Get information to march through data 
   inRegion->GetIncrements(inInc0, inInc1);
@@ -110,57 +86,25 @@ static void vtkImageCastExecute(vtkImageCast *self,
     inPtr0 = inPtr1;
     for (idx0 = min0; idx0 <= max0; ++idx0)
       {
-      *outPtr0 = (OT)(*inPtr0);
+      
+      // Pixel operation
+      if (*inPtr0 > 0)
+	{
+	*outPtr0 = (T)(c*log((double)(*inPtr0)+1.0));
+	}
+      else
+	{
+	*outPtr0 = (T)(-c*log(1.0-(double)(*inPtr0)));
+	}
+      
       outPtr0 += outInc0;
-      inPtr0  += inInc0;
+      inPtr0 += inInc0;
       }
     outPtr1 += outInc1;
     inPtr1 += inInc1;
-  }
-}
-
-
-
-//----------------------------------------------------------------------------
-template <class T>
-static void vtkImageCastExecute(vtkImageCast *self,
-			 vtkImageRegion *inRegion, T *inPtr,
-			 vtkImageRegion *outRegion)
-{
-  void *outPtr = outRegion->GetScalarPointer();
-  switch (outRegion->GetScalarType())
-    {
-    case VTK_FLOAT:
-      vtkImageCastExecute(self, 
-			  inRegion, (T *)(inPtr), 
-			  outRegion, (float *)(outPtr));
-      break;
-    case VTK_INT:
-      vtkImageCastExecute(self, 
-			  inRegion, (T *)(inPtr), 
-			  outRegion, (int *)(outPtr)); 
-      break;
-    case VTK_SHORT:
-      vtkImageCastExecute(self, 
-			  inRegion, (T *)(inPtr), 
-			  outRegion, (short *)(outPtr));
-      break;
-    case VTK_UNSIGNED_SHORT:
-      vtkImageCastExecute(self, 
-			  inRegion, (T *)(inPtr), 
-			  outRegion, (unsigned short *)(outPtr)); 
-      break;
-    case VTK_UNSIGNED_CHAR:
-      vtkImageCastExecute(self, 
-			  inRegion, (T *)(inPtr), 
-			  outRegion, (unsigned char *)(outPtr)); 
-      break;
-    default:
-      vtkGenericWarningMacro("Execute: Unknown output ScalarType");
-      return;
     }
+  
 }
-
 
 
 
@@ -170,39 +114,52 @@ static void vtkImageCastExecute(vtkImageCast *self,
 // algorithm to fill the output from the input.
 // It just executes a switch statement to call the correct function for
 // the regions data types.
-void vtkImageCast::Execute(vtkImageRegion *inRegion, vtkImageRegion *outRegion)
+void vtkImageLogarithmicScale::Execute(vtkImageRegion *inRegion, 
+					     vtkImageRegion *outRegion)
 {
   void *inPtr = inRegion->GetScalarPointer();
+  void *outPtr = outRegion->GetScalarPointer();
+  
+  vtkDebugMacro(<< "Execute: inRegion = " << inRegion 
+		<< ", outRegion = " << outRegion);
+  
+  // this filter expects that input is the same type as output.
+  if (inRegion->GetScalarType() != outRegion->GetScalarType())
+    {
+    vtkErrorMacro(<< "Execute: input ScalarType, " << inRegion->GetScalarType()
+                  << ", must match out ScalarType " << outRegion->GetScalarType());
+    return;
+    }
   
   switch (inRegion->GetScalarType())
     {
     case VTK_FLOAT:
-      vtkImageCastExecute(this, 
+      vtkImageLogarithmicScaleExecute(this, 
 			  inRegion, (float *)(inPtr), 
-			  outRegion);
+			  outRegion, (float *)(outPtr));
       break;
     case VTK_INT:
-      vtkImageCastExecute(this, 
+      vtkImageLogarithmicScaleExecute(this, 
 			  inRegion, (int *)(inPtr), 
-				       outRegion);
+			  outRegion, (int *)(outPtr));
       break;
     case VTK_SHORT:
-      vtkImageCastExecute(this, 
+      vtkImageLogarithmicScaleExecute(this, 
 			  inRegion, (short *)(inPtr), 
-			  outRegion);
+			  outRegion, (short *)(outPtr));
       break;
     case VTK_UNSIGNED_SHORT:
-      vtkImageCastExecute(this, 
+      vtkImageLogarithmicScaleExecute(this, 
 			  inRegion, (unsigned short *)(inPtr), 
-			  outRegion);
+			  outRegion, (unsigned short *)(outPtr));
       break;
     case VTK_UNSIGNED_CHAR:
-      vtkImageCastExecute(this, 
+      vtkImageLogarithmicScaleExecute(this, 
 			  inRegion, (unsigned char *)(inPtr), 
-			  outRegion);
+			  outRegion, (unsigned char *)(outPtr));
       break;
     default:
-      vtkErrorMacro(<< "Execute: Unknown input ScalarType");
+      vtkErrorMacro(<< "Execute: Unknown ScalarType");
       return;
     }
 }
