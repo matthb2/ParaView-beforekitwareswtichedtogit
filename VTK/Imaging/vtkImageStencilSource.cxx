@@ -15,6 +15,7 @@
 #include "vtkImageStencilSource.h"
 
 #include "vtkImageStencilData.h"
+#include "vtkInformation.h"
 #include "vtkObjectFactory.h"
 
 #include <math.h>
@@ -25,6 +26,9 @@ vtkStandardNewMacro(vtkImageStencilSource);
 //----------------------------------------------------------------------------
 vtkImageStencilSource::vtkImageStencilSource()
 {
+  // A source has no inputs by default.
+  this->SetNumberOfInputPorts(0);
+
   this->vtkSource::SetNthOutput(0,vtkImageStencilData::New());
   // Releasing data for pipeline parallism.
   // Filters will know it is empty. 
@@ -99,4 +103,14 @@ void vtkImageStencilSource::ThreadedExecute(vtkImageStencilData *vtkNotUsed(o),
     }
 }
 
-
+//----------------------------------------------------------------------------
+int vtkImageStencilSource::FillOutputPortInformation(int port,
+                                                     vtkInformation* info)
+{
+  if(!this->Superclass::FillOutputPortInformation(port, info))
+    {
+    return 0;
+    }
+  info->Set(vtkInformation::OUTPUT_DATA_TYPE(), "vtkImageStencilData");
+  return 1;
+}
