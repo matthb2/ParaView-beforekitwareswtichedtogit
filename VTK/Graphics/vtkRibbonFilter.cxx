@@ -65,7 +65,7 @@ void vtkRibbonFilter::Execute()
   vtkIdType i;
   float range[2];
   vtkCellArray *newStrips;
-  vtkIdType npts, *pts;
+  vtkIdType npts=0, *pts=NULL;
   vtkIdType offset=0;
   vtkFloatArray *newTCoords=NULL;
   int abort=0;
