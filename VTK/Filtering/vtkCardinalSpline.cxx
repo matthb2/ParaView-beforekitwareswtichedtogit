@@ -16,7 +16,9 @@
 
 =========================================================================*/
 #include "vtkCardinalSpline.h"
+
 #include "vtkObjectFactory.h"
+#include "vtkPiecewiseFunction.h"
 
 vtkCxxRevisionMacro(vtkCardinalSpline, "$Revision$");
 vtkStandardNewMacro(vtkCardinalSpline);

@@ -17,6 +17,8 @@
 =========================================================================*/
 #include "vtkSpline.h"
 
+#include "vtkPiecewiseFunction.h"
+
 vtkCxxRevisionMacro(vtkSpline, "$Revision$");
 
 // Construct a spline wth the folloing defaults:
