@@ -357,7 +357,13 @@ vtkImageData* vtkImageAlgorithm::GetOutput(int port)
   return vtkImageData::SafeDownCast(this->GetOutputDataObject(port));
 }
 
+//----------------------------------------------------------------------------
+void vtkImageAlgorithm::SetOutput(vtkDataObject* d)
+{
+  this->GetExecutive()->SetOutputData(0, d);
+}
 
+//----------------------------------------------------------------------------
 int vtkImageAlgorithm::FillOutputPortInformation(
   int vtkNotUsed(port), vtkInformation* info)
 {
