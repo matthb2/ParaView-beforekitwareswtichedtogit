@@ -313,16 +313,14 @@ const char* vtkSMPropertyAdaptor::GetElement(unsigned int idx)
     }
   if (this->IdTypeVectorProperty)
     {
-    sprintf(this->ElemValue, 
-            "%ld", 
-            this->IdTypeVectorProperty->GetElement(idx));
+    ostrstream elemV(this->ElemValue, 128);
+    elemV << this->IdTypeVectorProperty->GetElement(idx) << ends;
     return this->ElemValue;
     }
   if (this->IntVectorProperty)
     {
-    sprintf(this->ElemValue, 
-            "%d", 
-            this->IntVectorProperty->GetElement(idx));
+    ostrstream elemV(this->ElemValue, 128);
+    elemV << this->IntVectorProperty->GetElement(idx) << ends;
     return this->ElemValue;
     }
   if (this->StringVectorProperty)
