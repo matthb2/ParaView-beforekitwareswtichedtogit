@@ -112,12 +112,9 @@ void vtkInteractorStyleSwitch::SetCurrentStyleToTrackballCamera()
 }
 
 //----------------------------------------------------------------------------
-void vtkInteractorStyleSwitch::OnChar(int vtkNotUsed(ctrl), 
-                                      int vtkNotUsed(shift), 
-                                      char keycode,
-                                      int vtkNotUsed(repeatcount)) 
+void vtkInteractorStyleSwitch::OnChar() 
 {
-  switch (keycode)
+  switch (this->Interactor->GetKeyCode())
     {
     case 'j':
     case 'J':
