@@ -583,7 +583,7 @@ void vtkOpenGLImageMapper::RenderData(vtkViewport* viewport,
   int front = 
     (actor->GetProperty()->GetDisplayLocation() == VTK_FOREGROUND_LOCATION);
 
-#if defined(sparc) && defined(GL_VERSION_1_1)
+#if defined(sparc) && !defined(GL_VERSION_1_2)
   glDisable(GL_BLEND);
 #endif
   switch (data->GetScalarType())
@@ -670,7 +670,7 @@ void vtkOpenGLImageMapper::RenderData(vtkViewport* viewport,
   glMatrixMode( GL_MODELVIEW);
   glPopMatrix();
   glEnable( GL_LIGHTING);
-#if defined(sparc) && defined(GL_VERSION_1_1)
+#if defined(sparc) && !defined(GL_VERSION_1_2)
   glEnable(GL_BLEND);
 #endif
 }
