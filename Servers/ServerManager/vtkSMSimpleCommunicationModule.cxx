@@ -57,15 +57,14 @@ void vtkSMSimpleCommunicationModule::SendStreamToServer(
     {
     return;
     }
-  pm->GetStream() = *stream;
 
   if (serverid == 0)
     {
-    pm->SendStreamToServerRoot();
+    pm->SendStreamToServerRootTemp(stream);
     }
   else
     {
-    pm->SendStreamToServer();
+    pm->SendStreamToServerTemp(stream);
     }
 
   // TODO Replace this with a generic controller where each node is the
