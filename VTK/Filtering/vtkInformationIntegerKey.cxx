@@ -84,7 +84,14 @@ int vtkInformationIntegerKey::Has(vtkInformation* info)
 //----------------------------------------------------------------------------
 void vtkInformationIntegerKey::ShallowCopy(vtkInformation* from, vtkInformation* to)
 {
-  this->Set(to, this->Get(from));
+  if (this->Has(from))
+    {
+    this->Set(to, this->Get(from));
+    }
+  else
+    {
+    this->SetAsObjectBase(to, 0); // doesn't exist in from, so remove the key
+    }
 }
 
 //----------------------------------------------------------------------------
