@@ -56,7 +56,7 @@ void vtkInformationKey::PrintSelf(ostream& os, vtkIndent indent)
 }
 
 //----------------------------------------------------------------------------
-void vtkInformationKey::UnRegister(vtkObjectBase *o)
+void vtkInformationKey::UnRegister(vtkObjectBase *)
 {
   this->ReferenceCount--;
   if (this->ReferenceCount <= 0)
