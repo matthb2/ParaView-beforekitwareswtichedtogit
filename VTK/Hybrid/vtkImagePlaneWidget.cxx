@@ -2309,8 +2309,8 @@ void vtkImagePlaneWidget::GenerateText()
   textprop->SetVerticalJustificationToBottom();
 
   vtkCoordinate* coord = this->TextActor->GetPositionCoordinate();
-  coord->SetCoordinateSystemToNormalizedDisplay();
-  coord->SetValue(0.01, 0.01);
+  coord->SetCoordinateSystemToNormalizedViewport();
+  coord->SetValue(.01, .01);
 
   this->TextActor->VisibilityOff();
 }
