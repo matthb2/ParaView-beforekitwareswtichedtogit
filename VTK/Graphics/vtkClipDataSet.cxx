@@ -132,7 +132,7 @@ void vtkClipDataSet::Execute()
   vtkDataArray *clipScalars;
   vtkPoints *cellPts;
   vtkIdList *cellIds;
-  float s;
+  double s;
   vtkIdType npts;
   vtkIdType *pts;
   int cellType = 0;
@@ -278,7 +278,7 @@ void vtkClipDataSet::Execute()
     {
     if ( !(cellId % updateTime) )
       {
-      this->UpdateProgress((float)cellId / numCells);
+      this->UpdateProgress((double)cellId / numCells);
       abort = this->GetAbortExecute();
       }
 

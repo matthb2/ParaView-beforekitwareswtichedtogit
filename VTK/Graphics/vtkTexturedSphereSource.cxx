@@ -46,10 +46,10 @@ void vtkTexturedSphereSource::Execute()
   vtkFloatArray *newNormals;
   vtkFloatArray *newTCoords;
   vtkCellArray *newPolys;
-  float x[3], deltaPhi, deltaTheta, phi, theta, radius, norm;
+  double x[3], deltaPhi, deltaTheta, phi, theta, radius, norm;
   vtkIdType pts[3];
   vtkPolyData *output = this->GetOutput();
-  float tc[2];
+  double tc[2];
   
   //
   // Set things up; allocate memory

@@ -114,7 +114,7 @@ void vtkClipPolyData::Execute()
   vtkCellArray *clippedPolys=NULL, *clippedList=NULL;
   vtkPoints *newPoints;
   vtkIdList *cellIds;
-  float s;
+  double s;
   vtkIdType estimatedSize, numCells=input->GetNumberOfCells();
   vtkIdType numPts=input->GetNumberOfPoints();
   vtkPoints *inPts=input->GetPoints();  
@@ -269,7 +269,7 @@ void vtkClipPolyData::Execute()
 
     if ( !(cellId % updateTime) )
       {
-      this->UpdateProgress((float)cellId / numCells);
+      this->UpdateProgress((double)cellId / numCells);
       abort = this->GetAbortExecute();
       }
     } //for each cell

@@ -238,7 +238,7 @@ void vtkOOGLExporter::WriteData()
 
 void vtkOOGLExporter::WriteALight(vtkLight *aLight, FILE *fp)
 {
-  float *pos, *focus, *color;
+  double *pos, *focus, *color;
   float dir[3];
   
   pos = aLight->GetPosition();

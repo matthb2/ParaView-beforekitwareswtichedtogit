@@ -36,7 +36,7 @@ void vtkBrownianPoints::Execute()
   vtkIdType i, numPts;
   int j;
   vtkFloatArray *newVectors;
-  float v[3], norm, speed;
+  double v[3], norm, speed;
   vtkDataSet *input= this->GetInput();
   vtkDataSet *output =  this->GetOutput();
 
@@ -70,7 +70,7 @@ void vtkBrownianPoints::Execute()
     {
     if ( ! (i % tenth) ) 
       {
-      this->UpdateProgress ((float)i/numPts);
+      this->UpdateProgress ((double)i/numPts);
       if (this->GetAbortExecute())
         {
         break;

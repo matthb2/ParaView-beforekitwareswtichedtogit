@@ -167,7 +167,7 @@ void vtkTextSource::Execute()
   vtkPoints *newPoints; 
   vtkCellArray *newPolys;
   vtkUnsignedCharArray *newScalars;
-  float x[3];
+  double x[3];
   int pos = 0;
   int pixelPos;
   vtkIdType pts[5];

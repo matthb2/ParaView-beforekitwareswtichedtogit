@@ -23,7 +23,7 @@
 vtkCxxRevisionMacro(vtkShrinkPolyData, "$Revision$");
 vtkStandardNewMacro(vtkShrinkPolyData);
 
-vtkShrinkPolyData::vtkShrinkPolyData(float sf)
+vtkShrinkPolyData::vtkShrinkPolyData(double sf)
 {
   sf = ( sf < 0.0 ? 0.0 : (sf > 1.0 ? 1.0 : sf));
   this->ShrinkFactor = sf;
@@ -31,7 +31,7 @@ vtkShrinkPolyData::vtkShrinkPolyData(float sf)
 
 
 template <class T>
-void vtkShrinkPolyDataExecute(vtkShrinkPolyData *self, T *inPts, float shrinkFactor)
+void vtkShrinkPolyDataExecute(vtkShrinkPolyData *self, T *inPts, double shrinkFactor)
 {
   int j, k;
   T center[3];

@@ -184,7 +184,7 @@ void vtkIVExporter::WriteData()
 
 void vtkIVExporter::WriteALight(vtkLight *aLight, FILE *fp)
 {
-  float *pos, *focus, *color;
+  double *pos, *focus, *color;
   float dir[3];
   
   pos = aLight->GetPosition();
@@ -198,7 +198,7 @@ void vtkIVExporter::WriteALight(vtkLight *aLight, FILE *fp)
     
   if (aLight->GetPositional())
     {
-    float *attn;
+    double *attn;
     
     if (aLight->GetConeAngle() >= 180.0)
       {

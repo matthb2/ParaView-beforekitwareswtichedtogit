@@ -43,7 +43,7 @@ void vtkAxes::Execute()
   vtkCellArray *newLines;
   vtkFloatArray *newScalars;
   vtkFloatArray *newNormals;
-  float x[3], n[3];
+  double x[3], n[3];
   vtkIdType ptIds[2];
   vtkPolyData *output = this->GetOutput();
   
