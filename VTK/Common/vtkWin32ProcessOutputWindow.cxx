@@ -111,3 +111,13 @@ void vtkWin32ProcessOutputWindow::Write(const char* data, int length)
       }
     }
 }
+
+//----------------------------------------------------------------------------
+void vtkWin32ProcessOutputWindow::PrintSelf(ostream& os, vtkIndent indent)
+{
+  this->Superclass::PrintSelf(os, indent);
+
+  os << indent << "Executable: " 
+     << (this->Executable ? this->Executable : "(none)") << "\n";
+}
+
