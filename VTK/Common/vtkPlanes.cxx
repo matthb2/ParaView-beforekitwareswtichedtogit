@@ -64,7 +64,7 @@ void vtkPlanes::SetNormals(vtkDataArray* normals)
   vtkDebugMacro(<< this->GetClassName() << " (" << this
                 << "): setting Normals to " << normals ); 
 
-  if (normals->GetNumberOfComponents() != 3)
+  if (normals && normals->GetNumberOfComponents() != 3)
     {
     vtkWarningMacro("This array does not have 3 components. Ignoring normals.");
     return;
