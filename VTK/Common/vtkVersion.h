@@ -62,7 +62,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #define VTK_SOURCE_VERSION "vtk version " VTK_VERSION ", vtk source $Revision$, $Date$ (GMT)"
 
 
-class VTK_EXPORT vtkVersion : public vtkObject {
+class VTK_COMMON_EXPORT vtkVersion : public vtkObject {
 public:
   static vtkVersion *New();
   vtkTypeMacro(vtkVersion,vtkObject);
