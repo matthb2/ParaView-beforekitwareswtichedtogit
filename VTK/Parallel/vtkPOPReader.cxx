@@ -382,8 +382,9 @@ vtkPoints *vtkPOPReader::ReadPoints(vtkImageData *image)
   double theta, phi;
   int i, j, k;
   int id, num;
-  // The only different between these two is the z extent.
-  // We should probably ditch ext and user update extent to make things simpler.
+
+  // The only different between these two is the z extent.  We should
+  // probably ditch ext and user update extent to make things simpler.
   int *updateExt = this->GetOutput()->GetUpdateExtent();
   int *ext = image->GetExtent();
   

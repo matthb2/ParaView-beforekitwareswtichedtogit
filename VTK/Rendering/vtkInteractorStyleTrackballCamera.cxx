@@ -190,8 +190,8 @@ void vtkInteractorStyleTrackballCamera::Rotate()
   
   int *size = this->CurrentRenderer->GetRenderWindow()->GetSize();
 
-  float delta_elevation = -20.0 / size[1];
-  float delta_azimuth = -20.0 / size[0];
+  double delta_elevation = -20.0 / size[1];
+  double delta_azimuth = -20.0 / size[0];
   
   double rxf = (double)dx * delta_azimuth * this->MotionFactor;
   double ryf = (double)dy * delta_elevation * this->MotionFactor;
