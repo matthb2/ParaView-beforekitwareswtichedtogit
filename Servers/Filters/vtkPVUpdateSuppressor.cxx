@@ -74,7 +74,6 @@ void vtkPVUpdateSuppressor::ForceUpdate()
 {
   vtkPolyData *input = this->GetInput();
   vtkPolyData *output = this->GetOutput();
-  unsigned long oldTime = input->GetUpdateTime();
 
   input->SetUpdatePiece(this->UpdatePiece);
   input->SetUpdateNumberOfPieces(this->UpdateNumberOfPieces);

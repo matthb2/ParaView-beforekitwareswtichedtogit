@@ -791,7 +791,12 @@ void vtkStreamTracer::Integrate(vtkDataArray* seedSource, vtkIdList* seedIds)
         {
         normals->GetTuple(i, normal);
         normals->SetName("Normals");
-        vtkDataArray* newVectors = outputPD->GetVectors();
+        vtkDataArray* newVectors = outputPD->GetVectors(this->InputVectorsSelection);
+        if (newVectors == NULL)
+          { // This should never happen.
+          vtkErrorMacro("Could not find output array.");
+          return;
+          }
         newVectors->GetTuple(i, velocity);
         // obtain two unit orthogonal vectors on the plane perpendicular to
         // the streamline
