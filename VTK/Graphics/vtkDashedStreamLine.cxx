@@ -39,7 +39,7 @@ void vtkDashedStreamLine::Execute()
     return;
     }
 
-  vtkStreamPoint *sPrev, *sPtr;
+  vtkStreamer::StreamPoint *sPrev, *sPtr;
   vtkPoints *newPts;
   vtkFloatArray *newVectors;
   vtkFloatArray *newScalars=NULL;

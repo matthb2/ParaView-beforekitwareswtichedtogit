@@ -37,7 +37,7 @@ vtkStreamPoints::vtkStreamPoints()
 
 void vtkStreamPoints::Execute()
 {
-  vtkStreamPoint *sPrev, *sPtr;
+  vtkStreamer::StreamPoint *sPrev, *sPtr;
   vtkPoints *newPts;
   vtkFloatArray *newVectors;
   vtkFloatArray *newScalars=NULL;
