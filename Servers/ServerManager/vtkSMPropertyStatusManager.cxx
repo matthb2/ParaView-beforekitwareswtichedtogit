@@ -101,6 +101,20 @@ void vtkSMPropertyStatusManager::InitializeStatus()
 }
 
 //-----------------------------------------------------------------------------
+vtkSMVectorProperty* vtkSMPropertyStatusManager::GetInternalProperty(
+  vtkSMVectorProperty* property)
+{
+  vtkSMPropertyStatusManagerInternals::PropertyToPropertyMap::iterator iter =
+    this->Internals->Properties.find(property);
+  if (iter == this->Internals->Properties.end())
+    {
+    vtkErrorMacro("Property is not registered with this property status manager.");
+    return 0;
+    }
+  return iter->second;
+}
+
+//-----------------------------------------------------------------------------
 int vtkSMPropertyStatusManager::HasPropertyChanged(vtkSMVectorProperty* property)
 {
   vtkSMPropertyStatusManagerInternals::PropertyToPropertyMap::iterator iter =
