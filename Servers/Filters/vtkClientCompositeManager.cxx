@@ -1140,6 +1140,12 @@ void vtkClientCompositeManager::SquirtCompress(vtkUnsignedCharArray *in,
                                           {0xF8, 0xFC, 0xF8, 0xFF},
                                           {0xF0, 0xF8, 0xF0, 0xFF},
                                           {0xE0, 0xF0, 0xE0, 0xFF}};
+  if (compress_level < 1 || compress_level > 6)
+    {
+    vtkErrorMacro("Squirt compression level (" << compress_level 
+                  << ") is out of range [1,6].");
+    compress_level = 1;
+    }
 
   // Set bitmask based on compress_level
   unsigned int compress_mask;
