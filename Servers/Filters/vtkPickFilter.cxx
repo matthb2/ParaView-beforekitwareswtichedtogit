@@ -437,7 +437,7 @@ void vtkPickFilter::CreateOutput(vtkIdList* regionCellIds)
       {
       vtkIntArray* partArray = vtkIntArray::New();
       // There should only be one cell, but ...
-      vtkIdType num, id;
+      vtkIdType id;
       num = output->GetNumberOfCells();
       partArray->SetNumberOfTuples(num);
       for (id = 0; id < num; ++id)
@@ -453,7 +453,7 @@ void vtkPickFilter::CreateOutput(vtkIdList* regionCellIds)
       {
       vtkIntArray* partArray = vtkIntArray::New();
       // There should only be one cell, but ...
-      vtkIdType num, id;
+      vtkIdType id;
       num = output->GetNumberOfPoints();
       partArray->SetNumberOfTuples(num);
       for (id = 0; id < num; ++id)
