@@ -90,7 +90,12 @@ void vtkTimerLog::AllocateLog()
 // Remove timer log.
 void vtkTimerLog::CleanupLog()
 {
+  if ( vtkTimerLog::TimerLog )
+    {
+    return;
+    }
   delete [] vtkTimerLog::TimerLog;
+  vtkTimerLog::TimerLog = 0;
 }
 
 //----------------------------------------------------------------------------
