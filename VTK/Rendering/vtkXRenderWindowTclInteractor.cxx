@@ -71,11 +71,14 @@ static int vtkTclEventProc(XtPointer clientData,XEvent *event)
   return !ctd;
 }
 
-static void vtkXTclTimerProc(ClientData clientData)
+extern "C"
 {
-  XtIntervalId id;
-  
-  vtkXRenderWindowTclInteractorTimer((XtPointer)clientData,&id);
+  static void vtkXTclTimerProc(ClientData clientData)
+  {
+    XtIntervalId id;
+    
+    vtkXRenderWindowTclInteractorTimer((XtPointer)clientData,&id);
+  }
 }
 
 
