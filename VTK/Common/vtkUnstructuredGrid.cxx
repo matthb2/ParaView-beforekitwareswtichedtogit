@@ -30,6 +30,7 @@
 #include "vtkVoxel.h"
 #include "vtkWedge.h"
 #include "vtkPyramid.h"
+#include "vtkQuadraticEdge.h"
 #include "vtkObjectFactory.h"
 
 vtkCxxRevisionMacro(vtkUnstructuredGrid, "$Revision$");
@@ -51,6 +52,7 @@ vtkUnstructuredGrid::vtkUnstructuredGrid ()
   this->Hexahedron = vtkHexahedron::New();
   this->Wedge = vtkWedge::New();
   this->Pyramid = vtkPyramid::New();
+  this->QuadraticEdge = vtkQuadraticEdge::New();
 
   this->Connectivity = NULL;
   this->Links = NULL;
@@ -251,6 +253,10 @@ vtkCell *vtkUnstructuredGrid::GetCell(vtkIdType cellId)
 
     case VTK_PYRAMID:
       cell = this->Pyramid;
+      break;
+
+    case VTK_QUADRATIC_EDGE:
+      cell = this->QuadraticEdge;
       break;
     }
 
