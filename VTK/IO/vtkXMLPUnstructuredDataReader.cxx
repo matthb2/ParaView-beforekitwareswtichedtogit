@@ -112,7 +112,7 @@ vtkIdType vtkXMLPUnstructuredDataReader::GetNumberOfCellsInPiece(int piece)
 void vtkXMLPUnstructuredDataReader::SetupEmptyOutput()
 {
   // No pieces means no input.
-  this->GetOutputAsDataSet()->SetUpdateExtent(0, 0);
+  this->GetOutputAsDataSet(0)->SetUpdateExtent(0, 0);
 }
 
 //----------------------------------------------------------------------------
