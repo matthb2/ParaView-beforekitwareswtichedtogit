@@ -104,6 +104,9 @@ void vtkDesktopDeliveryServer
     // Create a reference.
     this->ParallelRenderManager->Register(this);
 
+    // No need to write the image back on the render server.
+    this->ParallelRenderManager->WriteBackImagesOff();
+
     // Attach observers.
     vtkCallbackCommand *cbc;
 
