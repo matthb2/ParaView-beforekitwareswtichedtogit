@@ -148,7 +148,6 @@ vtkMoleculeReaderBase::vtkMoleculeReaderBase()
   this->FileName = NULL;
   this->BScale = 1.0;
   this->HBScale = 1.0;
-  this->NumberOfAtoms = 0;
   this->AtomType = NULL;
   this->Points = NULL;
   this->RGB = NULL;
@@ -187,7 +186,6 @@ void vtkMoleculeReaderBase::Execute()
     {
     return;
     }
-  vtkDebugMacro(<<  this->NumberOfAtoms);
 
   if ((fp = fopen(this->FileName, "r")) == NULL) 
     {
@@ -207,7 +205,7 @@ int vtkMoleculeReaderBase::ReadMolecule(FILE *fp)
   vtkCellArray *newBonds;
 
   vtkDebugMacro(<< "Scanning the Molecule file");
-
+  this->NumberOfAtoms = 0;
   vtkPolyData *output = this->GetOutput();
 
   if ( !this->AtomType )
@@ -241,7 +239,7 @@ int vtkMoleculeReaderBase::ReadMolecule(FILE *fp)
   output->SetLines(newBonds);
   newBonds->Delete();
 
-  vtkDebugMacro(<< "read " << this->NumberOfAtoms << " and found " 
+  vtkDebugMacro(<< "read " << this->NumberOfAtoms << " atoms and found " 
     << newBonds->GetNumberOfCells() << " bonds" << endl);
 
   if ( this->RGB )
@@ -259,12 +257,10 @@ int vtkMoleculeReaderBase::ReadMolecule(FILE *fp)
 
   for(i=0; i < this->NumberOfAtoms; i++)
     {
-    this->RGB->InsertNextTuple(&vtkMoleculeReaderBaseAtomColors[AtomType->GetValue(i)][0]);
+                     this->RGB->InsertNextTuple(&vtkMoleculeReaderBaseAtomColors[AtomType->GetValue(i)][0]);
     }
 
   output->GetPointData()->SetScalars(this->RGB);
-
-  vtkDebugMacro(<< "assigned colors: " << NumberOfAtoms << endl);
 
   if ( this->Radii )
     {

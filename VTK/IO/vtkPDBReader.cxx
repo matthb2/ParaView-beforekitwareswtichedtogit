@@ -100,8 +100,8 @@ void vtkPDBReader::ReadSpecificMolecule(FILE* fp)
         //sprintf(aamin[NumberOfAtoms],"%3s", dum2);
         this->NumberOfAtoms++;
         }
+      this->AtomType->InsertNextValue(this->MakeAtomType(atype));
       }
-    this->AtomType->InsertNextValue(this->MakeAtomType(atype));
     }
   this->Points->Squeeze();
 }
