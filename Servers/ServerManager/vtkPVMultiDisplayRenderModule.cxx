@@ -23,7 +23,6 @@
 #include "vtkRenderer.h"
 #include "vtkTimerLog.h"
 #include "vtkClientServerStream.h"
-#include "vtkPVServerInformation.h"
 #include "vtkPVOptions.h"
 
 #define DUPLICATE_CODE 0
@@ -66,7 +65,7 @@ void vtkPVMultiDisplayRenderModule::SetProcessModule(vtkProcessModule *pm)
 
   this->Composite = NULL;
   this->CompositeID = pm->NewStreamObject("vtkMultiDisplayManager");
-  int *tileDim = this->ProcessModule->GetServerInformation()->GetTileDimensions();
+  int *tileDim = this->ProcessModule->GetOptions()->GetTileDimensions();
   pm->GetStream()
     << vtkClientServerStream::Invoke
     << this->CompositeID << "SetTileDimensions"

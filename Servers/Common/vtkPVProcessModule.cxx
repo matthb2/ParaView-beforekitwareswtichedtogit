@@ -483,3 +483,61 @@ void vtkPVProcessModule::SetProcessEnvironmentVariable(int processId,
   char* envstr = vtkString::Duplicate(var);
   putenv(envstr);
 }
+
+//-----------------------------------------------------------------------------
+int vtkPVProcessModule::SetupRenderModule()
+{
+  // If the user has not set rendering options on the client, get them from
+  // the server.
+  if (!this->Options->GetTileDimensions()[0])
+    {
+    this->Options->SetTileDimensions
+      (this->ServerInformation->GetTileDimensions());
+    }
+  if (!this->Options->GetUseOffscreenRendering())
+    {
+    this->Options->SetUseOffscreenRendering
+      (this->ServerInformation->GetUseOffscreenRendering());
+    }
+
+  const char *renderModuleName = this->Options->GetRenderModuleName();
+  if (renderModuleName == NULL)
+    {
+    // If we are in client/server mode, the server options determine the
+    // render module.
+    if (this->Options->GetTileDimensions()[0])
+      {
+      if (this->ServerInformation->GetUseIceT())
+        {
+        renderModuleName = "IceTRenderModule";
+        }
+      else
+        {
+        renderModuleName = "MultiDisplayRenderModule";
+        }
+      }
+    else if (this->Options->GetClientMode())
+      {
+      if (this->ServerInformation->GetUseIceT())
+        {
+        renderModuleName = "DeskTopRenderModule";
+        }
+      else
+        {
+        renderModuleName = "MPIRenderModule";
+        }
+      }
+    else
+      {
+      // We are not in Client/Server mode, so we can just use local info.
+#ifdef VTK_USE_MPI
+      renderModuleName = "MPIRenderModule";
+#else
+      renderModuleName = "LODRenderModule";
+#endif
+      }
+    this->Options->SetRenderModuleName(renderModuleName);
+    }
+
+  return this->Superclass::SetupRenderModule();
+}

@@ -13,7 +13,6 @@
 
 =========================================================================*/
 #include <sys/stat.h>
-#include "vtkPVServerInformation.h"
 #include "vtkPVCaveRenderModule.h"
 #include "vtkToolkits.h"
 #include "vtkObjectFactory.h"
