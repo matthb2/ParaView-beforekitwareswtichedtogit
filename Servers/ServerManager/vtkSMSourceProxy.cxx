@@ -322,6 +322,12 @@ void vtkSMSourceProxy::AddInput(
 //   return this->Consumers[i];
 // }
 
+//---------------------------------------------------------------------------
+void vtkSMSourceProxy::UpdateSelfAndAllInputs()
+{
+  this->Superclass::UpdateSelfAndAllInputs();
+  this->UpdateInformation();
+}
 
 //---------------------------------------------------------------------------
 void vtkSMSourceProxy::PrintSelf(ostream& os, vtkIndent indent)
