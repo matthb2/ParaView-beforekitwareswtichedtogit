@@ -196,7 +196,7 @@ void vtkAppendFilter::Execute()
   for (idx = 0; idx < this->NumberOfInputs && !abort; ++idx)
     {
     ds = (vtkDataSet *)(this->Inputs[idx]);
-    if ( ds->GetNumberOfPoints() > 0 && ds->GetNumberOfCells() > 0 )
+    if ( ds->GetNumberOfPoints() > 0 || ds->GetNumberOfCells() > 0 )
       {
       if (ds != NULL)
         {
