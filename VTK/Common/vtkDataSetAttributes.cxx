@@ -1546,7 +1546,7 @@ int vtkDataSetAttributes::CheckNumberOfComponents(vtkDataArray* da,
 vtkDataArray* vtkDataSetAttributes::GetAttribute(int attributeType)
 {
   int index = this->AttributeIndices[attributeType];
-  if (index == -1)
+  if (index == -1 || this->Data == NULL)
     {
     return 0;
     }
