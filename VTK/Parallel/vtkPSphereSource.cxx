@@ -255,3 +255,8 @@ unsigned long vtkPSphereSource::GetEstimatedMemorySize()
   
   return sz.CastToUnsignedLong();
 }
+
+void vtkPSphereSource::PrintSelf(ostream& os, vtkIndent indent)
+{
+  this->Superclass::PrintSelf(os, indent);
+}

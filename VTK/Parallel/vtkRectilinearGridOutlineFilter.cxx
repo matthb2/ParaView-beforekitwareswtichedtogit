@@ -203,4 +203,7 @@ void vtkRectilinearGridOutlineFilter::Execute()
   output->Squeeze();
 }
 
-
+void vtkRectilinearGridOutlineFilter::PrintSelf(ostream& os, vtkIndent indent)
+{
+  this->Superclass::PrintSelf(os, indent);
+}

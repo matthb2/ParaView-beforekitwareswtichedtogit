@@ -63,6 +63,7 @@ void vtkCommunicator::SetUseCopy(int useCopy)
 
 void vtkCommunicator::PrintSelf(ostream& os, vtkIndent indent)
 {
+  this->Superclass::PrintSelf(os, indent);
   os << indent << "Marshal string: ";
   if ( this->MarshalString )
     {
