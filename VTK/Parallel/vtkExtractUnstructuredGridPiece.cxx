@@ -133,7 +133,7 @@ void vtkExtractUnstructuredGridPiece::Execute()
   int numCellPts;
   vtkIdType *cellPointer;
   vtkIdType *ids;
-  float *x;
+  double *x;
 
   // Pipeline update piece will tell us what to generate.
   ghostLevel = output->GetUpdateGhostLevel();

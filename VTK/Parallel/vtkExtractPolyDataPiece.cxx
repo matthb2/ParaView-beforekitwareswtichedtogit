@@ -127,7 +127,7 @@ void vtkExtractPolyDataPiece::Execute()
   vtkUnsignedCharArray* pointGhostLevels = 0;
   vtkIdType ptId, newId, numPts, i;
   int numCellPts;
-  float *x;
+  double *x;
 
   // Pipeline update piece will tell us what to generate.
   ghostLevel = output->GetUpdateGhostLevel();

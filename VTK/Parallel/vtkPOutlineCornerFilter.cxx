@@ -45,7 +45,7 @@ vtkPOutlineCornerFilter::~vtkPOutlineCornerFilter ()
 void vtkPOutlineCornerFilter::Execute()
 {
   vtkPolyData *output = this->GetOutput();
-  float bds[6];
+  double bds[6];
 
   if ( !this->Controller )
     {
@@ -68,7 +68,7 @@ void vtkPOutlineCornerFilter::Execute()
     {
     int numProcs = this->Controller->GetNumberOfProcesses();
     int idx;
-    float tmp[6];
+    double tmp[6];
 
     for (idx = 1; idx < numProcs; ++idx)
       {
