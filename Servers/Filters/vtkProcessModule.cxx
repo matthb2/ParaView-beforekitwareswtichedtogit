@@ -306,10 +306,6 @@ void vtkProcessModule::FinalizeInterpreter()
 
   // Delete the standard IDs.
   vtkClientServerStream css;
-  // TODO move this to subclass
-//   css << vtkClientServerStream::Delete
-//       << this->GetApplicationID()
-//       << vtkClientServerStream::End;
   css << vtkClientServerStream::Delete
       << this->GetProcessModuleID()
       << vtkClientServerStream::End;
