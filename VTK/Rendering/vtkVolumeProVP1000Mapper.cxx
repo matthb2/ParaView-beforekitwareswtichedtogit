@@ -614,7 +614,7 @@ void vtkVolumeProVP1000Mapper::UpdateVolume( vtkRenderer * vtkNotUsed(ren), vtkV
   float                     dataOrigin[3];
   float                     dataSpacing[3];
   VLIStatus                 status;
-  float                     range[2];
+  double                    range[2];
   
   // We need the size to create the volume and check the subvolume
   input->GetDimensions( dataSize );
