@@ -60,8 +60,9 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #else
 # include <sys/types.h>
 # include <unistd.h>
-# define SSH_COMMAND "ssh"
 #endif
+
+#define SSH_COMMAND "ssh"
 
 //----------------------------------------------------------------------------
 //============================================================================
