@@ -15,11 +15,12 @@
      PURPOSE.  See the above copyright notice for more information.
 
 =========================================================================*/
-
 #include "vtkMemoryLimitImageDataStreamer.h"
+
+#include "vtkCommand.h"
+#include "vtkExtentTranslator.h"
 #include "vtkImageData.h"
 #include "vtkObjectFactory.h"
-#include "vtkCommand.h"
 #include "vtkPipelineSize.h"
 
 vtkCxxRevisionMacro(vtkMemoryLimitImageDataStreamer, "$Revision$");
