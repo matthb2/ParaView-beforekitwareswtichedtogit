@@ -159,3 +159,36 @@ int vtkString::CompareCase(const char* str1, const char* str2)
   return STRCASECMP(str1, str2);
 }
 
+//----------------------------------------------------------------------------
+// Description:
+// Transform the string to lowercase (inplace).
+char* vtkString::ToLower(char *str)
+{
+  if (str)
+    {
+    char *ptr = str;
+    while (*ptr)
+      {
+      *ptr = (char)tolower(*ptr);
+      ++ptr;
+      }
+    }
+  return str;
+}
+
+//----------------------------------------------------------------------------
+// Description:
+// Transform the string to uppercase (inplace).
+char* vtkString::ToUpper(char *str)
+{
+  if (str)
+    {
+    char *ptr = str;
+    while (*ptr)
+      {
+      *ptr = (char)toupper(*ptr);
+      ++ptr;
+      }
+    }
+  return str;
+}
