@@ -398,7 +398,8 @@ void vtkTensorGlyph::Execute()
 
   if ( newScalars )
     {
-    outPD->SetScalars(newScalars);
+    int idx = outPD->AddArray(newScalars);
+    outPD->SetActiveAttribute(idx, vtkDataSetAttributes::SCALARS);
     newScalars->Delete();
     }
 

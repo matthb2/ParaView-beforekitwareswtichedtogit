@@ -278,7 +278,8 @@ void vtkImageMarchingCubes::Execute()
   this->Triangles = NULL;
   if (this->ComputeScalars)
     {
-    output->GetPointData()->SetScalars(this->Scalars);
+    int idx = output->GetPointData()->AddArray(this->Scalars);
+    output->GetPointData()->SetActiveAttribute(idx, vtkDataSetAttributes::SCALARS);
     this->Scalars->Delete();
     this->Scalars = NULL;
     }

@@ -118,10 +118,10 @@ void vtkVectorDot::Execute()
 
   // Update self and relase memory
   //
-  outPD->CopyScalarsOff();
   outPD->PassData(input->GetPointData());
 
-  outPD->SetScalars(newScalars);
+  int idx = outPD->AddArray(newScalars);
+  outPD->SetActiveAttribute(idx, vtkDataSetAttributes::SCALARS);
   newScalars->Delete();
 }
 

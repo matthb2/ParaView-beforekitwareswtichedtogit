@@ -619,7 +619,8 @@ void vtkSmoothPolyDataFilter::Execute()
       newScalars->SetComponent(i,0,
                                sqrt(vtkMath::Distance2BetweenPoints(x1,x2)));
       }
-    output->GetPointData()->SetScalars(newScalars);
+    int idx = output->GetPointData()->AddArray(newScalars);
+    output->GetPointData()->SetActiveAttribute(idx, vtkDataSetAttributes::SCALARS);
     newScalars->Delete();
     }
 

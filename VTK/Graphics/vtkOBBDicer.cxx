@@ -157,6 +157,7 @@ void vtkOBBDicer::Execute()
   this->PointsList = NULL;
   groupIds = vtkShortArray::New();
   groupIds->SetNumberOfTuples(numPts);
+  groupIds->SetName("vtkOBBDicer_GroupIds");
   this->NumberOfActualPieces = 0;
   this->MarkPoints(root,groupIds);
   this->DeleteTree(root);
@@ -168,14 +169,14 @@ void vtkOBBDicer::Execute()
   //
   if ( this->FieldData )
     {
-    groupIds->SetName("vtkOBBDicer_GroupIds");
     output->GetPointData()->AddArray(groupIds);
     output->GetPointData()->CopyFieldOff("vtkOBBDicer_GroupIds");
     output->GetPointData()->PassData(input->GetPointData());
     }
   else
     {
-    output->GetPointData()->SetScalars(groupIds);
+    output->GetPointData()->AddArray(groupIds);
+    output->GetPointData()->SetActiveScalars(groupIds->GetName());
     output->GetPointData()->CopyScalarsOff();
     output->GetPointData()->PassData(input->GetPointData());
     }

@@ -115,7 +115,8 @@ void vtkPolyDataStreamer::Execute()
   output->SetUpdateGhostLevel(outGhost);
   if (pieceColors)
     {
-    output->GetCellData()->SetScalars(pieceColors);
+    int idx = output->GetCellData()->AddArray(pieceColors);
+    output->GetCellData()->SetActiveAttribute(idx, vtkDataSetAttributes::SCALARS);
     pieceColors->Delete();
     }
   append->Delete();

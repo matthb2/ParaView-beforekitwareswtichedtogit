@@ -242,13 +242,15 @@ void vtkProgrammableGlyphFilter::Execute()
   
   if ( ptScalars )
     {
-    outputPD->SetScalars(ptScalars);
+    int idx = outputPD->AddArray(ptScalars);
+    outputPD->SetActiveAttribute(idx, vtkDataSetAttributes::SCALARS);
     ptScalars->Delete();
     }
   
   if ( cellScalars )
     {
-    outputCD->SetScalars(cellScalars);
+    int idx = outputCD->AddArray(cellScalars);
+    outputCD->SetActiveAttribute(idx, vtkDataSetAttributes::SCALARS);
     cellScalars->Delete();
     }
   

@@ -539,7 +539,8 @@ void vtkDecimate::CreateOutput(vtkIdType numPts, vtkIdType numTris,
   newPolys->Delete();
   if ( this->GenerateErrorScalars )
     {
-    outputPD->SetScalars(newScalars);
+    int idx = outputPD->AddArray(newScalars);
+    outputPD->SetActiveAttribute(idx, vtkDataSetAttributes::SCALARS);
     newScalars->Delete();
     delete [] VertexError;
     }

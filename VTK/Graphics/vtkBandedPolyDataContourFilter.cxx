@@ -720,7 +720,9 @@ void vtkBandedPolyDataContourFilter::Execute()
   output->SetPoints(newPts);
   newPts->Delete();
 
-  outCD->SetScalars(newScalars);
+  int arrayIdx = outCD->AddArray(newScalars);
+  outCD->SetActiveAttribute(arrayIdx, vtkDataSetAttributes::SCALARS);
+  
   newScalars->Delete();
   
   output->Squeeze();

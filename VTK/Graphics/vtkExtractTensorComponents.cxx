@@ -191,7 +191,8 @@ void vtkExtractTensorComponents::Execute()
   //
   if ( this->ExtractScalars )
     {
-    outPD->SetScalars(newScalars);
+    int idx = outPD->AddArray(newScalars);
+    outPD->SetActiveAttribute(idx, vtkDataSetAttributes::SCALARS);
     newScalars->Delete();
     }
   if ( this->ExtractVectors ) 

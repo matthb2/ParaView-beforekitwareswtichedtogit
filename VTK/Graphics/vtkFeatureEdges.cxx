@@ -155,7 +155,6 @@ void vtkFeatureEdges::Execute()
     {
     newScalars = vtkFloatArray::New();
     newScalars->Allocate(numCells/10,numCells);
-    outCD->CopyScalarsOff();
     }
 
   outPD->CopyAllocate(pd, numPts);
@@ -339,7 +338,8 @@ void vtkFeatureEdges::Execute()
 
   if ( this->Coloring )
     {
-    outCD->SetScalars(newScalars);
+    int idx = outCD->AddArray(newScalars);
+    outCD->SetActiveAttribute(idx, vtkDataSetAttributes::SCALARS);
     newScalars->Delete();
     }
 }

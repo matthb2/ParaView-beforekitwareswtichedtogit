@@ -104,8 +104,9 @@ void vtkMeshQuality::Execute()
       vtkErrorMacro(<<"Nothing to be calculated!!!!");
       }
     }
-     
-  celld->SetScalars(scalars);
+  
+  int idx = celld->AddArray(scalars);
+  celld->SetActiveAttribute(idx, vtkDataSetAttributes::SCALARS);
   this->GetOutput()->SetFieldData(celld);
   celld->Delete();
   id->Delete();

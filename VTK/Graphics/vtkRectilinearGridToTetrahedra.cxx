@@ -307,7 +307,8 @@ void vtkRectilinearGridToTetrahedra::GridToTetMesh(vtkRectilinearGrid *RectGrid,
   if(RememberVoxelId)
     {
     TetOriginalVoxel->Squeeze();
-    TetMesh->GetCellData()->SetScalars(TetOriginalVoxel);
+    int idx = TetMesh->GetCellData()->AddArray(TetOriginalVoxel);
+    TetMesh->GetCellData()->SetActiveAttribute(idx, vtkDataSetAttributes::SCALARS);
     TetOriginalVoxel->Delete();
     }
 

@@ -248,7 +248,8 @@ void vtkDepthSortPolyData::Execute()
   output->GetPointData()->PassData(this->GetInput()->GetPointData());
   if ( this->SortScalars )
     {
-    output->GetCellData()->SetScalars(sortScalars);
+    int idx = output->GetCellData()->AddArray(sortScalars);
+    output->GetCellData()->SetActiveAttribute(idx, vtkDataSetAttributes::SCALARS);
     sortScalars->Delete();
     }
 

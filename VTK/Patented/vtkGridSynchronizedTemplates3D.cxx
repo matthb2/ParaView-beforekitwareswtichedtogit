@@ -651,7 +651,8 @@ void ContourGrid(vtkGridSynchronizedTemplates3D *self, int vtkNotUsed(threadId),
       {
       newScalars->SetName(inScalars->GetName());
       }
-    output->GetPointData()->SetScalars(newScalars);
+    int idx = output->GetPointData()->AddArray(newScalars);
+    output->GetPointData()->SetActiveAttribute(idx, vtkDataSetAttributes::SCALARS);
     newScalars->Delete();
     newScalars = NULL;
     }

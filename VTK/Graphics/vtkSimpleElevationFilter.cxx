@@ -95,7 +95,8 @@ void vtkSimpleElevationFilter::Execute()
   output->GetCellData()->PassData(input->GetCellData());
 
   newScalars->SetName("Elevation");
-  output->GetPointData()->SetScalars(newScalars);
+  output->GetPointData()->AddArray(newScalars);
+  output->GetPointData()->SetActiveScalars(newScalars->GetName());
   newScalars->Delete();
 }
 

@@ -166,7 +166,8 @@ void vtkPlatonicSolidSource::Execute()
   // Assemble the output
   output->SetPoints(pts);
   output->SetPolys(polys);
-  output->GetCellData()->SetScalars(colors);
+  int idx = output->GetCellData()->AddArray(colors);
+  output->GetCellData()->SetActiveAttribute(idx, vtkDataSetAttributes::SCALARS);
 
   pts->Delete();
   polys->Delete();

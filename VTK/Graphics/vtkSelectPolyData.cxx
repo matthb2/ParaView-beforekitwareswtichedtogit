@@ -511,7 +511,8 @@ void vtkSelectPolyData::Execute()
       }//for all boundary points
 
     output->CopyStructure(this->Mesh); //pass geometry/topology unchanged
-    outPD->SetScalars(selectionScalars);
+    int idx = outPD->AddArray(selectionScalars);
+    outPD->SetActiveAttribute(idx, vtkDataSetAttributes::SCALARS);
     outPD->CopyScalarsOff();
     outPD->PassData(inPD);
     outCD->PassData(inCD);

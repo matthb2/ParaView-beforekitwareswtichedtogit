@@ -177,7 +177,6 @@ void vtkGlyph3D::Execute()
 
   // Allocate storage for output PolyData
   //
-  outputPD->CopyScalarsOff();
   outputPD->CopyVectorsOff();
   outputPD->CopyNormalsOff();
 
@@ -549,7 +548,8 @@ void vtkGlyph3D::Execute()
 
   if (newScalars)
     {
-    outputPD->SetScalars(newScalars);
+    int idx = outputPD->AddArray(newScalars);
+    outputPD->SetActiveAttribute(idx, vtkDataSetAttributes::SCALARS);
     newScalars->Delete();
     }
 

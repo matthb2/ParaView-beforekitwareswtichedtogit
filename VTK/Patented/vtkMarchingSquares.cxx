@@ -536,7 +536,8 @@ void vtkMarchingSquares::Execute()
   output->SetLines(newLines);
   newLines->Delete();
 
-  output->GetPointData()->SetScalars(newScalars);
+  int idx = output->GetPointData()->AddArray(newScalars);
+  output->GetPointData()->SetActiveAttribute(idx, vtkDataSetAttributes::SCALARS);
   newScalars->Delete();
 
   this->Locator->Initialize();

@@ -136,7 +136,8 @@ void vtkStreamPoints::Execute()
 
   if ( newScalars ) 
     {
-    output->GetPointData()->SetScalars(newScalars);
+    int idx = output->GetPointData()->AddArray(newScalars);
+    output->GetPointData()->SetActiveAttribute(idx, vtkDataSetAttributes::SCALARS);
     newScalars->Delete();
     }
 
