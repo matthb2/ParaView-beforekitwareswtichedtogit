@@ -20,6 +20,7 @@
 #include "vtkMath.h"
 #include "vtkObjectFactory.h"
 #include "vtkPolyData.h"
+#include "vtkSpherePuzzle.h"
 
 #include <math.h>
 
@@ -191,7 +192,11 @@ void vtkSpherePuzzleArrows::AppendArrow(int id1, int id2,
   polys->InsertCellPoint(ptId3);
 }
 
-
+//----------------------------------------------------------------------------
+void vtkSpherePuzzleArrows::SetPermutation(vtkSpherePuzzle *puz) 
+{
+  this->SetPermutation(puz->GetState());
+}
 
 //----------------------------------------------------------------------------
 void vtkSpherePuzzleArrows::PrintSelf(ostream& os, vtkIndent indent)

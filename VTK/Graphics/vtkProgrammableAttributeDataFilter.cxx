@@ -16,6 +16,8 @@
 
 =========================================================================*/
 #include "vtkProgrammableAttributeDataFilter.h"
+
+#include "vtkDataSetCollection.h"
 #include "vtkObjectFactory.h"
 
 vtkCxxRevisionMacro(vtkProgrammableAttributeDataFilter, "$Revision$");

@@ -16,8 +16,11 @@
 
 =========================================================================*/
 #include "vtkMassProperties.h"
-#include "vtkObjectFactory.h"
+
 #include "vtkCommand.h"
+#include "vtkDataObject.h"
+#include "vtkObjectFactory.h"
+#include "vtkPolyData.h"
 
 vtkCxxRevisionMacro(vtkMassProperties, "$Revision$");
 vtkStandardNewMacro(vtkMassProperties);

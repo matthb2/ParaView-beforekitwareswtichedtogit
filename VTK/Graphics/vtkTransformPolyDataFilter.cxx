@@ -17,7 +17,9 @@
 =========================================================================*/
 #include "vtkTransformPolyDataFilter.h"
 
+#include "vtkAbstractTransform.h"
 #include "vtkFloatArray.h"
+#include "vtkLinearTransform.h"
 #include "vtkObjectFactory.h"
 #include "vtkPolyData.h"
 

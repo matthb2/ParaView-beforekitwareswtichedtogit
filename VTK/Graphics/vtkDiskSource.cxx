@@ -16,8 +16,12 @@
 
 =========================================================================*/
 #include "vtkDiskSource.h"
+
+#include "vtkCellArray.h"
 #include "vtkMath.h"
 #include "vtkObjectFactory.h"
+#include "vtkPoints.h"
+#include "vtkPolyData.h"
 
 vtkCxxRevisionMacro(vtkDiskSource, "$Revision$");
 vtkStandardNewMacro(vtkDiskSource);

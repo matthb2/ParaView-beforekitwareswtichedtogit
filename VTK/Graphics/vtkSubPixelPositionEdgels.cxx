@@ -21,6 +21,7 @@
 #include "vtkMath.h"
 #include "vtkObjectFactory.h"
 #include "vtkPolyData.h"
+#include "vtkStructuredPoints.h"
 
 vtkCxxRevisionMacro(vtkSubPixelPositionEdgels, "$Revision$");
 vtkStandardNewMacro(vtkSubPixelPositionEdgels);

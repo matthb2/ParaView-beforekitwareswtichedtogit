@@ -23,6 +23,7 @@
 #include "vtkObjectFactory.h"
 #include "vtkPolyData.h"
 #include "vtkSphereSource.h"
+#include "vtkTransform.h"
 #include "vtkTransformFilter.h"
 
 #include <math.h>

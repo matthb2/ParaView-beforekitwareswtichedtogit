@@ -16,8 +16,10 @@
 
 =========================================================================*/
 #include "vtkProbeFilter.h"
+
 #include "vtkObjectFactory.h"
 #include "vtkImageData.h"
+#include "vtkIdTypeArray.h"
 
 vtkCxxRevisionMacro(vtkProbeFilter, "$Revision$");
 vtkStandardNewMacro(vtkProbeFilter);

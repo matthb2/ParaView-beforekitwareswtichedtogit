@@ -17,6 +17,7 @@
 =========================================================================*/
 #include "vtkSpatialRepresentationFilter.h"
 
+#include "vtkLocator.h"
 #include "vtkObjectFactory.h"
 #include "vtkPolyData.h"
 

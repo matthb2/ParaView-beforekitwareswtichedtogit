@@ -16,12 +16,14 @@
 
 =========================================================================*/
 #include "vtkInterpolateDataSetAttributes.h"
+
+#include "vtkDataSetCollection.h"
+#include "vtkObjectFactory.h"
 #include "vtkPolyData.h"
+#include "vtkRectilinearGrid.h"
 #include "vtkStructuredGrid.h"
 #include "vtkStructuredPoints.h"
 #include "vtkUnstructuredGrid.h"
-#include "vtkRectilinearGrid.h"
-#include "vtkObjectFactory.h"
 
 vtkCxxRevisionMacro(vtkInterpolateDataSetAttributes, "$Revision$");
 vtkStandardNewMacro(vtkInterpolateDataSetAttributes);

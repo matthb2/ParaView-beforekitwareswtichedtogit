@@ -17,10 +17,12 @@
 =========================================================================*/
 #include "vtkQuadricDecimation.h"
 
+#include "vtkEdgeTable.h"
 #include "vtkFloatArray.h"
 #include "vtkMath.h"
 #include "vtkObjectFactory.h"
 #include "vtkPolyData.h"
+#include "vtkPriorityQueue.h"
 
 vtkCxxRevisionMacro(vtkQuadricDecimation, "$Revision$");
 vtkStandardNewMacro(vtkQuadricDecimation);

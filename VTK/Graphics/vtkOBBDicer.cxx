@@ -20,6 +20,7 @@
 #include "vtkDataSet.h"
 #include "vtkIdList.h"
 #include "vtkMath.h"
+#include "vtkOBBTree.h"
 #include "vtkObjectFactory.h"
 #include "vtkShortArray.h"
 

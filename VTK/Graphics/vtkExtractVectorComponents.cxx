@@ -16,6 +16,9 @@
 
 =========================================================================*/
 #include "vtkExtractVectorComponents.h"
+
+#include "vtkDataObject.h"
+#include "vtkDataSet.h"
 #include "vtkObjectFactory.h"
 
 vtkCxxRevisionMacro(vtkExtractVectorComponents, "$Revision$");

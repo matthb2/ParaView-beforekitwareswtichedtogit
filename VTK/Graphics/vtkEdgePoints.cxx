@@ -19,6 +19,7 @@
 
 #include "vtkDataSet.h"
 #include "vtkFloatArray.h"
+#include "vtkMergePoints.h"
 #include "vtkObjectFactory.h"
 #include "vtkPolyData.h"
 

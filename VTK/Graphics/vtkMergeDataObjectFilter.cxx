@@ -19,6 +19,7 @@
 
 #include "vtkDataSet.h"
 #include "vtkFieldData.h"
+#include "vtkFieldDataToAttributeDataFilter.h"
 #include "vtkObjectFactory.h"
 
 vtkCxxRevisionMacro(vtkMergeDataObjectFilter, "$Revision$");
@@ -108,6 +109,23 @@ void vtkMergeDataObjectFilter::Execute()
     }
 }
 
+//----------------------------------------------------------------------------
+void vtkMergeDataObjectFilter::SetOutputFieldToDataObjectField() 
+{
+  this->SetOutputField(VTK_DATA_OBJECT_FIELD);
+}
+
+//----------------------------------------------------------------------------
+void vtkMergeDataObjectFilter::SetOutputFieldToPointDataField() 
+{
+  this->SetOutputField(VTK_POINT_DATA_FIELD);
+}
+
+//----------------------------------------------------------------------------
+void vtkMergeDataObjectFilter::SetOutputFieldToCellDataField() 
+{
+  this->SetOutputField(VTK_CELL_DATA_FIELD);
+}
 
 //----------------------------------------------------------------------------
 void vtkMergeDataObjectFilter::PrintSelf(ostream& os, vtkIndent indent)

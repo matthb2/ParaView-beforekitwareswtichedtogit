@@ -18,6 +18,7 @@
 #include "vtkExtractPolyDataGeometry.h"
 
 #include "vtkFloatArray.h"
+#include "vtkImplicitFunction.h"
 #include "vtkObjectFactory.h"
 #include "vtkPolyData.h"
 
