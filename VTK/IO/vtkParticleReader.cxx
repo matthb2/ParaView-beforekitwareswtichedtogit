@@ -220,7 +220,6 @@ void vtkParticleReader::Execute()
       }
     }
   delete [] data;
-  ptr = NULL;
 
   output->SetPoints(points);
   points->Delete();

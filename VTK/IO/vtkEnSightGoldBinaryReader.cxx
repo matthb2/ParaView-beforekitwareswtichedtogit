@@ -531,7 +531,7 @@ int vtkEnSightGoldBinaryReader::SkipUnstructuredGrid(char line[256])
       int *numNodesPerElement;
       int numNodes = 0;
       
-      cellType = vtkEnSightReader::NSIDED;
+      //cellType = vtkEnSightReader::NSIDED;
       this->ReadInt(&numElements);
       if (numElements < 0 || numElements*(int)sizeof(int) > this->FileSize ||
           numElements > this->FileSize)

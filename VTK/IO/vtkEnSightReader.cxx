@@ -1101,7 +1101,6 @@ int vtkEnSightReader::ReadCaseFile()
       this->FileSetNumberOfSteps->AddItem(numSteps);
       
       filenameNums->Delete();
-      filenameNums = NULL;
       numSteps->Delete();
       }
     }
@@ -1357,7 +1356,7 @@ int vtkEnSightReader::ReadVariableFiles()
             numSteps += numStepsList->GetId(i);
             if (timeStep > numSteps)
               {
-              fileNum++;
+              //fileNum++;
               timeStepInFile -= numStepsList->GetId(i);
               }
             }
