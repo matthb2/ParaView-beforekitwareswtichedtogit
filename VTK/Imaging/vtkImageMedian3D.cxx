@@ -395,6 +395,11 @@ void vtkImageMedian3D::ExecuteData(vtkDataObject *out)
   vtkDataArray *inArray;
   vtkDataArray *outArray;
 
+  // Avoid a floating point exception.
+  if (this->UpdateExtentIsEmpty(output))
+    {
+    return;
+    }
 
   input->GetExtent(inExt);
   output->SetExtent(output->GetUpdateExtent());
