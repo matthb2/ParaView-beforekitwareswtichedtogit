@@ -341,8 +341,6 @@ void vtkCutter::UnstructuredGridCutter()
 
   float range[2];
 
-  cellScalars=vtkFloatArray::New();
-
   // Create objects to hold output of contour operation
   //
   estimatedSize = (vtkIdType) pow ((double) numCells, .75) * numContours;
