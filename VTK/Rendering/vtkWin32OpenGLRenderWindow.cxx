@@ -199,9 +199,10 @@ int vtkWin32OpenGLRenderWindow::GetEventPending()
 void vtkWin32OpenGLRenderWindow::MakeCurrent()
 {
   // Try to avoid doing anything (for performance).
-  if (this->ContextId != wglGetCurrentContext())
-    { 
-    if(this->IsPickingOn)
+  HGLRC current = wglGetCurrentContext();
+  if (this->ContextId != current)
+    {
+    if(this->IsPicking && current)
       {
       vtkErrorMacro("Attempting to call MakeCurrent for a different window"
                     " than the one doing the picking, this can causes crashes"
