@@ -52,12 +52,6 @@ vtkCell3D::~vtkCell3D()
     }
 }
 
-// usually overridden
-float *vtkCell3D::GetParametricCoords()
-{
-  return (float *)this->Points->GetVoidPointer(0);
-}
-
 void vtkCell3D::Clip(float value, vtkDataArray *cellScalars, 
                      vtkPointLocator *locator, vtkCellArray *tets,
                      vtkPointData *inPD, vtkPointData *outPD,

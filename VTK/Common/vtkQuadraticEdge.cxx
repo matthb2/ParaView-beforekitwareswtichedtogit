@@ -350,3 +350,8 @@ void vtkQuadraticEdge::InterpolationDerivs(float pcoords[3], float derivs[3])
   derivs[2] = 4.0 - r * 8.0;
 }
 
+static float vtkQEdgeCellPCoords[9] = {0.0,0.0,0.0, 1.0,0.0,0.0, 0.5,0.0,0.0};
+float *vtkQuadraticEdge::GetParametricCoords()
+{
+  return vtkQEdgeCellPCoords;
+}

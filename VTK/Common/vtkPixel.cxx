@@ -662,3 +662,10 @@ void vtkPixel::Clip(float value, vtkDataArray *cellScalars,
     }
 }
 
+static float vtkPixelCellPCoords[12] = {0.0,0.0,0.0, 1.0,0.0,0.0,
+                                        0.0,1.0,0.0, 1.0,1.0,0.0};
+
+float *vtkPixel::GetParametricCoords()
+{
+  return vtkPixelCellPCoords;
+}

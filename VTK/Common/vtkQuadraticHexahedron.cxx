@@ -654,3 +654,14 @@ void vtkQuadraticHexahedron::InterpolationDerivs(float pcoords[3],
   derivs[59] = -0.5*t*rm*sp;
 }
 
+static float vtkQHexCellPCoords[60] = {0.0,0.0,0.0, 1.0,0.0,0.0, 1.0,1.0,0.0, 
+                                       0.0,1.0,0.0, 0.0,0.0,1.0, 1.0,0.0,1.0,
+                                       1.0,1.0,1.0, 0.0,1.0,1.0, 0.5,0.0,0.0,
+                                       1.0,0.5,1.0, 0.5,1.0,0.0, 0.0,0.5,0.0,
+                                       0.5,0.0,1.0, 1.0,0.5,1.0, 0.5,1.0,1.0,
+                                       0.0,0.5,1.0, 0.0,0.0,0.5, 1.0,0.0,0.5,
+                                       1.0,1.0,0.5, 0.0,1.0,0.5};
+float *vtkQuadraticHexahedron::GetParametricCoords()
+{
+  return vtkQHexCellPCoords;
+}

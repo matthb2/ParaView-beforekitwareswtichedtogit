@@ -171,6 +171,11 @@ int vtkGenericCell::GetParametricCenter(float pcoords[3])
   return this->Cell->GetParametricCenter(pcoords);
 }
 
+float *vtkGenericCell::GetParametricCoords()
+{
+  return this->Cell->GetParametricCoords();
+}
+
 int vtkGenericCell::IsPrimaryCell()
 {
   return this->Cell->IsPrimaryCell();

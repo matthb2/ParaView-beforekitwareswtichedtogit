@@ -917,3 +917,10 @@ void vtkQuad::Clip(float value, vtkDataArray *cellScalars,
     outCd->CopyData(inCd,cellId,newCellId);
     }
 }
+
+static float vtkQuadCellPCoords[12] = {0.0,0.0,0.0, 1.0,0.0,0.0,
+                                       1.0,1.0,0.0, 0.0,1.0,0.0};
+float *vtkQuad::GetParametricCoords()
+{
+  return vtkQuadCellPCoords;
+}

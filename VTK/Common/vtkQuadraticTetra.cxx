@@ -549,3 +549,13 @@ float vtkQuadraticTetra::GetParametricDistance(float pcoords[3])
   
   return pDistMax;
 }
+
+static float vtkQTetraCellPCoords[30] = {0.0,0.0,0.0, 1.0,0.0,0.0, 0.0,1.0,0.0, 
+                                         0.0,0.0,1.0, 0.5,0.0,0.0, 0.5,0.5,0.0,
+                                         0.0,0.5,0.0, 0.0,0.0,0.5, 0.5,0.0,0.5,
+                                         0.0,0.5,0.5};
+float *vtkQuadraticTetra::GetParametricCoords()
+{
+  return vtkQTetraCellPCoords;
+}
+
