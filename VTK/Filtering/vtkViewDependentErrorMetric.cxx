@@ -43,11 +43,32 @@ vtkViewDependentErrorMetric::~vtkViewDependentErrorMetric()
 }
 
 //-----------------------------------------------------------------------------
+// Description:
+// Set the squared screen-based geometric accuracy measured in pixels.
+// Subdivision will be required if the square distance between the projection
+// of the real point and the straight line passing through the projection
+// of the vertices of the edge is greater than `value'.
+// For instance, 0.25 will give better result than 1.
+// \pre positive_value: value>0
+void vtkViewDependentErrorMetric::SetPixelTolerance(double value)
+{
+  assert("pre: positive_value" && value>0);
+  if(this->PixelTolerance!=value)
+    {
+    this->PixelTolerance=value;
+    this->Modified();
+    }
+}
+
+//-----------------------------------------------------------------------------
 // Avoid reference loop
 void vtkViewDependentErrorMetric::SetViewport(vtkViewport *viewport)
 {
-  this->Viewport = viewport;
-  this->Modified();
+  if(this->Viewport!=viewport)
+    {
+    this->Viewport = viewport;
+    this->Modified();
+    }
 }
 
 //-----------------------------------------------------------------------------
