@@ -28,18 +28,18 @@ vtkNonLinearCell::vtkNonLinearCell()
   this->Error = 0.10;
 }
 
-void vtkNonLinearCell::Tesselate(vtkIdType vtkNotUsed(cellId), 
-                                 vtkDataSet* vtkNotUsed(input), 
-                                 vtkPolyData* vtkNotUsed(output), 
-                                 vtkPointLocator* vtkNotUsed(locator))
+void vtkNonLinearCell::Tessellate(vtkIdType vtkNotUsed(cellId), 
+                                  vtkDataSet* vtkNotUsed(input), 
+                                  vtkPolyData* vtkNotUsed(output), 
+                                  vtkPointLocator* vtkNotUsed(locator))
 {
   vtkWarningMacro(<<"This method should be implemented by a subclass");
 }
 
-void vtkNonLinearCell::Tesselate(vtkIdType vtkNotUsed(cellId), 
-                                 vtkDataSet* vtkNotUsed(input), 
-                                 vtkUnstructuredGrid* vtkNotUsed(output), 
-                                 vtkPointLocator* vtkNotUsed(locator))
+void vtkNonLinearCell::Tessellate(vtkIdType vtkNotUsed(cellId), 
+                                  vtkDataSet* vtkNotUsed(input), 
+                                  vtkUnstructuredGrid* vtkNotUsed(output), 
+                                  vtkPointLocator* vtkNotUsed(locator))
 {
   vtkWarningMacro(<<"This method should be implemented by a subclass");
 }
