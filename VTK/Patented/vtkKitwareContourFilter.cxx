@@ -137,7 +137,7 @@ void vtkKitwareContourFilter::Execute()
   vtkDebugMacro(<< "Executing contour filter");
 
   numCells = input->GetNumberOfCells();
-  inScalars = input->GetPointData()->GetScalars();
+  inScalars = input->GetPointData()->GetScalars(this->InputScalarsSelection);
   if ( ! inScalars || numCells < 1 )
     {
     // vtkErrorMacro(<<"No data to contour");
