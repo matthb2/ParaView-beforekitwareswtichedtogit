@@ -100,7 +100,6 @@ vtkStreamer::~vtkStreamer()
     delete [] this->Streamers;
     }
 
-  this->SetSource(0);
   if (this->Threader)
     {
     this->Threader->Delete();
