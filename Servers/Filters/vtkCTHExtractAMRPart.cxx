@@ -361,7 +361,7 @@ void vtkCTHExtractAMRPart::CreateInternalPipeline()
 #ifdef VTK_USE_PATENTED
   this->Contour = vtkPVKitwareContourFilter::New();
   // vtkDataSetSurfaceFilter does not generate normals, so they will be lost.
-  contour->ComputeNormalsOff();
+  this->Contour->ComputeNormalsOff();
 #else
   this->Contour = vtkContourFilter::New();
 #endif
