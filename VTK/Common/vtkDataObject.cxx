@@ -884,6 +884,18 @@ void vtkDataObject::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os,indent);
 
+  if (this->ProducerPort && this->ProducerPort->GetProducer())
+    {
+    os << indent << "ProducerPort: "
+       << this->ProducerPort->GetProducer()->GetClassName()
+       << "(" << this->ProducerPort->GetProducer() << ") port "
+       << this->ProducerPort->GetIndex() << "\n";
+    }
+  else
+    {
+    os << indent << "ProducerPort: (none)\n";
+    }
+
   if ( this->Source )
     {
     os << indent << "Source: " << this->Source << "\n";
