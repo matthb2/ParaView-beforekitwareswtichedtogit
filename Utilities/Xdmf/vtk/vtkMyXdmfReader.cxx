@@ -954,7 +954,8 @@ void vtkMyXdmfReader::ExecuteInformation()
   EndExtent[0] = vtkMAX(1, EndExtent[0]) / this->Stride[2];
   EndExtent[1] = vtkMAX(1, EndExtent[1]) / this->Stride[1];
   EndExtent[2] = vtkMAX(1, EndExtent[2]) / this->Stride[0];
-  vtkDebugMacro( << "EndExtents = " << EndExtent[0] << ", " << EndExtent[1] << ", " << EndExtent[2]);
+  vtkDebugMacro( << "EndExtents = " << (vtkIdType)EndExtent[0] << ", " 
+     << (vtkIdType)EndExtent[1] << ", " << (vtkIdType)EndExtent[2]);
   this->Outputs[0]->SetWholeExtent(0, EndExtent[2],
                                    0, EndExtent[1],
                                    0, EndExtent[0]);
