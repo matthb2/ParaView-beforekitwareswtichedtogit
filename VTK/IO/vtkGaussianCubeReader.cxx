@@ -241,10 +241,10 @@ int vtkGaussianCubeReader::RequestInformation(
                 0, n1-1, 0, n2-1, 0, n3-1);
   gridInfo->Set(vtkDataObject::ORIGIN(), 0, 0, 0);
   gridInfo->Set(vtkDataObject::SPACING(), 1, 1, 1);
-  gridInfo->Set(vtkDataObject::SCALAR_TYPE(), VTK_FLOAT);
 
   fclose(fp);
 
+  vtkDataObject::SetPointDataActiveScalarInfo(gridInfo, VTK_FLOAT, -1);
   return 1;
 }
 

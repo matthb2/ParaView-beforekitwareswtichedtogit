@@ -627,9 +627,7 @@ int vtkImageQuantizeRGBToIndex::RequestInformation (
   // get the info objects
   vtkInformation* outInfo = outputVector->GetInformationObject(0);
 
-  outInfo->Set(vtkDataObject::SCALAR_NUMBER_OF_COMPONENTS(),1);
-  outInfo->Set(vtkDataObject::SCALAR_TYPE(),VTK_UNSIGNED_SHORT);
-
+  vtkDataObject::SetPointDataActiveScalarInfo(outInfo, VTK_UNSIGNED_SHORT, 1);
   return 1;
 }
 

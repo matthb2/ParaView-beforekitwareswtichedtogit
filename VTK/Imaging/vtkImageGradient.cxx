@@ -83,10 +83,7 @@ int vtkImageGradient::RequestInformation (
   outInfo->Set(vtkStreamingDemandDrivenPipeline::WHOLE_EXTENT(), 
                extent, 6);
 
-  outInfo->Set(vtkDataObject::SCALAR_TYPE(),VTK_DOUBLE);
-  outInfo->Set(vtkDataObject::SCALAR_NUMBER_OF_COMPONENTS(),
-               this->Dimensionality);
-
+  vtkDataObject::SetPointDataActiveScalarInfo(outInfo, VTK_DOUBLE, this->Dimensionality);
   return 1;
 }
 

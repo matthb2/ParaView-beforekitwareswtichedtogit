@@ -115,9 +115,7 @@ int vtkPointLoad::RequestInformation (
   wExt[5] = this->SampleDimensions[2] - 1;
   
   outInfo->Set(vtkStreamingDemandDrivenPipeline::WHOLE_EXTENT(), wExt, 6);
-  outInfo->Set(vtkDataObject::SCALAR_TYPE(),VTK_FLOAT);
-  outInfo->Set(vtkDataObject::SCALAR_NUMBER_OF_COMPONENTS(),1);
-
+  vtkDataObject::SetPointDataActiveScalarInfo(outInfo, VTK_FLOAT, 1);
   return 1;
 }
 

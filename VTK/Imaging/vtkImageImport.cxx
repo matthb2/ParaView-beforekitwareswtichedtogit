@@ -220,10 +220,8 @@ int vtkImageImport::RequestInformation (
   outInfo->Set(vtkDataObject::ORIGIN(),this->DataOrigin,3);
 
   // set data type
-  outInfo->Set(vtkDataObject::SCALAR_TYPE(),this->DataScalarType);
-  outInfo->Set(vtkDataObject::SCALAR_NUMBER_OF_COMPONENTS(),
-               this->NumberOfScalarComponents);
-
+  vtkDataObject::SetPointDataActiveScalarInfo(outInfo, this->DataScalarType, 
+    this->NumberOfScalarComponents);
   return 1;
 }
 

@@ -18,6 +18,7 @@
 #include "vtkInformation.h"
 #include "vtkInformationVector.h"
 #include "vtkObjectFactory.h"
+#include "vtkDataSetAttributes.h"
 #include "vtkStreamingDemandDrivenPipeline.h"
 
 #include <math.h>
@@ -38,10 +39,8 @@ int vtkImageDivergence::RequestInformation (
   vtkInformationVector** vtkNotUsed(inputVector),
   vtkInformationVector* outputVector)
 {
-  // get the info objects
-  vtkInformation* outInfo = outputVector->GetInformationObject(0);
-  outInfo->Set(vtkDataObject::SCALAR_NUMBER_OF_COMPONENTS(),1);
-
+  vtkDataObject::SetPointDataActiveScalarInfo(
+    outputVector->GetInformationObject(0), -1, 1);
   return 1;
 }
 
@@ -58,8 +57,17 @@ int vtkImageDivergence::RequestUpdateExtent (
 
   int idx;
   int wholeExtent[6];
+
+  vtkInformation *inScalarInfo = vtkDataObject::GetActiveFieldInformation(inInfo, 
+    vtkDataObject::FIELD_ASSOCIATION_POINTS, vtkDataSetAttributes::SCALARS);
+  if (!inScalarInfo)
+    {
+    vtkErrorMacro("Missing scalar field on input information!");
+    return 0;
+    }
+
   int dimensionality = 
-    inInfo->Get(vtkDataObject::SCALAR_NUMBER_OF_COMPONENTS());
+    inScalarInfo->Get(vtkDataObject::FIELD_NUMBER_OF_COMPONENTS());
   
   if (dimensionality > 3)
     {

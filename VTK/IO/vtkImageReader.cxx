@@ -130,10 +130,8 @@ int vtkImageReader::RequestInformation (
   this->ComputeTransformedOrigin(origin);
   outInfo->Set(vtkDataObject::ORIGIN(),  this->DataOrigin, 3);
 
-  outInfo->Set(vtkDataObject::SCALAR_TYPE(), this->DataScalarType);
-  outInfo->Set(vtkDataObject::SCALAR_NUMBER_OF_COMPONENTS(),
-               this->NumberOfScalarComponents);
-
+  vtkDataObject::SetPointDataActiveScalarInfo(outInfo, this->DataScalarType,
+    this->NumberOfScalarComponents);
   return 1;
 }
 

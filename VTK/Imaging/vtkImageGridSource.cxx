@@ -63,9 +63,7 @@ int vtkImageGridSource::RequestInformation (
   outInfo->Set(vtkDataObject::ORIGIN(),this->DataOrigin,3);
   outInfo->Set(vtkStreamingDemandDrivenPipeline::WHOLE_EXTENT(),
                this->DataExtent,6);
-  outInfo->Set(vtkDataObject::SCALAR_TYPE(),this->DataScalarType);
-  outInfo->Set(vtkDataObject::SCALAR_NUMBER_OF_COMPONENTS(),1);
-
+  vtkDataObject::SetPointDataActiveScalarInfo(outInfo, this->DataScalarType, 1);
   return 1;
 }
 

@@ -543,7 +543,7 @@ void vtkPDataSetReader::ReadPVTKFileInformation(
     // Handle parameter: scalarType.
     if (strcmp(param, "scalarType") == 0)
       {
-      info->Set(vtkDataObject::SCALAR_TYPE(), atoi(val));
+      vtkDataObject::SetPointDataActiveScalarInfo(info, atoi(val), -1);
       }
 
     // Handle parameter: spacing.

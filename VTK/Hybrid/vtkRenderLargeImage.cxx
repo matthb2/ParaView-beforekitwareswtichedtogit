@@ -128,8 +128,7 @@ void vtkRenderLargeImage::RequestInformation (
   outInfo->Set(vtkDataObject::ORIGIN(),0.0, 0.0, 0.0);
   
   // set the scalar components
-  outInfo->Set(vtkDataObject::SCALAR_NUMBER_OF_COMPONENTS(), 3);
-  outInfo->Set(vtkDataObject::SCALAR_TYPE(), VTK_UNSIGNED_CHAR);
+  vtkDataObject::SetPointDataActiveScalarInfo(outInfo, VTK_UNSIGNED_CHAR, 3);
 }
 
 

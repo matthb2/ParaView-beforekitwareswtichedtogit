@@ -313,9 +313,8 @@ void vtkRendererSource::RequestInformation (
     
   outInfo->Set(vtkStreamingDemandDrivenPipeline::WHOLE_EXTENT(), extent, 6);
     
-  outInfo->Set(vtkDataObject::SCALAR_TYPE(), VTK_UNSIGNED_CHAR);
-  outInfo->Set(vtkDataObject::SCALAR_NUMBER_OF_COMPONENTS(),
-      3 + (this->DepthValuesInScalars ? 1:0));
+  vtkDataObject::SetPointDataActiveScalarInfo(outInfo, VTK_UNSIGNED_CHAR, 
+    3 + (this->DepthValuesInScalars ? 1:0));
 }
 
 //----------------------------------------------------------------------------

@@ -152,9 +152,7 @@ int vtkTriangularTexture::RequestInformation (
   int wExt[6] = {0,this->XSize -1, 0, this->YSize - 1, 0,0};
     
   outInfo->Set(vtkStreamingDemandDrivenPipeline::WHOLE_EXTENT(),wExt,6);
-  outInfo->Set(vtkDataObject::SCALAR_TYPE(),VTK_UNSIGNED_CHAR);
-  outInfo->Set(vtkDataObject::SCALAR_NUMBER_OF_COMPONENTS(),2);
-
+  vtkDataObject::SetPointDataActiveScalarInfo(outInfo, VTK_UNSIGNED_CHAR, 2);
   return 1;
 }
 

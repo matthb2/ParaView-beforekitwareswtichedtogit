@@ -40,10 +40,7 @@ int vtkImageCorrelation::RequestInformation (
 {
   // get the info objects
   vtkInformation* outInfo = outputVector->GetInformationObject(0);
-
-  outInfo->Set(vtkDataObject::SCALAR_NUMBER_OF_COMPONENTS(),1);
-  outInfo->Set(vtkDataObject::SCALAR_TYPE(),VTK_FLOAT);
-
+  vtkDataObject::SetPointDataActiveScalarInfo(outInfo, VTK_FLOAT, 1);
   return 1;
 }
 

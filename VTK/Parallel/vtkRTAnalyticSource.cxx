@@ -104,9 +104,8 @@ int vtkRTAnalyticSource::RequestInformation (
   
   outInfo->Set(vtkStreamingDemandDrivenPipeline::WHOLE_EXTENT(),
                this->WholeExtent,6);
-  outInfo->Set(vtkDataObject::SCALAR_TYPE(),VTK_FLOAT);
-  outInfo->Set(vtkDataObject::SCALAR_NUMBER_OF_COMPONENTS(),1);
 
+  vtkDataObject::SetPointDataActiveScalarInfo(outInfo, VTK_FLOAT, 1);
   return 1;
 }
 

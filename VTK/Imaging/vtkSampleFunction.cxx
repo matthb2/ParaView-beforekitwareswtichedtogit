@@ -102,9 +102,6 @@ int vtkSampleFunction::RequestInformation (
   int i;
   double ar[3], origin[3];
   
-  outInfo->Set(vtkDataObject::SCALAR_TYPE(),VTK_DOUBLE);
-  outInfo->Set(vtkDataObject::SCALAR_NUMBER_OF_COMPONENTS(),1);
-
   int wExt[6];
   wExt[0] = 0; wExt[2] = 0; wExt[4] = 0;
   wExt[1] = this->SampleDimensions[0]-1;
@@ -129,6 +126,7 @@ int vtkSampleFunction::RequestInformation (
   outInfo->Set(vtkDataObject::ORIGIN(),origin,3);
   outInfo->Set(vtkDataObject::SPACING(),ar,3);
 
+  vtkDataObject::SetPointDataActiveScalarInfo(outInfo, VTK_DOUBLE, 1);
   return 1;
 }
 

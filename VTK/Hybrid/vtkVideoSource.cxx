@@ -985,9 +985,8 @@ int vtkVideoSource::RequestInformation(
   outInfo->Set(vtkDataObject::ORIGIN(),this->DataOrigin,3);
 
   // set default data type (8 bit greyscale)
-  outInfo->Set(vtkDataObject::SCALAR_TYPE(), VTK_UNSIGNED_CHAR);
-  outInfo->Set(vtkDataObject::SCALAR_NUMBER_OF_COMPONENTS(),
-               this->NumberOfScalarComponents);
+  vtkDataObject::SetPointDataActiveScalarInfo(outInfo, VTK_UNSIGNED_CHAR, 
+    this->NumberOfScalarComponents);
 
   return 1;
 }

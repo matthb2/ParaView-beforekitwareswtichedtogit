@@ -19,6 +19,7 @@
 #include "vtkInformation.h"
 #include "vtkInformationVector.h"
 #include "vtkObjectFactory.h"
+#include "vtkDataSetAttributes.h"
 #include "vtkStreamingDemandDrivenPipeline.h"
 
 vtkCxxRevisionMacro(vtkImageSkeleton2D, "$Revision$");
@@ -329,11 +330,20 @@ void vtkImageSkeleton2D::ThreadedExecute(vtkImageData *inData,
   vtkInformation* inInfo = inData->GetPipelineInformation();
   inInfo->Get(vtkStreamingDemandDrivenPipeline::UPDATE_EXTENT(), inExt);
 
+  vtkInformation *inScalarInfo = vtkDataObject::GetActiveFieldInformation(inInfo, 
+    vtkDataObject::FIELD_ASSOCIATION_POINTS, vtkDataSetAttributes::SCALARS);
+  if (!inScalarInfo)
+    {
+    vtkErrorMacro("Missing ActiveScalar info in input information!");
+    return;
+    }
+
   // Make a temporary copy of the input data
   tempData = vtkImageData::New();
-  tempData->SetScalarType(inInfo->Get(vtkImageData::SCALAR_TYPE()));
+  tempData->SetScalarType( inScalarInfo->Get(vtkImageData::FIELD_ARRAY_TYPE()) );
   tempData->SetExtent(inExt);
-  tempData->SetNumberOfScalarComponents(inInfo->Get(vtkImageData::SCALAR_NUMBER_OF_COMPONENTS()));
+  tempData->SetNumberOfScalarComponents(
+    inScalarInfo->Get(vtkImageData::FIELD_NUMBER_OF_COMPONENTS()) );
   tempData->CopyAndCastFrom(inData, inExt);
 
   inPtr = tempData->GetScalarPointerForExtent(outExt);

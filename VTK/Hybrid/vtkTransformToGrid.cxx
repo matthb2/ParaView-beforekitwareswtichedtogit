@@ -117,8 +117,7 @@ void vtkTransformToGrid::RequestInformation (
                this->GridExtent,6);
   outInfo->Set(vtkDataObject::SPACING(),this->GridSpacing,3);
   outInfo->Set(vtkDataObject::ORIGIN(),this->GridOrigin,3);
-  outInfo->Set(vtkDataObject::SCALAR_TYPE(),this->GridScalarType);
-  outInfo->Set(vtkDataObject::SCALAR_NUMBER_OF_COMPONENTS(),3);
+  vtkDataObject::SetPointDataActiveScalarInfo(outInfo, this->GridScalarType, 3);
 }
 
 //----------------------------------------------------------------------------

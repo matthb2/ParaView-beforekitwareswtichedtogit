@@ -110,9 +110,6 @@ int vtkShepardMethod::RequestInformation (
   int i;
   double ar[3], origin[3];
   
-  outInfo->Set(vtkDataObject::SCALAR_TYPE(),VTK_FLOAT);
-  outInfo->Set(vtkDataObject::SCALAR_NUMBER_OF_COMPONENTS(),1);
-  
   outInfo->Set(vtkStreamingDemandDrivenPipeline::WHOLE_EXTENT(),
                0, this->SampleDimensions[0]-1,
                0, this->SampleDimensions[1]-1,
@@ -134,6 +131,7 @@ int vtkShepardMethod::RequestInformation (
   outInfo->Set(vtkDataObject::ORIGIN(),origin,3);
   outInfo->Set(vtkDataObject::SPACING(),ar,3);
 
+  vtkDataObject::SetPointDataActiveScalarInfo(outInfo, VTK_FLOAT, 1);
   return 1;
 }
 

@@ -41,8 +41,7 @@ int vtkImageNormalize::RequestInformation (
 {
   // get the info objects
   vtkInformation* outInfo = outputVector->GetInformationObject(0);
-  outInfo->Set(vtkDataObject::SCALAR_TYPE(),VTK_FLOAT);
-
+  vtkDataObject::SetPointDataActiveScalarInfo(outInfo, VTK_FLOAT, -1);
   return 1;
 }
 
