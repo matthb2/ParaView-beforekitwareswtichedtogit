@@ -37,7 +37,7 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 
 
 =========================================================================*/
-#include "vtkImage2dIslandRemovalFilter.h"
+#include "vtkImageIslandRemoval2d.h"
 #include "vtkImageCache.h"
 
 
@@ -49,7 +49,7 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 //----------------------------------------------------------------------------
 // Description:
 // Constructor: Sets default filter to be identity.
-vtkImage2dIslandRemovalFilter::vtkImage2dIslandRemovalFilter()
+vtkImageIslandRemoval2d::vtkImageIslandRemoval2d()
 {
   this->SetAxes2d(VTK_IMAGE_X_AXIS, VTK_IMAGE_Y_AXIS);
   this->SetAreaThreshold(4);
@@ -59,7 +59,7 @@ vtkImage2dIslandRemovalFilter::vtkImage2dIslandRemovalFilter()
 }
 
 //----------------------------------------------------------------------------
-void vtkImage2dIslandRemovalFilter::PrintSelf(ostream& os, vtkIndent indent)
+void vtkImageIslandRemoval2d::PrintSelf(ostream& os, vtkIndent indent)
 {
   vtkImageFilter::PrintSelf(os,indent);
   os << indent << "AreaThreshold: " << this->AreaThreshold;
@@ -80,7 +80,7 @@ void vtkImage2dIslandRemovalFilter::PrintSelf(ostream& os, vtkIndent indent)
 // Description:
 // Intercepts the caches UpdateRegion to make the region larger than requested.
 // The whole image is generated when any region is requested.
-void vtkImage2dIslandRemovalFilter::InterceptCacheUpdate(vtkImageRegion *region)
+void vtkImageIslandRemoval2d::InterceptCacheUpdate(vtkImageRegion *region)
 {
   int bounds[4];
 
@@ -104,7 +104,7 @@ void vtkImage2dIslandRemovalFilter::InterceptCacheUpdate(vtkImageRegion *region)
 // neighborhoods is to check neighbors one by one directly.  Also, I did
 // not want to break the templated function into pieces.
 template <class T>
-void vtkImage2dIslandRemovalFilterExecute(vtkImage2dIslandRemovalFilter *self,
+void vtkImageIslandRemoval2dExecute(vtkImageIslandRemoval2d *self,
 					  vtkImageRegion *inRegion, T *inPtr,
 					  vtkImageRegion *outRegion, T *outPtr)
 {
@@ -466,7 +466,7 @@ void vtkImage2dIslandRemovalFilterExecute(vtkImage2dIslandRemovalFilter *self,
 // This method uses the input region to fill the output region.
 // It can handle any type data, but the two regions must have the same 
 // data type.  Assumes that in and out have the same lower bounds.
-void vtkImage2dIslandRemovalFilter::Execute2d(vtkImageRegion *inRegion, 
+void vtkImageIslandRemoval2d::Execute2d(vtkImageRegion *inRegion, 
 					      vtkImageRegion *outRegion)
 {
   void *inPtr, *outPtr;
@@ -488,27 +488,27 @@ void vtkImage2dIslandRemovalFilter::Execute2d(vtkImageRegion *inRegion,
   switch (inRegion->GetDataType())
     {
     case VTK_IMAGE_FLOAT:
-      vtkImage2dIslandRemovalFilterExecute(this, 
+      vtkImageIslandRemoval2dExecute(this, 
 			   inRegion, (float *)(inPtr), 
 			   outRegion, (float *)(outPtr));
       break;
     case VTK_IMAGE_INT:
-      vtkImage2dIslandRemovalFilterExecute(this, 
+      vtkImageIslandRemoval2dExecute(this, 
 			   inRegion, (int *)(inPtr), 
 			   outRegion, (int *)(outPtr));
       break;
     case VTK_IMAGE_SHORT:
-      vtkImage2dIslandRemovalFilterExecute(this, 
+      vtkImageIslandRemoval2dExecute(this, 
 			   inRegion, (short *)(inPtr), 
 			   outRegion, (short *)(outPtr));
       break;
     case VTK_IMAGE_UNSIGNED_SHORT:
-      vtkImage2dIslandRemovalFilterExecute(this, 
+      vtkImageIslandRemoval2dExecute(this, 
 			   inRegion, (unsigned short *)(inPtr), 
 			   outRegion, (unsigned short *)(outPtr));
       break;
     case VTK_IMAGE_UNSIGNED_CHAR:
-      vtkImage2dIslandRemovalFilterExecute(this, 
+      vtkImageIslandRemoval2dExecute(this, 
 			   inRegion, (unsigned char *)(inPtr), 
 			   outRegion, (unsigned char *)(outPtr));
       break;
