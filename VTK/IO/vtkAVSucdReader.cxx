@@ -109,12 +109,6 @@ const char *vtkAVSucdReader::GetByteOrderAsString()
 
 void vtkAVSucdReader::Execute()
 {
-  vtkUnstructuredGrid *output = (vtkUnstructuredGrid *)this->GetOutput();
-  
-  this->ReleaseDataFlagOff ();
-  output->GlobalReleaseDataFlagOff();
-  output->SetSource(this);
-  
   if ( this->fs == NULL )
     {
     vtkErrorMacro(<< "No file specified!");
