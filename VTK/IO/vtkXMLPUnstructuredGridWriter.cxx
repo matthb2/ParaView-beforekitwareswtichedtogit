@@ -66,6 +66,7 @@ vtkXMLPUnstructuredGridWriter::CreateUnstructuredPieceWriter()
   return pWriter;
 }
 
+//----------------------------------------------------------------------------
 int vtkXMLPUnstructuredGridWriter::FillInputPortInformation(
   int vtkNotUsed(port), vtkInformation* info)
 {

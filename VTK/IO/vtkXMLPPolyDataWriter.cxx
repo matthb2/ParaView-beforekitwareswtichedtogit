@@ -66,6 +66,7 @@ vtkXMLPPolyDataWriter::CreateUnstructuredPieceWriter()
   return pWriter;
 }
 
+//----------------------------------------------------------------------------
 int vtkXMLPPolyDataWriter::FillInputPortInformation(
   int vtkNotUsed(port), vtkInformation* info)
 {

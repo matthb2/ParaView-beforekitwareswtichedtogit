@@ -67,13 +67,18 @@ const char* vtkXMLStructuredGridWriter::GetDefaultFileExtension()
 }
 
 //----------------------------------------------------------------------------
-int vtkXMLStructuredGridWriter::WriteAppendedMode(vtkIndent indent)
+void vtkXMLStructuredGridWriter::AllocatePositionArrays()
 {
+  this->Superclass::AllocatePositionArrays();
   this->PointsPosition = new unsigned long[this->NumberOfPieces];
-  int result = this->Superclass::WriteAppendedMode(indent);
+}
+
+//----------------------------------------------------------------------------
+void vtkXMLStructuredGridWriter::DeletePositionArrays()
+{
+  this->Superclass::DeletePositionArrays();
   delete [] this->PointsPosition;
   this->PointsPosition = 0;
-  return result;
 }
 
 //----------------------------------------------------------------------------
@@ -118,7 +123,7 @@ void vtkXMLStructuredGridWriter::WriteAppendedPieceData(int index)
 }
 
 //----------------------------------------------------------------------------
-void vtkXMLStructuredGridWriter::WriteInlinePiece(int index, vtkIndent indent)
+void vtkXMLStructuredGridWriter::WriteInlinePiece(vtkIndent indent)
 {
   // Split progress range by the approximate fractions of data written
   // by each step in this method.
@@ -131,7 +136,7 @@ void vtkXMLStructuredGridWriter::WriteInlinePiece(int index, vtkIndent indent)
   this->SetProgressRange(progressRange, 0, fractions);
   
   // Let the superclass write its data.
-  this->Superclass::WriteInlinePiece(index, indent);
+  this->Superclass::WriteInlinePiece(indent);
   if (this->ErrorCode == vtkErrorCode::OutOfDiskSpaceError)
     {
     return;

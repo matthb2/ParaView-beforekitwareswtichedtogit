@@ -61,14 +61,6 @@ const char* vtkXMLUnstructuredGridWriter::GetDefaultFileExtension()
 }
 
 //----------------------------------------------------------------------------
-void vtkXMLUnstructuredGridWriter::SetInputUpdateExtent(int piece,
-                                                        int numPieces,
-                                                        int ghostLevel)
-{
-  this->GetInput()->SetUpdateExtent(piece, numPieces, ghostLevel);
-}
-
-//----------------------------------------------------------------------------
 void vtkXMLUnstructuredGridWriter::WriteInlinePieceAttributes()
 {
   this->Superclass::WriteInlinePieceAttributes();
@@ -112,15 +104,21 @@ void vtkXMLUnstructuredGridWriter::WriteInlinePiece(vtkIndent indent)
 }
 
 //----------------------------------------------------------------------------
-int vtkXMLUnstructuredGridWriter::WriteAppendedMode(vtkIndent indent)
+void vtkXMLUnstructuredGridWriter::AllocatePositionArrays()
 {
+  this->Superclass::AllocatePositionArrays();
+
   this->NumberOfCellsPositions = new unsigned long[this->NumberOfPieces];
   this->CellsPositions = new unsigned long*[this->NumberOfPieces];
-  int ret = this->Superclass::WriteAppendedMode(indent);
+}
+
+//----------------------------------------------------------------------------
+void vtkXMLUnstructuredGridWriter::DeletePositionArrays()
+{
+  this->Superclass::DeletePositionArrays();
+
   delete [] this->CellsPositions;
   delete [] this->NumberOfCellsPositions;
-  
-  return ret;
 }
 
 //----------------------------------------------------------------------------
