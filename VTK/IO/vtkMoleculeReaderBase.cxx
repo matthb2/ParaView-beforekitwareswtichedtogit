@@ -365,7 +365,7 @@ int vtkMoleculeReaderBase::MakeBonds(vtkPoints *newPts,
 int vtkMoleculeReaderBase::MakeAtomType(const char *atype)
 {
   char      a, b;
-  int       anum;
+  int       anum=0;
 
   a = atype[0];
   if (islower(a)) a = toupper(a);
