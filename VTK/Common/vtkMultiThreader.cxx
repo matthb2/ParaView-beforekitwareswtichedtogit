@@ -82,7 +82,7 @@ int vtkMultiThreader::GetGlobalDefaultNumberOfThreads()
 #elif defined(_SC_NPROC_ONLN)
     num = sysconf( _SC_NPROC_ONLN );
 #endif
-#if defined(__SVR4) && defined(sun)
+#if defined(__SVR4) && defined(sun) && defined(PTHREAD_MUTEX_NORMAL)
     pthread_setconcurrency(num);
 #endif
 #endif
