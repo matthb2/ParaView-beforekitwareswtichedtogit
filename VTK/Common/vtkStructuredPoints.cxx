@@ -44,13 +44,13 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 
 vtkStructuredPoints::vtkStructuredPoints()
 {
-  this->ScalarType = VTK_FLOAT;
+  this->SetScalarType(VTK_FLOAT);
 }
 
 
 int vtkStructuredPoints::ClipUpdateExtentWithWholeExtent()
 {
-  this->UpdateExtent->SetExtent(this->WholeExtent);
+  this->UpdateExtent->SetExtent(this->GetWholeExtent());
   return 1;
 }
 
