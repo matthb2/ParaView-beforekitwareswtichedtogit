@@ -141,6 +141,13 @@ void vtkDataArray::DeepCopy(vtkDataArray *da)
       default:
         vtkErrorMacro(<<"Unsupported data type!");
       }
+
+    this->SetLookupTable(0);
+    if (da->LookupTable)
+      {
+      this->LookupTable = da->LookupTable->NewInstance();
+      this->LookupTable->DeepCopy(da->LookupTable);
+      }
     }
 }
 
