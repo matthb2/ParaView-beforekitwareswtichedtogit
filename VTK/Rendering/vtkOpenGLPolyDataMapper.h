@@ -47,14 +47,10 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 #ifndef __vtkOpenGLPolyDataMapper_h
 #define __vtkOpenGLPolyDataMapper_h
 
+#include "vtkPolyDataMapper.h"
 #include <stdlib.h>
-
-#ifdef _WIN32
-#include <afxwin.h>
-#endif
 #include <GL/gl.h>
 
-#include "vtkPolyDataMapper.h"
 
 class vtkOpenGLRenderer;
 class vtkProperty;
