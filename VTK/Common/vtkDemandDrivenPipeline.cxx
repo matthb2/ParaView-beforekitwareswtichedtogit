@@ -283,7 +283,6 @@ int vtkDemandDrivenPipeline::UpdateData(int outputPort)
     {
     vtkErrorMacro("UpdateData invoked during a downstream request.  "
                   "Returning failure from the method.");
-    abort();
     return 0;
     }
 
