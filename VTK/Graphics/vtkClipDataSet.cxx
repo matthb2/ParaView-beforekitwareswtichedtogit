@@ -69,6 +69,17 @@ vtkClipDataSet::~vtkClipDataSet()
 }
 
 //----------------------------------------------------------------------------
+// Do not say we have two outputs unless we are generating the clipped output. 
+int vtkClipDataSet::GetNumberOfOutputs()
+{
+  if (this->GenerateClippedOutput)
+    {
+    return 2;
+    }
+  return 1;
+}
+
+//----------------------------------------------------------------------------
 // Overload standard modified time function. If Clip functions is modified,
 // then this object is modified as well.
 unsigned long vtkClipDataSet::GetMTime()
