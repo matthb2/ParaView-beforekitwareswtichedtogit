@@ -194,11 +194,6 @@ void vtkPVIceTRenderModule::SetProcessModule(vtkProcessModule *pm)
 
   this->CompositeID = 
     pvm->NewStreamObject("vtkDesktopDeliveryClient", stream);
-  if (tileDim[0])
-    {
-    stream << vtkClientServerStream::Invoke << this->CompositeID
-           << "UseTileDisplayOn" << vtkClientServerStream::End;
-    }
   pvm->SendStream(vtkProcessModule::CLIENT, stream);
 
   // Create a vtkDesktopDeliveryServer on the server, but use the same id.
