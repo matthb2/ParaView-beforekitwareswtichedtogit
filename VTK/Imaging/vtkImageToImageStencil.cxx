@@ -16,6 +16,7 @@
 
 #include "vtkImageData.h"
 #include "vtkImageStencilData.h"
+#include "vtkInformation.h"
 #include "vtkObjectFactory.h"
 #include "vtkPointData.h"
 
@@ -27,6 +28,8 @@ vtkStandardNewMacro(vtkImageToImageStencil);
 //----------------------------------------------------------------------------
 vtkImageToImageStencil::vtkImageToImageStencil()
 {
+  this->NumberOfRequiredInputs = 1;
+  this->SetNumberOfInputPorts(1);
   this->UpperThreshold = VTK_LARGE_FLOAT;
   this->LowerThreshold = -VTK_LARGE_FLOAT;
 }
@@ -190,4 +193,32 @@ void vtkImageToImageStencil::ThreadedExecute(vtkImageStencilData *data,
         }
       } // for idY
     } // for idZ
+}
+
+void vtkImageToImageStencil::ExecuteInformation()
+{
+  vtkImageStencilData *output;
+  
+  output = this->GetOutput();
+  
+  // this is an odd source that can produce any requested size.  so its whole
+  // extent is essentially infinite. This would not be a great source to
+  // connect to some sort of writer or viewer. For a sanity check we will
+  // limit the size produced to something reasonable (depending on your
+  // definition of reasonable)
+  output->SetWholeExtent(0, VTK_LARGE_INTEGER >> 2,
+                         0, VTK_LARGE_INTEGER >> 2,
+                         0, VTK_LARGE_INTEGER >> 2);
+}
+
+//----------------------------------------------------------------------------
+int vtkImageToImageStencil::FillInputPortInformation(int port,
+                                                     vtkInformation* info)
+{
+  if(!this->Superclass::FillInputPortInformation(port, info))
+    {
+    return 0;
+    }
+  info->Set(vtkAlgorithm::INPUT_REQUIRED_DATA_TYPE(), "vtkImageData");
+  return 1;
 }
