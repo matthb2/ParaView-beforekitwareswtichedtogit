@@ -582,4 +582,24 @@ int vtkString::ConvertTimeStampMacroString(char *str, time_t *tmt)
   return 1;
 }
 
+//----------------------------------------------------------------------------
+char* vtkString::AddSpaceToUpperFirstString(const char *str, char *res)
+{
+  if (str && *str && res)
+    {
+    char *ptr = res;
+    *ptr++ = *str++;
+    while (*str)
+      {
+      if (isupper(*str) && !isupper(*(str - 1)))
+        {
+        *ptr++ = ' ';
+        }
+      *ptr++ = *str++;
+      }
+    *ptr = '\0';
+    }
+
+  return res;
+}
 
