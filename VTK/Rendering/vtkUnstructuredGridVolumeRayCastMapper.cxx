@@ -709,6 +709,10 @@ void vtkUnstructuredGridVolumeRayCastMapper::CastRays( int threadID, int threadC
     {
     farIntersections->Delete();
     }
+  else
+    {
+    intersectedCells->Delete();
+    }
 }
 
 double vtkUnstructuredGridVolumeRayCastMapper::
