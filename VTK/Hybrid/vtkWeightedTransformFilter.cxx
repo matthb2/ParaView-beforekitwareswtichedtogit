@@ -84,10 +84,11 @@ vtkWeightedTransformFilter::~vtkWeightedTransformFilter()
     delete [] this->Transforms;
     }
 
-    delete [] this->CellDataWeightArray;
-    delete [] this->WeightArray;
-    delete [] this->CellDataTransformIndexArray;
-    delete [] this->TransformIndexArray;
+  // Setting these strings to NULL has the side-effect of deleting them.
+  this->SetCellDataWeightArray(NULL);
+  this->SetWeightArray(NULL);
+  this->SetCellDataTransformIndexArray(NULL);
+  this->SetTransformIndexArray(NULL);
 }
 
 //----------------------------------------------------------------------------
