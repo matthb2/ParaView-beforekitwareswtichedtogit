@@ -95,12 +95,13 @@ void vtkGeometricErrorMetric::SetRelativeGeometricTolerance(double value,
 //-----------------------------------------------------------------------------
 int vtkGeometricErrorMetric::NeedEdgeSubdivision(double *leftPoint,
                                                  double *midPoint,
-                                                 double *rightPoint)
+                                                 double *rightPoint,
+                                                 double vtkNotUsed(alpha))
 {
   assert("pre: leftPoint_exists" && leftPoint!=0);
   assert("pre: midPoint_exists" && midPoint!=0);
   assert("pre: rightPoint_exists" && rightPoint!=0);
-  
+//  assert("pre: clamped_alpha" && alpha>0 && alpha<1); // or else true
   if( this->GenericCell->IsGeometryLinear() )
     {
     //don't need to do anything:
