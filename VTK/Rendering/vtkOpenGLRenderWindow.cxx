@@ -702,8 +702,8 @@ int vtkOpenGLRenderWindow::SetRGBAPixelData(int x1, int y1, int x2, int y2,
     return VTK_ERROR;
     }
 
-  this->SetRGBAPixelData(x1, y1, x2, y2, data->GetPointer(0), front,
-			 blend);
+  return this->SetRGBAPixelData(x1, y1, x2, y2, data->GetPointer(0), front,
+				blend);
 }
 
 int vtkOpenGLRenderWindow::SetRGBAPixelData(int x1, int y1, int x2, int y2,
