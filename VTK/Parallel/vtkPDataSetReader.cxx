@@ -123,6 +123,17 @@ void vtkPDataSetReader::SetOutput(vtkDataSet *output)
 }
 
 //----------------------------------------------------------------------------
+vtkDataSet *vtkPDataSetReader::GetOutput(int idx)
+{
+  if (idx != 0)
+    {
+    vtkErrorMacro("This reader only has one output.");
+    return NULL;
+    }
+  return this->GetOutput();
+}
+
+//----------------------------------------------------------------------------
 vtkDataSet *vtkPDataSetReader::GetOutput()
 {
   vtkDataSet *output;
@@ -946,6 +957,7 @@ void vtkPDataSetReader::Execute()
     reader->SetFileName(this->FileName);
     reader->Update();
     vtkDataSet *data = reader->GetOutput();
+    data->Update();
     // Structured points giving me a pain.
     //this->DataType = data->GetDataObjectType();
      
