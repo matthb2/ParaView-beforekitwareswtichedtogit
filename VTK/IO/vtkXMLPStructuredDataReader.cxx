@@ -176,6 +176,16 @@ vtkXMLPStructuredDataReader::ReadPrimaryElement(vtkXMLDataElement* ePrimary)
 }
 
 //----------------------------------------------------------------------------
+void vtkXMLPStructuredDataReader::SetupOutputInformation()
+{
+  this->Superclass::SetupOutputInformation();
+  
+  // Tell the output to use the table extent translator to provide the
+  // correct piece breakdown for the file layout.
+  this->GetOutputAsDataSet()->SetExtentTranslator(this->ExtentTranslator);
+}
+
+//----------------------------------------------------------------------------
 void vtkXMLPStructuredDataReader::SetupEmptyOutput()
 {
   // Special extent to indicate no input.
