@@ -1324,6 +1324,14 @@ void vtkPDataSetReader::CoverExtent(int ext[6], int *pieceMask)
 }
 
 //----------------------------------------------------------------------------
+int vtkPDataSetReader::ReadOutputType()
+{
+  this->ExecuteInformation();
+
+  return this->DataType;
+}
+
+//----------------------------------------------------------------------------
 void vtkPDataSetReader::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os,indent);
