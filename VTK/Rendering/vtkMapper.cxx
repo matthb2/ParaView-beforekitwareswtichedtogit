@@ -15,6 +15,7 @@
 #include "vtkMapper.h"
 
 #include "vtkDataSet.h"
+#include "vtkExecutive.h"
 #include "vtkLookupTable.h"
 #include "vtkFloatArray.h"
 #include "vtkImageData.h"
@@ -104,12 +105,12 @@ double *vtkMapper::GetBounds()
 
 vtkDataSet *vtkMapper::GetInput()
 {
-  if (this->NumberOfInputs < 1)
+  if (this->GetNumberOfInputConnections(0) < 1)
     {
-    return NULL;
+    return 0;
     }
-  
-  return (vtkDataSet *)(this->Inputs[0]);
+  return vtkDataSet::SafeDownCast(
+    this->GetExecutive()->GetInputData(0, 0));
 }
 
 void vtkMapper::SetGlobalImmediateModeRendering(int val)
@@ -422,15 +423,6 @@ void vtkMapper::CreateDefaultLookupTable()
   // Consistent Register/UnRegisters.
   this->LookupTable->Register(this);
   this->LookupTable->Delete();
-}
-
-// Update the network connected to this mapper.
-void vtkMapper::Update()
-{
-  if ( this->GetInput() )
-    {
-    this->GetInput()->Update();
-    }
 }
 
 // Return the method of coloring scalar data.
