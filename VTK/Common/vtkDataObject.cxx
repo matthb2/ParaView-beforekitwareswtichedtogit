@@ -608,6 +608,7 @@ void vtkDataObject::CopyInformation( vtkDataObject *data )
     {
     this->MaximumNumberOfPieces = data->GetMaximumNumberOfPieces();
     }
+  this->SetExtentTranslator(data->GetExtentTranslator());
 }
 
 //----------------------------------------------------------------------------
