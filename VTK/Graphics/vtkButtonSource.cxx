@@ -390,7 +390,7 @@ void vtkButtonSource::IntersectEllipseWithLine(float a2, float b2, float dX,
     }
 }
 
-float vtkButtonSource::ComputeDepth(int inTextureRegion, 
+float vtkButtonSource::ComputeDepth(int vtkNotUsed(inTextureRegion),
                                     float x, float y, float n[3])
 {
   float z;
