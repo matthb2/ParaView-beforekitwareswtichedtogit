@@ -853,7 +853,7 @@ int vtkDataWriter::WriteTCoordData(ostream *fp, vtkDataArray *tcoords, int num)
 
 
   *fp << "TEXTURE_COORDINATES ";
-  sprintf(format, "%s %d %s\n", this->TCoordsName, dim, "%s");
+  sprintf(format, "%s %d %s\n", tcoordsName, dim, "%s");
   delete[] tcoordsName;
 
   return this->WriteArray(fp, tcoords->GetDataType(), tcoords, format, num, 
