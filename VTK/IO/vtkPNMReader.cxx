@@ -197,7 +197,7 @@ void vtkPNMReader::ExecuteInformation()
 }
 
 
-static inline int iseol(int c)
+inline int iseol(int c)
 {
   return c == 10 || c == 13;
 }
