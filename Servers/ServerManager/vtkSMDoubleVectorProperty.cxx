@@ -204,6 +204,17 @@ int vtkSMDoubleVectorProperty::SetElements3(
 }
 
 //---------------------------------------------------------------------------
+int vtkSMDoubleVectorProperty::SetElements4(
+  double value0, double value1, double value2, double value3)
+{
+  int retVal1 = this->SetElement(0, value0);
+  int retVal2 = this->SetElement(1, value1);
+  int retVal3 = this->SetElement(2, value2);
+  int retVal4 = this->SetElement(3, value3);
+  return (retVal1 && retVal2 && retVal3 && retVal4);
+}
+
+//---------------------------------------------------------------------------
 int vtkSMDoubleVectorProperty::SetElements(const double* values)
 {
   if (this->IsReadOnly)
