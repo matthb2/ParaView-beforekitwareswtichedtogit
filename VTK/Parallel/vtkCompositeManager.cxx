@@ -802,7 +802,7 @@ void vtkCompositeManager::EndRender()
     }
 
   vtkRenderWindow* renWin = this->RenderWindow;
-  vtkMultiProcessController *controller = this->Controller;
+  //vtkMultiProcessController *controller = this->Controller;
   int numProcs;
   
   // EndRender only happens on root.
