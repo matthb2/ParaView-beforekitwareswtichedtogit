@@ -301,6 +301,7 @@ void vtkButtonSource::Execute()
 
   newPts->Delete();
   tcoords->Delete();
+  normals->Delete();
   newPolys->Delete();
 }
 
