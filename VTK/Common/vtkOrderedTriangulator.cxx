@@ -1167,6 +1167,7 @@ void vtkOrderedTriangulator::Triangulate()
 void vtkOrderedTriangulator::TemplateTriangulate(int cellType, 
                                                  int numPts, int numEdges)
 {
+  (void)cellType;
   if ( ! this->UseTemplates )
     {
     this->Triangulate();
