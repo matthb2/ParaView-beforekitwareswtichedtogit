@@ -112,6 +112,12 @@ void vtkCharArray::DeepCopy(vtkDataArray *ia)
     return;
     }
 
+  if ( ia->GetDataType() != VTK_CHAR )
+    {
+    vtkDataArray::DeepCopy(ia);
+    return;
+    }  
+
   if ( this != ia )
     {
     if ((this->Array) && (!this->SaveUserArray))
