@@ -104,7 +104,7 @@ int vtkXMLDataParser::Parse()
   int result = this->Superclass::Parse();
   
   // Check that the input is okay.
-  if(!this->CheckPrimaryAttributes())
+  if(result && !this->CheckPrimaryAttributes())
     {
     result = 0;
     }
