@@ -327,7 +327,7 @@ void vtkAlgorithm::SetInput(int index, vtkAlgorithmOutput* input)
 }
 
 //----------------------------------------------------------------------------
-vtkDataObject* vtkAlgorithm::GetOutput(int port)
+vtkDataObject* vtkAlgorithm::GetOutputDataObject(int port)
 {
   if(!this->OutputPortIndexInRange(port, "get the data object for"))
     {
