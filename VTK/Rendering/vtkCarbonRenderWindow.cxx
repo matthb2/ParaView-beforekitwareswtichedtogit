@@ -455,9 +455,16 @@ void vtkCarbonRenderWindow::MakeCurrent()
     }
 }
 
+// --------------------------------------------------------------------------
 void vtkCarbonRenderWindow::SetForceMakeCurrent()
 {
   this->ForceMakeCurrent = 1;
+}
+
+// --------------------------------------------------------------------------
+void vtkCarbonRenderWindow::SetSize(int a[2])
+{
+  this->SetSize(a[0], a[1]);
 }
 
 // --------------------------------------------------------------------------
