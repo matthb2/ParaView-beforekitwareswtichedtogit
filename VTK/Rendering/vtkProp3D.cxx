@@ -84,6 +84,41 @@ vtkProp3D::~vtkProp3D()
     }
 }
 
+unsigned long int vtkProp3D::GetMTime()
+{
+  unsigned long mTime=this->Superclass::GetMTime();
+  unsigned long time;
+
+  time = this->GetUserTransformMatrixMTime();
+  mTime = ( time > mTime ? time : mTime );
+
+  return mTime;
+}
+
+unsigned long int vtkProp3D::GetUserTransformMatrixMTime()
+{
+  unsigned long mTime;
+  unsigned long time;
+
+  // Factored out of GetMTime because there are times we want
+  // just this information, without being influenced by other
+  // changes that affect this class's or a subclass's mtime.
+  // (E.g. see vtkLODProp3D)
+  if ( this->UserMatrix != NULL )
+    {
+    mTime = this->UserMatrix->GetMTime();
+    }
+
+  if ( this->UserTransform != NULL )
+    {
+    time = this->UserTransform->GetMTime();
+    mTime = ( time > mTime ? time : mTime );
+    }
+
+
+  return mTime;
+}
+
 // Incrementally change the position of the Prop3D.
 void vtkProp3D::AddPosition (float deltaX,float deltaY,float deltaZ)
 {
