@@ -100,6 +100,7 @@ void vtkCachedStreamingDemandDrivenPipeline
 ::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os, indent);
+  os << indent << "CacheSize: " << this->CacheSize << "\n";
 }
 
 //----------------------------------------------------------------------------
