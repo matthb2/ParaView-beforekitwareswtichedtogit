@@ -84,7 +84,7 @@ int vtkKitwareContourFilter::ComputeInputUpdateExtent(
         }
       }
      
-    if ((dim == 2) && (dims[2] == 0))
+    if (dim == 2)
       {
       vtkSynchronizedTemplates2D *syncTemp2D = 
         vtkSynchronizedTemplates2D::New();
