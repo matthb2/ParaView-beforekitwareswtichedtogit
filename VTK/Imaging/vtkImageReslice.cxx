@@ -317,6 +317,13 @@ void vtkImageReslice::ComputeInputUpdateExtents(vtkDataObject *output)
 void vtkImageReslice::ComputeInputUpdateExtent(int inExt[6], 
                                                int outExt[6])
 {
+    
+  if (this->GetInput() == NULL)
+    {
+    vtkErrorMacro(<< "ComputeInputUpdateExtent: Input is not set.");
+    return;        
+    }
+    
   if (this->Optimization)
     {
     this->OptimizedComputeInputUpdateExtent(inExt,outExt);
