@@ -92,7 +92,6 @@ void vtkCTHAMRContour::Execute()
   vtkPolyData* output;
   vtkImageData* block; 
   vtkAppendPolyData* tmp;
-  int idx;
 
   vtkGarbageCollector::DeferredCollectionPush();
 
@@ -166,7 +165,6 @@ void vtkCTHAMRContour::ExecuteBlock(vtkImageData* block,
                                     double startProg, double endProg)
 {
   vtkFloatArray* pointVolumeFraction;
-  int idx, num;
   const char* arrayName;
 
   this->UpdateProgress(startProg + .3);
