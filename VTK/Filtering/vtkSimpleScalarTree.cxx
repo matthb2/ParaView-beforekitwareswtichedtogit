@@ -211,10 +211,10 @@ void vtkSimpleScalarTree::BuildTree()
 // will have scalar values that span the scalar value specified.
 void vtkSimpleScalarTree::InitTraversal(float scalarValue)
 {
+  this->BuildTree();
   vtkScalarRange<float> *TTree = 
     static_cast< vtkScalarRange<float> * > (this->Tree);
 
-  this->BuildTree();
   this->ScalarValue = scalarValue;
   this->TreeIndex = this->TreeSize;
 
