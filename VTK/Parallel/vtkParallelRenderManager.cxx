@@ -1753,8 +1753,8 @@ void vtkParallelRenderManager::SatelliteStartRender()
       cam->SetViewUp(renInfoDouble.CameraViewUp);
       cam->SetClippingRange(renInfoDouble.CameraClippingRange);
       cam->SetViewAngle(renInfoDouble.CameraViewAngle);
-      cam->SetWindowCenter(renInfoDouble.WindowCenter[0],
-                           renInfoDouble.WindowCenter[1]);
+      //cam->SetWindowCenter(renInfoDouble.WindowCenter[0],
+      //                     renInfoDouble.WindowCenter[1]);
       if (renInfoDouble.ParallelScale != 0.0)
         {
         cam->ParallelProjectionOn();
