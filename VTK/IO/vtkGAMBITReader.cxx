@@ -237,7 +237,15 @@ void vtkGAMBITReader::ReadBoundaryConditionSets()
       for(f=0; f < nentry; f++)
         {
         *(this->FileStream) >> node;
-        bcscalar->SetValue(node, 1);
+        node--;
+        if( node >= 0 && node < this->NumberOfNodes)
+          {
+          bcscalar->SetValue(node, 1);
+          }
+        else
+          {
+          vtkErrorMacro(<<"Node value is outside of range");
+          }
         }
       this->FileStream->get(c);
       // read here the end of section
