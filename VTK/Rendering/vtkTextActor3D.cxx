@@ -86,7 +86,9 @@ double* vtkTextActor3D::GetBounds()
     return this->ImageActor->GetBounds();
     }
 
-  return NULL;
+  static double unknown_bounds[6];
+  vtkMath::UninitializeBounds(unknown_bounds);
+  return unknown_bounds;
 }
 
 // --------------------------------------------------------------------------
