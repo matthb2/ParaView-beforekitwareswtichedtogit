@@ -460,6 +460,9 @@ int vtkXMLUnstructuredDataReader::ReadPieceData()
     if(!this->ReadArrayForPoints(ePoints->GetNestedElement(0),
                                  output->GetPoints()->GetData()))
       {
+      vtkErrorMacro("Cannot read points array from " << ePoints->GetName()
+                    << " in piece " << this->Piece
+                    << ".  The data array in the element may be too short.");
       return 0;
       }
     }

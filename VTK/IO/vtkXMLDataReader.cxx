@@ -317,6 +317,10 @@ int vtkXMLDataReader::ReadPieceData()
         // Read the array.
         if(!this->ReadArrayForPoints(eNested, pointData->GetArray(a++)))
           {
+          vtkErrorMacro("Cannot read point data array \""
+                        << pointData->GetArray(a-1)->GetName() << "\" from "
+                        << ePointData->GetName() << " in piece " << this->Piece
+                        << ".  The data array in the element may be too short.");
           return 0;
           }
         }
@@ -337,6 +341,10 @@ int vtkXMLDataReader::ReadPieceData()
         // Read the array.
         if(!this->ReadArrayForCells(eNested, cellData->GetArray(a++)))
           {
+          vtkErrorMacro("Cannot read cell data array \""
+                        << cellData->GetArray(a-1)->GetName() << "\" from "
+                        << ePointData->GetName() << " in piece " << this->Piece
+                        << ".  The data array in the element may be too short.");
           return 0;
           }
         }
