@@ -1008,6 +1008,7 @@ void vtkStructuredGrid::InternalStructuredGridCopy(vtkStructuredGrid *src)
 
   this->DataDescription = src->DataDescription;
   this->Blanking = src->Blanking;
+  this->SetPointVisibility(src->PointVisibility);
 
   // Update dimensions
   this->GetDimensions();
