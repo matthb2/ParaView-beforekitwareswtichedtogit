@@ -19,6 +19,7 @@
 
 #include "vtkImagingFactory.h"
 #include "vtkTextProperty.h"
+#include "vtkToolkits.h"
 
 vtkCxxRevisionMacro(vtkTextMapper, "$Revision$");
 
