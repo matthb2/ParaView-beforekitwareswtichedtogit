@@ -36,13 +36,30 @@ vtkMultiBlockDataSet::~vtkMultiBlockDataSet()
 }
 
 //----------------------------------------------------------------------------
-void vtkMultiBlockDataSet::AddDataSet(vtkDataObject* data)
+unsigned int vtkMultiBlockDataSet::GetNumberOfDataSets()
+{
+  return this->Internal->DataSets.size();
+}
+
+//----------------------------------------------------------------------------
+vtkDataObject* vtkMultiBlockDataSet::GetDataSet(unsigned int idx)
+{
+  if ( idx >= this->Internal->DataSets.size() )
+    {
+    return 0;
+    }
+  return this->Internal->DataSets[idx];
+}
+
+//----------------------------------------------------------------------------
+unsigned int vtkMultiBlockDataSet::AddDataSet(vtkDataObject* data)
 {
   if (data)
     {
     this->Internal->DataSets.push_back(data);
     this->Modified();
     }
+  return this->Internal->DataSets.size() - 1;
 }
 
 //----------------------------------------------------------------------------
