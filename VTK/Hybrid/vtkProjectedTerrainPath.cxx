@@ -101,6 +101,18 @@ int vtkProjectedTerrainPath::FillInputPortInformation(int port,
 }
 
 //-----------------------------------------------------------------------------
+// Warning: this method may return negative indices. This is expected behavior
+//
+inline void vtkProjectedTerrainPath::GetImageIndex(double x[3], 
+                                                   double loc[2], int ij[2])
+{
+  loc[0] = (x[0] - this->Origin[0]) / this->Spacing[0];
+  ij[0] = (int) (floor(loc[0]));
+  loc[1] = (x[1] - this->Origin[1]) / this->Spacing[1];
+  ij[1] = (int) (floor(loc[1]));
+}
+
+//-----------------------------------------------------------------------------
 int vtkProjectedTerrainPath::RequestData(vtkInformation *,
                                          vtkInformationVector **inputVector,
                                          vtkInformationVector *outputVector)
@@ -325,18 +337,6 @@ void vtkProjectedTerrainPath::SplitEdge(vtkIdType eId, double t)
   // Recompute the errors along the edges
   this->ComputeError(eId);
   this->ComputeError(eNew);
-}
-
-//-----------------------------------------------------------------------------
-// Warning: this method may return negative indices. This is expected behavior
-//
-inline void vtkProjectedTerrainPath::GetImageIndex(double x[3], 
-                                                   double loc[2], int ij[2])
-{
-  loc[0] = (x[0] - this->Origin[0]) / this->Spacing[0];
-  ij[0] = (int) (floor(loc[0]));
-  loc[1] = (x[1] - this->Origin[1]) / this->Spacing[1];
-  ij[1] = (int) (floor(loc[1]));
 }
 
 // if the line lies outside of the image.
