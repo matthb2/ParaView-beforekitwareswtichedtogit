@@ -136,8 +136,7 @@ void vtkGenericProbeFilter::Execute()
     input->GetPoint(ptId, x);
 
     // Find the cell that contains xyz and get it
-    vtkIdType foo = source->FindCell(x,cellIt,tol2,subId,pcoords);
-    if (foo >= 0)
+    if(source->FindCell(x,cellIt,tol2,subId,pcoords))
       {
       // Interpolate the point data
       vtkGenericAdaptorCell *cellProbe = cellIt->GetCell();
