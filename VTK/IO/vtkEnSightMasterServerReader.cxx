@@ -147,11 +147,9 @@ int vtkEnSightMasterServerReader::DetermineFileName(int piece)
           return VTK_ERROR;
           }
         this->SetPieceCaseFileName(filename);
+        break;
         }
-      else
-        {
-        currentserver ++;
-        }
+      currentserver ++;
       }
     //cout << "Read: " << result << endl;
     }
