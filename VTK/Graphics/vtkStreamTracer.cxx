@@ -98,11 +98,6 @@ void vtkStreamTracer::AddInput(vtkDataSet* input)
 {
   int idx;
   
-  if (input)
-    {
-    input->AddConsumer(this);
-    input->Register(this);
-    }
   this->Modified();
   
   // Always leave room for source (2nd input)
