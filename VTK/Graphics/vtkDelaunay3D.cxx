@@ -253,6 +253,9 @@ vtkIdType vtkDelaunay3D::FindEnclosingFaces(float x[3],
     this->CheckedTetras->InsertId(i,tetras->GetId(i));
     }
 
+  p1 = 0;
+  p2 = 0;
+  p3 = 0;
   for (i=0; i < numTetras; i++)
     {
     tetraId = tetras->GetId(i);
