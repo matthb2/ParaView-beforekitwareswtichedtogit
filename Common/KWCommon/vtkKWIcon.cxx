@@ -334,6 +334,14 @@ void vtkKWIcon::SetImage(int image)
         image_filters_buffer_length);
       break;      
 
+    case vtkKWIcon::ICON_FOLDER:
+      this->SetImage(
+        image_folder, 
+        image_folder_width, image_folder_height,
+        image_folder_pixel_size, 
+        image_folder_buffer_length);
+      break;
+
     case vtkKWIcon::ICON_GENERAL:
       this->SetImage(
         image_general, 
