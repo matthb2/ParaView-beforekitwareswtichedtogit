@@ -438,7 +438,8 @@ void vtkMetaImageReader::ExecuteInformation()
         {
         if ( value[0] == '/' || 
           ( value[1] == ':' && ( value[2] == '/' || value[2] == '\\' ) ) ||
-          ( value[0] == '\\' && value[1] == '\\' ) )
+          ( value[0] == '\\' && value[1] == '\\' ) ||
+          path.size() == 0)
           {
           datafile = "";
           datafile.append(value, valuelen);
