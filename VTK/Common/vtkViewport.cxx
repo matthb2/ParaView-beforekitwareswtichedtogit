@@ -637,6 +637,11 @@ void vtkViewport::GetTiledSize(int *usize, int *vsize)
 void vtkViewport::GetTiledSizeAndOrigin(int *usize, int *vsize,
                                         int *lowerLeftU, int *lowerLeftV)
 {
+  // if there is no window return
+  if (!this->GetVTKWindow())
+    {
+    return;
+    }
 
   double *vport;
 
