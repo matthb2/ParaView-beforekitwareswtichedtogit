@@ -95,7 +95,10 @@ vtkStreamer::vtkStreamer()
 
 vtkStreamer::~vtkStreamer()
 {
+  if( this->Streamers )
+    {
   delete [] this->Streamers;
+    }
 
   this->SetSource(0);
   if (this->Threader)
@@ -464,8 +467,11 @@ void vtkStreamer::Integrate()
   vtkDebugMacro(<<"Generating streamers");
   this->NumberOfStreamers = 0;
 
-// reexecuting - delete old stuff
+  // reexecuting - delete old stuff
+  if( this->Streamers )
+    {
   delete [] this->Streamers;
+    }
   this->Streamers = NULL;
 
   if ( ! (inVectors=pd->GetVectors()) )
@@ -668,10 +674,6 @@ void vtkStreamer::Integrate()
     {
     cellScalars->Delete();
     }
-}
-
-void vtkStreamer::ComputeVorticity()
-{
 }
 
 void vtkStreamer::PrintSelf(ostream& os, vtkIndent indent)
