@@ -111,6 +111,8 @@ vtkImagePlaneWidget::vtkImagePlaneWidget()
   this->TexturePlaneMapper = vtkDataSetMapper::New();
   this->TexturePlaneActor = vtkActor::New();
   this->DummyTransform = vtkTransform::New();
+
+  this->ImageData = 0;
 }
 
 vtkImagePlaneWidget::~vtkImagePlaneWidget()
