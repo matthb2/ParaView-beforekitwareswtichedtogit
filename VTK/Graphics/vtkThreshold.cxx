@@ -210,8 +210,9 @@ void vtkThreshold::Execute()
       keepCell = (this->*(this->ThresholdFunction))(cellScalars->GetComponent(cellId,0));
       }
     
-    if ( keepCell ) // satisfied thresholding
+    if (  numCellPts > 0 && keepCell )
       {
+      // satisfied thresholding (also non-empty cell, i.e. not VTK_EMPTY_CELL)
       for (i=0; i < numCellPts; i++)
         {
         ptId = cellPts->GetId(i);
