@@ -44,6 +44,11 @@ void vtkSMSimpleStringInformationHelper::UpdateProperty(
     return;
     }
 
+  if (!prop->GetCommand())
+    {
+    return;
+    }
+
   // Invoke property's method on the root node of the server
   vtkClientServerStream str;
   str << vtkClientServerStream::Invoke 
