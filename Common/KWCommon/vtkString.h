@@ -27,7 +27,7 @@
 
 #include "vtkObject.h"
 
-class VTK_COMMON_EXPORT vtkString : public vtkObject
+class VTK_EXPORT vtkString : public vtkObject
 {
 public:
   static vtkString *New();
