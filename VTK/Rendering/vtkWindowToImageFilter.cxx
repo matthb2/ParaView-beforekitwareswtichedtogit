@@ -164,6 +164,7 @@ void vtkWindowToImageFilter::ExecuteData(vtkDataObject *vtkNotUsed(data))
     cam->SetViewUp(cams[i]->GetViewUp());
     cam->SetClippingRange(cams[i]->GetClippingRange());
     cam->SetParallelProjection(cams[i]->GetParallelProjection());
+    cam->SetFocalDisk(cams[i]->GetFocalDisk());
     aren->SetActiveCamera(cam);
     }
   
