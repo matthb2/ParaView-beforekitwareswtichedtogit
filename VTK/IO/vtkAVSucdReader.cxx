@@ -440,9 +440,9 @@ void vtkAVSucdReader::ReadGeometry()
 void vtkAVSucdReader::ReadBinaryCellTopology(vtkIntArray *materials, int *types, vtkIdTypeArray *listcells)
 {
   int i, j, k1, k2;
-  int *mat = materials->GetPointer(0);
-  int *list = listcells->GetPointer(0);
-  int *Ctype = new int[4 * this->NumberOfCells];
+  vtkIdType *mat = materials->GetPointer(0);
+  vtkIdType *list = listcells->GetPointer(0);
+  vtkIdType *Ctype = new int[4 * this->NumberOfCells];
   if(Ctype == NULL)
     {
     vtkErrorMacro(<< "Error allocating Ctype memory");
