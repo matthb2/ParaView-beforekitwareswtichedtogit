@@ -168,6 +168,7 @@ void vtkHDF5RawImageReader::PrintSelf(ostream& os, vtkIndent indent)
   if(this->PointDataArraySelection)
     {
     os << indent << "PointDataArraySelection: " << this->PointDataArraySelection;
+    os << "\n";
     }
   else
     {
@@ -176,6 +177,7 @@ void vtkHDF5RawImageReader::PrintSelf(ostream& os, vtkIndent indent)
   if(this->CellDataArraySelection)
     {
     os << indent << "CellDataArraySelection: " << this->CellDataArraySelection;
+    os << "\n";
     }
   else
     {

@@ -211,8 +211,21 @@ void vtkMergeArrays::PrintSelf(ostream& os, vtkIndent indent)
   for (idx = 0; idx < num; ++idx)
     {
     input = this->GetInput(idx);
-    os << indent << "Input: (" << input << ")\n";
+    if( input )
+      {
+      os << indent << "Input: (" << input << ")\n";
+      }
+    else
+      {
+      os << indent << "No Input\n";
+      }
     } 
-  output = this->GetOutput();
-  os << indent << "Output: (" << output << ")\n";
+  if( ( output = this->GetOutput() ) )
+    {
+    os << indent << "Output: (" << output << ")\n";
+    }
+  else
+    {
+    os << indent << "No Output\n";
+    }  
 }
