@@ -97,7 +97,7 @@ unsigned long int vtkProp3D::GetMTime()
 
 unsigned long int vtkProp3D::GetUserTransformMatrixMTime()
 {
-  unsigned long mTime;
+  unsigned long mTime = 0;
   unsigned long time;
 
   // Factored out of GetMTime because there are times we want

@@ -113,7 +113,8 @@ void vtkRenderLargeImage::ExecuteData(vtkDataObject *output)
   unsigned char *pixels, *outPtr;
   int x, y, row;
   int rowSize, rowStart, rowEnd, colStart, colEnd;
-  int doublebuffer, swapbuffers;
+  int doublebuffer;
+  int swapbuffers = 0;
   
   if (this->GetOutput()->GetScalarType() != VTK_UNSIGNED_CHAR)
     {
