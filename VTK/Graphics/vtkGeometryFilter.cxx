@@ -868,6 +868,8 @@ void vtkGeometryFilter::UnstructuredGridExecute()
         case VTK_QUADRATIC_QUAD:
         case VTK_QUADRATIC_TETRA:
         case VTK_QUADRATIC_HEXAHEDRON:
+        case VTK_QUADRATIC_WEDGE:
+        case VTK_QUADRATIC_PYRAMID:
           {
           vtkGenericCell *cell = vtkGenericCell::New();
           input->GetCell(cellId,cell);
