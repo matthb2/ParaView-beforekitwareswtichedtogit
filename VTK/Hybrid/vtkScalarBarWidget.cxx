@@ -26,6 +26,7 @@
 
 vtkCxxRevisionMacro(vtkScalarBarWidget, "$Revision$");
 vtkStandardNewMacro(vtkScalarBarWidget);
+vtkCxxSetObjectMacro(vtkScalarBarWidget, ScalarBarActor, vtkScalarBarActor);
 
 vtkScalarBarWidget::vtkScalarBarWidget()
 {
@@ -37,7 +38,10 @@ vtkScalarBarWidget::vtkScalarBarWidget()
 
 vtkScalarBarWidget::~vtkScalarBarWidget()
 {
-  this->ScalarBarActor->Delete();
+  if (this->ScalarBarActor)
+    {
+    this->ScalarBarActor->Delete();
+    }
 }
 
 void vtkScalarBarWidget::SetEnabled(int enabling)
