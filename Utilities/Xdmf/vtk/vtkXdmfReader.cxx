@@ -1484,7 +1484,7 @@ void vtkXdmfReader::EnableGrid(const char* name)
   if ( gidx < 0 || gidx >= this->GetNumberOfGrids() )
     {
     cout << "Enabling unknown grid" << endl;
-    vtkXdmfReaderInternal::StringListType::iterator it = 0;
+    vtkXdmfReaderInternal::StringListType::iterator it;
     for ( it = this->Internals->EnabledUnknownGrids.begin();
       it != this->Internals->EnabledUnknownGrids.end();
       ++ it )
