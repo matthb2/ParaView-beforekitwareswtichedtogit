@@ -404,6 +404,22 @@ void vtkKWIcon::SetImageData(int image)
         image_move_buffer_length);
       break;      
 
+    case vtkKWIcon::ICON_MOVE_H:
+      this->SetImageData(
+        image_move_h, 
+        image_move_h_width, image_move_h_height,
+        image_move_h_pixel_size, 
+        image_move_h_buffer_length);
+      break;      
+
+    case vtkKWIcon::ICON_MOVE_V:
+      this->SetImageData(
+        image_move_v, 
+        image_move_v_width, image_move_v_height,
+        image_move_v_pixel_size, 
+        image_move_v_buffer_length);
+      break;      
+
     case vtkKWIcon::ICON_PLUS:
       this->SetImageData(
         image_plus, 
