@@ -322,4 +322,8 @@ void vtkCocoaTextMapper::RenderOverlay(vtkViewport* viewport,
 
 }
 
-
+//----------------------------------------------------------------------------
+void vtkCocoaTextMapper::PrintSelf(ostream& os, vtkIndent indent)
+{
+  this->Superclass::PrintSelf(os,indent);
+}
