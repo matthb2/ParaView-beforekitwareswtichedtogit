@@ -56,11 +56,11 @@ class vtkObserver
   ~vtkObserver();
   void PrintSelf(ostream& os, vtkIndent indent);
   
-  float Priority;
   vtkCommand *Command;
   unsigned long Event;
   unsigned long Tag;
   vtkObserver *Next;
+  float Priority;
 };
 
 void vtkObserver::PrintSelf(ostream& os, vtkIndent indent)

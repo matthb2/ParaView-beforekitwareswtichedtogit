@@ -292,8 +292,10 @@ void vtkPlaneWidget::SetEnabled(int enabling)
   this->Interactor->Render();
 }
 
-void vtkPlaneWidget::ProcessEvents(vtkObject* object, unsigned long event,
-                                       void* clientdata, void* vtkNotUsed(calldata))
+void vtkPlaneWidget::ProcessEvents(vtkObject* vtkNotUsed(object), 
+                                   unsigned long event,
+                                   void* clientdata, 
+                                   void* vtkNotUsed(calldata))
 {
   vtkPlaneWidget* self = reinterpret_cast<vtkPlaneWidget *>( clientdata );
 

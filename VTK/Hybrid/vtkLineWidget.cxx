@@ -228,8 +228,10 @@ void vtkLineWidget::SetEnabled(int enabling)
   this->Interactor->Render();
 }
 
-void vtkLineWidget::ProcessEvents(vtkObject* object, unsigned long event,
-                                  void* clientdata, void* vtkNotUsed(calldata))
+void vtkLineWidget::ProcessEvents(vtkObject* vtkNotUsed(object), 
+                                  unsigned long event,
+                                  void* clientdata, 
+                                  void* vtkNotUsed(calldata))
 {
   vtkLineWidget* self = reinterpret_cast<vtkLineWidget *>( clientdata );
 
