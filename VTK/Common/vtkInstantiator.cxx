@@ -40,6 +40,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 =========================================================================*/
 #include "vtkInstantiator.h"
 #include "vtkObjectFactory.h"
+#include "vtkDebugLeaks.h"
 
 vtkCxxRevisionMacro(vtkInstantiator, "$Revision$");
 vtkStandardNewMacro(vtkInstantiator);
@@ -103,6 +104,9 @@ vtkCxxRevisionMacro(vtkInstantiatorHashTable, "$Revision$");
 //----------------------------------------------------------------------------
 vtkInstantiatorHashTable* vtkInstantiatorHashTable::New()
 {
+#ifdef VTK_DEBUG_LEAKS
+  vtkDebugLeaks::ConstructClass("vtkInstantiatorHashTable");
+#endif    
   // Don't use the object factory because it may not have been
   // initialized when this table is allocated.
   return new vtkInstantiatorHashTable;
