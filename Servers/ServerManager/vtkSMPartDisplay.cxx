@@ -282,6 +282,7 @@ vtkSMPartDisplay::~vtkSMPartDisplay()
   
   this->SetSource(0);
   this->SetProcessModule(0);
+  this->SetVolumeRenderField(0);
 }
 
 //----------------------------------------------------------------------------
