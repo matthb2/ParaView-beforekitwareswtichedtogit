@@ -270,9 +270,7 @@ void vtkProcrustesAlignmentFilter::Execute()
         new_mean->GetPoint(v, p);
         MeanPoints->GetPoint(v, p2);
         difference += vtkMath::Distance2BetweenPoints(p,p2);
-        p2[0] = p[0];
-        p2[1] = p[1];
-        p2[2] = p[2];
+        MeanPoints->SetPoint(v, p);
       }
 
     // test for convergence
