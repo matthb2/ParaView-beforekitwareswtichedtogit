@@ -1294,7 +1294,7 @@ double vtkMeshQuality::TetMinAngle( vtkCell* cell )
 
   alpha = alpha < beta    ? alpha : beta;
   alpha = alpha < gamma   ? alpha : gamma;
-  alpha = alpha < gamma   ? alpha : gamma;
+  alpha = alpha < delta   ? alpha : delta;
   alpha = alpha < epsilon ? alpha : epsilon;
   
   return  (alpha < zeta ? alpha : zeta) * 180. * normal_coeff;
