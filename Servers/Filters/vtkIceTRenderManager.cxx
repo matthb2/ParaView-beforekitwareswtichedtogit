@@ -801,6 +801,17 @@ void vtkIceTRenderManager::PrintSelf(ostream &os, vtkIndent indent)
     {
     os << "(none)" << endl;
     }
+
+  os << indent << "Data Replication Group: ";
+  if (this->DataReplicationGroup)
+    {
+    os << endl;
+    this->DataReplicationGroup->PrintSelf(os, i2);
+    }
+  else
+    {
+    os << "(none)" << endl;
+    }
 }
 
 
