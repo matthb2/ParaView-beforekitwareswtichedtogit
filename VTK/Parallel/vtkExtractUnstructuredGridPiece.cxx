@@ -152,7 +152,7 @@ void vtkExtractUnstructuredGridPiece::Execute()
   if (ghostLevel > 0 && this->CreateGhostCells)
     {
     cellGhostLevels = vtkUnsignedCharArray::New();
-    cellGhostLevels->SetNumberOfTuples(numCells);
+    cellGhostLevels->Allocate(numCells);
     // We may want to create point ghost levels even
     // if there are no ghost cells.  Since it cost extra,
     // and no filter really uses it, and the filter did not
@@ -161,7 +161,7 @@ void vtkExtractUnstructuredGridPiece::Execute()
     pointOwnership = vtkIdList::New();
     pointOwnership->Allocate(numPts);
     pointGhostLevels = vtkUnsignedCharArray::New();
-    pointGhostLevels->SetNumberOfTuples(numPts);
+    pointGhostLevels->Allocate(numPts);
     }
     
   // Break up cells based on which piece they belong to.
