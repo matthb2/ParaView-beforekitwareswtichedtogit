@@ -118,7 +118,7 @@ void vtkGeometryFilter::Execute()
   vtkPoints *newPts;
   vtkIdType ptId;
   int npts;
-  vtkIdType pt;
+  vtkIdType pt=0;
   vtkPointData *pd = input->GetPointData();
   vtkCellData *cd = input->GetCellData();
   int allVisible;

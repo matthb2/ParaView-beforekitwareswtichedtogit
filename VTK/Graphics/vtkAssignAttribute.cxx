@@ -186,7 +186,7 @@ void vtkAssignAttribute::Execute()
   if ((this->AttributeType != -1) &&
       (this->AttributeLocation != -1) && (this->FieldType != -1))
     {
-    vtkDataSetAttributes* ods;
+    vtkDataSetAttributes* ods=0;
     // Get the appropriate output DataSetAttributes
     switch (this->AttributeLocation)
       {

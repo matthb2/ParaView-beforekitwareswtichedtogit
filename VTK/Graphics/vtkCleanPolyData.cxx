@@ -135,7 +135,7 @@ void vtkCleanPolyData::Execute()
   vtkIdType *pts;
   float x[3];
   float newx[3];
-  vtkIdType *pointMap; //used if no merging
+  vtkIdType *pointMap=0; //used if no merging
 
   vtkCellArray *inVerts  = input->GetVerts(),  *newVerts  = NULL;
   vtkCellArray *inLines  = input->GetLines(),  *newLines  = NULL;

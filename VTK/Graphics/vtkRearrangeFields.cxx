@@ -89,7 +89,7 @@ void vtkRearrangeFields::Execute()
 vtkFieldData* vtkRearrangeFields::GetFieldDataFromLocation(vtkDataSet* ds, 
                                                            int fieldLoc)
 {
-  vtkFieldData* fd;
+  vtkFieldData* fd=0;
 
   switch (fieldLoc)
     {

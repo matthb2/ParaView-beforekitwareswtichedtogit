@@ -84,7 +84,7 @@ void vtkGlyph3D::Execute()
   vtkDataSet *input = this->GetInput();
   int numberOfSources = this->GetNumberOfSources();
   vtkPolyData *defaultSource = NULL;
-  vtkIdTypeArray *pointIds;
+  vtkIdTypeArray *pointIds=0;
   
   vtkDebugMacro(<<"Generating glyphs");
 

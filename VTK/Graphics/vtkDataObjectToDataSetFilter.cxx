@@ -252,7 +252,7 @@ void vtkDataObjectToDataSetFilter::ExecuteInformation()
 void vtkDataObjectToDataSetFilter::Execute()
 {
   vtkIdType npts;
-  vtkDataObject *input = this->GetInput();
+  //vtkDataObject *input = this->GetInput();
 
   vtkDebugMacro(<<"Generating dataset from field data");
 
