@@ -29,6 +29,7 @@ vtkPVCompositeBuffer::vtkPVCompositeBuffer()
 {
   this->PData = NULL;
   this->ZData = NULL;
+  this->UncompressedLength = -1;
 }
 
   
@@ -52,8 +53,9 @@ void vtkPVCompositeBuffer::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->vtkObject::PrintSelf(os, indent);
   
-  os << indent << indent << "PData: " << this->PData << endl;
-  os << indent << indent << "ZData: " << this->ZData << endl;
+  os << indent << "PData: " << this->PData << endl;
+  os << indent << "ZData: " << this->ZData << endl;
+  os << indent << "UncompressedLength: " << this->UncompressedLength << endl;
 }
 
 
