@@ -224,10 +224,6 @@ void vtkDICOMImageReader::ExecuteData(vtkDataObject *output)
 
   this->ComputeDataIncrements();
 
-  // Get the pointer to the output pixel data
-  void *outPtr;
-  outPtr = data->GetScalarPointer();
-
   if (this->FileName)
     {
     vtkDebugMacro( << "Single file : " << this->FileName);
