@@ -954,6 +954,9 @@ void vtkGenericEnSightReader::ReplaceWildcards(char* fileName, int timeSet,
     sscanf(line, " %*s %*s %d", &fileNameNum);
     this->ReplaceWildcardsHelper(fileName, fileNameNum);
     }
+  
+  delete this->IS;
+  this->IS = NULL;
 }
 
 void vtkGenericEnSightReader::ReplaceWildcardsHelper(char* fileName, int num)
