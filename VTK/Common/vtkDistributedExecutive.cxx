@@ -104,7 +104,7 @@ int vtkDistributedExecutive::Update()
 }
 
 //----------------------------------------------------------------------------
-int vtkDistributedExecutive::Update(int port)
+int vtkDistributedExecutive::Update(int)
 {
   vtkErrorMacro("This class does not implement Update.");
   return 0;
