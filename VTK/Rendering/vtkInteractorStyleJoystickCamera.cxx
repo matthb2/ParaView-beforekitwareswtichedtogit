@@ -26,6 +26,9 @@ vtkStandardNewMacro(vtkInteractorStyleJoystickCamera);
 //----------------------------------------------------------------------------
 vtkInteractorStyleJoystickCamera::vtkInteractorStyleJoystickCamera() 
 {
+  // Use timers to handle continous interaction
+
+  this->UseTimers = 1;
 }
 
 //----------------------------------------------------------------------------

@@ -39,7 +39,7 @@ vtkInteractorStyle::vtkInteractorStyle()
   this->AnimState           = VTKIS_ANIM_OFF; 
 
   this->HandleObservers     = 1;
-  this->UseTimers           = 1;
+  this->UseTimers           = 0;
 
   this->AutoAdjustCameraClippingRange = 1;
   

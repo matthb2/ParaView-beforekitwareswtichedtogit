@@ -29,6 +29,10 @@ vtkInteractorStyleJoystickActor::vtkInteractorStyleJoystickActor()
   this->MotionFactor    = 10.0;
   this->InteractionProp = NULL;
   this->InteractionPicker = vtkCellPicker::New();
+
+  // Use timers to handle continous interaction
+
+  this->UseTimers = 1;
 }
 
 //----------------------------------------------------------------------------
