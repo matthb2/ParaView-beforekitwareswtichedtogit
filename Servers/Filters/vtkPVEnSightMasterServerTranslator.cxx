@@ -62,6 +62,8 @@ vtkPVEnSightMasterServerTranslator::~vtkPVEnSightMasterServerTranslator()
 void vtkPVEnSightMasterServerTranslator::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os, indent);
+  os << indent << "ProcessId: " << this->ProcessId << "\n";
+  
 }
 
 //----------------------------------------------------------------------------
