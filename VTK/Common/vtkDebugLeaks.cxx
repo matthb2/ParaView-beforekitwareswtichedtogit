@@ -389,17 +389,6 @@ void vtkDebugLeaks::ClassFinalize()
 }
 
 //----------------------------------------------------------------------------
-void vtkDebugLeaks::PrintSelf(ostream& os, vtkIndent indent)
-{
-  this->Superclass::PrintSelf(os,indent);
-  
-  os << indent << "MemoryTable:\n";
-  this->MemoryTable->PrintTable(os);
-
-  os << indent << "CriticalSection: " << this->CriticalSection << "\n";
-}
-
-//----------------------------------------------------------------------------
 
 // Purposely not initialized.  ClassInitialize will handle it.
 vtkDebugLeaksHashTable* vtkDebugLeaks::MemoryTable;
