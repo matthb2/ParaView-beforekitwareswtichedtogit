@@ -58,7 +58,7 @@ int vtkPPolyDataNormals::RequestData(
 }
 
 //--------------------------------------------------------------------------
-int vtkPPolyDataNormals::ComputeInputUpdateExtent(
+int vtkPPolyDataNormals::RequestUpdateExtent(
   vtkInformation *vtkNotUsed(request),
   vtkInformationVector **inputVector,
   vtkInformationVector *outputVector)
