@@ -150,6 +150,8 @@ int vtkPVMPIProcessModule::Start(int argc, char **argv)
   this->ArgumentCount = argc;
   this->Arguments = argv;
 
+  this->CreateLogFile("NodeLog");
+
   // Go through the motions.
   // This indirection is not really necessary and is just to mimick the
   // threaded controller.
