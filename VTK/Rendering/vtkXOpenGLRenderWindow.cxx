@@ -76,7 +76,9 @@ vtkXOpenGLRenderWindowInternal::vtkXOpenGLRenderWindowInternal(
   this->OffScreenWindow = NULL;
   this->ScreenMapped = rw->GetMapped();
   this->ScreenDoubleBuffer = rw->GetDoubleBuffer();
-#endif  
+#else
+  rw = 0;
+#endif
 }
 
 
