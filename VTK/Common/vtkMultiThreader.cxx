@@ -34,6 +34,10 @@ vtkStandardNewMacro(vtkMultiThreader);
 #include <pthread.h>
 #endif
 
+#ifdef __APPLE__
+#include <Carbon/Carbon.h>
+#endif
+
 // Initialize static member that controls global maximum number of threads
 static int vtkMultiThreaderGlobalMaximumNumberOfThreads = 0;
 
@@ -85,6 +89,12 @@ int vtkMultiThreader::GetGlobalDefaultNumberOfThreads()
 #if defined(__SVR4) && defined(sun) && defined(PTHREAD_MUTEX_NORMAL)
     pthread_setconcurrency(num);
 #endif
+#endif
+
+#ifdef __APPLE__
+    // MPProcessors returns the physical number of processors present
+    // MPProcessorsScheduled returns number of active processors
+    num = MPProcessors();
 #endif
 
 #ifdef _WIN32
