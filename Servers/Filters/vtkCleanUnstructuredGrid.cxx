@@ -21,7 +21,6 @@
 
 #include "vtkCleanUnstructuredGrid.h"
 
-#include "vtkIdType.h"
 #include "vtkUnstructuredGrid.h"
 #include "vtkCell.h"
 #include "vtkPoints.h"

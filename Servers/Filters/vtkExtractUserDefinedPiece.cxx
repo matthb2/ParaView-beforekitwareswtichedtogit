@@ -24,7 +24,6 @@
 #include "vtkPointData.h"
 #include "vtkCellData.h"
 #include "vtkIntArray.h"
-#include "vtkIdType.h"
 #include "vtkIdList.h"
 #include "vtkCell.h"
 #include "vtkPoints.h"

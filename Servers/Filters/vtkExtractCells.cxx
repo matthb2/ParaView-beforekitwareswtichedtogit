@@ -19,7 +19,6 @@
 
 #include "vtkExtractCells.h"
 
-#include "vtkIdType.h"
 #include "vtkCellArray.h"
 #include "vtkIntArray.h"
 #include "vtkIdType.h"
