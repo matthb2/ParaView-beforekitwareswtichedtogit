@@ -405,15 +405,6 @@ void vtkXOpenGLRenderWindow::WindowInitialize (void)
     
     this->Internal->ContextId = glXCreateContext(this->DisplayId, v, 0, GL_TRUE);
 
-    if (this->HasObserver(vtkCommand::ExitEvent))
-      {
-        this->InvokeEvent(vtkCommand::ExitEvent, NULL);
-      }
-    else
-      {
-        cout <<"no exit event" << endl;
-      }
-
     if(!this->Internal->ContextId)
       {
       vtkErrorMacro("Cannot create GLX context.  Aborting.");
