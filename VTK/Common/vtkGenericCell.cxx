@@ -85,6 +85,16 @@ int vtkGenericCell::IsLinear()
   return this->Cell->IsLinear();
 }
 
+int vtkGenericCell::RequiresInitialization()
+{
+  return this->Cell->RequiresInitialization();
+}
+
+void vtkGenericCell::Initialize()
+{
+  this->Cell->Initialize();
+}
+
 int vtkGenericCell::GetNumberOfEdges()
 {
   return this->Cell->GetNumberOfEdges();
@@ -252,7 +262,7 @@ void vtkGenericCell::SetCellType(int cellType)
     this->Points->Register(this);
     this->PointIds = this->Cell->PointIds;
     this->PointIds->Register(this);
-    }
+    }//need to change cell type
 }
 
 
