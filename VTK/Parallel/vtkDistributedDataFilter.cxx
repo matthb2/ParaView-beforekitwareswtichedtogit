@@ -3144,7 +3144,7 @@ vtkIntArray **vtkDistributedDataFilter::FindGlobalPointIds(
 
     for (ptId = 0; ptId < npoints; ptId++)
       {
-      localId = kd->FindPoint(pt);
+      localId = kd->FindPoint((double)pt[0], (double)pt[1], (double)pt[2]);
 
       if (localId >= 0)
         {
