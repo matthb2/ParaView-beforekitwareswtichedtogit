@@ -17,9 +17,7 @@
 =========================================================================*/
 #include "vtkWindow.h"
 
-#include <stdlib.h>
-#include <stdio.h>
-#include <string.h>
+#include "vtkString.h"
 
 vtkCxxRevisionMacro(vtkWindow, "$Revision$");
 
@@ -56,7 +54,7 @@ vtkWindow::~vtkWindow()
     }
 }
 
-void vtkWindow::SetWindowName( char * _arg )
+void vtkWindow::SetWindowName( const char * _arg )
 {
   vtkDebugMacro("Debug: In " __FILE__ << ", line " << __LINE__ << "\n" 
          << this->GetClassName() << " (" << this << "): setting " 
@@ -70,15 +68,7 @@ void vtkWindow::SetWindowName( char * _arg )
     {
     delete [] this->WindowName;
     }
-  if( _arg )
-    {
-    this->WindowName = new char[strlen(_arg)+1];
-    strcpy(this->WindowName,_arg);
-    }
-  else
-    {
-    this->WindowName = NULL;
-    }
+  this->WindowName = vtkString::Duplicate(_arg);
   this->Modified();
 }
 
