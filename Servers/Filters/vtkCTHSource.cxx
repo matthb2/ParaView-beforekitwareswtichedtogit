@@ -51,6 +51,36 @@ vtkCTHData *vtkCTHSource::GetOutput(int idx)
 }
 
 //----------------------------------------------------------------------------
+void vtkCTHSource::ComputeInputUpdateExtents(vtkDataObject *data)
+{
+  int piece, numPieces, ghostLevel;
+  vtkCTHData *output = (vtkCTHData*)data;
+  int idx;
+
+  output->GetUpdateExtent(piece, numPieces, ghostLevel);
+  
+  // make sure piece is valid
+  if (piece < 0 || piece >= numPieces)
+    {
+    return;
+    }
+  
+  if (ghostLevel < 0)
+    {
+    return;
+    }
+  
+  // just copy the Update extent as default behavior.
+  for (idx = 0; idx < this->NumberOfInputs; ++idx)
+    {
+    if (this->Inputs[idx])
+      {
+      this->Inputs[idx]->SetUpdateExtent(piece, numPieces, ghostLevel);
+      }
+    }
+}
+
+//----------------------------------------------------------------------------
 void vtkCTHSource::SetOutput(vtkCTHData *output)
 {
   this->vtkSource::SetNthOutput(0, output);
