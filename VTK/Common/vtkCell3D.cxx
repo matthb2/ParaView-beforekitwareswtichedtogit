@@ -21,6 +21,7 @@
 #include "vtkPointLocator.h"
 #include "vtkMarchingCubesCases.h"
 #include "vtkPointData.h"
+#include "vtkCellData.h"
 #include "vtkTetra.h"
 #include "vtkPoints.h"
 #include "vtkCellArray.h"
@@ -128,7 +129,13 @@ void vtkCell3D::Clip(float value, vtkDataArray *cellScalars,
     // If the cell is interior we are done.
     if ( allInside )
       {
+      vtkIdType numTetras = tets->GetNumberOfCells();
       this->Triangulator->AddTetras(0,tets);
+      vtkIdType numAddedTetras = tets->GetNumberOfCells() - numTetras;
+      for (j=0; j<numAddedTetras; j++)
+        {
+        outCD->CopyData(inCD, cellId, numTetras+j);
+        }
       }
     // Otherwise we have produced tetrahedra and now clip these using
     // the faster vtkTetra::Clip() method.
