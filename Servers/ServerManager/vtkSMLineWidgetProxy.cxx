@@ -75,7 +75,6 @@ void vtkSMLineWidgetProxy::UpdateVTKObjects()
     {
     pm->SendStream(this->Servers,str,0);
     }
-  this->InvokeEvent(vtkKWEvent::WidgetModifiedEvent);
 }
 
 //----------------------------------------------------------------------------

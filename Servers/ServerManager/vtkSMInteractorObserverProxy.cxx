@@ -114,6 +114,10 @@ void vtkSMInteractorObserverProxy::ExecuteEvent(vtkObject*, unsigned long event,
     {
     this->InvokeEvent(vtkCommand::EndInteractionEvent);
     }
+  else
+    {
+    this->UpdateVTKObjects();
+    }
 }
 
 //----------------------------------------------------------------------------
