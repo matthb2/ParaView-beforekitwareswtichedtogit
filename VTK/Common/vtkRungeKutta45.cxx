@@ -87,9 +87,9 @@ int vtkRungeKutta45::ComputeNextStep(float* xprev, float* dxprev,
                                      float* xnext, float t, float& delT,
                                      float& delTActual,
                                      float minStep, float maxStep, 
-                                     float maxError, float& vtkNotUsed(error))
+                                     float maxError, float& estErr )
 {
-  float estErr = VTK_LARGE_FLOAT;
+  estErr = VTK_LARGE_FLOAT;
 
   // Step size should always be positive. We'll check anyway.
   if (minStep < 0)
