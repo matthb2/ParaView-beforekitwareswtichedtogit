@@ -414,6 +414,10 @@ int vtkEnSightReader::ReadCaseFile()
   if (this->FilePath)
     {
     sfilename = this->FilePath;
+    if (sfilename.at(sfilename.length()-1) != '/')
+      {
+      sfilename += "/";
+      }
     sfilename += this->CaseFileName;
     vtkDebugMacro("full path to case file: " << sfilename.c_str());
     }
