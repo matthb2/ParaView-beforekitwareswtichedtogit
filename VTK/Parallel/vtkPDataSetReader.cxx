@@ -819,6 +819,12 @@ void vtkPDataSetReader::Execute()
       {
       return;
       }
+    if (output->CheckAttributes())
+      {
+      vtkErrorMacro("Attribute Mismatch.");
+      return;
+      }
+
     output->CopyStructure(data);
     output->GetCellData()->PassData(data->GetCellData());
     output->GetPointData()->PassData(data->GetPointData());
