@@ -170,7 +170,7 @@ void vtkXMLUnstructuredDataWriter::WriteInlinePieceAttributes()
 {
   vtkPointSet* input = this->GetInputAsPointSet();
   this->WriteScalarAttribute("NumberOfPoints",
-                             input->GetPoints()->GetNumberOfPoints());
+                             input->GetNumberOfPoints());
 }
 
 //----------------------------------------------------------------------------
