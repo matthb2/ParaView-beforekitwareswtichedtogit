@@ -92,9 +92,9 @@ void vtkPushImageReader::ExecuteInformation()
 // This function reads in one data of data.
 // templated to handle different data types.
 template <class OT>
-static void vtkPushImageReaderUpdate(vtkPushImageReader *self, 
-                                     vtkImageData *data,
-                                     OT *outPtr)
+void vtkPushImageReaderUpdate(vtkPushImageReader *self, 
+                              vtkImageData *data,
+                              OT *outPtr)
 {
   int outIncr[3];
   OT *outPtr1, *outPtr2;

@@ -257,7 +257,7 @@ void vtkPushPipeline::Trace(vtkProcessObject *po)
 {
   // add the po to the map
   this->AddPusher(po);
-  vtkPushPipelineProcessInfo *dref;
+  vtkPushPipelineProcessInfo *dref = NULL;
   this->ProcessMap->GetItem(po,dref);
   if (dref->Marked)
     {
@@ -344,7 +344,7 @@ vtkPushPipeline::GetPushProcessInfo(vtkProcessObject *pusher)
 vtkPushPipelineDataInfo *
 vtkPushPipeline::GetPushDataInfo(vtkDataObject *dao)
 {
-  vtkPushPipelineDataInfo *res;
+  vtkPushPipelineDataInfo *res = NULL;
   this->DataMap->GetItem(dao,res);
   return res;
 }
