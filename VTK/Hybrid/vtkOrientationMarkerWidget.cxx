@@ -571,6 +571,7 @@ void vtkOrientationMarkerWidget::OnMouseMove()
 
   this->UpdateOutline();
   this->EventCallbackCommand->SetAbortFlag( 1 );
+  this->InvokeEvent( vtkCommand::InteractionEvent, NULL );
   this->Interactor->Render();
 }
 
