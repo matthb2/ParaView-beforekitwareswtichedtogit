@@ -161,10 +161,11 @@ int vtkSMDataTypeDomain::IsInDomain(vtkSMSourceProxy* proxy)
 
   if (info->GetBaseDataClassName())
     {
-    vtkDataObject* dobj =  pm->GetDataObjectOfType(info->GetBaseDataClassName());
+    vtkDataObject* cDobj =  
+      pm->GetDataObjectOfType(info->GetBaseDataClassName());
     for (unsigned int i=0; i<numTypes; i++)
       {
-      if (dobj->IsA(this->GetDataType(i)))
+      if (cDobj->IsA(this->GetDataType(i)))
         {
         return 1;
         }

@@ -104,8 +104,8 @@ int vtkTestMultiBlockDataReader::RequestUpdateExtent(
     {
     //if (updatePiece == 0)
       {
-      vtkInformation* info = compInfo->GetInformation(0, i);
-      info->Set(vtkCompositeDataPipeline::MARKED_FOR_UPDATE(), 1);
+      vtkInformation* blockInfo = compInfo->GetInformation(0, i);
+      blockInfo->Set(vtkCompositeDataPipeline::MARKED_FOR_UPDATE(), 1);
       }
     }
 

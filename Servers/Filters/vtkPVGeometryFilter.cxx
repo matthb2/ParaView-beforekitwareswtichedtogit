@@ -612,7 +612,6 @@ void vtkPVGeometryFilter::CTHDataExecute(
 {
   if (!this->UseOutline)
     {
-    vtkPolyData *output = this->GetOutput();
     vtkCTHData* inCopy = vtkCTHData::New();
     inCopy->ShallowCopy(input);
     vtkCTHAMRSurface *surface = vtkCTHAMRSurface::New();

@@ -109,8 +109,8 @@ int vtkTestHierarchicalDataReader::RequestUpdateExtent(
       {
       if (updatePiece == 0)
         {
-        vtkInformation* info = compInfo->GetInformation(j, i);
-        info->Set(vtkCompositeDataPipeline::MARKED_FOR_UPDATE(), 1);
+        vtkInformation* blockInfo = compInfo->GetInformation(j, i);
+        blockInfo->Set(vtkCompositeDataPipeline::MARKED_FOR_UPDATE(), 1);
         }
       }
     }
