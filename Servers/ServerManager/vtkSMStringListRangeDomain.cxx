@@ -260,24 +260,6 @@ void vtkSMStringListRangeDomain::SetAnimationValue(
 }
 
 //---------------------------------------------------------------------------
-void vtkSMStringListRangeDomain::SetAnimationValueInBatch(
-  ofstream *file, vtkSMProperty *property, vtkClientServerID sourceID,
-  int idx, double value)
-{
-  if (!file || !property || !sourceID.ID)
-    {
-    return;
-    }
-  
-  char val[128];
-  sprintf(val, "%d", static_cast<int>(floor(value)));
-  *file << "  [$pvTemp" << sourceID << " GetProperty "
-        << property->GetXMLName() << "] SetElement " << 2*idx+1 << " " << val
-        << endl;
-  *file << "  $pvTemp" << sourceID << " UpdateVTKObjects" << endl;
-}
-
-//---------------------------------------------------------------------------
 void vtkSMStringListRangeDomain::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os, indent);

@@ -331,22 +331,6 @@ void vtkSMIntRangeDomain::SetAnimationValue(vtkSMProperty *property, int idx,
 }
 
 //---------------------------------------------------------------------------
-void vtkSMIntRangeDomain::SetAnimationValueInBatch(
-  ofstream *file, vtkSMProperty *property, vtkClientServerID sourceID,
-  int idx, double value)
-{
-  if (!file || !property || !sourceID.ID)
-    {
-    return;
-    }
-
-  *file << "  [$pvTemp" << sourceID << " GetProperty "
-        << property->GetXMLName() << "] SetElement " << idx << " "
-        << (int)(floor(value)) << endl;
-  *file << "  $pvTemp" << sourceID << " UpdateVTKObjects" << endl;
-}
-
-//---------------------------------------------------------------------------
 void vtkSMIntRangeDomain::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os, indent);
