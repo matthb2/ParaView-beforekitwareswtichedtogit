@@ -23,14 +23,17 @@
 vtkStandardNewMacro(vtkSMExtentDomain);
 vtkCxxRevisionMacro(vtkSMExtentDomain, "$Revision$");
 
+//---------------------------------------------------------------------------
 vtkSMExtentDomain::vtkSMExtentDomain()
 {
 }
 
+//---------------------------------------------------------------------------
 vtkSMExtentDomain::~vtkSMExtentDomain()
 {
 }
 
+//---------------------------------------------------------------------------
 void vtkSMExtentDomain::Update(vtkSMProperty*)
 {
   this->RemoveAllMinima();
@@ -44,6 +47,7 @@ void vtkSMExtentDomain::Update(vtkSMProperty*)
     }
 }
 
+//---------------------------------------------------------------------------
 void vtkSMExtentDomain::Update(vtkSMProxyProperty *pp)
 {
   unsigned int i, j;
@@ -71,6 +75,7 @@ void vtkSMExtentDomain::Update(vtkSMProxyProperty *pp)
     }
 }
 
+//---------------------------------------------------------------------------
 void vtkSMExtentDomain::SetAnimationValue(vtkSMProperty *property, int idx,
                                           double value)
 {
@@ -109,6 +114,7 @@ void vtkSMExtentDomain::SetAnimationValue(vtkSMProperty *property, int idx,
     }
 }
 
+//---------------------------------------------------------------------------
 void vtkSMExtentDomain::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os, indent);

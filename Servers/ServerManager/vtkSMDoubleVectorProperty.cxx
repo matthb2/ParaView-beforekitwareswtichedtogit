@@ -108,7 +108,8 @@ void vtkSMDoubleVectorProperty::AppendCommandToStream(
 }
 
 //---------------------------------------------------------------------------
-void vtkSMDoubleVectorProperty::UpdateInformation( vtkClientServerID objectId )
+void vtkSMDoubleVectorProperty::UpdateInformation( 
+  int serverIds, vtkClientServerID objectId )
 {
   if (!this->InformationOnly)
     {
@@ -121,7 +122,7 @@ void vtkSMDoubleVectorProperty::UpdateInformation( vtkClientServerID objectId )
       << vtkClientServerStream::End;
 
   vtkProcessModule* pm = vtkProcessModule::GetProcessModule();
-  pm->SendStream(vtkProcessModule::DATA_SERVER, str, 0);
+  pm->SendStream(vtkProcessModule::GetRootId(serverIds), str, 0);
 
   const vtkClientServerStream& res = pm->GetLastResult(vtkProcessModule::DATA_SERVER_ROOT);
 
