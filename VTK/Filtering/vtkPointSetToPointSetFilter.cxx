@@ -24,6 +24,7 @@ vtkCxxRevisionMacro(vtkPointSetToPointSetFilter, "$Revision$");
 vtkPointSetToPointSetFilter::vtkPointSetToPointSetFilter()
 {
   this->NumberOfRequiredInputs = 1;
+  this->SetNumberOfInputPorts(1);
 }
 
 //----------------------------------------------------------------------------

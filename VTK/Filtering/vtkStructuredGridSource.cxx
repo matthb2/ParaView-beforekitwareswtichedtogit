@@ -14,6 +14,7 @@
 =========================================================================*/
 #include "vtkStructuredGridSource.h"
 
+#include "vtkInformation.h"
 #include "vtkObjectFactory.h"
 #include "vtkStructuredGrid.h"
 
@@ -22,6 +23,9 @@ vtkCxxRevisionMacro(vtkStructuredGridSource, "$Revision$");
 //----------------------------------------------------------------------------
 vtkStructuredGridSource::vtkStructuredGridSource()
 {
+  // A source has no inputs by default.
+  this->SetNumberOfInputPorts(0);
+
   this->vtkSource::SetNthOutput(0, vtkStructuredGrid::New());
   // Releasing data for pipeline parallism.
   // Filters will know it is empty. 
@@ -50,6 +54,18 @@ vtkStructuredGrid *vtkStructuredGridSource::GetOutput(int idx)
 void vtkStructuredGridSource::SetOutput(vtkStructuredGrid *output)
 {
   this->vtkSource::SetNthOutput(0, output);
+}
+
+//----------------------------------------------------------------------------
+int vtkStructuredGridSource::FillOutputPortInformation(int port,
+                                                       vtkInformation* info)
+{
+  if(!this->Superclass::FillOutputPortInformation(port, info))
+    {
+    return 0;
+    }
+  info->Set(vtkInformation::OUTPUT_DATA_TYPE(), "vtkStructuredGrid");
+  return 1;
 }
 
 //----------------------------------------------------------------------------

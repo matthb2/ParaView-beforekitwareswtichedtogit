@@ -23,6 +23,7 @@ vtkCxxRevisionMacro(vtkImageTwoInputFilter, "$Revision$");
 vtkImageTwoInputFilter::vtkImageTwoInputFilter()
 {
   this->NumberOfRequiredInputs = 2;
+  this->SetNumberOfInputPorts(1);
 }
 
 //----------------------------------------------------------------------------

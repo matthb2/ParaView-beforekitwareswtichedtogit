@@ -14,6 +14,7 @@
 =========================================================================*/
 #include "vtkPointSetSource.h"
 
+#include "vtkInformation.h"
 #include "vtkObjectFactory.h"
 #include "vtkPointSet.h"
 
@@ -22,7 +23,8 @@ vtkCxxRevisionMacro(vtkPointSetSource, "$Revision$");
 //----------------------------------------------------------------------------
 vtkPointSetSource::vtkPointSetSource()
 {
-
+  // A source has no inputs by default.
+  this->SetNumberOfInputPorts(0);
 }
 
 //----------------------------------------------------------------------------
@@ -47,6 +49,18 @@ vtkPointSet *vtkPointSetSource::GetOutput(int idx)
 void vtkPointSetSource::SetOutput(vtkPointSet *output)
 {
   this->vtkSource::SetNthOutput(0, output);
+}
+
+//----------------------------------------------------------------------------
+int vtkPointSetSource::FillOutputPortInformation(int port,
+                                                 vtkInformation* info)
+{
+  if(!this->Superclass::FillOutputPortInformation(port, info))
+    {
+    return 0;
+    }
+  info->Set(vtkInformation::OUTPUT_DATA_TYPE(), "vtkPointSet");
+  return 1;
 }
 
 //----------------------------------------------------------------------------

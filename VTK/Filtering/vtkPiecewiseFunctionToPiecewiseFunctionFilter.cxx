@@ -21,8 +21,9 @@ vtkCxxRevisionMacro(vtkPiecewiseFunctionToPiecewiseFunctionFilter, "$Revision$")
 //----------------------------------------------------------------------------
 vtkPiecewiseFunctionToPiecewiseFunctionFilter::vtkPiecewiseFunctionToPiecewiseFunctionFilter() 
 {
-  this->vtkProcessObject::SetNumberOfInputs(1);
   this->NumberOfRequiredInputs = 1;
+  this->SetNumberOfInputPorts(1);
+  this->vtkProcessObject::SetNumberOfInputs(1);
 }
 //----------------------------------------------------------------------------
 // Specify the input data or filter.

@@ -22,6 +22,9 @@ vtkCxxRevisionMacro(vtkHierarchicalBoxSource, "$Revision$");
 //----------------------------------------------------------------------------
 vtkHierarchicalBoxSource::vtkHierarchicalBoxSource()
 {
+  // A source has no inputs by default.
+  this->SetNumberOfInputPorts(0);
+
   this->vtkSource::SetNthOutput(0, vtkHierarchicalBoxDataSet::New());
   // Releasing data for pipeline parallism.
   // Filters will know it is empty. 

@@ -15,6 +15,7 @@
 #include "vtkHierarchicalBoxToPolyDataFilter.h"
 
 #include "vtkHierarchicalBoxDataSet.h"
+#include "vtkInformation.h"
 
 vtkCxxRevisionMacro(vtkHierarchicalBoxToPolyDataFilter, "$Revision$");
 
@@ -22,6 +23,7 @@ vtkCxxRevisionMacro(vtkHierarchicalBoxToPolyDataFilter, "$Revision$");
 vtkHierarchicalBoxToPolyDataFilter::vtkHierarchicalBoxToPolyDataFilter()
 {
   this->NumberOfRequiredInputs = 1;
+  this->SetNumberOfInputPorts(1);
 }
 
 //----------------------------------------------------------------------------
@@ -47,6 +49,19 @@ vtkHierarchicalBoxDataSet *vtkHierarchicalBoxToPolyDataFilter::GetInput()
     }
   
   return (vtkHierarchicalBoxDataSet *)(this->Inputs[0]);
+}
+
+//----------------------------------------------------------------------------
+int
+vtkHierarchicalBoxToPolyDataFilter
+::FillInputPortInformation(int port, vtkInformation* info)
+{
+  if(!this->Superclass::FillInputPortInformation(port, info))
+    {
+    return 0;
+    }
+  info->Set(vtkInformation::INPUT_REQUIRED_DATA_TYPE(), "vtkHierarchicalBoxDataSet");
+  return 1;
 }
 
 //----------------------------------------------------------------------------

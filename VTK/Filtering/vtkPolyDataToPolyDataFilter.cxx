@@ -14,6 +14,7 @@
 =========================================================================*/
 #include "vtkPolyDataToPolyDataFilter.h"
 
+#include "vtkInformation.h"
 #include "vtkPolyData.h"
 
 vtkCxxRevisionMacro(vtkPolyDataToPolyDataFilter, "$Revision$");
@@ -22,7 +23,9 @@ vtkCxxRevisionMacro(vtkPolyDataToPolyDataFilter, "$Revision$");
 vtkPolyDataToPolyDataFilter::vtkPolyDataToPolyDataFilter() 
 {
   this->NumberOfRequiredInputs = 1;
+  this->SetNumberOfInputPorts(1);
 }
+
 //----------------------------------------------------------------------------
 // Specify the input data or filter.
 void vtkPolyDataToPolyDataFilter::SetInput(vtkPolyData *input)
@@ -40,6 +43,19 @@ vtkPolyData *vtkPolyDataToPolyDataFilter::GetInput()
     }
   
   return (vtkPolyData *)(this->Inputs[0]);
+}
+
+//----------------------------------------------------------------------------
+int vtkPolyDataToPolyDataFilter::FillInputPortInformation(int port,
+                                                          vtkInformation* info)
+{
+  if(!this->Superclass::FillInputPortInformation(port, info))
+    {
+    return 0;
+    }
+  //info->Set(vtkInformation::INPUT_REQUIRED_DATA_TYPE(), "vtkPolyData"); HACK
+  info->Set(vtkInformation::INPUT_REQUIRED_DATA_TYPE(), "vtkDataSet");
+  return 1;
 }
 
 //----------------------------------------------------------------------------

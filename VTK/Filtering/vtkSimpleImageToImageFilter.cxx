@@ -22,6 +22,7 @@ vtkCxxRevisionMacro(vtkSimpleImageToImageFilter, "$Revision$");
 vtkSimpleImageToImageFilter::vtkSimpleImageToImageFilter()
 {
   this->NumberOfRequiredInputs = 1;
+  this->SetNumberOfInputPorts(1);
 }
 
 //----------------------------------------------------------------------------

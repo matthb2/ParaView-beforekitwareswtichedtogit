@@ -14,6 +14,7 @@
 =========================================================================*/
 #include "vtkDataSetToUnstructuredGridFilter.h"
 
+#include "vtkInformation.h"
 #include "vtkUnstructuredGrid.h"
 
 vtkCxxRevisionMacro(vtkDataSetToUnstructuredGridFilter, "$Revision$");
@@ -22,6 +23,7 @@ vtkCxxRevisionMacro(vtkDataSetToUnstructuredGridFilter, "$Revision$");
 vtkDataSetToUnstructuredGridFilter::vtkDataSetToUnstructuredGridFilter()
 {
   this->NumberOfRequiredInputs = 1;
+  this->SetNumberOfInputPorts(1);
 }
 
 //----------------------------------------------------------------------------
@@ -48,6 +50,18 @@ vtkDataSet *vtkDataSetToUnstructuredGridFilter::GetInput()
   return (vtkDataSet *)(this->Inputs[0]);
 }
 
+//----------------------------------------------------------------------------
+int
+vtkDataSetToUnstructuredGridFilter
+::FillInputPortInformation(int port, vtkInformation* info)
+{
+  if(!this->Superclass::FillInputPortInformation(port, info))
+    {
+    return 0;
+    }
+  info->Set(vtkInformation::INPUT_REQUIRED_DATA_TYPE(), "vtkDataSet");
+  return 1;
+}
 
 //----------------------------------------------------------------------------
 void vtkDataSetToUnstructuredGridFilter::PrintSelf(ostream& os, vtkIndent indent)

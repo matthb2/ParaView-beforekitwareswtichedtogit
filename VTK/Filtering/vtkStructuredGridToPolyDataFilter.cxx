@@ -14,6 +14,7 @@
 =========================================================================*/
 #include "vtkStructuredGridToPolyDataFilter.h"
 
+#include "vtkInformation.h"
 #include "vtkStructuredGrid.h"
 
 vtkCxxRevisionMacro(vtkStructuredGridToPolyDataFilter, "$Revision$");
@@ -22,6 +23,7 @@ vtkCxxRevisionMacro(vtkStructuredGridToPolyDataFilter, "$Revision$");
 vtkStructuredGridToPolyDataFilter::vtkStructuredGridToPolyDataFilter()
 {
   this->NumberOfRequiredInputs = 1;
+  this->SetNumberOfInputPorts(1);
 }
 
 //----------------------------------------------------------------------------
@@ -46,6 +48,19 @@ vtkStructuredGrid *vtkStructuredGridToPolyDataFilter::GetInput()
     }
   
   return (vtkStructuredGrid *)(this->Inputs[0]);
+}
+
+//----------------------------------------------------------------------------
+int
+vtkStructuredGridToPolyDataFilter
+::FillInputPortInformation(int port, vtkInformation* info)
+{
+  if(!this->Superclass::FillInputPortInformation(port, info))
+    {
+    return 0;
+    }
+  info->Set(vtkInformation::INPUT_REQUIRED_DATA_TYPE(), "vtkStructuredGrid");
+  return 1;
 }
 
 //----------------------------------------------------------------------------
