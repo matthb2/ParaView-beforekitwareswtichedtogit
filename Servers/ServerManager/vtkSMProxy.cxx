@@ -86,6 +86,8 @@ vtkSMProxy::vtkSMProxy()
   // By default, all objects are created on server 1.
   this->Internals->ServerIDs.push_back(1);
   this->VTKClassName = 0;
+  this->XMLGroup = 0;
+  this->XMLName = 0;
   this->ObjectsCreated = 0;
 
   vtkClientServerID nullID = { 0 };
@@ -116,8 +118,6 @@ vtkSMProxy::vtkSMProxy()
     pm->GetInterpreter()->ClearLastResult();
     }
 
-  this->XMLGroup = 0;
-  this->XMLName = 0;
 }
 
 //---------------------------------------------------------------------------
