@@ -336,7 +336,7 @@ void vtkDesktopDeliveryServer::ReadReducedImage()
 }
 
 void vtkDesktopDeliveryServer::LocalComputeVisiblePropBounds(vtkRenderer *ren,
-                                 float bounds[6])
+                                 double bounds[6])
 {
   if (this->ParallelRenderManager)
     {
