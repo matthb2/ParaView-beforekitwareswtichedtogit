@@ -160,7 +160,7 @@ void vtkExtractEdges::Execute()
         for ( i=0; i < numEdgePts; i++, pt1=pt2, pts[0]=pts[1] )
           {
           pt2 = edgeIds->GetId(i);
-          x = edgePts->GetPoint(pt2);
+          x = edgePts->GetPoint(i);
           if ( this->Locator->InsertUniquePoint(x, pts[1]) )
             {
             outPD->CopyData (pd,pt2,pts[1]);
