@@ -24,7 +24,7 @@
 #include "vtkPointData.h"
 
 #ifdef _MSC_VER
-#pragma warning (push, 3)
+#pragma warning (push, 2)
 #endif
 #include <vector>
 #ifdef _MSC_VER
