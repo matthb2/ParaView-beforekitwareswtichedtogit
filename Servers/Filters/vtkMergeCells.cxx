@@ -338,8 +338,10 @@ void vtkMergeCells::PrintSelf(ostream& os, vtkIndent indent)
   os << indent << "NumberOfCells: " << this->NumberOfCells << endl;
   os << indent << "NumberOfPoints: " << this->NumberOfPoints << endl;
 
-  os << indent << "GlobalIdArrayName: " << this->GlobalIdArrayName << endl;
-
+  if (this->GlobalIdArrayName)
+    {
+    os << indent << "GlobalIdArrayName: " << this->GlobalIdArrayName << endl;
+    }
   os << indent << "GlobalIdMap size: " << this->GlobalIdMap.size() << endl;
 
   os << indent << "UnstructuredGrid: " << this->UnstructuredGrid << endl;
