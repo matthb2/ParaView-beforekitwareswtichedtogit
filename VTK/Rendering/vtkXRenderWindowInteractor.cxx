@@ -369,7 +369,7 @@ void vtkXRenderWindowInteractor::PrintSelf(ostream& os, vtkIndent indent)
   this->Superclass::PrintSelf(os,indent);
   if (vtkXRenderWindowInteractor::App)
     {
-    os << indent << "App: " << vtkXRenderWindowInteractor::App << "\n";
+    os << indent << "App: " << this->App << "\n";
     }
   else
     {
