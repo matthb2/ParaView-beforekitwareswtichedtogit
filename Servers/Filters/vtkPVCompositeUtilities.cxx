@@ -73,10 +73,10 @@ vtkPVCompositeUtilities::~vtkPVCompositeUtilities()
     this->FloatArrayCollection->Delete();
     this->FloatArrayCollection = NULL;
     }
-  if (this->FloatArrayCollection)
+  if (this->UnsignedCharArrayCollection)
     {
-    this->FloatArrayCollection->Delete();
-    this->FloatArrayCollection = NULL;
+    this->UnsignedCharArrayCollection->Delete();
+    this->UnsignedCharArrayCollection = NULL;
     }
 }
 
