@@ -265,6 +265,12 @@ void vtkDataObject::Update()
         ->Set(vtkStreamingDemandDrivenPipeline::UPDATE_EXTENT_INITIALIZED(),
               1);
       }
+    else
+      {
+      sddp->GetOutputInformation(index)
+        ->Set(vtkStreamingDemandDrivenPipeline::UPDATE_EXTENT_INITIALIZED(),
+              0);
+      }
 
     // Update this output.
     sddp->Update(producer, index);
