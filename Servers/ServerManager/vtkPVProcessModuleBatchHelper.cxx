@@ -31,6 +31,7 @@ vtkStandardNewMacro(vtkPVProcessModuleBatchHelper);
 EXTERN void TclSetLibraryPath _ANSI_ARGS_((Tcl_Obj * pathPtr));
 extern "C" int Vtktcl_Init(Tcl_Interp *interp);
 extern "C" int Vtkpvservermanagertcl_Init(Tcl_Interp *interp); 
+extern "C" int Vtkpvservercommontcl_Init(Tcl_Interp *interp); 
 
 //----------------------------------------------------------------------------
 static Tcl_Interp *vtkPVProcessModuleBatchHelperInitializeTcl(int argc, 
@@ -152,6 +153,7 @@ static Tcl_Interp *vtkPVProcessModuleBatchHelperInitializeTcl(int argc,
 
   Vtktcl_Init(interp);
   Vtkpvservermanagertcl_Init(interp); 
+  Vtkpvservercommontcl_Init(interp); 
 
   return interp;
 }
