@@ -1096,17 +1096,17 @@ int vtkPlanesIntersection::IntersectsProjection(vtkPoints *R, int dir)
     {
     case Xdim:
 
-      intersects = this->regionPts->rectangleIntersectionX(R);
+      intersects = this->regionPts->RectangleIntersectionX(R);
       break;
 
     case Ydim:
 
-      intersects = this->regionPts->rectangleIntersectionY(R);
+      intersects = this->regionPts->RectangleIntersectionY(R);
       break;
 
     case Zdim:
 
-      intersects = this->regionPts->rectangleIntersectionZ(R);
+      intersects = this->regionPts->RectangleIntersectionZ(R);
       break;
     }
 
