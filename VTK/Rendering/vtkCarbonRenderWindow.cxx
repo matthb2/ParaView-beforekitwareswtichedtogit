@@ -346,7 +346,6 @@ vtkCarbonRenderWindow::vtkCarbonRenderWindow()
   this->ParentId = 0;
   this->StereoType = 0;
   this->SetWindowName("Visualization Toolkit - Carbon");
-  this->TextureResourceIds = vtkIdList::New();
   this->CursorHidden = 0;
   this->ForceMakeCurrent = 0;
 }
