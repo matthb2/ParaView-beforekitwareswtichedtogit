@@ -138,8 +138,9 @@ void vtkMCubesReader::Execute()
   else // read data to get bounds
     {
     fseek (fp, this->HeaderSize, 0);
-    bounds[0] = bounds[2] = bounds[4] = VTK_DOUBLE_MAX;
-    bounds[1] = bounds[3] = bounds[5] = -VTK_DOUBLE_MAX;
+    // cannot use vtkMath uninitialze bounds for this computation
+    bounds[0] = bounds[2] = bounds[4] = VTK_FLOAT_MAX;
+    bounds[1] = bounds[3] = bounds[5] = -VTK_FLOAT_MAX;
     for (i=0; fread(&point, sizeof(pointType), 1, fp); i++) 
       {
       // swap bytes if necc
