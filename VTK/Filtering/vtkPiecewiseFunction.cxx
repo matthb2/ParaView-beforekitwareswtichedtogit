@@ -89,15 +89,6 @@ void vtkPiecewiseFunction::ShallowCopy( vtkDataObject *o )
   this->vtkDataObject::ShallowCopy(o);
 }
 
-vtkDataObject *vtkPiecewiseFunction::MakeObject()
-{
-  vtkPiecewiseFunction *f;
-
-  f = vtkPiecewiseFunction::New();
-  f->DeepCopy( this );
-  return (vtkDataObject *)f;
-}
-
 void vtkPiecewiseFunction::Initialize()
 {
   if ( this->Function)
