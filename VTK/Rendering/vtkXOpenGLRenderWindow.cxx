@@ -928,7 +928,7 @@ void vtkXOpenGLRenderWindow::MakeCurrent()
 
 void vtkXOpenGLRenderWindow::SetForceMakeCurrent()
 {
-  this.ForceMakeCurrent = 1;
+  this->ForceMakeCurrent = 1;
 }
 
 int vtkXOpenGLRenderWindowFoundMatch;
