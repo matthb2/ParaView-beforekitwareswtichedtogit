@@ -118,7 +118,7 @@ char* vtkString::Append(const char* str1, const char* str2)
     return 0;
     }
   char *newstr = 
-    new char[ vtkString::Length(str1) + vtkString::Length(str1)+1];
+    new char[ vtkString::Length(str1) + vtkString::Length(str2)+1];
   if ( !newstr )
     {
     return 0;
