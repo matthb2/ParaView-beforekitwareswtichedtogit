@@ -855,14 +855,3 @@ void vtkFieldData::InsertComponent(const vtkIdType i, const int j,
   this->Tuple[j] = c;
   this->InsertTuple(i,this->Tuple);
 }
-
-//----------------------------------------------------------------------------
-#ifndef VTK_REMOVE_LEGACY_CODE
-vtkFieldData* vtkFieldData::MakeObject()
-{
-  VTK_LEGACY_METHOD(MakeObject, "4.2");
-  vtkFieldData* f = this->NewInstance();
-  f->CopyStructure(this);
-  return f;
-}
-#endif
