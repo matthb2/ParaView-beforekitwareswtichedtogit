@@ -957,7 +957,7 @@ void vtkPVClientServerModule::Exit()
 // Eliminate it if possible. !!!!!!!!
 int vtkPVClientServerModule::GetPartitionId()
 {
-  if (this->Options->GetClientMode())
+  if (this->Options && this->Options->GetClientMode())
     {
     return -1;
     }
@@ -972,7 +972,7 @@ int vtkPVClientServerModule::GetPartitionId()
 // This is used to determine which filters are available.
 int vtkPVClientServerModule::GetNumberOfPartitions()
 {
-  if (this->Options->GetClientMode())
+  if (this->Options && this->Options->GetClientMode())
     {
     return this->NumberOfServerProcesses;
     }

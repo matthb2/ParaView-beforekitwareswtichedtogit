@@ -403,6 +403,10 @@ const char* vtkPVProcessModule::GetDemoPath()
 
 #else
 
+  if (!this->Options)
+    {
+    return 0;
+    }
   vtkKWDirectoryUtilities* util = vtkKWDirectoryUtilities::New();
   const char* selfPath = util->FindSelfPath(
     this->Options->GetArgv0());
