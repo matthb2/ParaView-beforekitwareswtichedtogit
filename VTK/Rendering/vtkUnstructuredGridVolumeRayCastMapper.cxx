@@ -219,7 +219,7 @@ void vtkUnstructuredGridVolumeRayCastMapper::SelectScalarArray(const char *array
   this->Modified();
 
   delete[] this->ArrayName;
-  this->ArrayName = new char[strlen(arrayName + 1)];
+  this->ArrayName = new char[strlen(arrayName) + 1];
   strcpy(this->ArrayName, arrayName);
   this->ArrayAccessMode = VTK_GET_ARRAY_BY_NAME;
 }
