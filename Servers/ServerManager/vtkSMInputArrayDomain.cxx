@@ -29,9 +29,9 @@ vtkCxxRevisionMacro(vtkSMInputArrayDomain, "$Revision$");
 
 //---------------------------------------------------------------------------
 static const char* const vtkSMInputArrayDomainAttributeTypes[] = {
-  "POINT",
-  "CELL",
-  "ANY"
+  "point",
+  "cell",
+  "any"
 };
 
 //---------------------------------------------------------------------------
