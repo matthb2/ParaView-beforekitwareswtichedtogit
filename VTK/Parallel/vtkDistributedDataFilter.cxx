@@ -4524,6 +4524,13 @@ int vtkDistributedDataFilter::HasMetadata(vtkDataSet *s)
   return vtkModelMetadata::HasMetadata(vtkUnstructuredGrid::SafeDownCast(s));
 }
 //-------------------------------------------------------------------------
+int vtkDistributedDataFilter::FillInputPortInformation(int, vtkInformation *info)
+{
+  info->Set(vtkAlgorithm::INPUT_REQUIRED_DATA_TYPE(), "vtkDataSet");
+  return 1;
+}
+
+//-------------------------------------------------------------------------
 void vtkDistributedDataFilter::PrintSelf(ostream& os, vtkIndent indent)
 {  
   this->Superclass::PrintSelf(os,indent);
