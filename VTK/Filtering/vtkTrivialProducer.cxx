@@ -100,7 +100,7 @@ int vtkTrivialProducer::FillOutputPortInformation(int, vtkInformation*)
 //----------------------------------------------------------------------------
 int
 vtkTrivialProducer::ProcessRequest(vtkInformation* request,
-                                   vtkInformationVector*,
+                                   vtkInformationVector**,
                                    vtkInformationVector* outputVector)
 {
   if(request->Has(vtkDemandDrivenPipeline::REQUEST_INFORMATION()) &&

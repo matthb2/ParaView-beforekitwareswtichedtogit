@@ -31,8 +31,8 @@ vtkPCellDataToPointData::vtkPCellDataToPointData()
 
 //----------------------------------------------------------------------------
 int vtkPCellDataToPointData::RequestData(
-  vtkInformation* request, 
-  vtkInformationVector* inputVector , 
+  vtkInformation* request,
+  vtkInformationVector** inputVector ,
   vtkInformationVector* outputVector)
 {
   vtkInformation* info = outputVector->GetInformationObject(0);
@@ -69,7 +69,7 @@ int vtkPCellDataToPointData::RequestData(
 //--------------------------------------------------------------------------
 int vtkPCellDataToPointData::ComputeInputUpdateExtent(
   vtkInformation*,
-  vtkInformationVector* inputVector,
+  vtkInformationVector** inputVector,
   vtkInformationVector* outputVector)
 {
   if (this->PieceInvariant == 0)
@@ -82,9 +82,7 @@ int vtkPCellDataToPointData::ComputeInputUpdateExtent(
   vtkInformation* opInfo = this->GetOutputPortInformation(0);
   int extentType = opInfo->Get(vtkDataObject::DATA_EXTENT_TYPE());
   vtkInformation* outInfo = outputVector->GetInformationObject(0);
-  vtkInformation* inInfo = 
-    inputVector->GetInformationObject(0)->Get(
-      vtkAlgorithm::INPUT_CONNECTION_INFORMATION())->GetInformationObject(0);
+  vtkInformation* inInfo = inputVector[0]->GetInformationObject(0);
   
   int piece, numPieces, ghostLevel;
   int* wholeExt;

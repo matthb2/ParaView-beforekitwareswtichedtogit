@@ -53,9 +53,9 @@ vtkRendererSource::~vtkRendererSource()
     }
 }
 
-void vtkRendererSource::RequestData(vtkInformation *, 
-                                         vtkInformationVector *, 
-                                         vtkInformationVector *outputVector)
+void vtkRendererSource::RequestData(vtkInformation*,
+                                    vtkInformationVector**,
+                                    vtkInformationVector* outputVector)
 {
   int numOutPts;
   float x1,y1,x2,y2;
@@ -280,7 +280,7 @@ unsigned long vtkRendererSource::GetMTime()
 //----------------------------------------------------------------------------
 void vtkRendererSource::ExecuteInformation (
   vtkInformation * vtkNotUsed(request),
-  vtkInformationVector * vtkNotUsed( inputVector ),
+  vtkInformationVector** vtkNotUsed( inputVector ),
   vtkInformationVector *outputVector)
 {
     vtkRenderer *ren = this->GetInput();

@@ -55,17 +55,16 @@ void vtkImageGradient::PrintSelf(ostream& os, vtkIndent indent)
 
 //----------------------------------------------------------------------------
 void vtkImageGradient::ExecuteInformation (
-  vtkInformation * vtkNotUsed(request),
-  vtkInformationVector *inputVector,
-  vtkInformationVector *outputVector)
+  vtkInformation* vtkNotUsed(request),
+  vtkInformationVector** inputVector,
+  vtkInformationVector* outputVector)
 {
   int extent[6];
   int idx;
 
   // get the info objects
   vtkInformation* outInfo = outputVector->GetInformationObject(0);
-  vtkInformation *inInfo = 
-    this->GetInputConnectionInformation(inputVector,0,0);
+  vtkInformation* inInfo = inputVector[0]->GetInformationObject(0);
 
   // invalid setting, it has not been set, so default to whole Extent
   inInfo->Get(vtkStreamingDemandDrivenPipeline::WHOLE_EXTENT(), 
@@ -93,17 +92,16 @@ void vtkImageGradient::ExecuteInformation (
 //----------------------------------------------------------------------------
 // This method computes the input extent necessary to generate the output.
 void vtkImageGradient::RequestUpdateExtent (
-  vtkInformation * vtkNotUsed(request),
-  vtkInformationVector *inputVector,
-  vtkInformationVector *outputVector)
+  vtkInformation* vtkNotUsed(request),
+  vtkInformationVector** inputVector,
+  vtkInformationVector* outputVector)
 {
   int wholeExtent[6];
   int idx;
 
   // get the info objects
   vtkInformation* outInfo = outputVector->GetInformationObject(0);
-  vtkInformation *inInfo = 
-    this->GetInputConnectionInformation(inputVector,0,0);
+  vtkInformation *inInfo = inputVector[0]->GetInformationObject(0);
 
   // invalid setting, it has not been set, so default to whole Extent
   inInfo->Get(vtkStreamingDemandDrivenPipeline::WHOLE_EXTENT(), 

@@ -544,7 +544,7 @@ void vtkSource::SetNumberOfOutputPorts(int n)
 
 //----------------------------------------------------------------------------
 int vtkSource::ProcessRequest(vtkInformation* request,
-                              vtkInformationVector*,
+                              vtkInformationVector**,
                               vtkInformationVector* outputVector)
 {
   if(request->Has(vtkDemandDrivenPipeline::REQUEST_DATA_OBJECT()))

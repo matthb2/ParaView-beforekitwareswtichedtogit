@@ -37,7 +37,7 @@ vtkImageLuminance::vtkImageLuminance()
 // This method overrides information set by parent's ExecuteInformation.
 void vtkImageLuminance::ExecuteInformation(
   vtkInformation       * vtkNotUsed( request ),
-  vtkInformationVector * vtkNotUsed( inputVector ), 
+  vtkInformationVector** vtkNotUsed( inputVector ),
   vtkInformationVector * outputVector)
 {
   // get the info objects

@@ -36,8 +36,8 @@ vtkCellDataToPointData::vtkCellDataToPointData()
 
 //----------------------------------------------------------------------------
 int vtkCellDataToPointData::RequestData(
-  vtkInformation*, 
-  vtkInformationVector* inputVector , 
+  vtkInformation*,
+  vtkInformationVector** inputVector,
   vtkInformationVector* outputVector)
 {
   vtkInformation* info = outputVector->GetInformationObject(0);
@@ -45,9 +45,7 @@ int vtkCellDataToPointData::RequestData(
     info->Get(vtkDataObject::DATA_OBJECT()));
   if (!output) {return 0;}
 
-  vtkInformation* inInfo = 
-    inputVector->GetInformationObject(0)->Get(
-      vtkAlgorithm::INPUT_CONNECTION_INFORMATION())->GetInformationObject(0);
+  vtkInformation* inInfo = inputVector[0]->GetInformationObject(0);
   vtkDataSet *input = vtkDataSet::SafeDownCast(
     inInfo->Get(vtkDataObject::DATA_OBJECT()));
   if (!input) {return 0;}

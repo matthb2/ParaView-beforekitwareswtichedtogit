@@ -87,7 +87,7 @@ void vtkImageGaussianSource::SetWholeExtent(int xMin, int xMax,
 //----------------------------------------------------------------------------
 void vtkImageGaussianSource::ExecuteInformation (
   vtkInformation * vtkNotUsed(request),
-  vtkInformationVector * vtkNotUsed( inputVector ),
+  vtkInformationVector** vtkNotUsed( inputVector ),
   vtkInformationVector *outputVector)
 {
   // get the info objects

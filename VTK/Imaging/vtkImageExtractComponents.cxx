@@ -109,7 +109,7 @@ void vtkImageExtractComponents::SetComponents(int c1)
 // This method tells the superclass that only one component will remain.
 void vtkImageExtractComponents::ExecuteInformation(
   vtkInformation       * vtkNotUsed( request ),
-  vtkInformationVector * vtkNotUsed( inputVector ), 
+  vtkInformationVector ** vtkNotUsed( inputVector ), 
   vtkInformationVector * outputVector)
 {
   // get the info objects

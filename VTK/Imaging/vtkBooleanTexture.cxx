@@ -46,7 +46,7 @@ vtkBooleanTexture::vtkBooleanTexture()
 //----------------------------------------------------------------------------
 void vtkBooleanTexture::ExecuteInformation (
   vtkInformation * vtkNotUsed(request),
-  vtkInformationVector * vtkNotUsed( inputVector ),
+  vtkInformationVector** vtkNotUsed( inputVector ),
   vtkInformationVector *outputVector)
 {
   // get the info objects

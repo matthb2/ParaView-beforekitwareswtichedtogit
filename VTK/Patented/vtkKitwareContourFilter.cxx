@@ -51,12 +51,10 @@ vtkKitwareContourFilter::~vtkKitwareContourFilter()
 
 int vtkKitwareContourFilter::ComputeInputUpdateExtent(
   vtkInformation* request,
-  vtkInformationVector* inputVector,
+  vtkInformationVector** inputVector,
   vtkInformationVector* outputVector)
 {
-  vtkInformation* inInfo = 
-    inputVector->GetInformationObject(0)->Get(
-      vtkAlgorithm::INPUT_CONNECTION_INFORMATION())->GetInformationObject(0);
+  vtkInformation* inInfo = inputVector[0]->GetInformationObject(0);
   vtkDataSet *input = vtkDataSet::SafeDownCast(
     inInfo->Get(vtkDataObject::DATA_OBJECT()));
 
@@ -172,13 +170,11 @@ int vtkKitwareContourFilter::ComputeInputUpdateExtent(
 // General contouring filter.  Handles arbitrary input.
 //
 int vtkKitwareContourFilter::RequestData(
-  vtkInformation* request, 
-  vtkInformationVector* inputVector , 
+  vtkInformation* request,
+  vtkInformationVector** inputVector,
   vtkInformationVector* outputVector)
 {
-  vtkInformation* inInfo = 
-    inputVector->GetInformationObject(0)->Get(
-      vtkAlgorithm::INPUT_CONNECTION_INFORMATION())->GetInformationObject(0);
+  vtkInformation* inInfo = inputVector[0]->GetInformationObject(0);
   vtkDataSet *input = vtkDataSet::SafeDownCast(
     inInfo->Get(vtkDataObject::DATA_OBJECT()));
   if (!input) {return 0;}

@@ -957,7 +957,7 @@ vtkImplicitModeller::FillInputPortInformation(int port, vtkInformation* info)
 
 //----------------------------------------------------------------------------
 int vtkImplicitModeller::ProcessRequest(vtkInformation* request,
-                                        vtkInformationVector* inputVector,
+                                        vtkInformationVector** inputVector,
                                         vtkInformationVector* outputVector)
 {
   // should we generate the data?

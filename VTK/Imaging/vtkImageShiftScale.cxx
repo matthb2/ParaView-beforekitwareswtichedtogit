@@ -41,7 +41,7 @@ vtkImageShiftScale::vtkImageShiftScale()
 //----------------------------------------------------------------------------
 void vtkImageShiftScale::ExecuteInformation (
   vtkInformation * vtkNotUsed(request),
-  vtkInformationVector * vtkNotUsed( inputVector ), 
+  vtkInformationVector ** vtkNotUsed( inputVector ), 
   vtkInformationVector * outputVector)
 {
   if (this->OutputScalarType != -1)

@@ -38,7 +38,7 @@ vtkImageCast::vtkImageCast()
 // Just change the Image type.
 void vtkImageCast::ExecuteInformation(
   vtkInformation       * vtkNotUsed( request ),
-  vtkInformationVector * vtkNotUsed( inputVector ), 
+  vtkInformationVector** vtkNotUsed( inputVector ),
   vtkInformationVector * outputVector)
 {
   // get the info objects

@@ -89,7 +89,7 @@ void vtkWindowToImageFilter::PrintSelf(ostream& os, vtkIndent indent)
 // This method returns the largest region that can be generated.
 void vtkWindowToImageFilter::ExecuteInformation (
   vtkInformation * vtkNotUsed(request),
-  vtkInformationVector * vtkNotUsed( inputVector ),
+  vtkInformationVector** vtkNotUsed( inputVector ),
   vtkInformationVector *outputVector)
 {
   if (this->Input == NULL )
