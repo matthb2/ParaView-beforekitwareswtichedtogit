@@ -91,6 +91,7 @@ void vtkInteractorObserver::ProcessEvents(vtkObject* object, unsigned long event
       break;
     case vtkCommand::DeleteEvent:
       self->Interactor = NULL; //its going bye bye
+      self->Enabled = 0;
       break;
     }
 }
