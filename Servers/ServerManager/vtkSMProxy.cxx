@@ -653,8 +653,8 @@ void vtkSMProxy::CreateVTKObjects(int numObjects)
     vtkClientServerID objectId = pm->NewStreamObject(this->VTKClassName, stream);
 
     this->Internals->IDs.push_back(objectId);
-    // This broke render server.
-    pm->GetStream() << vtkClientServerStream::Invoke << pm->GetProcessModuleID()
+
+    stream << vtkClientServerStream::Invoke << pm->GetProcessModuleID()
       << "RegisterProgressEvent"
       << objectId << static_cast<int>(objectId.ID)
       << vtkClientServerStream::End;
