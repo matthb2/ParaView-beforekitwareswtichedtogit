@@ -191,8 +191,10 @@ struct VTK_JPEG_ERROR_MANAGER
 
 typedef struct VTK_JPEG_ERROR_MANAGER* VTK_JPEG_ERROR_PTR;
 
-extern "C" 
+extern "C"
 {
+  /* The JPEG library does not expect the error function to return.
+     Therefore we must use this ugly longjmp call.  */
   void
   VTK_JPEG_ERROR_EXIT (j_common_ptr cinfo)
 {
