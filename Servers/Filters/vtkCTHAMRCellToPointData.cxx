@@ -63,13 +63,15 @@ vtkCTHAMRCellToPointData::~vtkCTHAMRCellToPointData()
 //--------------------------------------------------------------------------
 void vtkCTHAMRCellToPointData::RemoveAllVolumeArrayNames()
 {
-  this->VolumeArrayNames->RemoveAllItems();  
+  this->VolumeArrayNames->RemoveAllItems();
+  this->Modified();
 }
 
 //--------------------------------------------------------------------------
 void vtkCTHAMRCellToPointData::AddVolumeArrayName(const char* arrayName)
 {
   this->VolumeArrayNames->AddString(arrayName);
+  this->Modified();
 }
 
 //--------------------------------------------------------------------------
