@@ -418,6 +418,16 @@ void vtkXRenderWindowTclInteractorCallback(Widget vtkNotUsed(w),
 
     case KeyPress:
       {
+      int ctrl = 0;
+      if ((reinterpret_cast<XButtonEvent *>(event))->state & ControlMask)
+        {
+        ctrl = 1;
+        }
+      int shift = 0;
+      if ((reinterpret_cast<XButtonEvent *>(event))->state & ShiftMask)
+        {
+        shift = 1;
+        }
       KeySym ks;
       static char buffer[20];
       buffer[0] = '\0';
@@ -426,7 +436,7 @@ void vtkXRenderWindowTclInteractorCallback(Widget vtkNotUsed(w),
       yp = me->Size[1] - (reinterpret_cast<XKeyEvent*>(event))->y - 1;
       if (!me->Enabled) return;
       me->SetEventInformation(xp, yp,
-                              0, 0, buffer[0], 1, buffer);
+                              ctrl, shift, buffer[0], 1, buffer);
       me->InvokeEvent(vtkCommand::MouseMoveEvent, NULL);
       me->InvokeEvent(vtkCommand::CharEvent, NULL);
       }
