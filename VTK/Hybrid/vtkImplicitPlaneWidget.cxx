@@ -988,6 +988,8 @@ void vtkImplicitPlaneWidget::PlaceWidget(double bds[6])
                              (bounds[5]-bounds[4])*(bounds[5]-bounds[4]));
 
   this->UpdateRepresentation();
+
+  this->SizeHandles();
 }
 
 // Description:
