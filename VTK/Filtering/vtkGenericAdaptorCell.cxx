@@ -584,7 +584,8 @@ void vtkGenericAdaptorCell::TriangulateFace(vtkGenericAttributeCollection *attri
   
 
   //temporary:
-  vtkIdType npts, *pts = 0;
+  vtkIdType npts=0;
+  vtkIdType *pts = 0;
   double *point = this->InternalPoints->GetPointer(0);
   
   // for each cell-centered attribute: copy the value

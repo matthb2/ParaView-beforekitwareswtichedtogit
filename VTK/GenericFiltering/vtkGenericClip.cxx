@@ -141,7 +141,7 @@ void vtkGenericClip::Execute()
   vtkIdType numCells = input->GetNumberOfCells();
   vtkPointData *outPD = output->GetPointData();
   vtkCellData *outCD[2];
-  vtkIdType npts;
+  vtkIdType npts=0;
   vtkIdType *pts;
   int cellType = 0;
   int j;
