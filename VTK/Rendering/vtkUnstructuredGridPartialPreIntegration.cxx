@@ -253,8 +253,9 @@ void vtkPartialPreIntegrationTransferFunction::GetTransferFunction(
 inline void vtkPartialPreIntegrationTransferFunction::GetColor(double x,
                                                                double c[4])
 {
-  int i = 1;
-  while (this->ControlPoints[i] < x) i++;
+  unsigned int i = 1;
+  unsigned int size = this->ControlPoints.size();
+  while ((this->ControlPoints[i] < x) && (i < size-1)) i++;
 
   double before = this->ControlPoints[i-1];
   double after = this->ControlPoints[i];
