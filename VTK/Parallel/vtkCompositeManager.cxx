@@ -673,7 +673,7 @@ void vtkCompositeManager::ResetCameraClippingRange(vtkRenderer *ren)
 
 //----------------------------------------------------------------------------
 void vtkCompositeManager::ComputeVisiblePropBounds(vtkRenderer *ren, 
-                                                float bounds[6])
+						   float bounds[6])
 {
   float tmp[6];
   int id, num;
