@@ -42,6 +42,7 @@ vtkTransmitPolyDataPiece::~vtkTransmitPolyDataPiece()
 {
   this->Buffer->Delete();
   this->Buffer = NULL;
+  this->SetController(NULL);
 }
 
 //----------------------------------------------------------------------------

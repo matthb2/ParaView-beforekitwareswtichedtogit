@@ -33,6 +33,12 @@ vtkTransmitUnstructuredGridPiece::vtkTransmitUnstructuredGridPiece()
 }
 
 //----------------------------------------------------------------------------
+vtkTransmitUnstructuredGridPiece::~vtkTransmitUnstructuredGridPiece()
+{
+  this->SetController(NULL);
+}
+
+//----------------------------------------------------------------------------
 void vtkTransmitUnstructuredGridPiece::ComputeInputUpdateExtents(vtkDataObject *out)
 {
   vtkUnstructuredGrid *input = this->GetInput();

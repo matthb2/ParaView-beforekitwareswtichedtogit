@@ -170,7 +170,8 @@ void vtkMPIController::Initialize(int* argc, char*** argv)
   vtkMPIController::WorldRMICommunicator = vtkMPICommunicator::New();
   vtkMPIController::WorldRMICommunicator->Duplicate((vtkMPICommunicator*)this->Communicator);
   this->RMICommunicator = vtkMPIController::WorldRMICommunicator;
-  this->RMICommunicator->Register(this);
+  // Since we use Delete to get rid of the reference, we should use NULL to register.
+  this->RMICommunicator->Register(NULL);
 
   this->Modified();
 }
