@@ -78,7 +78,7 @@ void vtkSMInputProperty::SetInputsUpdateImmediately(int up)
 void vtkSMInputProperty::AppendCommandToStream(
   vtkSMProxy* cons, vtkClientServerStream* str, vtkClientServerID objectId )
 {
-  if (!this->Command || this->IsReadOnly)
+  if (!this->Command || this->InformationOnly)
     {
     return;
     }
