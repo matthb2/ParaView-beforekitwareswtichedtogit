@@ -291,6 +291,22 @@ int vtkSMIntRangeDomain::ReadXMLAttributes(vtkSMProperty* prop, vtkPVXMLElement*
 }
 
 //---------------------------------------------------------------------------
+void vtkSMIntRangeDomain::SetAnimationValue(vtkSMProperty *property, int idx,
+                                            double value)
+{
+  if (!property)
+    {
+    return;
+    }
+  
+  vtkSMIntVectorProperty *ivp = vtkSMIntVectorProperty::SafeDownCast(property);
+  if (ivp)
+    {
+    ivp->SetElement(idx, (int)(floor(value)));
+    }
+}
+
+//---------------------------------------------------------------------------
 void vtkSMIntRangeDomain::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os, indent);

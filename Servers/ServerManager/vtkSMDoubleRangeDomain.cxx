@@ -292,6 +292,23 @@ int vtkSMDoubleRangeDomain::ReadXMLAttributes(
 }
 
 //---------------------------------------------------------------------------
+void vtkSMDoubleRangeDomain::SetAnimationValue(vtkSMProperty *property,
+                                               int idx, double value)
+{
+  if (!property)
+    {
+    return;
+    }
+  
+  vtkSMDoubleVectorProperty *dvp =
+    vtkSMDoubleVectorProperty::SafeDownCast(property);
+  if (dvp)
+    {
+    dvp->SetElement(idx, value);
+    }
+}
+
+//---------------------------------------------------------------------------
 void vtkSMDoubleRangeDomain::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os, indent);
