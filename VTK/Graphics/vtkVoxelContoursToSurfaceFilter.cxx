@@ -637,8 +637,8 @@ void vtkVoxelContoursToSurfaceFilter::Execute()
     contourOutput = vtkPolyData::New();
     contourFilter->SetOutput( contourOutput );
     contourFilter->Update();
-    appendFilter->AddInput( contourFilter->GetOutput() );
     contourFilter->SetOutput( NULL );
+    appendFilter->AddInput( contourOutput );
     contourOutput->Delete();
 
 
