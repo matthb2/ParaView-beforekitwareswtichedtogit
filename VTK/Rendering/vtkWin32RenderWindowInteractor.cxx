@@ -683,7 +683,12 @@ LRESULT CALLBACK vtkHandleMessage2(HWND hWnd,UINT uMsg, WPARAM wParam,
         {
         (*me->ClassExitMethod)(me->ClassExitMethodArg);
         }
-      me->TerminateApp();
+      else
+        {
+        // Add a else condition to override the ExitEvent, and allow for example
+        // a message box: "Are you sure you want to quit?"
+        me->TerminateApp();
+        }
       break;
       
     case WM_CHAR:
