@@ -18,7 +18,11 @@
 #include "vtkObjectFactory.h"
 #include "vtkPointData.h"
 
-#include <png.h>
+#ifdef VTK_USE_SYSTEM_PNG
+# include <png.h>
+#else
+# include "vtk_png.h"
+#endif
 
 vtkCxxRevisionMacro(vtkPNGReader, "$Revision$");
 vtkStandardNewMacro(vtkPNGReader);
