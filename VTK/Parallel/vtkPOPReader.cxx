@@ -966,6 +966,7 @@ void vtkPOPReader::PrintSelf(ostream& os, vtkIndent indent)
      << this->ClipExtent[3] << ", " << this->ClipExtent[4] << ", "
      << this->ClipExtent[5] << endl;
 
+  os << indent << "NumberOfGhostLevels = " << this->NumberOfGhostLevels << endl;
 
 }
 
