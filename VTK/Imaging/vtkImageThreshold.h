@@ -38,52 +38,65 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 
 
 =========================================================================*/
-// .NAME vtkImageShrink3D - Subsamples an image.
+// .NAME vtkImageThreshold -  Flexible threshold
 // .SECTION Description
-// vtkImageShrink3D shrinks an image by sub sampling on a 
-// uniform grid. (integer multiples)
+// vtkImageThreshold Can do binary or continous thresholding
+// for lower, upper or a range of data.
+//  The output data type may be different than the output, but defaults
+// to the same type.
 
 
-#ifndef __vtkImageShrink3D_h
-#define __vtkImageShrink3D_h
+#ifndef __vtkImageThreshold_h
+#define __vtkImageThreshold_h
 
 
 #include "vtkImageFilter.h"
 
-class vtkImageShrink3D : public vtkImageFilter
+class vtkImageThreshold : public vtkImageFilter
 {
 public:
-  vtkImageShrink3D();
-  char *GetClassName() {return "vtkImageShrink3D";};
-  void PrintSelf(ostream& os, vtkIndent indent);
-  
-  // Description:
-  // Set/Get the shrink factors
-  vtkSetVector3Macro(ShrinkFactors,int);
-  vtkGetVector3Macro(ShrinkFactors,int);
+  vtkImageThreshold();
+  char *GetClassName() {return "vtkImageThreshold";};
+
+  void ThresholdByUpper(float thresh);
+  void ThresholdByLower(float thresh);
+  void ThresholdBetween(float lower, float upper);
 
   // Description:
-  // Set/Get the pixel to use as origin.
-  vtkSetVector3Macro(Shift,int);
-  vtkGetVector3Macro(Shift,int);
+  // Determines whether to replace the pixel in range with InValue
+  vtkSetMacro(ReplaceIn, int);
+  vtkGetMacro(ReplaceIn, int);
+  vtkBooleanMacro(ReplaceIn, int);
 
   // Description:
-  // Choose Averaging or sub sampling
-  vtkSetMacro(Averaging,int);
-  vtkGetMacro(Averaging,int);
-  vtkBooleanMacro(Averaging,int);
+  // Replace the in range pixels with this value.
+  vtkSetMacro(InValue, float);
+  vtkGetMacro(InValue, float);
   
+  // Description:
+  // Determines whether to replace the pixel out of range with OutValue
+  vtkSetMacro(ReplaceOut, int);
+  vtkGetMacro(ReplaceOut, int);
+  vtkBooleanMacro(ReplaceOut, int);
+
+  // Description:
+  // Replace the in range pixels with this value.
+  vtkSetMacro(OutValue, float);
+  vtkGetMacro(OutValue, float);
+  
+  // for the templated function (too many to make friends)
+  vtkGetMacro(UpperThreshold, float);
+  vtkGetMacro(LowerThreshold, float);
   
 protected:
-  int ShrinkFactors[3];
-  int Shift[3];
-  int Averaging;
+  float UpperThreshold;
+  float LowerThreshold;
+  int ReplaceIn;
+  float InValue;
+  int ReplaceOut;
+  float OutValue;
 
-  void ComputeOutputImageInformation(vtkImageRegion *inRegion,
-				     vtkImageRegion *outRegion);
-  void ComputeRequiredInputRegionExtent(vtkImageRegion *outRegion,
-					vtkImageRegion *inRegion);
-  void Execute(vtkImageRegion *inRegion, vtkImageRegion *outRegion);  
+  void Execute(vtkImageRegion *inRegion, vtkImageRegion *outRegion);
 };
 
 #endif

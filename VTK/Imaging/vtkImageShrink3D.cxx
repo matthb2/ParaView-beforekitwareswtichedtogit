@@ -38,14 +38,14 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 
 
 =========================================================================*/
-#include "vtkImageShrink3d.h"
+#include "vtkImageShrink3D.h"
 #include "vtkImageCache.h"
 
 
 //----------------------------------------------------------------------------
 // Description:
 // Constructor: Sets default filter to be identity.
-vtkImageShrink3d::vtkImageShrink3d()
+vtkImageShrink3D::vtkImageShrink3D()
 {
   this->SetAxes(VTK_IMAGE_X_AXIS, VTK_IMAGE_Y_AXIS, VTK_IMAGE_Z_AXIS);
   this->SetShrinkFactors(1, 1, 1);
@@ -54,7 +54,7 @@ vtkImageShrink3d::vtkImageShrink3d()
 }
 
 //----------------------------------------------------------------------------
-void vtkImageShrink3d::PrintSelf(ostream& os, vtkIndent indent)
+void vtkImageShrink3D::PrintSelf(ostream& os, vtkIndent indent)
 {
   vtkImageFilter::PrintSelf(os,indent);
   os << indent << "ShrinkFactors: (" << this->ShrinkFactors[0] << ", "
@@ -66,7 +66,7 @@ void vtkImageShrink3d::PrintSelf(ostream& os, vtkIndent indent)
 //----------------------------------------------------------------------------
 // Description:
 // This method computes the Region of input necessary to generate outRegion.
-void vtkImageShrink3d::ComputeRequiredInputRegionExtent(
+void vtkImageShrink3D::ComputeRequiredInputRegionExtent(
 					       vtkImageRegion *outRegion,
 					       vtkImageRegion *inRegion)
 {
@@ -98,7 +98,7 @@ void vtkImageShrink3d::ComputeRequiredInputRegionExtent(
 // Description:
 // Computes any global image information associated with regions.
 // Any problems with roundoff or negative numbers ???
-void vtkImageShrink3d::ComputeOutputImageInformation(
+void vtkImageShrink3D::ComputeOutputImageInformation(
 		    vtkImageRegion *inRegion, vtkImageRegion *outRegion)
 {
   int idx;
@@ -128,7 +128,7 @@ void vtkImageShrink3d::ComputeOutputImageInformation(
 //----------------------------------------------------------------------------
 // The templated execute function handles all the data types.
 template <class T>
-void vtkImageShrink3dExecute(vtkImageShrink3d *self,
+void vtkImageShrink3DExecute(vtkImageShrink3D *self,
 				   vtkImageRegion *inRegion, T *inPtr,
 				   vtkImageRegion *outRegion, T *outPtr)
 {
@@ -215,7 +215,7 @@ void vtkImageShrink3dExecute(vtkImageShrink3d *self,
 // This method uses the input region to fill the output region.
 // It can handle any type data, but the two regions must have the same 
 // data type.
-void vtkImageShrink3d::Execute(vtkImageRegion *inRegion, 
+void vtkImageShrink3D::Execute(vtkImageRegion *inRegion, 
 				       vtkImageRegion *outRegion)
 {
   void *inPtr = inRegion->GetScalarPointer();
@@ -235,27 +235,27 @@ void vtkImageShrink3d::Execute(vtkImageRegion *inRegion,
   switch (inRegion->GetScalarType())
     {
     case VTK_FLOAT:
-      vtkImageShrink3dExecute(this, 
+      vtkImageShrink3DExecute(this, 
 			  inRegion, (float *)(inPtr), 
 			  outRegion, (float *)(outPtr));
       break;
     case VTK_INT:
-      vtkImageShrink3dExecute(this, 
+      vtkImageShrink3DExecute(this, 
 			  inRegion, (int *)(inPtr), 
 			  outRegion, (int *)(outPtr));
       break;
     case VTK_SHORT:
-      vtkImageShrink3dExecute(this, 
+      vtkImageShrink3DExecute(this, 
 			  inRegion, (short *)(inPtr), 
 			  outRegion, (short *)(outPtr));
       break;
     case VTK_UNSIGNED_SHORT:
-      vtkImageShrink3dExecute(this, 
+      vtkImageShrink3DExecute(this, 
 			  inRegion, (unsigned short *)(inPtr), 
 			  outRegion, (unsigned short *)(outPtr));
       break;
     case VTK_UNSIGNED_CHAR:
-      vtkImageShrink3dExecute(this, 
+      vtkImageShrink3DExecute(this, 
 			  inRegion, (unsigned char *)(inPtr), 
 			  outRegion, (unsigned char *)(outPtr));
       break;
