@@ -114,6 +114,10 @@ vtkVolumeRayCastMapper::vtkVolumeRayCastMapper()
   this->RenderTableEntries     = 0;
 
   this->ZBuffer                = NULL;
+  this->ZBufferSize[0]         = 0;
+  this->ZBufferSize[1]         = 0;
+  this->ZBufferOrigin[0]       = 0;
+  this->ZBufferOrigin[1]       = 0;
   
   this->IntermixIntersectingGeometry = 1;
   
