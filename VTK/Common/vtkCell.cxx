@@ -179,6 +179,9 @@ char vtkCell::HitBBox (float bounds[6], float origin[3], float dir[3],
 
     return 1;
 }
+#undef VTK_RIGHT 
+#undef VTK_LEFT
+#undef VTK_MIDDLE
 
 // Compute cell bounding box (xmin,xmax,ymin,ymax,zmin,zmax). Return pointer
 // to array of six float values.
