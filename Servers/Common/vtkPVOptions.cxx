@@ -61,7 +61,8 @@ vtkPVOptions::vtkPVOptions()
   this->UseRenderingGroup = 0;
   this->GroupFileName = 0;
   this->XMLConfigFile = 0;
-
+  this->ParaViewDataName = 0;
+  
   this->ClientRenderServer = 0;
   this->ConnectRenderToData = 0;
   this->ConnectDataToRender = 0;
