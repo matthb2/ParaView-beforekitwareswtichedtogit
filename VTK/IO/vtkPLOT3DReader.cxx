@@ -767,7 +767,7 @@ void vtkPLOT3DReader::Execute()
                 this->SetErrorCode(vtkErrorCode::PrematureEndOfFileError);
                 // We need to generate output (otherwise, this filter will
                 // keep executing). So we produce all 0's
-                float nullpt[3] = {0.0, 0.0, 0.0};
+                double nullpt[3] = {0.0, 0.0, 0.0};
                 vtkIdType ipts, npts=this->PointCache[i]->GetNumberOfTuples();
                 for(ipts=0; ipts < npts; ipts++)
                   {

@@ -108,7 +108,7 @@ inline void vtkCopyPixel(T *&out, const T *in, int numscalars)
 }
 
 //----------------------------------------------------------------------------
-// Convert background color from float to appropriate type
+// Convert background color from double to appropriate type
 
 template <class T>
 void vtkAllocBackground(vtkImageStencil *self, T *&background)
