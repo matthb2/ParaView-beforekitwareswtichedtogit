@@ -2823,11 +2823,7 @@ void vtkImagePlaneWidget::Scale(double *p1, double *p2,
   double *o = this->PlaneSource->GetOrigin();
   double *pt1 = this->PlaneSource->GetPoint1();
   double *pt2 = this->PlaneSource->GetPoint2();
-
-  double center[3];
-  center[0] = o[0] + (pt1[0]-o[0])/2.0 + (pt2[0]-o[0])/2.0;
-  center[1] = o[1] + (pt1[1]-o[1])/2.0 + (pt2[1]-o[1])/2.0;
-  center[2] = o[2] + (pt1[2]-o[2])/2.0 + (pt2[2]-o[2])/2.0;
+  double* center = this->PlaneSource->GetCenter();
 
   // Compute the scale factor
   //
