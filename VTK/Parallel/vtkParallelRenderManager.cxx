@@ -599,8 +599,9 @@ void vtkParallelRenderManager::StartRender()
                            vtkParallelRenderManager::WIN_INFO_DOUBLE_SIZE,
                            id, 
                            vtkParallelRenderManager::WIN_INFO_DOUBLE_TAG);
-    this->SendWindowInformation();
     }
+  // This used to be inside the loop which caused too many sends.
+  this->SendWindowInformation();
 
   if (this->ImageReductionFactor > 1)
     {
