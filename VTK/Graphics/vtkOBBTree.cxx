@@ -77,6 +77,8 @@ vtkOBBTree::vtkOBBTree()
   this->Automatic = 1;
   this->Tolerance = 0.01;
   this->Tree = NULL;
+  this->PointsList = NULL;
+  this->InsertedPoints = NULL;
 }
 
 vtkOBBTree::~vtkOBBTree()

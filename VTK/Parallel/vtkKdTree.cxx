@@ -1051,6 +1051,8 @@ void vtkKdTree::InitializeCellLists()
 void vtkKdTree::DeleteCellLists()
 { 
   int i;
+  this->MaxWidth = 0.0;
+
   int num = this->CellList.nRegions;
   
   if (this->CellList.regionIds)

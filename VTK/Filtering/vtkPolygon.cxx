@@ -40,6 +40,9 @@ vtkPolygon::vtkPolygon()
   this->TriScalars = vtkDoubleArray::New();
   this->TriScalars->Allocate(3);
   this->Line = vtkLine::New();
+  this->Tolerance = 0.0;
+  this->SuccessfulTriangulation = 0;
+  this->Normal[0] = this->Normal[1] = this->Normal[2] = 0.0;
 }
 
 vtkPolygon::~vtkPolygon()
