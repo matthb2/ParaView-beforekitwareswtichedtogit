@@ -225,12 +225,12 @@ void vtkObjectBase::RemoveReferences()
 void vtkObjectBase::GarbageCollectionStarting()
 {
   // Do not delete this object until garbage collection is finishing.
-  this->Register(0);
+  this->Register(this);
 }
 
 //----------------------------------------------------------------------------
 void vtkObjectBase::GarbageCollectionFinishing()
 {
   // Delete this object now.
-  this->UnRegister(0);
+  this->UnRegister(this);
 }
