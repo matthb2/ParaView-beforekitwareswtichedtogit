@@ -113,9 +113,9 @@ void vtkDataSetTriangleFilter::StructuredExecute()
   dimensions[1] = dimensions[1] - 1;
   dimensions[2] = dimensions[2] - 1;
 
-  vtkIdType numSlices=dimensions[2];
+  vtkIdType numSlices = ( dimensions[2] > 0 ? dimensions[2] : 1 );
   int abort=0;
-  for (k = 0; k < dimensions[2] && !abort; k++)
+  for (k = 0; k < numSlices && !abort; k++)
     {
     this->UpdateProgress((double)k / numSlices);
     abort = this->GetAbortExecute();
