@@ -332,11 +332,11 @@ int vtkTubeFilter::GeneratePoints(vtkIdType offset,
     // if s is zero then just use sPrev cross n
     if (vtkMath::Normalize(s) == 0.0)
       {
-      vtkWarningMacro(<< "Using alternate bevel vector");
+      vtkDebugMacro(<< "Using alternate bevel vector");
       vtkMath::Cross(sPrev,n,s);
       if (vtkMath::Normalize(s) == 0.0)
         {
-        vtkWarningMacro(<< "Using alternate bevel vector");
+        vtkDebugMacro(<< "Using alternate bevel vector");
         }
       }
 
