@@ -159,6 +159,11 @@ void vtkImageShrink3D::ExecuteInformation(vtkImageData *inData,
 
   for (idx = 0; idx < 3; ++idx)
     {
+    // Avoid dividing by 0.
+    if (this->ShrinkFactors[idx])
+      {
+      this->ShrinkFactors[idx] = 1;
+      }
     // Scale the output extent
     wholeExtent[2*idx] = 
       (int)(ceil((double)(wholeExtent[2*idx] - this->Shift[idx]) 
