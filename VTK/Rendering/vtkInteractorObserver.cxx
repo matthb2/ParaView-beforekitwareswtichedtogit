@@ -20,6 +20,7 @@
 #include "vtkCallbackCommand.h"
 #include "vtkObjectFactory.h"
 #include "vtkRenderer.h"
+#include "vtkRenderWindowInteractor.h"
 
 vtkCxxRevisionMacro(vtkInteractorObserver, "$Revision$");
 

@@ -18,6 +18,7 @@
 
 #include "vtkAssemblyNode.h"
 #include "vtkAssemblyPath.h"
+#include "vtkCamera.h"
 #include "vtkFieldData.h"
 #include "vtkGeometryFilter.h"
 #include "vtkImageAppendComponents.h"

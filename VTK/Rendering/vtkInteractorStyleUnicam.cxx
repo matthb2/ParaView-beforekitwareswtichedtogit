@@ -25,6 +25,7 @@
 
 #include "vtkInteractorStyleUnicam.h"
 
+#include "vtkCamera.h"
 #include "vtkMath.h"
 #include "vtkObjectFactory.h"
 #include "vtkPolyDataMapper.h"

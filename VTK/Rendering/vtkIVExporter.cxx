@@ -18,14 +18,16 @@
 #include "vtkIVExporter.h"
 
 #include "vtkAssemblyNode.h"
+#include "vtkCamera.h"
 #include "vtkGeometryFilter.h"
+#include "vtkLight.h"
 #include "vtkMath.h"
 #include "vtkObjectFactory.h"
 #include "vtkPolyDataMapper.h"
 #include "vtkProperty.h"
+#include "vtkRenderWindow.h"
 #include "vtkTexture.h"
 #include "vtkUnsignedCharArray.h"
-#include "vtkRenderWindow.h"
 
 vtkCxxRevisionMacro(vtkIVExporter, "$Revision$");
 vtkStandardNewMacro(vtkIVExporter);

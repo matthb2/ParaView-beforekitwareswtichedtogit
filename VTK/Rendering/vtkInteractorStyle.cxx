@@ -26,6 +26,7 @@
 #include "vtkPolyDataMapper.h"
 #include "vtkProperty.h"
 #include "vtkRenderWindow.h"
+#include "vtkRenderWindowInteractor.h"
 
 vtkCxxRevisionMacro(vtkInteractorStyle, "$Revision$");
 

@@ -17,6 +17,7 @@
 =========================================================================*/
 #include "vtkRenderWindowInteractor.h"
 
+#include "vtkCamera.h"
 #include "vtkGraphicsFactory.h"
 #include "vtkInteractorStyleSwitch.h"
 #include "vtkMath.h"

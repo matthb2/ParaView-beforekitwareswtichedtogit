@@ -19,6 +19,7 @@
 
 #include "vtkAssemblyNode.h"
 #include "vtkCallbackCommand.h"
+#include "vtkCamera.h"
 #include "vtkCellPicker.h"
 #include "vtkDataSetMapper.h"
 #include "vtkImageData.h"
@@ -32,6 +33,7 @@
 #include "vtkPolyData.h"
 #include "vtkPolyDataMapper.h"
 #include "vtkProperty.h"
+#include "vtkRenderWindowInteractor.h"
 #include "vtkTexture.h"
 #include "vtkTextureMapToPlane.h"
 #include "vtkTransform.h"

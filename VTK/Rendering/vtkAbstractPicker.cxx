@@ -16,8 +16,10 @@
 
 =========================================================================*/
 #include "vtkAbstractPicker.h"
+
 #include "vtkObjectFactory.h"
 #include "vtkOldStyleCallbackCommand.h"
+#include "vtkRenderer.h"
 
 vtkCxxRevisionMacro(vtkAbstractPicker, "$Revision$");
 

@@ -16,10 +16,12 @@
 
 =========================================================================*/
 #include "vtkPropPicker.h"
-#include "vtkWorldPointPicker.h"
+
 #include "vtkAssemblyNode.h"
-#include "vtkObjectFactory.h"
 #include "vtkCommand.h"
+#include "vtkObjectFactory.h"
+#include "vtkRenderer.h"
+#include "vtkWorldPointPicker.h"
 
 vtkCxxRevisionMacro(vtkPropPicker, "$Revision$");
 vtkStandardNewMacro(vtkPropPicker);

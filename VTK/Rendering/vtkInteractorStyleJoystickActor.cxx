@@ -16,9 +16,15 @@
 
 =========================================================================*/
 #include "vtkInteractorStyleJoystickActor.h"
-#include "vtkObjectFactory.h"
-#include "vtkMath.h"
+
+#include "vtkCamera.h"
 #include "vtkCommand.h"
+#include "vtkMath.h"
+#include "vtkObjectFactory.h"
+#include "vtkRenderWindowInteractor.h"
+#include "vtkProp3D.h"
+#include "vtkRenderer.h"
+#include "vtkCellPicker.h"
 
 vtkCxxRevisionMacro(vtkInteractorStyleJoystickActor, "$Revision$");
 vtkStandardNewMacro(vtkInteractorStyleJoystickActor);

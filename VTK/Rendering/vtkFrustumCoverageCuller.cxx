@@ -16,9 +16,11 @@
 
 =========================================================================*/
 #include "vtkFrustumCoverageCuller.h"
+
+#include "vtkCamera.h"
+#include "vtkObjectFactory.h"
 #include "vtkProp.h"
 #include "vtkRenderer.h"
-#include "vtkObjectFactory.h"
 
 vtkCxxRevisionMacro(vtkFrustumCoverageCuller, "$Revision$");
 vtkStandardNewMacro(vtkFrustumCoverageCuller);

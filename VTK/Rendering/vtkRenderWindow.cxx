@@ -16,15 +16,13 @@
 
 =========================================================================*/
 #include "vtkRenderWindow.h"
+
+#include "vtkCamera.h"
+#include "vtkCommand.h"
+#include "vtkGraphicsFactory.h"
+#include "vtkMath.h"
 #include "vtkRenderWindowInteractor.h"
 #include "vtkTransform.h"
-#include "vtkMath.h"
-#include "vtkGraphicsFactory.h"
-#include "vtkCommand.h"
-
-#include <stdlib.h>
-#include <stdio.h>
-#include <string.h>
 
 vtkCxxRevisionMacro(vtkRenderWindow, "$Revision$");
 

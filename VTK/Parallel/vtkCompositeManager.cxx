@@ -18,9 +18,11 @@
 
 #include "vtkCompositeManager.h"
 
+#include "vtkCamera.h"
 #include "vtkCallbackCommand.h"
 #include "vtkCompressCompositer.h"
 #include "vtkFloatArray.h"
+#include "vtkLight.h"
 #include "vtkMultiProcessController.h"
 #include "vtkObjectFactory.h"
 #include "vtkPolyDataMapper.h"

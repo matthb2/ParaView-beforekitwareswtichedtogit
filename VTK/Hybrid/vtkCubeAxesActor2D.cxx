@@ -16,11 +16,13 @@
 
 =========================================================================*/
 #include "vtkCubeAxesActor2D.h"
+
 #include "vtkCamera.h"
 #include "vtkMath.h"
 #include "vtkObjectFactory.h"
 #include "vtkDataSet.h"
 #include "vtkAxisActor2D.h"
+#include "vtkViewport.h"
 
 vtkCxxRevisionMacro(vtkCubeAxesActor2D, "$Revision$");
 vtkStandardNewMacro(vtkCubeAxesActor2D);

@@ -16,12 +16,13 @@
 
 =========================================================================*/
 #include "vtkVolume.h"
-#include "vtkVolumeCollection.h"
-#include "vtkRenderer.h"
-#include "vtkVolumeRayCastMapper.h"
-#include "vtkObjectFactory.h"
 
-#include <stdlib.h>
+#include "vtkCamera.h"
+#include "vtkObjectFactory.h"
+#include "vtkRenderer.h"
+#include "vtkVolumeCollection.h"
+#include "vtkVolumeRayCastMapper.h"
+
 #include <math.h>
 
 vtkCxxRevisionMacro(vtkVolume, "$Revision$");

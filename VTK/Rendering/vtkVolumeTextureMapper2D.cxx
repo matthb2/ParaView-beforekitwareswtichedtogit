@@ -16,9 +16,11 @@
 
 =========================================================================*/
 #include "vtkVolumeTextureMapper2D.h"
-#include "vtkRenderWindow.h"
+
+#include "vtkCamera.h"
 #include "vtkGraphicsFactory.h"
 #include "vtkLargeInteger.h"
+#include "vtkRenderWindow.h"
 
 #define VTK_PLUS_X_MAJOR_DIRECTION  0
 #define VTK_MINUS_X_MAJOR_DIRECTION 1

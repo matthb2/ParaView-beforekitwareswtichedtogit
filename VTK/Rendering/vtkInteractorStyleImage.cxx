@@ -22,6 +22,7 @@
 #include "vtkCommand.h"
 #include "vtkMath.h"
 #include "vtkObjectFactory.h"
+#include "vtkRenderWindowInteractor.h"
 
 vtkCxxRevisionMacro(vtkInteractorStyleImage, "$Revision$");
 vtkStandardNewMacro(vtkInteractorStyleImage);

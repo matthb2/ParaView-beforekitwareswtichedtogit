@@ -18,7 +18,9 @@
 #include "vtkOOGLExporter.h"
 
 #include "vtkAssemblyNode.h"
+#include "vtkCamera.h"
 #include "vtkGeometryFilter.h"
+#include "vtkLight.h"
 #include "vtkMath.h"
 #include "vtkObjectFactory.h"
 #include "vtkPolyDataMapper.h"

@@ -16,13 +16,15 @@
 
 =========================================================================*/
 #include "vtkInteractorStyleSwitch.h"
-#include "vtkObjectFactory.h"
-#include "vtkCommand.h"
+
 #include "vtkCallbackCommand.h"
+#include "vtkCommand.h"
 #include "vtkInteractorStyleJoystickActor.h"
 #include "vtkInteractorStyleJoystickCamera.h"
 #include "vtkInteractorStyleTrackballActor.h"
 #include "vtkInteractorStyleTrackballCamera.h"
+#include "vtkObjectFactory.h"
+#include "vtkRenderWindowInteractor.h"
 
 vtkCxxRevisionMacro(vtkInteractorStyleSwitch, "$Revision$");
 vtkStandardNewMacro(vtkInteractorStyleSwitch);

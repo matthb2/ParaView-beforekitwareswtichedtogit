@@ -19,6 +19,7 @@
 
 #include "vtkAssemblyNode.h"
 #include "vtkCallbackCommand.h"
+#include "vtkCamera.h"
 #include "vtkCellPicker.h"
 #include "vtkConeSource.h"
 #include "vtkDoubleArray.h"
@@ -31,6 +32,7 @@
 #include "vtkPolyData.h"
 #include "vtkPolyDataMapper.h"
 #include "vtkProperty.h"
+#include "vtkRenderWindowInteractor.h"
 #include "vtkSphereSource.h"
 
 vtkCxxRevisionMacro(vtkPlaneWidget, "$Revision$");

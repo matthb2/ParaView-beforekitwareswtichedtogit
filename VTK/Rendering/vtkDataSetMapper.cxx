@@ -18,6 +18,7 @@
 #include "vtkDataSetMapper.h"
 #include "vtkPolyDataMapper.h"
 #include "vtkObjectFactory.h"
+#include "vtkDataSetSurfaceFilter.h"
 
 vtkCxxRevisionMacro(vtkDataSetMapper, "$Revision$");
 vtkStandardNewMacro(vtkDataSetMapper);

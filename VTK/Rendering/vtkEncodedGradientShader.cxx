@@ -17,8 +17,10 @@
 =========================================================================*/
 #include "vtkEncodedGradientShader.h"
 
+#include "vtkCamera.h"
 #include "vtkDirectionEncoder.h"
 #include "vtkEncodedGradientEstimator.h"
+#include "vtkLight.h"
 #include "vtkObjectFactory.h"
 #include "vtkRenderer.h"
 #include "vtkVolume.h"

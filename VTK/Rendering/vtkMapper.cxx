@@ -16,7 +16,9 @@
 
 =========================================================================*/
 #include "vtkMapper.h"
+
 #include "vtkLookupTable.h"
+#include "vtkDataSet.h"
 
 vtkCxxRevisionMacro(vtkMapper, "$Revision$");
 

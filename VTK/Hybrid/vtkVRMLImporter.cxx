@@ -40,10 +40,12 @@
 
 #include "vtkActor.h"
 #include "vtkByteSwap.h"
+#include "vtkCamera.h"
 #include "vtkConeSource.h"
 #include "vtkCubeSource.h"
 #include "vtkCylinderSource.h"
 #include "vtkFloatArray.h"
+#include "vtkLight.h"
 #include "vtkLookupTable.h"
 #include "vtkObjectFactory.h"
 #include "vtkPoints.h"

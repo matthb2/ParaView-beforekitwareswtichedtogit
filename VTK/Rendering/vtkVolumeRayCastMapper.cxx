@@ -17,6 +17,7 @@
 =========================================================================*/
 #include "vtkVolumeRayCastMapper.h"
 
+#include "vtkCamera.h"
 #include "vtkEncodedGradientEstimator.h"
 #include "vtkEncodedGradientShader.h"
 #include "vtkFiniteDifferenceGradientEstimator.h"

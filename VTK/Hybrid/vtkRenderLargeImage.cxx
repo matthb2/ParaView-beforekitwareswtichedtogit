@@ -17,13 +17,10 @@
 =========================================================================*/
 #include "vtkRenderLargeImage.h"
 
+#include "vtkCamera.h"
 #include "vtkObjectFactory.h"
 #include "vtkRenderWindow.h"
 #include "vtkRenderer.h"
-
-#include <stdio.h>
-#include <ctype.h>
-#include <string.h>
 
 vtkCxxRevisionMacro(vtkRenderLargeImage, "$Revision$");
 vtkStandardNewMacro(vtkRenderLargeImage);

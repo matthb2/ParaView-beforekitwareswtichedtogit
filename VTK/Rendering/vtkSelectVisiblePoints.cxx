@@ -16,9 +16,11 @@
 
 =========================================================================*/
 #include "vtkSelectVisiblePoints.h"
-#include "vtkRenderer.h"
-#include "vtkRenderWindow.h"
+
+#include "vtkCamera.h"
 #include "vtkObjectFactory.h"
+#include "vtkRenderWindow.h"
+#include "vtkRenderer.h"
 
 vtkCxxRevisionMacro(vtkSelectVisiblePoints, "$Revision$");
 vtkStandardNewMacro(vtkSelectVisiblePoints);

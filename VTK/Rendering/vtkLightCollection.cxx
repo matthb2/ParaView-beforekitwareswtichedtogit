@@ -16,9 +16,10 @@
 
 =========================================================================*/
 #include "vtkLightCollection.h"
-#include "vtkObjectFactory.h"
 
-#include <stdlib.h>
+#include "vtkObjectFactory.h"
+#include "vtkLight.h"
+
 #include <math.h>
 
 vtkCxxRevisionMacro(vtkLightCollection, "$Revision$");

@@ -20,6 +20,7 @@
 #include "vtkAssemblyNode.h"
 #include "vtkCallbackCommand.h"
 #include "vtkCellPicker.h"
+#include "vtkCamera.h"
 #include "vtkDoubleArray.h"
 #include "vtkFloatArray.h"
 #include "vtkMath.h"
@@ -29,6 +30,7 @@
 #include "vtkPolyDataMapper.h"
 #include "vtkProperty.h"
 #include "vtkSphereSource.h"
+#include "vtkRenderWindowInteractor.h"
 
 vtkCxxRevisionMacro(vtkBoxWidget, "$Revision$");
 vtkStandardNewMacro(vtkBoxWidget);

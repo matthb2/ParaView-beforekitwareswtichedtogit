@@ -17,10 +17,12 @@
 =========================================================================*/
 #include "vtkInteractorStyleJoystickCamera.h"
 
+#include "vtkCamera.h"
 #include "vtkCommand.h"
 #include "vtkMath.h"
 #include "vtkObjectFactory.h"
 #include "vtkRenderer.h"
+#include "vtkRenderWindowInteractor.h"
 
 vtkCxxRevisionMacro(vtkInteractorStyleJoystickCamera, "$Revision$");
 vtkStandardNewMacro(vtkInteractorStyleJoystickCamera);

@@ -16,9 +16,12 @@
 
 =========================================================================*/
 #include "vtkCamera.h"
+
 #include "vtkMath.h"
 #include "vtkTimeStamp.h"
 #include "vtkGraphicsFactory.h"
+#include "vtkPerspectiveTransform.h"
+#include "vtkTransform.h"
 
 #include <math.h>
 
@@ -938,3 +941,12 @@ void vtkCamera::PrintSelf(ostream& os, vtkIndent indent)
   os << indent << "WindowCenter: (" << this->WindowCenter[0] << ", " 
      << this->WindowCenter[1] << ")\n";
 }
+
+vtkMatrix4x4 *vtkCamera::GetViewTransformMatrix() 
+{ return this->ViewTransform->GetMatrix(); }
+
+float *vtkCamera::GetOrientation() 
+{ return this->ViewTransform->GetOrientation(); };
+
+float *vtkCamera::GetOrientationWXYZ() 
+{ return this->ViewTransform->GetOrientationWXYZ(); };
