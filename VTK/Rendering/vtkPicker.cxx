@@ -16,15 +16,17 @@
 
 =========================================================================*/
 #include "vtkPicker.h"
-#include "vtkCamera.h"
-#include "vtkMath.h"
-#include "vtkVertex.h"
-#include "vtkRenderWindow.h"
+
 #include "vtkAssemblyNode.h"
-#include "vtkVolume.h"
-#include "vtkObjectFactory.h"
-#include "vtkLODProp3D.h"
+#include "vtkCamera.h"
 #include "vtkCommand.h"
+#include "vtkLODProp3D.h"
+#include "vtkMath.h"
+#include "vtkObjectFactory.h"
+#include "vtkProperty.h"
+#include "vtkRenderWindow.h"
+#include "vtkVertex.h"
+#include "vtkVolume.h"
 
 vtkCxxRevisionMacro(vtkPicker, "$Revision$");
 vtkStandardNewMacro(vtkPicker);

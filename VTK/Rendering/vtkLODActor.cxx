@@ -16,9 +16,12 @@
 
 =========================================================================*/
 #include "vtkLODActor.h"
-#include "vtkRenderWindow.h"
-#include "vtkTimerLog.h"
+
 #include "vtkObjectFactory.h"
+#include "vtkProperty.h"
+#include "vtkRenderWindow.h"
+#include "vtkTexture.h"
+#include "vtkTimerLog.h"
 
 #include <stdlib.h>
 #include <math.h>

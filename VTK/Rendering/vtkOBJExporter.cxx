@@ -16,10 +16,13 @@
 
 =========================================================================*/
 #include "vtkOBJExporter.h"
-#include "vtkGeometryFilter.h"
+
 #include "vtkAssemblyNode.h"
-#include "vtkObjectFactory.h"
 #include "vtkFloatArray.h"
+#include "vtkGeometryFilter.h"
+#include "vtkMapper.h"
+#include "vtkObjectFactory.h"
+#include "vtkProperty.h"
 
 vtkCxxRevisionMacro(vtkOBJExporter, "$Revision$");
 vtkStandardNewMacro(vtkOBJExporter);

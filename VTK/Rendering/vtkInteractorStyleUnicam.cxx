@@ -24,13 +24,14 @@
  */
 
 #include "vtkInteractorStyleUnicam.h"
-#include "vtkMath.h"
-#include "vtkWorldPointPicker.h"
-#include "vtkRenderWindowInteractor.h"
-#include "vtkObjectFactory.h"
 
-#include "vtkSphereSource.h"
+#include "vtkMath.h"
+#include "vtkObjectFactory.h"
 #include "vtkPolyDataMapper.h"
+#include "vtkProperty.h"
+#include "vtkRenderWindowInteractor.h"
+#include "vtkSphereSource.h"
+#include "vtkWorldPointPicker.h"
 
 vtkCxxRevisionMacro(vtkInteractorStyleUnicam, "$Revision$");
 vtkStandardNewMacro(vtkInteractorStyleUnicam);

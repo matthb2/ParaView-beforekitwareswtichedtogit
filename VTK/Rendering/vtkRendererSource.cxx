@@ -16,10 +16,12 @@
 
 =========================================================================*/
 #include "vtkRendererSource.h"
-#include "vtkRenderWindow.h"
+
 #include "vtkFloatArray.h"
-#include "vtkUnsignedCharArray.h"
+#include "vtkMapper.h"
 #include "vtkObjectFactory.h"
+#include "vtkRenderWindow.h"
+#include "vtkUnsignedCharArray.h"
 
 vtkCxxRevisionMacro(vtkRendererSource, "$Revision$");
 vtkStandardNewMacro(vtkRendererSource);
@@ -179,7 +181,7 @@ void vtkRendererSource::UpdateInformation()
   vtkActorCollection *actors;
   vtkActor *actor;
   vtkMapper *mapper;
-  vtkDataObject *data;
+  vtkDataObject *data=0;
   float x1,y1,x2,y2;
   
   if (output == NULL || ren == NULL || ren->GetRenderWindow() == NULL)

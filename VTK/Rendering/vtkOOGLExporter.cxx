@@ -16,12 +16,15 @@
 
 =========================================================================*/
 #include "vtkOOGLExporter.h"
-#include "vtkGeometryFilter.h"
-#include "vtkPolyDataMapper.h"
-#include "vtkMath.h"
+
 #include "vtkAssemblyNode.h"
+#include "vtkGeometryFilter.h"
+#include "vtkMath.h"
 #include "vtkObjectFactory.h"
+#include "vtkPolyDataMapper.h"
+#include "vtkProperty.h"
 #include "vtkSystemIncludes.h"
+#include "vtkTexture.h"
 #include "vtkTriangleStrip.h"
 #include "vtkVersion.h"
 
@@ -268,7 +271,7 @@ void vtkOOGLExporter::WriteAnActor(vtkActor *anActor, FILE *fp, int count)
   vtkCellArray *cells;
   vtkIdType npts = 0;
   vtkIdType *indx = 0;
-  float tempf2;
+  float tempf2=0;
   vtkPolyDataMapper *pm;
   vtkUnsignedCharArray *colors;
    

@@ -15,19 +15,21 @@
      PURPOSE.  See the above copyright notice for more information.
 =========================================================================*/
 #include "vtkRIBExporter.h"
-#include "vtkRIBProperty.h"
-#include "vtkRIBLight.h"
+
+#include "vtkAssemblyNode.h"
+#include "vtkAssemblyPath.h"
+#include "vtkFieldData.h"
 #include "vtkGeometryFilter.h"
-#include "vtkMath.h"
-#include "vtkPolygon.h"
-#include "vtkTIFFWriter.h"
+#include "vtkImageAppendComponents.h"
 #include "vtkImageConstantPad.h"
 #include "vtkImageExtractComponents.h"
-#include "vtkImageAppendComponents.h"
-#include "vtkAssemblyPath.h"
-#include "vtkAssemblyNode.h"
+#include "vtkMapper.h"
+#include "vtkMath.h"
 #include "vtkObjectFactory.h"
-#include "vtkFieldData.h"
+#include "vtkPolygon.h"
+#include "vtkRIBLight.h"
+#include "vtkRIBProperty.h"
+#include "vtkTIFFWriter.h"
 
 vtkCxxRevisionMacro(vtkRIBExporter, "$Revision$");
 vtkStandardNewMacro(vtkRIBExporter);

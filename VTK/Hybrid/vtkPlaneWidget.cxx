@@ -30,6 +30,7 @@
 #include "vtkPlanes.h"
 #include "vtkPolyData.h"
 #include "vtkPolyDataMapper.h"
+#include "vtkProperty.h"
 #include "vtkSphereSource.h"
 
 vtkCxxRevisionMacro(vtkPlaneWidget, "$Revision$");

@@ -16,7 +16,9 @@
 
 =========================================================================*/
 #include "vtkActorCollection.h"
+
 #include "vtkObjectFactory.h"
+#include "vtkProperty.h"
 
 vtkCxxRevisionMacro(vtkActorCollection, "$Revision$");
 vtkStandardNewMacro(vtkActorCollection);

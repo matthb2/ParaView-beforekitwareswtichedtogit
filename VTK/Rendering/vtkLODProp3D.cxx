@@ -16,10 +16,12 @@
 
 =========================================================================*/
 #include "vtkLODProp3D.h"
+
 #include "vtkActor.h"
-#include "vtkVolume.h"
+#include "vtkMapper.h"
 #include "vtkObjectFactory.h"
 #include "vtkPropCollection.h"
+#include "vtkVolume.h"
 
 #include <stdlib.h>
 #include <math.h>

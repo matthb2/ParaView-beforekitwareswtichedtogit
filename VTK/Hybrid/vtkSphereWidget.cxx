@@ -16,6 +16,7 @@
 
 =========================================================================*/
 #include "vtkSphereWidget.h"
+
 #include "vtkMath.h"
 #include "vtkPolyDataMapper.h"
 #include "vtkSphereSource.h"
@@ -25,6 +26,7 @@
 #include "vtkSphere.h"
 #include "vtkCallbackCommand.h"
 #include "vtkObjectFactory.h"
+#include "vtkProperty.h"
 
 vtkCxxRevisionMacro(vtkSphereWidget, "$Revision$");
 vtkStandardNewMacro(vtkSphereWidget);

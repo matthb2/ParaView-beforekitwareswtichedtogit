@@ -16,11 +16,14 @@
 
 =========================================================================*/
 #include "vtkVRMLExporter.h"
-#include "vtkGeometryFilter.h"
-#include "vtkPolyDataMapper.h"
-#include "vtkMath.h"
+
 #include "vtkAssemblyNode.h"
+#include "vtkGeometryFilter.h"
+#include "vtkMath.h"
 #include "vtkObjectFactory.h"
+#include "vtkPolyDataMapper.h"
+#include "vtkProperty.h"
+#include "vtkTexture.h"
 
 vtkCxxRevisionMacro(vtkVRMLExporter, "$Revision$");
 vtkStandardNewMacro(vtkVRMLExporter);

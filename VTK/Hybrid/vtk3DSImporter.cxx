@@ -16,11 +16,13 @@
 
 =========================================================================*/
 #include "vtk3DSImporter.h"
+
 #include "vtkByteSwap.h"
+#include "vtkObjectFactory.h"
 #include "vtkPolyDataMapper.h"
 #include "vtkPolyDataNormals.h"
+#include "vtkProperty.h"
 #include "vtkStripper.h"
-#include "vtkObjectFactory.h"
 
 vtkCxxRevisionMacro(vtk3DSImporter, "$Revision$");
 vtkStandardNewMacro(vtk3DSImporter);
