@@ -561,7 +561,8 @@ void vtkSMLODPartDisplay::InvalidateGeometry()
 //----------------------------------------------------------------------------
 void vtkSMLODPartDisplay::RemoveAllCaches()
 {
-  if (this->UpdateSuppressorProxy)
+  if (this->UpdateSuppressorProxy &&
+      this->UpdateSuppressorProxy->GetNumberOfIDs())
     {
     vtkProcessModule* pm = vtkProcessModule::GetProcessModule();
     vtkClientServerStream stream;
@@ -574,6 +575,16 @@ void vtkSMLODPartDisplay::RemoveAllCaches()
       << this->LODUpdateSuppressorProxy->GetID(0) << "RemoveAllCaches"
       << vtkClientServerStream::End;
     pm->SendStream(vtkProcessModule::CLIENT_AND_SERVERS, stream);
+    }
+  else if (!this->UpdateSuppressorProxy->GetNumberOfIDs())
+    {
+    vtkPVProcessModule *pm = vtkPVProcessModule::SafeDownCast(
+      vtkProcessModule::GetProcessModule());
+    this->SetInputInternal(this->Source, pm);
+    if (pm->GetRenderModule())
+      {
+      pm->GetRenderModule()->AddDisplay(this);
+      }
     }
 }
 
