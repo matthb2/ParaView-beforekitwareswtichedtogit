@@ -147,7 +147,7 @@ void vtkImagePadFilter::ComputeInputUpdateExtent (int inExt[6],
 
 //----------------------------------------------------------------------------
 // Just clip the request.  The subclass may need to overwrite this method.
-void vtkImagePadFilter::ComputeInputUpdateExtent (
+void vtkImagePadFilter::RequestUpdateExtent (
   vtkInformation * vtkNotUsed(request),
   vtkInformationVector *inputVector,
   vtkInformationVector *outputVector)

@@ -37,7 +37,7 @@ vtkExtractVOI::vtkExtractVOI()
 
 //-----------------------------------------------------------------------------
 // Get ALL of the input.
-void vtkExtractVOI::ComputeInputUpdateExtent (
+void vtkExtractVOI::RequestUpdateExtent (
   vtkInformation * vtkNotUsed(request),
   vtkInformationVector *inputVector,
   vtkInformationVector *vtkNotUsed( outputVector ))

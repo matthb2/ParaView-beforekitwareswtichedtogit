@@ -45,7 +45,7 @@ void vtkImageDivergence::ExecuteInformation(
 
 //----------------------------------------------------------------------------
 // Just clip the request.  The subclass may need to overwrite this method.
-void vtkImageDivergence::ComputeInputUpdateExtent (
+void vtkImageDivergence::RequestUpdateExtent (
   vtkInformation * vtkNotUsed(request),
   vtkInformationVector *inputVector,
   vtkInformationVector *outputVector)

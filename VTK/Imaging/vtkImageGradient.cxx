@@ -92,7 +92,7 @@ void vtkImageGradient::ExecuteInformation (
 
 //----------------------------------------------------------------------------
 // This method computes the input extent necessary to generate the output.
-void vtkImageGradient::ComputeInputUpdateExtent (
+void vtkImageGradient::RequestUpdateExtent (
   vtkInformation * vtkNotUsed(request),
   vtkInformationVector *inputVector,
   vtkInformationVector *outputVector)
