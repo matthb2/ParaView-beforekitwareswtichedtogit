@@ -17,7 +17,12 @@
 =========================================================================*/
 #include "vtkExporter.h"
 
+#include "vtkRenderWindow.h"
+
 vtkCxxRevisionMacro(vtkExporter, "$Revision$");
+
+vtkCxxSetObjectMacro(vtkExporter,RenderWindow,vtkRenderWindow);
+
 
 // Construct with no start and end write methods or arguments.
 vtkExporter::vtkExporter()

@@ -23,6 +23,7 @@
 #include "vtkObjectFactory.h"
 #include "vtkPolyDataMapper.h"
 #include "vtkProperty.h"
+#include "vtkRenderWindow.h"
 #include "vtkTexture.h"
 
 vtkCxxRevisionMacro(vtkVRMLExporter, "$Revision$");

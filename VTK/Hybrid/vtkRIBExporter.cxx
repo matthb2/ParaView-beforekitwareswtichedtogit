@@ -29,6 +29,7 @@
 #include "vtkPolygon.h"
 #include "vtkRIBLight.h"
 #include "vtkRIBProperty.h"
+#include "vtkRenderWindow.h"
 #include "vtkTIFFWriter.h"
 
 vtkCxxRevisionMacro(vtkRIBExporter, "$Revision$");

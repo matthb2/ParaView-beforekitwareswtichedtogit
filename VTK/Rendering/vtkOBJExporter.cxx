@@ -17,12 +17,14 @@
 =========================================================================*/
 #include "vtkOBJExporter.h"
 
+#include "vtkActorCollection.h"
 #include "vtkAssemblyNode.h"
 #include "vtkFloatArray.h"
 #include "vtkGeometryFilter.h"
 #include "vtkMapper.h"
 #include "vtkObjectFactory.h"
 #include "vtkProperty.h"
+#include "vtkRenderWindow.h"
 
 vtkCxxRevisionMacro(vtkOBJExporter, "$Revision$");
 vtkStandardNewMacro(vtkOBJExporter);
