@@ -56,7 +56,7 @@ vtkQuad::~vtkQuad()
 }
 
 static const int VTK_QUAD_MAX_ITERATION=20;
-static const float VTK_QUAD_CONVERGED=1.e-05;
+static const float VTK_QUAD_CONVERGED=1.e-04;
 
 int vtkQuad::EvaluatePosition(float x[3], float* closestPoint,
                              int& subId, float pcoords[3], 
