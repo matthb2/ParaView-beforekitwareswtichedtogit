@@ -399,7 +399,8 @@ void vtkColorQuantizeNode::ComputeStdDev()
 {
   int   i, j;
   float mean;
-  int   count, medianCount;
+  int   count=0;
+  int   medianCount;
 
   // Create space for histogram
   this->Histogram[0] = new int[this->Bounds[1] - this->Bounds[0] + 1];

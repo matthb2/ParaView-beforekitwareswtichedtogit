@@ -87,7 +87,7 @@ void vtkUnstructuredGridReader::Execute()
 {
   int i, numPts=0, numCells=0;
   char line[256];
-  int npts, size, ncells;
+  int npts, size, ncells=0;
   int piece, numPieces, ghostLevel, skip1, read2, skip3, tmp;
   vtkCellArray *cells=NULL;
   int *types=NULL;

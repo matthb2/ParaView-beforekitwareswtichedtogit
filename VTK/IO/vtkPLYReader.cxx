@@ -78,7 +78,7 @@ void vtkPLYReader::Execute()
   };
 
   int i, j, k;
-  int numPts, numPolys;
+  int numPts=0, numPolys=0;
   vtkPolyData *output = (vtkPolyData *)this->GetOutput();
 
   if (!this->FileName)
