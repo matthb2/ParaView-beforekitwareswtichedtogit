@@ -75,8 +75,6 @@ vtkDataObject::vtkDataObject()
   this->SetFieldData(fd);
   fd->Delete();
 
-  this->RequestExactExtent = 0;
-  
   this->GarbageCollecting = 0;
 }
 
@@ -178,15 +176,14 @@ void vtkDataObject::PrintSelf(ostream& os, vtkIndent indent)
          << pInfo->Get(vtkStreamingDemandDrivenPipeline::EXTENT_TRANSLATOR())
          << ")\n";
     }
-    }
-
-  if (this->RequestExactExtent)
+    if(pInfo->Get(vtkStreamingDemandDrivenPipeline::EXACT_EXTENT()))
     {
     os << indent << "RequestExactExtent: On\n ";
     }
   else
     {
     os << indent << "RequestExactExtent: Off\n ";
+    }
     }
 
   os << indent << "Field Data:\n";
@@ -325,12 +322,6 @@ int vtkDataObject::ShouldIReleaseData()
     {
     return 0;
     }
-}
-
-//----------------------------------------------------------------------------
-void vtkDataObject::SetRequestExactExtent( int flag )
-{
-  this->RequestExactExtent = flag;
 }
 
 //----------------------------------------------------------------------------
@@ -974,5 +965,24 @@ unsigned long vtkDataObject::GetPipelineMTime()
     {
     return sddp->GetPipelineMTime();
     }    
+  return 0;
+}
+
+//----------------------------------------------------------------------------
+void vtkDataObject::SetRequestExactExtent(int flag)
+{
+  if(SDDP* sddp = this->TrySDDP("SetRequestExactExtent"))
+    {
+    sddp->SetRequestExactExtent(this->GetPortNumber(), flag);
+    }
+}
+
+//----------------------------------------------------------------------------
+int vtkDataObject::GetRequestExactExtent()
+{
+  if(SDDP* sddp = this->TrySDDP("GetRequestExactExtent"))
+    {
+    return sddp->GetRequestExactExtent(this->GetPortNumber());
+    }
   return 0;
 }
