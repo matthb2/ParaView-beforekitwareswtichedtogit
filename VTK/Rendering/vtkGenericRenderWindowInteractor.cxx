@@ -90,6 +90,15 @@ void vtkGenericRenderWindowInteractor::MiddleButtonReleaseEvent()
   this->InvokeEvent(vtkCommand::MiddleButtonReleaseEvent, NULL);
 }
 
+void vtkGenericRenderWindowInteractor::ExposeEvent()
+{
+  if (!this->Enabled) 
+    {
+    return;
+    }
+  this->InvokeEvent(vtkCommand::ExposeEvent, NULL);
+}
+
 void vtkGenericRenderWindowInteractor::ConfigureEvent()
 {
   if (!this->Enabled) 
