@@ -222,6 +222,13 @@ int i,j;
     getPoints();
     }
 
+  // I'm not sure what I'm doing here but the current code is clearly screwed
+  // up and doesn't handle some degenerate cases
+  if (this->Npts == 0)
+    {
+    return 0;
+    }
+
   switch (dir)
     {
     case xdim:
