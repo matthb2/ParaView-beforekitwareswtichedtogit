@@ -1331,6 +1331,8 @@ void vtkGenericCellTessellator::PrintSelf(ostream& os, vtkIndent indent)
   os << indent << "TessellatePoints: " 
      << this->TessellatePoints << endl;
 
+  os << indent << "ErrorMetric: " 
+     << this->ErrorMetric << endl;
 }
 
 //-----------------------------------------------------------------------------
