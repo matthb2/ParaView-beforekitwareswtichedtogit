@@ -436,10 +436,7 @@ void vtkPVEnSightMasterServerReader::SuperclassExecuteData()
   this->CaseFileName = temp;
 
   // We should be able to run with more processes than ensight partitions.
-  int fixme;
   int idx;
-  vtkUnstructuredGrid *ugrid;
-  vtkPolyData *pd;
   
   // The superclass thinks it is reading the whole data set.
   // This subclass tells the output that it is only a piece.
