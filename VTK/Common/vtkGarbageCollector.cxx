@@ -134,8 +134,6 @@ void vtkGarbageCollector::Check(vtkObjectBase* root)
   //  collector.SetDebug(obj->GetDebug());
   //  }
 
-  collector.SetDebug(1);
-
   // Do collection if necessary.
   collector.CheckReferenceLoops(root);
 
