@@ -150,7 +150,7 @@ static void vtkImageDivergenceExecute(vtkImageDivergence *self,
           // do X axis
           d = (float)(inPtr[useMin[idxC]]);
           d -= (float)(inPtr[useMax[idxC]]);
-          sum = d * r[idxC];
+          sum += d * r[idxC];
           inPtr++;
           }
         *outPtr = (T)sum;
