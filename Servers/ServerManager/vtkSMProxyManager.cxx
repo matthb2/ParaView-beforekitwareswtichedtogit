@@ -50,8 +50,8 @@ vtkSMProxyManager::vtkSMProxyManager()
 //---------------------------------------------------------------------------
 vtkSMProxyManager::~vtkSMProxyManager()
 {
-  delete this->Internals;
   this->UnRegisterProxies();
+  delete this->Internals;
 }
 
 //----------------------------------------------------------------------------
