@@ -248,6 +248,13 @@ int vtkSMStringVectorProperty::ReadXMLAttributes(vtkSMProxy* proxy,
     }
   delete[] eTypes;
 
+  int numElems = this->GetNumberOfElements();
+  if (numElems > 0)
+    {
+    const char *initVal = element->GetAttribute("default_values");
+    this->SetElement(0, initVal); // what to do with > 1 element?
+    }
+  
   return 1;
 }
 
