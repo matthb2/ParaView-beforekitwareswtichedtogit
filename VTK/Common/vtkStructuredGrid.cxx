@@ -16,13 +16,17 @@
 
 =========================================================================*/
 #include "vtkStructuredGrid.h"
-#include "vtkVertex.h"
-#include "vtkLine.h"
-#include "vtkQuad.h"
-#include "vtkHexahedron.h"
+
+#include "vtkCellData.h"
 #include "vtkEmptyCell.h"
 #include "vtkExtentTranslator.h"
+#include "vtkGenericCell.h"
+#include "vtkHexahedron.h"
+#include "vtkLine.h"
 #include "vtkObjectFactory.h"
+#include "vtkPointData.h"
+#include "vtkQuad.h"
+#include "vtkVertex.h"
 
 vtkCxxRevisionMacro(vtkStructuredGrid, "$Revision$");
 vtkStandardNewMacro(vtkStructuredGrid);

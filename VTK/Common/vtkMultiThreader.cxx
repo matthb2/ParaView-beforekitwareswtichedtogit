@@ -16,6 +16,8 @@
 
 =========================================================================*/
 #include "vtkMultiThreader.h"
+
+#include "vtkMutexLock.h"
 #include "vtkObjectFactory.h"
 
 vtkCxxRevisionMacro(vtkMultiThreader, "$Revision$");

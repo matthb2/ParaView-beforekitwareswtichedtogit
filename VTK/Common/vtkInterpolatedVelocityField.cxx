@@ -17,10 +17,12 @@
 =========================================================================*/
 #include "vtkInterpolatedVelocityField.h"
 
+#include "vtkDataArray.h"
 #include "vtkDataSet.h"
 #include "vtkGenericCell.h"
-#include "vtkVector.txx"
 #include "vtkObjectFactory.h"
+#include "vtkPointData.h"
+#include "vtkVector.txx"
 
 vtkCxxRevisionMacro(vtkInterpolatedVelocityField, "$Revision$");
 vtkStandardNewMacro(vtkInterpolatedVelocityField);

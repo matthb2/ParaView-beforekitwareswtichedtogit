@@ -21,6 +21,7 @@
 #include "vtkPointLocator.h"
 #include "vtkMarchingCubesCases.h"
 #include "vtkPointData.h"
+#include "vtkPoints.h"
 
 vtkCxxRevisionMacro(vtkCell3D, "$Revision$");
 

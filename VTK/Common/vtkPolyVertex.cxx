@@ -17,12 +17,14 @@
 =========================================================================*/
 #include "vtkPolyVertex.h"
 
-#include "vtkMath.h"
 #include "vtkCellArray.h"
-#include "vtkPointLocator.h"
+#include "vtkCellData.h"
+#include "vtkMath.h"
 #include "vtkObjectFactory.h"
 #include "vtkPointData.h"
-#include "vtkCellData.h"
+#include "vtkPointLocator.h"
+#include "vtkPoints.h"
+#include "vtkVertex.h"
 
 vtkCxxRevisionMacro(vtkPolyVertex, "$Revision$");
 vtkStandardNewMacro(vtkPolyVertex);

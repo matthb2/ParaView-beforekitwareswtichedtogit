@@ -16,11 +16,17 @@
 
 =========================================================================*/
 #include "vtkWedge.h"
-#include "vtkMath.h"
+
 #include "vtkCellArray.h"
-#include "vtkPointLocator.h"
-#include "vtkUnstructuredGrid.h"
+#include "vtkCellData.h"
+#include "vtkLine.h"
+#include "vtkMath.h"
 #include "vtkObjectFactory.h"
+#include "vtkPointData.h"
+#include "vtkPointLocator.h"
+#include "vtkQuad.h"
+#include "vtkTriangle.h"
+#include "vtkUnstructuredGrid.h"
 
 vtkCxxRevisionMacro(vtkWedge, "$Revision$");
 vtkStandardNewMacro(vtkWedge);

@@ -16,9 +16,14 @@
 
 =========================================================================*/
 #include "vtkPropAssembly.h"
-#include "vtkViewport.h"
+
 #include "vtkAssemblyNode.h"
+#include "vtkAssemblyPath.h"
+#include "vtkAssemblyPaths.h"
 #include "vtkObjectFactory.h"
+#include "vtkProp.h"
+#include "vtkPropCollection.h"
+#include "vtkViewport.h"
 
 vtkCxxRevisionMacro(vtkPropAssembly, "$Revision$");
 vtkStandardNewMacro(vtkPropAssembly);

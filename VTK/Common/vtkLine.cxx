@@ -23,6 +23,7 @@
 #include "vtkObjectFactory.h"
 #include "vtkPointData.h"
 #include "vtkPointLocator.h"
+#include "vtkPoints.h"
 
 vtkCxxRevisionMacro(vtkLine, "$Revision$");
 vtkStandardNewMacro(vtkLine);

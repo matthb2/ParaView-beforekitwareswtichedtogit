@@ -16,15 +16,18 @@
 
 =========================================================================*/
 #include "vtkPolygon.h"
-#include "vtkMath.h"
-#include "vtkPlane.h"
-#include "vtkDataSet.h"
-#include "vtkCellArray.h"
-#include "vtkPriorityQueue.h"
-#include "vtkFloatArray.h"
-#include "vtkObjectFactory.h"
 
-#include <stdlib.h>
+#include "vtkCellArray.h"
+#include "vtkDataSet.h"
+#include "vtkFloatArray.h"
+#include "vtkLine.h"
+#include "vtkMath.h"
+#include "vtkObjectFactory.h"
+#include "vtkPlane.h"
+#include "vtkPoints.h"
+#include "vtkPriorityQueue.h"
+#include "vtkQuad.h"
+#include "vtkTriangle.h"
 
 vtkCxxRevisionMacro(vtkPolygon, "$Revision$");
 vtkStandardNewMacro(vtkPolygon);

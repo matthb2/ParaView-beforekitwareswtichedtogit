@@ -16,14 +16,17 @@
 
 =========================================================================*/
 #include "vtkConvexPointSet.h"
-#include "vtkMath.h"
+
 #include "vtkCellArray.h"
-#include "vtkPointLocator.h"
-#include "vtkOrderedTriangulator.h"
-#include "vtkTetra.h"
 #include "vtkFloatArray.h"
-#include "vtkPointData.h"
+#include "vtkMath.h"
 #include "vtkObjectFactory.h"
+#include "vtkOrderedTriangulator.h"
+#include "vtkPointData.h"
+#include "vtkPointLocator.h"
+#include "vtkPoints.h"
+#include "vtkTetra.h"
+#include "vtkTriangle.h"
 
 vtkCxxRevisionMacro(vtkConvexPointSet, "$Revision$");
 vtkStandardNewMacro(vtkConvexPointSet);

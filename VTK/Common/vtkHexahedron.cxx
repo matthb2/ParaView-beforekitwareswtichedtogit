@@ -24,6 +24,7 @@
 #include "vtkObjectFactory.h"
 #include "vtkPointData.h"
 #include "vtkPointLocator.h"
+#include "vtkPoints.h"
 #include "vtkQuad.h"
 
 vtkCxxRevisionMacro(vtkHexahedron, "$Revision$");

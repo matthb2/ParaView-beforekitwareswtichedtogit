@@ -16,14 +16,13 @@
 
 =========================================================================*/
 #include "vtkViewport.h"
-#include "vtkWindow.h"
-#include "vtkActor2DCollection.h"
-#include "vtkPropCollection.h"
-#include "vtkProp.h"
-#include "vtkOldStyleCallbackCommand.h"
 
-#include <stdlib.h>
-#include <string.h>
+#include "vtkActor2DCollection.h"
+#include "vtkAssemblyPath.h"
+#include "vtkOldStyleCallbackCommand.h"
+#include "vtkProp.h"
+#include "vtkPropCollection.h"
+#include "vtkWindow.h"
 
 vtkCxxRevisionMacro(vtkViewport, "$Revision$");
 

@@ -16,6 +16,8 @@
 
 =========================================================================*/
 #include "vtkMatrixToHomogeneousTransform.h"
+
+#include "vtkMatrix4x4.h"
 #include "vtkObjectFactory.h"
 
 vtkCxxRevisionMacro(vtkMatrixToHomogeneousTransform, "$Revision$");

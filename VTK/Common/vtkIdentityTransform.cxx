@@ -16,8 +16,11 @@
 
 =========================================================================*/
 #include "vtkIdentityTransform.h"
-#include "vtkObjectFactory.h"
+
+#include "vtkDataArray.h"
 #include "vtkMath.h"
+#include "vtkObjectFactory.h"
+#include "vtkPoints.h"
 
 vtkCxxRevisionMacro(vtkIdentityTransform, "$Revision$");
 vtkStandardNewMacro(vtkIdentityTransform);

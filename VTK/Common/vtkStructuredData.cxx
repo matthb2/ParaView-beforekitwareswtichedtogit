@@ -16,6 +16,8 @@
 
 =========================================================================*/
 #include "vtkStructuredData.h"
+
+#include "vtkIdList.h"
 #include "vtkObjectFactory.h"
 
 vtkCxxRevisionMacro(vtkStructuredData, "$Revision$");

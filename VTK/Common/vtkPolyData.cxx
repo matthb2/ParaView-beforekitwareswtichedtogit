@@ -17,10 +17,14 @@
 =========================================================================*/
 #include "vtkPolyData.h"
 
+#include "vtkCellArray.h"
+#include "vtkCellData.h"
 #include "vtkCriticalSection.h"
 #include "vtkEmptyCell.h"
+#include "vtkGenericCell.h"
 #include "vtkLine.h"
 #include "vtkObjectFactory.h"
+#include "vtkPointData.h"
 #include "vtkPointLocator.h"
 #include "vtkPolyLine.h"
 #include "vtkPolyVertex.h"

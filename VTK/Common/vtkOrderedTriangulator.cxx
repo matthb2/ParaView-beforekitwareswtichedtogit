@@ -16,10 +16,13 @@
 
 =========================================================================*/
 #include "vtkOrderedTriangulator.h"
-#include "vtkUnstructuredGrid.h"
-#include "vtkTetra.h"
+
+#include "vtkCellArray.h"
 #include "vtkEdgeTable.h"
+#include "vtkMath.h"
 #include "vtkObjectFactory.h"
+#include "vtkTetra.h"
+#include "vtkUnstructuredGrid.h"
 
 vtkCxxRevisionMacro(vtkOrderedTriangulator, "$Revision$");
 vtkStandardNewMacro(vtkOrderedTriangulator);

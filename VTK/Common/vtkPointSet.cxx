@@ -17,8 +17,10 @@
 =========================================================================*/
 #include "vtkPointSet.h"
 
-#include "vtkSource.h"
+#include "vtkCell.h"
+#include "vtkGenericCell.h"
 #include "vtkPointLocator.h"
+#include "vtkSource.h"
 
 vtkCxxRevisionMacro(vtkPointSet, "$Revision$");
 

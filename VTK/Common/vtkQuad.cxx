@@ -25,6 +25,7 @@
 #include "vtkPlane.h"
 #include "vtkPointData.h"
 #include "vtkPointLocator.h"
+#include "vtkPoints.h"
 #include "vtkTriangle.h"
 
 vtkCxxRevisionMacro(vtkQuad, "$Revision$");

@@ -17,6 +17,8 @@
 =========================================================================*/
 #include "vtkScalarsToColors.h"
 
+#include "vtkUnsignedCharArray.h"
+
 #include <math.h>
 
 vtkCxxRevisionMacro(vtkScalarsToColors, "$Revision$");

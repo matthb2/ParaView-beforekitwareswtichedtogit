@@ -16,7 +16,10 @@
 
 =========================================================================*/
 #include "vtkHomogeneousTransform.h"
+
 #include "vtkMath.h"
+#include "vtkMatrix4x4.h"
+#include "vtkPoints.h"
 
 vtkCxxRevisionMacro(vtkHomogeneousTransform, "$Revision$");
 

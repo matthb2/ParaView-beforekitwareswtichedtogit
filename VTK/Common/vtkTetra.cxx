@@ -16,13 +16,16 @@
 
 =========================================================================*/
 #include "vtkTetra.h"
-#include "vtkMath.h"
-#include "vtkLine.h"
-#include "vtkTriangle.h"
+
 #include "vtkCellArray.h"
-#include "vtkPointLocator.h"
-#include "vtkUnstructuredGrid.h"
+#include "vtkCellData.h"
+#include "vtkLine.h"
+#include "vtkMath.h"
 #include "vtkObjectFactory.h"
+#include "vtkPointData.h"
+#include "vtkPointLocator.h"
+#include "vtkTriangle.h"
+#include "vtkUnstructuredGrid.h"
 
 vtkCxxRevisionMacro(vtkTetra, "$Revision$");
 vtkStandardNewMacro(vtkTetra);

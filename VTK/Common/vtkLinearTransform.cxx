@@ -16,7 +16,11 @@
 
 =========================================================================*/
 #include "vtkLinearTransform.h"
+
+#include "vtkDataArray.h"
 #include "vtkMath.h"
+#include "vtkMatrix4x4.h"
+#include "vtkPoints.h"
 
 vtkCxxRevisionMacro(vtkLinearTransform, "$Revision$");
 

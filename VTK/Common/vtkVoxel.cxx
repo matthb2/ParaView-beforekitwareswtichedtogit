@@ -25,6 +25,7 @@
 #include "vtkPixel.h"
 #include "vtkPointData.h"
 #include "vtkPointLocator.h"
+#include "vtkPoints.h"
 
 vtkCxxRevisionMacro(vtkVoxel, "$Revision$");
 vtkStandardNewMacro(vtkVoxel);

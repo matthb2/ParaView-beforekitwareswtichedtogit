@@ -17,9 +17,10 @@
 =========================================================================*/
 #include "vtkPlanes.h"
 
-#include "vtkPlane.h"
-#include "vtkObjectFactory.h"
 #include "vtkFloatArray.h"
+#include "vtkObjectFactory.h"
+#include "vtkPlane.h"
+#include "vtkPoints.h"
 
 #include <math.h>
 

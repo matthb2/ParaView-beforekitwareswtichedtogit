@@ -16,10 +16,13 @@
 
 =========================================================================*/
 #include "vtkTriangleStrip.h"
+
 #include "vtkCellArray.h"
+#include "vtkFloatArray.h"
 #include "vtkLine.h"
 #include "vtkObjectFactory.h"
-#include "vtkFloatArray.h"
+#include "vtkTriangle.h"
+#include "vtkPoints.h"
 
 vtkCxxRevisionMacro(vtkTriangleStrip, "$Revision$");
 vtkStandardNewMacro(vtkTriangleStrip);

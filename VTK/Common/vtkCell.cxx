@@ -16,7 +16,9 @@
 
 =========================================================================*/
 #include "vtkCell.h"
+
 #include "vtkMarchingSquaresCases.h"
+#include "vtkPoints.h"
 
 vtkCxxRevisionMacro(vtkCell, "$Revision$");
 

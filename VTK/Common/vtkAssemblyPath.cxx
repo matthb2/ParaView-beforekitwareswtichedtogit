@@ -16,9 +16,11 @@
 
 =========================================================================*/
 #include "vtkAssemblyPath.h"
+
 #include "vtkAssemblyNode.h"
 #include "vtkTransform.h"
 #include "vtkObjectFactory.h"
+#include "vtkProp.h"
 
 vtkCxxRevisionMacro(vtkAssemblyPath, "$Revision$");
 vtkStandardNewMacro(vtkAssemblyPath);

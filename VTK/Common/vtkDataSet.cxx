@@ -16,6 +16,13 @@
 
 =========================================================================*/
 #include "vtkDataSet.h"
+
+#include "vtkCell.h"
+#include "vtkCellData.h"
+#include "vtkCellTypes.h"
+#include "vtkGenericCell.h"
+#include "vtkIdList.h"
+#include "vtkPointData.h"
 #include "vtkSource.h"
 
 #include <math.h>

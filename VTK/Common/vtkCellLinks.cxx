@@ -16,10 +16,12 @@
 
 =========================================================================*/
 #include "vtkCellLinks.h"
-#include "vtkDataSet.h"
+
 #include "vtkCellArray.h"
-#include "vtkPolyData.h"
+#include "vtkDataSet.h"
+#include "vtkGenericCell.h"
 #include "vtkObjectFactory.h"
+#include "vtkPolyData.h"
 
 vtkCxxRevisionMacro(vtkCellLinks, "$Revision$");
 vtkStandardNewMacro(vtkCellLinks);

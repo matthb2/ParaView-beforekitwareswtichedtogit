@@ -17,6 +17,8 @@
 =========================================================================*/
 #include "vtkOverrideInformation.h"
 
+#include "vtkObjectFactory.h"
+
 vtkCxxRevisionMacro(vtkOverrideInformation, "$Revision$");
 vtkStandardNewMacro(vtkOverrideInformation);
 vtkCxxSetObjectMacro(vtkOverrideInformation,ObjectFactory,vtkObjectFactory);
