@@ -98,7 +98,11 @@ public:
     {
       for (int i = 0; i < 64; i++)
         {
-        delete this->Nodes[i];
+        vtkDebugLeaksHashNode *pos = this->Nodes[i];
+        if(pos)
+          {
+          delete pos;
+          }
         }
     }
 
