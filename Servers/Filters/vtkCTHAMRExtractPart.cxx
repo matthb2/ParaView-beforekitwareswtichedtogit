@@ -72,7 +72,7 @@ vtkCTHAMRExtractPart::vtkCTHAMRExtractPart()
   this->Clip2 =0;
   this->Cut = 0;
 
-  this->IgnoreGhostLevels = 1;
+  this->IgnoreGhostLevels = 0;
 }
 
 //----------------------------------------------------------------------------
