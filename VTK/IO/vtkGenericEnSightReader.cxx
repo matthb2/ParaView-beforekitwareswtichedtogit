@@ -129,6 +129,11 @@ void vtkGenericEnSightReader::Execute()
 {
   int i;
 
+  if ( !this->Reader )
+    {
+    return;
+    }
+
   this->Reader->SetTimeValue(this->GetTimeValue());
   this->Reader->Update();
 
