@@ -617,7 +617,6 @@ int vtkDemandDrivenPipeline::CheckDataObject(int port)
                   << ") did not create output for port " << port
                   << " when asked by REQUEST_DATA_OBJECT and does not"
                   << " specify any DATA_TYPE_NAME.");
-    abort();
     return 0;
     }
 }
