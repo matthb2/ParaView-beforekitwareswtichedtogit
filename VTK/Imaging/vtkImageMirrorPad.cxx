@@ -16,6 +16,8 @@
 
 =========================================================================*/
 #include "vtkImageMirrorPad.h"
+
+#include "vtkImageData.h"
 #include "vtkObjectFactory.h"
 
 vtkCxxRevisionMacro(vtkImageMirrorPad, "$Revision$");

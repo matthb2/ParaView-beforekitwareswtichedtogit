@@ -16,8 +16,10 @@
 
 =========================================================================*/
 #include "vtkImageShiftScale.h"
-#include "vtkObjectFactory.h"
+
+#include "vtkImageData.h"
 #include "vtkImageProgressIterator.h"
+#include "vtkObjectFactory.h"
 
 vtkCxxRevisionMacro(vtkImageShiftScale, "$Revision$");
 vtkStandardNewMacro(vtkImageShiftScale);

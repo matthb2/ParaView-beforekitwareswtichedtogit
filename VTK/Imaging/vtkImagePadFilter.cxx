@@ -16,6 +16,8 @@
 
 =========================================================================*/
 #include "vtkImagePadFilter.h"
+
+#include "vtkImageData.h"
 #include "vtkObjectFactory.h"
 
 vtkCxxRevisionMacro(vtkImagePadFilter, "$Revision$");

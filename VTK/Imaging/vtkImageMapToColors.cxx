@@ -16,6 +16,8 @@
 
 =========================================================================*/
 #include "vtkImageMapToColors.h"
+
+#include "vtkImageData.h"
 #include "vtkObjectFactory.h"
 
 vtkCxxRevisionMacro(vtkImageMapToColors, "$Revision$");

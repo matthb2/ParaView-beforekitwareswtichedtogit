@@ -16,10 +16,12 @@
 
 =========================================================================*/
 #include "vtkSurfaceReconstructionFilter.h"
+
 #include "vtkFloatArray.h"
-#include "vtkPointLocator.h"
+#include "vtkImageData.h"
 #include "vtkMath.h"
 #include "vtkObjectFactory.h"
+#include "vtkPointLocator.h"
 
 vtkCxxRevisionMacro(vtkSurfaceReconstructionFilter, "$Revision$");
 vtkStandardNewMacro(vtkSurfaceReconstructionFilter);

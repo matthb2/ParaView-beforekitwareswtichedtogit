@@ -16,8 +16,9 @@
 
 =========================================================================*/
 #include "vtkImageTranslateExtent.h"
-#include "vtkObjectFactory.h"
 
+#include "vtkImageData.h"
+#include "vtkObjectFactory.h"
 
 vtkCxxRevisionMacro(vtkImageTranslateExtent, "$Revision$");
 vtkStandardNewMacro(vtkImageTranslateExtent);

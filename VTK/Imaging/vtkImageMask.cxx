@@ -16,6 +16,8 @@
 
 =========================================================================*/
 #include "vtkImageMask.h"
+
+#include "vtkImageData.h"
 #include "vtkObjectFactory.h"
 
 vtkCxxRevisionMacro(vtkImageMask, "$Revision$");

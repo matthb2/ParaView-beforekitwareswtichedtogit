@@ -16,9 +16,11 @@
 
 =========================================================================*/
 #include "vtkImageReslice.h"
+
+#include "vtkImageData.h"
 #include "vtkMath.h"
-#include "vtkTransform.h"
 #include "vtkObjectFactory.h"
+#include "vtkTransform.h"
 
 #include <limits.h>
 #include <float.h>
@@ -26,6 +28,7 @@
 
 vtkCxxRevisionMacro(vtkImageReslice, "$Revision$");
 vtkStandardNewMacro(vtkImageReslice);
+vtkCxxSetObjectMacro(vtkImageReslice, InformationInput, vtkImageData);
 
 //----------------------------------------------------------------------------
 vtkImageReslice::vtkImageReslice()

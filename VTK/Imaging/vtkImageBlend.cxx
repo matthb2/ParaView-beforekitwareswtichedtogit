@@ -16,6 +16,8 @@
 
 =========================================================================*/
 #include "vtkImageBlend.h"
+
+#include "vtkImageData.h"
 #include "vtkObjectFactory.h"
 
 vtkCxxRevisionMacro(vtkImageBlend, "$Revision$");

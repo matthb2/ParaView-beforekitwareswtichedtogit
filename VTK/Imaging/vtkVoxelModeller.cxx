@@ -16,11 +16,12 @@
 
 =========================================================================*/
 #include "vtkVoxelModeller.h"
-#include "vtkObjectFactory.h"
+
 #include "vtkBitArray.h"
+#include "vtkImageData.h"
+#include "vtkObjectFactory.h"
 
 #include <math.h>
-#include <stdio.h>
 
 vtkCxxRevisionMacro(vtkVoxelModeller, "$Revision$");
 vtkStandardNewMacro(vtkVoxelModeller);

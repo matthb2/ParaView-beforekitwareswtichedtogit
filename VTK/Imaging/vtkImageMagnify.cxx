@@ -16,6 +16,8 @@
 
 =========================================================================*/
 #include "vtkImageMagnify.h"
+
+#include "vtkImageData.h"
 #include "vtkObjectFactory.h"
 
 vtkCxxRevisionMacro(vtkImageMagnify, "$Revision$");

@@ -16,6 +16,8 @@
 
 =========================================================================*/
 #include "vtkImageRFFT.h"
+
+#include "vtkImageData.h"
 #include "vtkObjectFactory.h"
 
 #include <math.h>

@@ -16,9 +16,11 @@
 
 =========================================================================*/
 #include "vtkShepardMethod.h"
+
+#include "vtkFloatArray.h"
+#include "vtkImageData.h"
 #include "vtkMath.h"
 #include "vtkObjectFactory.h"
-#include "vtkFloatArray.h"
 
 vtkCxxRevisionMacro(vtkShepardMethod, "$Revision$");
 vtkStandardNewMacro(vtkShepardMethod);

@@ -16,6 +16,8 @@
 
 =========================================================================*/
 #include "vtkImageClip.h"
+
+#include "vtkImageData.h"
 #include "vtkExtentTranslator.h"
 #include "vtkObjectFactory.h"
 

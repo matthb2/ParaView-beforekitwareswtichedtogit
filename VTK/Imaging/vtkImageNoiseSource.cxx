@@ -16,9 +16,11 @@
 
 =========================================================================*/
 #include "vtkImageNoiseSource.h"
+
+#include "vtkImageData.h"
+#include "vtkImageProgressIterator.h"
 #include "vtkMath.h"
 #include "vtkObjectFactory.h"
-#include "vtkImageProgressIterator.h"
 
 vtkCxxRevisionMacro(vtkImageNoiseSource, "$Revision$");
 vtkStandardNewMacro(vtkImageNoiseSource);

@@ -16,7 +16,11 @@
 
 =========================================================================*/
 #include "vtkExtractVOI.h"
+
+#include "vtkCellData.h"
+#include "vtkImageData.h"
 #include "vtkObjectFactory.h"
+#include "vtkPointData.h"
 
 vtkCxxRevisionMacro(vtkExtractVOI, "$Revision$");
 vtkStandardNewMacro(vtkExtractVOI);

@@ -16,8 +16,10 @@
 
 =========================================================================*/
 #include "vtkBooleanTexture.h"
-#include "vtkUnsignedCharArray.h"
+
+#include "vtkImageData.h"
 #include "vtkObjectFactory.h"
+#include "vtkUnsignedCharArray.h"
 
 vtkCxxRevisionMacro(vtkBooleanTexture, "$Revision$");
 vtkStandardNewMacro(vtkBooleanTexture);

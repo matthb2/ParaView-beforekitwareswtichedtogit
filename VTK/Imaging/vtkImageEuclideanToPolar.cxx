@@ -16,8 +16,10 @@
 
 =========================================================================*/
 #include "vtkImageEuclideanToPolar.h"
-#include "vtkObjectFactory.h"
+
+#include "vtkImageData.h"
 #include "vtkImageProgressIterator.h"
+#include "vtkObjectFactory.h"
 
 #include <math.h>
 

@@ -16,6 +16,8 @@
 
 =========================================================================*/
 #include "vtkImageWrapPad.h"
+
+#include "vtkImageData.h"
 #include "vtkObjectFactory.h"
 
 vtkCxxRevisionMacro(vtkImageWrapPad, "$Revision$");

@@ -16,6 +16,8 @@
 
 =========================================================================*/
 #include "vtkImageCheckerboard.h"
+
+#include "vtkImageData.h"
 #include "vtkObjectFactory.h"
 
 vtkCxxRevisionMacro(vtkImageCheckerboard, "$Revision$");

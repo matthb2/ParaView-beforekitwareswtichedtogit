@@ -16,6 +16,8 @@
 
 =========================================================================*/
 #include "vtkImageCorrelation.h"
+
+#include "vtkImageData.h"
 #include "vtkObjectFactory.h"
 
 vtkCxxRevisionMacro(vtkImageCorrelation, "$Revision$");

@@ -16,6 +16,8 @@
 
 =========================================================================*/
 #include "vtkImageFlip.h"
+
+#include "vtkImageData.h"
 #include "vtkMatrix4x4.h"
 #include "vtkObjectFactory.h"
 

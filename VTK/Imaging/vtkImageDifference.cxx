@@ -16,9 +16,9 @@
 
 =========================================================================*/
 #include "vtkImageDifference.h"
-#include "vtkObjectFactory.h"
 
-#include "stdlib.h"
+#include "vtkImageData.h"
+#include "vtkObjectFactory.h"
 
 vtkCxxRevisionMacro(vtkImageDifference, "$Revision$");
 vtkStandardNewMacro(vtkImageDifference);

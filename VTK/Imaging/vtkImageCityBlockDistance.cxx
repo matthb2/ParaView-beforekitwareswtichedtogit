@@ -16,6 +16,8 @@
 
 =========================================================================*/
 #include "vtkImageCityBlockDistance.h"
+
+#include "vtkImageData.h"
 #include "vtkObjectFactory.h"
 
 vtkCxxRevisionMacro(vtkImageCityBlockDistance, "$Revision$");

@@ -16,6 +16,8 @@
 
 =========================================================================*/
 #include "vtkImageIslandRemoval2D.h"
+
+#include "vtkImageData.h"
 #include "vtkObjectFactory.h"
 
 vtkCxxRevisionMacro(vtkImageIslandRemoval2D, "$Revision$");

@@ -17,6 +17,8 @@
 =========================================================================*/
 #include "vtkImageIterateFilter.h"
 
+#include "vtkImageData.h"
+
 vtkCxxRevisionMacro(vtkImageIterateFilter, "$Revision$");
 
 //----------------------------------------------------------------------------

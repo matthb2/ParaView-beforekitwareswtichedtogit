@@ -16,7 +16,9 @@
 
 =========================================================================*/
 #include "vtkImageConstantPad.h"
+
 #include "vtkObjectFactory.h"
+#include "vtkImageData.h"
 
 vtkCxxRevisionMacro(vtkImageConstantPad, "$Revision$");
 vtkStandardNewMacro(vtkImageConstantPad);

@@ -16,9 +16,10 @@
 
 =========================================================================*/
 #include "vtkImageCast.h"
-#include "vtkObjectFactory.h"
-#include "vtkImageProgressIterator.h"
 
+#include "vtkImageData.h"
+#include "vtkImageProgressIterator.h"
+#include "vtkObjectFactory.h"
 
 vtkCxxRevisionMacro(vtkImageCast, "$Revision$");
 vtkStandardNewMacro(vtkImageCast);

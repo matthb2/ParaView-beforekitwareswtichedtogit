@@ -16,8 +16,10 @@
 
 =========================================================================*/
 #include "vtkImageAppendComponents.h"
-#include "vtkObjectFactory.h"
+
+#include "vtkImageData.h"
 #include "vtkImageProgressIterator.h"
+#include "vtkObjectFactory.h"
 
 vtkCxxRevisionMacro(vtkImageAppendComponents, "$Revision$");
 vtkStandardNewMacro(vtkImageAppendComponents);

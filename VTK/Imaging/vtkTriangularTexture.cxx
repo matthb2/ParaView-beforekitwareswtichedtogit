@@ -16,9 +16,11 @@
 
 =========================================================================*/
 #include "vtkTriangularTexture.h"
+
+#include "vtkImageData.h"
 #include "vtkMath.h"
-#include "vtkUnsignedCharArray.h"
 #include "vtkObjectFactory.h"
+#include "vtkUnsignedCharArray.h"
 
 vtkCxxRevisionMacro(vtkTriangularTexture, "$Revision$");
 vtkStandardNewMacro(vtkTriangularTexture);

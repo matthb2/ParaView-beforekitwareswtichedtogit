@@ -16,6 +16,8 @@
 
 =========================================================================*/
 #include "vtkImageSeparableConvolution.h"
+
+#include "vtkImageData.h"
 #include "vtkObjectFactory.h"
 
 vtkCxxRevisionMacro(vtkImageSeparableConvolution, "$Revision$");

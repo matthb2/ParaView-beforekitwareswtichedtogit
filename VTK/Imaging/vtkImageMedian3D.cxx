@@ -16,6 +16,8 @@
 
 =========================================================================*/
 #include "vtkImageMedian3D.h"
+
+#include "vtkImageData.h"
 #include "vtkObjectFactory.h"
 
 vtkCxxRevisionMacro(vtkImageMedian3D, "$Revision$");

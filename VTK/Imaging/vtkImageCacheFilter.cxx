@@ -16,6 +16,8 @@
 
 =========================================================================*/
 #include "vtkImageCacheFilter.h"
+
+#include "vtkImageData.h"
 #include "vtkObjectFactory.h"
 
 vtkCxxRevisionMacro(vtkImageCacheFilter, "$Revision$");

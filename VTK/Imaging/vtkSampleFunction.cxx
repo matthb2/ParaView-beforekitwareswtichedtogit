@@ -16,8 +16,10 @@
 
 =========================================================================*/
 #include "vtkSampleFunction.h"
-#include "vtkMath.h"
+
 #include "vtkFloatArray.h"
+#include "vtkImageData.h"
+#include "vtkMath.h"
 #include "vtkObjectFactory.h"
 
 vtkCxxRevisionMacro(vtkSampleFunction, "$Revision$");

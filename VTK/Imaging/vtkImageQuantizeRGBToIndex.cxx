@@ -16,11 +16,12 @@
 
 =========================================================================*/
 #include "vtkImageQuantizeRGBToIndex.h"
-#include "vtkTimerLog.h"
+
+#include "vtkImageData.h"
 #include "vtkObjectFactory.h"
+#include "vtkTimerLog.h"
 
 #include <math.h>
-#include <stdlib.h>
 
 vtkCxxRevisionMacro(vtkImageQuantizeRGBToIndex, "$Revision$");
 vtkStandardNewMacro(vtkImageQuantizeRGBToIndex);
