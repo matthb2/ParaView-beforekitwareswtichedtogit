@@ -441,9 +441,14 @@ vtkRenderer* vtkRenderWindowInteractor::FindPokedRenderer(int x,int y)
 }
 
 //----------------------------------------------------------------------------
-vtkCamera*  vtkRenderWindowInteractor::FindPokedCamera(int x,int y) 
+vtkCamera* vtkRenderWindowInteractor::FindPokedCamera(int x,int y) 
 {
-  return this->FindPokedRenderer(x,y)->GetActiveCamera();
+  vtkRenderer *aren = this->FindPokedRenderer(x,y);
+  if (aren != NULL) 
+    {
+    return aren->GetActiveCamera();
+    }
+  return NULL;
 }
 
 void vtkRenderWindowInteractor::PrintSelf(ostream& os, vtkIndent indent)
