@@ -168,7 +168,9 @@ unsigned char *vtkTexture::MapScalarsToColors (vtkDataArray *scalars)
   // to the range of the scalar data.
   if (this->SelfAdjustingTableRange)
     {
-    this->LookupTable->SetTableRange (scalars->GetRange(0));
+    double tmp[2];
+    scalars->GetRange(tmp,0);
+    this->LookupTable->SetTableRange ((float)(tmp[0]),(float)(tmp[1]));
     }
   
   // map the scalars to colors
