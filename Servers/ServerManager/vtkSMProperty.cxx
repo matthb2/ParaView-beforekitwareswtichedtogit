@@ -49,6 +49,7 @@ vtkSMProperty::vtkSMProperty()
   this->DomainIterator = vtkSMDomainIterator::New();
   this->DomainIterator->SetProperty(this);
   this->Proxy = 0;
+  this->InformationOnly = 0;
 }
 
 //---------------------------------------------------------------------------
@@ -277,6 +278,13 @@ int vtkSMProperty::ReadXMLAttributes(vtkSMProxy* proxy,
   if(retVal) 
     { 
     this->SetIsReadOnly(read_only); 
+    }
+
+  int information_only;
+  retVal = element->GetScalarAttribute("information_only", &information_only);
+  if(retVal) 
+    { 
+    this->SetInformationOnly(information_only); 
     }
 
   // Read and create domains.

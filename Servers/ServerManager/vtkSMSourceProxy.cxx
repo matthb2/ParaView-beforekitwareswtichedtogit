@@ -91,6 +91,7 @@ void vtkSMSourceProxy::UpdateInformation()
   vtkProcessModule* pm = vtkProcessModule::GetProcessModule();
   pm->SendStream(this->Servers, command, 0);
   
+  this->Superclass::UpdateInformation();
 }
 
 //---------------------------------------------------------------------------
