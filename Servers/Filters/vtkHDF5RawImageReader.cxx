@@ -30,17 +30,8 @@
 #include "vtkShortArray.h"
 
 // Include ordering of these four files is very sensitive on HP-UX.
-#ifdef _MSC_VER
-#pragma warning (push, 3)
-#endif
-
-#include <vector>
-#include <string>
-
-#ifdef _MSC_VER
-#pragma warning(pop)
-#endif
-
+#include <vtkstd/vector>
+#include <vtkstd/string>
 #include <sys/stat.h>
 #include <hdf5.h>
 
