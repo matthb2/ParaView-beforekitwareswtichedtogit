@@ -555,7 +555,7 @@ void ContourImage(vtkSynchronizedTemplates3D *self, int *exExt,
       {
       newScalars->SetName(inScalars->GetName());
       }
-    int idx = output->GetPointData()->AddArray(newScalars);
+    idx = output->GetPointData()->AddArray(newScalars);
     output->GetPointData()->SetActiveAttribute(idx, vtkDataSetAttributes::SCALARS);
     newScalars->Delete();
     newScalars = NULL;

@@ -525,7 +525,7 @@ int vtkMetaImageReader::CanReadFile(const char* fname)
     }
 
   ifstream ifs(fname);
-  if ( !fname )
+  if ( !ifs )
     {
     return 0;
     }
