@@ -24,6 +24,7 @@ vtkDataSetSource::vtkDataSetSource()
 {
   // A source has no inputs by default.
   this->SetNumberOfInputPorts(0);
+  this->SetNumberOfOutputPorts(1);
 }
 
 //----------------------------------------------------------------------------
