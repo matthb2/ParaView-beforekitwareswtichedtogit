@@ -57,7 +57,8 @@ void vtkSMDoubleVectorProperty::AppendCommandToStream(
   if (this->SetNumberCommand)
     {
     *str << vtkClientServerStream::Invoke 
-         << objectId << this->SetNumberCommand << this->GetNumberOfElements()
+         << objectId << this->SetNumberCommand 
+         << this->GetNumberOfElements() / this->NumberOfElementsPerCommand
          << vtkClientServerStream::End;
     }
 
