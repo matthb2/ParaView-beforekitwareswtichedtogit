@@ -272,7 +272,7 @@ int vtkKitwareContourFilter::RequestData(
     }
 
   // otherwise just use the normal one
-  this->Superclass::RequestData(request, inputVector, outputVector);
+  return this->Superclass::RequestData(request, inputVector, outputVector);
 }
 
 

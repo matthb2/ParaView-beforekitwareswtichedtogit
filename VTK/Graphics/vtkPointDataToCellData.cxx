@@ -34,7 +34,7 @@ vtkPointDataToCellData::vtkPointDataToCellData()
 
 //----------------------------------------------------------------------------
 int vtkPointDataToCellData::RequestData(
-  vtkInformation* request, 
+  vtkInformation*, 
   vtkInformationVector* inputVector , 
   vtkInformationVector* outputVector)
 {

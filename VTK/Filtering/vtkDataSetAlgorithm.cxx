@@ -169,7 +169,7 @@ int vtkDataSetAlgorithm::ProcessRequest(
 
 //----------------------------------------------------------------------------
 int vtkDataSetAlgorithm::CreateOutput(
-  vtkInformation* request, 
+  vtkInformation*, 
   vtkInformationVector* inputVector , 
   vtkInformationVector* outputVector)
 {

@@ -94,7 +94,7 @@ unsigned long vtkContourFilter::GetMTime()
 // General contouring filter.  Handles arbitrary input.
 //
 int vtkContourFilter::RequestData(
-  vtkInformation* request, 
+  vtkInformation*, 
   vtkInformationVector* inputVector , 
   vtkInformationVector* outputVector)
 {
