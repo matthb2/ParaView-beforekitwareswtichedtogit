@@ -89,7 +89,7 @@ int vtkKitwareContourFilter::RequestUpdateExtent(
         vtkSynchronizedTemplates2D::New();
       syncTemp2D->SetInput(vtkImageData::SafeDownCast(input));
       syncTemp2D->SetDebug(this->Debug);
-      syncTemp2D->ComputeInputUpdateExtents(output);
+      syncTemp2D->RequestUpdateExtent(request, inputVector, outputVector);
       syncTemp2D->Delete();
       return 1;
       }
