@@ -39,21 +39,6 @@ vtkBandedPolyDataContourFilter::~vtkBandedPolyDataContourFilter()
   this->ContourValues->Delete();
 }
 
-float vtkBandedPolyDataContourFilter::ComputeScalar(int idx)
-{
-  float val;
-
-  if ( idx == (this->NumberOfClipValues-1) )
-    {
-    val = (this->ClipValues[idx-1]+this->ClipValues[idx])/2.0;
-    }
-  else
-    {
-    val = (this->ClipValues[idx]+this->ClipValues[idx+1])/2.0;
-    }
-  return val;
-}
-
 int vtkBandedPolyDataContourFilter::ComputeLowerScalarIndex(float val)
 {
   for (int i=0; i < (this->NumberOfClipValues-1); i++)
@@ -182,7 +167,7 @@ inline int vtkBandedPolyDataContourFilter::InsertCell(vtkCellArray *cells,
       }
     else
       {
-      newS->InsertTuple1(cellId++,this->ComputeScalar(idx));
+      newS->InsertTuple1(cellId++,this->ClipValues[idx]);
       }
     }
   return cellId;
