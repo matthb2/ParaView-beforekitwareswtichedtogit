@@ -672,6 +672,7 @@ void vtkPlaneWidget::OnMiddleButtonUp()
   this->State = vtkPlaneWidget::Start;
   this->HighlightPlane(0);
   this->HighlightNormal(0);
+  this->HighlightHandle(NULL);
   
   this->EventCallbackCommand->SetAbortFlag(1);
   this->EndInteraction();
