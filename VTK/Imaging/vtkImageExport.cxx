@@ -109,6 +109,18 @@ void vtkImageExport::SetExportVoidPointer(void *ptr)
 }
 
 //----------------------------------------------------------------------------
+// This is the superclasses style of Execute method.  Convert it into
+// an imaging style Execute method.
+int vtkImageExport::RequestData(
+  vtkInformation* vtkNotUsed( request ),
+  vtkInformationVector** vtkNotUsed( inputVector ),
+  vtkInformationVector* vtkNotUsed( outputVector ))
+{
+  // we are the end of the pipeline, we do nothing
+  return 1;
+}
+
+//----------------------------------------------------------------------------
 // Exports all the data from the input.
 void vtkImageExport::Export(void *output)
 {

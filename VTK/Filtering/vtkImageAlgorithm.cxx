@@ -72,8 +72,14 @@ int vtkImageAlgorithm::RequestData(
   vtkInformation *outInfo = 
     outputVector->GetInformationObject(outputPort);
   // call ExecuteData
-  this->ExecuteData( outInfo->Get(vtkDataObject::DATA_OBJECT()) );
-
+  if (outInfo)
+    {
+    this->ExecuteData( outInfo->Get(vtkDataObject::DATA_OBJECT()) );
+    }
+  else
+    {
+    this->ExecuteData(NULL);
+    }
   return 1;
 }
 
