@@ -66,7 +66,6 @@ vtkStructuredCacheFilter::~vtkStructuredCacheFilter()
 void vtkStructuredCacheFilter::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os,indent);
-  vtkIndent i2 = indent.GetNextIndent();
   
   os << indent << "Cache: " << this->Cache << endl;
   os << indent << "CacheUpdateTime: " << this->CacheUpdateTime << endl;
