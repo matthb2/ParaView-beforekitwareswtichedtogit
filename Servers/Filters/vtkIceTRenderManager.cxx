@@ -559,7 +559,7 @@ void vtkIceTRenderManager::PreRenderProcessing()
   vtkRendererCollection *rens = this->RenderWindow->GetRenderers();
   vtkRenderer *ren;
   int i;
-  for (rens->InitTraversal(), i = 0; ren = rens->GetNextItem(); i++)
+  for (rens->InitTraversal(), i = 0; (ren = rens->GetNextItem()); i++)
     {
     vtkIceTRenderer *icetRen = vtkIceTRenderer::SafeDownCast(ren);
     if (icetRen == NULL)

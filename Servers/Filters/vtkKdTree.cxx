@@ -28,21 +28,22 @@
 =========================================================================*/
 
 #include "vtkKdTree.h"
+#include "vtkObjectFactory.h"
+#include "vtkDataSet.h"
+#include "vtkCamera.h"
+#include "vtkPolyData.h"
+#include "vtkRenderWindow.h"
+#include "vtkFloatArray.h"
+#include "vtkMath.h"
+#include "vtkPlanesIntersection.h"
+#include "vtkCell.h"
+#include "vtkCellArray.h"
+#include "vtkIdList.h"
+#include "vtkTimerLog.h"
+#include "vtkPolyData.h"
+#include "vtkPoints.h"
+
 #include <algorithm>
-#include <vtkObjectFactory.h>
-#include <vtkDataSet.h>
-#include <vtkCamera.h>
-#include <vtkPolyData.h>
-#include <vtkRenderWindow.h>
-#include <vtkFloatArray.h>
-#include <vtkMath.h>
-#include <vtkPlanesIntersection.h>
-#include <vtkCell.h>
-#include <vtkCellArray.h>
-#include <vtkIdList.h>
-#include <vtkTimerLog.h>
-#include <vtkPolyData.h>
-#include <vtkPoints.h>
 
 vtkCxxRevisionMacro(vtkKdTree, "$Revision$");
 

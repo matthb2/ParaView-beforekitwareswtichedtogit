@@ -226,7 +226,7 @@ void vtkIceTClientCompositeManager::StartRender()
   vtkLightCollection *lc;
   vtkLight *light;
   static int firstRender = 1;
-  float updateRate = this->RenderWindow->GetDesiredUpdateRate();
+  //float updateRate = this->RenderWindow->GetDesiredUpdateRate();
   
   if (firstRender)
     {
