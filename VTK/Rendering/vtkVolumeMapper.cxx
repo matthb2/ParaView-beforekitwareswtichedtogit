@@ -40,6 +40,9 @@ vtkVolumeMapper::vtkVolumeMapper()
   
   this->ImageClipper = vtkImageClip::New();
   this->ImageClipper->ClipDataOn();
+  
+  this->IndependentComponents = 1;
+  this->ComponentBlendMode = vtkVolumeMapper::ComponentBlendAdd;
 }
 
 vtkVolumeMapper::~vtkVolumeMapper()
