@@ -16,8 +16,12 @@
 
 #include "vtkCompositeDataIterator.h"
 #include "vtkDataSet.h"
+#include "vtkInformation.h"
+#include "vtkInformationIntegerKey.h"
 
 vtkCxxRevisionMacro(vtkCompositeDataSet, "$Revision$");
+
+vtkInformationKeyMacro(vtkCompositeDataSet,INDEX,Integer);
 
 //----------------------------------------------------------------------------
 vtkCompositeDataSet::vtkCompositeDataSet()

@@ -172,8 +172,7 @@ vtkDataObject* vtkHierarchicalDataIterator::GetCurrentDataObject()
     {
     return 0;
     }
-  vtkHDSNode* node = *this->Internal->LDSIterator;
-  return (node ? node->DataSet.GetPointer() : 0);
+  return this->Internal->LDSIterator->GetPointer();
 }
 
 //----------------------------------------------------------------------------

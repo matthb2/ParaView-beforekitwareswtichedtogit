@@ -14,6 +14,7 @@
 =========================================================================*/
 #include "vtkMultiBlockDataSet.h"
 
+#include "vtkInformation.h"
 #include "vtkMultiBlockDataIterator.h"
 #include "vtkMultiBlockDataSetInternal.h"
 
@@ -48,6 +49,16 @@ vtkDataObject* vtkMultiBlockDataSet::GetDataSet(unsigned int idx)
     return 0;
     }
   return this->Internal->DataSets[idx];
+}
+
+//----------------------------------------------------------------------------
+vtkDataObject* vtkMultiBlockDataSet::GetDataSet(vtkInformation* index)
+{
+  if (index->Has(INDEX()))
+    {
+    return this->GetDataSet(index->Get(INDEX()));
+    }
+  return 0;
 }
 
 //----------------------------------------------------------------------------
