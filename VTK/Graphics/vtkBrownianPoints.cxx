@@ -60,7 +60,7 @@ int vtkBrownianPoints::RequestData(
 
   if ( ((numPts=input->GetNumberOfPoints()) < 1) )
     {
-    vtkErrorMacro(<< "No input!\n");
+    vtkDebugMacro(<< "No input!\n");
     return 1;
     }
 
