@@ -402,17 +402,6 @@ void vtkSource::SetNthOutput(int index, vtkDataObject* newOutput)
   // Ask the executive to setup the new output.
   this->GetExecutive()->SetOutputData(index, newOutput);
 
-  // Set vtkSource's extra pointer to the output.
-  if(newOutput)
-    {
-    newOutput->Register(this);
-      }
-    this->Outputs[index] = newOutput;
-  if(oldOutput)
-    {
-    oldOutput->UnRegister(this);
-    }
-  
   this->InvokeEvent(vtkCommand::SetOutputEvent,NULL);
 
   this->Modified();
