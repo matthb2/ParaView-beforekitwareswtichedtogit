@@ -338,7 +338,7 @@ void vtkOutputPort::WaitForUpdate()
 
 //----------------------------------------------------------------------------
 int vtkOutputPort
-::FillInputPortInformation(int port, vtkInformation* info)
+::FillInputPortInformation(int vtkNotUsed( port ), vtkInformation* info)
 {
   info->Set(vtkAlgorithm::INPUT_REQUIRED_DATA_TYPE(), "vtkDataSet");
   return 1;
