@@ -247,6 +247,7 @@ void vtkXMLReader::ExecuteInformation()
   // reported by OpenVTKFile.
   if(!this->OpenVTKFile())
     {
+    this->SetupEmptyOutput();
     return;
     }
   
@@ -295,11 +296,12 @@ void vtkXMLReader::ExecuteData(vtkDataObject* output)
     output->Initialize();
     return;
     }
-  
+
   // Re-open the input file.  If it fails, the error was already
   // reported by OpenVTKFile.
   if(!this->OpenVTKFile())
     {
+    this->SetupEmptyOutput();
     return;
     }
   if(!this->XMLParser)
