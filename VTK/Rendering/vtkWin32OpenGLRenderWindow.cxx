@@ -992,6 +992,15 @@ void vtkWin32OpenGLRenderWindow::SetWindowInfo(char *info)
   vtkDebugMacro(<< "Setting WindowId to " << this->WindowId << "\n"); 
 }
 
+void vtkWin32OpenGLRenderWindow::SetNextWindowInfo(char *info)
+{
+  int tmp;
+  
+  sscanf(info,"%i",&tmp);
+
+  this->SetNextWindowId((HWND)tmp);
+}
+
 void vtkWin32OpenGLRenderWindow::SetDisplayId(void * arg)
 { 
   this->DeviceContext = (HDC) arg;
@@ -1033,6 +1042,11 @@ void vtkWin32OpenGLRenderWindow::SetNextWindowId(HWND arg)
   vtkDebugMacro(<< "Setting NextWindowId to " << arg << "\n"); 
 
   this->NextWindowId = arg;
+}
+
+void vtkWin32OpenGLRenderWindow::SetNextWindowId(void *arg)
+{
+   this->SetNextWindowId((HWND)arg);
 }
 
 // Begin the rendering process.
