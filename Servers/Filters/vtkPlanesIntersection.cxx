@@ -34,6 +34,7 @@
 #include "vtkCamera.h"
 #include "vtkRenderWindow.h"
 #include "vtkCell.h"
+#include "vtkObjectFactory.h"
 
 vtkCxxRevisionMacro(vtkPlanesIntersection, "$Revision$");
 vtkStandardNewMacro(vtkPlanesIntersection);

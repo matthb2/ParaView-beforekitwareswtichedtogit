@@ -30,6 +30,7 @@
 =========================================================================*/
 
 #include "vtkPointsProjectedHull.h"
+#include "vtkObjectFactory.h"
 
 vtkCxxRevisionMacro(vtkPointsProjectedHull, "$Revision$");
 vtkStandardNewMacro(vtkPointsProjectedHull);

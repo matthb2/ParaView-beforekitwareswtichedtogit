@@ -47,6 +47,9 @@
 #include "vtkLongArray.h"
 #include "vtkUnsignedLongArray.h"
 #include "vtkDataArray.h"
+#include "vtkPointData.h"
+#include "vtkCellData.h"
+
 #include <stdlib.h>
 #include <algorithm>
 
