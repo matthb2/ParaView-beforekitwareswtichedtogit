@@ -479,6 +479,8 @@ int vtkXMLWriter::WriteBinaryData(void* data, int numWords, int wordType)
       return 0;
       }    
     }
+  
+  return 1;
 }
 
 //----------------------------------------------------------------------------
