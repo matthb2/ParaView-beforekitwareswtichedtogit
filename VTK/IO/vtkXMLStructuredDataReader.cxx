@@ -111,6 +111,7 @@ void vtkXMLStructuredDataReader::DestroyPieces()
   this->PiecePointIncrements = 0;
   this->PieceCellDimensions = 0;
   this->PieceCellIncrements = 0;
+  this->Superclass::DestroyPieces();
 }
 
 //----------------------------------------------------------------------------
