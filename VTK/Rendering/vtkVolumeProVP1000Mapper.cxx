@@ -18,11 +18,13 @@
 #include "vtkVolumeProVP1000Mapper.h"
 
 #include "vtkCamera.h"
+#include "vtkColorTransferFunction.h"
 #include "vtkDebugLeaks.h"
 #include "vtkGraphicsFactory.h"
 #include "vtkLight.h"
 #include "vtkObjectFactory.h"
 #include "vtkOpenGLVolumeProVP1000Mapper.h"
+#include "vtkPiecewiseFunction.h"
 #include "vtkRenderWindow.h"
 #include "vtkRenderer.h"
 #include "vtkToolkits.h"
@@ -1379,4 +1381,10 @@ VLIStatus vtkVolumeProVP1000Mapper::CheckSubSampling(const VLIVolume *inVolume,
     outMinImageHeight = (int)ceil( double (viewportHeight-1)*viewportScale +1);
     
     return status;
+}
+
+//----------------------------------------------------------------------------
+void vtkVolumeProVP1000Mapper::PrintSelf(ostream& os, vtkIndent indent)
+{
+  this->Superclass::PrintSelf(os,indent);
 }

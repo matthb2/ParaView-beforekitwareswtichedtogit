@@ -18,11 +18,13 @@
 #include "vtkVolumeProVG500Mapper.h"
 
 #include "vtkCamera.h"
+#include "vtkColorTransferFunction.h"
 #include "vtkDebugLeaks.h"
 #include "vtkGraphicsFactory.h"
 #include "vtkLight.h"
 #include "vtkObjectFactory.h"
 #include "vtkOpenGLVolumeProVG500Mapper.h"
+#include "vtkPiecewiseFunction.h"
 #include "vtkRenderWindow.h"
 #include "vtkRenderer.h"
 #include "vtkToolkits.h"
@@ -1140,4 +1142,8 @@ void vtkVolumeProVG500Mapper::Render( vtkRenderer *ren, vtkVolume *vol )
 
 }
 
-
+//----------------------------------------------------------------------------
+void vtkVolumeProVG500Mapper::PrintSelf(ostream& os, vtkIndent indent)
+{
+  this->Superclass::PrintSelf(os,indent);
+}
