@@ -1893,6 +1893,12 @@ private:
     this->Valid = 0;
     this->Done = 0;
     }
+  void ReportStrayAttribute(const char*, const char*, const char*) {}
+  void ReportMissingAttribute(const char*, const char*) {}
+  void ReportBadAttribute(const char*, const char*, const char*) {}
+  void ReportUnknownElement(const char*) {}
+  void ReportXmlParseError() {}
+
   int ParsingComplete() { return this->Done; }
   int Valid;
   int Done;
