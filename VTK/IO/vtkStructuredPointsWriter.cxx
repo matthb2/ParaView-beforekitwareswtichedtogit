@@ -103,6 +103,16 @@ int vtkStructuredPointsWriter::FillInputPortInformation(int,
   return 1;
 }
 
+vtkImageData* vtkStructuredPointsWriter::GetInput()
+{
+  return vtkImageData::SafeDownCast(this->Superclass::GetInput());
+}
+
+vtkImageData* vtkStructuredPointsWriter::GetInput(int port)
+{
+  return vtkImageData::SafeDownCast(this->Superclass::GetInput(port));
+}
+
 void vtkStructuredPointsWriter::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os,indent);

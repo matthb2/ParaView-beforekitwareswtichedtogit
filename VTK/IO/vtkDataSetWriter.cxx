@@ -119,6 +119,16 @@ int vtkDataSetWriter::FillInputPortInformation(int, vtkInformation *info)
   return 1;
 }
 
+vtkDataSet* vtkDataSetWriter::GetInput()
+{
+  return vtkDataSet::SafeDownCast(this->Superclass::GetInput());
+}
+
+vtkDataSet* vtkDataSetWriter::GetInput(int port)
+{
+  return vtkDataSet::SafeDownCast(this->Superclass::GetInput(port));
+}
+
 void vtkDataSetWriter::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os,indent);

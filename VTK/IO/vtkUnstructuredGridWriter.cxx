@@ -132,6 +132,16 @@ int vtkUnstructuredGridWriter::FillInputPortInformation(int,
   return 1;
 }
 
+vtkUnstructuredGrid* vtkUnstructuredGridWriter::GetInput()
+{
+  return vtkUnstructuredGrid::SafeDownCast(this->Superclass::GetInput());
+}
+
+vtkUnstructuredGrid* vtkUnstructuredGridWriter::GetInput(int port)
+{
+  return vtkUnstructuredGrid::SafeDownCast(this->Superclass::GetInput(port));
+}
+
 void vtkUnstructuredGridWriter::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os,indent);

@@ -111,6 +111,16 @@ int vtkRectilinearGridWriter::FillInputPortInformation(int,
   return 1;
 }
 
+vtkRectilinearGrid* vtkRectilinearGridWriter::GetInput()
+{
+  return vtkRectilinearGrid::SafeDownCast(this->Superclass::GetInput());
+}
+
+vtkRectilinearGrid* vtkRectilinearGridWriter::GetInput(int port)
+{
+  return vtkRectilinearGrid::SafeDownCast(this->Superclass::GetInput(port));
+}
+
 void vtkRectilinearGridWriter::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os,indent);

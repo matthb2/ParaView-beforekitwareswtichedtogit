@@ -528,13 +528,7 @@ int vtkCGMqsortCompare(const void *val1, const void *val2)
 void vtkCGMWriter::WriteData()
 {
   FILE *outf;
-  vtkPolyData *input=vtkPolyData::SafeDownCast(this->GetInput());
-
-  if (!input)
-    {
-    vtkErrorMacro("Input is not a vtkPolyData.");
-    return;
-    }
+  vtkPolyData *input=this->GetInput();
 
   vtkIdType numCells=input->GetNumberOfCells(), cellId;
   vtkIdType numPts=input->GetNumberOfPoints();

@@ -119,6 +119,16 @@ int vtkStructuredGridWriter::FillInputPortInformation(int,
   return 1;
 }
 
+vtkStructuredGrid* vtkStructuredGridWriter::GetInput()
+{
+  return vtkStructuredGrid::SafeDownCast(this->Superclass::GetInput());
+}
+
+vtkStructuredGrid* vtkStructuredGridWriter::GetInput(int port)
+{
+  return vtkStructuredGrid::SafeDownCast(this->Superclass::GetInput(port));
+}
+
 void vtkStructuredGridWriter::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os,indent);
