@@ -24,21 +24,18 @@ vtkStandardNewMacro(vtkTreeComposite);
 //-------------------------------------------------------------------------
 vtkTreeComposite::vtkTreeComposite()
 {
-  vtkWarningMacro("vtkTreeComposite is a legacy class.  Please use vtkCompositeManager instead." <<
+  vtkWarningMacro("vtkTreeComposite is a legacy class and is deprecated in VTK 4.2.  "
+                  "Please use vtkCompositeManager instead.  "
                   "The new class defaults to using vtkTreeCompositer, but can use any compositer.");
 }
-
   
 //-------------------------------------------------------------------------
 vtkTreeComposite::~vtkTreeComposite()
 {
 }
 
-
+//-------------------------------------------------------------------------
 void vtkTreeComposite::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->vtkCompositeManager::PrintSelf(os, indent);
 }
-
-
-
