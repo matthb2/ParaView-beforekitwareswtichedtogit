@@ -127,16 +127,16 @@ int vtkCommunicator::Send(vtkDataObject* data, int remoteHandle,
 int vtkCommunicator::Send(vtkDataArray* data, int remoteHandle, int tag)
 {
 
+  int type = -1;
   if (data == NULL)
     {
-    this->MarshalDataLength = 0;
-    this->Send( &this->MarshalDataLength, 1,      
-                remoteHandle, tag);
-    return 1;
+      this->MarshalDataLength = 0;
+      this->Send( &type, 1, remoteHandle, tag);
+      return 1;
     }
 
   // send array type
-  int type = data->GetDataType();
+  type = data->GetDataType();
   this->Send( &type, 1, remoteHandle, tag);
 
   // send array size
@@ -268,6 +268,11 @@ int vtkCommunicator::Receive(vtkDataArray* data, int remoteHandle,
     {
     vtkErrorMacro("Could not receive data!");
     return 0;
+    }
+
+  if (type == -1) 
+    { // This indicates a NULL object was sent. Do nothing.
+    return 1;   
     }
 
   // Next receive the data length.
