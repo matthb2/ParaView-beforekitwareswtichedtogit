@@ -17,17 +17,18 @@
 =========================================================================*/
 #include "vtkStructuredCacheFilter.h"
 
+#include "vtkCellData.h"
+#include "vtkExtentSplitter.h"
+#include "vtkFloatArray.h"
 #include "vtkImageData.h"
-#include "vtkStructuredGrid.h"
-#include "vtkRectilinearGrid.h"
+#include "vtkMultiProcessController.h"
 #include "vtkObjectFactory.h"
 #include "vtkPointData.h"
-#include "vtkMultiProcessController.h"
-#include "vtkTableExtentTranslator.h"
-#include "vtkExtentSplitter.h"
 #include "vtkPointData.h"
-#include "vtkCellData.h"
-#include "vtkFloatArray.h"
+#include "vtkRectilinearGrid.h"
+#include "vtkStructuredGrid.h"
+#include "vtkUnsignedCharArray.h"
+#include "vtkTableExtentTranslator.h"
 #include "vtkTimerLog.h"
 
 vtkCxxRevisionMacro(vtkStructuredCacheFilter, "$Revision$");
