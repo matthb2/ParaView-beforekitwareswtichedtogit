@@ -343,10 +343,7 @@ void vtkSphereWidget::SelectRepresentation()
 void vtkSphereWidget::GetSphere(vtkSphere *sphere)
 {
   sphere->SetRadius(this->SphereSource->GetRadius());
-  // TODO: cleanup when spheresource is converted to double
-  sphere->SetCenter(this->SphereSource->GetCenter()[0],
-                    this->SphereSource->GetCenter()[1],
-                    this->SphereSource->GetCenter()[2]);
+  sphere->SetCenter(this->SphereSource->GetCenter());
 }
 
 void vtkSphereWidget::HighlightSphere(int highlight)

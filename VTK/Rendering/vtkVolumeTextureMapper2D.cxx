@@ -949,7 +949,7 @@ void vtkVolumeTextureMapper2D::InitializeRender( vtkRenderer *ren,
     }
   else
     {
-    float vpn[3];
+    double vpn[3];
 
     // Take the vpn, convert it to volume coordinates, and find the 
     // major direction

@@ -445,13 +445,10 @@ void vtkBoxWidget::PositionHandles()
   VTK_AVERAGE(p0,p6,x);
   this->Points->SetPoint(14, x);
 
-  // TODO clean this up as double change progresses farther
   int i;
   for (i = 0; i < 7; ++i)
     {
-    this->HandleGeometry[i]->SetCenter(this->Points->GetPoint(8+i)[0],
-                                       this->Points->GetPoint(8+i)[1],
-                                       this->Points->GetPoint(8+i)[2]);
+    this->HandleGeometry[i]->SetCenter(this->Points->GetPoint(8+i));
     }
   
   this->HexFacePolyData->Modified();
