@@ -16,15 +16,16 @@
 
 =========================================================================*/
 #include "vtkObjectFactory.h"
-#include "vtkObjectFactoryCollection.h"
-#include "vtkDynamicLoader.h"
-#include "vtkDirectory.h"
-#include "vtkVersion.h"
-#include <stdlib.h>
-#include <ctype.h>
-#include "vtkOverrideInformationCollection.h"
-#include "vtkOverrideInformation.h"
+
 #include "vtkDebugLeaks.h"
+#include "vtkDirectory.h"
+#include "vtkDynamicLoader.h"
+#include "vtkObjectFactoryCollection.h"
+#include "vtkOverrideInformation.h"
+#include "vtkOverrideInformationCollection.h"
+#include "vtkVersion.h"
+
+#include <ctype.h>
 
 vtkCxxRevisionMacro(vtkObjectFactory, "$Revision$");
 

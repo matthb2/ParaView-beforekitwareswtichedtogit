@@ -16,17 +16,18 @@
 
 =========================================================================*/
 #include "vtkImageReader2Factory.h"
-#include "vtkObjectFactory.h"
-#include "vtkImageReader2.h"
+
+#include "vtkBMPReader.h"
 #include "vtkGESignaReader.h"
+#include "vtkImageReader2.h"
+#include "vtkImageReader2Collection.h"
+#include "vtkJPEGReader.h"
+#include "vtkObjectFactory.h"
+#include "vtkObjectFactoryCollection.h"
 #include "vtkPNGReader.h"
 #include "vtkPNMReader.h"
-#include "vtkJPEGReader.h"
-#include "vtkTIFFReader.h"
-#include "vtkBMPReader.h"
 #include "vtkSLCReader.h"
-#include "vtkImageReader2Collection.h"
-#include "vtkObjectFactoryCollection.h"
+#include "vtkTIFFReader.h"
 
 vtkCxxRevisionMacro(vtkImageReader2Factory, "$Revision$");
 vtkStandardNewMacro(vtkImageReader2Factory);
