@@ -547,7 +547,7 @@ void vtkCocoaRenderWindow::SetFullScreen(int arg)
     // if window already up get its values 
     if (this->WindowId)
       {
-      temp = this->GetPosition();      
+      pos = this->GetPosition();      
       this->OldScreen[0] = pos[0];
       this->OldScreen[1] = pos[1];
 
