@@ -248,7 +248,7 @@ void vtkPVProgressHandler::InvokeRootNodeProgressEvent(
 
 //----------------------------------------------------------------------------
 void vtkPVProgressHandler::InvokeRootNodeServerProgressEvent(
-  vtkProcessModule* app, vtkObject* o, int myprogress)
+  vtkProcessModule* , vtkObject* o, int myprogress)
 {
   int id = -1;
   int progress = -1;
