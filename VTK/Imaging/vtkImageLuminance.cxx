@@ -44,9 +44,10 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 
 //----------------------------------------------------------------------------
 // This method overrides information set by parent's ExecuteInformation.
-void vtkImageLuminance::ExecuteImageInformation()
+void vtkImageLuminance::ExecuteInformation(vtkImageData *vtkNotUsed(inData), 
+					   vtkImageData *outData)
 {
-  this->GetOutput()->SetNumberOfScalarComponents(1);
+  outData->SetNumberOfScalarComponents(1);
 }
 
 //----------------------------------------------------------------------------

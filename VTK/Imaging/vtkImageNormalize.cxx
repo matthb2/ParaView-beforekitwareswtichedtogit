@@ -40,15 +40,15 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 =========================================================================*/
 #include <math.h>
 
-#include "vtkImageMagnitude.h"
+#include "vtkImageNormalize.h"
 
 
 //----------------------------------------------------------------------------
 // This method tells the superclass that the first axis will collapse.
-void vtkImageMagnitude::ExecuteInformation(vtkImageData *vtkNotUsed(inData), 
+void vtkImageNormalize::ExecuteInformation(vtkImageData *vtkNotUsed(inData), 
 					   vtkImageData *outData)
 {
-  outData->SetNumberOfScalarComponents(1);
+  outData->SetScalarType(VTK_FLOAT);
 }
 
 //----------------------------------------------------------------------------
@@ -56,10 +56,10 @@ void vtkImageMagnitude::ExecuteInformation(vtkImageData *vtkNotUsed(inData),
 // it handles boundaries. Pixels are just replicated to get values 
 // out of extent.
 template <class T>
-static void vtkImageMagnitudeExecute(vtkImageMagnitude *self,
-					     vtkImageData *inData, T *inPtr,
-					     vtkImageData *outData, T *outPtr,
-					     int outExt[6], int id)
+static void vtkImageNormalizeExecute(vtkImageNormalize *self,
+				     vtkImageData *inData, T *inPtr,
+				     vtkImageData *outData, float *outPtr,
+				     int outExt[6], int id)
 {
   int idxC, idxX, idxY, idxZ;
   int maxC, maxX, maxY, maxZ;
@@ -68,6 +68,7 @@ static void vtkImageMagnitudeExecute(vtkImageMagnitude *self,
   unsigned long count = 0;
   unsigned long target;
   float sum;
+  T *inVect;
   
   // find the region to loop over
   maxC = inData->GetNumberOfScalarComponents();
@@ -96,14 +97,30 @@ static void vtkImageMagnitudeExecute(vtkImageMagnitude *self,
 	}
       for (idxX = 0; idxX <= maxX; idxX++)
 	{
-	sum = 0;
+
+	// save the start of the vector
+	inVect = inPtr;
+
+	// compute the magnitude.
+	sum = 0.0;
 	for (idxC = 0; idxC < maxC; idxC++)
 	  {
-	  sum += (*inPtr * *inPtr);
+	  sum += (float)(*inPtr) * (float)(*inPtr);
 	  inPtr++;
 	  }
-	*outPtr = (T)(sqrt(sum));
-	outPtr++;
+	if (sum > 0.0)
+	  {
+	  sum = 1.0 / sqrt(sum);
+	  }
+	
+	// now divide to normalize.
+	for (idxC = 0; idxC < maxC; idxC++)
+	  {
+	  *outPtr = (float)(*inVect) * sum;
+	  inVect++;
+	  outPtr++;
+	  }
+
 	}
       outPtr += outIncY;
       inPtr += inIncY;
@@ -118,7 +135,7 @@ static void vtkImageMagnitudeExecute(vtkImageMagnitude *self,
 // This method contains a switch statement that calls the correct
 // templated function for the input data type.  The output data
 // must match input type.  This method does handle boundary conditions.
-void vtkImageMagnitude::ThreadedExecute(vtkImageData *inData, 
+void vtkImageNormalize::ThreadedExecute(vtkImageData *inData, 
 					vtkImageData *outData,
 					int outExt[6], int id)
 {
@@ -129,73 +146,75 @@ void vtkImageMagnitude::ThreadedExecute(vtkImageData *inData,
   << ", outData = " << outData);
   
   // this filter expects that input is the same type as output.
-  if (inData->GetScalarType() != outData->GetScalarType())
+  if (outData->GetScalarType() != VTK_FLOAT)
     {
-    vtkErrorMacro(<< "Execute: input ScalarType, " << inData->GetScalarType()
-    << ", must match out ScalarType " << outData->GetScalarType());
+    vtkErrorMacro(<< "Execute: output ScalarType, " << outData->GetScalarType()
+    << ", must be float");
     return;
     }
   
   switch (inData->GetScalarType())
     {
     case VTK_DOUBLE:
-      vtkImageMagnitudeExecute(this, 
+      vtkImageNormalizeExecute(this, 
 			       inData, (double *)(inPtr), 
-			       outData, (double *)(outPtr), outExt, id);
+			       outData, (float *)(outPtr), outExt, id);
       break;
     case VTK_FLOAT:
-      vtkImageMagnitudeExecute(this, 
+      vtkImageNormalizeExecute(this, 
 			       inData, (float *)(inPtr), 
 			       outData, (float *)(outPtr), outExt, id);
       break;
     case VTK_LONG:
-      vtkImageMagnitudeExecute(this, 
+      vtkImageNormalizeExecute(this, 
 			       inData, (long *)(inPtr), 
-			       outData, (long *)(outPtr), outExt, id);
+			       outData, (float *)(outPtr), outExt, id);
       break;
     case VTK_UNSIGNED_LONG:
-      vtkImageMagnitudeExecute(this, 
+      vtkImageNormalizeExecute(this, 
 			       inData, (unsigned long *)(inPtr), 
-			       outData, (unsigned long *)(outPtr), 
+			       outData, (float *)(outPtr), 
 			       outExt, id);
       break;
     case VTK_INT:
-      vtkImageMagnitudeExecute(this, 
+      vtkImageNormalizeExecute(this, 
 			       inData, (int *)(inPtr), 
-			       outData, (int *)(outPtr), outExt, id);
+			       outData, (float *)(outPtr), outExt, id);
       break;
     case VTK_UNSIGNED_INT:
-      vtkImageMagnitudeExecute(this, 
+      vtkImageNormalizeExecute(this, 
 			       inData, (unsigned int *)(inPtr), 
-			       outData, (unsigned int *)(outPtr), 
+			       outData, (float *)(outPtr), 
 			       outExt, id);
       break;
     case VTK_SHORT:
-      vtkImageMagnitudeExecute(this, 
+      vtkImageNormalizeExecute(this, 
 			       inData, (short *)(inPtr), 
-			       outData, (short *)(outPtr), outExt, id);
+			       outData, (float *)(outPtr), outExt, id);
       break;
     case VTK_UNSIGNED_SHORT:
-      vtkImageMagnitudeExecute(this, 
+      vtkImageNormalizeExecute(this, 
 			       inData, (unsigned short *)(inPtr), 
-			       outData, (unsigned short *)(outPtr), 
+			       outData, (float *)(outPtr), 
 			       outExt, id);
       break;
     case VTK_CHAR:
-      vtkImageMagnitudeExecute(this, 
+      vtkImageNormalizeExecute(this, 
 			       inData, (char *)(inPtr), 
-			       outData, (char *)(outPtr), outExt, id);
+			       outData, (float *)(outPtr), outExt, id);
       break;
     case VTK_UNSIGNED_CHAR:
-      vtkImageMagnitudeExecute(this, 
+      vtkImageNormalizeExecute(this, 
 			       inData, (unsigned char *)(inPtr), 
-			       outData, (unsigned char *)(outPtr), outExt, id);
+			       outData, (float *)(outPtr), outExt, id);
       break;
     default:
       vtkErrorMacro(<< "Execute: Unknown ScalarType");
       return;
     }
 }
+
+
 
 
 

@@ -38,80 +38,40 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 
 
 =========================================================================*/
-// .NAME vtkImageIslandRemoval2D - Removes small clusters in masks.
+// .NAME vtkImageNormalize - Normalizes that scalar components for each point.
 // .SECTION Description
-// vtkImageIslandRemoval2D computes the area of separate islands in 
-// a mask image.  It removes any island that has less than AreaThreshold
-// pixels.  Output has the same ScalarType as input.  It generates
-// the whole 2D output image for any output request.
+// For each point, vtkImageNormalize normalizes the vector defined by the 
+// scalar components.  If the magnitude of this vector is zero, the output
+// vector is zero also.
 
 
-#ifndef __vtkImageIslandRemoval2D_h
-#define __vtkImageIslandRemoval2D_h
+#ifndef __vtkImageNormalize_h
+#define __vtkImageNormalize_h
 
 
 #include "vtkImageToImageFilter.h"
 
-
-
-typedef struct{
-  void *inPtr;
-  void *outPtr;
-  int idx0;
-  int idx1;
-  } vtkImage2DIslandPixel;
-
-
-
-class VTK_EXPORT vtkImageIslandRemoval2D : public vtkImageToImageFilter
+class VTK_EXPORT vtkImageNormalize : public vtkImageToImageFilter
 {
 public:
+  static vtkImageNormalize *New() {return new vtkImageNormalize;};
+  const char *GetClassName() {return "vtkImageNormalize";};
 
-  // Description:
-  // Constructor: Sets default filter to be identity.
-  vtkImageIslandRemoval2D();
-
-  static vtkImageIslandRemoval2D *New() {return new vtkImageIslandRemoval2D;};
-  const char *GetClassName() {return "vtkImageIslandRemoval2D";};
-  void PrintSelf(ostream& os, vtkIndent indent);
-  
-  // Description:
-  // Set/Get the cutoff area for removal
-  vtkSetMacro(AreaThreshold, int);
-  vtkGetMacro(AreaThreshold, int);
-
-  // Description:
-  // Set/Get whether to use 4 or 8 neighbors
-  vtkSetMacro(SquareNeighborhood, int);
-  vtkGetMacro(SquareNeighborhood, int);
-  vtkBooleanMacro(SquareNeighborhood, int);
-
-  // Description:
-  // Set/Get the value to remove.
-  vtkSetMacro(IslandValue, float);
-  vtkGetMacro(IslandValue, float);
-
-  // Description:
-  // Set/Get the value to put in the place of removed pixels.
-  vtkSetMacro(ReplaceValue, float);
-  vtkGetMacro(ReplaceValue, float);
-  
 protected:
-  int AreaThreshold;
-  int SquareNeighborhood;
-  float IslandValue;
-  float ReplaceValue;
 
-  void Execute(vtkImageData *inData, vtkImageData *outData);
-
-  // Description:
-  // Generate more than requested.  Called by the superclass before
-  // an execute, and before output memory is allocated.
-  void ModifyOutputUpdateExtent();
-
+  void ExecuteInformation(vtkImageData *inData, vtkImageData *outData);
+  void ThreadedExecute(vtkImageData *inData, vtkImageData *outData,
+		       int extent[6], int id);
 };
 
 #endif
+
+
+
+
+
+
+
 
 
 
