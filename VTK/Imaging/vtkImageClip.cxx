@@ -182,6 +182,7 @@ void vtkImageClip::ExecuteData(vtkDataObject *)
 
   outData->SetExtent(inExt);
   outData->GetPointData()->PassData(inData->GetPointData());
+  outData->GetCellData()->PassData(inData->GetCellData());
 
   if (this->ClipData)
     {
