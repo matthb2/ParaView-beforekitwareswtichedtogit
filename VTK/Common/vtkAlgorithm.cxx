@@ -404,6 +404,12 @@ void vtkAlgorithm::AddInputConnection(int port, vtkAlgorithmOutput* input)
                                                     input->GetIndex()) !=
      this->AlgorithmInternal->InputPorts[port].end())
     {
+    vtkWarningMacro("Not adding connection from output port index "
+                    << input->GetIndex() << " on algorithm "
+                    << (input->GetProducer()?
+                        input->GetProducer()->GetClassName() : "NULL")
+                    << "(" << input->GetProducer() << ") to input port "
+                    << port << " because it is already present.");
     return;
     }
 
