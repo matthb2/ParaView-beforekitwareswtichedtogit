@@ -348,7 +348,7 @@ void vtkXMLPDataWriter::ProgressCallbackFunction(vtkObject* caller,
                                                  unsigned long,
                                                  void* clientdata, void*)
 {
-  vtkProcessObject* w = vtkProcessObject::SafeDownCast(caller);
+  vtkAlgorithm* w = vtkAlgorithm::SafeDownCast(caller);
   if(w)
     {
     reinterpret_cast<vtkXMLPDataWriter*>(clientdata)->ProgressCallback(w);
@@ -356,7 +356,7 @@ void vtkXMLPDataWriter::ProgressCallbackFunction(vtkObject* caller,
 }
 
 //----------------------------------------------------------------------------
-void vtkXMLPDataWriter::ProgressCallback(vtkProcessObject* w)
+void vtkXMLPDataWriter::ProgressCallback(vtkAlgorithm* w)
 {
   float width = this->ProgressRange[1]-this->ProgressRange[0];
   float internalProgress = w->GetProgress();
