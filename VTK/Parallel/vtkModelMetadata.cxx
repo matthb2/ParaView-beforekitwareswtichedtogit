@@ -304,15 +304,6 @@ void vtkModelMetadata::Reset()
   this->InitializeAllIvars();
 }
 
-vtkModelMetadata& vtkModelMetadata::operator= (const vtkModelMetadata &mmd)
-{
-  this->Reset();
-
-  this->MergeModelMetadata(&mmd);
-
-  return *this;
-}
-
 //-------------------------------------------------
 // information  && QA fields
 //-------------------------------------------------
