@@ -87,6 +87,9 @@ protected:
   void ComputeInputUpdateExtents(vtkDataObject *out);
  
   vtkPolyData *Buffer;
+  int BufferPiece;
+  int BufferNumberOfPieces;
+  int BufferGhostLevel;
 
   int CreateGhostCells;
   vtkMultiProcessController *Controller;
