@@ -393,8 +393,9 @@ void vtkRenderer::AllocateTime()
   totalTime = this->PropArrayCount;
   this->ComputeAspect();
 
-  for (this->Cullers->InitTraversal(); 
-       (aCuller=this->Cullers->GetNextItem());)
+  vtkCollectionSimpleIterator sit;    
+  for (this->Cullers->InitTraversal(sit); 
+       (aCuller=this->Cullers->GetNextCuller(sit));)
     {
     totalTime = 
       aCuller->Cull((vtkRenderer *)this, 
