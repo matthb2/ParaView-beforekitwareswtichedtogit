@@ -52,13 +52,13 @@ void vtkRendererCollection::Render()
     }
 }
 
-void vtkRendererCollection::Render2D()
+void vtkRendererCollection::RenderOverlay()
 {
   vtkRenderer *ren;
 
   for (this->InitTraversal(); (ren = this->GetNextItem()); )
     {
-    ren->Render2D();
+    ren->RenderOverlay();
     }
 }
 

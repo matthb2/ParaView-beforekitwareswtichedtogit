@@ -5,7 +5,6 @@
   Language:  C++
   Date:      $Date$
   Version:   $Revision$
-  Thanks:    Thanks to Matt Turek who developed this class.
 
 Copyright (c) 1993-1998 Ken Martin, Will Schroeder, Bill Lorensen.
 
@@ -38,37 +37,24 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 
 
 =========================================================================*/
-// .NAME vtkMapper2D
-// .SECTION Description
-// vtkMapper2D is an abstract class which defines the interface for objects
-// which render two dimensional actors (vtkActor2D).
+#include "vtkProp.h"
 
-// .SECTION See Also
-// vtkActor2D
-
-#ifndef __vtkMapper2D_h
-#define __vtkMapper2D_h
-
-#include "vtkViewport.h"
-#include "vtkWindow.h"
-#include "vtkActor2D.h"
-
-class VTK_EXPORT vtkMapper2D : public vtkObject
+// Creates an Prop with the following defaults: visibility on.
+vtkProp::vtkProp()
 {
-public:
-  static vtkMapper2D* New() {return new vtkMapper2D;};
-  void PrintSelf(ostream& os, vtkIndent indent);
-  virtual void RenderOverlay(vtkViewport* viewport, vtkActor2D* actor) {};
-  virtual void RenderOpaqueGeometry(vtkViewport* viewport, 
-		vtkActor2D* actor) {};
-  virtual void RenderTranslucentGeometry(vtkViewport* viewport, 
-		vtkActor2D* actor) {};
+  this->Visibility = 1;  // ON
+  this->AllocatedRenderTime = 10.0;
+}
 
-protected:
+void vtkProp::PrintSelf(ostream& os, vtkIndent indent)
+{
+  this->vtkObject::PrintSelf(os,indent);
 
-};
+  os << indent << "AllocatedRenderTime: " 
+     << this->AllocatedRenderTime << endl;
+  os << indent << "Visibility: " << (this->Visibility ? "On\n" : "Off\n");
+}
 
-#endif
 
 
 

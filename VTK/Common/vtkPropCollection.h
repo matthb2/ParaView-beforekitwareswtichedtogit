@@ -5,7 +5,7 @@
   Language:  C++
   Date:      $Date$
   Version:   $Revision$
-  Thanks:    Thanks to Matt Turek who developed this class.
+
 
 Copyright (c) 1993-1998 Ken Martin, Will Schroeder, Bill Lorensen.
 
@@ -38,37 +38,84 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 
 
 =========================================================================*/
-// .NAME vtkMapper2D
+// .NAME vtkPropCollection - a list of Props
 // .SECTION Description
-// vtkMapper2D is an abstract class which defines the interface for objects
-// which render two dimensional actors (vtkActor2D).
+// vtkPropCollection represents and provides methods to manipulate a list of
+// Props (i.e., vtkProp and subclasses). The list is unsorted and duplicate
+// entries are not prevented.
 
-// .SECTION See Also
-// vtkActor2D
+// .SECTION see also
+// vtkProp vtkCollection 
 
-#ifndef __vtkMapper2D_h
-#define __vtkMapper2D_h
+#ifndef __vtkPropC_h
+#define __vtkPropC_h
 
-#include "vtkViewport.h"
-#include "vtkWindow.h"
-#include "vtkActor2D.h"
+#include "vtkCollection.h"
+class vtkProp;
 
-class VTK_EXPORT vtkMapper2D : public vtkObject
+class VTK_EXPORT vtkPropCollection : public vtkCollection
 {
-public:
-  static vtkMapper2D* New() {return new vtkMapper2D;};
-  void PrintSelf(ostream& os, vtkIndent indent);
-  virtual void RenderOverlay(vtkViewport* viewport, vtkActor2D* actor) {};
-  virtual void RenderOpaqueGeometry(vtkViewport* viewport, 
-		vtkActor2D* actor) {};
-  virtual void RenderTranslucentGeometry(vtkViewport* viewport, 
-		vtkActor2D* actor) {};
+ public:
+  static vtkPropCollection *New() {return new vtkPropCollection;};
+  const char *GetClassName() {return "vtkPropCollection";};
 
-protected:
+  // Description:
+  // Add an Prop to the list.
+  void AddItem(vtkProp *a);
 
+  // Description:
+  // Remove an Prop from the list.
+  void RemoveItem(vtkProp *a);
+
+  // Description:
+  // Determine whether a particular Prop is present. Returns its position
+  // in the list.
+  int IsItemPresent(vtkProp *a);
+
+  // Description:
+  // Get the next Prop in the list.
+  vtkProp *GetNextItem();
+
+  // Description:
+  // Get the last Prop in the list.
+  vtkProp *GetLastItem();
 };
 
+inline void vtkPropCollection::AddItem(vtkProp *a) 
+{
+  this->vtkCollection::AddItem((vtkObject *)a);
+}
+
+inline void vtkPropCollection::RemoveItem(vtkProp *a) 
+{
+  this->vtkCollection::RemoveItem((vtkObject *)a);
+}
+
+inline int vtkPropCollection::IsItemPresent(vtkProp *a) 
+{
+  return this->vtkCollection::IsItemPresent((vtkObject *)a);
+}
+
+inline vtkProp *vtkPropCollection::GetNextItem() 
+{ 
+  return (vtkProp *)(this->GetNextItemAsObject());
+}
+
+inline vtkProp *vtkPropCollection::GetLastItem() 
+{ 
+  if ( this->Bottom == NULL )
+    {
+    return NULL;
+    }
+  else
+    {
+    return (vtkProp *)(this->Bottom->Item);
+    }
+}
+
 #endif
+
+
 
 
 
