@@ -26,7 +26,15 @@
 #include "vtkIdListCollection.h"
 #include "vtkObjectFactory.h"
 
+#ifdef _MSC_VER
+#pragma warning (push, 3)
+#endif
+
 #include <string>
+
+#ifdef _MSC_VER
+#pragma warning(pop)
+#endif
 
 vtkCxxRevisionMacro(vtkGenericEnSightReader, "$Revision$");
 vtkStandardNewMacro(vtkGenericEnSightReader);
