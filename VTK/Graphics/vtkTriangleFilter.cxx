@@ -93,7 +93,7 @@ void vtkTriangleFilter::Execute()
   if ( !abort && input->GetLines()->GetNumberOfCells() > 0 )
     {
     cells = input->GetLines();
-    if ( this->PassVerts )
+    if ( this->PassLines )
       {
       newId = output->GetNumberOfCells();
       newCells = vtkCellArray::New();
