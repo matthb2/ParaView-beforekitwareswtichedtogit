@@ -474,7 +474,7 @@ void vtkXRenderWindowTclInteractorCallback(Widget vtkNotUsed(w),
                                    shift, 
                                    buffer[0], 
                                    1, 
-                                   buffer);
+                                   XKeysymToString(ks));
       me->InvokeEvent(vtkCommand::KeyPressEvent, NULL);
       me->InvokeEvent(vtkCommand::CharEvent, NULL);
       }
