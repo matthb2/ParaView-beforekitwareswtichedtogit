@@ -222,7 +222,7 @@ void vtkQuadraticQuad::InterpolateAttributes(vtkPointData *inPd,
 }
 
 void vtkQuadraticQuad::Contour(float value, 
-                               vtkDataArray* cellScalars, 
+                               vtkDataArray* vtkNotUsed(cellScalars), 
                                vtkPointLocator* locator, 
                                vtkCellArray *verts, 
                                vtkCellArray* lines, 

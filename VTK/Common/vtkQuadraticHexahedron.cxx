@@ -320,7 +320,7 @@ int vtkQuadraticHexahedron::CellBoundary(int subId, float pcoords[3],
 }
 
 void vtkQuadraticHexahedron::Contour(float value, 
-                                     vtkDataArray* cellScalars, 
+                                     vtkDataArray* vtkNotUsed(cellScalars), 
                                      vtkPointLocator* locator, 
                                      vtkCellArray *verts, 
                                      vtkCellArray* lines, 
