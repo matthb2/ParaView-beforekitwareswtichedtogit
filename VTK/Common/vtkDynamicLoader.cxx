@@ -209,8 +209,11 @@ const char* vtkDynamicLoader::LastError()
   // Free the buffer.
   static char* str = 0;
   delete [] str;
-  str = strcpy(new char[strlen((char*)lpMsgBuf)+1], (char*)lpMsgBuf);
-  LocalFree( lpMsgBuf );
+  if (lpMsgBuf)
+    {
+    str = strcpy(new char[strlen((char*)lpMsgBuf)+1], (char*)lpMsgBuf);
+    LocalFree( lpMsgBuf );
+    }
   return str;
 }
 
