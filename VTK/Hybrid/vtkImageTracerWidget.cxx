@@ -380,7 +380,7 @@ void vtkImageTracerWidget::PrintSelf(ostream& os, vtkIndent indent)
     {
     os << indent << "Handle Property: (none)\n";
     }
-
+  os << indent << "Number of Handles: " << this->NumberOfHandles << "\n";
   if ( this->SelectedHandleProperty )
     {
     os << indent << "Selected Handle Property: "

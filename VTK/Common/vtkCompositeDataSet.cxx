@@ -60,6 +60,7 @@ void vtkCompositeDataSet::GetUpdateExtent(int &piece, int &numPieces, int &ghost
 //----------------------------------------------------------------------------
 void vtkCompositeDataSet::PrintSelf(ostream& os, vtkIndent indent)
 {
+  // this->UpdateExtent
   this->Superclass::PrintSelf(os,indent);
 }
 
