@@ -2973,7 +2973,8 @@ void vtkKdTree::PrintSelf(ostream& os, vtkIndent indent)
     os << indent << "CellList.boundaryCells " << this->CellList.boundaryCells << endl;
     }
   os << indent << "CellRegionList: " << this->CellRegionList << endl;
-
+  os << indent << "ComputeIntersectionsUsingDataBounds: ";
+    os << this->ComputeIntersectionsUsingDataBounds << endl;
 }
 
 
