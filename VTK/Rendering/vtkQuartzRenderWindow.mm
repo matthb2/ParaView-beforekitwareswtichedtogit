@@ -556,7 +556,7 @@ vtkWarningMacro(<< "Can't remap the window.");
 
 void vtkQuartzRenderWindow::PrintSelf(ostream& os, vtkIndent indent)
 {
-  this->vtkRenderWindow::PrintSelf(os,indent);
+  this->Superclass::PrintSelf(os,indent);
 
   os << indent << "ContextId: " << this->ContextId << "\n";
   os << indent << "MultiSamples: " << this->MultiSamples << "\n";
