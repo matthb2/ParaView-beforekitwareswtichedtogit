@@ -126,4 +126,5 @@ int vtkSMDomain::ReadXMLAttributes(vtkSMProperty* prop, vtkPVXMLElement* element
 void vtkSMDomain::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os, indent);
+  os << indent << "XMLName: " << this->XMLName << endl;
 }
