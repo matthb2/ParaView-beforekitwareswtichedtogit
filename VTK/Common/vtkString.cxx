@@ -17,6 +17,7 @@
 =========================================================================*/
 #include "vtkString.h"
 #include "vtkObjectFactory.h"
+#include <ctype.h>
 
 vtkCxxRevisionMacro(vtkString, "$Revision$");
 vtkStandardNewMacro(vtkString);
