@@ -139,9 +139,14 @@ void vtkKdTree::DeleteAllDescendants(vtkKdNode *nd)
   if (nd->GetLeft() && nd->GetLeft()->GetLeft())
     {
     vtkKdTree::DeleteAllDescendants(nd->GetLeft());
+    }
+
+  if (nd->GetRight() && nd->GetRight()->GetRight())
+    {
     vtkKdTree::DeleteAllDescendants(nd->GetRight());
     }
-  else if (nd->GetLeft())
+
+  if (nd->GetLeft())
     {
     nd->GetLeft()->Delete();    // cancel out my New() 
     nd->GetRight()->Delete();
