@@ -519,7 +519,7 @@ void vtkSource::SetNumberOfOutputPorts(int n)
 
 //----------------------------------------------------------------------------
 int vtkSource::ProcessRequest(vtkInformation* request,
-                              vtkInformationVector**,
+                              vtkInformationVector** inputVector,
                               vtkInformationVector* outputVector)
 {
   if(request->Has(vtkDemandDrivenPipeline::REQUEST_DATA_OBJECT()))
@@ -714,7 +714,7 @@ int vtkSource::ProcessRequest(vtkInformation* request,
       }
     return 1;
     }
-  return 0;
+  return this->Superclass::ProcessRequest(request, inputVector, outputVector);
 }
 
 //----------------------------------------------------------------------------
