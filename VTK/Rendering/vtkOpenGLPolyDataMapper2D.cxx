@@ -31,6 +31,11 @@
 #include "vtkViewport.h"
 #include "vtkWindow.h"
 #include "vtkgluPickMatrix.h"
+#include "vtkToolkits.h"  // for VTK_USE_GL2PS
+
+#ifdef VTK_USE_GL2PS
+#include "gl2ps.h"
+#endif // VTK_USE_GL2PS
 
 #include <math.h>
 
@@ -260,6 +265,12 @@ void vtkOpenGLPolyDataMapper2D::RenderOverlay(vtkViewport* viewport,
       }
     glEnd();
     }
+
+  // Set pointsize and linewidth for GL2PS output.
+#ifdef VTK_USE_GL2PS
+  gl2psPointSize(actor->GetProperty()->GetPointSize());
+  gl2psLineWidth(actor->GetProperty()->GetLineWidth());
+#endif // VTK_USE_GL2PS
 
   // Set the LineWidth
   glLineWidth(actor->GetProperty()->GetLineWidth());
