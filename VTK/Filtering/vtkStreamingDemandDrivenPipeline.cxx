@@ -361,7 +361,10 @@ vtkStreamingDemandDrivenPipeline
           vtkInformation* inInfo = this->GetInputInformation(i, j);
 
           // Copy the time request
-          inInfo->CopyEntry(outInfo, UPDATE_TIME_INDEX());
+          if ( outInfo->Has(UPDATE_TIME_INDEX()) )
+            {
+            inInfo->CopyEntry(outInfo, UPDATE_TIME_INDEX());
+            }
 
           // Get the executive and port number producing this input.
           vtkStreamingDemandDrivenPipeline* inExec =
