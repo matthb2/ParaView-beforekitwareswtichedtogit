@@ -61,6 +61,14 @@ void vtkInterpolatedVelocityField::PrintSelf(ostream& os, vtkIndent indent)
     {
     os << indent << "Data Set: (none)" << endl;
     }
+  if ( this->VectorsSelection )
+    {
+    os << indent << "VectorsSelection: " << this->VectorsSelection << endl;
+    }
+  else
+    {
+    os << indent << "VectorsSelection: (none)" << endl;
+    }
   if ( this->GenCell )
     {
     os << indent << "Last cell: " << this->GenCell << endl;
