@@ -844,8 +844,11 @@ void vtkVolumeTextureMapper2D::GenerateTexturesAndRenderQuads( vtkRenderer *ren,
       }
     
     this->MajorDirection = savedDirection;
-    this->RenderSavedTexture();
-    this->TextureMTime.Modified();
+    if ( !ren->GetRenderWindow()->GetAbortRender() ) 
+      {
+      this->RenderSavedTexture();
+      this->TextureMTime.Modified();
+      }
     }
   else
     {
