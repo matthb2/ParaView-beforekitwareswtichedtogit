@@ -139,9 +139,9 @@ void vtkMetaImageWriter::Write()
     return;
     }
 
-  origin[0] += ext[0];
-  origin[1] += ext[2];
-  origin[2] += ext[4];
+  origin[0] += ext[0] * spacing[0];
+  origin[1] += ext[2] * spacing[1];
+  origin[2] += ext[4] * spacing[2];
 
   const char* data_file = this->GetRAWFileName();
   int pos = 0;
