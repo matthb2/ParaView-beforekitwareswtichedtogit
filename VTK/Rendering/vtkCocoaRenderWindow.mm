@@ -403,6 +403,7 @@ void vtkCocoaRenderWindow::WindowInitialize (void)
 	[glView setVTKRenderWindowInteractor:0];
 	[[(vtkCocoaWindow *)this->WindowId getvtkCocoaGLView] display];
         this->OwnWindow = 1;
+        this->ContextId = [[(vtkCocoaWindow *)this->WindowId getvtkCocoaGLView ] getOpenGLContext];
     }
     this->OpenGLInit();
     this->Mapped = 1;
