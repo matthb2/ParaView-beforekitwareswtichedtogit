@@ -740,6 +740,23 @@ void vtkPiecewiseFunction::IncreaseArraySize()
   delete [] old_function;
 }
 
+void vtkPiecewiseFunction::FillFromDataPointer(int nb, float *ptr)
+{
+  if (nb <= 0 || !ptr)
+    {
+    return;
+    }
+
+  this->RemoveAllPoints();
+
+  while (nb)
+    {
+    this->AddPoint(ptr[0], ptr[1]);
+    ptr += 2;
+    nb--;
+    }
+}
+
 // Print method for tkPiecewiseFunction
 void vtkPiecewiseFunction::PrintSelf(ostream& os, vtkIndent indent)
 {
