@@ -410,7 +410,7 @@ void vtkBandedPolyDataContourFilter::Execute()
   // Triangle strips are treated similarly.
   //
   int numPolys = input->GetPolys()->GetNumberOfCells();
-  int numStrips = numStrips=input->GetStrips()->GetNumberOfCells();
+  int numStrips = input->GetStrips()->GetNumberOfCells();
   if ( numPolys > 0 || numStrips > 0 )
     {
     // Set up processing. We are going to store an ordered list of
