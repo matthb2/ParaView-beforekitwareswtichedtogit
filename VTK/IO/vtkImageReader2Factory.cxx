@@ -173,3 +173,20 @@ void vtkImageReader2Factory::InitializeReaders()
     AddItem((reader = vtkGESignaReader::New()));
   reader->Delete();
 }
+
+
+void vtkImageReader2Factory::GetRegisteredReaders(vtkImageReader2Collection* collection)
+{
+  // get all dynamic readers
+  vtkObjectFactory::CreateAllInstance("vtkImageReaderObject",
+                                      collection);
+  // get the current registered readers
+  vtkImageReader2* ret;
+    for(vtkImageReader2Factory::AvailiableReaders->InitTraversal();
+      (ret = vtkImageReader2Factory::AvailiableReaders->GetNextItem());)
+    {
+    collection->AddItem(ret);
+    }
+}
+
+
