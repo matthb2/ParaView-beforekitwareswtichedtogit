@@ -369,5 +369,6 @@ void vtkProcrustesAlignmentFilter::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os,indent);
   this->LandmarkTransform->PrintSelf(os,indent);
+  this->MeanPoints->PrintSelf(os, indent);
 }
 
