@@ -71,7 +71,7 @@ void vtk3DWidget::PlaceWidget()
 }
 
 void vtk3DWidget::PlaceWidget(float xmin, float xmax, float ymin, float ymax, 
-                            float zmin, float zmax)
+                              float zmin, float zmax)
 {
   float bounds[6];
 
