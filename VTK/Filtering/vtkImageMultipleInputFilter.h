@@ -38,39 +38,76 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 
 
 =========================================================================*/
-// .NAME vtkImageGaussianSmooth - smooths on a 3D plane.
+// .NAME vtkImageMultipleInputFilter - Generic filter that has N inputs.
 // .SECTION Description
-// vtkImageGaussianSmooth implements Gaussian smoothing over any number of 
-// axes. It really consists of multiple decomposed 1D filters.
+// vtkImageMultipleInputFilter is a super class for filters that 
+// any number of inputs.
 
 
-#ifndef __vtkImageGaussianSmooth_h
-#define __vtkImageGaussianSmooth_h
 
 
-#include "vtkImageDecomposedFilter.h"
-#include "vtkImageGaussianSmooth1D.h"
+#ifndef __vtkImageMultipleInputFilter_h
+#define __vtkImageMultipleInputFilter_h
 
-class vtkImageGaussianSmooth : public vtkImageDecomposedFilter
+
+#include "vtkImageCachedSource.h"
+#include "vtkImageRegion.h"
+
+class vtkImageMultipleInputFilter : public vtkImageCachedSource
 {
 public:
-  vtkImageGaussianSmooth();
-  char *GetClassName() {return "vtkImageGaussianSmooth";};
+  vtkImageMultipleInputFilter();
+  char *GetClassName() {return "vtkImageMultipleInputFilter";};
+  void PrintSelf(ostream& os, vtkIndent indent);
 
-  void SetDimensionality(int num);
-  void SetStandardDeviation(float std);
-  void SetRadiusFactor(float factor);
+  virtual void SetInput(int num, vtkImageSource *input);
+  void UpdatePointData(int dim, vtkImageRegion *outRegion);
+  void UpdateImageInformation(vtkImageRegion *outRegion);
+  unsigned long int GetPipelineMTime();
+  
+  vtkSetMacro(UseExecuteMethod,int);
+  vtkGetMacro(UseExecuteMethod,int);
+  vtkBooleanMacro(UseExecuteMethod,int);
+  
+  // Description:
+  // Get one input to this filter.
+  vtkImageSource *GetInput(int num) {return this->Inputs[num];};
 
   // Description:
-  // Each axis can have a stride to srink the image.
-  void SetStrides(int num, int *strides);
-  vtkImageSetMacro(Strides, int);
+  // Set/Get input memory limit.  Make this smaller to stream.
+  vtkSetMacro(InputMemoryLimit,long);
+  vtkGetMacro(InputMemoryLimit,long);
+
+  // Description:
+  // Get the number of inputs to this filter
+  vtkGetMacro(NumberOfInputs, int);
+  
   
 protected:
-  int Strides[VTK_IMAGE_DIMENSIONS];
+  int NumberOfInputs;
+  vtkImageSource **Inputs;     // An Array of the inputs to the filter
+  vtkImageRegion **Regions;   // We need an array for inputs.
+  int UseExecuteMethod;        // Use UpdatePointData or Execute method?
+
+  long InputMemoryLimit;
+  
+  // Should be set in the constructor.
+  void SetNumberOfInputs(int num);
+  
+  virtual void ComputeOutputImageInformation(vtkImageRegion **inRegions,
+					     vtkImageRegion *outRegion);
+  virtual void ComputeRequiredInputRegionExtent(vtkImageRegion *outRegion,
+						vtkImageRegion **inRegions);
+  virtual void Execute(int dim, vtkImageRegion **inRegions,
+		       vtkImageRegion *outRegion);
+  virtual void Execute(vtkImageRegion **inRegions, vtkImageRegion *outRegion);
 };
 
 #endif
+
+
+
+
 
 
 
