@@ -759,7 +759,8 @@ vtkPVTreeComposite::vtkPVTreeComposite()
   this->ReceivePending = 0;
   this->ReceiveMessage = 0;
   
-  this->LocalProcessId = this->Controller->GetLocalProcessId();
+  this->LocalProcessId = this->Controller ? 
+                         this->Controller->GetLocalProcessId() : -1;
 
   this->RenderAborted = 0;
   
