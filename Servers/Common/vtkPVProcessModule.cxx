@@ -74,6 +74,10 @@ vtkPVProcessModule::vtkPVProcessModule()
 //----------------------------------------------------------------------------
 vtkPVProcessModule::~vtkPVProcessModule()
 { 
+  if(this->GUIHelper)
+    {
+    this->GUIHelper->Delete();
+    }
   this->FinalizeInterpreter();
 }
 
