@@ -193,7 +193,7 @@ int vtkTextActor::RenderOpaqueGeometry(vtkViewport *viewport)
     }
 
   int *point1, *point2;
-  float u, v;
+  double u, v;
 
   // we don't need to do anything additional, just pass the call
   // right through to the actor

@@ -202,9 +202,9 @@ float vtkVolume::ComputeScreenCoverage( vtkViewport *vp )
     {
     vtkCamera *cam = ren->GetActiveCamera();
     ren->ComputeAspect();
-    float *aspect = ren->GetAspect();
-    vtkMatrix4x4 *mat = 
-      cam->GetCompositePerspectiveTransformMatrix( aspect[0]/aspect[1], 0.0, 1.0 );
+    double *aspect = ren->GetAspect();
+    vtkMatrix4x4 *mat = cam->GetCompositePerspectiveTransformMatrix( 
+      aspect[0]/aspect[1], 0.0, 1.0 );
     float *bounds = this->GetBounds();
     float minX =  1.0;
     float maxX = -1.0;

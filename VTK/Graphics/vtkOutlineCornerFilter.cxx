@@ -46,7 +46,6 @@ void vtkOutlineCornerFilter::Execute()
   //
   // Let OutlineCornerSource do all the work
   //
-
   this->OutlineCornerSource->SetBounds(this->GetInput()->GetBounds());
   this->OutlineCornerSource->SetCornerFactor(this->GetCornerFactor());
   this->OutlineCornerSource->Update();

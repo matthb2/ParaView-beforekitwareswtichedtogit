@@ -53,7 +53,7 @@ float vtkFrustumCoverageCuller::Cull( vtkRenderer *ren,
   float               *distanceList;
   int                 index1, index2;
   float               tmp;
-  float               aspect[2];
+  double              aspect[2];
 
   // We will create a center distance entry for each prop in the list
   // If SortingStyle is set to BackToFront or FrontToBack we will then

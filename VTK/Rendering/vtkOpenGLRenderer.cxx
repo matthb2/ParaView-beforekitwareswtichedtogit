@@ -315,7 +315,7 @@ void vtkOpenGLRenderer::DonePick()
   this->RenderWindow->IsPickingOff();
 }
 
-float vtkOpenGLRenderer::GetPickedZ()
+double vtkOpenGLRenderer::GetPickedZ()
 {
   return this->PickedZ;
 }

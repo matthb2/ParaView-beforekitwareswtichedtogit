@@ -433,7 +433,7 @@ void vtkRIBExporter::WriteAmbientLight (int count)
 void vtkRIBExporter::WriteViewport (vtkRenderer *ren, int size[2])
 {
   double aspect[2];
-  float *vport;
+  double *vport;
   int left,right,bottom,top;
   
   if (size[0] != -1 || size[1] != -1)

@@ -79,10 +79,11 @@ double vtkImplicitBoolean::EvaluateFunction(double x[3])
   double v;
   vtkImplicitFunction *f;
 
+  
   if ( this->OperationType == VTK_UNION )
     { //take minimum value
     for (value = VTK_DOUBLE_MAX, this->FunctionList->InitTraversal(); 
-    (f=this->FunctionList->GetNextItem()); )
+         (f=this->FunctionList->GetNextItem()); )
       {
       if ( (v=f->FunctionValue(x)) < value )
         {
