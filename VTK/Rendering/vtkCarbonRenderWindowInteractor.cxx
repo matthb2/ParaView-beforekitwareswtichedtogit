@@ -234,6 +234,28 @@ static pascal OSStatus myWinEvtHndlr(EventHandlerCallRef nextHandler,
           result = noErr;
           break;
           }
+        case kEventMouseWheelMoved:
+          {
+          EventMouseWheelAxis axis;
+          SInt32 delta;
+          GetEventParameter( event, kEventParamMouseWheelAxis, 
+                         typeMouseWheelAxis, NULL, sizeof(axis), NULL, &axis );
+          GetEventParameter( event, kEventParamMouseWheelDelta, 
+                          typeLongInteger, NULL, sizeof(delta), NULL, &delta );
+          if ( axis == kEventMouseWheelAxisY )
+            {
+             if( delta > 0)
+              {
+              me->InvokeEvent(vtkCommand::MouseWheelForwardEvent, NULL);
+              }
+            else
+              {
+              me->InvokeEvent(vtkCommand::MouseWheelBackwardEvent, NULL);
+              }
+            }
+          result = noErr;
+          break;
+          }
         default:
           {
           result = noErr;
@@ -330,6 +352,7 @@ void vtkCarbonRenderWindowInteractor::Enable()
                             { kEventClassMouse, kEventMouseUp },
                             { kEventClassMouse, kEventMouseMoved },
                             { kEventClassMouse, kEventMouseDragged },
+                            { kEventClassMouse, kEventMouseWheelMoved },
                             { kEventClassKeyboard, kEventRawKeyDown },
                             { kEventClassKeyboard, kEventRawKeyRepeat },
                             { kEventClassKeyboard, kEventRawKeyUp }};

@@ -87,6 +87,24 @@ void vtkGenericRenderWindowInteractor::MiddleButtonReleaseEvent()
   this->InvokeEvent(vtkCommand::MiddleButtonReleaseEvent, NULL);
 }
 
+void vtkGenericRenderWindowInteractor::MouseWheelForwardEvent()
+{
+  if (!this->Enabled) 
+    {
+    return;
+    }
+  this->InvokeEvent(vtkCommand::MouseWheelForwardEvent, NULL);
+}
+
+void vtkGenericRenderWindowInteractor::MouseWheelBackwardEvent()
+{
+  if (!this->Enabled) 
+    {
+    return;
+    }
+  this->InvokeEvent(vtkCommand::MouseWheelBackwardEvent, NULL);
+}
+
 void vtkGenericRenderWindowInteractor::ExposeEvent()
 {
   if (!this->Enabled) 

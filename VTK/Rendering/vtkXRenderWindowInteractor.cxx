@@ -512,6 +512,12 @@ void vtkXRenderWindowInteractorCallback(Widget vtkNotUsed(w),
         case Button3: 
           me->InvokeEvent(vtkCommand::RightButtonPressEvent,NULL);
           break;
+        case Button4: 
+          me->InvokeEvent(vtkCommand::MouseWheelForwardEvent,NULL);
+          break;
+        case Button5: 
+          me->InvokeEvent(vtkCommand::MouseWheelBackwardEvent,NULL);
+          break;
         }
       }
       break;
