@@ -16,9 +16,11 @@
 
 =========================================================================*/
 #include "vtkCell3D.h"
+
 #include "vtkOrderedTriangulator.h"
 #include "vtkPointLocator.h"
 #include "vtkMarchingCubesCases.h"
+#include "vtkPointData.h"
 
 vtkCxxRevisionMacro(vtkCell3D, "$Revision$");
 

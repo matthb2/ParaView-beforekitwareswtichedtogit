@@ -16,13 +16,16 @@
 
 =========================================================================*/
 #include "vtkQuad.h"
-#include "vtkTriangle.h"
-#include "vtkPlane.h"
+
 #include "vtkCellArray.h"
+#include "vtkCellData.h"
 #include "vtkLine.h"
-#include "vtkPointLocator.h"
 #include "vtkMath.h"
 #include "vtkObjectFactory.h"
+#include "vtkPlane.h"
+#include "vtkPointData.h"
+#include "vtkPointLocator.h"
+#include "vtkTriangle.h"
 
 vtkCxxRevisionMacro(vtkQuad, "$Revision$");
 vtkStandardNewMacro(vtkQuad);

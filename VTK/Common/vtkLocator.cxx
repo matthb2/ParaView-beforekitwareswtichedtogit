@@ -17,7 +17,11 @@
 =========================================================================*/
 #include "vtkLocator.h"
 
+#include "vtkDataSet.h"
+
 vtkCxxRevisionMacro(vtkLocator, "$Revision$");
+
+vtkCxxSetObjectMacro(vtkLocator,DataSet,vtkDataSet);
 
 // Construct with automatic computation of divisions, averaging
 // 25 points per bucket.

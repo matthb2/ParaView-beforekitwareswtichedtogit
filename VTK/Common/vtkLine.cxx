@@ -16,10 +16,13 @@
 
 =========================================================================*/
 #include "vtkLine.h"
-#include "vtkMath.h"
+
 #include "vtkCellArray.h"
-#include "vtkPointLocator.h"
+#include "vtkCellData.h"
+#include "vtkMath.h"
 #include "vtkObjectFactory.h"
+#include "vtkPointData.h"
+#include "vtkPointLocator.h"
 
 vtkCxxRevisionMacro(vtkLine, "$Revision$");
 vtkStandardNewMacro(vtkLine);

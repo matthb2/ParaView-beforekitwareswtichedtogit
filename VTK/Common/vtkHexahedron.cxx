@@ -16,12 +16,15 @@
 
 =========================================================================*/
 #include "vtkHexahedron.h"
-#include "vtkObjectFactory.h"
-#include "vtkMath.h"
-#include "vtkLine.h"
-#include "vtkQuad.h"
+
 #include "vtkCellArray.h"
+#include "vtkCellData.h"
+#include "vtkLine.h"
+#include "vtkMath.h"
+#include "vtkObjectFactory.h"
+#include "vtkPointData.h"
 #include "vtkPointLocator.h"
+#include "vtkQuad.h"
 
 vtkCxxRevisionMacro(vtkHexahedron, "$Revision$");
 vtkStandardNewMacro(vtkHexahedron);

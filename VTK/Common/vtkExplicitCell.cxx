@@ -19,7 +19,7 @@
 
 #include "vtkCellArray.h"
 #include "vtkObjectFactory.h"
-
+#include "vtkDataSet.h"
 
 vtkCxxRevisionMacro(vtkExplicitCell, "$Revision$");
 vtkCxxSetObjectMacro(vtkExplicitCell,DataSet,vtkDataSet);

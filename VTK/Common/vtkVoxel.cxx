@@ -16,11 +16,14 @@
 
 =========================================================================*/
 #include "vtkVoxel.h"
-#include "vtkObjectFactory.h"
-#include "vtkMath.h"
-#include "vtkLine.h"
-#include "vtkPixel.h"
+
 #include "vtkCellArray.h"
+#include "vtkCellData.h"
+#include "vtkLine.h"
+#include "vtkMath.h"
+#include "vtkObjectFactory.h"
+#include "vtkPixel.h"
+#include "vtkPointData.h"
 #include "vtkPointLocator.h"
 
 vtkCxxRevisionMacro(vtkVoxel, "$Revision$");

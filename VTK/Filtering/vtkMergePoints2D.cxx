@@ -16,7 +16,10 @@
 
 =========================================================================*/
 #include "vtkMergePoints2D.h"
+
 #include "vtkObjectFactory.h"
+#include "vtkIdList.h"
+#include "vtkPoints.h"
 
 vtkCxxRevisionMacro(vtkMergePoints2D, "$Revision$");
 

@@ -16,6 +16,7 @@
 
 =========================================================================*/
 #include "vtkPixel.h"
+
 #include "vtkObjectFactory.h"
 #include "vtkQuad.h"
 #include "vtkTriangle.h"
@@ -24,6 +25,8 @@
 #include "vtkCellArray.h"
 #include "vtkLine.h"
 #include "vtkPointLocator.h"
+#include "vtkPointData.h"
+#include "vtkCellData.h"
 
 vtkCxxRevisionMacro(vtkPixel, "$Revision$");
 vtkStandardNewMacro(vtkPixel);
