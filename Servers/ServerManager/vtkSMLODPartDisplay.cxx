@@ -116,7 +116,6 @@ vtkPVLODPartDisplayInformation* vtkSMLODPartDisplay::GetLODInformation()
 }
 
 
-
 //----------------------------------------------------------------------------
 void vtkSMLODPartDisplay::CreateVTKObjects(int num)
 {
@@ -128,8 +127,6 @@ void vtkSMLODPartDisplay::CreateVTKObjects(int num)
     vtkErrorMacro("Set the ProcessModule before you connect.");
     return;
     }
-  vtkClientServerStream& stream = pm->GetStream();
-
   this->Superclass::CreateVTKObjects(num);
   
   // Create the decimation filter which branches the LOD pipeline.
