@@ -518,6 +518,11 @@ void vtkSMPartDisplay::CreateVTKObjects(int num)
            << "InterpolateScalarsBeforeMappingOn" 
            << vtkClientServerStream::End;
     stream << vtkClientServerStream::Invoke 
+           << this->UpdateSuppressorProxy->GetID(i) 
+           << "SetOutputType" 
+           << "vtkPolyData"
+           <<  vtkClientServerStream::End;
+    stream << vtkClientServerStream::Invoke 
            << this->UpdateSuppressorProxy->GetID(i) << "GetPolyDataOutput" 
            <<  vtkClientServerStream::End;
     stream << vtkClientServerStream::Invoke << this->MapperProxy->GetID(i) << "SetInput" 

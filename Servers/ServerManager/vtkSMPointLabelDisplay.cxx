@@ -179,6 +179,11 @@ void vtkSMPointLabelDisplay::CreateVTKObjects(int num)
          << this->PointLabelMapperProxy->GetID(0)
          << vtkClientServerStream::End;
   stream << vtkClientServerStream::Invoke 
+         << this->UpdateSuppressorProxy->GetID(0) 
+         << "SetOutputType"
+         << "vtkUnstructuredGrid"
+         << vtkClientServerStream::End;
+  stream << vtkClientServerStream::Invoke 
          << this->UpdateSuppressorProxy->GetID(0) << "GetUnstructuredGridOutput"
          << vtkClientServerStream::End
          << vtkClientServerStream::Invoke 

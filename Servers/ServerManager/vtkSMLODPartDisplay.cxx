@@ -249,6 +249,11 @@ void vtkSMLODPartDisplay::CreateVTKObjects(int num)
       << vtkClientServerStream::Invoke
       << this->LODMapperProxy->GetID(i) << "UseLookupTableScalarRangeOn"
       << vtkClientServerStream::End;
+    stream << vtkClientServerStream::Invoke 
+           << this->LODUpdateSuppressorProxy->GetID(i) 
+           << "SetOutputType" 
+           << "vtkPolyData"
+           <<  vtkClientServerStream::End;
     stream
       << vtkClientServerStream::Invoke
       << this->LODUpdateSuppressorProxy->GetID(i) << "GetPolyDataOutput"
