@@ -63,13 +63,14 @@ void vtkPointsProjectedHull::initFlags()
   for (i=0; i<3; i++)
     {
     this->ccwHull[i] = NULL;
-    }
-
-  for (i=0; i<3; i++)
-    {
     this->hullSize[i]     = 0;
+    for (int j=0; j<3; j++)
+      {
+      this->hullBBox[i][j] = 0.0;
+      }
     }
 }
+
 void vtkPointsProjectedHull::clearAllocations()
 {
   int i;
