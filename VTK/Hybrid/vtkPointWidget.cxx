@@ -241,6 +241,7 @@ void vtkPointWidget::Highlight(int highlight)
     {
     this->Actor->SetProperty(this->SelectedProperty);
     this->CursorPicker->GetPickPosition(this->LastPickPosition);
+    this->ValidPick = 1;
     }
   else
     {
