@@ -135,3 +135,27 @@ char* vtkString::Append(const char* str1, const char* str2)
   return newstr;
 }
 
+#if defined( _WIN32 ) && !defined(__CYGWIN__)
+#  if defined(__BORLANDC__)
+#    define STRCASECMP stricmp
+#  else
+#    define STRCASECMP _stricmp
+#  endif
+#else
+#  define STRCASECMP strcasecmp
+#endif
+
+//----------------------------------------------------------------------------
+int vtkString::CompareCase(const char* str1, const char* str2)
+{
+  if ( !str1 )
+    {
+    return -1;
+    }
+  if ( !str2 )
+    {
+    return 1;
+    }
+  return STRCASECMP(str1, str2);
+}
+
