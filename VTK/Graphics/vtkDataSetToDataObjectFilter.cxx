@@ -18,6 +18,7 @@
 #include "vtkCellData.h"
 #include "vtkFieldData.h"
 #include "vtkFloatArray.h"
+#include "vtkInformation.h"
 #include "vtkObjectFactory.h"
 #include "vtkPointData.h"
 #include "vtkPolyData.h"
@@ -34,6 +35,7 @@ vtkStandardNewMacro(vtkDataSetToDataObjectFilter);
 vtkDataSetToDataObjectFilter::vtkDataSetToDataObjectFilter()
 {
   this->NumberOfRequiredInputs = 1;
+  this->SetNumberOfInputPorts(1);
   this->Geometry = 1;
   this->Topology = 1;
   this->PointData = 1;
@@ -319,6 +321,17 @@ void vtkDataSetToDataObjectFilter::ComputeInputUpdateExtents(
     }
 }
 
+//----------------------------------------------------------------------------
+int vtkDataSetToDataObjectFilter::FillInputPortInformation(int port,
+                                                           vtkInformation* info)
+{
+  if(!this->Superclass::FillInputPortInformation(port, info))
+    {
+    return 0;
+    }
+  info->Set(vtkInformation::INPUT_REQUIRED_DATA_TYPE(), "vtkDataSet");
+  return 1;
+}
 
 //----------------------------------------------------------------------------
 void vtkDataSetToDataObjectFilter::PrintSelf(ostream& os, vtkIndent indent)

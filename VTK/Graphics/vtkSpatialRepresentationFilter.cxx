@@ -15,6 +15,7 @@
 #include "vtkSpatialRepresentationFilter.h"
 
 #include "vtkLocator.h"
+#include "vtkInformation.h"
 #include "vtkObjectFactory.h"
 #include "vtkPolyData.h"
 
@@ -25,6 +26,8 @@ vtkCxxSetObjectMacro(vtkSpatialRepresentationFilter,
 
 vtkSpatialRepresentationFilter::vtkSpatialRepresentationFilter()
 {
+  this->NumberOfRequiredInputs = 1;
+  this->SetNumberOfInputPorts(1);
   this->SpatialRepresentation = NULL;
   this->Level = 0;
   this->TerminalNodesRequested = 0;
@@ -179,4 +182,15 @@ vtkDataSet *vtkSpatialRepresentationFilter::GetInput()
     }
   
   return (vtkDataSet *)(this->Inputs[0]);
+}
+
+//----------------------------------------------------------------------------
+int vtkSpatialRepresentationFilter::FillInputPortInformation(int port, vtkInformation* info)
+{
+  if(!this->Superclass::FillInputPortInformation(port, info))
+    {
+    return 0;
+    }
+  info->Set(vtkInformation::INPUT_REQUIRED_DATA_TYPE(), "vtkDataSet");
+  return 1;
 }
