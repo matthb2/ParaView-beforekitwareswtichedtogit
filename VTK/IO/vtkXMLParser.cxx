@@ -21,7 +21,7 @@
 #include "expat.h"
 #include <ctype.h>
 
-#ifdef VTK_USE_ANSI_STDLIB
+#if defined(VTK_USE_ANSI_STDLIB) || (defined(__GNUC__) && (__GNUC__  >= 3))
 #define VTK_IOS_NOCREATE 
 #else
 #define VTK_IOS_NOCREATE | ios::nocreate
