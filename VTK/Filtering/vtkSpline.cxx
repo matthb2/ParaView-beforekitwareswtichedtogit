@@ -51,6 +51,34 @@ vtkSpline::~vtkSpline ()
     }
 }
 
+float vtkSpline::ComputeLeftDerivative()
+{
+  float *dptr = this->PiecewiseFunction->GetDataPointer();
+  int size = this->PiecewiseFunction->GetSize();
+  if ( dptr == NULL || size < 2 )
+    {
+    return 0.0;
+    }
+  else
+    {
+    return (dptr[2]-dptr[0]);
+    }
+}
+
+float vtkSpline::ComputeRightDerivative()
+{
+  float *dptr = this->PiecewiseFunction->GetDataPointer();
+  int size = this->PiecewiseFunction->GetSize();
+  if ( dptr == NULL || size < 2 )
+    {
+    return 0.0;
+    }
+  else
+    {
+    return (dptr[(size-1)*2]-dptr[(size-2)*2]);
+    }
+}
+
 // Add a point to the Piecewise Functions containing the data
 void vtkSpline::AddPoint (float t, float x)
 {

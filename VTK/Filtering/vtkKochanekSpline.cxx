@@ -276,6 +276,11 @@ void vtkKochanekSpline::Fit1D (int size, float *x, float *y,
     {
     switch (leftConstraint) 
       {
+      case 0:
+        // desired slope at leftmost point is leftValue
+        coefficients[0][1] = this->ComputeLeftDerivative();
+        break;
+
       case 1:
         // desired slope at leftmost point is leftValue
         coefficients[0][1] = leftValue;
@@ -306,6 +311,11 @@ void vtkKochanekSpline::Fit1D (int size, float *x, float *y,
 
     switch (rightConstraint)
       {
+      case 0:
+        // desired slope at rightmost point is rightValue
+        coefficients[N][2] = this->ComputeRightDerivative();
+        break;
+
       case 1:
         // desired slope at rightmost point is rightValue
         coefficients[N][2] = rightValue;
