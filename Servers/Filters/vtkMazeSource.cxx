@@ -37,7 +37,7 @@ vtkMazeSource::vtkMazeSource()
   this->ShowSolution = 1;
 
   this->Visited = NULL;
-  this->NumberOfVisited;
+  this->NumberOfVisited = 0;
   this->NeighborCount = NULL;
   this->NumberOfBranchCandidates = 0;
   this->RightEdge = NULL;
