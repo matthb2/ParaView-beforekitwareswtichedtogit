@@ -1228,7 +1228,7 @@ void vtkGenericEnSightReader::DestroyStringArray(int numStrings,
       delete [] strings[i];
       }
     }
-  delete strings;
+  delete[] strings;
 }
 
 //----------------------------------------------------------------------------
