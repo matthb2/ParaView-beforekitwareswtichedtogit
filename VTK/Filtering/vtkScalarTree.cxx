@@ -15,7 +15,6 @@
 #include "vtkScalarTree.h"
 
 #include "vtkDataSet.h"
-#include "vtkFloatArray.h"
 #include "vtkObjectFactory.h"
 
 vtkCxxRevisionMacro(vtkScalarTree, "$Revision$");
@@ -26,7 +25,7 @@ vtkCxxSetObjectMacro(vtkScalarTree,DataSet,vtkDataSet);
 vtkScalarTree::vtkScalarTree()
 {
   this->DataSet = NULL;
-  this->ScalarValue = 0.0f;
+  this->ScalarValue = 0.0;
 }
 
 vtkScalarTree::~vtkScalarTree()
