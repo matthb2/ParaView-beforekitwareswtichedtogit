@@ -278,7 +278,7 @@ int vtkPVXMLElement::GetScalarAttribute(const char* name, float* value)
 
 //----------------------------------------------------------------------------
 template <class T>
-static int vtkPVXMLVectorAttributeParse(const char* str, int length, T* data)
+int vtkPVXMLVectorAttributeParse(const char* str, int length, T* data)
 {
   if(!str || !length) { return 0; }
   strstream vstr;
