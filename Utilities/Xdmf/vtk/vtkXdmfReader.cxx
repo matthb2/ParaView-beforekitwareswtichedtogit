@@ -661,9 +661,13 @@ void vtkXdmfReader::Execute()
       {
       vtkImageData *vGrid = vtkImageData::SafeDownCast(this->Outputs[idx]);
       XdmfFloat64 *origin = Geometry->GetOrigin();
-      vGrid->SetOrigin(origin[0], origin[1], origin[2]);
+      vGrid->SetOrigin(origin[2], origin[1], origin[0]);
       XdmfFloat64 *spacing = Geometry->GetDxDyDz();
-      vGrid->SetSpacing(spacing[0], spacing[1], spacing[2]);
+      stride[2] = this->Stride[0];
+      stride[1] = this->Stride[1];
+      stride[0] = this->Stride[2];
+      vGrid->SetSpacing(spacing[2]*this->Stride[0], 
+        spacing[1]*this->Stride[1], spacing[0]*this->Stride[2]);
       }
     else
       {
