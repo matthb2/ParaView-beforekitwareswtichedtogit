@@ -21,6 +21,7 @@
 #include "vtkFloatArray.h"
 #include "vtkMath.h"
 #include "vtkObjectFactory.h"
+#include "vtkPointData.h"
 
 vtkCxxRevisionMacro(vtkExtractTensorComponents, "$Revision$");
 vtkStandardNewMacro(vtkExtractTensorComponents);

@@ -17,11 +17,12 @@
 =========================================================================*/
 #include "vtkWarpScalar.h"
 
+#include "vtkCellData.h"
 #include "vtkDataArray.h"
-#include "vtkPoints.h"
+#include "vtkObjectFactory.h"
 #include "vtkPointData.h"
 #include "vtkPointSet.h"
-#include "vtkObjectFactory.h"
+#include "vtkPoints.h"
 
 vtkCxxRevisionMacro(vtkWarpScalar, "$Revision$");
 vtkStandardNewMacro(vtkWarpScalar);

@@ -17,10 +17,12 @@
 =========================================================================*/
 #include "vtkMergeDataObjectFilter.h"
 
+#include "vtkCellData.h"
 #include "vtkDataSet.h"
 #include "vtkFieldData.h"
 #include "vtkFieldDataToAttributeDataFilter.h"
 #include "vtkObjectFactory.h"
+#include "vtkPointData.h"
 
 vtkCxxRevisionMacro(vtkMergeDataObjectFilter, "$Revision$");
 vtkStandardNewMacro(vtkMergeDataObjectFilter);

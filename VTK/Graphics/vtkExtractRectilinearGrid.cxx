@@ -17,8 +17,10 @@
 =========================================================================*/
 #include "vtkExtractRectilinearGrid.h"
 
+#include "vtkCellData.h"
 #include "vtkFloatArray.h"
 #include "vtkObjectFactory.h"
+#include "vtkPointData.h"
 #include "vtkRectilinearGrid.h"
 
 vtkCxxRevisionMacro(vtkExtractRectilinearGrid, "$Revision$");

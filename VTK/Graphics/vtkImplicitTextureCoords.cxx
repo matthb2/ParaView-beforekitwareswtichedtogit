@@ -21,6 +21,7 @@
 #include "vtkFloatArray.h"
 #include "vtkImplicitFunction.h"
 #include "vtkObjectFactory.h"
+#include "vtkPointData.h"
 
 vtkCxxRevisionMacro(vtkImplicitTextureCoords, "$Revision$");
 vtkStandardNewMacro(vtkImplicitTextureCoords);

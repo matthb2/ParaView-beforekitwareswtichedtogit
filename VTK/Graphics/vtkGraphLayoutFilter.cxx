@@ -17,8 +17,11 @@
 =========================================================================*/
 #include "vtkGraphLayoutFilter.h"
 
+#include "vtkCellArray.h"
+#include "vtkCellData.h"
 #include "vtkMath.h"
 #include "vtkObjectFactory.h"
+#include "vtkPointData.h"
 #include "vtkPolyData.h"
 
 vtkCxxRevisionMacro(vtkGraphLayoutFilter, "$Revision$");

@@ -17,14 +17,18 @@
 =========================================================================*/
 #include "vtkCurvatures.h"
 
-#include "vtkObjectFactory.h"
-#include "vtkPolyDataNormals.h"
-#include "vtkPolyData.h"
+#include "vtkCellArray.h"
 #include "vtkDoubleArray.h"
+#include "vtkFieldData.h"
 #include "vtkFloatArray.h"
 #include "vtkMath.h"
+#include "vtkObjectFactory.h"
+#include "vtkPointData.h"
+#include "vtkPolyData.h"
+#include "vtkPolyDataNormals.h"
 #include "vtkPolygon.h"
 #include "vtkTensor.h"
+#include "vtkTriangle.h"
 
 vtkCxxRevisionMacro(vtkCurvatures, "$Revision$");
 vtkStandardNewMacro(vtkCurvatures);

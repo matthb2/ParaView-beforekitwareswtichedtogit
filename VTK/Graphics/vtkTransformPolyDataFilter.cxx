@@ -18,9 +18,11 @@
 #include "vtkTransformPolyDataFilter.h"
 
 #include "vtkAbstractTransform.h"
+#include "vtkCellData.h"
 #include "vtkFloatArray.h"
 #include "vtkLinearTransform.h"
 #include "vtkObjectFactory.h"
+#include "vtkPointData.h"
 #include "vtkPolyData.h"
 
 vtkCxxRevisionMacro(vtkTransformPolyDataFilter, "$Revision$");

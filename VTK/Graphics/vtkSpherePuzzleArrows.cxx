@@ -17,6 +17,7 @@
 =========================================================================*/
 #include "vtkSpherePuzzleArrows.h"
 
+#include "vtkCellArray.h"
 #include "vtkMath.h"
 #include "vtkObjectFactory.h"
 #include "vtkPolyData.h"

@@ -17,6 +17,8 @@
 =========================================================================*/
 #include "vtkCutter.h"
 
+#include "vtkCellArray.h"
+#include "vtkCellData.h"
 #include "vtkContourValues.h"
 #include "vtkDataSet.h"
 #include "vtkFloatArray.h"
@@ -24,6 +26,7 @@
 #include "vtkImplicitFunction.h"
 #include "vtkMergePoints.h"
 #include "vtkObjectFactory.h"
+#include "vtkPointData.h"
 #include "vtkPolyData.h"
 
 #include <math.h>

@@ -17,8 +17,12 @@
 =========================================================================*/
 #include "vtkAppendFilter.h"
 
+#include "vtkCell.h"
+#include "vtkCellData.h"
+#include "vtkDataSetAttributes.h"
 #include "vtkDataSetCollection.h"
 #include "vtkObjectFactory.h"
+#include "vtkPointData.h"
 #include "vtkUnstructuredGrid.h"
 
 vtkCxxRevisionMacro(vtkAppendFilter, "$Revision$");

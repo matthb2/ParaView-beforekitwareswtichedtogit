@@ -17,8 +17,10 @@
 =========================================================================*/
 #include "vtkMassProperties.h"
 
+#include "vtkCell.h"
 #include "vtkCommand.h"
 #include "vtkDataObject.h"
+#include "vtkIdList.h"
 #include "vtkObjectFactory.h"
 #include "vtkPolyData.h"
 

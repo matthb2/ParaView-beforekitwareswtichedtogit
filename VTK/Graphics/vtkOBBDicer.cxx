@@ -17,11 +17,14 @@
 =========================================================================*/
 #include "vtkOBBDicer.h"
 
+#include "vtkCellData.h"
 #include "vtkDataSet.h"
 #include "vtkIdList.h"
 #include "vtkMath.h"
 #include "vtkOBBTree.h"
 #include "vtkObjectFactory.h"
+#include "vtkPointData.h"
+#include "vtkPoints.h"
 #include "vtkShortArray.h"
 
 vtkCxxRevisionMacro(vtkOBBDicer, "$Revision$");

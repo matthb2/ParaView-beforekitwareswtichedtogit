@@ -17,9 +17,12 @@
 =========================================================================*/
 #include "vtkExtractPolyDataGeometry.h"
 
+#include "vtkCellArray.h"
+#include "vtkCellData.h"
 #include "vtkFloatArray.h"
 #include "vtkImplicitFunction.h"
 #include "vtkObjectFactory.h"
+#include "vtkPointData.h"
 #include "vtkPolyData.h"
 
 vtkCxxRevisionMacro(vtkExtractPolyDataGeometry, "$Revision$");

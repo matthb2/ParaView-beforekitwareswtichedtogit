@@ -18,10 +18,13 @@
 #include "vtkContourGrid.h"
 
 #include "vtkCell.h"
+#include "vtkCellArray.h"
+#include "vtkCellData.h"
 #include "vtkContourValues.h"
 #include "vtkFloatArray.h"
 #include "vtkMergePoints.h"
 #include "vtkObjectFactory.h"
+#include "vtkPointData.h"
 #include "vtkPolyData.h"
 #include "vtkSimpleScalarTree.h"
 #include "vtkUnstructuredGrid.h"

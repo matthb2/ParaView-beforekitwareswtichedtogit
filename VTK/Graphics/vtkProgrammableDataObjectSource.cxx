@@ -16,6 +16,8 @@
 
 =========================================================================*/
 #include "vtkProgrammableDataObjectSource.h"
+
+#include "vtkDataObject.h"
 #include "vtkObjectFactory.h"
 
 vtkCxxRevisionMacro(vtkProgrammableDataObjectSource, "$Revision$");

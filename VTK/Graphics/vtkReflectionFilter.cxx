@@ -17,7 +17,11 @@
 =========================================================================*/
 #include "vtkReflectionFilter.h"
 
+#include "vtkCellData.h"
+#include "vtkGenericCell.h"
+#include "vtkIdList.h"
 #include "vtkObjectFactory.h"
+#include "vtkPointData.h"
 #include "vtkUnstructuredGrid.h"
 
 vtkCxxRevisionMacro(vtkReflectionFilter, "$Revision$");

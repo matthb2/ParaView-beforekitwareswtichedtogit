@@ -17,11 +17,14 @@
 =========================================================================*/
 #include "vtkProgrammableGlyphFilter.h"
 
+#include "vtkCell.h"
 #include "vtkCellData.h"
 #include "vtkDataSet.h"
 #include "vtkFloatArray.h"
+#include "vtkIdList.h"
 #include "vtkMath.h"
 #include "vtkObjectFactory.h"
+#include "vtkPointData.h"
 #include "vtkPolyData.h"
 #include "vtkTransform.h"
 

@@ -17,7 +17,9 @@
 =========================================================================*/
 #include "vtkWarpVector.h"
 
+#include "vtkCellData.h"
 #include "vtkObjectFactory.h"
+#include "vtkPointData.h"
 #include "vtkPointSet.h"
 #include "vtkPoints.h"
 

@@ -17,12 +17,17 @@
 =========================================================================*/
 #include "vtkClipPolyData.h"
 
-#include "vtkMergePoints.h"
-#include "vtkLine.h"
-#include "vtkTriangle.h"
-#include "vtkObjectFactory.h"
+#include "vtkCellArray.h"
+#include "vtkCellData.h"
 #include "vtkFloatArray.h"
+#include "vtkGenericCell.h"
+#include "vtkImplicitFunction.h"
+#include "vtkLine.h"
+#include "vtkMergePoints.h"
+#include "vtkObjectFactory.h"
+#include "vtkPointData.h"
 #include "vtkPolyData.h"
+#include "vtkTriangle.h"
 
 #include <math.h>
 

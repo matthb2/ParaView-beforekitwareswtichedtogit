@@ -17,8 +17,10 @@
 =========================================================================*/
 #include "vtkInterpolateDataSetAttributes.h"
 
+#include "vtkCellData.h"
 #include "vtkDataSetCollection.h"
 #include "vtkObjectFactory.h"
+#include "vtkPointData.h"
 #include "vtkPolyData.h"
 #include "vtkRectilinearGrid.h"
 #include "vtkStructuredGrid.h"

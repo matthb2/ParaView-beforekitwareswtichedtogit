@@ -25,6 +25,9 @@
 #include "vtkPolyData.h"
 #include "vtkPriorityQueue.h"
 #include "vtkTriangle.h"
+#include "vtkCellArray.h"
+#include "vtkPointData.h"
+#include "vtkCellData.h"
 
 vtkCxxRevisionMacro(vtkDecimatePro, "$Revision$");
 vtkStandardNewMacro(vtkDecimatePro);

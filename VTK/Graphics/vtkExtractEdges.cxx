@@ -17,6 +17,7 @@
 =========================================================================*/
 #include "vtkExtractEdges.h"
 
+#include "vtkCellArray.h"
 #include "vtkCellData.h"
 #include "vtkDataSet.h"
 #include "vtkEdgeTable.h"

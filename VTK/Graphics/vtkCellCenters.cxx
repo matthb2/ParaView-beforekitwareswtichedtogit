@@ -24,6 +24,7 @@
 #include "vtkPointData.h"
 #include "vtkPoints.h"
 #include "vtkPolyData.h"
+#include "vtkCellArray.h"
 
 vtkCxxRevisionMacro(vtkCellCenters, "$Revision$");
 vtkStandardNewMacro(vtkCellCenters);

@@ -20,6 +20,7 @@
 #include "vtkDataSet.h"
 #include "vtkFloatArray.h"
 #include "vtkObjectFactory.h"
+#include "vtkPointData.h"
 #include "vtkTransform.h"
 
 vtkCxxRevisionMacro(vtkTransformTextureCoords, "$Revision$");

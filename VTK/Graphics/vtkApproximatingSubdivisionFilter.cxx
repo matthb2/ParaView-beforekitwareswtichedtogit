@@ -17,7 +17,12 @@
 =========================================================================*/
 #include "vtkApproximatingSubdivisionFilter.h"
 
+#include "vtkCell.h"
+#include "vtkCellArray.h"
+#include "vtkCellData.h"
 #include "vtkEdgeTable.h"
+#include "vtkIdList.h"
+#include "vtkPointData.h"
 #include "vtkPolyData.h"
 #include "vtkUnsignedCharArray.h"
 

@@ -17,8 +17,10 @@
 =========================================================================*/
 #include "vtkArrayCalculator.h"
 
+#include "vtkCellData.h"
 #include "vtkDataSet.h"
 #include "vtkDoubleArray.h"
+#include "vtkFieldData.h"
 #include "vtkFunctionParser.h"
 #include "vtkObjectFactory.h"
 #include "vtkPointData.h"

@@ -17,7 +17,9 @@
 =========================================================================*/
 #include "vtkTextSource.h"
 
+#include "vtkCellArray.h"
 #include "vtkObjectFactory.h"
+#include "vtkPointData.h"
 #include "vtkPoints.h"
 #include "vtkPolyData.h"
 #include "vtkUnsignedCharArray.h"

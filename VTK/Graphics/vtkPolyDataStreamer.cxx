@@ -18,6 +18,7 @@
 #include "vtkPolyDataStreamer.h"
 
 #include "vtkAppendPolyData.h"
+#include "vtkCellData.h"
 #include "vtkFloatArray.h"
 #include "vtkObjectFactory.h"
 #include "vtkPolyData.h"

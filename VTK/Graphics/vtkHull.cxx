@@ -17,9 +17,10 @@
 =========================================================================*/
 #include "vtkHull.h"
 
-#include "vtkPlanes.h"
+#include "vtkCellArray.h"
 #include "vtkMath.h"
 #include "vtkObjectFactory.h"
+#include "vtkPlanes.h"
 #include "vtkPolyData.h"
 
 vtkCxxRevisionMacro(vtkHull, "$Revision$");

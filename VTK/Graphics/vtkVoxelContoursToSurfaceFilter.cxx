@@ -21,6 +21,7 @@
 #include "vtkCellArray.h"
 #include "vtkContourFilter.h"
 #include "vtkObjectFactory.h"
+#include "vtkPointData.h"
 #include "vtkPolyData.h"
 #include "vtkStructuredPoints.h"
 

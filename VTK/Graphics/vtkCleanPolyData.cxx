@@ -17,8 +17,11 @@
 =========================================================================*/
 #include "vtkCleanPolyData.h"
 
+#include "vtkCellArray.h"
+#include "vtkCellData.h"
 #include "vtkMergePoints.h"
 #include "vtkObjectFactory.h"
+#include "vtkPointData.h"
 #include "vtkPolyData.h"
 
 vtkCxxRevisionMacro(vtkCleanPolyData, "$Revision$");

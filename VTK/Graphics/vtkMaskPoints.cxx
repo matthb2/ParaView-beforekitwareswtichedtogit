@@ -17,6 +17,7 @@
 =========================================================================*/
 #include "vtkMaskPoints.h"
 
+#include "vtkCellArray.h"
 #include "vtkDataSet.h"
 #include "vtkMath.h"
 #include "vtkObjectFactory.h"

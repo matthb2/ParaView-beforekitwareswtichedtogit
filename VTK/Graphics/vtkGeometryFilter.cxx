@@ -17,9 +17,13 @@
 =========================================================================*/
 #include "vtkGeometryFilter.h"
 
+#include "vtkCellArray.h"
+#include "vtkCellData.h"
+#include "vtkGenericCell.h"
 #include "vtkHexahedron.h"
 #include "vtkMergePoints.h"
 #include "vtkObjectFactory.h"
+#include "vtkPointData.h"
 #include "vtkPolyData.h"
 #include "vtkPyramid.h"
 #include "vtkStructuredGrid.h"

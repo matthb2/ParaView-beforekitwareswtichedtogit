@@ -21,6 +21,7 @@
 #include "vtkLinearExtrusionFilter.h"
 #include "vtkMath.h"
 #include "vtkObjectFactory.h"
+#include "vtkPointData.h"
 #include "vtkPolyData.h"
 #include "vtkSphereSource.h"
 #include "vtkTransform.h"

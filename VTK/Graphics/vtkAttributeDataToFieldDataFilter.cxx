@@ -17,8 +17,10 @@
 =========================================================================*/
 #include "vtkAttributeDataToFieldDataFilter.h"
 
+#include "vtkCellData.h"
 #include "vtkDataSet.h"
 #include "vtkObjectFactory.h"
+#include "vtkPointData.h"
 
 vtkCxxRevisionMacro(vtkAttributeDataToFieldDataFilter, "$Revision$");
 vtkStandardNewMacro(vtkAttributeDataToFieldDataFilter);

@@ -17,12 +17,18 @@
 =========================================================================*/
 #include "vtkClipDataSet.h"
 
+#include "vtkCellArray.h"
+#include "vtkCellData.h"
 #include "vtkClipVolume.h"
 #include "vtkFloatArray.h"
+#include "vtkGenericCell.h"
 #include "vtkImageData.h"
 #include "vtkImplicitFunction.h"
+#include "vtkIntArray.h"
 #include "vtkMergePoints.h"
 #include "vtkObjectFactory.h"
+#include "vtkPointData.h"
+#include "vtkUnsignedCharArray.h"
 #include "vtkUnstructuredGrid.h"
 
 #include <math.h>

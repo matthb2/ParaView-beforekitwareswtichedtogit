@@ -17,7 +17,10 @@
 =========================================================================*/
 #include "vtkStripper.h"
 
+#include "vtkCellArray.h"
+#include "vtkIdList.h"
 #include "vtkObjectFactory.h"
+#include "vtkPointData.h"
 #include "vtkPolyData.h"
 
 vtkCxxRevisionMacro(vtkStripper, "$Revision$");

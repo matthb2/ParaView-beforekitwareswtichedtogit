@@ -17,9 +17,12 @@
 =========================================================================*/
 #include "vtkBandedPolyDataContourFilter.h"
 
+#include "vtkCellArray.h"
+#include "vtkCellData.h"
 #include "vtkEdgeTable.h"
 #include "vtkFloatArray.h"
 #include "vtkObjectFactory.h"
+#include "vtkPointData.h"
 #include "vtkPolyData.h"
 #include "vtkTriangleStrip.h"
 

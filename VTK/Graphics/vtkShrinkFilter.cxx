@@ -17,7 +17,11 @@
 =========================================================================*/
 #include "vtkShrinkFilter.h"
 
+#include "vtkCell.h"
+#include "vtkCellData.h"
+#include "vtkIdList.h"
 #include "vtkObjectFactory.h"
+#include "vtkPointData.h"
 #include "vtkUnstructuredGrid.h"
 
 vtkCxxRevisionMacro(vtkShrinkFilter, "$Revision$");

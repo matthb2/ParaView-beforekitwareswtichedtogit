@@ -20,6 +20,8 @@
 #include "vtkDataArray.h"
 #include "vtkDataSet.h"
 #include "vtkObjectFactory.h"
+#include "vtkPointData.h"
+#include "vtkCellData.h"
 
 vtkCxxRevisionMacro(vtkFieldDataToAttributeDataFilter, "$Revision$");
 vtkStandardNewMacro(vtkFieldDataToAttributeDataFilter);

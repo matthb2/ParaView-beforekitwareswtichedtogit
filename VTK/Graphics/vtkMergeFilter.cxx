@@ -16,12 +16,15 @@
 
 =========================================================================*/
 #include "vtkMergeFilter.h"
+
+#include "vtkCellData.h"
+#include "vtkObjectFactory.h"
+#include "vtkPointData.h"
 #include "vtkPolyData.h"
+#include "vtkRectilinearGrid.h"
 #include "vtkStructuredGrid.h"
 #include "vtkStructuredPoints.h"
 #include "vtkUnstructuredGrid.h"
-#include "vtkRectilinearGrid.h"
-#include "vtkObjectFactory.h"
 
 vtkCxxRevisionMacro(vtkMergeFilter, "$Revision$");
 vtkStandardNewMacro(vtkMergeFilter);

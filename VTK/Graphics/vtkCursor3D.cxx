@@ -17,6 +17,7 @@
 =========================================================================*/
 #include "vtkCursor3D.h"
 
+#include "vtkCellArray.h"
 #include "vtkObjectFactory.h"
 #include "vtkPolyData.h"
 

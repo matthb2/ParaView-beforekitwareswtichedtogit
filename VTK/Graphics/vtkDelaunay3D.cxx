@@ -20,6 +20,7 @@
 #include "vtkEdgeTable.h"
 #include "vtkMath.h"
 #include "vtkObjectFactory.h"
+#include "vtkPointData.h"
 #include "vtkPointLocator.h"
 #include "vtkPolyData.h"
 #include "vtkTetra.h"

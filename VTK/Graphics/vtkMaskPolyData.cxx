@@ -17,7 +17,9 @@
 =========================================================================*/
 #include "vtkMaskPolyData.h"
 
+#include "vtkCellArray.h"
 #include "vtkObjectFactory.h"
+#include "vtkPointData.h"
 #include "vtkPolyData.h"
 
 vtkCxxRevisionMacro(vtkMaskPolyData, "$Revision$");

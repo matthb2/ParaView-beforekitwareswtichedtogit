@@ -25,6 +25,9 @@
 #include "vtkPolygon.h"
 #include "vtkTriangleStrip.h"
 #include "vtkUnsignedCharArray.h"
+#include "vtkCellArray.h"
+#include "vtkCellData.h"
+#include "vtkPointData.h"
 
 vtkCxxRevisionMacro(vtkFeatureEdges, "$Revision$");
 vtkStandardNewMacro(vtkFeatureEdges);

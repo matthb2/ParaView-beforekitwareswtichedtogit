@@ -17,8 +17,11 @@
 =========================================================================*/
 #include "vtkReverseSense.h"
 
+#include "vtkCellArray.h"
+#include "vtkCellData.h"
 #include "vtkDataArray.h"
 #include "vtkObjectFactory.h"
+#include "vtkPointData.h"
 #include "vtkPolyData.h"
 
 vtkCxxRevisionMacro(vtkReverseSense, "$Revision$");
