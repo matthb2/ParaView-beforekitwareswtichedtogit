@@ -236,4 +236,5 @@ void vtkReflectionFilter::PrintSelf(ostream &os, vtkIndent indent)
   this->Superclass::PrintSelf(os, indent);
 
   os << indent << "Plane: " << this->Plane << endl;
+  os << indent << "Center: " << this->Center << endl;
 }
