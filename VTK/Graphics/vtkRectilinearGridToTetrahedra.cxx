@@ -51,19 +51,6 @@ vtkRectilinearGridToTetrahedra::vtkRectilinearGridToTetrahedra()
 
 //----------------------------------------------------------------------------
 
-// Specify the input data or filter.
-vtkRectilinearGrid *vtkRectilinearGridToTetrahedra::GetInput()
-{
-  if (this->GetNumberOfInputConnections(0) < 1)
-    {
-    return NULL;
-    }
-  return vtkRectilinearGrid::SafeDownCast(
-    this->GetExecutive()->GetInputData(0, 0));
-}
-
-//----------------------------------------------------------------------------
-
 void vtkRectilinearGridToTetrahedra::SetInput(const double ExtentX, 
                                               const double ExtentY,
                                               const double ExtentZ, 

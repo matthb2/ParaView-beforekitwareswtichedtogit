@@ -30,19 +30,6 @@
 vtkCxxRevisionMacro(vtkDelaunay3D, "$Revision$");
 vtkStandardNewMacro(vtkDelaunay3D);
 
-//----------------------------------------------------------------------------
-// Get the input data
-vtkPointSet *vtkDelaunay3D::GetInput()
-{
-  if (this->GetNumberOfInputConnections(0) < 1)
-    {
-    return NULL;
-    }
-  
-  return vtkPointSet::SafeDownCast(
-    this->GetExecutive()->GetInputData(0, 0));
-}
-
 // Structure used to represent sphere around tetrahedron
 //
 typedef struct _vtkDelaunayTetra 
