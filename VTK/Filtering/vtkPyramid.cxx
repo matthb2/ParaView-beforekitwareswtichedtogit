@@ -626,7 +626,7 @@ void vtkPyramid::Derivatives(int vtkNotUsed(subId), double pcoords[3],
 }
 
 //----------------------------------------------------------------------------
-// Compute iso-parametrix interpolation functions for pyramid
+// Compute iso-parametric interpolation functions for pyramid
 //
 void vtkPyramid::InterpolationFunctions(double pcoords[3], double sf[5])
 {

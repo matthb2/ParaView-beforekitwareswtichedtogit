@@ -193,7 +193,7 @@ int vtkHexahedron::EvaluatePosition(double x[3], double* closestPoint,
 }
 
 //----------------------------------------------------------------------------
-// Compute iso-parametrix interpolation functions
+// Compute iso-parametric interpolation functions
 //
 void vtkHexahedron::InterpolationFunctions(double pcoords[3], double sf[8])
 {
