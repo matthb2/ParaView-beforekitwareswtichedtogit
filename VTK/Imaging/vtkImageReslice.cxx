@@ -742,7 +742,7 @@ void vtkImageReslice::ExecuteInformation(vtkImageData *input,
 // and is used a lot in this code, optimize for different CPU architectures
 inline int vtkResliceFloor(double x)
 {
-#if defined mips || defined sparc
+#if defined mips || defined sparc || defined __ppc__
   return (int)((unsigned int)(x + 2147483648.0) - 2147483648U);
 #elif defined i386 || defined _M_IX86
   unsigned int hilo[2];
