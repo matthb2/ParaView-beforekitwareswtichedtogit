@@ -175,6 +175,28 @@ int vtkMPICommunicatorGatherVData(T* data, T* to,
 }
 //----------------------------------------------------------------------------
 template <class T>
+int vtkMPICommunicatorAllGatherData(T* data, T* to,
+                                    int sendlength,
+                                    MPI_Datatype datatype,
+                                    MPI_Comm *Handle)
+{
+  return MPI_Allgather(data, sendlength, datatype, to, 
+                    sendlength, datatype, *(Handle));
+}
+//----------------------------------------------------------------------------
+template <class T>
+int vtkMPICommunicatorAllGatherVData(T* data, T* to,
+                                     int sendlength, int* recvlengths,
+                                     int* offsets,
+                                     MPI_Datatype datatype,
+                                     MPI_Comm *Handle)
+{
+  return MPI_Allgatherv(data, sendlength, datatype, 
+                     to, recvlengths, offsets, datatype, 
+                     *(Handle));
+}
+//----------------------------------------------------------------------------
+template <class T>
 int vtkMPICommunicatorReduceData(T* data, T* to, int root,
                                  int sendlength, MPI_Datatype datatype,
                                  MPI_Op op, MPI_Comm *Handle)
@@ -980,6 +1002,110 @@ int vtkMPICommunicator::GatherV(double* data, double* to,
                                   root, MPI_DOUBLE, 
                                   this->Comm->Handle));
 }
+
+//----------------------------------------------------------------------------
+int vtkMPICommunicator::AllGather(int* data, int* to, int length)
+{
+
+  return CheckForMPIError(
+    vtkMPICommunicatorAllGatherData(data, to, length, MPI_INT, 
+                                 this->Comm->Handle));
+}
+//----------------------------------------------------------------------------
+int vtkMPICommunicator::AllGather(unsigned long* data, unsigned long* to, 
+                               int length)
+{
+
+  return CheckForMPIError(
+    vtkMPICommunicatorAllGatherData(data, to, length, MPI_UNSIGNED_LONG, 
+                                 this->Comm->Handle));
+}
+//----------------------------------------------------------------------------
+int vtkMPICommunicator::AllGather(char* data, char* to, int length)
+{
+
+  return CheckForMPIError(
+    vtkMPICommunicatorAllGatherData(data, to, length, MPI_CHAR, 
+                                 this->Comm->Handle));
+}
+//----------------------------------------------------------------------------
+int vtkMPICommunicator::AllGather(float* data, float* to, int length)
+{
+
+  return CheckForMPIError(
+    vtkMPICommunicatorAllGatherData(data, to, length, MPI_FLOAT, 
+                                 this->Comm->Handle));
+}
+//----------------------------------------------------------------------------
+int vtkMPICommunicator::AllGather(double* data, double* to, int length)
+{
+
+  return CheckForMPIError(
+    vtkMPICommunicatorAllGatherData(data, to, length, MPI_DOUBLE, 
+                                 this->Comm->Handle));
+}
+//----------------------------------------------------------------------------
+int vtkMPICommunicator::AllGatherV(int* data, int* to, 
+                                int sendlength, int* recvlengths, 
+                                int* offsets)
+{
+
+  return CheckForMPIError(
+    vtkMPICommunicatorAllGatherVData(data, to, 
+                                  sendlength, recvlengths, offsets,
+                                  MPI_INT, this->Comm->Handle));
+}
+//----------------------------------------------------------------------------
+int vtkMPICommunicator::AllGatherV(unsigned long* data, unsigned long* to, 
+                                int sendlength, int* recvlengths,
+                                int* offsets)
+{
+
+  return CheckForMPIError(
+    vtkMPICommunicatorAllGatherVData(data, to, 
+                                  sendlength, recvlengths, offsets,
+                                  MPI_UNSIGNED_LONG, 
+                                  this->Comm->Handle));
+}
+//----------------------------------------------------------------------------
+int vtkMPICommunicator::AllGatherV(char* data, char* to,
+                                int sendlength, int* recvlengths,
+                                int* offsets)
+{
+
+  return CheckForMPIError(
+    vtkMPICommunicatorAllGatherVData(data, to, 
+                                  sendlength, recvlengths, offsets,
+                                  MPI_CHAR, 
+                                  this->Comm->Handle));
+}
+//----------------------------------------------------------------------------
+int vtkMPICommunicator::AllGatherV(float* data, float* to, 
+                                int sendlength, int* recvlengths,
+                                int* offsets)
+{
+
+  return CheckForMPIError(
+    vtkMPICommunicatorAllGatherVData(data, to, 
+                                  sendlength, recvlengths, offsets,
+                                  MPI_FLOAT, 
+                                  this->Comm->Handle));
+}
+//----------------------------------------------------------------------------
+int vtkMPICommunicator::AllGatherV(double* data, double* to,
+                                int sendlength, int* recvlengths,
+                                int* offsets)
+{
+
+  return CheckForMPIError(
+    vtkMPICommunicatorAllGatherVData(data, to, 
+                                  sendlength, recvlengths, offsets,
+                                  MPI_DOUBLE, 
+                                     this->Comm->Handle));
+}
+
+
+
 //----------------------------------------------------------------------------
 int vtkMPICommunicator::ReduceMax(int* data, int* to,
                                   int sendlength, int root)
