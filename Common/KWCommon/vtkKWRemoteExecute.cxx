@@ -116,7 +116,7 @@ int vtkKWRemoteExecute::Detach()
 }
 
 //----------------------------------------------------------------------------
-int vtkKWRemoteExecute::RunRemoteCommand(const char* command, 
+int vtkKWRemoteExecute::RunRemoteCommand(const char*, 
   const char* args[])
 {
   if ( !this->RemoteHost )
