@@ -1348,6 +1348,20 @@ void vtkXMLWriter::WritePDataArray(vtkDataArray* a, vtkIndent indent,
 }
 
 //----------------------------------------------------------------------------
+void vtkXMLWriter::WritePCoordinates(vtkDataArray* xc, vtkDataArray* yc,
+                                     vtkDataArray* zc, vtkIndent indent)
+{
+  ostream& os = *(this->Stream);
+  os << indent << "<PCoordinates>\n";
+  
+  this->WritePDataArray(xc, indent.GetNextIndent());
+  this->WritePDataArray(yc, indent.GetNextIndent());
+  this->WritePDataArray(zc, indent.GetNextIndent());
+  
+  os << indent << "</PCoordinates>\n";
+}
+
+//----------------------------------------------------------------------------
 char** vtkXMLWriter::CreateStringArray(int numStrings)
 {
   char** strings = new char*[numStrings];

@@ -77,3 +77,12 @@ vtkXMLPRectilinearGridWriter::CreateStructuredPieceWriter()
   pWriter->SetInput(this->GetInput());
   return pWriter;
 }
+
+//----------------------------------------------------------------------------
+void vtkXMLPRectilinearGridWriter::WritePData(vtkIndent indent)
+{
+  this->Superclass::WritePData(indent);
+  vtkRectilinearGrid* input = this->GetInput();
+  this->WritePCoordinates(input->GetXCoordinates(), input->GetYCoordinates(),
+                          input->GetZCoordinates(), indent);
+}
