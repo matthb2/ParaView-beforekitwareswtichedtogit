@@ -275,7 +275,7 @@ int vtkDemandDrivenPipeline::Update(int port)
     {
     return 0;
     }
-  if(port >= 0 && port < this->Algorithm->GetNumberOfOutputPorts())
+  if(port >= -1 && port < this->Algorithm->GetNumberOfOutputPorts())
     {
     return this->UpdateData(port);
     }

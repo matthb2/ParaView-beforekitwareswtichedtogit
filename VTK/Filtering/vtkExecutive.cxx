@@ -289,7 +289,7 @@ void vtkExecutive::ReportReferences(vtkGarbageCollector* collector)
 //----------------------------------------------------------------------------
 int vtkExecutive::Update()
 {
-  return this->Update(0);
+  return this->Update(-1);
 }
 
 //----------------------------------------------------------------------------
