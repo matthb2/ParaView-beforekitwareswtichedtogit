@@ -214,10 +214,18 @@ int vtkMoleculeReaderBase::ReadMolecule(FILE *fp)
     {
     this->AtomType = vtkIdTypeArray::New();
     }
+  else
+    {
+    this->AtomType->Reset();
+    }
 
   if ( !this->Points )
     {
     this->Points = vtkPoints::New();
+    }
+  else
+    {
+    this->Points->Reset();
     }
 
   newBonds = vtkCellArray::New();
