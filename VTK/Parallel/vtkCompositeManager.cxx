@@ -37,8 +37,6 @@
 
 #ifdef _WIN32
 #include "vtkWin32OpenGLRenderWindow.h"
-#elif defined(VTK_USE_MESA)
-#include "vtkMesaRenderWindow.h"
 #endif
 
 #ifdef VTK_USE_MPI
