@@ -80,6 +80,14 @@ protected:
   vtkSMProxy* Proxy;
 
   vtkSMProxyObserver() : PropertyName(0) {};
+  ~vtkSMProxyObserver() { 
+    if (this->PropertyName) 
+      {
+      delete [] this->PropertyName;
+      this->PropertyName = 0;
+      }
+  };
+      
 };
 
 //---------------------------------------------------------------------------
