@@ -31,6 +31,8 @@
 vtkCxxRevisionMacro(vtkCaptionActor2D, "$Revision$");
 vtkStandardNewMacro(vtkCaptionActor2D);
 
+vtkCxxSetObjectMacro(vtkCaptionActor2D,LeaderGlyph,vtkPolyData);
+
 vtkCaptionActor2D::vtkCaptionActor2D()
 {
   // Positioning information
