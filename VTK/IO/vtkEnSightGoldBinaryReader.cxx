@@ -1248,7 +1248,7 @@ int vtkEnSightGoldBinaryReader::ReadTensorsPerNode(char* fileName,
     }
   
   this->IFile = fopen(line, "rb");
-  if (this->IFile)
+  if (this->IFile == NULL)
     {
     vtkErrorMacro("Unable to open file: " << line);
     return 0;
@@ -1766,7 +1766,7 @@ int vtkEnSightGoldBinaryReader::ReadTensorsPerElement(char* fileName,
     }
   
   this->IFile = fopen(line, "rb");
-  if (this->IFile)
+  if (this->IFile == NULL)
     {
     vtkErrorMacro("Unable to open file: " << line);
     return 0;
