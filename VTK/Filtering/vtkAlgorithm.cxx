@@ -275,6 +275,10 @@ void vtkAlgorithm::RemoveAllInputs()
 }
 
 //----------------------------------------------------------------------------
+void vtkAlgorithm::SetInputConnection(vtkAlgorithmOutput* input)
+{
+  this->SetInputConnection(0,input);
+}
 void vtkAlgorithm::SetInputConnection(int port, vtkAlgorithmOutput* input)
 {
   if(!this->InputPortIndexInRange(port, "connect"))
