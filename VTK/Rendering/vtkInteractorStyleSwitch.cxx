@@ -78,6 +78,34 @@ void vtkInteractorStyleSwitch::SetAutoAdjustCameraClippingRange( int value )
   this->Modified();
 }
 
+void vtkInteractorStyleSwitch::SetCurrentStyleToJoystickActor()
+{
+  this->JoystickOrTrackball = VTKIS_JOYSTICK;
+  this->CameraOrActor = VTKIS_ACTOR;
+  this->SetCurrentStyle();
+}
+
+void vtkInteractorStyleSwitch::SetCurrentStyleToJoystickCamera()
+{
+  this->JoystickOrTrackball = VTKIS_JOYSTICK;
+  this->CameraOrActor = VTKIS_CAMERA;
+  this->SetCurrentStyle();
+}
+
+void vtkInteractorStyleSwitch::SetCurrentStyleToTrackballActor()
+{
+  this->JoystickOrTrackball = VTKIS_TRACKBALL;
+  this->CameraOrActor = VTKIS_ACTOR;
+  this->SetCurrentStyle();
+}
+
+void vtkInteractorStyleSwitch::SetCurrentStyleToTrackballCamera()
+{
+  this->JoystickOrTrackball = VTKIS_TRACKBALL;
+  this->CameraOrActor = VTKIS_CAMERA;
+  this->SetCurrentStyle();
+}
+
 //----------------------------------------------------------------------------
 void vtkInteractorStyleSwitch::OnChar(int vtkNotUsed(ctrl), 
                                       int vtkNotUsed(shift), 
@@ -190,7 +218,7 @@ void vtkInteractorStyleSwitch::SetInteractor(vtkRenderWindowInteractor *iren)
   if(iren)
     {
     iren->AddObserver(vtkCommand::CharEvent, this->EventCallbackCommand);
-        iren->AddObserver(vtkCommand::DeleteEvent, this->EventCallbackCommand);
+    iren->AddObserver(vtkCommand::DeleteEvent, this->EventCallbackCommand);
     }
   this->SetCurrentStyle();
 }
