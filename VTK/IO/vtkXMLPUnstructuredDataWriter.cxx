@@ -17,6 +17,7 @@
 =========================================================================*/
 #include "vtkXMLPUnstructuredDataWriter.h"
 #include "vtkXMLUnstructuredDataWriter.h"
+#include "vtkErrorCode.h"
 #include "vtkPointSet.h"
 
 vtkCxxRevisionMacro(vtkXMLPUnstructuredDataWriter, "$Revision$");
@@ -63,6 +64,10 @@ vtkXMLWriter* vtkXMLPUnstructuredDataWriter::CreatePieceWriter(int index)
 void vtkXMLPUnstructuredDataWriter::WritePData(vtkIndent indent)
 {
   this->Superclass::WritePData(indent);
+  if (this->ErrorCode == vtkErrorCode::OutOfDiskSpaceError)
+    {
+    return;
+    }
   vtkPointSet* input = this->GetInputAsPointSet();  
   this->WritePPoints(input->GetPoints(), indent);
 }

@@ -17,6 +17,7 @@
 =========================================================================*/
 #include "vtkDataSet.h"
 #include "vtkDataSetWriter.h"
+#include "vtkErrorCode.h"
 #include "vtkObjectFactory.h"
 #include "vtkPolyDataWriter.h"
 #include "vtkRectilinearGridWriter.h"
@@ -109,6 +110,10 @@ void vtkDataSetWriter::WriteData()
   writer->SetDebug(this->Debug);
   writer->SetWriteToOutputString(this->WriteToOutputString);
   writer->Write();
+  if (writer->GetErrorCode() == vtkErrorCode::OutOfDiskSpaceError)
+    {
+    this->SetErrorCode(vtkErrorCode::OutOfDiskSpaceError);
+    }
   if (this->WriteToOutputString)
     {
     if (this->OutputString)

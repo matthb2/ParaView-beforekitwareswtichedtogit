@@ -18,6 +18,7 @@
 #include "vtkXMLPRectilinearGridWriter.h"
 #include "vtkObjectFactory.h"
 #include "vtkXMLRectilinearGridWriter.h"
+#include "vtkErrorCode.h"
 #include "vtkRectilinearGrid.h"
 
 vtkCxxRevisionMacro(vtkXMLPRectilinearGridWriter, "$Revision$");
@@ -82,6 +83,11 @@ vtkXMLPRectilinearGridWriter::CreateStructuredPieceWriter()
 void vtkXMLPRectilinearGridWriter::WritePData(vtkIndent indent)
 {
   this->Superclass::WritePData(indent);
+  if (this->ErrorCode == vtkErrorCode::OutOfDiskSpaceError)
+    {
+    return;
+    }
+  
   vtkRectilinearGrid* input = this->GetInput();
   this->WritePCoordinates(input->GetXCoordinates(), input->GetYCoordinates(),
                           input->GetZCoordinates(), indent);
