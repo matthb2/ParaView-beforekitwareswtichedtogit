@@ -596,6 +596,8 @@ void vtkLineWidget::OnLeftButtonDown()
   path = this->HandlePicker->GetPath();
   if ( path != NULL )
     {
+    this->EventCallbackCommand->SetAbortFlag(1);
+    this->StartInteraction();
     this->InvokeEvent(vtkCommand::StartInteractionEvent,NULL);
     this->State = vtkLineWidget::MovingHandle;
     this->HighlightHandle(path->GetFirstNode()->GetProp());
@@ -608,6 +610,8 @@ void vtkLineWidget::OnLeftButtonDown()
     path = this->LinePicker->GetPath();
     if ( path != NULL )
       {
+      this->EventCallbackCommand->SetAbortFlag(1);
+      this->StartInteraction();
       this->InvokeEvent(vtkCommand::StartInteractionEvent,NULL);
       this->State = vtkLineWidget::MovingLine;
       this->HighlightLine(1);
@@ -622,8 +626,6 @@ void vtkLineWidget::OnLeftButtonDown()
       }
     }
   
-  this->EventCallbackCommand->SetAbortFlag(1);
-  this->StartInteraction();
   if ( ! forward )
     {
     this->Interactor->Render();
@@ -678,6 +680,8 @@ void vtkLineWidget::OnMiddleButtonDown()
   path = this->HandlePicker->GetPath();
   if ( path != NULL )
     {
+    this->EventCallbackCommand->SetAbortFlag(1);
+    this->StartInteraction();
     this->InvokeEvent(vtkCommand::StartInteractionEvent,NULL);
     this->State = vtkLineWidget::MovingLine;
     this->HighlightHandles(1);
@@ -691,6 +695,8 @@ void vtkLineWidget::OnMiddleButtonDown()
     path = this->LinePicker->GetPath();
     if ( path != NULL )
       {
+      this->EventCallbackCommand->SetAbortFlag(1);
+      this->StartInteraction();
       this->InvokeEvent(vtkCommand::StartInteractionEvent,NULL);
       //The highlight methods set the LastPickPosition, so they are ordered
       this->HighlightHandles(1);
@@ -706,8 +712,6 @@ void vtkLineWidget::OnMiddleButtonDown()
       }
     }
   
-  this->EventCallbackCommand->SetAbortFlag(1);
-  this->StartInteraction();
   if ( ! forward )
     {
     this->Interactor->Render();
