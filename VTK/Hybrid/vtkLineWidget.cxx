@@ -106,10 +106,6 @@ vtkLineWidget::vtkLineWidget()
 
 vtkLineWidget::~vtkLineWidget()
 {
-  if ( this->Enabled )
-    {
-    this->SetEnabled(0);
-    }
   this->LineActor->Delete();
   this->LineMapper->Delete();
   this->LineSource->Delete();
