@@ -72,9 +72,14 @@ void vtkPolyDataNormals::Execute()
 
   vtkDebugMacro(<<"Generating surface normals");
 
+  if ( input==NULL )
+    {
+    return;
+    }
+
   numPolys=input->GetNumberOfPolys();
   numStrips=input->GetNumberOfStrips();
-  if ( (numPts=input->GetNumberOfPoints()) < 1 || 
+  if ( (numPts=input->GetNumberOfPoints()) < 1 ||
        (numPolys < 1 && numStrips < 1) )
     {
     vtkErrorMacro(<<"No data to generate normals for!");
