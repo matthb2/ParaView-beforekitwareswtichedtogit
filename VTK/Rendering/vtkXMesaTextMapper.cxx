@@ -504,3 +504,8 @@ void vtkXMesaTextMapper::RenderOverlay(vtkViewport* viewport,
   glEnable( GL_LIGHTING);
 }
 
+//----------------------------------------------------------------------------
+void vtkXMesaTextMapper::PrintSelf(ostream& os, vtkIndent indent)
+{
+  this->Superclass::PrintSelf(os,indent);
+}

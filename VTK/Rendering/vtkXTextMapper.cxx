@@ -226,8 +226,8 @@ void vtkXTextMapper::DetermineSize(vtkViewport *viewport, int *size)
   XFreeFontInfo(NULL, fontStruct, 1);
 }
 
-
-
-
-
-
+//----------------------------------------------------------------------------
+void vtkXTextMapper::PrintSelf(ostream& os, vtkIndent indent)
+{
+  this->Superclass::PrintSelf(os,indent);
+}
