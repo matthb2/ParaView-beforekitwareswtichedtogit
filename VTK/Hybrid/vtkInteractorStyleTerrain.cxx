@@ -315,7 +315,7 @@ void vtkInteractorStyleTerrain::OnMouseMove (int vtkNotUsed(ctrl), int shift,
   
     if ( shift )
       {
-      if ( fabs(OldX-X) >= fabs(OldY-Y) )
+      if ( fabs((float)(OldX-X)) >= fabs((float)(OldY-Y)) )
         {
         e = 0.0;
         }
