@@ -221,4 +221,8 @@ void vtkPVUpdateSuppressor::PrintSelf(ostream& os, vtkIndent indent)
   this->Superclass::PrintSelf(os,indent);
   os << indent << "UpdatePiece: " << this->UpdatePiece << endl;
   os << indent << "UpdateNumberOfPieces: " << this->UpdateNumberOfPieces << endl;
+  os << indent << "OutputType: " 
+     << (this->OutputType?this->OutputType:"(none)")
+     << endl;
+         
 }
