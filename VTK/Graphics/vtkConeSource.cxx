@@ -279,7 +279,7 @@ int vtkConeSource::RequestData(
 }
 
 //----------------------------------------------------------------------------
-int vtkConeSource::ExecuteInformation(
+int vtkConeSource::RequestInformation(
   vtkInformation *vtkNotUsed(request),
   vtkInformationVector **vtkNotUsed(inputVector),
   vtkInformationVector *outputVector)
