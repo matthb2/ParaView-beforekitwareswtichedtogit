@@ -128,9 +128,9 @@ void vtkPointSetAlgorithm::AddInput(int index, vtkPointSet* input)
 }
 
 //----------------------------------------------------------------------------
-vtkDataObject* vtkPointSetAlgorithm::GetInput(int port)
+vtkDataObject* vtkPointSetAlgorithm::GetInput()
 {
-  return this->GetExecutive()->GetInputData(port, 0);
+  return this->GetExecutive()->GetInputData(0, 0);
 }
 
 //----------------------------------------------------------------------------
