@@ -704,6 +704,10 @@ public:
         }
       ++j;
       }
+    if(!isValid)
+      {
+      cout<<"not valid: j="<<j<<" k="<<k<<endl;
+      }
     return isValid;
   }
 #endif
@@ -1626,6 +1630,47 @@ void vtkSimpleCellTessellator::InsertEdgesIntoEdgeTable(vtkTriangleTile &tri )
         }
       
       doSubdivision = tri.GetSubdivisionLevel() < this->GetMaxSubdivisionLevel();
+      
+      //
+      // For measurement of the quality of a fixed subdivision.
+      //
+      if(!doSubdivision) // done
+        {
+        if(this->GetMaxSubdivisionLevel()==this->GetFixedSubdivisions())
+          {
+          // fixed subdivision only
+          if(this->GetMeasurement())
+            {
+            // global position and attributes at the left vertex
+            this->EdgeTable->CheckPoint(leftId,leftPoint,
+                                        leftPoint + ATTRIBUTES_OFFSET);
+            // global position and attributes at the right vertex
+            this->EdgeTable->CheckPoint(rightId,rightPoint,
+                                        rightPoint + ATTRIBUTES_OFFSET);
+
+            // parametric center of the edge
+            local = midPoint + PARAMETRIC_OFFSET;
+
+            for(int i=0; i<3; i++)
+              {
+              local[i] = left[i] + alpha*(right[i] - left[i]);
+              }
+            // global position of the center
+            this->GenericCell->EvaluateLocation(0,local,midPoint);
+            
+            // attributes at the center
+            this->GenericCell->InterpolateTuple(this->AttributeCollection,
+                                                local,
+                                                midPoint+ATTRIBUTES_OFFSET);
+            this->UpdateMaxError(leftPoint,midPoint,rightPoint,alpha);
+            }
+          }
+        }
+      //
+      //
+      //
+      
+      
       if(doSubdivision)
         {
         // global position and attributes at the left vertex
@@ -1810,6 +1855,46 @@ void vtkSimpleCellTessellator::InsertEdgesIntoEdgeTable( vtkTetraTile &tetra )
         }
       
       doSubdivision = tetra.GetSubdivisionLevel() < this->GetMaxSubdivisionLevel();
+      
+      //
+      // For measurement of the quality of a fixed subdivision.
+      //
+      if(!doSubdivision) // done
+        {
+        if(this->GetMaxSubdivisionLevel()==this->GetFixedSubdivisions())
+          {
+          // fixed subdivision only
+          if(this->GetMeasurement())
+            {
+            // global position and attributes at the left vertex
+            this->EdgeTable->CheckPoint(leftId,leftPoint,
+                                        leftPoint + ATTRIBUTES_OFFSET);
+            // global position and attributes at the right vertex
+            this->EdgeTable->CheckPoint(rightId,rightPoint,
+                                        rightPoint + ATTRIBUTES_OFFSET);
+
+            // parametric center of the edge
+            local = midPoint + PARAMETRIC_OFFSET;
+
+            for(int i=0; i<3; i++)
+              {
+              local[i] = left[i] + alpha*(right[i] - left[i]);
+              }
+            // global position of the center
+            this->GenericCell->EvaluateLocation(0,local,midPoint);
+            
+            // attributes at the center
+            this->GenericCell->InterpolateTuple(this->AttributeCollection,
+                                                local,
+                                                midPoint+ATTRIBUTES_OFFSET);
+            this->UpdateMaxError(leftPoint,midPoint,rightPoint,alpha);
+            }
+          }
+        }
+      //
+      //
+      //
+      
       if(doSubdivision)
         {
         // global position and attributes at the left vertex

@@ -122,6 +122,60 @@ int vtkViewDependentErrorMetric::RequiresEdgeSubdivision(double *leftPoint,
 
 //-----------------------------------------------------------------------------
 // Description:
+// Return the error at the mid-point. The type of error depends on the state
+// of the concrete error metric. For instance, it can return an absolute
+// or relative error metric.
+// See RequiresEdgeSubdivision() for a description of the arguments.
+// \pre leftPoint_exists: leftPoint!=0
+// \pre midPoint_exists: midPoint!=0
+// \pre rightPoint_exists: rightPoint!=0
+// \pre clamped_alpha: alpha>0 && alpha<1
+// \pre valid_size: sizeof(leftPoint)=sizeof(midPoint)=sizeof(rightPoint)
+//          =GetAttributeCollection()->GetNumberOfPointCenteredComponents()+6
+// \post positive_result: result>=0
+double vtkViewDependentErrorMetric::GetError(double *leftPoint,
+                                             double *midPoint,
+                                             double *rightPoint,
+                                             double vtkNotUsed(alpha))
+{
+  assert("pre: leftPoint_exists" && leftPoint!=0);
+  assert("pre: midPoint_exists" && midPoint!=0);
+  assert("pre: rightPoint_exists" && rightPoint!=0);
+//  assert("pre: clamped_alpha" && alpha>0 && alpha<1); // or else true
+  if( this->GenericCell->IsGeometryLinear() )
+    {
+    //don't need to do anything:
+    return 0;
+    }
+  
+  // Get the projection of the left, mid and right points
+  double leftProjPoint[2];
+  double midProjPoint[2];
+//  double rightProjPoint[2];
+  
+  this->Coordinate->SetValue(leftPoint);
+  double *pix = this->Coordinate->GetComputedDoubleDisplayValue(this->Viewport);
+  
+  // pix is a volatile pointer
+  leftProjPoint[0] = pix[0];
+  leftProjPoint[1] = pix[1];
+  
+  this->Coordinate->SetValue(midPoint);
+  pix = this->Coordinate->GetComputedDoubleDisplayValue(this->Viewport);
+  
+  // pix is a volatile pointer
+  midProjPoint[0] = pix[0];
+  midProjPoint[1] = pix[1];
+  
+  this->Coordinate->SetValue(rightPoint);
+  pix = this->Coordinate->GetComputedDoubleDisplayValue(this->Viewport);
+  
+  // distance between the line (leftProjPoint,rightProjPoint) and the point midProjPoint.
+  return this->Distance2LinePoint(leftProjPoint,pix,midProjPoint);
+}
+
+//-----------------------------------------------------------------------------
+// Description:
 // Square distance between a straight line (defined by points x and y)
 // and a point z. Property: if x and y are equal, the line is a point and
 // the result is the square distance between points x and z.
