@@ -605,18 +605,13 @@ void vtkIceTRenderManager::PreRenderProcessing()
                        viewport[3]*this->ImageReductionFactor);
       }
     }
-
-  this->RenderWindow->SwapBuffersOff();
 }
 
 void vtkIceTRenderManager::PostRenderProcessing()
 {
   vtkDebugMacro("PostRenderProcessing");
 
-  this->RenderWindow->SwapBuffersOn();
   this->Controller->Barrier();
-
-  this->RenderWindow->Frame();
 
   if (this->WriteBackImages)
     {
