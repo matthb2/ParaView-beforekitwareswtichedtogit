@@ -1116,8 +1116,6 @@ void vtkClientCompositeManager::InitializeOffScreen()
 // Only process 0 needs start and end render callbacks.
 void vtkClientCompositeManager::SetRenderWindow(vtkRenderWindow *renWin)
 {
-  vtkRenderer *ren = 0;
-
   if (this->RenderWindow == renWin)
     {
     return;
