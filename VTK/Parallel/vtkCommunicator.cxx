@@ -475,7 +475,7 @@ int vtkCommunicator::WriteDataSet(vtkDataSet *data)
   unsigned long size;
   vtkDataSetWriter *writer = vtkDataSetWriter::New();
 
-  copy = (vtkDataSet*)(data->MakeObject());
+  copy = data->NewInstance();
   copy->ShallowCopy(data);
 
   // There is a problem with binary files with no data.

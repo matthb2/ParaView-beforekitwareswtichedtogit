@@ -81,15 +81,6 @@ void vtkImageStencilData::PrintSelf(ostream& os, vtkIndent indent)
 }
 
 //----------------------------------------------------------------------------
-vtkDataObject *vtkImageStencilData::MakeObject()
-{
-  vtkImageStencilData *o = vtkImageStencilData::New();
-  o->DeepCopy(this);
-
-  return (vtkDataObject *)o;
-}
-
-//----------------------------------------------------------------------------
 void vtkImageStencilData::Initialize()
 {
   if (this->ExtentLists)
@@ -469,9 +460,13 @@ void vtkImageStencilData::InsertNextExtent(int r1, int r2, int yIdx, int zIdx)
   clist[clistlen++] = r2 + 1;
 }
 
-  
-
-
-
-
-
+//----------------------------------------------------------------------------
+#ifndef VTK_REMOVE_LEGACY_CODE
+vtkDataObject* vtkImageStencilData::MakeObject()
+{
+  VTK_LEGACY_METHOD(MakeObject, "4.2");  
+  vtkImageStencilData* o = vtkImageStencilData::New();
+  o->DeepCopy(this);
+  return o;
+}
+#endif

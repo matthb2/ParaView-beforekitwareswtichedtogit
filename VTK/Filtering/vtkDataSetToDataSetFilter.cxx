@@ -52,7 +52,7 @@ void vtkDataSetToDataSetFilter::SetInput(vtkDataSet *input)
   
   if (input != NULL && this->vtkSource::GetOutput(0) == NULL)
     {
-    this->vtkSource::SetNthOutput(0, input->MakeObject());
+    this->vtkSource::SetNthOutput(0, input->NewInstance());
     this->Outputs[0]->ReleaseData();
     this->Outputs[0]->Delete();
     }
