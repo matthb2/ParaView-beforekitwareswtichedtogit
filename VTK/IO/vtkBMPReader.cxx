@@ -57,10 +57,6 @@ vtkBMPReader::~vtkBMPReader()
     }
 }
 
-vtkLookupTable *vtkBMPReader::GetLookupTable(void) {
-    return this->LookupTable;
-}
-
 void vtkBMPReader::ExecuteInformation()
 {
   int xsize, ysize;
