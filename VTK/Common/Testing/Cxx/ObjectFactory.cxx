@@ -105,7 +105,7 @@ void TestNewVertex(vtkVertex* v, const char* expectedClassName)
 }
 
 
-int main()
+int ObjectFactory(int, char *[])
 {
   vtkDebugLeaks::PromptUserOff();
   vtkGenericWarningMacro("Test Generic Warning");
