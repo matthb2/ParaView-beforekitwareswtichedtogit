@@ -198,6 +198,11 @@ void vtkCocoaRenderWindow::SetSize(int x, int y)
     }
 }
 
+void vtkCocoaRenderWindow::SetForceMakeCurrent()
+{
+  this.ForceMakeCurrent = 1;
+}
+
 void vtkCocoaRenderWindow::SetPosition(int x, int y)
 {
   static int resizing = 0;
