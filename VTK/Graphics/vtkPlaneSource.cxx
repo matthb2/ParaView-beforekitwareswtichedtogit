@@ -158,9 +158,11 @@ int vtkPlaneSource::RequestData(
   output->SetPoints(newPoints);
   newPoints->Delete();
 
+  newNormals->SetName("Normals");
   output->GetPointData()->SetNormals(newNormals);
   newNormals->Delete();
 
+  newTCoords->SetName("TextureCoordinates");
   output->GetPointData()->SetTCoords(newTCoords);
   newTCoords->Delete();
 
