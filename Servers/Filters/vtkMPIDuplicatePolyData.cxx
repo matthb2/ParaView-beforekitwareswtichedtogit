@@ -51,6 +51,7 @@ vtkMPIDuplicatePolyData::vtkMPIDuplicatePolyData()
 vtkMPIDuplicatePolyData::~vtkMPIDuplicatePolyData()
 {
   this->SetController(0);
+  this->SetSocketController(0);
 }
 
 
