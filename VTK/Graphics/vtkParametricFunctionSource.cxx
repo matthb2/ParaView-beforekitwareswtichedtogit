@@ -23,7 +23,7 @@
 #include "vtkCellArray.h"
 #include "vtkPolyData.h"
 
-#include <cmath>
+#include <math.h>
 #include <vtkstd/string>
 
 vtkCxxRevisionMacro(vtkParametricFunctionSource, "$Revision$");
