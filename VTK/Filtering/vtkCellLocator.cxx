@@ -16,11 +16,13 @@
 
 =========================================================================*/
 #include "vtkCellLocator.h"
-#include "vtkPolyData.h"
+
+#include "vtkCellArray.h"
+#include "vtkGenericCell.h"
 #include "vtkMath.h"
 #include "vtkObjectFactory.h"
+#include "vtkPolyData.h"
 
-#include <stdlib.h>
 #include <math.h>
 
 vtkCxxRevisionMacro(vtkCellLocator, "$Revision$");

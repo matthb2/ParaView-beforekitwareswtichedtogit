@@ -16,8 +16,11 @@
 
 =========================================================================*/
 #include "vtkMergePoints.h"
+
 #include "vtkFloatArray.h"
+#include "vtkIdList.h"
 #include "vtkObjectFactory.h"
+#include "vtkPoints.h"
 
 vtkCxxRevisionMacro(vtkMergePoints, "$Revision$");
 vtkStandardNewMacro(vtkMergePoints);

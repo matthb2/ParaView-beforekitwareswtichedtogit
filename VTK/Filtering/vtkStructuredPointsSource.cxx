@@ -17,7 +17,9 @@
 =========================================================================*/
 #include "vtkStructuredPointsSource.h"
 
+#include "vtkDataArray.h"
 #include "vtkObjectFactory.h"
+#include "vtkPointData.h"
 #include "vtkStructuredPoints.h"
 
 vtkCxxRevisionMacro(vtkStructuredPointsSource, "$Revision$");
