@@ -23,6 +23,7 @@
 #include "vtkXMLDataParser.h"
 #include "vtkInformationVector.h"
 #include "vtkInformation.h"
+#include "vtkExecutive.h"
 
 vtkCxxRevisionMacro(vtkXMLDataReader, "$Revision$");
 
@@ -79,6 +80,8 @@ void vtkXMLDataReader::DestroyXMLParser()
 
 
 //----------------------------------------------------------------------------
+// Note that any changes (add or removing information) made to this method
+// should be replicated in CopyOutputInformation
 void vtkXMLDataReader::SetupOutputInformation(vtkInformation *outInfo)
 {
   if (this->InformationError)
@@ -118,6 +121,21 @@ void vtkXMLDataReader::SetupOutputInformation(vtkInformation *outInfo)
     infoVector->Delete();
     }
 }
+
+
+//----------------------------------------------------------------------------
+void vtkXMLDataReader::CopyOutputInformation(vtkInformation *outInfo, int port)
+  {
+  vtkInformation *localInfo = this->GetExecutive()->GetOutputInformation( port );
+  if ( localInfo->Has(vtkDataObject::POINT_DATA_VECTOR()) )
+    {
+    outInfo->CopyEntry( localInfo, vtkDataObject::POINT_DATA_VECTOR() );
+    }
+  if ( localInfo->Has(vtkDataObject::CELL_DATA_VECTOR()) )
+    {
+    outInfo->CopyEntry( localInfo, vtkDataObject::CELL_DATA_VECTOR() );
+    }
+  }
 
 
 //----------------------------------------------------------------------------
