@@ -1788,7 +1788,6 @@ void vtkImagePlaneWidget::GetPolyData(vtkPolyData *pd)
 void vtkImagePlaneWidget::SetTextProperty(vtkTextProperty* tprop)
 {
   this->TextActor->SetTextProperty(tprop);
-  this->TextActor->Modified();
 }
 
 vtkTextProperty* vtkImagePlaneWidget::GetTextProperty()
