@@ -131,6 +131,16 @@ void vtkPVGeometryFilter::Execute()
     return;
     }
 
+  if (input->IsA("vtkDataSet"))
+    {
+    vtkDataSet *ds = static_cast<vtkDataSet*>(input);
+    if (!ds->GetNumberOfPoints())
+      {
+      vtkErrorMacro("No input points");
+      return;
+      }
+    }
+  
   if (input->IsA("vtkImageData"))
     {
     this->ImageDataExecute(static_cast<vtkImageData*>(input));

@@ -183,6 +183,10 @@ void vtkPVDataInformation::CopyFromDataSet(vtkDataSet* data)
   int *ext = NULL;
 
   this->NumberOfPoints = data->GetNumberOfPoints();
+  if (!this->NumberOfPoints)
+    {
+    return;
+    }
   this->NumberOfCells = data->GetNumberOfCells();
   bds = data->GetBounds();
   for (idx = 0; idx < 6; ++idx)
