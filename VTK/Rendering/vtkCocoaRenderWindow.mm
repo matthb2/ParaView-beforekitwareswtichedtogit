@@ -376,14 +376,12 @@ void vtkCocoaRenderWindow::WindowConfigure()
   // this is all handled by the desiredVisualInfo method
 }
 
-void vtkCocoaRenderWindow::SetupPixelFormat(void *hDC, void *dwFlags, 
-						  int debug, int bpp, 
-						  int zbpp)
+void vtkCocoaRenderWindow::SetupPixelFormat(void*, void*, int, int, int)
 {
     cout << "vtkCocoaRenderWindow::SetupPixelFormat - IMPLEMENT\n";
 }
 
-void vtkCocoaRenderWindow::SetupPalette(void *hDC)
+void vtkCocoaRenderWindow::SetupPalette(void*)
 {
 cout << "vtkCocoaRenderWindow::SetupPalette - IMPLEMENT\n";
 }
@@ -391,21 +389,18 @@ cout << "vtkCocoaRenderWindow::SetupPalette - IMPLEMENT\n";
 // Initialize the window for rendering.
 void vtkCocoaRenderWindow::WindowInitialize (void)
 {
-  int x, y, width, height;
   static int count = 1;
   char *windowName;
   NSRect ctRect;
   NSRect glRect;
   vtkCocoaGLView *glView;
 #undef id
-  id item;
 #define id Id
   // create our own window if not already set
   this->OwnWindow = 0;
     // get the application instance if we don't have one already
     if (!this->ApplicationInitialized)
         {
-	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
 	[NSApplication sharedApplication];
         this->ApplicationInitialized=1;
         }
