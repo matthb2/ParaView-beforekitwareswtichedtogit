@@ -23,7 +23,6 @@
 #include "vtkFloatArray.h"
 #include "vtkUnsignedCharArray.h"
 #include "vtkTreeCompositer.h"
-#include "vtkCompressCompositer.h"
 #include "vtkObjectFactory.h"
 
 #ifdef _WIN32
@@ -1488,6 +1487,15 @@ void vtkCompositeManager::PrintSelf(ostream& os, vtkIndent indent)
     }
 
   os << indent << "Controller: (" << this->Controller << ")\n"; 
+  if (this->Compositer)
+    {
+    os << indent << "Compositer: " << this->Compositer->GetClassName() 
+       << " (" << this->Compositer << ")\n"; 
+    }
+  else
+    {
+    os << indent << "Compositer: NULL\n";
+    }
 }
 
 
