@@ -956,11 +956,16 @@ vtkDataObject* vtkDemandDrivenPipeline::NewDataObject(const char* type)
 void vtkDemandDrivenPipeline::ReportReferences(vtkGarbageCollector* collector)
 {
   this->Superclass::ReportReferences(collector);
-  for(int i=0; i < this->Algorithm->GetNumberOfOutputPorts(); ++i)
+  
+  // if we have an algorithm then report our references to its data objects 
+  if (this->Algorithm)
     {
-    collector->ReportReference(
+    for(int i=0; i < this->Algorithm->GetNumberOfOutputPorts(); ++i)
+      {
+      collector->ReportReference(
       this->GetOutputInformation(i)->Get(vtkDataObject::DATA_OBJECT()),
       "AlgorithmOutput");
+      }
     }
 }
 
