@@ -16,13 +16,17 @@
 
 =========================================================================*/
 #include "vtkArcPlotter.h"
-#include "vtkMath.h"
-#include "vtkPlane.h"
+
+#include "vtkCamera.h"
 #include "vtkFloatArray.h"
+#include "vtkMath.h"
 #include "vtkObjectFactory.h"
+#include "vtkPlane.h"
 
 vtkCxxRevisionMacro(vtkArcPlotter, "$Revision$");
 vtkStandardNewMacro(vtkArcPlotter);
+
+vtkCxxSetObjectMacro(vtkArcPlotter,Camera,vtkCamera);
 
 vtkArcPlotter::vtkArcPlotter()
 {
