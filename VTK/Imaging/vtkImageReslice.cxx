@@ -2221,7 +2221,6 @@ void vtkOptimizedExecute(vtkImageReslice *self,
   int inInc[3];
   unsigned long count = 0;
   unsigned long target;
-  int r1, r2;
   int iter, idXmin, idXmax;
   double temp[3];
   F inOrigin[3], inInvSpacing[3];
