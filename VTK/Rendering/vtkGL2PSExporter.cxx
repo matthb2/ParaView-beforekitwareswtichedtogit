@@ -128,7 +128,7 @@ void vtkGL2PSExporter::WriteData()
   
 
   // Setup the file.
-  fName = new char [strlen(this->FilePrefix) + 4] ;
+  fName = new char [strlen(this->FilePrefix) + 5] ;
   if (this->FileFormat == PS_FILE)
     {
     sprintf(fName, "%s.ps", this->FilePrefix);
