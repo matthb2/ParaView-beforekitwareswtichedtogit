@@ -2059,6 +2059,16 @@ void vtkDataReader::PrintSelf(ostream& os, vtkIndent indent)
     os << indent << "Input String: (None)\n";
     }
 
+  if ( this->InputArray )
+    {
+    os << indent << "Input Array: "  << "\n";
+    this->InputArray->PrintSelf(os,indent.GetNextIndent());
+    }
+  else
+    {
+    os << indent << "Input String: (None)\n";
+    }
+
   os << indent << "Input String Length: " << this->InputStringLength << endl;
 
   if ( this->ScalarsName )
