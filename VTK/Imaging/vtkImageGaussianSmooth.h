@@ -56,6 +56,7 @@ class VTK_EXPORT vtkImageGaussianSmooth : public vtkImageDecomposedFilter
 public:
   vtkImageGaussianSmooth();
   static vtkImageGaussianSmooth *New() {return new vtkImageGaussianSmooth;};
+  void PrintSelf(ostream& os, vtkIndent indent);
   char *GetClassName() {return "vtkImageGaussianSmooth";};
 
   void SetDimensionality(int num);
@@ -63,8 +64,6 @@ public:
 
   void SetStandardDeviation(int num, float *std);
   vtkImageSetMacro(StandardDeviation, float);
-
-  void vtkTest () {};
 
   // Description:
   // Each axis can have a stride to srink the image.
@@ -74,6 +73,7 @@ public:
 protected:
   int Strides[VTK_IMAGE_DIMENSIONS];
   float StandardDeviation[VTK_IMAGE_DIMENSIONS];
+  float RadiusFactor;
 };
 
 #endif
