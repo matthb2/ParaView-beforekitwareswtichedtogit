@@ -288,5 +288,5 @@ void vtkSphereSource::PrintSelf(ostream& os, vtkIndent indent)
 //----------------------------------------------------------------------------
 void vtkSphereSource::ExecuteInformation()
 {
-  this->GetOutput()->SetMaximumNumberOfPieces(this->ThetaResolution);
+  this->GetOutput()->SetMaximumNumberOfPieces(-1);
 }

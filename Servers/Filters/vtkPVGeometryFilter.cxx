@@ -150,6 +150,18 @@ int vtkPVGeometryFilter::CheckAttributes(vtkDataObject* input)
 }
 
 //----------------------------------------------------------------------------
+void vtkPVGeometryFilter::ExecuteInformation()
+{
+  vtkDataObject *output = this->GetOutput();
+
+  if (output)
+    { // Execute synchronizes (communicates among processes), so we need
+    // all procs to call Execute.
+    output->SetMaximumNumberOfPieces(-1);
+    }
+}
+
+//----------------------------------------------------------------------------
 void vtkPVGeometryFilter::Execute()
 {
   vtkDataObject *input = this->GetInput();
