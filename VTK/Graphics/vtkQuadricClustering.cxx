@@ -80,6 +80,16 @@ vtkQuadricClustering::~vtkQuadricClustering()
     delete [] this->QuadricArray;
     this->QuadricArray = NULL;
     }
+  if (this->OutputTriangleArray)
+    {
+    this->OutputTriangleArray->Delete();
+    this->OutputTriangleArray = NULL;
+    }
+  if (this->OutputLines)
+    {
+    this->OutputLines->Delete();
+    this->OutputLines = NULL;
+    }
 }
 
 //----------------------------------------------------------------------------
