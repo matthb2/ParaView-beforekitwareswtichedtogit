@@ -318,7 +318,7 @@ void vtkLoopSubdivisionFilter::Execute()
   vtkPolyData *input = this->GetInput();
   vtkCellArray *polys = input->GetPolys();
   int hasTris = 0;
-  vtkIdType numPts, *pts;
+  vtkIdType numPts = 0, *pts = 0;
 
   input->BuildLinks();
   
