@@ -11,13 +11,13 @@
 
 #include <vtkstd/algorithm>
 
-#include <vtkObjectFactory.h>
-#include <vtkIdList.h>
-#include <vtkDataArray.h>
-#include <vtkPointData.h>
-#include <vtkCellData.h>
-#include <vtkCell.h>
-#include <vtkDataSet.h>
+#include "vtkObjectFactory.h"
+#include "vtkIdList.h"
+#include "vtkDataArray.h"
+#include "vtkPointData.h"
+#include "vtkCellData.h"
+#include "vtkCell.h"
+#include "vtkDataSet.h"
 
 vtkCxxRevisionMacro(vtkDataSetSubdivisionAlgorithm,"$Revision$");
 vtkStandardNewMacro(vtkDataSetSubdivisionAlgorithm);

@@ -56,12 +56,12 @@
 #include <vtkstd/map>
 
 #ifdef VTK_USE_MPI
-#include <vtkMPIController.h>
+#include "vtkMPIController.h"
 #endif
 
 // Timing data ---------------------------------------------
 
-#include <vtkTimerLog.h>
+#include "vtkTimerLog.h"
 
 #define MSGSIZE 60
 

@@ -11,10 +11,10 @@
  * Edit vtkStreamingTessellatorGenerator.py instead.
  */
 
-#include <vtkObjectFactory.h>
+#include "vtkObjectFactory.h"
 
-#include <vtkStreamingTessellator.h>
-#include <vtkSubdivisionAlgorithm.h>
+#include "vtkStreamingTessellator.h"
+#include "vtkSubdivisionAlgorithm.h"
 #undef UGLY_ASPECT_RATIO_HACK
 #undef DBG_MIDPTS
 
