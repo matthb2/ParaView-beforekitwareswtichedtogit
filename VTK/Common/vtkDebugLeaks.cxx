@@ -143,6 +143,14 @@ public:
   int DecrementCount(const char* name);
   void PrintTable();
   int IsEmpty();
+  ~vtkDebugLeaksHashTable()
+    {
+      for (int i = 0; i < 64; i++)
+        {
+        delete this->Nodes[i];
+        }
+    }
+
 private:
   vtkDebugLeaksHashNode* Nodes[64];
 };
