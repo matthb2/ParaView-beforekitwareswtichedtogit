@@ -18,7 +18,6 @@
 #include "vtkObjectFactory.h"
 #include "vtkPVProcessModule.h"
 #include "vtkClientServerStream.h"
-#include "vtkKWEvent.h"
 #include "vtkCommand.h"
 #include "vtkSMDoubleVectorProperty.h"
 
@@ -105,13 +104,16 @@ void vtkSMLineWidgetProxy::ExecuteEvent(vtkObject *wdg, unsigned long event,void
     {
     return;
     }
-  double val[3];
+  double point1[3];
+  double point2[3];
   //Update the iVars to reflect the VTK object state
-  widget->GetPoint1(val);
-  this->SetPoint1(val);
-  widget->GetPoint2(val);
-  this->SetPoint2(val);
-  this->InvokeEvent(vtkKWEvent::WidgetModifiedEvent);
+  widget->GetPoint1(point1);
+  widget->GetPoint2(point2);
+  if (event != vtkCommand::PlaceWidgetEvent || !this->IgnorePlaceWidgetChanges)
+    {
+    this->SetPoint1(point1);
+    this->SetPoint2(point2);
+    }
   this->Superclass::ExecuteEvent(wdg, event, p);
 }
 

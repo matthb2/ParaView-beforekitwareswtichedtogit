@@ -17,9 +17,9 @@
 #include "vtkObjectFactory.h"
 #include "vtkPVProcessModule.h"
 #include "vtkClientServerStream.h"
-#include "vtkKWEvent.h"
 #include "vtkSphereWidget.h"
 #include "vtkSMDoubleVectorProperty.h"
+#include "vtkCommand.h"
 
 vtkStandardNewMacro(vtkSMSphereWidgetProxy);
 vtkCxxRevisionMacro(vtkSMSphereWidgetProxy, "$Revision$");
@@ -75,12 +75,14 @@ void vtkSMSphereWidgetProxy::ExecuteEvent(vtkObject *wdg, unsigned long event,vo
     }
   //Update iVars to reflect the state of the VTK object
   double val[3];
-  widget->GetCenter(val); 
-  this->SetCenter(val);
   double rad = widget->GetRadius();
-  this->SetRadius(rad);
+  widget->GetCenter(val); 
   
-  this->InvokeEvent(vtkKWEvent::WidgetModifiedEvent);
+  if (event != vtkCommand::PlaceWidgetEvent || !this->IgnorePlaceWidgetChanges)
+    {
+    this->SetCenter(val);
+    this->SetRadius(rad);
+    }
   this->Superclass::ExecuteEvent(wdg, event, p);
 }
 
