@@ -42,6 +42,7 @@ vtkSMDoubleVectorProperty::vtkSMDoubleVectorProperty()
 vtkSMDoubleVectorProperty::~vtkSMDoubleVectorProperty()
 {
   delete this->Internals;
+  this->SetSetNumberCommand(0);
 }
 
 //---------------------------------------------------------------------------
