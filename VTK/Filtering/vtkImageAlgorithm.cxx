@@ -26,15 +26,6 @@
 
 vtkCxxRevisionMacro(vtkImageAlgorithm, "$Revision$");
 
-class vtkImageAlgorithmToDataSetFriendship
-{
-public:
-  static void GenerateGhostLevelArray(vtkDataSet* ds)
-    {
-    ds->GenerateGhostLevelArray();
-    }
-};
-
 //----------------------------------------------------------------------------
 vtkImageAlgorithm::vtkImageAlgorithm()
 {
