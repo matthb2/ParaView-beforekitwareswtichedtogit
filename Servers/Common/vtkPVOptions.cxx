@@ -370,7 +370,7 @@ void vtkPVOptions::PrintSelf(ostream& os, vtkIndent indent)
        << (this->Username?this->Username:"(none)") << endl;
     if(this->AlwaysSSH)
       {
-      os << indent << "Always using SSH";
+      os << indent << "Always using SSH" << endl;
       }
     }
 
