@@ -1838,12 +1838,12 @@ void vtkRedistributePolyData::ReceiveCells
       outPtr = outputCellArrays[type]->GetPointer(); 
       outPtr+= prevCellptCntr[type];
 
-      if (outPtr)
-      {
+      if (cellptCntr[type] && outPtr)
+        {
         this->Controller->Receive((vtkIdType*)outPtr, 
                                   cellptCntr[type], 
                                   recFrom, CELL_TAG+type);
-      }
+        }
 
       // ... Fix pointId's (need to have offset added to represent 
       //   correct location ...
