@@ -78,6 +78,36 @@ void vtkHierarchicalDataIterator::GoToFirstItem()
     {
     // Initialize to the first node in the first level
     this->Internal->LDSIterator = this->Internal->DSIterator->begin();
+    if (this->Internal->LDSIterator == this->Internal->DSIterator->end())
+      {
+      this->GoToNextNonEmptyLevel();
+      }
+    // Skip nodes with NULL dataset pointers.
+    if (!this->IsDoneWithTraversal() && !this->GetCurrentDataObject())
+      {
+      this->GoToNextItem();
+      }
+    }
+}
+
+//----------------------------------------------------------------------------
+void vtkHierarchicalDataIterator::GoToNextNonEmptyLevel()
+{
+  if (!this->IsDoneWithTraversal())
+    {
+    while (1)
+      {
+      this->Internal->DSIterator++;
+      if (this->IsDoneWithTraversal())
+        {
+        break;
+        }
+      this->Internal->LDSIterator = this->Internal->DSIterator->begin();
+      if (this->Internal->LDSIterator != this->Internal->DSIterator->end())
+        {
+        break;
+        }
+      }
     }
 }
 
@@ -91,20 +121,27 @@ void vtkHierarchicalDataIterator::GoToNextItem()
     }
   if (!this->IsDoneWithTraversal())
     {
+    // In case the first level is empty
+    if (this->Internal->LDSIterator == this->Internal->DSIterator->end())
+      {
+      this->GoToNextNonEmptyLevel();
+      if (this->IsDoneWithTraversal())
+        {
+        return;
+        }
+      }
+
     this->Internal->LDSIterator++;
     if (this->Internal->LDSIterator == this->Internal->DSIterator->end())
       {
-      // Move to the next level
-      this->Internal->DSIterator++;
-      if (this->Internal->DSIterator != 
-          this->DataSet->Internal->DataSets.end())
+      this->GoToNextNonEmptyLevel();
+      if (this->IsDoneWithTraversal())
         {
-        // Move to the first node in the next level
-        this->Internal->LDSIterator = this->Internal->DSIterator->begin();
+        return;
         }
       }
     // Skip nodes with NULL dataset pointers.
-    if (!this->IsDoneWithTraversal() && !this->GetCurrentDataObject())
+    if (!this->GetCurrentDataObject())
       {
       this->GoToNextItem();
       }
