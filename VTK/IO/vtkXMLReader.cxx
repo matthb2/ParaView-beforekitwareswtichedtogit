@@ -224,6 +224,10 @@ void vtkXMLReader::ExecuteInformation()
   else
     {
     vtkErrorMacro("Error parsing input file.  ExecuteInformation aborting.");
+    
+    // The output should be empty to prevent the rest of the pipeline
+    // from executing.
+    this->SetupEmptyOutput();
     }
   
   // Close the file to prevent resource leaks.

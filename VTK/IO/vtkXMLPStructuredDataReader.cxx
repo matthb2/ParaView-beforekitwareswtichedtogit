@@ -134,6 +134,13 @@ vtkXMLPStructuredDataReader::ReadPrimaryElement(vtkXMLDataElement* ePrimary)
 }
 
 //----------------------------------------------------------------------------
+void vtkXMLPStructuredDataReader::SetupEmptyOutput()
+{
+  // Special extent to indicate no input.
+  this->GetOutputAsDataSet()->SetUpdateExtent(1, 0, 1, 0, 1, 0);
+}
+
+//----------------------------------------------------------------------------
 void vtkXMLPStructuredDataReader::SetupPieces(int numPieces)
 {
   this->Superclass::SetupPieces(numPieces);

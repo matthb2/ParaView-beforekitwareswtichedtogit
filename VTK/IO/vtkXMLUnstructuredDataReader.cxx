@@ -93,6 +93,13 @@ vtkXMLUnstructuredDataReader
 }
 
 //----------------------------------------------------------------------------
+void vtkXMLUnstructuredDataReader::SetupEmptyOutput()
+{
+  // No pieces means no input.
+  this->GetOutputAsDataSet()->SetUpdateExtent(0, 0);
+}
+
+//----------------------------------------------------------------------------
 void vtkXMLUnstructuredDataReader::SetupOutputTotals()
 {
   int i;
