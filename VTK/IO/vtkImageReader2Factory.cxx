@@ -29,7 +29,7 @@
 // Destroying the prototype readers requires information keys.
 // Include the manager here to make sure the keys are not destroyed
 // until after the AvailableReaders singleton has been destroyed.
-#include "vtkInformationKeyManager.h"
+#include "vtkFilteringInformationKeyManager.h"
 
 vtkCxxRevisionMacro(vtkImageReader2Factory, "$Revision$");
 vtkStandardNewMacro(vtkImageReader2Factory);

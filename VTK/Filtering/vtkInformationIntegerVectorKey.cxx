@@ -27,6 +27,7 @@ vtkInformationIntegerVectorKey
                                  int length):
   vtkInformationKey(name, location), RequiredLength(length)
 {
+  vtkFilteringInformationKeyManager::Register(this);
 }
 
 //----------------------------------------------------------------------------

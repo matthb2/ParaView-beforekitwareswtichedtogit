@@ -25,6 +25,7 @@ vtkInformationObjectBaseKey
                               const char* requiredClass):
   vtkInformationKey(name, location), RequiredClass(requiredClass)
 {
+  vtkFilteringInformationKeyManager::Register(this);
 }
 
 //----------------------------------------------------------------------------

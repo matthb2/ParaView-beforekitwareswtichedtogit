@@ -20,6 +20,7 @@ vtkCxxRevisionMacro(vtkInformationUnsignedLongKey, "$Revision$");
 vtkInformationUnsignedLongKey::vtkInformationUnsignedLongKey(const char* name, const char* location):
   vtkInformationKey(name, location)
 {
+  vtkFilteringInformationKeyManager::Register(this);
 }
 
 //----------------------------------------------------------------------------

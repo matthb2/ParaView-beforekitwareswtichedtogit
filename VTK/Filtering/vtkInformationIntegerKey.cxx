@@ -20,6 +20,7 @@ vtkCxxRevisionMacro(vtkInformationIntegerKey, "$Revision$");
 vtkInformationIntegerKey::vtkInformationIntegerKey(const char* name, const char* location):
   vtkInformationKey(name, location)
 {
+  vtkFilteringInformationKeyManager::Register(this);
 }
 
 //----------------------------------------------------------------------------
