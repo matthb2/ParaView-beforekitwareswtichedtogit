@@ -544,6 +544,7 @@ void vtkProp3D::PokeMatrix(vtkMatrix4x4 *matrix)
       {
       this->SetUserMatrix(this->CachedProp3D->UserMatrix);
       }
+    this->CachedProp3D->SetUserTransform(NULL);
     this->Transform->SetMatrix(this->CachedProp3D->GetMatrix());
     this->Modified();
     }
