@@ -248,7 +248,6 @@ void vtkIVExporter::WriteAnActor(vtkActor *anActor, FILE *fp)
   vtkDataArray *tcoords = NULL;
   int i;
   vtkProperty *prop;
-  float *tempf;
   double *tempd;
   vtkCellArray *cells;
   vtkIdType npts = 0;
