@@ -96,7 +96,8 @@ int vtkEnSight6BinaryReader::ReadGeometryFile(char* fileName, int timeStep)
   
   this->ReadLine(line);
   sscanf(line, " %*s %s", subLine);
-  if (strcmp(subLine, "Binary") != 0)
+  if (strcmp(subLine, "Binary") != 0 &&
+      strcmp(subLine, "binary") != 0)
     {
     vtkErrorMacro("This is not an EnSight6 binary file. Try "
                   << "vtkEnSight6Reader.");
