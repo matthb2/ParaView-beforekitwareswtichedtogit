@@ -134,7 +134,7 @@ vtkClientCompositeManager::vtkClientCompositeManager()
   this->BaseArray = NULL;
 
   this->SquirtCompression = 0;
-  this->UseCompositing = 1;
+  this->UseCompositing = 0;
 }
 
   
