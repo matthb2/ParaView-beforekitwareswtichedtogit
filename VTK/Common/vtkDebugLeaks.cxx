@@ -325,7 +325,7 @@ void vtkDebugLeaks::PrintCurrentLeaks()
 int vtkDebugLeaks::DisplayMessageBox(const char* msg)
 {
 #ifdef UNICODE
-  wchar_t *wmsg = new wchar_t [mbstowcs(NULL, msg, 32000)];
+  wchar_t *wmsg = new wchar_t [mbstowcs(NULL, msg, 32000)+1];
   mbstowcs(wmsg, msg, 32000);
   int result = (MessageBox(NULL, wmsg, L"Error",
                            MB_ICONERROR | MB_OKCANCEL) == IDCANCEL);
