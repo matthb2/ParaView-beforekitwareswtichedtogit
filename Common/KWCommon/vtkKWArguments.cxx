@@ -432,6 +432,7 @@ void vtkKWArguments::PrintSelf(ostream& os, vtkIndent indent)
     {
     os << indent << "No help" << endl;
     }
+  os << "Linelength: " << this->LineLength << endl;
 }
 
 
