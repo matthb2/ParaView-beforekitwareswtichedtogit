@@ -60,6 +60,16 @@ int vtkSimpleImageToImageFilter::RequestData(
   vtkImageData *input = vtkImageData::SafeDownCast(
     inInfo->Get(vtkDataObject::DATA_OBJECT()));
   
+  int inExt[6];
+  input->GetExtent(inExt);
+  // if the input extent is empty then exit
+  if (inExt[1] < inExt[0] ||
+      inExt[3] < inExt[2] ||
+      inExt[5] < inExt[4])
+    {
+    return 1;
+    }
+  
   // Set the extent of the output and allocate memory.
   output->SetExtent(
     outInfo->Get(vtkStreamingDemandDrivenPipeline::WHOLE_EXTENT()));
