@@ -96,7 +96,7 @@ void vtkPKdTree::SetController(vtkMultiProcessController *c)
   if (this->Controller != NULL)
     {
     this->Controller->UnRegister(this);
-    this->Controller == NULL;
+    this->Controller = NULL;
     }
   if (c == NULL)
     {
