@@ -217,6 +217,7 @@ void vtkImageCacheFilter::UpdateData(vtkDataObject *outObject)
       if (this->Data[i] == NULL)
         {
         bestIdx = i;
+        bestTime = 0;
         break;
         }
       if (this->Times[i] < bestTime)

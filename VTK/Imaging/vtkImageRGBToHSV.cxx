@@ -26,6 +26,8 @@ vtkStandardNewMacro(vtkImageRGBToHSV);
 vtkImageRGBToHSV::vtkImageRGBToHSV()
 {
   this->Maximum = 255.0;
+  this->SetNumberOfInputPorts(1);
+  this->SetNumberOfOutputPorts(1);
 }
 
 //----------------------------------------------------------------------------
@@ -93,7 +95,7 @@ void vtkImageRGBToHSVExecute(vtkImageRGBToHSV *self,
 }
 
 //----------------------------------------------------------------------------
-void vtkImageRGBToHSV::ThreadedExecute(vtkImageData *inData, 
+void vtkImageRGBToHSV::ThreadedExecute (vtkImageData *inData, 
                                          vtkImageData *outData,
                                          int outExt[6], int id)
 {

@@ -16,6 +16,7 @@
 
 #include "vtkDataArray.h"
 #include "vtkFieldData.h"
+#include "vtkInformation.h"
 #include "vtkObjectFactory.h"
 #include "vtkRectilinearGrid.h"
 
@@ -343,6 +344,18 @@ void vtkRectilinearGridReader::Execute()
     }
 
   this->CloseVTKFile ();
+}
+
+//----------------------------------------------------------------------------
+int vtkRectilinearGridReader::FillOutputPortInformation(int port,
+                                                        vtkInformation* info)
+{
+  if(!this->Superclass::FillOutputPortInformation(port, info))
+    {
+    return 0;
+    }
+  info->Set(vtkDataObject::DATA_TYPE_NAME(), "vtkRectilinearGrid");
+  return 1;
 }
 
 //----------------------------------------------------------------------------

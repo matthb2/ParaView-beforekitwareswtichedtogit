@@ -232,7 +232,7 @@ unsigned int vtkSMProxyProperty::GetNumberOfUncheckedProxies()
 //---------------------------------------------------------------------------
 vtkSMProxy* vtkSMProxyProperty::GetProxy(unsigned int idx)
 {
-  return this->PPInternals->Proxies[idx];
+  return this->PPInternals->Proxies[idx].GetPointer();
 }
 
 //---------------------------------------------------------------------------

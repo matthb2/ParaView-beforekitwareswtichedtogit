@@ -108,7 +108,7 @@ void vtkImageThreshold::ExecuteInformation(vtkImageData *inData,
     }
   else
     {
-    outData->SetScalarType(inData->GetScalarType());
+    outData->SetScalarType(inData->GetPipelineScalarType());
     }
 }
 

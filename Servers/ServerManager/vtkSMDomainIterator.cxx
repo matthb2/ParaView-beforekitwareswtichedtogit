@@ -135,7 +135,7 @@ vtkSMDomain* vtkSMDomainIterator::GetDomain()
   if (this->Internals->DomainIterator != 
       this->Property->PInternals->Domains.end())
     {
-    return this->Internals->DomainIterator->second;
+    return this->Internals->DomainIterator->second.GetPointer();
     }
 
   return 0;

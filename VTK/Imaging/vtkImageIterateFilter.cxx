@@ -185,8 +185,9 @@ void vtkImageIterateFilter::ExecuteInformation()
     out->SetWholeExtent(in->GetWholeExtent());
     out->SetSpacing(in->GetSpacing());
     out->SetOrigin(in->GetOrigin());
-    out->SetScalarType(in->GetScalarType());
-    out->SetNumberOfScalarComponents(in->GetNumberOfScalarComponents());
+    out->SetScalarType(in->GetPipelineScalarType());
+    out->SetNumberOfScalarComponents(
+      in->GetPipelineNumberOfScalarComponents());
 
     // Let the subclass modify the default.
     this->ExecuteInformation(in, out);

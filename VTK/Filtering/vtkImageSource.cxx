@@ -114,7 +114,6 @@ int vtkImageSource::FillOutputPortInformation(int port, vtkInformation* info)
     return 0;
     }
   info->Set(vtkDataObject::DATA_TYPE_NAME(), "vtkImageData");
-  info->Set(vtkDataObject::DATA_EXTENT_TYPE(), VTK_3D_EXTENT);
   return 1;
 }
 

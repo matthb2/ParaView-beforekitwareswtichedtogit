@@ -68,7 +68,7 @@ vtkOutputWindowCleanup::~vtkOutputWindowCleanup()
 
 vtkOutputWindow::vtkOutputWindow()
 {
-  this->PromptUser = 0;
+  this->PromptUser = 1;
 }
 
 vtkOutputWindow::~vtkOutputWindow()

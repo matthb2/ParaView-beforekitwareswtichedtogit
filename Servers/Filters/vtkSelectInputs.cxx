@@ -245,6 +245,11 @@ void vtkSelectInputs::ComputeInputUpdateExtents(vtkDataObject *)
         }
       ++count;
       }
+    else
+      {
+      // This input is not selected.  Ask for empty data.
+      input->SetUpdateExtent(0, 1, 0);
+      }
     } 
 }
 

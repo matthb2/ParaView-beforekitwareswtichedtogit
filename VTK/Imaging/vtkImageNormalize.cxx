@@ -16,7 +16,10 @@
 
 #include "vtkImageData.h"
 #include "vtkImageProgressIterator.h"
+#include "vtkInformation.h"
+#include "vtkInformationVector.h"
 #include "vtkObjectFactory.h"
+#include "vtkStreamingDemandDrivenPipeline.h"
 
 #include <math.h>
 
@@ -24,11 +27,21 @@ vtkCxxRevisionMacro(vtkImageNormalize, "$Revision$");
 vtkStandardNewMacro(vtkImageNormalize);
 
 //----------------------------------------------------------------------------
-// This method tells the superclass that the first axis will collapse.
-void vtkImageNormalize::ExecuteInformation(vtkImageData *vtkNotUsed(inData), 
-                                           vtkImageData *outData)
+vtkImageNormalize::vtkImageNormalize()
 {
-  outData->SetScalarType(VTK_FLOAT);
+  this->SetNumberOfInputPorts(1);
+  this->SetNumberOfOutputPorts(1);
+}
+
+//----------------------------------------------------------------------------
+void vtkImageNormalize::ExecuteInformation(
+  vtkInformation       * vtkNotUsed( request ),
+  vtkInformationVector * vtkNotUsed( inputVector ), 
+  vtkInformationVector * outputVector)
+{
+  // get the info objects
+  vtkInformation* outInfo = outputVector->GetInformationObject(0);
+  outInfo->Set(vtkDataObject::SCALAR_TYPE(),VTK_FLOAT);
 }
 
 //----------------------------------------------------------------------------
@@ -91,7 +104,7 @@ void vtkImageNormalizeExecute(vtkImageNormalize *self,
 // This method contains a switch statement that calls the correct
 // templated function for the input data type.  The output data
 // must match input type.  This method does handle boundary conditions.
-void vtkImageNormalize::ThreadedExecute(vtkImageData *inData, 
+void vtkImageNormalize::ThreadedExecute (vtkImageData *inData, 
                                         vtkImageData *outData,
                                         int outExt[6], int id)
 {
@@ -115,15 +128,6 @@ void vtkImageNormalize::ThreadedExecute(vtkImageData *inData,
       return;
     }
 }
-
-
-
-
-
-
-
-
-
 
 
 

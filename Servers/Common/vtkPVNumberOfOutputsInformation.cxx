@@ -14,6 +14,7 @@
 =========================================================================*/
 #include "vtkPVNumberOfOutputsInformation.h"
 
+#include "vtkAlgorithm.h"
 #include "vtkClientServerStream.h"
 #include "vtkObjectFactory.h"
 #include "vtkSource.h"
@@ -44,13 +45,21 @@ void vtkPVNumberOfOutputsInformation::PrintSelf(ostream &os, vtkIndent indent)
 void vtkPVNumberOfOutputsInformation::CopyFromObject(vtkObject* obj)
 {
   this->NumberOfOutputs = 0;
-  vtkSource* src = vtkSource::SafeDownCast(obj);
-  if(!src)
+  vtkAlgorithm* algorithm = vtkAlgorithm::SafeDownCast(obj);
+  vtkSource* source = vtkSource::SafeDownCast(obj);
+  if(!algorithm)
     {
-    vtkErrorMacro("Could not downcast vtkSource.");
+    vtkErrorMacro("Could not downcast vtkAlgorithm.");
     return;
     }
-  this->NumberOfOutputs = src->GetNumberOfOutputs();
+  if(source)
+    {
+    this->NumberOfOutputs = source->GetNumberOfOutputs();
+    }
+  else
+    {
+    this->NumberOfOutputs = algorithm->GetNumberOfOutputPorts();
+    }
 }
 
 //----------------------------------------------------------------------------

@@ -132,7 +132,7 @@ vtkSMProperty* vtkSMSubPropertyIterator::GetSubProperty()
   if (this->Internals->SubPropertyIterator != 
       this->Property->PInternals->SubProperties.end())
     {
-    return this->Internals->SubPropertyIterator->second;
+    return this->Internals->SubPropertyIterator->second.GetPointer();
     }
 
   return 0;

@@ -98,6 +98,7 @@ void vtkPVUpdateSuppressor::ForceUpdate()
 
   input->SetUpdatePiece(this->UpdatePiece);
   input->SetUpdateNumberOfPieces(this->UpdateNumberOfPieces);
+  input->SetUpdateGhostLevel(0);
   input->Update();
 
   unsigned long t2;

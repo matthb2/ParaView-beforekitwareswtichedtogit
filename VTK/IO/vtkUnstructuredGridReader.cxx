@@ -17,6 +17,7 @@
 #include "vtkByteSwap.h"
 #include "vtkCellArray.h"
 #include "vtkFieldData.h"
+#include "vtkInformation.h"
 #include "vtkObjectFactory.h"
 #include "vtkUnstructuredGrid.h"
 
@@ -380,6 +381,18 @@ void vtkUnstructuredGridReader::Execute()
 
   this->CloseVTKFile ();
   return;
+}
+
+//----------------------------------------------------------------------------
+int vtkUnstructuredGridReader::FillOutputPortInformation(int port,
+                                                         vtkInformation* info)
+{
+  if(!this->Superclass::FillOutputPortInformation(port, info))
+    {
+    return 0;
+    }
+  info->Set(vtkDataObject::DATA_TYPE_NAME(), "vtkUnstructuredGrid");
+  return 1;
 }
 
 void vtkUnstructuredGridReader::PrintSelf(ostream& os, vtkIndent indent)

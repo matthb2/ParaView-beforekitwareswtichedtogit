@@ -54,20 +54,16 @@ void vtkScalarTree::PrintSelf(ostream& os, vtkIndent indent)
 void vtkScalarTree::ReportReferences(vtkGarbageCollector* collector)
 {
   this->Superclass::ReportReferences(collector);
-#ifdef VTK_USE_EXECUTIVES
   collector->ReportReference(this->DataSet, "DataSet");
-#endif
 }
 
 //----------------------------------------------------------------------------
 void vtkScalarTree::RemoveReferences()
 {
-#ifdef VTK_USE_EXECUTIVES
   if(this->DataSet)
     {
     this->DataSet->Delete();
     this->DataSet = 0;
     }
-#endif
   this->Superclass::RemoveReferences();
 }

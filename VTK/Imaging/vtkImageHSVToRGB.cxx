@@ -26,6 +26,8 @@ vtkStandardNewMacro(vtkImageHSVToRGB);
 vtkImageHSVToRGB::vtkImageHSVToRGB()
 {
   this->Maximum = 255.0;
+  this->SetNumberOfInputPorts(1);
+  this->SetNumberOfOutputPorts(1);
 }
 
 
@@ -94,7 +96,7 @@ void vtkImageHSVToRGBExecute(vtkImageHSVToRGB *self,
 }
 
 //----------------------------------------------------------------------------
-void vtkImageHSVToRGB::ThreadedExecute(vtkImageData *inData, 
+void vtkImageHSVToRGB::ThreadedExecute (vtkImageData *inData, 
                                        vtkImageData *outData,
                                        int outExt[6], int id)
 {

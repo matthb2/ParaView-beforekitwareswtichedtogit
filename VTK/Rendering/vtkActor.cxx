@@ -510,14 +510,12 @@ void vtkActor::SetMapper(vtkMapper *args)
     {                                                           
     if (this->Mapper != NULL) 
       { 
-      this->Mapper->RemoveConsumer(this);
       this->Mapper->UnRegister(this); 
       }   
     this->Mapper = args;                                          
     if (this->Mapper != NULL) 
       { 
       this->Mapper->Register(this); 
-      this->Mapper->AddConsumer(this);
       }     
     this->Modified();                                           
     }                                                           
