@@ -942,14 +942,14 @@ void vtkXdmfWriter::Write()
     if ( cellTypes.size() > 1 )
       {
       vtkXdmfWriterInternal::MapOfCellTypes::iterator it;
-      int cc = 0;
+      int ct = 0;
       for ( it = cellTypes.begin(); it != cellTypes.end(); ++it )
         {
         ostrstream str;
-        str << this->GridName << "_" << cc << ends;
+        str << this->GridName << "_" << ct << ends;
         this->WriteGrid(ofs, str.str(), ds, &cellTypes, &(*it));
         str.rdbuf()->freeze(2);
-        cc ++;
+        ct ++;
         }
       }
     else
