@@ -24,6 +24,7 @@
 #include "vtkMergePoints.h"
 #include "vtkObjectFactory.h"
 #include "vtkScalarTree.h"
+#include "vtkStructuredGrid.h"
 #include "vtkSynchronizedTemplates2D.h"
 #include "vtkSynchronizedTemplates3D.h"
 

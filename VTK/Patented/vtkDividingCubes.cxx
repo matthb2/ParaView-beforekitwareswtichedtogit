@@ -31,10 +31,14 @@
 
 =========================================================================*/
 #include "vtkDividingCubes.h"
-#include "vtkMath.h"
-#include "vtkVoxel.h"
+
+#include "vtkCellArray.h"
 #include "vtkFloatArray.h"
+#include "vtkImageData.h"
+#include "vtkMath.h"
 #include "vtkObjectFactory.h"
+#include "vtkPolyData.h"
+#include "vtkVoxel.h"
 
 vtkCxxRevisionMacro(vtkDividingCubes, "$Revision$");
 vtkStandardNewMacro(vtkDividingCubes);

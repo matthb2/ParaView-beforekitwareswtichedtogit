@@ -16,14 +16,16 @@
 
 =========================================================================*/
 #include "vtkVolumeRayCastIsosurfaceFunction.h"
-#include "vtkVolumeRayCastMapper.h"
+
 #include "vtkCamera.h"
-#include "vtkRenderWindow.h"
 #include "vtkColorTransferFunction.h"
 #include "vtkMath.h"
-#include "vtkVolumeProperty.h"
-#include "vtkVolume.h"
 #include "vtkObjectFactory.h"
+#include "vtkPiecewiseFunction.h"
+#include "vtkRenderWindow.h"
+#include "vtkVolume.h"
+#include "vtkVolumeProperty.h"
+#include "vtkVolumeRayCastMapper.h"
 
 #include <math.h>
 

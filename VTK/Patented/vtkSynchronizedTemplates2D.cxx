@@ -26,20 +26,23 @@
      for more information.
 
 =========================================================================*/
-#include <math.h>
-#include "vtkImageData.h"
+#include "vtkSynchronizedTemplates2D.h"
+
 #include "vtkCharArray.h"
-#include "vtkUnsignedCharArray.h"
-#include "vtkShortArray.h"
-#include "vtkUnsignedShortArray.h"
-#include "vtkIntArray.h"
-#include "vtkUnsignedIntArray.h"
-#include "vtkLongArray.h"
-#include "vtkUnsignedLongArray.h"
 #include "vtkDoubleArray.h"
 #include "vtkFloatArray.h"
-#include "vtkSynchronizedTemplates2D.h"
+#include "vtkImageData.h"
+#include "vtkIntArray.h"
+#include "vtkLongArray.h"
 #include "vtkObjectFactory.h"
+#include "vtkPolyData.h"
+#include "vtkShortArray.h"
+#include "vtkUnsignedCharArray.h"
+#include "vtkUnsignedIntArray.h"
+#include "vtkUnsignedLongArray.h"
+#include "vtkUnsignedShortArray.h"
+
+#include <math.h>
 
 vtkCxxRevisionMacro(vtkSynchronizedTemplates2D, "$Revision$");
 vtkStandardNewMacro(vtkSynchronizedTemplates2D);

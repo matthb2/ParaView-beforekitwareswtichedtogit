@@ -37,6 +37,7 @@
 #include "vtkImageData.h"
 #include "vtkMarchingCubesCases.h"
 #include "vtkObjectFactory.h"
+#include "vtkPolyData.h"
 
 #include <math.h>
 

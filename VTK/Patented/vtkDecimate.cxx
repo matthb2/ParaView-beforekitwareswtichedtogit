@@ -36,6 +36,8 @@
 #include "vtkMath.h"
 #include "vtkObjectFactory.h"
 #include "vtkPlane.h"
+#include "vtkPointData.h"
+#include "vtkPolyData.h"
 #include "vtkTriangle.h"
 
 vtkCxxRevisionMacro(vtkDecimate, "$Revision$");
