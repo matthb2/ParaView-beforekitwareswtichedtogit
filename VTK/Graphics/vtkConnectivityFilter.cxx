@@ -332,7 +332,7 @@ void vtkConnectivityFilter::Execute()
   this->CellIds->Delete();
   output->Squeeze();
   vtkDataArray* outScalars = 0; 
-  if (this->ColorRegions && (outScalar=output->GetPointData()->GetScalars()))
+  if (this->ColorRegions && (outScalars=output->GetPointData()->GetScalars()))
     {
     outScalars->Resize(output->GetNumberOfPoints());
     }
