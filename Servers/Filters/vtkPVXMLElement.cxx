@@ -66,6 +66,7 @@ vtkPVXMLElement::vtkPVXMLElement()
 vtkPVXMLElement::~vtkPVXMLElement()
 {
   this->SetName(0);
+  this->SetId(0);
   unsigned int i;
   for(i=0;i < this->NumberOfAttributes;++i)
     {
