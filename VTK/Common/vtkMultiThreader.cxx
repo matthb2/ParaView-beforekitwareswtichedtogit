@@ -82,6 +82,9 @@ int vtkMultiThreader::GetGlobalDefaultNumberOfThreads()
 #elif defined(_SC_NPROC_ONLN)
     num = sysconf( _SC_NPROC_ONLN );
 #endif
+#if defined(__SVR4) && defined(sun)
+    pthread_setconcurrency(num);
+#endif
 #endif
 
 #ifdef _WIN32
@@ -102,10 +105,10 @@ int vtkMultiThreader::GetGlobalDefaultNumberOfThreads()
 #endif  
 #endif
   
-    // Lets limit the number of threads to 8
-    if (num > 8)
+    // Lets limit the number of threads to VTK_MAX_THREADS
+    if (num > VTK_MAX_THREADS)
       {
-      num = 8;
+      num = VTK_MAX_THREADS;
       }
 
     vtkMultiThreaderGlobalDefaultNumberOfThreads = num;
