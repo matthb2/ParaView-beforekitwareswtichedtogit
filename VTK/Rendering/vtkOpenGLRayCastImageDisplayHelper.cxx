@@ -99,6 +99,7 @@ void vtkOpenGLRayCastImageDisplayHelper::RenderTexture( vtkVolume *vol,
   
   // get the perspective transformation from the active camera 
   viewToWorldMatrix->DeepCopy( perspectiveTransform->GetMatrix() );
+  perspectiveTransform->Delete();
   
   // use the inverse matrix 
   viewToWorldMatrix->Invert();

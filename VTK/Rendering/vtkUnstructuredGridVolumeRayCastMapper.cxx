@@ -526,6 +526,9 @@ float vtkUnstructuredGridVolumeRayCastMapper::GetMinimumBoundsDepth( vtkRenderer
       }
     }
   
+  perspectiveTransform->Delete();
+  perspectiveMatrix->Delete();
+  
   return minZ;
 }
 

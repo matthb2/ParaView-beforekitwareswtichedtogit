@@ -415,6 +415,9 @@ void vtkUnstructuredGridBunykRayCastFunction::TransformPoints()
     transformedPtr += 3;
     }
   
+  perspectiveTransform->Delete();
+  perspectiveMatrix->Delete();
+  
 }
 
 // This is done once per change in the data - build a list of
