@@ -80,7 +80,11 @@ int vtkXMLParser::Parse()
   if ( !this->InputString && !this->Stream && this->FileName )
     {
     // If it is file, open it and set the appropriate stream
+#ifdef _WIN32
+    ifs.open(this->FileName, ios::binary | ios::in VTK_IOS_NOCREATE);
+#else
     ifs.open(this->FileName, ios::in VTK_IOS_NOCREATE);
+#endif
     if ( !ifs )
       {
       vtkErrorMacro("Cannot open XML file: " << this->FileName);
