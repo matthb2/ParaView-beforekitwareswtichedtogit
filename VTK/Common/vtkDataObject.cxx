@@ -413,12 +413,6 @@ void vtkDataObject::UpdateData()
       this->Source->UpdateData(this);
       }
     }
-
-  // Filters, that can't handle more data than they request, set this flag.
-  if (this->RequestExactExtent)
-    { // clip the data down to the UpdateExtent.
-    this->Crop();
-    }
 #endif
 }
 
