@@ -206,8 +206,10 @@ int vtkMemoryLimitImageDataStreamer::ProcessUpstreamRequest(
                                                inputVector,
                                                outputVector);
     }
-#else
-  (void)request;
-#endif
   return 0;
+#else
+  return this->Superclass::ProcessUpstreamRequest(request,
+                                                  inputVector,
+                                                  outputVector);
+#endif
 }
