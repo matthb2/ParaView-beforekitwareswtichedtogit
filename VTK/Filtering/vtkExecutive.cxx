@@ -577,7 +577,7 @@ void vtkExecutive::CopyDefaultInformation(vtkInformation* request,
       }
 
     // Copy information from the requesting output to all inputs.
-    if(outputPort < this->GetNumberOfOutputPorts())
+    if(outputPort >= 0 && outputPort < this->GetNumberOfOutputPorts())
       {
       vtkInformationKey** keys = request->Get(KEYS_TO_COPY());
       int length = request->Length(KEYS_TO_COPY());
