@@ -66,6 +66,7 @@ int vtkXMLTextPropertyWriter::Write(ostream &os, vtkIndent vtkNotUsed(indent))
 {
   if (!this->TextProperty)
     {
+    vtkWarningMacro(<< "The TextProperty is not set!");
     return 0;
     }
 

@@ -66,6 +66,7 @@ int vtkXMLCameraWriter::Write(ostream &os, vtkIndent vtkNotUsed(indent))
 {
   if (!this->Camera)
     {
+    vtkWarningMacro(<< "The Camera is not set!");
     return 0;
     }
 

@@ -64,7 +64,13 @@ vtkXMLCameraReader::~vtkXMLCameraReader()
 //----------------------------------------------------------------------------
 void vtkXMLCameraReader::StartElement(const char *name, const char **args)
 {
-  if (!this->Camera || strcmp(name, "Camera"))
+  if (!this->Camera)
+    {
+    vtkWarningMacro(<< "The Camera is not set!");
+    return;
+    }
+
+  if (strcmp(name, "Camera"))
     {
     return;
     }

@@ -64,7 +64,13 @@ vtkXMLTextPropertyReader::~vtkXMLTextPropertyReader()
 //----------------------------------------------------------------------------
 void vtkXMLTextPropertyReader::StartElement(const char *name, const char **args)
 {
-  if (!this->TextProperty || strcmp(name, "TextProperty"))
+  if (!this->TextProperty)
+    {
+    vtkWarningMacro(<< "The TextProperty is not set!");
+    return;
+    }
+
+  if (strcmp(name, "TextProperty"))
     {
     return;
     }
