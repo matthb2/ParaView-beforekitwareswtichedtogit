@@ -86,6 +86,20 @@ void vtkStringList::RemoveAllItems()
 }
 
 //----------------------------------------------------------------------------
+int vtkStringList::GetIndex(const char* str)
+{
+  int idx;
+  for ( idx = 0; idx < this->NumberOfStrings; ++idx )
+    {
+    if ( strcmp(str, this->Strings[idx]) == 0 )
+      {
+      return idx;
+      }
+    }
+  return -1;
+}
+
+//----------------------------------------------------------------------------
 const char *vtkStringList::GetString(int idx)
 {
   if (idx < 0 || idx >= this->NumberOfStrings)
