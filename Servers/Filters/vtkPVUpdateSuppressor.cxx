@@ -78,7 +78,7 @@ void vtkPVUpdateSuppressor::ForceUpdate()
   input->SetUpdatePiece(this->UpdatePiece);
   input->SetUpdateNumberOfPieces(this->UpdateNumberOfPieces);
   input->Update();
-  if (input->GetPipelineMTime() > this->UpdateTime)
+  if (input->GetPipelineMTime() > this->UpdateTime || output->GetDataReleased())
     {
     output->ShallowCopy(input);
     this->UpdateTime.Modified();
