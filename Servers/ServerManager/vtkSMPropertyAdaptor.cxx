@@ -297,6 +297,24 @@ unsigned int vtkSMPropertyAdaptor::GetNumberOfElements()
 }
 
 //---------------------------------------------------------------------------
+unsigned int vtkSMPropertyAdaptor::GetEnumerationElementIndex(const char* element)
+{
+  if ( !element )
+    {
+    return 0;
+    }
+  unsigned int cc;
+  for ( cc = 0; cc < this->GetNumberOfEnumerationEntries(); cc ++ )
+    {
+    if ( strcmp(element, this->GetEnumerationValue(cc)) == 0 )
+      {
+      return cc;
+      }
+    }
+  return 0;
+}
+
+//---------------------------------------------------------------------------
 const char* vtkSMPropertyAdaptor::GetElement(unsigned int idx)
 {
   if (this->ProxyProperty && this->ProxyGroupDomain)
