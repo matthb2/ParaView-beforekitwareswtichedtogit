@@ -332,6 +332,10 @@ void vtkXMLPUnstructuredDataReader::CopyArrayForPoints(vtkDataArray* inArray,
     {
     return;
     }
+  if (inArray == NULL || outArray == NULL)
+    {
+    return;
+    }
   
   vtkIdType numPoints = this->PieceReaders[this->Piece]->GetNumberOfPoints();
   vtkIdType components = outArray->GetNumberOfComponents();
