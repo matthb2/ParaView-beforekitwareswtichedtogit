@@ -1563,7 +1563,7 @@ void vtkSMPartDisplay::GatherGeometryInformation()
 
 //----------------------------------------------------------------------------
 // This should be handle the same way batch is (in the future).
-void vtkSMPartDisplay::SaveState(ofstream *file, const char* tclName, 
+void vtkSMPartDisplay::SavePVState(ostream *file, const char* tclName, 
                                  vtkIndent indent)
 {
   float rgb[3];
