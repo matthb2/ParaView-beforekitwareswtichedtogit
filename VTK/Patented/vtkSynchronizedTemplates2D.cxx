@@ -462,6 +462,12 @@ void vtkSynchronizedTemplates2D::Execute()
     image->Delete();
     }
 
+  // Lets set the name of the scalars here.
+  if (newScalars)
+    {
+    newScalars->SetName(inScalars->GetName());
+    }
+
   vtkDebugMacro(<<"Created: " 
                << newPts->GetNumberOfPoints() << " points, " 
                << newLines->GetNumberOfCells() << " lines");

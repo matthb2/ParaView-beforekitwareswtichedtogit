@@ -713,6 +713,13 @@ void vtkGridSynchronizedTemplates3D::ThreadedExecute(int *exExt, int threadId)
     ContourGrid(this, threadId, exExt, scalars, output);
     image->Delete();
     }
+
+  // Lets set the name of the scalars here.
+  if (this->ComputeScalars)
+    {
+    vtkDataArray *outScalars = output->GetPointData()->GetScalars();
+    outScalars->SetName(inScalars->GetName());
+    }
 }
 
 //----------------------------------------------------------------------------
