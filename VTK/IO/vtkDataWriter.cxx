@@ -825,10 +825,17 @@ int vtkDataWriter::WriteFieldData(ostream *fp, vtkFieldData *f)
         {
         numComp = array->GetNumberOfComponents();
         numTuples = array->GetNumberOfTuples();
-        sprintf(format, "%s %d %d %s\n", array->GetName(), numComp, numTuples, 
+
+        // Buffer size is size of array name times four because 
+        // in theory there could be array name consisting of only
+        // weird symbols.
+        char *buffer = new char[ strlen(array->GetName()) * 4 + 1];
+        this->EncodeArrayName(buffer, array->GetName());
+        sprintf(format, "%s %d %d %s\n", buffer, numComp, numTuples, 
                 "%s");
         this->WriteArray(fp, array->GetDataType(), array, format, numTuples, 
                          numComp);
+        delete [] buffer;
         }
       else
         {
