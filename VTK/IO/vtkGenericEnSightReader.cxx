@@ -480,7 +480,6 @@ int vtkGenericEnSightReader::DetermineEnSightVersion()
           {
           vtkErrorMacro("Unable to open file: " << sfilename.c_str());
           vtkWarningMacro("Assuming binary file.");
-          fclose(this->IFile);
           this->IFile = NULL;
           delete [] fileName;
           return vtkGenericEnSightReader::ENSIGHT_6_BINARY;
