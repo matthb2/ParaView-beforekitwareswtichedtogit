@@ -85,6 +85,7 @@ vtkPVPartDisplay* vtkPVCompositeRenderModule::CreatePartDisplay()
   vtkPVLODPartDisplay* pDisp;
 
   pDisp = vtkPVCompositePartDisplay::New();
+  pDisp->SetProcessModule(this->GetProcessModule());
   pDisp->SetLODResolution(this->LODResolution);
   return pDisp;
 }
