@@ -471,7 +471,7 @@ void vtkXdmfReader::Execute()
         {
         if( Points )
           {
-          if ( Geometry->GetPoints()->GetDataType() == XDMF_FLOAT32_TYPE )
+          if ( Geometry->GetPoints()->GetNumberType() == XDMF_FLOAT32_TYPE )
             {
             if ( Points->GetData()->GetDataType() != VTK_FLOAT)
               {
