@@ -78,7 +78,7 @@ void vtkInteractorObserver::SetInteractor(vtkRenderWindowInteractor* i)
   this->Modified();
 }
 
-void vtkInteractorObserver::ProcessEvents(vtkObject* object, 
+void vtkInteractorObserver::ProcessEvents(vtkObject* vtkNotUsed(object), 
                                           unsigned long event,
                                           void* clientdata, 
                                           void* vtkNotUsed(calldata))

@@ -1054,7 +1054,7 @@ void vtkInteractorStyle::PrintSelf(ostream& os, vtkIndent indent)
 }
 
 //----------------------------------------------------------------------------
-void vtkInteractorStyle::ProcessEvents(vtkObject* object, 
+void vtkInteractorStyle::ProcessEvents(vtkObject* vtkNotUsed(object), 
                                        unsigned long event,
                                        void* clientdata, 
                                        void* vtkNotUsed(calldata))
