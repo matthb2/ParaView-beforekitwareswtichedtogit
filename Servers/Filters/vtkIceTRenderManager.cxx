@@ -130,7 +130,7 @@ void vtkIceTRenderManager::SetController(vtkMultiProcessController *controller)
     return;
     }
 
-  vtkCommunicator *communicator;
+  vtkCommunicator *communicator = NULL;
   if (controller != NULL)
     {
     communicator = controller->GetCommunicator();

@@ -105,12 +105,6 @@ struct vtkClientCompositeDoubleInfo
 vtkClientCompositeManager::vtkClientCompositeManager()
 {
   this->SquirtLevel = 0;
-  this->Controller = vtkMultiProcessController::GetGlobalController();
-  if (this->Controller)
-    {
-    this->Controller->Register(this);
-    }
-
   this->ClientController = NULL;
   this->ClientFlag = 1;
 
