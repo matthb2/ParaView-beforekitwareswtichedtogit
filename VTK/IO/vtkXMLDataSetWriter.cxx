@@ -69,6 +69,12 @@ vtkDataSet* vtkXMLDataSetWriter::GetInput()
 //----------------------------------------------------------------------------
 int vtkXMLDataSetWriter::Write()
 {
+  // Make sure there are enough settings to write (Input, FileName, etc).
+  if(!this->IsSafeToWrite())
+    {
+    return 0;
+    }
+  
   vtkDataSet* input = this->GetInput();
   vtkXMLWriter* writer = 0;
   
