@@ -219,7 +219,7 @@ vtkUnsignedCharArray *vtkMapper::MapScalars(double alpha)
       GetScalars(this->GetInput(), this->ScalarMode, this->ArrayAccessMode,
                  this->ArrayId, this->ArrayName, this->ArrayComponent);
     if (this->GetMTime() < this->Colors->GetMTime() &&
-        scalars->GetMTime() < this->Colors->GetMTime())
+        scalars && scalars->GetMTime() < this->Colors->GetMTime())
       {
       return this->Colors;
       }
