@@ -198,6 +198,12 @@ void vtkMPIController::Finalize(int finalizedExternally)
     vtkMPIController::WorldRMICommunicator->Delete();
     vtkMPIController::WorldRMICommunicator = 0;
     vtkMPICommunicator::WorldCommunicator->Delete();
+    this->SetCommunicator(0);
+    if (this->RMICommunicator)
+      {
+      this->RMICommunicator->Delete();
+      this->RMICommunicator = 0;
+      }
     if (finalizedExternally == 0)
       {
         MPI_Finalize();
