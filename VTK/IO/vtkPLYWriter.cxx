@@ -22,6 +22,8 @@
 #include "vtkPolyData.h"
 #include "vtkScalarsToColors.h"
 
+#include <stddef.h>
+
 vtkCxxRevisionMacro(vtkPLYWriter, "$Revision$");
 vtkStandardNewMacro(vtkPLYWriter);
 
