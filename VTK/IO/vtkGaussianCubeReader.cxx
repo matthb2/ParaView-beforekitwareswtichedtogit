@@ -15,6 +15,7 @@
 #include "vtkGaussianCubeReader.h"
 
 #include "vtkImageData.h"
+#include "vtkInformation.h"
 #include "vtkPointData.h"
 #include "vtkPoints.h"
 #include "vtkFloatArray.h"
@@ -169,4 +170,16 @@ void vtkGaussianCubeReader::PrintSelf(ostream& os, vtkIndent indent)
   os << "Filename: " << (this->FileName?this->FileName:"<null>") << "\n";
   os << indent << "Xform: ";
   //os << indent << this->Transform->PrintSelf(os, indent);
+}
+
+//----------------------------------------------------------------------------
+int vtkGaussianCubeReader::FillOutputPortInformation(int port,
+                                                     vtkInformation* info)
+{
+  if(port == 0)
+    {
+    return this->Superclass::FillOutputPortInformation(port, info);
+    }
+  info->Set(vtkInformation::OUTPUT_DATA_TYPE(), "vtkImageData");
+  return 1;
 }
