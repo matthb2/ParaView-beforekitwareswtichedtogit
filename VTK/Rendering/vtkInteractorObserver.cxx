@@ -52,7 +52,6 @@ vtkInteractorObserver::vtkInteractorObserver()
 
 vtkInteractorObserver::~vtkInteractorObserver()
 {
-  this->SetCurrentRenderer(NULL);
   this->EventCallbackCommand->Delete();
   this->KeyPressCallbackCommand->Delete();
 }
