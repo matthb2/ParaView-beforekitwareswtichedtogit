@@ -255,7 +255,7 @@ int vtkMetaImageReader::GetFileInformation(const char* fname, int populate)
     }
 
   ifstream ifs(fname);
-  if ( !fname )
+  if ( !ifs)
     {
     return 0;
     }
