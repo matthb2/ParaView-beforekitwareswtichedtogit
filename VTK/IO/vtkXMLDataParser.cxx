@@ -151,6 +151,13 @@ int vtkXMLDataParser::Parse(const char*)
 }
 
 //----------------------------------------------------------------------------
+int vtkXMLDataParser::Parse(const char*, unsigned int)
+{
+  vtkErrorMacro("Parsing from a string is not supported.");
+  return 0;
+}
+
+//----------------------------------------------------------------------------
 void vtkXMLDataParser::StartElement(const char* name, const char** atts)
 {
   vtkXMLDataElement* element = vtkXMLDataElement::New();
