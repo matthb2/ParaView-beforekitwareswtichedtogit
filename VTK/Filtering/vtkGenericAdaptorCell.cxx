@@ -831,6 +831,10 @@ void vtkGenericAdaptorCell::Tessellate(vtkGenericAttributeCollection *attributes
         valid_npts=3;
 #endif
         }
+      else
+        {
+        linearCellType=0; // for compiler warning
+        }
       }
     
     vtkIdType npts = 0;
