@@ -466,7 +466,6 @@ void vtkPVEnSightMasterServerReader::Execute()
     {
     this->Balance();
     }
-
   // This reader can produce any number of pieces.  The superclass
   // sets the output max pieces to 1 during Execute so we must change
   // it back to -1 here.

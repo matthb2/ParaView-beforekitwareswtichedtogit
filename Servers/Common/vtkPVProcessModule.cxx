@@ -71,6 +71,7 @@ vtkPVProcessModule::vtkPVProcessModule()
 //----------------------------------------------------------------------------
 vtkPVProcessModule::~vtkPVProcessModule()
 { 
+  this->SetGUIHelper(0);
   this->SetDemoPath(0);
   this->SetApplicationInstallationDirectory(0);
   this->FinalizeInterpreter();

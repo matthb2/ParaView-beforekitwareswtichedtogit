@@ -47,6 +47,10 @@ void vtkPVLODPartDisplayInformation::CopyFromObject(vtkObject* obj)
 {
   this->GeometryMemorySize = 0;
   this->LODGeometryMemorySize = 0;
+  if (obj == 0)
+    {
+    return;
+    }
   vtkQuadricClustering* deci = vtkQuadricClustering::SafeDownCast(obj);
   if(!deci)
     {
