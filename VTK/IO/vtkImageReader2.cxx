@@ -550,10 +550,11 @@ unsigned long vtkImageReader2::GetHeaderSize(unsigned long idx)
     this->ComputeInternalFileName(idx);
 
     struct stat statbuf;
-    stat(this->InternalFileName, &statbuf);
-
-    return (int)(statbuf.st_size -
-      (long)this->DataIncrements[this->GetFileDimensionality()]);
+    if (!stat(this->InternalFileName, &statbuf))
+      {
+      return (int)(statbuf.st_size -
+                   (long)this->DataIncrements[this->GetFileDimensionality()]);
+      }
     }
   
   return this->HeaderSize;
