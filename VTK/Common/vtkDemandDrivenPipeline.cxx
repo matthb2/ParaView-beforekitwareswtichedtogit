@@ -74,6 +74,7 @@ vtkDemandDrivenPipeline::~vtkDemandDrivenPipeline()
 void vtkDemandDrivenPipeline::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os, indent);
+  os << indent << "PipelineMTime: " << this->PipelineMTime << "\n";
 }
 
 //----------------------------------------------------------------------------
