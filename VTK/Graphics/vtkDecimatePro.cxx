@@ -186,7 +186,7 @@ void vtkDecimatePro::Execute()
       output->GetCellData()->PassData(input->GetCellData());
       return;
       }
-    pPolys += 3;
+    pPolys += 4;
     }
 
   // Build cell data structure. Need to copy triangle connectivity data
