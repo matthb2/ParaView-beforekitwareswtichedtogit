@@ -1634,8 +1634,12 @@ void vtkParallelRenderManager::SatelliteStartRender()
   this->ReceiveWindowInformation();
 
   this->RenderWindow->SetDesiredUpdateRate(winInfoDouble.DesiredUpdateRate);
-  this->UseCompositing = winInfoInt.UseCompositing;
-  this->ImageReductionFactor = winInfoInt.ImageReductionFactor;
+  this->SetUseCompositing(winInfoInt.UseCompositing);
+  if (this->MaxImageReductionFactor < winInfoInt.ImageReductionFactor)
+    {
+    this->SetMaxImageReductionFactor(winInfoInt.ImageReductionFactor);
+    }
+  this->SetImageReductionFactor(winInfoInt.ImageReductionFactor);
   this->FullImageSize[0] = winInfoInt.FullSize[0];
   this->FullImageSize[1] = winInfoInt.FullSize[1];
   this->ReducedImageSize[0] = winInfoInt.ReducedSize[0];
