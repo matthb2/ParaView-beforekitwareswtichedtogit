@@ -80,8 +80,8 @@ public:
 protected:
   vtkVersion() {}; //insure constructor/destructor protected
   ~vtkVersion() {};
-  vtkVersion(const vtkVersion&) {};
-  void operator=(const vtkVersion&) {};
+  vtkVersion(const vtkVersion&);
+  void operator=(const vtkVersion&);
 
 };
 
