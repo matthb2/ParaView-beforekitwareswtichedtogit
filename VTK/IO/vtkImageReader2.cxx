@@ -39,8 +39,8 @@ vtkStandardNewMacro(vtkImageReader2);
 vtkImageReader2::vtkImageReader2()
 {
   this->FilePrefix = NULL;
-  this->FilePattern = new char[strlen("%s") + 1];
-  strcpy (this->FilePattern, "%s");
+  this->FilePattern = new char[strlen("%s.%d") + 1];
+  strcpy (this->FilePattern, "%s.%d");
   this->File = NULL;
 
   this->DataScalarType = VTK_SHORT;
@@ -68,7 +68,7 @@ vtkImageReader2::vtkImageReader2()
   // Left over from short reader
   this->SwapBytes = 0;
   this->FileLowerLeft = 0;
-  this->FileDimensionality = 3;
+  this->FileDimensionality = 2;
 }
 
 //----------------------------------------------------------------------------
