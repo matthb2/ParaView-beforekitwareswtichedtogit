@@ -26,6 +26,7 @@
 #include <vtkDoubleArray.h>
 #include <vtkUnsignedCharArray.h>
 #include "vtkMultiProcessController.h"
+#include "vtkDoubleArray.h"
 
 //#include <vtkRef.h>
 
