@@ -621,9 +621,9 @@ void vtkCompositeManager::SatelliteStartRender()
     else
       {
       lc = ren->GetLights();
-      vtkCollectionSimpleIterator sit;
-      lc->InitTraversal(sit);
-      light = lc->GetNextLight(sit);
+      vtkCollectionSimpleIterator lit;
+      lc->InitTraversal(lit);
+      light = lc->GetNextLight(lit);
   
       cam->SetPosition(renInfo.CameraPosition);
       cam->SetFocalPoint(renInfo.CameraFocalPoint);
