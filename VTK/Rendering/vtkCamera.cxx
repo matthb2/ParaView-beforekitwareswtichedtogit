@@ -986,8 +986,8 @@ void vtkCamera::PrintSelf(ostream& os, vtkIndent indent)
 vtkMatrix4x4 *vtkCamera::GetViewTransformMatrix() 
 { return this->ViewTransform->GetMatrix(); }
 
-float *vtkCamera::GetOrientation() 
+double *vtkCamera::GetOrientation() 
 { return this->ViewTransform->GetOrientation(); };
 
-float *vtkCamera::GetOrientationWXYZ() 
+double *vtkCamera::GetOrientationWXYZ() 
 { return this->ViewTransform->GetOrientationWXYZ(); };

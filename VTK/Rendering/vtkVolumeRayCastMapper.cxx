@@ -1174,7 +1174,7 @@ VTK_THREAD_RETURN_TYPE VolumeRayCastMapper_CastRays( void *arg )
   return VTK_THREAD_RETURN_VALUE;
 }
 
-float vtkVolumeRayCastMapper::GetZBufferValue(int x, int y)
+double vtkVolumeRayCastMapper::GetZBufferValue(int x, int y)
 {
   int xPos, yPos;
   
@@ -1212,8 +1212,8 @@ int vtkVolumeRayCastMapper::ComputeRowBounds(vtkVolume   *vol,
   bounds[3] = static_cast<float>(dim[1]-1);
   bounds[5] = static_cast<float>(dim[2]-1);
   
-  float camPos[3];
-  float worldBounds[6];
+  double camPos[3];
+  double worldBounds[6];
   vol->GetBounds( worldBounds );
   int insideFlag = 0;
   ren->GetActiveCamera()->GetPosition( camPos );

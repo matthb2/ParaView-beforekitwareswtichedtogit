@@ -283,7 +283,7 @@ void vtkOOGLExporter::WriteAnActor(vtkActor *anActor, FILE *fp, int count)
   vtkPolyDataMapper *pm;
   vtkUnsignedCharArray *colors;
    
-  float p[3];
+  double p[3];
   unsigned char *c;
   vtkTransform *trans;
    

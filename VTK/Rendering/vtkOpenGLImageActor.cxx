@@ -424,7 +424,7 @@ void vtkOpenGLImageActor::Load(vtkRenderer *ren)
     else
       {
 #ifdef GL_VERSION_1_1
-      float f, u;
+      double f, u;
       glEnable(GL_POLYGON_OFFSET_FILL);
       vtkMapper::GetResolveCoincidentTopologyPolygonOffsetParameters(f,u);
       glPolygonOffset(f,u);
