@@ -285,6 +285,8 @@ void vtkPStreamTracer::ComputeInputUpdateExtents( vtkDataObject *output )
 
 void vtkPStreamTracer::ExecuteInformation()
 {
+  this->Superclass::ExecuteInformation();
+
   vtkDataSet *output = this->GetOutput();
   output->SetMaximumNumberOfPieces(-1);
 }
