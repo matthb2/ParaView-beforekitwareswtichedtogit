@@ -86,6 +86,7 @@ void vtkProjectedTerrainPath::PrintSelf(ostream& os, vtkIndent indent)
     }
   
   os << indent << "Height Offset: " << this->HeightOffset << "\n";
+  os << indent << "Height Tolerance: " << this->HeightTolerance << "\n";
   os << indent << "Subdivision Factor: " << this->SubdivisionFactor << "\n";
   
 }
