@@ -59,6 +59,8 @@ void vtkXMLParser::PrintSelf(ostream& os, vtkIndent indent)
     {
     os << indent << "Stream: (none)\n";
     }
+  os << indent << "FileName: " << (this->FileName? this->FileName : "(none)")
+     << "\n";
 }
 
 //----------------------------------------------------------------------------
