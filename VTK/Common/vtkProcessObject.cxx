@@ -99,16 +99,15 @@ void vtkProcessObject::SetNumberOfInputs(int num)
     }
   
   // delete the previous arrays
-  if (this->Inputs)
-    {
-    delete [] this->Inputs;
-    this->Inputs = NULL;
-    this->NumberOfInputs = 0;
-    delete [] this->SortedInputs;
-    this->SortedInputs = NULL;
-    delete [] this->SortedInputs2;
-    this->SortedInputs2 = NULL;
-    }
+  delete [] this->Inputs;
+  this->Inputs = NULL;
+  this->NumberOfInputs = 0;
+
+  delete [] this->SortedInputs;
+  this->SortedInputs = NULL;
+
+  delete [] this->SortedInputs2;
+  this->SortedInputs2 = NULL;
   
   // Set the new arrays
   this->Inputs = inputs;
