@@ -28,6 +28,7 @@
 #include "vtkPriorityQueue.h"
 #include "vtkQuad.h"
 #include "vtkTriangle.h"
+#include "vtkBox.h"
 
 vtkCxxRevisionMacro(vtkPolygon, "$Revision$");
 vtkStandardNewMacro(vtkPolygon);
@@ -1324,7 +1325,7 @@ int vtkPolygon::IntersectPolygonWithPolygon(int npts, float *pts,float bounds[6]
       {
       ray[j] = p2[j] - p1[j];
       }
-    if ( ! vtkCell::HitBBox(bounds2, p1, ray, coords, t) )
+    if ( ! vtkBox::IntersectBox(bounds2, p1, ray, coords, t) )
       {
       continue;
       }
@@ -1360,7 +1361,7 @@ int vtkPolygon::IntersectPolygonWithPolygon(int npts, float *pts,float bounds[6]
       ray[j] = p2[j] - p1[j];
       }
 
-    if ( ! vtkCell::HitBBox(bounds, p1, ray, coords, t) )
+    if ( ! vtkBox::IntersectBox(bounds, p1, ray, coords, t) )
       {
       continue;
       }

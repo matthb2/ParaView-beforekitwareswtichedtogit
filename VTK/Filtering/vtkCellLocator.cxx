@@ -22,6 +22,7 @@
 #include "vtkMath.h"
 #include "vtkObjectFactory.h"
 #include "vtkPolyData.h"
+#include "vtkBox.h"
 
 #include <math.h>
 
@@ -232,7 +233,7 @@ int vtkCellLocator::IntersectWithLine(float a0[3], float a1[3], float tol,
     direction3[i] = direction2[i]/tMax;
     }
   
-  if (vtkCell::HitBBox(bounds2, origin, direction2, hitPosition, result))
+  if (vtkBox::IntersectBox(bounds2, origin, direction2, hitPosition, result))
     {
     // start walking through the octants
     prod = this->NumberOfDivisions*this->NumberOfDivisions;
@@ -294,16 +295,16 @@ int vtkCellLocator::IntersectWithLine(float a0[3], float a1[3], float tol,
             // check whether we intersect the cell bounds
             if (this->CacheCellBounds)
               {
-              hitCellBounds = vtkCell::HitBBox(this->CellBounds[cId],
-                                               a0, direction1,
-                                               hitCellBoundsPosition, result);
+              hitCellBounds = vtkBox::IntersectBox(this->CellBounds[cId],
+                                                   a0, direction1,
+                                                   hitCellBoundsPosition, result);
               }
             else 
               {
               this->DataSet->GetCellBounds(cId, cellBounds);
-              hitCellBounds = vtkCell::HitBBox(cellBounds,
-                                               a0, direction1,
-                                               hitCellBoundsPosition, result);
+              hitCellBounds = vtkBox::IntersectBox(cellBounds,
+                                                   a0, direction1,
+                                                   hitCellBoundsPosition, result);
               }
 
             if (hitCellBounds)
