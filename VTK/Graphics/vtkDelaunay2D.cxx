@@ -42,7 +42,7 @@ vtkDelaunay2D::vtkDelaunay2D()
   this->BoundingTriangulation = 0;
   this->Offset = 1.0;
   this->Transform = NULL;
-  this->ProjectionPlaneMode = VTK_XY_PLANE;
+  this->ProjectionPlaneMode = VTK_DELAUNAY_XY_PLANE;
 
   // optional 2nd input
   this->SetNumberOfInputPorts(2);
