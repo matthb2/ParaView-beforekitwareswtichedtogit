@@ -175,7 +175,7 @@ void vtkParticleReader::Execute()
   if ( this->File->gcount() != (length*4*sizeof(float))
      // On apple read to eof returns fail
 #ifndef __APPLE_CC__     
-     || this->File->Fail()
+     || this->File->fail()
 #endif // __APPLE_CC__     
      )
     {
