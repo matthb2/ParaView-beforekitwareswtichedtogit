@@ -104,19 +104,19 @@ void vtkThreadSafeLog::DumpLog(char *filename, int nMode)
 }
 
 //----------------------------------------------------------------------------
-void StartTimer()
+void vtkThreadSafeLog::StartTimer()
 {
   this->Timer->StartTimer();
 }
 
 //----------------------------------------------------------------------------
-void StopTimer()
+void vtkThreadSafeLog::StopTimer()
 {
   this->Timer->StopTimer();
 }
 
 //----------------------------------------------------------------------------
-double GetElapsedTime()
+double vtkThreadSafeLog::GetElapsedTime()
 {
   return this->Timer->GetElapsedTime();
 }
