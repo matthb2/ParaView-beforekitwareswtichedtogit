@@ -17,6 +17,11 @@
 vtkCxxRevisionMacro(vtkGenericPointIterator, "$Revision$");
 
 //----------------------------------------------------------------------------
+vtkGenericPointIterator::vtkGenericPointIterator()
+{
+}
+
+//----------------------------------------------------------------------------
 vtkGenericPointIterator::~vtkGenericPointIterator()
 {
 }
