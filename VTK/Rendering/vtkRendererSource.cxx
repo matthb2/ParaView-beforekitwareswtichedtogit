@@ -292,13 +292,9 @@ unsigned long vtkRendererSource::GetMTime()
 #ifndef VTK_USE_EXECUTIVES
 void vtkRendererSource::UpdateInformation()
 {
-  unsigned long t1, t2;
+  unsigned long t1;
   vtkImageData *output = this->GetOutput();
   vtkRenderer *ren = this->GetInput();
-  vtkActorCollection *actors;
-  vtkActor *actor;
-  vtkMapper *mapper;
-  vtkDataObject *data=0;
   float x1,y1,x2,y2;
   
   if (output == NULL || ren == NULL || ren->GetRenderWindow() == NULL)
