@@ -26,6 +26,15 @@
 
 vtkCxxRevisionMacro(vtkImageAlgorithm, "$Revision$");
 
+class vtkImageAlgorithmToDataSetFriendship
+{
+public:
+  static void GenerateGhostLevelArray(vtkDataSet* ds)
+    {
+    ds->GenerateGhostLevelArray();
+    }
+};
+
 //----------------------------------------------------------------------------
 vtkImageAlgorithm::vtkImageAlgorithm()
 {
@@ -123,6 +132,11 @@ int vtkImageAlgorithm::ProcessRequest(vtkInformation* request,
         //info->Set(vtkDataObject::ORIGIN(), output->GetOrigin(), 3);
         //info->Set(vtkDataObject::SPACING(), output->GetSpacing(), 3);
         output->DataHasBeenGenerated();
+        }
+      if(vtkDataSet* ds = vtkDataSet::SafeDownCast(
+        info->Get(vtkDataObject::DATA_OBJECT())))
+        {
+        vtkImageAlgorithmToDataSetFriendship::GenerateGhostLevelArray(ds);
         }
       }
     return 1;
