@@ -36,6 +36,7 @@
 #include "vtkQuadraticQuad.h"
 #include "vtkQuadraticTetra.h"
 #include "vtkQuadraticHexahedron.h"
+#include "vtkConvexPointSet.h"
 #include "vtkObjectFactory.h"
 
 vtkCxxRevisionMacro(vtkGenericCell, "$Revision$");
@@ -239,6 +240,9 @@ void vtkGenericCell::SetCellType(int cellType)
         break;
       case VTK_QUADRATIC_HEXAHEDRON:
         this->Cell = vtkQuadraticHexahedron::New();
+        break;
+      case VTK_CONVEX_POINT_SET:
+        this->Cell = vtkConvexPointSet::New();
         break;
       default:
         vtkErrorMacro(<<"Unsupported cell type! Setting to vtkEmptyCell");
