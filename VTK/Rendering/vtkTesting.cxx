@@ -177,10 +177,10 @@ const char *vtkTesting::GetDataRoot()
       argv[i] = strdup(this->Args[i].c_str());
       }
     }
+
   char *dr = vtkTestUtilitiesGetArgOrEnvOrDefault(
     "-D", this->Args.size(), argv, "VTK_DATA_ROOT", 
     "../../../../VTKData");
-  
   this->SetDataRoot(dr);
   delete [] dr;
   
@@ -242,10 +242,11 @@ const char *vtkTesting::GetValidImageFileName()
       }
     }
   
-  vtkstd::string viname = vtkTestUtilitiesGetArgOrEnvOrDefault(
+  char * baseline = vtkTestUtilitiesGetArgOrEnvOrDefault(
     "-B", this->Args.size(), argv, 
-    "VTK_BASELINE_ROOT", 
-    this->GetDataRoot());
+    "VTK_BASELINE_ROOT", this->GetDataRoot());
+  vtkstd::string viname = baseline;
+  delete [] baseline;
   
   for (i = 0; i < (this->Args.size() - 1); ++i)
     {
