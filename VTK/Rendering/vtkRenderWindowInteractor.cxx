@@ -321,8 +321,7 @@ vtkRenderer* vtkRenderWindowInteractor::FindPokedRenderer(int x,int y)
   // We must have a value - take anything.
   if ( currentRenderer == NULL) 
     {
-    rc->InitTraversal();
-    aren = rc->GetNextItem();
+    aren = rc->GetFirstRenderer();
     currentRenderer = aren;
     }
 

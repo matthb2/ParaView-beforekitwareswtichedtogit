@@ -59,8 +59,7 @@ void vtkImporter::Read ()
     }
 
   // Get the first renderer in the render window
-  this->RenderWindow->GetRenderers()->InitTraversal();
-  renderer = this->RenderWindow->GetRenderers()->GetNextItem();
+  renderer = this->RenderWindow->GetRenderers()->GetFirstRenderer();
   if (renderer == NULL)
     {
     vtkDebugMacro( <<"Creating a Renderer\n");
