@@ -972,6 +972,12 @@ void vtkPDataSetReader::Execute()
     reader->SetFileName(this->FileName);
     reader->Update();
     vtkDataSet *data = reader->GetOutput();
+
+    if (data == NULL)
+      {
+      vtkErrorMacro("Could not read file: " << this->FileName);
+      return;
+      }
     data->Update();
     // Structured points giving me a pain.
     //this->DataType = data->GetDataObjectType();
