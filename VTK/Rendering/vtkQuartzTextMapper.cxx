@@ -16,7 +16,6 @@
 
 =========================================================================*/
 #include "vtkQuartzTextMapper.h"
-#include "vtkQuartzImageWindow.h"
 #include "vtkObjectFactory.h"
 
 vtkCxxRevisionMacro(vtkQuartzTextMapper, "$Revision$");
