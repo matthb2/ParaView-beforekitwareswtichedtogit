@@ -296,6 +296,83 @@ VTK_INFORMATION_DEFINE_VECTOR_VALUE_PROPERTY(Double, double);
 #undef VTK_INFORMATION_DEFINE_VECTOR_VALUE_PROPERTY
 
 //----------------------------------------------------------------------------
+void vtkInformation::Append(vtkInformationKeyVectorKey* key, 
+                            vtkInformationDataObjectKey* value)
+{
+  key->Append(this, value);
+}
+
+//----------------------------------------------------------------------------
+void vtkInformation::Append(vtkInformationKeyVectorKey* key, 
+                            vtkInformationDoubleKey* value)
+{
+  key->Append(this, value);
+}
+
+//----------------------------------------------------------------------------
+void vtkInformation::Append(vtkInformationKeyVectorKey* key, 
+                            vtkInformationDoubleVectorKey* value)
+{
+  key->Append(this, value);
+}
+
+//----------------------------------------------------------------------------
+void vtkInformation::Append(vtkInformationKeyVectorKey* key, 
+                            vtkInformationExecutivePortKey* value)
+{
+  key->Append(this, value);
+}
+
+//----------------------------------------------------------------------------
+void vtkInformation::Append(vtkInformationKeyVectorKey* key, 
+                            vtkInformationInformationKey* value)
+{
+  key->Append(this, value);
+}
+
+//----------------------------------------------------------------------------
+void vtkInformation::Append(vtkInformationKeyVectorKey* key, 
+                            vtkInformationInformationVectorKey* value)
+{
+  key->Append(this, value);
+}
+
+//----------------------------------------------------------------------------
+void vtkInformation::Append(vtkInformationKeyVectorKey* key, 
+                            vtkInformationIntegerKey* value)
+{
+  key->Append(this, value);
+}
+
+//----------------------------------------------------------------------------
+void vtkInformation::Append(vtkInformationKeyVectorKey* key, 
+                            vtkInformationIntegerVectorKey* value)
+{
+  key->Append(this, value);
+}
+
+//----------------------------------------------------------------------------
+void vtkInformation::Append(vtkInformationKeyVectorKey* key, 
+                            vtkInformationStringKey* value)
+{
+  key->Append(this, value);
+}
+
+//----------------------------------------------------------------------------
+void vtkInformation::Append(vtkInformationKeyVectorKey* key,   
+                            vtkInformationUnsignedLongKey* value)
+{
+  key->Append(this, value);
+}
+
+//----------------------------------------------------------------------------
+void vtkInformation::Append(vtkInformationKeyVectorKey* key,   
+                            vtkInformationObjectBaseKey* value)
+{
+  key->Append(this, value);
+}
+
+//----------------------------------------------------------------------------
 void vtkInformation::Set(vtkInformationExecutivePortKey* key,
                          vtkExecutive* executive, int port)
 {
