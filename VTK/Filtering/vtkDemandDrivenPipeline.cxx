@@ -62,6 +62,7 @@ vtkDemandDrivenPipeline::vtkDemandDrivenPipeline()
   this->DemandDrivenInternal = new vtkDemandDrivenPipelineInternals;
   this->InProcessDownstreamRequest = 0;
   this->InProcessUpstreamRequest = 0;
+  this->PipelineMTime = 0;
 }
 
 //----------------------------------------------------------------------------
