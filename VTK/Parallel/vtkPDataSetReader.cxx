@@ -15,21 +15,23 @@
      PURPOSE.  See the above copyright notice for more information.
 
 =========================================================================*/
-
 #include "vtkPDataSetReader.h"
-#include "vtkDataSetReader.h"
-#include "vtkStructuredPointsReader.h"
-#include "vtkStructuredGridReader.h"
-#include "vtkAppendPolyData.h"
+
 #include "vtkAppendFilter.h"
-#include "vtkPolyData.h"
-#include "vtkUnstructuredGrid.h"
-#include "vtkStructuredGrid.h"
-#include "vtkRectilinearGrid.h"
+#include "vtkAppendPolyData.h"
+#include "vtkCellData.h"
+#include "vtkDataSetReader.h"
 #include "vtkImageData.h"
-#include "vtkStructuredPoints.h"
 #include "vtkObjectFactory.h"
+#include "vtkPointData.h"
+#include "vtkPolyData.h"
+#include "vtkRectilinearGrid.h"
 #include "vtkSource.h"
+#include "vtkStructuredGrid.h"
+#include "vtkStructuredGridReader.h"
+#include "vtkStructuredPoints.h"
+#include "vtkStructuredPointsReader.h"
+#include "vtkUnstructuredGrid.h"
 
 vtkCxxRevisionMacro(vtkPDataSetReader, "$Revision$");
 vtkStandardNewMacro(vtkPDataSetReader);

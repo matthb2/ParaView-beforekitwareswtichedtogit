@@ -18,8 +18,10 @@
 #include "vtkCollectPolyData.h"
 
 #include "vtkAppendPolyData.h"
-#include "vtkObjectFactory.h"
+#include "vtkCellData.h"
 #include "vtkMultiProcessController.h"
+#include "vtkObjectFactory.h"
+#include "vtkPointData.h"
 #include "vtkPolyData.h"
 
 vtkCxxRevisionMacro(vtkCollectPolyData, "$Revision$");

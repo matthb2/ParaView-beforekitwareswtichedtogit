@@ -17,8 +17,13 @@
 =========================================================================*/
 #include "vtkExtractPolyDataPiece.h"
 
+#include "vtkCell.h"
+#include "vtkCellData.h"
+#include "vtkGenericCell.h"
+#include "vtkIdList.h"
 #include "vtkOBBDicer.h"
 #include "vtkObjectFactory.h"
+#include "vtkPointData.h"
 #include "vtkPolyData.h"
 #include "vtkUnsignedCharArray.h"
 

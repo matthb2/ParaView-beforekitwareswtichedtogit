@@ -18,12 +18,14 @@
 #include "vtkPStreamTracer.h"
 
 #include "vtkAppendPolyData.h"
-#include "vtkInterpolatedVelocityField.h"
-#include "vtkMultiProcessController.h"
+#include "vtkCellData.h"
 #include "vtkFloatArray.h"
 #include "vtkIdList.h"
 #include "vtkIntArray.h"
+#include "vtkInterpolatedVelocityField.h"
+#include "vtkMultiProcessController.h"
 #include "vtkObjectFactory.h"
+#include "vtkPointData.h"
 #include "vtkPolyData.h"
 #include "vtkRungeKutta2.h"
 

@@ -24,6 +24,7 @@
 #include "vtkImageWrapPad.h"
 #include "vtkMath.h"
 #include "vtkObjectFactory.h"
+#include "vtkPointData.h"
 #include "vtkStructuredGrid.h"
 
 #include <ctype.h>

@@ -17,7 +17,13 @@
 =========================================================================*/
 #include "vtkExtractUnstructuredGridPiece.h"
 
+#include "vtkCell.h"
+#include "vtkCellData.h"
+#include "vtkGenericCell.h"
+#include "vtkIdList.h"
+#include "vtkIntArray.h"
 #include "vtkObjectFactory.h"
+#include "vtkPointData.h"
 #include "vtkUnsignedCharArray.h"
 #include "vtkUnstructuredGrid.h"
 

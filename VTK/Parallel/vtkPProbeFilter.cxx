@@ -17,8 +17,10 @@
 =========================================================================*/
 #include "vtkPProbeFilter.h"
 
+#include "vtkIdTypeArray.h"
 #include "vtkMultiProcessController.h"
 #include "vtkObjectFactory.h"
+#include "vtkPointData.h"
 #include "vtkPolyData.h"
 
 vtkCxxRevisionMacro(vtkPProbeFilter, "$Revision$");

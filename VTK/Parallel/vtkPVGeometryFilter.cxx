@@ -17,11 +17,13 @@
 =========================================================================*/
 #include "vtkPVGeometryFilter.h"
 
+#include "vtkCellData.h"
 #include "vtkCommand.h"
 #include "vtkGeometryFilter.h"
 #include "vtkImageData.h"
 #include "vtkObjectFactory.h"
 #include "vtkOutlineSource.h"
+#include "vtkPointData.h"
 #include "vtkPolyData.h"
 #include "vtkRectilinearGrid.h"
 #include "vtkRectilinearGridOutlineFilter.h"
