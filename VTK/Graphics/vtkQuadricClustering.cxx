@@ -1060,8 +1060,8 @@ void vtkQuadricClustering::EndAppendUsingPoints(vtkPolyData *input)
   output->GetPointData()->CopyAllocate(input->GetPointData(), this->NumberOfBinsUsed);
 
   // Allocate and initialize an array to hold errors for each bin.
-  numBins = this->NumberOfXDivisions * this->NumberOfYDivisions 
-                  * this->NumberOfZDivisions;
+  numBins = this->NumberOfDivisions[0] * this->NumberOfDivisions[1] 
+                  * this->NumberOfDivisions[2];
   minError = new float[numBins];
   for (i = 0; i < numBins; ++i)
     {
