@@ -285,6 +285,8 @@ void vtkDataObject::UpdateInformation()
      vtkDemandDrivenPipeline::SafeDownCast(producer->GetExecutive()))
     {
     ddp->UpdateInformation();
+    int index = this->ProducerPort->GetIndex();
+    this->CopyDownstreamIVarsFromInformation(ddp->GetOutputInformation(index));
     }
   else
     {
