@@ -16,8 +16,10 @@
 
 =========================================================================*/
 #include "vtkRenderLargeImage.h"
-#include "vtkRenderWindow.h"
+
 #include "vtkObjectFactory.h"
+#include "vtkRenderWindow.h"
+#include "vtkRenderer.h"
 
 #include <stdio.h>
 #include <ctype.h>
@@ -25,6 +27,8 @@
 
 vtkCxxRevisionMacro(vtkRenderLargeImage, "$Revision$");
 vtkStandardNewMacro(vtkRenderLargeImage);
+
+vtkCxxSetObjectMacro(vtkRenderLargeImage,Input,vtkRenderer);
 
 //----------------------------------------------------------------------------
 vtkRenderLargeImage::vtkRenderLargeImage()
