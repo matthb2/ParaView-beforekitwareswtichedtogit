@@ -19,6 +19,7 @@
 vtkCxxRevisionMacro(vtkParametricCrossCap, "$Revision$");
 vtkStandardNewMacro(vtkParametricCrossCap);
 
+//----------------------------------------------------------------------------
 vtkParametricCrossCap::vtkParametricCrossCap()
 {
   // Preset triangulation parameters
@@ -35,10 +36,12 @@ vtkParametricCrossCap::vtkParametricCrossCap()
   this->DerivativesAvailable = 1;
 }
 
+//----------------------------------------------------------------------------
 vtkParametricCrossCap::~vtkParametricCrossCap()
 {
 }
 
+//----------------------------------------------------------------------------
 void vtkParametricCrossCap::Evaluate(double uvw[3], double Pt[3], double Duvw[9])
 {
 
@@ -68,11 +71,13 @@ void vtkParametricCrossCap::Evaluate(double uvw[3], double Pt[3], double Duvw[9]
   Dv[2] = -2 * cv * sv * (1 + cu * cu);
 }
 
+//----------------------------------------------------------------------------
 double vtkParametricCrossCap::EvaluateScalar(double *, double *, double *)
 {
   return 0;
 }
 
+//----------------------------------------------------------------------------
 void vtkParametricCrossCap::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os,indent);

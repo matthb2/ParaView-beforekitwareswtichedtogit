@@ -19,6 +19,7 @@
 vtkCxxRevisionMacro(vtkParametricFigure8Klein, "$Revision$");
 vtkStandardNewMacro(vtkParametricFigure8Klein);
 
+//----------------------------------------------------------------------------
 vtkParametricFigure8Klein::vtkParametricFigure8Klein()
 {
   // Preset triangulation parameters
@@ -36,10 +37,12 @@ vtkParametricFigure8Klein::vtkParametricFigure8Klein()
   this->Radius = 1;
 }
 
+//----------------------------------------------------------------------------
 vtkParametricFigure8Klein::~vtkParametricFigure8Klein()
 {
 }
 
+//----------------------------------------------------------------------------
 void vtkParametricFigure8Klein::Evaluate(double uvw[3], double Pt[3], double Duvw[9])
 {
   double u = uvw[0];
@@ -71,11 +74,13 @@ void vtkParametricFigure8Klein::Evaluate(double uvw[3], double Pt[3], double Duv
   Dv[2] = su2 * cv / 2 + cu2 * c2v;
 }
 
+//----------------------------------------------------------------------------
 double vtkParametricFigure8Klein::EvaluateScalar(double*, double*, double*)
 {
   return 0;
 }
 
+//----------------------------------------------------------------------------
 void vtkParametricFigure8Klein::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os,indent);

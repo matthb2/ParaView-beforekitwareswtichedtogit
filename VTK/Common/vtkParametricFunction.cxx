@@ -16,6 +16,7 @@
 
 vtkCxxRevisionMacro(vtkParametricFunction, "$Revision$");
 
+//----------------------------------------------------------------------------
 vtkParametricFunction::vtkParametricFunction() :
     MinimumU(0.0)
   , MaximumU(1.0)
@@ -35,11 +36,13 @@ vtkParametricFunction::vtkParametricFunction() :
 }
 
 
+//----------------------------------------------------------------------------
 vtkParametricFunction::~vtkParametricFunction()
 {
 }
 
 
+//----------------------------------------------------------------------------
 void vtkParametricFunction::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os,indent);
