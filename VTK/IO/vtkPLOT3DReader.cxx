@@ -226,7 +226,7 @@ long vtkPLOT3DReader::EstimateSize(int ni, int nj, int nk)
   return size;
 }
 
-int vtkPLOT3DReader::CanReadFile(const char* fname)
+int vtkPLOT3DReader::CanReadBinaryFile(const char* fname)
 {
   FILE* xyzFp;
 
