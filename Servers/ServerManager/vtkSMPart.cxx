@@ -261,30 +261,6 @@ void vtkSMPart::InsertExtractPiecesIfNecessary()
 //                       << vtkClientServerStream::End;
       }
     }
-  else if (!strcmp(className, "vtkImageData"))
-    {
-    if (getenv("PV_LOCK_SAFE") == NULL)
-      { 
-      tempDataPiece = pm->NewStreamObject(
-        "vtkStructuredCacheFilter", stream);
-      }
-    }
-  else if (!strcmp(className, "vtkStructuredGrid"))
-    {
-    if (getenv("PV_LOCK_SAFE") == NULL)
-      {
-      tempDataPiece = pm->NewStreamObject(
-        "vtkStructuredCacheFilter", stream);
-      }
-    }
-  else if (!strcmp(className, "vtkRectilinearGrid"))
-    {
-    if (getenv("PV_LOCK_SAFE") == NULL)
-      {
-      tempDataPiece = pm->NewStreamObject(
-        "vtkStructuredCacheFilter", stream);
-      }
-    }
 
   // If no filter is to be inserted, just return.
   if(tempDataPiece.ID == 0)

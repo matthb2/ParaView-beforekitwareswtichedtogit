@@ -29,7 +29,7 @@ vtkStandardNewMacro(vtkColorByPart);
 // Add a dataset to the list of data to append.
 void vtkColorByPart::AddInput(vtkDataSet *ds)
 {
-  this->vtkProcessObject::AddInput(ds);
+  this->Superclass::AddInput(ds);
 }
 
 //----------------------------------------------------------------------------
