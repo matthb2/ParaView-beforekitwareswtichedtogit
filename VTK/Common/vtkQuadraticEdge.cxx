@@ -306,6 +306,14 @@ void vtkQuadraticEdge::Tesselate(vtkIdType cellId,
     }
 }
 
+// The second Tesselate() method is empty (intended only for 3D cells).
+void vtkQuadraticEdge::Tesselate(vtkIdType vtkNotUsed(cellId),
+                                 vtkDataSet* vtkNotUsed(input),
+                                 vtkUnstructuredGrid* vtkNotUsed(output),
+                                 vtkPointLocator* vtkNotUsed(locator))
+{
+}
+
 void vtkQuadraticEdge::InternalTesselate()
 {
   vtkPoints *pts;
