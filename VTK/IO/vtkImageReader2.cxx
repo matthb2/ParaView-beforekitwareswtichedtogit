@@ -140,7 +140,24 @@ void vtkImageReader2::ComputeInternalFileName(int slice)
     else
       {
       this->InternalFileName = new char [strlen(this->FilePattern) + 10];
-      sprintf (this->InternalFileName, this->FilePattern, "", slicenum);
+      int len = strlen(this->FilePattern);
+      int hasPercentS = 0;
+      for(int i =0; i < len-1; ++i)
+        {
+        if(this->FilePattern[i] == '%' && this->FilePattern[i] == 's')
+          {
+          hasPercentS = 1;
+          break;
+          }
+        }
+      if(hasPercentS)
+        {
+        sprintf (this->InternalFileName, this->FilePattern, "", slicenum);
+        }
+      else
+        {
+        sprintf (this->InternalFileName, this->FilePattern, slicenum);
+        }
       }
     }
 }
