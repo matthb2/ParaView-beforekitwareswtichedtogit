@@ -48,6 +48,12 @@ vtkStandardNewMacro(vtkPVInformation);
 vtkCxxRevisionMacro(vtkPVInformation, "$Revision$");
 
 //----------------------------------------------------------------------------
+vtkPVInformation::vtkPVInformation()
+{
+  this->RootOnly = 0;
+}
+
+//----------------------------------------------------------------------------
 void vtkPVInformation::CopyFromObject(vtkObject*)
 {
   vtkErrorMacro("CopyFromObject not implemented.");
@@ -82,9 +88,5 @@ void vtkPVInformation::WriteMessage(unsigned char*)
 void vtkPVInformation::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os,indent);
+  os << indent << "RootOnly: " << this->RootOnly;
 }
-
-  
-
-
-
