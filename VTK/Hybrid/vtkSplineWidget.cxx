@@ -128,7 +128,7 @@ vtkSplineWidget::vtkSplineWidget()
   // create new points
   for (i=0; i<this->NumberOfSplinePoints; i++)
     {
-    position = static_cast<float>(i)/this->Resolution;
+    position = static_cast<float>(i)*(this->NumberOfHandles - 1.0)/(this->NumberOfSplinePoints - 1.0);
     this->SplinePositions[i] = position;
     points->InsertPoint(i, XSpline->Evaluate(position),
                            YSpline->Evaluate(position),
@@ -1345,7 +1345,7 @@ void vtkSplineWidget::SetResolution(int resolution)
   int i;
   for (i=0; i<this->NumberOfSplinePoints; i++)
     {
-    position = static_cast<float>(i)/this->Resolution;
+    position = static_cast<float>(i)*(this->NumberOfHandles - 1.0)/(this->NumberOfSplinePoints - 1.0);
     this->SplinePositions[i] = position;
     newPoints->InsertPoint(i, XSpline->Evaluate(position),
                            YSpline->Evaluate(position),
