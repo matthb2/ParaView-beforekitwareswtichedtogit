@@ -20,6 +20,17 @@
 vtkCxxRevisionMacro(vtkDataSetToImageFilter, "$Revision$");
 
 //----------------------------------------------------------------------------
+vtkDataSetToImageFilter::vtkDataSetToImageFilter()
+{
+  this->NumberOfRequiredInputs = 1;
+}
+
+//----------------------------------------------------------------------------
+vtkDataSetToImageFilter::~vtkDataSetToImageFilter()
+{
+}
+
+//----------------------------------------------------------------------------
 // Specify the input data or filter.
 void vtkDataSetToImageFilter::SetInput(vtkDataSet *input)
 {

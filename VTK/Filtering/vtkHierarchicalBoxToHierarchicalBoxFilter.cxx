@@ -16,8 +16,18 @@
 
 #include "vtkHierarchicalBoxDataSet.h"
 
-vtkCxxRevisionMacro(vtkHierarchicalBoxToHierarchicalBoxFilter, 
-                    "$Revision$");
+vtkCxxRevisionMacro(vtkHierarchicalBoxToHierarchicalBoxFilter, "$Revision$");
+
+//----------------------------------------------------------------------------
+vtkHierarchicalBoxToHierarchicalBoxFilter::vtkHierarchicalBoxToHierarchicalBoxFilter()
+{
+  this->NumberOfRequiredInputs = 1;
+}
+
+//----------------------------------------------------------------------------
+vtkHierarchicalBoxToHierarchicalBoxFilter::~vtkHierarchicalBoxToHierarchicalBoxFilter()
+{
+}
 
 //----------------------------------------------------------------------------
 // Specify the input data or filter.

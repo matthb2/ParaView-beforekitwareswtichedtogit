@@ -19,6 +19,17 @@
 vtkCxxRevisionMacro(vtkDataSetToStructuredGridFilter, "$Revision$");
 
 //----------------------------------------------------------------------------
+vtkDataSetToStructuredGridFilter::vtkDataSetToStructuredGridFilter()
+{
+  this->NumberOfRequiredInputs = 1;
+}
+
+//----------------------------------------------------------------------------
+vtkDataSetToStructuredGridFilter::~vtkDataSetToStructuredGridFilter()
+{
+}
+
+//----------------------------------------------------------------------------
 // Specify the input data or filter.
 void vtkDataSetToStructuredGridFilter::SetInput(vtkDataSet *input)
 {

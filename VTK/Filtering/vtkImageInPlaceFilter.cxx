@@ -21,6 +21,16 @@
 vtkCxxRevisionMacro(vtkImageInPlaceFilter, "$Revision$");
 
 //----------------------------------------------------------------------------
+vtkImageInPlaceFilter::vtkImageInPlaceFilter()
+{
+}
+
+//----------------------------------------------------------------------------
+vtkImageInPlaceFilter::~vtkImageInPlaceFilter()
+{
+}
+
+//----------------------------------------------------------------------------
 
 void vtkImageInPlaceFilter::ExecuteData(vtkDataObject *vtkNotUsed(out))
 {

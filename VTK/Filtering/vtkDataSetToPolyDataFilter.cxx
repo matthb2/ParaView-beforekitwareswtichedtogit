@@ -19,6 +19,17 @@
 vtkCxxRevisionMacro(vtkDataSetToPolyDataFilter, "$Revision$");
 
 //----------------------------------------------------------------------------
+vtkDataSetToPolyDataFilter::vtkDataSetToPolyDataFilter()
+{
+  this->NumberOfRequiredInputs = 1;
+}
+
+//----------------------------------------------------------------------------
+vtkDataSetToPolyDataFilter::~vtkDataSetToPolyDataFilter()
+{
+}
+
+//----------------------------------------------------------------------------
 // Specify the input data or filter.
 void vtkDataSetToPolyDataFilter::SetInput(vtkDataSet *input)
 {

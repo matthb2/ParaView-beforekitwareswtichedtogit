@@ -19,6 +19,17 @@
 vtkCxxRevisionMacro(vtkRectilinearGridToPolyDataFilter, "$Revision$");
 
 //----------------------------------------------------------------------------
+vtkRectilinearGridToPolyDataFilter::vtkRectilinearGridToPolyDataFilter()
+{
+  this->NumberOfRequiredInputs = 1;
+}
+
+//----------------------------------------------------------------------------
+vtkRectilinearGridToPolyDataFilter::~vtkRectilinearGridToPolyDataFilter()
+{
+}
+
+//----------------------------------------------------------------------------
 // Specify the input data or filter.
 void vtkRectilinearGridToPolyDataFilter::SetInput(vtkRectilinearGrid *input)
 {

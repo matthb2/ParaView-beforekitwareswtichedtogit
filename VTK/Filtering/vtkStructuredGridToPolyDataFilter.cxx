@@ -19,6 +19,17 @@
 vtkCxxRevisionMacro(vtkStructuredGridToPolyDataFilter, "$Revision$");
 
 //----------------------------------------------------------------------------
+vtkStructuredGridToPolyDataFilter::vtkStructuredGridToPolyDataFilter()
+{
+  this->NumberOfRequiredInputs = 1;
+}
+
+//----------------------------------------------------------------------------
+vtkStructuredGridToPolyDataFilter::~vtkStructuredGridToPolyDataFilter()
+{
+}
+
+//----------------------------------------------------------------------------
 // Specify the input data or filter.
 void vtkStructuredGridToPolyDataFilter::SetInput(vtkStructuredGrid *input)
 {

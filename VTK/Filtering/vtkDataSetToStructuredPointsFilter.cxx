@@ -19,6 +19,17 @@
 vtkCxxRevisionMacro(vtkDataSetToStructuredPointsFilter, "$Revision$");
 
 //----------------------------------------------------------------------------
+vtkDataSetToStructuredPointsFilter::vtkDataSetToStructuredPointsFilter()
+{
+  this->NumberOfRequiredInputs = 1;
+}
+
+//----------------------------------------------------------------------------
+vtkDataSetToStructuredPointsFilter::~vtkDataSetToStructuredPointsFilter()
+{
+}
+
+//----------------------------------------------------------------------------
 // Specify the input data or filter.
 void vtkDataSetToStructuredPointsFilter::SetInput(vtkDataSet *input)
 {

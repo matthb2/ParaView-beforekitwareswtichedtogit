@@ -19,6 +19,17 @@
 vtkCxxRevisionMacro(vtkUnstructuredGridToPolyDataFilter, "$Revision$");
 
 //----------------------------------------------------------------------------
+vtkUnstructuredGridToPolyDataFilter::vtkUnstructuredGridToPolyDataFilter()
+{
+  this->NumberOfRequiredInputs = 1;
+}
+
+//----------------------------------------------------------------------------
+vtkUnstructuredGridToPolyDataFilter::~vtkUnstructuredGridToPolyDataFilter()
+{
+}
+
+//----------------------------------------------------------------------------
 // Specify the input data or filter.
 void vtkUnstructuredGridToPolyDataFilter::SetInput(vtkUnstructuredGrid *input)
 {

@@ -19,6 +19,17 @@
 vtkCxxRevisionMacro(vtkStructuredPointsToPolyDataFilter, "$Revision$");
 
 //----------------------------------------------------------------------------
+vtkStructuredPointsToPolyDataFilter::vtkStructuredPointsToPolyDataFilter()
+{
+  this->NumberOfRequiredInputs = 1;
+}
+
+//----------------------------------------------------------------------------
+vtkStructuredPointsToPolyDataFilter::~vtkStructuredPointsToPolyDataFilter()
+{
+}
+
+//----------------------------------------------------------------------------
 // Specify the input data or filter.
 void vtkStructuredPointsToPolyDataFilter::SetInput(vtkImageData *input)
 {

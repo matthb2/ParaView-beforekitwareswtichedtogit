@@ -20,6 +20,17 @@
 vtkCxxRevisionMacro(vtkStructuredPointsToUnstructuredGridFilter, "$Revision$");
 
 //----------------------------------------------------------------------------
+vtkStructuredPointsToUnstructuredGridFilter::vtkStructuredPointsToUnstructuredGridFilter()
+{
+  this->NumberOfRequiredInputs = 1;
+}
+
+//----------------------------------------------------------------------------
+vtkStructuredPointsToUnstructuredGridFilter::~vtkStructuredPointsToUnstructuredGridFilter()
+{
+}
+
+//----------------------------------------------------------------------------
 // Specify the input data or filter.
 void vtkStructuredPointsToUnstructuredGridFilter::SetInput(vtkImageData *input)
 {

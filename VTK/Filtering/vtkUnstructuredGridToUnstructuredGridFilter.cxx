@@ -19,6 +19,17 @@
 vtkCxxRevisionMacro(vtkUnstructuredGridToUnstructuredGridFilter, "$Revision$");
 
 //----------------------------------------------------------------------------
+vtkUnstructuredGridToUnstructuredGridFilter::vtkUnstructuredGridToUnstructuredGridFilter()
+{
+  this->NumberOfRequiredInputs = 1;
+}
+
+//----------------------------------------------------------------------------
+vtkUnstructuredGridToUnstructuredGridFilter::~vtkUnstructuredGridToUnstructuredGridFilter()
+{
+}
+
+//----------------------------------------------------------------------------
 // Specify the input data or filter.
 void vtkUnstructuredGridToUnstructuredGridFilter::SetInput(vtkUnstructuredGrid *input)
 {
