@@ -17,6 +17,8 @@
 #include "vtkDebugLeaks.h"
 #include "vtkInformation.h"
 
+#include <vtkstd/vector>
+
 vtkCxxRevisionMacro(vtkInformationKey, "$Revision$");
 
 class vtkInformationKeyToInformationFriendship
@@ -35,10 +37,18 @@ public:
 };
 
 //----------------------------------------------------------------------------
+// Purposely not initialized.  ClassInitialize will handle it.
+vtkstd::vector<vtkInformationKey*>* vtkInformationKeyInstances;
+
+//----------------------------------------------------------------------------
 vtkInformationKey::vtkInformationKey(const char* name, const char* location)
 {
+  // Save the name and location.
   this->Name = name;
   this->Location = location;
+
+  // Register this instance for deletion by the singleton.
+  vtkInformationKeyInstances->push_back(this);
 }
 
 //----------------------------------------------------------------------------
@@ -100,6 +110,7 @@ void vtkInformationKey::Report(vtkInformation*, vtkGarbageCollector*)
   // Report nothing by default.
 }
 
+//----------------------------------------------------------------------------
 #ifdef VTK_DEBUG_LEAKS
 void vtkInformationKey::ConstructClass(const char* name)
 {
@@ -110,3 +121,30 @@ void vtkInformationKey::ConstructClass(const char*)
 {
 }
 #endif
+
+//----------------------------------------------------------------------------
+void vtkInformationKey::ClassInitialize()
+{
+  // Allocate the singleton storing pointers to all information keys.
+  vtkInformationKeyInstances = new vtkstd::vector<vtkInformationKey*>;
+}
+
+//----------------------------------------------------------------------------
+void vtkInformationKey::ClassFinalize()
+{
+  if(vtkInformationKeyInstances)
+    {
+    // Delete all information keys.
+    for(vtkstd::vector<vtkInformationKey*>::iterator i =
+          vtkInformationKeyInstances->begin();
+        i != vtkInformationKeyInstances->end(); ++i)
+      {
+      vtkInformationKey* key = *i;
+      delete key;
+      }
+
+    // Delete the singleton storing pointers to all information keys.
+    delete vtkInformationKeyInstances;
+    vtkInformationKeyInstances = 0;
+    }
+}
