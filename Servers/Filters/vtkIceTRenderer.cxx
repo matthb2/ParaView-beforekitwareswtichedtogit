@@ -92,6 +92,7 @@ void vtkIceTRenderer::DeviceRender()
     this->vtkOpenGLRenderer::DeviceRender();
     glMatrixMode(GL_MODELVIEW);
     glPopMatrix();
+    this->InvokeEvent(vtkCommand::EndEvent,NULL);
     return;
     }
 
