@@ -23,10 +23,10 @@ vtkCxxRevisionMacro(vtkLightKit, "$Revision$");
 vtkStandardNewMacro(vtkLightKit);
 
 static const char *vtkLightKitTypeStrings[] = {
-  "Key Light",
-  "Fill Light",
-  "Back Light",
-  "Head Light",
+  "KeyLight",
+  "FillLight",
+  "BackLight",
+  "HeadLight",
   NULL
 };
 
