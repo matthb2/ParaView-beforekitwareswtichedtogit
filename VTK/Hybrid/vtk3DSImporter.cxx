@@ -18,6 +18,8 @@
 #include "vtk3DSImporter.h"
 
 #include "vtkByteSwap.h"
+#include "vtkCamera.h"
+#include "vtkLight.h"
 #include "vtkObjectFactory.h"
 #include "vtkPolyDataMapper.h"
 #include "vtkPolyDataNormals.h"

@@ -16,7 +16,11 @@
 
 =========================================================================*/
 #include "vtkVideoSource.h"
+
+#include "vtkCriticalSection.h"
+#include "vtkMultiThreader.h"
 #include "vtkObjectFactory.h"
+#include "vtkTimerLog.h"
 
 #include <ctype.h>
 #include <time.h>
