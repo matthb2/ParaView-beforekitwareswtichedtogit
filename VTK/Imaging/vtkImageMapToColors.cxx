@@ -82,6 +82,8 @@ void vtkImageMapToColors::ExecuteData(vtkDataObject *output)
     }
   else // normal behaviour
     {
+    this->LookupTable->Build(); //make sure table is built
+
     if (this->DataWasPassed)
       {
       outData->GetPointData()->SetScalars(NULL);
