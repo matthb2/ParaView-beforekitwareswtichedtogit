@@ -30,12 +30,16 @@
 
 =========================================================================*/
 #include "vtkSweptSurface.h"
-#include "vtkVoxel.h"
+
 #include "vtkMath.h"
 #include "vtkObjectFactory.h"
+#include "vtkTransformCollection.h"
+#include "vtkVoxel.h"
 
 vtkCxxRevisionMacro(vtkSweptSurface, "$Revision$");
 vtkStandardNewMacro(vtkSweptSurface);
+
+vtkCxxSetObjectMacro(vtkSweptSurface,Transforms, vtkTransformCollection);
 
 // Description:
 // Construct object with SampleDimensions = (50,50,50), FillValue = 
