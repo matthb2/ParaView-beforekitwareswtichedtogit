@@ -155,8 +155,9 @@ void vtkSource::Update()
        vtkStreamingDemandDrivenPipeline::SafeDownCast(this->GetExecutive()))
       {
       // The update extent may have been set on the output.
-      if(vtkSourceToDataObjectFriendship
-         ::UpdateExtentInitialized(this->Outputs[0]))
+      if(this->Outputs && this->Outputs[0] &&
+         (vtkSourceToDataObjectFriendship
+          ::UpdateExtentInitialized(this->Outputs[0])))
         {
         int extent[6];
         this->Outputs[0]->GetUpdateExtent(extent);
