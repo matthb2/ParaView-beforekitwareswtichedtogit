@@ -793,7 +793,7 @@ const char *vtkXYPlotActor::GetXValuesAsString()
 //----------------------------------------------------------------------------
 const char *vtkXYPlotActor::GetDataObjectPlotModeAsString()
 {
-  if ( this->XValues == VTK_XYPLOT_ROW ) 
+  if ( this->DataObjectPlotMode == VTK_XYPLOT_ROW ) 
     {
     return "Plot Rows";
     }
