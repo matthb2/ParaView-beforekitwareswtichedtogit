@@ -2209,7 +2209,8 @@ void vtkDataReader::DecodeArrayName(char *resname, const char* name)
     }
   //strcpy(resname, name);
   ostrstream str;
-  int cc = 0, ch;
+  int cc = 0;
+  unsigned int ch;
   int len = static_cast<int>(strlen(name));
   char buffer[10] = "0x";
   while(name[cc]) 
