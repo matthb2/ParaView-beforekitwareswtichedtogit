@@ -213,8 +213,11 @@ void vtkQuadraticQuad::InterpolateAttributes(vtkPointData *inPd,
     {
     this->PointData->CopyData(inPd,this->PointIds->GetId(i),i);
     }
+
   // now interpolate the center point
+  this->PointIds->SetNumberOfIds(8);
   this->PointData->InterpolatePoint(inPd, 8, this->PointIds, weights);
+  this->PointIds->SetNumberOfIds(9);
   
   // copy the cell data over to the linear cell
   this->CellData->CopyData(inCd,cellId,0);
