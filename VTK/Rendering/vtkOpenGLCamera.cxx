@@ -192,7 +192,7 @@ void vtkOpenGLCamera::Render(vtkRenderer *ren)
   // insert camera view transformation 
   glMultMatrixd(matrix->Element[0]);
 
-  if ((ren->GetRenderWindow())->GetErase())
+  if ((ren->GetRenderWindow())->GetErase() && ren->GetErase())
     {
     ren->Clear();
     }
