@@ -556,7 +556,8 @@ void vtkXdmfReader::Execute()
             } 
           else 
             {
-            XdmfFloat64   *TmpPp, *TmpPoints = new XdmfFloat64[ Length ];
+            XdmfFloat64   *TmpPp;
+            XdmfFloat64   *TmpPoints = new XdmfFloat64[ Length ];
             XdmfInt64     ii, jj, kk;
 
             Geometry->GetPoints()->GetValues( 0, TmpPoints, Length );
@@ -610,7 +611,7 @@ void vtkXdmfReader::Execute()
                 cnt ++;
                 }
               }
-            delete TmpPoints;
+            delete [] TmpPoints;
             }
           Points->Modified();
           Pointset->Modified();
