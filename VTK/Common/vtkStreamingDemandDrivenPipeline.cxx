@@ -134,7 +134,7 @@ int vtkStreamingDemandDrivenPipeline::PropagateUpdateExtent(int outputPort)
     }
 
   // Range check.
-  if(outputPort < 0 ||
+  if(outputPort < -1 ||
      outputPort >= this->Algorithm->GetNumberOfOutputPorts())
     {
     vtkErrorMacro("PropagateUpdateExtent given output port index "
