@@ -173,8 +173,8 @@ int vtkDEMReader::ReadTypeARecord ()
   //
   // read the record. it is always 1024 characters long
   //
-
-  fscanf(fp, "%1024c", record);
+  fscanf(fp, "%512c", record); 
+  fscanf(fp, "%512c", record+512); 
   record[1024] = '\0';
 
   //
