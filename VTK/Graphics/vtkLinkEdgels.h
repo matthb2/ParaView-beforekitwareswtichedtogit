@@ -75,7 +75,6 @@ public:
   vtkGetMacro(GradientThreshold,float);
 
   void Update();
-  void ConditionalUpdate(int forced);
   
 protected:
   vtkImageSource *Input;
