@@ -152,8 +152,8 @@ void vtkJPEGWriteToMemoryTerm(j_compress_ptr cinfo)
     {
     vtkUnsignedCharArray *uc = self->GetResult();
     // we must close the array
-    int oldSize = uc->GetSize();
-    uc->SetNumberOfTuples(oldSize - cinfo->dest->free_in_buffer);
+    vtkIdType oldSize = uc->GetSize();
+    uc->SetNumberOfTuples(oldSize - static_cast<vtkIdType>(cinfo->dest->free_in_buffer));
     }
 }
 

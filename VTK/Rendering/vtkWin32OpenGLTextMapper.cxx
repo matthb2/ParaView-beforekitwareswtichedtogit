@@ -19,6 +19,7 @@
 #include <GL/gl.h>
 #include "vtkObjectFactory.h"
 #include "vtkgluPickMatrix.h"
+#include "vtkString.h"
 
 vtkCxxRevisionMacro(vtkWin32OpenGLTextMapper, "$Revision$");
 vtkStandardNewMacro(vtkWin32OpenGLTextMapper);
@@ -363,7 +364,8 @@ void vtkWin32OpenGLTextMapper::RenderOverlay(vtkViewport* viewport,
     glBitmap(0, 0, 0, 0, xoff + 1, yoff - 1, NULL);
     
     // Draw the shadow text
-    glCallLists (strlen(this->Input), GL_UNSIGNED_BYTE, this->Input);  
+    glCallLists (vtkString::Length(this->Input), GL_UNSIGNED_BYTE, 
+                 this->Input);  
     }
   
   // set the colors for the foreground
@@ -374,7 +376,8 @@ void vtkWin32OpenGLTextMapper::RenderOverlay(vtkViewport* viewport,
   glBitmap(0, 0, 0, 0, xoff, yoff, NULL);
 
   // display a string: // indicate start of glyph display lists 
-  glCallLists (strlen(this->Input), GL_UNSIGNED_BYTE, this->Input);  
+  glCallLists (vtkString::Length(this->Input), GL_UNSIGNED_BYTE, 
+               this->Input);  
 
   glFlush();
 #ifndef _WIN32_WCE
