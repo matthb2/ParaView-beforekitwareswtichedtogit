@@ -1,8 +1,9 @@
 /*=========================================================================
 
+  Program:   Visualization Toolkit
   Module:    $RCSfile$
 
-  Copyright (c) Kitware, Inc.
+  Copyright (c) Ken Martin, Will Schroeder, Bill Lorensen
   All rights reserved.
   See Copyright.txt or http://www.kitware.com/Copyright.htm for details.
 
@@ -29,7 +30,7 @@ class vtkImageMapToWindowLevelColors;
 class vtkImageActor;
 class vtkTextProperty;
 
-class VTK_EXPORT vtkCornerAnnotation : public vtkActor2D
+class VTK_HYBRID_EXPORT vtkCornerAnnotation : public vtkActor2D
 {
 public:
   vtkTypeRevisionMacro(vtkCornerAnnotation,vtkActor2D);
