@@ -101,6 +101,11 @@ vtkInteractorStyle::~vtkInteractorStyle()
     this->CurrentRenderer->UnRegister(this);
     this->CurrentRenderer = NULL;
     }
+  if (this->CurrentCamera)
+    {
+    this->CurrentCamera->UnRegister(this);
+    this->CurrentRenderer = NULL;
+    }
 
 }
 
@@ -304,9 +309,17 @@ void vtkInteractorStyle::FindPokedRenderer(int x,int y)
 
 //----------------------------------------------------------------------------
 void  vtkInteractorStyle::FindPokedCamera(int x,int y) 
-{
-  this->CurrentRenderer = this->Interactor->FindPokedRenderer(x,y);
+{  
+  if (this->CurrentCamera)
+    {
+    this->CurrentCamera->UnRegister(this);
+    }
+  this->FindPokedRenderer(x,y);
   this->CurrentCamera = this->CurrentRenderer->GetActiveCamera();
+  if(this->CurrentCamera)
+    {
+    this->CurrentCamera->Register(this);
+    }
   
   // side effect stuff
   float *vp = this->CurrentRenderer->GetViewport();
