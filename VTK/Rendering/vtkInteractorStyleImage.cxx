@@ -270,9 +270,11 @@ void vtkInteractorStyleImage::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os, indent);
   
-  os << indent << "Window Level Current Position: " <<
-    this->WindowLevelCurrentPosition << endl;
+  os << indent << "Window Level Current Position: ("
+     << this->WindowLevelCurrentPosition[0] << ", "
+     << this->WindowLevelCurrentPosition[1] << ")" << endl;
 
-  os << indent << "Window Level Start Position: " <<
-    this->WindowLevelStartPosition << endl;
+  os << indent << "Window Level Start Position: ("
+     << this->WindowLevelStartPosition[0] << ", "
+     << this->WindowLevelStartPosition[1] << ")" << endl;
 }
