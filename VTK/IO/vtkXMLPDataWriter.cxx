@@ -114,7 +114,7 @@ int vtkXMLPDataWriter::WriteInternal()
       for (i = this->StartPiece; i < this->EndPiece; i++)
         {
         char* fileName = this->CreatePieceFileName(i, this->PathName);
-        this->DeleteFile(fileName);
+        this->DeleteAFile(fileName);
         delete [] fileName;
         }
       return 0;
@@ -297,7 +297,7 @@ int vtkXMLPDataWriter::WritePieces()
       for(int j=this->StartPiece; j < i; ++j)
         {
         char* fileName = this->CreatePieceFileName(j, this->PathName);
-        this->DeleteFile(fileName);
+        this->DeleteAFile(fileName);
         delete [] fileName;
         }
       return 0;
