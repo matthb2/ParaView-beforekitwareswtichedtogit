@@ -22,6 +22,7 @@
 vtkCxxRevisionMacro(vtkLightKit, "$Revision$");
 vtkStandardNewMacro(vtkLightKit);
 
+#if 0 /* || Mathieu Finishes This */
 static const char *vtkLightKitTypeStrings[] = {
   "Key Light",
   "Fill Light",
@@ -40,6 +41,7 @@ static const char *vtkLightKitSubTypeStrings[] = {
   "K:H Ratio",
   NULL
 };
+#endif 
 
 //const char *vtkCommand::GetStringFromEventId(unsigned long event)
 //{
