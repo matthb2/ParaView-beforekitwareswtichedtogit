@@ -299,7 +299,9 @@ void vtkPStreamTracer::Execute()
 
   if (this->Controller->GetNumberOfProcesses() == 1)
     {
+    this->GenerateNormalsInIntegrate = 1;
     this->Superclass::Execute();
+    this->GenerateNormalsInIntegrate = 0;
     return;
     }
 
