@@ -27,6 +27,7 @@
 #include "vtkObjectFactory.h"
 #include "vtkOpenGLVolumeProVG500Mapper.h"
 #include "vtkPiecewiseFunction.h"
+#include "vtkPointData.h"
 #include "vtkRenderWindow.h"
 #include "vtkRenderer.h"
 #include "vtkToolkits.h"
