@@ -1315,8 +1315,8 @@ int vtkVolumeRayCastMapper::ComputeRowBounds(vtkVolume   *vol,
        ( minY < 0 && maxY < 0 ) ||
        ( minX > this->ImageViewportSize[0]-1 &&
          maxX > this->ImageViewportSize[0]-1 ) ||
-       ( minX > this->ImageViewportSize[0]-1 &&
-         maxX > this->ImageViewportSize[0]-1 ) )
+       ( minY > this->ImageViewportSize[1]-1 &&
+         maxY > this->ImageViewportSize[1]-1 ) )
     {
     return 0;
     }
