@@ -371,20 +371,9 @@ vtkStreamingDemandDrivenPipeline
 //----------------------------------------------------------------------------
 int vtkStreamingDemandDrivenPipeline::PropagateUpdateExtent(int outputPort)
 {
-  // Avoid infinite recursion.
-  if(this->InProcessRequest)
+  // The algorithm should not invoke anything on the executive.
+  if(!this->CheckAlgorithm("PropagateUpdateExtent"))
     {
-    vtkErrorMacro("PropagateUpdateExtent invoked during another request.  "
-                  "Returning failure to algorithm "
-                  << this->Algorithm->GetClassName() << "("
-                  << this->Algorithm << ").");
-
-    // Tests should fail when this happens because there is a bug in
-    // the code.
-    if(getenv("DASHBOARD_TEST_FROM_CTEST") || getenv("DART_TEST_FROM_DART"))
-      {
-      abort();
-      }
     return 0;
     }
 
