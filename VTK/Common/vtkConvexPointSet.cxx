@@ -170,7 +170,7 @@ void vtkConvexPointSet::Clip(float value,
   // For each tetra, contour it
   int i, j;
   vtkIdType ptId;
-  vtkDataArray *localScalars = inPD->GetScalars();
+  vtkDataArray *localScalars = inPD->GetArray("ClipDataSetScalars");
   int numTets = this->TetraIds->GetNumberOfIds() / 4;
   for (i=0; i<numTets; i++)
     {
