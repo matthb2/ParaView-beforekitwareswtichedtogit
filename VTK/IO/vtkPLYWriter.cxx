@@ -17,8 +17,11 @@
 =========================================================================*/
 #include "vtkPLYWriter.h"
 
+#include "vtkCellArray.h"
+#include "vtkCellData.h"
 #include "vtkObjectFactory.h"
 #include "vtkPLY.h"
+#include "vtkPointData.h"
 #include "vtkPolyData.h"
 #include "vtkScalarsToColors.h"
 

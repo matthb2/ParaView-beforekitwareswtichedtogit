@@ -19,9 +19,11 @@
 
 #include "vtkByteSwap.h"
 #include "vtkErrorCode.h"
+#include "vtkFieldData.h"
 #include "vtkFloatArray.h"
 #include "vtkIntArray.h"
 #include "vtkObjectFactory.h"
+#include "vtkPointData.h"
 #include "vtkStructuredGrid.h"
 #include "vtkUnsignedCharArray.h"
 

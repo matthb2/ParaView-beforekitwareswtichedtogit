@@ -17,6 +17,7 @@
 =========================================================================*/
 #include "vtkXMLRectilinearGridReader.h"
 
+#include "vtkDataArray.h"
 #include "vtkObjectFactory.h"
 #include "vtkRectilinearGrid.h"
 #include "vtkXMLDataElement.h"

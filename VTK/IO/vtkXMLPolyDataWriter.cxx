@@ -16,6 +16,8 @@
 
 =========================================================================*/
 #include "vtkXMLPolyDataWriter.h"
+
+#include "vtkCellArray.h"
 #include "vtkObjectFactory.h"
 #include "vtkPolyData.h"
 

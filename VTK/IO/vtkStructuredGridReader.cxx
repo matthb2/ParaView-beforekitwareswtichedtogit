@@ -17,6 +17,7 @@
 =========================================================================*/
 #include "vtkStructuredGridReader.h"
 
+#include "vtkFieldData.h"
 #include "vtkObjectFactory.h"
 #include "vtkStructuredGrid.h"
 

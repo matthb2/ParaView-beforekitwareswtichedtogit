@@ -19,6 +19,7 @@
 
 #include "vtkObjectFactory.h"
 #include "vtkImageData.h"
+#include "vtkPointData.h"
 
 vtkCxxRevisionMacro(vtkTIFFWriter, "$Revision$");
 vtkStandardNewMacro(vtkTIFFWriter);

@@ -18,6 +18,7 @@
 #include "vtkUnstructuredGridWriter.h"
 
 #include "vtkByteSwap.h"
+#include "vtkCellArray.h"
 #include "vtkObjectFactory.h"
 #include "vtkUnstructuredGrid.h"
 

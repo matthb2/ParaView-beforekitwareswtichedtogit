@@ -17,8 +17,9 @@
 =========================================================================*/
 #include "vtkImageWriter.h"
 
-#include "vtkObjectFactory.h"
 #include "vtkImageData.h"
+#include "vtkObjectFactory.h"
+#include "vtkPointData.h"
 
 vtkCxxRevisionMacro(vtkImageWriter, "$Revision$");
 vtkStandardNewMacro(vtkImageWriter);

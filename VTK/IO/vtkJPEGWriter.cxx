@@ -19,6 +19,7 @@
 
 #include "vtkImageData.h"
 #include "vtkObjectFactory.h"
+#include "vtkUnsignedCharArray.h"
 
 extern "C" {
 #include <jpeglib.h>

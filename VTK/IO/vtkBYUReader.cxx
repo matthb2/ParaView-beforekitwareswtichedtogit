@@ -17,8 +17,12 @@
 =========================================================================*/
 #include "vtkBYUReader.h"
 
+#include "vtkCell.h"
+#include "vtkCellArray.h"
 #include "vtkFloatArray.h"
+#include "vtkIdList.h"
 #include "vtkObjectFactory.h"
+#include "vtkPointData.h"
 #include "vtkPoints.h"
 #include "vtkPolyData.h"
 

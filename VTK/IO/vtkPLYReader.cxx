@@ -17,6 +17,8 @@
 =========================================================================*/
 #include "vtkPLYReader.h"
 
+#include "vtkCellArray.h"
+#include "vtkCellData.h"
 #include "vtkFloatArray.h"
 #include "vtkObjectFactory.h"
 #include "vtkPLY.h"

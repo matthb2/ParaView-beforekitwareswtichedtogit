@@ -17,8 +17,10 @@
 =========================================================================*/
 #include "vtkOBJReader.h"
 
+#include "vtkCellArray.h"
 #include "vtkFloatArray.h"
 #include "vtkObjectFactory.h"
+#include "vtkPointData.h"
 #include "vtkPolyData.h"
 
 vtkCxxRevisionMacro(vtkOBJReader, "$Revision$");

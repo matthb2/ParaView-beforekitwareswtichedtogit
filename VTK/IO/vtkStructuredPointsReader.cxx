@@ -17,8 +17,11 @@
 =========================================================================*/
 #include "vtkStructuredPointsReader.h"
 
-#include "vtkObjectFactory.h"
+#include "vtkDataArray.h"
 #include "vtkErrorCode.h"
+#include "vtkFieldData.h"
+#include "vtkObjectFactory.h"
+#include "vtkPointData.h"
 #include "vtkStructuredPoints.h"
 
 vtkCxxRevisionMacro(vtkStructuredPointsReader, "$Revision$");

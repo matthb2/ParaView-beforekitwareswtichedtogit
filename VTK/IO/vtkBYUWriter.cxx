@@ -17,7 +17,9 @@
 =========================================================================*/
 #include "vtkBYUWriter.h"
 
+#include "vtkCellArray.h"
 #include "vtkObjectFactory.h"
+#include "vtkPointData.h"
 #include "vtkPolyData.h"
 
 vtkCxxRevisionMacro(vtkBYUWriter, "$Revision$");

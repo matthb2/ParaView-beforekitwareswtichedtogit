@@ -18,6 +18,7 @@
 #include "vtkSTLWriter.h"
 
 #include "vtkByteSwap.h"
+#include "vtkCellArray.h"
 #include "vtkObjectFactory.h"
 #include "vtkPolyData.h"
 #include "vtkTriangle.h"

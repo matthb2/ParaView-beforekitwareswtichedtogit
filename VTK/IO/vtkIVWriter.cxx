@@ -18,6 +18,7 @@
 #include "vtkIVWriter.h"
 
 #include "vtkAbstractMapper.h"
+#include "vtkCellArray.h"
 #include "vtkLookupTable.h"
 #include "vtkObjectFactory.h"
 #include "vtkPolyData.h"

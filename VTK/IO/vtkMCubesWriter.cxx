@@ -18,7 +18,9 @@
 #include "vtkMCubesWriter.h"
 
 #include "vtkByteSwap.h"
+#include "vtkCellArray.h"
 #include "vtkObjectFactory.h"
+#include "vtkPointData.h"
 #include "vtkPolyData.h"
 
 vtkCxxRevisionMacro(vtkMCubesWriter, "$Revision$");

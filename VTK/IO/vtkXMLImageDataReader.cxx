@@ -16,9 +16,12 @@
 
 =========================================================================*/
 #include "vtkXMLImageDataReader.h"
-#include "vtkObjectFactory.h"
-#include "vtkXMLDataElement.h"
+
+#include "vtkDataArray.h"
 #include "vtkImageData.h"
+#include "vtkObjectFactory.h"
+#include "vtkPointData.h"
+#include "vtkXMLDataElement.h"
 
 vtkCxxRevisionMacro(vtkXMLImageDataReader, "$Revision$");
 vtkStandardNewMacro(vtkXMLImageDataReader);

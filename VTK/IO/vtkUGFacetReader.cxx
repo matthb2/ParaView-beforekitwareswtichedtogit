@@ -18,9 +18,11 @@
 #include "vtkUGFacetReader.h"
 
 #include "vtkByteSwap.h"
+#include "vtkCellArray.h"
 #include "vtkFloatArray.h"
 #include "vtkMergePoints.h"
 #include "vtkObjectFactory.h"
+#include "vtkPointData.h"
 #include "vtkPolyData.h"
 #include "vtkShortArray.h"
 

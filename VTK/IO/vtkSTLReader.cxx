@@ -18,6 +18,8 @@
 #include "vtkSTLReader.h"
 
 #include "vtkByteSwap.h"
+#include "vtkCellArray.h"
+#include "vtkCellData.h"
 #include "vtkFloatArray.h"
 #include "vtkMergePoints.h"
 #include "vtkObjectFactory.h"
