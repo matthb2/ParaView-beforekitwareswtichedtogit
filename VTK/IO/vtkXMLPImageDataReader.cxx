@@ -156,3 +156,13 @@ vtkXMLDataReader* vtkXMLPImageDataReader::CreatePieceReader()
 {
   return vtkXMLImageDataReader::New();
 }
+
+
+
+//----------------------------------------------------------------------------
+int vtkXMLPImageDataReader::FillOutputPortInformation(int, vtkInformation* info)
+{
+  info->Set(vtkDataObject::DATA_TYPE_NAME(), "vtkImageData");
+  return 1;
+}
+

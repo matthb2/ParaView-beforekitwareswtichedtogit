@@ -19,6 +19,7 @@
 #include "vtkStructuredGrid.h"
 #include "vtkXMLDataElement.h"
 #include "vtkXMLStructuredGridReader.h"
+#include "vtkInformation.h"
 #include "vtkStreamingDemandDrivenPipeline.h"
 
 vtkCxxRevisionMacro(vtkXMLPStructuredGridReader, "$Revision$");
@@ -172,3 +173,11 @@ vtkXMLDataReader* vtkXMLPStructuredGridReader::CreatePieceReader()
 {
   return vtkXMLStructuredGridReader::New();
 }
+
+
+int vtkXMLPStructuredGridReader::FillOutputPortInformation(int, vtkInformation *info)
+  {
+  info->Set(vtkDataObject::DATA_TYPE_NAME(), "vtkStructuredGrid");
+  return 1;
+  }
+

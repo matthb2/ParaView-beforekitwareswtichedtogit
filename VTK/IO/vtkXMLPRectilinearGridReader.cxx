@@ -19,6 +19,7 @@
 #include "vtkRectilinearGrid.h"
 #include "vtkXMLDataElement.h"
 #include "vtkXMLRectilinearGridReader.h"
+#include "vtkInformation.h"
 #include "vtkStreamingDemandDrivenPipeline.h"
 
 vtkCxxRevisionMacro(vtkXMLPRectilinearGridReader, "$Revision$");
@@ -216,3 +217,12 @@ void vtkXMLPRectilinearGridReader::CopySubCoordinates(int* inBounds,
          inArray->GetVoidPointer(sourceStartIndex*components),
          length*tupleSize);
 }
+
+
+int vtkXMLPRectilinearGridReader::FillOutputPortInformation(int, vtkInformation *info)
+  {
+  info->Set(vtkDataObject::DATA_TYPE_NAME(), "vtkRectilinearGrid");
+  return 1;
+  }
+
+

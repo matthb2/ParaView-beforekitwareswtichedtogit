@@ -19,6 +19,7 @@
 #include "vtkPolyData.h"
 #include "vtkUnsignedCharArray.h"
 #include "vtkCellArray.h"
+#include "vtkInformation.h"
 #include "vtkStreamingDemandDrivenPipeline.h"
 
 vtkCxxRevisionMacro(vtkXMLPPolyDataReader, "$Revision$");
@@ -277,4 +278,13 @@ void vtkXMLPPolyDataReader::CopyArrayForCells(vtkDataArray* inArray,
 vtkXMLDataReader* vtkXMLPPolyDataReader::CreatePieceReader()
 {
   return vtkXMLPolyDataReader::New();
+}
+
+
+//----------------------------------------------------------------------------
+int vtkXMLPPolyDataReader::FillOutputPortInformation(int,
+                                                 vtkInformation* info)
+{
+  info->Set(vtkDataObject::DATA_TYPE_NAME(), "vtkPolyData");
+  return 1;
 }
