@@ -16,17 +16,19 @@
 
 =========================================================================*/
 #include "vtkPolyData.h"
-#include "vtkVertex.h"
-#include "vtkPolyVertex.h"
+
+#include "vtkCriticalSection.h"
+#include "vtkEmptyCell.h"
 #include "vtkLine.h"
+#include "vtkObjectFactory.h"
+#include "vtkPointLocator.h"
 #include "vtkPolyLine.h"
+#include "vtkPolyVertex.h"
+#include "vtkPolygon.h"
+#include "vtkQuad.h"
 #include "vtkTriangle.h"
 #include "vtkTriangleStrip.h"
-#include "vtkQuad.h"
-#include "vtkPolygon.h"
-#include "vtkEmptyCell.h"
-#include "vtkObjectFactory.h"
-#include "vtkCriticalSection.h"
+#include "vtkVertex.h"
 
 vtkCxxRevisionMacro(vtkPolyData, "$Revision$");
 vtkStandardNewMacro(vtkPolyData);

@@ -16,9 +16,13 @@
 
 =========================================================================*/
 #include "vtkPointSet.h"
+
 #include "vtkSource.h"
+#include "vtkPointLocator.h"
 
 vtkCxxRevisionMacro(vtkPointSet, "$Revision$");
+
+vtkCxxSetObjectMacro(vtkPointSet,Points,vtkPoints);
 
 vtkPointSet::vtkPointSet ()
 {

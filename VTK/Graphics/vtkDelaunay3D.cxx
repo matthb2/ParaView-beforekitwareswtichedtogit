@@ -16,12 +16,14 @@
 
 =========================================================================*/
 #include "vtkDelaunay3D.h"
+
+#include "vtkEdgeTable.h"
 #include "vtkMath.h"
+#include "vtkObjectFactory.h"
+#include "vtkPointLocator.h"
+#include "vtkPolyData.h"
 #include "vtkTetra.h"
 #include "vtkTriangle.h"
-#include "vtkEdgeTable.h"
-#include "vtkPolyData.h"
-#include "vtkObjectFactory.h"
 
 vtkCxxRevisionMacro(vtkDelaunay3D, "$Revision$");
 vtkStandardNewMacro(vtkDelaunay3D);
