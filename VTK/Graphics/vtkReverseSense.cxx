@@ -82,7 +82,7 @@ void vtkReverseSense::Execute()
     }
 
   //If specified and normals available, reverse orientation of normals.
-  // Using MakeObject() creates normals of the same data type.
+  // Using NewInstance() creates normals of the same data type.
   if ( this->ReverseNormals && normals )
     {
     //first do point normals
