@@ -709,6 +709,15 @@ void vtkSource::SetNumberOfOutputs(int num)
     {
     return;
     }
+
+  // Destroy extra outputs if decreasing number of outputs.
+  if(num < this->NumberOfOutputs)
+    {
+    for(idx=num; idx < this->NumberOfOutputs; ++idx)
+      {
+      this->SetNthOutput(idx, 0);
+      }
+    }
   
   // Allocate new arrays.
   outputs = new vtkDataObject *[num];
