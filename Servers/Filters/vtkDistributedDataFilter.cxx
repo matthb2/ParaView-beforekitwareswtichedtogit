@@ -870,9 +870,9 @@ int vtkDistributedDataFilter::PairWiseDataExchange(int *yourSize,
 
   delete [] myData;
   delete [] mySize;
+#endif
 
   return 0;
-#endif
 }
 
 #ifdef VTK_USE_MPI
