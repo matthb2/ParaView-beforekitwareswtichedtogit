@@ -149,10 +149,10 @@ void vtkSphereWidget::SetEnabled(int enabling)
     
     if ( ! this->CurrentRenderer )
       {
-      this->CurrentRenderer = 
+      this->SetCurrentRenderer(
         this->Interactor->FindPokedRenderer(
           this->Interactor->GetLastEventPosition()[0],
-          this->Interactor->GetLastEventPosition()[1]);
+          this->Interactor->GetLastEventPosition()[1]));
       if (this->CurrentRenderer == NULL)
         {
         return;
@@ -205,7 +205,7 @@ void vtkSphereWidget::SetEnabled(int enabling)
     this->CurrentRenderer->RemoveActor(this->HandleActor);
 
     this->InvokeEvent(vtkCommand::DisableEvent,NULL);
-    this->CurrentRenderer = NULL;
+    this->SetCurrentRenderer(NULL);
     }
 
   this->Interactor->Render();
