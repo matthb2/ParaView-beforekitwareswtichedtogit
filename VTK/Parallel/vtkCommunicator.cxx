@@ -34,7 +34,7 @@
 vtkCxxRevisionMacro(vtkCommunicator, "$Revision$");
 
 template <class T>
-static int SendDataArray(T* data, int length, int handle, int tag, vtkCommunicator *self)
+int SendDataArray(T* data, int length, int handle, int tag, vtkCommunicator *self)
 {
 
   self->Send(data, length, handle, tag);

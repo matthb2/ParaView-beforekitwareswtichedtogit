@@ -313,8 +313,7 @@ void vtkBMPReader::ComputeDataIncrements()
 // This function reads in one data of data.
 // templated to handle different data types.
 template <class OT>
-static void vtkBMPReaderUpdate2(vtkBMPReader *self, vtkImageData *data, 
-                                OT *outPtr)
+void vtkBMPReaderUpdate2(vtkBMPReader *self, vtkImageData *data, OT *outPtr)
 {
   int inIncr[3], outIncr[3];
   OT *outPtr0, *outPtr1, *outPtr2;

@@ -51,10 +51,9 @@ vtkXImageMapper::~vtkXImageMapper()
  * for a window of values of type T, lower and upper. 
  */
 template <class T>
-static void vtkXImageMapperClamps ( vtkImageData *data, float w, 
-                                    float l, T& lower, T& upper, 
-                                    unsigned char &lower_val, 
-                                    unsigned char &upper_val)
+void vtkXImageMapperClamps ( vtkImageData *data, float w,
+                             float l, T& lower, T& upper, 
+                             unsigned char &lower_val, unsigned char &upper_val)
 {
   double f_lower, f_upper, f_lower_val, f_upper_val;
   double adjustedLower, adjustedUpper;
@@ -243,10 +242,9 @@ void vtkXImageMapper::GetXColors(int colors[])
 //----------------------------------------------------------------------------
 // A templated function that handles gray scale images.
 template <class T>
-static void vtkXImageMapperRenderGray(vtkXImageMapper *mapper, 
-                                      vtkViewport *viewport,
-                                      vtkImageData *data,
-                                      T *inPtr, unsigned char *outPtr)
+void vtkXImageMapperRenderGray(vtkXImageMapper *mapper, vtkViewport *viewport,
+                               vtkImageData *data, T *inPtr, 
+                               unsigned char *outPtr)
 {
 
   T *inPtr0, *inPtr1, *endPtr;
@@ -463,10 +461,9 @@ static void vtkXImageMapperRenderGray(vtkXImageMapper *mapper,
 //----------------------------------------------------------------------------
 // A templated function that handles color images. (only True Color 24 bit)
 template <class T>
-static void vtkXImageMapperRenderColor(vtkXImageMapper *mapper,
-                                       vtkViewport *viewport,
-                                       vtkImageData *data, T *redPtr, int bpp,
-                                       unsigned char *outPtr)
+void vtkXImageMapperRenderColor(vtkXImageMapper *mapper, vtkViewport *viewport,
+                                vtkImageData *data, T *redPtr, int bpp,
+                                unsigned char *outPtr)
 {
   int red, green, blue;
   T *redPtr0, *redPtr1;

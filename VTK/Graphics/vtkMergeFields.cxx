@@ -280,9 +280,8 @@ void vtkMergeFields::Execute()
 
 // fast pointer copy
 template <class T>
-static void CopyTuples(T* input, T* output, vtkIdType numTuples, 
-                       int numInComp, int numOutComp,
-                       int inComp, int outComp)
+void vtkCopyTuples(T* input, T* output, vtkIdType numTuples, 
+                int numInComp, int numOutComp, int inComp, int outComp)
 {
   for (int i=0; i<numTuples; i++)
     {
@@ -310,7 +309,7 @@ int vtkMergeFields::MergeArray(vtkDataArray* in, vtkDataArray* out,
       {
       switch (out->GetDataType())
         {
-        vtkTemplateMacro7(CopyTuples, (VTK_TT *)in->GetVoidPointer(0), 
+        vtkTemplateMacro7(vtkCopyTuples, (VTK_TT *)in->GetVoidPointer(0), 
                           (VTK_TT *)out->GetVoidPointer(0), numTuples,
                           in->GetNumberOfComponents(), 
                           out->GetNumberOfComponents(), inComp, outComp );

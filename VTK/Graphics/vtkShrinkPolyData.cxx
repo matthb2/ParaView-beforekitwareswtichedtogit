@@ -29,8 +29,7 @@ vtkShrinkPolyData::vtkShrinkPolyData(float sf)
 
 
 template <class T>
-static void vtkShrinkPolyDataExecute(vtkShrinkPolyData *self,
-                                     T *inPts, float shrinkFactor)
+void vtkShrinkPolyDataExecute(vtkShrinkPolyData *self, T *inPts, float shrinkFactor)
 {
   int j, k;
   T center[3];
