@@ -1209,6 +1209,11 @@ void vtkSplineWidget::SetResolution(int resolution)
   this->LineActor->Modified();
 }
 
+void vtkSplineWidget::GetPolyData(vtkPolyData *pd)
+{ 
+  pd->ShallowCopy(this->LineData); 
+}
+
 void vtkSplineWidget::SizeHandles()
 {
   float radius = this->vtk3DWidget::SizeHandles(1.0);
