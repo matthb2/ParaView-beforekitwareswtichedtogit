@@ -121,7 +121,6 @@ void vtkLODActor::Render(vtkRenderer *ren, vtkMapper *vtkNotUsed(m))
       // If the LOD has never been rendered, select it!
       if (tempTime == 0.0)
         { 
-        // cerr << "      Has never been rendererd\n";
         bestMapper = mapper;
         bestTime = 0.0;
         }
@@ -129,13 +128,11 @@ void vtkLODActor::Render(vtkRenderer *ren, vtkMapper *vtkNotUsed(m))
         {
         if (bestTime > myTime && tempTime < bestTime)
           {
-          // cerr << "      Less than best in violation\n";
           bestMapper = mapper;
           bestTime = tempTime;
           }
         if (tempTime > bestTime && tempTime < myTime)
           { 
-          // cerr << "      Larger than best\n";
           bestMapper = mapper;
           bestTime = tempTime;
           }
