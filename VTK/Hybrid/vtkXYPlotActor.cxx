@@ -353,6 +353,8 @@ void vtkXYPlotActor::RemoveAllInputs()
       }
     }
   this->SelectedInputScalarsComponent->Reset();
+
+  this->DataObjectInputList->RemoveAllItems();
 }
 
 //----------------------------------------------------------------------------
