@@ -692,7 +692,7 @@ void vtkImageReader2::ExecuteData(vtkDataObject *output)
   void *ptr = NULL;
   int *ext;
   
-  if (!this->FileName && !this->FilePattern || !this->File)
+  if (!this->FileName && !this->FilePattern)
     {
     vtkErrorMacro("Either a valid FileName or FilePattern must be specified.");
     return;
