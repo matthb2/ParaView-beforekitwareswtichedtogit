@@ -446,7 +446,7 @@ int vtkQuadraticTetra::GetParametricCenter(double pcoords[3])
 // Compute interpolation functions. First four nodes are the 
 // tetrahedron corner vertices; the others are mid-edge nodes.
 void vtkQuadraticTetra::InterpolationFunctions(double pcoords[3], 
-                                               double weights[3])
+                                               double weights[10])
 {
   double r = pcoords[0];
   double s = pcoords[1];
