@@ -337,6 +337,7 @@ void vtkMultiProcessController::ProcessRMIs()
     if (!this->RMICommunicator->Receive(triggerMessage, 3, ANY_SOURCE, 
                                         RMI_TAG))
       {
+      vtkErrorMacro("Could not receive RMI trigger message.");
       break;
       }
     if (triggerMessage[1] > 0)
@@ -345,6 +346,7 @@ void vtkMultiProcessController::ProcessRMIs()
       if (!this->RMICommunicator->Receive((char*)(arg), triggerMessage[1], 
                                           triggerMessage[2], RMI_ARG_TAG))
         {
+        vtkErrorMacro("Could not receive RMI argument.");
         break;
         }
       }
