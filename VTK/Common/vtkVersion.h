@@ -58,7 +58,7 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 #define VTK_MAJOR_VERSION 2
 #define VTK_MINOR_VERSION 2
 #define VTK_BUILD_VERSION 2
-#define VTK_VERSION_ID "$RCSfile$ $Revision$, $Date$"
+#define VTK_VERSION_ID "vtk running source id $Revision$, $Date$"
 
 
 class VTK_EXPORT vtkVersion : public vtkObject {
