@@ -129,7 +129,14 @@ void vtkPVDuplicatePolyData::Execute()
     }
   // MPIRoot as client.
   // Subset of satellites for zero empty.
-  myId = this->Controller->GetLocalProcessId() - this->ZeroEmpty;
+  if (this->Controller)
+    {
+    myId = this->Controller->GetLocalProcessId() - this->ZeroEmpty;
+    }
+  else
+    {
+    myId = 0;
+    }
   if (myId < 0)
     {
     this->ClientExecute(this->Controller);
