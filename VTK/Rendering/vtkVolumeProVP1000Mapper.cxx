@@ -769,10 +769,13 @@ void vtkVolumeProVP1000Mapper::UpdateVolume( vtkRenderer * vtkNotUsed(ren), vtkV
       correctionMatrixVLI[i][j] = correctionTransform->GetMatrix()->GetElement( i, j );
       }
 
-  status = this->Volume->SetCorrectionMatrix( correctionMatrixVLI );
-  if ( status != kVLIOK )
+  if( this->Volume )
     {
-    vtkErrorMacro( << "Error setting the correction matrix: " << status );
+    status = this->Volume->SetCorrectionMatrix( correctionMatrixVLI );
+    if ( status != kVLIOK )
+      {
+      vtkErrorMacro( << "Error setting the correction matrix: " << status );
+      }
     }
 
   status = this->Context->GetCamera().SetModelMatrix( modelMatrixVLI );
@@ -786,7 +789,8 @@ void vtkVolumeProVP1000Mapper::UpdateVolume( vtkRenderer * vtkNotUsed(ren), vtkV
   modelTransform->Delete();
 
   // Update the subvolume if it is reasonable
-  if ( this->SubVolume[0] >= 0 && 
+  if ( this->Volume &&
+       this->SubVolume[0] >= 0 && 
        this->SubVolume[2] >= 0 &&
        this->SubVolume[4] >= 0 &&
        this->SubVolume[0] < dataSize[0] &&
