@@ -95,9 +95,9 @@ inline void vtkGreedyTerrainDecimation::ComputeImageCoordinates(vtkIdType inputP
 inline vtkIdType vtkGreedyTerrainDecimation::InsertNextPoint(vtkIdType inputPtId, 
                                                              double x[3])
 {
-  if ( (this->CurrentPointId+1) >= (vtkIdType)this->PointInfo->capacity() )
+  if ( (this->CurrentPointId+1) >= (vtkIdType)this->PointInfo->size() )
     {
-    this->PointInfo->resize(2*this->PointInfo->capacity());
+    this->PointInfo->resize(2*this->PointInfo->size());
     }
 
   double *ptr = this->Points->WritePointer(3*this->CurrentPointId,3);
@@ -651,7 +651,7 @@ void vtkGreedyTerrainDecimation::Execute()
   this->TerrainInfo = new vtkGreedyTerrainDecimationTerrainInfoType(numInputPts,vtkTerrainInfo());
 
   this->PointInfo = new vtkGreedyTerrainDecimationPointInfoType;
-  this->PointInfo->reserve(numPts);
+  this->PointInfo->resize(numPts);
 
   // Setup the point attributes
   this->OutputPD->CopyAllocate(this->InputPD,numPts);
