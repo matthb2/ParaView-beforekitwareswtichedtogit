@@ -643,7 +643,11 @@ int vtkTIFFReader::CanReadFile(const char* fname)
   vtkTIFFReaderInternal tf;
   int res = tf.Open(fname);
   tf.Clean();
-  return res;
+  if (res)
+    {
+    return 3;
+    }
+  return 0;
 }
 
 //----------------------------------------------------------------------------
