@@ -86,6 +86,8 @@ vtkPVXMLElement::~vtkPVXMLElement()
 void vtkPVXMLElement::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os, indent);
+  os << "Id: " << (this->Id?this->Id:"<none>") << endl;
+  os << "Name: " << (this->Name?this->Name:"<none>") << endl;
 }
 
 //----------------------------------------------------------------------------
