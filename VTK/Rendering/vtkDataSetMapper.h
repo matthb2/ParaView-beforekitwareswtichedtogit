@@ -87,7 +87,7 @@ public:
     this->SetInput(((vtkDataSet *)tmp->GetOutput())); tmp->Delete();}  
 
   vtkDataSet *GetInput();
-
+  
 protected:
   vtkDataSetMapper();
   ~vtkDataSetMapper();
