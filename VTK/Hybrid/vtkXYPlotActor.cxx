@@ -943,6 +943,11 @@ void vtkXYPlotActor::PrintSelf(ostream& os, vtkIndent indent)
      << this->LegendPosition2[1] << ")\n";
 
   os << indent << "Glyph Size: " << this->GlyphSize << endl;
+
+  os << indent << "Legend Actor:";
+  this->LegendActor->PrintSelf( os << endl, i2);
+  os << indent << "Glyph Source:";
+  this->GlyphSource->PrintSelf( os << endl, i2);
 }
 
 //----------------------------------------------------------------------------
