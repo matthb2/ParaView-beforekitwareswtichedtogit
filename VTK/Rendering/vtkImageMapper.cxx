@@ -238,7 +238,7 @@ void vtkImageMapper::RenderStart(vtkViewport* viewport, vtkActor2D* actor)
     this->DisplayExtent[4] = this->ZSlice;
     this->DisplayExtent[5] = this->ZSlice;
     //
-    this->GetInput()->SetUpdateExtent(this->DisplayExtent);
+    this->GetInput()->SetUpdateExtentToWholeExtent();
     // clear the position adjustment
     this->PositionAdjustment[0] = 0;
     this->PositionAdjustment[1] = 0;
