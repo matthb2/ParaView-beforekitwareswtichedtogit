@@ -61,7 +61,8 @@ vtkPolyData *vtkSpatialRepresentationFilter::GetOutput(int level)
     return this->GetOutput();
     }
 
-  if ( this->Outputs[level] == NULL )
+  if ( this->GetNumberOfOutputs() <= level ||
+       this->Outputs[level] == NULL )
     {
     this->vtkSource::SetNthOutput(level, vtkPolyData::New());
     this->Modified(); //asking for new output
