@@ -1008,11 +1008,14 @@ vtkIdType TemplateCastRay(
       {
       // Far intersection is the nearest intersectation that is farther
       // than nearZ.
-      double tmpZ = 
-        -( fx*candidate[i]->A + 
-           fy*candidate[i]->B + 
-           candidate[i]->D) / candidate[i]->C;
-
+      double tmpZ = 1.0;
+      if (candidate[i]->C != 0.0)
+        {
+        tmpZ = 
+          -( fx*candidate[i]->A + 
+             fy*candidate[i]->B + 
+             candidate[i]->D) / candidate[i]->C;
+        }
       if (tmpZ > nearZ && tmpZ < farZ)
         {
         farZ = tmpZ;
