@@ -478,16 +478,18 @@ int vtkSubjectHelper::InvokeEvent(unsigned long event, void *callData,
     if (!elem->Visited &&
         elem->Event == event || elem->Event == vtkCommand::AnyEvent)
       {
-      int abort = 0;
       elem->Visited = 1;
-      elem->Command->SetAbortFlagPointer(&abort);
+      vtkCommand* command = elem->Command;
+      command->Register(command);
       elem->Command->Execute(self,event,callData);
       // if the command set the abort flag, then stop firing events
       // and return
-      if(abort)
+      if(command->GetAbortFlag())
         {
+        command->UnRegister();
         return 1;
         }
+      command->UnRegister();
       }
     if (this->ListModified)
       {
