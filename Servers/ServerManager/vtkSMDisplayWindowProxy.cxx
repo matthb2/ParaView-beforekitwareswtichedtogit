@@ -289,7 +289,7 @@ void vtkSMDisplayWindowProxy::WriteImage(const char* filename,
 }
 
 //---------------------------------------------------------------------------
-void vtkSMDisplayWindowProxy::AddDisplay(vtkSMDisplayerProxy* display)
+void vtkSMDisplayWindowProxy::AddDisplayer(vtkSMDisplayerProxy* display)
 {
   this->CreateVTKObjects(1);
 
