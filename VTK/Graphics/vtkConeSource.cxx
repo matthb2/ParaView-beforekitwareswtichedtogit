@@ -128,6 +128,7 @@ void vtkConeSource::Execute()
     break;
   }
   newPoints = vtkPoints::New();
+  newPoints->SetDataTypeToFloat(); //used later during transformation
   newPoints->Allocate(numPts);
 
   // Create cone
