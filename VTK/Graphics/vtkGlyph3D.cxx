@@ -91,11 +91,17 @@ void vtkGlyph3D::Execute()
   int numberOfSources = this->GetNumberOfSources();
   vtkPolyData *defaultSource = NULL;
   vtkIdTypeArray *pointIds=0;
-  
+
   vtkDebugMacro(<<"Generating glyphs");
 
   pts = vtkIdList::New();
   pts->Allocate(VTK_CELL_SIZE);
+
+  if (!input)
+    {
+    vtkErrorMacro(<<"No input");
+    return;
+    }
 
   pd = input->GetPointData();
   inScalars = pd->GetScalars(this->InputScalarsSelection);
