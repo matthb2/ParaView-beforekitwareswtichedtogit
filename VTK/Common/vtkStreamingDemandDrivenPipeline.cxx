@@ -129,7 +129,9 @@ int vtkStreamingDemandDrivenPipeline::PropagateUpdateExtent(int outputPort)
   if(this->InProcessUpstreamRequest)
     {
     vtkErrorMacro("PropagateUpdateExtent invoked during an upstream request.  "
-                  "Returning failure from the method.");
+                  "Returning failure to algorithm "
+                  << this->Algorithm->GetClassName() << "("
+                  << this->Algorithm << ").");
     return 0;
     }
 
