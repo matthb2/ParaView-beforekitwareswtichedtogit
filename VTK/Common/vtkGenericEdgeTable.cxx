@@ -72,15 +72,15 @@ void vtkEdgeTablePoints::LoadFactor()
   vtkIdType numBins = 0;
 
   vtkIdType size = PointVector.size();
-  std::cerr << "EdgeTablePoints:\n";
+  cerr << "EdgeTablePoints:\n";
   for(int i=0; i<size; i++)
     {
     numEntries += PointVector[i].size();
     if( PointVector[i].size() ) numBins++;
-    std::cerr << PointVector[i].size() << ",";
+    cerr << PointVector[i].size() << ",";
     }
-  std::cerr << "\n";
-  std::cout << size << "," << numEntries << "," << numBins << "," << Modulo
+  cerr << "\n";
+  cout << size << "," << numEntries << "," << numBins << "," << Modulo
             << "\n";
 }
 
@@ -139,7 +139,7 @@ void vtkEdgeTableEdge::LoadFactor()
   vtkIdType numBins = 0;
 
   vtkIdType size = Vector.size();
-  std::cerr << "EdgeTableEdge:\n";
+  cerr << "EdgeTableEdge:\n";
   for(int i=0; i<size; i++)
     {
     VectorEdgeTableType v = Vector[i];
@@ -147,8 +147,8 @@ void vtkEdgeTableEdge::LoadFactor()
     if(v.size()) numBins++;
     //std::cerr << v.size() << ",";
     }
-  std::cerr << "\n";
-  std::cerr << size << "," << numEntry << "," << numBins << "," << Modulo
+  cerr << "\n";
+  cerr << size << "," << numEntry << "," << numBins << "," << Modulo
             << "\n";
 }
 
