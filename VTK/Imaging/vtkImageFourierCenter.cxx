@@ -38,54 +38,26 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 
 
 =========================================================================*/
-// .NAME vtkImageGradient - Computes the gradient vector.
-// .SECTION Description
-// vtkImageGradient computes the gradient
-// vector of an image.  The vector results are placed along the
-// component axis.  Setting the FilteredAxes determines whether the gradient
-// computed on 1D lines, 2D images, 3D volumes or higher dimensional 
-// images.  The default is two dimensional XY images.  OutputScalarType
-// is always float.  Gradient is computed using central differences.
+#include "vtkImageFourierCenter.h"
 
-
-
-#ifndef __vtkImageGradient_h
-#define __vtkImageGradient_h
-
-
-#include "vtkImageSpatialFilter.h"
-
-class VTK_EXPORT vtkImageGradient : public vtkImageFilter
+//----------------------------------------------------------------------------
+vtkImageFourierCenter::vtkImageFourierCenter()
 {
-public:
-  vtkImageGradient();
-  static vtkImageGradient *New() {return new vtkImageGradient;};
-  const char *GetClassName() {return "vtkImageGradient";};
-  void PrintSelf(ostream& os, vtkIndent indent);
-  
-  // Description:
-  // Which axes should be considered when computing the gradient.
-  void SetFilteredAxes(int num, int *axes);
-  vtkImageSetMacro(FilteredAxes,int);
-  
-  // Description:
-  // If "HandleBoundariesOn" then boundary pixels are duplicated
-  // So central differences can get values.
-  vtkSetMacro(HandleBoundaries, int);
-  vtkGetMacro(HandleBoundaries, int);
-  vtkBooleanMacro(HandleBoundaries, int);
+  int idx;
+  vtkImageFourierCenter1D *filter;
 
-protected:
-  int HandleBoundaries;
-  int Dimensionality;
-  
-  void ExecuteImageInformation(vtkImageCache *in, vtkImageCache *out);
-  void ComputeRequiredInputUpdateExtent(vtkImageCache *out, vtkImageCache *in);
-  void Execute(vtkImageRegion *inRegion, vtkImageRegion *outRegion);
+  for (idx = 0; idx < 4; ++idx)
+    {
+    filter = vtkImageFourierCenter1D::New();
+    this->Filters[idx] = filter;
+    filter->SetFilteredAxis(idx);
+    }
+  // Let the superclass set some superclass variables of the filters.
+  this->InitializeFilters();
 
-};
-
-#endif
+  // Default 2D FourierCenter.
+  this->SetFilteredAxes(VTK_IMAGE_X_AXIS, VTK_IMAGE_Y_AXIS);
+}
 
 
 

@@ -38,49 +38,37 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 
 
 =========================================================================*/
-// .NAME vtkImageGradient - Computes the gradient vector.
+// .NAME vtkImageSobel2D - Computes a vector field using sobel functions.
 // .SECTION Description
-// vtkImageGradient computes the gradient
-// vector of an image.  The vector results are placed along the
-// component axis.  Setting the FilteredAxes determines whether the gradient
-// computed on 1D lines, 2D images, 3D volumes or higher dimensional 
-// images.  The default is two dimensional XY images.  OutputScalarType
-// is always float.  Gradient is computed using central differences.
+// vtkImageSobel2D computes a vector field from a scalar field by using
+// Sobel functions.  The number of vector components is 2 because
+// the input is an image.  Output is always floats.
 
 
 
-#ifndef __vtkImageGradient_h
-#define __vtkImageGradient_h
+#ifndef __vtkImageSobel2D_h
+#define __vtkImageSobel2D_h
 
 
-#include "vtkImageSpatialFilter.h"
+#include "vtkImageFilter.h"
 
-class VTK_EXPORT vtkImageGradient : public vtkImageFilter
+class VTK_EXPORT vtkImageSobel2D : public vtkImageFilter
 {
 public:
-  vtkImageGradient();
-  static vtkImageGradient *New() {return new vtkImageGradient;};
-  const char *GetClassName() {return "vtkImageGradient";};
+  vtkImageSobel2D();
+  static vtkImageSobel2D *New() {return new vtkImageSobel2D;};
+  const char *GetClassName() {return "vtkImageSobel2D";};
   void PrintSelf(ostream& os, vtkIndent indent);
-  
-  // Description:
-  // Which axes should be considered when computing the gradient.
-  void SetFilteredAxes(int num, int *axes);
-  vtkImageSetMacro(FilteredAxes,int);
-  
-  // Description:
-  // If "HandleBoundariesOn" then boundary pixels are duplicated
-  // So central differences can get values.
-  vtkSetMacro(HandleBoundaries, int);
-  vtkGetMacro(HandleBoundaries, int);
-  vtkBooleanMacro(HandleBoundaries, int);
 
-protected:
-  int HandleBoundaries;
-  int Dimensionality;
+  // Description:
+  // Specify which axes will contribute to the gradient.
+  void SetFilteredAxes(int axis0, int axis1);
+  vtkGetVector2Macro(FilteredAxes, int);
   
+protected:
   void ExecuteImageInformation(vtkImageCache *in, vtkImageCache *out);
-  void ComputeRequiredInputUpdateExtent(vtkImageCache *out, vtkImageCache *in);
+  void ComputeRequiredInputUpdateExtent(vtkImageCache *out, 
+					vtkImageCache *in);
   void Execute(vtkImageRegion *inRegion, vtkImageRegion *outRegion);
 
 };

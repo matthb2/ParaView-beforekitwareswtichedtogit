@@ -5,7 +5,7 @@
   Language:  C++
   Date:      $Date$
   Version:   $Revision$
-  Thanks:    Thanks to C. Charles Law who developed this class.
+  Thanks:    Thanks to Abdalmajeid M. Alyassin who developed this class.
 
 Copyright (c) 1993-1995 Ken Martin, Will Schroeder, Bill Lorensen.
 
@@ -39,100 +39,117 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 
 =========================================================================*/
 #include "vtkImageRegion.h"
-#include "vtkImageConstantPad.h"
-
-
+#include "vtkImageCache.h"
+#include "vtkImagePermute.h"
 
 //----------------------------------------------------------------------------
 // Description:
 // Constructor sets default values
-vtkImageConstantPad::vtkImageConstantPad()
+vtkImagePermute::vtkImagePermute()
 {
-  // execute function handles four axes.
+  this->SetExecutionAxes(VTK_IMAGE_X_AXIS, VTK_IMAGE_Y_AXIS,
+			 VTK_IMAGE_Z_AXIS, VTK_IMAGE_COMPONENT_AXIS);
+}
+
+
+//----------------------------------------------------------------------------
+void vtkImagePermute::SetFilteredAxes(int num, int *axes)
+{
+  this->vtkImageFilter::SetFilteredAxes(num, axes);
   this->NumberOfExecutionAxes = 4;
 }
 
+//----------------------------------------------------------------------------
+void vtkImagePermute::ExecuteImageInformation(vtkImageCache *in, 
+					      vtkImageCache *out)
+{
+  int min, max;
+  float spacing;
+  float origin;
+  int idx, axis;
+  
+  for (idx = 0; idx < this->NumberOfFilteredAxes; ++idx)
+    {
+    axis = this->FilteredAxes[idx];
+    in->GetAxisWholeExtent(axis, min, max);
+    out->SetAxisWholeExtent(idx, min, max);
+    in->GetAxisSpacing(axis, spacing);
+    out->SetAxisSpacing(idx, spacing);
+    in->GetAxisOrigin(axis, origin);
+    out->SetAxisOrigin(idx, origin);
+    }
+}
+
+
+//----------------------------------------------------------------------------
+void vtkImagePermute::ComputeRequiredInputUpdateExtent(vtkImageCache *out, 
+						       vtkImageCache *in)
+{
+  int min, max;
+  int idx, axis;
+  
+  for (idx = 0; idx < this->NumberOfFilteredAxes; ++idx)
+    {
+    axis = this->FilteredAxes[idx];
+    out->GetAxisUpdateExtent(idx, min, max);
+    in->SetAxisUpdateExtent(axis, min, max);
+    }
+}
 
 
 //----------------------------------------------------------------------------
 // Description:
 // This templated function executes the filter for any type of data.
 template <class T>
-static void vtkImageConstantPadExecute(vtkImageConstantPad *self,
-				       vtkImageRegion *inRegion, T *inPtr,
-				       vtkImageRegion *outRegion, T *outPtr)
+static void vtkImagePermuteExecute(vtkImagePermute *self,
+				   vtkImageRegion *inRegion, T *inPtr,
+				   vtkImageRegion *outRegion, T *outPtr)
 {
   int min0, max0, min1, max1, min2, max2, min3, max3;
-  int imageMin0, imageMax0, imageMin1, imageMax1, 
-    imageMin2, imageMax2, imageMin3, imageMax3;
-  int outIdx0, outIdx1, outIdx2, outIdx3;
+  int idx0, idx1, idx2, idx3;
   int inInc0, inInc1, inInc2, inInc3;
   int outInc0, outInc1, outInc2, outInc3;
-  T *inPtr0, *inPtr1, *inPtr2, *inPtr3;
-  T *outPtr0, *outPtr1, *outPtr2, *outPtr3;
-  int state0, state1, state2, state3;
-  T constant;
+  T  *inPtr0, *inPtr1, *inPtr2, *inPtr3;
+  T  *outPtr0, *outPtr1, *outPtr2, *outPtr3;
 
-
-  constant = (T)(self->GetConstant());
+  self = self;
+  outRegion->SetAxes(VTK_IMAGE_X_AXIS, VTK_IMAGE_Y_AXIS, VTK_IMAGE_Z_AXIS,
+		     VTK_IMAGE_TIME_AXIS);
+    
   // Get information to march through data 
   inRegion->GetIncrements(inInc0, inInc1, inInc2, inInc3);
-  inRegion->GetWholeExtent(imageMin0, imageMax0, imageMin1, imageMax1, 
-			   imageMin2, imageMax2, imageMin3, imageMax3);
   outRegion->GetIncrements(outInc0, outInc1, outInc2, outInc3);
   outRegion->GetExtent(min0, max0, min1, max1, min2, max2, min3, max3);
 
   // Loop through ouput pixels
   inPtr3 = inPtr;
   outPtr3 = outPtr;
-  for (outIdx3 = min3; outIdx3 <= max3; ++outIdx3)
+  for (idx3 = min3; idx3 <= max3; ++idx3)
     {
-    state3 = (outIdx3 < imageMin3 || outIdx3 > imageMax3);
     outPtr2 = outPtr3;
     inPtr2 = inPtr3;
-    for (outIdx2 = min2; outIdx2 <= max2; ++outIdx2)
+    for (idx2 = min2; idx2 <= max2; ++idx2)
       {
-      state2 = (state3 || outIdx2 < imageMin2 || outIdx2 > imageMax2);
-      outPtr1 = outPtr2;
       inPtr1 = inPtr2;
-      for (outIdx1 = min1; outIdx1 <= max1; ++outIdx1)
+      outPtr1 = outPtr2;
+      for (idx1 = min1; idx1 <= max1; ++idx1)
 	{
-	state1 = (state2 || outIdx1 < imageMin1 || outIdx1 > imageMax1);
 	outPtr0 = outPtr1;
 	inPtr0 = inPtr1;
-	for (outIdx0 = min0; outIdx0 <= max0; ++outIdx0)
+	for (idx0 = min0; idx0 <= max0; ++idx0)
 	  {
-	  state0 = (state1 || outIdx0 < imageMin0 || outIdx0 > imageMax0);
-	  
-	  // Copy Pixel
-	  if (state0)
-	    {
-	    *outPtr0 = constant;
-	    }
-	  else
-	    {
-	    *outPtr0 = *inPtr0;
-	    inPtr0 += inInc0;
-	    }
+	  *outPtr0 = *inPtr0;
 	  outPtr0 += outInc0;
-	  }
-	if ( ! state1)
-	  {
-	  inPtr1 += inInc1;
+	  inPtr0  += inInc0;
 	  }
 	outPtr1 += outInc1;
-	}
-      if ( ! state2)
-	{
-	inPtr2 += inInc2;
+	inPtr1 += inInc1;
 	}
       outPtr2 += outInc2;
-      }
-    if ( ! state3)
-      {
-      inPtr3 += inInc3;
+      inPtr2  += inInc2;
       }
     outPtr3 += outInc3;
+    inPtr3 += inInc3;
     }
 }
 
@@ -144,47 +161,45 @@ static void vtkImageConstantPadExecute(vtkImageConstantPad *self,
 // algorithm to fill the output from the input.
 // It just executes a switch statement to call the correct function for
 // the regions data types.
-void vtkImageConstantPad::Execute(vtkImageRegion *inRegion, 
-				  vtkImageRegion *outRegion)
+void vtkImagePermute::Execute(vtkImageRegion *inRegion, 
+			      vtkImageRegion *outRegion)
 {
   void *inPtr = inRegion->GetScalarPointer();
   void *outPtr = outRegion->GetScalarPointer();
   
-  vtkDebugMacro(<< "Execute: inRegion = " << inRegion 
-		<< ", outRegion = " << outRegion);
-  
-  // this filter expects that input is the same type as output.
-  if (inRegion->GetScalarType() != outRegion->GetScalarType())
+  if (inRegion->GetScalarType() != inRegion->GetScalarType())
     {
-    vtkErrorMacro(<< "Execute: input ScalarType, " << inRegion->GetScalarType()
-          << ", must match out ScalarType " << outRegion->GetScalarType());
+    vtkErrorMacro("Input (" 
+	  << vtkImageScalarTypeNameMacro(inRegion->GetScalarType()) 
+	  << ") has to be the same data type as output"
+	  << vtkImageScalarTypeNameMacro(outRegion->GetScalarType()) << ")");
     return;
     }
   
   switch (inRegion->GetScalarType())
     {
     case VTK_FLOAT:
-      vtkImageConstantPadExecute(this, inRegion, (float *)(inPtr), 
+      vtkImagePermuteExecute(this, inRegion, (float *)(inPtr), 
 			  outRegion, (float *)(outPtr));
       break;
     case VTK_INT:
-      vtkImageConstantPadExecute(this, inRegion, (int *)(inPtr), 
-			  outRegion, (int *)(outPtr));
+      vtkImagePermuteExecute(this, inRegion, (int *)(inPtr), 
+			     outRegion, (int *)(outPtr));
       break;
     case VTK_SHORT:
-      vtkImageConstantPadExecute(this, inRegion, (short *)(inPtr), 
+      vtkImagePermuteExecute(this, inRegion, (short *)(inPtr), 
 			  outRegion, (short *)(outPtr));
       break;
     case VTK_UNSIGNED_SHORT:
-      vtkImageConstantPadExecute(this, inRegion, (unsigned short *)(inPtr), 
+      vtkImagePermuteExecute(this, inRegion, (unsigned short *)(inPtr), 
 			  outRegion, (unsigned short *)(outPtr));
       break;
     case VTK_UNSIGNED_CHAR:
-      vtkImageConstantPadExecute(this, inRegion, (unsigned char *)(inPtr), 
+      vtkImagePermuteExecute(this, inRegion, (unsigned char *)(inPtr), 
 			  outRegion, (unsigned char *)(outPtr));
       break;
     default:
-      vtkErrorMacro(<< "Execute: Unknown ScalarType");
+      vtkErrorMacro(<< "Execute: Unknown input ScalarType");
       return;
     }
 }

@@ -38,51 +38,53 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 
 
 =========================================================================*/
-// .NAME vtkImageGradient - Computes the gradient vector.
+// .NAME vtkImageDilateErode3D - Dilates one value and erodes another.
 // .SECTION Description
-// vtkImageGradient computes the gradient
-// vector of an image.  The vector results are placed along the
-// component axis.  Setting the FilteredAxes determines whether the gradient
-// computed on 1D lines, 2D images, 3D volumes or higher dimensional 
-// images.  The default is two dimensional XY images.  OutputScalarType
-// is always float.  Gradient is computed using central differences.
+// vtkImageDilateErode3D will dilate one value and erode another.
+// It uses an eliptical foot print, and only erodes/dilates on the
+// boundary of the two values.  The filter is restricted to the 
+// X, Y, and Z axes for now.  It can degenerate to a 2 or 1 dimensional
+// filter by setting the kernal size to 1 for a specific axis.
 
 
-
-#ifndef __vtkImageGradient_h
-#define __vtkImageGradient_h
+#ifndef __vtkImageDilateErode3D_h
+#define __vtkImageDilateErode3D_h
 
 
 #include "vtkImageSpatialFilter.h"
 
-class VTK_EXPORT vtkImageGradient : public vtkImageFilter
+class VTK_EXPORT vtkImageDilateErode3D : public vtkImageSpatialFilter
 {
 public:
-  vtkImageGradient();
-  static vtkImageGradient *New() {return new vtkImageGradient;};
-  const char *GetClassName() {return "vtkImageGradient";};
+  vtkImageDilateErode3D();
+  static vtkImageDilateErode3D *New() {return new vtkImageDilateErode3D;};
+  const char *GetClassName() {return "vtkImageDilateErode3D";};
   void PrintSelf(ostream& os, vtkIndent indent);
   
-  // Description:
-  // Which axes should be considered when computing the gradient.
-  void SetFilteredAxes(int num, int *axes);
-  vtkImageSetMacro(FilteredAxes,int);
+  void SetFilteredAxes(int axis0, int axis1, int axis2);
+
+  // Set/Get the size of the neighood.
+  void SetKernelSize(int size0, int size1, int size2);
   
   // Description:
-  // If "HandleBoundariesOn" then boundary pixels are duplicated
-  // So central differences can get values.
-  vtkSetMacro(HandleBoundaries, int);
-  vtkGetMacro(HandleBoundaries, int);
-  vtkBooleanMacro(HandleBoundaries, int);
+  // Set/Get the value to dilate/erode
+  vtkSetMacro(DilateValue, float);
+  vtkGetMacro(DilateValue, float);
+  vtkSetMacro(ErodeValue, float);
+  vtkGetMacro(ErodeValue, float);
 
+  // Description:
+  // Get the Mask used as a footprint.
+  vtkGetObjectMacro(Mask, vtkImageRegion);
+  
 protected:
-  int HandleBoundaries;
-  int Dimensionality;
-  
-  void ExecuteImageInformation(vtkImageCache *in, vtkImageCache *out);
-  void ComputeRequiredInputUpdateExtent(vtkImageCache *out, vtkImageCache *in);
+  float DilateValue;
+  float ErodeValue;
+  vtkImageRegion *Mask;
+    
+  void ExecuteCenter(vtkImageRegion *inRegion, vtkImageRegion *outRegion);
   void Execute(vtkImageRegion *inRegion, vtkImageRegion *outRegion);
-
+  void ComputeMask();
 };
 
 #endif

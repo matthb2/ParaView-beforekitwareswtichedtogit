@@ -41,21 +41,21 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 #include <math.h>
 #include "vtkImageRegion.h"
 #include "vtkImageCache.h"
-#include "vtkImageSobel3D.h"
+#include "vtkImageSobel2D.h"
 
 
 //----------------------------------------------------------------------------
 // Description:
-// Construct an instance of vtkImageSobel3D fitler.
-vtkImageSobel3D::vtkImageSobel3D()
+// Construct an instance of vtkImageSobel2D fitler.
+vtkImageSobel2D::vtkImageSobel2D()
 {
-  this->SetFilteredAxes(VTK_IMAGE_X_AXIS, VTK_IMAGE_Y_AXIS, VTK_IMAGE_Z_AXIS);
+  this->SetFilteredAxes(VTK_IMAGE_X_AXIS, VTK_IMAGE_Y_AXIS);
   this->SetOutputScalarType(VTK_FLOAT);
 }
 
 
 //----------------------------------------------------------------------------
-void vtkImageSobel3D::PrintSelf(ostream& os, vtkIndent indent)
+void vtkImageSobel2D::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->vtkImageFilter::PrintSelf(os, indent);
 }
@@ -63,24 +63,23 @@ void vtkImageSobel3D::PrintSelf(ostream& os, vtkIndent indent)
 
 
 //----------------------------------------------------------------------------
-void vtkImageSobel3D::SetFilteredAxes(int axis0, int axis1, int axis2)
+void vtkImageSobel2D::SetFilteredAxes(int axis0, int axis1)
 {
-  int axes[4];
+  int axes[3];
   
-  if (axis0 > 3 || axis1 > 3 || axis2 > 3)
+  if (axis0 > 3 || axis1 > 3)
     {
     vtkErrorMacro("SetFilteredAxes: Component axis not allowed");
     return;
     }
   axes[0] = axis0;
   axes[1] = axis1;
-  axes[2] = axis2;
-  axes[3] = VTK_IMAGE_COMPONENT_AXIS;
-  this->vtkImageFilter::SetFilteredAxes(4,axes);
+  axes[2] = VTK_IMAGE_COMPONENT_AXIS;
+  this->vtkImageFilter::SetFilteredAxes(3,axes);
 }
 
 //----------------------------------------------------------------------------
-void vtkImageSobel3D::ExecuteImageInformation(vtkImageCache *in,
+void vtkImageSobel2D::ExecuteImageInformation(vtkImageCache *in,
 					      vtkImageCache *out)
 {
   in = in;
@@ -91,7 +90,7 @@ void vtkImageSobel3D::ExecuteImageInformation(vtkImageCache *in,
 //----------------------------------------------------------------------------
 // Description:
 // This method computes the input extent necessary to generate the output.
-void vtkImageSobel3D::ComputeRequiredInputUpdateExtent(vtkImageCache *out, 
+void vtkImageSobel2D::ComputeRequiredInputUpdateExtent(vtkImageCache *out, 
 						       vtkImageCache *in)
 {
   int extent[8];
@@ -131,125 +130,86 @@ void vtkImageSobel3D::ComputeRequiredInputUpdateExtent(vtkImageCache *out,
 // it handles boundaries. Pixels are just replicated to get values 
 // out of extent.
 template <class T>
-static void vtkImageSobel3DExecute(vtkImageSobel3D *self,
+static void vtkImageSobel2DExecute(vtkImageSobel2D *self,
 			    vtkImageRegion *inRegion, T *inPtr, 
 			    vtkImageRegion *outRegion, float *outPtr)
 {
-  float r0, r1, r2;
+  float r0, r1;
   // For looping though output (and input) pixels.
-  int min0, max0, min1, max1, min2, max2;
-  int outIdx0, outIdx1, outIdx2;
-  int outInc0, outInc1, outInc2, outIncV;
-  float *outPtr0, *outPtr1, *outPtr2, *outPtrV;
-  int inInc0, inInc1, inInc2;
-  T *inPtr0, *inPtr1, *inPtr2;
+  int min0, max0, min1, max1;
+  int outIdx0, outIdx1;
+  int outInc0, outInc1, outIncV;
+  float *outPtr0, *outPtr1, *outPtrV;
+  int inInc0, inInc1;
+  T *inPtr0, *inPtr1;
   // For sobel function convolution (Left Right incs for each axis)
-  int inInc0L, inInc0R, inInc1L, inInc1R, inInc2L, inInc2R;
+  int inInc0L, inInc0R, inInc1L, inInc1R;
   T *inPtrL, *inPtrR;
   float sum;
   // Boundary of input image
   int inWholeMin0, inWholeMax0, inWholeMin1, inWholeMax1;
-  int inWholeMin2, inWholeMax2;
 
   // avoid warings. (unused parameter)
   self = self;
   
   // Get boundary information 
   inRegion->GetWholeExtent(inWholeMin0,inWholeMax0, 
-			   inWholeMin1,inWholeMax1,
-			   inWholeMin2,inWholeMax2);
+			   inWholeMin1,inWholeMax1);
   
   // Get information to march through data (skip component)
-  inRegion->GetIncrements(inInc0, inInc1, inInc2); 
-  outRegion->GetIncrements(outInc0, outInc1, outInc2); 
+  inRegion->GetIncrements(inInc0, inInc1); 
+  outRegion->GetIncrements(outInc0, outInc1); 
   outRegion->GetAxisIncrements(VTK_IMAGE_COMPONENT_AXIS, outIncV);
-  outRegion->GetExtent(min0,max0, min1,max1, min2,max2);
+  outRegion->GetExtent(min0,max0, min1,max1);
   
   // We want the input pixel to correspond to output
-  inPtr = (T *)(inRegion->GetScalarPointer(min0,min1,min2));
+  inPtr = (T *)(inRegion->GetScalarPointer(min0,min1));
 
   // The data spacing is important for computing the gradient.
   // Scale so it has the same range as gradient.
-  inRegion->GetSpacing(r0, r1, r2);
-  r0 = 0.060445 / r0;
-  r1 = 0.060445 / r1;
-  r2 = 0.060445 / r2;
+  inRegion->GetSpacing(r0, r1);
+  r0 = 0.125 / r0;
+  r1 = 0.125 / r1;
   
   // loop through pixels of output
-  outPtr2 = outPtr;
-  inPtr2 = inPtr;
-  for (outIdx2 = min2; outIdx2 <= max2; ++outIdx2)
+  outPtr1 = outPtr;
+  inPtr1 = inPtr;
+  for (outIdx1 = min1; outIdx1 <= max1; ++outIdx1)
     {
-    inInc2L = (outIdx2 == inWholeMin2) ? 0 : -inInc2;
-    inInc2R = (outIdx2 == inWholeMax2) ? 0 : inInc2;
-
-    outPtr1 = outPtr2;
-    inPtr1 = inPtr2;
-    for (outIdx1 = min1; outIdx1 <= max1; ++outIdx1)
+    inInc1L = (outIdx1 == inWholeMin1) ? 0 : -inInc1;
+    inInc1R = (outIdx1 == inWholeMax1) ? 0 : inInc1;
+    
+    outPtr0 = outPtr1;
+    inPtr0 = inPtr1;
+    for (outIdx0 = min0; outIdx0 <= max0; ++outIdx0)
       {
-      inInc1L = (outIdx1 == inWholeMin1) ? 0 : -inInc1;
-      inInc1R = (outIdx1 == inWholeMax1) ? 0 : inInc1;
+      inInc0L = (outIdx0 == inWholeMin0) ? 0 : -inInc0;
+      inInc0R = (outIdx0 == inWholeMax0) ? 0 : inInc0;
+      
+      // compute vector.
+      outPtrV = outPtr0;
+      // 0 direction
+      inPtrL = inPtr0 + inInc0L;
+      inPtrR = inPtr0 + inInc0R;
+      sum = 2.0 * (*inPtrR - *inPtrL);
+      sum += (inPtrR[inInc1L] + inPtrR[inInc1R]);
+      sum -= (inPtrL[inInc1L] + inPtrL[inInc1R]);
 
-      outPtr0 = outPtr1;
-      inPtr0 = inPtr1;
-      for (outIdx0 = min0; outIdx0 <= max0; ++outIdx0)
-	{
-	inInc0L = (outIdx0 == inWholeMin0) ? 0 : -inInc0;
-	inInc0R = (outIdx0 == inWholeMax0) ? 0 : inInc0;
-
-	// compute vector.
-	outPtrV = outPtr0;
-	// 12 Plane
-	inPtrL = inPtr0 + inInc0L;
-	inPtrR = inPtr0 + inInc0R;
-	sum = 2.0 * (*inPtrR - *inPtrL);
-	sum += (inPtrR[inInc1L] + inPtrR[inInc1R] 
-		+ inPtrR[inInc2L] + inPtrR[inInc2R]);
-	sum += (0.586 * (inPtrR[inInc1L+inInc2L] + inPtrR[inInc1L+inInc2R]
-			 + inPtrR[inInc1R+inInc2L] + inPtrR[inInc1R+inInc2R]));
-	sum -= (inPtrL[inInc1L] + inPtrL[inInc1R] 
-		+ inPtrL[inInc2L] + inPtrL[inInc2R]);
-	sum -= (0.586 * (inPtrL[inInc1L+inInc2L] + inPtrL[inInc1L+inInc2R]
-			 + inPtrL[inInc1R+inInc2L] + inPtrL[inInc1R+inInc2R]));
-	*outPtrV = sum * r0;
-	outPtrV += outIncV;
-	// 02 Plane
-	inPtrL = inPtr0 + inInc1L;
-	inPtrR = inPtr0 + inInc1R;
-	sum = 2.0 * (*inPtrR - *inPtrL);
-	sum += (inPtrR[inInc0L] + inPtrR[inInc0R] 
-		+ inPtrR[inInc2L] + inPtrR[inInc2R]);
-	sum += (0.586 * (inPtrR[inInc0L+inInc2L] + inPtrR[inInc0L+inInc2R]
-			 + inPtrR[inInc0R+inInc2L] + inPtrR[inInc0R+inInc2R]));
-	sum -= (inPtrL[inInc0L] + inPtrL[inInc0R] 
-		+ inPtrL[inInc2L] + inPtrL[inInc2R]);
-	sum -= (0.586 * (inPtrL[inInc0L+inInc2L] + inPtrL[inInc0L+inInc2R]
-			 + inPtrL[inInc0R+inInc2L] + inPtrL[inInc0R+inInc2R]));
-	*outPtrV = sum * r1;
-	outPtrV += outIncV;
-	// 01 Plane
-	inPtrL = inPtr0 + inInc2L;
-	inPtrR = inPtr0 + inInc2R;
-	sum = 2.0 * (*inPtrR - *inPtrL);
-	sum += (inPtrR[inInc0L] + inPtrR[inInc0R] 
-		+ inPtrR[inInc1L] + inPtrR[inInc1R]);
-	sum += (0.586 * (inPtrR[inInc0L+inInc1L] + inPtrR[inInc0L+inInc1R]
-			 + inPtrR[inInc0R+inInc1L] + inPtrR[inInc0R+inInc1R]));
-	sum -= (inPtrL[inInc0L] + inPtrL[inInc0R] 
-		+ inPtrL[inInc1L] + inPtrL[inInc1R]);
-	sum -= (0.586 * (inPtrL[inInc0L+inInc1L] + inPtrL[inInc0L+inInc1R]
-			 + inPtrL[inInc0R+inInc1L] + inPtrL[inInc0R+inInc1R]));
-	*outPtrV = sum * r2;
-	outPtrV += outIncV;
-
-	outPtr0 += outInc0;
-	inPtr0 += inInc0;
-	}
-      outPtr1 += outInc1;
-      inPtr1 += inInc1;
+      *outPtrV = sum * r0;
+      outPtrV += outIncV;
+      // 1 direction
+      inPtrL = inPtr0 + inInc1L;
+      inPtrR = inPtr0 + inInc1R;
+      sum = 2.0 * (*inPtrR - *inPtrL);
+      sum += (inPtrR[inInc0L] + inPtrR[inInc0R]);
+      sum -= (inPtrL[inInc0L] + inPtrL[inInc0R]);
+      *outPtrV = sum * r1;
+      
+      outPtr0 += outInc0;
+      inPtr0 += inInc0;
       }
-    outPtr2 += outInc2;
-    inPtr2 += inInc2;
+    outPtr1 += outInc1;
+    inPtr1 += inInc1;
     }
 }
 
@@ -260,7 +220,7 @@ static void vtkImageSobel3DExecute(vtkImageSobel3D *self,
 // templated function for the input region type.  The output region
 // must be of type float.  This method does handle boundary conditions.
 // The third axis is the component axis for the output.
-void vtkImageSobel3D::Execute(vtkImageRegion *inRegion, 
+void vtkImageSobel2D::Execute(vtkImageRegion *inRegion, 
 			      vtkImageRegion *outRegion)
 {
   void *inPtr = inRegion->GetScalarPointer();
@@ -278,27 +238,27 @@ void vtkImageSobel3D::Execute(vtkImageRegion *inRegion,
   switch (inRegion->GetScalarType())
     {
     case VTK_FLOAT:
-      vtkImageSobel3DExecute(this, 
+      vtkImageSobel2DExecute(this, 
 			  inRegion, (float *)(inPtr), 
 			  outRegion, (float *)(outPtr));
       break;
     case VTK_INT:
-      vtkImageSobel3DExecute(this, 
+      vtkImageSobel2DExecute(this, 
 			  inRegion, (int *)(inPtr), 
 			  outRegion, (float *)(outPtr));
       break;
     case VTK_SHORT:
-      vtkImageSobel3DExecute(this, 
+      vtkImageSobel2DExecute(this, 
 			  inRegion, (short *)(inPtr), 
 			  outRegion, (float *)(outPtr));
       break;
     case VTK_UNSIGNED_SHORT:
-      vtkImageSobel3DExecute(this, 
+      vtkImageSobel2DExecute(this, 
 			  inRegion, (unsigned short *)(inPtr), 
 			  outRegion, (float *)(outPtr));
       break;
     case VTK_UNSIGNED_CHAR:
-      vtkImageSobel3DExecute(this, 
+      vtkImageSobel2DExecute(this, 
 			  inRegion, (unsigned char *)(inPtr), 
 			  outRegion, (float *)(outPtr));
       break;

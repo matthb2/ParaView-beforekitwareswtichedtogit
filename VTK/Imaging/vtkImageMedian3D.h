@@ -38,49 +38,48 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 
 
 =========================================================================*/
-// .NAME vtkImageGradient - Computes the gradient vector.
+// .NAME vtkImageMedian3D - Median Filter
 // .SECTION Description
-// vtkImageGradient computes the gradient
-// vector of an image.  The vector results are placed along the
-// component axis.  Setting the FilteredAxes determines whether the gradient
-// computed on 1D lines, 2D images, 3D volumes or higher dimensional 
-// images.  The default is two dimensional XY images.  OutputScalarType
-// is always float.  Gradient is computed using central differences.
+// vtkImageMedian3D a Median filter that replaces each pixel with the 
+// median value from a rectangular neighborhood around that pixel.
+// Neighborhoods can be no more than 3 dimensional.  Setting one
+// axis of the neighborhood kernelSize to 1 changes the filter
+// into a 2D median.  
 
 
-
-#ifndef __vtkImageGradient_h
-#define __vtkImageGradient_h
+#ifndef __vtkImageMedian3D_h
+#define __vtkImageMedian3D_h
 
 
 #include "vtkImageSpatialFilter.h"
 
-class VTK_EXPORT vtkImageGradient : public vtkImageFilter
+class VTK_EXPORT vtkImageMedian3D : public vtkImageSpatialFilter
 {
 public:
-  vtkImageGradient();
-  static vtkImageGradient *New() {return new vtkImageGradient;};
-  const char *GetClassName() {return "vtkImageGradient";};
-  void PrintSelf(ostream& os, vtkIndent indent);
-  
-  // Description:
-  // Which axes should be considered when computing the gradient.
-  void SetFilteredAxes(int num, int *axes);
-  vtkImageSetMacro(FilteredAxes,int);
-  
-  // Description:
-  // If "HandleBoundariesOn" then boundary pixels are duplicated
-  // So central differences can get values.
-  vtkSetMacro(HandleBoundaries, int);
-  vtkGetMacro(HandleBoundaries, int);
-  vtkBooleanMacro(HandleBoundaries, int);
+  vtkImageMedian3D();
+  ~vtkImageMedian3D();
+  static vtkImageMedian3D *New() {return new vtkImageMedian3D;};
+  const char *GetClassName() {return "vtkImageMedian3D";};
 
-protected:
-  int HandleBoundaries;
-  int Dimensionality;
+  void SetFilteredAxes(int axis0, int axis1, int axis2);
   
-  void ExecuteImageInformation(vtkImageCache *in, vtkImageCache *out);
-  void ComputeRequiredInputUpdateExtent(vtkImageCache *out, vtkImageCache *in);
+  // Set/Get the size of the neighood.
+  void SetKernelSize(int size0, int size1, int size2);
+  
+  void ClearMedian();
+  void AccumulateMedian(double val);
+  double GetMedian();
+  
+protected:
+  // stuff for sorting the pixels
+  int NumNeighborhood;
+  double *Sort;
+  double *Median;
+  int UpMax;
+  int DownMax;
+  int UpNum;
+  int DownNum;
+
   void Execute(vtkImageRegion *inRegion, vtkImageRegion *outRegion);
 
 };

@@ -38,51 +38,37 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 
 
 =========================================================================*/
-// .NAME vtkImageGradient - Computes the gradient vector.
+// .NAME vtkImagePermute -  Permutes axes of input.
 // .SECTION Description
-// vtkImageGradient computes the gradient
-// vector of an image.  The vector results are placed along the
-// component axis.  Setting the FilteredAxes determines whether the gradient
-// computed on 1D lines, 2D images, 3D volumes or higher dimensional 
-// images.  The default is two dimensional XY images.  OutputScalarType
-// is always float.  Gradient is computed using central differences.
+// vtkImagePermute reorders the axes of the input. Filtered axes specify
+// the input axes which become X, Y, Z and Time.  The input has to have the
+// same scalar type of the output. The filter does copy the 
+// data when it executes. (If flexible memory order were allowed, this
+// would not be necessary.)
 
 
+#ifndef __vtkImagePermute_h
+#define __vtkImagePermute_h
 
-#ifndef __vtkImageGradient_h
-#define __vtkImageGradient_h
 
+#include "vtkImageFilter.h"
 
-#include "vtkImageSpatialFilter.h"
-
-class VTK_EXPORT vtkImageGradient : public vtkImageFilter
+class VTK_EXPORT vtkImagePermute : public vtkImageFilter
 {
 public:
-  vtkImageGradient();
-  static vtkImageGradient *New() {return new vtkImageGradient;};
-  const char *GetClassName() {return "vtkImageGradient";};
-  void PrintSelf(ostream& os, vtkIndent indent);
-  
-  // Description:
-  // Which axes should be considered when computing the gradient.
-  void SetFilteredAxes(int num, int *axes);
-  vtkImageSetMacro(FilteredAxes,int);
-  
-  // Description:
-  // If "HandleBoundariesOn" then boundary pixels are duplicated
-  // So central differences can get values.
-  vtkSetMacro(HandleBoundaries, int);
-  vtkGetMacro(HandleBoundaries, int);
-  vtkBooleanMacro(HandleBoundaries, int);
+  vtkImagePermute();
+  static vtkImagePermute *New() {return new vtkImagePermute;};
+  const char *GetClassName() {return "vtkImagePermute";};
 
-protected:
-  int HandleBoundaries;
-  int Dimensionality;
+  // Description:
+  // The filtered axes are the input axes that get relabeled to X,Y,Z,Time.
+  void SetFilteredAxes(int num, int *axes);
+  vtkImageSetMacro(FilteredAxes, int);
   
+protected:
   void ExecuteImageInformation(vtkImageCache *in, vtkImageCache *out);
   void ComputeRequiredInputUpdateExtent(vtkImageCache *out, vtkImageCache *in);
   void Execute(vtkImageRegion *inRegion, vtkImageRegion *outRegion);
-
 };
 
 #endif

@@ -38,51 +38,32 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 
 
 =========================================================================*/
-// .NAME vtkImageGradient - Computes the gradient vector.
+// .NAME vtkImageFourierCenter - Shifts constant frequency to center for
+// display.
 // .SECTION Description
-// vtkImageGradient computes the gradient
-// vector of an image.  The vector results are placed along the
-// component axis.  Setting the FilteredAxes determines whether the gradient
-// computed on 1D lines, 2D images, 3D volumes or higher dimensional 
-// images.  The default is two dimensional XY images.  OutputScalarType
-// is always float.  Gradient is computed using central differences.
+// This filter is used for dispaying images in frequency space.  
+// FFT converts spatial
+// images into ferequency space, but puts the zero frequency at the origin.
+// This filter shifts the zero frequency to the center of the image.
+// Input and output are assumed to be floats.
 
 
 
-#ifndef __vtkImageGradient_h
-#define __vtkImageGradient_h
+#ifndef __vtkImageFourierCenter_h
+#define __vtkImageFourierCenter_h
 
 
-#include "vtkImageSpatialFilter.h"
+#include "vtkImageDecomposedFilter.h"
+#include "vtkImageFourierCenter1D.h"
 
-class VTK_EXPORT vtkImageGradient : public vtkImageFilter
+class VTK_EXPORT vtkImageFourierCenter : public vtkImageDecomposedFilter
 {
 public:
-  vtkImageGradient();
-  static vtkImageGradient *New() {return new vtkImageGradient;};
-  const char *GetClassName() {return "vtkImageGradient";};
-  void PrintSelf(ostream& os, vtkIndent indent);
-  
-  // Description:
-  // Which axes should be considered when computing the gradient.
-  void SetFilteredAxes(int num, int *axes);
-  vtkImageSetMacro(FilteredAxes,int);
-  
-  // Description:
-  // If "HandleBoundariesOn" then boundary pixels are duplicated
-  // So central differences can get values.
-  vtkSetMacro(HandleBoundaries, int);
-  vtkGetMacro(HandleBoundaries, int);
-  vtkBooleanMacro(HandleBoundaries, int);
+  vtkImageFourierCenter();
+  static vtkImageFourierCenter *New() {return new vtkImageFourierCenter;};
+  const char *GetClassName() {return "vtkImageFourierCenter";};
 
 protected:
-  int HandleBoundaries;
-  int Dimensionality;
-  
-  void ExecuteImageInformation(vtkImageCache *in, vtkImageCache *out);
-  void ComputeRequiredInputUpdateExtent(vtkImageCache *out, vtkImageCache *in);
-  void Execute(vtkImageRegion *inRegion, vtkImageRegion *outRegion);
-
 };
 
 #endif
