@@ -50,6 +50,7 @@ vtkCxxRevisionMacro(vtkPVProcessModule, "$Revision$");
 //----------------------------------------------------------------------------
 vtkPVProcessModule::vtkPVProcessModule()
 {
+  this->MPIMToNSocketConnectionID.ID = 0;
   this->MachinesFileName = 0;
   this->RenderNodePort = 0;
   this->ReverseConnection = 0;
