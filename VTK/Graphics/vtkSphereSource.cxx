@@ -256,6 +256,7 @@ void vtkSphereSource::Execute()
   output->GetPointData()->SetNormals(newNormals);
   newNormals->Delete();
 
+  newPolys->Squeeze();
   output->SetPolys(newPolys);
   newPolys->Delete();
 }
