@@ -67,6 +67,8 @@ public:
   vtkSetMacro(HandleBoundaries, int);
   vtkGetMacro(HandleBoundaries, int);
   vtkBooleanMacro(HandleBoundaries, int);
+
+  vtkSetMacro(Dimensionality, int);
   
 protected:
   int HandleBoundaries;

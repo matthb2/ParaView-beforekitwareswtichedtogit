@@ -38,56 +38,37 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 
 
 =========================================================================*/
-// .NAME vtkImageGradient - Computes the gradient vector.
+// .NAME vtkImageSobel3D - Computes a vector field using sobel functions.
 // .SECTION Description
-// vtkImageGradient computes the gradient
-// vector of an image.  The vector results are placed along the
-// component axis.  Setting the axes determines whether the gradient
-// computed on 1D lines, 2D images, 3D volumes or higher dimensional 
-// images.  The default is two dimensional XY images.  OutputScalarType
-// is always float.
+// vtkImageSobel3D computes a vector field from a scalar field by using
+// Sobel functions.  The number of vector components is 3 because
+// the input is a volume.
 
 
 
-#ifndef __vtkImageGradient_h
-#define __vtkImageGradient_h
+#ifndef __vtkImageSobel3D_h
+#define __vtkImageSobel3D_h
 
 
-#include "vtkImageSpatialFilter.h"
+#include "vtkImageFilter.h"
 
-class vtkImageGradient : public vtkImageFilter
+class vtkImageSobel3D : public vtkImageFilter
 {
 public:
-  vtkImageGradient();
-  char *GetClassName() {return "vtkImageGradient";};
+  vtkImageSobel3D();
+  char *GetClassName() {return "vtkImageSobel3D";};
   void PrintSelf(ostream& os, vtkIndent indent);
   
   void InterceptCacheUpdate(vtkImageRegion *region);
 
   // Description:
-  // This SetAxes method sets VTK_COMPONENT_AXIS as the first axis.
+  // This SetAxes method sets VTK_COMPONENT_AXIS as the fourth axis.
   // The superclass is told not to loop over this axis.
   // Note: Get Axes still returns the super class axes.
   void SetAxes(int num, int *axes);
   vtkImageSetMacro(Axes,int);
   
-  // Description:
-  // If "HandleBoundariesOn" then boundary pixels are duplicated
-  // So central differences can get values.
-  vtkSetMacro(HandleBoundaries, int);
-  vtkGetMacro(HandleBoundaries, int);
-  vtkBooleanMacro(HandleBoundaries, int);
-  
-  // Description:
-  // Determines how the input is interpreted (set of 2d slices ...)
-  // and the number of components in the output vectors.
-  // (Input can not use the component axis).
-  vtkSetMacro(Dimensionality, int);
-  
-  
 protected:
-  int HandleBoundaries;
-  
   void ComputeOutputImageInformation(vtkImageRegion *inRegion,
 				     vtkImageRegion *outRegion);
   void ComputeRequiredInputRegionExtent(vtkImageRegion *outRegion, 
