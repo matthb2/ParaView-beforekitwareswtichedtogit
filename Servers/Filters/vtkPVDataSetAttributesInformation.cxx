@@ -159,6 +159,11 @@ void vtkPVDataSetAttributesInformation::AddInformation(vtkPVDataSetAttributesInf
   short                  newAttributeIndices[5]; 
   vtkCollection*         newArrayInformation;
 
+  for (idx1 = 0; idx1 < 5; ++idx1)
+    {
+    newAttributeIndices[idx1] = -1;
+    }
+
   // Combine point array information.
   infoArrayIndex = 0;
   newArrayInformation = vtkCollection::New();
