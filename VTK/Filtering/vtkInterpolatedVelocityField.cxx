@@ -267,6 +267,12 @@ int vtkInterpolatedVelocityField::GetLastLocalCoordinates(double pcoords[3])
     }
 }
 
+void vtkInterpolatedVelocityField::CopyParameters(
+  vtkInterpolatedVelocityField* from)
+{
+  this->Caching = from->Caching;
+}
+
 void vtkInterpolatedVelocityField::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os, indent);
