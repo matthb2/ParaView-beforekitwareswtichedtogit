@@ -149,7 +149,6 @@ vtkTrivialProducer::ProcessDownstreamRequest(vtkInformation* request,
   if(request->Has(vtkDemandDrivenPipeline::REQUEST_DATA()) && this->Output)
     {
     this->Output->DataHasBeenGenerated();
-    this->Output->Print(cout);
     }
   return 1;
 }
