@@ -46,6 +46,12 @@ void vtkRectilinearGridOutlineFilter::Execute()
   int*          ext      = input->GetExtent();;
   int*          wholeExt = input->GetWholeExtent();
 
+  if (xCoords == NULL || yCoords == NULL || zCoords == NULL ||
+      input->GetNumberOfCells() == 0)
+    {
+    return;
+    }
+
   // We could probably use just the input bounds ...
   range = xCoords->GetRange();
   bounds[0] = range[0];
