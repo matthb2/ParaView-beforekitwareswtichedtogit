@@ -25,6 +25,7 @@
 #include "vtkPolyData.h"
 #include "vtkSocketController.h"
 #include "vtkTimerLog.h"
+#include "vtkToolkits.h"
 #ifdef VTK_USE_MPI
 #include "vtkMPICommunicator.h"
 #endif
@@ -161,8 +162,13 @@ void vtkMPIDuplicatePolyData::Execute()
 
 
 //-----------------------------------------------------------------------------
+#ifdef VTK_USE_MPI
 void vtkMPIDuplicatePolyData::ServerExecute(vtkPolyDataReader* reader,
                                             vtkPolyDataWriter* writer)
+#else
+void vtkMPIDuplicatePolyData::ServerExecute(vtkPolyDataReader* ,
+                                            vtkPolyDataWriter* writer)
+#endif
 {
   int numProcs;
   numProcs = this->Controller->GetNumberOfProcesses();
@@ -184,10 +190,10 @@ void vtkMPIDuplicatePolyData::ServerExecute(vtkPolyDataReader* reader,
   pd = NULL;
   
 #ifdef VTK_USE_MPI
-
   int idx;
   int sum;
   int myId = this->Controller->GetLocalProcessId();
+
   vtkMPICommunicator *com = NULL;
   if (this->Controller)
     {
