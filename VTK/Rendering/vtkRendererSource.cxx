@@ -59,6 +59,12 @@ void vtkRendererSource::ExecuteData(vtkDataObject *outp)
   vtkImageData *output = this->AllocateOutputData(outp);
   vtkUnsignedCharArray *outScalars = 
     vtkUnsignedCharArray::SafeDownCast(output->GetPointData()->GetScalars());
+
+  if (this->Input == NULL)
+    {
+    return;
+    }
+
   if (this->DepthValuesInScalars)
     {
     outScalars->SetName("RGBValues");
