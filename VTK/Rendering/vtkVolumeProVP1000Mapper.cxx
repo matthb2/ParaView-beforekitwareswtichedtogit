@@ -33,6 +33,11 @@
 
 vtkCxxRevisionMacro(vtkVolumeProVP1000Mapper, "$Revision$");
 
+//----------------------------------------------------------------------------
+// Needed when we don't use the vtkStandardNewMacro.
+vtkInstantiatorNewMacro(vtkVolumeProMapper);
+//----------------------------------------------------------------------------
+
 vtkVolumeProVP1000Mapper::vtkVolumeProVP1000Mapper()
 {
   VLIStatus         status;
