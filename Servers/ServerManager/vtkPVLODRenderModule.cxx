@@ -106,6 +106,9 @@ void vtkPVLODRenderModule::InteractiveRender()
   if (this->GetTotalVisibleGeometryMemorySize() > this->LODThreshold*1000)
     {
     this->ProcessModule->SetGlobalLODFlag(1);
+    // We call this again because the LOD branches
+    // may not have been updated.
+    this->UpdateAllDisplays();
     }
   else
     {
