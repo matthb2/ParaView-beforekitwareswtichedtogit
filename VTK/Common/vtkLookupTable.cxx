@@ -952,6 +952,8 @@ void vtkLookupTable::DeepCopy(vtkLookupTable *lut)
   this->AlphaRange[1]       = lut->AlphaRange[1];
   this->NumberOfColors      = lut->NumberOfColors;
   this->Ramp                = lut->Ramp;
+  this->InsertTime          = lut->InsertTime;
+  this->BuildTime           = lut->BuildTime;
   this->Table->DeepCopy(lut->Table);
 }
 
