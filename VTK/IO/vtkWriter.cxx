@@ -19,6 +19,7 @@
 
 #include "vtkCommand.h"
 #include "vtkDataObject.h"
+#include "vtkErrorCode.h"
 
 vtkCxxRevisionMacro(vtkWriter, "$Revision$");
 
@@ -45,6 +46,8 @@ vtkDataObject *vtkWriter::GetInput()
 // well as StartMethod() and EndMethod() methods.
 void vtkWriter::Write()
 {
+  this->SetErrorCode(vtkErrorCode::NoError);
+  
   vtkDataObject *input = this->GetInput();
   int idx;
 
