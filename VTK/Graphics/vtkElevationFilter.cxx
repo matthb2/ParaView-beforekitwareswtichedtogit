@@ -132,7 +132,7 @@ void vtkElevationFilter::Execute()
 
   // Update self
   //
-  this->GetOutput()->GetPointData()->CopyScalarsOff();
+  this->GetInput()->GetPointData()->CopyScalarsOff();
   this->GetOutput()->GetPointData()->PassData(input->GetPointData());
 
   this->GetOutput()->GetCellData()->PassData(input->GetCellData());
