@@ -523,6 +523,10 @@ void vtkCompositeManager::RenderRMI()
         cam->ParallelProjectionOn();
         cam->SetParallelScale(renInfo.ParallelScale);
         }
+      else
+        {
+        cam->ParallelProjectionOff();   
+        }
       if (light)
         {
         light->SetPosition(renInfo.LightPosition);
@@ -708,6 +712,10 @@ void vtkCompositeManager::StartRender()
     if (cam->GetParallelProjection())
       {
       renInfo.ParallelScale = cam->GetParallelScale();
+      }
+    else
+      {
+      renInfo.ParallelScale = 0.0;
       }
     if (light)
       {
