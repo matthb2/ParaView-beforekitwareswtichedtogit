@@ -255,7 +255,8 @@ int vtkSMInputArrayDomain::ReadXMLAttributes(
       }
     else if (strcmp(attribute_type, "point") == 0)
       {
-      this->SetAttributeType(vtkSMInputArrayDomain::POINT);
+      this->SetAttributeType(
+        static_cast<unsigned char>(vtkSMInputArrayDomain::POINT));
       }
     else
       {
