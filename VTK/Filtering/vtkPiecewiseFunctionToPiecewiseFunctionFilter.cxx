@@ -14,6 +14,7 @@
 =========================================================================*/
 #include "vtkPiecewiseFunctionToPiecewiseFunctionFilter.h"
 
+#include "vtkInformation.h"
 #include "vtkPiecewiseFunction.h"
 
 vtkCxxRevisionMacro(vtkPiecewiseFunctionToPiecewiseFunctionFilter, "$Revision$");
@@ -23,7 +24,6 @@ vtkPiecewiseFunctionToPiecewiseFunctionFilter::vtkPiecewiseFunctionToPiecewiseFu
 {
   this->NumberOfRequiredInputs = 1;
   this->SetNumberOfInputPorts(1);
-  this->vtkProcessObject::SetNumberOfInputs(1);
 }
 //----------------------------------------------------------------------------
 // Specify the input data or filter.
@@ -42,6 +42,19 @@ vtkPiecewiseFunction *vtkPiecewiseFunctionToPiecewiseFunctionFilter::GetInput()
     }
   
   return (vtkPiecewiseFunction *)(this->Inputs[0]);
+}
+
+//----------------------------------------------------------------------------
+int
+vtkPiecewiseFunctionToPiecewiseFunctionFilter
+::FillInputPortInformation(int port, vtkInformation* info)
+{
+  if(!this->Superclass::FillInputPortInformation(port, info))
+    {
+    return 0;
+    }
+  info->Set(vtkInformation::INPUT_REQUIRED_DATA_TYPE(), "vtkPiecewiseFunction");
+  return 1;
 }
 
 //----------------------------------------------------------------------------
