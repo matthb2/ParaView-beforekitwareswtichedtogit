@@ -478,7 +478,6 @@ void ContourGrid(vtkGridSynchronizedTemplates3D *self,
     inPtrZ = scalars + ((ZMin - inExt[4]) * incZ +
                         (YMin - inExt[2]) * incY +
                         (XMin - inExt[0]));
-    p2 = inPtPtrZ;
     s2 = inPtrZ;
     v2 = (*s2 < value ? 0 : 1);
 
