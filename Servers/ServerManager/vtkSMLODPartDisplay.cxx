@@ -561,8 +561,11 @@ void vtkSMLODPartDisplay::InvalidateGeometry()
 //----------------------------------------------------------------------------
 void vtkSMLODPartDisplay::RemoveAllCaches()
 {
-  if (this->UpdateSuppressorProxy &&
-      this->UpdateSuppressorProxy->GetNumberOfIDs())
+  if (!this->UpdateSuppressorProxy)
+    {
+    return;
+    }
+  if (this->UpdateSuppressorProxy->GetNumberOfIDs())
     {
     vtkProcessModule* pm = vtkProcessModule::GetProcessModule();
     vtkClientServerStream stream;
