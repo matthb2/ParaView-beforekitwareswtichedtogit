@@ -865,20 +865,6 @@ int vtkRectilinearGrid::ComputeStructuredCoordinates(double x[3], int ijk[3],
 }
 
 //----------------------------------------------------------------------------
-void vtkRectilinearGrid::SetUpdateExtent(int piece, int numPieces,
-                                         int ghostLevel)
-{
-  if(SDDP* sddp = this->TrySDDP("SetUpdateExtent"))
-    {
-    if(sddp->SetUpdateExtent(this->GetPortNumber(), piece,
-                             numPieces, ghostLevel))
-      {
-      this->Modified();
-      }
-    }
-}
-
-//----------------------------------------------------------------------------
 unsigned long vtkRectilinearGrid::GetActualMemorySize()
 {
   unsigned long size=this->vtkDataSet::GetActualMemorySize();

@@ -832,14 +832,6 @@ int vtkUnstructuredGrid::InsertNextLinkedCell(int type, int npts,
 }
 
 //----------------------------------------------------------------------------
-void vtkUnstructuredGrid::SetUpdateExtent(int piece, int numPieces, int ghostLevel)
-{
-  this->SetUpdatePiece(piece);
-  this->SetUpdateNumberOfPieces(numPieces);
-  this->SetUpdateGhostLevel(ghostLevel);
-}
-
-//----------------------------------------------------------------------------
 void vtkUnstructuredGrid::GetUpdateExtent(int& piece, int& numPieces, int& ghostLevel)
 {
   piece = this->GetUpdatePiece();

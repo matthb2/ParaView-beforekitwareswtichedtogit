@@ -1354,11 +1354,3 @@ unsigned char vtkUniformGrid::GetCellBlanking()
   return this->PointVisibility->IsConstrained() || 
     this->CellVisibility->IsConstrained();
 }
-
-//----------------------------------------------------------------------------
-void vtkUniformGrid::SetUpdateExtent(int piece, int numPieces, int ghostLevel)
-{
-  this->SetUpdatePiece(piece);
-  this->SetUpdateNumberOfPieces(numPieces);
-  this->SetUpdateGhostLevel(ghostLevel);
-}

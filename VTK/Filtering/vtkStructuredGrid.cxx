@@ -850,22 +850,6 @@ void vtkStructuredGrid::GetCellPoints(vtkIdType cellId, vtkIdList *ptIds)
 }
 
 //----------------------------------------------------------------------------
-// Should we split up cells, or just points.  It does not matter for now.
-// Extent of structured data assumes points.
-void vtkStructuredGrid::SetUpdateExtent(int piece, int numPieces,
-                                        int ghostLevel)
-{
-  if(SDDP* sddp = this->TrySDDP("SetUpdateExtent"))
-    {
-    if(sddp->SetUpdateExtent(this->GetPortNumber(), piece,
-                             numPieces, ghostLevel))
-      {
-      this->Modified();
-      }
-    }
-}
-
-//----------------------------------------------------------------------------
 void vtkStructuredGrid::SetExtent(int extent[6])
 {
   int description;

@@ -99,14 +99,6 @@ void vtkGenericDataSet::GetCellTypes(vtkCellTypes *types)
 }
 
 //----------------------------------------------------------------------------
-void vtkGenericDataSet::SetUpdateExtent(int piece, int numPieces, int ghostLevel)
-{
-  this->SetUpdatePiece(piece);
-  this->SetUpdateNumberOfPieces(numPieces);
-  this->SetUpdateGhostLevel(ghostLevel);
-}
-
-//----------------------------------------------------------------------------
 // Return a pointer to the geometry bounding box in the form
 // (xmin,xmax, ymin,ymax, zmin,zmax).
 // The return value is VOLATILE.

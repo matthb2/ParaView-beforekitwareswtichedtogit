@@ -219,6 +219,20 @@ void vtkDataObject::PrintSelf(ostream& os, vtkIndent indent)
 }
 
 //----------------------------------------------------------------------------
+void vtkDataObject::SetUpdateExtent(int piece, int numPieces, int ghostLevel)
+{
+  if(SDDP* sddp = this->TrySDDP("SetUpdateExtent"))
+    {
+    if(sddp->SetUpdateExtent(this->GetPortNumber(), piece,
+                             numPieces, ghostLevel))
+      {
+      this->Modified();
+      }
+    }
+}
+
+
+//----------------------------------------------------------------------------
 void vtkDataObject::SetPipelineInformation(vtkInformation* newInfo)
 {
   vtkInformation* oldInfo = this->PipelineInformation;

@@ -1183,19 +1183,6 @@ void vtkImageData::UpdateInformation()
 }
 
 //----------------------------------------------------------------------------
-void vtkImageData::SetUpdateExtent(int piece, int numPieces, int ghostLevel)
-{
-  if(SDDP* sddp = this->TrySDDP("SetUpdateExtent"))
-    {
-    if(sddp->SetUpdateExtent(this->GetPortNumber(), piece,
-                             numPieces, ghostLevel))
-      {
-      this->Modified();
-      }
-    }
-}
-
-//----------------------------------------------------------------------------
 void vtkImageData::SetNumberOfScalarComponents(int num)
 {
   this->GetProducerPort();
