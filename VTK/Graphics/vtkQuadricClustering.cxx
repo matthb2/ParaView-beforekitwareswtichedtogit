@@ -771,7 +771,7 @@ vtkIdType vtkQuadricClustering::HashPoint(double point[3])
     }
   
   // vary x fastest, then y, then z
-  binId = xBinCoord + yBinCoord*this->NumberOfDivisions[1] + 
+  binId = xBinCoord + yBinCoord*this->NumberOfDivisions[0] + 
     zBinCoord*this->SliceSize;
 
   return binId;
