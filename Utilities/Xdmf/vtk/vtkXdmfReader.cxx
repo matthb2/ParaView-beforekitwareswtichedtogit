@@ -185,6 +185,7 @@ vtkXdmfReader::~vtkXdmfReader()
     }
 
   delete this->Internals;
+  H5garbage_collect();
 }
 
 //----------------------------------------------------------------------------
