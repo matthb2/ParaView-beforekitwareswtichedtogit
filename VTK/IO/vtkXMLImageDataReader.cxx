@@ -116,10 +116,10 @@ void vtkXMLImageDataReader::SetupOutputInformation(vtkInformation *outInfo)
 
 //----------------------------------------------------------------------------
 void vtkXMLImageDataReader::CopyOutputInformation(vtkInformation *outInfo, int port)
-  {
+{
   this->Superclass::CopyOutputInformation(outInfo, port);
   vtkInformation *localInfo = this->GetExecutive()->GetOutputInformation( port );
-
+  
   if ( localInfo->Has(vtkDataObject::ORIGIN()) )
     {
     outInfo->CopyEntry( localInfo, vtkDataObject::ORIGIN() );
@@ -128,7 +128,11 @@ void vtkXMLImageDataReader::CopyOutputInformation(vtkInformation *outInfo, int p
     {
     outInfo->CopyEntry( localInfo, vtkDataObject::SPACING() );
     }
-  }
+  if ( localInfo->Has(vtkStreamingDemandDrivenPipeline::WHOLE_EXTENT()) )
+    {
+    outInfo->CopyEntry( localInfo, vtkStreamingDemandDrivenPipeline::WHOLE_EXTENT() );
+    }
+}
 
 
 //----------------------------------------------------------------------------

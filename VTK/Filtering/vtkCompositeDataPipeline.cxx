@@ -376,6 +376,7 @@ int vtkCompositeDataPipeline::ExecuteInformationForBlock(vtkInformation* request
       if (dobj && dobjCopy)
         {
         dobjCopy->ShallowCopy(dobj);
+        dobjCopy->CopyInformation(dobj);
         }
       }
     }

@@ -225,6 +225,7 @@ void vtkGenericEnSightReader::Execute()
         output = tmp->NewInstance();
         this->SetNthOutput(i, output); // law: this causes the extra partid bug
         output->ShallowCopy(tmp);
+        output->CopyInformation(tmp);
         output->Delete();
         // Used later.
         //output = NULL;
