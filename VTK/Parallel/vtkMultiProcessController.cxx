@@ -108,7 +108,8 @@ vtkMultiProcessController::vtkMultiProcessController()
 // (We need to have a "GetNetReferenceCount" to avoid memory leaks.)
 vtkMultiProcessController::~vtkMultiProcessController()
 {
-  if ( this->OutputWindow == vtkOutputWindow::GetInstance() )
+  if ( this->OutputWindow &&
+       (this->OutputWindow == vtkOutputWindow::GetInstance()) )
     {
     vtkOutputWindow::SetInstance(0);
     }
