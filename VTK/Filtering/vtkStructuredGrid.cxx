@@ -97,7 +97,12 @@ void vtkStructuredGrid::CopyStructure(vtkDataSet *ds)
 
   this->DataDescription = sg->DataDescription;
 
+  this->PointVisibility->Delete();
+  this->PointVisibility = vtkStructuredVisibilityConstraint::New();
   this->PointVisibility->ShallowCopy(sg->PointVisibility);
+
+  this->CellVisibility->Delete();
+  this->CellVisibility = vtkStructuredVisibilityConstraint::New();
   this->CellVisibility->ShallowCopy(sg->CellVisibility);
 }
 

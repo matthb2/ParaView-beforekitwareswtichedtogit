@@ -46,9 +46,15 @@ vtkPointSet::~vtkPointSet ()
 void vtkPointSet::CopyStructure(vtkDataSet *ds)
 {
   vtkPointSet *ps=(vtkPointSet *)ds;
-  this->Initialize();
 
-  this->SetPoints(ps->Points);
+  if ( this->Points != ps->Points )
+    {
+    if ( this->Locator ) 
+      {
+      this->Locator->Initialize();
+      }
+    this->SetPoints(ps->Points);
+    }
 }
 
 
