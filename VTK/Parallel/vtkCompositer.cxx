@@ -53,6 +53,7 @@ void vtkCompositer::CompositeBuffer(vtkDataArray *pBuf, vtkFloatArray *zBuf,
 void vtkCompositer::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->vtkObject::PrintSelf(os, indent);
+  os << indent << "Controller: (" << this->Controller << ")\n";
 }
 
 

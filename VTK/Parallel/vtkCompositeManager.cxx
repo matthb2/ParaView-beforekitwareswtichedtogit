@@ -1455,6 +1455,15 @@ void vtkCompositeManager::PrintSelf(ostream& os, vtkIndent indent)
     os << indent << "UseChar: Off\n";
     }  
   
+  if (this->UseRGB)
+    {
+    os << indent << "UseRGB: On\n";
+    }
+  else
+    {
+    os << indent << "UseRGB: Off\n";
+    }  
+  
   if ( this->RenderWindow )
     {
     os << indent << "RenderWindow: " << this->RenderWindow << "\n";
