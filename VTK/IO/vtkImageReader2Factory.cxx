@@ -109,7 +109,7 @@ vtkImageReader2* vtkImageReader2Factory::CreateImageReader2(const char* path)
     if(ret->CanReadFile(path))
       {
       // like a new call
-      return ret->MakeObject();
+      return ret->NewInstance();
       }
     }
   return 0;

@@ -736,3 +736,11 @@ void vtkImageReader2::SetDataScalarType(int type)
   this->GetOutput()->SetScalarType(this->DataScalarType);
 }
 
+//----------------------------------------------------------------------------
+#ifndef VTK_REMOVE_LEGACY_CODE
+vtkImageReader2* vtkImageReader2::MakeObject()
+{
+  VTK_LEGACY_METHOD(MakeObject, "4.2");
+  return this->NewInstance();
+}
+#endif
