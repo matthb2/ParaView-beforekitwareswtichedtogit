@@ -235,13 +235,16 @@ void vtkXMLUnstructuredDataReader::SetupOutputInformation()
   output->SetMaximumNumberOfPieces(this->NumberOfPieces);
   
   // Create the points array.
-  vtkDataArray* array =
-    this->CreateDataArray(this->PointElements[this->Piece]->GetNestedElement(0));
   vtkPoints* points = vtkPoints::New();
-  points->SetData(array);
+  
+  // Use the configuration of the first piece since all are the same.
+  vtkXMLDataElement* ePoints = this->PointElements[0];
+  vtkDataArray* a = this->CreateDataArray(ePoints->GetNestedElement(0));
+  points->SetData(a);
+  a->Delete();
+  
   output->SetPoints(points);
   points->Delete();
-  array->Delete();
 }
 
 //----------------------------------------------------------------------------
