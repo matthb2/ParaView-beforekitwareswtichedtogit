@@ -68,6 +68,12 @@ void vtkBYUWriter::WriteData()
     return;
     }
 
+  if ( !this->GeometryFileName )
+    {
+    vtkErrorMacro(<< "Geometry file name was not specified");
+    return;
+    }
+
   if ((geomFp = fopen(this->GeometryFileName, "w")) == NULL)
     {
     vtkErrorMacro(<< "Couldn't open geometry file: " << this->GeometryFileName);
