@@ -1081,6 +1081,15 @@ void vtkCompositeManager::PrintSelf(ostream& os, vtkIndent indent)
     os << indent << "UseCompositing: Off\n";
     }
 
+  if (this->Manual)
+    {
+    os << indent << "Manual: On\n";
+    }
+  else
+    {
+    os << indent << "Manual: Off\n";
+    }
+
   os << indent << "Controller: (" << this->Controller << ")\n"; 
 }
 
