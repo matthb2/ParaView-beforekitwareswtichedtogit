@@ -110,6 +110,8 @@ void vtkCocoaRenderWindow::Clean()
     [(vtkCocoaWindow *)this->WindowId makeCurrentContext];
     //DOCOCOAwglDeleteContext(this->ContextId);
     this->ContextId = NULL;
+    NSAutoreleasePool *pool = (NSAutoreleasePool *)(this->AutoreleasePool);
+    [pool release];
     }
 }
 
@@ -373,6 +375,8 @@ void vtkCocoaRenderWindow::WindowInitialize (void)
     // get the application instance if we don't have one already
     if (!this->ApplicationInitialized)
         {
+	NSAutoreleasePool *pool = (NSAutoreleasePool *)(this->AutoreleasePool);
+	pool = [[NSAutoreleasePool alloc] init];
 	[NSApplication sharedApplication];
         this->ApplicationInitialized=1;
         }
