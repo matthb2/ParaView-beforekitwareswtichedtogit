@@ -33,6 +33,7 @@
 #include "vtkLongArray.h"
 #include "vtkFloatArray.h"
 #include "vtkDoubleArray.h"
+#include "vtkBitArray.h"
 
 vtkCxxRevisionMacro(vtkImageData, "$Revision$");
 vtkStandardNewMacro(vtkImageData);
@@ -1533,6 +1534,9 @@ void vtkImageData::AllocateScalars()
   // allocate the new scalars
   switch (this->ScalarType)
     {
+    case VTK_BIT:
+      scalars = vtkBitArray::New();
+      break;
     case VTK_UNSIGNED_CHAR:
       scalars = vtkUnsignedCharArray::New();
       break;
