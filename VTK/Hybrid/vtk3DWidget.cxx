@@ -123,7 +123,7 @@ float vtk3DWidget::SizeHandles(float factor)
   if ( !this->ValidPick || !(renderer=this->CurrentRenderer) || 
        !(camera=renderer->GetActiveCamera()) )
     {
-    return (this->HandleSize * this->InitialLength);
+    return (this->HandleSize * factor * this->InitialLength);
     }
   else
     {
@@ -152,7 +152,7 @@ float vtk3DWidget::SizeHandles(float factor)
         (windowUpperRight[i] - windowLowerLeft[i]);
       }
 
-    return ((float)sqrt(radius) * this->HandleSize);
+    return ((float)sqrt(radius) * factor * this->HandleSize);
     }
 }
 
