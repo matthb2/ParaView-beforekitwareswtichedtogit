@@ -103,6 +103,12 @@ vtkCaptionActor2D::vtkCaptionActor2D()
   this->BorderActor = vtkActor2D::New();
   this->BorderActor->SetMapper(this->BorderMapper);
 
+  // Set border mapper coordinate system to Display.
+  vtkCoordinate *coord = vtkCoordinate::New();
+  coord->SetCoordinateSystemToDisplay();
+  this->BorderMapper->SetTransformCoordinate(coord);
+  coord->Delete();
+
   // This is for glyphing the head of the leader
   // A single point with a vector for glyph orientation
   this->HeadPolyData = vtkPolyData::New();
