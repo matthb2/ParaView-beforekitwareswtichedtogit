@@ -434,7 +434,7 @@ void vtkSynchronizedTemplates2D::Execute()
   //
   // Allocate necessary objects
   //
-  estimatedSize = (int) (sqrt((double)dims[0]*dims[1]*dims[2]));
+  estimatedSize = (int) (sqrt((double)(dataSize)));
   if (estimatedSize < 1024)
     {
     estimatedSize = 1024;
