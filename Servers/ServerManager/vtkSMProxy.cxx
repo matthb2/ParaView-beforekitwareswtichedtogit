@@ -141,7 +141,7 @@ vtkSMProxy::~vtkSMProxy()
   // To remove cyclic dependancy
   for(; it != this->Internals->Properties.end(); it++)
     {
-    it->second.Property.GetPointer()->RemoveAllDependants();
+    it->second.Property.GetPointer()->RemoveAllDependents();
     }
   delete this->Internals;
   this->SetVTKClassName(0);

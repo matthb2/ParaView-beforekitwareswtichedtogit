@@ -102,7 +102,7 @@ int vtkSMDomain::ReadXMLAttributes(vtkSMProperty* prop, vtkPVXMLElement* element
               vtkSMProperty* req = prop->NewProperty(name);
               if (req)
                 {
-                req->AddDependant(this);
+                req->AddDependent(this);
                 this->Internals->RequiredProperties[function] = req;
                 }
               }
