@@ -17,20 +17,20 @@ Thanks:    to Yves Starreveld for developing this class
 
 =========================================================================*/
 
-#include <stdlib.h>
-#include <math.h>
-#include <stdio.h>
 #include "vtkCarbonRenderWindow.h"
+
 #include "vtkCarbonRenderWindowInteractor.h"
-#include "vtkOpenGLRenderer.h"
-#include "vtkOpenGLProperty.h"
-#include "vtkOpenGLTexture.h"
-#include "vtkOpenGLCamera.h"
+#include "vtkObjectFactory.h"
 #include "vtkOpenGLActor.h"
+#include "vtkOpenGLCamera.h"
 #include "vtkOpenGLLight.h"
 #include "vtkOpenGLPolyDataMapper.h"
-#include "vtkObjectFactory.h"
+#include "vtkOpenGLProperty.h"
+#include "vtkOpenGLRenderer.h"
+#include "vtkOpenGLTexture.h"
 #include "vtkRendererCollection.h"
+
+#include <math.h>
 
 vtkCxxRevisionMacro(vtkCarbonRenderWindow, "$Revision$");
 vtkStandardNewMacro(vtkCarbonRenderWindow);
