@@ -115,6 +115,10 @@ void vtkImageAccumulate::SetStencil(vtkImageStencilData *stencil)
 //----------------------------------------------------------------------------
 vtkImageStencilData *vtkImageAccumulate::GetStencil()
 {
+  if (this->GetNumberOfInputConnections(1) < 1)
+    {
+    return 0;
+    }
   return vtkImageStencilData::SafeDownCast(
     this->GetExecutive()->GetInputData(this,1,0));
 }
