@@ -67,6 +67,7 @@ vtkWin32OpenGLRenderWindow::vtkWin32OpenGLRenderWindow()
   this->MFChandledWindow = FALSE;       // hsr
   this->StereoType = VTK_STEREO_CRYSTAL_EYES;  
   this->CursorHidden = 0;
+  this->ForceMakeCurrent = 0;
 }
 
 vtkWin32OpenGLRenderWindow::~vtkWin32OpenGLRenderWindow()
@@ -200,10 +201,10 @@ HGLRC vtkWin32OpenGLGlobalContext = 0;
 
 void vtkWin32OpenGLRenderWindow::MakeCurrent()
 {
-  if (this->ContextId != vtkWin32OpenGLGlobalContext)
+  if (this->ContextId != vtkWin32OpenGLGlobalContext || this->ForceMakeCurrent)
     {
     // Try to avoid doing anything (for performance).
-    if (this->ContextId)
+    if (this->ContextId || this->ForceMakeCurrent)
       { 
       if (wglMakeCurrent(this->DeviceContext, this->ContextId) != TRUE) 
         {
@@ -223,6 +224,7 @@ void vtkWin32OpenGLRenderWindow::MakeCurrent()
                       << (LPCTSTR)lpMsgBuf);
         ::LocalFree( lpMsgBuf );
         }
+      this->ForceMakeCurrent = 0;
       }
     vtkWin32OpenGLGlobalContext = this->ContextId;
     }

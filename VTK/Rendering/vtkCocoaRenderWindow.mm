@@ -1,4 +1,4 @@
-/*=========================================================================
+=====================================================================
 
   Program:   Visualization Toolkit
   Module:    $RCSfile$
@@ -76,6 +76,7 @@ vtkCocoaRenderWindow::vtkCocoaRenderWindow()
   this->SetWindowName("Visualization Toolkit - Cocoa");
   this->TextureResourceIds = vtkIdList::New();
   this->CursorHidden = 0;
+  this->ForceMakeCurrent = 0;
 }
 
 vtkCocoaRenderWindow::~vtkCocoaRenderWindow()

@@ -926,13 +926,6 @@ void vtkXOpenGLRenderWindow::MakeCurrent()
     }
 }
 
-
-void vtkXOpenGLRenderWindow::SetForceMakeCurrent()
-{
-  this->ForceMakeCurrent = 1;
-}
-
-
 int vtkXOpenGLRenderWindowFoundMatch;
 
 extern "C"
