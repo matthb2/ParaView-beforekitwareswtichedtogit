@@ -1102,7 +1102,7 @@ int vtkPolygon::IntersectWithLine(float p1[3], float p2[3], float tol,float& t,
   // Evaluate position
   //
   weights = new float[npts];
-  if ( this->EvaluatePosition(x, closestPoint, subId, pcoords, dist2, weights))
+  if ( this->EvaluatePosition(x, closestPoint, subId, pcoords, dist2, weights) >= 0)
     {
     if ( dist2 <= tol2 ) 
       {
