@@ -21,6 +21,7 @@
 #include "vtkColorTransferFunction.h"
 #include "vtkDebugLeaks.h"
 #include "vtkGraphicsFactory.h"
+#include "vtkImageData.h"
 #include "vtkLight.h"
 #include "vtkLightCollection.h"
 #include "vtkObjectFactory.h"
