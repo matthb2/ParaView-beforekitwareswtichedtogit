@@ -189,5 +189,7 @@ int vtkSMInputArrayDomain::ReadXMLAttributes(
 void vtkSMInputArrayDomain::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os, indent);
-
+  
+  os << indent << "NumberOfComponents: " << this->NumberOfComponents << endl;
+  os << indent << "AttributeType: " << this->AttributeType << endl;
 }

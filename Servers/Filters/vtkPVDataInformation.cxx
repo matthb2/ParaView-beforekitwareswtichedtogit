@@ -92,6 +92,9 @@ void vtkPVDataInformation::PrintSelf(ostream& os, vtkIndent indent)
     {
     os << indent << "Name: NULL\n";
     }
+
+  os << indent << "DataClassName: " 
+     << (this->DataClassName?this->DataClassName:"(none)") << endl;
 }
 
 //----------------------------------------------------------------------------

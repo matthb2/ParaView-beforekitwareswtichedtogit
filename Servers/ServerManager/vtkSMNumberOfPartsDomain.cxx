@@ -138,4 +138,6 @@ int vtkSMNumberOfPartsDomain::ReadXMLAttributes(
 void vtkSMNumberOfPartsDomain::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os, indent);
+
+  os << indent << "PartMultiplicity: " << this->PartMultiplicity << endl;
 }
