@@ -340,7 +340,7 @@ int vtkMoleculeReaderBase::MakeBonds(vtkPoints *newPts,
   return nbonds;
 }
 
-int vtkMoleculeReaderBase::MakeAtomType(char *atype)
+int vtkMoleculeReaderBase::MakeAtomType(const char *atype)
 {
   char      a, b;
   int       anum;
