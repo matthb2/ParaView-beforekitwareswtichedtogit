@@ -795,11 +795,11 @@ void vtkCarbonRenderWindow::Finalize(void)
       //this->CleanUpOffScreenRendering()
     }
 
+  this->Clean();
+  //ReleaseDC in Win32
+  this->DeviceContext = NULL;
   if (this->WindowId && this->OwnWindow)
     {
-      this->Clean();
-      //ReleaseDC in Win32
-      this->DeviceContext = NULL;
       SetWRefCon(this->WindowId, (long)0);
       DisposeWindow(this->WindowId);
     }

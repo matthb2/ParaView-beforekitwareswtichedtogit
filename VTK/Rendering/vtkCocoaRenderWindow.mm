@@ -86,12 +86,11 @@ vtkCocoaRenderWindow::~vtkCocoaRenderWindow()
   {
       this->ShowCursor();
   }
+  this->Clean();
+  // can't set WindowId=NULL, needed for DestroyWindow
+  this->DeviceContext = NULL;
   if (this->WindowId && this->OwnWindow)
-    {
-    this->Clean();
-    // can't set WindowId=NULL, needed for DestroyWindow
-    this->DeviceContext = NULL;
-    
+    {  
     [(vtkCocoaWindow *)this->WindowId close];
     }
 }
