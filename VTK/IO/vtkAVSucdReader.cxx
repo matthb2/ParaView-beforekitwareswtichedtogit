@@ -51,7 +51,9 @@ vtkAVSucdReader::vtkAVSucdReader()
   this->NumberOfCellComponents = 0;
   this->fs = NULL;
   this->DecrementNodeIds = 0;
-
+  this->NumberOfNodes = 0;
+  this->NumberOfCells = 0;
+  
   this->NodeDataInfo = NULL;
   this->CellDataInfo = NULL;
   this->PointDataArraySelection = vtkDataArraySelection::New();
