@@ -462,6 +462,12 @@ void vtkPVGeometryFilter::ImageDataExecute(vtkImageData *input)
     output->SetLines(outline->GetOutput()->GetLines());
     outline->Delete();
     }
+  else
+    {
+    vtkPoints* pts = vtkPoints::New();
+    output->SetPoints(pts);
+    pts->Delete();
+    }
 }
 
 //----------------------------------------------------------------------------
