@@ -76,7 +76,8 @@ int vtkXMLStructuredDataReader::ReadPrimaryElement(vtkXMLDataElement* ePrimary)
 void vtkXMLStructuredDataReader::SetupEmptyOutput()
 {
   // Special extent to indicate no input.
-  this->GetOutputAsDataSet(0)->SetUpdateExtent(1, 0, 1, 0, 1, 0);
+  this->GetOutputAsDataSet(0)->SetWholeExtent(0, -1, 0, -1, 0, -1);
+  this->GetOutputAsDataSet(0)->SetUpdateExtent(0, -1, 0, -1, 0, -1);
 }
 
 //----------------------------------------------------------------------------
