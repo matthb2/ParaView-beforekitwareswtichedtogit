@@ -181,8 +181,8 @@ int vtkHierarchicalDataExtractLevel::SetUpdateBlocks(
       vtkInformation* inBInfo = inUpdateInfo->GetInformation(j, i);
       if (inBInfo->Get(vtkCompositeDataPipeline::MARKED_FOR_UPDATE()))
         {
-        info = updateInfo->GetInformation(j, i);
-        info->Set(vtkCompositeDataPipeline::MARKED_FOR_UPDATE(), 1);
+        vtkInformation* blockInfo = updateInfo->GetInformation(j, i);
+        blockInfo->Set(vtkCompositeDataPipeline::MARKED_FOR_UPDATE(), 1);
         }
       }
     }
