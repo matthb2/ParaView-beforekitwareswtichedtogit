@@ -41,6 +41,8 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 =========================================================================*/
 #include "vtkUnstructuredGridToUnstructuredGridFilter.h"
 
+vtkCxxRevisionMacro(vtkUnstructuredGridToUnstructuredGridFilter, "$Revision$");
+
 //----------------------------------------------------------------------------
 // Specify the input data or filter.
 void vtkUnstructuredGridToUnstructuredGridFilter::SetInput(vtkUnstructuredGrid *input)

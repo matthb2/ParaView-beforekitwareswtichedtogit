@@ -65,3 +65,6 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #define vtkOpenGLImageMapper vtkMesaImageMapper
 #include "vtkOpenGLImageMapper.cxx"
 #undef vtkOpenGLImageMapper
+
+vtkCxxRevisionMacro(vtkMesaImageMapper, "$Revision$");
+vtkStandardNewMacro(vtkMesaImageMapper);

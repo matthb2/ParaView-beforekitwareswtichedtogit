@@ -41,6 +41,8 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 =========================================================================*/
 #include "vtkVolumeMapper.h"
 
+vtkCxxRevisionMacro(vtkVolumeMapper, "$Revision$");
+
 // Construct a vtkVolumeMapper with empty scalar input and clipping off.
 vtkVolumeMapper::vtkVolumeMapper()
 {
@@ -190,7 +192,7 @@ vtkImageData *vtkVolumeMapper::GetRGBTextureInput()
 // Print the vtkVolumeMapper
 void vtkVolumeMapper::PrintSelf(ostream& os, vtkIndent indent)
 {
-  this->vtkAbstractMapper3D::PrintSelf(os,indent);
+  this->Superclass::PrintSelf(os,indent);
 
   if ( this->GetRGBTextureInput() )
     {

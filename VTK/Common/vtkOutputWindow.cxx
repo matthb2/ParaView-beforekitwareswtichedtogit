@@ -46,6 +46,8 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "vtkObjectFactory.h"
 #include "vtkDebugLeaks.h"
 
+vtkCxxRevisionMacro(vtkOutputWindow, "$Revision$");
+
 vtkOutputWindow* vtkOutputWindow::Instance = 0;
 vtkOutputWindowSmartPointer vtkOutputWindow::SmartPointer(NULL);
 

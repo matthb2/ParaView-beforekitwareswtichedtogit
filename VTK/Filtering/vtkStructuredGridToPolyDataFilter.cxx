@@ -41,6 +41,8 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 =========================================================================*/
 #include "vtkStructuredGridToPolyDataFilter.h"
 
+vtkCxxRevisionMacro(vtkStructuredGridToPolyDataFilter, "$Revision$");
+
 //----------------------------------------------------------------------------
 // Specify the input data or filter.
 void vtkStructuredGridToPolyDataFilter::SetInput(vtkStructuredGrid *input)

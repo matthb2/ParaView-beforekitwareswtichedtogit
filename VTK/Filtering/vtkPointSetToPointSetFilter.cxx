@@ -44,6 +44,8 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "vtkStructuredGrid.h"
 #include "vtkUnstructuredGrid.h"
 
+vtkCxxRevisionMacro(vtkPointSetToPointSetFilter, "$Revision$");
+
 //----------------------------------------------------------------------------
 // Construct object.
 vtkPointSetToPointSetFilter::vtkPointSetToPointSetFilter()

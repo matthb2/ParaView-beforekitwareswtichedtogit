@@ -42,6 +42,8 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "vtkWin32TextMapper.h"
 #include "vtkObjectFactory.h"
 
+vtkCxxRevisionMacro(vtkWin32TextMapper, "$Revision$");
+
 //--------------------------------------------------------------------------
 vtkWin32TextMapper* vtkWin32TextMapper::New()
 {

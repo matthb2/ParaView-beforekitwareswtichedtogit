@@ -45,12 +45,13 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "vtkPolyDataMapper.h"
 #include "vtkToolkits.h"
 
-
 #ifdef _WIN32
 #include "vtkWin32OpenGLRenderWindow.h"
 #elif defined(VTK_USE_MESA)
 #include "vtkMesaRenderWindow.h"
 #endif
+
+vtkCxxRevisionMacro(vtkCompositeManager, "$Revision$");
 
 // Structures to communicate render info.
 struct vtkCompositeRenderWindowInfo 
