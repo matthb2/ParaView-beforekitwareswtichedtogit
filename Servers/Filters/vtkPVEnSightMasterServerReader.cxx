@@ -296,7 +296,7 @@ void vtkPVEnSightMasterServerReader::ExecuteInformation()
     this->InformationError = 1;
     return;
     }
-  for (int i= 0;i < this->NumberOfOutputs; ++i)
+  for (i=0; i < this->NumberOfOutputs; ++i)
     {
     this->Outputs[i]->SetMaximumNumberOfPieces(-1);
     }
