@@ -222,6 +222,7 @@ void vtkSource::UpdateInformation()
         }  
       }
     
+    this->InvokeEvent(vtkCommand::ExecuteInformationEvent, NULL);
     this->ExecuteInformation();
 
     // Information gets invalidated as soon as Update is called,
