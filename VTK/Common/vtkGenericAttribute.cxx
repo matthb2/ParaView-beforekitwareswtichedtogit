@@ -20,6 +20,17 @@
 
 vtkCxxRevisionMacro(vtkGenericAttribute, "$Revision$");
 
+//---------------------------------------------------------------------------
+vtkGenericAttribute::vtkGenericAttribute()
+{
+}
+
+//---------------------------------------------------------------------------
+vtkGenericAttribute::~vtkGenericAttribute()
+{
+}
+
+//---------------------------------------------------------------------------
 void vtkGenericAttribute::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os,indent);

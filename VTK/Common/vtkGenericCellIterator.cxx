@@ -17,6 +17,11 @@
 vtkCxxRevisionMacro(vtkGenericCellIterator, "$Revision$");
 
 //----------------------------------------------------------------------------
+vtkGenericCellIterator::vtkGenericCellIterator()
+{
+}
+
+//----------------------------------------------------------------------------
 vtkGenericCellIterator::~vtkGenericCellIterator()
 {
 }

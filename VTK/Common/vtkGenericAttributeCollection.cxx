@@ -47,7 +47,7 @@ vtkGenericAttributeCollection::vtkGenericAttributeCollection()
   this->NumberOfComponents = 0;
   this->MaxNumberOfComponents = 0; // cache
   this->ActualMemorySize = 0;
-  vtkTimeStamp ComputeTime; // cache time stamp
+  //vtkTimeStamp ComputeTime; // cache time stamp
 }
 
 //----------------------------------------------------------------------------
