@@ -166,6 +166,11 @@ void vtkTesting::AddArgument(const char *arg)
   this->Args.push_back(arg);
 }
 
+void vtkTesting::CleanArguments()
+{
+  this->Args.erase( this->Args.begin(), this->Args.end() );
+}
+
 const char *vtkTesting::GetDataRoot()
 {
   unsigned int i;
@@ -331,11 +336,7 @@ char* vtkTesting::IncrementFileName(const char* fname, int count)
     {
     newFileName[marker] = counts[i];
     }
-  newFileName[marker++] = '.';
-  newFileName[marker++] = 'p';
-  newFileName[marker++] = 'n';
-  newFileName[marker++] = 'g';
-  newFileName[marker] = '\0';
+  strncpy( newFileName + marker, ".png", 4 );
   
   return newFileName;
 }
