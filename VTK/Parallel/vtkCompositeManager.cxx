@@ -96,7 +96,6 @@ vtkCompositeManager::vtkCompositeManager()
   this->RenderWindowInteractor = NULL;
   this->Controller = vtkMultiProcessController::GetGlobalController();
 
-  Sleep(15000);
   if (this->Controller)
     {
     this->Controller->Register(this);
