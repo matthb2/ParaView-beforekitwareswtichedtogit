@@ -420,6 +420,7 @@ void vtkPVTreeComposite::InternalStartRender()
     cam->GetPosition(renInfoDouble.CameraPosition);
     cam->GetFocalPoint(renInfoDouble.CameraFocalPoint);
     cam->GetViewUp(renInfoDouble.CameraViewUp);
+    renInfoDouble.CameraViewAngle = cam->GetViewAngle();
     cam->GetClippingRange(renInfoDouble.CameraClippingRange);
     if (cam->GetParallelProjection())
       {
