@@ -63,6 +63,7 @@ vtkUnstructuredGridLinearRayIntegrator::vtkUnstructuredGridLinearRayIntegrator()
 {
   this->Property = NULL;
   this->ControlPoints = NULL;
+  this->NumIndependentComponents = 0;
 }
 
 vtkUnstructuredGridLinearRayIntegrator::~vtkUnstructuredGridLinearRayIntegrator()
