@@ -246,8 +246,10 @@ void vtkGL2PSExporter::WriteData()
 
   // GL2PS versions before 0.9.1 segfault if sorting is performed when
   // TeX output is chosen.  Sorting is irrelevant for Tex output
-  // anyway.
-  if (this->FileFormat == TEX_FILE)
+  // anyway.  When Write3DPropsAsRasterImage is on sorting is of no
+  // use.
+  if ((this->FileFormat == TEX_FILE) || 
+      (this->Write3DPropsAsRasterImage == 1))
     {
     sort = GL2PS_NO_SORT;
     }
@@ -312,7 +314,11 @@ void vtkGL2PSExporter::WriteData()
 
   // Ready to write file.
 
-  // write out a raster image without the 2d actors
+  // Need to render once before rendering into the feedback buffer to
+  // prevent problems.
+  this->RenderWindow->Render();  
+
+  // Write out a raster image without the 2d actors
   if (this->Write3DPropsAsRasterImage)
     {
     _SavePropVisibility(renCol, volVis, actVis, act2dVis);
