@@ -44,6 +44,9 @@ public:
 #endif
     return new vtkProcessObjectDummyData;
     }
+protected:
+  vtkProcessObjectDummyData() {}; 
+  virtual ~vtkProcessObjectDummyData() {}; 
 private:
   vtkProcessObjectDummyData(const vtkProcessObjectDummyData&);
   void operator=(const vtkProcessObjectDummyData&);  // Not implemented.
