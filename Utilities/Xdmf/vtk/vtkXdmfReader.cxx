@@ -553,7 +553,8 @@ void vtkXdmfReader::Execute()
         status = this->CellDataArraySelection->ArrayIsEnabled(name);
         }
       }
-    attrNode = this->DOM->FindElement("Attribute", cc);
+    // attrNode = this->DOM->FindElement("Attribute", cc);
+    attrNode = Attribute->GetCurrentElement();
     // dataNode = this->DOM->FindElement("DataStructure", 0, attrNode);
     // Find the DataTransform or DataStructure below the <Attribute>
     dataNode = this->DOM->FindElement(NULL, 0, attrNode);
