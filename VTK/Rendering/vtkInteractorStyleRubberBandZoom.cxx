@@ -88,6 +88,8 @@ void vtkInteractorStyleRubberBandZoom::OnMouseMove()
     }
   
   this->Interactor->GetRenderWindow()->SetPixelData(0, 0, size[0]-1, size[1]-1, pixels, 1);
+  
+  tmpPixelArray->Delete();
 }
 
 void vtkInteractorStyleRubberBandZoom::OnLeftButtonDown()
