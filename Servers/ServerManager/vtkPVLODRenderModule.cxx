@@ -23,6 +23,7 @@
 #include "vtkPVLODPartDisplayInformation.h"
 #include "vtkSMPart.h"
 #include "vtkPVDataInformation.h"
+#include "vtkSMSourceProxy.h"
 
 //----------------------------------------------------------------------------
 vtkStandardNewMacro(vtkPVLODRenderModule);
@@ -149,7 +150,6 @@ void vtkPVLODRenderModule::ComputeTotalVisibleMemorySize()
 {
   vtkObject* object;
   vtkSMLODPartDisplay* pDisp;
-  vtkPVLODPartDisplayInformation* info;
 
   this->TotalVisibleGeometryMemorySize = 0;
   this->TotalVisibleLODMemorySize = 0;
@@ -159,8 +159,19 @@ void vtkPVLODRenderModule::ComputeTotalVisibleMemorySize()
     pDisp = vtkSMLODPartDisplay::SafeDownCast(object);
     if (pDisp && pDisp->GetVisibility())
       {
-      info = pDisp->GetLODInformation();
-      this->TotalVisibleGeometryMemorySize += info->GetGeometryMemorySize();
+      vtkPVLODPartDisplayInformation *info = pDisp->GetLODInformation();
+      if (pDisp->GetVolumeRenderMode())
+        {
+        // If we are volume rendering, count size of total geometry, not
+        // just the surface.  This is not perfect because the source
+        // may have been tetrahedralized.
+        vtkPVDataInformation *info2 = pDisp->GetSource()->GetDataInformation();
+        this->TotalVisibleGeometryMemorySize += info2->GetMemorySize();
+        }
+      else
+        {
+        this->TotalVisibleGeometryMemorySize += info->GetGeometryMemorySize();
+        }
       this->TotalVisibleLODMemorySize += info->GetLODGeometryMemorySize();
       }
     }
