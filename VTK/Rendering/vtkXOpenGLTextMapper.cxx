@@ -20,7 +20,9 @@
 #include <GL/glx.h>
 #include "vtkObjectFactory.h"
 #include "vtkgluPickMatrix.h"
+#include "vtkProperty2D.h"
 #include "vtkTextProperty.h"
+#include "vtkViewport.h"
 
 vtkCxxRevisionMacro(vtkXOpenGLTextMapper, "$Revision$");
 vtkStandardNewMacro(vtkXOpenGLTextMapper);
@@ -53,7 +55,7 @@ int vtkXOpenGLTextMapper::GetListBaseForFont(vtkTextMapper *tm,
   vtkWindow *win = vp->GetVTKWindow();
 
   vtkTextProperty *tprop = tm->GetTextProperty();
-  tm_font_size = tm->GetMatchingFontSize();
+  int tm_font_size = tm->GetSystemFontSize(tprop->GetFontSize());
 
   // has the font been cached ?
   for (i = 0; i < numCached; i++)
