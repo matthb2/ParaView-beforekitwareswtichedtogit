@@ -53,6 +53,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "vtkOpenGLLight.h"
 #include "vtkOpenGLPolyDataMapper.h"
 #include "vtkObjectFactory.h"
+#include "vtkRendererCollection.h"
 //#include "vtkFloatArray.h"
 #import "vtkCocoaWindow.h"
 #import "vtkCocoaGLView.h"
