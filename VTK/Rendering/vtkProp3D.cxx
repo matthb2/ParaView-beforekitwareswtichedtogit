@@ -520,7 +520,6 @@ void vtkProp3D::PokeMatrix(vtkMatrix4x4 *matrix)
     //"non-transformed", this is the final transformation.
     this->SetUserMatrix(matrix);
     }
-    
   else //we restore our original state
     {
     this->CachedProp3D->GetOrigin(this->Origin);
