@@ -29,6 +29,7 @@ vtkStandardNewMacro(vtkCompositer);
 vtkCompositer::vtkCompositer()
 {
   this->Controller = vtkMultiProcessController::GetGlobalController();
+  this->NumberOfProcesses = 1;
   if (this->Controller)
     {
     this->Controller->Register(this);
