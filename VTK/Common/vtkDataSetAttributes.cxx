@@ -1610,7 +1610,7 @@ void vtkDataSetAttributes::PrintSelf(ostream& os, vtkIndent indent)
        << ": ";
     if ( (da=this->GetAttribute(attributeType)) )
       {
-      cout << endl;
+      os << endl;
       da->PrintSelf(os, indent.GetNextIndent());
       }
     else
