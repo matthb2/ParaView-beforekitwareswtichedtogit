@@ -111,6 +111,7 @@ void vtkTIFFWriter::WriteFileHeader(ofstream *file, vtkImageData *data)
     }
 
   int predictor = 0;
+  ostream* ost = file;
 
   // Find the length of the rows to write.
   data->GetWholeExtent(min0, max0, min1, max1, min2, max2);
@@ -118,7 +119,7 @@ void vtkTIFFWriter::WriteFileHeader(ofstream *file, vtkImageData *data)
   height = (max1 - min1 + 1);
 
   TIFF* tif = TIFFClientOpen(this->GetFileName(), "w",
-    (thandle_t) file,
+    (thandle_t) ost,
     reinterpret_cast<TIFFReadWriteProc>(vtkTIFFWriterIO::TIFFRead), 
     reinterpret_cast<TIFFReadWriteProc>(vtkTIFFWriterIO::TIFFWrite),
     reinterpret_cast<TIFFSeekProc>(vtkTIFFWriterIO::TIFFSeek),
