@@ -874,7 +874,7 @@ void vtkDataSetSurfaceFilter::UnstructuredGridExecute()
           } // if 3D
         else
           {
-          vtkErrorMacro("Missing cell type.");
+          vtkDebugMacro("Missing cell type.");
           }
         } // a linear cell type
 
