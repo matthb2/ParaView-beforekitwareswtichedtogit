@@ -60,8 +60,8 @@ void vtkImageShiftScaleExecute(vtkImageShiftScale *self,
   vtkImageProgressIterator<OT> outIt(outData, outExt, self, id);
   double typeMin, typeMax, val;
   int clamp;
-  float shift = self->GetShift();
-  float scale = self->GetScale();
+  double shift = self->GetShift();
+  double scale = self->GetScale();
 
   // for preventing overflow
   typeMin = outData->GetScalarTypeMin();
@@ -79,7 +79,7 @@ void vtkImageShiftScaleExecute(vtkImageShiftScale *self,
       while (outSI != outSIEnd)
         {
         // Pixel operation
-        val = ((float)(*inSI) + shift) * scale;
+        val = ((double)(*inSI) + shift) * scale;
         if (val > typeMax)
           {
           val = typeMax;
@@ -98,7 +98,7 @@ void vtkImageShiftScaleExecute(vtkImageShiftScale *self,
       while (outSI != outSIEnd)
         {
         // Pixel operation
-        *outSI = (OT)(((float)(*inSI) + shift) * scale);
+        *outSI = (OT)(((double)(*inSI) + shift) * scale);
         ++outSI;
         ++inSI;
         }

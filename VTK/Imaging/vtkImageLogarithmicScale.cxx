@@ -40,7 +40,7 @@ void vtkImageLogarithmicScaleExecute(vtkImageLogarithmicScale *self,
 {
   vtkImageIterator<T> inIt(inData, outExt);
   vtkImageProgressIterator<T> outIt(outData, outExt, self, id);
-  float c;
+  double c;
 
   c = self->GetConstant();
 
