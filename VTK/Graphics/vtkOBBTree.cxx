@@ -1106,6 +1106,11 @@ void vtkOBBTree::BuildLocator()
     cellList->InsertId(i,i);
     }
 
+  if ( this->Tree )
+    {
+    this->DeleteTree(this->Tree);
+    delete this->Tree;
+    }
   this->Tree = new vtkOBBNode;
   this->DeepestLevel = 0;
   this->BuildTree(cellList,this->Tree,0);
