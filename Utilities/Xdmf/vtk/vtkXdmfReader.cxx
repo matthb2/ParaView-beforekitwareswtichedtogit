@@ -84,6 +84,8 @@ vtkCxxRevisionMacro(vtkXdmfReader, "$Revision$");
 #define vtkMAX(x, y) (((x)>(y))?(x):(y))
 #define vtkMIN(x, y) (((x)<(y))?(x):(y))
 
+#define PRINT_EXTENT(x) "[" << (x)[0] << " " << (x)[1] << " " << (x)[2] << " " << (x)[3] << " " << (x)[4] << " " << (x)[5] << "]" 
+
 class vtkXdmfReaderInternal
 {
 public:
@@ -249,12 +251,21 @@ void vtkXdmfReader::Execute()
       {
       continue;
       }
+
+    //cout << "WholeExtent:  " << PRINT_EXTENT(this->Outputs[idx]->GetWholeExtent()) << endl;
+    //cout << "UpdateExtent: " << PRINT_EXTENT(this->Outputs[idx]->GetUpdateExtent()) << endl;
+    //vtkStructuredGrid  *vGrid = vtkStructuredGrid::SafeDownCast(this->Outputs[idx]);
+    //if ( vGrid )
+    //  {
+    //  cout << "Extent:       " << PRINT_EXTENT(vGrid->GetExtent()) << endl;
+    //  }
+    XdmfGrid* grid = this->Internals->Grids[currentGrid];
+
     if ( !this->Internals->DataDescriptions[currentGrid] )
       {
-      continue;
+      this->Internals->DataDescriptions[currentGrid] = grid->GetShapeDesc();
+      //continue;
       }
-
-    XdmfGrid* grid = this->Internals->Grids[currentGrid];
 
     grid->Update();
 
@@ -1075,7 +1086,14 @@ void vtkXdmfReader::ExecuteInformation()
         << upext[2] << ", " 
         << upext[3] << ", " 
         << upext[4] << ", " 
-        << upext[5] )
+        << upext[5] );
+      //cout << "WholeExtent:  " << PRINT_EXTENT(this->Outputs[idx]->GetWholeExtent()) << endl;
+      //cout << "UpdateExtent: " << PRINT_EXTENT(this->Outputs[idx]->GetUpdateExtent()) << endl;
+      //vtkStructuredGrid  *vGrid = vtkStructuredGrid::SafeDownCast(this->Outputs[idx]);
+      //if ( vGrid )
+      //  {
+      //  cout << "Extent:       " << PRINT_EXTENT(vGrid->GetExtent()) << endl;
+      //  }
       }
 
     idx ++;
