@@ -18,6 +18,7 @@
 #include "vtkMILVideoSource.h"
 #include "vtkTimerLog.h"
 #include "vtkObjectFactory.h"
+#include "vtkCriticalSection.h"
 
 #include <mil.h>
 #include <ctype.h>
