@@ -1567,14 +1567,6 @@ void vtkSimpleCellTessellator::Initialize(vtkGenericDataSet *ds)
 }
 
 //-----------------------------------------------------------------------------
-// Description:
-// Return the internal edge table.
-vtkGenericEdgeTable *vtkSimpleCellTessellator::GetEdgeTable()
-{
-  return this->EdgeTable;
-}
-
-//-----------------------------------------------------------------------------
 void vtkSimpleCellTessellator::Tessellate(vtkGenericAdaptorCell *cell,
                                           vtkGenericAttributeCollection *att,
                                           vtkDoubleArray *points, 

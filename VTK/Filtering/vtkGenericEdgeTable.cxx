@@ -534,14 +534,6 @@ void vtkGenericEdgeTable::Initialize(vtkIdType start)
 
 //-----------------------------------------------------------------------------
 // Description:
-// Return the last point id inserted.
-vtkIdType vtkGenericEdgeTable::GetLastPointId()
-{
-  return this->LastPointId;
-}
-  
-//-----------------------------------------------------------------------------
-// Description:
 // Return the total number of components for the point-centered attributes.
 // \post positive_result: result>0
 int vtkGenericEdgeTable::GetNumberOfComponents()
