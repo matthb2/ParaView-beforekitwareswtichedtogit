@@ -133,7 +133,7 @@ int IsAntiAliasingRequestedByThisProperty(vtkTextProperty *tprop)
 //----------------------------------------------------------------------------
 // A cache
 
-#define FONT_CACHE_CAPACITY 60
+#define FONT_CACHE_CAPACITY 150
 
 class vtkFontCache
 {
