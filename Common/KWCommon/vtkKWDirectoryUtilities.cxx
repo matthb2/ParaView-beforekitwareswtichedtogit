@@ -245,7 +245,7 @@ int vtkKWDirectoryUtilities::FileIsDirectory(const char* name)
 }
 
 //----------------------------------------------------------------------------
-char** vtkKWDirectoryUtilities::GetSystemPath()
+const char*const* vtkKWDirectoryUtilities::GetSystemPath()
 {
   if(this->SystemPath)
     {
