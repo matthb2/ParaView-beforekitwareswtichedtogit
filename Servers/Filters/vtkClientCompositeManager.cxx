@@ -600,6 +600,7 @@ void vtkClientCompositeManager::RenderRMI()
 //-------------------------------------------------------------------------
 void vtkClientCompositeManager::SatelliteStartRender()
 {
+  int renIdx;
   int i, j, myId, numProcs;
   vtkClientRenderWindowInfo winInfo;
   vtkClientRendererInfo renInfo;
@@ -652,7 +653,8 @@ void vtkClientCompositeManager::SatelliteStartRender()
   // Synchronize the renderers.
   rens = renWin->GetRenderers();
   rens->InitTraversal();
-  for (i = 0; i < winInfo.NumberOfRenderers; ++i)
+  // This is misleading.  We do not support multiple renderers.
+  for (renIdx = 0; renIdx < winInfo.NumberOfRenderers; ++renIdx)
     {
     // Receive the camera information.
 
@@ -687,7 +689,7 @@ void vtkClientCompositeManager::SatelliteStartRender()
       lc->InitTraversal();
       light = lc->GetNextItem();
 
-      if (this->Tiled == 0)
+      if (this->Tiled)
         {
         int x, y;
         // Figure out the tile indexes.
