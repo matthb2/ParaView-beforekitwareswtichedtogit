@@ -413,6 +413,7 @@ void vtkPVProcessModule::SetGUIHelper(vtkProcessModuleGUIHelper* h)
 void vtkPVProcessModule::SetProcessEnvironmentVariable(int processId,
                                                        const char* var)
 {
+  (void)processId;
   char* envstr = vtkString::Duplicate(var);
   putenv(envstr);
 }
