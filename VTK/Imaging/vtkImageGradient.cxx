@@ -17,8 +17,10 @@
 =========================================================================*/
 #include "vtkImageGradient.h"
 
+#include "vtkDataArray.h"
 #include "vtkImageData.h"
 #include "vtkObjectFactory.h"
+#include "vtkPointData.h"
 
 #include <math.h>
 

@@ -19,6 +19,7 @@
 
 #include "vtkImageData.h"
 #include "vtkObjectFactory.h"
+#include "vtkPointData.h"
 
 vtkCxxRevisionMacro(vtkImageCacheFilter, "$Revision$");
 vtkStandardNewMacro(vtkImageCacheFilter);

@@ -18,10 +18,13 @@
 #include "vtkSurfaceReconstructionFilter.h"
 
 #include "vtkFloatArray.h"
+#include "vtkIdList.h"
 #include "vtkImageData.h"
 #include "vtkMath.h"
 #include "vtkObjectFactory.h"
+#include "vtkPointData.h"
 #include "vtkPointLocator.h"
+#include "vtkPoints.h"
 
 vtkCxxRevisionMacro(vtkSurfaceReconstructionFilter, "$Revision$");
 vtkStandardNewMacro(vtkSurfaceReconstructionFilter);

@@ -21,6 +21,7 @@
 #include "vtkActor2D.h"
 #include "vtkAssembly.h"
 #include "vtkAssemblyNode.h"
+#include "vtkAssemblyPath.h"
 #include "vtkObjectFactory.h"
 #include "vtkPropAssembly.h"
 #include "vtkVolume.h"

@@ -17,9 +17,11 @@
 =========================================================================*/
 #include "vtkImageClip.h"
 
-#include "vtkImageData.h"
+#include "vtkCellData.h"
 #include "vtkExtentTranslator.h"
+#include "vtkImageData.h"
 #include "vtkObjectFactory.h"
+#include "vtkPointData.h"
 
 vtkCxxRevisionMacro(vtkImageClip, "$Revision$");
 vtkStandardNewMacro(vtkImageClip);

@@ -22,6 +22,7 @@
 #include "vtkImageData.h"
 #include "vtkLinearTransform.h"
 #include "vtkMapper.h"
+#include "vtkPointData.h"
 #include "vtkPropCollection.h"
 #include "vtkProperty.h"
 #include "vtkRenderWindow.h"

@@ -16,9 +16,12 @@
 
 =========================================================================*/
 #include "vtkImageContinuousDilate3D.h"
+
 #include "vtkImageData.h"
 #include "vtkImageEllipsoidSource.h"
 #include "vtkObjectFactory.h"
+#include "vtkPointData.h"
+#include "vtkDataArray.h"
 
 vtkCxxRevisionMacro(vtkImageContinuousDilate3D, "$Revision$");
 vtkStandardNewMacro(vtkImageContinuousDilate3D);

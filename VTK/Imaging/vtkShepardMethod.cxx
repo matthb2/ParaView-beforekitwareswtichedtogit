@@ -21,6 +21,7 @@
 #include "vtkImageData.h"
 #include "vtkMath.h"
 #include "vtkObjectFactory.h"
+#include "vtkPointData.h"
 
 vtkCxxRevisionMacro(vtkShepardMethod, "$Revision$");
 vtkStandardNewMacro(vtkShepardMethod);

@@ -20,6 +20,7 @@
 #include "vtkImageData.h"
 #include "vtkImageProgressIterator.h"
 #include "vtkObjectFactory.h"
+#include "vtkPointData.h"
 
 #include <math.h>
 

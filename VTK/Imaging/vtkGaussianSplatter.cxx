@@ -20,6 +20,7 @@
 #include "vtkFloatArray.h"
 #include "vtkImageData.h"
 #include "vtkObjectFactory.h"
+#include "vtkPointData.h"
 
 #include <math.h>
 

@@ -20,6 +20,7 @@
 #include "vtkActor.h"
 #include "vtkActor2D.h"
 #include "vtkAssemblyNode.h"
+#include "vtkAssemblyPath.h"
 #include "vtkCallbackCommand.h"
 #include "vtkCellPicker.h"
 #include "vtkMath.h" 

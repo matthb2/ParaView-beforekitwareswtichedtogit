@@ -17,12 +17,14 @@
 =========================================================================*/
 #include "vtkAxisActor2D.h"
 
+#include "vtkCellArray.h"
 #include "vtkObjectFactory.h"
 #include "vtkPolyData.h"
 #include "vtkPolyDataMapper2D.h"
 #include "vtkTextMapper.h"
 #include "vtkTextProperty.h"
 #include "vtkViewport.h"
+#include "vtkWindow.h"
 
 vtkCxxRevisionMacro(vtkAxisActor2D, "$Revision$");
 vtkStandardNewMacro(vtkAxisActor2D);

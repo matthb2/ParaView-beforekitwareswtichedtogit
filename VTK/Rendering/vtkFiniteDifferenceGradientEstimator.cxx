@@ -26,6 +26,7 @@
 #include "vtkLongArray.h"
 #include "vtkMultiThreader.h"
 #include "vtkObjectFactory.h"
+#include "vtkPointData.h"
 #include "vtkShortArray.h"
 #include "vtkUnsignedCharArray.h"
 #include "vtkUnsignedIntArray.h"

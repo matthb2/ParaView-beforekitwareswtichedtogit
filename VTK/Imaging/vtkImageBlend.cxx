@@ -20,6 +20,7 @@
 #include "vtkImageData.h"
 #include "vtkImageStencilData.h"
 #include "vtkObjectFactory.h"
+#include "vtkPointData.h"
 
 vtkCxxRevisionMacro(vtkImageBlend, "$Revision$");
 vtkStandardNewMacro(vtkImageBlend);

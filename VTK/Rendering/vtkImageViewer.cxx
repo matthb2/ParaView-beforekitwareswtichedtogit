@@ -17,6 +17,7 @@
 =========================================================================*/
 #include "vtkImageViewer.h"
 
+#include "vtkActor2D.h"
 #include "vtkCommand.h"
 #include "vtkImageData.h"
 #include "vtkInteractorStyleImage.h"

@@ -18,8 +18,10 @@
 #include "vtkVoxelModeller.h"
 
 #include "vtkBitArray.h"
+#include "vtkCell.h"
 #include "vtkImageData.h"
 #include "vtkObjectFactory.h"
+#include "vtkPointData.h"
 
 #include <math.h>
 

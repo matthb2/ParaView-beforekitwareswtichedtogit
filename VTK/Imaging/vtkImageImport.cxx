@@ -20,6 +20,7 @@
 #include "vtkByteSwap.h"
 #include "vtkImageData.h"
 #include "vtkObjectFactory.h"
+#include "vtkPointData.h"
 
 #include <ctype.h>
 

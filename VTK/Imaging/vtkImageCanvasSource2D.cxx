@@ -20,6 +20,7 @@
 #include "vtkImageCast.h"
 #include "vtkImageClip.h"
 #include "vtkObjectFactory.h"
+#include "vtkPointData.h"
 
 #include <math.h>
 

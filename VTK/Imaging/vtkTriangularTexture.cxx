@@ -20,6 +20,7 @@
 #include "vtkImageData.h"
 #include "vtkMath.h"
 #include "vtkObjectFactory.h"
+#include "vtkPointData.h"
 #include "vtkUnsignedCharArray.h"
 
 vtkCxxRevisionMacro(vtkTriangularTexture, "$Revision$");
