@@ -298,6 +298,21 @@ void vtkVRMLExporter::WriteAnActor(vtkActor *anActor, FILE *fp)
   pm->SetLookupTable(anActor->GetMapper()->GetLookupTable());
   pm->SetScalarMode(anActor->GetMapper()->GetScalarMode());
 
+  if ( pm->GetScalarMode() == VTK_SCALAR_MODE_USE_POINT_FIELD_DATA ||
+       pm->GetScalarMode() == VTK_SCALAR_MODE_USE_CELL_FIELD_DATA )
+    {
+    if ( anActor->GetMapper()->GetArrayAccessMode() == VTK_GET_ARRAY_BY_ID )
+      {
+      pm->ColorByArrayComponent(anActor->GetMapper()->GetArrayId(),
+        anActor->GetMapper()->GetArrayComponent());
+      }
+    else
+      {
+      pm->ColorByArrayComponent(anActor->GetMapper()->GetArrayName(),
+        anActor->GetMapper()->GetArrayComponent());
+      }
+    }
+
   points = pd->GetPoints();
   pntData = pd->GetPointData();
   normals = pntData->GetNormals();
