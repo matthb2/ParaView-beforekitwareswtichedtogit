@@ -385,6 +385,17 @@ double* vtkCTHData::GetBlockOrigin(int blockId)
 }
 
 //----------------------------------------------------------------------------
+void vtkCTHData::GetBlockOrigin(int blockId, double origin[6])
+{
+  double *tmp = this->GetBlockOrigin(blockId);
+  int i;
+  for (i = 0; i < 3; ++i)
+    {
+    origin[i] = tmp[i];
+    }
+}
+
+//----------------------------------------------------------------------------
 double* vtkCTHData::GetBlockSpacing(int blockId)
 {
   if (blockId < 0 || blockId >= this->GetNumberOfBlocks())
@@ -1193,6 +1204,7 @@ int vtkCTHData::GetCellType(vtkIdType vtkNotUsed(cellId))
 }
 
 //----------------------------------------------------------------------------
+// We have to coimpute bounds around ghost cells, or locators in filters crash.
 void vtkCTHData::ComputeBounds()
 {
   double bds[6];
@@ -1208,13 +1220,13 @@ void vtkCTHData::ComputeBounds()
     spacing = this->GetBlockSpacing(blockId);
     dims = this->GetBlockPointDimensions(blockId);
 
-    bds[0] = origin[0] + (this->NumberOfGhostLevels * spacing[0]);
-    bds[2] = origin[1] + (this->NumberOfGhostLevels * spacing[1]);
-    bds[4] = origin[2] + (this->NumberOfGhostLevels * spacing[2]);
+    bds[0] = origin[0];
+    bds[2] = origin[1];
+    bds[4] = origin[2];
 
-    bds[1] = origin[0] + ((dims[0]-1-this->NumberOfGhostLevels) * spacing[0]);
-    bds[3] = origin[1] + ((dims[1]-1-this->NumberOfGhostLevels) * spacing[1]);
-    bds[5] = origin[2] + ((dims[2]-1-this->NumberOfGhostLevels) * spacing[2]);
+    bds[1] = origin[0] + ((dims[0]-1) * spacing[0]);
+    bds[3] = origin[1] + ((dims[1]-1) * spacing[1]);
+    bds[5] = origin[2] + ((dims[2]-1) * spacing[2]);
     if (blockId == 0)
       {
       this->Bounds[0] = bds[0];
