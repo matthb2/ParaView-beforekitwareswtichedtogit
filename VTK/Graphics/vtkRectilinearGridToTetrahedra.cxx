@@ -271,10 +271,12 @@ void vtkRectilinearGridToTetrahedra::GridToTetMesh(vtkRectilinearGrid *RectGrid,
                                           (int)VoxelSubdivisionType->GetValue(i),
                                           NodePoints,TetList);
     if (RememberVoxelId)
+      {
       for(int j=0;j<NumTetFromVoxel;j++)
         {
         TetOriginalVoxel->InsertNextValue(i);
         }
+      }
     }
   
   //
