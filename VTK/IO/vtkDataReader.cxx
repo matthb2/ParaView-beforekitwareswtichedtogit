@@ -139,6 +139,10 @@ vtkDataReader::~vtkDataReader()
 
   this->SetInputArray(0);
   this->InitializeCharacteristics();
+  if ( this->IS )
+    {
+    delete this->IS;
+    }
 }
 
 void vtkDataReader::SetInputString(const char *in)
@@ -466,6 +470,7 @@ int vtkDataReader::ReadHeader()
     {
     vtkDebugMacro(<< "Opening vtk file as binary");
     delete this->IS;
+    this->IS = 0;
 #ifdef _WIN32
     this->IS = new ifstream(this->FileName, ios::in | ios::binary);
 #else
