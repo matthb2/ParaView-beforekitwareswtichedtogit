@@ -218,8 +218,16 @@ void vtkBandedPolyDataContourFilter::Execute()
   // base clip tolerance on overall input scalar range
   this->ClipTolerance = FLT_EPSILON*(range[1] - range[0]); 
 
-  this->ClipValues[0] = range[0];
-  this->ClipValues[this->NumberOfClipValues - 1] = range[1];
+  this->ClipValues[0] = 
+    (range[0]<this->ContourValues->GetValue(0))?
+    (range[0]):
+    (this->ContourValues->GetValue(0));
+  
+  this->ClipValues[this->NumberOfClipValues - 1] = 
+    (range[1]<this->ContourValues->GetValue(this->NumberOfClipValues-2))?
+    (range[1]):
+    (this->ContourValues->GetValue(this->NumberOfClipValues-2));
+  
   for ( i=1; i<this->NumberOfClipValues-1; i++)
     {
     this->ClipValues[i] = this->ContourValues->GetValue(i-1);
