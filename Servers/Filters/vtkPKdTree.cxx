@@ -40,7 +40,7 @@
 static char dots[MSGSIZE] = "...........................................................";
 static char msg[MSGSIZE];
 
-static char * makeEntry(char *s)
+static char * makeEntry(const char *s)
 {
   memcpy(msg, dots, MSGSIZE);
   int len = strlen(s);
@@ -177,7 +177,7 @@ void vtkPKdTree::SetController(vtkMultiProcessController *c)
 // for median finding.
 //--------------------------------------------------------------------
 
-int vtkPKdTree::AllCheckForFailure(int rc, char *where, char *how)
+int vtkPKdTree::AllCheckForFailure(int rc, const char *where, const char *how)
 {
   int vote;
   char errmsg[256];
