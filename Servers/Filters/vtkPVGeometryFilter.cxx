@@ -208,7 +208,6 @@ void vtkPVGeometryFilter::ExecuteCellNormals(vtkPolyData *output)
   vtkIdType* cellPtr;
   vtkIdType *pts = 0;
   vtkIdType npts = 0;
-  unsigned char count = 0;
   double polyNorm[3];
   vtkFloatArray* cellNormals = vtkFloatArray::New();
   cellNormals->SetNumberOfComponents(3);
