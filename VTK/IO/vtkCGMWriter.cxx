@@ -1158,7 +1158,6 @@ static int cgmCgmHeader(cgmImagePtr im)
   if (cgmAddElem(im, headerp, octet_count)) 
     {
     free(headerp);
-    headerp = 0;
     return 1;
     }
   else 
