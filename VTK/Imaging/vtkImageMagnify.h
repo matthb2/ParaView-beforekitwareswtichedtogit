@@ -38,76 +38,49 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 
 
 =========================================================================*/
-// .NAME vtkImageSpatialFilter - Filters that operate on pixel neighborhoods.
+// .NAME vtkImageMagnify - Magnifies an image by integer values
 // .SECTION Description
-// vtkImageSpatialFilter is a super class for filters that operate on
-// an input neighborhood for each output pixel.  It is setup to for
-// any dimensionality.  It handels even sized neighborhoods, but their can be
-// a half pixel shift associated with processing.  This superclass has some
-// logic for handling boundaries.  It can split regions into boundary and 
-// non-boundary pieces and call different execute methods.
+// vtkImageMagnify maps each pixel of the input onto a nxmx... region
+// of the output.  Location (0,0,...) remains in the same place.
+// The filter is decomposed into many filters, one for each axis.
 
 
-#ifndef __vtkImageSpatialFilter_h
-#define __vtkImageSpatialFilter_h
+#ifndef __vtkImageMagnify_h
+#define __vtkImageMagnify_h
 
 
-#include "vtkImageFilter.h"
-#include "vtkImageRegion.h"
+#include "vtkImageDecomposedFilter.h"
+#include "vtkImageMagnify1D.h"
+#include "vtkImageSetGet.h"
 
-class vtkImageSpatialFilter : public vtkImageFilter
+class vtkImageMagnify : public vtkImageDecomposedFilter
 {
 public:
-  vtkImageSpatialFilter();
-  char *GetClassName() {return "vtkImageSpatialFilter";};
-  void PrintSelf(ostream& os, vtkIndent indent);
+  vtkImageMagnify();
+  char *GetClassName() {return "vtkImageMagnify";};
 
   // Description:
-  // Get the Spatial kernel size and middle.
-  void GetKernelSize(int num, int *size);
-  vtkImageGetMacro(KernelSize,int);
-  void GetKernelMiddle(int num, int *middle);
-  vtkImageGetMacro(KernelMiddle,int);
-  // Description:
-  // Set/Get whether use boundary execute method or not (shrink image).
-  vtkSetMacro(HandleBoundaries,int);
-  vtkGetMacro(HandleBoundaries,int);
-  vtkBooleanMacro(HandleBoundaries,int);
+  // Set/Get Magnification factors
+  void SetMagnificationFactors(int num, int *factors);
+  vtkImageSetMacro(MagnificationFactors,int);
+  void GetMagnificationFactors(int num, int *factors);
+  vtkImageGetMacro(MagnificationFactors,int);
   
   // Description:
-  // Set/Get whether a special method exists for non boundary condition.
-  vtkSetMacro(UseExecuteCenter,int);
-  vtkGetMacro(UseExecuteCenter,int);
-  vtkBooleanMacro(UseExecuteCenter,int);
+  // Turn interpolation on and off (pixel replication)
+  void SetInterpolate(int interpolate);
+  int GetInterpolate();
+  vtkBooleanMacro(Interpolate,int);
   
+  // Description:
+  // Determines how many sub filters are created.
+  void SetDimensionality(int num);
   
 protected:
-  int   KernelSize[VTK_IMAGE_DIMENSIONS];
-  int   KernelMiddle[VTK_IMAGE_DIMENSIONS];      // Index of kernel origin
-  int   HandleBoundaries;     // Shrink kernel at boundaries?
-  int   UseExecuteCenter;     // Will the subclass have special execute method.
-
-  void ComputeOutputImageInformation(vtkImageRegion *inRegion,
-				     vtkImageRegion *outRegion);
-  void ComputeRequiredInputRegionExtent(vtkImageRegion *outRegion, 
-					vtkImageRegion *inRegion);
-  
-  void Execute(int dim, vtkImageRegion *inRegion, vtkImageRegion *outRegion);
-  void ExecuteCenter(int dim, vtkImageRegion *inRegion,
-		     vtkImageRegion *outRegion);  
-  
-  virtual void ExecuteCenter(vtkImageRegion *inRegion, 
-			     vtkImageRegion *outRegion);  
+  int MagnificationFactors[VTK_IMAGE_DIMENSIONS];
 };
 
 #endif
-
-
-
-
-
-
-
 
 
 
