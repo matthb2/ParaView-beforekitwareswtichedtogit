@@ -19,7 +19,6 @@
 #include "vtkObjectFactory.h"
 
 vtkCxxRevisionMacro(vtkImageSource, "$Revision$");
-vtkStandardNewMacro(vtkImageSource);
 
 //----------------------------------------------------------------------------
 vtkImageSource::vtkImageSource()

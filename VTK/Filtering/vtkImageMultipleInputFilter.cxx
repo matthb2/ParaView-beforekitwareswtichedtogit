@@ -19,7 +19,6 @@
 #include "vtkObjectFactory.h"
 
 vtkCxxRevisionMacro(vtkImageMultipleInputFilter, "$Revision$");
-vtkStandardNewMacro(vtkImageMultipleInputFilter);
 
 //----------------------------------------------------------------------------
 vtkImageMultipleInputFilter::vtkImageMultipleInputFilter()
