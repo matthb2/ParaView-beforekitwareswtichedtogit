@@ -567,6 +567,20 @@ void vtkParametricFunctionSource::SetAllParametricTriangulatorParameters (
 }
 */
 
+unsigned long vtkParametricFunctionSource::GetMTime()
+{
+  unsigned long mTime=this->Superclass::GetMTime();
+  unsigned long funcMTime;
+
+  if ( this->ParametricFunction != NULL )
+    {
+    funcMTime = this->ParametricFunction->GetMTime();
+    mTime = ( funcMTime > mTime ? funcMTime : mTime );
+    }
+
+  return mTime;
+}
+
 void vtkParametricFunctionSource::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os,indent);
