@@ -169,17 +169,19 @@ void vtkWin32OpenGLRenderWindow::SetWindowName( const char * _arg )
 int vtkWin32OpenGLRenderWindow::GetEventPending()
 {
   MSG msg;
-
-  if (PeekMessage(&msg,this->WindowId,WM_MOUSEFIRST,WM_MOUSELAST,PM_NOREMOVE))
-    {
-      if ((msg.message == WM_LBUTTONDOWN) ||
-          (msg.message == WM_RBUTTONDOWN) ||
-          (msg.message == WM_MBUTTONDOWN))
-        {
-          return 1;
-        }
+  bool messages = PeekMessage(&msg,this->WindowId,WM_MOUSEFIRST,WM_MOUSELAST,PM_NOREMOVE);
+  if (messages)
+  {
+    if (msg.message == WM_MOUSEMOVE)
+      PeekMessage(&msg,this->WindowId,WM_MOUSEFIRST,WM_MOUSELAST,PM_REMOVE);
+    if ((msg.message == WM_LBUTTONDOWN) ||
+        (msg.message == WM_RBUTTONDOWN) ||
+        (msg.message == WM_MBUTTONDOWN))
+      {
+        return 1;
+      }
     }
-
+  
   return 0;
 }
 
