@@ -76,18 +76,21 @@ static vtkVideoSource **vtkVideoSources = NULL;
 static int vtkVideoSourceExitFuncRegistered = 0;
 
 // this function is called at exit
-static void vtkVideoSourceExitFunc()
+extern "C"
 {
-  int i = 0;
-  
-  for (i = 0; i < vtkVideoSourcesLen; i++)
-    {
-    vtkVideoSources[i]->ReleaseSystemResources();
-    }
-
-  free((void *)vtkVideoSources);
-  vtkVideoSources = 0;
-  vtkVideoSourcesLen = 0;
+  void vtkVideoSourceExitFunc()
+  {
+    int i = 0;
+    
+    for (i = 0; i < vtkVideoSourcesLen; i++)
+      {
+      vtkVideoSources[i]->ReleaseSystemResources();
+      }
+    
+    free((void *)vtkVideoSources);
+    vtkVideoSources = 0;
+    vtkVideoSourcesLen = 0;
+  }
 }
 
 // this function is called to add a source to the list
