@@ -60,6 +60,7 @@ char* vtkMetaImageWriter::GetRAWFileName()
 void vtkMetaImageWriter::Write()
 {
   vtkImageData* id = this->GetInput();
+  id->Update();
   if ( !id )
     {
     vtkErrorMacro("Input not specified");
