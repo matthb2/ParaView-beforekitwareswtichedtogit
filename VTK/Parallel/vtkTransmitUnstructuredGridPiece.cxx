@@ -101,12 +101,12 @@ void vtkTransmitUnstructuredGridPiece::Execute()
   procId = this->Controller->GetLocalProcessId();
   if (procId == 0)
     {
-    cerr << "Root Execute\n";
+    // cerr << "Root Execute\n";
     this->RootExecute();
     }
   else
     {
-    cerr << "Satellite Execute " << procId << endl;
+    // cerr << "Satellite Execute " << procId << endl;
     this->SatelliteExecute(procId);
     }
 }
