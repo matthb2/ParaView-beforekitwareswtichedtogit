@@ -19,7 +19,17 @@
 #include "vtkObjectFactory.h"
 
 vtkCxxRevisionMacro(vtkMergePoints2D, "$Revision$");
-vtkStandardNewMacro(vtkMergePoints2D);
+
+vtkMergePoints2D* vtkMergePoints2D::New() 
+{ 
+  vtkGenericWarningMacro("MergePoints2D is being deprecated in VTK 4.1. There is no replacement for it.");
+  vtkObject* ret = vtkObjectFactory::CreateInstance("vtkMergePoints2D"); 
+  if(ret) 
+      { 
+      return static_cast<vtkMergePoints2D*>(ret); 
+      } 
+    return new vtkMergePoints2D; 
+}
 
 // Determine whether point given by x[2] has been inserted into points list.
 // Return id of previously inserted point if this is true, otherwise return
