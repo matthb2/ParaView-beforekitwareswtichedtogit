@@ -22,9 +22,12 @@
 #include "vtkObjectFactory.h"
 #include "vtkRenderWindow.h"
 #include "vtkUnsignedCharArray.h"
+#include "vtkRenderer.h"
 
 vtkCxxRevisionMacro(vtkRendererSource, "$Revision$");
 vtkStandardNewMacro(vtkRendererSource);
+
+vtkCxxSetObjectMacro(vtkRendererSource,Input,vtkRenderer);
 
 vtkRendererSource::vtkRendererSource()
 {
