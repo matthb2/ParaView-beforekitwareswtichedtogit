@@ -164,7 +164,7 @@ void vtkTransmitUnstructuredGridPiece::RootExecute()
 }
 
 //----------------------------------------------------------------------------
-void vtkTransmitUnstructuredGridPiece::SatelliteExecute(int procId)
+void vtkTransmitUnstructuredGridPiece::SatelliteExecute(int)
 {
   vtkUnstructuredGrid *tmp = vtkUnstructuredGrid::New();
   vtkUnstructuredGrid *output = this->GetOutput();

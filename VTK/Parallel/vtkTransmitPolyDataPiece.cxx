@@ -199,7 +199,7 @@ void vtkTransmitPolyDataPiece::RootExecute()
 }
 
 //----------------------------------------------------------------------------
-void vtkTransmitPolyDataPiece::SatelliteExecute(int procId)
+void vtkTransmitPolyDataPiece::SatelliteExecute(int)
 {
   vtkPolyData *tmp = vtkPolyData::New();
   vtkPolyData *output = this->GetOutput();
