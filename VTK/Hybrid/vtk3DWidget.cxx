@@ -21,6 +21,8 @@
 
 vtkCxxRevisionMacro(vtk3DWidget, "$Revision$");
 
+vtkCxxSetObjectMacro(vtk3DWidget,Prop3D,vtkProp3D);
+vtkCxxSetObjectMacro(vtk3DWidget,Input,vtkDataSet);
 vtk3DWidget::vtk3DWidget()
 {
   this->Placed = 1;
