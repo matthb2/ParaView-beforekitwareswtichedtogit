@@ -318,10 +318,10 @@ void vtkOBJReader::Execute()
       tcoord_polys->InitTraversal();
       normal_polys->InitTraversal();
       int i,j;
-      int dummy_warning_prevention_mechanism[1];
-      int n_pts=-1,*pts=dummy_warning_prevention_mechanism;
-      int n_tcoord_pts=-1,*tcoord_pts=dummy_warning_prevention_mechanism;
-      int n_normal_pts=-1,*normal_pts=dummy_warning_prevention_mechanism;
+      vtkIdType dummy_warning_prevention_mechanism[1];
+      vtkIdType n_pts=-1,*pts=dummy_warning_prevention_mechanism;
+      vtkIdType n_tcoord_pts=-1,*tcoord_pts=dummy_warning_prevention_mechanism;
+      vtkIdType n_normal_pts=-1,*normal_pts=dummy_warning_prevention_mechanism;
       for (i=0;i<polys->GetNumberOfCells();i++) 
         {
         polys->GetNextCell(n_pts,pts); 
