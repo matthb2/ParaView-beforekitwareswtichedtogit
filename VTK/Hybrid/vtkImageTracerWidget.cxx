@@ -1010,7 +1010,6 @@ void vtkImageTracerWidget::OnMouseMove()
     else if (this->State == vtkImageTracerWidget::Moving)
       {
       double focalPoint[4], pickPoint[4], prevPickPoint[4];
-      double z, vpn[3];
 
       vtkCamera *camera = this->CurrentRenderer->GetActiveCamera();
       if (!camera){ return; }
