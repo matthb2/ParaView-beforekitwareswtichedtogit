@@ -253,9 +253,6 @@ void vtkCTHFractal::Traverse(int &blockId, int level, vtkCTHData* output,
 {
   int ext[6];
   float bds[6];
-  float* spacing = output->GetTopLevelSpacing();
-  float* origin = output->GetTopLevelOrigin();
-  int spacingFactor = 1;
   int dim = this->Dimensions;
 
   // Compute cell extent.
