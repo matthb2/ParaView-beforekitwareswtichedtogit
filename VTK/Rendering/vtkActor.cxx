@@ -19,11 +19,13 @@
 
 #include "vtkAssemblyPaths.h"
 #include "vtkGraphicsFactory.h"
+#include "vtkLinearTransform.h"
 #include "vtkMapper.h"
 #include "vtkPropCollection.h"
 #include "vtkProperty.h"
 #include "vtkRenderWindow.h"
 #include "vtkTexture.h"
+#include "vtkTransform.h"
 
 #include <math.h>
 

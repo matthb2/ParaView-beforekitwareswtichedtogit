@@ -17,6 +17,7 @@
 =========================================================================*/
 #include "vtk3DSImporter.h"
 
+#include "vtkActor.h"
 #include "vtkByteSwap.h"
 #include "vtkCamera.h"
 #include "vtkLight.h"
@@ -24,6 +25,7 @@
 #include "vtkPolyDataMapper.h"
 #include "vtkPolyDataNormals.h"
 #include "vtkProperty.h"
+#include "vtkRenderer.h"
 #include "vtkStripper.h"
 
 vtkCxxRevisionMacro(vtk3DSImporter, "$Revision$");

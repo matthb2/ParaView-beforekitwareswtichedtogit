@@ -16,10 +16,11 @@
 
 =========================================================================*/
 #include "vtkProp3D.h"
+
 #include "vtkActor.h"
 #include "vtkMatrixToLinearTransform.h"
+#include "vtkTransform.h"
 
-#include <stdlib.h>
 #include <math.h>
 
 typedef double (*SqMatPtr)[4];
@@ -525,6 +526,15 @@ void vtkProp3D::InitPathTraversal()
   path->Delete();
 
   this->Paths->InitTraversal();
+}
+
+vtkMatrix4x4* vtkProp3D::GetUserMatrix() 
+{ 
+  if (this->UserTransform) 
+    { 
+    this->UserTransform->Update(); 
+    }
+  return this->UserMatrix; 
 }
 
 void vtkProp3D::PrintSelf(ostream& os, vtkIndent indent)

@@ -229,6 +229,12 @@ void vtkFollower::Render(vtkRenderer *ren)
   matrix->Delete();
 }
 
+void vtkFollower::GetMatrix(double m[16])
+{
+  this->GetMatrix(this->Matrix); 
+  vtkMatrix4x4::DeepCopy(m,this->Matrix);
+}
+
 void vtkFollower::ShallowCopy(vtkProp *prop)
 {
   vtkFollower *f = vtkFollower::SafeDownCast(prop);

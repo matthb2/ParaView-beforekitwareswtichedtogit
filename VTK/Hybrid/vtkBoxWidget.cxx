@@ -17,6 +17,7 @@
 =========================================================================*/
 #include "vtkBoxWidget.h"
 
+#include "vtkActor.h"
 #include "vtkAssemblyNode.h"
 #include "vtkCallbackCommand.h"
 #include "vtkCellPicker.h"
@@ -29,6 +30,7 @@
 #include "vtkPolyData.h"
 #include "vtkPolyDataMapper.h"
 #include "vtkProperty.h"
+#include "vtkRenderer.h"
 #include "vtkSphereSource.h"
 #include "vtkRenderWindowInteractor.h"
 

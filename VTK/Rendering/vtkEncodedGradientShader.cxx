@@ -21,6 +21,7 @@
 #include "vtkDirectionEncoder.h"
 #include "vtkEncodedGradientEstimator.h"
 #include "vtkLight.h"
+#include "vtkLightCollection.h"
 #include "vtkObjectFactory.h"
 #include "vtkRenderer.h"
 #include "vtkVolume.h"

@@ -21,6 +21,7 @@
 #include "vtkCamera.h"
 #include "vtkGeometryFilter.h"
 #include "vtkLight.h"
+#include "vtkLightCollection.h"
 #include "vtkMath.h"
 #include "vtkObjectFactory.h"
 #include "vtkPolyDataMapper.h"

@@ -16,8 +16,10 @@
 
 =========================================================================*/
 #include "vtkPolyDataMapper.h"
+
 #include "vtkRenderWindow.h"
 #include "vtkGraphicsFactory.h"
+#include "vtkPolyData.h"
 
 vtkCxxRevisionMacro(vtkPolyDataMapper, "$Revision$");
 

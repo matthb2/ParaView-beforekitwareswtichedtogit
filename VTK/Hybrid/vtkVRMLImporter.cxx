@@ -52,9 +52,11 @@
 #include "vtkPolyDataMapper.h"
 #include "vtkPolyDataNormals.h"
 #include "vtkProperty.h"
+#include "vtkRenderer.h"
 #include "vtkSphereSource.h"
 #include "vtkStripper.h"
 #include "vtkSystemIncludes.h"
+#include "vtkTransform.h"
 #include "vtkVRML.h"
 
 class vtkVRMLImporterInternal {

@@ -24,6 +24,7 @@
 #include "vtkImageAppendComponents.h"
 #include "vtkImageConstantPad.h"
 #include "vtkImageExtractComponents.h"
+#include "vtkLightCollection.h"
 #include "vtkMapper.h"
 #include "vtkMath.h"
 #include "vtkObjectFactory.h"

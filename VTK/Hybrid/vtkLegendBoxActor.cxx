@@ -28,6 +28,7 @@
 #include "vtkTextProperty.h"
 #include "vtkTransform.h"
 #include "vtkTransformPolyDataFilter.h"
+#include "vtkViewport.h"
 
 vtkCxxRevisionMacro(vtkLegendBoxActor, "$Revision$");
 vtkStandardNewMacro(vtkLegendBoxActor);

@@ -31,6 +31,7 @@
 #include "vtkProperty2D.h"
 #include "vtkTextActor.h"
 #include "vtkTextProperty.h"
+#include "vtkViewport.h"
 
 vtkCxxRevisionMacro(vtkCaptionActor2D, "$Revision$");
 vtkStandardNewMacro(vtkCaptionActor2D);
