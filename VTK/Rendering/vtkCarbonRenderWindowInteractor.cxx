@@ -185,7 +185,7 @@ static pascal OSStatus myWinEvtHndlr(EventHandlerCallRef nextHandler,
           case kEventRawKeyDown:
             {
             me->SetKeyEventInformation(controlDown, shiftDown,
-                                       (int)charCode,1,&((char)charCode));
+                                       (int)charCode,1,(char*)&charCode);
             me->InvokeEvent(vtkCommand::KeyPressEvent, NULL);
             me->InvokeEvent(vtkCommand::CharEvent, NULL);
             break;
@@ -193,7 +193,7 @@ static pascal OSStatus myWinEvtHndlr(EventHandlerCallRef nextHandler,
           case kEventRawKeyRepeat:
             {
             me->SetKeyEventInformation(controlDown, shiftDown,
-                                       (int)charCode,1,&((char)charCode));
+                                       (int)charCode,1,(char*)&charCode);
             me->InvokeEvent(vtkCommand::KeyPressEvent, NULL);
             me->InvokeEvent(vtkCommand::CharEvent, NULL);
             break;
@@ -201,7 +201,7 @@ static pascal OSStatus myWinEvtHndlr(EventHandlerCallRef nextHandler,
           case kEventRawKeyUp:
             {
             me->SetKeyEventInformation(controlDown, shiftDown,
-                                       (int)charCode,1,&((char)charCode));
+                                       (int)charCode,1,(char*)&charCode);
             me->InvokeEvent(vtkCommand::KeyReleaseEvent, NULL);
             break;
             }
