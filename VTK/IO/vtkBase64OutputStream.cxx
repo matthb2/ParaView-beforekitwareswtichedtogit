@@ -41,6 +41,39 @@ void vtkBase64OutputStream::PrintSelf(ostream& os, vtkIndent indent)
 }
 
 //----------------------------------------------------------------------------
+inline int vtkBase64OutputStream::EncodeTriplet(unsigned char c0,
+                                                unsigned char c1,
+                                                unsigned char c2)
+{
+  // Encodes 3 bytes into 4 bytes and writes them to the output stream.
+  unsigned char out[4];
+  vtkBase64Utility::EncodeTriplet(c0, c1, c2,
+                                  &out[0], &out[1], &out[2], &out[3]);
+  return (this->Stream->write(reinterpret_cast<char*>(out), 4)? 1:0);
+}
+  
+//----------------------------------------------------------------------------
+inline int vtkBase64OutputStream:: EncodeEnding(unsigned char c0,
+                                                unsigned char c1)
+{
+  // Encodes a 2-byte ending into 3 bytes and 1 pad byte and writes.
+  unsigned char out[4];
+  vtkBase64Utility::EncodePair(c0, c1,
+                               &out[0], &out[1], &out[2], &out[3]);
+  return (this->Stream->write(reinterpret_cast<char*>(out), 4)? 1:0);
+}
+
+//----------------------------------------------------------------------------
+inline int vtkBase64OutputStream::EncodeEnding(unsigned char c0)
+{
+  // Encodes a 1-byte ending into 2 bytes and 2 pad bytes and writes.
+  unsigned char out[4];
+  vtkBase64Utility::EncodeSingle(c0,
+                                 &out[0], &out[1], &out[2], &out[3]);
+  return (this->Stream->write(reinterpret_cast<char*>(out), 4)? 1:0);
+}
+
+//----------------------------------------------------------------------------
 int vtkBase64OutputStream::StartWriting()
 {
   if(!this->Superclass::StartWriting())
@@ -103,37 +136,4 @@ int vtkBase64OutputStream::Write(const unsigned char* data,
     this->Buffer[this->BufferLength++] = *in++;
     }
   return 1;
-}
-
-//----------------------------------------------------------------------------
-inline int vtkBase64OutputStream::EncodeTriplet(unsigned char c0,
-                                                unsigned char c1,
-                                                unsigned char c2)
-{
-  // Encodes 3 bytes into 4 bytes and writes them to the output stream.
-  unsigned char out[4];
-  vtkBase64Utility::EncodeTriplet(c0, c1, c2,
-                                  &out[0], &out[1], &out[2], &out[3]);
-  return (this->Stream->write(reinterpret_cast<char*>(out), 4)? 1:0);
-}
-  
-//----------------------------------------------------------------------------
-inline int vtkBase64OutputStream:: EncodeEnding(unsigned char c0,
-                                                unsigned char c1)
-{
-  // Encodes a 2-byte ending into 3 bytes and 1 pad byte and writes.
-  unsigned char out[4];
-  vtkBase64Utility::EncodePair(c0, c1,
-                               &out[0], &out[1], &out[2], &out[3]);
-  return (this->Stream->write(reinterpret_cast<char*>(out), 4)? 1:0);
-}
-
-//----------------------------------------------------------------------------
-inline int vtkBase64OutputStream::EncodeEnding(unsigned char c0)
-{
-  // Encodes a 1-byte ending into 2 bytes and 2 pad bytes and writes.
-  unsigned char out[4];
-  vtkBase64Utility::EncodeSingle(c0,
-                                 &out[0], &out[1], &out[2], &out[3]);
-  return (this->Stream->write(reinterpret_cast<char*>(out), 4)? 1:0);
 }
