@@ -154,6 +154,7 @@ void vtkFeatureEdges::Execute()
   if ( this->Coloring )
     {
     newScalars = vtkFloatArray::New();
+    newScalars->SetName("Edge Types");
     newScalars->Allocate(numCells/10,numCells);
     }
 
