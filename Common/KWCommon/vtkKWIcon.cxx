@@ -18,7 +18,12 @@
 #include "vtkImageFlip.h"
 #include "vtkObjectFactory.h"
 #include "vtkBase64Utilities.h"
+
+#if ((VTK_MAJOR_VERSION <= 4) && (VTK_MINOR_VERSION <= 4))
+#include "zlib.h"
+#else
 #include "vtk_zlib.h"
+#endif
 
 #include "Resources/icons.h"
 
