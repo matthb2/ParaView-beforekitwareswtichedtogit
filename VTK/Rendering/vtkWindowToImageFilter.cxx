@@ -29,6 +29,7 @@ vtkWindowToImageFilter::vtkWindowToImageFilter()
   this->Input = NULL;
   this->Magnification = 1;
   this->ReadFrontBuffer = 1;
+  this->ShouldRerender = 1;
 }
 
 //----------------------------------------------------------------------------
@@ -224,7 +225,10 @@ void vtkWindowToImageFilter::ExecuteData(vtkDataObject *vtkNotUsed(data))
         }
       
       // now render the tile and get the data
-      this->Input->Render();
+      if (this->ShouldRerender || this->Magnification > 1)
+        {
+        this->Input->Render();
+        }
       int buffer = this->ReadFrontBuffer;
       if(!this->Input->GetDoubleBuffer())
         {
