@@ -55,9 +55,9 @@ void vtkOutputWindowDisplayDebugText(const char* message)
 
 vtkOutputWindowSmartPointer::~vtkOutputWindowSmartPointer()
 {
-  if (Pointer)
+  if (this->Pointer)
     {
-    Pointer->Delete();
+    this->Pointer->Delete();
     }
 }
 
