@@ -44,6 +44,11 @@ vtkMPICommunicatorOpaqueComm::vtkMPICommunicatorOpaqueComm()
   this->Handle = 0;
 }
 
+MPI_Comm* vtkMPICommunicatorOpaqueComm::GetHandle()
+{
+  return this->Handle;
+}
+
 //----------------------------------------------------------------------------
 // overloaded functions for vtkIdType
 #ifdef VTK_HAS_ID_TYPE
