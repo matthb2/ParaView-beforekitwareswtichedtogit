@@ -425,8 +425,7 @@ const char* vtkWin32OpenGLRenderWindow::ReportCapabilities()
 
   strm << ends;
   delete[] this->Capabilities;
-  this->Capabilities = new char[strlen(strm.str()) + 1];
-  strcpy(this->Capabilities, strm.str());
+  this->Capabilities = strm.str();
   return this->Capabilities;
 }
 
