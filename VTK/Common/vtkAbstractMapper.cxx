@@ -112,6 +112,11 @@ void vtkAbstractMapper::RemoveAllClippingPlanes()
 void vtkAbstractMapper::SetClippingPlanes(vtkPlanes *planes)
 {
   vtkPlane *plane;
+  if (!planes)
+    {
+    return;
+    }
+
   int numPlanes = planes->GetNumberOfPlanes();
 
   this->RemoveAllClippingPlanes();
