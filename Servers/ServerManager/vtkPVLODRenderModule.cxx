@@ -89,7 +89,6 @@ vtkSMPartDisplay* vtkPVLODRenderModule::CreatePartDisplay()
   vtkSMLODPartDisplay* pDisp;
 
   pDisp = vtkSMLODPartDisplay::New();
-  pDisp->SetProcessModule(vtkPVProcessModule::SafeDownCast(this->GetProcessModule()));
   pDisp->SetLODResolution(this->LODResolution);
   return pDisp;
 }

@@ -56,7 +56,7 @@ void vtkSMSimpleDoubleInformationHelper::UpdateProperty(
       << vtkClientServerStream::End;
 
   vtkProcessModule* pm = vtkProcessModule::GetProcessModule();
-  pm->SendStream(vtkProcessModule::GetRootId(serverIds), str, 0);
+  pm->SendStream(vtkProcessModule::GetRootId(serverIds), str);
 
   // Get the result
   const vtkClientServerStream& res =     

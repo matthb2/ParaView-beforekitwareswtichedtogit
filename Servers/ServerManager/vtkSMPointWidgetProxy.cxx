@@ -45,12 +45,14 @@ void vtkSMPointWidgetProxy::CreateVTKObjects(int numObjects)
     }
   this->Superclass::CreateVTKObjects(numObjects);
   vtkProcessModule* pm = vtkProcessModule::GetProcessModule();
+  vtkClientServerStream stream;
   for(unsigned int cc=0; cc < this->GetNumberOfIDs(); cc++)
     {
     vtkClientServerID id = this->GetID(cc);
-    pm->GetStream() << vtkClientServerStream::Invoke << id << "AllOff" 
-                  << vtkClientServerStream::End;
-    pm->SendStream(this->GetServers());
+    stream << vtkClientServerStream::Invoke 
+           << id << "AllOff" 
+           << vtkClientServerStream::End;
+    pm->SendStream(this->GetServers(), stream);
     }
 }
 
@@ -74,7 +76,7 @@ void vtkSMPointWidgetProxy::UpdateVTKObjects()
     }
   if (str.GetNumberOfMessages() > 0)
     {
-    pm->SendStream(this->Servers,str,0);
+    pm->SendStream(this->Servers,str);
     }
 }
 

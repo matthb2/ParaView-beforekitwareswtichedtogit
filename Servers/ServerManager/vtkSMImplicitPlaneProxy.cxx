@@ -68,7 +68,7 @@ void vtkSMImplicitPlaneProxy::UpdateVTKObjects()
   if (str.GetNumberOfMessages() > 0)
     {
     vtkProcessModule* pm = vtkProcessModule::GetProcessModule();
-    pm->SendStream(this->Servers, str, 0);
+    pm->SendStream(this->Servers, str);
     }
 
 }
