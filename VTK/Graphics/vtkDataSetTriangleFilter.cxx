@@ -37,6 +37,10 @@ vtkDataSetTriangleFilter::~vtkDataSetTriangleFilter()
 void vtkDataSetTriangleFilter::Execute()
 {
   vtkDataSet *input = this->GetInput();
+  if (!input)
+    {
+    return;
+    }
   if (input->IsA("vtkStructuredPoints") ||
       input->IsA("vtkStructuredGrid") || 
       input->IsA("vtkImageData"))
