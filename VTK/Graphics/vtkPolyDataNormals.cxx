@@ -90,7 +90,6 @@ void vtkPolyDataNormals::Execute()
     return;
     }
 
-  vtkErrorMacro(<<"numPts is " << numPts);
 
   // If there is nothing to do, pass the data through
   if ( this->ComputePointNormals == 0 && this->ComputeCellNormals == 0) 
