@@ -437,6 +437,46 @@ vtkInformation *vtkDataObject::GetActiveFieldInformation(vtkInformation *info,
 }
 
 //----------------------------------------------------------------------------
+vtkInformation *vtkDataObject::GetNamedFieldInformation(vtkInformation *info, 
+                                                        int fieldAssociation, 
+                                                        const char *name)
+{
+  int i;
+  vtkInformation *fieldDataInfo;
+  vtkInformationVector *fieldDataInfoVector;
+  
+  if (fieldAssociation == FIELD_ASSOCIATION_POINTS)
+    {
+    fieldDataInfoVector = info->Get(POINT_DATA_VECTOR());
+    }
+  else if (fieldAssociation == FIELD_ASSOCIATION_CELLS)
+    {
+    fieldDataInfoVector = info->Get(CELL_DATA_VECTOR());
+    }
+  else
+    {
+    vtkGenericWarningMacro("Unrecognized field association!");
+    return NULL;
+    }
+  
+  if (!fieldDataInfoVector)
+    {
+    return NULL;
+    }
+  
+  for (i = 0; i < fieldDataInfoVector->GetNumberOfInformationObjects(); i++)
+    {
+    fieldDataInfo = fieldDataInfoVector->GetInformationObject(i);
+    if ( fieldDataInfo->Has(FIELD_NAME()) &&
+         !strcmp(fieldDataInfo->Get(FIELD_NAME()),name))
+      {
+      return fieldDataInfo;
+      }
+    }
+  return NULL;
+}
+
+//----------------------------------------------------------------------------
 vtkInformation *vtkDataObject::SetActiveAttribute(vtkInformation *info, 
                                                   int fieldAssociation,
                                                   const char *attributeName,
