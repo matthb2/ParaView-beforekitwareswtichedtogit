@@ -92,6 +92,39 @@ int vtkGenericAdaptorCell::IsGeometryLinear()
 
 //----------------------------------------------------------------------------
 // Description:
+// Return the index of the first point centered attribute with the highest
+// order in `ac'.
+// \pre ac_exists: ac!=0
+// \post valid_result: result>=-1 && result<ac->GetNumberOfAttributes()
+int vtkGenericAdaptorCell::GetHighestOrderAttribute(vtkGenericAttributeCollection *ac)
+{
+  assert("pre: ac_exists" && ac!=0);
+  int result=-1;
+  int highestOrder=-1;
+  int order;
+  vtkGenericAttribute *a;
+  int c = ac->GetNumberOfAttributes();
+  int i=0;
+  while(i<c)
+    {
+    a=ac->GetAttribute(i);
+    if(a->GetCentering()==vtkPointCentered)
+      {
+      order=this->GetAttributeOrder(a);
+      if(order>highestOrder)
+        {
+        highestOrder=order;
+        result=i;
+        }
+      }
+    ++i;
+    }
+  assert("post: valid_result" && result>=-1 && result<ac->GetNumberOfAttributes());
+  return result;
+}
+
+//----------------------------------------------------------------------------
+// Description:
 // Does the attribute `a' have no higher-order interpolation for the cell?
 // \pre a_exists: a!=0
 // \post definition: result==(GetAttributeOrder()==1)
