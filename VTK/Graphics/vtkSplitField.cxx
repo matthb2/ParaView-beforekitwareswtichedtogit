@@ -135,7 +135,7 @@ void vtkSplitField::SetInputField(const char* name,
 
   if (attrType == -1)
     {
-    this->SetInputField(name, fieldLoc);
+    this->SetInputField(name, loc);
     }
   else
     {
