@@ -88,7 +88,7 @@ void vtkReverseSense::Execute()
     //first do point normals
     vtkIdType numPoints=input->GetNumberOfPoints();
     vtkDataArray *outNormals=normals->NewInstance();
-    outNormals->SetNumberOfComponents(outNormals->GetNumberOfComponents());
+    outNormals->SetNumberOfComponents(normals->GetNumberOfComponents());
     outNormals->SetNumberOfTuples(numPoints);
     float n[3];
 
