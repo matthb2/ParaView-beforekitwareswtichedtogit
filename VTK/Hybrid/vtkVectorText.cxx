@@ -1690,7 +1690,7 @@ void vtkVectorText::Execute()
         if ((this->Text[pos] > 32)&&(this->Text[pos] < 127))
           {
           // add the result to our output
-          aLetter = this->Letters[this->Text[pos]];
+          aLetter = this->Letters[static_cast<int>(this->Text[pos])];
           ptCount = strtol(aLetter,&aLetter,10);
           width = strtod(aLetter,&aLetter);
           for (i = 0; i < ptCount; i++)
