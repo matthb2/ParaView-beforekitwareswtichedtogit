@@ -195,7 +195,7 @@ int vtkTextSource::RequestData(
   if (this->Text == NULL)
     {
     vtkErrorMacro (<< "Text is not set!");
-    return 0;
+    return 1;
     }
 
   // convert colors to unsigned char

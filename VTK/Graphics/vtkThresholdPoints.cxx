@@ -139,7 +139,7 @@ int vtkThresholdPoints::RequestData(
   if ( ! (inScalars = input->GetPointData()->GetScalars()) )
     {
     vtkErrorMacro(<<"No scalar data to threshold");
-    return 0;
+    return 1;
     }
      
   numPts = input->GetNumberOfPoints();

@@ -87,7 +87,7 @@ int vtkRotationalExtrusionFilter::RequestData(
   if (numPts < 1 || numCells < 1)
     {
     vtkErrorMacro(<<"No data to extrude!");
-    return 0;
+    return 1;
     }
 
   // Build cell data structure.

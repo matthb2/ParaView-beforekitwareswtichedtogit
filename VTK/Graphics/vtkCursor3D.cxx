@@ -151,7 +151,7 @@ int vtkCursor3D::RequestData(
     }
   else
     {
-    return 0;
+    return 1;
     }
 
   // Create axes

@@ -120,7 +120,7 @@ int vtkFeatureEdges::RequestData(
        (numPolys < 1 && numStrips < 1) )
     {
     //vtkErrorMacro(<<"No input data!");
-    return 0;
+    return 1;
     }
 
   if ( !this->BoundaryEdges && !this->NonManifoldEdges && 

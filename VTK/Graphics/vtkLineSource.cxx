@@ -77,7 +77,7 @@ int vtkLineSource::RequestData(
   
   if (outInfo->Get(vtkStreamingDemandDrivenPipeline::UPDATE_PIECE_NUMBER()) > 0)
     {
-    return 0;
+    return 1;
     }
 
   newPoints = vtkPoints::New();

@@ -76,7 +76,7 @@ int vtkSubPixelPositionEdgels::RequestData(
   if ( numPts < 1 || (inPts=input->GetPoints()) == NULL )
     {
     vtkErrorMacro(<<"No data to fit!");
-    return 0;
+    return 1;
     }
 
   newPts = vtkPoints::New();

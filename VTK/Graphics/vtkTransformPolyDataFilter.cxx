@@ -71,7 +71,7 @@ int vtkTransformPolyDataFilter::RequestData(
   if ( this->Transform == NULL )
     {
     vtkErrorMacro(<<"No transform defined!");
-    return 0;
+    return 1;
     }
 
   inPts = input->GetPoints();
@@ -83,7 +83,7 @@ int vtkTransformPolyDataFilter::RequestData(
   if ( !inPts )
     {
     vtkErrorMacro(<<"No input data");
-    return 0;
+    return 1;
     }
 
   numPts = inPts->GetNumberOfPoints();

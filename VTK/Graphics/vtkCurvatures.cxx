@@ -449,7 +449,7 @@ int vtkCurvatures::RequestData(
   else 
     {
     vtkErrorMacro("Only Gauss, Mean, Max, and Min Curvature type available");
-    return 0;
+    return 1;
     }
 
   return 1;

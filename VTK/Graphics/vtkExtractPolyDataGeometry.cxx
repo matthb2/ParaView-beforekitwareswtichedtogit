@@ -93,7 +93,7 @@ int vtkExtractPolyDataGeometry::RequestData(
   if ( ! this->ImplicitFunction )
     {
     vtkErrorMacro(<<"No implicit function specified");
-    return 0;
+    return 1;
     }
 
   numPts = input->GetNumberOfPoints();

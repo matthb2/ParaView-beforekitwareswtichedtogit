@@ -64,7 +64,7 @@ int vtkApproximatingSubdivisionFilter::RequestData(
   if (numPts < 1 || numCells < 1)
     {
     vtkErrorMacro(<<"No data to approximate!");
-    return 0;
+    return 1;
     }
 
   //

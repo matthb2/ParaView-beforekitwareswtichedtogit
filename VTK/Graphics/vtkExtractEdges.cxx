@@ -81,7 +81,7 @@ int vtkExtractEdges::RequestData(
   numPts=input->GetNumberOfPoints();
   if ( (numCells=input->GetNumberOfCells()) < 1 || numPts < 1 )
     {
-    return 0;
+    return 1;
     }
 
   // Set up processing

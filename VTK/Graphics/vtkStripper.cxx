@@ -87,7 +87,7 @@ int vtkStripper::RequestData(
     output->GetCellData()->PassData(input->GetCellData());
     mesh->Delete();
     vtkDebugMacro(<<"No data to strip!");
-    return 0;
+    return 1;
     }
 
   pts = new vtkIdType[this->MaximumLength + 2]; //working array

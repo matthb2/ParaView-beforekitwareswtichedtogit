@@ -59,7 +59,7 @@ int vtkInterpolatingSubdivisionFilter::RequestData(
   if (numPts < 1 || numCells < 1)
     {
     vtkDebugMacro(<<"No data to interpolate!");
-    return 0;
+    return 1;
     }
 
   //
@@ -94,7 +94,7 @@ int vtkInterpolatingSubdivisionFilter::RequestData(
     {
     vtkWarningMacro( << this->GetClassName() << " only operates on triangles, but this data set has no triangles to operate on.");
     inputDS->Delete();
-    return 0;
+    return 1;
     }
   
   for (level = 0; level < this->NumberOfSubdivisions; level++)

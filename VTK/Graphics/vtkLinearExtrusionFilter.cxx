@@ -131,7 +131,7 @@ int vtkLinearExtrusionFilter::RequestData(
   if (numPts < 1 || numCells < 1)
     {
     vtkErrorMacro(<<"No data to extrude!");
-    return 0;
+    return 1;
     }
   //
   // Decide which vector to use for extrusion

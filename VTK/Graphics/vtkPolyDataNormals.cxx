@@ -92,7 +92,7 @@ int vtkPolyDataNormals::RequestData(
   if ( (numPts=input->GetNumberOfPoints()) < 1 )
     {
     vtkErrorMacro(<<"No data to generate normals for!");
-    return 0;
+    return 1;
     }
 
 

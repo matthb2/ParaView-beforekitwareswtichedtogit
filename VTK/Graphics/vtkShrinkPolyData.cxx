@@ -289,7 +289,7 @@ int vtkShrinkPolyData::RequestData(
 
   if (input == NULL || input->GetPoints() == NULL)
     {
-    return 0;
+    return 1;
     }
   
   // get the input pointer for templating

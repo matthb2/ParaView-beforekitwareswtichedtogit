@@ -142,7 +142,7 @@ int vtkDecimatePro::RequestData(
   if (!input)
     {
     vtkErrorMacro(<<"No input!");
-    return 0;
+    return 1;
     }
   vtkPointData *outputPD=output->GetPointData();
   vtkPointData *inPD=input->GetPointData();
@@ -159,7 +159,7 @@ int vtkDecimatePro::RequestData(
        (this->TargetReduction > 0.0) )
     {
     vtkErrorMacro(<<"No data to decimate!");
-    return 0;
+    return 1;
     }
   
   // Initialize
@@ -198,7 +198,7 @@ int vtkDecimatePro::RequestData(
       output->CopyStructure(input);
       output->GetPointData()->PassData(input->GetPointData());
       output->GetCellData()->PassData(input->GetCellData());
-      return 0;
+      return 1;
       }
     pPolys += 4;
     }

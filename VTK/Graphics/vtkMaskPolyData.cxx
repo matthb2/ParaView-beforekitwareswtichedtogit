@@ -62,7 +62,7 @@ int vtkMaskPolyData::RequestData(
   if ( numCells < 1 )
     {
     vtkErrorMacro (<<"No PolyData to mask!");
-    return 0;
+    return 1;
     }
 
   output->Allocate(input,numCells);

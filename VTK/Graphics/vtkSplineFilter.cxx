@@ -91,13 +91,13 @@ int vtkSplineFilter::RequestData(
        (numLines = inLines->GetNumberOfCells()) < 1 )
     {
     vtkWarningMacro(<< " No input data!");
-    return 0;
+    return 1;
     }
 
   if ( this->Spline == NULL )
     {
     vtkWarningMacro(<< "Need to specify a spline!");
-    return 0;
+    return 1;
     }
 
   // Create the geometry and topology

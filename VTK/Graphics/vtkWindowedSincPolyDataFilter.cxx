@@ -111,7 +111,7 @@ int vtkWindowedSincPolyDataFilter::RequestData(
   if (numPts < 1 || numCells < 1)
     {
     vtkErrorMacro(<<"No data to smooth!");
-    return 0;
+    return 1;
     }
 
   CosFeatureAngle = 

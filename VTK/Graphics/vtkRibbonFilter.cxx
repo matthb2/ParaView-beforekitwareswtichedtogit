@@ -105,7 +105,7 @@ int vtkRibbonFilter::RequestData(
       !(inLines = input->GetLines()) || 
        (numLines = inLines->GetNumberOfCells()) < 1 )
     {
-    return 0;
+    return 1;
     }
 
   // Create the geometry and topology

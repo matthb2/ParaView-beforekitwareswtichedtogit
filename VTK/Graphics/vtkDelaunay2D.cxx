@@ -329,13 +329,13 @@ int vtkDelaunay2D::RequestData(
   if ( (inPoints=input->GetPoints()) == NULL )
     {
     vtkErrorMacro("<<Cannot triangulate; no input points");
-    return 0;
+    return 1;
     }
 
   if ( (numPoints=inPoints->GetNumberOfPoints()) <= 2 )
     {
     vtkErrorMacro("<<Cannot triangulate; need at least 3 input points");
-    return 0;
+    return 1;
     }
   
   neighbors = vtkIdList::New(); neighbors->Allocate(2);

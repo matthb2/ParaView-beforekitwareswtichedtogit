@@ -120,7 +120,7 @@ int vtkTensorGlyph::RequestData(
   if ( !inTensors || numPts < 1 )
     {
     vtkErrorMacro(<<"No data to glyph!");
-    return 0;
+    return 1;
     }
   //
   // Allocate storage for output PolyData

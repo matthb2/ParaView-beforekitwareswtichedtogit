@@ -78,13 +78,13 @@ int vtkRuledSurfaceFilter::RequestData(
   inLines = input->GetLines();
   if ( !inPts || !inLines)
     {
-    return 0;
+    return 1;
     }
   numLines=inLines->GetNumberOfCells();
   numPts = inPts->GetNumberOfPoints();
   if (numPts < 1 || numLines < 2 )
     {
-    return 0;
+    return 1;
     }
   
   if ( this->PassLines )

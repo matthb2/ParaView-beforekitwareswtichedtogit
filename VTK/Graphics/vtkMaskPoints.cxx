@@ -67,7 +67,7 @@ int vtkMaskPoints::RequestData(
 
   if ( numPts < 1 )
     {
-    return 0;
+    return 1;
     }
 
   pd = input->GetPointData();

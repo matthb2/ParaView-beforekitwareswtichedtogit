@@ -503,7 +503,7 @@ int vtkHull::RequestData(
   if ( numPoints < 3 )
     {
     vtkErrorMacro( << "There must be >= 3 points in the input data!!!\n" );
-    return 0;
+    return 1;
     }
 
   // There should be at least four planes for this to work. There will need
@@ -511,7 +511,7 @@ int vtkHull::RequestData(
   if ( this->NumberOfPlanes < 4 )
     {
     vtkErrorMacro( << "There must be >= 4 planes!!!\n" );
-    return 0;
+    return 1;
     }
 
   // Create a new set of points and polygons into which the results will

@@ -364,7 +364,7 @@ int vtkHyperStreamline::RequestData(
   if ( ! (inTensors=pd->GetTensors()) )
     {
     vtkErrorMacro(<<"No tensor data defined!");
-    return 0;
+    return 1;
     }
   w = new double[input->GetMaxCellSize()];
 

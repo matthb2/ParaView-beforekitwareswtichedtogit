@@ -104,7 +104,7 @@ int vtkGraphLayoutFilter::RequestData(
   if ( numPts <= 0 || numLines <= 0)
     {                   
     vtkErrorMacro(<<"No input");
-    return 0;
+    return 1;
     }
 
   // Generate bounds automatically if necessary. It's the same

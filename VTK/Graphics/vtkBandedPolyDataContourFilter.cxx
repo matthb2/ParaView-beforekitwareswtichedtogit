@@ -233,7 +233,7 @@ int vtkBandedPolyDataContourFilter::RequestData(
        !inScalars || numCells < 1 )
     {
     vtkErrorMacro(<<"No input data!");
-    return 0;
+    return 1;
     }
 
   // Set up supplemental data structures for processing edge/generating
