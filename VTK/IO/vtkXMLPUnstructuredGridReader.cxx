@@ -189,6 +189,10 @@ void vtkXMLPUnstructuredGridReader::CopyArrayForCells(vtkDataArray* inArray,
     {
     return;
     }
+  if(!inArray || !outArray)
+    {
+    return;
+    }
   
   vtkIdType numCells = this->PieceReaders[this->Piece]->GetNumberOfCells();
   vtkIdType components = outArray->GetNumberOfComponents();
