@@ -153,7 +153,14 @@ void vtkImageToStructuredPoints::Execute()
       {
       inPtr = (unsigned char *) data->GetScalarPointerForExtent(uExtent);
       outPtr = (unsigned char *) output->GetScalarPointer();
-      
+
+      // Make sure there are data.
+      if(!inPtr || !outPtr)
+        {
+        output->Initialize();
+        return;
+        }
+
       // Get increments to march through data 
       data->GetIncrements(inIncX, inIncY, inIncZ);
       
@@ -194,7 +201,14 @@ void vtkImageToStructuredPoints::Execute()
       {
       vtkDataArray *fv = vtkDataArray::CreateDataArray(vData->GetScalarType());
       float *inPtr2 = (float *)(vData->GetScalarPointerForExtent(uExtent));
-      
+
+      // Make sure there are data.
+      if(!inPtr2)
+        {
+        output->Initialize();
+        return;
+        }
+
       fv->SetNumberOfComponents(3);
       fv->SetNumberOfTuples((maxZ+1)*(maxY+1)*(maxX+1));
       vData->GetContinuousIncrements(uExtent, inIncX, inIncY, inIncZ);
