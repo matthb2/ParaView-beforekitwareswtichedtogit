@@ -963,7 +963,7 @@ const char *vtkImplicitModeller::GetProcessModeAsString()
 
 //----------------------------------------------------------------------------
 int vtkImplicitModeller::FillInputPortInformation(
-  int port, vtkInformation* info)
+  int vtkNotUsed( port ), vtkInformation* info)
 {
   info->Set(vtkAlgorithm::INPUT_REQUIRED_DATA_TYPE(), "vtkDataSet");
   info->Set(vtkAlgorithm::INPUT_IS_OPTIONAL(), 1);
