@@ -591,6 +591,5 @@ void vtkPointWidget::PlaceWidget(float bds[6])
                              (bounds[3]-bounds[2])*(bounds[3]-bounds[2]) +
                              (bounds[5]-bounds[4])*(bounds[5]-bounds[4]));
 
-  this->InvokeEvent(vtkCommand::InteractionEvent,NULL);  
 }
 
