@@ -388,8 +388,8 @@ void vtkQuadricDecimation::InitializeQuadrics(void)
   double *QEM;
   vtkIdType ptId;
   int i, j;
-  vtkCellArray *polys = NULL;
-  vtkIdType npts, *pts;
+  vtkCellArray *polys=NULL;
+  vtkIdType npts, *pts=NULL;
   const float *point0, *point1, *point2;
   float n[3];
   float tempP1[3], tempP2[3],  d, triArea2;

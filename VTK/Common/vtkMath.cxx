@@ -272,8 +272,8 @@ int vtkMath::SolveLinearSystem(double **A, double *x, int size)
 // if inverse not computed.
 int vtkMath::InvertMatrix(double **A, double **AI, int size)
 {
-  int *index, iScratch[10];
-  double *column, dScratch[10];
+  int *index=NULL, iScratch[10];
+  double *column=NULL, dScratch[10];
 
   // Check on allocation of working vectors
   //
