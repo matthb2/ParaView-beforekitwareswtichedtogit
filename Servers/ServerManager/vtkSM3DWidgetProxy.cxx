@@ -51,6 +51,7 @@ void vtkSM3DWidgetProxy::InitializeObservers(vtkInteractorObserver* widget3D)
 //----------------------------------------------------------------------------
 void vtkSM3DWidgetProxy::PlaceWidget(double bds[6])
 {
+  unsigned int cc;
   if (bds[0] == this->Bounds[0] &&
     bds[1] == this->Bounds[1] &&
     bds[2] == this->Bounds[2] &&
@@ -62,7 +63,7 @@ void vtkSM3DWidgetProxy::PlaceWidget(double bds[6])
     }
   
   vtkProcessModule *pm = vtkProcessModule::GetProcessModule();
-  for(unsigned int cc=0; cc < this->GetNumberOfIDs(); cc++)
+  for(cc=0; cc < this->GetNumberOfIDs(); cc++)
     {
     pm->GetStream() << vtkClientServerStream::Invoke << this->GetID(cc)
       << "PlaceWidget" 
@@ -72,7 +73,7 @@ void vtkSM3DWidgetProxy::PlaceWidget(double bds[6])
     }
   //Since call to PlaceWidget with bounds as an argument does not invoke a 
   //PlaceWidgetEvent, we trigger an artificial event.
-  for(unsigned int cc=0; cc < this->GetNumberOfIDs(); cc++)
+  for(cc=0; cc < this->GetNumberOfIDs(); cc++)
     {
     vtkInteractorObserver* wdg = vtkInteractorObserver::SafeDownCast(
       pm->GetObjectFromID(this->GetID(cc)));
