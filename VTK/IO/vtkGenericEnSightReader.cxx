@@ -1230,7 +1230,7 @@ void vtkGenericEnSightReader::SetDataArraySelectionSetsFromVariables()
                        this->NumberOfComplexVectorsPerElement);
   
   char** pointNames = this->CreateStringArray(numPointArrays);
-  char** cellNames = this->CreateStringArray(numPointArrays);
+  char** cellNames = this->CreateStringArray(numCellArrays);
   int pointArrayCount = 0;
   int cellArrayCount = 0;
   
