@@ -194,7 +194,7 @@ void vtkInteractorStyleJoystickActor::OnLeftButtonUp(int vtkNotUsed(ctrl),
 
 //----------------------------------------------------------------------------
 void vtkInteractorStyleJoystickActor::OnMiddleButtonDown(int ctrl, 
-                                                         int shift, 
+                                                         int vtkNotUsed(shift), 
                                                          int x, 
                                                          int y) 
 {

@@ -140,8 +140,8 @@ void vtkInteractorStyleJoystickCamera::OnMiddleButtonUp(int vtkNotUsed(ctrl),
 }
 
 //----------------------------------------------------------------------------
-void vtkInteractorStyleJoystickCamera::OnRightButtonDown(int ctrl,
-                                                         int shift, 
+void vtkInteractorStyleJoystickCamera::OnRightButtonDown(int vtkNotUsed(ctrl),
+                                                         int vtkNotUsed(shift), 
                                                          int x, 
                                                          int y)
 {

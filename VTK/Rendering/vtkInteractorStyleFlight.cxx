@@ -132,8 +132,8 @@ void vtkInteractorStyleFlight::OnTimer(void)
 //---------------------------------------------------------------------------
 // Mouse event handlers
 //---------------------------------------------------------------------------
-void vtkInteractorStyleFlight::OnMouseMove(int ctrl, 
-                                           int shift, 
+void vtkInteractorStyleFlight::OnMouseMove(int vtkNotUsed(ctrl), 
+                                           int vtkNotUsed(shift),
                                            int x, 
                                            int y) 
 {
