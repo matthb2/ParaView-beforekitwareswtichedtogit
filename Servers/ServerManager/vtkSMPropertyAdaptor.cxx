@@ -651,8 +651,16 @@ void vtkSMPropertyAdaptor::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os, indent);
   
-  os << indent << "Property: " << this->Property->GetClassName() << " (" << this->Property << ")" << endl;
-  this->Property->PrintSelf(os, indent.GetNextIndent());
+  os << indent << "Property: ";
+  if ( this->Property )
+    {
+    os << this->Property->GetClassName() << " (" << this->Property << ")" << endl;
+    this->Property->PrintSelf(os, indent.GetNextIndent());
+    }
+  else
+    {
+    os << "(null)" << endl;
+    }
   os << indent << "Domains: " << endl;
 #define PRINT_DOMAIN(type) \
   if ( this->type##Domain ) \
