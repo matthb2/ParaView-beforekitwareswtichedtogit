@@ -27,6 +27,11 @@
 
 vtkCxxRevisionMacro(vtkRenderWindow, "$Revision$");
 
+//----------------------------------------------------------------------------
+// Needed when we don't use the vtkStandardNewMacro.
+vtkInstantiatorNewMacro(vtkRenderWindow);
+//----------------------------------------------------------------------------
+
 // Construct an instance of  vtkRenderWindow with its screen size 
 // set to 300x300, borders turned on, positioned at (0,0), double 
 // buffering turned on, stereo capable off.

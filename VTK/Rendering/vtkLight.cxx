@@ -25,6 +25,9 @@ vtkCxxRevisionMacro(vtkLight, "$Revision$");
 
 vtkCxxSetObjectMacro(vtkLight,TransformMatrix,vtkMatrix4x4);
 
+//----------------------------------------------------------------------------
+// Needed when we don't use the vtkStandardNewMacro.
+vtkInstantiatorNewMacro(vtkLight);
 
 // Create a light with the focal point at the origin and its position
 // set to (0,0,1). The lights color is white, intensity=1, and the light 

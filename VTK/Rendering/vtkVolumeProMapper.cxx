@@ -34,6 +34,11 @@
 
 vtkCxxRevisionMacro(vtkVolumeProMapper, "$Revision$");
 
+//----------------------------------------------------------------------------
+// Needed when we don't use the vtkStandardNewMacro.
+vtkInstantiatorNewMacro(vtkVolumeProMapper);
+//----------------------------------------------------------------------------
+
 // Create the mapper. No context has been created, no volume has
 // been created yet.
 vtkVolumeProMapper::vtkVolumeProMapper()

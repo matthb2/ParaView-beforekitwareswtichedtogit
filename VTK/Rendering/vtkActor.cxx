@@ -31,6 +31,10 @@ vtkCxxRevisionMacro(vtkActor, "$Revision$");
 
 vtkCxxSetObjectMacro(vtkActor,Texture,vtkTexture);
 
+//----------------------------------------------------------------------------
+// Needed when we don't use the vtkStandardNewMacro.
+vtkInstantiatorNewMacro(vtkActor);
+
 
 // Creates an actor with the following defaults: origin(0,0,0) 
 // position=(0,0,0) scale=(1,1,1) visibility=1 pickable=1 dragable=1

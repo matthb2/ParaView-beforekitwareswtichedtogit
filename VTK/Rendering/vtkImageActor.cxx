@@ -21,6 +21,11 @@
 
 vtkCxxRevisionMacro(vtkImageActor, "$Revision$");
 
+//----------------------------------------------------------------------------
+// Needed when we don't use the vtkStandardNewMacro.
+vtkInstantiatorNewMacro(vtkImageActor);
+
+//----------------------------------------------------------------------------
 vtkImageActor* vtkImageActor::New()
 {
   // First try to create the object from the vtkObjectFactory

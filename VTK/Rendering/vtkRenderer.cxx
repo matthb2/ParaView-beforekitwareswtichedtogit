@@ -33,6 +33,11 @@
 
 vtkCxxRevisionMacro(vtkRenderer, "$Revision$");
 
+//----------------------------------------------------------------------------
+// Needed when we don't use the vtkStandardNewMacro.
+vtkInstantiatorNewMacro(vtkRenderer);
+//----------------------------------------------------------------------------
+
 // Create a vtkRenderer with a black background, a white ambient light, 
 // two-sided lighting turned on, a viewport of (0,0,1,1), and backface culling
 // turned off.

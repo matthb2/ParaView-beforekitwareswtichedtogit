@@ -24,6 +24,11 @@
 
 vtkCxxRevisionMacro(vtkTexture, "$Revision$");
 
+//----------------------------------------------------------------------------
+// Needed when we don't use the vtkStandardNewMacro.
+vtkInstantiatorNewMacro(vtkTexture);
+//----------------------------------------------------------------------------
+
 // Construct object and initialize.
 vtkTexture::vtkTexture()
 {

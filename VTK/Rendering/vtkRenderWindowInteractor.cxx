@@ -29,6 +29,11 @@
 
 vtkCxxRevisionMacro(vtkRenderWindowInteractor, "$Revision$");
 
+//----------------------------------------------------------------------------
+// Needed when we don't use the vtkStandardNewMacro.
+vtkInstantiatorNewMacro(vtkRenderWindowInteractor);
+//----------------------------------------------------------------------------
+
 vtkCxxSetObjectMacro(vtkRenderWindowInteractor,Picker,vtkAbstractPicker);
 
 // Construct object so that light follows camera motion.

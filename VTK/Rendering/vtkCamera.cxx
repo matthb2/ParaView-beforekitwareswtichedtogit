@@ -28,6 +28,10 @@
 vtkCxxRevisionMacro(vtkCamera, "$Revision$");
 
 //----------------------------------------------------------------------------
+// Needed when we don't use the vtkStandardNewMacro.
+vtkInstantiatorNewMacro(vtkCamera);
+
+//----------------------------------------------------------------------------
 // Construct camera instance with its focal point at the origin, 
 // and position=(0,0,1). The view up is along the y-axis, 
 // view angle is 30 degrees, and the clipping range is (.1,1000).

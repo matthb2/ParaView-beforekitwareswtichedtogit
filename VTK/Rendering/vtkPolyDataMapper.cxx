@@ -22,6 +22,10 @@
 vtkCxxRevisionMacro(vtkPolyDataMapper, "$Revision$");
 
 //----------------------------------------------------------------------------
+// Needed when we don't use the vtkStandardNewMacro.
+vtkInstantiatorNewMacro(vtkPolyDataMapper);
+
+//----------------------------------------------------------------------------
 // return the correct type of PolyDataMapper 
 vtkPolyDataMapper *vtkPolyDataMapper::New()
 {

@@ -26,6 +26,12 @@
 
 vtkCxxRevisionMacro(vtkImageMapper, "$Revision$");
 
+//----------------------------------------------------------------------------
+// Needed when we don't use the vtkStandardNewMacro.
+vtkInstantiatorNewMacro(vtkImageMapper);
+
+//----------------------------------------------------------------------------
+
 #define VTK_RINT(x) ((x > 0.0) ? (int)(x + 0.5) : (int)(x - 0.5))
 
 vtkImageMapper::vtkImageMapper()

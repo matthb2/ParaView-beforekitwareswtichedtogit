@@ -33,6 +33,11 @@
 
 vtkCxxRevisionMacro(vtkVolumeRayCastMapper, "$Revision$");
 
+//----------------------------------------------------------------------------
+// Needed when we don't use the vtkStandardNewMacro.
+vtkInstantiatorNewMacro(vtkVolumeRayCastMapper);
+//----------------------------------------------------------------------------
+
 vtkCxxSetObjectMacro(vtkVolumeRayCastMapper,VolumeRayCastFunction,
                      vtkVolumeRayCastFunction );
 

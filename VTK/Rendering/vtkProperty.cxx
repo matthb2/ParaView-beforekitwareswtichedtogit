@@ -25,6 +25,11 @@
 
 vtkCxxRevisionMacro(vtkProperty, "$Revision$");
 
+//----------------------------------------------------------------------------
+// Needed when we don't use the vtkStandardNewMacro.
+vtkInstantiatorNewMacro(vtkProperty);
+//----------------------------------------------------------------------------
+
 // Construct object with object color, ambient color, diffuse color,
 // specular color, and edge color white; ambient coefficient=0; diffuse 
 // coefficient=0; specular coefficient=0; specular power=1; Gouraud shading;

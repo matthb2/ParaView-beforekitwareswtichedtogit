@@ -28,6 +28,11 @@
 #include "vtkObjectFactory.h"
 #include "vtkOutputWindow.h"
 
+//----------------------------------------------------------------------------
+// Needed when we don't use the vtkStandardNewMacro.
+vtkInstantiatorNewMacro(vtkMultiProcessController);
+
+//----------------------------------------------------------------------------
 
 // Helper class to contain the RMI information.  
 // A subclass of vtkObject so that I can keep them in a collection.
@@ -123,7 +128,7 @@ vtkMultiProcessController::~vtkMultiProcessController()
   this->RMIs = NULL;
 }
 
-  
+ 
 //----------------------------------------------------------------------------
 vtkMultiProcessController *vtkMultiProcessController::New()
 {

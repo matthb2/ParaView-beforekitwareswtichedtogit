@@ -24,6 +24,11 @@
 
 vtkCxxRevisionMacro(vtkPolyDataMapper2D, "$Revision$");
 
+//----------------------------------------------------------------------------
+// Needed when we don't use the vtkStandardNewMacro.
+vtkInstantiatorNewMacro(vtkPolyDataMapper2D);
+//----------------------------------------------------------------------------
+
 vtkCxxSetObjectMacro(vtkPolyDataMapper2D,Input,vtkPolyData);
 vtkCxxSetObjectMacro(vtkPolyDataMapper2D,TransformCoordinate,vtkCoordinate);
 
