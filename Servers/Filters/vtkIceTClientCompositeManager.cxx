@@ -35,8 +35,6 @@
 #include "vtkFloatArray.h"
 #include "vtkUnsignedCharArray.h"
 #include "vtkTimerLog.h"
-// Until we trigger LOD from AllocatedRenderTime ...
-#include "vtkPVApplication.h"
 #include "vtkByteSwap.h"
 #include "vtkIceTRenderManager.h"
 
