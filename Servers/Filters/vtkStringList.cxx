@@ -86,7 +86,7 @@ void vtkStringList::RemoveAllItems()
 }
 
 //----------------------------------------------------------------------------
-char *vtkStringList::GetString(int idx)
+const char *vtkStringList::GetString(int idx)
 {
   if (idx < 0 || idx >= this->NumberOfStrings)
     {
