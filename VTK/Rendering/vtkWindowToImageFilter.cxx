@@ -69,6 +69,7 @@ void vtkWindowToImageFilter::PrintSelf(ostream& os, vtkIndent indent)
     {
     os << indent << "Input: (none)\n";
     }
+  os << indent << "ReadFrontBuffer: " << this->ReadFrontBuffer << "\n";
   os << indent << "Magnification: " << this->Magnification << "\n";
 }
 
