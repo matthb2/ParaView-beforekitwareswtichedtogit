@@ -19,7 +19,7 @@
 vtkCxxRevisionMacro(vtkParametricFigure8Klein, "$Revision$");
 vtkStandardNewMacro(vtkParametricFigure8Klein);
 
-vtkParametricFigure8Klein::vtkParametricFigure8Klein(void)
+vtkParametricFigure8Klein::vtkParametricFigure8Klein()
 {
   // Preset triangulation parameters
   this->MinimumU = -vtkMath::Pi();
@@ -36,7 +36,7 @@ vtkParametricFigure8Klein::vtkParametricFigure8Klein(void)
   this->Radius = 1;
 }
 
-vtkParametricFigure8Klein::~vtkParametricFigure8Klein(void)
+vtkParametricFigure8Klein::~vtkParametricFigure8Klein()
 {
 }
 
