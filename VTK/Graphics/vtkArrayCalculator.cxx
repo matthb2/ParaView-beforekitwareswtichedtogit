@@ -814,4 +814,7 @@ void vtkArrayCalculator::PrintSelf(ostream& os, vtkIndent indent)
      << endl;
   os << indent << "Number Of Vector Arrays: " << this->NumberOfVectorArrays
      << endl;
+  os << indent << "Replace Invalid Values: " 
+     << (this->ReplaceInvalidValues ? "On" : "Off") << endl;
+  os << indent << "Replacement Value: " << this->ReplacementValue << endl;
 }

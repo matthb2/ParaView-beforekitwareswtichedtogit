@@ -1987,5 +1987,9 @@ void vtkFunctionParser::PrintSelf(ostream& os, vtkIndent indent)
     os << indent << "ScalarResult: " << "(none)" << endl;
     os << indent << "VectorResult: " << "(none)" << endl;
     }
+
+  os << indent << "Replace Invalid Values: " 
+     << (this->ReplaceInvalidValues ? "On" : "Off") << endl;
+  os << indent << "Replacement Value: " << this->ReplacementValue << endl;
 }
 
