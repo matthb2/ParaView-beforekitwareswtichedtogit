@@ -151,11 +151,19 @@ void vtkInteractorStyleJoystickCamera::OnLeftButtonUp(int vtkNotUsed(ctrl),
                                                       int vtkNotUsed(x),
                                                       int vtkNotUsed(y))
 {
-  if (this->State == VTK_INTERACTOR_STYLE_CAMERA_ROTATE)
+  if (this->State == VTK_INTERACTOR_STYLE_CAMERA_ROTATE) 
     {
     this->EndRotate();
-    }
-  else
+    } 
+  else if (this->State == VTK_INTERACTOR_STYLE_CAMERA_PAN) 
+    {
+    this->EndPan();
+    } 
+  else if (this->State == VTK_INTERACTOR_STYLE_CAMERA_ZOOM) 
+    {
+    this->EndDolly();
+    } 
+  else 
     {
     this->EndSpin();
     }

@@ -79,13 +79,6 @@ void vtkVolumeTextureMapper::Update()
     this->GetInput()->SetUpdateExtentToWholeExtent();
     this->GetInput()->Update();
     }
-
-  if ( this->GetRGBTextureInput() )
-    {
-    this->GetRGBTextureInput()->UpdateInformation();
-    this->GetRGBTextureInput()->SetUpdateExtentToWholeExtent();
-    this->GetRGBTextureInput()->Update();
-    }
 }
 
 void vtkVolumeTextureMapper::InitializeRender( vtkRenderer *ren,
