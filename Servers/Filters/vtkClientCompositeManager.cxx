@@ -932,7 +932,9 @@ void vtkClientCompositeManager::ReallocPDataArrays()
 {
   int numComps = 4;
   int numTuples = this->PDataSize[0] * this->PDataSize[1];
-  int magNumTuples = this->PDataSize[0] * this->PDataSize[1];
+  // This was producing a warning. I did not remove it because
+  // I was not sure if the author intended to use it later.
+  //int magNumTuples = this->PDataSize[0] * this->PDataSize[1];
   int numProcs = 1;
 
   if ( ! this->ClientFlag)
