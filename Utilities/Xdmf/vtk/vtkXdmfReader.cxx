@@ -2099,6 +2099,15 @@ void vtkXdmfReader::UpdateGrids()
       }
     }
   this->GridsModified = 0;
+  this->SetNumberOfOutputPorts(this->GetNumberOfGrids());
+  int i;
+  vtkUnstructuredGrid *ugrid;
+  for (i = 0; i < this->GetNumberOfGrids(); i++)
+    {
+    ugrid = vtkUnstructuredGrid::New();
+    this->GetExecutive()->SetOutputData(i, ugrid);
+    ugrid->Delete();
+    }
 }
 
 //----------------------------------------------------------------------------
