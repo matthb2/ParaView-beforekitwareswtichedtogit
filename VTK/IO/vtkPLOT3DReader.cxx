@@ -239,6 +239,9 @@ int vtkPLOT3DReader::CanReadFile(const char* fname)
     {
     return 0;
     }
+
+  this->CalculateFileSize(xyzFp);
+
   int numOutputs = this->GetNumberOfOutputsInternal(xyzFp, 1);
   fclose(xyzFp);
   if (numOutputs != 0)
