@@ -255,7 +255,7 @@ void vtkImagePlaneWidget::SetEnabled(int enabling)
 
     if ( this->PlanePicker )
       {
-      this->PlaneActor->PickableOn();
+      this->PlaneActor->PickableOff();
       }
 
     this->InvokeEvent(vtkCommand::DisableEvent,0);
