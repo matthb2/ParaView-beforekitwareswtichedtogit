@@ -181,13 +181,11 @@ int vtkPVEnSightMasterServerReaderSyncValues(T* data, int numValues,
 }
 #else
 template <class T>
-int vtkPVEnSightMasterServerReaderSyncValues(T* data, int numValues,
-                     int numPieces,
-                     vtkMultiProcessController* controller)
+int vtkPVEnSightMasterServerReaderSyncValues(T*, 
+                                             int,
+                                             int,
+                                             vtkMultiProcessController*)
 {
-  data = data;
-  numValues = numValues;
-  controller = controller;
   return VTK_OK;
 }
 #endif
