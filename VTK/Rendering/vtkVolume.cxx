@@ -140,7 +140,7 @@ float vtkVolume::GetGradientOpacityConstant(int index)
     {
     vtkErrorMacro("Index out of range [0-" << VTK_MAX_VRCOMP << 
                   "]: " << index );
-    return NULL;
+    return 0;
     }
   return this->GradientOpacityConstant[index];
 }

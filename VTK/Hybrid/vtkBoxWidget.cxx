@@ -937,7 +937,7 @@ void vtkBoxWidget::Translate(double *p1, double *p2)
 }
 
 void vtkBoxWidget::Scale(double* vtkNotUsed(p1), double* vtkNotUsed(p2), 
-                         int X, int Y)
+                         int vtkNotUsed(X), int Y)
 {
   double *pts = ((vtkDoubleArray *)this->Points->GetData())->GetPointer(0);
   double *center 
