@@ -78,8 +78,8 @@ vtkPVProcessModule::~vtkPVProcessModule()
     {
     this->GUIHelper->Delete();
     }
-  this->FinalizeInterpreter();
   this->SetRenderServerHostName(0);
+  this->FinalizeInterpreter();
 }
 
 //----------------------------------------------------------------------------
