@@ -1063,9 +1063,6 @@ void vtkInteractorStyle::ProcessEvents(vtkObject* object,
   vtkInteractorStyle* self 
     = reinterpret_cast<vtkInteractorStyle *>( clientdata );
 
-  vtkRenderWindowInteractor* rwi 
-    = static_cast<vtkRenderWindowInteractor *>( object );
-
   switch(event)
     {
     case vtkCommand::ExposeEvent:

@@ -85,8 +85,6 @@ void vtkInteractorObserver::ProcessEvents(vtkObject* object,
 {
   vtkInteractorObserver* self 
     = reinterpret_cast<vtkInteractorObserver *>( clientdata );
-  vtkRenderWindowInteractor* rwi 
-    = static_cast<vtkRenderWindowInteractor *>( object );
 
   //look for char and delete events
   switch(event)
