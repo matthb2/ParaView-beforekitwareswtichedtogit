@@ -87,7 +87,6 @@ void vtkWriter::PrintSelf(ostream& os, vtkIndent indent)
 
 void vtkWriter::EncodeArrayName(char* resname, const char* name)
 {
-  cout << "Encoding the name: [" << name << "]" << endl;
   if ( !name || !resname )
     {   
     return;
@@ -116,5 +115,4 @@ void vtkWriter::EncodeArrayName(char* resname, const char* name)
   str << ends;
   strcpy(resname, str.str());
   str.rdbuf()->freeze(0);
-  cout << "Produce: [" << resname << "]" << endl;
 }
