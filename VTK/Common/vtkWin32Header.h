@@ -5,7 +5,7 @@
   Language:  C++
   Date:      $Date$
   Version:   $Revision$
-
+  Thanks:    to Horst Schreiber for developing this MFC code
 
 Copyright (c) 1993-1996 Ken Martin, Will Schroeder, Bill Lorensen.
 
@@ -39,36 +39,32 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 
 =========================================================================*/
 
-// .NAME vtkIndent - a simple class to control print indentation
-// .SECTION Description
-// vtkIndent is used to control indentation during the chaining print 
-// process. This way nested objects can correctly indent themselves.
+#ifndef __vtkWIN32Header_h
+#define __vtkWIN32Header_h
 
-#ifndef __vtkIndent_h
-#define __vtkIndent_h
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <fstream.h>
+#include <math.h>
 
-#include <iostream.h>
-
-class vtkIndent
-{
-public:
-  vtkIndent(int ind=0) {this->Indent=ind;};
-  vtkIndent GetNextIndent();
-  int Indent;
-
-  //BTX
-#ifdef _WIN32
-#ifdef VTKDLL
-  friend __declspec(dllexport) 
-    ostream& operator<<(ostream& os, vtkIndent& o);  
-#else
-  friend __declspec(dllimport) 
-     ostream& operator<<(ostream& os, vtkIndent& o);
+#include <afxwin.h>  // MFC core and standard components
+#include <afxext.h>  // MFC extensions
+#ifdef stdio
+#undef stdout
+#undef stderr
+#define stdout afxDump
+#define stderr afxDump
 #endif
-#else  
-  friend ostream& operator<<(ostream& os, vtkIndent& o);
-#endif 
-  //ETX
-};
+
+#pragma warning ( disable : 4244 )
+#pragma warning ( disable : 4305 )
+#pragma warning ( disable : 4309 )
+
+#ifdef VTKDLL
+#define class class  __declspec( dllexport ) 
+#else
+#define class class __declspec( dllimport )
+#endif
 
 #endif

@@ -52,6 +52,9 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 #define __vtkObject_h
 
 #include <iostream.h>
+#ifdef _WIN32
+#include "vtkWin32Header.h"
+#endif
 #include "vtkTimeStamp.h"
 #include "vtkSetGet.h"
 #include "vtkIndent.h"
@@ -85,7 +88,19 @@ protected:
   vtkTimeStamp MTime; // Keep track of modification time
 
 private:
+  //BTX
+#ifdef _WIN32
+#ifdef VTKDLL
+  friend __declspec(dllexport) 
+    ostream& operator<<(ostream& os, vtkObject& o);  
+#else
+  friend __declspec(dllimport) 
+     ostream& operator<<(ostream& os, vtkObject& o);
+#endif
+#else  
   friend ostream& operator<<(ostream& os, vtkObject& o);
+#endif 
+  //ETX
 };
 
 // Description:
