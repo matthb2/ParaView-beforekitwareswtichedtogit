@@ -830,7 +830,7 @@ void vtkClientCompositeManager::SatelliteStartRender()
       //this->CompositeController->Send((char*)(&winInfo), 
       //                sizeof(struct vtkClientRenderWindowInfo), j,
       //                vtkCompositeManager::WIN_INFO_TAG);
-      this->CompositeController->Send((float*)(&winInfo), 22, j,
+      this->CompositeController->Send((float*)(&winInfo), 5, j,
                       vtkCompositeManager::WIN_INFO_TAG);
       }
     }
