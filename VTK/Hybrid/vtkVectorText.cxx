@@ -16,10 +16,13 @@
 
 =========================================================================*/
 #include "vtkVectorText.h"
-#include "vtkPoints.h"
-#include "vtkTransformPolyDataFilter.h"
-#include "vtkPolyDataReader.h"
+
+#include "vtkCellArray.h"
 #include "vtkObjectFactory.h"
+#include "vtkPoints.h"
+#include "vtkPolyData.h"
+#include "vtkPolyDataReader.h"
+#include "vtkTransformPolyDataFilter.h"
 
 vtkCxxRevisionMacro(vtkVectorText, "$Revision$");
 vtkStandardNewMacro(vtkVectorText);

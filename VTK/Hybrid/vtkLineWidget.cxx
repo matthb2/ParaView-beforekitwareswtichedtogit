@@ -931,3 +931,7 @@ void vtkLineWidget::SetPoint2(float x, float y, float z)
   this->PositionHandles();
 }
 
+void vtkLineWidget::GetPolyData(vtkPolyData *pd)
+{ 
+  pd->ShallowCopy(this->LineSource->GetOutput()); 
+}

@@ -20,6 +20,7 @@
 #include "vtkCamera.h"
 #include "vtkMath.h"
 #include "vtkObjectFactory.h"
+#include "vtkPolyData.h"
 #include "vtkProp3D.h"
 #include "vtkTransform.h"
 #include "vtkUnsignedIntArray.h"

@@ -22,6 +22,7 @@
 #include "vtkMath.h"
 #include "vtkObjectFactory.h"
 #include "vtkPlane.h"
+#include "vtkPolyData.h"
 
 vtkCxxRevisionMacro(vtkArcPlotter, "$Revision$");
 vtkStandardNewMacro(vtkArcPlotter);

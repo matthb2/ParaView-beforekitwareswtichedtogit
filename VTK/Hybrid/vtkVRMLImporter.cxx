@@ -49,6 +49,7 @@
 #include "vtkLookupTable.h"
 #include "vtkObjectFactory.h"
 #include "vtkPoints.h"
+#include "vtkPolyData.h"
 #include "vtkPolyDataMapper.h"
 #include "vtkPolyDataNormals.h"
 #include "vtkProperty.h"

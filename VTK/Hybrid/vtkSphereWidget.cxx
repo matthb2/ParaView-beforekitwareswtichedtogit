@@ -25,6 +25,7 @@
 #include "vtkDoubleArray.h"
 #include "vtkMath.h"
 #include "vtkObjectFactory.h"
+#include "vtkPolyData.h"
 #include "vtkPolyDataMapper.h"
 #include "vtkProperty.h"
 #include "vtkRenderer.h"
@@ -678,3 +679,7 @@ void vtkSphereWidget::PlaceHandle(float *center, float radius)
   this->HandleSource->SetCenter(this->HandlePosition);
 }
 
+void vtkSphereWidget::GetPolyData(vtkPolyData *pd)
+{ 
+  pd->ShallowCopy(this->SphereSource->GetOutput()); 
+}

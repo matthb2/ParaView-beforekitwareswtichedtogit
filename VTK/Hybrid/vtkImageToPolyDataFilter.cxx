@@ -19,8 +19,10 @@
 
 #include "vtkAppendPolyData.h"
 #include "vtkEdgeTable.h"
+#include "vtkImageData.h"
 #include "vtkLine.h"
 #include "vtkObjectFactory.h"
+#include "vtkPolyData.h"
 #include "vtkScalarsToColors.h"
 #include "vtkUnsignedCharArray.h"
 

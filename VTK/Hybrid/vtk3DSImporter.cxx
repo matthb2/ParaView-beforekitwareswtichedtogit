@@ -22,6 +22,7 @@
 #include "vtkCamera.h"
 #include "vtkLight.h"
 #include "vtkObjectFactory.h"
+#include "vtkPolyData.h"
 #include "vtkPolyDataMapper.h"
 #include "vtkPolyDataNormals.h"
 #include "vtkProperty.h"
