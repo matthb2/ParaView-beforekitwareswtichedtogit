@@ -26,6 +26,17 @@ vtkCxxRevisionMacro(vtkBlankStructuredGridWithImage, "$Revision$");
 vtkStandardNewMacro(vtkBlankStructuredGridWithImage);
 
 //----------------------------------------------------------------------------
+vtkBlankStructuredGridWithImage::vtkBlankStructuredGridWithImage()
+{
+  this->NumberOfRequiredInputs = 2;
+}
+
+//----------------------------------------------------------------------------
+vtkBlankStructuredGridWithImage::~vtkBlankStructuredGridWithImage()
+{
+}
+
+//----------------------------------------------------------------------------
 // Specify the input data or filter.
 void vtkBlankStructuredGridWithImage::SetBlankingInput(vtkImageData *input)
 {
