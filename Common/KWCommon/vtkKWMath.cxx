@@ -54,6 +54,77 @@ int vtkKWMath::GetScalarRange(vtkDataArray *array, int comp, float range[2])
 }
 
 //----------------------------------------------------------------------------
+template <class T>
+void vtkKWMathGetScalarRange(
+  vtkDataArray *array, int comp, double range[2], T *)
+{
+  if (!array || comp < 0 || comp >= array->GetNumberOfComponents())
+    {
+    return;
+    }
+
+  vtkIdType nb_of_scalars = array->GetNumberOfTuples();
+  int nb_of_components = array->GetNumberOfComponents();
+
+  T *data = (T*)array->GetVoidPointer(0) + comp;
+  T *data_end = data + nb_of_scalars * nb_of_components;
+
+  double min = VTK_DOUBLE_MAX;
+  double max = VTK_DOUBLE_MIN;
+
+  if (nb_of_components > 1)
+    {
+    while (data < data_end)
+      {
+      if (*data < min)
+        {
+        min = *data;
+        }
+      if (*data > max)
+        {
+        max = *data;
+        }
+      data += nb_of_components;
+      }
+    }
+  else
+    {
+    while (data < data_end)
+      {
+      if (*data < min)
+        {
+        min = *data;
+        }
+      if (*data > max)
+        {
+        max = *data;
+        }
+      data++;
+      }
+    }
+
+  range[0] = min;
+  range[1] = max;
+}
+
+//----------------------------------------------------------------------------
+int vtkKWMath::GetScalarRange(vtkDataArray *array, int comp, double range[2])
+{
+  if (!array || comp < 0 || comp >= array->GetNumberOfComponents())
+    {
+    return 0;
+    }
+
+  switch (array->GetDataType())
+    {
+    vtkTemplateMacro4(vtkKWMathGetScalarRange,
+                      array, comp, range, static_cast<VTK_TT *>(0));
+    }
+  
+  return 1;
+}
+
+//----------------------------------------------------------------------------
 int vtkKWMath::GetAdjustedScalarRange(
   vtkDataArray *array, int comp, float range[2])
 {
