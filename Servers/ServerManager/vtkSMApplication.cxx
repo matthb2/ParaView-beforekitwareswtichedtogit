@@ -19,7 +19,6 @@
 #include "vtkObjectFactory.h"
 #include "vtkSMProxyManager.h"
 #include "vtkSMXMLParser.h"
-#include "vtkString.h"
 
 #include "vtkProcessModule.h"
 
@@ -153,13 +152,13 @@ void vtkSMApplication::Initialize()
 //     for(int i=0; i < dir->GetNumberOfFiles(); ++i)
 //       {
 //       const char* file = dir->GetFile(i);
-//       int extPos = vtkString::Length(file)-4;
+//       int extPos = strlen(file)-4;
       
 //       // Look for the ".xml" extension.
-//       if((extPos > 0) && vtkString::Equals(file+extPos, ".xml"))
+//       if((extPos > 0) && !strcmp(file+extPos, ".xml"))
 //         {
 //         char* fullPath 
-//           = new char[vtkString::Length(file)+vtkString::Length(directory)+2];
+//           = new char[strlen(file) + strlen(directory)+2];
 //         strcpy(fullPath, directory);
 //         strcat(fullPath, "/");
 //         strcat(fullPath, file);
