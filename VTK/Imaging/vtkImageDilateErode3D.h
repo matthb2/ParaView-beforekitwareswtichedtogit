@@ -48,13 +48,14 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 #define __vtkImage3dDilateErodeFilter_h
 
 
-#include "vtkImage3dSpatialFilter.hh"
+#include "vtkImageSpatialFilter.hh"
 
-class vtkImage3dDilateErodeFilter : public vtkImage3dSpatialFilter
+class vtkImage3dDilateErodeFilter : public vtkImageSpatialFilter
 {
 public:
   vtkImage3dDilateErodeFilter();
   char *GetClassName() {return "vtkImage3dDilateErodeFilter";};
+  void PrintSelf(ostream& os, vtkIndent indent);
   
   void SetKernelSize(int size){this->SetKernelSize(size,size,size);};
   void SetKernelSize(int size0, int size1, int size2);
@@ -75,7 +76,8 @@ protected:
   float ErodeValue;
   vtkImageRegion *Mask;
     
-  void Execute3d(vtkImageRegion *inRegion, vtkImageRegion *outRegion);
+  void ExecuteCenter3d(vtkImageRegion *inRegion, vtkImageRegion *outRegion);
+  void ExecuteBoundary3d(vtkImageRegion *inRegion, vtkImageRegion *outRegion);
 };
 
 #endif
