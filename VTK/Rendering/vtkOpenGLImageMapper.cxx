@@ -207,7 +207,12 @@ void vtkOpenGLImageMapperRender(vtkOpenGLImageMapper *self, vtkImageData *data,
   glDrawPixels(width, height, ((bpp < 4) ? GL_RGB : GL_RGBA),
                GL_UNSIGNED_BYTE, (void *)newPtr);
   
-  delete [] newPtr;    
+  if (self->GetRenderToRectangle())
+    {
+    // restore zoom to 1,1 otherwise other glDrawPixels cals may be affected
+    glPixelZoom(1.0, 1.0);
+    }
+  delete [] newPtr;
 }
 
 //---------------------------------------------------------------
@@ -348,6 +353,11 @@ void vtkOpenGLImageMapperRenderShort(vtkOpenGLImageMapper *self, vtkImageData *d
   glDrawPixels(width, height, ((bpp < 4) ? GL_RGB : GL_RGBA),
                GL_UNSIGNED_BYTE, (void *)newPtr);
 
+  if (self->GetRenderToRectangle())
+    {
+    // restore zoom to 1,1 otherwise other glDrawPixels cals may be affected
+    glPixelZoom(1.0, 1.0);
+    }
   delete [] newPtr;
 }
 
@@ -482,6 +492,13 @@ void vtkOpenGLImageMapperRenderChar(vtkOpenGLImageMapper *self, vtkImageData *da
 
     delete [] newPtr;
     }
+
+  if (self->GetRenderToRectangle())
+    {
+    // restore zoom to 1,1 otherwise other glDrawPixels cals may be affected
+    glPixelZoom(1.0, 1.0);
+    }
+
   glPixelStorei( GL_UNPACK_ROW_LENGTH, 0);
 }
 
