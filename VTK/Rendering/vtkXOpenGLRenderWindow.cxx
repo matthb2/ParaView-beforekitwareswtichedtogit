@@ -151,6 +151,10 @@ XVisualInfo *vtkXOpenGLRenderWindowTryForVisual(Display *DisplayId,
     
   attributes[index++] = None;
 
+  if (!DisplayId)
+    {
+    return NULL;
+    }
   return glXChooseVisual(DisplayId, DefaultScreen(DisplayId), attributes );
 }
 

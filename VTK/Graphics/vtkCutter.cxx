@@ -115,7 +115,6 @@ void vtkCutter::Execute()
 
   if ( numPts < 1 )
     {
-    vtkErrorMacro(<<"No data to cut");
     return;
     }
 

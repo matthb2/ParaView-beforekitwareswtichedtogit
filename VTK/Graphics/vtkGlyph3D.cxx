@@ -253,12 +253,17 @@ void vtkGlyph3D::Execute()
     {
     newScalars =  inScalars->MakeObject ();
     newScalars->Allocate(inScalars->GetNumberOfComponents()*numPts*numSourcePts);
+    newScalars->SetName(inScalars->GetName());
     }
   else if ( (this->ColorMode == VTK_COLOR_BY_SCALE) && inScalars)
     {
     newScalars = vtkFloatArray::New();
     newScalars->Allocate(numPts*numSourcePts);
     newScalars->SetName("GlyphScale");
+    if (this->ScaleMode == VTK_SCALE_BY_SCALAR)
+      {
+      newScalars->SetName(inScalars->GetName());
+      }
     }
   else if ( (this->ColorMode == VTK_COLOR_BY_VECTOR) && haveVectors)
     {

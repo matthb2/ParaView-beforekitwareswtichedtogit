@@ -544,7 +544,6 @@ void vtkStreamTracer::Integrate(vtkDataArray* seedSource, vtkIdList* seedIds)
     seedSource->GetTuple(seedIds->GetId(currentLine), point1);
     if (!func->FunctionValues(point1, velocity))
       {
-      vtkWarningMacro("The initial position is not in the input data set.");
       continue;
       }
 
@@ -795,7 +794,12 @@ void vtkStreamTracer::Integrate(vtkDataArray* seedSource, vtkIdList* seedIds)
         {
         normals->GetTuple(i, normal);
         normals->SetName("Normals");
-        vtkDataArray* newVectors = outputPD->GetVectors();
+        vtkDataArray* newVectors = outputPD->GetVectors(this->InputVectorsSelection);
+        if (newVectors == NULL)
+          { // This should never happen.
+          vtkErrorMacro("Could not find output array.");
+          return;
+          }
         newVectors->GetTuple(i, velocity);
         // obtain two unit orthogonal vectors on the plane perpendicular to
         // the streamline
