@@ -704,10 +704,6 @@ public:
         }
       ++j;
       }
-    if(!isValid)
-      {
-      cout<<"not valid: j="<<j<<" k="<<k<<endl;
-      }
     return isValid;
   }
 #endif
