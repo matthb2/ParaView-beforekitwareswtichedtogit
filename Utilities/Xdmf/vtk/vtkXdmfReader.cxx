@@ -1281,16 +1281,16 @@ void vtkXdmfReader::ExecuteInformation()
         (grid->GetTopologyType() == XDMF_3DSMESH ) )
         {
         vtkDebugMacro( << "Setting Extents for vtkStructuredGrid");
-        vtkStructuredGrid  *vGrid = vtkStructuredGrid::SafeDownCast(this->Outputs[idx]);
-        vGrid->SetDimensions(
+        vtkStructuredGrid  *stvGrid = vtkStructuredGrid::SafeDownCast(this->Outputs[idx]);
+        stvGrid->SetDimensions(
           EndExtent[2] + 1,
           EndExtent[1] + 1,
           EndExtent[0] + 1);
-        vGrid->SetWholeExtent(
+        stvGrid->SetWholeExtent(
           0, EndExtent[2],
           0, EndExtent[1],
           0, EndExtent[0]);
-        vGrid->SetExtent(
+        stvGrid->SetExtent(
           0, EndExtent[2],
           0, EndExtent[1],
           0, EndExtent[0]);
@@ -1298,14 +1298,15 @@ void vtkXdmfReader::ExecuteInformation()
       else if ( grid->GetTopologyType() == XDMF_2DCORECTMESH || 
         grid->GetTopologyType() == XDMF_3DCORECTMESH )
         {
-        vtkImageData* vGrid = vtkImageData::SafeDownCast(this->Outputs[idx]);
-        vGrid->SetDimensions(EndExtent[2] + 1,
+        vtkDebugMacro( << "Setting Extents for vtkImageData");
+        vtkImageData* idvGrid = vtkImageData::SafeDownCast(this->Outputs[idx]);
+        idvGrid->SetDimensions(EndExtent[2] + 1,
           EndExtent[1] + 1,
           EndExtent[0] + 1);
-        vGrid->SetWholeExtent(0, EndExtent[2],
+        idvGrid->SetWholeExtent(0, EndExtent[2],
           0, EndExtent[1],
           0, EndExtent[0]);
-        vGrid->SetExtent(0, EndExtent[2],
+        idvGrid->SetExtent(0, EndExtent[2],
           0, EndExtent[1],
           0, EndExtent[0]);
         }
@@ -1313,29 +1314,14 @@ void vtkXdmfReader::ExecuteInformation()
         grid->GetTopologyType() == XDMF_3DRECTMESH )
         {
         vtkDebugMacro( << "Setting Extents for vtkRectilinearGrid");
-        vtkRectilinearGrid *vGrid = vtkRectilinearGrid::SafeDownCast(this->Outputs[idx]);
-        vGrid->SetDimensions(EndExtent[2] + 1,
+        vtkRectilinearGrid *rgvGrid = vtkRectilinearGrid::SafeDownCast(this->Outputs[idx]);
+        rgvGrid->SetDimensions(EndExtent[2] + 1,
           EndExtent[1] + 1,
           EndExtent[0] + 1);
-        vGrid->SetWholeExtent(0, EndExtent[2],
+        rgvGrid->SetWholeExtent(0, EndExtent[2],
           0, EndExtent[1],
           0, EndExtent[0]);
-        vGrid->SetExtent(0, EndExtent[2],
-          0, EndExtent[1],
-          0, EndExtent[0]);
-        }
-      else if ( grid->GetTopologyType() == XDMF_2DSMESH ||
-        grid->GetTopologyType() == XDMF_3DSMESH )
-        {
-        vtkDebugMacro( << "Setting Extents for vtkRectilinearGrid");
-        vtkStructuredGrid *vGrid = vtkStructuredGrid::SafeDownCast(this->Outputs[idx]);
-        vGrid->SetDimensions(EndExtent[2] + 1,
-          EndExtent[1] + 1,
-          EndExtent[0] + 1);
-        vGrid->SetWholeExtent(0, EndExtent[2],
-          0, EndExtent[1],
-          0, EndExtent[0]);
-        vGrid->SetExtent(0, EndExtent[2],
+        rgvGrid->SetExtent(0, EndExtent[2],
           0, EndExtent[1],
           0, EndExtent[0]);
         }
