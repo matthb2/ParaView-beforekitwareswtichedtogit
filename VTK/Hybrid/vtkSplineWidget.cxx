@@ -571,6 +571,7 @@ void vtkSplineWidget::BuildRepresentation()
     this->ParametricSpline->Evaluate(u, pt, NULL);
     points->SetPoint(i, pt);
     }
+  points->GetData()->Modified();
   this->LineData->Modified();
 }
 

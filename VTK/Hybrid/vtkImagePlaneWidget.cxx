@@ -593,6 +593,7 @@ void vtkImagePlaneWidget::BuildRepresentation()
   points->SetPoint(1,pt1);
   points->SetPoint(2,x);
   points->SetPoint(3,pt2);
+  points->GetData()->Modified();
   this->PlaneOutlinePolyData->Modified();
 
   this->PlaneSource->GetNormal(this->Normal);

@@ -450,7 +450,8 @@ void vtkBoxWidget::PositionHandles()
     {
     this->HandleGeometry[i]->SetCenter(this->Points->GetPoint(8+i));
     }
-  
+
+  this->Points->GetData()->Modified();
   this->HexFacePolyData->Modified();
   this->HexPolyData->Modified();
   this->GenerateOutline();
