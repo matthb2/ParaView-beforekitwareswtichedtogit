@@ -744,8 +744,7 @@ void vtkOpenGLPolyDataMapperDrawPolygons(int idx,
                         glNormal3fv(normals + 3**ptIds);,;,
                         glTexCoord2fv(tcoords + 2**ptIds);,;,
                         float *normals = (float *)voidNormals;,
-                        float *tcoords = (float *)voidTCoords;,
-                        );
+                        float *tcoords = (float *)voidTCoords;);
       break;
     default:
     {
@@ -907,8 +906,7 @@ void vtkOpenGLPolyDataMapperDrawTStrips(int idx,
                         glNormal3fv(normals + 3**ptIds);,;,
                         glTexCoord2fv(tcoords + 2**ptIds);,;,
                         float *normals = (float *)voidNormals;,
-                        float *tcoords = (float *)voidTCoords;,
-                        );
+                        float *tcoords = (float *)voidTCoords;);
       break;
     default:
     {
@@ -1062,8 +1060,7 @@ void vtkOpenGLPolyDataMapperDrawTStripLines(int idx,
                              glNormal3fv(normals + 3**ptIds);,;,
                              glTexCoord2fv(tcoords + 2**ptIds);,;,
                              float *normals = (float *)voidNormals;,
-                             float *tcoords = (float *)voidTCoords;,
-                             );
+                             float *tcoords = (float *)voidTCoords;);
       break;
     default:
     {
