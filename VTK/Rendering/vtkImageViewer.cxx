@@ -47,10 +47,13 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 //----------------------------------------------------------------------------
 vtkImageViewer::vtkImageViewer()
 {
+  this->Size[0] = 0;
+  this->Size[1] = 0;
   this->Input = NULL;
   this->WholeImage = 1;
   this->Coordinate2 = 0;
   this->Coordinate3 = 0;
+  this->Mapped = 0;
   
   this->ColorWindow = 255.0;
   this->ColorLevel = 127.0;
@@ -67,6 +70,11 @@ vtkImageViewer::vtkImageViewer()
 //----------------------------------------------------------------------------
 vtkImageViewer::~vtkImageViewer()
 {
+}
+
+void vtkImageViewer::SetSize(int a[2])
+{
+  this->SetSize(a[0],a[1]);
 }
 
 //----------------------------------------------------------------------------
