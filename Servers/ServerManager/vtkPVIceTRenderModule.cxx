@@ -225,6 +225,6 @@ void vtkPVIceTRenderModule::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os,indent);
 
-  os << indent << "ReductionFactor: " << this->ReductionFactor << endl;
+  os << indent << "DisplayManagerID: " << this->DisplayManagerID.ID << endl;
 }
 

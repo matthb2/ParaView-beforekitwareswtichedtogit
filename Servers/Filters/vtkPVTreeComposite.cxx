@@ -54,7 +54,7 @@ vtkCxxRevisionMacro(vtkPVTreeComposite, "$Revision$");
 
 
 //=========================================================================
-// Stuff to avoid compositing if there is no data on statlite processes.
+// Stuff to avoid compositing if there is no data on satellite processes.
 
 
 //----------------------------------------------------------------------------
