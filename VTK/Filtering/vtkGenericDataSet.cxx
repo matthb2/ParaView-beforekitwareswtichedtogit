@@ -200,3 +200,11 @@ unsigned long vtkGenericDataSet::GetActualMemorySize()
   result += this->Attributes->GetActualMemorySize();
   return result;
 }
+
+//----------------------------------------------------------------------------
+// Description:
+// Return the type of data object.
+int vtkGenericDataSet::GetDataObjectType() 
+{
+  return VTK_GENERIC_DATA_SET;
+}
