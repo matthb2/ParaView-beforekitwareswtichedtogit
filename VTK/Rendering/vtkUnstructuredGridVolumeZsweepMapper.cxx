@@ -16,8 +16,8 @@
 
 #include <assert.h>
 #include <string.h> // memset()
-#include <vector>
-#include <list>
+#include <vtkstd/vector>
+#include <vtkstd/list>
 
 #include "vtkObjectFactory.h"
 #include "vtkUnstructuredGrid.h"
