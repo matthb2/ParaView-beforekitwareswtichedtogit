@@ -306,10 +306,15 @@ void vtkEncodedGradientShader::UpdateShadingTable( vtkRenderer *ren,
   // regardless of what they really are
   while ( (light = lightCollection->GetNextItem()) != NULL  )
     { 
+    if ( ! light->GetSwitch() )
+      {
+      continue;
+      }
+    
     // Get the light color, position, focal point, and intensity
     light->GetColor( lightColor );
-    light->GetPosition( lightPosition );
-    light->GetFocalPoint( lightFocalPoint );
+    light->GetTransformedPosition( lightPosition );
+    light->GetTransformedFocalPoint( lightFocalPoint );
     lightIntensity = light->GetIntensity( );
     
 
