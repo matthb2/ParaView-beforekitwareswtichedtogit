@@ -92,14 +92,6 @@ void vtkImageFlip::ExecuteInformation(vtkImageData *input,
   output->SetOrigin(origin);
   output->SetScalarType(input->GetScalarType());
   output->SetNumberOfScalarComponents(input->GetNumberOfScalarComponents());
-
-  // update information related to clipping the data
-  vtkImageStencilData *stencil = this->GetStencil();
-  if (stencil)
-    {
-    stencil->SetSpacing(spacing);
-    stencil->SetOrigin(origin);
-    }
 }
 
 //----------------------------------------------------------------------------
