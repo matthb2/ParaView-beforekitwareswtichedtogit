@@ -246,6 +246,36 @@ int vtkCell::GetParametricCenter(float pcoords[3])
   return 0;
 }
 
+// This method works fine for all "rectangular" cells, not triangular
+// and tetrahedral topologies.
+float vtkCell::GetParametricDistance(float pcoords[3])
+{
+  int i;
+  float pDist, pDistMax=0.0f;
+
+  for (i=0; i<3; i++)
+    {
+    if ( pcoords[i] < 0.0 ) 
+      {
+      pDist = -pcoords[i];
+      }
+    else if ( pcoords[i] > 1.0 ) 
+      {
+      pDist = pcoords[i] - 1.0f;
+      }
+    else //inside the cell in the parametric direction
+      {
+      pDist = 0.0;
+      }
+    if ( pDist > pDistMax )
+      {
+      pDistMax = pDist;
+      }
+    }
+  return pDistMax;
+}
+
+
 void vtkCell::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os,indent);
