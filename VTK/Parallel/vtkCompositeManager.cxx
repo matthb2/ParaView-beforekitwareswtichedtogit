@@ -876,6 +876,7 @@ void vtkCompositeManager::EndRender()
   // EndRender only happens on root.
   if (this->CheckForAbortComposite())
     {
+    renWin->SwapBuffersOn();  
     this->Lock = 0;
     return;
     }  
