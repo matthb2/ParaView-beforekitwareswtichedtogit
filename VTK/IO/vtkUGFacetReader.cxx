@@ -200,7 +200,7 @@ void vtkUGFacetReader::Execute()
     vtkIdType *pts = 0;
     vtkIdType nodes[3];
     vtkIdType npts;
-    float *x;
+    double *x;
 
     mergedPts = vtkPoints::New();
     mergedPts->Allocate(newPts->GetNumberOfPoints()/3);

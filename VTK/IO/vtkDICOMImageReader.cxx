@@ -397,7 +397,7 @@ void vtkDICOMImageReader::SetDirectoryName(const char* dn)
   this->Modified(); 
 }
 
-float* vtkDICOMImageReader::GetPixelSpacing()
+double* vtkDICOMImageReader::GetPixelSpacing()
 {
   vtkstd::vector<vtkstd::pair<float, vtkstd::string> > sortedFiles;
     

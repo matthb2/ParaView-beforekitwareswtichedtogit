@@ -170,7 +170,7 @@ void vtkBYUWriter::WriteGeometryFile(FILE *geomFile, int numPts)
 {
   int numPolys, numEdges;
   int i;
-  float *x;
+  double *x;
   vtkIdType npts = 0;
   vtkIdType *pts = 0;
   vtkPoints *inPts;
@@ -262,7 +262,7 @@ void vtkBYUWriter::WriteDisplacementFile(int numPts)
 {
   FILE *dispFp;
   int i;
-  float *v;
+  double *v;
   vtkDataArray *inVectors;
   vtkPolyData *input= this->GetInput();
 
@@ -360,7 +360,7 @@ void vtkBYUWriter::WriteTextureFile(int numPts)
 {
   FILE *textureFp;
   int i;
-  float *t;
+  double *t;
   vtkDataArray *inTCoords;
   vtkPolyData *input= this->GetInput();
 
