@@ -202,6 +202,23 @@ void vtkSMStringListDomain::SaveState(
 }
 
 //---------------------------------------------------------------------------
+void vtkSMStringListDomain::SetAnimationValue(vtkSMProperty *prop, int idx,
+                                              double value)
+{
+  if (!prop)
+    {
+    return;
+    }
+
+  vtkSMStringVectorProperty *svp =
+    vtkSMStringVectorProperty::SafeDownCast(prop);
+  if (svp)
+    {
+    svp->SetElement(idx, this->GetString((int)(floor(value))));
+    }
+}
+
+//---------------------------------------------------------------------------
 void vtkSMStringListDomain::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os, indent);
