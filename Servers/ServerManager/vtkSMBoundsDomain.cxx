@@ -30,7 +30,7 @@ vtkSMBoundsDomain::~vtkSMBoundsDomain()
 {
 }
 
-void vtkSMBoundsDomain::Update(vtkSMProperty *prop)
+void vtkSMBoundsDomain::Update(vtkSMProperty*)
 {
   this->RemoveAllMinima();
   this->RemoveAllMaxima();
