@@ -207,9 +207,9 @@ void vtkLabeledDataMapper::RenderOpaqueGeometry(vtkViewport *viewport,
       activeComp = 0;
       if ( this->LabeledComponent >= 0 )
         {
-        numComp = 1;
         activeComp = (this->LabeledComponent < numComp ? 
                       this->LabeledComponent : numComp - 1);
+        numComp = 1;
         }
       }
     else
