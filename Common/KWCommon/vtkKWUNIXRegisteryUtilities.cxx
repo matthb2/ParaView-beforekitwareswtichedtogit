@@ -136,6 +136,7 @@ int vtkKWUNIXRegisteryUtilities::OpenInternal(const char *toplevel,
         this->Empty = 0;
         delete [] key;
         found = 1;      
+        break;
         }
       }
     if ( !found )
