@@ -174,13 +174,20 @@ vtkImagePlaneWidget::~vtkImagePlaneWidget()
     {
     this->PlaneProperty->Delete();
     }
+    
   if ( this->SelectedPlaneProperty )
     {
     this->SelectedPlaneProperty->Delete();
     }
+
   if ( this->CursorProperty )
     {
     this->CursorProperty->Delete();
+    }
+
+  if ( this->MarginProperty )
+    {
+    this->MarginProperty->Delete();
     }
 
   this->ResliceAxes->Delete();
