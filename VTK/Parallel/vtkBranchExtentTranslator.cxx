@@ -24,7 +24,7 @@ vtkStandardNewMacro(vtkBranchExtentTranslator);
 vtkCxxSetObjectMacro(vtkBranchExtentTranslator,OriginalSource,vtkImageData);
 
 //-----  This hack needed to compile using gcc3 on OSX until new stdc++.dylib
-#ifdef __APPLE_CC__
+#ifdef __APPLE__
 extern "C"
 {
   void oft_initParallel() 
