@@ -629,6 +629,9 @@ void vtkXOpenGLRenderWindow::Finalize (void)
     delete[] this->Capabilities;
     this->Capabilities = 0;
     }
+    
+  // make sure all other code knows we're not mapped anymore
+  this->Mapped = 0;
 
 }
 
