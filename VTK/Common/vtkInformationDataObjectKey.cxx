@@ -12,22 +12,22 @@
      PURPOSE.  See the above copyright notice for more information.
 
 =========================================================================*/
-#include "vtkInformationDataSetKey.h"
+#include "vtkInformationDataObjectKey.h"
 
-vtkCxxRevisionMacro(vtkInformationDataSetKey, "$Revision$");
+vtkCxxRevisionMacro(vtkInformationDataObjectKey, "$Revision$");
 
 //----------------------------------------------------------------------------
-vtkInformationDataSetKey::vtkInformationDataSetKey()
+vtkInformationDataObjectKey::vtkInformationDataObjectKey()
 {
 }
 
 //----------------------------------------------------------------------------
-vtkInformationDataSetKey::~vtkInformationDataSetKey()
+vtkInformationDataObjectKey::~vtkInformationDataObjectKey()
 {
 }
 
 //----------------------------------------------------------------------------
-void vtkInformationDataSetKey::PrintSelf(ostream& os, vtkIndent indent)
+void vtkInformationDataObjectKey::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os, indent);
 }

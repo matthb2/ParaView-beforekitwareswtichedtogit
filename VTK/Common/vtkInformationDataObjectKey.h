@@ -12,28 +12,28 @@
      PURPOSE.  See the above copyright notice for more information.
 
 =========================================================================*/
-// .NAME vtkInformationDataSetKey - Key for vtkDataSet values.
+// .NAME vtkInformationDataObjectKey - Key for vtkDataObject values.
 // .SECTION Description
-// vtkInformationDataSetKey is used to represent keys in
-// vtkInformation for values that are vtkDataSet instances.
+// vtkInformationDataObjectKey is used to represent keys in
+// vtkInformation for values that are vtkDataObject instances.
 
-#ifndef __vtkInformationDataSetKey_h
-#define __vtkInformationDataSetKey_h
+#ifndef __vtkInformationDataObjectKey_h
+#define __vtkInformationDataObjectKey_h
 
 #include "vtkInformationKey.h"
 
-class VTK_COMMON_EXPORT vtkInformationDataSetKey : public vtkInformationKey
+class VTK_COMMON_EXPORT vtkInformationDataObjectKey : public vtkInformationKey
 {
 public:
-  vtkTypeRevisionMacro(vtkInformationDataSetKey,vtkInformationKey);
+  vtkTypeRevisionMacro(vtkInformationDataObjectKey,vtkInformationKey);
   void PrintSelf(ostream& os, vtkIndent indent);
 
-  vtkInformationDataSetKey();
-  ~vtkInformationDataSetKey();
+  vtkInformationDataObjectKey();
+  ~vtkInformationDataObjectKey();
 
 private:
-  vtkInformationDataSetKey(const vtkInformationDataSetKey&);  // Not implemented.
-  void operator=(const vtkInformationDataSetKey&);  // Not implemented.
+  vtkInformationDataObjectKey(const vtkInformationDataObjectKey&);  // Not implemented.
+  void operator=(const vtkInformationDataObjectKey&);  // Not implemented.
 };
 
 #endif
