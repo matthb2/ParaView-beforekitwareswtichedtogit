@@ -1499,7 +1499,7 @@ vtkUnstructuredGrid *
     vtkIdList ***cellIds, int *numLists, int deleteCellIds,
     vtkDataSet *myGrid, int deleteMyGrid, 
     int filterOutDuplicateCells,   // flag if different processes may send same cells
-    int ghostCellFlag,   // flag if these cells are ghost cells
+    int vtkNotUsed(ghostCellFlag),   // flag if these cells are ghost cells
     int tag)
 {
   vtkUnstructuredGrid *mergedGrid = NULL;
@@ -2024,7 +2024,7 @@ vtkUnstructuredGrid *
     vtkIdList ***cellIds, int *numLists, int deleteCellIds,
     vtkDataSet *myGrid, int deleteMyGrid, 
     int filterOutDuplicateCells,   // flag if different processes may send same cells
-    int ghostCellFlag,  // flag if these are ghost cells
+    int vtkNotUsed(ghostCellFlag),  // flag if these are ghost cells
     int tag)
 {
   vtkUnstructuredGrid *mergedGrid = NULL;
