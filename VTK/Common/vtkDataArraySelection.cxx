@@ -284,7 +284,38 @@ void vtkDataArraySelection::CopySelections(vtkDataArraySelection* selections)
     {
     return;
     }
-  
+
+  int needUpdate = 0;
+  int i;
+  const char* arrayName;
+  if (this->GetNumberOfArrays() != selections->GetNumberOfArrays())
+    {
+    needUpdate = 1;
+    }
+  else
+    {
+    for (i = 0; i < this->GetNumberOfArrays(); i++)
+      {
+      arrayName = this->GetArrayName(i);
+      if (!selections->ArrayExists(arrayName))
+        {
+        needUpdate = 1;
+        break;
+        }
+      if (selections->ArrayIsEnabled(arrayName) !=
+          this->ArrayIsEnabled(arrayName))
+        {
+        needUpdate = 1;
+        break;
+        }
+      }
+    }
+
+  if (!needUpdate)
+    {
+    return;
+    }
+
   vtkDebugMacro("Copying arrays and settings from " << selections << ".");
 
   this->RemoveAllArrays();
