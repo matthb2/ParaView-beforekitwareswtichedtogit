@@ -831,7 +831,8 @@ void vtkLODProp3D::SetAllocatedRenderTime( float t, vtkViewport *vp )
 
   // update the EstimatedTime of the last LOD to be rendered
   if ( this->SelectedLODIndex >= 0 &&
-       this->SelectedLODIndex < this->NumberOfEntries )
+       this->SelectedLODIndex < this->NumberOfEntries &&
+       this->LODs[this->SelectedLODIndex].ID != VTK_INDEX_NOT_IN_USE )
     {
     // For stability, blend in the new time - 25% old + 75% new
     newTime = 
