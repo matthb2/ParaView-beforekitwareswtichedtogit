@@ -22,6 +22,9 @@ vtkStandardNewMacro(vtkPVClipDataSet);
 //----------------------------------------------------------------------------
 vtkPVClipDataSet::vtkPVClipDataSet(vtkImplicitFunction *vtkNotUsed(cf))
 {
+  // setting NumberOfOutputPorts to 1 because ParaView does not allow you to
+  // generate the clipped output
+  this->SetNumberOfOutputPorts(1);
 }
 
 //----------------------------------------------------------------------------
