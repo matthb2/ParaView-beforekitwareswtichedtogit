@@ -250,10 +250,3 @@ int vtkStructuredGridOutlineFilter::RequestData(
 
   return 1;
 }
-
-int vtkStructuredGridOutlineFilter::FillInputPortInformation(
-  int, vtkInformation *info)
-{
-  info->Set(vtkAlgorithm::INPUT_REQUIRED_DATA_TYPE(), "vtkStructuredGrid");
-  return 1;
-}

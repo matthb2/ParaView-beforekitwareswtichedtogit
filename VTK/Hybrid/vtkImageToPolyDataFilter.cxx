@@ -1367,10 +1367,3 @@ void vtkImageToPolyDataFilter::DecimateEdges(vtkPolyData *edges,
       } //if manifold
     } //for all points
 }
-
-int vtkImageToPolyDataFilter::FillInputPortInformation(int,
-                                                       vtkInformation *info)
-{
-  info->Set(vtkAlgorithm::INPUT_REQUIRED_DATA_TYPE(), "vtkImageData");
-  return 1;
-}

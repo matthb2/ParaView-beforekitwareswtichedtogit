@@ -70,18 +70,6 @@ vtkSynchronizedTemplates2D::~vtkSynchronizedTemplates2D()
 }
 
 //----------------------------------------------------------------------------
-int vtkSynchronizedTemplates2D::FillInputPortInformation(int port,
-                                                         vtkInformation* info)
-{
-  if(!this->Superclass::FillInputPortInformation(port, info))
-    {
-    return 0;
-    }
-  info->Set(vtkAlgorithm::INPUT_REQUIRED_DATA_TYPE(), "vtkImageData");
-  return 1;
-}
-
-//----------------------------------------------------------------------------
 // Description:
 // Overload standard modified time function. If contour values are modified,
 // then this object is modified as well.

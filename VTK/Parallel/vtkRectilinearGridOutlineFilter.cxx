@@ -214,13 +214,6 @@ int vtkRectilinearGridOutlineFilter::RequestData(
   return 1;
 }
 
-int vtkRectilinearGridOutlineFilter::FillInputPortInformation(
-  int, vtkInformation *info)
-{
-  info->Set(vtkAlgorithm::INPUT_REQUIRED_DATA_TYPE(), "vtkRectilinearGrid");
-  return 1;
-}
-
 void vtkRectilinearGridOutlineFilter::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os, indent);

@@ -1151,7 +1151,7 @@ int vtkDelaunay2D::FillInputPortInformation(int port, vtkInformation* info)
 {
   if (port == 0)
     {
-    info->Set(vtkAlgorithm::INPUT_REQUIRED_DATA_TYPE(), "vtkPointSet");
+    return this->Superclass::FillInputPortInformation(port, info);
     }
   else if (port == 1)
     {

@@ -372,11 +372,3 @@ void vtkContourFilter::ReportReferences(vtkGarbageCollector* collector)
   // reference loop.
   vtkGarbageCollectorReport(collector, this->ScalarTree, "ScalarTree");
 }
-
-//----------------------------------------------------------------------------
-int vtkContourFilter::FillInputPortInformation(
-  int vtkNotUsed(port), vtkInformation* info)
-{
-  info->Set(vtkAlgorithm::INPUT_REQUIRED_DATA_TYPE(), "vtkDataSet");
-  return 1;
-}

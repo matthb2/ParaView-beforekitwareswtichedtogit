@@ -567,18 +567,6 @@ void vtkMarchingSquares::CreateDefaultLocator()
     }
 }
 
-//----------------------------------------------------------------------------
-int vtkMarchingSquares::FillInputPortInformation(int port,
-                                                 vtkInformation* info)
-{
-  if(!this->Superclass::FillInputPortInformation(port, info))
-    {
-    return 0;
-    }
-  info->Set(vtkAlgorithm::INPUT_REQUIRED_DATA_TYPE(), "vtkImageData");
-  return 1;
-}
-
 void vtkMarchingSquares::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os,indent);

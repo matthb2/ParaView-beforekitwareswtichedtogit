@@ -1115,13 +1115,6 @@ int vtkGreedyTerrainDecimation::CharacterizeTriangle(int ij1[2], int ij2[2], int
   return VTK_TWO_TRIANGLES;
 }
 
-int vtkGreedyTerrainDecimation::FillInputPortInformation(int,
-                                                         vtkInformation *info)
-{
-  info->Set(vtkAlgorithm::INPUT_REQUIRED_DATA_TYPE(), "vtkImageData");
-  return 1;
-}
-
 void vtkGreedyTerrainDecimation::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os,indent);

@@ -360,12 +360,6 @@ void vtkContourGrid::CreateDefaultLocator()
     }
 }
 
-int vtkContourGrid::FillInputPortInformation(int, vtkInformation *info)
-{
-  info->Set(vtkAlgorithm::INPUT_REQUIRED_DATA_TYPE(), "vtkUnstructuredGrid");
-  return 1;
-}
-
 void vtkContourGrid::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os,indent);
