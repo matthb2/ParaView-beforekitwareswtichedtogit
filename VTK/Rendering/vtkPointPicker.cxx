@@ -90,7 +90,7 @@ double vtkPointPicker::IntersectWithLine(double p1[3], double p2[3], double tol,
     //
     if ( t >= 0.0 && t <= 1.0 && t <= (tMin+this->Tolerance) ) 
       {
-      for(maxDist=0.0f, i=0; i<3; i++) 
+      for(maxDist=0.0, i=0; i<3; i++) 
         {
         projXYZ[i] = p1[i] + t*ray[i];
         dist = fabs(x[i]-projXYZ[i]);

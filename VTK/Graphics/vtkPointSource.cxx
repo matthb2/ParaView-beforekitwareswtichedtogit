@@ -66,7 +66,7 @@ void vtkPointSource::Execute()
       cosphi = 1 - 2*vtkMath::Random();
       sinphi = sqrt(1 - cosphi*cosphi);
       radius = this->Radius * sinphi;
-      theta = 6.2831853f * vtkMath::Random();
+      theta = 6.2831853 * vtkMath::Random();
       x[0] = this->Center[0] + radius*cos(theta);
       x[1] = this->Center[1] + radius*sin(theta);
       x[2] = this->Center[2] + this->Radius*cosphi;
@@ -79,9 +79,9 @@ void vtkPointSource::Execute()
       {
       cosphi = 1 - 2*vtkMath::Random();
       sinphi = sqrt(1 - cosphi*cosphi);
-      rho = this->Radius*pow(vtkMath::Random(),0.33333333f);
+      rho = this->Radius*pow(vtkMath::Random(),0.33333333);
       radius = rho * sinphi;
-      theta = 6.2831853f * vtkMath::Random();
+      theta = 6.2831853 * vtkMath::Random();
       x[0] = this->Center[0] + radius*cos(theta);
       x[1] = this->Center[1] + radius*sin(theta);
       x[2] = this->Center[2] + rho*cosphi;

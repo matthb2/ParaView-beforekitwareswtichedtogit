@@ -722,7 +722,7 @@ int vtkAmoebaMinimizer::PerformAmoeba()
           for( j = 0 ; j < this->NumberOfParameters ; j++ )
             {
             this->ParameterValues[j] = (this->AmoebaVertices[i][j] +
-                                        this->AmoebaVertices[low][j]) / 2.0f;
+                                        this->AmoebaVertices[low][j]) / 2.0;
             this->AmoebaVertices[i][j] = this->ParameterValues[j];
             }
           
