@@ -884,8 +884,10 @@ extern "C"
     
     if (((reinterpret_cast<XAnyEvent *>(event))->window == win) &&
         ((event->type == ButtonPress)))
+      {
       vtkXOpenGLRenderWindowFoundMatch = 1;
-    
+      }
+
     return 0; 
   }
 }
