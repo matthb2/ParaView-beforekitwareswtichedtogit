@@ -431,6 +431,10 @@ void vtkImageReader::ExecuteData(vtkDataObject *output)
     }
 
   ext = data->GetExtent();
+  if (!data->GetPointData()->GetScalars())
+    {
+    return;
+    }
   data->GetPointData()->GetScalars()->SetName(this->ScalarArrayName);
 
   vtkDebugMacro("Reading extent: " << ext[0] << ", " << ext[1] << ", " 
