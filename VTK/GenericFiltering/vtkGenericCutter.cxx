@@ -345,7 +345,7 @@ void vtkGenericCutter::UnstructuredGridCutter()
         cell->GetPointIds( cellIds );
         //cutScalars->GetTuples(cellIds,cellScalars);
         
-        for(int j=0; j<cell->GetNumberOfPoints();j++)
+        for(int j=0; j<cell->GetNumberOfBoundaries(0);j++)
           {
           //da->SetTuple(i,this->GetTuple(ptIds->GetId(i)));
           cellScalars->SetTuple(j, cutScalars->GetTuple(cellIds[j]));
