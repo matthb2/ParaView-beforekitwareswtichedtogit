@@ -335,6 +335,7 @@ vtkPVTreeComposite::vtkPVTreeComposite()
   this->Initialized = 0;
   
   this->UseChar = 1;
+  this->UseCompositing = 0;
 }
 
   
