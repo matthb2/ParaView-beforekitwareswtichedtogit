@@ -15,7 +15,7 @@
 #include "vtkImplicitFunction.h"
 
 #include "vtkMath.h"
-#include "vtkAbstractTransform."
+#include "vtkAbstractTransform.h"
 #include "vtkTransform.h"
 
 vtkCxxRevisionMacro(vtkImplicitFunction, "$Revision$");
