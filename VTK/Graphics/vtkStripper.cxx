@@ -65,7 +65,7 @@ void vtkStripper::Execute()
   Mesh->BuildLinks();
 
   // check input
-  if ( (numCells=Mesh->GetNumberOfCells()) < 1 )
+  if ( (numCells=Mesh->GetNumberOfCells()) < 1  && inStrips->GetNumberOfCells() < 1)
     {
     Mesh->Delete();
     vtkDebugMacro(<<"No data to strip!");
