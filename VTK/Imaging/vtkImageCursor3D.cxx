@@ -52,8 +52,8 @@ vtkImageCursor3D::vtkImageCursor3D()
 
 
 template <class T>
-static void vtkImageCursor3DExecute(vtkImageCursor3D *self,
-                                    vtkImageData *outData, T *ptr)
+void vtkImageCursor3DExecute(vtkImageCursor3D *self,
+                             vtkImageData *outData, T *ptr)
 {
   int min0, max0, min1, max1, min2, max2;
   int c0, c1, c2;

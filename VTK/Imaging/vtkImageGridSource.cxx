@@ -61,7 +61,7 @@ void vtkImageGridSource::ExecuteInformation()
 
 //----------------------------------------------------------------------------
 template<class T>
-static void vtkImageGridSourceExecute(vtkImageGridSource *self,
+void vtkImageGridSourceExecute(vtkImageGridSource *self,
                                vtkImageData *data, T *outPtr,
                                int outExt[6], int id)
 {

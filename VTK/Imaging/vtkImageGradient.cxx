@@ -104,10 +104,10 @@ void vtkImageGradient::ComputeInputUpdateExtent(int inExt[6],
 // it handles boundaries. Pixels are just replicated to get values 
 // out of extent.
 template <class T>
-static void vtkImageGradientExecute(vtkImageGradient *self,
-                                    vtkImageData *inData, T *inPtr,
-                                    vtkImageData *outData, float *outPtr,
-                                    int outExt[6], int id)
+void vtkImageGradientExecute(vtkImageGradient *self,
+                             vtkImageData *inData, T *inPtr,
+                             vtkImageData *outData, float *outPtr,
+                             int outExt[6], int id)
 {
   int idxX, idxY, idxZ;
   int maxX, maxY, maxZ;

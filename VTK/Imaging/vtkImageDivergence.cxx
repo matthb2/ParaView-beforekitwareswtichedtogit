@@ -79,7 +79,7 @@ void vtkImageDivergence::ComputeInputUpdateExtent(int inExt[6],
 // it handles boundaries. Pixels are just replicated to get values 
 // out of extent.
 template <class T>
-static void vtkImageDivergenceExecute(vtkImageDivergence *self,
+void vtkImageDivergenceExecute(vtkImageDivergence *self,
                                vtkImageData *inData, T *inPtr,
                                vtkImageData *outData, T *outPtr,
                                int outExt[6], int id)

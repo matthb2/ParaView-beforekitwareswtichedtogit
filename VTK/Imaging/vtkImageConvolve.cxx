@@ -275,10 +275,10 @@ void vtkImageConvolve::GetKernel(float *kernel)
 // If the filter needs to be faster, the function could be duplicated
 // for strictly center (no boundary) processing.
 template <class T>
-static void vtkImageConvolveExecute(vtkImageConvolve *self,
-                                    vtkImageData *inData, T *inPtr, 
-                                    vtkImageData *outData, T *outPtr,
-                                    int outExt[6], int id)
+void vtkImageConvolveExecute(vtkImageConvolve *self,
+                             vtkImageData *inData, T *inPtr, 
+                             vtkImageData *outData, T *outPtr,
+                             int outExt[6], int id)
 {
   int *kernelSize;
   int kernelMiddle[3];
