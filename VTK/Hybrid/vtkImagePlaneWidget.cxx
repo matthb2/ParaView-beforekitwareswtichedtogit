@@ -892,6 +892,22 @@ void vtkImagePlaneWidget::WindowLevel(int X, int Y)
     }
 }
 
+void vtkImagePlaneWidget::SetWindowLevel(float window, float level)
+{
+  float rmin = level - window*0.5;
+  float rmax = level + window*0.5;
+  this->CurrentWindow = window;
+  this->OriginalWindow  = window;
+  this->CurrentLevel = level;
+  this->OriginalLevel  = level;
+  this->LookupTable->SetTableRange(rmin,rmax);
+
+  if(this->Enabled)
+    {
+    this->Interactor->Render();
+    }
+}
+
 void vtkImagePlaneWidget::GetWindowLevel(float wl[2])
 {
   float range[2];
