@@ -646,7 +646,6 @@ void vtkDataSetSurfaceFilter::ComputeInputUpdateExtents(vtkDataObject *output)
   
   if (this->GetInput() == NULL)
     {
-    vtkErrorMacro("No Input");
     return;
     }
   piece = output->GetUpdatePiece();
