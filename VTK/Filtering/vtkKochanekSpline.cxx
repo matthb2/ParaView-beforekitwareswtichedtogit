@@ -34,7 +34,7 @@ vtkKochanekSpline::vtkKochanekSpline ()
 // Evaluate a 1D Spline
 double vtkKochanekSpline::Evaluate (double t)
 {
-  int i, index = 0;
+  int index = 0;
   int size = this->PiecewiseFunction->GetSize ();
   double *intervals;
   double *coefficients;
@@ -71,14 +71,7 @@ double vtkKochanekSpline::Evaluate (double t)
     }
 
   // find pointer to cubic spline coefficient
-  for (i = 1; i < size; i++)
-    {
-    index = i - 1;
-    if (t < intervals[i])
-      {
-      break;
-      }
-    }
+  index = this->FindIndex(size,t);
 
   // calculate offset within interval
   t = (t - intervals[index]) / (intervals[index+1] - intervals[index]);
