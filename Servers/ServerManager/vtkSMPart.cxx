@@ -228,10 +228,13 @@ void vtkSMPart::InsertExtractPiecesIfNecessary()
         "vtkStructuredCacheFilter", stream);
       }
     }
-  else
+
+  // If no filter is to be inserted, just return.
+  if(tempDataPiece.ID == 0)
     {
     return;
     }
+
   // Connect the filter to the pipeline.  
   stream << vtkClientServerStream::Invoke << tempDataPiece 
                   << "SetInput"
