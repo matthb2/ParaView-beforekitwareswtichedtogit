@@ -341,7 +341,6 @@ void vtkClipDataSet::Execute()
           } //switch
 
         newCellId = types[i]->InsertNextValue(cellType);
-        outCD[i]->CopyData(inCD, cellId, newCellId);
         } //for each new cell
       } //for both outputs
     } //for each cell
