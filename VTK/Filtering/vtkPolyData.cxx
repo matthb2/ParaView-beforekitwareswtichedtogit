@@ -1357,6 +1357,11 @@ int vtkPolyData::InsertNextCell(int type, vtkIdList *pts)
       id = this->Cells->InsertNextCell(type, this->Strips->GetInsertLocation(npts));
       break;
 
+    case VTK_EMPTY_CELL:
+      id = -1;
+      // do nothing
+      break;
+
     default:
       id = -1;
       vtkErrorMacro(<<"Bad cell type! Can't insert!");
