@@ -17,6 +17,7 @@
 =========================================================================*/
 #include "vtkCollection.h"
 #include "vtkObjectFactory.h"
+#include "vtkCollectionIterator.h"
 
 #include <stdlib.h>
 #include <math.h>
@@ -293,8 +294,9 @@ void vtkCollection::RemoveItem(int i)
   this->NumberOfItems--;
 }
 
-
-
-
-
-
+vtkCollectionIterator* vtkCollection::NewIterator()
+{
+  vtkCollectionIterator* it = vtkCollectionIterator::New();
+  it->SetCollection(this);
+  return it;
+}
