@@ -200,6 +200,15 @@ int vtkTestHierarchicalDataReader::RequestCompositeData(
   return 1;
 }
 
+int vtkTestHierarchicalDataReader::FillOutputPortInformation(
+  int vtkNotUsed(port), vtkInformation* info)
+{
+  info->Set(vtkDataObject::DATA_TYPE_NAME(), "vtkDataObject");
+  info->Set(vtkCompositeDataPipeline::COMPOSITE_DATA_TYPE_NAME(), 
+            "vtkHierarchicalBoxDataSet");
+  return 1;
+}
+
 void vtkTestHierarchicalDataReader::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os,indent);
