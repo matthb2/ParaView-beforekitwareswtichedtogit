@@ -356,13 +356,13 @@ void vtkVolumeProVP1000Mapper::UpdateProperties( vtkRenderer *vtkNotUsed(ren),
   switch ( this->VolumeDataType )
     {
     case VTK_VOLUME_8BIT:
-      scale = 1.0 / 16.0;
+      scale = 255.0 / 4095.0;
       break;
     case VTK_VOLUME_12BIT_LOWER:
       scale = 1.0;
       break;
     case VTK_VOLUME_16BIT:
-      scale = 16.0;
+      scale = 65535.0 / 4095.0;
       break;
     }
 
@@ -699,7 +699,7 @@ void vtkVolumeProVP1000Mapper::UpdateVolume( vtkRenderer * vtkNotUsed(ren), vtkV
                                           dataSize[2], 0, 0, us_data_ptr );
         
         input->GetPointData()->GetScalars()->GetRange( range );
-        if ( range[0] > 4095 )
+        if ( range[1] > 4095 )
           {
           this->Volume->SetFieldDescriptor(kVLIField0,
                                            VLIFieldDescriptor(0, 16, kVLIUnsignedFraction));
