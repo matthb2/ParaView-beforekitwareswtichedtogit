@@ -133,4 +133,13 @@ void vtkViewDependentErrorMetric::PrintSelf(ostream& os, vtkIndent indent)
   this->Superclass::PrintSelf(os,indent);
   
   os << indent << "PixelTolerance: "  << this->PixelTolerance << endl;
+  os << indent << "ViewPort: ";
+  if( this->ViewPort )
+    {
+    this->ViewPort->PrintSelf( os << endl, indent.GetNextIndent());
+    }
+  else
+    {
+    os << "(none)" << endl;
+    }
 }
