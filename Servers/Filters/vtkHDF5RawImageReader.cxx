@@ -51,6 +51,7 @@ public:
 
 class vtkHDF5RawImageReaderDataSetsType: public vtkstd::vector<vtkHDF5RawImageReaderDataSet> {};
 
+extern "C"
 int vtkHDF5RawImageReaderVisit(hid_t, const char*, void* opdata);
 int vtkHDF5RawImageReaderTraverseGroup(vtkHDF5RawImageReader*,
                                        hid_t loc_id, const char*);
