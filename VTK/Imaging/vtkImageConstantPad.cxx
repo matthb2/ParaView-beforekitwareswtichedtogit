@@ -49,7 +49,7 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 vtkImageConstantPad::vtkImageConstantPad()
 {
   // execute function handles four axes.
-  this->NumberOfExecutionAxes = 4;
+  this->NumberOfExecutionAxes = 5;
 
   this->Constant = 0.0;
 }
@@ -64,80 +64,93 @@ static void vtkImageConstantPadExecute(vtkImageConstantPad *self,
 				       vtkImageRegion *inRegion, T *inPtr,
 				       vtkImageRegion *outRegion, T *outPtr)
 {
-  int min0, max0, min1, max1, min2, max2, min3, max3;
+  int min0, max0, min1, max1, min2, max2, min3, max3, min4, max4;
   int imageMin0, imageMax0, imageMin1, imageMax1, 
-    imageMin2, imageMax2, imageMin3, imageMax3;
-  int outIdx0, outIdx1, outIdx2, outIdx3;
-  int inInc0, inInc1, inInc2, inInc3;
-  int outInc0, outInc1, outInc2, outInc3;
-  T *inPtr0, *inPtr1, *inPtr2, *inPtr3;
-  T *outPtr0, *outPtr1, *outPtr2, *outPtr3;
-  int state0, state1, state2, state3;
+    imageMin2, imageMax2, imageMin3, imageMax3, imageMin4, imageMax4;
+  int outIdx0, outIdx1, outIdx2, outIdx3, outIdx4;
+  int inInc0, inInc1, inInc2, inInc3, inInc4;
+  int outInc0, outInc1, outInc2, outInc3, outInc4;
+  T *inPtr0, *inPtr1, *inPtr2, *inPtr3, *inPtr4;
+  T *outPtr0, *outPtr1, *outPtr2, *outPtr3, *outPtr4;
+  int state0, state1, state2, state3, state4;
   T constant;
 
 
   constant = (T)(self->GetConstant());
   // Get information to march through data 
-  inRegion->GetIncrements(inInc0, inInc1, inInc2, inInc3);
+  inRegion->GetIncrements(inInc0, inInc1, inInc2, inInc3, inInc4);
   inRegion->GetWholeExtent(imageMin0, imageMax0, imageMin1, imageMax1, 
-			   imageMin2, imageMax2, imageMin3, imageMax3);
-  outRegion->GetIncrements(outInc0, outInc1, outInc2, outInc3);
-  outRegion->GetExtent(min0, max0, min1, max1, min2, max2, min3, max3);
+			   imageMin2, imageMax2, imageMin3, imageMax3,
+			   imageMin4, imageMax4);
+  outRegion->GetIncrements(outInc0, outInc1, outInc2, outInc3, outInc4);
+  outRegion->GetExtent(min0, max0, min1, max1, min2, max2, min3, max3,
+		       min4, max4);
 
   // Loop through ouput pixels
-  inPtr3 = inPtr;
-  outPtr3 = outPtr;
-  for (outIdx3 = min3; outIdx3 <= max3; ++outIdx3)
+  inPtr4 = inPtr;
+  outPtr4 = outPtr;
+  for (outIdx4 = min4; outIdx4 <= max4; ++outIdx4)
     {
-    state3 = (outIdx3 < imageMin3 || outIdx3 > imageMax3);
-    outPtr2 = outPtr3;
-    inPtr2 = inPtr3;
-    for (outIdx2 = min2; outIdx2 <= max2; ++outIdx2)
+    state4 = (outIdx4 < imageMin4 || outIdx4 > imageMax4);
+    outPtr3 = outPtr4;
+    inPtr3 = inPtr4;
+    for (outIdx3 = min3; outIdx3 <= max3; ++outIdx3)
       {
-      state2 = (state3 || outIdx2 < imageMin2 || outIdx2 > imageMax2);
-      outPtr1 = outPtr2;
-      inPtr1 = inPtr2;
-      for (outIdx1 = min1; outIdx1 <= max1; ++outIdx1)
+      state3 = (state4 || outIdx3 < imageMin3 || outIdx3 > imageMax3);
+      outPtr2 = outPtr3;
+      inPtr2 = inPtr3;
+      for (outIdx2 = min2; outIdx2 <= max2; ++outIdx2)
 	{
-	state1 = (state2 || outIdx1 < imageMin1 || outIdx1 > imageMax1);
-	outPtr0 = outPtr1;
-	inPtr0 = inPtr1;
-	for (outIdx0 = min0; outIdx0 <= max0; ++outIdx0)
+	state2 = (state3 || outIdx2 < imageMin2 || outIdx2 > imageMax2);
+	outPtr1 = outPtr2;
+	inPtr1 = inPtr2;
+	for (outIdx1 = min1; outIdx1 <= max1; ++outIdx1)
 	  {
-	  state0 = (state1 || outIdx0 < imageMin0 || outIdx0 > imageMax0);
-	  
-	  // Copy Pixel
-	  if (state0)
+	  state1 = (state2 || outIdx1 < imageMin1 || outIdx1 > imageMax1);
+	  outPtr0 = outPtr1;
+	  inPtr0 = inPtr1;
+	  for (outIdx0 = min0; outIdx0 <= max0; ++outIdx0)
 	    {
-	    *outPtr0 = constant;
+	    state0 = (state1 || outIdx0 < imageMin0 || outIdx0 > imageMax0);
+	    
+	    // Copy Pixel
+	    if (state0)
+	      {
+	      *outPtr0 = constant;
+	      }
+	    else
+	      {
+	      *outPtr0 = *inPtr0;
+	      inPtr0 += inInc0;
+	      }
+	    outPtr0 += outInc0;
 	    }
-	  else
+	  if ( ! state1)
 	    {
-	    *outPtr0 = *inPtr0;
-	    inPtr0 += inInc0;
+	    inPtr1 += inInc1;
 	    }
-	  outPtr0 += outInc0;
+	  outPtr1 += outInc1;
 	  }
-	if ( ! state1)
+	if ( ! state2)
 	  {
-	  inPtr1 += inInc1;
+	  inPtr2 += inInc2;
 	  }
-	outPtr1 += outInc1;
+	outPtr2 += outInc2;
 	}
-      if ( ! state2)
+      if ( ! state3)
 	{
-	inPtr2 += inInc2;
+	inPtr3 += inInc3;
 	}
-      outPtr2 += outInc2;
+      outPtr3 += outInc3;
       }
-    if ( ! state3)
+    if ( ! state4)
       {
-      inPtr3 += inInc3;
+      inPtr4 += inInc4;
       }
-    outPtr3 += outInc3;
+    outPtr4 += outInc4;
     }
 }
-
+  
 
 
 //----------------------------------------------------------------------------
