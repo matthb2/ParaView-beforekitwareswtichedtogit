@@ -34,24 +34,24 @@ vtkCxxRevisionMacro(vtkOpenGLCamera, "$Revision$");
 vtkStandardNewMacro(vtkOpenGLCamera);
 #endif
 
-void vtkOpenGLCameraBound(float &vpu, float &vpv)
-{
-  if (vpu > 1.0) 
-    {
-    vpu = 1.0;
-    }
-  if (vpu < 0.0)
-    {
-    vpu = 0.0;
-    }
-  if (vpv > 1.0) 
-    {
-    vpv = 1.0;
-    }
-  if (vpv < 0.0)
-    {
-    vpv = 0.0;
-    }  
+#define vtkOpenGLCameraBound(vpu, vpv) \
+{ \
+  if (vpu > 1.0) \
+    { \
+    vpu = 1.0; \
+    } \
+  if (vpu < 0.0) \
+    { \
+    vpu = 0.0; \
+    } \
+  if (vpv > 1.0) \
+    { \
+    vpv = 1.0; \
+    } \
+  if (vpv < 0.0) \
+    { \
+    vpv = 0.0; \
+    }  \
 }
 
 // Implement base class method.
