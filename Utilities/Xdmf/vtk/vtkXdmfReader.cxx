@@ -170,6 +170,14 @@ vtkXdmfReader::~vtkXdmfReader()
   this->PointDataArraySelection->Delete();
 
   this->SetDomainName(0);
+
+
+  vtkXdmfReaderInternal::GridListType::size_type currentGrid;
+  for ( currentGrid = 0; currentGrid < this->Internals->Grids.size(); currentGrid ++ )
+    {
+    delete this->Internals->Grids[currentGrid];
+    }
+
   delete this->Internals;
 }
 
