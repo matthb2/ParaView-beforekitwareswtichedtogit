@@ -229,12 +229,13 @@ int vtkDataArraySelection::AddArray(const char* name)
 //----------------------------------------------------------------------------
 void vtkDataArraySelection::SetArrays(const char* const* names, int numArrays)
 {
-  this->SetArrays(names, numArrays, 1);
+  this->SetArraysWithDefault(names, numArrays, 1);
 }
 
 //----------------------------------------------------------------------------
-void vtkDataArraySelection::SetArrays(const char* const* names, int numArrays,
-                                      int defaultStatus)
+void vtkDataArraySelection::SetArraysWithDefault(const char* const* names,
+                                                 int numArrays,
+                                                 int defaultStatus)
 {
   // This function is called only by the filter owning the selection.
   // It should not call Modified() because array settings are not
