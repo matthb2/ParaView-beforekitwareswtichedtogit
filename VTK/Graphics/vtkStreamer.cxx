@@ -95,7 +95,10 @@ vtkStreamer::vtkStreamer()
 
 vtkStreamer::~vtkStreamer()
 {
-  delete [] this->Streamers;
+  if( this->Streamers )
+    {
+    delete [] this->Streamers;
+    }
 
   this->SetSource(0);
   if (this->Threader)
@@ -464,10 +467,9 @@ void vtkStreamer::Integrate()
   vtkDebugMacro(<<"Generating streamers");
   this->NumberOfStreamers = 0;
 
-// reexecuting - delete old stuff
+  // reexecuting - delete old stuff
   if( this->Streamers )
     {
-    // C++ does not define behavior of delete[] NULL
     delete [] this->Streamers;
     }
   this->Streamers = NULL;
