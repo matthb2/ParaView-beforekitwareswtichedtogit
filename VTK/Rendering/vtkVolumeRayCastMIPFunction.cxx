@@ -167,7 +167,7 @@ void vtkCastMaxScalarValueRay( T *data_ptr, vtkVolumeRayCastDynamicInfo *dynamic
         G = *(dptr + Ginc);
         H = *(dptr + Hinc);
 
-        memcpy( prev_voxel, voxel, 3*sizeof(float) );
+        memcpy( prev_voxel, voxel, 3*sizeof(int) );
         }
 
       // Compute our offset in the voxel, and use that to trilinearly
