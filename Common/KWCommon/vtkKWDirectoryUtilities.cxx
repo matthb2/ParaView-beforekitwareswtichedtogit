@@ -731,6 +731,8 @@ int vtkKWDirectoryUtilities::FileHasSignature(const char *filename,
     res = (!strncmp(buffer, signature, signature_len) ? 1 : 0);
     }
 
+  delete [] buffer;
+
   fclose(fp);
   return res;
 }
