@@ -817,11 +817,11 @@ void vtkXdmfReader::Execute()
       // this->Internals->DataDescriptions[currentGrid] is a Copy so Delete it later
       if( XDMF_WORD_CMP(NodeType, "DataTransform") )
         {
-        this->Internals->DataDescriptions[currentGrid] = this->Transform->ElementToDataDesc( dataNode );
+        this->Internals->DataDescriptions[currentGrid] = this->Transform->ElementToDataDesc( dataNode, 0 );
         } 
       else 
         {
-        this->Internals->DataDescriptions[currentGrid] = this->FormatMulti->ElementToDataDesc( dataNode );
+        this->Internals->DataDescriptions[currentGrid] = this->FormatMulti->ElementToDataDesc( dataNode, 0 );
         }
 
       if ( Attribute && status )

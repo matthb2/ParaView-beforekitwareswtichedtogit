@@ -104,6 +104,7 @@ vtkXdmfWriter::~vtkXdmfWriter()
     }
   this->SetHDF5ArrayName(0);
   this->SetDomainName(0);
+  this->SetGridName(0);
 }
 
 //----------------------------------------------------------------------------
