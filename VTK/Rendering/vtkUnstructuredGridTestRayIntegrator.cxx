@@ -35,6 +35,7 @@ static void TemplateIntegrateColor(
 
 //----------------------------------------------------------------------------
 
+//-----------------------------------------------------------------------------
 vtkUnstructuredGridTestRayIntegrator::vtkUnstructuredGridTestRayIntegrator()
 {
   this->ColorTable                   = NULL;
@@ -52,18 +53,21 @@ vtkUnstructuredGridTestRayIntegrator::vtkUnstructuredGridTestRayIntegrator()
   this->SavedParametersScalars       = NULL;
 }
 
+//-----------------------------------------------------------------------------
 vtkUnstructuredGridTestRayIntegrator::~vtkUnstructuredGridTestRayIntegrator()
 {
   this->SetNumberOfComponents(0);
 }
 
+//-----------------------------------------------------------------------------
 void vtkUnstructuredGridTestRayIntegrator::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os,indent);
+  os << indent << "ScalarOpacityUnitDistance: " 
+     << this->ScalarOpacityUnitDistance << "\n";
 }
 
 //-----------------------------------------------------------------------------
-
 void vtkUnstructuredGridTestRayIntegrator::SetNumberOfComponents(int num)
 {
   if ( num == this->SavedNumberOfComponents )
