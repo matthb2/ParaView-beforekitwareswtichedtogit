@@ -243,7 +243,7 @@ int vtkObject::IsTypeOf(const char *name)
     {
     return 1;
     }
-  return 0;
+  return vtkObject::Superclass::IsTypeOf(name);
 }
 
 int vtkObject::IsA(const char *type)
