@@ -44,6 +44,7 @@ vtkConvexPointSet::vtkConvexPointSet()
   this->Triangle = vtkTriangle::New();
   this->Triangulator = vtkOrderedTriangulator::New();
   this->Triangulator->PreSortedOff();
+  this->Triangulator->UseTemplatesOff();
 }
 
 vtkConvexPointSet::~vtkConvexPointSet()
