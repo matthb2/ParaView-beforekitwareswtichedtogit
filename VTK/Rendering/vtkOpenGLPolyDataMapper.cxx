@@ -1460,7 +1460,7 @@ void vtkOpenGLPolyDataMapperDrawTStripLines(int idx,
     default:
     {
     int j;
-    vtkIdType nPts;
+    vtkIdType nPts = 0;
     int count = 0;
     for (ca->InitTraversal(); noAbort && ca->GetNextCell(nPts,ptIds); 
          count++)
