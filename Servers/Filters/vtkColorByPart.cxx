@@ -51,6 +51,10 @@ vtkDataSet* vtkColorByPart::GetOutput(int idxOut)
   vtkDataObject* output;
 
   input = this->GetInput(idxOut);
+  if (!input)
+    {
+    return NULL;
+    }
   output = this->Superclass::GetOutput(idxOut);
   if (output == NULL)
     { // Create a new output.
