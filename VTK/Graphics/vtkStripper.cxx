@@ -33,7 +33,7 @@ void vtkStripper::Execute()
   int longestStrip, longestLine, j, numPts;
   vtkIdType numLines, numStrips, nei;
   vtkCellArray *newStrips=NULL, *inStrips, *newLines=NULL, *inLines, *inPolys;
-  vtkCellArray *newPolys;
+  vtkCellArray *newPolys=0;
   vtkIdType numLinePts;
   vtkIdList *cellIds;
   int foundOne;

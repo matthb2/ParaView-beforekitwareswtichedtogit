@@ -121,7 +121,8 @@ float vtkPerlinNoise::EvaluateFunction(float x[3])
 }
 
 // Evaluate PerlinNoise gradient.
-void vtkPerlinNoise::EvaluateGradient(float x[3], float n[3])
+void vtkPerlinNoise::EvaluateGradient(float* vtkNotUsed(x), // Was x[3]
+                                      float n[3])
 {
   // contrary to the paper, the vector computed as a byproduct of
   // the Perlin Noise computation isn't a gradient;  it's a tangent.
