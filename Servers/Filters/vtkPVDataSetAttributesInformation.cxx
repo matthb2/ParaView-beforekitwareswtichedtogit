@@ -242,6 +242,22 @@ vtkPVDataSetAttributesInformation
 }
 
 //----------------------------------------------------------------------------
+void vtkPVDataSetAttributesInformation::AddInformation(vtkPVInformation* info)
+{
+  vtkPVDataSetAttributesInformation* p =
+    vtkPVDataSetAttributesInformation::SafeDownCast(info);
+  if(p)
+    {
+    this->AddInformation(p);
+    }
+  else
+    {
+    vtkErrorMacro("AddInformation called with object of type "
+                  << (info? info->GetClassName():"<unknown>"));
+    }
+}
+
+//----------------------------------------------------------------------------
 void
 vtkPVDataSetAttributesInformation
 ::AddInformation(vtkDataSetAttributes *da)
