@@ -50,7 +50,12 @@ vtkPVGlyphFilter::~vtkPVGlyphFilter()
 //-----------------------------------------------------------------------------
 void vtkPVGlyphFilter::SetRandomMode(int mode)
 {
+  if ( mode == this->MaskPoints->GetRandomMode() )
+    {
+    return;
+    }
   this->MaskPoints->SetRandomMode(mode);
+  this->Modified();
 }
 
 //-----------------------------------------------------------------------------
