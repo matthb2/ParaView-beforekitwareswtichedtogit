@@ -81,6 +81,8 @@ vtkRenderer::vtkRenderer()
   this->Cullers->AddItem(cull);
   cull->Delete();  
   this->NearClippingPlaneTolerance = 0.01;
+
+  this->Erase = 1;
 }
 
 vtkRenderer::~vtkRenderer()
@@ -1113,9 +1115,11 @@ void vtkRenderer::PrintSelf(ostream& os, vtkIndent indent)
      << this->LastRenderTimeInSeconds << endl;
   os << indent << "TimeFactor: " << this->TimeFactor << endl;
 
+  os << indent << "Erase: " 
+     << (this->Erase ? "On\n" : "Off\n");
+
   // I don't want to print this since it is used just internally
   // os << indent << this->NumberOfPropsRendered;
-
 }
 
 int vtkRenderer::VisibleActorCount()
