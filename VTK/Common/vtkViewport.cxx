@@ -108,9 +108,14 @@ void vtkViewport::RemoveActor2D(vtkProp* p)
   this->RemoveProp(p);
 }
 
+int vtkViewport::HasProp(vtkProp *p)
+{
+  return (p && this->Props->IsItemPresent(p));
+}
+
 void vtkViewport::AddProp(vtkProp *p)
 {
-  if (!this->Props->IsItemPresent(p))
+  if (p && !this->HasProp(p))
     {
     this->Props->AddItem(p);
     p->AddConsumer(this);
@@ -119,7 +124,7 @@ void vtkViewport::AddProp(vtkProp *p)
 
 void vtkViewport::RemoveProp(vtkProp *p)
 {
-  if (p && this->Props->IsItemPresent(p))
+  if (p && this->HasProp(p))
     {
     p->ReleaseGraphicsResources(this->VTKWindow);
     p->RemoveConsumer(this);
