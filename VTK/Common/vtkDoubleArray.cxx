@@ -83,12 +83,12 @@ void vtkDoubleArray::SetArray(double* array, vtkIdType size, int save)
   
   if ((this->Array) && (!this->SaveUserArray))
     {
-      vtkDebugMacro (<< "Deleting the array...");
-      delete [] this->Array;
+    vtkDebugMacro (<< "Deleting the array...");
+    delete [] this->Array;
     }
   else 
     {
-      vtkDebugMacro (<<"Warning, array not deleted, but will point to new array.");
+    vtkDebugMacro (<<"Warning, array not deleted, but will point to new array.");
     }
 
   vtkDebugMacro(<<"Setting array to: " << array);
