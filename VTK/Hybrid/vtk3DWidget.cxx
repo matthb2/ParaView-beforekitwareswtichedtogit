@@ -131,6 +131,7 @@ void vtk3DWidget::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os,indent);
   
+  os << indent << "Interactor: " << this->Interactor << "\n";
   os << indent << "Prop3D: " << this->Prop3D << "\n";
   os << indent << "Input: " << this->Input << "\n";
   os << indent << "Priority: " << this->Priority << "\n";
