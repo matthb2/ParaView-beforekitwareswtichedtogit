@@ -66,7 +66,7 @@ public:
   vtkstd::vector< vtkSmartPointer<vtkXMLWriter> > Writers;
   vtkstd::string FilePath;
   vtkstd::string FilePrefix;
-  vtkstd::vector<std::string> Entries;
+  vtkstd::vector<vtkstd::string> Entries;
   vtkstd::string CreatePieceFileName(int index);
 };
 
