@@ -126,6 +126,9 @@ void vtkDataSetMapper::Render(vtkRenderer *ren, vtkActor *act)
   this->PolyDataMapper->SetImmediateModeRendering(
     this->GetImmediateModeRendering());
   this->PolyDataMapper->SetColorMode(this->GetColorMode());
+  this->PolyDataMapper->SetInterpolateScalarsBeforeMapping(
+                               this->GetInterpolateScalarsBeforeMapping());
+
   this->PolyDataMapper->SetScalarMode(this->GetScalarMode());
   if ( this->ScalarMode == VTK_SCALAR_MODE_USE_POINT_FIELD_DATA ||
        this->ScalarMode == VTK_SCALAR_MODE_USE_CELL_FIELD_DATA )
