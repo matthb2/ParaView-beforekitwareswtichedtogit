@@ -16,6 +16,7 @@
 
 =========================================================================*/
 #include "vtkActor2D.h"
+
 #include "vtkProperty2D.h"
 #include "vtkMapper2D.h"
 #include "vtkPropCollection.h"
@@ -23,6 +24,8 @@
 
 vtkCxxRevisionMacro(vtkActor2D, "$Revision$");
 vtkStandardNewMacro(vtkActor2D);
+
+vtkCxxSetObjectMacro(vtkActor2D,Property, vtkProperty2D);
 
 // Creates an actor2D with the following defaults:
 // position -1, -1 (view coordinates)

@@ -21,6 +21,7 @@
 #include "vtkMath.h"
 #include "vtkObjectFactory.h"
 #include "vtkPolyData.h"
+#include "vtkProperty2D.h"
 #include "vtkScalarsToColors.h"
 #include "vtkUnsignedCharArray.h"
 #include "vtkViewport.h"
