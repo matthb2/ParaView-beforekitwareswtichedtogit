@@ -142,7 +142,7 @@ void vtkIdTypeArray::DeepCopy(vtkDataArray *ia)
     return;
     }
 
-  if ( ia->GetDataType() != VTK_INT )
+  if ( ia->GetDataType() != VTK_ID_TYPE )
     {
       vtkDataArray::DeepCopy(ia);
       return;
