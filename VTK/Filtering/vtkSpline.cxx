@@ -69,6 +69,22 @@ void vtkSpline::RemoveAllPoints ()
   this->PiecewiseFunction->RemoveAllPoints ();
 }
 
+void vtkSpline::DeepCopy(vtkSpline *s)
+{
+  vtkSpline *spline = vtkSpline::SafeDownCast(s);
+
+  if ( spline != NULL )
+    {
+    this->ClampValue = s->ClampValue;
+    this->LeftConstraint = s->LeftConstraint;
+    this->LeftValue = s->LeftValue;
+    this->RightConstraint = s->RightConstraint;
+    this->RightValue = s->RightValue;
+    this->Closed = s->Closed;
+    this->PiecewiseFunction->DeepCopy(s->PiecewiseFunction);
+    }
+}
+
 // Overload standard modified time function. If data is modified,
 // then this object is modified as well.
 unsigned long vtkSpline::GetMTime()
