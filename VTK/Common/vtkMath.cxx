@@ -2077,7 +2077,12 @@ void vtkMath::RGBToHSV(float r, float g, float b, float *h, float *s, float *v)
     *v = 0.0;
     return;
     }
-  if (r >= g && g >= b)
+  if (r == g && g == b)
+    {
+    hue = sat = 0.0;
+    val = r;
+    }
+  else if (r >= g && g >= b)
     { // case 0
     val = r;
     lz = g;
