@@ -1883,6 +1883,10 @@ int vtkEnSight6Reader::CreateUnstructuredGridOutput(int partId,
       delete [] nodeIds;
       delete [] intIds;
       }
+    else if (strncmp(line, "END TIME STEP", 13) == 0)
+      {
+      break;
+      }
     }
 
   ((vtkUnstructuredGrid*)this->GetOutput(partId))->
