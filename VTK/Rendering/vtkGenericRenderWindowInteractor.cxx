@@ -195,9 +195,9 @@ int vtkGenericRenderWindowInteractor::CreateTimer(int )
 
 int vtkGenericRenderWindowInteractor::DestroyTimer()
 {
-  if(this->HasObserver(vtkCommand::CreateTimerEvent))
+  if(this->HasObserver(vtkCommand::DestroyTimerEvent))
     {
-    this->InvokeEvent(vtkCommand::CreateTimerEvent, NULL);
+    this->InvokeEvent(vtkCommand::DestroyTimerEvent, NULL);
     return 1;
     }
   return 0;
