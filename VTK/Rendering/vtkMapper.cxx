@@ -32,7 +32,7 @@ static double vtkMapperGlobalResolveCoincidentTopologyZShift = 0.01;
 static double vtkMapperGlobalResolveCoincidentTopologyPolygonOffsetFactor = 1.0;
 static double vtkMapperGlobalResolveCoincidentTopologyPolygonOffsetUnits = 1.0;
 
-// Construct with initial range (0,1).
+// Construct with initial range (0,1).            
 vtkMapper::vtkMapper()
 {
   this->Colors = 0;
@@ -601,6 +601,7 @@ void vtkMapper::MapScalarsToTexture(vtkDataArray* scalars)
   // Create new coordinates if necessary.
   // Need to compare lookup table incase the range has changed.
   if (this->ColorCoordinates == 0 ||
+      this->GetMTime() > this->ColorCoordinates->GetMTime() ||
       this->GetInput()->GetMTime() > this->ColorCoordinates->GetMTime() ||
       this->LookupTable->GetMTime() > this->ColorCoordinates->GetMTime())
     {
