@@ -172,7 +172,9 @@ void vtkExtractEdges::CreateDefaultLocator()
 {
   if ( this->Locator == NULL )
     {
-    this->Locator = vtkMergePoints::New();
+    vtkMergePoints *locator = vtkMergePoints::New();
+    this->SetLocator(locator);
+    locator->Delete();
     }
 }
 

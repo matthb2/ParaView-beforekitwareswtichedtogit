@@ -215,6 +215,8 @@ void vtkPolyDataMapper2D::CreateDefaultLookupTable()
     this->LookupTable->UnRegister(this);
     }
   this->LookupTable = vtkLookupTable::New();
+  this->LookupTable->Register(this);
+  this->LookupTable->Delete();
 }
 
 // Return the method of coloring scalar data.
