@@ -76,6 +76,7 @@ void vtkImageSource::Execute(vtkImageData *)
 }
 
 
+//----------------------------------------------------------------------------
 vtkImageData *vtkImageSource::AllocateOutputData(vtkDataObject *out)
 {
   vtkImageData *res = vtkImageData::SafeDownCast(out);
