@@ -124,6 +124,7 @@ void vtkTextMapper::PrintSelf(ostream& os, vtkIndent indent)
   os << indent << "FontFamily: " << this->FontFamily << "\n";
   os << indent << "FontSize: " << this->FontSize << "\n";
   os << indent << "Input: " << (this->Input ? this->Input : "(none)") << "\n";
+  os << indent << "AntiAliasing: " << this->AntiAliasing << "\n";
   os << indent << "Justification: ";
   switch (this->Justification)
     {
