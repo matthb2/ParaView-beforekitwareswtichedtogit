@@ -30,7 +30,7 @@ Thanks:    to Yves Starreveld for developing this class
 #include "vtkOpenGLLight.h"
 #include "vtkOpenGLPolyDataMapper.h"
 #include "vtkObjectFactory.h"
-
+#include "vtkRendererCollection.h"
 
 vtkCxxRevisionMacro(vtkCarbonRenderWindow, "$Revision$");
 vtkStandardNewMacro(vtkCarbonRenderWindow);
