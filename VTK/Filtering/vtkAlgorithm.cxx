@@ -817,3 +817,27 @@ void vtkAlgorithm::ReleaseDataFlagOff()
       }
     }
 }
+
+//----------------------------------------------------------------------------
+void vtkAlgorithm::SetReleaseDataFlag(int val)
+{
+  if(vtkDemandDrivenPipeline* ddp =
+     vtkDemandDrivenPipeline::SafeDownCast(this->GetExecutive()))
+    {
+    for(int i=0; i < this->GetNumberOfOutputPorts(); ++i)
+      {
+      ddp->SetReleaseDataFlag(i, val);
+      }
+    }
+}
+
+//----------------------------------------------------------------------------
+int vtkAlgorithm::GetReleaseDataFlag()
+{
+  if(vtkDemandDrivenPipeline* ddp =
+     vtkDemandDrivenPipeline::SafeDownCast(this->GetExecutive()))
+    {
+    return ddp->GetReleaseDataFlag(0);
+    }
+  return 0;
+}
