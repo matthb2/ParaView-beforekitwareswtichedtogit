@@ -226,6 +226,17 @@ const char* vtkXMLDataElement::GetAttributeName(int idx)
 }
 
 //----------------------------------------------------------------------------
+const char* vtkXMLDataElement::GetAttributeValue(int idx)
+{
+  if (idx < 0 || idx >= this->NumberOfAttributes)
+    {
+    return 0;
+    }
+
+  return this->AttributeValues[idx];
+}
+
+//----------------------------------------------------------------------------
 void vtkXMLDataElement::PrintXML(ostream& os, vtkIndent indent)
 {
   os << indent << "<" << this->Name;
