@@ -54,7 +54,6 @@ PURPOSE.  See the above copyright notice for more information.
 #include "vtkPolyData.h"
 #include "vtkPointData.h"
 #include "vtkPriorityQueue.h"
-#include "vtkVoidArray.h"
 #include "vtkTriangle.h"
 
 vtkCxxRevisionMacro(vtkQuadricDecimation, "$Revision$");
