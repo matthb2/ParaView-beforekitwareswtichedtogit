@@ -20,6 +20,7 @@
 #include <math.h>
 
 vtkCxxRevisionMacro(vtkPerlinNoise, "$Revision$");
+vtkStandardNewMacro(vtkPerlinNoise);
 
 // These functions are from Greg Ward's recursive implementation in 
 // Graphics Gems II.  I've kept the names the same for instructional
@@ -92,20 +93,6 @@ static void perlinNoise(float x[3], float noise[4])
   xarg[2] = x[2] - xlim[2][0];
 
   interpolate(noise, 0, 3, xlim, xarg);
-}
-
-
-//----------------------------------------------------------------------------
-vtkPerlinNoise* vtkPerlinNoise::New()
-{
-  // First try to create the object from the vtkObjectFactory
-  vtkObject* ret = vtkObjectFactory::CreateInstance("vtkPerlinNoise");
-  if (ret)
-    {
-    return (vtkPerlinNoise*)ret;
-    }
-  // If the factory was unable to create the object, then create it here.
-  return new vtkPerlinNoise;
 }
 
 vtkPerlinNoise::vtkPerlinNoise()
