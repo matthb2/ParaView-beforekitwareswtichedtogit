@@ -319,6 +319,7 @@ void vtkStripper::Execute()
 
   output->SetPoints(input->GetPoints());
   output->GetPointData()->PassData(pd);
+  output->SetFieldData(input->GetFieldData());
 
   // output strips
   if ( newStrips )
