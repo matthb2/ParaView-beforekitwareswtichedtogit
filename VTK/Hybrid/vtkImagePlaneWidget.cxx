@@ -790,7 +790,7 @@ void vtkImagePlaneWidget::SetPlaneOrientation(int i)
 
 void vtkImagePlaneWidget::GenerateTexturePlane()
 {
-  this->ImageData = (vtkImageData *) this->GetInput();
+  this->ImageData = vtkImageData::SafeDownCast(this->GetInput());
   if( ! this->ImageData )
     {
     vtkGenericWarningMacro(<<"Must call SetInput() with vtkImageData*!");
@@ -985,7 +985,7 @@ void vtkImagePlaneWidget::UpdateNormal()
   this->Reslice->SetResliceAxes(this->ResliceAxes);
   this->Reslice->SetResliceAxesOrigin(newOrigin);
 
-  this->ImageData = Reslice->GetInput();
+  this->ImageData = this->Reslice->GetInput();
   // calculate appropriate pixel spacing for the reslicing
 
   this->ImageData->UpdateInformation();
