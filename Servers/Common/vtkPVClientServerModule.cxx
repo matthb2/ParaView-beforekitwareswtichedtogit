@@ -252,6 +252,10 @@ void vtkPVClientServerModule::Initialize()
       return;
       }
   
+    vtkDebugMacro("Setup observer for progress");
+    this->SocketController->GetCommunicator()->AddObserver(
+      vtkCommand::WrongTagEvent, this->GetObserver());
+
     // The client sends the connect id to data server
     int cid = this->Options->GetConnectID();
     this->SocketController->Send(&cid, 1, 1, 8843);
