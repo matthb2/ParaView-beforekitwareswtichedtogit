@@ -1109,3 +1109,17 @@ void vtkWin32OpenGLRenderWindow::ShowCursor()
   ::ShowCursor(!this->CursorHidden);
 }                                  
 
+//----------------------------------------------------------------------------
+void vtkWin32OpenGLRenderWindow::SetCursorPosition(int x, int y) 
+{
+  int *size = this->GetSize();
+
+  POINT point;
+  point.x = x;
+  point.y = size[1] - y - 1;
+
+  if (ClientToScreen(this->WindowId, &point))
+    {
+    SetCursorPos(point.x, point.y);
+    }
+};
