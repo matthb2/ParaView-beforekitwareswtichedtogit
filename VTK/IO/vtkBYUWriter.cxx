@@ -23,6 +23,8 @@
 #include "vtkPointData.h"
 #include "vtkPolyData.h"
 
+#include <stdio.h>
+
 vtkCxxRevisionMacro(vtkBYUWriter, "$Revision$");
 vtkStandardNewMacro(vtkBYUWriter);
 

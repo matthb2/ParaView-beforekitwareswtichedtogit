@@ -22,6 +22,8 @@
 #include "vtkObjectFactory.h"
 #include "vtkUnstructuredGrid.h"
 
+#include <stdio.h>
+
 vtkCxxRevisionMacro(vtkUnstructuredGridWriter, "$Revision$");
 vtkStandardNewMacro(vtkUnstructuredGridWriter);
 

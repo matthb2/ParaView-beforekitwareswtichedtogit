@@ -20,6 +20,8 @@
 #include "vtkObjectFactory.h"
 #include "vtkRectilinearGrid.h"
 
+#include <stdio.h>
+
 vtkCxxRevisionMacro(vtkRectilinearGridWriter, "$Revision$");
 vtkStandardNewMacro(vtkRectilinearGridWriter);
 

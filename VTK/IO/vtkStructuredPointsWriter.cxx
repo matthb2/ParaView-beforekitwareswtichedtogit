@@ -20,6 +20,8 @@
 #include "vtkObjectFactory.h"
 #include "vtkStructuredPoints.h"
 
+#include <stdio.h>
+
 vtkCxxRevisionMacro(vtkStructuredPointsWriter, "$Revision$");
 vtkStandardNewMacro(vtkStructuredPointsWriter);
 

@@ -20,6 +20,8 @@
 #include "vtkObjectFactory.h"
 #include "vtkStructuredGrid.h"
 
+#include <stdio.h>
+
 vtkCxxRevisionMacro(vtkStructuredGridWriter, "$Revision$");
 vtkStandardNewMacro(vtkStructuredGridWriter);
 

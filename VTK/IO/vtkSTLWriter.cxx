@@ -24,6 +24,8 @@
 #include "vtkPolyData.h"
 #include "vtkTriangle.h"
 
+#include <stdio.h>
+
 vtkCxxRevisionMacro(vtkSTLWriter, "$Revision$");
 vtkStandardNewMacro(vtkSTLWriter);
 

@@ -20,6 +20,8 @@
 #include "vtkObjectFactory.h"
 #include "vtkPolyData.h"
 
+#include <stdio.h>
+
 vtkCxxRevisionMacro(vtkPolyDataWriter, "$Revision$");
 vtkStandardNewMacro(vtkPolyDataWriter);
 
