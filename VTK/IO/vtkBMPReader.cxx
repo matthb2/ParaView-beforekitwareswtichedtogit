@@ -48,7 +48,7 @@ vtkBMPReader::vtkBMPReader()
   this->Depth = 0;
   // we need to create it now in case its asked for later (pointer must be valid)
   this->LookupTable = vtkLookupTable::New();
-  this->Allow8BitBMP = false;
+  this->Allow8BitBMP = 0;
 }
 
 //----------------------------------------------------------------------------
