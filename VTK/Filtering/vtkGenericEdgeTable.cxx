@@ -145,7 +145,6 @@ void vtkEdgeTableEdge::LoadFactor()
     VectorEdgeTableType v = Vector[i];
     numEntry += v.size();
     if(v.size()) numBins++;
-    //std::cerr << v.size() << ",";
     }
   cerr << "\n";
   cerr << size << "," << numEntry << "," << numBins << "," << Modulo
