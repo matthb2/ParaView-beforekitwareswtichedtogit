@@ -215,16 +215,19 @@ vtkUnsignedCharArray *vtkMapper::MapScalars(double alpha)
   // Lets try to resuse the old colors.
   if (this->ScalarVisibility && this->Colors)
     {
-    vtkDataArray *scalars = vtkAbstractMapper::
-      GetScalars(this->GetInput(), this->ScalarMode, this->ArrayAccessMode,
-                 this->ArrayId, this->ArrayName, this->ArrayComponent);
-    if (this->GetMTime() < this->Colors->GetMTime() &&
-        scalars && scalars->GetMTime() < this->Colors->GetMTime())
+    if (this->LookupTable && this->LookupTable->GetAlpha() == alpha)
       {
-      return this->Colors;
+      vtkDataArray *scalars = vtkAbstractMapper::
+        GetScalars(this->GetInput(), this->ScalarMode, this->ArrayAccessMode,
+                   this->ArrayId, this->ArrayName, this->ArrayComponent);
+      if (this->GetMTime() < this->Colors->GetMTime() &&
+          scalars && scalars->GetMTime() < this->Colors->GetMTime())
+        {
+        return this->Colors;
+        }
       }
     }
-
+  
   // Get rid of old colors
   if ( this->Colors )
     {
