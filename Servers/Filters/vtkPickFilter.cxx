@@ -233,7 +233,7 @@ void vtkPickFilter::CellExecute()
       //  {
       //  dist2= 0.0;
       //  }
-      if (dist2 < bestDist2)
+      if (inside != -1 && dist2 < bestDist2)
         {
         bestId = cellId;
         bestDist2 = dist2;
