@@ -235,8 +235,9 @@ int vtkProbeFilter::RequestUpdateExtent(
   // What ever happend to CopyUpdateExtent in vtkDataObject?
   // Copying both piece and extent could be bad.  Setting the piece
   // of a structured data set will affect the extent.
-  if (!strcmp(outInfo->Get(vtkDataObject::DATA_TYPE_NAME()), "vtkUnstructuredGrid") ||
-      !strcmp(outInfo->Get(vtkDataObject::DATA_TYPE_NAME()), "vtkPolyData"))
+  if (outInfo->Get(vtkDataObject::DATA_TYPE_NAME()) &&
+      (!strcmp(outInfo->Get(vtkDataObject::DATA_TYPE_NAME()), "vtkUnstructuredGrid") ||
+       !strcmp(outInfo->Get(vtkDataObject::DATA_TYPE_NAME()), "vtkPolyData")))
     {
     usePiece = 1;
     }
