@@ -998,8 +998,7 @@ void vtkGridSynchronizedTemplates3D::Execute()
       {
       threadPD = this->Threads[idx]->GetPointData();
       
-      if ( !this->Threads[idx] || 
-           this->Threads[idx]->GetNumberOfPoints() <= 0 )
+      if ( !this->Threads[idx])
         {
         continue; //no input, just skip
         }
@@ -1022,8 +1021,7 @@ void vtkGridSynchronizedTemplates3D::Execute()
       {
       threadCD = this->Threads[idx]->GetCellData();
       
-      if ( !this->Threads[idx] || 
-           this->Threads[idx]->GetNumberOfPoints() <= 0 )
+      if ( !this->Threads[idx])
         {
         continue; //no input, just skip
         }
