@@ -1179,7 +1179,7 @@ void vtkOrderedTriangulator::Triangulate()
 void vtkOrderedTriangulator::TemplateTriangulate(int cellType, 
                                                  int numPts, int numEdges)
 {
-  (void)cellType;
+  this->CellType = cellType;
   if ( ! this->UseTemplates )
     {
     this->Triangulate();
