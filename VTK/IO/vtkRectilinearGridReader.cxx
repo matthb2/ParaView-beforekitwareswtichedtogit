@@ -39,14 +39,15 @@ vtkRectilinearGridReader::~vtkRectilinearGridReader()
 }
 
 //----------------------------------------------------------------------------
-vtkRectilinearGrid *vtkRectilinearGridReader::GetOutput()
+vtkRectilinearGrid* vtkRectilinearGridReader::GetOutput()
 {
-  if (this->NumberOfOutputs < 1)
-    {
-    return NULL;
-    }
-  
-  return (vtkRectilinearGrid *)(this->Outputs[0]);
+  return this->GetOutput(0);
+}
+
+//----------------------------------------------------------------------------
+vtkRectilinearGrid* vtkRectilinearGridReader::GetOutput(int idx)
+{
+  return static_cast<vtkRectilinearGrid*>(this->vtkSource::GetOutput(idx));
 }
 
 //----------------------------------------------------------------------------

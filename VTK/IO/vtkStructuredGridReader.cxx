@@ -36,17 +36,17 @@ vtkStructuredGridReader::~vtkStructuredGridReader()
 {
 }
 
-//-----------------------------------------------------------------------------
-vtkStructuredGrid *vtkStructuredGridReader::GetOutput()
+//----------------------------------------------------------------------------
+vtkStructuredGrid* vtkStructuredGridReader::GetOutput()
 {
-  if (this->NumberOfOutputs < 1)
-    {
-    return NULL;
-    }
-  
-  return (vtkStructuredGrid *)(this->Outputs[0]);
+  return this->GetOutput(0);
 }
 
+//----------------------------------------------------------------------------
+vtkStructuredGrid* vtkStructuredGridReader::GetOutput(int idx)
+{
+  return static_cast<vtkStructuredGrid*>(this->vtkSource::GetOutput(idx));
+}
 
 //-----------------------------------------------------------------------------
 void vtkStructuredGridReader::SetOutput(vtkStructuredGrid *output)
