@@ -442,6 +442,7 @@ void vtkPushPipeline::Run(vtkSource *pusher)
       {
       this->RunState = 3;
       }
+    pmi->Delete();
     }
   // remove the observer now that we are done running
   pusher->RemoveObserver(tag);
