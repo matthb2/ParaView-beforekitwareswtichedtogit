@@ -738,8 +738,8 @@ void vtkWedge::GetFacePoints(int faceId, int* &pts)
   pts = this->GetFaceArray(faceId);
 }
 
-static double vtkWedgeCellPCoords[18] = {0.0,0.0,0.0, 1.0,0.0,0.0, 0.5,0.5,1.0,
-                                        0.0,1.0,0.0, 1.0,1.0,0.0, 0.5,1.0,1.0};
+static double vtkWedgeCellPCoords[18] = {0.0,0.0,0.0, 1.0,0.0,0.0, 0.0,1.0,0.0,
+                                        0.0,0.0,1.0, 1.0,0.0,1.0, 0.0,1.0,1.0};
 
 double *vtkWedge::GetParametricCoords()
 {
