@@ -753,3 +753,20 @@ void vtkObjectFactory::SetAllEnableFlags(int flag,
 
 
   
+void vtkObjectFactory::CreateAllInstance(const char* vtkclassname,
+                                               vtkCollection* retList)
+{
+  vtkObjectFactory* f;
+  vtkObjectFactoryCollection* collection
+    = vtkObjectFactory::GetRegisteredFactories();
+  for(collection->InitTraversal(); (f = collection->GetNextItem()); )
+    {
+    vtkObject* o = f->CreateObject(vtkclassname);
+    if(o)
+      {
+      retList->AddItem(o);
+      o->Delete();
+      }
+    }
+}
+
