@@ -492,6 +492,11 @@ void vtkPVDataInformation::CopyFromMessage(unsigned char *msg)
   int attrMsgLength;
   int idx;
 
+  if (msg == NULL)
+    { // Something really bad has happend ...
+    return;
+    }
+
 #ifdef VTK_WORDS_BIGENDIAN
   bigEndianFlag = (unsigned char)(1);
 #else
