@@ -150,7 +150,8 @@ vtkPVCompositePartDisplay::CreateParallelTclObjects(vtkPVProcessModule *pm)
   //  pm->SendStream(vtkProcessModule::CLIENT_AND_SERVERS);
   //  }
   //else 
-  if (pm->GetOptions()->GetUseTiledDisplay() || pm->GetOptions()->GetCaveConfigurationFileName())
+  if (pm->GetOptions()->GetTileDimensions()[0] ||
+    pm->GetOptions()->GetCaveConfigurationFileName())
     { 
     this->CollectID = pm->NewStreamObject("vtkMPIMoveData");
     // Create a temporary input.
@@ -214,7 +215,8 @@ vtkPVCompositePartDisplay::CreateParallelTclObjects(vtkPVProcessModule *pm)
   //  pm->SendStream(vtkProcessModule::CLIENT_AND_SERVERS);
   //  }
   //else 
-  if (pm->GetOptions()->GetUseTiledDisplay() || pm->GetOptions()->GetCaveConfigurationFileName())
+  if (pm->GetOptions()->GetTileDimensions()[0] ||
+    pm->GetOptions()->GetCaveConfigurationFileName())
     { // This should be in subclass.
     this->LODCollectID = pm->NewStreamObject("vtkMPIMoveData");
     // Create a temporary input.
