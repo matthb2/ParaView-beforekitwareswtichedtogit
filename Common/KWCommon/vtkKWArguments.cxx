@@ -201,9 +201,12 @@ int vtkKWArguments::Parse()
         }
 
       this->Internals->ArgumentValues[sarg.c_str()] = (value?value:"1");
-      if ( !cs->Callback(sarg.c_str(), value, cs->CallData) )
+      if ( cs->Callback )
         {
-        return 0;
+        if ( !cs->Callback(sarg.c_str(), value, cs->CallData) )
+          {
+          return 0;
+          }
         }
       }
     else
