@@ -1,0 +1,1234 @@
+/*=========================================================================
+
+  Program:   ParaView
+  Module:    $RCSfile$
+
+  Copyright (c) Kitware, Inc.
+  All rights reserved.
+  See Copyright.txt or http://www.paraview.org/HTML/Copyright.html for details.
+
+     This software is distributed WITHOUT ANY WARRANTY; without even
+     the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR
+     PURPOSE.  See the above copyright notice for more information.
+
+=========================================================================*/
+#include "vtkPVClientServerModule.h"
+
+#include "vtkCharArray.h"
+#include "vtkDataSet.h"
+#include "vtkDoubleArray.h"
+#include "vtkDummyController.h"
+#include "vtkFloatArray.h"
+#include "vtkInstantiator.h"
+#include "vtkLongArray.h"
+#include "vtkMapper.h"
+#include "vtkMapper.h"
+#include "vtkMultiProcessController.h"
+#include "vtkObjectFactory.h"
+#include "vtkPolyData.h"
+#include "vtkPVConfig.h"
+#include "vtkPVInformation.h"
+#include "vtkShortArray.h"
+#include "vtkSocketCommunicator.h"
+#include "vtkSocketController.h"
+#include "vtkSource.h"
+#include "vtkString.h"
+#include "vtkString.h"
+#include "vtkStringList.h"
+#include "vtkStringList.h"
+#include "vtkToolkits.h"
+#include "vtkUnsignedIntArray.h"
+#include "vtkUnsignedLongArray.h"
+#include "vtkUnsignedShortArray.h"
+#include "vtkCallbackCommand.h"
+#include "vtkKWRemoteExecute.h"
+#ifndef _WIN32
+#include <unistd.h>
+#endif
+#include <vtkstd/string>
+#include "vtkProcessModuleGUIHelper.h"
+#include "vtkPVProgressHandler.h"
+
+#ifdef VTK_USE_MPI
+#include "vtkMPIController.h"
+#include "vtkMPICommunicator.h"
+#include "vtkMPIGroup.h"
+#endif
+
+#include "vtkClientServerStream.h"
+#include "vtkClientServerInterpreter.h"
+#include "vtkMPIMToNSocketConnectionPortInformation.h"
+
+
+#define VTK_PV_CLIENTSERVER_RMI_TAG          938531
+#define VTK_PV_CLIENTSERVER_ROOT_RMI_TAG     938532
+
+#define VTK_PV_SLAVE_CLIENTSERVER_RMI_TAG    397529
+
+#define VTK_PV_ROOT_RESULT_LENGTH_TAG        838487
+#define VTK_PV_ROOT_RESULT_TAG               838488
+#define VTK_PV_CLIENT_SERVER_LAST_RESULT_TAG 838490
+
+#define VTK_PV_DATA_OBJECT_TAG               923857
+
+
+//----------------------------------------------------------------------------
+// This RMI is only on process 0 of server. (socket controller)
+void vtkPVClientServerLastResultRMI(void *localArg, void* ,
+                                    int vtkNotUsed(remoteArgLength),
+                                    int vtkNotUsed(remoteProcessId))
+{
+  vtkPVClientServerModule *self = (vtkPVClientServerModule *)(localArg);
+  self->SendLastClientServerResult();
+}
+
+
+void vtkPVClientServerMPIRMI(void *localArg, void *remoteArg,
+                                int remoteArgLength,
+                                int vtkNotUsed(remoteProcessId))
+{
+  vtkPVClientServerModule *self = (vtkPVClientServerModule *)(localArg);
+  self->ProcessMessage((unsigned char*)remoteArg, remoteArgLength);
+  // do something with result here??
+}
+
+//----------------------------------------------------------------------------
+// This RMI is used for
+void vtkPVClientServerSocketRMI(void *localArg, void *remoteArg,
+                                int remoteArgLength,
+                                int remoteProcessId)
+{
+  vtkPVClientServerModule *self = (vtkPVClientServerModule *)(localArg);
+  vtkMultiProcessController* controler = self->GetController();
+  for(int i = 1; i < controler->GetNumberOfProcesses(); ++i)
+    {
+    controler->TriggerRMI(
+      i, remoteArg, remoteArgLength, VTK_PV_SLAVE_CLIENTSERVER_RMI_TAG);
+    }
+  vtkPVClientServerMPIRMI(localArg, remoteArg, remoteArgLength, remoteProcessId);
+}
+
+
+//----------------------------------------------------------------------------
+// This RMI is only on process 0 of server. (socket controller)
+void vtkPVClientServerRootRMI(void *localArg, void *remoteArg,
+                              int remoteArgLength,
+                              int remoteProcessId)
+{
+  vtkPVClientServerMPIRMI(localArg, remoteArg, remoteArgLength, remoteProcessId);
+}
+
+//----------------------------------------------------------------------------
+void vtkPVSendStreamToClientServerNodeRMI(void *localArg, void *remoteArg,
+                                          int remoteArgLength,
+                                          int vtkNotUsed(remoteProcessId))
+{
+  vtkPVClientServerModule* self =
+    reinterpret_cast<vtkPVClientServerModule*>(localArg);
+  self->GetInterpreter()
+    ->ProcessStream(reinterpret_cast<unsigned char*>(remoteArg),
+                    remoteArgLength);
+}
+
+//----------------------------------------------------------------------------
+vtkStandardNewMacro(vtkPVClientServerModule);
+vtkCxxRevisionMacro(vtkPVClientServerModule, "$Revision$");
+
+
+//----------------------------------------------------------------------------
+vtkPVClientServerModule::vtkPVClientServerModule()
+{
+  this->LastServerResultStream = new vtkClientServerStream;
+  this->Controller = NULL;
+  this->SocketController = NULL;
+  this->RenderServerSocket = NULL;
+  this->ClientMode = 1;
+  this->RenderServerMode = 0;
+
+  this->ArgumentCount = 0;
+  this->Arguments = NULL;
+  this->ReturnValue = 0;
+
+  this->RenderServerHostName = 0;
+  this->HostName = 0;
+  this->Username = 0;
+  this->Port = 0;
+  this->RenderServerPort = 0;
+  this->MultiProcessMode = vtkPVClientServerModule::SINGLE_PROCESS_MODE;
+  this->NumberOfProcesses = 2;
+  this->GatherRenderServer = 0;
+  this->RemoteExecution = vtkKWRemoteExecute::New();
+}
+
+//----------------------------------------------------------------------------
+vtkPVClientServerModule::~vtkPVClientServerModule()
+{
+  delete this->LastServerResultStream;
+  if (this->Controller)
+    {
+    this->Controller->Delete();
+    this->Controller = NULL;
+    }
+  if (this->SocketController)
+    {
+    this->SocketController->Delete();
+    this->SocketController = NULL;
+    }
+  if (this->RenderServerSocket)
+    {
+    this->RenderServerSocket->Delete();
+    this->RenderServerSocket = NULL;
+    }
+
+  this->ArgumentCount = 0;
+  this->Arguments = NULL;
+  this->ReturnValue = 0;
+
+  this->SetRenderServerHostName(0);
+  this->SetHostName(0);
+  this->SetUsername(0);
+
+  this->RemoteExecution->Delete();
+}
+
+
+//----------------------------------------------------------------------------
+vtkSocketController* vtkPVClientServerModule::GetRenderServerSocketController()
+{
+  if(!this->RenderServerSocket)
+    {
+    return this->SocketController;
+    }
+  return this->RenderServerSocket;
+}
+
+  
+
+
+
+//----------------------------------------------------------------------------
+// Each server process starts with this method.  One process is designated as
+// "master" to handle communication.  The other processes are slaves.
+void vtkPVClientServerInit(vtkMultiProcessController *, void *arg )
+{
+  vtkPVClientServerModule *self = (vtkPVClientServerModule*)arg;
+  self->Initialize();
+}
+
+//----------------------------------------------------------------------------
+void vtkPVClientServerModule::ErrorCallback(vtkObject *vtkNotUsed(caller),
+  unsigned long vtkNotUsed(eid), void *vtkNotUsed(clientdata), void *calldata)
+{
+  cout << (char*)calldata << endl;
+}
+
+//----------------------------------------------------------------------------
+// This method is a bit long, we should probably break it up
+// to simplify it. !!!!!
+void vtkPVClientServerModule::Initialize()
+{
+  int myId = this->Controller->GetLocalProcessId();
+  int numProcs = this->Controller->GetNumberOfProcesses();
+  int id;
+
+  this->Connect();
+  if (this->ReturnValue)
+    { // Could not connect.
+    return;
+    } 
+
+  if (this->ClientMode)
+    {  
+    if(!this->GUIHelper)
+      {
+      vtkErrorMacro("GUIHelper must be set, for vtkPVProcessModule to be able to run a gui.");
+      return;
+      }
+  
+    // Receive as the hand shake the number of processes available.
+    int numServerProcs = 0;
+    this->SocketController->Receive(&numServerProcs, 1, 1, 8843);
+    this->NumberOfServerProcesses = numServerProcs;
+   
+    if(this->RenderServerMode)
+      { 
+      this->RenderServerSocket->Receive(&numServerProcs, 1, 1, 8843);
+      this->NumberOfRenderServerProcesses = numServerProcs;
+      }
+
+    // attempt to initialize render server connection to data server
+    this->InitializeRenderServer();
+      
+    this->ReturnValue = this->GUIHelper->
+      RunGUIStart(this->ArgumentCount, this->Arguments, numServerProcs, myId);
+    cout << "Exit Client\n";
+    cout.flush();
+    }
+  else if (myId == 0)
+    { // process 0 of Server
+    // send the number of server processes as a handshake. 
+    this->SocketController->Send(&numProcs, 1, 1, 8843);
+
+        //
+    this->SocketController->AddRMI(vtkPVClientServerLastResultRMI, (void *)(this),
+                                   VTK_PV_CLIENT_SERVER_LAST_RESULT_TAG);
+    // for SendMessages
+    this->SocketController->AddRMI(vtkPVClientServerSocketRMI, (void *)(this),
+                                   VTK_PV_CLIENTSERVER_RMI_TAG);
+    this->SocketController->AddRMI(vtkPVClientServerRootRMI, (void *)(this),
+                                   VTK_PV_CLIENTSERVER_ROOT_RMI_TAG);
+    
+    this->Controller->CreateOutputWindow();
+    this->SocketController->ProcessRMIs();
+    if(this->RenderServerMode)
+      {
+      cout << "Exit Render Server.\n";
+      cout.flush();
+      }
+    else
+      {
+      cout << "Exit Data Server.\n";
+      cout.flush();
+      }
+      
+    
+    // Exiting.  Relay the break RMI to otehr processes.
+    for (id = 1; id < numProcs; ++id)
+      {
+      this->Controller->TriggerRMI(id, vtkMultiProcessController::BREAK_RMI_TAG);
+      }
+
+    this->SocketController->CloseConnection();
+    }
+  else
+    { // Sattelite processes of server.
+    this->Controller->CreateOutputWindow();
+
+    this->Controller->AddRMI(vtkPVSendStreamToClientServerNodeRMI, this,
+                             VTK_PV_SLAVE_CLIENTSERVER_RMI_TAG);
+
+    // Process rmis until the application exits.
+    this->Controller->ProcessRMIs();    
+    // Now we are exiting.
+    }  
+}
+
+
+//----------------------------------------------------------------------------
+int vtkPVClientServerModule::ShouldWaitForConnection()
+{  
+  // if client mode then return reverse connection
+  if(this->ClientMode)
+    {
+    // if in client mode, it should not wait for a connection
+    // unless reverse is 1, so just return reverse connection value
+    return this->GetReverseConnection();
+    }
+  // if server mode, then by default wait for the connection
+  // so return not getreverseconnection
+  return !this->GetReverseConnection();
+  
+}
+
+//----------------------------------------------------------------------------
+int vtkPVClientServerModule::OpenConnectionDialog(int* start)
+{ 
+  if(!this->GUIHelper)
+    {
+      vtkErrorMacro("GUIHelper must be set, for OpenConnectionDialog to work.");
+      return 0;
+    }
+  return this->GUIHelper->OpenConnectionDialog(start);
+}
+
+//----------------------------------------------------------------------------
+int vtkPVClientServerModule::StartRemoteParaView(vtkSocketCommunicator* comm)
+{ 
+  char numbuffer[100];
+  vtkstd::string runcommand = "eval ${PARAVIEW_SETUP_SCRIPT} ; ";
+  // Add mpi
+  if ( this->MultiProcessMode == vtkPVClientServerModule::MPI_MODE )
+    {
+    sprintf(numbuffer, "%d", this->NumberOfProcesses);
+    runcommand += "mpirun -np ";
+    runcommand += numbuffer;
+    runcommand += " ";
+    }
+  runcommand += "eval ${PARAVIEW_EXECUTABLE} --server --port=";
+  sprintf(numbuffer, "%d", this->Port);
+  runcommand += numbuffer;
+  this->RemoteExecution->SetRemoteHost(this->HostName);
+  if ( this->Username && this->Username[0] )
+    {
+    this->RemoteExecution->SetSSHUser(this->Username);
+    }
+  else
+    {
+    this->RemoteExecution->SetSSHUser(0);
+    }
+  this->RemoteExecution->RunRemoteCommand(runcommand.c_str());
+  int cc;
+  const int max_try = 10;
+  for ( cc = 0; cc < max_try; cc ++ )
+    {
+#ifdef _WIN32
+    Sleep(1000);
+#else
+    sleep(1);
+#endif
+    if ( this->RemoteExecution->GetResult() != vtkKWRemoteExecute::RUNNING )
+      {
+      cc = max_try;
+      break;
+      }
+    if (comm->ConnectTo(this->HostName, this->Port))
+      {
+      break;
+      }
+    }
+  if ( cc < max_try )
+    {
+    return 1;
+    }
+  return 0;
+}
+
+  
+
+//----------------------------------------------------------------------------
+void vtkPVClientServerModule::ConnectToRemote()
+{
+  // according to the cvs logs this stops a memory leak
+  vtkSocketController* dummy = vtkSocketController::New();
+  dummy->Initialize();
+  dummy->Delete();
+  
+  // create a socket communicator
+  vtkSocketCommunicator *comm = vtkSocketCommunicator::New();
+  vtkSocketCommunicator *commRenderServer = vtkSocketCommunicator::New();
+  
+  // Get the host name from the command line arguments
+  vtkCallbackCommand* cb = vtkCallbackCommand::New();
+  cb->SetCallback(vtkPVClientServerModule::ErrorCallback);
+  cb->SetClientData(this);
+  comm->AddObserver(vtkCommand::ErrorEvent, cb);
+  cb->Delete();
+
+  // Get the port from the command line arguments
+  // Establish connection
+  int start = 0;
+  if ( this->GetAlwaysSSH() )
+    {
+    start = 1;
+    }
+  while (!comm->ConnectTo(this->HostName, this->Port))
+    {  
+    // Do not bother trying to start the client if reverse connection is specified.
+    // only try the ConnectTo once if it is a server in reverse mode
+    if ( ! this->ClientMode)
+      {  
+      // This is the "reverse-connection" server condition.  
+      // For now just fail if connection is not found.
+      vtkErrorMacro("Server error: Could not connect to the client. " 
+                    << this->HostName << " " << this->Port);
+      comm->Delete();
+      commRenderServer->Delete();
+      if(this->GUIHelper)
+        {
+        this->GUIHelper->ExitApplication();
+        }
+      else
+        {
+        vtkErrorMacro("No GUIHelper set, can not exit application");
+        }
+      this->ReturnValue = 1;
+      return;
+      }
+    if ( start)
+      {
+      start = 0;
+      if(this->StartRemoteParaView(comm))
+        {
+        // if a remote paraview was successfuly started
+        // the connection would be made in StartRemoteParaView
+        // so break from the connect while loop 
+        break;
+        }
+      continue;
+      }
+    if (this->ClientMode)
+      {
+      if(!this->OpenConnectionDialog(&start))
+        {
+        // if the user canceled then just quit
+        vtkErrorMacro("Client error: Could not connect to the server.");
+        comm->Delete();
+        commRenderServer->Delete();
+        if(this->GUIHelper)
+          {
+          this->GUIHelper->ExitApplication();
+          }  
+        else
+          {
+          vtkErrorMacro("No GUIHelper set, can not exit application");
+          }
+        this->ReturnValue = 1;
+        return;
+        }
+      }
+    }
+  
+  if(this->ClientMode && this->RenderServerMode)
+    {
+    if(commRenderServer->ConnectTo(this->RenderServerHostName, this->RenderServerPort))
+      {
+      this->RenderServerSocket = vtkSocketController::New();
+      this->RenderServerSocket->SetCommunicator(commRenderServer);
+      }
+    else
+      {
+      vtkErrorMacro("Could not connect to render server on host: " << this->RenderServerHostName 
+                    << " Port: " << this->RenderServerPort); 
+      comm->Delete();
+      commRenderServer->Delete();
+      if(this->GUIHelper)
+        {
+        this->GUIHelper->ExitApplication();
+        }  
+      else
+        {
+        vtkErrorMacro("No GUIHelper set, can not exit application");
+        }
+      this->ReturnValue = 1;
+      return;
+      }
+    }
+
+  // if you make it this far, then the connection
+  // was made.
+  this->SocketController = vtkSocketController::New();
+  this->SocketController->SetCommunicator(comm);
+  this->ProgressHandler->SetSocketController(this->SocketController);
+  comm->Delete();
+  commRenderServer->Delete();
+}
+
+//----------------------------------------------------------------------------
+void vtkPVClientServerModule::SetupWaitForConnection()
+{
+  this->SocketController = vtkSocketController::New();
+  this->SocketController->Initialize();
+  this->ProgressHandler->SetSocketController(this->SocketController);
+  vtkSocketCommunicator* comm = vtkSocketCommunicator::New();
+  
+  int port= this->GetPort();
+  if(this->RenderServerMode)
+    {
+    port = this->GetRenderServerPort();
+    }
+  if ( this->ClientMode )
+    {
+    cout << "Waiting for server..." << endl;
+    }
+  else
+    {
+    if( this->RenderServerMode )
+      {
+      cout << "RenderServer: ";
+      }
+    cout << "Waiting for client..." << endl;
+    }
+
+  // Establish connection
+  if (!comm->WaitForConnection(port))
+    {
+    vtkErrorMacro("Wait timed out or could not initialize socket.");
+    comm->Delete();
+    this->ReturnValue = 1;
+    return;
+    }
+  if ( this->ClientMode )
+    {
+    cout << "Server connected." << endl;
+    }
+  else
+    {
+    cout << "Client connected." << endl;
+    }
+  this->SocketController->SetCommunicator(comm);
+  comm->Delete();
+  comm = NULL;
+}
+
+
+
+//----------------------------------------------------------------------------
+void vtkPVClientServerModule::Connect()
+{
+  int myId = this->Controller->GetLocalProcessId();
+ 
+#ifdef MPIPROALLOC
+  vtkCommunicator::SetUseCopy(1);
+#endif
+
+
+  // Do not try to connect sockets on MPI processes other than root.
+  if (myId > 0)
+    {
+    return;
+    }
+
+  if ( this->ShouldWaitForConnection())
+    {
+    this->SetupWaitForConnection();
+    }
+  else
+    {
+    this->ConnectToRemote();
+    }
+}
+
+
+void vtkPVClientServerModule::InitializeRenderServer()
+{
+  // if this is not client and using render server, then exit
+  if(!(this->ClientMode && this->RenderServerMode))
+    {
+    return;
+    }
+  int connectingServer;
+  int waitingServer;
+  int numberOfRenderNodes = 0;
+  if(this->RenderServerMode == 1)
+    {
+    connectingServer = vtkProcessModule::DATA_SERVER;
+    waitingServer = vtkProcessModule::RENDER_SERVER;
+    }
+  else
+    {
+    waitingServer = vtkProcessModule::DATA_SERVER;
+    connectingServer = vtkProcessModule::RENDER_SERVER;
+    }
+  // Create a vtkMPIMToNSocketConnection object on both the 
+  // servers.  This object holds the vtkSocketCommunicator object
+  // for each machine and makes the connections
+  vtkClientServerID id = this->NewStreamObject("vtkMPIMToNSocketConnection");
+  this->MPIMToNSocketConnectionID = id;
+  this->SendStream(vtkProcessModule::RENDER_SERVER|vtkProcessModule::DATA_SERVER);
+
+  vtkMPIMToNSocketConnectionPortInformation* info 
+    = vtkMPIMToNSocketConnectionPortInformation::New();
+  // if the data server is going to wait for the render server
+  // then we have to tell the data server how many connections to make
+  // if the render server is waiting, it already knows how many to make
+  if(this->RenderServerMode == 2)
+    {
+      // get the number of processes on the render server
+      this->GatherInformationRenderServer(info, id);
+      // Set the number of connections on the server to be equal to
+      // the number of connections on the render server
+      numberOfRenderNodes = info->GetNumberOfConnections();
+      this->GetStream() 
+        << vtkClientServerStream::Invoke << id 
+        << "SetNumberOfConnections" << numberOfRenderNodes
+        << vtkClientServerStream::End;
+      this->SendStream(vtkProcessModule::DATA_SERVER);
+    }
+  
+  // now initilaize the waiting server and have it set up the connections
+  this->GetStream()  
+    << vtkClientServerStream::Invoke
+    << this->GetProcessModuleID() << "GetRenderNodePort" << vtkClientServerStream::End;
+  this->GetStream()
+    << vtkClientServerStream::Invoke << id << "SetPortNumber"
+    << vtkClientServerStream::LastResult
+    << vtkClientServerStream::End;
+  this->GetStream()  
+    << vtkClientServerStream::Invoke
+    << this->GetProcessModuleID() << "GetMachinesFileName" << vtkClientServerStream::End;
+  this->GetStream()
+    << vtkClientServerStream::Invoke << id << "SetMachinesFileName"
+    << vtkClientServerStream::LastResult
+    << vtkClientServerStream::End;
+  this->GetStream() 
+    << vtkClientServerStream::Invoke << id << "SetupWaitForConnection"
+    << vtkClientServerStream::End;
+  this->SendStream(waitingServer);
+
+  // Get the information about the connection after the call to SetupWaitForConnection
+  if(this->RenderServerMode == 1)
+    {
+      this->GatherInformationRenderServer(info, id);
+      numberOfRenderNodes = info->GetNumberOfConnections();
+    }
+  else
+    {
+      this->GatherInformation(info, id);
+    }
+   // let the connecting server know how many render nodes 
+  this->GetStream() 
+    << vtkClientServerStream::Invoke << id 
+    << "SetNumberOfConnections" << numberOfRenderNodes
+    << vtkClientServerStream::End;
+
+  // set up host/port information for the connecting
+  // server so it will know what machines to connect to
+  for(int i=0; i < numberOfRenderNodes; ++i)
+    {
+    this->GetStream() 
+      << vtkClientServerStream::Invoke << id 
+      << "SetPortInformation" 
+      << static_cast<unsigned int>(i)
+      << info->GetProcessPort(i)
+      << info->GetProcessHostName(i)
+      << vtkClientServerStream::End;
+    } 
+  this->SendStream(connectingServer);
+  // all should be ready now to wait and connect
+
+  // tell the waiting server to wait for the connections
+  this->GetStream() 
+    << vtkClientServerStream::Invoke << id << "WaitForConnection"
+    << vtkClientServerStream::End;
+  this->SendStream(waitingServer);
+
+  // tell the connecting server to make the connections
+  this->GetStream() 
+    << vtkClientServerStream::Invoke << id << "Connect"
+    << vtkClientServerStream::End;
+  this->SendStream(connectingServer);
+  info->Delete();
+}
+
+//----------------------------------------------------------------------------
+// same as the MPI start.
+int vtkPVClientServerModule::Start(int argc, char **argv)
+{
+  // First we initialize the mpi controller.
+  // We are assuming that the client has been started with one process
+  // and is linked with MPI.
+  this->ArgumentCount = argc;
+  this->Arguments = argv;
+#ifdef VTK_USE_MPI
+  this->Controller = vtkMPIController::New();
+  vtkMultiProcessController::SetGlobalController(this->Controller);
+  this->Controller->Initialize(&argc, &argv, 1);
+  this->Controller->SetSingleMethod(vtkPVClientServerInit, (void *)(this));
+  this->Controller->SingleMethodExecute();
+  this->Controller->Finalize(1);
+#else
+  this->Controller = vtkDummyController::New();
+  // This would be simpler if vtkDummyController::SingleMethodExecute
+  // did its job correctly.
+  vtkMultiProcessController::SetGlobalController(this->Controller);
+  vtkPVClientServerInit(this->Controller, (void*)this);
+#endif
+
+  return this->ReturnValue;
+}
+
+
+
+
+//----------------------------------------------------------------------------
+// Only called by the client.
+void vtkPVClientServerModule::Exit()
+{
+  if ( ! this->ClientMode)
+    {
+    vtkErrorMacro("Not expecting server to call Exit.");
+    return;
+    }
+
+  if (this->MPIMToNSocketConnectionID.ID)
+    {    
+    this->DeleteStreamObject(this->MPIMToNSocketConnectionID);
+    this->SendStream(vtkProcessModule::RENDER_SERVER|vtkProcessModule::DATA_SERVER);
+    this->MPIMToNSocketConnectionID.ID = 0;
+    }
+ 
+
+  // If we are being called because a connection was not established,
+  // we don't need to cleanup the connection.
+  if(this->SocketController)
+    {
+    this->SocketController->TriggerRMI(
+      1, vtkMultiProcessController::BREAK_RMI_TAG);
+#ifdef _WIN32
+    // if you start client server mode with mpi the server
+    // never gets the break rmi unless this sleep is here.
+    Sleep(1000);
+#else
+    sleep(1);
+#endif
+    }
+  if(this->RenderServerSocket)
+    {
+    this->RenderServerSocket->TriggerRMI(
+      1, vtkMultiProcessController::BREAK_RMI_TAG);
+#ifdef _WIN32
+    // if you start client server mode with mpi the server
+    // never gets the break rmi unless this sleep is here.
+    Sleep(1000);
+#else
+    sleep(1);
+#endif
+    }
+  // Break RMI for MPI controller is in Init method.
+}
+
+
+
+
+
+//----------------------------------------------------------------------------
+// I do not think this method is really necessary.
+// Eliminate it if possible. !!!!!!!!
+int vtkPVClientServerModule::GetPartitionId()
+{
+  if (this->ClientMode)
+    {
+    return -1;
+    }
+  if (this->Controller)
+    {
+    return this->Controller->GetLocalProcessId();
+    }
+  return 0;
+}
+
+//----------------------------------------------------------------------------
+// This is used to determine which filters are available.
+int vtkPVClientServerModule::GetNumberOfPartitions()
+{
+  if (this->ClientMode)
+    {
+    return this->NumberOfServerProcesses;
+    }
+
+  if (this->Controller)
+    {
+    return this->Controller->GetNumberOfProcesses();
+    }
+
+  return 1;
+}
+
+//----------------------------------------------------------------------------
+void vtkPVClientServerModule::GatherInformation(vtkPVInformation* info,
+                                                vtkClientServerID id)
+{
+  // Just a simple way of passing the information object to the next method.
+  this->TemporaryInformation = info;
+
+  // Gather on the server.
+  this->GetStream()
+    << vtkClientServerStream::Invoke
+    << this->GetProcessModuleID()
+    << "GatherInformationInternal" << info->GetClassName() << id
+    << vtkClientServerStream::End;
+  this->SendStream(vtkProcessModule::DATA_SERVER);
+
+  // Gather on the client.
+  this->GatherInformationInternal(NULL, NULL);
+  this->TemporaryInformation = NULL;
+}
+
+//----------------------------------------------------------------------------
+void vtkPVClientServerModule::GatherInformationRenderServer(vtkPVInformation* info,
+                                                            vtkClientServerID id)
+{
+  // Just a simple way of passing the information object to the next method.
+  this->TemporaryInformation = info;
+
+  // Gather on the server.
+  this->GetStream()
+    << vtkClientServerStream::Invoke
+    << this->GetProcessModuleID()
+    << "GatherInformationInternal" << info->GetClassName() << id
+    << vtkClientServerStream::End;
+  this->SendStream(vtkProcessModule::RENDER_SERVER);
+  this->GatherRenderServer = 1;
+  // Gather on the client.
+  this->GatherInformationInternal(NULL, NULL);
+  this->GatherRenderServer = 0; 
+  this->TemporaryInformation = NULL;
+}
+
+//----------------------------------------------------------------------------
+// This method is broadcast to all processes.
+void
+vtkPVClientServerModule::GatherInformationInternal(const char* infoClassName,
+                                                   vtkObject* object)
+{
+  vtkClientServerStream css;
+  
+  if(this->GetClientMode())
+    {
+    vtkSocketController* controller = this->SocketController;
+    if(this->GatherRenderServer)
+      {
+      controller = this->RenderServerSocket;
+      }
+    
+    // Client just receives information from the server.
+    int length;
+    controller->Receive(&length, 1, 1, 398798);
+    if (length < 0)
+      { // I got this condition when the server aborted.
+      vtkErrorMacro("Could not gather information.");
+      return;
+      }
+    unsigned char* data = new unsigned char[length];
+    controller->Receive(data, length, 1, 398799);
+    css.SetData(data, length);
+    this->TemporaryInformation->CopyFromStream(&css);
+    delete [] data;
+    return;
+    }
+
+  // We are one of the server nodes.
+  int myId = this->Controller->GetLocalProcessId();
+  if(!object)
+    {
+    vtkErrorMacro("Deci id must be wrong.");
+    return;
+    }
+
+  // Create a temporary information object to hold the input object's
+  // information.
+  vtkObject* o = vtkInstantiator::CreateInstance(infoClassName);
+  if(!o)
+    {
+    vtkErrorMacro("Could not instantiate object " << infoClassName);
+    return;
+    }
+  vtkPVInformation* tempInfo1 = vtkPVInformation::SafeDownCast(o);
+  o = 0;
+
+  // Nodes other than 0 just send their information.
+  if(myId != 0)
+    {
+    if(tempInfo1->GetRootOnly())
+      {
+      // Root-only and we are not the root.  Do nothing.
+      tempInfo1->Delete();
+      return;
+      }
+    tempInfo1->CopyFromObject(object);
+    tempInfo1->CopyToStream(&css);
+    size_t length;
+    const unsigned char* data;
+    css.GetData(&data, &length);
+    int len = static_cast<int>(length);
+    this->Controller->Send(&len, 1, 0, 498798);
+    this->Controller->Send(const_cast<unsigned char*>(data),
+                           length, 0, 498799);
+    tempInfo1->Delete();
+    return;
+    }
+
+  // This is node 0.  First get our own information.
+  tempInfo1->CopyFromObject(object);
+
+  if(!tempInfo1->GetRootOnly())
+    {
+    // Create another temporary information object in which to
+    // receive information from other nodes.
+    o = vtkInstantiator::CreateInstance(infoClassName);
+    vtkPVInformation* tempInfo2 = vtkPVInformation::SafeDownCast(o);
+    o = NULL;
+
+    // Merge information from other nodes.
+    int numProcs = this->Controller->GetNumberOfProcesses();
+    int idx;
+    for (idx = 1; idx < numProcs; ++idx)
+      {
+      int length;
+      this->Controller->Receive(&length, 1, idx, 498798);
+      unsigned char* data = new unsigned char[length];
+      this->Controller->Receive(data, length, idx, 498799);
+      css.SetData(data, length);
+      tempInfo2->CopyFromStream(&css);
+      tempInfo1->AddInformation(tempInfo2);
+      delete [] data;
+      }
+    tempInfo2->Delete();
+    }
+
+  // Send final information to client over socket connection.
+  size_t length;
+  const unsigned char* data;
+  tempInfo1->CopyToStream(&css);
+  css.GetData(&data, &length);
+  int len = static_cast<int>(length);
+  this->SocketController->Send(&len, 1, 1, 398798);
+  this->SocketController->Send(const_cast<unsigned char*>(data),
+                               length, 1, 398799);
+  tempInfo1->Delete();
+}
+
+//----------------------------------------------------------------------------
+void vtkPVClientServerModule::PrintSelf(ostream& os, vtkIndent indent)
+{
+  this->Superclass::PrintSelf(os,indent);
+  os << indent << "Controller: " << this->Controller << endl;;
+  os << indent << "SocketController: " << this->SocketController << endl;;
+  os << indent << "RenderServerSocket: " << this->RenderServerSocket << endl;;
+  os << indent << "ClientMode: " << this->ClientMode << endl;
+  os << indent << "RenderServerMode: " << this->RenderServerMode << endl;
+}
+
+//----------------------------------------------------------------------------
+int vtkPVClientServerModule::GetDirectoryListing(const char* dir,
+                                                 vtkStringList* dirs,
+                                                 vtkStringList* files,
+                                                 int save)
+{
+  if(this->ClientMode)
+    {
+    return this->Superclass::GetDirectoryListing(dir, dirs, files, save);
+    }
+  else
+    {
+    dirs->RemoveAllItems();
+    files->RemoveAllItems();
+    return 0;
+    }
+}
+
+//----------------------------------------------------------------------------
+void vtkPVClientServerModule::ProcessMessage(unsigned char* msg, size_t len)
+{
+  this->Interpreter->ProcessStream(msg, len);
+}
+
+//----------------------------------------------------------------------------
+const vtkClientServerStream& vtkPVClientServerModule::GetLastClientResult()
+{
+  return this->Superclass::GetLastServerResult();
+}
+
+//----------------------------------------------------------------------------
+const vtkClientServerStream& vtkPVClientServerModule::GetLastServerResult()
+{
+  if(!this->ClientMode)
+    {
+    vtkErrorMacro("GetLastServerResult() should not be called on the server.");
+    this->LastServerResultStream->Reset();
+    *this->LastServerResultStream
+      << vtkClientServerStream::Error
+      << "vtkPVClientServerModule::GetLastServerResult() should not be called on the server."
+      << vtkClientServerStream::End;
+    return *this->LastServerResultStream;
+    }
+  int length;
+  this->SocketController->TriggerRMI(1, "", VTK_PV_CLIENT_SERVER_LAST_RESULT_TAG);
+  this->SocketController->Receive(&length, 1, 1, VTK_PV_ROOT_RESULT_LENGTH_TAG);
+  if(length <= 0)
+    {
+    this->LastServerResultStream->Reset();
+    *this->LastServerResultStream
+      << vtkClientServerStream::Error
+      << "vtkPVClientServerModule::GetLastServerResult() received no data from the server."
+      << vtkClientServerStream::End;
+    return *this->LastServerResultStream;
+    }
+  unsigned char* result = new unsigned char[length];
+  this->SocketController->Receive((char*)result, length, 1, VTK_PV_ROOT_RESULT_TAG);
+  this->LastServerResultStream->SetData(result, length);
+  delete [] result;
+  return *this->LastServerResultStream;
+}
+
+
+vtkTypeUInt32 vtkPVClientServerModule::CreateSendFlag(vtkTypeUInt32 servers)
+{  
+  vtkTypeUInt32 sendflag = 0;  
+
+  // for RenderServer mode keep the bit vector the same
+  // because all servers are different processes
+  if(this->RenderServerMode)
+    {
+    return servers;
+    }
+  // for data server only mode convert all render server calls
+  // into data server calls
+  if(servers & CLIENT)
+    {
+    sendflag |= CLIENT;
+    }
+  if(servers & RENDER_SERVER)
+    {
+    sendflag |= DATA_SERVER;
+    }
+  if(servers & RENDER_SERVER_ROOT)
+    {
+    sendflag |= DATA_SERVER_ROOT;
+    }
+  if(servers & DATA_SERVER)
+    {
+    sendflag |= DATA_SERVER;
+    }
+  if(servers & DATA_SERVER_ROOT)
+    {
+    sendflag |= DATA_SERVER_ROOT;
+    }
+  return sendflag;
+}
+
+//----------------------------------------------------------------------------
+int vtkPVClientServerModule::SendStreamToClient(vtkClientServerStream& stream)
+{ 
+  if(!this->ClientMode)
+    {
+    vtkErrorMacro("Attempt to call SendStreamToClient on server node.");
+    return -1;
+    }
+
+  // Just process the stream locally.
+  this->Interpreter->ProcessStream(stream);
+  return 0;
+}
+
+
+//----------------------------------------------------------------------------
+int vtkPVClientServerModule::SendStreamToDataServer(vtkClientServerStream& stream)
+{ 
+  if(!this->ClientMode)
+    {
+    vtkErrorMacro("Attempt to call SendStreamToDataServer on server node.");
+    return -1;
+    }
+  if (stream.GetNumberOfMessages() < 1)
+    {
+    return 1;
+    }
+  const unsigned char* data;
+  size_t len;
+  stream.GetData(&data, &len);
+  this->SocketController->TriggerRMI(1, (void*)(data), len,
+                                     VTK_PV_CLIENTSERVER_RMI_TAG);
+  return 0;
+}
+
+//----------------------------------------------------------------------------
+int vtkPVClientServerModule::SendStreamToDataServerRoot(vtkClientServerStream& stream)
+{
+  if(!this->ClientMode)
+    {
+    vtkErrorMacro("Attempt to call SendStreamToDataServerRoot on server node.");
+    return -1;
+    }
+  if (stream.GetNumberOfMessages() < 1)
+    {
+    return 0;
+    }
+  const unsigned char* data;
+  size_t len;
+  stream.GetData(&data, &len);
+  this->SocketController->TriggerRMI(1, (void*)(data), len,
+                                     VTK_PV_CLIENTSERVER_ROOT_RMI_TAG);
+  return 0;
+}
+
+//----------------------------------------------------------------------------
+int vtkPVClientServerModule::SendStreamToRenderServer(vtkClientServerStream& stream)
+{  
+  if (stream.GetNumberOfMessages() < 1)
+    {
+    return 0;
+    }
+  if(!this->RenderServerMode)
+    {
+    vtkErrorMacro("Attempt to call SendStreamToRenderServer when not in renderserver mode.");
+    return -1;
+    }
+
+  const unsigned char* data;
+  size_t len;
+  stream.GetData(&data, &len);
+  this->RenderServerSocket->TriggerRMI(1, (void*)(data), len,
+                                       VTK_PV_CLIENTSERVER_RMI_TAG);
+  return 0;
+}
+
+//----------------------------------------------------------------------------
+int vtkPVClientServerModule::SendStreamToRenderServerRoot(vtkClientServerStream& stream)
+{
+  if (stream.GetNumberOfMessages() < 1)
+    {
+    return 0;
+    }
+  if(!this->RenderServerMode)
+    {
+    vtkErrorMacro("Attempt to call SendStreamToRenderServerRoot when not in renderserver mode.");
+    return -1;
+    }
+
+  const unsigned char* data;
+  size_t len;
+  stream.GetData(&data, &len);
+  this->RenderServerSocket->TriggerRMI(1, (void*)(data), len,
+                                       VTK_PV_CLIENTSERVER_ROOT_RMI_TAG);
+  return 0;
+}
+
+
+//----------------------------------------------------------------------------
+void vtkPVClientServerModule::SendLastClientServerResult()
+{
+  const unsigned char* data;
+  size_t length = 0;
+  this->Interpreter->GetLastResult().GetData(&data, &length);
+  int len = static_cast<int>(length);
+  this->GetSocketController()->Send(&len, 1, 1,
+                                    VTK_PV_ROOT_RESULT_LENGTH_TAG);
+  if(length > 0)
+    {
+    this->GetSocketController()->Send((char*)(data), length, 1,
+                                      VTK_PV_ROOT_RESULT_TAG);
+    }
+}
+
+//----------------------------------------------------------------------------
+int vtkPVClientServerModule::LoadModuleInternal(const char* name,
+                                                const char* directory)
+{
+  // Try to load the module on the local process.
+  int localResult = this->Superclass::LoadModuleInternal(name, directory);
+
+  // Make sure we have a communicator.
+#ifdef VTK_USE_MPI
+  vtkMPICommunicator* communicator = vtkMPICommunicator::SafeDownCast(
+    this->Controller->GetCommunicator());
+  if(!communicator)
+    {
+    return 0;
+    }
+
+  // Gather load results to process 0.
+  int numProcs = this->Controller->GetNumberOfProcesses();
+  int myid = this->Controller->GetLocalProcessId();
+  int* results = new int[numProcs];
+  communicator->Gather(&localResult, results, numProcs, 0);
+
+  int globalResult = 1;
+  if(myid == 0)
+    {
+    for(int i=0; i < numProcs; ++i)
+      {
+      if(!results[i])
+        {
+        globalResult = 0;
+        }
+      }
+    }
+
+  delete [] results;
+
+  return globalResult;
+#else
+  return localResult;
+#endif
+}
