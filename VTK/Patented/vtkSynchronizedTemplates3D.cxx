@@ -155,11 +155,6 @@ void vtkSynchronizedTemplates3DInitializeOutput(
     scalars->SetName("Scalars");
     }
   
-  // if we did not ask for scalars to be computed, don't copy them
-  if (!self->GetComputeScalars())
-    {
-    o->GetPointData()->CopyScalarsOff();
-    }
   o->GetPointData()->InterpolateAllocate(input->GetPointData(),
                                          estimatedSize,estimatedSize/2);
   o->GetCellData()->CopyAllocate(input->GetCellData(),
