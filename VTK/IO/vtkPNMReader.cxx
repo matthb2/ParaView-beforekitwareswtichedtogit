@@ -16,6 +16,8 @@
 
 =========================================================================*/
 #include "vtkPNMReader.h"
+
+#include "vtkImageData.h"
 #include "vtkObjectFactory.h"
 
 vtkCxxRevisionMacro(vtkPNMReader, "$Revision$");

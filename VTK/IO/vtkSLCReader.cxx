@@ -16,6 +16,8 @@
 
 =========================================================================*/
 #include "vtkSLCReader.h"
+
+#include "vtkImageData.h"
 #include "vtkObjectFactory.h"
 
 #include <ctype.h>

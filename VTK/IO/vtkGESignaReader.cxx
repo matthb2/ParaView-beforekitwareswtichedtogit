@@ -16,7 +16,9 @@
 
 =========================================================================*/
 #include "vtkGESignaReader.h"
+
 #include "vtkByteSwap.h"
+#include "vtkImageData.h"
 #include "vtkObjectFactory.h"
 
 vtkCxxRevisionMacro(vtkGESignaReader, "$Revision$");

@@ -16,6 +16,8 @@
 
 =========================================================================*/
 #include "vtkJPEGReader.h"
+
+#include "vtkImageData.h"
 #include "vtkObjectFactory.h"
 
 extern "C" {

@@ -18,8 +18,13 @@
 #include "vtkSelectVisiblePoints.h"
 
 #include "vtkCamera.h"
+#include "vtkCellArray.h"
+#include "vtkDataSet.h"
 #include "vtkMatrix4x4.h"
 #include "vtkObjectFactory.h"
+#include "vtkPointData.h"
+#include "vtkPoints.h"
+#include "vtkPolyData.h"
 #include "vtkRenderWindow.h"
 #include "vtkRenderer.h"
 

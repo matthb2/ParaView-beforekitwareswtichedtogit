@@ -16,8 +16,10 @@
 
 =========================================================================*/
 #include "vtkImageReader2.h"
-#include "vtkObjectFactory.h"
+
 #include "vtkByteSwap.h"
+#include "vtkImageData.h"
+#include "vtkObjectFactory.h"
 
 #include <sys/stat.h>
 

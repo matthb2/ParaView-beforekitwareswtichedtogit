@@ -18,11 +18,12 @@
 #include "vtkRendererSource.h"
 
 #include "vtkFloatArray.h"
+#include "vtkImageData.h"
 #include "vtkMapper.h"
 #include "vtkObjectFactory.h"
 #include "vtkRenderWindow.h"
-#include "vtkUnsignedCharArray.h"
 #include "vtkRenderer.h"
+#include "vtkUnsignedCharArray.h"
 
 vtkCxxRevisionMacro(vtkRendererSource, "$Revision$");
 vtkStandardNewMacro(vtkRendererSource);

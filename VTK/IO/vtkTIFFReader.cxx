@@ -40,7 +40,10 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 =========================================================================*/
 #include "vtkTIFFReader.h"
+
+#include "vtkImageData.h"
 #include "vtkObjectFactory.h"
+
 #include <sys/stat.h>
 
 extern "C" {

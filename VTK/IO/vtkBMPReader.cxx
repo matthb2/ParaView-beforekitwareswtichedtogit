@@ -16,7 +16,9 @@
 
 =========================================================================*/
 #include "vtkBMPReader.h"
+
 #include "vtkByteSwap.h"
+#include "vtkImageData.h"
 #include "vtkObjectFactory.h"
 
 vtkCxxRevisionMacro(vtkBMPReader, "$Revision$");

@@ -16,7 +16,9 @@
 
 =========================================================================*/
 #include "vtkVolumeMapper.h"
+
 #include "vtkImageClip.h"
+#include "vtkImageData.h"
 
 vtkCxxRevisionMacro(vtkVolumeMapper, "$Revision$");
 

@@ -18,6 +18,7 @@
 #include "vtkWindowToImageFilter.h"
 
 #include "vtkCamera.h"
+#include "vtkImageData.h"
 #include "vtkObjectFactory.h"
 #include "vtkRenderWindow.h"
 #include "vtkRendererCollection.h"

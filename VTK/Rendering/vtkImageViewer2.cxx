@@ -19,6 +19,7 @@
 
 #include "vtkCamera.h"
 #include "vtkCommand.h"
+#include "vtkImageData.h"
 #include "vtkImageMapToWindowLevelColors.h"
 #include "vtkInteractorStyleImage.h"
 #include "vtkObjectFactory.h"

@@ -17,6 +17,7 @@
 =========================================================================*/
 #include "vtkVolume16Reader.h"
 
+#include "vtkImageData.h"
 #include "vtkObjectFactory.h"
 #include "vtkTransform.h"
 #include "vtkUnsignedShortArray.h"

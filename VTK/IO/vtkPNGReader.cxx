@@ -16,6 +16,8 @@
 
 =========================================================================*/
 #include "vtkPNGReader.h"
+
+#include "vtkImageData.h"
 #include "vtkObjectFactory.h"
 
 #include <png.h>
