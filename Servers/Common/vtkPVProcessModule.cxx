@@ -219,6 +219,7 @@ void vtkPVProcessModule::PrintSelf(ostream& os, vtkIndent indent)
     {
     os << "(none)" << endl;;
     }
+  os << indent << "ApplicationInstallationDirectory: " << (this->ApplicationInstallationDirectory?this->ApplicationInstallationDirectory:"(none)") << endl;
 }
 
 //----------------------------------------------------------------------------
