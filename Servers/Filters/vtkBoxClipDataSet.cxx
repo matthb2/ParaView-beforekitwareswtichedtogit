@@ -526,6 +526,8 @@ void vtkBoxClipDataSet::PrintSelf(ostream& os, vtkIndent indent)
     os << indent << "Locator: (none)\n";
     }
 
+  os << indent << "Generate Clipped Output: "
+     << (this->GenerateClippedOutput ? "Yes\n" : "Off\n");
   os << indent << "Generate Clip Scalars: " 
      << (this->GenerateClipScalars ? "On\n" : "Off\n");
 

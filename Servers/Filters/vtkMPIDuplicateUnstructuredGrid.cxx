@@ -442,5 +442,7 @@ void vtkMPIDuplicateUnstructuredGrid::PrintSelf(ostream& os, vtkIndent indent)
     }
   os << indent << "PassThrough: " << this->PassThrough << endl;
   os << indent << "ZeroEmpty: " << this->ZeroEmpty << endl;
+  // this->MemorySize doesn't exist (if vtkCollectUnstructuredGrid API is ever
+  // to be mimicked, then this may need to be declared).
 }
 

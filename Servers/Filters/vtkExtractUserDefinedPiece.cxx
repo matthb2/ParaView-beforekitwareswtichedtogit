@@ -45,6 +45,14 @@ vtkExtractUserDefinedPiece::~vtkExtractUserDefinedPiece()
     this->ConstantData = NULL;
   }
 }
+void vtkExtractUserDefinedPiece::PrintSelf(ostream& os, vtkIndent indent)
+{
+  this->Superclass::PrintSelf( os, indent );
+  os << indent << "ConstantData: " << this->ConstantData
+     << indent << "ConstantDataLen: " << this->ConstantDataLen
+     << indent << "InPiece: " << this->InPiece
+     << "\n";
+}
 void vtkExtractUserDefinedPiece::SetConstantData(void *data, int len)
 {
   this->ConstantData = new char [len];
