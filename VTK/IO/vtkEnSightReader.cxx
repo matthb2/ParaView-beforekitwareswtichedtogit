@@ -80,7 +80,7 @@ vtkEnSightReader::vtkEnSightReader()
   
   this->OutputsAreValid = 1;
   this->InitialRead = 1;
-  this->NumberOfNewOutputs;
+  this->NumberOfNewOutputs = 0;
 }
 
 //----------------------------------------------------------------------------
