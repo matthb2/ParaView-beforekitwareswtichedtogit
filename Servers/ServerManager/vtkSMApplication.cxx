@@ -132,6 +132,11 @@ void vtkSMApplication::Initialize()
   parser->ProcessConfiguration(proxyM);
   delete[] init_string;
 
+  init_string =  vtkSMDefaultModuleswritersGetInterfaces();
+  parser->Parse(init_string);
+  parser->ProcessConfiguration(proxyM);
+  delete[] init_string;
+
   parser->Delete();
 
 // //  const char* directory = args->GetValue("--configuration-path");
