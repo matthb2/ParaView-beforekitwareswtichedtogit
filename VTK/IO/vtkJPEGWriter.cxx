@@ -115,7 +115,7 @@ void vtkJPEGWriter::Write()
         sprintf(this->InternalFileName, this->FilePattern,this->FileNumber);
         }
       }
-    this->GetInput()->UpdateData();
+    this->GetInput()->Update();
     this->WriteSlice(this->GetInput());
     if (this->ErrorCode == vtkErrorCode::OutOfDiskSpaceError)
       {
