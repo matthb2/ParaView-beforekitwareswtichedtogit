@@ -546,6 +546,8 @@ void vtkIceTClientCompositeManager::PrintSelf(ostream& os, vtkIndent indent)
     {
     os << indent << "Tiled display with dimensions: " 
        << this->TiledDimensions[0] << ", " << this->TiledDimensions[1] << endl;
+    os << indent << "Tiled display with size: " 
+       << this->TileSize[0] << ", " << this->TileSize[1] << endl;
     }
 
   os << indent << "UseCompositing: " << this->UseCompositing << endl;
