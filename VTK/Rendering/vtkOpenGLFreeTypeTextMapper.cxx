@@ -260,6 +260,7 @@ void vtkOpenGLFreeTypeTextMapper::RenderOverlay(vtkViewport* viewport,
   glPushMatrix();
   glLoadIdentity();
   glDisable(GL_LIGHTING);
+  glDepthFunc(GL_ALWAYS);
 
   if (actor->GetProperty()->GetDisplayLocation() == VTK_FOREGROUND_LOCATION)
     {
@@ -379,7 +380,6 @@ void vtkOpenGLFreeTypeTextMapper::RenderOverlay(vtkViewport* viewport,
       }
 #endif
     
-    glDepthFunc(GL_ALWAYS);
     // Set the color here since load/render glyphs is done
     // on demand and this color has to be consistent for a given font entry.
     
