@@ -28,6 +28,8 @@ vtkImplicitFunction::vtkImplicitFunction()
 
 vtkImplicitFunction::~vtkImplicitFunction()
 {
+  //static_cast needed since otherwise the
+  //call to SetTransform becomes ambiguous
   this->SetTransform(static_cast<vtkAbstractTransform*>(NULL));
 }
 
@@ -147,5 +149,6 @@ void vtkImplicitFunction::SetTransform(double elements[16])
   vtkTransform* transform = vtkTransform::New();
   transform->SetMatrix(elements);
   this->SetTransform(transform);
+  transform->Delete();
 }
 
