@@ -92,7 +92,7 @@ void vtkQuadricDecimation::Execute()
     }
 
   this->ErrorQuadrics = 
-    new vtkQuadricDecimation::ErrorQuadricStruct[input->GetNumberOfPoints()];
+    new vtkQuadricDecimation::ErrorQuadric[input->GetNumberOfPoints()];
   this->Mesh->DeepCopy(input);
   input->BuildLinks();
   this->Mesh->BuildLinks();

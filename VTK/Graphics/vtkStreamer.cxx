@@ -221,9 +221,9 @@ VTK_THREAD_RETURN_TYPE vtkStreamer::ThreadedIntegrate( void *arg )
   float err;
   int nSavePts = 0, counter=0;
 
-  thread_id = ((vtkMultiThreader::ThreadInfoStruct *)(arg))->ThreadID;
-  thread_count = ((vtkMultiThreader::ThreadInfoStruct *)(arg))->NumberOfThreads;
-  self = (vtkStreamer *)(((vtkMultiThreader::ThreadInfoStruct *)(arg))->UserData);
+  thread_id = ((vtkMultiThreader::ThreadInfo *)(arg))->ThreadID;
+  thread_count = ((vtkMultiThreader::ThreadInfo *)(arg))->NumberOfThreads;
+  self = (vtkStreamer *)(((vtkMultiThreader::ThreadInfo *)(arg))->UserData);
 
   input     = self->GetInput();
   pd        = input->GetPointData();

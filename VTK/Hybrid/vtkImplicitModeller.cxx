@@ -161,10 +161,10 @@ static VTK_THREAD_RETURN_TYPE vtkImplicitModeller_ThreadedAppend( void *arg )
   int slabSize, slabMin, slabMax;
   vtkMutexLock *mutex;
 
-  thread_id = ((vtkMultiThreader::ThreadInfoStruct *)(arg))->ThreadID;
-  thread_count = ((vtkMultiThreader::ThreadInfoStruct *)(arg))->NumberOfThreads;
+  thread_id = ((vtkMultiThreader::ThreadInfo *)(arg))->ThreadID;
+  thread_count = ((vtkMultiThreader::ThreadInfo *)(arg))->NumberOfThreads;
   userData = (vtkImplicitModellerAppendInfo *)
-    (((vtkMultiThreader::ThreadInfoStruct *)(arg))->UserData);
+    (((vtkMultiThreader::ThreadInfo *)(arg))->UserData);
   mutex = userData->ProgressMutex;
 
 

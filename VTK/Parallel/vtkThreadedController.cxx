@@ -286,7 +286,7 @@ void vtkThreadedController::Barrier()
 VTK_THREAD_RETURN_TYPE vtkThreadedController::vtkThreadedControllerStart( 
   void *arg )
 {
-  vtkMultiThreader::ThreadInfoStruct* info = (vtkMultiThreader::ThreadInfoStruct*)(arg);
+  vtkMultiThreader::ThreadInfo* info = (vtkMultiThreader::ThreadInfo*)(arg);
   int threadId = info->ThreadID;
   vtkThreadedController *controller0 =(vtkThreadedController*)(info->UserData);
 
