@@ -294,6 +294,14 @@ void vtkKWIcon::SetImage(int image)
         image_axes_buffer_length);
       break;
 
+    case vtkKWIcon::ICON_CONNECTION:
+      this->SetImage(
+        image_connection, 
+        image_connection_width, image_connection_height,
+        image_connection_pixel_size, 
+        image_connection_buffer_length);
+      break;
+
     case vtkKWIcon::ICON_CONTOURS:
       this->SetImage(
         image_contours, 
