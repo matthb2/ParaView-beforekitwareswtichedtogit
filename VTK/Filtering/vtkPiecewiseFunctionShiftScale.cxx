@@ -32,7 +32,6 @@ vtkPiecewiseFunctionShiftScale::vtkPiecewiseFunctionShiftScale()
 
 vtkPiecewiseFunctionShiftScale::~vtkPiecewiseFunctionShiftScale()
 {
-  this->SetInput(NULL);
 }
 
 void vtkPiecewiseFunctionShiftScale::Execute()
