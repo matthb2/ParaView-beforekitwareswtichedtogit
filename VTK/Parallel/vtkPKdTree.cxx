@@ -1490,8 +1490,8 @@ void vtkPKdTree::GetLocalMinMax(int L, int R, int me,
 
     for (d=0; d<3; d++)
       {
-      min[d] = (float)regionMin[d];
-      max[d] = (float)regionMax[d];
+      min[d] = (float)regionMax[d];
+      max[d] = (float)regionMin[d];
       }
     }
 }
