@@ -1433,6 +1433,10 @@ void vtkXMLWriter::WriteCoordinatesInline(vtkDataArray* xc, vtkDataArray* yc,
     vtkIdType total = (oxc->GetNumberOfTuples()+
                        oyc->GetNumberOfTuples()+
                        ozc->GetNumberOfTuples());
+    if(total == 0)
+      {
+      total = 1;
+      }
     float fractions[4] =
       {
         0,
@@ -1497,6 +1501,10 @@ void vtkXMLWriter::WriteCoordinatesAppendedData(vtkDataArray* xc,
     vtkIdType total = (oxc->GetNumberOfTuples()+
                        oyc->GetNumberOfTuples()+
                        ozc->GetNumberOfTuples());
+    if(total == 0)
+      {
+      total = 1;
+      }
     float fractions[4] =
       {
         0,
