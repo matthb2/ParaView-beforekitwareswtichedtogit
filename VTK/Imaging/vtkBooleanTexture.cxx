@@ -51,13 +51,13 @@ void vtkBooleanTexture::ExecuteInformation()
 
 void vtkBooleanTexture::ExecuteData(vtkDataObject *outp)
 {
-  int numPts, i, j;
+  int i, j;
   int midILower, midJLower, midIUpper, midJUpper;
   vtkImageData *output = this->AllocateOutputData(outp);
   vtkUnsignedCharArray *newScalars = 
     vtkUnsignedCharArray::SafeDownCast(output->GetPointData()->GetScalars());
   
-  if (!newScalars || (numPts = this->XSize * this->YSize) < 1 )
+  if (!newScalars || this->XSize*this->YSize < 1 )
     {
     vtkErrorMacro(<<"Bad texture (xsize,ysize) specification!");
     return;
