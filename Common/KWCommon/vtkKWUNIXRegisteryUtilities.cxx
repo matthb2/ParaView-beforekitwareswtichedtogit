@@ -46,7 +46,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #define VTK_IOS_NOCREATE | ios::nocreate
 #endif
 
-#define BUFFER_SIZE 1024
+#define BUFFER_SIZE 8192
 
 vtkStandardNewMacro( vtkKWUNIXRegisteryUtilities );
 vtkCxxRevisionMacro(vtkKWUNIXRegisteryUtilities, "$Revision$");
