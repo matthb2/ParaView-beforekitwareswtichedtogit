@@ -22,6 +22,7 @@
 #include <stdio.h>
 #include <ctype.h>
 #include <string.h>
+#include <sys/stat.h>
 
 vtkCxxRevisionMacro(vtkImageReader2, "$Revision$");
 vtkStandardNewMacro(vtkImageReader2);
@@ -513,11 +514,15 @@ void vtkImageReader2::OpenFile()
   
   // Open the new file
   vtkDebugMacro(<< "Initialize: opening file " << this->InternalFileName);
+  struct stat fs;
+  if ( !stat( this->InternalFileName, &fs) )
+    {
 #ifdef _WIN32
-  this->File = new ifstream(this->InternalFileName, ios::in | ios::binary);
+    this->File = new ifstream(this->InternalFileName, ios::in | ios::binary);
 #else
-  this->File = new ifstream(this->InternalFileName, ios::in);
+    this->File = new ifstream(this->InternalFileName, ios::in);
 #endif
+    }
   if (! this->File || this->File->fail())
     {
     vtkErrorMacro(<< "Initialize: Could not open file " << 
@@ -680,9 +685,9 @@ void vtkImageReader2::ExecuteData(vtkDataObject *output)
   void *ptr = NULL;
   int *ext;
   
-  if (!this->FileName && !this->FilePattern)
+  if (!this->FileName && !this->FilePattern || !this->File)
     {
-    vtkErrorMacro(<<"Either a FileName or FilePattern must be specified.");
+    vtkErrorMacro("Either a valid FileName or FilePattern must be specified.");
     return;
     }
 

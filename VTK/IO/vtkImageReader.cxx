@@ -134,7 +134,10 @@ void vtkImageReader::OpenAndSeekFile(int dataExtent[6], int idx)
     }
   this->ComputeInternalFileName(idx);
   this->OpenFile();
-
+  if ( !this->File )
+    {
+    return;
+    }
   // convert data extent into constants that can be used to seek.
   streamStart = 
     (dataExtent[0] - this->DataExtent[0]) * this->DataIncrements[0];
@@ -368,9 +371,9 @@ void vtkImageReader::ExecuteData(vtkDataObject *output)
   void *ptr = NULL;
   int *ext;
   
-  if (!this->FileName && !this->FilePattern)
+  if (!this->FileName && !this->FilePattern || !this->File)
     {
-    vtkErrorMacro(<<"Either a FileName or FilePattern must be specified.");
+    vtkErrorMacro("Either a valid FileName or FilePattern must be specified.");
     return;
     }
 
