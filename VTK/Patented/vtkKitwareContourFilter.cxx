@@ -324,3 +324,9 @@ void vtkKitwareContourFilter::DataSetContour()
   this->SetOutput(output);
   contour->Delete();
 }
+
+//----------------------------------------------------------------------------
+void vtkKitwareContourFilter::PrintSelf(ostream& os, vtkIndent indent)
+{
+  this->Superclass::PrintSelf(os,indent);
+}
