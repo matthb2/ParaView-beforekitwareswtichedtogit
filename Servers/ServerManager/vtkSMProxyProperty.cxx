@@ -253,7 +253,7 @@ vtkSMProxy* vtkSMProxyProperty::GetUncheckedProxy(unsigned int idx)
 
 //---------------------------------------------------------------------------
 void vtkSMProxyProperty::SaveState(
-  const char* name,  ofstream* file, vtkIndent indent)
+  const char* name,  ostream* file, vtkIndent indent)
 {
   vtkSMProxyManager* pm = this->GetProxyManager();
   if (!pm)

@@ -118,7 +118,7 @@ int vtkSMEnumerationDomain::IsInDomain(int val, unsigned int& idx)
 
 //---------------------------------------------------------------------------
 void vtkSMEnumerationDomain::SaveState(
-  const char* name, ofstream* file, vtkIndent indent)
+  const char* name, ostream* file, vtkIndent indent)
 {
   *file << indent 
         << "<Domain name=\"" << this->XMLName << "\" id=\"" << name << "\">"
