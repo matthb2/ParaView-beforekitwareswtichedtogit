@@ -29,6 +29,7 @@ vtkCxxRevisionMacro(vtkKWProcessStatistics, "$Revision$");
 #endif
 
 #include "vtkObjectFactory.h"
+#include "vtkWindows.h"
 
 vtkStandardNewMacro(vtkKWProcessStatistics);
 
