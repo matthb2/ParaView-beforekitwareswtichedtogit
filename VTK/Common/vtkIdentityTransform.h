@@ -119,12 +119,12 @@ public:
 
   // Description:
   // This method does no type checking, use DeepCopy instead.
-  void InternalDeepCopy(vtkGeneralTransform *t);
+  void InternalDeepCopy(vtkAbstractTransform *t);
 
   // Description:
   // Make a transform of the same type.  This will actually
   // return the same transform.
-  vtkGeneralTransform *MakeTransform();
+  vtkAbstractTransform *MakeTransform();
 
 protected:
   vtkIdentityTransform();
