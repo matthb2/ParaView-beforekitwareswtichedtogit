@@ -454,6 +454,14 @@ void vtkKWIcon::SetImage(int image)
         image_question_buffer_length);
       break;
 
+    case vtkKWIcon::ICON_RELOAD:
+      this->SetImage(
+        image_reload, 
+        image_reload_width, image_reload_height,
+        image_reload_pixel_size, 
+        image_reload_buffer_length);
+      break;
+
     case vtkKWIcon::ICON_SHRINK:
       this->SetImage(
         image_shrink, 
