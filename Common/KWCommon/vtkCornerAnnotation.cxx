@@ -18,6 +18,7 @@
 #include "vtkImageMapToWindowLevelColors.h"
 #include "vtkObjectFactory.h"
 #include "vtkPropCollection.h"
+#include "vtkSource.h"
 #include "vtkTextMapper.h"
 #include "vtkTextProperty.h"
 #include "vtkViewport.h"
