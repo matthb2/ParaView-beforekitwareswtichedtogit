@@ -83,6 +83,14 @@ void vtkImageSpatialFilter::ExecuteInformation()
   this->ComputeOutputWholeExtent(extent, this->HandleBoundaries);
   output->SetWholeExtent(extent);
   this->ExecuteInformation(input, output);
+
+  vtkDataArray *inArray;
+  inArray = input->GetPointData()->GetScalars(this->InputScalarsSelection);
+  if (inArray)
+    {
+    output->SetScalarType(inArray->GetDataType());
+    output->SetNumberOfScalarComponents(inArray->GetNumberOfComponents());
+    }
 }
 //----------------------------------------------------------------------------
 void vtkImageSpatialFilter::ExecuteInformation(
