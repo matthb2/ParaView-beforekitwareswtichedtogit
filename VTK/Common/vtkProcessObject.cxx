@@ -48,14 +48,6 @@ vtkProcessObject::~vtkProcessObject()
       this->Inputs[idx]->UnRegister(this);
       this->Inputs[idx] = NULL;
       }
-    if (this->SortedInputs[idx])
-      {
-      this->SortedInputs[idx]= NULL;
-      }
-    if (this->SortedInputs2[idx])
-      {
-      this->SortedInputs2[idx]= NULL;
-      }
     }
   if (this->Inputs)
     {
