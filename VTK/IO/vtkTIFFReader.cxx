@@ -42,6 +42,8 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "vtkTIFFReader.h"
 
 #include "vtkImageData.h"
+#include "vtkPointData.h"
+#include "vtkDataArray.h"
 #include "vtkObjectFactory.h"
 
 #include <sys/stat.h>
@@ -312,7 +314,14 @@ void vtkTIFFReader::ExecuteData(vtkDataObject *output)
     vtkTemplateMacro3(vtkTIFFReaderUpdate, this, data, (VTK_TT *)(outPtr));
     default:
       vtkErrorMacro("UpdateFromFile: Unknown data type");
-    }   
+    }
+
+  // Give the scalars a name.
+  const char* name = data->GetPointData()->GetScalars()->GetName();
+  if (name == NULL || name[0] == '\0')
+    {
+    data->GetPointData()->GetScalars()->SetName("TIFF Image");
+    }
 }
 
 unsigned int vtkTIFFReader::GetFormat( )
