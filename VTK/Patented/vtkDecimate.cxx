@@ -31,6 +31,7 @@
 =========================================================================*/
 #include "vtkDecimate.h"
 
+#include "vtkCellArray.h"
 #include "vtkFloatArray.h"
 #include "vtkLine.h"
 #include "vtkMath.h"

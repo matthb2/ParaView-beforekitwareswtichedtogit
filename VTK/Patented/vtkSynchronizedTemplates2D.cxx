@@ -28,6 +28,8 @@
 =========================================================================*/
 #include "vtkSynchronizedTemplates2D.h"
 
+#include "vtkCellArray.h"
+#include "vtkCellData.h"
 #include "vtkCharArray.h"
 #include "vtkDoubleArray.h"
 #include "vtkFloatArray.h"
@@ -35,6 +37,7 @@
 #include "vtkIntArray.h"
 #include "vtkLongArray.h"
 #include "vtkObjectFactory.h"
+#include "vtkPointData.h"
 #include "vtkPolyData.h"
 #include "vtkShortArray.h"
 #include "vtkUnsignedCharArray.h"

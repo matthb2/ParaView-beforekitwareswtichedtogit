@@ -40,6 +40,7 @@
 #include "vtkMarchingSquares.h"
 #include "vtkMergePoints.h"
 #include "vtkObjectFactory.h"
+#include "vtkPointData.h"
 #include "vtkPolyData.h"
 #include "vtkScalarTree.h"
 #include "vtkStructuredPoints.h"

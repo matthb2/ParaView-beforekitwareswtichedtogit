@@ -18,11 +18,13 @@
 #include "vtkKitwareContourFilter.h"
 
 #include "vtkCell.h"
+#include "vtkCellData.h"
 #include "vtkContourValues.h"
 #include "vtkGridSynchronizedTemplates3D.h"
 #include "vtkImageData.h"
 #include "vtkMergePoints.h"
 #include "vtkObjectFactory.h"
+#include "vtkPointData.h"
 #include "vtkPolyData.h"
 #include "vtkScalarTree.h"
 #include "vtkStructuredGrid.h"

@@ -31,9 +31,11 @@
 =========================================================================*/
 #include "vtkSweptSurface.h"
 
+#include "vtkDataArray.h"
 #include "vtkImageData.h"
 #include "vtkMath.h"
 #include "vtkObjectFactory.h"
+#include "vtkPointData.h"
 #include "vtkTransformCollection.h"
 #include "vtkVoxel.h"
 
