@@ -23,7 +23,7 @@
 #include "vtkTransform.h"
 #include "vtkVolume.h"
 
-#include <GL/gl.h>
+#include "vtkOpenGL.h"
 
 vtkCxxRevisionMacro(vtkOpenGLVolumeProVP1000Mapper, "$Revision$");
 vtkStandardNewMacro(vtkOpenGLVolumeProVP1000Mapper);

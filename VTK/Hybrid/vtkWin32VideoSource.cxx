@@ -21,7 +21,7 @@
 
 #include <ctype.h>
 
-#include <windows.h>
+#include "vtkWindows.h"
 #include <winuser.h>
 #include <vfw.h>
 

@@ -16,11 +16,7 @@
 #include "vtkMatrix4x4.h"
 #include "vtkVolume.h"
 #ifndef VTK_IMPLEMENT_MESA_CXX
-#ifdef __APPLE__
-#include <OpenGL/gl.h>
-#else
-#include <GL/gl.h>
-#endif
+# include "vtkOpenGL.h"
 #endif
 #include "vtkObjectFactory.h"
 

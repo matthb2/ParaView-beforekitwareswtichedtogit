@@ -511,6 +511,16 @@ void vtkTimerLog::PrintSelf(ostream& os, vtkIndent indent)
 // timer table logging.
 
 //----------------------------------------------------------------------------
+#ifdef VTK_WORKAROUND_WINDOWS_MANGLE
+# undef GetCurrentTime
+// Define possible mangled names.
+double vtkTimerLog::GetTickCount()
+{
+  return vtkTimerLog::GetCurrentTime();
+}
+#endif
+
+//----------------------------------------------------------------------------
 // Returns the elapsed number of seconds since January 1, 1970. This
 // is also called Universal Coordinated Time.
 double vtkTimerLog::GetCurrentTime()

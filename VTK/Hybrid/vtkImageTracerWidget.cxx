@@ -199,7 +199,26 @@ vtkImageTracerWidget::~vtkImageTracerWidget()
   this->HandleGenerator->Delete();
 }
 
+//----------------------------------------------------------------------------
+#ifdef VTK_WORKAROUND_WINDOWS_MANGLE
+# undef SetProp
+// Define possible mangled names.
+void vtkImageTracerWidget::SetPropA(vtkProp* prop)
+{
+  this->SetPropInternal(prop);
+}
+void vtkImageTracerWidget::SetPropW(vtkProp* prop)
+{
+  this->SetPropInternal(prop);
+}
+#endif
 void vtkImageTracerWidget::SetProp(vtkProp* prop)
+{
+  this->SetPropInternal(prop);
+}
+
+//----------------------------------------------------------------------------
+void vtkImageTracerWidget::SetPropInternal(vtkProp* prop)
 {
   if ( this->Prop != prop )
     {

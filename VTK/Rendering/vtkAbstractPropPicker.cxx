@@ -51,7 +51,26 @@ void vtkAbstractPropPicker::Initialize()
     }
 }
 
-vtkProp *vtkAbstractPropPicker::GetProp()
+//----------------------------------------------------------------------------
+#ifdef VTK_WORKAROUND_WINDOWS_MANGLE
+# undef GetProp
+// Define possible mangled names.
+vtkProp* vtkAbstractPropPicker::GetPropA()
+{
+  return this->GetPropInternal();
+}
+vtkProp* vtkAbstractPropPicker::GetPropW()
+{
+  return this->GetPropInternal();
+}
+#endif
+vtkProp* vtkAbstractPropPicker::GetProp()
+{
+  return this->GetPropInternal();
+}
+
+//----------------------------------------------------------------------------
+vtkProp* vtkAbstractPropPicker::GetPropInternal()
 {
   if ( this->Path != NULL )
     {

@@ -115,7 +115,26 @@ void vtkViewport::AddProp(vtkProp *p)
     }
 }
 
-void vtkViewport::RemoveProp(vtkProp *p)
+//----------------------------------------------------------------------------
+#ifdef VTK_WORKAROUND_WINDOWS_MANGLE
+# undef RemoveProp
+// Define possible mangled names.
+void vtkViewport::RemovePropA(vtkProp* p)
+{
+  this->RemovePropInternal(p);
+}
+void vtkViewport::RemovePropW(vtkProp* p)
+{
+  this->RemovePropInternal(p);
+}
+#endif
+void vtkViewport::RemoveProp(vtkProp* p)
+{
+  this->RemovePropInternal(p);
+}
+
+//----------------------------------------------------------------------------
+void vtkViewport::RemovePropInternal(vtkProp *p)
 {
   if (p && this->HasProp(p))
     {

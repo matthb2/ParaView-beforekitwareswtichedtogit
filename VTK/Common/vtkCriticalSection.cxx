@@ -92,20 +92,6 @@ void vtkSimpleCriticalSection::Unlock()
 #endif
 }
 
-int vtkSimpleCriticalSection::IsA(const char *type)
-{
-  if ( !strcmp(this->vtkSimpleCriticalSection::GetClassName(),type) )
-    {
-    return 1;
-    }
-  return 0;
-}
-
-vtkSimpleCriticalSection *vtkSimpleCriticalSection::SafeDownCast(vtkSimpleCriticalSection *o)
-{
-  return (vtkSimpleCriticalSection *)o;
-}
-  
 void vtkCriticalSection::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os, indent);

@@ -40,6 +40,10 @@ extern "C" { typedef void *(*vtkExternCThreadFunctionType)(void *); }
 typedef vtkThreadFunctionType vtkExternCThreadFunctionType;
 #endif
 
+#ifdef VTK_USE_WIN32_THREADS
+# include "vtkWindows.h"
+#endif
+
 #ifdef __APPLE__
 #include <Carbon/Carbon.h>
 #endif

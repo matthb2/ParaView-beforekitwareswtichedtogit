@@ -13,7 +13,9 @@
 
 =========================================================================*/
 #include "vtkWin32ProcessOutputWindow.h"
+
 #include "vtkObjectFactory.h"
+#include "vtkWindows.h"
 
 #include <vtkstd/string>
 

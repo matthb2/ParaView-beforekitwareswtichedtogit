@@ -453,7 +453,25 @@ void vtkParallelRenderManager::StartInteractor()
 }
 
 //----------------------------------------------------------------------------
+#ifdef VTK_WORKAROUND_WINDOWS_MANGLE
+# undef StartService
+// Define possible mangled names.
+void vtkParallelRenderManager::StartServiceA()
+{
+  this->StartServiceInternal();
+}
+void vtkParallelRenderManager::StartServiceW()
+{
+  this->StartServiceInternal();
+}
+#endif
 void vtkParallelRenderManager::StartService()
+{
+  this->StartServiceInternal();
+}
+
+//----------------------------------------------------------------------------
+void vtkParallelRenderManager::StartServiceInternal()
 {
   vtkDebugMacro("StartService");
   

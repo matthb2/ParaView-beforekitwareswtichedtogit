@@ -62,6 +62,24 @@ vtkObjectBase::~vtkObjectBase()
     }
 }
 
+//----------------------------------------------------------------------------
+#ifdef VTK_WORKAROUND_WINDOWS_MANGLE
+# undef GetClassName
+// Define possible mangled names.
+const char* vtkObjectBase::GetClassNameA() const
+{
+  return this->GetClassNameInternal();
+}
+const char* vtkObjectBase::GetClassNameW() const
+{
+  return this->GetClassNameInternal();
+}
+#endif
+const char* vtkObjectBase::GetClassName() const
+{
+  return this->GetClassNameInternal();
+}
+
 int vtkObjectBase::IsTypeOf(const char *name) 
 {
   if ( !strcmp("vtkObjectBase",name) )
