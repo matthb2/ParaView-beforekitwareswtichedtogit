@@ -41,6 +41,19 @@
 vtkCxxRevisionMacro(vtkTimerLog, "$Revision$");
 vtkStandardNewMacro(vtkTimerLog);
 
+// Create a singleton to cleanup the table.  No other singletons
+// should be using the timer log, so it is safe to do this without the
+// full ClassInitialize/ClassFinalize idiom.
+class vtkTimerLogCleanup
+{
+public:
+  ~vtkTimerLogCleanup()
+    {
+    vtkTimerLog::CleanupLog();
+    }
+};
+static vtkTimerLogCleanup vtkTimerLogCleanupInstance;
+
 // initialze the class variables
 int vtkTimerLog::Logging = 1;
 int vtkTimerLog::Indent = 0;
