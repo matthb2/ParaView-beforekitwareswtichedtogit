@@ -31,7 +31,7 @@ vtkPVInformation::~vtkPVInformation()
 void vtkPVInformation::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os,indent);
-  os << indent << "RootOnly: " << this->RootOnly;
+  os << indent << "RootOnly: " << this->RootOnly << endl;
 }
 
 //----------------------------------------------------------------------------
