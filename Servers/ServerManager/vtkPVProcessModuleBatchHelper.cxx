@@ -23,6 +23,7 @@
 #include "vtkTclUtil.h"
 #include "vtkKWDirectoryUtilities.h"
 #include "vtkString.h"
+#include "vtkWindows.h"
 
 vtkCxxRevisionMacro(vtkPVProcessModuleBatchHelper, "$Revision$");
 vtkStandardNewMacro(vtkPVProcessModuleBatchHelper);

@@ -13,6 +13,7 @@
 
 =========================================================================*/
 #include "vtkPVClientServerModule.h"
+
 #include "vtkPVServerInformation.h"
 #include "vtkCharArray.h"
 #include "vtkDataSet.h"
@@ -44,7 +45,9 @@
 #include "vtkKWRemoteExecute.h"
 #include "vtkPVOptions.h"
 #ifndef _WIN32
-#include <unistd.h>
+# include <unistd.h>
+#else
+# include "vtkWindows.h"
 #endif
 #include <vtkstd/string>
 #include "vtkProcessModuleGUIHelper.h"
