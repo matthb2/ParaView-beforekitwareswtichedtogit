@@ -75,6 +75,12 @@ vtkPolyData* vtkXMLPolyDataReader::GetOutput()
 }
 
 //----------------------------------------------------------------------------
+vtkPolyData* vtkXMLPolyDataReader::GetOutput(int idx)
+{
+  return static_cast<vtkPolyData*>(this->Superclass::GetOutput(idx));
+}
+
+//----------------------------------------------------------------------------
 vtkIdType vtkXMLPolyDataReader::GetNumberOfVerts()
 {
   return this->TotalNumberOfVerts;

@@ -66,6 +66,13 @@ vtkStructuredGrid* vtkXMLStructuredGridReader::GetOutput()
 }
 
 //----------------------------------------------------------------------------
+vtkStructuredGrid* vtkXMLStructuredGridReader::GetOutput(int idx)
+{
+  return static_cast<vtkStructuredGrid*>(this->Superclass::GetOutput(idx));
+}
+  
+
+//----------------------------------------------------------------------------
 const char* vtkXMLStructuredGridReader::GetDataSetName()
 {
   return "StructuredGrid";

@@ -67,6 +67,12 @@ vtkRectilinearGrid* vtkXMLRectilinearGridReader::GetOutput()
 }
 
 //----------------------------------------------------------------------------
+vtkRectilinearGrid* vtkXMLRectilinearGridReader::GetOutput(int idx)
+{
+  return static_cast<vtkRectilinearGrid*>(this->Superclass::GetOutput(idx));
+}
+
+//----------------------------------------------------------------------------
 const char* vtkXMLRectilinearGridReader::GetDataSetName()
 {
   return "RectilinearGrid";

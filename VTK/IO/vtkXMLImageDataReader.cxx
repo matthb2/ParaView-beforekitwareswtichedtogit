@@ -65,6 +65,13 @@ vtkImageData* vtkXMLImageDataReader::GetOutput()
 }
 
 //----------------------------------------------------------------------------
+vtkImageData* vtkXMLImageDataReader::GetOutput(int idx)
+{
+  return static_cast<vtkImageData*>(this->Superclass::GetOutput(idx));
+}
+
+
+//----------------------------------------------------------------------------
 const char* vtkXMLImageDataReader::GetDataSetName()
 {
   return "ImageData";
