@@ -29,8 +29,8 @@ vtkSubdivisionAlgorithm::vtkSubdivisionAlgorithm()
 
 vtkSubdivisionAlgorithm::~vtkSubdivisionAlgorithm()
 {
-  delete this->FieldIds;
-  delete this->FieldOffsets;
+  delete[] this->FieldIds;
+  delete[] this->FieldOffsets;
 };
 
 void vtkSubdivisionAlgorithm::ResetFieldList()
