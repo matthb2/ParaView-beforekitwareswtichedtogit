@@ -180,8 +180,8 @@ int vtkStreamingDemandDrivenPipeline::Update(int port)
 //----------------------------------------------------------------------------
 int vtkStreamingDemandDrivenPipeline::UpdateWholeExtent()
 {
-  // TODO: this->SetUpdateExtentToWholeExtent(0) should probably be
-  // called here but it makes TestImageStreamer fail.
+  this->UpdateInformation();
+  this->SetUpdateExtentToWholeExtent(0);
   return this->Update();
 }
 
