@@ -32,55 +32,46 @@ EVEN IF THE AUTHORS HAVE BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 THE AUTHORS AND DISTRIBUTORS SPECIFICALLY DISCLAIM ANY WARRANTIES, INCLUDING,
 BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A
-PARTICULAR PURPOSE, AND NON-INFRINGEMENT.  THIS SOFTWARE IS PROVIDED ON AN
+PARTICULAR PURPOSE, AND -INFRINGEMENT.  THIS SOFTWARE IS PROVIDED ON AN
 "AS IS" BASIS, AND THE AUTHORS AND DISTRIBUTORS HAVE NO OBLIGATION TO PROVIDE
 MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 
 
 =========================================================================*/
-// .NAME vtkImageGaussianSource - Create an image with Gaussian pixel values.
-// vtkImageGaussianSource just produces images with pixel values determined 
-// by a Gaussian.
+// .NAME vtkImageDivergence - Scalar field from vector field.
+// .SECTION Description
+// vtkImageDivergence takes a 3D vector field from a surface detection
+// filter (i.e. Gradient) and creates a scalar field which 
+// which represents the rate of change of the vector field.
 
 
-#ifndef __vtkImageGaussianSource_h
-#define __vtkImageGaussianSource_h
+#ifndef __vtkImageDivergence_h
+#define __vtkImageDivergence_h
 
-#include "vtkImageSource.h"
+#include "vtkImageFilter.h"
 
-class VTK_EXPORT vtkImageGaussianSource : public vtkImageSource
+class VTK_EXPORT vtkImageDivergence : public vtkImageFilter
 {
 public:
-  vtkImageGaussianSource();
-  static vtkImageGaussianSource *New() {return new vtkImageGaussianSource;};
-  const char *GetClassName() {return "vtkImageGaussianSource";};
+  vtkImageDivergence();
+  static vtkImageDivergence *New() {return new vtkImageDivergence;};
+  const char *GetClassName() {return "vtkImageDivergence";};
   
   // Description:
-  // Set/Get the extent of the whole output image.
-  void SetWholeExtent(int xMinx, int xMax, int yMin, int yMax,
-		      int zMin, int zMax);
-  
-  // Description:
-  // Set/Get the center of the Gaussian.
-  vtkSetVector3Macro(Center, float);
-  vtkGetVector3Macro(Center, float);
+  // Determines how the input is interpreted (set of 2d slices ...)
+  vtkSetClampMacro(Dimensionality,int,2,3);
+  vtkGetMacro(Dimensionality,int);
 
-  vtkSetMacro(Maximum, float);
-  vtkGetMacro(Maximum, float);
+protected:
+  int Dimensionality;
 
-  vtkSetMacro(StandardDeviation, float);
-  vtkGetMacro(StandardDeviation, float);
-
-  void UpdateImageInformation();
-
-private:
-  float StandardDeviation;
-  int WholeExtent[6];
-  float Center[3];
-  float Maximum;
-
-  void Execute(vtkImageData *data);
+  void ExecuteImageInformation();
+  void ComputeRequiredInputUpdateExtent(int inExt[6], int outExt[6]);
+  void ThreadedExecute(vtkImageData *inData, vtkImageData *outData,
+		       int ext[6], int id);
 };
 
-
 #endif
+
+
+
