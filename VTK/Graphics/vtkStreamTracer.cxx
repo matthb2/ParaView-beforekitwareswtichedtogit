@@ -1087,6 +1087,8 @@ void vtkStreamTracer::SimpleIntegrate(float seed[3],
   float velocity[3];
   float speed;
 
+  (void)seed; // Seed is not used
+
   memcpy(point1, lastPoint, 3*sizeof(float));
 
   // Create a new integrator, the type is the same as Integrator
