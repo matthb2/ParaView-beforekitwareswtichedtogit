@@ -53,6 +53,7 @@ vtkPVDuplicatePolyData::~vtkPVDuplicatePolyData()
     }
 
   this->SetController(0);
+  this->SetSocketController(0);
 }
 
 
