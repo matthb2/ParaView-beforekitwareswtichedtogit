@@ -351,7 +351,7 @@ void vtkSource::UpdateData(vtkDataObject *output)
         }
       }
     }
-  this->Updating = 0;     
+
     
   // Initialize all the outputs
   for (idx = 0; idx < this->NumberOfOutputs; idx++)
@@ -424,6 +424,8 @@ void vtkSource::UpdateData(vtkDataObject *output)
         }
       }  
     }
+
+  this->Updating = 0;
   
 }
 
