@@ -16,6 +16,8 @@
 
 =========================================================================*/
 #include "vtkPassThroughFilter.h"
+
+#include "vtkDataSet.h"
 #include "vtkObjectFactory.h"
 
 vtkCxxRevisionMacro(vtkPassThroughFilter, "$Revision$");

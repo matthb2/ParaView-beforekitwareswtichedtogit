@@ -17,11 +17,12 @@
 =========================================================================*/
 #include "vtkPOPReader.h"
 
-#include "vtkMath.h"
 #include "vtkExtentTranslator.h"
 #include "vtkFloatArray.h"
+#include "vtkImageData.h"
 #include "vtkImageReader.h"
 #include "vtkImageWrapPad.h"
+#include "vtkMath.h"
 #include "vtkObjectFactory.h"
 #include "vtkStructuredGrid.h"
 

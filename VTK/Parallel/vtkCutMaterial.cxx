@@ -21,6 +21,7 @@
 #include "vtkMath.h"
 #include "vtkObjectFactory.h"
 #include "vtkPlane.h"
+#include "vtkPolyData.h"
 #include "vtkThreshold.h"
 #include "vtkUnstructuredGrid.h"
 
