@@ -100,7 +100,7 @@ vtkRenderWindowInteractor *vtkRenderWindowInteractor::New()
 
 void vtkRenderWindowInteractor::Render()
 {
-  if (this->RenderWindow)
+  if (this->RenderWindow && this->Enabled)
     {
     this->RenderWindow->Render();
     }
