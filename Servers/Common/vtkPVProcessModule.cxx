@@ -427,7 +427,6 @@ const char* vtkPVProcessModule::GetDemoPath()
     delete[] demoFile;
     delete[] newPath;
     }
-  util->Delete();
 
 #endif // _WIN32  
 
