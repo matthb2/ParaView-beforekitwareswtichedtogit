@@ -190,10 +190,14 @@ void vtkImageMedian3D::ExecuteInformation(vtkImageData *inData,
   vtkDataArray *inArray;
 
   this->Superclass::ExecuteInformation(inData, outData);
-  inArray = inData->GetPointData()->GetScalars(this->InputScalarsSelection);
 
-  outData->SetScalarType(inArray->GetDataType());
-  outData->SetNumberOfScalarComponents(inArray->GetNumberOfComponents());
+  // I would like to get rid of this type of information.
+  if (inArray)
+    {
+    inArray = inData->GetPointData()->GetScalars(this->InputScalarsSelection);
+    outData->SetScalarType(inArray->GetDataType());
+    outData->SetNumberOfScalarComponents(inArray->GetNumberOfComponents());
+    }
 }
 
 
