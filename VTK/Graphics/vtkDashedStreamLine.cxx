@@ -29,6 +29,12 @@ vtkDashedStreamLine::vtkDashedStreamLine()
 
 void vtkDashedStreamLine::Execute()
 {
+  if ( !this->GetInput() )
+    {
+    vtkErrorMacro("Input not set");
+    return;
+    }
+
   vtkStreamPoint *sPrev, *sPtr;
   vtkPoints *newPts;
   vtkFloatArray *newVectors;

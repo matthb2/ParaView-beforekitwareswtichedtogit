@@ -109,8 +109,13 @@ void vtkCleanPolyData::ComputeInputUpdateExtents(vtkDataObject *output)
 
 //--------------------------------------------------------------------------
 void vtkCleanPolyData::Execute()
-{
+{  
   vtkPolyData *input = this->GetInput(); //always defined on entry into Execute
+  if ( !input )
+    {
+    vtkErrorMacro("Input not defined");
+    return;
+    }
   vtkPoints   *inPts = input->GetPoints();
   vtkIdType   numPts = input->GetNumberOfPoints();
 
