@@ -27,6 +27,7 @@ PURPOSE.  See the above copyright notice for more information.
 #include "vtkInformationDoubleVectorKey.h"
 #include "vtkInformationIntegerKey.h"
 #include "vtkInformationIntegerVectorKey.h"
+#include "vtkInformationInformationVectorKey.h"
 #include "vtkInformationStringKey.h"
 
 vtkCxxRevisionMacro(vtkDataObject, "$Revision$");
@@ -43,6 +44,7 @@ vtkInformationKeyMacro(vtkDataObject, DATA_NUMBER_OF_PIECES, Integer);
 vtkInformationKeyMacro(vtkDataObject, DATA_NUMBER_OF_GHOST_LEVELS, Integer);
 vtkInformationKeyMacro(vtkDataObject, SCALAR_TYPE, Integer);
 vtkInformationKeyMacro(vtkDataObject, SCALAR_NUMBER_OF_COMPONENTS, Integer);
+vtkInformationKeyMacro(vtkDataObject, FIELD_DATA_VECTOR, InformationVector);
 vtkInformationKeyMacro(vtkDataObject, FIELD_ARRAY_TYPE, Integer);
 vtkInformationKeyMacro(vtkDataObject, FIELD_ASSOCIATION, Integer);
 vtkInformationKeyMacro(vtkDataObject, FIELD_ATTRIBUTE_TYPE, Integer);
