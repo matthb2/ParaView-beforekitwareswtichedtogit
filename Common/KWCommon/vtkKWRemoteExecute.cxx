@@ -199,4 +199,5 @@ int vtkKWRemoteExecute::RunCommand(const char* command, const char* args[])
 void vtkKWRemoteExecute::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os,indent);
+  os << indent << "RemoteHost: " << this->RemoteHost << endl;
 }
