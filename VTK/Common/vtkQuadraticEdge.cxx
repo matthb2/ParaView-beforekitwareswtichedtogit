@@ -261,7 +261,7 @@ void vtkQuadraticEdge::Tesselate(vtkIdType cellId,
   
   //the error divided by the maximum permissable error is an approximation to
   //the number of subdivisions.
-  int numDivs = ceil( d2/(l2*e2) );
+  int numDivs = int(ceil( d2/(l2*e2) ));
   int numPts = numDivs + 1;
   
   //add new points to the output
