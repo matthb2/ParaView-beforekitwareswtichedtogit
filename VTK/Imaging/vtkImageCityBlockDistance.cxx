@@ -66,7 +66,7 @@ void vtkImageCityBlockDistance::IterativeRequestUpdateExtent(
 //----------------------------------------------------------------------------
 // This is writen as a 1D execute method, but is called several times.
 void vtkImageCityBlockDistance::IterativeRequestData(
-  vtkInformation* request,
+  vtkInformation* vtkNotUsed( request ),
   vtkInformationVector** inputVector,
   vtkInformationVector* outputVector)
 {
