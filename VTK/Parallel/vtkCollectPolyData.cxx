@@ -16,9 +16,11 @@
 
 =========================================================================*/
 #include "vtkCollectPolyData.h"
+
 #include "vtkAppendPolyData.h"
 #include "vtkObjectFactory.h"
 #include "vtkMultiProcessController.h"
+#include "vtkPolyData.h"
 
 vtkCxxRevisionMacro(vtkCollectPolyData, "$Revision$");
 vtkStandardNewMacro(vtkCollectPolyData);

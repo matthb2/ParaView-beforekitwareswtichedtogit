@@ -16,8 +16,10 @@
 
 =========================================================================*/
 #include "vtkExtractPolyDataPiece.h"
-#include "vtkObjectFactory.h"
+
 #include "vtkOBBDicer.h"
+#include "vtkObjectFactory.h"
+#include "vtkPolyData.h"
 #include "vtkUnsignedCharArray.h"
 
 vtkCxxRevisionMacro(vtkExtractPolyDataPiece, "$Revision$");

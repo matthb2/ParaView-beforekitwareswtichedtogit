@@ -15,15 +15,18 @@
      PURPOSE.  See the above copyright notice for more information.
 
 =========================================================================*/
-#include <ctype.h>
-#include <math.h>
 #include "vtkPOPReader.h"
+
 #include "vtkMath.h"
 #include "vtkExtentTranslator.h"
 #include "vtkFloatArray.h"
 #include "vtkImageReader.h"
 #include "vtkImageWrapPad.h"
 #include "vtkObjectFactory.h"
+#include "vtkStructuredGrid.h"
+
+#include <ctype.h>
+#include <math.h>
 
 vtkCxxRevisionMacro(vtkPOPReader, "$Revision$");
 vtkStandardNewMacro(vtkPOPReader);

@@ -16,13 +16,16 @@
 
 =========================================================================*/
 #include "vtkPVGeometryFilter.h"
-#include "vtkGeometryFilter.h"
-#include "vtkOutlineSource.h"
-#include "vtkRectilinearGridOutlineFilter.h"
-#include "vtkStructuredGridOutlineFilter.h"
-#include "vtkStripper.h"
-#include "vtkObjectFactory.h"
+
 #include "vtkCommand.h"
+#include "vtkGeometryFilter.h"
+#include "vtkObjectFactory.h"
+#include "vtkOutlineSource.h"
+#include "vtkPolyData.h"
+#include "vtkRectilinearGrid.h"
+#include "vtkRectilinearGridOutlineFilter.h"
+#include "vtkStripper.h"
+#include "vtkStructuredGridOutlineFilter.h"
 
 vtkCxxRevisionMacro(vtkPVGeometryFilter, "$Revision$");
 vtkStandardNewMacro(vtkPVGeometryFilter);

@@ -16,15 +16,17 @@
 
 =========================================================================*/
 #include "vtkPipelineSize.h"
-#include "vtkDataObject.h"
-#include "vtkSource.h"
-#include "vtkObjectFactory.h"
-#include "vtkDataReader.h"
+
 #include "vtkConeSource.h"
-#include "vtkPlaneSource.h"
+#include "vtkDataObject.h"
+#include "vtkDataReader.h"
 #include "vtkLargeInteger.h"
+#include "vtkObjectFactory.h"
 #include "vtkPSphereSource.h"
+#include "vtkPlaneSource.h"
+#include "vtkPolyData.h"
 #include "vtkPolyDataMapper.h"
+#include "vtkSource.h"
 
 vtkCxxRevisionMacro(vtkPipelineSize, "$Revision$");
 vtkStandardNewMacro(vtkPipelineSize);

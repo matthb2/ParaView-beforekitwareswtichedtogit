@@ -16,7 +16,9 @@
 
 =========================================================================*/
 #include "vtkPPolyDataNormals.h"
+
 #include "vtkObjectFactory.h"
+#include "vtkPolyData.h"
 
 vtkCxxRevisionMacro(vtkPPolyDataNormals, "$Revision$");
 vtkStandardNewMacro(vtkPPolyDataNormals);

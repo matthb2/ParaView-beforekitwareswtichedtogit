@@ -16,11 +16,13 @@
 
 =========================================================================*/
 #include "vtkCutMaterial.h"
+
 #include "vtkCutter.h"
-#include "vtkThreshold.h"
 #include "vtkMath.h"
 #include "vtkObjectFactory.h"
 #include "vtkPlane.h"
+#include "vtkThreshold.h"
+#include "vtkUnstructuredGrid.h"
 
 vtkCxxRevisionMacro(vtkCutMaterial, "$Revision$");
 vtkStandardNewMacro(vtkCutMaterial);
