@@ -170,8 +170,10 @@ void vtkImageImport::PropagateUpdateExtent(vtkDataObject *output)
   vtkImageSource::PropagateUpdateExtent(output);
   if (this->PropagateUpdateExtentCallback)
     {
-    (this->PropagateUpdateExtentCallback)(this->CallbackUserData,
-                                          output->GetUpdateExtent());
+    tryCatchMacro(
+      (this->PropagateUpdateExtentCallback)(this->CallbackUserData,
+                                            output->GetUpdateExtent()),
+      "PropagateUpdateExtentCallback: ");
     }
 }
 
