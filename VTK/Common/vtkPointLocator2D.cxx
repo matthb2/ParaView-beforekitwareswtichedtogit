@@ -22,6 +22,7 @@
 #include "vtkObjectFactory.h"
 
 vtkCxxRevisionMacro(vtkPointLocator2D, "$Revision$");
+vtkCxxSetObjectMacro(vtkPointLocator2D,Points,vtkPoints);
 
 vtkPointLocator2D* vtkPointLocator2D::New() 
 { 
