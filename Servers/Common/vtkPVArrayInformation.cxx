@@ -28,6 +28,7 @@ vtkPVArrayInformation::vtkPVArrayInformation()
   this->DataType = VTK_VOID;
   this->NumberOfComponents = 0;
   this->Ranges = 0;
+  this->IsPartial = 0;
 }
 
 //----------------------------------------------------------------------------
@@ -53,6 +54,7 @@ void vtkPVArrayInformation::PrintSelf(ostream& os, vtkIndent indent)
     }
   os << indent << "DataType: " << this->DataType << endl;
   os << indent << "NumberOfComponents: " << this->NumberOfComponents << endl;
+  os << indent << "IsPartial: " << this->IsPartial << endl;
 
   os << indent << "Ranges :" << endl;
   num = this->NumberOfComponents;
