@@ -121,7 +121,7 @@ int vtkBitArray::GetValue(const vtkIdType id)
 }
 
 // Allocate memory for this array. Delete old storage only if necessary.
-int vtkBitArray::Allocate(const vtkIdType sz, const int vtkNotUsed(ext))
+int vtkBitArray::Allocate(const vtkIdType sz, const vtkIdType vtkNotUsed(ext))
 {
   if ( sz > this->Size )
     {
@@ -388,7 +388,7 @@ void vtkBitArray::InsertTuple(const vtkIdType i, const double * tuple)
 }
 
 // Insert (memory allocation performed) the tuple onto the end of the array.
-int vtkBitArray::InsertNextTuple(const float * tuple)
+vtkIdType vtkBitArray::InsertNextTuple(const float * tuple)
 {
   for (int i=0; i<this->NumberOfComponents; i++)
     {
@@ -398,7 +398,7 @@ int vtkBitArray::InsertNextTuple(const float * tuple)
   return this->MaxId / this->NumberOfComponents;
 }
 
-int vtkBitArray::InsertNextTuple(const double * tuple)
+vtkIdType vtkBitArray::InsertNextTuple(const double * tuple)
 {
   for (int i=0; i<this->NumberOfComponents; i++)
     {
