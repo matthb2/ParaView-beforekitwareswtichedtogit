@@ -73,6 +73,10 @@ public:
   ~vtkDebugLeaksHashNode()
     {
       delete [] this->Key;
+      if(this->Next)
+        {
+        delete this->Next;
+        }
     }
 public:
   vtkDebugLeaksHashNode *Next;
