@@ -30,6 +30,12 @@ vtkImageReader2 *vtkImageReader2Collection::GetNextItem()
   return static_cast<vtkImageReader2*>(this->GetNextItemAsObject());
 }
 
+vtkImageReader2 *vtkImageReader2Collection::GetNextImageReader2(
+  vtkCollectionSimpleIterator &cookie) 
+{
+  return static_cast<vtkImageReader2 *>(this->GetNextItemAsObject(cookie));
+}
+
 //----------------------------------------------------------------------------
 void vtkImageReader2Collection::PrintSelf(ostream& os, vtkIndent indent)
 {

@@ -145,8 +145,9 @@ void vtkRenderer::Render(void)
     vtkLight *light;
     
     // now we just need to check the lights and actors
-    for(this->Lights->InitTraversal(); 
-        (light = this->Lights->GetNextItem()); )
+    vtkCollectionSimpleIterator sit;
+    for(this->Lights->InitTraversal(sit); 
+        (light = this->Lights->GetNextLight(sit)); )
       {
       if (light->GetSwitch() && 
           light->GetMTime() > this->RenderTime)
@@ -325,8 +326,9 @@ int vtkRenderer::UpdateLightsGeometryToFollowCamera()
   camera = this->GetActiveCamera();
   lightMatrix = camera->GetCameraLightTransformMatrix();
 
-  for(this->Lights->InitTraversal(); 
-      (light = this->Lights->GetNextItem()); )
+  vtkCollectionSimpleIterator sit;
+  for(this->Lights->InitTraversal(sit); 
+      (light = this->Lights->GetNextLight(sit)); )
     {
     if (light->LightTypeIsSceneLight())
       {

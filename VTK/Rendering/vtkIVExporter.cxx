@@ -159,7 +159,8 @@ void vtkIVExporter::WriteData()
   // make sure we have a default light
   // if we dont then use a headlight
   lc = ren->GetLights();
-  for (lc->InitTraversal(); (aLight = lc->GetNextItem()); )
+  vtkCollectionSimpleIterator sit;
+  for (lc->InitTraversal(sit); (aLight = lc->GetNextLight(sit)); )
     {
     this->WriteALight(aLight, fp);
     }

@@ -35,6 +35,12 @@ vtkLight *vtkLightCollection::GetNextItem()
   return static_cast<vtkLight *>(this->GetNextItemAsObject());
 }
 
+vtkLight *vtkLightCollection::GetNextLight(
+  vtkCollectionSimpleIterator &cookie) 
+{
+  return static_cast<vtkLight *>(this->GetNextItemAsObject(cookie));
+}
+
 //----------------------------------------------------------------------------
 void vtkLightCollection::PrintSelf(ostream& os, vtkIndent indent)
 {

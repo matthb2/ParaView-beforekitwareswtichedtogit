@@ -102,8 +102,9 @@ int vtkOpenGLRenderer::UpdateLights ()
   count = 0;
   curLight= this->NumberOfLightsBound + GL_LIGHT0;
 
-  for(this->Lights->InitTraversal(); 
-      (light = this->Lights->GetNextItem()); )
+  vtkCollectionSimpleIterator sit;
+  for(this->Lights->InitTraversal(sit); 
+      (light = this->Lights->GetNextLight(sit)); )
     {
     status = light->GetSwitch();
     if ((status > 0.0)&& (curLight < (GL_LIGHT0+VTK_MAX_LIGHTS)))
@@ -126,8 +127,8 @@ int vtkOpenGLRenderer::UpdateLights ()
   glMatrixMode(GL_MODELVIEW);
   glPushMatrix();
 
-  for(this->Lights->InitTraversal(); 
-      (light = this->Lights->GetNextItem()); )
+  for(this->Lights->InitTraversal(sit); 
+      (light = this->Lights->GetNextLight(sit)); )
     {
 
     status = light->GetSwitch();
