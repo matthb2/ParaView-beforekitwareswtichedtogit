@@ -18,10 +18,12 @@
 #include "vtkVolume.h"
 
 #include "vtkCamera.h"
+#include "vtkColorTransferFunction.h"
 #include "vtkObjectFactory.h"
 #include "vtkRenderer.h"
 #include "vtkVolumeCollection.h"
 #include "vtkVolumeRayCastMapper.h"
+#include "vtkPiecewiseFunction.h"
 
 #include <math.h>
 

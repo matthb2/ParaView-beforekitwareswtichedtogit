@@ -16,7 +16,10 @@
 
 =========================================================================*/
 #include "vtkVolumeProperty.h"
+
 #include "vtkObjectFactory.h"
+#include "vtkPiecewiseFunction.h"
+#include "vtkColorTransferFunction.h"
 
 vtkCxxRevisionMacro(vtkVolumeProperty, "$Revision$");
 vtkStandardNewMacro(vtkVolumeProperty);

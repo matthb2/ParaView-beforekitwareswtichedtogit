@@ -16,10 +16,12 @@
 
 =========================================================================*/
 #include "vtkVolumeRayCastCompositeFunction.h"
+
+#include "vtkObjectFactory.h"
+#include "vtkPiecewiseFunction.h"
+#include "vtkVolume.h"
 #include "vtkVolumeProperty.h"
 #include "vtkVolumeRayCastMapper.h"
-#include "vtkVolume.h"
-#include "vtkObjectFactory.h"
 
 #include <math.h>
 
