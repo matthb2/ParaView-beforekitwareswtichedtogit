@@ -38,38 +38,34 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 
 
 =========================================================================*/
-// .NAME vtkImageHSVToRGB - Converts HSV components to RGB.
+// .NAME vtkImageEuclideanToPolar - Converts 2D Euclidean coordinates to polar.
 // .SECTION Description
-// For each pixel with hue, saturation and value compnents this
-// filter output the color coded as red, green, blue.
-// Output type must be the same as input type.
+// For each pixel with vector components x,y, this filter outputs theta radius.
 
-
-
-#ifndef __vtkImageHSVToRGB_h
-#define __vtkImageHSVToRGB_h
+#ifndef __vtkImageEuclideanToPolar_h
+#define __vtkImageEuclideanToPolar_h
 
 
 #include "vtkImageFilter.h"
 
-class VTK_EXPORT vtkImageHSVToRGB : public vtkImageFilter
+class VTK_EXPORT vtkImageEuclideanToPolar : public vtkImageFilter
 {
 public:
-  vtkImageHSVToRGB();
-  static vtkImageHSVToRGB *New() 
-    {return new vtkImageHSVToRGB;};
-  const char *GetClassName() {return "vtkImageHSVToRGB";};
+  vtkImageEuclideanToPolar();
+  static vtkImageEuclideanToPolar *New() 
+    {return new vtkImageEuclideanToPolar;};
+  const char *GetClassName() {return "vtkImageEuclideanToPolar";};
 
   // Description:
-  // Hue is an angle. Maximum specifies when it maps back to 0.
-  // HueMaximum defaults to 255 instead of 2PI, because unsigned char
+  // Theta is an angle. Maximum specifies when it maps back to 0.
+  // ThetaMaximum defaults to 255 instead of 2PI, because unsigned char
   // is expected as input.
-  // Maximum also specifies the maximum of the Saturation, and R, G, B.
-  vtkSetMacro(Maximum,float);
-  vtkGetMacro(Maximum,float);
+  // Output type must be the same as input type.
+  vtkSetMacro(ThetaMaximum,float);
+  vtkGetMacro(ThetaMaximum,float);
   
 protected:
-  float Maximum;
+  float ThetaMaximum;
   
   void Execute(vtkImageRegion *inRegion, vtkImageRegion *outRegion);
 };
