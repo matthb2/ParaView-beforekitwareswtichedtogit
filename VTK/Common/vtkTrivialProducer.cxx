@@ -43,10 +43,13 @@ vtkTrivialProducer::~vtkTrivialProducer()
 }
 
 //----------------------------------------------------------------------------
-void vtkTrivialProducer::SetOutput(vtkDataObject*)
+void vtkTrivialProducer::SetOutput(vtkDataObject*
+#ifdef VTK_USE_EXECUTIVES
+                                   newOutput
+#endif
+  )
 {
-  // Method is currently disabled.
-#if 0
+#ifdef VTK_USE_EXECUTIVES
   vtkDataObject* oldOutput = this->Output;
   if(newOutput != oldOutput)
     {
