@@ -364,7 +364,10 @@ int vtkPicker::Pick(double selectionX, double selectionY, double selectionZ,
           if ( t < VTK_DOUBLE_MAX )
             {
             picked = 1;
-            this->Prop3Ds->AddItem((vtkProp3D *)prop);
+            if ( ! this->Prop3Ds->IsItemPresent(prop) )
+              {
+              this->Prop3Ds->AddItem((vtkProp3D *)prop);
+              }
             this->PickedPositions->InsertNextPoint
               ((1.0 - t)*p1World[0] + t*p2World[0],
                (1.0 - t)*p1World[1] + t*p2World[1],
