@@ -159,6 +159,7 @@ vtkImageReslice::~vtkImageReslice()
     {
     this->OptimizedTransform->Delete();
     }
+  this->SetInformationInput(NULL);
 }
 
 //----------------------------------------------------------------------------
