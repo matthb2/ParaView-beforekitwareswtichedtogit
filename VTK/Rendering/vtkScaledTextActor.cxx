@@ -236,9 +236,9 @@ void vtkScaledTextActor::SetMapper(vtkTextMapper *mapper)
   this->TextActor->SetMapper(mapper);
 }
 
-vtkTextMapper *vtkScaledTextActor::GetMapper(void)
+vtkMapper2D *vtkScaledTextActor::GetMapper(void)
 {
-  return (vtkTextMapper *)(this->TextActor->GetMapper());
+  return (this->TextActor->GetMapper());
 }
 
 void vtkScaledTextActor::SetMapper(vtkMapper2D *mapper)
