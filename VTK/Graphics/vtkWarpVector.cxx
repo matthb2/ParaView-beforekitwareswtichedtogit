@@ -66,11 +66,15 @@ void vtkWarpVectorExecute2(vtkWarpVector *self, T1 *inPts,
 }
           
 template <class T>
-void vtkWarpVectorExecute(vtkWarpVector *self, T *inPts, T *outPts, vtkIdType max)
+void vtkWarpVectorExecute(vtkWarpVector *self, 
+                          T *inPts, 
+                          T *outPts, 
+                          vtkIdType max,
+                          const char* vectorsSelection)
 {
   void *inVec;
   vtkDataArray *vectors = self->GetInput()->GetPointData()->
-                            GetVectors(self->GetInputVectorsSelection());
+                            GetVectors(vectorsSelection);
 
   if (vectors == NULL)
     {
@@ -126,8 +130,8 @@ void vtkWarpVector::Execute()
   // call templated function
   switch (input->GetPoints()->GetDataType())
     {
-    vtkTemplateMacro4(vtkWarpVectorExecute, this, 
-                      (VTK_TT *)(inPtr), (VTK_TT *)(outPtr), numPts);
+    vtkTemplateMacro5(vtkWarpVectorExecute, this, 
+                      (VTK_TT *)(inPtr), (VTK_TT *)(outPtr), numPts, this->InputVectorsSelection);
     default:
       break;
     }
