@@ -37,6 +37,7 @@ vtkInstantiatorNewMacro(vtkRenderWindow);
 // buffering turned on, stereo capable off.
 vtkRenderWindow::vtkRenderWindow()
 {
+  this->IsPicking = 0;
   this->Borders = 1;
   this->FullScreen = 0;
   this->OldScreen[0] = this->OldScreen[1] = 0;
