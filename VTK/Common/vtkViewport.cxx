@@ -637,17 +637,24 @@ void vtkViewport::GetTiledSize(int *usize, int *vsize)
 void vtkViewport::GetTiledSizeAndOrigin(int *usize, int *vsize,
                                         int *lowerLeftU, int *lowerLeftV)
 {
-  // if there is no window return
-  if (!this->GetVTKWindow())
-    {
-    return;
-    }
-
   double *vport;
 
   // find out if we should stereo render
   vport = this->GetViewport();
-  double *tileViewPort = this->GetVTKWindow()->GetTileViewport();
+
+  // if there is no window assume 0 1
+  double tileViewPort[4];
+  if (this->GetVTKWindow())
+    {
+    this->GetVTKWindow()->GetTileViewport(tileViewPort);
+    }
+  else
+    {
+    tileViewPort[0] = 0;
+    tileViewPort[1] = 0;
+    tileViewPort[2] = 1;
+    tileViewPort[3] = 1;
+    }
   
   double vpu, vpv;
   // find the lower left corner of the viewport, taking into account the

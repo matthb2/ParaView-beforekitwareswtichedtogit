@@ -1396,7 +1396,7 @@ double vtkRenderer::GetTiledAspectRatio()
   double aspectModification = aspect[0]*aspect2[1]/(aspect[1]*aspect2[0]);
   
   double finalAspect = 1.0;
-  if(vsize)
+  if(vsize && usize)
     {
     finalAspect = aspectModification*usize/vsize;
     }
