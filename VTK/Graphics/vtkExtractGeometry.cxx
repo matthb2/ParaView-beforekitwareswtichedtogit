@@ -267,4 +267,6 @@ void vtkExtractGeometry::PrintSelf(ostream& os, vtkIndent indent)
      << (this->ExtractInside ? "On\n" : "Off\n");
   os << indent << "Extract Boundary Cells: " 
      << (this->ExtractBoundaryCells ? "On\n" : "Off\n");
+  os << indent << "Extract Only Boundary Cells: " 
+     << (this->ExtractOnlyBoundaryCells ? "On\n" : "Off\n");
 }
