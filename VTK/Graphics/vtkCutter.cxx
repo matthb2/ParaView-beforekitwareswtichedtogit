@@ -103,7 +103,6 @@ void vtkCutter::Execute()
 
   if ( input->GetNumberOfPoints() < 1 )
     {
-    vtkErrorMacro("Input data set is empty");
     return;
     }
   
