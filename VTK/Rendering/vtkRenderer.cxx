@@ -218,7 +218,7 @@ void vtkRenderer::Render(void)
   this->PropArrayCount = 0;
   vtkCollectionSimpleIterator pit;
   for ( this->Props->InitTraversal(pit); 
-        aProp = this->Props->GetNextProp(pit); )
+        (aProp = this->Props->GetNextProp(pit)); )
     {
     if ( aProp->GetVisibility() )
       {
