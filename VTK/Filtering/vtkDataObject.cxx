@@ -235,7 +235,9 @@ void vtkDataObject::SetPipelineInformation(vtkInformation* newInfo)
       // Detach the output that used to be held by the new information.
       if(vtkDataObject* oldData = newInfo->Get(vtkDataObject::DATA_OBJECT()))
         {
+        oldData->Register(this);
         oldData->SetPipelineInformation(0);
+        oldData->UnRegister(this);
         }
 
       // Tell the new information about this object.

@@ -426,7 +426,9 @@ void vtkExecutive::SetOutputData(int newPort, vtkDataObject* newOutput)
         }
       else if(vtkDataObject* oldOutput = info->Get(vtkDataObject::DATA_OBJECT()))
         {
+        oldOutput->Register(this);
         oldOutput->SetPipelineInformation(0);
+        oldOutput->UnRegister(this);
         }
 
       // Output has changed.  Reset the pipeline information.
