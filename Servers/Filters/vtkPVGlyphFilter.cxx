@@ -14,9 +14,10 @@
 =========================================================================*/
 #include "vtkPVGlyphFilter.h"
 
+#include "vtkGarbageCollector.h"
 #include "vtkMaskPoints.h"
-#include "vtkObjectFactory.h"
 #include "vtkMultiProcessController.h"
+#include "vtkObjectFactory.h"
 #include "vtkPolyData.h"
 
 vtkCxxRevisionMacro(vtkPVGlyphFilter, "$Revision$");
@@ -37,7 +38,10 @@ vtkPVGlyphFilter::vtkPVGlyphFilter()
 //-----------------------------------------------------------------------------
 vtkPVGlyphFilter::~vtkPVGlyphFilter()
 {
-  this->MaskPoints->Delete();
+  if(this->MaskPoints)
+    {
+    this->MaskPoints->Delete();
+    }
 }
 
 //-----------------------------------------------------------------------------
@@ -79,6 +83,24 @@ void vtkPVGlyphFilter::Execute()
     }
   
   this->Superclass::Execute();
+}
+
+//-----------------------------------------------------------------------------
+void vtkPVGlyphFilter::ReportReferences(vtkGarbageCollector* collector)
+{
+  this->Superclass::ReportReferences(collector);
+  collector->ReportReference(this->MaskPoints, "MaskPoints");
+}
+
+//-----------------------------------------------------------------------------
+void vtkPVGlyphFilter::RemoveReferences()
+{
+  if(this->MaskPoints)
+    {
+    this->MaskPoints->Delete();
+    this->MaskPoints = 0;
+    }
+  this->Superclass::RemoveReferences();
 }
 
 //-----------------------------------------------------------------------------
