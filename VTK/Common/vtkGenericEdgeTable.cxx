@@ -631,6 +631,7 @@ int vtkGenericEdgeTable::CheckPoint(vtkIdType ptId, double point[3],
     }
 
   assert("check: TODO" && 0 );
+  return 1;
 }
 
 //-----------------------------------------------------------------------------
