@@ -16,8 +16,10 @@
 
 =========================================================================*/
 
-#include "vtkBar.h"
 #include "vtkImageFoo.h"
+
+#include "vtkBar.h"
+#include "vtkImageData.h"
 #include "vtkObjectFactory.h"
 
 //----------------------------------------------------------------------------
