@@ -1283,6 +1283,9 @@ void vtkUnstructuredGridBunykRayCastFunction::Finalize( )
 void vtkUnstructuredGridBunykRayCastFunction::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os,indent);
+  
+  // Do not want to print ViewToWorldMatrix or ImageOrigin - these are internal
+  // ivar and not part of the public API for this class
 }
 
 
