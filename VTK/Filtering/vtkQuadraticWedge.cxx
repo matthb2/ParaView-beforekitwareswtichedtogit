@@ -339,7 +339,7 @@ void vtkQuadraticWedge::Subdivide(vtkPointData *inPd, vtkCellData *inCd,
       s += cellScalars->GetTuple1(i) * weights[i];
       }
     this->Points->SetPoint(15+numMidPts,x);
-    this->CellScalars->SetValue(20+numMidPts,s);
+    this->CellScalars->SetValue(15+numMidPts,s);
     this->PointData->InterpolatePoint(inPd, 15+numMidPts, 
                                       this->PointIds, weights);
     }
