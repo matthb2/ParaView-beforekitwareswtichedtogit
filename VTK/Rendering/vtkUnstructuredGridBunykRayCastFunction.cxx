@@ -204,7 +204,8 @@ void *vtkUnstructuredGridBunykRayCastFunction::NewIntersection()
 {
   // Look for the first buffer that has enough space, or the
   // first one that has not yet been allocated
-  for ( int i = 0; i < VTK_BUNYKRCF_MAX_ARRAYS; i++ )
+  int i;
+  for ( i = 0; i < VTK_BUNYKRCF_MAX_ARRAYS; i++ )
     {
     if ( !this->IntersectionBuffer[i] ||
          this->IntersectionBufferCount[i] < VTK_BUNYKRCF_ARRAY_SIZE ) 
