@@ -181,6 +181,7 @@ void vtkHeap::PrintSelf(ostream& os, vtkIndent indent)
   os << indent << "Number of Blocks: " << this->NumberOfBlocks << "\n";
   os << indent << "Number of Allocations: " << this->NumberOfAllocations << "\n";
   os << indent << "Current bytes allocated: " 
-     << ((this->NumberOfBlocks-1)*(int)this->BlockSize + this->Position) << "\n";
+     << ((this->NumberOfBlocks-1)*(int)this->BlockSize + 
+         (int)this->Position) << "\n";
 }
 
