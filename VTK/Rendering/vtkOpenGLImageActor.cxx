@@ -22,20 +22,7 @@
 #include "vtkOpenGLRenderer.h"
 #include "vtkRenderWindow.h"
 #include "vtkImageData.h"
-
-#ifdef VTK_USE_CARBON
- #include "vtkCarbonRenderWindow.h"
-#else
- #ifdef VTK_USE_COCOA
-  #include "vtkCocoaRenderWindow.h"
- #else
-  #ifdef _WIN32
-   #include "vtkWin32OpenGLRenderWindow.h"
-  #else
-   #include "vtkOpenGLRenderWindow.h"
-  #endif
- #endif
-#endif
+#include "vtkOpenGLRenderWindow.h"
 
 #include <math.h>
 
