@@ -861,3 +861,9 @@ int vtkClientServerInterpreter::LoadInternal(const char* moduleName,
   func(this);
   return 1;
 }
+
+//----------------------------------------------------------------------------
+void vtkClientServerInterpreter::ClearLastResult()
+{
+  this->LastResultMessage->Reset();
+}
