@@ -371,6 +371,8 @@ void vtkPStreamTracer::Execute()
   this->IntegrationDirections = 0;
   this->SeedIds->Delete();
   this->SeedIds = 0;
+
+  output->Squeeze();
 }
 
 void vtkPStreamTracer::PrintSelf(ostream& os, vtkIndent indent)
