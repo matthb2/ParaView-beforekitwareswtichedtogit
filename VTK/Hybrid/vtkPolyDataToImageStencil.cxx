@@ -32,6 +32,7 @@ vtkPolyDataToImageStencil::vtkPolyDataToImageStencil()
 {
   this->OBBTree = NULL;
   this->Tolerance = 1e-3;
+  this->NumberOfRequiredInputs = 1;
 }
 
 //----------------------------------------------------------------------------
