@@ -24,7 +24,6 @@ vtkCxxRevisionMacro(vtkPolyDataToPolyDataFilter, "$Revision$");
 //----------------------------------------------------------------------------
 vtkPolyDataToPolyDataFilter::vtkPolyDataToPolyDataFilter() 
 {
-  this->vtkProcessObject::SetNumberOfInputs(1);
   this->NumberOfRequiredInputs = 1;
 }
 //----------------------------------------------------------------------------
