@@ -42,7 +42,7 @@ void vtkRendererCollection::Render()
   // Only have the renderers render from back to front.  This is necessary
   // because transparent renderers clear the z-buffer before each render and
   // then overlay their image.
-  for (i = numLayers-1 ; i >= 0 ; i--)
+  for (i = 0; i < numLayers; i++)
     {
     for (this->InitTraversal(); (ren = this->GetNextItem()); )
       {

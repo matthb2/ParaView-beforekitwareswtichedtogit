@@ -1385,10 +1385,8 @@ void vtkRenderer::PickGeometry()
 
 int  vtkRenderer::Transparent()
 {
-  int  numLayers = this->RenderWindow->GetNumberOfLayers();
-
-  // If our layer is the last layer, then we are not transparent, else we are.
-  return (this->Layer == numLayers-1 ? 0 : 1);
+  // If our layer is the 0th layer, then we are not transparent, else we are.
+  return (this->Layer == 0 ? 0 : 1);
 }
 
 
