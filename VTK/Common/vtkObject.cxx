@@ -246,25 +246,6 @@ void vtkObject::UnRegister(vtkObjectBase* o)
     }
 }
 
-int vtkObject::IsTypeOf(const char *name) 
-{
-  if ( !strcmp("vtkObject",name) )
-    {
-    return 1;
-    }
-  return vtkObject::Superclass::IsTypeOf(name);
-}
-
-int vtkObject::IsA(const char *type)
-{
-  return this->vtkObject::IsTypeOf(type);
-}
-
-vtkObject *vtkObject::SafeDownCast(vtkObject *o)
-{
-  return (vtkObject *)o;
-}
-
 //----------------------------------Command/Observer stuff-------------------
 //
 
