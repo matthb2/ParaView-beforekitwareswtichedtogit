@@ -582,7 +582,7 @@ void vtkQuadraticHexahedron::InterpolationDerivs(float pcoords[3],
   //coordinate system conversion from (0,1) to (-1,1).
   float r = 2.0*(pcoords[0]-0.5);
   float s = 2.0*(pcoords[1]-0.5);
-  float t = 2.0*(pcoords[1]-0.5);
+  float t = 2.0*(pcoords[2]-0.5);
 
   float rm = 1.0 - r;
   float rp = 1.0 + r;
