@@ -16,6 +16,7 @@
 
 #include "vtkDoubleArray.h"
 #include "vtkFloatArray.h"
+#include "vtkGarbageCollector.h"
 #include "vtkImageData.h"
 #include "vtkImplicitFunction.h"
 #include "vtkMath.h"
@@ -330,3 +331,20 @@ void vtkSampleFunction::PrintSelf(ostream& os, vtkIndent indent)
   os << indent << "Compute Normals: " << (this->ComputeNormals ? "On\n" : "Off\n");
 }
 
+//----------------------------------------------------------------------------
+void vtkSampleFunction::ReportReferences(vtkGarbageCollector* collector)
+{
+  this->Superclass::ReportReferences(collector);
+#ifdef VTK_USE_EXECUTIVES
+  collector->ReportReference(this->ImplicitFunction, "ImplicitFunction");
+#endif
+}
+
+//----------------------------------------------------------------------------
+void vtkSampleFunction::RemoveReferences()
+{
+#ifdef VTK_USE_EXECUTIVES
+  this->SetImplicitFunction(0);
+#endif
+  this->Superclass::RemoveReferences();
+}
