@@ -214,7 +214,7 @@ void vtkDistributedExecutive::SetOutputData(vtkAlgorithm* algorithm, int port,
                   "by this executive: " << algorithm);
     return;
     }
-  return this->SetOutputData(port, newOutput);
+  this->SetOutputData(port, newOutput);
 }
 
 //----------------------------------------------------------------------------
