@@ -179,5 +179,4 @@ void vtkSMProperty::PrintSelf(ostream& os, vtkIndent indent)
      << (this->Command ? this->Command : "(null)") << endl;
   os << indent << "ImmediateUpdate:" << this->ImmediateUpdate << endl;
   os << indent << "UpdateSelf:" << this->UpdateSelf << endl;
-  os << indent << "IsReadOnly:" << this->IsReadOnly << endl;
 }
