@@ -122,3 +122,9 @@ int vtkKWWin32RegisteryUtilities::SetValueInternal(const char *key,
                         len+1) == ERROR_SUCCESS );
   return res;
 }
+
+//----------------------------------------------------------------------------
+void vtkKWWin32RegisteryUtilities::PrintSelf(ostream& os, vtkIndent indent)
+{
+  this->Superclass::PrintSelf(os,indent);
+}
