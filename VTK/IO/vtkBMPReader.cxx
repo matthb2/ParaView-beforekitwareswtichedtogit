@@ -470,7 +470,7 @@ void vtkBMPReaderUpdate2(vtkBMPReader *self, vtkImageData *data, OT *outPtr)
                                << ", Read = " << streamRead
                                << ", Skip0 = " << streamSkip0
                                << ", Skip1 = " << streamSkip1
-                               << ", FilePos = " << self->GetFile()->tellg()
+                               << ", FilePos = " << static_cast<vtkIdType>(self->GetFile()->tellg())
                                << ", FileName = " << self->GetInternalFileName()
                                );
         return;
