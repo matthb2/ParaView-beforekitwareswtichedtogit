@@ -450,7 +450,7 @@ void vtkGenericStreamer::Integrate()
   vtkGenericDataSet *input  = this->GetInput();
   vtkDataSet *source = this->GetSource();
 //  vtkPointData *pd   = input->GetPointData();//FIXME
-  vtkDataArray *inScalars;
+  vtkDataArray *inScalars=0;
   vtkDataArray *inVectors=0;
   vtkIdType numSourcePts, idx, idxNext;
   vtkGenericStreamer::StreamPoint *sNext, *sPtr;
