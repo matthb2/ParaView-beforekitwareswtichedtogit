@@ -26,6 +26,10 @@ vtkStandardNewMacro(vtkTriangleFilter);
 void vtkTriangleFilter::Execute()
 {
   vtkPolyData *input = this->GetInput();
+  if (!input)
+    {
+    return;
+    }
   vtkIdType numCells=input->GetNumberOfCells();
   vtkIdType cellNum=0;
   vtkIdType numPts, newId;
