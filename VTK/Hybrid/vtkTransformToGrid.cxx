@@ -49,7 +49,7 @@ vtkTransformToGrid::vtkTransformToGrid()
 //----------------------------------------------------------------------------
 vtkTransformToGrid::~vtkTransformToGrid()
 {
-  this->SetInput(NULL);
+  this->SetInput(static_cast<vtkAbstractTransform*>(0));
 }
 
 //----------------------------------------------------------------------------
