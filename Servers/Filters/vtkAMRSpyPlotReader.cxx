@@ -455,11 +455,11 @@ void vtkAMRSpyPlotReader::UpdateMetaData(const char* fname)
   vtkDebugMacro("Number of Cell Fields: " << num_cell_fields);
   for(field=0; field< num_cell_fields; ++field)
     {
-    const char* fname = spcth_getCellFieldName(spcth, field);
-    vtkDebugMacro("Cell Field Name -- Description(" << field << "): " << fname << " -- " << spcth_getCellFieldDescription(spcth, field));
-    if ( !this->CellDataArraySelection->ArrayExists(fname) )
+    const char* fieldName = spcth_getCellFieldName(spcth, field);
+    vtkDebugMacro("Cell Field Name -- Description(" << field << "): " << fieldName << " -- " << spcth_getCellFieldDescription(spcth, field));
+    if ( !this->CellDataArraySelection->ArrayExists(fieldName) )
       {
-      this->CellDataArraySelection->AddArray(fname);
+      this->CellDataArraySelection->AddArray(fieldName);
       }
     }
 }
