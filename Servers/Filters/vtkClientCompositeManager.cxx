@@ -41,7 +41,6 @@
 #include "vtkUnsignedCharArray.h"
 #include "vtkUnsignedCharArray.h"
 // Until we trigger LOD from AllocatedRenderTime ...
-#include "vtkPVApplication.h"
 #include "vtkByteSwap.h"
 
 #include "vtkOutlineFilter.h"
