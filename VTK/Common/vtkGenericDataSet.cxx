@@ -45,8 +45,6 @@ vtkGenericDataSet::~vtkGenericDataSet()
 void vtkGenericDataSet::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os,indent);
- 
-  double *bounds;
 
   os << indent << "Number Of Points: " << this->GetNumberOfPoints() << "\n";
   os << indent << "Number Of Cells: " << this->GetNumberOfCells() << "\n";
@@ -54,7 +52,7 @@ void vtkGenericDataSet::PrintSelf(ostream& os, vtkIndent indent)
   os << indent << "Attributes:\n";
   this->GetAttributes()->PrintSelf(os,indent.GetNextIndent());
 
-  bounds = this->GetBounds();
+  this->ComputeBounds();
   os << indent << "Bounds: \n";
   os << indent << "  Xmin,Xmax: (" <<this->Bounds[0] << ", " << this->Bounds[1] << ")\n";
   os << indent << "  Ymin,Ymax: (" <<this->Bounds[2] << ", " << this->Bounds[3] << ")\n";
