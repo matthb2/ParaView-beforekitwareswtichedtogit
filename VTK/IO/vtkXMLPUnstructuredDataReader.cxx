@@ -274,6 +274,10 @@ void vtkXMLPUnstructuredDataReader::ReadXMLData()
                           this->GetNumberOfPointsInPiece(i) + 
                           this->GetNumberOfCellsInPiece(i));
     }
+  if(fractions[this->EndPiece-this->StartPiece] == 0)
+    {
+    fractions[this->EndPiece-this->StartPiece] = 1;
+    }
   for(i=this->StartPiece; i < this->EndPiece; ++i)
     {
     int index = i-this->StartPiece;
