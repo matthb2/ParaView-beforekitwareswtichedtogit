@@ -29,6 +29,8 @@ PURPOSE.  See the above copyright notice for more information.
 #include <unistd.h>
 #endif
 
+#include <netinet/tcp.h>
+
 #if defined(_WIN32) && !defined(__CYGWIN__)
 #define WSA_VERSION MAKEWORD(1,1)
 #define vtkCloseSocketMacro(sock) (closesocket(sock))
