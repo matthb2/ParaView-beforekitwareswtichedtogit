@@ -60,6 +60,8 @@ void vtkTableExtentTranslator::PrintSelf(ostream& os, vtkIndent indent)
     os << indent << "ExtentTable: (none)\n";
     }
   os << indent << "MaximumGhostLevel: " << this->MaximumGhostLevel << "\n";
+  os << indent << "NumberOfPiecesInTable: " 
+     << this->NumberOfPiecesInTable << "\n";
   if(this->PieceAvailable)
     {
     vtkIndent nextIndent = indent.GetNextIndent();
