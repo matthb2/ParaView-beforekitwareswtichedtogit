@@ -84,9 +84,8 @@ void vtkGaussianCubeReader::Execute()
   char Title[256];
   char data_name[256];
   double elements[16];
-  int JN1, N1N2, n1, n2, n3, nt_atom, i, j, k, iatom;
+  int JN1, N1N2, n1, n2, n3, i, j, k;
   float tmp, *Cube_data;
-  float chg, x, y, z;
 
   // Output 0 (the default is the polydata)
   // Output 1 will be the gridded Image data

@@ -189,17 +189,14 @@ void vtkMoleculeReaderBase::Execute()
     }
   vtkDebugMacro(<<  this->NumberOfAtoms);
 
-  if(this->NumberOfAtoms == 0) 
+  if ((fp = fopen(this->FileName, "r")) == NULL) 
     {
-    if ((fp = fopen(this->FileName, "r")) == NULL) 
-      {
-      vtkErrorMacro(<< "File " << this->FileName << " not found");
-      return;
-      }
-    vtkDebugMacro(<< "opening base file " << this->FileName);
-    this->ReadMolecule(fp);
-    fclose(fp);
-    } 
+    vtkErrorMacro(<< "File " << this->FileName << " not found");
+    return;
+    }
+  vtkDebugMacro(<< "opening base file " << this->FileName);
+  this->ReadMolecule(fp);
+  fclose(fp);
 
   this->GetOutput()->Squeeze();
 }
@@ -500,8 +497,10 @@ void vtkMoleculeReaderBase::PrintSelf(ostream& os, vtkIndent indent)
   this->Superclass::PrintSelf(os,indent);
 
   os << indent << "File Name: " 
-    << (this->FileName ? this->FileName : "(none)") << "\n"
-    << indent << "NumberOfAtoms: " << this->NumberOfAtoms  << "\n";  
+    << (this->FileName ? this->FileName : "(none)") << endl;
+  os << indent << "NumberOfAtoms: " << this->NumberOfAtoms  << endl;
+  os << indent << "HBScale: " << this->HBScale << endl;
+  os << indent << "BScale: " << this->BScale << endl;
 }
 
 
