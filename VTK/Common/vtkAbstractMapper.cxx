@@ -119,8 +119,10 @@ void vtkAbstractMapper::SetClippingPlanes(vtkPlanes *planes)
   this->RemoveAllClippingPlanes();
   for (int i=0; i<numPlanes && i<6; i++)
     {
-    plane = planes->GetPlane(i);
+    plane = vtkPlane::New();
+    planes->GetPlane(i, plane);
     this->AddClippingPlane(plane);
+    plane->Delete();
     }
 }
 
