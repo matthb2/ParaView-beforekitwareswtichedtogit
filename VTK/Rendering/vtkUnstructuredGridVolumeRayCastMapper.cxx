@@ -31,7 +31,7 @@
 #include "vtkVolumeProperty.h"
 #include "vtkUnstructuredGridBunykRayCastFunction.h"
 #include "vtkUnstructuredGridVolumeRayCastIterator.h"
-#include "vtkUnstructuredGridTestRayIntegrator.h"
+#include "vtkUnstructuredGridPreIntegration.h"
 #include "vtkRayCastImageDisplayHelper.h"
 #include "vtkDoubleArray.h"
 
@@ -81,7 +81,7 @@ vtkUnstructuredGridVolumeRayCastMapper::vtkUnstructuredGridVolumeRayCastMapper()
   this->ImageDisplayHelper     = vtkRayCastImageDisplayHelper::New();
   
   this->RayCastFunction = vtkUnstructuredGridBunykRayCastFunction::New();
-  this->RayIntegrator = vtkUnstructuredGridTestRayIntegrator::New();
+  this->RayIntegrator = vtkUnstructuredGridPreIntegration::New();
   
 }
 
