@@ -276,7 +276,8 @@ void vtkFeatureEdges::Execute()
           continue;
           }
         }
-      else if ( this->ManifoldEdges )
+      else if ( this->ManifoldEdges &&
+                numNei == 1 && neighbors->GetId(0) > cellId )
         {
         if (ghostLevels && ghostLevels[cellId] > updateLevel)
           {
