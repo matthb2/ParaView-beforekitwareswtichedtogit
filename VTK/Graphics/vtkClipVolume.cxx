@@ -285,6 +285,10 @@ void vtkClipVolume::Execute()
         cellId = i + j*numICells + k*sliceSize;
         
         input->GetCell(cellId,cell);
+        if ( cell->GetCellType() == VTK_EMPTY_CELL )
+          {
+          continue;
+          }
         cellPts = cell->GetPoints();
         cellIds = cell->GetPointIds();
 
