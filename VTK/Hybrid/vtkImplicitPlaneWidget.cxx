@@ -529,6 +529,7 @@ void vtkImplicitPlaneWidget::OnLeftButtonDown()
   if ( prop == this->ConeActor || prop == this->LineActor ||
        prop == this->ConeActor2 || prop == this->LineActor2 )
     {
+    this->HighlightPlane(1);
     this->HighlightNormal(1);
     this->State = vtkImplicitPlaneWidget::Rotating;
     }
