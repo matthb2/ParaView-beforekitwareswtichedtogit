@@ -95,10 +95,6 @@ void vtkRedistributePolyData::Execute()
     }
 
   int myId;
-  if (!this->Controller)
-    {
-    this->SetController(vtkMultiProcessController::GetGlobalController());
-    }
 
   if (!this->Controller)
     {
