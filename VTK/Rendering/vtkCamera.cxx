@@ -475,7 +475,7 @@ void vtkCamera::SetParallelProjection(int flag)
 //----------------------------------------------------------------------------
 void vtkCamera::SetViewAngle(double angle)
 {
-  double min =   1.0;
+  double min =   0.00000001;
   double max = 179.0;
 
   if ( this->ViewAngle != angle )
