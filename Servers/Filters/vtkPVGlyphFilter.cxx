@@ -24,6 +24,7 @@ vtkStandardNewMacro(vtkPVGlyphFilter);
 
 vtkPVGlyphFilter::vtkPVGlyphFilter()
 {
+  this->SetColorModeToColorByScalar();
 }
 
 vtkPVGlyphFilter::~vtkPVGlyphFilter()
