@@ -957,7 +957,7 @@ void vtkImageTracerWidget::InitializeHandles(vtkPoints* points)
   if (npts > 1)
     {
     this->BuildLinesFromHandles();
-    if (this->AutoClose)
+    if (this->AutoClose && !this->IsClosed)
       {
       this->ClosePath();
       }
