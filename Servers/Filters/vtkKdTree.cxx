@@ -822,7 +822,7 @@ void vtkKdNode::PrintVerboseNode(int depth)
 static char dots[MSGSIZE] = "...........................................................";
 static char msg[MSGSIZE];
 
-static char * makeEntry(char *s)
+static char * makeEntry(const char *s)
 {
   memcpy(msg, dots, MSGSIZE);
   int len = strlen(s);
