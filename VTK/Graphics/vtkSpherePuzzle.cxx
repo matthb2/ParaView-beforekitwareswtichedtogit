@@ -175,7 +175,7 @@ int vtkSpherePuzzle::RequestData(
 
       // append all the pieces.
       append->AddInput(tmp);
-      tmp->Delete();
+      tmp->FastDelete();
       ++count;
       }
     }
