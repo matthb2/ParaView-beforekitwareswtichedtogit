@@ -45,7 +45,7 @@
 #include "vtkUniformGrid.h"
 #include "vtkRectilinearGrid.h"
 
-#ifdef _MSV_VER
+#ifdef _MSC_VER
 #pragma warning ( disable : 4100 )
 #endif
 #include <algorithm>
