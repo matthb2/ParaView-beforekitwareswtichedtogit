@@ -209,7 +209,7 @@ int vtkParametricSpline::Initialize()
 
   // Construct the splines, parameterized by length
   vtkIdType i;
-  double xPrev[3], x[3], len, t;
+  double xPrev[3], x[3], len;
   this->Points->GetPoint(0,xPrev);
   vtkIdType npts = this->Points->GetNumberOfPoints();
   
