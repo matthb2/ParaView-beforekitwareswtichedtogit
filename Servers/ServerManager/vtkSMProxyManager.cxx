@@ -65,9 +65,12 @@ void vtkSMProxyManager::InstantiateGroupPrototypes(const char* groupName)
     for(; it2 != it->second.end(); it2++)
       {
       vtkPVXMLElement* element = it2->second.GetPointer();
-      vtkSMProxy* proxy = this->NewProxy(element, groupName);
-      this->RegisterProxy(newgroupname.str(), it2->first.c_str(), proxy);
-      proxy->Delete();
+      if (!this->GetProxy(newgroupname.str(), it2->first.c_str()))
+        {
+        vtkSMProxy* proxy = this->NewProxy(element, groupName);
+        this->RegisterProxy(newgroupname.str(), it2->first.c_str(), proxy);
+        proxy->Delete();
+        }
       }
 
     }
