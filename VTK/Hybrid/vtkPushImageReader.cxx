@@ -216,3 +216,11 @@ void vtkPushImageReader::Run()
     }
   this->PushPipeline->Run(this);
 }
+
+void vtkPushImageReader::PrintSelf(ostream& os, vtkIndent indent)
+{
+  this->Superclass::PrintSelf(os,indent);
+  
+  os << indent << "CurrentSlice: " << this->CurrentSlice << "\n";
+  os << indent << "PushPipeline: " << this->PushPipeline << "\n";
+}

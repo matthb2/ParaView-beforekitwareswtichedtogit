@@ -877,3 +877,10 @@ void vtkPushPipeline::SetupRenderer(vtkRenderer *ren)
       }
     }
 }
+
+void vtkPushPipeline::PrintSelf(ostream& os, vtkIndent indent)
+{
+  this->Superclass::PrintSelf(os,indent);
+  
+  os << indent << "RunState: " << this->RunState << "\n";
+}
