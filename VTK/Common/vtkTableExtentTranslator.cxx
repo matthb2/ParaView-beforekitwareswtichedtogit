@@ -181,6 +181,7 @@ void vtkTableExtentTranslator::SetPieceAvailable(int piece, int available)
      (piece >= this->NumberOfPiecesInTable))
     {
     vtkErrorMacro("Piece " << piece << " does not exist.");
+    return;
     }
   this->PieceAvailable[piece] = available?1:0;
 }
