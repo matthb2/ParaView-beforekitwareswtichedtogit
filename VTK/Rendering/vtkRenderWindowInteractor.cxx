@@ -356,6 +356,7 @@ void vtkRenderWindowInteractor::FlyTo(vtkRenderer *ren, float x, float y, float 
       }
     ren->GetActiveCamera()->SetFocalPoint(focalPt);
     ren->GetActiveCamera()->Dolly(this->Dolly/this->NumberOfFlyFrames + 1.0);
+    ren->GetActiveCamera()->OrthogonalizeViewUp();
     ren->ResetCameraClippingRange();
     this->RenderWindow->Render();
     }
