@@ -1055,6 +1055,8 @@ void vtkImagePlaneWidget::PlaceWidget(float bds[6])
     }
   this->PlaneSource->Update();
   this->BuildRepresentation();
+  this->UpdateNormal();
+  this->UpdateOrigin();
 }
 
 void vtkImagePlaneWidget::SetPlaneOrientation(int i)
