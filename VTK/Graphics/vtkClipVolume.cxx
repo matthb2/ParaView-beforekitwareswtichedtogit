@@ -438,7 +438,7 @@ void vtkClipVolume::ClipTets(float value, vtkTetra *clipTetra,
   // Tesselate this cell as if it were inside
   vtkIdType ntetra = tetraPts->GetNumberOfPoints() / 4;
   int i, id, j, k, numNew;
-  vtkIdType npts, *pts;
+  vtkIdType npts=0, *pts;
   
   // Clip each tetrahedron
   for (i=0; i<ntetra; i++)
