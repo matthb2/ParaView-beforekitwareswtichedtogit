@@ -3002,6 +3002,16 @@ int vtkModelMetadata::MergeModelMetadata(const vtkModelMetadata *em)
 {
   int i, rc;
 
+  // Merge the global information - that which doesn't depend on
+  // which elements (cells) are in the two models.
+
+  rc = this->MergeGlobalInformation(em);
+
+  if (rc)
+    {
+    return 1;
+    }
+
   // If the input object is empty, we're done
 
   int nBlocksNew = em->GetNumberOfBlocks();
@@ -3014,16 +3024,6 @@ int vtkModelMetadata::MergeModelMetadata(const vtkModelMetadata *em)
     }
 
   if (nCellsNew == 0) return 0;
-
-  // Merge the global information - that which doesn't depend on
-  // which elements (cells) are in the two models.
-
-  rc = this->MergeGlobalInformation(em);
-
-  if (rc)
-    {
-    return 1;
-    }
 
   // BLOCKS
 
