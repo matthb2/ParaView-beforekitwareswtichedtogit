@@ -57,6 +57,7 @@ vtkHexagonalPrism::vtkHexagonalPrism()
   for (i = 0; i < 6; i++)
     {
     this->Polygon->Points->SetPoint(i, 0.0, 0.0, 0.0);
+    this->Polygon->PointIds->SetId(i,0);
     }
 }
 
