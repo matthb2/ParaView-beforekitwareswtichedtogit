@@ -38,37 +38,30 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 
 
 =========================================================================*/
-// .NAME vtkImageDotProduct - Dot product of two vector images.
+// .NAME vtkImageWrapPad - Makes an image larger by wrapping existing data.
 // .SECTION Description
-// vtkImageDotProduct interpretes one axis of the input images as
-// vectors and takes the dot product vector by vector.  The first axis
-// is the vector axis and defaults to VTK_IMAGE_COMPONENT_AXIS.
-// The output collapses the vector axis to the extent (0,0).
+// vtkImageWrapPad performs a modulo operation on the output pixel index
+// to determine the source input index.  The new image extent of the
+// output has to be specified.  Input has to be the same scalar type as 
+// output.
 
 
-#ifndef __vtkImageDotProduct_h
-#define __vtkImageDotProduct_h
+#ifndef __vtkImageWrapPad_h
+#define __vtkImageWrapPad_h
 
 
+#include "vtkImagePadFilter.h"
 
-#include "vtkImageTwoInputFilter.h"
-
-class vtkImageDotProduct : public vtkImageTwoInputFilter
+class vtkImageWrapPad : public vtkImagePadFilter
 {
 public:
-  vtkImageDotProduct();
-  char *GetClassName() {return "vtkImageDotProduct";};
+  vtkImageWrapPad();
+  char *GetClassName() {return "vtkImageWrapPad";};
 
 protected:
-  void ComputeOutputImageInformation(vtkImageRegion *inRegion1,
-				     vtkImageRegion *inRegion2,
-				     vtkImageRegion *outRegion);
   void ComputeRequiredInputRegionExtent(vtkImageRegion *outRegion,
-					vtkImageRegion *inRegion1,
-					vtkImageRegion *inRegion2);
-  void Execute(vtkImageRegion *inRegion1, 
-	       vtkImageRegion *inRegion2, 
-	       vtkImageRegion *outRegion);
+					vtkImageRegion *inRegion);
+  void Execute(vtkImageRegion *inRegion, vtkImageRegion *outRegion);
 };
 
 #endif

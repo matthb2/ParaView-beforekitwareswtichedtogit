@@ -38,37 +38,28 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 
 
 =========================================================================*/
-// .NAME vtkImageDotProduct - Dot product of two vector images.
+// .NAME vtkImageMirrorPad - Extra pixels are filled by mirror images.
 // .SECTION Description
-// vtkImageDotProduct interpretes one axis of the input images as
-// vectors and takes the dot product vector by vector.  The first axis
-// is the vector axis and defaults to VTK_IMAGE_COMPONENT_AXIS.
-// The output collapses the vector axis to the extent (0,0).
+// vtkImageMirrorPad makes an image larger by filling extra pixels with
+// a mirror image of the original image (mirror at image boundaries).  
 
 
-#ifndef __vtkImageDotProduct_h
-#define __vtkImageDotProduct_h
+#ifndef __vtkImageMirrorPad_h
+#define __vtkImageMirrorPad_h
 
 
+#include "vtkImagePadFilter.h"
 
-#include "vtkImageTwoInputFilter.h"
-
-class vtkImageDotProduct : public vtkImageTwoInputFilter
+class vtkImageMirrorPad : public vtkImagePadFilter
 {
 public:
-  vtkImageDotProduct();
-  char *GetClassName() {return "vtkImageDotProduct";};
+  vtkImageMirrorPad();
+  char *GetClassName() {return "vtkImageMirrorPad";};
 
 protected:
-  void ComputeOutputImageInformation(vtkImageRegion *inRegion1,
-				     vtkImageRegion *inRegion2,
-				     vtkImageRegion *outRegion);
   void ComputeRequiredInputRegionExtent(vtkImageRegion *outRegion,
-					vtkImageRegion *inRegion1,
-					vtkImageRegion *inRegion2);
-  void Execute(vtkImageRegion *inRegion1, 
-	       vtkImageRegion *inRegion2, 
-	       vtkImageRegion *outRegion);
+					vtkImageRegion *inRegion);
+  void Execute(vtkImageRegion *inRegion, vtkImageRegion *outRegion);
 };
 
 #endif

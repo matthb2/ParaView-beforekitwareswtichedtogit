@@ -51,9 +51,9 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 #define __vtkImageNonMaximumSuppression_h
 
 
-#include "vtkImageDyadicFilter.h"
+#include "vtkImageTwoInputFilter.h"
 
-class vtkImageNonMaximumSuppression : public vtkImageDyadicFilter
+class vtkImageNonMaximumSuppression : public vtkImageTwoInputFilter
 {
 public:
   vtkImageNonMaximumSuppression();

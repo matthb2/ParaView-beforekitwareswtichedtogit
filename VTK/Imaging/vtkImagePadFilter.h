@@ -38,37 +38,40 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 
 
 =========================================================================*/
-// .NAME vtkImageDotProduct - Dot product of two vector images.
+// .NAME vtkImagePadFilter - Super class for filters that fill in extra pixels.
 // .SECTION Description
-// vtkImageDotProduct interpretes one axis of the input images as
-// vectors and takes the dot product vector by vector.  The first axis
-// is the vector axis and defaults to VTK_IMAGE_COMPONENT_AXIS.
-// The output collapses the vector axis to the extent (0,0).
+// vtkImagePadFilter Changes the image extent of an image.  If the image
+// extent is larger than the input image extent, the extra pixels are
+// filled by an alogorithm detemined by the subclass.
+// The image extent of the output has to be specified.
 
 
-#ifndef __vtkImageDotProduct_h
-#define __vtkImageDotProduct_h
+#ifndef __vtkImagePadFilter_h
+#define __vtkImagePadFilter_h
 
 
+#include "vtkImageFilter.h"
 
-#include "vtkImageTwoInputFilter.h"
-
-class vtkImageDotProduct : public vtkImageTwoInputFilter
+class vtkImagePadFilter : public vtkImageFilter
 {
 public:
-  vtkImageDotProduct();
-  char *GetClassName() {return "vtkImageDotProduct";};
+  vtkImagePadFilter();
+  char *GetClassName() {return "vtkImagePadFilter";};
 
+  // Description:
+  // The image extent of the output has to be set explicitely.
+  void SetOutputImageExtent(int num, int *extent);
+  vtkImageSetExtentMacro(OutputImageExtent);
+  void GetOutputImageExtent(int num, int *extent);
+  vtkImageGetExtentMacro(OutputImageExtent);
+  
 protected:
-  void ComputeOutputImageInformation(vtkImageRegion *inRegion1,
-				     vtkImageRegion *inRegion2,
+  int OutputImageExtent[VTK_IMAGE_EXTENT_DIMENSIONS];
+
+  void ComputeOutputImageInformation(vtkImageRegion *inRegion,
 				     vtkImageRegion *outRegion);
   void ComputeRequiredInputRegionExtent(vtkImageRegion *outRegion,
-					vtkImageRegion *inRegion1,
-					vtkImageRegion *inRegion2);
-  void Execute(vtkImageRegion *inRegion1, 
-	       vtkImageRegion *inRegion2, 
-	       vtkImageRegion *outRegion);
+					vtkImageRegion *inRegion);
 };
 
 #endif
