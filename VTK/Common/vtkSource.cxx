@@ -16,10 +16,12 @@
 
 =========================================================================*/
 #include "vtkSource.h"
-#include "vtkDataObject.h"
-#include "vtkObjectFactory.h"
+
 #include "vtkCommand.h"
+#include "vtkDataObject.h"
 #include "vtkErrorCode.h"
+#include "vtkFieldData.h"
+#include "vtkObjectFactory.h"
 
 vtkCxxRevisionMacro(vtkSource, "$Revision$");
 

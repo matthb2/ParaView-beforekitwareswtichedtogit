@@ -17,10 +17,12 @@
 =========================================================================*/
 
 #include "vtkSharedMemoryCommunicator.h"
-#include "vtkDataObject.h"
-#include "vtkObjectFactory.h"
-#include "vtkMultiProcessController.h"
+
 #include "vtkCriticalSection.h"
+#include "vtkDataArray.h"
+#include "vtkDataObject.h"
+#include "vtkMultiProcessController.h"
+#include "vtkObjectFactory.h"
 
 class vtkSharedMemoryCommunicatorMessage
 {

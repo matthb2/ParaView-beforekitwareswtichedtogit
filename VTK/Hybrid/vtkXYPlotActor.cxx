@@ -30,6 +30,7 @@
 #include "vtkPlane.h"
 #include "vtkPlanes.h"
 #include "vtkPolyDataMapper2D.h"
+#include "vtkTextMapper.h"
 
 #define VTK_MAX_PLOTS 50
 
