@@ -80,7 +80,7 @@ vtkPStreamTracer::~vtkPStreamTracer()
 // This method waits until a process sends its first points.
 void vtkPStreamTracer::ReceiveLastPoints()
 {
-  int streamId;
+  int streamId = 0;
 
   while(1)
     {

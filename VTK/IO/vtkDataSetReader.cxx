@@ -102,7 +102,11 @@ void vtkDataSetReader::Execute()
         }
       else
         {
+        // Hack to make sure that the object is not modified
+        // with SetNthOutput. Otherwise, extra executions occur.
+        vtkTimeStamp ts = this->MTime;
         this->SetNthOutput(0, preader->GetOutput());
+        this->MTime = ts;
         }
       preader->Delete();
       return;
@@ -131,7 +135,11 @@ void vtkDataSetReader::Execute()
         }
       else
         {
+        // Hack to make sure that the object is not modified
+        // with SetNthOutput. Otherwise, extra executions occur.
+        vtkTimeStamp ts = this->MTime;
         this->SetNthOutput(0, preader->GetOutput());
+        this->MTime = ts;
         }
       preader->Delete();
       return;
@@ -160,7 +168,11 @@ void vtkDataSetReader::Execute()
         }
       else
         {
+        // Hack to make sure that the object is not modified
+        // with SetNthOutput. Otherwise, extra executions occur.
+        vtkTimeStamp ts = this->MTime;
         this->SetNthOutput(0, preader->GetOutput());
+        this->MTime = ts;
         }
       preader->Delete();
       return;
@@ -189,7 +201,11 @@ void vtkDataSetReader::Execute()
         }
       else
         {
+        // Hack to make sure that the object is not modified
+        // with SetNthOutput. Otherwise, extra executions occur.
+        vtkTimeStamp ts = this->MTime;
         this->SetNthOutput(0, preader->GetOutput());
+        this->MTime = ts;
         }
       preader->Delete();
       return;
@@ -218,7 +234,11 @@ void vtkDataSetReader::Execute()
         }
       else
         {
+        // Hack to make sure that the object is not modified
+        // with SetNthOutput. Otherwise, extra executions occur.
+        vtkTimeStamp ts = this->MTime;
         this->SetNthOutput(0, preader->GetOutput());
+        this->MTime = ts;
         }
       preader->Delete();
       return;

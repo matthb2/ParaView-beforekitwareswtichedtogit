@@ -53,7 +53,7 @@ void vtkEnSightMasterServerReader::Execute()
 {
   if ( !this->MaxNumberOfPieces )
     {
-    vtkErrorMacro("No pices to read");
+    vtkErrorMacro("No pieces to read");
     return;
     }
 

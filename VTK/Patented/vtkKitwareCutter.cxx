@@ -53,6 +53,11 @@ void vtkKitwareCutter::Execute()
     return;
     }
   
+  if (input->GetNumberOfCells() == 0)
+    {
+    return;
+    }
+
   if (!this->CutFunction)
     {
     vtkErrorMacro("No cut function specified");

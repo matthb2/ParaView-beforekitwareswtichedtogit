@@ -79,12 +79,13 @@ const char* vtkXMLStructuredGridWriter::GetDefaultFileExtension()
 }
 
 //----------------------------------------------------------------------------
-void vtkXMLStructuredGridWriter::WriteAppendedMode(vtkIndent indent)
+int vtkXMLStructuredGridWriter::WriteAppendedMode(vtkIndent indent)
 {
   this->PointsPosition = new unsigned long[this->NumberOfPieces];
-  this->Superclass::WriteAppendedMode(indent);
+  int result = this->Superclass::WriteAppendedMode(indent);
   delete [] this->PointsPosition;
   this->PointsPosition = 0;
+  return result;
 }
 
 //----------------------------------------------------------------------------
