@@ -271,7 +271,7 @@ void vtkMapper::ColorByArrayComponent(int arrayNum, int component)
 
 void vtkMapper::ColorByArrayComponent(const char* arrayName, int component)
 {
-  if (strcmp(this->ArrayName, arrayName) == 0 &&
+  if (arrayName || strcmp(this->ArrayName, arrayName) == 0 &&
       component == this->ArrayComponent &&
       this->ArrayAccessMode == VTK_GET_ARRAY_BY_ID)
     {
