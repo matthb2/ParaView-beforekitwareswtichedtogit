@@ -1090,7 +1090,7 @@ void vtkXOpenGLRenderWindow::SetParentId(void *arg)
 }
 
 
-void vtkXOpenGLRenderWindow::SetWindowName(char * name)
+void vtkXOpenGLRenderWindow::SetWindowName(const char * name)
 {
   XTextProperty win_name_text_prop;
 
