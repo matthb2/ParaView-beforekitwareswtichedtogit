@@ -303,42 +303,6 @@ void vtkTextMapper::RenderOverlayMultipleLines(vtkViewport *viewport,
     }
 }
 
-void vtkTextMapper::RenderOpaqueGeometryMultipleLines(vtkViewport *viewport, 
-                                                      vtkActor2D *actor)    
-{
-  float offset = 0.0;
-  int size[2];
-  // make sure LineSize is up to date 
-  this->GetMultiLineSize(viewport,size);
-
-  switch (this->VerticalJustification)
-    {
-    case VTK_TEXT_TOP:
-      offset = 1.0;
-      break;
-    case VTK_TEXT_CENTERED:
-      offset = -this->NumberOfLines/2.0 + 1;
-      break;
-    case VTK_TEXT_BOTTOM:
-      offset = -(this->NumberOfLines - 1.0);
-      break;
-    }
-
-  for (int lineNum=0; lineNum < this->NumberOfLines; lineNum++)
-    {
-    this->TextLines[lineNum]->SetItalic(this->Italic);
-    this->TextLines[lineNum]->SetBold(this->Bold);
-    this->TextLines[lineNum]->SetShadow(this->Shadow);
-    this->TextLines[lineNum]->SetFontSize(this->FontSize);
-    this->TextLines[lineNum]->SetFontFamily(this->FontFamily);
-    this->TextLines[lineNum]->SetJustification(this->Justification);
-    this->TextLines[lineNum]->SetLineOffset(this->LineSize*(lineNum+offset));
-    this->TextLines[lineNum]->SetLineSpacing(this->LineSpacing);
-    this->TextLines[lineNum]->RenderOpaqueGeometry(viewport,actor);
-    }
-}
-
-
 void vtkTextMapper::SetFontSize(int size)
 {
   if (size != this->FontSize)
