@@ -25,7 +25,7 @@
 #include "vtkVolume.h"
 
 #ifndef VTK_IMPLEMENT_MESA_CXX
-#ifdef __APPLE__
+#if defined(__APPLE__) && (defined(VTK_USE_CARBON) || defined(VTK_USE_COCOA))
 #include <OpenGL/gl.h>
 #else
 #include <GL/gl.h>
