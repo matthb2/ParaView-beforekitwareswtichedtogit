@@ -393,7 +393,7 @@ void vtkIceTRenderManager::ComputeTileViewportTransform()
         if (this->RenderWindow)
           {
           // RenderWindow tiles from lower left instead of upper left.
-          y = this->TileDimensions[0] - y - 1;
+          y = this->TileDimensions[1] - y - 1;
           this->RenderWindow->SetTileScale(this->TileDimensions);
           this->RenderWindow->SetTileViewport
             (x*(1.0/(float)(this->TileDimensions[0])), 
