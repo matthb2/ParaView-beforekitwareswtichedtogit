@@ -47,7 +47,8 @@ void vtkOpenGLPolyDataMapper2D::RenderOverlay(vtkViewport* viewport,
   vtkUnsignedCharArray *c=NULL;
   unsigned char  *rgba;
   unsigned char  color[4];
-  vtkIdType      *pts, npts;
+  vtkIdType      *pts = 0;
+  vtkIdType      npts = 0;
   int            cellScalars = 0;
   int            cellNum = 0;
   vtkPlaneCollection *clipPlanes;

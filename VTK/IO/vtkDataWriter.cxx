@@ -862,7 +862,8 @@ int vtkDataWriter::WriteCells(ostream *fp, vtkCellArray *cells, const char *labe
   if ( this->FileType == VTK_ASCII )
     {
     int j;
-    vtkIdType *pts, npts;
+    vtkIdType *pts = 0;
+    vtkIdType npts = 0;
     for (cells->InitTraversal(); cells->GetNextCell(npts,pts); )
       {
       // currently writing vtkIdType as int
