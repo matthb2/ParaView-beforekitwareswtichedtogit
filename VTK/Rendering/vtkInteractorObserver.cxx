@@ -20,6 +20,7 @@
 #include "vtkCallbackCommand.h"
 #include "vtkObjectFactory.h"
 #include "vtkRenderer.h"
+#include "vtkRenderWindow.h"
 #include "vtkRenderWindowInteractor.h"
 
 vtkCxxRevisionMacro(vtkInteractorObserver, "$Revision$");
@@ -106,6 +107,19 @@ void vtkInteractorObserver::ProcessEvents(vtkObject* vtkNotUsed(object),
     }
 }
 
+//----------------------------------------------------------------------------
+void vtkInteractorObserver::StartInteraction() 
+{
+  this->Interactor->GetRenderWindow()->SetDesiredUpdateRate(this->Interactor->GetDesiredUpdateRate());
+}
+
+//----------------------------------------------------------------------------
+void vtkInteractorObserver::EndInteraction() 
+{
+  this->Interactor->GetRenderWindow()->SetDesiredUpdateRate(this->Interactor->GetStillUpdateRate());
+}
+
+//----------------------------------------------------------------------------
 // Description:
 // Transform from display to world coordinates.
 // WorldPt has to be allocated as 4 vector
