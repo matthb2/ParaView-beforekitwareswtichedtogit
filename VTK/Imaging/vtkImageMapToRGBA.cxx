@@ -41,9 +41,7 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 #include "vtkImageMapToRGBA.h"
 #include "vtkObjectFactory.h"
 
-
-
-//------------------------------------------------------------------------------
+//----------------------------------------------------------------------------
 vtkImageMapToRGBA* vtkImageMapToRGBA::New()
 {
   // First try to create the object from the vtkObjectFactory
@@ -56,150 +54,10 @@ vtkImageMapToRGBA* vtkImageMapToRGBA::New()
   return new vtkImageMapToRGBA;
 }
 
-
-
-
-
-
 //----------------------------------------------------------------------------
 // Constructor sets default values
 vtkImageMapToRGBA::vtkImageMapToRGBA()
 {
-  this->LookupTable = NULL;
+  vtkWarningMacro(<<"vtkImageMapToRGBA is deprecated, use vtkImageMapToColors");
 }
-
-
-vtkImageMapToRGBA::~vtkImageMapToRGBA()
-{
-  if (this->LookupTable != NULL) 
-    {
-    this->LookupTable->UnRegister(this);
-    }
-}
-
-//----------------------------------------------------------------------------
-unsigned long vtkImageMapToRGBA::GetMTime()
-{
-  unsigned long t1, t2;
-
-  t1 = this->vtkImageToImageFilter::GetMTime();
-  if (this->LookupTable)
-    {
-    t2 = this->LookupTable->GetMTime();
-    if (t2 > t1)
-      {
-      t1 = t2;
-      }
-    }
-  return t1;
-}
-
-//----------------------------------------------------------------------------
-void vtkImageMapToRGBA::ExecuteInformation(vtkImageData *vtkNotUsed(inData), 
-					   vtkImageData *outData)
-{
-  if (this->LookupTable == 0)
-    {
-    vtkErrorMacro(<< "ExecuteInformation: No LookupTable was set!");
-    }
-  outData->SetScalarType(VTK_UNSIGNED_CHAR);
-  outData->SetNumberOfScalarComponents(4);
-
-}
-
-//----------------------------------------------------------------------------
-// This non-templated function executes the filter for any type of data.
-
-static void vtkImageMapToRGBAExecute(vtkImageMapToRGBA *self,
-				     vtkImageData *inData, void *inPtr,
-				     vtkImageData *outData, 
-				     unsigned char *outPtr,
-				     int outExt[6], int id)
-{
-  int idxY, idxZ;
-  int extX, extY, extZ;
-  int inIncX, inIncY, inIncZ;
-  int outIncX, outIncY, outIncZ;
-  unsigned long count = 0;
-  unsigned long target;
-  int dataType = inData->GetScalarType();
-  int scalarSize = inData->GetScalarSize();
-  int numberOfComponents;
-  int rowLength;
-  vtkScalarsToColors *lookupTable = self->GetLookupTable();
-  unsigned char *outPtr1;
-  void *inPtr1;
-
-  // find the region to loop over
-  extX = outExt[1] - outExt[0] + 1;
-  extY = outExt[3] - outExt[2] + 1; 
-  extZ = outExt[5] - outExt[4] + 1;
-
-  target = (unsigned long)(extZ*extY/50.0);
-  target++;
-  
-  // Get increments to march through data 
-  inData->GetContinuousIncrements(outExt, inIncX, inIncY, inIncZ);
-  // because we are using void * and char * we must take care
-  // of the scalar size in the increments
-  inIncY *= scalarSize;
-  inIncZ *= scalarSize;
-  outData->GetContinuousIncrements(outExt, outIncX, outIncY, outIncZ);
-  numberOfComponents = inData->GetNumberOfScalarComponents();
-  rowLength = extX*scalarSize;
-
-  // Loop through output pixels
-  outPtr1 = outPtr;
-  inPtr1 = inPtr;
-  for (idxZ = 0; idxZ < extZ; idxZ++)
-    {
-    for (idxY = 0; !self->AbortExecute && idxY < extY; idxY++)
-      {
-      if (!id) 
-	{
-	if (!(count%target))
-	  {
-	  self->UpdateProgress(count/(50.0*target));
-	  }
-	count++;
-	}
-      lookupTable->MapScalarsThroughTable2(inPtr1,(unsigned char *)outPtr1,
-					  dataType,extX,numberOfComponents);
-      outPtr1 += outIncY + extX*4;
-      inPtr1 = (void *) ((char *) inPtr1 + inIncY + rowLength);
-      }
-    outPtr1 += outIncZ;
-    inPtr1 = (void *) ((char *) inPtr1 + inIncZ);
-    }
-}
-
-//----------------------------------------------------------------------------
-// This method is passed a input and output data, and executes the filter
-// algorithm to fill the output from the input.
-
-void vtkImageMapToRGBA::ThreadedExecute(vtkImageData *inData, 
-					 vtkImageData *outData,
-					 int outExt[6], int id)
-{
-  void *inPtr = inData->GetScalarPointerForExtent(outExt);
-  void *outPtr = outData->GetScalarPointerForExtent(outExt);
-  
-  vtkImageMapToRGBAExecute(this, inData, inPtr, 
-			   outData, (unsigned char *)outPtr, outExt, id);
-}
-
-void vtkImageMapToRGBA::PrintSelf(ostream& os, vtkIndent indent)
-{
-  vtkImageToImageFilter::PrintSelf(os,indent);
-
-  os << indent << "LookupTable: " << this->LookupTable << "\n";
-  if (this->LookupTable)
-    {
-    this->LookupTable->PrintSelf(os,indent.GetNextIndent());
-    }
-}
-
-
-
-
 
