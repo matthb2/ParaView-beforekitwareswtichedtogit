@@ -58,6 +58,7 @@ vtkImagePlaneWidget::vtkImagePlaneWidget() : vtkPolyDataSourceWidget()
 
   this->Interaction              = 1;
   this->PlaneOrientation         = 0;
+  this->PlaceFactor              = 1.0;
   this->RestrictPlaneToVolume    = 1;
   this->OriginalWindow           = 1.0;
   this->OriginalLevel            = 0.5;
