@@ -134,16 +134,8 @@ vtkCxxSetObjectMacro(vtkMultiDisplayManager,SocketController,vtkSocketController
 //-------------------------------------------------------------------------
 vtkMultiDisplayManager::~vtkMultiDisplayManager()
 {
-  if (this->Controller)
-    {
-    this->Controller->UnRegister(this);
-    this->Controller = NULL;
-    }
-  if (this->SocketController)
-    {
-    this->SocketController->UnRegister(this);
-    this->SocketController = NULL;
-    }
+  this->SetController(NULL);
+  this->SetSocketController(NULL);
 
   this->CompositeUtilities->Delete();
   this->CompositeUtilities = NULL;
