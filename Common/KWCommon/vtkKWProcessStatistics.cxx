@@ -190,7 +190,7 @@ int vtkKWProcessStatistics::QueryMemory()
   fgets(buffer, sizeof(buffer), fd);
   fscanf(fd, "Mem: %lu %lu %lu %lu %lu %lu\n",
          &tp, &temp, &ap, &temp, &temp, &temp);
-  fscanf(fd, "Swap: %lu %lu %lu\n", &tv, &temp, &tv);  
+  fscanf(fd, "Swap: %lu %lu %lu\n", &tv, &temp, &av);  
   fclose( fd );
   this->TotalVirtualMemory = tv>>10;
   this->TotalPhysicalMemory = tp>>10;
