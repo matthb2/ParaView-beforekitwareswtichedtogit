@@ -162,6 +162,7 @@ void vtkStructuredCacheFilter::CopyDataAttributes(int* copyExt,
                      *(outExt[3]-outExt[2]+1)
                      *(outExt[5]-outExt[4]+1);
           gl->SetNumberOfTuples(length);
+          gl->SetName("vtkGhostLevels");
           // Initialize to 0.
           memset(gl->GetVoidPointer(0), 0, length);
           out->AddArray(gl);
