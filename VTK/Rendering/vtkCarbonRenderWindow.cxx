@@ -1,13 +1,9 @@
 /*=========================================================================
 
-Program:   Visualization Toolkit
-Module:    $RCSfile$
-Language:  C++
-Date:      $Date$
-Version:   $Revision$
-Thanks:    to Yves Starreveld for developing this class
+  Program:   Visualization Toolkit
+  Module:    $RCSfile$
 
-  Copyright (c) 1993-2002 Ken Martin, Will Schroeder, Bill Lorensen
+  Copyright (c) Ken Martin, Will Schroeder, Bill Lorensen
   All rights reserved.
   See Copyright.txt or http://www.kitware.com/Copyright.htm for details.
 
