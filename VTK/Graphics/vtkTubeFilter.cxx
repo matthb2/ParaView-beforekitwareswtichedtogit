@@ -465,7 +465,8 @@ int vtkTubeFilter::GeneratePoints(vtkIdType offset,
 }
 
 void vtkTubeFilter::GenerateStrips(vtkIdType offset, vtkIdType npts, 
-                                   vtkIdType *pts, vtkIdType inCellId,
+                                   vtkIdType* vtkNotUsed(pts), 
+                                   vtkIdType inCellId,
                                    vtkCellData *cd, vtkCellData *outCD,
                                    vtkCellArray *newStrips)
 {
