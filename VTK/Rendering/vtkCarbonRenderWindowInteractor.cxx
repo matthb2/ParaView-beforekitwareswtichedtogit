@@ -47,7 +47,6 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "vtkCarbonRenderWindow.h"
 #include "vtkCarbonRenderWindowInteractor.h"
 #include "vtkCommand.h"
-#include "vtkCommand.h"
 #include "vtkInteractorStyle.h"
 #include "vtkObjectFactory.h"
 
