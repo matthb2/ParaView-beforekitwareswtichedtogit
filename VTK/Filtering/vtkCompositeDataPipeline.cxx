@@ -310,13 +310,6 @@ int vtkCompositeDataPipeline::ProcessRequest(vtkInformation* request)
     {
     this->InSubPass = 1;
 
-    // Get the output port from which the request was made.
-    int outputPort = -1;
-    if(request->Has(FROM_OUTPUT_PORT()))
-      {
-      outputPort = request->Get(FROM_OUTPUT_PORT());
-      }
-
     // Update inputs first.
     if(!this->ForwardUpstream(request))
       {
