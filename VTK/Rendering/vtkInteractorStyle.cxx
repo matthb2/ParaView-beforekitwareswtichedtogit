@@ -763,24 +763,6 @@ void vtkInteractorStyle::OnChar()
       }
       break;
 
-    case 'l' :
-    case 'L' :
-      {
-      int val = vtkTextProperty::GetGlobalAntiAliasing();
-      // Cycle through global anti-aliasing control
-      if (val == VTK_TEXT_GLOBAL_ANTIALIASING_ALL)
-        {
-        val = VTK_TEXT_GLOBAL_ANTIALIASING_SOME;
-        }
-      else
-        {
-        val++;
-        }
-      vtkTextProperty::SetGlobalAntiAliasing(val);
-      rwi->Render();
-      }
-      break;
-
     case '3' :
       if (rwi->GetRenderWindow()->GetStereoRender()) 
         {
