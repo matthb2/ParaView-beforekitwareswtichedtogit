@@ -373,9 +373,10 @@ int vtkGenericEnSightReader::DetermineEnSightVersion()
             if (this->IFile == NULL)
               {
               vtkErrorMacro("Unable to open file: " << sfilename.c_str());
+              vtkWarningMacro("Assuming binary file.");
               this->IFile = NULL;
               delete [] fileName;
-              return 0;
+              return vtkGenericEnSightReader::ENSIGHT_GOLD_BINARY;
               } // end if IFile == NULL
           
             this->ReadBinaryLine(binaryLine);
@@ -466,10 +467,11 @@ int vtkGenericEnSightReader::DetermineEnSightVersion()
         if (this->IFile == NULL)
           {
           vtkErrorMacro("Unable to open file: " << sfilename.c_str());
+          vtkWarningMacro("Assuming binary file.");
           fclose(this->IFile);
           this->IFile = NULL;
           delete [] fileName;
-          return 0;
+          return vtkGenericEnSightReader::ENSIGHT_6_BINARY;
           } // end if IFile == NULL
         
         this->ReadBinaryLine(binaryLine);
