@@ -479,3 +479,9 @@ void vtkTIFFWriter::WriteFile(ofstream *file, vtkImageData *data,
       }
     }
 }
+
+//----------------------------------------------------------------------------
+void vtkTIFFWriter::PrintSelf(ostream& os, vtkIndent indent)
+{
+  this->Superclass::PrintSelf(os,indent);
+}

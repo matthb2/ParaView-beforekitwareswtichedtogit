@@ -223,4 +223,8 @@ void vtkIVWriter::WritePolyData(vtkPolyData *pd, FILE *fp)
 }
 
 
-
+//----------------------------------------------------------------------------
+void vtkIVWriter::PrintSelf(ostream& os, vtkIndent indent)
+{
+  this->Superclass::PrintSelf(os,indent);
+}

@@ -447,4 +447,8 @@ void vtkGESignaReader::ExecuteData(vtkDataObject *output)
   vtkGESignaReaderUpdate(this, data, (unsigned short *)(outPtr));
 }
 
-
+//----------------------------------------------------------------------------
+void vtkGESignaReader::PrintSelf(ostream& os, vtkIndent indent)
+{
+  this->Superclass::PrintSelf(os,indent);
+}

@@ -2073,3 +2073,9 @@ int vtkEnSight6Reader::CreateStructuredGridOutput(int partId,
   lineRead = this->ReadNextDataLine(line);
   return lineRead;
 }
+
+//----------------------------------------------------------------------------
+void vtkEnSight6Reader::PrintSelf(ostream& os, vtkIndent indent)
+{
+  this->Superclass::PrintSelf(os,indent);
+}

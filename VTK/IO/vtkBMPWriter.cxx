@@ -181,5 +181,8 @@ void vtkBMPWriter::WriteFile(ofstream *file, vtkImageData *data,
     }
 }
 
-
-
+//----------------------------------------------------------------------------
+void vtkBMPWriter::PrintSelf(ostream& os, vtkIndent indent)
+{
+  this->Superclass::PrintSelf(os,indent);
+}

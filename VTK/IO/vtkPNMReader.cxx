@@ -222,3 +222,9 @@ int vtkPNMReader::CanReadFile(const char* fname)
   fclose(fp);
   return ok;
 }
+
+//----------------------------------------------------------------------------
+void vtkPNMReader::PrintSelf(ostream& os, vtkIndent indent)
+{
+  this->Superclass::PrintSelf(os,indent);
+}

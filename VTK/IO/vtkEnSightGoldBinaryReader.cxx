@@ -2901,3 +2901,9 @@ int vtkEnSightGoldBinaryReader::ReadFloatArray(float *result,
   
   return 1;
 }
+
+//----------------------------------------------------------------------------
+void vtkEnSightGoldBinaryReader::PrintSelf(ostream& os, vtkIndent indent)
+{
+  this->Superclass::PrintSelf(os,indent);
+}

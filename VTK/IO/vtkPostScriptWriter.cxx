@@ -203,5 +203,8 @@ void vtkPostScriptWriter::WriteFile(ofstream *file, vtkImageData *data,
   
 }
 
-
-
+//----------------------------------------------------------------------------
+void vtkPostScriptWriter::PrintSelf(ostream& os, vtkIndent indent)
+{
+  this->Superclass::PrintSelf(os,indent);
+}

@@ -32,3 +32,9 @@ vtkImageReader2 *vtkImageReader2Collection::GetNextItem()
 { 
   return static_cast<vtkImageReader2*>(this->GetNextItemAsObject());
 }
+
+//----------------------------------------------------------------------------
+void vtkImageReader2Collection::PrintSelf(ostream& os, vtkIndent indent)
+{
+  this->Superclass::PrintSelf(os,indent);
+}

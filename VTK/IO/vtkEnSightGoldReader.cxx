@@ -1879,3 +1879,9 @@ int vtkEnSightGoldReader::CreateImageDataOutput(int partId, char line[256])
   lineRead = this->ReadNextDataLine(line);
   return lineRead;
 }
+
+//----------------------------------------------------------------------------
+void vtkEnSightGoldReader::PrintSelf(ostream& os, vtkIndent indent)
+{
+  this->Superclass::PrintSelf(os,indent);
+}

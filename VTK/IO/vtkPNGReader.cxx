@@ -354,3 +354,9 @@ int vtkPNGReader::CanReadFile(const char* fname)
   fclose(fp);
   return 1; 
 }
+
+//----------------------------------------------------------------------------
+void vtkPNGReader::PrintSelf(ostream& os, vtkIndent indent)
+{
+  this->Superclass::PrintSelf(os,indent);
+}

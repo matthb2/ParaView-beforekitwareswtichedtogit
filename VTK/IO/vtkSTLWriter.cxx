@@ -166,3 +166,8 @@ void vtkSTLWriter::WriteBinarySTL(vtkPoints *pts, vtkCellArray *polys)
   fclose (fp);
 }
 
+//----------------------------------------------------------------------------
+void vtkSTLWriter::PrintSelf(ostream& os, vtkIndent indent)
+{
+  this->Superclass::PrintSelf(os,indent);
+}

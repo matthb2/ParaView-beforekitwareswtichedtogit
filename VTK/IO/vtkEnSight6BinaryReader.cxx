@@ -2568,3 +2568,9 @@ int vtkEnSight6BinaryReader::ReadFloatArray(float *result,
   
   return 1;
 }
+
+//----------------------------------------------------------------------------
+void vtkEnSight6BinaryReader::PrintSelf(ostream& os, vtkIndent indent)
+{
+  this->Superclass::PrintSelf(os,indent);
+}
