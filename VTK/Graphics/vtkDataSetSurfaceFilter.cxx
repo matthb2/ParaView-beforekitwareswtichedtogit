@@ -67,6 +67,11 @@ void vtkDataSetSurfaceFilter::Execute()
   vtkIdType numCells = input->GetNumberOfCells();
   int *ext;
 
+  if (input->CheckAttributes())
+    {
+    return;
+    }
+
   if (numCells == 0)
     {
     return;
@@ -77,6 +82,11 @@ void vtkDataSetSurfaceFilter::Execute()
     case  VTK_UNSTRUCTURED_GRID:
       {
       this->UnstructuredGridExecute();
+      if (this->GetOutput()->CheckAttributes())
+        {
+        return;
+        }
+
       return;
       }
     case VTK_RECTILINEAR_GRID:
@@ -723,6 +733,7 @@ void vtkDataSetSurfaceFilter::UnstructuredGridExecute()
   pts = vtkIdList::New();  
   cell = vtkGenericCell::New();
 
+  this->NumberOfNewCells = 0;
   this->InitializeQuadHash(numPts);
 
   // Allocate
