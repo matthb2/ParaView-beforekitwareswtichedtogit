@@ -1965,4 +1965,6 @@ void vtkEnSightReader::PrintSelf(ostream& os, vtkIndent indent)
   os << indent << "TimeValue: " << this->TimeValue << endl;
   os << indent << "MinimumTimeValue: " << this->MinimumTimeValue << endl;
   os << indent << "MaximumTimeValue: " << this->MaximumTimeValue << endl;
+  os << indent << "TimeSetTimeValuesCollection: "
+     << this->TimeSetTimeValuesCollection << endl;
 }
