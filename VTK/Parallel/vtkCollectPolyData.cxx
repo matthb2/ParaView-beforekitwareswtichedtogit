@@ -83,8 +83,6 @@ void vtkCollectPolyData::ExecuteData(vtkDataObject*)
 {
   vtkPolyData *input = this->GetInput();
   vtkPolyData *output = this->GetOutput();
-  unsigned long size=0;
-  unsigned long tmp=0;
   int numProcs, myId;
   int idx;
 
