@@ -16,9 +16,12 @@
 
 =========================================================================*/
 #include "vtkInteractorStyleImage.h"
-#include "vtkObjectFactory.h"
-#include "vtkMath.h"
+
+#include "vtkAbstractPropPicker.h"
+#include "vtkAssemblyPath.h"
 #include "vtkCommand.h"
+#include "vtkMath.h"
+#include "vtkObjectFactory.h"
 
 vtkCxxRevisionMacro(vtkInteractorStyleImage, "$Revision$");
 vtkStandardNewMacro(vtkInteractorStyleImage);

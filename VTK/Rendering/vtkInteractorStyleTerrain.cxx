@@ -16,11 +16,13 @@
 
 =========================================================================*/
 #include "vtkInteractorStyleTerrain.h"
-#include "vtkMath.h"
-#include "vtkSphereSource.h"
+
 #include "vtkExtractEdges.h"
-#include "vtkPolyDataMapper.h"
+#include "vtkMath.h"
 #include "vtkObjectFactory.h"
+#include "vtkPolyDataMapper.h"
+#include "vtkRenderWindow.h"
+#include "vtkSphereSource.h"
 
 vtkCxxRevisionMacro(vtkInteractorStyleTerrain, "$Revision$");
 vtkStandardNewMacro(vtkInteractorStyleTerrain);

@@ -16,8 +16,11 @@
 
 =========================================================================*/
 #include "vtk3DWidget.h"
+
 #include "vtkCallbackCommand.h"
 #include "vtkObjectFactory.h"
+#include "vtkProp3D.h"
+#include "vtkDataSet.h"
 
 vtkCxxRevisionMacro(vtk3DWidget, "$Revision$");
 

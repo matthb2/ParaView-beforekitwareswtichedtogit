@@ -16,9 +16,12 @@
 
 =========================================================================*/
 #include "vtkInteractorStyleTrackballCamera.h"
-#include "vtkObjectFactory.h"
-#include "vtkMath.h"
+
 #include "vtkCommand.h"
+#include "vtkMath.h"
+#include "vtkObjectFactory.h"
+#include "vtkRenderWindow.h"
+#include "vtkRenderer.h"
 
 vtkCxxRevisionMacro(vtkInteractorStyleTrackballCamera, "$Revision$");
 vtkStandardNewMacro(vtkInteractorStyleTrackballCamera);
