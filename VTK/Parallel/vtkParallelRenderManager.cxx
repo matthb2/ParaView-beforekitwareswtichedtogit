@@ -1228,7 +1228,7 @@ static void MagnifyImageNearestFourComp(vtkUnsignedCharArray *fullImage,
   int numComp = reducedImage->GetNumberOfComponents();
   if (numComp != 4)
     {
-    vtkDebugMacro("MagnifyImageNearestFourComp only works on 4 component image");
+    vtkGenericWarningMacro("MagnifyImageNearestFourComp only works on 4 component image");
     return;
     }
   fullImage->SetNumberOfComponents(numComp);
