@@ -125,15 +125,8 @@ void vtkPVMPIProcessModule::Initialize()
 
   if (myId ==  0)
     { // The last process is for UI.
-    if ( this->SetupRenderModule() )
-      {
-      this->ReturnValue = this->GUIHelper->
-        RunGUIStart(this->ArgumentCount,this->Arguments, numProcs, myId);
-      }
-    else
-      {
-      this->ReturnValue = -1;
-      }
+    this->ReturnValue = this->GUIHelper->
+      RunGUIStart(this->ArgumentCount,this->Arguments, numProcs, myId);
     }
   else
     {
@@ -145,7 +138,6 @@ void vtkPVMPIProcessModule::Initialize()
 //----------------------------------------------------------------------------
 int vtkPVMPIProcessModule::Start(int argc, char **argv)
 {
-  cout << "Create controller" << endl;
   // Initialize the MPI controller.
   this->Controller = vtkMultiProcessController::New();
   this->Controller->Initialize(&argc, &argv, 1);

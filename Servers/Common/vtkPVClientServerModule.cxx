@@ -340,15 +340,8 @@ void vtkPVClientServerModule::Initialize()
       serverInfo->Delete();
       serverInfo = NULL;
       
-      if ( this->SetupRenderModule() )
-        {
-        this->ReturnValue = this->GUIHelper->
-          RunGUIStart(this->ArgumentCount, this->Arguments, numServerProcs, myId);
-        }
-      else
-        {
-        this->ReturnValue = -1;
-        }
+      this->ReturnValue = this->GUIHelper->
+        RunGUIStart(this->ArgumentCount, this->Arguments, numServerProcs, myId);
       }
     else
       {

@@ -213,6 +213,12 @@ int vtkPVOptions::WrongArgument(const char*)
 }
 
 //----------------------------------------------------------------------------
+const char* vtkPVOptions::GetArgv0()
+{
+  return this->Internals->CMD.GetArgv0();
+}
+
+//----------------------------------------------------------------------------
 int vtkPVOptions::Parse(int argc, const char* const argv[])
 {
   this->Internals->CMD.Initialize(argc, argv);
