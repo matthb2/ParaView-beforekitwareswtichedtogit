@@ -425,7 +425,7 @@ void vtkObjectFactory::UnRegisterAllFactories()
   while((factory =
          vtkObjectFactory::RegisteredFactories->GetNextItem()))
     {
-    libs[index] = factory->LibraryHandle;
+    libs[index++] = factory->LibraryHandle;
     }
   // delete the factory list and its factories
   vtkObjectFactory::RegisteredFactories->Delete();
