@@ -5,7 +5,6 @@
   Language:  C++
   Date:      $Date$
   Version:   $Revision$
-  Thanks:    Tim Hutton and Rasmus Paulsen who developed and contributed this class
 
   Copyright (c) 1993-2002 Ken Martin, Will Schroeder, Bill Lorensen 
   All rights reserved.
@@ -72,7 +71,7 @@ double static inline CentroidSize(vtkPoints* pd, float *cp)
   {
     float *p = pd->GetPoint(i);
     
-    S += vtkMath::Distance2BetweenPoints(p,cp);
+    S += sqrt(vtkMath::Distance2BetweenPoints(p,cp));
   }
   
   return S;
