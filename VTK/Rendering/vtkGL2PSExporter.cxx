@@ -262,16 +262,6 @@ void vtkGL2PSExporter::WriteData()
   else
     {
     sort = GL2PS_BSP_SORT;
-    }  
-
-  // GL2PS versions before 0.9.1 segfault if sorting is performed when
-  // TeX output is chosen.  Sorting is irrelevant for Tex output
-  // anyway.  When Write3DPropsAsRasterImage is on sorting is of no
-  // use.
-  if ((this->FileFormat == TEX_FILE) || 
-      (this->Write3DPropsAsRasterImage == 1))
-    {
-    sort = GL2PS_NO_SORT;
     }
 
   if (this->Compress == 1)
@@ -406,12 +396,6 @@ void vtkGL2PSExporter::WriteData()
     state = gl2psEndPage();
     }
   fclose(fpObj);
-
-  // GL2PS versions before 0.9.1 do not reset the render mode.
-  if (this->FileFormat == TEX_FILE)
-    {
-    glRenderMode(GL_RENDER);
-    }
 
   // Clean up.
   if (this->Write3DPropsAsRasterImage)
