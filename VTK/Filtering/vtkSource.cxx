@@ -1216,6 +1216,9 @@ int vtkSource::ProcessDownstreamRequest(vtkInformation* request,
       {
       if(this->Outputs[i])
         {
+        vtkDemandDrivenPipeline* ddp =
+          vtkDemandDrivenPipeline::SafeDownCast(this->GetExecutive());
+        this->Outputs[i]->SetPipelineMTime(ddp->GetPipelineMTime());
         vtkInformation* info = outputVector->GetInformationObject(i);
         vtkSourceToDataObjectFriendship
           ::CopyDownstreamIVarsToInformation(this->Outputs[i], info);
