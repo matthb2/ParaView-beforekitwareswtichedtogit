@@ -672,6 +672,13 @@ void vtkParallelRenderManager::EndRender()
     return;
     }
 
+  // EndRender only happens on root.
+  if (this->CheckForAbortComposite())
+    {
+    this->Lock = 0;
+    return;
+    }  
+
   this->PostRenderProcessing();
 
   // Restore renderer viewports, if necessary.
@@ -693,6 +700,11 @@ void vtkParallelRenderManager::EndRender()
 
 void vtkParallelRenderManager::SatelliteEndRender()
 {
+  if (this->CheckForAbortComposite())
+    {
+    return;
+    }
+
   if (!this->ParallelRendering)
     {
     return;
