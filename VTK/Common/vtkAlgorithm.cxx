@@ -661,6 +661,21 @@ void vtkAlgorithm::Update()
 }
 
 //----------------------------------------------------------------------------
+void vtkAlgorithm::UpdateWholeExtent()
+{
+  vtkStreamingDemandDrivenPipeline* sddp =
+    vtkStreamingDemandDrivenPipeline::SafeDownCast(this->GetExecutive());
+  if (sddp)
+    {
+    sddp->UpdateWholeExtent(this);
+    }
+  else
+    {
+    this->Update();
+    }
+}
+
+//----------------------------------------------------------------------------
 vtkExecutive* vtkAlgorithm::CreateDefaultExecutive()
 {
   return vtkStreamingDemandDrivenPipeline::New();
