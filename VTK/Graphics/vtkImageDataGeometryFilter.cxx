@@ -49,7 +49,10 @@ void vtkImageDataGeometryFilter::Execute()
   vtkCellData *cd, *outCD;
   vtkImageData *input = this->GetInput();
   vtkPolyData *output = this->GetOutput();
-
+  if (input==NULL)
+    {
+    return;
+    }
   vtkDebugMacro(<< "Extracting structured points geometry");
 
   pd = input->GetPointData();
