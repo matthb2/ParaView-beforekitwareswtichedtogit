@@ -180,8 +180,8 @@ void vtkSMPart::InsertExtractPiecesIfNecessary()
       return;
       }  
     stream << vtkClientServerStream::Invoke 
-                    << this->GetID(0) << "UpdateInformation"
-                    << vtkClientServerStream::End;
+           << this->GetID(0) << "UpdateInformation"
+           << vtkClientServerStream::End;
     pm->SendStream(vtkProcessModule::DATA_SERVER, stream, 1);
     stream << vtkClientServerStream::Invoke 
                     << this->GetID(0) << "GetMaximumNumberOfPieces"
@@ -233,8 +233,8 @@ void vtkSMPart::InsertExtractPiecesIfNecessary()
       return;
       }
     stream << vtkClientServerStream::Invoke 
-                    << this->GetID(0) << "UpdateInformation"
-                    << vtkClientServerStream::End;
+           << this->GetID(0) << "UpdateInformation"
+           << vtkClientServerStream::End;
     pm->SendStream(vtkProcessModule::DATA_SERVER, stream, 1);
     stream << vtkClientServerStream::Invoke 
                     << this->GetID(0) << "GetMaximumNumberOfPieces"
