@@ -42,19 +42,6 @@
 vtkCxxRevisionMacro(vtkDecimate, "$Revision$");
 vtkStandardNewMacro(vtkDecimate);
 
-//-----  This hack needed to compile using gcc3 on OSX until new stdc++.dylib
-#ifdef __APPLE__
-extern "C"
-{
-  void oft_initPatented() 
-  {
-  extern void _ZNSt8ios_base4InitC4Ev();
-  _ZNSt8ios_base4InitC4Ev();
-  }
-}
-#endif
-
-
 #define VTK_TOLERANCE 1.0e-05
 
 #define VTK_MAX_TRIS_PER_VERTEX VTK_CELL_SIZE

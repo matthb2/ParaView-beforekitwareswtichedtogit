@@ -25,18 +25,6 @@
 vtkCxxRevisionMacro(vtkAppendFilter, "$Revision$");
 vtkStandardNewMacro(vtkAppendFilter);
 
-//-----  This hack needed to compile using gcc3 on OSX until new stdc++.dylib
-#ifdef __APPLE__
-extern "C"
-{
-  void oft_initGraphics() 
-  {
-  extern void _ZNSt8ios_base4InitC4Ev();
-  _ZNSt8ios_base4InitC4Ev();
-  }
-}
-#endif
-
 //----------------------------------------------------------------------------
 vtkAppendFilter::vtkAppendFilter()
 {
