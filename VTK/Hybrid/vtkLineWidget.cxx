@@ -540,7 +540,10 @@ void vtkLineWidget::EnablePointWidget()
 // assumed current handle is set
 void vtkLineWidget::DisablePointWidget()
 {
-  this->CurrentPointWidget->Off();
+  if (this->CurrentPointWidget)
+    {
+    this->CurrentPointWidget->Off();
+    }
   this->CurrentPointWidget = NULL;
 }
 
