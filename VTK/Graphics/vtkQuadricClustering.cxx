@@ -1083,7 +1083,7 @@ void vtkQuadricClustering::EndAppendUsingPoints(vtkPolyData *input)
     this->QuadricArray = NULL;
     }
 
-  delete minError;
+  delete [] minError;
 }
 
 
