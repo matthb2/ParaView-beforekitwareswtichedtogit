@@ -951,8 +951,7 @@ void vtkBridgeCell::GetPointIds(vtkIdType *id)
   vtkIdType c=this->GetNumberOfBoundaries(0);
   while(i<c)
     {
-//     id[i]=l->GetId(i);
-    id[i]=this->DataSet->GetOutputPointId(l->GetId(i));
+     id[i]=l->GetId(i);
     ++i;
     }
 }
