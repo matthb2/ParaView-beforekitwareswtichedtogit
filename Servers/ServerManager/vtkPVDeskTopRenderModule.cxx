@@ -110,6 +110,17 @@ void vtkPVDeskTopRenderModule::SetProcessModule(vtkProcessModule *pm)
     vtkRenderWindow::SafeDownCast(
       pvm->GetObjectFromID(this->RenderWindowID));
   
+  // Anti-aliasing screws up the compositing.  Turn it off.
+  if (this->RenderWindow->IsA("vtkOpenGLRenderWindow") &&
+      (pm->GetNumberOfPartitions() > 1))
+    {
+    pm->GetStream()
+      << vtkClientServerStream::Invoke
+      << this->RenderWindowID << "SetMultiSamples" << 0
+      << vtkClientServerStream::End;
+    pm->SendStream(vtkProcessModule::RENDER_SERVER);
+    }
+
   if (pvm->GetOptions()->GetUseStereoRendering())
     {
     this->RenderWindow->StereoCapableWindowOn();
