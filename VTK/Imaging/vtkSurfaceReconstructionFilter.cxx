@@ -110,7 +110,7 @@ void vtkSRMultiply(double **m,double f,long nrl, long nrh, long ncl, long nch)
 
 //----------------------------------------------------------------------------
 int vtkSurfaceReconstructionFilter::FillInputPortInformation(
-  int port, vtkInformation* info)
+  int vtkNotUsed( port ), vtkInformation* info)
 {
   info->Set(vtkAlgorithm::INPUT_REQUIRED_DATA_TYPE(), "vtkDataSet");
   return 1;
