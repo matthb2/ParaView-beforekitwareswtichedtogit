@@ -547,8 +547,6 @@ void vtkIceTRenderManager::PreRenderProcessing()
     int tileIdx = this->Controller->GetLocalProcessId();
     y = tileIdx/this->NumTilesX;
     x = tileIdx - y*this->NumTilesX;
-    // Flip the y axis to match IceT
-    y = this->NumTilesY-1-y;
     // Setup the camera for this tile.
     cam->SetWindowCenter(1.0-(double)(this->NumTilesX) + 2.0*(double)x,
                          1.0-(double)(this->NumTilesY) + 2.0*(double)y);
@@ -611,6 +609,25 @@ void vtkIceTRenderManager::PostRenderProcessing()
 {
   vtkDebugMacro("PostRenderProcessing");
 
+  // Try to put the camera back the way it was.
+  if (!this->UseCompositing)
+    {
+    vtkCamera* cam;
+    vtkRenderWindow* renWin = this->RenderWindow;
+    vtkRendererCollection *rens;
+    vtkRenderer* ren;
+
+    rens = renWin->GetRenderers();
+    rens->InitTraversal();
+    ren = rens->GetNextItem();
+    if (ren)
+      {
+      cam = ren->GetActiveCamera();
+      cam->SetWindowCenter(0.0, 0.0);
+      return;
+      }
+    }
+  
   this->Controller->Barrier();
 
   if (this->WriteBackImages)

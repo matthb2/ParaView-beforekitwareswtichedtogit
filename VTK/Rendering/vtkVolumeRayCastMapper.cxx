@@ -537,7 +537,7 @@ void vtkVolumeRayCastMapper::Render( vtkRenderer *ren, vtkVolume *vol )
     
     if ( staticInfo->ClippingPlane )
       {
-      delete staticInfo->ClippingPlane;
+      delete [] staticInfo->ClippingPlane;
       }
     delete staticInfo;
 
