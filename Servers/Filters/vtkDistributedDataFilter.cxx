@@ -972,7 +972,7 @@ void vtkDistributedDataFilter::ClipCellsToSpatialRegion(vtkUnstructuredGrid *gri
   // Decompose it into convex sub-regions.  These sub-regions
   // are axis aligned boxes
   
-  float *bounds;
+  double *bounds;
   
   int numSubRegions = kd->MinimalNumberOfConvexSubRegions(
                             myRegions, &bounds);
