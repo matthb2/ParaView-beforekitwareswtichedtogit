@@ -213,7 +213,8 @@ int vtkTubeFilter::RequestData(
       if ( !lineNormalGenerator->GenerateSlidingNormals(inPts,singlePolyline,
                                                         inNormals) )
         {
-        vtkWarningMacro(<< "No normals for line!");
+        vtkWarningMacro("Could not generate normals for line. "
+                        "Skipping to next.");
         continue; //skip tubing this polyline
         }
       }
