@@ -299,6 +299,24 @@ void vtkMultiProcessController::TriggerRMI(int remoteProcessId,
 }
 
 //----------------------------------------------------------------------------
+void vtkMultiProcessController::TriggerBreakRMIs()
+{
+  int idx, num;
+
+  if (this->GetLocalProcessId() != 0)
+    {
+    vtkErrorMacro("Break should be triggered from process 0.");
+    return;
+    }
+
+  num = this->GetNumberOfProcesses();
+  for (idx = 1; idx < num; ++idx)
+    {
+    this->TriggerRMI(idx, NULL, 0, BREAK_RMI_TAG);
+    }
+}
+
+//----------------------------------------------------------------------------
 void vtkMultiProcessController::ProcessRMIs()
 {
   int triggerMessage[3];
