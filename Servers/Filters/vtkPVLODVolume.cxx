@@ -38,6 +38,8 @@ vtkCxxSetObjectMacro(vtkPVLODVolume, LODMapper, vtkAbstractVolumeMapper);
 vtkPVLODVolume::vtkPVLODVolume()
 {
   this->LODMapper = NULL;
+  this->MapperBounds[0] = this->MapperBounds[1] = this->MapperBounds[2] = 0;
+  this->MapperBounds[3] = this->MapperBounds[4] = this->MapperBounds[5] = 0;
 }
 
 //----------------------------------------------------------------------------
