@@ -380,7 +380,8 @@ void vtkInteractorStyleTerrain::OnMouseMove (int vtkNotUsed(ctrl), int shift,
 
 void vtkInteractorStyleTerrain::OnChar()
 {
-  int *XY = this->Interactor->GetEventPosition();
+  int X = this->Interactor->GetEventPosition()[0];
+  int Y = this->Interactor->GetEventPosition()[1];
 
   switch (this->Interactor->GetKeyCode())
     {
