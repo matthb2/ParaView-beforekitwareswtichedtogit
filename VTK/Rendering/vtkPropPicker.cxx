@@ -86,7 +86,7 @@ int vtkPropPicker::PickProp(double selectionX, double selectionY,
     {
     this->WorldPointPicker->Pick(selectionX, selectionY, 0, renderer);
     this->WorldPointPicker->GetPickPosition(this->PickPosition);
-    this->Path->GetLastNode()->GetProp()->Pick();
+    this->Path->GetLastNode()->GetViewProp()->Pick();
     this->InvokeEvent(vtkCommand::PickEvent,NULL);
     } 
 

@@ -278,7 +278,7 @@ int vtkPicker::Pick(double selectionX, double selectionY, double selectionZ,
       {
       pickable = 0;
       actor = NULL;
-      propCandidate = path->GetLastNode()->GetProp();
+      propCandidate = path->GetLastNode()->GetViewProp();
       if ( propCandidate->GetPickable() && propCandidate->GetVisibility() )
         {
         pickable = 1;

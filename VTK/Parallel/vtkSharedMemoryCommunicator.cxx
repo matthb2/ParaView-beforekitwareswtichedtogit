@@ -624,5 +624,5 @@ void vtkSharedMemoryCommunicator::WaitForNewMessage()
 void vtkSharedMemoryCommunicator::SignalNewMessage(
   vtkSharedMemoryCommunicator* receiveCommunicator)
 {
-  receiveCommunicator->Messager->SendMessage();
+  receiveCommunicator->Messager->SendWakeMessage();
 }

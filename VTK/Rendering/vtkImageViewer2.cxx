@@ -37,7 +37,7 @@ vtkImageViewer2::vtkImageViewer2()
   
   // setup the pipeline
   this->ImageActor->SetInput(this->WindowLevel->GetOutput());
-  this->Renderer->AddProp(this->ImageActor);
+  this->Renderer->AddViewProp(this->ImageActor);
   this->RenderWindow->AddRenderer(this->Renderer);
   this->FirstRender = 1;
   

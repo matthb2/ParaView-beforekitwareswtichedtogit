@@ -169,7 +169,7 @@ void vtkVRMLExporter::WriteData()
     {
     for (anActor->InitPathTraversal(); (apath=anActor->GetNextPath()); )
       {
-      aPart=(vtkActor *)apath->GetLastNode()->GetProp();
+      aPart=(vtkActor *)apath->GetLastNode()->GetViewProp();
       this->WriteAnActor(aPart, fp);
       }
     }

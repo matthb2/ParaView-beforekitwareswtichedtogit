@@ -253,14 +253,14 @@ void vtkPVPickDisplay::SetPointLabelVisibility(int val)
     {
     pm->GetStream()
       << vtkClientServerStream::Invoke
-      << pm->GetRenderModule()->GetRendererID() << "AddProp"
+      << pm->GetRenderModule()->GetRendererID() << "AddViewProp"
       << this->PointLabelActorID << vtkClientServerStream::End;
     }
   else
     {
     pm->GetStream()
       << vtkClientServerStream::Invoke
-      << pm->GetRenderModule()->GetRendererID() << "RemoveProp"
+      << pm->GetRenderModule()->GetRendererID() << "RemoveViewProp"
       << this->PointLabelActorID << vtkClientServerStream::End;
     }
   pm->SendStream(vtkProcessModule::CLIENT|vtkProcessModule::RENDER_SERVER);

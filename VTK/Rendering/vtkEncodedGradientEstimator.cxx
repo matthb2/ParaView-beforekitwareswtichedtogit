@@ -191,7 +191,7 @@ void vtkEncodedGradientEstimator::Update( )
     this->Input->SetUpdateExtentToWholeExtent();
     this->Input->Update();
     
-    startSeconds = vtkTimerLog::GetCurrentTime();
+    startSeconds = vtkTimerLog::GetUniversalTime();
     startCPUSeconds = vtkTimerLog::GetCPUTime();
     
     // Get the dimensions of the data and its aspect ratio
@@ -256,7 +256,7 @@ void vtkEncodedGradientEstimator::Update( )
 
     this->BuildTime.Modified();
 
-    endSeconds = vtkTimerLog::GetCurrentTime();
+    endSeconds = vtkTimerLog::GetUniversalTime();
     endCPUSeconds = vtkTimerLog::GetCPUTime();
   
     this->LastUpdateTimeInSeconds    = (float)(endSeconds    - startSeconds);

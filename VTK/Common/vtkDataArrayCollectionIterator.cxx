@@ -63,5 +63,5 @@ void vtkDataArrayCollectionIterator::SetCollection(vtkDataArrayCollection* c)
 //----------------------------------------------------------------------------
 vtkDataArray* vtkDataArrayCollectionIterator::GetDataArray()
 {
-  return static_cast<vtkDataArray*>(this->GetObject());
+  return static_cast<vtkDataArray*>(this->GetCurrentObject());
 }

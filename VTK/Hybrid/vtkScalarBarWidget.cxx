@@ -83,7 +83,7 @@ void vtkScalarBarWidget::SetEnabled(int enabling)
                    this->EventCallbackCommand, this->Priority);
 
     // Add the scalar bar
-    this->CurrentRenderer->AddProp(this->ScalarBarActor);
+    this->CurrentRenderer->AddViewProp(this->ScalarBarActor);
     this->InvokeEvent(vtkCommand::EnableEvent,NULL);
     }
   else //disabling------------------------------------------

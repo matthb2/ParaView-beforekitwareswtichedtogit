@@ -513,7 +513,7 @@ void vtkImplicitPlaneWidget::OnLeftButtonDown()
     return;
     }
 
-  vtkProp *prop = path->GetFirstNode()->GetProp();
+  vtkProp *prop = path->GetFirstNode()->GetViewProp();
   this->ValidPick = 1;
   this->Picker->GetPickPosition(this->LastPickPosition);
   if ( prop == this->ConeActor || prop == this->LineActor ||

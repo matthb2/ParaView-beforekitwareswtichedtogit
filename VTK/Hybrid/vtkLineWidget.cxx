@@ -606,7 +606,7 @@ void vtkLineWidget::OnLeftButtonDown()
     this->StartInteraction();
     this->InvokeEvent(vtkCommand::StartInteractionEvent,NULL);
     this->State = vtkLineWidget::MovingHandle;
-    this->HighlightHandle(path->GetFirstNode()->GetProp());
+    this->HighlightHandle(path->GetFirstNode()->GetViewProp());
     this->EnablePointWidget();
     forward = this->ForwardEvent(vtkCommand::LeftButtonPressEvent);
     }

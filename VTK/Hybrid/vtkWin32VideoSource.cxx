@@ -147,7 +147,7 @@ LRESULT PASCAL vtkWin32VideoSourceCapControlProc(HWND hwndC, int nState)
   if (nState == CONTROLCALLBACK_PREROLL)
     {
     //cerr << "controlcallback preroll\n";
-    self->SetStartTimeStamp(vtkTimerLog::GetCurrentTime());      
+    self->SetStartTimeStamp(vtkTimerLog::GetUniversalTime());      
     }
   else if (nState == CONTROLCALLBACK_CAPTURING)
     {
@@ -578,7 +578,7 @@ void vtkWin32VideoSource::Grab()
     }
 
   // just do the grab, the callback does the rest
-  this->SetStartTimeStamp(vtkTimerLog::GetCurrentTime());
+  this->SetStartTimeStamp(vtkTimerLog::GetUniversalTime());
   capGrabFrameNoStop(this->Internal->CapWnd);
 }
 

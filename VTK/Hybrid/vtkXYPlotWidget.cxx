@@ -80,7 +80,7 @@ void vtkXYPlotWidget::SetEnabled(int enabling)
                    this->EventCallbackCommand, this->Priority);
 
     // Add the xy plot
-    this->CurrentRenderer->AddProp(this->XYPlotActor);
+    this->CurrentRenderer->AddViewProp(this->XYPlotActor);
     this->InvokeEvent(vtkCommand::EnableEvent,NULL);
     }
   else //disabling------------------------------------------
