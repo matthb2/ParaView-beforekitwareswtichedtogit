@@ -427,7 +427,7 @@ void vtkExtractCells::CopyCellsUnstructuredGrid(vtkIdList *ptMap)
   cellArray->SetCells(numCells, newcells);
   int cellArrayIdx = 0;
 
-  vtkIntArray *locationArray = vtkIntArray::New();
+  vtkIdTypeArray *locationArray = vtkIdTypeArray::New();
   locationArray->SetNumberOfValues(numCells);
 
   vtkUnsignedCharArray *typeArray = vtkUnsignedCharArray::New();

@@ -3185,7 +3185,7 @@ void vtkDistributedDataFilter::FixGhostLevels(vtkUnstructuredGrid *ugrid)
 
   vtkCellArray *cellArray = ugrid->GetCells();
 
-  vtkIntArray *locs = ugrid->GetCellLocationsArray();
+  vtkIdTypeArray *locs = ugrid->GetCellLocationsArray();
   vtkIdTypeArray *cells = cellArray->GetData();
 
   int numLeveledCells = 0;
