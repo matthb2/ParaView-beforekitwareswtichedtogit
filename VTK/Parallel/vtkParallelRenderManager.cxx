@@ -111,6 +111,7 @@ vtkParallelRenderManager::vtkParallelRenderManager()
   this->RenderWindow = NULL;
   this->ObservingRenderWindow = 0;
   this->ObservingRenderer = 0;
+  this->ObservingAbort = 0;
 
   this->Controller = NULL;
   this->RootProcessId = 0;
@@ -259,7 +260,11 @@ void vtkParallelRenderManager::SetRenderWindow(vtkRenderWindow *renWin)
 
       this->ObservingRenderWindow = 0;
       }
-    this->RenderWindow->RemoveObserver(this->AbortRenderCheckTag);
+    if (this->ObservingAbort)
+      {
+      this->RenderWindow->RemoveObserver(this->AbortRenderCheckTag);
+      this->ObservingAbort = 0;
+      }
 
     // Delete the reference.
     this->RenderWindow->UnRegister(this);
@@ -281,6 +286,7 @@ void vtkParallelRenderManager::SetRenderWindow(vtkRenderWindow *renWin)
     this->AbortRenderCheckTag = renWin->AddObserver(vtkCommand::AbortCheckEvent,
       cbc);
     cbc->Delete();
+    this->ObservingAbort = 1;
 
     if (this->Controller)
       {
