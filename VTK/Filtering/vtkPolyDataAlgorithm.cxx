@@ -240,6 +240,8 @@ void vtkPolyDataAlgorithm::SetInput(int index, vtkDataObject* input)
   if(input)
     {
     this->SetInputConnection(index, input->GetProducerPort());
+    input->GetPipelineInformation()->Set(
+      vtkDataObject::DATA_TYPE_NAME(), input->GetClassName());
     }
   else
     {
