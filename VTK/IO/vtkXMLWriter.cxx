@@ -20,6 +20,7 @@
 #include "vtkBase64OutputStream.h"
 #include "vtkByteSwap.h"
 #include "vtkCellData.h"
+#include "vtkCommand.h"
 #include "vtkDataArray.h"
 #include "vtkDataSet.h"
 #include "vtkErrorCode.h"
@@ -250,6 +251,8 @@ int vtkXMLWriter::Write()
     return 0;
     }
   
+  this->InvokeEvent(vtkCommand::StartEvent);
+
   // We are just starting to write.  Do not call
   // UpdateProgressDiscrete because we want a 0 progress callback the
   // first time.
@@ -272,6 +275,8 @@ int vtkXMLWriter::Write()
   
   // We have finished writing.
   this->UpdateProgressDiscrete(1);
+
+  this->InvokeEvent(vtkCommand::EndEvent);
   
   return result;
 }
