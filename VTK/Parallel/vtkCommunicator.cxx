@@ -523,7 +523,6 @@ int vtkCommunicator::ReadDataSet(vtkDataSet *object)
   output->Update();
 
   object->ShallowCopy(output);
-  //object->DataHasBeenGenerated();
 
   reader->Delete();
 

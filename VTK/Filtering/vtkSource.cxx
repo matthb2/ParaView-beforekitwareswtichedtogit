@@ -637,6 +637,18 @@ int vtkSource::ProcessRequest(vtkInformation* request,
 
     return 1;
     }
+  else if(request->Has(vtkDemandDrivenPipeline::REQUEST_DATA_NOT_GENERATED()))
+    {
+    // Mark all outputs as not generated so that the executive does
+    // not try to handle initialization/finalization of the outputs.
+    // We will do it here.
+    int i;
+    for(i=0; i < outputVector->GetNumberOfInformationObjects(); ++i)
+      {
+      vtkInformation* outInfo = outputVector->GetInformationObject(i);
+      outInfo->Set(vtkDemandDrivenPipeline::DATA_NOT_GENERATED(), 1);
+      }
+    }
   else if(request->Has(vtkDemandDrivenPipeline::REQUEST_DATA()))
     {
     // Make sure the outputs are synchronized between the old and new
