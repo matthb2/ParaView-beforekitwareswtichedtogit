@@ -62,7 +62,7 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 
 
 class VTK_EXPORT vtkVersion : public vtkObject {
- public:
+public:
   static vtkVersion *New() {return new vtkVersion;};
   const char *GetClassName() {return "vtkVersion";};
 
@@ -76,7 +76,9 @@ class VTK_EXPORT vtkVersion : public vtkObject {
   static int GetVTKBuildVersion() { return VTK_BUILD_VERSION; };
   static const char *GetVTKSourceVersion() { return VTK_SOURCE_VERSION; };
   
- protected:
+protected:
+  vtkVersion() {}; //insure constructor/destructor protected
+  ~vtkVersion() {};
 
 };
 
