@@ -231,7 +231,6 @@ void vtkMPIController::InitializeCommunicator(vtkMPICommunicator* comm)
       this->Communicator->Register(this); 
       } 
 
-    vtkMPICommunicator* comm = (vtkMPICommunicator*)this->Communicator;
     if (comm && comm->Comm->Handle)
       {
       this->InitializeNumberOfProcesses();
