@@ -23,7 +23,6 @@
 #include "vtkTrivialProducer.h"
 
 vtkCxxRevisionMacro(vtkGenericDataSetAlgorithm, "$Revision$");
-vtkStandardNewMacro(vtkGenericDataSetAlgorithm);
 
 //----------------------------------------------------------------------------
 vtkGenericDataSetAlgorithm::vtkGenericDataSetAlgorithm()
@@ -90,6 +89,12 @@ int vtkGenericDataSetAlgorithm::ProcessRequest(vtkInformation* request,
                                          vtkInformationVector** inputVector,
                                          vtkInformationVector* outputVector)
 {
+  // generate the data
+  if(request->Has(vtkDemandDrivenPipeline::REQUEST_DATA_OBJECT()))
+    {
+    return this->RequestDataObject(request, inputVector, outputVector);
+    }
+  
   // generate the data
   if(request->Has(vtkDemandDrivenPipeline::REQUEST_DATA()))
     {
