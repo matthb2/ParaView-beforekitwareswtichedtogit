@@ -226,9 +226,9 @@ void vtkTIFFWriter::WriteFile(ofstream *, vtkImageData *data,
 
   // take into consideration the scalar type
   if( data->GetScalarType() != VTK_UNSIGNED_CHAR 
-   || data->GetScalarType() != VTK_UNSIGNED_SHORT)
+   && data->GetScalarType() != VTK_UNSIGNED_SHORT)
     {
-    vtkErrorMacro("TIFFWriter only accepts unsigned char scalars!");
+    vtkErrorMacro("TIFFWriter only accepts unsigned char/short scalars!");
     return; 
     }
 
