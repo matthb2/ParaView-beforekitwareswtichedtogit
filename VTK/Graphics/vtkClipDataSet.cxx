@@ -140,7 +140,9 @@ void vtkClipDataSet::Execute()
   int j;
   vtkIdType estimatedSize;
   vtkUnsignedCharArray *types[2];
+  types[0] = types[1] = 0;
   vtkIdTypeArray *locs[2];
+  locs[0] = locs[1] = 0;
   int numOutputs = 1;
   
   vtkDebugMacro(<< "Clipping dataset");
@@ -191,6 +193,7 @@ void vtkClipDataSet::Execute()
   cellScalars = vtkFloatArray::New();
   cellScalars->Allocate(VTK_CELL_SIZE);
   vtkCellArray *conn[2];
+  conn[0] = conn[1] = 0;
   conn[0] = vtkCellArray::New();
   conn[0]->Allocate(estimatedSize,estimatedSize/2);
   conn[0]->InitTraversal();
@@ -244,6 +247,23 @@ void vtkClipDataSet::Execute()
     clipScalars = inPD->GetScalars(this->InputScalarsSelection);
     if ( !clipScalars )
       {
+      for (int i=0; i<2; i++)
+        {
+        if (conn[i])
+          {
+          conn[i]->Delete();
+          }
+        if (types[i])
+          {
+          types[i]->Delete();
+          }
+        if (locs[i])
+          {
+          locs[i]->Delete();
+          }
+        }
+      cellScalars->Delete();
+      newPoints->Delete();
       vtkErrorMacro(<<"Cannot clip without clip function or input scalars");
       return;
       }
