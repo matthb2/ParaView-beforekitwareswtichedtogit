@@ -333,7 +333,7 @@ void vtkSMProxyManager::SaveState(const char* filename)
     for (; it2 != it->second.end(); it2++)
       {
       os << indent.GetNextIndent()
-         << "<Item name=\"" << it2->first.c_str() << "\">" << endl;
+         << "<Item name=\"" << it2->first.c_str() << "\" />" << endl;
       }
     os << indent << "</ProxyCollection>" << endl;
     }
