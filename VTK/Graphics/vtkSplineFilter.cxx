@@ -236,7 +236,7 @@ int vtkSplineFilter::GeneratePoints(vtkIdType offset, vtkIdType npts,
     }
   else
     {
-    numDivs = length / this->Length;
+    numDivs = (int) (length / this->Length);
     }
   numDivs = ( numDivs < 1 ? 1 : (numDivs > this->MaximumNumberOfSubdivisions ? 
                                  this->MaximumNumberOfSubdivisions : numDivs));
