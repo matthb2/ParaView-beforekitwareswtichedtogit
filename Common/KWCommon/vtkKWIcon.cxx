@@ -549,6 +549,22 @@ void vtkKWIcon::SetImage(int image)
         image_general_buffer_length);
       break;      
 
+    case vtkKWIcon::ICON_GRID_LINEAR:
+      this->SetImage(
+        image_grid_linear, 
+        image_grid_linear_width, image_grid_linear_height,
+        image_grid_linear_pixel_size, 
+        image_grid_linear_buffer_length);
+      break;      
+
+    case vtkKWIcon::ICON_GRID_LOG:
+      this->SetImage(
+        image_grid_log, 
+        image_grid_log_width, image_grid_log_height,
+        image_grid_log_pixel_size, 
+        image_grid_log_buffer_length);
+      break;      
+
     case vtkKWIcon::ICON_HELPBUBBLE:
       this->SetImage(
         image_helpbubble, 
