@@ -771,7 +771,7 @@ unsigned long vtkXMLDataParser::ReadAppendedData(unsigned long offset,
 }
 
 //----------------------------------------------------------------------------
-template <typename T>
+template <class T>
 T* vtkXMLParseAsciiData(istream& is, int* length, T* vtkNotUsed(dummy))
 {
   int dataLength = 0;
