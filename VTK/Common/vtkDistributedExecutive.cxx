@@ -109,6 +109,26 @@ int vtkDistributedExecutive::Update(vtkAlgorithm* algorithm)
 }
 
 //----------------------------------------------------------------------------
+vtkDataObject* vtkDistributedExecutive::GetOutputData(int port)
+{
+  vtkErrorMacro("GetOutputData(int) must be implemented for this executive.");
+  return 0;
+}
+
+//----------------------------------------------------------------------------
+vtkDataObject* vtkDistributedExecutive::GetOutputData(vtkAlgorithm* algorithm,
+                                                      int port)
+{
+  if(algorithm != this->GetAlgorithm())
+    {
+    vtkErrorMacro("Request for output data from an algorithm not managed "
+                  "by this executive: " << algorithm);
+    return 0;
+    }
+  return this->GetOutputData(port);
+}
+
+//----------------------------------------------------------------------------
 int vtkDistributedExecutive::InputPortIndexInRange(int port,
                                                    const char* action)
 {
