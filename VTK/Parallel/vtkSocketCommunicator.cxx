@@ -294,6 +294,10 @@ int vtkSocketCommunicator::WaitForConnection(int port)
   server.sin_family = AF_INET;
   server.sin_addr.s_addr = INADDR_ANY;
   server.sin_port = htons(port);
+  // Allow the socket to be bound to an address that is already in use
+  int opt=1;
+  setsockopt(sock, SOL_SOCKET, SO_REUSEADDR, (void *) &opt, sizeof(int));
+
   if ( bind(sock, (sockaddr *)&server, sizeof(server)) )
     {
     vtkErrorMacro("Can not bind socket to port " << port);
