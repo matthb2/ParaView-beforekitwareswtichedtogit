@@ -239,6 +239,10 @@ void vtkXMLPPolyDataReader::CopyArrayForCells(vtkDataArray* inArray,
     {
     return;
     }
+  if (inArray == NULL || outArray == NULL)
+    {
+    return;
+    }
   
   vtkIdType components = outArray->GetNumberOfComponents();
   vtkIdType tupleSize = inArray->GetDataTypeSize()*components;
