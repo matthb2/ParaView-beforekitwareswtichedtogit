@@ -444,6 +444,14 @@ void vtkKWIcon::SetImageData(int image)
         image_transfer_buffer_length);
       break;
       
+    case vtkKWIcon::ICON_TRASHCAN:
+      this->SetImageData(
+        image_trashcan, 
+        image_trashcan_width, image_trashcan_height,
+        image_trashcan_pixel_size, 
+        image_trashcan_buffer_length);
+      break;
+      
     case vtkKWIcon::ICON_WARNING:
       this->SetImageData(
         image_warning, 
