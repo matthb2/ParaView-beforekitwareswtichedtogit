@@ -120,7 +120,7 @@ void vtkPDataSetReader::SetNumberOfPieces(int num)
 
 
 //----------------------------------------------------------------------------
-int vtkPDataSetReader::CreateOutput(
+int vtkPDataSetReader::RequestDataObject(
   vtkInformation* request, 
   vtkInformationVector** inputVector , 
   vtkInformationVector* outputVector)

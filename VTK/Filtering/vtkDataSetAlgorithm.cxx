@@ -51,6 +51,13 @@ vtkDataSet* vtkDataSetAlgorithm::GetOutput(int port)
 }
 
 //----------------------------------------------------------------------------
+// Get the output as vtkImageData
+vtkImageData *vtkDataSetAlgorithm::GetImageDataOutput() 
+{
+  return vtkImageData::SafeDownCast(this->GetOutput());
+}
+
+//----------------------------------------------------------------------------
 // Get the output as vtkPolyData.
 vtkPolyData *vtkDataSetAlgorithm::GetPolyDataOutput() 
 {
@@ -175,7 +182,7 @@ int vtkDataSetAlgorithm::ProcessRequest(
   // create the output
   if(request->Has(vtkDemandDrivenPipeline::REQUEST_DATA_OBJECT()))
     {
-    return this->CreateOutput(request, inputVector, outputVector);
+    return this->RequestDataObject(request, inputVector, outputVector);
     }
 
   // execute information
@@ -193,7 +200,7 @@ int vtkDataSetAlgorithm::ProcessRequest(
 }
 
 //----------------------------------------------------------------------------
-int vtkDataSetAlgorithm::CreateOutput(
+int vtkDataSetAlgorithm::RequestDataObject(
   vtkInformation*, 
   vtkInformationVector** inputVector , 
   vtkInformationVector* outputVector)

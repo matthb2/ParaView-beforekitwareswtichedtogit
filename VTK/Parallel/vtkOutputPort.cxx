@@ -71,6 +71,36 @@ void vtkOutputPort::PrintSelf(ostream& os, vtkIndent indent)
 //----------------------------------------------------------------------------
 // Remote method call to UpdateInformation and send the information downstream.
 // This should be a friend.
+void vtkOutputPortRequestDataObjectCallBack(void *arg, void *remoteArgs,
+                                            int remoteArgsLength, 
+                                            int remoteProcessId)
+{
+  vtkOutputPort *self = (vtkOutputPort*)arg;
+  
+  remoteArgs = remoteArgs;
+  remoteArgsLength = remoteArgsLength;
+  // Just call a method
+  self->TriggerRequestDataObject(remoteProcessId);
+}
+//----------------------------------------------------------------------------
+void vtkOutputPort::TriggerRequestDataObject(int remoteProcessId)
+{
+  vtkDataObject *input = this->GetInput();
+  
+  // Handle no input gracefully.
+  if ( input != NULL )
+    {
+    input->UpdateInformation();
+    }
+  
+  int dataType = input->GetDataObjectType();
+  this->Controller->Send( &dataType, 1,
+                          remoteProcessId, vtkInputPort::DATA_TYPE_TAG );
+}
+
+//----------------------------------------------------------------------------
+// Remote method call to UpdateInformation and send the information downstream.
+// This should be a friend.
 void vtkOutputPortUpdateInformationCallBack(void *arg, void *remoteArgs,
                                     int remoteArgsLength, int remoteProcessId)
 {
@@ -298,6 +328,8 @@ void vtkOutputPort::SetTag(int tag)
                            (void *)this, tag);
   this->Controller->AddRMI(vtkOutputPortUpdateCallBack, 
                            (void *)this, tag+1);
+  this->Controller->AddRMI(vtkOutputPortRequestDataObjectCallBack, 
+                           (void *)this, tag+2);
 }
 
 
@@ -341,3 +373,4 @@ int vtkOutputPort
   info->Set(vtkAlgorithm::INPUT_REQUIRED_DATA_TYPE(), "vtkDataSet");
   return 1;
 }
+
