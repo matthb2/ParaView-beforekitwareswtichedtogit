@@ -856,6 +856,8 @@ void vtkMPIMoveData::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os,indent);
   os << indent << "NumberOfBuffers: " << this->NumberOfBuffers << endl;
+  os << indent "DefineCollectAsClone: " << this->DefineCollectAsClone << endl;
+
   //os << indent << "MToN
 }
 
