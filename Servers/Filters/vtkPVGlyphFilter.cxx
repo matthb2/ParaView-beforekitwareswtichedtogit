@@ -31,7 +31,7 @@ vtkPVGlyphFilter::vtkPVGlyphFilter()
   this->MaskPoints = vtkMaskPoints::New();
   this->MaximumNumberOfPoints = 5000;
   this->NumberOfProcesses = vtkMultiProcessController::GetGlobalController() ?
-    vtkMultiProcessController::GetGlobalController()->GetNumberOfProcesses() : 0;
+    vtkMultiProcessController::GetGlobalController()->GetNumberOfProcesses() : 1;
   this->UseMaskPoints = 1;
 }
 
