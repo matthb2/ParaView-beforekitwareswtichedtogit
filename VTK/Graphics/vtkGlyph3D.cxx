@@ -734,7 +734,7 @@ void vtkGlyph3D::PrintSelf(ostream& os, vtkIndent indent)
      << (this->InputNormalsSelection ? this->InputNormalsSelection : "(none)") << "\n";
 }
 
-void vtkGlyph3D::ComputeInputUpdateExtents( vtkDataObject *output )
+void vtkGlyph3D::ComputeInputUpdateExtents( vtkDataObject * )
 {
   vtkPolyData *outPd;
 
@@ -744,7 +744,6 @@ void vtkGlyph3D::ComputeInputUpdateExtents( vtkDataObject *output )
     return;
     }
 
-  output = output;
   outPd = this->GetOutput();
   if (this->GetSource())
     {

@@ -49,7 +49,6 @@ void vtkOBBDicer::BuildTree(vtkIdList *ptIds, vtkOBBNode *OBBptr)
   OBB->ComputeOBB(this->PointsList, OBBptr->Corner, OBBptr->Axes[0], 
                   OBBptr->Axes[1], OBBptr->Axes[2], size);
   OBB->Delete();
-  OBB = NULL;
   
   // Check whether to continue recursing; if so, create two children and
   // assign cells to appropriate child.

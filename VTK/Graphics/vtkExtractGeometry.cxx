@@ -78,7 +78,6 @@ void vtkExtractGeometry::Execute()
   vtkPointData *outputPD = output->GetPointData();
   vtkCellData *outputCD = output->GetCellData();
   int npts;
-  numCells = input->GetNumberOfCells();
   
   vtkDebugMacro(<< "Extracting geometry");
 

@@ -119,7 +119,7 @@ void vtkReverseSense::Execute()
     double n[3];
 
     progressInterval=numCells/5+1;
-    for (vtkIdType cellId=0; cellId < numCells; cellId++ )
+    for (vtkIdType cellId=0; cellId < numCells && !abort; cellId++ )
       {
       if ( ! (cellId % progressInterval) ) //manage progress / early abort
         {

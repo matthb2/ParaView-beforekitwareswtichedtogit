@@ -164,7 +164,6 @@ void vtkSpherePuzzle::Execute()
       // append all the pieces.
       append->AddInput(tmp);
       tmp->Delete();
-      tmp = NULL;
       ++count;
       }
     }

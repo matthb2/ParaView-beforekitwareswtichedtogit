@@ -55,7 +55,7 @@ void vtkSplineFilter::Execute()
   vtkPointData *outPD=output->GetPointData();
   vtkCellData *cd=input->GetCellData();
   vtkCellData *outCD=output->GetCellData();
-  vtkCellArray *inLines = NULL;
+  vtkCellArray *inLines;
   
   vtkPoints *inPts;
   vtkIdType numLines;

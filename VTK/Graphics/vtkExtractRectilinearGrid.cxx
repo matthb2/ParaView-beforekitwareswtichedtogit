@@ -382,7 +382,6 @@ void vtkExtractRectilinearGrid::Execute()
     }
   output->SetZCoordinates(outCoords);
   outCoords->Delete();
-  outCoords = NULL;
 
   // Traverse input data and copy point attributes to output
   // iIn,jIn,kIn are in input grid coordinates.

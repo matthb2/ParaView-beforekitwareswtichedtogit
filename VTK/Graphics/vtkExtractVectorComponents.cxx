@@ -208,7 +208,7 @@ void vtkExtractVectorComponents::Execute()
     name = 0;
     }
 
-  char* newName=0;
+  char* newName;
   if (name)
     {
     newName = new char[strlen(name)+10];

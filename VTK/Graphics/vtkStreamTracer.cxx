@@ -621,9 +621,9 @@ void vtkStreamTracer::Integrate(vtkPolyData* output,
   // Useful pointers
   vtkDataSetAttributes* outputPD = output->GetPointData();
   vtkDataSetAttributes* outputCD = output->GetCellData();
-  vtkPointData* inputPD  = 0;
-  vtkDataSet* input = 0;
-  vtkDataArray* inVectors = 0;
+  vtkPointData* inputPD;
+  vtkDataSet* input;
+  vtkDataArray* inVectors;
 
   int direction=1;
 

@@ -182,7 +182,6 @@ void vtkButterflySubdivisionFilter::GenerateLoopStencil(
   // Walk around the loop and get cells
   nextCell = cellIds->GetId(1);
   tp2 = p2;
-  boundary = 0;
   while (nextCell != startCell)
     {
     cell = polys->GetCell(nextCell);

@@ -161,7 +161,7 @@ void vtkRectilinearGridToTetrahedra::DetermineGridDivisionTypes(
   // the next
 
   int Rec[3];
-  int flip = 0;
+  int flip;
   int i;
 
   switch (TetraPerCell)

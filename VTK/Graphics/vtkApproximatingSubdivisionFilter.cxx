@@ -37,7 +37,7 @@ void vtkApproximatingSubdivisionFilter::Execute()
   int level;
   vtkPoints *outputPts;
 
-  vtkCellArray *outputPolys = NULL;
+  vtkCellArray *outputPolys;
   vtkPolyData *input = this->GetInput();
   vtkPolyData *output = this->GetOutput();
   vtkPointData *outputPD;

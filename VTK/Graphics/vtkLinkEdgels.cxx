@@ -37,8 +37,8 @@ vtkLinkEdgels::vtkLinkEdgels()
 void vtkLinkEdgels::Execute()
 {
   vtkPointData *pd;
-  vtkPoints *newPts=0;
-  vtkCellArray *newLines=0;
+  vtkPoints *newPts;
+  vtkCellArray *newLines;
   vtkDoubleArray *inScalars;
   vtkDoubleArray *outScalars;
   vtkImageData *input = this->GetInput();

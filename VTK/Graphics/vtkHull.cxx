@@ -585,7 +585,7 @@ void vtkHull::ClipPolygonsFromPlanes( vtkPoints *outPoints,
   pnts = new vtkIdType[this->NumberOfPlanes-1];
 
   // We have no vertices yet
-  vertCount = 0;
+  //vertCount = 0;
 
   // For each plane, create a polygon (if it gets completely clipped there
   // won't be a polygon)

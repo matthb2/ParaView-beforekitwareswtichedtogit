@@ -95,7 +95,6 @@ void vtkPolyDataStreamer::Execute()
     copy->ShallowCopy(input);
     append->AddInput(copy);
     copy->Delete();
-    copy = NULL;
     if (pieceColors)
       {
       for (j = 0; j < input->GetNumberOfCells(); ++j)

@@ -44,7 +44,7 @@ void vtkCellCenters::Execute()
   vtkPoints *newPts;
   vtkCell *cell;
   double x[3], pcoords[3];
-  double *weights = NULL;
+  double *weights;
 
   if (input == NULL)
     {

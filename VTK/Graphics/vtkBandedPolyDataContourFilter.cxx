@@ -640,7 +640,7 @@ void vtkBandedPolyDataContourFilter::Execute()
         numPointsToAdd = (mL > mR ? mL-mR+1 : numFullPts-(mR-mL)+1);
         if ( numPointsToAdd == 3 )
           {//just a triangle left
-          for (numPolyPoints=0, i=0; i<numPointsToAdd; i++)
+          for (i=0; i<numPointsToAdd; i++)
             {
             newPolygon[i] = fullPoly[(mR+i)%numFullPts];
             }
