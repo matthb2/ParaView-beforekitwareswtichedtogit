@@ -264,7 +264,7 @@ void vtkDesktopDeliveryClient::ComputeVisiblePropBounds(vtkRenderer *ren,
     // Convert doubles to float for vtkCubeSource
     // Does anyone know why vtkCubeSource doesn't
     // take doubles for SetBounds?
-    float fbounds[6];
+    double fbounds[6];
     for(int i=0;i<6;++i) fbounds[i]=bounds[i];
 
     vtkCubeSource* source = vtkCubeSource::New();
