@@ -19,6 +19,7 @@
 #include "vtkMultiProcessLog.h"
 #include "vtkObjectFactory.h"
 #include "vtkMultiProcessController.h"
+#include "vtkThreadSafeLog.h"
 
 // Is there a thread safe way to initialize this array?
 // A log for each process.

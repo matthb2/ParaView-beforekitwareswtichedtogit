@@ -72,6 +72,12 @@ void vtkThreadSafeLog::AddEntry(char *tag, float value)
 }
 
 //----------------------------------------------------------------------------
+void vtkThreadSafeLog::DumpLog(char *filename)
+{
+  this->DumpLog(filename, ios::out);
+}
+
+//----------------------------------------------------------------------------
 void vtkThreadSafeLog::DumpLog(char *filename, int nMode)
 {
   ofstream os(filename, nMode);
