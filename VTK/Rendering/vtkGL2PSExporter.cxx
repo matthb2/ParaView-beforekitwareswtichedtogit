@@ -322,6 +322,11 @@ void vtkGL2PSExporter::WriteData()
     sprintf(fName, "%s.eps", this->FilePrefix);
     format = GL2PS_EPS;
     }
+  else if (this->FileFormat == PDF_FILE)
+    {
+    sprintf(fName, "%s.pdf", this->FilePrefix);
+    format = GL2PS_PDF;
+    }
   else if (this->FileFormat == TEX_FILE)
     {
     sprintf(fName, "%s.tex", this->FilePrefix);
