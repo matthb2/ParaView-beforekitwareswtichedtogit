@@ -20,7 +20,6 @@
 #include "vtkOldStyleCallbackCommand.h"
 
 vtkCxxRevisionMacro(vtkProcessObject, "$Revision$");
-vtkStandardNewMacro(vtkProcessObject);
 
 // Instantiate object with no start, end, or progress methods.
 vtkProcessObject::vtkProcessObject()

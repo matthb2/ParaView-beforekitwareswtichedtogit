@@ -23,7 +23,6 @@
 #include "vtkRungeKutta2.h"
 
 vtkCxxRevisionMacro(vtkStreamer, "$Revision$");
-vtkStandardNewMacro(vtkStreamer);
 
 #define VTK_START_FROM_POSITION 0
 #define VTK_START_FROM_LOCATION 1

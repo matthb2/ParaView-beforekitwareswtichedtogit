@@ -19,7 +19,6 @@
 #include "vtkObjectFactory.h"
 
 vtkCxxRevisionMacro(vtkUnstructuredGridSource, "$Revision$");
-vtkStandardNewMacro(vtkUnstructuredGridSource);
 
 //----------------------------------------------------------------------------
 vtkUnstructuredGridSource::vtkUnstructuredGridSource()

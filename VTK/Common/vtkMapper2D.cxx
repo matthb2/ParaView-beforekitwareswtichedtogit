@@ -21,7 +21,6 @@
 #include "vtkObjectFactory.h"
 
 vtkCxxRevisionMacro(vtkMapper2D, "$Revision$");
-vtkStandardNewMacro(vtkMapper2D);
 
 void vtkMapper2D::PrintSelf(ostream& os, vtkIndent indent)
 {

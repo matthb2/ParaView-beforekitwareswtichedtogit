@@ -19,7 +19,6 @@
 #include "vtkObjectFactory.h"
 
 vtkCxxRevisionMacro(vtkStructuredPointsSource, "$Revision$");
-vtkStandardNewMacro(vtkStructuredPointsSource);
 
 //----------------------------------------------------------------------------
 vtkStructuredPointsSource::vtkStructuredPointsSource()

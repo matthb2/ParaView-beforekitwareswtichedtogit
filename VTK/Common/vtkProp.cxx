@@ -21,7 +21,6 @@
 #include "vtkOldStyleCallbackCommand.h"
 
 vtkCxxRevisionMacro(vtkProp, "$Revision$");
-vtkStandardNewMacro(vtkProp);
 
 // Creates an Prop with the following defaults: visibility on.
 vtkProp::vtkProp()
