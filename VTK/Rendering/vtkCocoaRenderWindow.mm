@@ -439,13 +439,13 @@ int *vtkCocoaRenderWindow::GetSize(void)
     // if we aren't mapped then just return the ivar
     if (!this->Mapped)
     {
-        return this->Size;
+        return this->Superclass::GetSize();
     }
 
     //  Find the current window size
     this->Size[0] = (int) [[(vtkCocoaWindow *)this->WindowId getvtkCocoaGLView] frame].size.width;
     this->Size[1] = (int) [[(vtkCocoaWindow *)this->WindowId getvtkCocoaGLView] frame].size.height;
-    return this->Size;
+    return this->Superclass::GetSize();
 }
 
 // Get the current size of the screen.
