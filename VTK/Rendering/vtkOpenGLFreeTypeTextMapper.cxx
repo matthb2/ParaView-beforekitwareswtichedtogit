@@ -346,6 +346,7 @@ void vtkOpenGLFreeTypeTextMapper::RenderOverlay(vtkViewport* viewport,
     glMatrixMode(GL_MODELVIEW);
     glPopMatrix();
     glEnable(GL_LIGHTING);
+    glDepthFunc(GL_LEQUAL);
     
     return;
     }
