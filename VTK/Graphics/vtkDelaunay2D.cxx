@@ -1162,8 +1162,7 @@ vtkAbstractTransform * vtkDelaunay2D::ComputeBestFittingPlane()
   double m[9], v[3], x[3];
   vtkIdType ptId;
   int i;
-  double length, w, *c1, *c2, *c3, det;
-  double *bounds;
+  double *c1, *c2, *c3, det;
   double normal[3];
   double origin[3];
 
