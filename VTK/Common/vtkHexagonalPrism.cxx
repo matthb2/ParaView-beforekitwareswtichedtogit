@@ -424,48 +424,6 @@ static int faces[8][6] = { {0,5,4,3,2,1}, {6,7,8,9,10,11},
                            {4,5,11,10,-1,-1}, {5,0,6,11,-1,-1} };
 
 //----------------------------------------------------------------------------
-void vtkHexagonalPrism::Subdivide(vtkPointData *inPd, vtkCellData *inCd, vtkIdType cellId)
-{
-  int i, j;
-  double x[3], x1[3], x2[3], weights[6];
-
-  this->PointData->CopyAllocate(inPd, 12+2);
-  this->CellData->CopyAllocate(inCd,8);
-  for(i=0; i<12; i++)
-    {
-    this->PointData->CopyData(inPd, this->PointIds->GetId(i),i);
-    }
-  this->CellData->CopyData(inCd,cellId,0);
- 
-  this->PointIds->SetNumberOfIds(12);
-
-  x1[0] = x1[1] = x1[2] = 0.;
-  x2[0] = x2[1] = x2[2] = 0.;
-  
-  for(i=0; i<6; ++i)
-    {
-    weights[i] = 1.0/6.0;
-    this->Points->GetPoint(i, x);
-    for(j=0; j<3; ++j)
-      {
-      x1[j] += x[j]*weights[i];
-      }
-    this->Points->GetPoint(i+6, x);
-    for(j=0; j<3; ++j)
-      {
-      x2[j] += x[j]*weights[i];
-      }
-    }
-  this->PointData->InterpolatePoint(inPd, 12, GetFace(0)->GetPointIds(), weights);
-  this->PointData->InterpolatePoint(inPd, 13, GetFace(1)->GetPointIds(), weights);
-
-  this->Points->SetPoint(12, x1); 
-  this->Points->SetPoint(13, x2);
-
-  this->PointIds->SetNumberOfIds(14);
-}
-
-//----------------------------------------------------------------------------
 int *vtkHexagonalPrism::GetEdgeArray(int edgeId)
 {
   return edges[edgeId];
