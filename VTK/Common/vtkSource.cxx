@@ -33,7 +33,6 @@ vtkSource::vtkSource()
   this->NumberOfOutputs = 0;
   this->Outputs = NULL;
   this->Updating = 0;
-  this->GarbageCollecting = 0;
 }
 
 //----------------------------------------------------------------------------
