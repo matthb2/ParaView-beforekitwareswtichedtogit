@@ -146,6 +146,8 @@ void vtkSLCReader::ExecuteData(vtkDataObject* )
   
   output->SetExtent(output->GetWholeExtent());
   output->AllocateScalars();
+  output->GetPointData()->GetScalars()->SetName("SLCImage");
+
   FILE *fp;
 
   int   temp;

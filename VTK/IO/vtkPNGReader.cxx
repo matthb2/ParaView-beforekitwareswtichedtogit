@@ -288,6 +288,8 @@ void vtkPNGReader::ExecuteData(vtkDataObject *output)
     return;
     }
 
+  data->GetPointData()->GetScalars()->SetName("PNGImage");
+
   this->ComputeDataIncrements();
   
   // Call the correct templated function for the output

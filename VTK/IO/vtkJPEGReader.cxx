@@ -263,6 +263,8 @@ void vtkJPEGReader::ExecuteData(vtkDataObject *output)
 
   this->ComputeDataIncrements();
   
+  data->GetPointData()->GetScalars()->SetName("JPEGImage");
+
   // Call the correct templated function for the output
   void *outPtr;
 

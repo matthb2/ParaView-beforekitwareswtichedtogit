@@ -435,6 +435,8 @@ void vtkGESignaReader::ExecuteData(vtkDataObject *output)
     return;
     }
 
+  data->GetPointData()->GetScalars()->SetName("GESignalImage");
+
   this->ComputeDataIncrements();
   
   // Call the correct templated function for the output
