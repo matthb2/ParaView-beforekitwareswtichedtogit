@@ -275,6 +275,9 @@ void vtkDesktopDeliveryServer::PreRenderProcessing()
     this->ParallelRenderManager
       ->SetImageReductionFactor(this->ImageReductionFactor);
     this->ParallelRenderManager->AutoImageReductionFactorOff();
+
+    // Pass UseCompositing flag.
+    this->ParallelRenderManager->SetUseCompositing(this->UseCompositing);
     }
 }
 
