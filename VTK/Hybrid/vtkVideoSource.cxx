@@ -25,6 +25,7 @@
 #include "vtkStreamingDemandDrivenPipeline.h"
 #include "vtkTimerLog.h"
 #include "vtkUnsignedCharArray.h"
+#include "vtkWindows.h"
 
 #include <ctype.h>
 #include <time.h>
