@@ -57,6 +57,11 @@ vtkWeightedTransformFilter::vtkWeightedTransformFilter()
   this->Transforms = NULL;
   this->NumberOfTransforms = 0;
 
+  this->CellDataWeightArray = NULL;
+  this->WeightArray = NULL;
+  this->CellDataTransformIndexArray = NULL;
+  this->TransformIndexArray = NULL;
+  
   // we use methods so that strings get dynamically allocated
   this->SetCellDataWeightArray("");
   this->SetWeightArray("");
