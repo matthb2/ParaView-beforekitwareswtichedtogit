@@ -21,6 +21,8 @@
 
 vtkCxxRevisionMacro(vtkCGMWriter, "$Revision$");
 
+vtkCxxSetObjectMacro(vtkCGMWriter, Viewport, vtkViewport);
+
 vtkCGMWriter::vtkCGMWriter()
 {
   this->Viewport = NULL;
