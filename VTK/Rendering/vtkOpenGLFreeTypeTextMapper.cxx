@@ -379,6 +379,7 @@ void vtkOpenGLFreeTypeTextMapper::RenderOverlay(vtkViewport* viewport,
       }
 #endif
     
+    glDepthFunc(GL_ALWAYS);
     // Set the color here since load/render glyphs is done
     // on demand and this color has to be consistent for a given font entry.
     
@@ -433,6 +434,7 @@ void vtkOpenGLFreeTypeTextMapper::RenderOverlay(vtkViewport* viewport,
   glMatrixMode(GL_MODELVIEW);
   glPopMatrix();
   glEnable(GL_LIGHTING);
+  glDepthFunc(GL_LEQUAL);
 }
 
 void vtkOpenGLFreeTypeTextMapper::PrintSelf(ostream& os, vtkIndent indent)
