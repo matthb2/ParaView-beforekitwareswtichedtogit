@@ -210,7 +210,7 @@ void vtkMapper::ShallowCopy(vtkAbstractMapper *mapper)
 
 // a side effect of this is that this->Colors is also set
 // to the return value
-vtkUnsignedCharArray *vtkMapper::MapScalars(float alpha)
+vtkUnsignedCharArray *vtkMapper::MapScalars(double alpha)
 {
   // Get rid of old colors
   if ( this->Colors )
@@ -427,7 +427,7 @@ void vtkMapper::PrintSelf(ostream& os, vtkIndent indent)
   os << indent << "Scalar Visibility: " 
     << (this->ScalarVisibility ? "On\n" : "Off\n");
 
-  float *range = this->GetScalarRange();
+  double *range = this->GetScalarRange();
   os << indent << "Scalar Range: (" << range[0] << ", " << range[1] << ")\n";
 
   os << indent << "UseLookupTableScalarRange: " 

@@ -642,7 +642,7 @@ void vtkVolume::UpdateTransferFunctions( vtkRenderer *vtkNotUsed(ren) )
          this->Property->GetScalarOpacityMTime(c) >
          this->ScalarOpacityArrayMTime[c] )
       {
-      sotf->GetTable( 0.0, static_cast<float>(arraySize-1),  
+      sotf->GetTable( 0.0, static_cast<double>(arraySize-1),  
                       arraySize, this->ScalarOpacityArray[c] );
       this->ScalarOpacityArrayMTime[c].Modified();
       }

@@ -749,7 +749,7 @@ int vtkDataWriter::WriteScalarData(ostream *fp, vtkDataArray *scalars, int num)
     *fp << "LOOKUP_TABLE " << this->LookupTableName << " " << size << "\n";
     if ( this->FileType == VTK_ASCII )
       {
-      float *c;
+      double *c;
       for (i=0; i<size; i++)
         {
         c = lut->GetTableValue(i);

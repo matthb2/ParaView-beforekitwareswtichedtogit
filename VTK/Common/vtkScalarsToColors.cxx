@@ -39,7 +39,7 @@ void vtkScalarsToColors::SetVectorModeToMagnitude()
 }
 
 // do not use SetMacro() because we do not the table to rebuild.
-void vtkScalarsToColors::SetAlpha(float alpha)
+void vtkScalarsToColors::SetAlpha(double alpha)
 {
   this->Alpha = (alpha < 0.0 ? 0.0 : (alpha > 1.0 ? 1.0 : alpha));
 }

@@ -46,7 +46,7 @@ void vtkPiecewiseFunctionShiftScale::Execute()
     return;
     }
 
-  float *inFunction = input->GetDataPointer();
+  double *inFunction = input->GetDataPointer();
   int numInValues = input->GetSize();
   
   output->RemoveAllPoints();
