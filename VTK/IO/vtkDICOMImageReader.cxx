@@ -149,10 +149,9 @@ void vtkDICOMImageReader::ExecuteInformation()
         continue;
         }
 
-      vtkstd::string temp = this->DirectoryName;
-      vtkstd::string temp2 = dir->GetFile(i);
-      vtkstd::string delim = "/";
-      vtkstd::string fileString = temp + delim + temp2;
+      vtkstd::string fileString = this->DirectoryName;
+      fileString += "/";
+      fileString += dir->GetFile(i);
 
       int val = this->CanReadFile(fileString.c_str());
 
