@@ -14,11 +14,17 @@
 =========================================================================*/
 #include "vtkTIFFWriter.h"
 
-#include "vtkObjectFactory.h"
-#include "vtkImageData.h"
-#include "vtkPointData.h"
 #include "vtkErrorCode.h"
-#include <tiffio.h>
+#include "vtkImageData.h"
+#include "vtkObjectFactory.h"
+#include "vtkPointData.h"
+#include "vtkToolkits.h"
+
+#ifdef VTK_USE_SYSTEM_TIFF
+# include <tiffio.h>
+#else
+# include "vtk_tiff.h"
+#endif
 
 vtkCxxRevisionMacro(vtkTIFFWriter, "$Revision$");
 vtkStandardNewMacro(vtkTIFFWriter);
