@@ -600,6 +600,7 @@ void vtkIceTClientCompositeManager::PrintSelf(ostream& os, vtkIndent indent)
   
   os << indent << "UseCompositing: " << this->UseCompositing << endl;
   os << indent << "ClientFlag: " << this->ClientFlag << endl;
+  os << indent << "UseCompositeCompression: " << this->UseCompositeCompression << endl;
 
   if (this->IceTManager)
     {
