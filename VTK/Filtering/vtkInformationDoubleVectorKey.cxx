@@ -144,3 +144,20 @@ void vtkInformationDoubleVectorKey::Copy(vtkInformation* from,
 {
   this->Set(to, this->Get(from), this->Length(from));
 }
+
+//----------------------------------------------------------------------------
+void vtkInformationDoubleVectorKey::Print(ostream& os, vtkInformation* info)
+{
+  // Print the value.
+  if(this->Has(info))
+    {
+    double* value = this->Get(info);
+    int length = this->Length(info);
+    const char* sep = "";
+    for(int i=0; i < length; ++i)
+      {
+      os << sep << value[i];
+      sep = " ";
+      }
+    }
+}

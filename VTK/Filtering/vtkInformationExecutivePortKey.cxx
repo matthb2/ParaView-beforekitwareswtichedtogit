@@ -117,6 +117,26 @@ void vtkInformationExecutivePortKey::Copy(vtkInformation* from,
 }
 
 //----------------------------------------------------------------------------
+void vtkInformationExecutivePortKey::Print(ostream& os, vtkInformation* info)
+{
+  // Print the value.
+  if(this->Has(info))
+    {
+    vtkExecutive* executive = this->GetExecutive(info);
+    int port = this->GetPort(info);
+    if(executive)
+      {
+      os << executive->GetClassName() << "(" << executive << ") port "
+         << port;
+      }
+    else
+      {
+      os << "(NULL) port " << port;
+      }
+    }
+}
+
+//----------------------------------------------------------------------------
 void vtkInformationExecutivePortKey::Report(vtkInformation* info,
                                             vtkGarbageCollector* collector)
 {

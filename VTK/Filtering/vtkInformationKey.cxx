@@ -107,6 +107,22 @@ void vtkInformationKey::Report(vtkInformation*, vtkGarbageCollector*)
 }
 
 //----------------------------------------------------------------------------
+void vtkInformationKey::Print(vtkInformation* info)
+{
+  this->Print(cout, info);
+}
+
+//----------------------------------------------------------------------------
+void vtkInformationKey::Print(ostream& os, vtkInformation* info)
+{
+  // Just print the value type and pointer by default.
+  if(vtkObjectBase* value = this->GetAsObjectBase(info))
+    {
+    os << value->GetClassName() << "(" << value << ")";
+    }
+}
+
+//----------------------------------------------------------------------------
 void vtkInformationKey::ReportAsObjectBase(vtkInformation* info,
                                            vtkGarbageCollector* collector)
 {

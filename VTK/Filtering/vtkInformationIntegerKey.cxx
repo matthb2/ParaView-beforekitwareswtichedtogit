@@ -88,6 +88,16 @@ void vtkInformationIntegerKey::Copy(vtkInformation* from, vtkInformation* to)
 }
 
 //----------------------------------------------------------------------------
+void vtkInformationIntegerKey::Print(ostream& os, vtkInformation* info)
+{
+  // Print the value.
+  if(this->Has(info))
+    {
+    os << this->Get(info);
+    }
+}
+
+//----------------------------------------------------------------------------
 int* vtkInformationIntegerKey::GetWatchAddress(vtkInformation* info)
 {
   if(vtkInformationIntegerValue* v =

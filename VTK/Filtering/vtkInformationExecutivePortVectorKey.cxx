@@ -234,6 +234,33 @@ void vtkInformationExecutivePortVectorKey::Remove(vtkInformation* info)
 }
 
 //----------------------------------------------------------------------------
+void vtkInformationExecutivePortVectorKey::Print(ostream& os,
+                                                 vtkInformation* info)
+{
+  // Print the value.
+  if(this->Has(info))
+    {
+    vtkExecutive** executives = this->GetExecutives(info);
+    int* ports = this->GetPorts(info);
+    int length = this->Length(info);
+    const char* sep = "";
+    for(int i=0; i < length; ++i)
+      {
+      if(executives[i])
+        {
+        os << sep << executives[i]->GetClassName()
+           << "(" << executives[i] << ") port " << ports[i];
+        }
+      else
+        {
+        os << sep << "(NULL) port " << ports[i];
+        }
+      sep = ", ";
+      }
+    }
+}
+
+//----------------------------------------------------------------------------
 void
 vtkInformationExecutivePortVectorKey::Report(vtkInformation* info,
                                              vtkGarbageCollector* collector)

@@ -160,6 +160,23 @@ void vtkInformationIntegerVectorKey::Copy(vtkInformation* from,
 }
 
 //----------------------------------------------------------------------------
+void vtkInformationIntegerVectorKey::Print(ostream& os, vtkInformation* info)
+{
+  // Print the value.
+  if(this->Has(info))
+    {
+    int* value = this->Get(info);
+    int length = this->Length(info);
+    const char* sep = "";
+    for(int i=0; i < length; ++i)
+      {
+      os << sep << value[i];
+      sep = " ";
+      }
+    }
+}
+
+//----------------------------------------------------------------------------
 int* vtkInformationIntegerVectorKey::GetWatchAddress(vtkInformation* info)
 {
   if(vtkInformationIntegerVectorValue* v =

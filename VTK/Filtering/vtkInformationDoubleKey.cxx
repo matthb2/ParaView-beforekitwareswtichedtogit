@@ -88,6 +88,16 @@ void vtkInformationDoubleKey::Copy(vtkInformation* from, vtkInformation* to)
 }
 
 //----------------------------------------------------------------------------
+void vtkInformationDoubleKey::Print(ostream& os, vtkInformation* info)
+{
+  // Print the value.
+  if(this->Has(info))
+    {
+    os << this->Get(info);
+    }
+}
+
+//----------------------------------------------------------------------------
 double* vtkInformationDoubleKey::GetWatchAddress(vtkInformation* info)
 {
   if(vtkInformationDoubleValue* v =

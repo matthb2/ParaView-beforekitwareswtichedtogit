@@ -129,3 +129,20 @@ void vtkInformationKeyVectorKey::Copy(vtkInformation* from, vtkInformation* to)
 {
   this->Set(to, this->Get(from), this->Length(from));
 }
+
+//----------------------------------------------------------------------------
+void vtkInformationKeyVectorKey::Print(ostream& os, vtkInformation* info)
+{
+  // Print the value.
+  if(this->Has(info))
+    {
+    vtkInformationKey** value = this->Get(info);
+    int length = this->Length(info);
+    const char* sep = "";
+    for(int i=0; i < length; ++i)
+      {
+      os << sep << (value[i]? value[i]->GetName() : "(NULL)");
+      sep = " ";
+      }
+    }
+}

@@ -90,6 +90,16 @@ void vtkInformationUnsignedLongKey::Copy(vtkInformation* from,
 }
 
 //----------------------------------------------------------------------------
+void vtkInformationUnsignedLongKey::Print(ostream& os, vtkInformation* info)
+{
+  // Print the value.
+  if(this->Has(info))
+    {
+    os << this->Get(info);
+    }
+}
+
+//----------------------------------------------------------------------------
 unsigned long*
 vtkInformationUnsignedLongKey::GetWatchAddress(vtkInformation* info)
 {

@@ -82,3 +82,13 @@ void vtkInformationStringKey::Copy(vtkInformation* from, vtkInformation* to)
 {
   this->Set(to, this->Get(from));
 }
+
+//----------------------------------------------------------------------------
+void vtkInformationStringKey::Print(ostream& os, vtkInformation* info)
+{
+  // Print the value.
+  if(this->Has(info))
+    {
+    os << this->Get(info);
+    }
+}
