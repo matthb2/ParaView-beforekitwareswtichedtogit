@@ -165,6 +165,14 @@ void vtkPVDataInformation::CopyFromCompositeDataSet(vtkCompositeDataSet* data)
   iter->Delete();
   this->DataSetType = data->GetDataObjectType();
 }
+#else
+class vtkCompositeDataSet
+{
+};
+//----------------------------------------------------------------------------
+void vtkPVDataInformation::CopyFromCompositeDataSet(vtkCompositeDataSet*)
+{
+}
 #endif
 
 //----------------------------------------------------------------------------
