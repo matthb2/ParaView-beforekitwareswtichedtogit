@@ -8,4 +8,4 @@
 # script is sourced, the variable $dir must contain the
 # full path name of this file's directory.
 
-package ifneeded vtkparallel 4.0 [list source [file join $dir vtkparallel.tcl]]
+package ifneeded vtktesting 4.0 [list source [file join $dir backdrop.tcl]]\n[list source [file join $dir colors.tcl]]\n[list source [file join $dir mccases.tcl]]
