@@ -261,10 +261,7 @@ void vtkKWArguments::AddCallbacks(CallbackStructure* callbacks)
   int cc;
   for ( cc = 0; callbacks[cc].Argument; cc ++ )
     {
-    this->Internals->Callbacks.erase(callbacks[cc].Argument);
-    this->Internals->Callbacks.insert(
-      vtkKWArgumentsInternal::CallbacksMap::value_type(callbacks[cc].Argument,
-                                                       callbacks[cc]));
+    this->Internals->Callbacks[callbacks[cc].Argument] = callbacks[cc];
     }
   this->GenerateHelp();
 }
