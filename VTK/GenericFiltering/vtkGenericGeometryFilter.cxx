@@ -121,7 +121,7 @@ void vtkGenericGeometryFilter::Execute()
   vtkIdType numCells = input->GetNumberOfCells();
   char *cellVis;
   vtkGenericAdaptorCell *cell;
-  double x[3];
+  double x[3]={0,0,0};
   //vtkIdList *ptIds;
   vtkIdType ptIds[4];
 

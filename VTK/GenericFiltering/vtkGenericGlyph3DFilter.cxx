@@ -84,7 +84,7 @@ void vtkGenericGlyph3DFilter::Execute()
   vtkGenericAttribute *inNormals=0;
   //  vtkGenericAttribute *sourceNormals=0;
  
-  int requestedGhostLevel;
+  int requestedGhostLevel=0;
   unsigned char* inGhostLevels=0;
   
   vtkIdType numPts, numSourcePts, numSourceCells, inPtId, i;
