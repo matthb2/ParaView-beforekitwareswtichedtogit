@@ -974,7 +974,7 @@ int vtkDataWriter::WriteFieldData(ostream *fp, vtkFieldData *f)
         // in theory there could be array name consisting of only
         // weird symbols.
         char* buffer;
-        if(strlen(array->GetName()) == 0)
+        if( !array->GetName() || strlen(array->GetName()) == 0)
           {
           buffer = strcpy(new char[strlen("unknown")+1], "unknown");
           }
@@ -1006,6 +1006,11 @@ int vtkDataWriter::WriteFieldData(ostream *fp, vtkFieldData *f)
 
 int vtkDataWriter::WriteCells(ostream *fp, vtkCellArray *cells, const char *label)
 {
+  if ( ! cells )
+    {
+    return 1;
+    }
+  
   int ncells=cells->GetNumberOfCells();
   int size=cells->GetNumberOfConnectivityEntries();
 
