@@ -32,6 +32,7 @@
 #include "vtkDecimate.h"
 #include "vtkObjectFactory.h"
 #include "vtkFloatArray.h"
+#include "vtkMath.h"
 
 vtkCxxRevisionMacro(vtkDecimate, "$Revision$");
 vtkStandardNewMacro(vtkDecimate);
