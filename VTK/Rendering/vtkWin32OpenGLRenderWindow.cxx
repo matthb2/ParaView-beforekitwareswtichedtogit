@@ -15,13 +15,6 @@
      PURPOSE.  See the above copyright notice for more information.
 
 =========================================================================*/
-
-#include "vtkWin32Header.h"
-#if defined(_MSC_VER) || defined (__BORLANDC__)
-#include <GL/glaux.h>
-#else
-#include <GL/gl.h>
-#endif
 #include "vtkWin32OpenGLRenderWindow.h"
 
 #include "vtkObjectFactory.h"
@@ -37,6 +30,12 @@
 #include "vtkWin32RenderWindowInteractor.h"
 
 #include <math.h>
+
+#if defined(_MSC_VER) || defined (__BORLANDC__)
+#include <GL/glaux.h>
+#else
+#include <GL/gl.h>
+#endif
 
 vtkCxxRevisionMacro(vtkWin32OpenGLRenderWindow, "$Revision$");
 vtkStandardNewMacro(vtkWin32OpenGLRenderWindow);
