@@ -213,7 +213,7 @@ vtkDistributedExecutive::GetOutputDataInternal(vtkAlgorithm* algorithm,
                                                int port)
 {
   vtkDataObject* output;
-  output = this->Superclass::GetOutputDataInternal(algorithm, port)
+  output = this->Superclass::GetOutputDataInternal(algorithm, port);
   if(output)
     {
     return output;
