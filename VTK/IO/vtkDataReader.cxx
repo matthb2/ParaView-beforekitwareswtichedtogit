@@ -36,6 +36,7 @@
 #include "vtkErrorCode.h"
 
 #include <ctype.h>
+#include <sys/stat.h>
 
 vtkCxxRevisionMacro(vtkDataReader, "$Revision$");
 vtkStandardNewMacro(vtkDataReader);
@@ -362,6 +363,16 @@ int vtkDataReader::OpenVTKFile()
       {
       vtkErrorMacro(<< "No file specified!");
       this->SetErrorCode( vtkErrorCode::NoFileNameError );
+      return 0;
+      }
+
+    // first make sure the file exists, this prevents an empty file from
+    // being created on older compilers
+    struct stat fs;
+    if (stat(this->FileName, &fs) != 0) 
+      {
+      vtkErrorMacro(<< "Unable to open file: "<< this->FileName);
+      this->SetErrorCode( vtkErrorCode::CannotOpenFileError );
       return 0;
       }
     this->IS = new ifstream(this->FileName, ios::in);
