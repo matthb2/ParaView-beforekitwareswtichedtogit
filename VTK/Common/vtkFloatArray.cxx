@@ -359,15 +359,14 @@ float vtkFloatArray::GetComponent(const vtkIdType i, const int j)
 // Note that i<NumberOfTuples and j<NumberOfComponents. Make sure enough
 // memory has been allocated (use SetNumberOfTuples() and 
 // SetNumberOfComponents()).
-void vtkFloatArray::SetComponent(const vtkIdType i, const int j, const float c)
+void vtkFloatArray::SetComponent(const vtkIdType i, const int j, float c)
 {
   this->SetValue(i*this->NumberOfComponents + j, c);
 }
 
 // Insert the data component at ith tuple and jth component location. 
 // Note that memory allocation is performed as necessary to hold the data.
-void vtkFloatArray::InsertComponent(const vtkIdType i, const int j,
-                                    const float c)
+void vtkFloatArray::InsertComponent(const vtkIdType i, const int j, float c)
 {
   this->InsertValue(i*this->NumberOfComponents + j, c);
 }

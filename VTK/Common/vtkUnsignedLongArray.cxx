@@ -382,14 +382,14 @@ float vtkUnsignedLongArray::GetComponent(const vtkIdType i, const int j)
 // memory has been allocated (use SetNumberOfTuples() and 
 // SetNumberOfComponents()).
 void vtkUnsignedLongArray::SetComponent(const vtkIdType i, const int j, 
-                                        const float c)
+                                        float c)
 {
-  this->SetValue(i*this->NumberOfComponents + j, static_cast<const unsigned long>(c));
+  this->SetValue(i*this->NumberOfComponents + j, static_cast<unsigned long>(c));
 }
 
 void vtkUnsignedLongArray::InsertComponent(const vtkIdType i, const int j, 
-                                           const float c)
+                                           float c)
 {
   this->InsertValue(i*this->NumberOfComponents + j, 
-                    static_cast<const unsigned long>(c));
+                    static_cast<unsigned long>(c));
 }

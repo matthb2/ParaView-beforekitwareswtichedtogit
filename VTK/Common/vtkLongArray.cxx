@@ -376,14 +376,13 @@ float vtkLongArray::GetComponent(const vtkIdType i, const int j)
 // Note that i<NumberOfTuples and j<NumberOfComponents. Make sure enough
 // memory has been allocated (use SetNumberOfTuples() and 
 // SetNumberOfComponents()).
-void vtkLongArray::SetComponent(const vtkIdType i, const int j, const float c)
+void vtkLongArray::SetComponent(const vtkIdType i, const int j, float c)
 {
-  this->SetValue(i*this->NumberOfComponents + j, static_cast<const long>(c));
+  this->SetValue(i*this->NumberOfComponents + j, static_cast<long>(c));
 }
 
-void vtkLongArray::InsertComponent(const vtkIdType i, const int j, 
-                                   const float c)
+void vtkLongArray::InsertComponent(const vtkIdType i, const int j, float c)
 {
   this->InsertValue(i*this->NumberOfComponents + j, 
-                    static_cast<const long>(c));
+                    static_cast<long>(c));
 }
