@@ -568,13 +568,11 @@ int vtkSource::ProcessRequest(vtkInformation* request,
                   "calling ExecuteInformation.");
 
     // for image data copy the wbb into origin and spacing
-    if(vtkStreamingDemandDrivenPipeline* sddp =
-       vtkStreamingDemandDrivenPipeline::SafeDownCast(this->GetExecutive()))
+    if(vtkExecutive* e = this->GetExecutive())
       {
       for(i=0; i < this->NumberOfInputs; ++i)
         {
-        vtkInformation* info =
-          sddp->GetConnectedInputInformation(0, i);
+        vtkInformation* info = e->GetInputInformation(0, i);
         vtkImageData *id = vtkImageData::SafeDownCast(
           info->Get(vtkDataObject::DATA_OBJECT()));
         if (id && 
