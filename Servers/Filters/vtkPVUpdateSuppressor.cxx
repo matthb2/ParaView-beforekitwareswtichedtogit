@@ -14,13 +14,14 @@
 =========================================================================*/
 #include "vtkPVUpdateSuppressor.h"
 
+#include "vtkCollection.h"
 #include "vtkCommand.h"
-#include "vtkDemandDrivenPipeline.h"
-#include "vtkObjectFactory.h"
 #include "vtkDataSet.h"
+#include "vtkDemandDrivenPipeline.h"
+#include "vtkInformation.h"
+#include "vtkObjectFactory.h"
 #include "vtkPolyData.h"
 #include "vtkUnstructuredGrid.h"
-#include "vtkCollection.h"
 
 vtkCxxRevisionMacro(vtkPVUpdateSuppressor, "$Revision$");
 vtkStandardNewMacro(vtkPVUpdateSuppressor);
@@ -141,6 +142,13 @@ void vtkPVUpdateSuppressor::ForceUpdate()
     ddp = 
       vtkDemandDrivenPipeline::SafeDownCast(
         input->GetSource()->GetExecutive());
+    }
+  else
+    {
+    vtkInformation* pipInf =
+      input->GetPipelineInformation();
+    ddp = vtkDemandDrivenPipeline::SafeDownCast(
+      pipInf->GetExecutive(vtkExecutive::PRODUCER()));
     }
   if (ddp)
     {
