@@ -130,13 +130,13 @@ void vtkDataArray::DeepCopy(vtkDataArray *da)
                         this,numTuples,this->NumberOfComponents);
 
       case VTK_BIT:
-                {//bit not supported, using generic float API
+        {//bit not supported, using generic float API
         for (int i=0; i < numTuples; i++)
           {
           this->SetTuple(i, da->GetTuple(i));
           }
         break;
-                }
+        }
 
       default:
         vtkErrorMacro(<<"Unsupported data type!");
