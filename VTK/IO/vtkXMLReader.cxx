@@ -639,7 +639,7 @@ void vtkXMLReader::DestroyStringArray(int numStrings, char** strings)
       delete [] strings[i];
       }
     }
-  delete strings;
+  delete [] strings;
 }
 
 //----------------------------------------------------------------------------
