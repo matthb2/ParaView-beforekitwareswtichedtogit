@@ -59,3 +59,8 @@ void vtkPolyDataSourceWidget::PlaceWidget()
     
   this->PlaceWidget(bounds);
 }
+
+void vtkPolyDataSourceWidget::PrintSelf(ostream& os, vtkIndent indent)
+{
+  this->Superclass::PrintSelf(os,indent);
+}

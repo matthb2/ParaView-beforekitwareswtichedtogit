@@ -202,3 +202,8 @@ void vtkPushImageFilterSample::ThreadedExecute(vtkImageData **inData,
       return;
     }
 }
+
+void vtkPushImageFilterSample::PrintSelf(ostream& os, vtkIndent indent)
+{
+  this->Superclass::PrintSelf(os,indent);
+}
