@@ -30,9 +30,13 @@
 
 =========================================================================*/
 #include "vtkDecimate.h"
-#include "vtkObjectFactory.h"
+
 #include "vtkFloatArray.h"
+#include "vtkLine.h"
 #include "vtkMath.h"
+#include "vtkObjectFactory.h"
+#include "vtkPlane.h"
+#include "vtkTriangle.h"
 
 vtkCxxRevisionMacro(vtkDecimate, "$Revision$");
 vtkStandardNewMacro(vtkDecimate);

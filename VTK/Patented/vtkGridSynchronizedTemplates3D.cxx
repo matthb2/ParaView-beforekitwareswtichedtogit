@@ -1086,3 +1086,4 @@ void vtkGridSynchronizedTemplates3D::Execute()
   
   output->Squeeze();
 }
+

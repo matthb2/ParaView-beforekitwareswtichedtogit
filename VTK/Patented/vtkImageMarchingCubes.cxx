@@ -30,12 +30,15 @@
      for more information.
 
 =========================================================================*/
-#include <math.h>
 #include "vtkImageMarchingCubes.h"
-#include "vtkObjectFactory.h"
+
 #include "vtkCommand.h"
-#include "vtkMarchingCubesCases.h"
 #include "vtkFloatArray.h"
+#include "vtkImageData.h"
+#include "vtkMarchingCubesCases.h"
+#include "vtkObjectFactory.h"
+
+#include <math.h>
 
 vtkCxxRevisionMacro(vtkImageMarchingCubes, "$Revision$");
 vtkStandardNewMacro(vtkImageMarchingCubes);
