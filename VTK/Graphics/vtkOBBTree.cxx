@@ -1895,3 +1895,36 @@ int vtkOBBTree::IntersectWithOBBTree( vtkOBBTree *OBBTreeB,
 
   return( count );
   }
+
+void vtkOBBTree::PrintSelf(ostream& os, vtkIndent indent)
+{
+  this->Superclass::PrintSelf(os, indent);
+  
+  if ( this->Tree )
+    {
+    os << indent << "Tree " << this->Tree << "\n";
+    }
+  else
+    {
+    os << indent << "Tree: (null)\n";      
+    }
+  if ( this->PointsList )
+    {
+    os << indent << "PointsList " << this->PointsList << "\n";
+    }
+  else
+    {
+    os << indent << "PointsList: (null)\n";
+    }
+  if( this->InsertedPoints )
+    {
+    os << indent << "InsertedPoints " << this->InsertedPoints << "\n";
+    }
+  else
+    {
+    os << indent << "InsertedPoints: (null)\n";      
+    }
+
+  os << indent << "OBBCount " << this->OBBCount << "\n";
+  os << indent << "DeepestLevel " << this->DeepestLevel << "\n";
+}

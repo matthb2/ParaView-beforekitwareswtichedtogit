@@ -704,3 +704,17 @@ double *vtkPentagonalPrism::GetParametricCoords()
 {
   return vtkPentagonalPrismCellPCoords;
 }
+
+//----------------------------------------------------------------------------
+void vtkPentagonalPrism::PrintSelf(ostream& os, vtkIndent indent)
+{
+  this->Superclass::PrintSelf(os,indent);
+  
+  os << indent << "Line:\n";
+  this->Line->PrintSelf(os,indent.GetNextIndent());
+  os << indent << "Quad:\n";
+  this->Quad->PrintSelf(os,indent.GetNextIndent());
+  os << indent << "Polygon:\n";
+  this->Polygon->PrintSelf(os,indent.GetNextIndent());
+}
+

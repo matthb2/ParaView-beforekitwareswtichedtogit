@@ -764,3 +764,16 @@ double *vtkWedge::GetParametricCoords()
 {
   return vtkWedgeCellPCoords;
 }
+
+//----------------------------------------------------------------------------
+void vtkWedge::PrintSelf(ostream& os, vtkIndent indent)
+{
+  this->Superclass::PrintSelf(os,indent);
+  
+  os << indent << "Line:\n";
+  this->Line->PrintSelf(os,indent.GetNextIndent());
+  os << indent << "Triangle:\n";
+  this->Triangle->PrintSelf(os,indent.GetNextIndent());
+  os << indent << "Quad:\n";
+  this->Quad->PrintSelf(os,indent.GetNextIndent());
+}
