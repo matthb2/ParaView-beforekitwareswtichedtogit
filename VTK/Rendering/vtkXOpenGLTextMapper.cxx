@@ -206,7 +206,7 @@ void vtkXOpenGLTextMapper::RenderOverlay(vtkViewport* viewport,
 
   // Get the position of the text actor
   int* actorPos = 
-    actor->GetPositionCoordinate()->GetComputedViewportValue(viewport);
+    actor->GetActualPositionCoordinate()->GetComputedViewportValue(viewport);
 
   // Set up the font color from the text actor
   unsigned char red = 0;
