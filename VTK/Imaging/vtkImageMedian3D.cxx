@@ -384,7 +384,7 @@ void vtkImageMedian3DExecute(vtkImageMedian3D *self,
 // Copydata at the end of the execute
 void vtkImageMedian3D::ExecuteData(vtkDataObject *out)
 { 
-  vtkImageData *output = this->GetOutput();
+  vtkImageData *output = vtkImageData::SafeDownCast(out);
   vtkImageData *input = this->GetInput();
   int inExt[6];
   int outExt[6];
