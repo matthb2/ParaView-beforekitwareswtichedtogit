@@ -204,9 +204,11 @@ void vtkExtractUserDefinedPiece::Execute()
   cellTags->Delete();
   pointOwnership->Delete();
 }
-void vtkExtractUserDefinedPiece::ComputeCellTagsWithFunction(vtkIntArray *tags,
-                                              vtkIdList *pointOwnership,
-                                              int piece, int numPieces)
+void vtkExtractUserDefinedPiece::
+ComputeCellTagsWithFunction(vtkIntArray *tags,
+                            vtkIdList *pointOwnership,
+                            int vtkNotUsed(piece), 
+                            int vtkNotUsed(numPieces))
 {
   vtkUnstructuredGrid *input;
   int j;
