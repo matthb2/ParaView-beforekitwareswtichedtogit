@@ -672,6 +672,18 @@ void vtkLODProp3D::DisableLOD( int id )
   this->LODs[index].State = 0;
 }
 
+int vtkLODProp3D::IsLODEnabled( int id )
+{
+  int index = this->ConvertIDToIndex( id );
+
+  if ( index == VTK_INVALID_LOD_INDEX || index == VTK_INDEX_NOT_IN_USE )
+    {
+    return 0;
+    }
+  
+  return this->LODs[index].State;
+}
+
 void vtkLODProp3D::SetLODLevel( int id, float level )
 {
   int index = this->ConvertIDToIndex( id );
