@@ -17,6 +17,7 @@
 =========================================================================*/
 // This will be the default.
 #include "vtkMultiProcessController.h"
+#include "vtkDummyController.h"
 #include "vtkThreadedController.h"
 #include "vtkToolkits.h"
 
@@ -153,8 +154,8 @@ vtkMultiProcessController *vtkMultiProcessController::New()
 #endif
 
   vtkGenericWarningMacro("No valid parallel library was found. "
-                         "Can not create controller.");
-  return NULL;
+                         "Creating dummy controller.");
+  return vtkDummyController::New();
 }
 
 
