@@ -597,7 +597,7 @@ void vtkImageReslice::ExecuteInformation(vtkImageData *input,
     else
       {
       s = inSpacing[i];
-      d = (inWholeExt[2*i+1] - e)*s;
+      d = (inWholeExt[2*i+1] - inWholeExt[2*i])*s;
       e = inWholeExt[2*i];
       }
 
