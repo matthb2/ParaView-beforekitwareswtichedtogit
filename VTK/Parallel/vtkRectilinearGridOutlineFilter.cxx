@@ -39,7 +39,7 @@ void vtkRectilinearGridOutlineFilter::ExecuteInformation()
 void vtkRectilinearGridOutlineFilter::Execute()
 {
   float         bounds[6];
-  float         *range;
+  double         *range;
   float         x[3];
   vtkIdType     pts[2];
   vtkPoints*    newPts;
