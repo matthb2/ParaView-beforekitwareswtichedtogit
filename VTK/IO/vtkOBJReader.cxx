@@ -83,6 +83,15 @@ the vertices on each face as necessary.
 
 ---------------------------------------------------------*/
 
+// a replacement for isspace()
+int is_whitespace(char c)
+{
+  if ( c==' ' || c=='\t' || c=='\n' || c=='\r' || c=='\v' || c=='\f')
+    return 1;
+  else
+    return 0;
+}
+
 void vtkOBJReader::Execute()
 {
   if (!this->FileName) 
@@ -184,7 +193,7 @@ void vtkOBJReader::Execute()
       while (everything_ok && pChar<pEnd) 
         {
         // find the first non-whitespace character
-        while (isspace(*pChar) && pChar<pEnd) { pChar++; }
+        while (is_whitespace(*pChar) && pChar<pEnd) { pChar++; }
 
         if (pChar<pEnd)         // there is still data left on this line
           {
@@ -231,7 +240,7 @@ void vtkOBJReader::Execute()
             }
           // skip over what we just read
           // (find the first whitespace character)
-          while (!isspace(*pChar) && pChar<pEnd) { pChar++; }
+          while (!is_whitespace(*pChar) && pChar<pEnd) { pChar++; }
 
           }
 
