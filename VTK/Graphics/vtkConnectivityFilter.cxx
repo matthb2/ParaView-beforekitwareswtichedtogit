@@ -331,6 +331,7 @@ void vtkConnectivityFilter::Execute()
   this->PointIds->Delete();
   this->CellIds->Delete();
   output->Squeeze();
+  output->GetPointData()->GetScalars()->Resize(output->GetNumberOfPoints());
 
   int num = this->GetNumberOfExtractedRegions();
   int count = 0;
