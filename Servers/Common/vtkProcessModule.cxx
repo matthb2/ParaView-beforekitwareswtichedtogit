@@ -765,3 +765,17 @@ vtkCommand* vtkProcessModule::GetObserver()
   return this->Observer;
 }
 
+//----------------------------------------------------------------------------
+void vtkProcessModule::Initialize()
+{
+  this->InitializeInterpreter();
+}
+
+//----------------------------------------------------------------------------
+void vtkProcessModule::Finalize()
+{
+  this->SetGUIHelper(0);
+  this->SetRenderModule(0);
+  this->FinalizeInterpreter();
+}
+
