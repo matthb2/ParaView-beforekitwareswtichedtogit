@@ -524,6 +524,17 @@ void vtkImageTracerWidget::AdjustHandlePosition(int handle, double pos[3])
   this->HandleGeometry[handle]->Modified();
 }
 
+void vtkImageTracerWidget::SetProjectionPosition(double position)
+{
+  this->ProjectionPosition = position;
+  
+  for (int i=0;i<this->NumberOfHandles;i++)
+    {
+    this->AdjustHandlePosition(i,this->HandleGeometry[i]->GetCenter());
+    }
+  this->BuildLinesFromHandles();
+}
+
 void vtkImageTracerWidget::SetHandlePosition(int handle, double xyz[3])
 {
   this->AdjustHandlePosition(handle, xyz);
