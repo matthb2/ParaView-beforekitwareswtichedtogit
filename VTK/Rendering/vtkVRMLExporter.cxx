@@ -248,7 +248,7 @@ void vtkVRMLExporter::WriteAnActor(vtkActor *anActor, FILE *fp)
   int pointDataWritten = 0;
   vtkPolyDataMapper *pm;
   vtkUnsignedCharArray *colors;
-  float *p;
+  double *p;
   unsigned char *c;
   vtkTransform *trans;
   int totalValues;
@@ -620,7 +620,7 @@ void vtkVRMLExporter::WritePointData(vtkPoints *points, vtkDataArray *normals,
                                      vtkDataArray *tcoords, 
                                      vtkUnsignedCharArray *colors, FILE *fp)
 {
-  float *p;
+  double *p;
   int i;
   unsigned char *c;
   

@@ -393,7 +393,7 @@ void vtkUnstructuredGridBunykRayCastFunction::TransformPoints()
   this->ViewToWorldMatrix->DeepCopy(perspectiveTransform->GetMatrix());
   this->ViewToWorldMatrix->Invert();
   
-  float *origPtr;
+  double *origPtr;
   double *transformedPtr = this->Points;
   double in[4], out[4];
   in[3] = 1.0;

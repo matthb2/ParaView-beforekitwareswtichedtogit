@@ -259,7 +259,7 @@ void vtkOpenGLPolyDataMapper2D::RenderOverlay(vtkViewport* viewport,
           }
         glColor4ubv(rgba);
         }
-      glVertex2fv(p->GetPoint(pts[j]));
+      glVertex2dv(p->GetPoint(pts[j]));
       }
     glEnd();
     }
@@ -311,7 +311,7 @@ void vtkOpenGLPolyDataMapper2D::RenderOverlay(vtkViewport* viewport,
           }
         glColor4ubv(rgba);
         }
-      glVertex2fv(p->GetPoint(pts[j]));
+      glVertex2dv(p->GetPoint(pts[j]));
       }
     glEnd();
     }
@@ -337,7 +337,7 @@ void vtkOpenGLPolyDataMapper2D::RenderOverlay(vtkViewport* viewport,
           }
         glColor4ubv(rgba);
         }
-      glVertex2fv(p->GetPoint(pts[j]));
+      glVertex2dv(p->GetPoint(pts[j]));
       }
     }
   glEnd();

@@ -166,8 +166,8 @@ float *vtkImageActor::GetBounds()
     return this->Bounds;
     }
   this->Input->UpdateInformation();
-  float *spacing = this->Input->GetSpacing();
-  float *origin = this->Input->GetOrigin();
+  double *spacing = this->Input->GetSpacing();
+  double *origin = this->Input->GetOrigin();
 
   // if the display extent has not been set, then compute one
   int *wExtent = this->Input->GetWholeExtent();

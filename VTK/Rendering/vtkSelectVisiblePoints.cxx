@@ -56,7 +56,8 @@ void vtkSelectVisiblePoints::Execute()
   vtkPointData *inPD=input->GetPointData();
   vtkPointData *outPD=output->GetPointData();
   vtkIdType numPts=input->GetNumberOfPoints();
-  float x[4], dx[3], z, diff;
+  float x[4];
+  float dx[3], z, diff;
   int selection[4];
   
   if ( this->Renderer == NULL )
@@ -122,7 +123,10 @@ void vtkSelectVisiblePoints::Execute()
   for (id=(-1), ptId=0; ptId < numPts && !abort; ptId++)
     {
     // perform conversion
-    input->GetPoint(ptId,x);
+    // TODO: cleanup when double
+    x[0] = (float)input->GetPoint(ptId)[0];
+    x[1] = (float)input->GetPoint(ptId)[1];
+    x[2] = (float)input->GetPoint(ptId)[2];
     matrix->MultiplyPoint(x, view);
     if (view[3] == 0.0)
       {
