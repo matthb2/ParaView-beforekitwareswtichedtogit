@@ -280,6 +280,26 @@ int vtkXMLCollectionReader::FillOutputPortInformation(int, vtkInformation *info)
 }
 
 
+int vtkXMLCollectionReader::ProcessRequest(vtkInformation* request,
+                                  vtkInformationVector** inputVector,
+                                  vtkInformationVector* outputVector)
+{
+  if(request->Has(vtkDemandDrivenPipeline::REQUEST_DATA_NOT_GENERATED()))
+    {
+    // Mark all outputs as not generated so that the executive does
+    // not try to handle initialization/finalization of the outputs.
+    // We will do it here.
+    int i;
+    for(i=0; i < outputVector->GetNumberOfInformationObjects(); ++i)
+      {
+      vtkInformation* outInfo = outputVector->GetInformationObject(i);
+      outInfo->Set(vtkDemandDrivenPipeline::DATA_NOT_GENERATED(), 1);
+      }
+    }
+  return this->Superclass::ProcessRequest(request, inputVector, outputVector);
+}
+
+
 //----------------------------------------------------------------------------
 int vtkXMLCollectionReader::RequestDataObject(
   vtkInformation *vtkNotUsed(request), 
