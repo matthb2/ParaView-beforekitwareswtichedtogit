@@ -161,7 +161,8 @@ void vtkPNMReader::ExecuteInformation()
     }
   else
     {
-    vtkErrorMacro(<<"Unknown file type! Not a binary PGM or PPM");
+    vtkErrorMacro(<<"Unknown file type! " << this->InternalFileName 
+                  <<" is not a binary PGM or PPM!");
     return;
     }
 

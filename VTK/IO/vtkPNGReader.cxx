@@ -52,7 +52,8 @@ void vtkPNGReader::ExecuteInformation()
      NULL, NULL);
   if (!png_ptr)
     {
-    vtkErrorMacro(<<"Unable to read PNG file!");
+    vtkErrorMacro(<<"Unknown file type! " << this->InternalFileName 
+                  <<" is not a PNG!");
     fclose(fp);
     return;
     }
@@ -62,7 +63,8 @@ void vtkPNGReader::ExecuteInformation()
     {
     png_destroy_read_struct(&png_ptr,
                             (png_infopp)NULL, (png_infopp)NULL);
-    vtkErrorMacro(<<"Unable to read PNG file!");
+    vtkErrorMacro(<<"Unknown file type! " << this->InternalFileName 
+                  <<" is not a PNG!");
     fclose(fp);
     return;
     }
