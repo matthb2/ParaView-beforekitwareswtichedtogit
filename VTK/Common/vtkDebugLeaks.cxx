@@ -324,7 +324,14 @@ void vtkDebugLeaks::PrintCurrentLeaks()
       msg << line << "\n";
       }
     msg << ends;
-    cancel = vtkDebugLeaks::DisplayMessageBox(msg.str());
+    if(getenv("DART_TEST_FROM_DART"))
+      {
+      cout << msg.str() << "\n";
+      }
+    else
+      {
+      cancel = vtkDebugLeaks::DisplayMessageBox(msg.str());
+      }
     msg.rdbuf()->freeze(0);
     }
 #else
