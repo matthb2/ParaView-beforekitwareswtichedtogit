@@ -60,18 +60,23 @@ int vtkKWWin32RegisteryUtilities::OpenInternal(const char *toplevel,
                                                const char *subkey, 
                                                int readonly)
 {
+  HKEY scope = HKEY_CURRENT_USER;
+  if ( this->GetGlobalScope() )
+    {
+    scope = HKEY_LOCAL_MACHINE;
+    }
   int res = 0;
   ostrstream str;
   DWORD dwDummy;
   str << "Software\\Kitware\\" << toplevel << "\\" << subkey << ends;
   if ( readonly == vtkKWRegisteryUtilities::READONLY )
     {
-    res = ( RegOpenKeyEx(HKEY_CURRENT_USER, str.str(), 
+    res = ( RegOpenKeyEx(scope, str.str(), 
                          0, KEY_READ, &this->HKey) == ERROR_SUCCESS );
     }
   else
     {
-    res = ( RegCreateKeyEx(HKEY_CURRENT_USER, str.str(),
+    res = ( RegCreateKeyEx(scope, str.str(),
                            0, "", REG_OPTION_NON_VOLATILE, KEY_READ|KEY_WRITE, 
                            NULL, &this->HKey, &dwDummy) == ERROR_SUCCESS );    
     }
