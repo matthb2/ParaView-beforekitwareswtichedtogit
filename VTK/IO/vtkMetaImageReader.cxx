@@ -16,7 +16,6 @@
 
 #include "vtkObjectFactory.h"
 #include "vtkImageData.h"
-#include "vtkXMLImageDataWriter.h"
 
 #include <vtkstd/string>
 
