@@ -535,6 +535,22 @@ void vtkGenericEdgeTable::Initialize(vtkIdType start)
 }
 
 //-----------------------------------------------------------------------------
+// Description:
+// Return the last point id inserted.
+vtkIdType vtkGenericEdgeTable::GetLastPointId()
+{
+  return this->LastPointId;
+}
+  
+//-----------------------------------------------------------------------------
+// Description:
+// Increment the last point id.
+void vtkGenericEdgeTable::IncrementLastPointId()
+{
+  ++this->LastPointId;
+}
+
+//-----------------------------------------------------------------------------
 vtkIdType vtkGenericEdgeTable::HashFunction(vtkIdType ptId)
 {
   //cout << ptId << "," << this->HashPoints->Modulo << "\n";
