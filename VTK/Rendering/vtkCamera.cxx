@@ -454,6 +454,38 @@ void vtkCamera::Elevation(double angle)
 }
 
 //----------------------------------------------------------------------------
+// Apply Transform to camera
+void vtkCamera::ApplyTransform(vtkTransform *t) {
+  
+  double posOld[4], posNew[4], fpOld[4], fpNew[4], vuOld[4], vuNew[4];
+
+  this->GetPosition(posOld);
+  this->GetFocalPoint(fpOld);
+  this->GetViewUp(vuOld);
+
+  posOld[3] = 1.0;
+  fpOld[3] = 1.0;
+  vuOld[3] = 1.0;
+
+  vuOld[0] += posOld[0];
+  vuOld[1] += posOld[1];
+  vuOld[2] += posOld[2];
+
+  t->MultiplyPoint(posOld, posNew);
+  t->MultiplyPoint(fpOld, fpNew);
+  t->MultiplyPoint(vuOld, vuNew);
+
+  vuNew[0] -= posNew[0];
+  vuNew[1] -= posNew[1];
+  vuNew[2] -= posNew[2];
+
+  this->SetPosition(posNew);
+  this->SetFocalPoint(fpNew);
+  this->SetViewUp(vuNew);
+  
+} 
+
+//----------------------------------------------------------------------------
 //----------------------------------------------------------------------------
 // The following methods set up the information that the Renderer needs
 // to set up the perspective transform.  The transformation matrix is
