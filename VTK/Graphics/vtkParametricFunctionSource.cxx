@@ -34,11 +34,11 @@ vtkStandardNewMacro(vtkParametricFunctionSource);
 
 
 vtkParametricFunctionSource::vtkParametricFunctionSource() :
-  NumberOfUPoints(50)
+  ParametricFunction(NULL)
+  , NumberOfUPoints(50)
   , NumberOfVPoints(50)
   , NumberOfWPoints(50)
   , ScalarMode(vtkParametricFunctionSource::SCALAR_NONE)
-  , ParametricFunction(NULL)
 {
   this->SetNumberOfInputPorts(0);
 }
