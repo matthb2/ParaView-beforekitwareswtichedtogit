@@ -21,7 +21,6 @@
 #include "vtkPVRenderModule.h"
 #include "vtkClientServerStream.h"
 #include "vtkSMDisplayWindowProxy.h"
-#include "vtkKWEvent.h"
 
 //----------------------------------------------------------------------------
 vtkCxxRevisionMacro(vtkSMInteractorObserverProxy, "$Revision$");
@@ -106,7 +105,7 @@ void vtkSMInteractorObserverProxy::UpdateVTKObjects()
 //----------------------------------------------------------------------------
 void vtkSMInteractorObserverProxy::ExecuteEvent(vtkObject*, unsigned long event, void*)
 {
-  this->InvokeEvent(vtkKWEvent::WidgetModifiedEvent);
+  this->InvokeEvent(vtkCommand::WidgetModifiedEvent);
   if ( event == vtkCommand::StartInteractionEvent )
     {
     this->InvokeEvent(vtkCommand::StartInteractionEvent);
