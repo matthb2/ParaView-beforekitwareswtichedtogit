@@ -38,38 +38,28 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 
 
 =========================================================================*/
-// .NAME vtkImageGradient - Computes the gradient vector.
+// .NAME vtkImageGradientMagnitude - Computes magnitude of the gradient.
 // .SECTION Description
-// vtkImageGradient computes the gradient
-// vector of an image.  The vector results are placed along the
-// component axis.  Setting the axes determines whether the gradient
+// vtkImageGradientMagnitude computes the gradient magnitude 
+// of an image.  Setting the axes determines whether the gradient
 // computed on 1D lines, 2D images, 3D volumes or higher dimensional 
 // images.  The default is two dimensional XY images.  OutputScalarType
 // is always float.
 
 
 
-#ifndef __vtkImageGradient_h
-#define __vtkImageGradient_h
+#ifndef __vtkImageGradientMagnitude_h
+#define __vtkImageGradientMagnitude_h
 
 
 #include "vtkImageSpatialFilter.h"
 
-class vtkImageGradient : public vtkImageFilter
+class vtkImageGradientMagnitude : public vtkImageFilter
 {
 public:
-  vtkImageGradient();
-  char *GetClassName() {return "vtkImageGradient";};
+  vtkImageGradientMagnitude();
+  char *GetClassName() {return "vtkImageGradientMagnitude";};
   void PrintSelf(ostream& os, vtkIndent indent);
-  
-  void InterceptCacheUpdate(vtkImageRegion *region);
-
-  // Description:
-  // This SetAxes method sets VTK_COMPONENT_AXIS as the first axis.
-  // The superclass is told not to loop over this axis.
-  // Note: Get Axes still returns the super class axes.
-  void SetAxes(int num, int *axes);
-  vtkImageSetMacro(Axes,int);
   
   // Description:
   // If "HandleBoundariesOn" then boundary pixels are duplicated

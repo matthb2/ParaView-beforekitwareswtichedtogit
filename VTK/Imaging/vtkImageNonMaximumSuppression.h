@@ -38,38 +38,36 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 
 
 =========================================================================*/
-// .NAME vtkImageGradient - Computes the gradient vector.
+// .NAME vtkImageNonMaximumSuppression - Thins Gradient images.
 // .SECTION Description
-// vtkImageGradient computes the gradient
-// vector of an image.  The vector results are placed along the
-// component axis.  Setting the axes determines whether the gradient
-// computed on 1D lines, 2D images, 3D volumes or higher dimensional 
-// images.  The default is two dimensional XY images.  OutputScalarType
-// is always float.
+// vtkImageNonMaximumSuppression Sets to zero any gradient
+// that is not a peak.  If a pixel has a neighbor along the gradient
+// that has larger magnitude, the smaller pixel is set to zero.
+// The filter takes two inputs: a gradient magnitude and a gradient vector.
+// Output is magnitude information and is always in floats.
 
 
+#ifndef __vtkImageNonMaximumSuppression_h
+#define __vtkImageNonMaximumSuppression_h
 
-#ifndef __vtkImageGradient_h
-#define __vtkImageGradient_h
 
+#include "vtkImageDyadicFilter.h"
 
-#include "vtkImageSpatialFilter.h"
-
-class vtkImageGradient : public vtkImageFilter
+class vtkImageNonMaximumSuppression : public vtkImageDyadicFilter
 {
 public:
-  vtkImageGradient();
-  char *GetClassName() {return "vtkImageGradient";};
-  void PrintSelf(ostream& os, vtkIndent indent);
+  vtkImageNonMaximumSuppression();
+  char *GetClassName() {return "vtkImageNonMaximumSuppression";};
   
-  void InterceptCacheUpdate(vtkImageRegion *region);
+  // Description:
+  // These method add VTK_IMAGE_COMPONENT_AXIS as the last axis.
+  void SetAxes(int num, int *axes);
+  vtkImageSetMacro(Axes, int);
 
   // Description:
-  // This SetAxes method sets VTK_COMPONENT_AXIS as the first axis.
-  // The superclass is told not to loop over this axis.
-  // Note: Get Axes still returns the super class axes.
-  void SetAxes(int num, int *axes);
-  vtkImageSetMacro(Axes,int);
+  // Rename the inputs.
+  void SetMagnitudeInput(vtkImageSource *input) {this->SetInput1(input);};
+  void SetVectorInput(vtkImageSource *input) {this->SetInput2(input);};
   
   // Description:
   // If "HandleBoundariesOn" then boundary pixels are duplicated
@@ -77,15 +75,20 @@ public:
   vtkSetMacro(HandleBoundaries, int);
   vtkGetMacro(HandleBoundaries, int);
   vtkBooleanMacro(HandleBoundaries, int);
+
   
 protected:
   int HandleBoundaries;
-  
-  void ComputeOutputImageInformation(vtkImageRegion *inRegion,
+  int NumberOfAxes;
+
+  void ComputeOutputImageInformation(vtkImageRegion *inRegion1,
+				     vtkImageRegion *inRegion2,
 				     vtkImageRegion *outRegion);
-  void ComputeRequiredInputRegionExtent(vtkImageRegion *outRegion, 
-					vtkImageRegion *inRegion);
-  void Execute(vtkImageRegion *inRegion, vtkImageRegion *outRegion);
+  void ComputeRequiredInputRegionExtent(vtkImageRegion *outRegion,
+					vtkImageRegion *inRegion1,
+					vtkImageRegion *inRegion2);
+  void Execute(vtkImageRegion *inRegion1, vtkImageRegion *inRegion2, 
+	       vtkImageRegion *outRegion);
 
 };
 
