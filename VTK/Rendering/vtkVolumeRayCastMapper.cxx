@@ -24,6 +24,7 @@
 #include "vtkGraphicsFactory.h"
 #include "vtkImageData.h"
 #include "vtkMath.h"
+#include "vtkMultiThreader.h"
 #include "vtkObjectFactory.h"
 #include "vtkPlaneCollection.h"
 #include "vtkRenderWindow.h"
@@ -553,10 +554,10 @@ void vtkVolumeRayCastMapper::Render( vtkRenderer *ren, vtkVolume *vol )
 VTK_THREAD_RETURN_TYPE VolumeRayCastMapper_CastRays( void *arg )
 {
   // Get the info out of the input structure
-  int threadID    = ((ThreadInfoStruct *)(arg))->ThreadID;
-  int threadCount = ((ThreadInfoStruct *)(arg))->NumberOfThreads;
+  int threadID    = ((vtkMultiThreader::ThreadInfoStruct *)(arg))->ThreadID;
+  int threadCount = ((vtkMultiThreader::ThreadInfoStruct *)(arg))->NumberOfThreads;
   VTKVRCStaticInfo *staticInfo  = 
-    (VTKVRCStaticInfo *)((ThreadInfoStruct *)arg)->UserData;
+    (VTKVRCStaticInfo *)((vtkMultiThreader::ThreadInfoStruct *)arg)->UserData;
   
   int i, j, k;
   unsigned char *ucptr;

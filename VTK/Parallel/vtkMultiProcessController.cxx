@@ -25,6 +25,7 @@
 #endif
 
 #include "vtkCollection.h"
+#include "vtkMultiThreader.h"
 #include "vtkObjectFactory.h"
 #include "vtkOutputWindow.h"
 

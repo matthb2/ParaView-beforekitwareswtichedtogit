@@ -18,6 +18,7 @@
 #include "vtkImageToImageFilter.h"
 
 #include "vtkImageData.h"
+#include "vtkMultiThreader.h"
 #include "vtkObjectFactory.h"
 
 vtkCxxRevisionMacro(vtkImageToImageFilter, "$Revision$");
@@ -182,10 +183,10 @@ VTK_THREAD_RETURN_TYPE vtkImageThreadedExecute( void *arg )
   int threadId, threadCount;
   vtkImageData *output;
 
-  threadId = ((ThreadInfoStruct *)(arg))->ThreadID;
-  threadCount = ((ThreadInfoStruct *)(arg))->NumberOfThreads;
+  threadId = ((vtkMultiThreader::ThreadInfoStruct *)(arg))->ThreadID;
+  threadCount = ((vtkMultiThreader::ThreadInfoStruct *)(arg))->NumberOfThreads;
 
-  str = (vtkImageThreadStruct *)(((ThreadInfoStruct *)(arg))->UserData);
+  str = (vtkImageThreadStruct *)(((vtkMultiThreader::ThreadInfoStruct *)(arg))->UserData);
   output = str->Output;
   output->GetUpdateExtent( ext );
 

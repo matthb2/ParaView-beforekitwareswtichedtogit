@@ -17,6 +17,7 @@
 =========================================================================*/
 #include "vtkEncodedGradientEstimator.h"
 
+#include "vtkMultiThreader.h"
 #include "vtkRecursiveSphereDirectionEncoder.h"
 #include "vtkTimerLog.h"
 #include "vtkImageData.h"
