@@ -143,6 +143,17 @@ void vtkViewport::RemoveProp(vtkProp *p)
     }
 }
 
+void vtkViewport::RemoveAllProps(void)
+{
+  vtkProp *aProp;
+  for (this->Props->InitTraversal();
+       (aProp = this->Props->GetNextProp()); )
+    {
+    aProp->ReleaseGraphicsResources(this->VTKWindow);
+    }
+  this->Props->RemoveAllItems();
+}
+
 // look through the props and get all the actors
 vtkActor2DCollection *vtkViewport::GetActors2D()
 {
@@ -150,8 +161,8 @@ vtkActor2DCollection *vtkViewport::GetActors2D()
   
   // clear the collection first
   this->Actors2D->RemoveAllItems();
-  
-  for (this->Props->InitTraversal(); 
+
+  for (this->Props->InitTraversal();
        (aProp = this->Props->GetNextProp()); )
     {
     aProp->GetActors2D(this->Actors2D);
