@@ -36,7 +36,10 @@ vtkCxxSetObjectMacro(vtkTextMapper,TextProperty,vtkTextProperty);
 vtkTextMapper::vtkTextMapper()
 {
   this->Input = (char*)NULL;
-  this->TextProperty = vtkTextProperty::New();
+  // consistent Register/unregister
+  this->TextProperty = NULL;
+  this->SetTextProperty(vtkTextProperty::New());
+  this->TextProperty->Delete();
 
   this->TextLines = NULL;
   this->NumberOfLines = 0;
