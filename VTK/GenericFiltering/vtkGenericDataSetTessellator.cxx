@@ -160,7 +160,6 @@ void vtkGenericDataSetTessellator::Execute()
         } //switch
       } //insert each new cell
     } //for all cells
-  cout<<"********* count="<<count<<endl;
   cellIt->Delete();
   
   // Send to the output

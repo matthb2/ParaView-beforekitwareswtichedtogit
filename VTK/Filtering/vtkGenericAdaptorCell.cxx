@@ -448,7 +448,6 @@ void vtkGenericAdaptorCell::Tessellate(vtkGenericAttributeCollection *attributes
    
    // for each cell-centered attribute: copy the value
     int c=this->InternalCellArray->GetNumberOfCells();
-    cout<<"this->InternalCellArray->GetNumberOfCells()="<<c<<endl;
     int attrib=0;
     while(attrib<attributes->GetNumberOfAttributes())
       {
