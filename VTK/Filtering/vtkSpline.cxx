@@ -82,8 +82,8 @@ void vtkSpline::GetParametricRange(double tRange[2]) const
     }
   else
     {
-    this->PiecewiseFunction->GetRange()[0];
-    this->PiecewiseFunction->GetRange()[1];
+    tRange[0] = this->PiecewiseFunction->GetRange()[0];
+    tRange[1] = this->PiecewiseFunction->GetRange()[1];
     }
 }
 
