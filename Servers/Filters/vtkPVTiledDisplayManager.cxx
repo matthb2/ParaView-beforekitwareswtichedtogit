@@ -593,6 +593,7 @@ vtkPVTiledDisplayManager::vtkPVTiledDisplayManager()
 
   this->RenderWindow = NULL;
   this->Controller = vtkMultiProcessController::GetGlobalController();
+  this->NumberOfProcesses = this->Controller->GetNumberOfProcesses();
 
   if (this->Controller)
     {
@@ -1248,7 +1249,7 @@ void vtkPVTiledDisplayManager::EndRender()
 //----------------------------------------------------------------------------
 void vtkPVTiledDisplayManager::PrintSelf(ostream& os, vtkIndent indent)
 {
-  this->vtkObject::PrintSelf(os, indent);
+  this->Superclass::PrintSelf(os, indent);
   
   if ( this->RenderWindow )
     {
