@@ -184,7 +184,7 @@ int vtkKWRemoteExecute::WaitToFinish()
 int vtkKWRemoteExecute::RunCommand(const char* args)
 {
   cout << "Execute [" << args << "]" << endl;
-  system(this->Internals->Command.c_str());
+  system(args);
   return VTK_OK;
 }
 
