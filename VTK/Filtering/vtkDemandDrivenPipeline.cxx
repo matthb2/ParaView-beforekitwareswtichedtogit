@@ -517,67 +517,6 @@ int vtkDemandDrivenPipeline::CheckDataObject(int port)
 }
 
 //----------------------------------------------------------------------------
-vtkDataObject* vtkDemandDrivenPipeline::GetOutputData(int port)
-{
-  if(!this->OutputPortIndexInRange(port, "get data for"))
-    {
-    return 0;
-    }
-
-  // Bring the data object up to date.
-  this->UpdateDataObject();
-
-  // Return the data object.
-  if(vtkInformation* info = this->GetOutputInformation(port))
-    {
-    return info->Get(vtkDataObject::DATA_OBJECT());
-    }
-  return 0;
-}
-
-//----------------------------------------------------------------------------
-void vtkDemandDrivenPipeline::SetOutputData(int newPort,
-                                            vtkDataObject* newOutput)
-{
-  if(vtkInformation* info = this->GetOutputInformation(newPort))
-    {
-    if(!newOutput || newOutput->GetPipelineInformation() != info)
-      {
-      if(newOutput)
-        {
-        newOutput->SetPipelineInformation(info);
-        }
-      else if(vtkDataObject* oldOutput = info->Get(vtkDataObject::DATA_OBJECT()))
-        {
-        oldOutput->SetPipelineInformation(0);
-        }
-
-      // Output has changed.  Reset the pipeline information.
-      this->ResetPipelineInformation(newPort, info);
-      }
-    }
-  else
-    {
-    vtkErrorMacro("Could not set output on port " << newPort << ".");
-    }
-}
-
-//----------------------------------------------------------------------------
-vtkDataObject* vtkDemandDrivenPipeline::GetInputData(int port, int index)
-{
-  if(vtkDemandDrivenPipeline* e = this->GetConnectedInputExecutive(port, index))
-    {
-    vtkAlgorithmOutput* input =
-      this->Algorithm->GetInputConnection(port, index);
-    return e->GetOutputData(input->GetIndex());
-    }
-  else
-    {
-    return 0;
-    }
-}
-
-//----------------------------------------------------------------------------
 void
 vtkDemandDrivenPipeline
 ::PrepareDownstreamRequest(vtkInformationIntegerKey* rkey)
