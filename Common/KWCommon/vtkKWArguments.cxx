@@ -194,7 +194,7 @@ int vtkKWArguments::Parse()
         }
       else
         {
-        cerr << "Got unknown argument: \"" << arg << "\"" << endl;
+        cerr << "Got unknown argument: \"" << arg.c_str() << "\"" << endl;
         return 0;
         }
       }
