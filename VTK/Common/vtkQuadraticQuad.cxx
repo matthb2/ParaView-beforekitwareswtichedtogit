@@ -384,7 +384,7 @@ void vtkQuadraticQuad::Derivatives(int vtkNotUsed(subId),
                                    float pcoords[3], float *values, 
                                    int dim, float *derivs)
 {
-  float *x0, *x1, *x2, deltaX[3], weights[3];
+  float *x0, *x1, *x2, deltaX[3], weights[8];
   int i, j;
   float functionDerivs[16];
 
