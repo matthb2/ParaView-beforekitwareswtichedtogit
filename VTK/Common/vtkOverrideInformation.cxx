@@ -19,6 +19,7 @@
 
 vtkCxxRevisionMacro(vtkOverrideInformation, "$Revision$");
 vtkStandardNewMacro(vtkOverrideInformation);
+vtkCxxSetObjectMacro(vtkOverrideInformation,ObjectFactory,vtkObjectFactory);
 
 vtkOverrideInformation::vtkOverrideInformation()
 {

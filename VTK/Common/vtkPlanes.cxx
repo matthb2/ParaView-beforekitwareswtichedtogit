@@ -16,6 +16,7 @@
 
 =========================================================================*/
 #include "vtkPlanes.h"
+
 #include "vtkPlane.h"
 #include "vtkObjectFactory.h"
 #include "vtkFloatArray.h"
@@ -24,6 +25,7 @@
 
 vtkCxxRevisionMacro(vtkPlanes, "$Revision$");
 vtkStandardNewMacro(vtkPlanes);
+vtkCxxSetObjectMacro(vtkPlanes,Points,vtkPoints);
 
 vtkPlanes::vtkPlanes()
 {

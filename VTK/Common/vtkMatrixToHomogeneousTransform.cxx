@@ -20,6 +20,7 @@
 
 vtkCxxRevisionMacro(vtkMatrixToHomogeneousTransform, "$Revision$");
 vtkStandardNewMacro(vtkMatrixToHomogeneousTransform);
+vtkCxxSetObjectMacro(vtkMatrixToHomogeneousTransform,Input,vtkMatrix4x4);
 
 //----------------------------------------------------------------------------
 vtkMatrixToHomogeneousTransform::vtkMatrixToHomogeneousTransform()

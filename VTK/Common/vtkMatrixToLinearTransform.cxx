@@ -20,6 +20,7 @@
 
 vtkCxxRevisionMacro(vtkMatrixToLinearTransform, "$Revision$");
 vtkStandardNewMacro(vtkMatrixToLinearTransform);
+vtkCxxSetObjectMacro(vtkMatrixToLinearTransform,Input,vtkMatrix4x4);
 
 //----------------------------------------------------------------------------
 vtkMatrixToLinearTransform::vtkMatrixToLinearTransform()
