@@ -173,6 +173,9 @@ void _Turn2DPropsOn(vtkRendererCollection *renCol, vtkIntArray *act2dVis)
 vtkCxxRevisionMacro(vtkGL2PSExporter, "$Revision$");
 vtkStandardNewMacro(vtkGL2PSExporter);
 
+static float vtkGL2PSExporterGlobalPointSizeFactor = 5.0/7.0;
+static float vtkGL2PSExporterGlobalLineWidthFactor = 5.0/7.0;
+
 vtkGL2PSExporter::vtkGL2PSExporter()
 {
   this->FilePrefix = NULL;
@@ -195,6 +198,26 @@ vtkGL2PSExporter::~vtkGL2PSExporter()
     {
     delete [] this->FilePrefix;
     }
+}
+
+void vtkGL2PSExporter::SetGlobalPointSizeFactor(float val)
+{
+    vtkGL2PSExporterGlobalPointSizeFactor = fabs(val);
+}
+
+float vtkGL2PSExporter::GetGlobalPointSizeFactor()
+{
+    return vtkGL2PSExporterGlobalPointSizeFactor;
+}
+
+void vtkGL2PSExporter::SetGlobalLineWidthFactor(float val)
+{
+    vtkGL2PSExporterGlobalLineWidthFactor = fabs(val);
+}
+
+float vtkGL2PSExporter::GetGlobalLineWidthFactor()
+{
+    return vtkGL2PSExporterGlobalLineWidthFactor;
 }
 
 void vtkGL2PSExporter::WriteData()
@@ -438,4 +461,8 @@ void vtkGL2PSExporter::PrintSelf(ostream& os, vtkIndent indent)
      << (this->OcclusionCull ? "On\n" : "Off\n");
   os << indent << "Write3DPropsAsRasterImage: "
      << (this->Write3DPropsAsRasterImage ? "On\n" : "Off\n");
+  os << indent << "GlobalPointSizeFactor:" 
+     << vtkGL2PSExporterGlobalPointSizeFactor << endl;
+  os << indent << "GlobalLineWidthFactor:" 
+     << vtkGL2PSExporterGlobalLineWidthFactor << endl;
 }
