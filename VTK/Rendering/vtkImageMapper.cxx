@@ -265,4 +265,3 @@ int vtkImageMapper::GetWholeZMax()
   return extent[5];
 }
 
-

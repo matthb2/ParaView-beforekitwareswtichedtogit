@@ -275,3 +275,9 @@ int vtkImagingFactory::GetUseMesaClasses()
 {
   return vtkImagingFactory::UseMesaClasses;
 }
+
+//----------------------------------------------------------------------------
+void vtkImagingFactory::PrintSelf(ostream& os, vtkIndent indent)
+{
+  this->Superclass::PrintSelf(os,indent);
+}

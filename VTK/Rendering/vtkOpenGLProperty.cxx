@@ -172,3 +172,8 @@ void vtkOpenGLProperty::BackfaceRender(vtkActor *vtkNotUsed(anActor),
 
 }
 
+//----------------------------------------------------------------------------
+void vtkOpenGLProperty::PrintSelf(ostream& os, vtkIndent indent)
+{
+  this->Superclass::PrintSelf(os,indent);
+}

@@ -2853,3 +2853,8 @@ int vtkOpenGLPolyDataMapper::Draw(vtkRenderer *aren, vtkActor *act)
 
   return noAbort;
 }
+
+void vtkOpenGLPolyDataMapper::PrintSelf(ostream& os, vtkIndent indent)
+{
+  this->Superclass::PrintSelf(os,indent);
+}

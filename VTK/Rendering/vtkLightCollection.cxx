@@ -38,9 +38,8 @@ vtkLight *vtkLightCollection::GetNextItem()
   return static_cast<vtkLight *>(this->GetNextItemAsObject());
 }
 
-
-
-
-
-
-
+//----------------------------------------------------------------------------
+void vtkLightCollection::PrintSelf(ostream& os, vtkIndent indent)
+{
+  this->Superclass::PrintSelf(os,indent);
+}

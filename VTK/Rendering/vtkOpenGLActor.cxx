@@ -108,3 +108,8 @@ void vtkOpenGLActor::Render(vtkRenderer *ren, vtkMapper *mapper)
     }
 }
 
+//----------------------------------------------------------------------------
+void vtkOpenGLActor::PrintSelf(ostream& os, vtkIndent indent)
+{
+  this->Superclass::PrintSelf(os,indent);
+}

@@ -17,6 +17,7 @@
 =========================================================================*/
 #include "vtkParallelCoordinatesActor.h"
 
+#include "vtkAxisActor2D.h"
 #include "vtkMath.h"
 #include "vtkObjectFactory.h"
 #include "vtkPolyData.h"

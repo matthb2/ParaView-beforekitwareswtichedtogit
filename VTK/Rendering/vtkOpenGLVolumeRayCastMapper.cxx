@@ -387,3 +387,7 @@ void vtkOpenGLVolumeRayCastMapper::RenderTexture( vtkVolume *vol,
 #endif
 }
 
+void vtkOpenGLVolumeRayCastMapper::PrintSelf(ostream& os, vtkIndent indent)
+{
+  this->Superclass::PrintSelf(os,indent);
+}

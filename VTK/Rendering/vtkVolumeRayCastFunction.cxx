@@ -130,5 +130,8 @@ void vtkVolumeRayCastFunction::FunctionInitialize(
   this->SpecificFunctionInitialize( ren, vol, staticInfo, mapper );
 }
 
-
-
+//----------------------------------------------------------------------------
+void vtkVolumeRayCastFunction::PrintSelf(ostream& os, vtkIndent indent)
+{
+  this->Superclass::PrintSelf(os,indent);
+}

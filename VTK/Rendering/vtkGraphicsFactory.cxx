@@ -317,3 +317,8 @@ int vtkGraphicsFactory::GetUseMesaClasses()
   return vtkGraphicsFactory::UseMesaClasses;
 }
 
+//----------------------------------------------------------------------------
+void vtkGraphicsFactory::PrintSelf(ostream& os, vtkIndent indent)
+{
+  this->Superclass::PrintSelf(os,indent);
+}

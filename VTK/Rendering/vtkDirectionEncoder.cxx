@@ -18,3 +18,9 @@
 #include "vtkDirectionEncoder.h"
 
 vtkCxxRevisionMacro(vtkDirectionEncoder, "$Revision$");
+
+//----------------------------------------------------------------------------
+void vtkDirectionEncoder::PrintSelf(ostream& os, vtkIndent indent)
+{
+  this->Superclass::PrintSelf(os,indent);
+}

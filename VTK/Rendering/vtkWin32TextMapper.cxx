@@ -190,5 +190,7 @@ void vtkWin32TextMapper::GetSize(vtkViewport* viewport, int *size)
   SelectObject(hdc, hOldFont);
 }
 
-
-
+void vtkWin32TextMapper::PrintSelf(ostream& os, vtkIndent indent)
+{
+  this->Superclass::PrintSelf(os,indent);
+}

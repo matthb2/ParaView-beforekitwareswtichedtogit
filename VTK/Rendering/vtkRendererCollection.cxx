@@ -66,5 +66,8 @@ void vtkRendererCollection::Render()
     }
 }
 
-
-
+//----------------------------------------------------------------------------
+void vtkRendererCollection::PrintSelf(ostream& os, vtkIndent indent)
+{
+  this->Superclass::PrintSelf(os,indent);
+}

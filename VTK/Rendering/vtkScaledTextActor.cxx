@@ -29,3 +29,7 @@ vtkScaledTextActor::vtkScaledTextActor()
   this->SetScaledText(1);
 }
 
+void vtkScaledTextActor::PrintSelf(ostream& os, vtkIndent indent)
+{
+  this->Superclass::PrintSelf(os,indent);
+}

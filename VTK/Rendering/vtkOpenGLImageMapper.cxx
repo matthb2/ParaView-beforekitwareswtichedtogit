@@ -674,3 +674,8 @@ void vtkOpenGLImageMapper::RenderData(vtkViewport* viewport,
   glEnable(GL_BLEND);
 #endif
 }
+
+void vtkOpenGLImageMapper::PrintSelf(ostream& os, vtkIndent indent)
+{
+  this->Superclass::PrintSelf(os,indent);
+}

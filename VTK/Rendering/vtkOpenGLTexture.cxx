@@ -436,3 +436,8 @@ unsigned char *vtkOpenGLTexture::ResampleToPowerOfTwo(int &xs, int &ys, unsigned
   
   return tptr;
 }
+
+void vtkOpenGLTexture::PrintSelf(ostream& os, vtkIndent indent)
+{
+  this->Superclass::PrintSelf(os,indent);
+}

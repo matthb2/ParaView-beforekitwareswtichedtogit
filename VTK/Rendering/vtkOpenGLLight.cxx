@@ -118,3 +118,8 @@ void vtkOpenGLLight::Render(vtkRenderer *vtkNotUsed(ren),int light_index)
   }
 }
 
+//----------------------------------------------------------------------------
+void vtkOpenGLLight::PrintSelf(ostream& os, vtkIndent indent)
+{
+  this->Superclass::PrintSelf(os,indent);
+}

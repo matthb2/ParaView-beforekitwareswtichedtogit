@@ -375,4 +375,3 @@ void vtkLODActor::ShallowCopy(vtkProp *prop)
   // Now do superclass
   this->vtkActor::ShallowCopy(prop);
 }
-

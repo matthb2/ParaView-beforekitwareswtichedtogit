@@ -20,3 +20,8 @@
 
 vtkCxxRevisionMacro(vtkRenderWindowCollection, "$Revision$");
 vtkStandardNewMacro(vtkRenderWindowCollection);
+
+void vtkRenderWindowCollection::PrintSelf(ostream& os, vtkIndent indent)
+{
+  this->Superclass::PrintSelf(os,indent);
+}

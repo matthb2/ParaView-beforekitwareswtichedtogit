@@ -444,3 +444,7 @@ void vtkWin32OpenGLTextMapper::RenderOverlay(vtkViewport* viewport,
   SelectObject(hdc, hOldFont);
 }
 
+void vtkWin32OpenGLTextMapper::PrintSelf(ostream& os, vtkIndent indent)
+{
+  this->Superclass::PrintSelf(os,indent);
+}

@@ -20,3 +20,9 @@
 
 vtkCxxRevisionMacro(vtkProp3DCollection, "$Revision$");
 vtkStandardNewMacro(vtkProp3DCollection);
+
+//----------------------------------------------------------------------------
+void vtkProp3DCollection::PrintSelf(ostream& os, vtkIndent indent)
+{
+  this->Superclass::PrintSelf(os,indent);
+}

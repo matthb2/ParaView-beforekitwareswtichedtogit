@@ -342,6 +342,9 @@ void vtkOpenGLPolyDataMapper2D::RenderOverlay(vtkViewport* viewport,
   // Turn it back on in case we've turned it off
   glDepthMask( GL_TRUE );
 }
-
-
   
+//----------------------------------------------------------------------------
+void vtkOpenGLPolyDataMapper2D::PrintSelf(ostream& os, vtkIndent indent)
+{
+  this->Superclass::PrintSelf(os,indent);
+}
