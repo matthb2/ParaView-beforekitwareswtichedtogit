@@ -2854,6 +2854,10 @@ void vtkKdTree::_printTree(int v)
 {
   vtkKdTree::__printTree(this->Top, 0, v);
 }
+void vtkKdTree::PrintRegion(int id)
+{
+  this->RegionList[id]->PrintNode(0);
+}
 void vtkKdTree::PrintTree()
 {   
   _printTree(0);
