@@ -1517,7 +1517,7 @@ void vtkPlaneWidget::GetPolyData(vtkPolyData *pd)
   pd->ShallowCopy(this->PlaneSource->GetOutput()); 
 }
 
-vtkPolyDataSource *vtkPlaneWidget::GetPolyDataSource()
+vtkPolyDataAlgorithm *vtkPlaneWidget::GetPolyDataAlgorithm()
 {
   return this->PlaneSource;
 }

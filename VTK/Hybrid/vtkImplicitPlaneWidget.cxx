@@ -1134,7 +1134,7 @@ void vtkImplicitPlaneWidget::GetPolyData(vtkPolyData *pd)
   pd->ShallowCopy(this->Cutter->GetOutput()); 
 }
 
-vtkPolyDataSource *vtkImplicitPlaneWidget::GetPolyDataSource()
+vtkPolyDataAlgorithm *vtkImplicitPlaneWidget::GetPolyDataAlgorithm()
 {
   return this->Cutter;
 }

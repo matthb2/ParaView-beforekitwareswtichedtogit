@@ -2183,7 +2183,7 @@ void vtkImagePlaneWidget::GetPolyData(vtkPolyData *pd)
   pd->ShallowCopy(this->PlaneSource->GetOutput());
 }
 
-vtkPolyDataSource *vtkImagePlaneWidget::GetPolyDataSource()
+vtkPolyDataAlgorithm *vtkImagePlaneWidget::GetPolyDataAlgorithm()
 {
   return this->PlaneSource;
 }
