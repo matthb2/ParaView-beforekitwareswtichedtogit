@@ -1141,6 +1141,10 @@ void vtkWin32OpenGLRenderWindow::SetCursorPosition(int x, int y)
 
 void vtkWin32OpenGLRenderWindow::SetCurrentCursor(int shape)
 {
+  if ( this->InvokeEvent(vtkCommand::CursorChangedEvent,&shape) )
+    {
+    return;
+    }
   this->Superclass::SetCurrentCursor(shape);
   LPCTSTR cursorName = 0;
   switch (shape)
