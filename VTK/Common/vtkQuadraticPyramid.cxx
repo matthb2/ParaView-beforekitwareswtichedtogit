@@ -192,9 +192,9 @@ int vtkQuadraticPyramid::EvaluatePosition(double* x,
       return -1;
       }
 
-    pcoords[0] = params[0] - vtkMath::Determinant3x3 (fcol,scol,tcol) / d;
-    pcoords[1] = params[1] - vtkMath::Determinant3x3 (rcol,fcol,tcol) / d;
-    pcoords[2] = params[2] - vtkMath::Determinant3x3 (rcol,scol,fcol) / d;
+    pcoords[0] = params[0] - 0.5*vtkMath::Determinant3x3 (fcol,scol,tcol) / d;
+    pcoords[1] = params[1] - 0.5*vtkMath::Determinant3x3 (rcol,fcol,tcol) / d;
+    pcoords[2] = params[2] - 0.5*vtkMath::Determinant3x3 (rcol,scol,fcol) / d;
 
     //  check for convergence
     if ( ((fabs(pcoords[0]-params[0])) < VTK_PYRAMID_CONVERGED) &&
