@@ -1708,9 +1708,9 @@ vtkFieldData *vtkDataReader::ReadFieldData()
     this->Read(&numTuples);
     this->ReadString(type);
     data = this->ReadArray(type, numTuples, numComp);
-    data->SetName(name);
     if ( data != NULL )
       {
+      data->SetName(name);
       if ( ! skipField )
         {
         f->AddArray(data);
