@@ -1292,9 +1292,9 @@ void vtkFreeTypeUtilities::PrintEntry(int i, char *msg)
     
   if (this->Entries[i]->Font)
     {
-    printf(" [F: %p]", this->Entries[i]->Font);
+    printf(" [F: %p]", (void*)this->Entries[i]->Font);
     printf("\n                                                [f: %p]", 
-           *(this->Entries[i]->Font->Face()->Face()));
+           (void*)*(this->Entries[i]->Font->Face()->Face()));
     }
   
   printf("\n");
