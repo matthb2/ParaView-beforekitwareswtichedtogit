@@ -243,11 +243,13 @@ void vtkExtractPolyDataPiece::Execute()
     if (pointOwnership->GetId(idx) == -1)
       {
       if ((count2 * numPieces / count) == piece)
-      x = input->GetPoint(ptId);
-      newId = newPoints->InsertNextPoint(x);
-      if (pointGhostLevels)
         {
-        pointGhostLevels->InsertNextValue(0);
+        x = input->GetPoint(idx);
+        newId = newPoints->InsertNextPoint(x);
+        if (pointGhostLevels)
+          {
+          pointGhostLevels->InsertNextValue(0);
+          }
         }
       }
     }
