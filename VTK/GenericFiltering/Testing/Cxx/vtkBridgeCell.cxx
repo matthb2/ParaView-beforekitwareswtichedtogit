@@ -66,8 +66,6 @@
 # include "vtkHexagonalPrism.h"
 # include "vtkQuadraticWedge.h"
 # include "vtkQuadraticPyramid.h"
-#else
-# include "vtkGenericCellType.h"
 #endif
 
 
