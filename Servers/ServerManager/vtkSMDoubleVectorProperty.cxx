@@ -202,6 +202,19 @@ int vtkSMDoubleVectorProperty::ReadXMLAttributes(vtkPVXMLElement* element)
 }
 
 //---------------------------------------------------------------------------
+void vtkSMDoubleVectorProperty::SaveState(
+  const char* name, ofstream* file, vtkIndent indent)
+{
+  *file << indent << this->GetClassName() << " : " << name << " : ";
+  unsigned int size = this->GetNumberOfElements();
+  for (unsigned int i=0; i<size; i++)
+    {
+    *file << this->GetElement(i) << " ";
+    }
+  *file << endl;
+}
+
+//---------------------------------------------------------------------------
 void vtkSMDoubleVectorProperty::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os, indent);

@@ -80,6 +80,15 @@ void vtkSMProxyProperty::AppendCommandToStream(
 }
 
 //---------------------------------------------------------------------------
+void vtkSMProxyProperty::SaveState(
+  const char* name,  ofstream* file, vtkIndent indent)
+{
+  *file << indent << this->GetClassName() 
+        << " : " << name 
+        << " : " << this->Proxy << endl;
+}
+
+//---------------------------------------------------------------------------
 void vtkSMProxyProperty::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os, indent);

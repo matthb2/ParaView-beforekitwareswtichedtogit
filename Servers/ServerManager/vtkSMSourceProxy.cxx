@@ -358,16 +358,23 @@ void vtkSMSourceProxy::RemoveConsumer(vtkSMSourceProxy *c)
   // remove it from the list, reallocate memory
   vtkSMSourceProxy **tmp = this->Consumers;
   this->NumberOfConsumers--;
-  this->Consumers = new vtkSMSourceProxy* [this->NumberOfConsumers];
-  int cnt = 0;
-  int i;
-  for (i = 0; i <= this->NumberOfConsumers; i++)
+  if (this->NumberOfConsumers > 0)
     {
-    if (tmp[i] != c)
+    this->Consumers = new vtkSMSourceProxy* [this->NumberOfConsumers];
+    int cnt = 0;
+    int i;
+    for (i = 0; i <= this->NumberOfConsumers; i++)
       {
-      this->Consumers[cnt] = tmp[i];
-      cnt++;
+      if (tmp[i] != c)
+        {
+        this->Consumers[cnt] = tmp[i];
+        cnt++;
+        }
       }
+    }
+  else
+    {
+    this->Consumers = 0;
     }
   // free old memory
   delete [] tmp;

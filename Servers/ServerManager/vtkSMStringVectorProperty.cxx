@@ -185,6 +185,19 @@ int vtkSMStringVectorProperty::ReadXMLAttributes(vtkPVXMLElement* element)
 }
 
 //---------------------------------------------------------------------------
+void vtkSMStringVectorProperty::SaveState(
+  const char* name, ofstream* file, vtkIndent indent)
+{
+  *file << indent << this->GetClassName() << " : " << name << " : ";
+  unsigned int size = this->GetNumberOfElements();
+  for (unsigned int i=0; i<size; i++)
+    {
+    *file << this->GetElement(i) << " ";
+    }
+  *file << endl;
+}
+
+//---------------------------------------------------------------------------
 void vtkSMStringVectorProperty::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os, indent);
