@@ -200,6 +200,25 @@ vtkDataSet *vtkXdmfReader::GetOutput()
 }
 
 //----------------------------------------------------------------------------
+void vtkXdmfReader::SetStride(int x, int y, int z)
+{
+  if ( x <= 0 || y <= 0 || z <= 0 )
+    {
+    vtkErrorMacro("Strides have to be greater than 0.");
+    return;
+    }
+  vtkDebugMacro(<< this->GetClassName() << " (" << this 
+    << "): setting Stride to (" << x << "," << y << "," << z << ")");
+  if ((this->Stride[0] != x)||(this->Stride[1] != y)||(this->Stride[2] != z))
+    {
+    this->Stride[0] = x;
+    this->Stride[1] = y;
+    this->Stride[2] = z;
+    this->Modified();
+    }
+}
+
+//----------------------------------------------------------------------------
 void vtkXdmfReader::SetOutput(vtkDataSet *output)
 {
   this->OutputsInitialized = 1;
