@@ -1373,6 +1373,7 @@ void vtkRIBExporter::ModifyArrayName(char *newname, const char* name)
   if ( !name )
     {
     *newname = 0;
+    return;
     }
   int cc = 0;
   for ( cc =0; name[cc]; cc++ )
