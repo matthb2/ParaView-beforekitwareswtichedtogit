@@ -138,12 +138,12 @@ void vtkRenderWindowInteractor::SetRenderWindow(vtkRenderWindow *aren)
     }
 }
 
-void vtkRenderWindowInteractor::SetInteractorStyle(vtkInteractorStyle *style)
+void vtkRenderWindowInteractor::SetInteractorStyle(vtkInteractorObserver *style)
 {
   if (this->InteractorStyle != style)
     {
     // to avoid destructor recursion
-    vtkInteractorStyle *temp = this->InteractorStyle;
+    vtkInteractorObserver *temp = this->InteractorStyle;
     this->InteractorStyle = style;
     if (temp != NULL)
       {
