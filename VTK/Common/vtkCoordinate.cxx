@@ -22,6 +22,8 @@
 vtkCxxRevisionMacro(vtkCoordinate, "$Revision$");
 vtkStandardNewMacro(vtkCoordinate);
 
+vtkCxxSetObjectMacro(vtkCoordinate,ReferenceCoordinate,vtkCoordinate);
+
 #define VTK_RINT(x) ((x > 0.0) ? (int)(x + 0.5) : (int)(x - 0.5))
 
 // Creates an Coordinate with the following defaults:
