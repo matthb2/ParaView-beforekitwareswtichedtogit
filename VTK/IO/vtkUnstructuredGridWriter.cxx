@@ -16,6 +16,7 @@
 
 #include "vtkByteSwap.h"
 #include "vtkCellArray.h"
+#include "vtkInformation.h"
 #include "vtkObjectFactory.h"
 #include "vtkUnstructuredGrid.h"
 
@@ -28,29 +29,11 @@
 vtkCxxRevisionMacro(vtkUnstructuredGridWriter, "$Revision$");
 vtkStandardNewMacro(vtkUnstructuredGridWriter);
 
-//----------------------------------------------------------------------------
-// Specify the input data or filter.
-void vtkUnstructuredGridWriter::SetInput(vtkUnstructuredGrid *input)
-{
-  this->vtkProcessObject::SetNthInput(0, input);
-}
-
-//----------------------------------------------------------------------------
-// Specify the input data or filter.
-vtkUnstructuredGrid *vtkUnstructuredGridWriter::GetInput()
-{
-  if (this->NumberOfInputs < 1)
-    {
-    return NULL;
-    }
-  
-  return (vtkUnstructuredGrid *)(this->Inputs[0]);
-}
-
 void vtkUnstructuredGridWriter::WriteData()
 {
   ostream *fp;
-  vtkUnstructuredGrid *input=this->GetInput();
+  vtkUnstructuredGrid *input= vtkUnstructuredGrid::SafeDownCast(
+    this->GetInput());
   int *types, ncells, cellId;
 
   vtkDebugMacro(<<"Writing vtk unstructured grid data...");
@@ -140,6 +123,13 @@ void vtkUnstructuredGridWriter::WriteData()
     }
 
   this->CloseVTKFile(fp);  
+}
+
+int vtkUnstructuredGridWriter::FillInputPortInformation(int,
+                                                        vtkInformation *info)
+{
+  info->Set(vtkAlgorithm::INPUT_REQUIRED_DATA_TYPE(), "vtkUnstructuredGrid");
+  return 1;
 }
 
 void vtkUnstructuredGridWriter::PrintSelf(ostream& os, vtkIndent indent)

@@ -72,7 +72,14 @@ void vtkPLYWriter::WriteData()
   vtkIdType i, j, idx;
   vtkPoints *inPts;
   vtkCellArray *polys;
-  vtkPolyData *input = this->GetInput();
+  vtkPolyData *input = vtkPolyData::SafeDownCast(this->GetInput());
+
+  if (!input)
+    {
+    vtkErrorMacro("Input is not a vtkPolyData.");
+    return;
+    }
+
   unsigned char *cellColors, *pointColors;
   PlyFile *ply;
   float version;

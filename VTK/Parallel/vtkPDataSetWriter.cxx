@@ -70,7 +70,7 @@ void vtkPDataSetWriter::Write()
   char *fileName;
 
   ostream *fptr;
-  vtkDataSet *input = this->GetInput();
+  vtkDataSet *input = vtkDataSet::SafeDownCast(this->GetInput());
 
   if (this->FileName == NULL)
     {
