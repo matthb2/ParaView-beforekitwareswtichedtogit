@@ -353,10 +353,10 @@ int vtkPVArrayInformation::WriteMessage(unsigned char *msg)
     }
   for (idx = 0; idx < num; ++idx)
     {
-    *((double*)msg) = this->Ranges[2*idx];
+    memcpy(msg, (unsigned char*)&this->Ranges[2*idx], sizeof(double));
     msg += sizeof(double);
     length += sizeof(double);
-    *((double*)msg) = this->Ranges[2*idx + 1];
+    memcpy(msg, (unsigned char*)&this->Ranges[2*idx + 1], sizeof(double));
     msg += sizeof(double);
     length += sizeof(double);
     }
@@ -407,10 +407,10 @@ int vtkPVArrayInformation::CopyFromMessage(unsigned char *msg)
     }
   for (idx = 0; idx < num; ++idx)
     {
-    this->Ranges[2*idx] = *((double*)msg);
+    memcpy((unsigned char*)&this->Ranges[2*idx], msg, sizeof(double));
     msg += sizeof(double);
     length += sizeof(double);
-    this->Ranges[2*idx + 1] = *((double*)msg);
+    memcpy((unsigned char*)&this->Ranges[2*idx + 1], msg, sizeof(double));
     msg += sizeof(double);
     length += sizeof(double);
     }
