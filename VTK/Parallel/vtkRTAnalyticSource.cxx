@@ -117,7 +117,9 @@ void vtkRTAnalyticSource::ExecuteData(vtkDataObject *output)
     vtkErrorMacro("Execute: This source only outputs doubles");
     return;
     }
-  
+
+  data->GetPointData()->GetScalars()->SetName("RTData");
+
   outExt = data->GetExtent();
   whlExt = data->GetWholeExtent();
 
