@@ -69,6 +69,7 @@ int vtkRungeKutta2::ComputeNextStep(float* xprev, float* dxprev, float* xnext,
     }
   else if ( !this->FunctionSet->FunctionValues(this->Vals, this->Derivs) )
     {
+    memcpy(xnext, this->Vals, (numVals-1)*sizeof(float));
     return OUT_OF_DOMAIN;
     }
 
@@ -82,6 +83,7 @@ int vtkRungeKutta2::ComputeNextStep(float* xprev, float* dxprev, float* xnext,
   // Obtain the derivatives at x_i + dt/2 * dx_i
   if (!this->FunctionSet->FunctionValues(this->Vals, this->Derivs))
     {
+    memcpy(xnext, this->Vals, (numVals-1)*sizeof(float));
     return OUT_OF_DOMAIN;
     }
     
