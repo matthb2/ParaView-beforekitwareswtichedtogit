@@ -55,7 +55,7 @@ void vtkCTHDataToCTHDataFilter::ComputeInputUpdateExtents(vtkDataObject *output)
 
   if (input)
     {
-    this->vtkCTHSource::ComputeInputUpdateExtents(output);
+    this->Superclass::ComputeInputUpdateExtents(output);
     input->RequestExactExtentOn();
     }
 }
