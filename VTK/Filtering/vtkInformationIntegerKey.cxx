@@ -82,7 +82,7 @@ int vtkInformationIntegerKey::Has(vtkInformation* info)
 }
 
 //----------------------------------------------------------------------------
-void vtkInformationIntegerKey::Copy(vtkInformation* from, vtkInformation* to)
+void vtkInformationIntegerKey::ShallowCopy(vtkInformation* from, vtkInformation* to)
 {
   this->Set(to, this->Get(from));
 }

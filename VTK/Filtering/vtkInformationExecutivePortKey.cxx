@@ -110,7 +110,7 @@ int vtkInformationExecutivePortKey::Has(vtkInformation* info)
 }
 
 //----------------------------------------------------------------------------
-void vtkInformationExecutivePortKey::Copy(vtkInformation* from,
+void vtkInformationExecutivePortKey::ShallowCopy(vtkInformation* from,
                                           vtkInformation* to)
 {
   this->Set(to, this->GetExecutive(from), this->GetPort(from));

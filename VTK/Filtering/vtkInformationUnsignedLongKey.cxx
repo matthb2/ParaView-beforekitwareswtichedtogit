@@ -83,7 +83,7 @@ int vtkInformationUnsignedLongKey::Has(vtkInformation* info)
 }
 
 //----------------------------------------------------------------------------
-void vtkInformationUnsignedLongKey::Copy(vtkInformation* from,
+void vtkInformationUnsignedLongKey::ShallowCopy(vtkInformation* from,
                                          vtkInformation* to)
 {
   this->Set(to, this->Get(from));

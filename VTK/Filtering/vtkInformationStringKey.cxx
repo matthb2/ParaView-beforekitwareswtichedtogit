@@ -78,7 +78,7 @@ int vtkInformationStringKey::Has(vtkInformation* info)
 }
 
 //----------------------------------------------------------------------------
-void vtkInformationStringKey::Copy(vtkInformation* from, vtkInformation* to)
+void vtkInformationStringKey::ShallowCopy(vtkInformation* from, vtkInformation* to)
 {
   this->Set(to, this->Get(from));
 }

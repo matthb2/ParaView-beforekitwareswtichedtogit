@@ -56,8 +56,18 @@ int vtkInformationInformationKey::Has(vtkInformation* info)
 }
 
 //----------------------------------------------------------------------------
-void vtkInformationInformationKey::Copy(vtkInformation* from,
+void vtkInformationInformationKey::ShallowCopy(vtkInformation* from,
                                         vtkInformation* to)
 {
   this->Set(to, this->Get(from));
+}
+
+//----------------------------------------------------------------------------
+void vtkInformationInformationKey::DeepCopy(vtkInformation* from,
+                                        vtkInformation* to)
+{
+  vtkInformation *toInfo = vtkInformation::New();   
+  toInfo->Copy(this->Get(from), 1);
+  this->Set(to, toInfo);
+  toInfo->Delete();
 }
