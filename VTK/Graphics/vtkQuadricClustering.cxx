@@ -28,6 +28,12 @@ vtkCxxRevisionMacro(vtkQuadricClustering, "$Revision$");
 vtkStandardNewMacro(vtkQuadricClustering);
 
 //----------------------------------------------------------------------------
+// Construct with default NumberOfDivisions to 50, DivisionSpacing to 1
+// in all (x,y,z) directions. AutoAdjustNumberOfDivisions is set to ON.
+// ComputeNumberOfDivisions to OFF. UseFeatureEdges and UseFeaturePoints
+// are set to OFF by default
+// The default behavior is also to compute an optimal position in each
+// bin to produce the output triangles (this is also recommended)
 vtkQuadricClustering::vtkQuadricClustering()
 {
   this->Bounds[0] = this->Bounds[1] = this->Bounds[2] = 0.0;
