@@ -183,12 +183,10 @@ void vtkInteractorEventRecorder::Play()
           }
         else
           {
-          /*
           if (stream_version >= 1.1)
             {
             // We could grab the time info here
             }
-          */
           *this->InputStream >> pos[0];
           *this->InputStream >> pos[1];
           *this->InputStream >> ctrlKey;
