@@ -650,6 +650,15 @@ void vtkQuadricClustering::AddVertex(vtkIdType binId, float *pt,
       {
       this->QuadricArray[binId].VertexId = this->NumberOfBinsUsed;
       this->NumberOfBinsUsed++;
+
+
+      if (this->CopyCellData && this->GetInput())
+        {
+        this->GetOutput()->GetCellData()->CopyData(this->GetInput()->GetCellData(),
+                                      this->InCellCount,
+                                      this->OutCellCount++);
+        }
+
       }
     }
 }
