@@ -686,7 +686,7 @@ void vtkPyramid::GetFacePoints(int faceId, int* &pts)
 
 static double vtkPyramidCellPCoords[15] = {0.0,0.0,0.0, 1.0,0.0,0.0,
                                           1.0,1.0,0.0, 0.0,1.0,0.0, 
-                                          0.5,0.5,1.0};
+                                          0.0,0.0,1.0};
 
 double *vtkPyramid::GetParametricCoords()
 {

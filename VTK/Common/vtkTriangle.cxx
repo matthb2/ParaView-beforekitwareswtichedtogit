@@ -269,6 +269,38 @@ void vtkTriangle::EvaluateLocation(int& vtkNotUsed(subId), double pcoords[3],
   weights[2] = pcoords[1];
 }
 
+// Compute iso-parametrix interpolation functions
+//
+void vtkTriangle::InterpolationFunctions(double pcoords[3], double sf[3])
+{
+  double rm, sm;
+
+  rm = 1. - pcoords[0];
+  sm = 1. - pcoords[1];
+
+  sf[0] = rm * sm;
+  sf[1] = pcoords[0] * sm;
+  sf[2] = rm * pcoords[1];
+}
+
+void vtkTriangle::InterpolationDerivs(double pcoords[3], double derivs[6])
+{
+  double rm, sm;
+
+  rm = 1. - pcoords[0];
+  sm = 1. - pcoords[1];
+
+  //r-derivatives
+  derivs[0] = -sm;
+  derivs[1] = sm;
+  derivs[2] = -pcoords[1];
+
+  //s-derivatives
+  derivs[3] = -rm;
+  derivs[4] = -pcoords[0];
+  derivs[5] = rm;
+}
+
 int vtkTriangle::CellBoundary(int vtkNotUsed(subId), double pcoords[3],
                               vtkIdList *pts)
 {
