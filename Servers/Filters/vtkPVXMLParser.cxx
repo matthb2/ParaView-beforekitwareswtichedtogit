@@ -141,6 +141,17 @@ void vtkPVXMLParser::PrintXML(ostream& os)
 }
 
 //----------------------------------------------------------------------------
+int vtkPVXMLParser::ParseXML()
+{
+  if (this->RootElement)
+    {
+    this->RootElement->Delete();
+    this->RootElement = 0;
+    }
+  return this->Superclass::ParseXML();
+}
+
+//----------------------------------------------------------------------------
 vtkPVXMLElement* vtkPVXMLParser::GetRootElement()
 {
   return this->RootElement;
