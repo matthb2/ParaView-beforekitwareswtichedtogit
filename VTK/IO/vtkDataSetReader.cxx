@@ -230,6 +230,9 @@ int vtkDataSetReader::RequestData(
         this->MTime = ts;
         }
       output->ShallowCopy(preader->GetOutput());
+      output->GetPipelineInformation()->CopyEntry(
+        preader->GetOutput()->GetPipelineInformation(),
+        vtkStreamingDemandDrivenPipeline::UPDATE_EXTENT());
       preader->Delete();
       return 1;
       }
