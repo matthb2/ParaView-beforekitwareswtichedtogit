@@ -16,6 +16,10 @@
 
 =========================================================================*/
 
+#ifdef VTK_USE_MPI
+ #include <mpi.h>
+#endif
+
 #include "vtkClientCompositeManager.h"
 #include "vtkCompositeManager.h"
 
@@ -46,9 +50,6 @@
 #include "vtkMesaRenderWindow.h"
 #endif
 
-#ifdef VTK_USE_MPI
- #include <mpi.h>
-#endif
 
 vtkCxxRevisionMacro(vtkClientCompositeManager, "$Revision$");
 vtkStandardNewMacro(vtkClientCompositeManager);
