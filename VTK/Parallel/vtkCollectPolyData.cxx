@@ -167,7 +167,6 @@ void vtkCollectPolyData::Execute()
     output->GetCellData()->PassData(input->GetCellData());
     append->Delete();
     append = NULL;
-    return;
     }
   else
     {
