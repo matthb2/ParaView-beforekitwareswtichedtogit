@@ -733,7 +733,10 @@ void vtkDistributedDataFilter::PrintSelf(ostream& os, vtkIndent indent)
   
   os << indent << "Kdtree: " << this->Kdtree << endl;
   os << indent << "Controller: " << this->Controller << endl;
-  os << indent << "GlobalIdArrayName: " << this->GlobalIdArrayName << endl;
+  if (this->GlobalIdArrayName)
+    {
+    os << indent << "GlobalIdArrayName: " << this->GlobalIdArrayName << endl;
+    }
   os << indent << "RetainKdtree: " << this->RetainKdtree << endl;
   os << indent << "NumProcesses: " << this->NumProcesses << endl;
   os << indent << "MyLocalId: " << this->MyLocalId << endl;
