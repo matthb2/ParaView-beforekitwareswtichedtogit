@@ -533,7 +533,7 @@ static int vtkPVEnSightMasterServerReaderGetLineFromStream(
       }
 
     // The fail bit may be set.  Clear it.
-    is.clear(is.rdstate() & ~std::ios::failbit);
+    is.clear(is.rdstate() & ~ios::failbit);
     }
   return haveData;
 }

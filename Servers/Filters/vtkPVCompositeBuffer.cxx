@@ -34,6 +34,21 @@ vtkPVCompositeBuffer::vtkPVCompositeBuffer()
 
   
 //-------------------------------------------------------------------------
+vtkUnsignedCharArray* vtkPVCompositeBuffer::GetPData()
+{
+  if (this->PData == NULL)
+    {
+    return NULL;
+    }
+  if (this->PData->GetNumberOfTuples() != this->UncompressedLength)
+    {
+    vtkErrorMacro("This buffer looks compressed.");
+    }
+  return this->PData;
+}
+
+
+//-------------------------------------------------------------------------
 vtkPVCompositeBuffer::~vtkPVCompositeBuffer()
 {
   if (this->PData)
