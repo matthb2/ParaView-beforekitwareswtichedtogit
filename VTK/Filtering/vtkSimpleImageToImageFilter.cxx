@@ -93,6 +93,13 @@ void vtkSimpleImageToImageFilter::ExecuteData(vtkDataObject *vtkNotUsed(out))
     return;
     }
 
+  // Too many filters have floating point exceptions to execute
+  // with empty input/ no request.
+  if (this->UpdateExtentIsEmpty(output))
+    {
+    return;
+    }
+
   // Set the extent of the output and allocate memory.
   output->SetExtent(output->GetWholeExtent());
   output->AllocateScalars();
