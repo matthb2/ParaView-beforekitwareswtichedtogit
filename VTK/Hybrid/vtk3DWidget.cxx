@@ -32,6 +32,8 @@ vtk3DWidget::vtk3DWidget()
   this->Prop3D = NULL;
   this->Input = NULL;
   this->PlaceFactor = 0.5;
+
+  this->Priority = 0.5;
 }
 
 vtk3DWidget::~vtk3DWidget()
