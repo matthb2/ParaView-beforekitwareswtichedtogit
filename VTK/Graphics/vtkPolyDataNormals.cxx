@@ -564,7 +564,7 @@ void vtkPolyDataNormals::MarkAndSplit (vtkIdType ptId)
             }//if can move to edge neighbor
           else
             {
-            cellId = -1;//separated by previous visit, bounary, or non-manifold
+            cellId = -1;//separated by previous visit, boundary, or non-manifold
             }
           }//while visit wave is propagating
         }//for each of the two edges of the starting cell
