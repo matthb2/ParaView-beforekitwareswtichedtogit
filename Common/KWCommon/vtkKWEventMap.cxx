@@ -64,6 +64,14 @@ vtkKWEventMap::~vtkKWEventMap()
     }
 }
 
+void vtkKWEventMap::AddMouseEvent(struct MouseEvent *me)
+{
+  if (me)
+    {
+    this->AddMouseEvent(me->Button, me->Modifier, me->Action);
+    }
+}
+
 void vtkKWEventMap::AddMouseEvent(int button, int modifier, char *action)
 {
   if ( ! action)
@@ -224,6 +232,14 @@ void vtkKWEventMap::AddKeySymEvent(char *keySym, char *action)
   this->NumberOfKeySymEvents++;
 }
 
+void vtkKWEventMap::SetMouseEvent(struct MouseEvent *me)
+{
+  if (me)
+    {
+    this->SetMouseEvent(me->Button, me->Modifier, me->Action);
+    }
+}
+
 void vtkKWEventMap::SetMouseEvent(int button, int modifier, char *action)
 {
   int i;
@@ -289,6 +305,14 @@ void vtkKWEventMap::SetKeySymEvent(char *keySym, char *action)
       strcpy(this->KeySymEvents[i].Action, action);
       break;
       }
+    }
+}
+
+void vtkKWEventMap::RemoveMouseEvent(struct MouseEvent *me)
+{
+  if (me)
+    {
+    this->RemoveMouseEvent(me->Button, me->Modifier, me->Action);
     }
 }
 
