@@ -394,8 +394,8 @@ void vtkCursor3D::SetModelBounds(float xmin, float xmax,
                                  float zmin, float zmax)
 {
   if ( xmin != this->ModelBounds[0] || xmax != this->ModelBounds[1] ||
-  ymin != this->ModelBounds[2] || ymax != this->ModelBounds[3] ||
-  zmin != this->ModelBounds[4] || zmax != this->ModelBounds[5] )
+       ymin != this->ModelBounds[2] || ymax != this->ModelBounds[3] ||
+       zmin != this->ModelBounds[4] || zmax != this->ModelBounds[5] )
     {
     this->Modified();
 
