@@ -38,7 +38,7 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 
 
 =========================================================================*/
-#include "OutlineF.hh"
+#include "vtkOutlineFilter.hh"
 
 void vtkOutlineFilter::Execute()
 {

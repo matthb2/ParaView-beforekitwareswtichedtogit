@@ -39,10 +39,10 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 
 =========================================================================*/
 #include <math.h>
-#include "CylSrc.hh"
-#include "FPoints.hh"
-#include "FNormals.hh"
-#include "FTCoords.hh"
+#include "vtkCylinderSource.hh"
+#include "vtkFloatPoints.hh"
+#include "vtkFloatNormals.hh"
+#include "vtkFloatTCoords.hh"
 
 vtkCylinderSource::vtkCylinderSource (int res)
 {

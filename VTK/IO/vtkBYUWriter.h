@@ -51,8 +51,8 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 #define __vtkBYUWriter_h
 
 #include <stdio.h>
-#include "Writer.hh"
-#include "PolyData.hh"
+#include "vtkWriter.hh"
+#include "vtkPolyData.hh"
 
 class vtkBYUWriter : public vtkWriter
 {

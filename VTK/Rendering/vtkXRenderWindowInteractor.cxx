@@ -43,9 +43,9 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 #include <string.h>
 #include <X11/X.h>
 #include <X11/keysym.h>
-#include "XInter.hh"
-#include "XRenWin.hh"
-#include "Actor.hh"
+#include "vtkXRenderWindowInteractor.hh"
+#include "vtkXRenderWindow.hh"
+#include "vtkActor.hh"
 #include <X11/Shell.h>
 #include <math.h>
 

@@ -38,7 +38,7 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 
 
 =========================================================================*/
-#include "Decimate.hh"
+#include "vtkDecimate.hh"
 //
 //  Static variables used by object
 //

@@ -39,7 +39,7 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 
 =========================================================================*/
 #include <math.h>
-#include "Lut.hh"
+#include "vtkLookupTable.hh"
 
 // Description:
 // Construct with range=(0,1); and hsv ranges set up for rainbow color table.

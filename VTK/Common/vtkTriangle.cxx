@@ -38,12 +38,12 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 
 
 =========================================================================*/
-#include "Triangle.hh"
-#include "Polygon.hh"
-#include "Plane.hh"
+#include "vtkTriangle.hh"
+#include "vtkPolygon.hh"
+#include "vtkPlane.hh"
 #include "vtkMath.hh"
-#include "CellArr.hh"
-#include "Line.hh"
+#include "vtkCellArray.hh"
+#include "vtkLine.hh"
 
 static vtkPolygon poly;
 static vtkMath math;

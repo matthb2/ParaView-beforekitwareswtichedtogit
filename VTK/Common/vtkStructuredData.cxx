@@ -38,7 +38,7 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 
 
 =========================================================================*/
-#include "StrData.hh"
+#include "vtkStructuredData.hh"
 
 vtkStructuredData::vtkStructuredData()
 {

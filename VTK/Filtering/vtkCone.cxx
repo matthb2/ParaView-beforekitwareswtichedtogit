@@ -38,7 +38,7 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 
 
 =========================================================================*/
-#include "Cone.hh"
+#include "vtkCone.hh"
 #include "vtkMath.hh"
 
 // Description

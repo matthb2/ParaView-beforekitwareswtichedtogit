@@ -38,7 +38,7 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 
 
 =========================================================================*/
-#include "VectDot.hh"
+#include "vtkVectorDot.hh"
 #include "vtkMath.hh"
 
 // Description:

@@ -38,8 +38,8 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 
 
 =========================================================================*/
-#include "TubeF.hh"
-#include "PolyLine.hh"
+#include "vtkTubeFilter.hh"
+#include "vtkPolyLine.hh"
 #include "vtkMath.hh"
 
 vtkTubeFilter::vtkTubeFilter()

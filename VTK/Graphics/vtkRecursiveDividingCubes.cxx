@@ -38,9 +38,9 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 
 
 =========================================================================*/
-#include "RDCubes.hh"
+#include "vtkRecursiveDividingCubes.hh"
 #include "vtkMath.hh"
-#include "Voxel.hh"
+#include "vtkVoxel.hh"
 
 vtkRecursiveDividingCubes::vtkRecursiveDividingCubes()
 {

@@ -50,9 +50,9 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 #ifndef __vtkAppendFilter_h
 #define __vtkAppendFilter_h
 
-#include "UGrid.hh"
-#include "Filter.hh"
-#include "DataSetC.hh"
+#include "vtkUnstructuredGrid.hh"
+#include "vtkFilter.hh"
+#include "vtkDataSetCollection.hh"
 
 class vtkAppendFilter : public vtkUnstructuredGrid, public vtkFilter
 {

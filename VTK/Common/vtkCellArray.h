@@ -54,8 +54,8 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 #ifndef __vtkCellArray_h
 #define __vtkCellArray_h
 
-#include "IntArray.hh"
-#include "Cell.hh"
+#include "vtkIntArray.hh"
+#include "vtkCell.hh"
 
 class vtkCellArray : public vtkRefCount
 {

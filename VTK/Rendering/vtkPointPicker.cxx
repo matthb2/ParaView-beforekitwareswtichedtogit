@@ -38,7 +38,7 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 
 
 =========================================================================*/
-#include "PtPicker.hh"
+#include "vtkPointPicker.hh"
 #include "vtkMath.hh"
 
 vtkPointPicker::vtkPointPicker()

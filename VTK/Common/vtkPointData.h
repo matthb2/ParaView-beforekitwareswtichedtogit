@@ -49,13 +49,13 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 #ifndef __vtkPointData_h
 #define __vtkPointData_h
 
-#include "Object.hh"
-#include "Scalars.hh"
-#include "Vectors.hh"
-#include "Normals.hh"
-#include "TCoords.hh"
-#include "Tensors.hh"
-#include "UserDef.hh"
+#include "vtkObject.hh"
+#include "vtkScalars.hh"
+#include "vtkVectors.hh"
+#include "vtkNormals.hh"
+#include "vtkTCoords.hh"
+#include "vtkTensors.hh"
+#include "vtkUserDefined.hh"
 
 class vtkPointData : public vtkObject 
 {

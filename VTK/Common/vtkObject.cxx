@@ -38,7 +38,7 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 
 
 =========================================================================*/
-#include "Object.hh"
+#include "vtkObject.hh"
 
 // Description:
 // Operator allows all subclasses of vtkObject to be printed via <<.

@@ -52,7 +52,7 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 #ifndef __vtkConeSource_h
 #define __vtkConeSource_h
 
-#include "PolySrc.hh"
+#include "vtkPolySource.hh"
 
 class vtkConeSource : public vtkPolySource 
 {

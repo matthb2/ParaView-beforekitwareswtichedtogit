@@ -38,7 +38,7 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 
 
 =========================================================================*/
-#include "WarpTo.hh"
+#include "vtkWarpTo.hh"
 
 void vtkWarpTo::Execute()
 {

@@ -39,7 +39,7 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 
 =========================================================================*/
 #include <stdlib.h>
-#include "RenderC.hh"
+#include "vtkRendererCollection.hh"
 
 // Description:
 // Forward the Render() method to each renderer in the list.

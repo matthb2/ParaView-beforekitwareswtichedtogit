@@ -48,8 +48,8 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 #ifndef __vtkExtractGeometry_h
 #define __vtkExtractGeometry_h
 
-#include "DS2UGrid.hh"
-#include "ImpFunc.hh"
+#include "vtkDataSetToUnstructuredGridFilter.hh"
+#include "vtkImplicitFunction.hh"
 
 class vtkExtractGeometry : public vtkDataSetToUnstructuredGridFilter
 {

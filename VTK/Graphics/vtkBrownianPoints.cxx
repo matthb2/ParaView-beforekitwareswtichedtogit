@@ -38,8 +38,8 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 
 
 =========================================================================*/
-#include "BrownPts.hh"
-#include "FVectors.hh"
+#include "vtkBrownianPoints.hh"
+#include "vtkFloatVectors.hh"
 #include "vtkMath.hh"
 
 vtkBrownianPoints::vtkBrownianPoints()

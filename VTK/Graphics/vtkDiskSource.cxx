@@ -38,7 +38,7 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 
 
 =========================================================================*/
-#include "DiskSrc.hh"
+#include "vtkDiskSource.hh"
 #include "vtkMath.hh"
 
 vtkDiskSource::vtkDiskSource()

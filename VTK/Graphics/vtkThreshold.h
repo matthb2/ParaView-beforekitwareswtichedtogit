@@ -52,7 +52,7 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 #ifndef __vtkThreshold_h
 #define __vtkThreshold_h
 
-#include "DS2UGrid.hh"
+#include "vtkDataSetToUnstructuredGridFilter.hh"
 
 class vtkThreshold : public vtkDataSetToUnstructuredGridFilter
 {

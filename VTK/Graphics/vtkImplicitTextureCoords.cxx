@@ -38,7 +38,7 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 
 
 =========================================================================*/
-#include "ImpTC.hh"
+#include "vtkImplicitTextureCoords.hh"
 
 // Description:
 // Create object with texture dimension=2 and no r-s-t implicit functions defined.

@@ -38,7 +38,7 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 
 
 =========================================================================*/
-#include "Plane.hh"
+#include "vtkPlane.hh"
 #include "vtkMath.hh"
 
 static vtkMath math;

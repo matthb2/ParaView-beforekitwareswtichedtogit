@@ -48,8 +48,8 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 #ifndef __vtkDataSetToDataSetFilter_h
 #define __vtkDataSetToDataSetFilter_h
 
-#include "DataSetF.hh"
-#include "DataSet.hh"
+#include "vtkDataSetFilter.hh"
+#include "vtkDataSet.hh"
 
 class vtkDataSetToDataSetFilter : public vtkDataSet, public vtkDataSetFilter
 {

@@ -48,8 +48,8 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 #ifndef __vtkUnstructuredGridWriter_hh
 #define __vtkUnstructuredGridWriter_hh
 
-#include "vtkDataW.hh"
-#include "UGrid.hh"
+#include "vtkDataWriter.hh"
+#include "vtkUnstructuredGrid.hh"
 
 class vtkUnstructuredGridWriter : public vtkDataWriter
 {

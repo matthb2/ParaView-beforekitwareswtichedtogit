@@ -50,7 +50,7 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 #ifndef __vtkDiskSource_h
 #define __vtkDiskSource_h
 
-#include "PolySrc.hh"
+#include "vtkPolySource.hh"
 
 class vtkDiskSource : public vtkPolySource 
 {

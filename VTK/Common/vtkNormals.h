@@ -49,7 +49,7 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 #ifndef __vtkNormals_h
 #define __vtkNormals_h
 
-#include "RefCount.hh"
+#include "vtkRefCount.hh"
 
 class vtkIdList;
 class vtkFloatNormals;
@@ -108,7 +108,7 @@ public:
 
 // These include files are placed here so that if Normals.hh is included 
 // all other classes necessary for compilation are also included. 
-#include "IdList.hh"
-#include "FNormals.hh"
+#include "vtkIdList.hh"
+#include "vtkFloatNormals.hh"
 
 #endif

@@ -49,7 +49,7 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 #define __vtkPlane_h
 
 #include <math.h>
-#include "ImpFunc.hh"
+#include "vtkImplicitFunction.hh"
 
 class vtkPlane : public vtkImplicitFunction
 {

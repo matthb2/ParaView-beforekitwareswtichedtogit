@@ -38,11 +38,11 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 
 
 =========================================================================*/
-#include "BYURead.hh"
-#include "FPoints.hh"
-#include "FVectors.hh"
-#include "FScalars.hh"
-#include "FTCoords.hh"
+#include "vtkBYUReader.hh"
+#include "vtkFloatPoints.hh"
+#include "vtkFloatVectors.hh"
+#include "vtkFloatScalars.hh"
+#include "vtkFloatTCoords.hh"
 
 vtkBYUReader::vtkBYUReader()
 {

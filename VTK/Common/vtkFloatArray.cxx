@@ -38,7 +38,7 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 
 
 =========================================================================*/
-#include "FArray.hh"
+#include "vtkFloatArray.hh"
 
 // Description:
 // Allocate memory for this array. Delete old storage if present.

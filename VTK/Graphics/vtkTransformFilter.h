@@ -55,8 +55,8 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 #ifndef __vtkTransformFilter_h
 #define __vtkTransformFilter_h
 
-#include "PtS2PtSF.hh"
-#include "Trans.hh"
+#include "vtkPointSetToPointSetFilter.hh"
+#include "vtkTransform.hh"
 
 class vtkTransformFilter : public vtkPointSetToPointSetFilter
 {

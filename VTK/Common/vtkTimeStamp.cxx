@@ -41,6 +41,6 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 //
 // Initialize static member
 //
-#include "TimeSt.hh"
+#include "vtkTimeStamp.hh"
 
 unsigned long vtkTimeStamp::vtkTime = 0;

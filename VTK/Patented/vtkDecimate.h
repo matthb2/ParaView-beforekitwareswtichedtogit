@@ -74,12 +74,12 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 #ifndef __vtkDecimate_h
 #define __vtkDecimate_h
 
-#include "P2PF.hh"
+#include "vtkPolyToPolyFilter.hh"
 #include "vtkMath.hh"
-#include "Triangle.hh"
-#include "Plane.hh"
-#include "Polygon.hh"
-#include "Line.hh"
+#include "vtkTriangle.hh"
+#include "vtkPlane.hh"
+#include "vtkPolygon.hh"
+#include "vtkLine.hh"
 
 #define NUMBER_STATISTICS 12
 #define TOLERANCE 1.0e-05

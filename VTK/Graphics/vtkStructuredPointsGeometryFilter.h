@@ -59,7 +59,7 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 #ifndef __vtkStructuredPointsGeometryFilter_h
 #define __vtkStructuredPointsGeometryFilter_h
 
-#include "SPt2Poly.hh"
+#include "vtkStructuredPointsToPolyDataFilter.hh"
 
 class vtkStructuredPointsGeometryFilter : public vtkStructuredPointsToPolyDataFilter
 {

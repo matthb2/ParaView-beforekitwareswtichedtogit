@@ -38,7 +38,7 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 
 
 =========================================================================*/
-#include "HyperStr.hh"
+#include "vtkHyperStreamline.hh"
 #include "vtkMath.hh"
 
 vtkHyperArray::vtkHyperArray()

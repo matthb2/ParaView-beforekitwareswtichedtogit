@@ -38,7 +38,7 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 
 
 =========================================================================*/
-#include "MaskPts.hh"
+#include "vtkMaskPoints.hh"
 #include "vtkMath.hh"
 
 void vtkMaskPoints::Execute()

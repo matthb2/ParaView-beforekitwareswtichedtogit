@@ -49,7 +49,7 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 #ifndef __vtkCursor3D_h
 #define __vtkCursor3D_h
 
-#include "PolySrc.hh"
+#include "vtkPolySource.hh"
 
 class vtkCursor3D : public vtkPolySource 
 {

@@ -47,7 +47,7 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 #ifndef __vtkStructuredGridOutlineFilter_h
 #define __vtkStructuredGridOutlineFilter_h
 
-#include "SG2PolyF.hh"
+#include "vtkStructuredGridToPolyFilter.hh"
 
 class vtkStructuredGridOutlineFilter : public vtkStructuredGridToPolyFilter
 {

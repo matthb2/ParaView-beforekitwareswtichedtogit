@@ -38,11 +38,11 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 
 
 =========================================================================*/
-#include "vtkDSRdr.hh"
-#include "vtkPolyR.hh"
-#include "vtkSPtsR.hh"
-#include "vtkSGrdR.hh"
-#include "vtkUGrdR.hh"
+#include "vtkDataSetReader.hh"
+#include "vtkPolyReader.hh"
+#include "vtkStructuredPointsReader.hh"
+#include "vtkStructuredGridReader.hh"
+#include "vtkUnstructuredGridReader.hh"
 
 
 vtkDataSetReader::vtkDataSetReader()

@@ -49,7 +49,7 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 #ifndef __vtkDividingCubes_h
 #define __vtkDividingCubes_h
 
-#include "SPt2Poly.hh"
+#include "vtkStructuredPointsToPolyDataFilter.hh"
 
 class vtkDividingCubes : public vtkStructuredPointsToPolyDataFilter
 {

@@ -38,10 +38,10 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 
 
 =========================================================================*/
-#include "TriStrip.hh"
-#include "Triangle.hh"
-#include "CellArr.hh"
-#include "Line.hh"
+#include "vtkTriangleStrip.hh"
+#include "vtkTriangle.hh"
+#include "vtkCellArray.hh"
+#include "vtkLine.hh"
 
 // Description:
 // Deep copy of cell.

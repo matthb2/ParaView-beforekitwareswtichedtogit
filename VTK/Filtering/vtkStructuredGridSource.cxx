@@ -38,7 +38,7 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 
 
 =========================================================================*/
-#include "SGridSrc.hh"
+#include "vtkStructuredGridSource.hh"
 
 void vtkStructuredGridSource::Modified()
 {

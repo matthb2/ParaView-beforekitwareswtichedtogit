@@ -46,7 +46,7 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 #ifndef __vtkFollower_hh
 #define __vtkFollower_hh
 
-#include "Actor.hh"
+#include "vtkActor.hh"
 class vtkCamera;
 
 class vtkFollower : public vtkActor

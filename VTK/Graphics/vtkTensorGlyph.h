@@ -69,7 +69,7 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 #ifndef __vtkTensorGlyph_h
 #define __vtkTensorGlyph_h
 
-#include "DS2PolyF.hh"
+#include "vtkDataSetToPolyFilter.hh"
 
 class vtkTensorGlyph : public vtkDataSetToPolyFilter
 {

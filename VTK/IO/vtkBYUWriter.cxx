@@ -38,7 +38,7 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 
 
 =========================================================================*/
-#include "BYUWrite.hh"
+#include "vtkBYUWriter.hh"
 
 // Description:
 // Create object so that it writes displacement, scalar, and texture files

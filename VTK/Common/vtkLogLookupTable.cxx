@@ -39,7 +39,7 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 
 =========================================================================*/
 #include <math.h>
-#include "LogLut.hh"
+#include "vtkLogLookupTable.hh"
 
 // Description:
 // Construct with effective range 1->10 (based on logarithmic values.

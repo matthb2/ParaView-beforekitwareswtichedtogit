@@ -58,8 +58,8 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 #ifndef __vtkLookupTable_h
 #define __vtkLookupTable_h
 
-#include "RefCount.hh"
-#include "APixmap.hh"
+#include "vtkRefCount.hh"
+#include "vtkAPixmap.hh"
 
 class vtkLookupTable : public vtkRefCount
 {

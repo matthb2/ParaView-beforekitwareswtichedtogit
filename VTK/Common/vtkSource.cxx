@@ -38,7 +38,7 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
  
 
 =========================================================================*/
-#include "Source.hh"
+#include "vtkSource.hh"
 
 #ifndef NULL
 #define NULL 0

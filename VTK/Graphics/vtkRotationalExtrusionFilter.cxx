@@ -38,9 +38,9 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 
 
 =========================================================================*/
-#include "RotExtrd.hh"
+#include "vtkRotationalExtrusionFilter.hh"
 #include "vtkMath.hh"
-#include "IdList.hh"
+#include "vtkIdList.hh"
 
 // Description:
 // Create object with capping on, angle of 360 degrees, resolution = 12, and

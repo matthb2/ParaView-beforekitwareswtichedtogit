@@ -38,7 +38,7 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 
 
 =========================================================================*/
-#include "ExtractG.hh"
+#include "vtkExtractGeometry.hh"
 #include "vtkMath.hh"
 
 // Description:

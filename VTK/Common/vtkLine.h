@@ -45,7 +45,7 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 #ifndef __vtkLine_h
 #define __vtkLine_h
 
-#include "Cell.hh"
+#include "vtkCell.hh"
 
 class vtkLine : public vtkCell
 {

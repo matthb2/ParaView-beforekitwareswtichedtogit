@@ -50,7 +50,7 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 #include <X11/X.h>
 #include <X11/Xlib.h>
 #include <X11/Xutil.h>
-#include "RenderW.hh"
+#include "vtkRenderWindow.hh"
 
 class vtkXRenderWindow : public vtkRenderWindow
 {

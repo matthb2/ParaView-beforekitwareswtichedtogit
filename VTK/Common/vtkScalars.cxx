@@ -38,10 +38,10 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 
 
 =========================================================================*/
-#include "Scalars.hh"
-#include "FScalars.hh"
-#include "IdList.hh"
-#include "Lut.hh"
+#include "vtkScalars.hh"
+#include "vtkFloatScalars.hh"
+#include "vtkIdList.hh"
+#include "vtkLookupTable.hh"
 
 vtkScalars::vtkScalars()
 {

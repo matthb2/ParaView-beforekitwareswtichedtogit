@@ -48,7 +48,7 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 #ifndef __vtkCollection_hh
 #define __vtkCollection_hh
 
-#include "Object.hh"
+#include "vtkObject.hh"
 
 //BTX - begin tcl exclude
 class vtkCollectionElement //;prevents pick-up by man page generator

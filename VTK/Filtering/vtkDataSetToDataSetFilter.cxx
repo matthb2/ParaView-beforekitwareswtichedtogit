@@ -38,8 +38,8 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 
 
 =========================================================================*/
-#include "DS2DSF.hh"
-#include "PolyData.hh"
+#include "vtkDataSetToDataSetFilter.hh"
+#include "vtkPolyData.hh"
 
 vtkDataSetToDataSetFilter::vtkDataSetToDataSetFilter()
 {

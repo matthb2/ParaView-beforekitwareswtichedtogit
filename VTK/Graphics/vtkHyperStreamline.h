@@ -45,7 +45,7 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 #ifndef __vtkHyperStreamline_h
 #define __vtkHyperStreamline_h
 
-#include "DS2PolyF.hh"
+#include "vtkDataSetToPolyFilter.hh"
 
 #define INTEGRATE_FORWARD 0
 #define INTEGRATE_BACKWARD 1

@@ -38,7 +38,7 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 
 
 =========================================================================*/
-#include "StreamPt.hh"
+#include "vtkStreamPoints.hh"
 
 vtkStreamPoints::vtkStreamPoints()
 {

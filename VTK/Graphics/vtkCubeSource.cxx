@@ -42,9 +42,9 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 // Methods for cube generator
 //
 #include <math.h>
-#include "CubeSrc.hh"
-#include "FPoints.hh"
-#include "FNormals.hh"
+#include "vtkCubeSource.hh"
+#include "vtkFloatPoints.hh"
+#include "vtkFloatNormals.hh"
 
 vtkCubeSource::vtkCubeSource(float xL, float yL, float zL)
 {

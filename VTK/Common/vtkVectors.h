@@ -48,7 +48,7 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 #ifndef __vtkVectors_h
 #define __vtkVectors_h
 
-#include "RefCount.hh"
+#include "vtkRefCount.hh"
 
 class vtkIdList;
 class vtkFloatVectors;
@@ -113,7 +113,7 @@ protected:
 
 // These include files are placed here so that if Vectors.hh is included 
 // all other classes necessary for compilation are also included. 
-#include "IdList.hh"
-#include "FVectors.hh"
+#include "vtkIdList.hh"
+#include "vtkFloatVectors.hh"
 
 #endif

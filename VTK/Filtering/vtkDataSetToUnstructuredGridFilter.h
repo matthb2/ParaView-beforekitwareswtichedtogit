@@ -47,8 +47,8 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 #ifndef __vtkDataSetToUnstructuredGridFilter_h
 #define __vtkDataSetToUnstructuredGridFilter_h
 
-#include "DataSetF.hh"
-#include "UGrid.hh"
+#include "vtkDataSetFilter.hh"
+#include "vtkUnstructuredGrid.hh"
 
 class vtkDataSetToUnstructuredGridFilter : public vtkUnstructuredGrid, public vtkDataSetFilter
 {

@@ -38,9 +38,9 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 
 
 =========================================================================*/
-#include "STLWrite.hh"
-#include "Polygon.hh"
-#include "ByteSwap.hh"
+#include "vtkSTLWriter.hh"
+#include "vtkPolygon.hh"
+#include "vtkByteSwap.hh"
 
 vtkSTLWriter::vtkSTLWriter()
 {

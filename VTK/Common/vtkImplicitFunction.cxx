@@ -38,7 +38,7 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 
 
 =========================================================================*/
-#include "ImpFunc.hh"
+#include "vtkImplicitFunction.hh"
 
 vtkImplicitFunction::vtkImplicitFunction()
 {

@@ -39,10 +39,10 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 
 =========================================================================*/
 #include <stdlib.h>
-#include "Texture.hh"
-#include "Renderer.hh"
-#include "RenderW.hh"
-#include "TextDev.hh"
+#include "vtkTexture.hh"
+#include "vtkRenderer.hh"
+#include "vtkRenderWindow.hh"
+#include "vtkTextureDevice.hh"
 
 // Description:
 // Construct object and initialize.

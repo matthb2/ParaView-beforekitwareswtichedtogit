@@ -46,7 +46,7 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 #ifndef __vtkWarpTo_h
 #define __vtkWarpTo_h
 
-#include "PtS2PtSF.hh"
+#include "vtkPointSetToPointSetFilter.hh"
 
 class vtkWarpTo : public vtkPointSetToPointSetFilter
 {

@@ -38,7 +38,7 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 
 
 =========================================================================*/
-#include "DArray.hh"
+#include "vtkDoubleArray.hh"
 
 // Description:
 // Allocate memory for this array. Delete old storage if present.

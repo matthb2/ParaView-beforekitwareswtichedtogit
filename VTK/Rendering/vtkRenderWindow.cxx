@@ -41,8 +41,8 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
-#include "RenderW.hh"
-#include "Interact.hh"
+#include "vtkRenderWindow.hh"
+#include "vtkRenderWindowInteractor.hh"
 
 // Description:
 // Construct object with screen size 300x300, borders turned on, position

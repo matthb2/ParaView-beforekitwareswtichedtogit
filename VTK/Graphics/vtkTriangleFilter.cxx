@@ -38,8 +38,8 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 
 
 =========================================================================*/
-#include "TriF.hh"
-#include "Polygon.hh"
+#include "vtkTriangleFilter.hh"
+#include "vtkPolygon.hh"
 
 void vtkTriangleFilter::Execute()
 {

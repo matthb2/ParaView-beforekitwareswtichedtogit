@@ -45,7 +45,7 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 #ifndef __vtkVertex_h
 #define __vtkVertex_h
 
-#include "Cell.hh"
+#include "vtkCell.hh"
 
 class vtkVertex : public vtkCell
 {

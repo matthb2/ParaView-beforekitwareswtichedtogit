@@ -53,8 +53,8 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 #define __vtkProperty_hh
 
 #include "Render.hh"
-#include "Object.hh"
-#include "StrPts.hh"
+#include "vtkObject.hh"
+#include "vtkStructuredPoints.hh"
 
 class vtkRenderer;
 class vtkPropertyDevice;

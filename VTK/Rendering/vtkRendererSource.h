@@ -59,8 +59,8 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 #ifndef __vtkRendererSource_hh
 #define __vtkRendererSource_hh
 
-#include "SPtsSrc.hh"
-#include "Renderer.hh"
+#include "vtkStructuredPointsSource.hh"
+#include "vtkRenderer.hh"
 
 class vtkRendererSource : public vtkStructuredPointsSource
 {

@@ -38,9 +38,9 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 
 
 =========================================================================*/
-#include "RenSrc.hh"
-#include "RenderW.hh"
-#include "Pixmap.hh"
+#include "vtkRendererSource.hh"
+#include "vtkRenderWindow.hh"
+#include "vtkPixmap.hh"
 
 vtkRendererSource::vtkRendererSource()
 {

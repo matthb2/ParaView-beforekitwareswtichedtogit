@@ -38,7 +38,7 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 
 
 =========================================================================*/
-#include "vtkUGrdR.hh"
+#include "vtkUnstructuredGridReader.hh"
 
 vtkUnstructuredGridReader::vtkUnstructuredGridReader()
 {

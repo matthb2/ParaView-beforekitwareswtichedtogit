@@ -38,9 +38,9 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 
 
 =========================================================================*/
-#include "DCubes.hh"
+#include "vtkDividingCubes.hh"
 #include "vtkMath.hh"
-#include "Voxel.hh"
+#include "vtkVoxel.hh"
 
 vtkDividingCubes::vtkDividingCubes()
 {

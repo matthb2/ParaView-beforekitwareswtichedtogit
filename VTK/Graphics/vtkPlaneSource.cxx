@@ -38,10 +38,10 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 
 
 =========================================================================*/
-#include "PlaneSrc.hh"
-#include "FPoints.hh"
-#include "FNormals.hh"
-#include "FTCoords.hh"
+#include "vtkPlaneSource.hh"
+#include "vtkFloatPoints.hh"
+#include "vtkFloatNormals.hh"
+#include "vtkFloatTCoords.hh"
 
 // Description:
 // Set the number of x-y subdivisions in the plane.

@@ -50,10 +50,10 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 #ifndef __vtkVolume_hh
 #define __vtkVolume_hh
 
-#include "Object.hh"
-#include "Trans.hh"
-#include "StrPts.hh"
-#include "Lut.hh"
+#include "vtkObject.hh"
+#include "vtkTransform.hh"
+#include "vtkStructuredPoints.hh"
+#include "vtkLookupTable.hh"
 
 class vtkRenderer;
 

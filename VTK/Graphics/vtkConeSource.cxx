@@ -42,7 +42,7 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 // Methods for Cone generator
 //
 #include <math.h>
-#include "ConeSrc.hh"
+#include "vtkConeSource.hh"
 
 vtkConeSource::vtkConeSource(int res)
 {

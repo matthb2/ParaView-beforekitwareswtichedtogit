@@ -38,7 +38,7 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 
 
 =========================================================================*/
-#include "ByteSwap.hh"
+#include "vtkByteSwap.hh"
 
 // Description:
 // Swap four byte word.

@@ -41,7 +41,7 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 #include <stdlib.h>
 #include <math.h>
 
-#include "Volume.hh"
+#include "vtkVolume.hh"
 
 // Description:
 // Creates an Volume with the following defaults: origin(0,0,0) 

@@ -38,10 +38,10 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 
 
 =========================================================================*/
-#include "ContourF.hh"
-#include "FScalars.hh"
-#include "Cell.hh"
-#include "MergePts.hh"
+#include "vtkContourFilter.hh"
+#include "vtkFloatScalars.hh"
+#include "vtkCell.hh"
+#include "vtkMergePoints.hh"
 
 // Description:
 // Construct object with initial range (0,1) and single contour value

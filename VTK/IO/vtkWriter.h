@@ -50,8 +50,8 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 #ifndef __vtkWriter_hh
 #define __vtkWriter_hh
 
-#include "Object.hh"
-#include "DataSet.hh"
+#include "vtkObject.hh"
+#include "vtkDataSet.hh"
 
 class vtkWriter : public vtkObject 
 {

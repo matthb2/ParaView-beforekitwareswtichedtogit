@@ -49,7 +49,7 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 #ifndef __vtkCylinderSource_h
 #define __vtkCylinderSource_h
 
-#include "PolySrc.hh"
+#include "vtkPolySource.hh"
 
 class vtkCylinderSource : public vtkPolySource 
 {

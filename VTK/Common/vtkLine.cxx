@@ -38,9 +38,9 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 
 
 =========================================================================*/
-#include "Line.hh"
+#include "vtkLine.hh"
 #include "vtkMath.hh"
-#include "CellArr.hh"
+#include "vtkCellArray.hh"
 
 static vtkMath math; //avoid lots of construction
 

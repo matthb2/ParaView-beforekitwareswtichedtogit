@@ -48,9 +48,9 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 #define __vtkObject_hh
 
 #include <iostream.h>
-#include "TimeSt.hh"
+#include "vtkTimeStamp.hh"
 #include "SetGet.hh"
-#include "Indent.hh"
+#include "vtkIndent.hh"
 
 class vtkObject 
 {

@@ -38,9 +38,9 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 
 
 =========================================================================*/
-#include "Locator.hh"
+#include "vtkLocator.hh"
 #include "vtkMath.hh"
-#include "IntArray.hh"
+#include "vtkIntArray.hh"
 
 class vtkNeighborPoints
 {

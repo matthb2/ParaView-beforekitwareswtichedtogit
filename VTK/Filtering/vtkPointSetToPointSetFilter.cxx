@@ -38,8 +38,8 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 
 
 =========================================================================*/
-#include "PtS2PtSF.hh"
-#include "PolyData.hh"
+#include "vtkPointSetToPointSetFilter.hh"
+#include "vtkPolyData.hh"
 
 vtkPointSetToPointSetFilter::vtkPointSetToPointSetFilter()
 {

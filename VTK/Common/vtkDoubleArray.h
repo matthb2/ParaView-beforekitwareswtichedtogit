@@ -47,7 +47,7 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 #ifndef __vtkDoubleArray_h
 #define __vtkDoubleArray_h
 
-#include "Object.hh"
+#include "vtkObject.hh"
 
 class vtkDoubleArray : public vtkObject 
 {

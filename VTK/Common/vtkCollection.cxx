@@ -41,7 +41,7 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 #include <stdlib.h>
 #include <math.h>
 
-#include "Collect.hh"
+#include "vtkCollection.hh"
 
 // Description:
 // Construct with empty list.

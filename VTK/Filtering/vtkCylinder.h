@@ -52,7 +52,7 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 #ifndef __vtkCylinder_h
 #define __vtkCylinder_h
 
-#include "ImpFunc.hh"
+#include "vtkImplicitFunction.hh"
 
 class vtkCylinder : public vtkImplicitFunction
 {

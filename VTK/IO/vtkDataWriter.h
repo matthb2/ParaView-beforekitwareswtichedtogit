@@ -48,8 +48,8 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 #define __vtkDataWriter_hh
 
 #include <stdio.h>
-#include "Writer.hh"
-#include "DataSet.hh"
+#include "vtkWriter.hh"
+#include "vtkDataSet.hh"
 
 #define ASCII 1
 #define BINARY 2

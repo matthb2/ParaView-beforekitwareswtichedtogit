@@ -41,7 +41,7 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 #include <stdlib.h>
 #include <math.h>
 
-#include "Mat4x4.hh"
+#include "vtkMatrix4x4.hh"
 #include "vtkMath.hh"
 
 // Description:

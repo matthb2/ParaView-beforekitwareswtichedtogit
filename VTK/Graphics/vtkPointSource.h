@@ -47,7 +47,7 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 #ifndef __vtkPointSource_h
 #define __vtkPointSource_h
 
-#include "PolySrc.hh"
+#include "vtkPolySource.hh"
 
 class vtkPointSource : public vtkPolySource 
 {

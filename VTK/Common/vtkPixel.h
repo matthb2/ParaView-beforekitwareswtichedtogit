@@ -47,7 +47,7 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 #ifndef __vtkPixel_h
 #define __vtkPixel_h
 
-#include "Cell.hh"
+#include "vtkCell.hh"
 
 class vtkPixel : public vtkCell
 {

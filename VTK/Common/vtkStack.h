@@ -47,7 +47,7 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 #ifndef __vtkStack_hh
 #define __vtkStack_hh
 
-#include "Object.hh"
+#include "vtkObject.hh"
 
 //BTX begin tcl exclude
 class vtkStackElement //;prevents pick-up by man page generator

@@ -38,7 +38,7 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 
 
 =========================================================================*/
-#include "Writer.hh"
+#include "vtkWriter.hh"
 
 // Description:
 // Construct with no start and end write methods or arguments.

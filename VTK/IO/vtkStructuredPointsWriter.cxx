@@ -38,7 +38,7 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 
 
 =========================================================================*/
-#include "vtkSPtsW.hh"
+#include "vtkStructuredPointsWriter.hh"
 
 // Description:
 // Specify the input data or filter.

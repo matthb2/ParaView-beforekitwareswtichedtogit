@@ -40,8 +40,8 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 =========================================================================*/
 #include <math.h>
 #include <stdio.h>
-#include "VoxelMod.hh"
-#include "BScalars.hh"
+#include "vtkVoxelModeller.hh"
+#include "vtkBitScalars.hh"
 
 // Description:
 // Construct with sample dimensions=(50,50,50) and so that model bounds are

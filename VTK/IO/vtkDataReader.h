@@ -48,8 +48,8 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 #define __vtkDataReader_hh
 
 #include <stdio.h>
-#include "Object.hh"
-#include "PointSet.hh"
+#include "vtkObject.hh"
+#include "vtkPointSet.hh"
 
 #define ASCII 1
 #define BINARY 2

@@ -39,10 +39,10 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 
 =========================================================================*/
 #include "vtkMath.hh"
-#include "RibbonF.hh"
-#include "FPoints.hh"
-#include "FNormals.hh"
-#include "PolyLine.hh"
+#include "vtkRibbonFilter.hh"
+#include "vtkFloatPoints.hh"
+#include "vtkFloatNormals.hh"
+#include "vtkPolyLine.hh"
 
 // Description:
 // Construct ribbon so that width is 0.1, no normal rotation, the width does 

@@ -38,11 +38,11 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 
 
 =========================================================================*/
-#include "Picker.hh"
-#include "Camera.hh"
+#include "vtkPicker.hh"
+#include "vtkCamera.hh"
 #include "vtkMath.hh"
-#include "Vertex.hh"
-#include "RenderW.hh"
+#include "vtkVertex.hh"
+#include "vtkRenderWindow.hh"
 
 static vtkMath math;
 

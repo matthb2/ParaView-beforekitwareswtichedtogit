@@ -38,7 +38,7 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 
 
 =========================================================================*/
-#include "SPt2Poly.hh"
+#include "vtkStructuredPointsToPolyDataFilter.hh"
 
 void vtkStructuredPointsToPolyDataFilter::Modified()
 {

@@ -38,10 +38,10 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 
 
 =========================================================================*/
-#include "MCubes.hh"
+#include "vtkMarchingCubes.hh"
 #include "MC_Cases.h"
-#include "StrPts.hh"
-#include "SScalars.hh"
+#include "vtkStructuredPoints.hh"
+#include "vtkShortScalars.hh"
 #include "vtkMath.hh"
 
 // Description:

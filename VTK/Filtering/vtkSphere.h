@@ -46,7 +46,7 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 #ifndef __vtkSphere_h
 #define __vtkSphere_h
 
-#include "ImpFunc.hh"
+#include "vtkImplicitFunction.hh"
 
 class vtkSphere : public vtkImplicitFunction
 {

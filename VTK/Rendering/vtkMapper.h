@@ -50,10 +50,10 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 #ifndef __vtkMapper_hh
 #define __vtkMapper_hh
 
-#include "Object.hh"
-#include "GeomPrim.hh"
-#include "Lut.hh"
-#include "DataSet.hh"
+#include "vtkObject.hh"
+#include "vtkGeometryPrimitive.hh"
+#include "vtkLookupTable.hh"
+#include "vtkDataSet.hh"
 
 class vtkRenderer;
 

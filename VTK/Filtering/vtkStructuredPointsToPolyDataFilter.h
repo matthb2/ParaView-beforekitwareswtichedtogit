@@ -47,8 +47,8 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 #ifndef __vtkStructuredPointsToPolyDataFilter_h
 #define __vtkStructuredPointsToPolyDataFilter_h
 
-#include "StrPtsF.hh"
-#include "PolyData.hh"
+#include "vtkStructuredPointsFilter.hh"
+#include "vtkPolyData.hh"
 
 class vtkStructuredPointsToPolyDataFilter : public vtkPolyData, 
                                               public vtkStructuredPointsFilter

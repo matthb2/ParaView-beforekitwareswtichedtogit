@@ -47,8 +47,8 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 #ifndef __vtkActorC_hh
 #define __vtkActorC_hh
 
-#include "Collect.hh"
-#include "Actor.hh"
+#include "vtkCollection.hh"
+#include "vtkActor.hh"
 
 class vtkActorCollection : public vtkCollection
 {

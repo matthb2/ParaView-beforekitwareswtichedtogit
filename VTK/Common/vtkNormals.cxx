@@ -38,9 +38,9 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 
 
 =========================================================================*/
-#include "Normals.hh"
-#include "IdList.hh"
-#include "FNormals.hh"
+#include "vtkNormals.hh"
+#include "vtkIdList.hh"
+#include "vtkFloatNormals.hh"
 
 void vtkNormals::GetNormal(int id, float n[3])
 {

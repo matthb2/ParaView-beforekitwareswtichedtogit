@@ -47,8 +47,8 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 #ifndef __vtkLightC_hh
 #define __vtkLightC_hh
 
-#include "Collect.hh"
-#include "Light.hh"
+#include "vtkCollection.hh"
+#include "vtkLight.hh"
 
 class vtkLightCollection : public vtkCollection
 {

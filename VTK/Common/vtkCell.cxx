@@ -38,7 +38,7 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 
 
 =========================================================================*/
-#include "Cell.hh"
+#include "vtkCell.hh"
 
 // Description:
 // Construct cell.

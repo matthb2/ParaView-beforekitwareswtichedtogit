@@ -64,7 +64,7 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 #ifndef __vtkBooleanTexture_h
 #define __vtkBooleanTexture_h
 
-#include "SPtsSrc.hh"
+#include "vtkStructuredPointsSource.hh"
 
 class vtkBooleanTexture : public vtkStructuredPointsSource
 {

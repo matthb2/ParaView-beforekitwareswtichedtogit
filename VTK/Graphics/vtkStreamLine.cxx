@@ -38,7 +38,7 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 
 
 =========================================================================*/
-#include "StreamL.hh"
+#include "vtkStreamLine.hh"
 
 vtkStreamLine::vtkStreamLine()
 {

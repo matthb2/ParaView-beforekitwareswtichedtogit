@@ -38,7 +38,7 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 
 
 =========================================================================*/
-#include "MaskPoly.hh"
+#include "vtkMaskPolyData.hh"
 
 vtkMaskPolyData::vtkMaskPolyData()
 {

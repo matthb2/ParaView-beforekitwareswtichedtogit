@@ -42,7 +42,7 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 // DataSet methods
 //
 #include <math.h>
-#include "DataSet.hh"
+#include "vtkDataSet.hh"
 
 // Initialize static member that controls global data release after use by filter
 int vtkDataSet::GlobalReleaseDataFlag = 0;

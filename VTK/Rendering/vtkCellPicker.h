@@ -51,7 +51,7 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 #ifndef __vtkCellPicker_h
 #define __vtkCellPicker_h
 
-#include "Picker.hh"
+#include "vtkPicker.hh"
 
 class vtkCellPicker : public vtkPicker
 {

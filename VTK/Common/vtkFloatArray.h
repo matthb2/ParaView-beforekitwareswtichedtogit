@@ -47,7 +47,7 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 #ifndef __vtkFloatArray_h
 #define __vtkFloatArray_h
 
-#include "Object.hh"
+#include "vtkObject.hh"
 
 class vtkFloatArray : public vtkObject 
 {

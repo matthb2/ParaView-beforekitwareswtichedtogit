@@ -38,10 +38,10 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 
 
 =========================================================================*/
-#include "TenGlyph.hh"
-#include "Trans.hh"
-#include "FVectors.hh"
-#include "FNormals.hh"
+#include "vtkTensorGlyph.hh"
+#include "vtkTransform.hh"
+#include "vtkFloatVectors.hh"
+#include "vtkFloatNormals.hh"
 #include "vtkMath.hh"
 
 // Description

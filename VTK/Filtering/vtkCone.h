@@ -52,7 +52,7 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 #ifndef __vtkCone_h
 #define __vtkCone_h
 
-#include "ImpFunc.hh"
+#include "vtkImplicitFunction.hh"
 
 class vtkCone : public vtkImplicitFunction
 {

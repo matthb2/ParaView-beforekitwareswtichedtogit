@@ -38,11 +38,11 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 
 
 =========================================================================*/
-#include "Voxel.hh"
+#include "vtkVoxel.hh"
 #include "vtkMath.hh"
-#include "Line.hh"
-#include "Pixel.hh"
-#include "CellArr.hh"
+#include "vtkLine.hh"
+#include "vtkPixel.hh"
+#include "vtkCellArray.hh"
 
 static vtkMath math;  
 static vtkLine line;

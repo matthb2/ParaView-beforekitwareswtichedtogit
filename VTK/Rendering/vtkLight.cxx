@@ -40,10 +40,10 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 =========================================================================*/
 #include <stdlib.h>
 #include <iostream.h>
-#include "Light.hh"
-#include "Renderer.hh"
-#include "RenderW.hh"
-#include "LgtDev.hh"
+#include "vtkLight.hh"
+#include "vtkRenderer.hh"
+#include "vtkRenderWindow.hh"
+#include "vtkLightDevice.hh"
 
 // Description:
 // Create a light with focal point at origin and position=(0,0,1).

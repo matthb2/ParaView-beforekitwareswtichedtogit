@@ -38,10 +38,10 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 
 
 =========================================================================*/
-#include "PolyLine.hh"
+#include "vtkPolyLine.hh"
 #include "vtkMath.hh"
-#include "Line.hh"
-#include "CellArr.hh"
+#include "vtkLine.hh"
+#include "vtkCellArray.hh"
 
 //
 // eliminate constructor / destructor calls

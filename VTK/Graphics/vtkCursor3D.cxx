@@ -39,7 +39,7 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 
 =========================================================================*/
 #include <math.h>
-#include "Cursor3D.hh"
+#include "vtkCursor3D.hh"
 
 // Description:
 // Construct with model bounds = (-1,1,-1,1,-1,1), focal point = (0,0,0),

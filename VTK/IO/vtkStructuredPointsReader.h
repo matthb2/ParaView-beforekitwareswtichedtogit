@@ -48,8 +48,8 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 #ifndef __vtkStructuredPointsReader_h
 #define __vtkStructuredPointsReader_h
 
-#include "SPtsSrc.hh"
-#include "vtkDataR.hh"
+#include "vtkStructuredPointsSource.hh"
+#include "vtkDataReader.hh"
 
 class vtkStructuredPointsReader : public vtkStructuredPointsSource
 {

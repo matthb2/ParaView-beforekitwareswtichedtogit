@@ -49,7 +49,7 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 #ifndef __vtkElevationFilter_h
 #define __vtkElevationFilter_h
 
-#include "DS2DSF.hh"
+#include "vtkDataSetToDataSetFilter.hh"
 
 class vtkElevationFilter : public vtkDataSetToDataSetFilter 
 {

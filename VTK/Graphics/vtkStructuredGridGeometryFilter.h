@@ -59,7 +59,7 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 #ifndef __vtkStructuredGridGeometryFilter_h
 #define __vtkStructuredGridGeometryFilter_h
 
-#include "SG2PolyF.hh"
+#include "vtkStructuredGridToPolyFilter.hh"
 
 class vtkStructuredGridGeometryFilter : public vtkStructuredGridToPolyFilter
 {

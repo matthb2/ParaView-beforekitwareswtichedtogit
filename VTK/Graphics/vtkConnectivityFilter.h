@@ -49,7 +49,7 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 #ifndef __vtkConnectivityFilter_h
 #define __vtkConnectivityFilter_h
 
-#include "DS2UGrid.hh"
+#include "vtkDataSetToUnstructuredGridFilter.hh"
 
 #define EXTRACT_POINT_SEEDED_REGIONS 1
 #define EXTRACT_CELL_SEEDED_REGIONS 2

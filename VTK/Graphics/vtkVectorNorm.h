@@ -47,7 +47,7 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 #ifndef __vtkVectorNorm_h
 #define __vtkVectorNorm_h
 
-#include "DS2DSF.hh"
+#include "vtkDataSetToDataSetFilter.hh"
 
 class vtkVectorNorm : public vtkDataSetToDataSetFilter 
 {

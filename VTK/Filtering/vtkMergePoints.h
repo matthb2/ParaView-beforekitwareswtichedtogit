@@ -48,7 +48,7 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 #ifndef __vtkMergePoints_h
 #define __vtkMergePoints_h
 
-#include "Locator.hh"
+#include "vtkLocator.hh"
 
 class vtkMergePoints : public vtkLocator
 {

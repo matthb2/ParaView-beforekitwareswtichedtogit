@@ -47,7 +47,7 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 #ifndef __vtkProbeFilter_h
 #define __vtkProbeFilter_h
 
-#include "DS2DSF.hh"
+#include "vtkDataSetToDataSetFilter.hh"
 
 class vtkProbeFilter : public vtkDataSetToDataSetFilter
 {

@@ -53,9 +53,9 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 #ifndef __vtkLocator_h
 #define __vtkLocator_h
 
-#include "Object.hh"
-#include "Points.hh"
-#include "IdList.hh"
+#include "vtkObject.hh"
+#include "vtkPoints.hh"
+#include "vtkIdList.hh"
 
 class vtkLocator : public vtkObject
 {

@@ -46,7 +46,7 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 #ifndef __vtkDataSetWriter_hh
 #define __vtkDataSetWriter_hh
 
-#include "vtkDataW.hh"
+#include "vtkDataWriter.hh"
 
 class vtkDataSetWriter : public vtkDataWriter
 {

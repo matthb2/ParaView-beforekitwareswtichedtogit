@@ -38,10 +38,10 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 
 
 =========================================================================*/
-#include "Glyph3D.hh"
-#include "Trans.hh"
-#include "FVectors.hh"
-#include "FNormals.hh"
+#include "vtkGlyph3D.hh"
+#include "vtkTransform.hh"
+#include "vtkFloatVectors.hh"
+#include "vtkFloatNormals.hh"
 #include "vtkMath.hh"
 
 // Description

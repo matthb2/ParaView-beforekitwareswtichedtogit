@@ -38,11 +38,11 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 
 
 =========================================================================*/
-#include "Tetra.hh"
+#include "vtkTetra.hh"
 #include "vtkMath.hh"
-#include "Line.hh"
-#include "Triangle.hh"
-#include "CellArr.hh"
+#include "vtkLine.hh"
+#include "vtkTriangle.hh"
+#include "vtkCellArray.hh"
 
 static vtkMath math;
 

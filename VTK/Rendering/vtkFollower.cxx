@@ -41,8 +41,8 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 #include <stdlib.h>
 #include <math.h>
 #include "vtkMath.hh"
-#include "Follower.hh"
-#include "Camera.hh"
+#include "vtkFollower.hh"
+#include "vtkCamera.hh"
 
 // Description:
 // Creates an follower with no camera set

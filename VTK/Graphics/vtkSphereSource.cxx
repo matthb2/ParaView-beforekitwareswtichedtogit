@@ -39,9 +39,9 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 
 =========================================================================*/
 #include <math.h>
-#include "SpherSrc.hh"
-#include "FPoints.hh"
-#include "FNormals.hh"
+#include "vtkSphereSource.hh"
+#include "vtkFloatPoints.hh"
+#include "vtkFloatNormals.hh"
 #include "vtkMath.hh"
 
 // Description:

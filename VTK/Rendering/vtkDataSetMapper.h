@@ -50,9 +50,9 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 #ifndef __vtkDataSetMapper_h
 #define __vtkDataSetMapper_h
 
-#include "GeomF.hh"
-#include "PolyMap.hh"
-#include "Renderer.hh"
+#include "vtkGeometryFilter.hh"
+#include "vtkPolyMapper.hh"
+#include "vtkRenderer.hh"
 
 class vtkDataSetMapper : public vtkMapper 
 {

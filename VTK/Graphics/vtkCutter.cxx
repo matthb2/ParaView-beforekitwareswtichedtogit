@@ -38,7 +38,7 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 
 
 =========================================================================*/
-#include "Cutter.hh"
+#include "vtkCutter.hh"
 
 // Description:
 // Construct with user-specified implicit function.

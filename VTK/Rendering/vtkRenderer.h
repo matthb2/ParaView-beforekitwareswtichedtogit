@@ -51,12 +51,12 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 #ifndef __vtkRenderer_hh
 #define __vtkRenderer_hh
 
-#include "Object.hh"
-#include "Mat4x4.hh"
-#include "LightC.hh"
-#include "Camera.hh"
-#include "ActorC.hh"
-#include "GeomPrim.hh"
+#include "vtkObject.hh"
+#include "vtkMatrix4x4.hh"
+#include "vtkLightCollection.hh"
+#include "vtkCamera.hh"
+#include "vtkActorCollection.hh"
+#include "vtkGeometryPrimitive.hh"
 
 class vtkRenderWindow;
 class vtkVolumeRenderer;

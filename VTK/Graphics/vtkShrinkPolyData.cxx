@@ -38,7 +38,7 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 
 
 =========================================================================*/
-#include "ShrinkP.hh"
+#include "vtkShrinkPolyData.hh"
 
 void vtkShrinkPolyData::Execute()
 {

@@ -38,7 +38,7 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 
 
 =========================================================================*/
-#include "vtkUGrdW.hh"
+#include "vtkUnstructuredGridWriter.hh"
 
 // Description:
 // Specify the input data or filter.

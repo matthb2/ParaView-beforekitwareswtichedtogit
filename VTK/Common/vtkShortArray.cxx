@@ -38,7 +38,7 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 
 
 =========================================================================*/
-#include "SArray.hh"
+#include "vtkShortArray.hh"
 
 // Description:
 // Allocate memory for this array. Delete old storage if present.

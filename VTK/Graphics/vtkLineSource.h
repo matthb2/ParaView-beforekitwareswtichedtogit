@@ -47,7 +47,7 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 #ifndef __vtkLineSource_h
 #define __vtkLineSource_h
 
-#include "PolySrc.hh"
+#include "vtkPolySource.hh"
 
 class vtkLineSource : public vtkPolySource 
 {

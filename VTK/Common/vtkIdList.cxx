@@ -38,8 +38,8 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 
 
 =========================================================================*/
-#include "IdList.hh"
-#include "Cell.hh"
+#include "vtkIdList.hh"
+#include "vtkCell.hh"
 
 void vtkIdList::DeleteId(int cellId)
 {

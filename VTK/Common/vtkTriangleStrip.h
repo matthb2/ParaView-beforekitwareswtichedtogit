@@ -50,7 +50,7 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 #ifndef __vtkTriangleStrip_h
 #define __vtkTriangleStrip_h
 
-#include "Cell.hh"
+#include "vtkCell.hh"
 
 class vtkTriangleStrip : public vtkCell
 {

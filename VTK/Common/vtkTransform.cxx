@@ -40,7 +40,7 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 =========================================================================*/
 #include <stdlib.h>
 #include <math.h>
-#include "Trans.hh"
+#include "vtkTransform.hh"
 #include "vtkMath.hh"
 
 // Description:

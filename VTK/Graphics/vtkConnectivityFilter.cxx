@@ -38,7 +38,7 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 
 
 =========================================================================*/
-#include "ConnectF.hh"
+#include "vtkConnectivityFilter.hh"
 
 // Description:
 // Construct with default extraction mode to extract largest regions.

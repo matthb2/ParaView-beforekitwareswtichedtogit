@@ -47,8 +47,8 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 #ifndef __vtkVolumeC_hh
 #define __vtkVolumeC_hh
 
-#include "Collect.hh"
-#include "Volume.hh"
+#include "vtkCollection.hh"
+#include "vtkVolume.hh"
 
 class vtkVolumeCollection : public vtkCollection
 {

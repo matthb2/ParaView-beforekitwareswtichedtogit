@@ -38,8 +38,8 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 
 
 =========================================================================*/
-#include "DSMapper.hh"
-#include "PolyMap.hh"
+#include "vtkDataSetMapper.hh"
+#include "vtkPolyMapper.hh"
 
 vtkDataSetMapper::vtkDataSetMapper()
 {

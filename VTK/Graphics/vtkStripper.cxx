@@ -38,7 +38,7 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 
 
 =========================================================================*/
-#include "Stripper.hh"
+#include "vtkStripper.hh"
 
 // Description:
 // Construct object with vertex and line passing turned on.

@@ -47,7 +47,7 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 #ifndef __vtkCubeSource_h
 #define __vtkCubeSource_h
 
-#include "PolySrc.hh"
+#include "vtkPolySource.hh"
 
 class vtkCubeSource : public vtkPolySource 
 {

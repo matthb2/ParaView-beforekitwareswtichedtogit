@@ -38,13 +38,13 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 
 
 =========================================================================*/
-#include "Pixel.hh"
-#include "Quad.hh"
-#include "Polygon.hh"
-#include "Plane.hh"
+#include "vtkPixel.hh"
+#include "vtkQuad.hh"
+#include "vtkPolygon.hh"
+#include "vtkPlane.hh"
 #include "vtkMath.hh"
-#include "CellArr.hh"
-#include "Line.hh"
+#include "vtkCellArray.hh"
+#include "vtkLine.hh"
 
 static vtkMath math;
 static vtkPlane plane;

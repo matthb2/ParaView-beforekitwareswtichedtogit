@@ -47,7 +47,7 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 #ifndef __vtkUnsignedCharArray_h
 #define __vtkUnsignedCharArray_h
 
-#include "Object.hh"
+#include "vtkObject.hh"
 
 class vtkUnsignedCharArray : public vtkObject 
 {

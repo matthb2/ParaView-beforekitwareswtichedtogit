@@ -38,7 +38,7 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 
 
 =========================================================================*/
-#include "CellArr.hh"
+#include "vtkCellArray.hh"
 
 vtkCellArray::vtkCellArray (const vtkCellArray& ca)
 {

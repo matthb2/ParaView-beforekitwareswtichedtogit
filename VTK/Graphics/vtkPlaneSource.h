@@ -49,7 +49,7 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 #ifndef __vtkPlaneSource_h
 #define __vtkPlaneSource_h
 
-#include "PolySrc.hh"
+#include "vtkPolySource.hh"
 
 class vtkPlaneSource : public vtkPolySource 
 {

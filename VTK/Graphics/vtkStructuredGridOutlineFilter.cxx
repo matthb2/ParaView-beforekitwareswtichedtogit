@@ -38,7 +38,7 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 
 
 =========================================================================*/
-#include "SGOutlF.hh"
+#include "vtkStructuredGridOutlineFilter.hh"
 
 void vtkStructuredGridOutlineFilter::Execute()
 {

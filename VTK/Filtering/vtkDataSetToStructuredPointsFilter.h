@@ -47,8 +47,8 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 #ifndef __vtkDataSetToStructuredPointsFilter_h
 #define __vtkDataSetToStructuredPointsFilter_h
 
-#include "DataSetF.hh"
-#include "StrPts.hh"
+#include "vtkDataSetFilter.hh"
+#include "vtkStructuredPoints.hh"
 
 class vtkDataSetToStructuredPointsFilter : public vtkStructuredPoints, public vtkDataSetFilter
 {

@@ -45,7 +45,7 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 #ifndef __vtkMatrix4x4_hh
 #define __vtkMatrix4x4_hh
 
-#include "Object.hh"
+#include "vtkObject.hh"
 
 class vtkMatrix4x4 : public vtkObject
 {

@@ -41,7 +41,7 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 #include <stdlib.h>
 #include <math.h>
 
-#include "Actor.hh"
+#include "vtkActor.hh"
 
 // Description:
 // Creates an actor with the following defaults: origin(0,0,0) 

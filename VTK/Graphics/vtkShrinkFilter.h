@@ -51,7 +51,7 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 #ifndef __vtkShrinkFilter_h
 #define __vtkShrinkFilter_h
 
-#include "DS2UGrid.hh"
+#include "vtkDataSetToUnstructuredGridFilter.hh"
 
 class vtkShrinkFilter : public vtkDataSetToUnstructuredGridFilter
 {

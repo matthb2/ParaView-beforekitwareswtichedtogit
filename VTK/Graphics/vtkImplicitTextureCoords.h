@@ -62,8 +62,8 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 #ifndef __vtkImplicitTextureCoords_h
 #define __vtkImplicitTextureCoords_h
 
-#include "DS2DSF.hh"
-#include "ImpFunc.hh"
+#include "vtkDataSetToDataSetFilter.hh"
+#include "vtkImplicitFunction.hh"
 
 class vtkImplicitTextureCoords : public vtkDataSetToDataSetFilter 
 {

@@ -38,7 +38,7 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 
 
 =========================================================================*/
-#include "MergePts.hh"
+#include "vtkMergePoints.hh"
 
 // Description:
 // Merge points together if they are exactly coincident. Return a list 

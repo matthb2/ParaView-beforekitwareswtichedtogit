@@ -51,7 +51,7 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 #ifndef __vtkThresholdTextureCoords_h
 #define __vtkThresholdTextureCoords_h
 
-#include "DS2DSF.hh"
+#include "vtkDataSetToDataSetFilter.hh"
 
 class vtkThresholdTextureCoords : public vtkDataSetToDataSetFilter
 {

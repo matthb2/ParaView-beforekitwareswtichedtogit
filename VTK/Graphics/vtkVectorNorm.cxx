@@ -38,9 +38,9 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 
 
 =========================================================================*/
-#include "VectNorm.hh"
+#include "vtkVectorNorm.hh"
 #include "vtkMath.hh"
-#include "FScalars.hh"
+#include "vtkFloatScalars.hh"
 
 // Description:
 // Construct with normalize flag off.

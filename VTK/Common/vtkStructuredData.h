@@ -48,9 +48,9 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 #ifndef __vtkStructuredData_h
 #define __vtkStructuredData_h
 
-#include "LWObject.hh"
-#include "BArray.hh"
-#include "IdList.hh"
+#include "vtkLWObject.hh"
+#include "vtkBitArray.hh"
+#include "vtkIdList.hh"
 
 #define SINGLE_POINT 0
 #define X_LINE 1

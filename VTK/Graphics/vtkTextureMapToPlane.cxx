@@ -39,9 +39,9 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 
 =========================================================================*/
 #include <math.h>
-#include "TMap2Pl.hh"
+#include "vtkTextureMapToPlane.hh"
 #include "vtkMath.hh"
-#include "FTCoords.hh"
+#include "vtkFloatTCoords.hh"
 
 // Description:
 // Construct with s,t range=(0,1) and automatic plane generation turned on.

@@ -39,10 +39,10 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 
 =========================================================================*/
 #include <stdlib.h>
-#include "Property.hh"
-#include "Renderer.hh"
-#include "RenderW.hh"
-#include "PropDev.hh"
+#include "vtkProperty.hh"
+#include "vtkRenderer.hh"
+#include "vtkRenderWindow.hh"
+#include "vtkPropertyDevice.hh"
 
 // Description:
 // Construct object with object color, ambient color, diffuse color,

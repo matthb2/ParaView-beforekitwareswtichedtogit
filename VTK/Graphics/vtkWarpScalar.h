@@ -55,7 +55,7 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 #ifndef __vtkWarpScalar_h
 #define __vtkWarpScalar_h
 
-#include "PtS2PtSF.hh"
+#include "vtkPointSetToPointSetFilter.hh"
 
 class vtkWarpScalar : public vtkPointSetToPointSetFilter
 {

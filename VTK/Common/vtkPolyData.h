@@ -52,11 +52,11 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 #ifndef __vtkPolyData_h
 #define __vtkPolyData_h
 
-#include "PointSet.hh"
-#include "FPoints.hh"
-#include "CellArr.hh"
-#include "CellList.hh"
-#include "LinkList.hh"
+#include "vtkPointSet.hh"
+#include "vtkFloatPoints.hh"
+#include "vtkCellArray.hh"
+#include "vtkCellList.hh"
+#include "vtkLinkList.hh"
 
 class vtkPolyData : public vtkPointSet 
 {

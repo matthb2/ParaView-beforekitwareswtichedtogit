@@ -47,8 +47,8 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 #ifndef __vtkPolyDataCollection_hh
 #define __vtkPolyDataCollection_hh
 
-#include "Collect.hh"
-#include "PolyData.hh"
+#include "vtkCollection.hh"
+#include "vtkPolyData.hh"
 
 class vtkPolyDataCollection : public vtkCollection
 {

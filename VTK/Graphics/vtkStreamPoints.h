@@ -48,7 +48,7 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 #ifndef __vtkStreamPoints_h
 #define __vtkStreamPoints_h
 
-#include "Streamer.hh"
+#include "vtkStreamer.hh"
 
 class vtkStreamPoints : public vtkStreamer
 {

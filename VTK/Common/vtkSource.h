@@ -48,7 +48,7 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 #ifndef __vtkSource_h
 #define __vtkSource_h
 
-#include "LWObject.hh"
+#include "vtkLWObject.hh"
 
 class vtkSource : public vtkLWObject
 {

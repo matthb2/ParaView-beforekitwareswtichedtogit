@@ -52,11 +52,11 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 #ifndef __vtkActor_hh
 #define __vtkActor_hh
 
-#include "Object.hh"
-#include "Property.hh"
-#include "Texture.hh"
-#include "Mapper.hh"
-#include "Trans.hh"
+#include "vtkObject.hh"
+#include "vtkProperty.hh"
+#include "vtkTexture.hh"
+#include "vtkMapper.hh"
+#include "vtkTransform.hh"
 
 class vtkRenderer;
 

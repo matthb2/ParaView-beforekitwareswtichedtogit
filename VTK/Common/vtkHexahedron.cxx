@@ -38,11 +38,11 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 
 
 =========================================================================*/
-#include "Hexa.hh"
+#include "vtkHexahedron.hh"
 #include "vtkMath.hh"
-#include "Line.hh"
-#include "Quad.hh"
-#include "CellArr.hh"
+#include "vtkLine.hh"
+#include "vtkQuad.hh"
+#include "vtkCellArray.hh"
 
 // Description:
 // Deep copy of cell.

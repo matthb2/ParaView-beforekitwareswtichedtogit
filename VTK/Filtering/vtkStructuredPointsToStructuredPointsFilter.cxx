@@ -38,7 +38,7 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 
 
 =========================================================================*/
-#include "SPt2SPtF.hh"
+#include "vtkStructuredPointsToStructuredPointsFilter.hh"
 
 void vtkStructuredPointsToStructuredPointsFilter::Modified()
 {

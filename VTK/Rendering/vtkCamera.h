@@ -50,8 +50,8 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 #ifndef __vtkCamera_hh
 #define __vtkCamera_hh
 
-#include "Object.hh"
-#include "Trans.hh"
+#include "vtkObject.hh"
+#include "vtkTransform.hh"
 
 class vtkRenderer;
 class vtkCameraDevice;

@@ -38,7 +38,7 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 
 
 =========================================================================*/
-#include "ImpBool.hh"
+#include "vtkImplicitBoolean.hh"
 
 // Description:
 // 

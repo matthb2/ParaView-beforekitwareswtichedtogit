@@ -50,8 +50,8 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 #define __vtkSTLWriter_h
 
 #include <stdio.h>
-#include "Writer.hh"
-#include "PolyData.hh"
+#include "vtkWriter.hh"
+#include "vtkPolyData.hh"
 
 #define STL_ASCII 0
 #define STL_BINARY 1

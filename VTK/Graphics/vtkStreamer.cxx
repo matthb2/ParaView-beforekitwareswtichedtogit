@@ -38,7 +38,7 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 
 
 =========================================================================*/
-#include "Streamer.hh"
+#include "vtkStreamer.hh"
 #include "vtkMath.hh"
 
 vtkStreamArray::vtkStreamArray()

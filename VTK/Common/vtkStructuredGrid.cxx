@@ -38,11 +38,11 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 
 
 =========================================================================*/
-#include "SGrid.hh"
-#include "Vertex.hh"
-#include "Line.hh"
-#include "Quad.hh"
-#include "Hexa.hh"
+#include "vtkStructuredGrid.hh"
+#include "vtkVertex.hh"
+#include "vtkLine.hh"
+#include "vtkQuad.hh"
+#include "vtkHexahedron.hh"
 
 vtkStructuredGrid::vtkStructuredGrid()
 {

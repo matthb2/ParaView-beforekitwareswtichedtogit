@@ -39,8 +39,8 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 
 =========================================================================*/
 #include <sys/stat.h>
-#include "MCubesR.hh"
-#include "MergePts.hh"
+#include "vtkMCubesReader.hh"
+#include "vtkMergePoints.hh"
 
 // Description:
 // Construct object with FlipNormals and Normals set to true.

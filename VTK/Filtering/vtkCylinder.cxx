@@ -38,7 +38,7 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 
 
 =========================================================================*/
-#include "Cylinder.hh"
+#include "vtkCylinder.hh"
 
 // Description
 // Construct cylinder radius of 0.5.

@@ -39,11 +39,11 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 
 =========================================================================*/
 #include <math.h>
-#include "Camera.hh"
+#include "vtkCamera.hh"
 #include "vtkMath.hh"
-#include "Renderer.hh"
-#include "RenderW.hh"
-#include "CamDev.hh"
+#include "vtkRenderer.hh"
+#include "vtkRenderWindow.hh"
+#include "vtkCameraDevice.hh"
 
 // Description:
 // Construct camera instance with its focal point at the origin, 

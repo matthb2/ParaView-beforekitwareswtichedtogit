@@ -55,8 +55,8 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 #ifndef __vtkImplicitBoolean_h
 #define __vtkImplicitBoolean_h
 
-#include "ImpFunc.hh"
-#include "ImpFuncC.hh"
+#include "vtkImplicitFunction.hh"
+#include "vtkImplicitFunctionCollection.hh"
 
 #define UNION 0
 #define INTERSECTION 1

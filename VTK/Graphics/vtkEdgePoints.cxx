@@ -38,7 +38,7 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 
 
 =========================================================================*/
-#include "EdgePts.hh"
+#include "vtkEdgePoints.hh"
 
 // Description:
 // Construct object with contour value of 0.0.

@@ -40,8 +40,8 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 =========================================================================*/
 #include <ctype.h>
 #include <math.h>
-#include "Pl3dRead.hh"
-#include "ByteSwap.hh"
+#include "vtkPLOT3DReader.hh"
+#include "vtkByteSwap.hh"
 
 #define BINARY 0
 #define ASCII 1

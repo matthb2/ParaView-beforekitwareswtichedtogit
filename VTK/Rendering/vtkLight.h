@@ -46,7 +46,7 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 #ifndef __vtkLight_hh
 #define __vtkLight_hh
 
-#include "Object.hh"
+#include "vtkObject.hh"
 
 /* need for virtual function */
 class vtkRenderer;

@@ -38,7 +38,7 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 
 
 =========================================================================*/
-#include "WarpScal.hh"
+#include "vtkWarpScalar.hh"
 
 vtkWarpScalar::vtkWarpScalar()
 {

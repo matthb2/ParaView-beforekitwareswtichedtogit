@@ -53,9 +53,9 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 #define __vtkMCubesReader_h
 
 #include <stdio.h>
-#include "PolySrc.hh"
-#include "FPoints.hh"
-#include "CellArr.hh"
+#include "vtkPolySource.hh"
+#include "vtkFloatPoints.hh"
+#include "vtkCellArray.hh"
 
 class vtkMCubesReader : public vtkPolySource 
 {

@@ -38,7 +38,7 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 
 
 =========================================================================*/
-#include "UCArray.hh"
+#include "vtkUnsignedCharArray.hh"
 
 // Description:
 // Allocate memory for this array. Delete old storage if present.

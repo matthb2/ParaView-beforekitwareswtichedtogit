@@ -48,11 +48,11 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 #ifndef __vtkDataSet_h
 #define __vtkDataSet_h
 
-#include "Object.hh"
-#include "IdList.hh"
-#include "FPoints.hh"
-#include "PtData.hh"
-#include "Cell.hh"
+#include "vtkObject.hh"
+#include "vtkIdList.hh"
+#include "vtkFloatPoints.hh"
+#include "vtkPointData.hh"
+#include "vtkCell.hh"
 
 class vtkDataSet : public vtkObject 
 {

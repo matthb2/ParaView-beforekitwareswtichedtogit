@@ -46,8 +46,8 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 #ifndef __vtkStructuredPointsCollection_hh
 #define __vtkStructuredPointsCollection_hh
 
-#include "Collect.hh"
-#include "StrPts.hh"
+#include "vtkCollection.hh"
+#include "vtkStructuredPoints.hh"
 
 class vtkStructuredPointsCollection : public vtkCollection
 {

@@ -52,11 +52,11 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 #ifndef __vtkTransform_hh
 #define __vtkTransform_hh
 
-#include "Object.hh"
-#include "Mat4x4.hh"
-#include "Points.hh"
-#include "Normals.hh"
-#include "Vectors.hh"
+#include "vtkObject.hh"
+#include "vtkMatrix4x4.hh"
+#include "vtkPoints.hh"
+#include "vtkNormals.hh"
+#include "vtkVectors.hh"
 
 class vtkTransform : public vtkObject
 {

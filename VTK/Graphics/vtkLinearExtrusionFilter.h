@@ -69,7 +69,7 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 #ifndef __vtkLinearExtrusionFilter_h
 #define __vtkLinearExtrusionFilter_h
 
-#include "P2PF.hh"
+#include "vtkPolyToPolyFilter.hh"
 
 #define VECTOR_EXTRUSION 1
 #define NORMAL_EXTRUSION 2

@@ -41,9 +41,9 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 #include <stdlib.h>
 #include <string.h>
 
-#include "Renderer.hh"
-#include "RenderW.hh"
-#include "VolRen.hh"
+#include "vtkRenderer.hh"
+#include "vtkRenderWindow.hh"
+#include "vtkVolumeRenderer.hh"
 #include "vtkMath.hh"
 
 // Description:

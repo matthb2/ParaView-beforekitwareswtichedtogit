@@ -46,7 +46,7 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 #ifndef __vtkOutlineSource_h
 #define __vtkOutlineSource_h
 
-#include "PolySrc.hh"
+#include "vtkPolySource.hh"
 
 class vtkOutlineSource : public vtkPolySource 
 {

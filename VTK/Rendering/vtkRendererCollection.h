@@ -47,8 +47,8 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 #ifndef __vtkRendererCollection_hh
 #define __vtkRendererCollection_hh
 
-#include "Collect.hh"
-#include "Renderer.hh"
+#include "vtkCollection.hh"
+#include "vtkRenderer.hh"
 
 class vtkRendererCollection : public vtkCollection
 {

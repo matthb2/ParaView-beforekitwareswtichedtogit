@@ -55,10 +55,10 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 #ifndef __vtkCellLocator_h
 #define __vtkCellLocator_h
 
-#include "Object.hh"
-#include "Points.hh"
-#include "IdList.hh"
-#include "DataSet.hh"
+#include "vtkObject.hh"
+#include "vtkPoints.hh"
+#include "vtkIdList.hh"
+#include "vtkDataSet.hh"
 
 
 class vtkCellLocator : public vtkObject

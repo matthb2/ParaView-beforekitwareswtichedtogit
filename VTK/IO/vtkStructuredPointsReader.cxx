@@ -38,7 +38,7 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 
 
 =========================================================================*/
-#include "vtkSPtsR.hh"
+#include "vtkStructuredPointsReader.hh"
 
 vtkStructuredPointsReader::vtkStructuredPointsReader()
 {

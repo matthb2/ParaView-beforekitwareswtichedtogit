@@ -38,14 +38,14 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 
 
 =========================================================================*/
-#include "PtData.hh"
-#include "Cell.hh"
-#include "FScalars.hh"
-#include "FVectors.hh"
-#include "FNormals.hh"
-#include "FTCoords.hh"
-#include "FTensors.hh"
-#include "Pixmap.hh"
+#include "vtkPointData.hh"
+#include "vtkCell.hh"
+#include "vtkFloatScalars.hh"
+#include "vtkFloatVectors.hh"
+#include "vtkFloatNormals.hh"
+#include "vtkFloatTCoords.hh"
+#include "vtkFloatTensors.hh"
+#include "vtkPixmap.hh"
 
 // Description:
 // Construct with copying turned on for all data.

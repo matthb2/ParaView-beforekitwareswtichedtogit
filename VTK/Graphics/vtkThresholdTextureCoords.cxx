@@ -38,7 +38,7 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 
 
 =========================================================================*/
-#include "ThreshTC.hh"
+#include "vtkThresholdTextureCoords.hh"
 
 // Construct with lower threshold=0, upper threshold=1, threshold 
 // function=upper, and texture dimension = 2.

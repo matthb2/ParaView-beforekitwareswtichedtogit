@@ -38,9 +38,9 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 
 
 =========================================================================*/
-#include "Vectors.hh"
-#include "FVectors.hh"
-#include "IdList.hh"
+#include "vtkVectors.hh"
+#include "vtkFloatVectors.hh"
+#include "vtkIdList.hh"
 #include "vtkMath.hh"
 
 vtkVectors::vtkVectors()

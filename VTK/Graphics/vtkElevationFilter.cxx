@@ -38,9 +38,9 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 
 
 =========================================================================*/
-#include "ElevatF.hh"
+#include "vtkElevationFilter.hh"
 #include "vtkMath.hh"
-#include "FScalars.hh"
+#include "vtkFloatScalars.hh"
 
 // Description:
 // Construct object with LowPoint=(0,0,0) and HighPoint=(0,0,1). Scalar

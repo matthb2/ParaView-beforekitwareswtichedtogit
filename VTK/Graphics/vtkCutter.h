@@ -47,8 +47,8 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 #ifndef __vtkCutter_h
 #define __vtkCutter_h
 
-#include "DS2PolyF.hh"
-#include "ImpFunc.hh"
+#include "vtkDataSetToPolyFilter.hh"
+#include "vtkImplicitFunction.hh"
 
 class vtkCutter : public vtkDataSetToPolyFilter
 {

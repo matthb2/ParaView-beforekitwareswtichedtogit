@@ -48,8 +48,8 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 #ifndef __vtkStructuredGridWriter_hh
 #define __vtkStructuredGridWriter_hh
 
-#include "vtkDataW.hh"
-#include "SGrid.hh"
+#include "vtkDataWriter.hh"
+#include "vtkStructuredGrid.hh"
 
 class vtkStructuredGridWriter : public vtkDataWriter
 {

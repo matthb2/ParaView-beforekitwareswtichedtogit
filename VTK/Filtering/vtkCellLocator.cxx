@@ -39,10 +39,10 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 
 =========================================================================*/
 #include <math.h>
-#include "CellLoc.hh"
-#include "Locator.hh"
+#include "vtkCellLocator.hh"
+#include "vtkLocator.hh"
 #include "vtkMath.hh"
-#include "IntArray.hh"
+#include "vtkIntArray.hh"
 
 #define OUTSIDE 0
 #define INSIDE 1

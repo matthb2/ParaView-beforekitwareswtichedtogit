@@ -46,8 +46,8 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 #ifndef __vtkTransformCollection_hh
 #define __vtkTransformCollection_hh
 
-#include "Collect.hh"
-#include "Trans.hh"
+#include "vtkCollection.hh"
+#include "vtkTransform.hh"
 
 class vtkTransformCollection : public vtkCollection
 {

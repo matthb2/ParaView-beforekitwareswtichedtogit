@@ -51,8 +51,8 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 #ifndef __vtkRenderWindow_hh
 #define __vtkRenderWindow_hh
 
-#include "Object.hh"
-#include "RenderC.hh"
+#include "vtkObject.hh"
+#include "vtkRendererCollection.hh"
 
 class vtkRenderWindowInteractor;
 class vtkLightDevice;

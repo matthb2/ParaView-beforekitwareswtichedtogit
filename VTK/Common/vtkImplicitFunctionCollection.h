@@ -47,8 +47,8 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 #ifndef __vtkImplicitFunctionCollection_hh
 #define __vtkImplicitFunctionCollection_hh
 
-#include "Collect.hh"
-#include "ImpFunc.hh"
+#include "vtkCollection.hh"
+#include "vtkImplicitFunction.hh"
 
 class vtkImplicitFunctionCollection : public vtkCollection
 {

@@ -48,8 +48,8 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 #ifndef __vtkStructuredPointsWriter_hh
 #define __vtkStructuredPointsWriter_hh
 
-#include "vtkDataW.hh"
-#include "StrPts.hh"
+#include "vtkDataWriter.hh"
+#include "vtkStructuredPoints.hh"
 
 class vtkStructuredPointsWriter : public vtkDataWriter
 {

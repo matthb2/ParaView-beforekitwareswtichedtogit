@@ -38,7 +38,7 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 
 
 =========================================================================*/
-#include "DStreamL.hh"
+#include "vtkDashedStreamLine.hh"
 
 vtkDashedStreamLine::vtkDashedStreamLine()
 {

@@ -58,8 +58,8 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 #ifndef __vtkImplicitFunction_h
 #define __vtkImplicitFunction_h
 
-#include "Object.hh"
-#include "Trans.hh"
+#include "vtkObject.hh"
+#include "vtkTransform.hh"
 
 class vtkImplicitFunction : public vtkObject
 {
