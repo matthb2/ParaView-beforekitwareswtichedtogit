@@ -595,6 +595,10 @@ void vtkXdmfReader::Execute()
           status = this->CellDataArraySelection->ArrayIsEnabled(name);
           }
         }
+      if ( !status )
+        {
+        continue;
+        }
       status = 1;
       vtkDebugMacro(<< "Array with name: " << name << " has status: " << status);
       // attrNode = this->DOM->FindElement("Attribute", cc);
