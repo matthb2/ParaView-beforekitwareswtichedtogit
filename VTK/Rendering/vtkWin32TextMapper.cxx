@@ -23,6 +23,10 @@
 
 vtkCxxRevisionMacro(vtkWin32TextMapper, "$Revision$");
 
+//----------------------------------------------------------------------------
+// Needed when we don't use the vtkStandardNewMacro.
+vtkInstantiatorNewMacro(vtkWin32TextMapper);
+
 //--------------------------------------------------------------------------
 vtkWin32TextMapper* vtkWin32TextMapper::New()
 {
