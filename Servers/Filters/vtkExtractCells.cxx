@@ -21,7 +21,6 @@
 
 #include "vtkCellArray.h"
 #include "vtkIntArray.h"
-#include "vtkIdType.h"
 #include "vtkUnsignedCharArray.h"
 #include "vtkUnstructuredGrid.h"
 #include "vtkCell.h"
