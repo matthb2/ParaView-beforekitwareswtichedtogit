@@ -63,7 +63,7 @@ vtkPriorityQueue::~vtkPriorityQueue()
 }
 
 // Insert id with priority specified.
-void vtkPriorityQueue::Insert(float priority, vtkIdType id)
+void vtkPriorityQueue::Insert(double priority, vtkIdType id)
 {
   vtkIdType i, idx;
   vtkPriorityQueue::Item temp;
@@ -113,13 +113,13 @@ void vtkPriorityQueue::Insert(float priority, vtkIdType id)
 // Simplified call for easier wrapping for Tcl.
 vtkIdType vtkPriorityQueue::Pop(vtkIdType location)
 {
-  float priority;
+  double priority;
   return this->Pop(location, priority);
 }
 
 // Removes item at specified location from tree; then reorders and
 // balances tree. The location == 0 is the root of the tree.
-vtkIdType vtkPriorityQueue::Pop(vtkIdType location, float &priority)
+vtkIdType vtkPriorityQueue::Pop(vtkIdType location, double &priority)
 {
   vtkIdType id, i, j, idx;
   vtkPriorityQueue::Item temp;

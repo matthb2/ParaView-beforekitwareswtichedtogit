@@ -79,7 +79,9 @@ void vtkInitialValueProblemSolver::Initialize()
     {
     return;
     }
-  this->Vals = new float[this->FunctionSet->GetNumberOfIndependentVariables()];
-  this->Derivs = new float[this->FunctionSet->GetNumberOfFunctions()];
+  this->Vals = 
+    new double[this->FunctionSet->GetNumberOfIndependentVariables()];
+  this->Derivs = 
+    new double[this->FunctionSet->GetNumberOfFunctions()];
   this->Initialized = 1;
 }

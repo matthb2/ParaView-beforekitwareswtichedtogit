@@ -1785,6 +1785,17 @@ float vtkMath::Norm(const float* x, int n)
   return sqrt(sum);
 }
 
+double vtkMath::Norm(const double* x, int n)
+{
+  double sum=0;
+  for (int i=0; i<n; i++)
+    {
+    sum += x[i]*x[i];
+    }
+
+  return sqrt(sum);
+}
+
 //----------------------------------------------------------------------------
 // Extract the eigenvalues and eigenvectors from a 3x3 matrix.
 // The eigenvectors (the columns of V) will be normalized. 
