@@ -38,15 +38,15 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 
 
 =========================================================================*/
-// .NAME vtkImageIslandRemoval2d - Removes small clusters in masks.
+// .NAME vtkImageIslandRemoval2D - Removes small clusters in masks.
 // .SECTION Description
-// vtkImageIslandRemoval2d computes the area of separate islands in 
+// vtkImageIslandRemoval2D computes the area of separate islands in 
 // a mask image.  It removes any island that has less than AreaThreshold
 // pixels.  Output has the same ScalarType as input.
 
 
-#ifndef __vtkImageIslandRemoval2d_h
-#define __vtkImageIslandRemoval2d_h
+#ifndef __vtkImageIslandRemoval2D_h
+#define __vtkImageIslandRemoval2D_h
 
 
 #include "vtkImageFilter.h"
@@ -58,15 +58,15 @@ typedef struct{
   void *outPtr;
   int idx0;
   int idx1;
-  } vtkImage2dIslandPixel;
+  } vtkImage2DIslandPixel;
 
 
 
-class vtkImageIslandRemoval2d : public vtkImageFilter
+class vtkImageIslandRemoval2D : public vtkImageFilter
 {
 public:
-  vtkImageIslandRemoval2d();
-  char *GetClassName() {return "vtkImageIslandRemoval2d";};
+  vtkImageIslandRemoval2D();
+  char *GetClassName() {return "vtkImageIslandRemoval2D";};
   void PrintSelf(ostream& os, vtkIndent indent);
   
   void InterceptCacheUpdate(vtkImageRegion *region);
