@@ -330,8 +330,9 @@ int vtkRenderer::UpdateLightsGeometryToFollowCamera()
     {
     if (light->LightTypeIsSceneLight())
       {
-      // reset any transformation matrix that may have been set before
-      light->SetTransformMatrix(NULL);
+      // Do nothing. Don't reset the transform matrix because applications
+      // may have set a custom matrix. Only reset the transform matrix in
+      // vtkLight::SetLightTypeToSceneLight()
       }
     else if (light->LightTypeIsHeadlight())
       {
