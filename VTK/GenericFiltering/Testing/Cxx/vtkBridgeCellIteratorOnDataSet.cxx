@@ -115,8 +115,8 @@ void vtkBridgeCellIteratorOnDataSet::Next()
   assert("pre: not_off" && !IsAtEnd());
   
   vtkIdType size=this->Size;
-  vtkCell *c=0;
-  int found=0;
+  vtkCell *c;
+  int found;
   
   this->Id++;
   

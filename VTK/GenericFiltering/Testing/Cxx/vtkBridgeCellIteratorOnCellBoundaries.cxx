@@ -106,7 +106,7 @@ void vtkBridgeCellIteratorOnCellBoundaries::GetCell(vtkGenericAdaptorCell *c)
   vtkBridgeCell *c2=static_cast<vtkBridgeCell *>(c);
   
   vtkCell *vc=0;
-  vtkIdType ptId=0;
+  vtkIdType ptId;
   
   switch(this->Dim)
     {
@@ -141,7 +141,7 @@ vtkGenericAdaptorCell *vtkBridgeCellIteratorOnCellBoundaries::GetCell()
   assert("pre: not_at_end" && !IsAtEnd());
   
   vtkCell *vc=0;
-  vtkIdType ptId=0;
+  vtkIdType ptId;
   
   switch(this->Dim)
     {
