@@ -1374,6 +1374,8 @@ void vtkImagePlaneWidget::SetResliceInterpolate(int i)
     {
     this->Reslice->SetInterpolationModeToCubic();
     }
+  this->Texture->SetInterpolate(this->TextureInterpolate);
+  this->Reslice->Update();
 }
 
 void vtkImagePlaneWidget::SetPicker(vtkCellPicker* picker)
