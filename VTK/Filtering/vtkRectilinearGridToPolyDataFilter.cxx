@@ -17,6 +17,8 @@
 =========================================================================*/
 #include "vtkRectilinearGridToPolyDataFilter.h"
 
+#include "vtkRectilinearGrid.h"
+
 vtkCxxRevisionMacro(vtkRectilinearGridToPolyDataFilter, "$Revision$");
 
 //----------------------------------------------------------------------------

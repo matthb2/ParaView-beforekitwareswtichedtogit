@@ -17,6 +17,8 @@
 =========================================================================*/
 #include "vtkStructuredGridToPolyDataFilter.h"
 
+#include "vtkStructuredGrid.h"
+
 vtkCxxRevisionMacro(vtkStructuredGridToPolyDataFilter, "$Revision$");
 
 //----------------------------------------------------------------------------

@@ -17,6 +17,9 @@
 =========================================================================*/
 #include "vtkStructuredPointsToUnstructuredGridFilter.h"
 
+#include "vtkImageData.h"
+#include "vtkStructuredPoints.h"
+
 vtkCxxRevisionMacro(vtkStructuredPointsToUnstructuredGridFilter, "$Revision$");
 
 //----------------------------------------------------------------------------
@@ -35,7 +38,7 @@ vtkImageData *vtkStructuredPointsToUnstructuredGridFilter::GetInput()
     return NULL;
     }
   
-  return (vtkStructuredPoints *)(this->Inputs[0]);
+  return static_cast<vtkStructuredPoints *>(this->Inputs[0]);
 }
 
 //----------------------------------------------------------------------------

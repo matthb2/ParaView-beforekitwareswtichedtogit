@@ -16,7 +16,9 @@
 
 =========================================================================*/
 #include "vtkStructuredGridSource.h"
+
 #include "vtkObjectFactory.h"
+#include "vtkStructuredGrid.h"
 
 vtkCxxRevisionMacro(vtkStructuredGridSource, "$Revision$");
 
@@ -41,6 +43,11 @@ vtkStructuredGrid *vtkStructuredGridSource::GetOutput()
   return (vtkStructuredGrid *)(this->Outputs[0]);
 }
 
+//----------------------------------------------------------------------------
+vtkStructuredGrid *vtkStructuredGridSource::GetOutput(int idx)
+{
+  return static_cast<vtkStructuredGrid *>( this->vtkSource::GetOutput(idx) ); 
+}
 
 //----------------------------------------------------------------------------
 void vtkStructuredGridSource::SetOutput(vtkStructuredGrid *output)

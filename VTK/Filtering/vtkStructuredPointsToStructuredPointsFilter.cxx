@@ -17,6 +17,9 @@
 =========================================================================*/
 #include "vtkStructuredPointsToStructuredPointsFilter.h"
 
+#include "vtkImageData.h"
+#include "vtkStructuredPoints.h"
+
 vtkCxxRevisionMacro(vtkStructuredPointsToStructuredPointsFilter, "$Revision$");
 
 //----------------------------------------------------------------------------

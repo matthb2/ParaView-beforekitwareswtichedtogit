@@ -17,6 +17,8 @@
 =========================================================================*/
 #include "vtkUnstructuredGridToUnstructuredGridFilter.h"
 
+#include "vtkUnstructuredGrid.h"
+
 vtkCxxRevisionMacro(vtkUnstructuredGridToUnstructuredGridFilter, "$Revision$");
 
 //----------------------------------------------------------------------------

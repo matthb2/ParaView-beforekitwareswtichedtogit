@@ -16,7 +16,9 @@
 
 =========================================================================*/
 #include "vtkColorTransferFunction.h"
+
 #include "vtkObjectFactory.h"
+#include "vtkPiecewiseFunction.h"
 
 vtkCxxRevisionMacro(vtkColorTransferFunction, "$Revision$");
 vtkStandardNewMacro(vtkColorTransferFunction);

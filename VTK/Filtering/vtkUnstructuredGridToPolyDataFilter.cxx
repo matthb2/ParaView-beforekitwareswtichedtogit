@@ -17,6 +17,8 @@
 =========================================================================*/
 #include "vtkUnstructuredGridToPolyDataFilter.h"
 
+#include "vtkUnstructuredGrid.h"
+
 vtkCxxRevisionMacro(vtkUnstructuredGridToPolyDataFilter, "$Revision$");
 
 //----------------------------------------------------------------------------

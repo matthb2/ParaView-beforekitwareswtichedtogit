@@ -17,6 +17,8 @@
 =========================================================================*/
 #include "vtkDataSetToStructuredGridFilter.h"
 
+#include "vtkStructuredGrid.h"
+
 vtkCxxRevisionMacro(vtkDataSetToStructuredGridFilter, "$Revision$");
 
 //----------------------------------------------------------------------------

@@ -16,7 +16,9 @@
 
 =========================================================================*/
 #include "vtkUnstructuredGridSource.h"
+
 #include "vtkObjectFactory.h"
+#include "vtkUnstructuredGrid.h"
 
 vtkCxxRevisionMacro(vtkUnstructuredGridSource, "$Revision$");
 
@@ -73,3 +75,7 @@ void vtkUnstructuredGridSource::ComputeInputUpdateExtents(vtkDataObject *data)
     }
 }
 
+vtkUnstructuredGrid *vtkUnstructuredGridSource::GetOutput(int idx)
+{
+  return static_cast<vtkUnstructuredGrid *>( this->vtkSource::GetOutput(idx) ); 
+}
