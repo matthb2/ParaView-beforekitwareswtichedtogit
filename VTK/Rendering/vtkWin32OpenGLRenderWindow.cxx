@@ -17,25 +17,26 @@
 =========================================================================*/
 
 #include "vtkWin32Header.h"
-#include <stdlib.h>
-#include <math.h>
-#include <stdio.h>
 #if defined(_MSC_VER) || defined (__BORLANDC__)
 #include <GL/glaux.h>
 #else
 #include <GL/gl.h>
 #endif
 #include "vtkWin32OpenGLRenderWindow.h"
-#include "vtkWin32RenderWindowInteractor.h"
-#include "vtkOpenGLRenderer.h"
-#include "vtkOpenGLProperty.h"
-#include "vtkOpenGLTexture.h"
-#include "vtkOpenGLCamera.h"
+
+#include "vtkObjectFactory.h"
 #include "vtkOpenGLActor.h"
+#include "vtkOpenGLCamera.h"
 #include "vtkOpenGLLight.h"
 #include "vtkOpenGLPolyDataMapper.h"
-#include "vtkObjectFactory.h"
+#include "vtkOpenGLProperty.h"
+#include "vtkOpenGLRenderer.h"
+#include "vtkOpenGLTexture.h"
+#include "vtkRendererCollection.h"
 #include "vtkString.h"
+#include "vtkWin32RenderWindowInteractor.h"
+
+#include <math.h>
 
 vtkCxxRevisionMacro(vtkWin32OpenGLRenderWindow, "$Revision$");
 vtkStandardNewMacro(vtkWin32OpenGLRenderWindow);
