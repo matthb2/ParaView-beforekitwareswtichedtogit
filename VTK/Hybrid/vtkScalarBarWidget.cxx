@@ -429,6 +429,7 @@ void vtkScalarBarWidget::OnMouseMove()
   
   // start a drag
   this->EventCallbackCommand->SetAbortFlag(1);
+  this->InvokeEvent(vtkCommand::InteractionEvent,NULL);
   this->Interactor->Render();
 }
 
