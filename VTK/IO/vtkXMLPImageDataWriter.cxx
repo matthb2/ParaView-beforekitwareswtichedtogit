@@ -86,6 +86,7 @@ vtkXMLPImageDataWriter::CreateStructuredPieceWriter()
   return pWriter;
 }
 
+//----------------------------------------------------------------------------
 int vtkXMLPImageDataWriter::FillInputPortInformation(
   int vtkNotUsed(port), vtkInformation* info)
 {

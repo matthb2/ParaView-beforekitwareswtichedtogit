@@ -69,6 +69,7 @@ void vtkXMLImageDataWriter::WritePrimaryElementAttributes()
   this->WriteVectorAttribute("Spacing", 3, input->GetSpacing());
 }
 
+//----------------------------------------------------------------------------
 int vtkXMLImageDataWriter::FillInputPortInformation(
   int vtkNotUsed(port), vtkInformation* info)
 {
