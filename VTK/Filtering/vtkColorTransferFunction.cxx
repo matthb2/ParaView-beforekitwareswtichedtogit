@@ -37,7 +37,7 @@ vtkColorTransferFunction::vtkColorTransferFunction()
   this->Range[0] = 0;
   this->Range[1] = 0;
 
-  this->Clamping = 0;
+  this->Clamping = 1;
   this->ColorSpace = VTK_CTF_RGB;
   
   this->Function = NULL;
