@@ -36,6 +36,21 @@ vtkAttributesErrorMetric::~vtkAttributesErrorMetric()
 }
 
 //-----------------------------------------------------------------------------
+// Description:
+// Set the relative attribute accuracy to `value'. See
+// GetAttributeTolerance() for details.
+// \pre valid_range_value: value>0 && value<1
+void vtkAttributesErrorMetric::SetAttributeTolerance(double value)
+{
+  assert("pre: valid_range_value" && value>0 && value<1);
+  if(this->AttributeTolerance!=value)
+    {
+    this->AttributeTolerance=value;
+    this->Modified();
+    }
+}
+
+//-----------------------------------------------------------------------------
 int vtkAttributesErrorMetric::NeedEdgeSubdivision(double *leftPoint,
                                                   double *midPoint,
                                                   double *rightPoint,
