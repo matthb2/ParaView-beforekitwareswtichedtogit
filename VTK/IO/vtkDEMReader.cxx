@@ -356,8 +356,6 @@ int vtkDEMReader::ReadProfiles (vtkImageData *data)
     return -1;
     }
 
-  this->UpdateInformation ();
-
   if ((fp = fopen(this->FileName, "rb")) == NULL)
     {
     vtkErrorMacro(<< "File " << this->FileName << " not found");
