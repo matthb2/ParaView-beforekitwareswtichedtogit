@@ -243,7 +243,7 @@ const char*const* vtkKWDirectoryUtilities::GetSystemPath()
   
   vtkIdType length = vtkString::Length(pathEnv);
   char* path = 0;
-  if((length > 0) && (path[length-1] != pathSep[0]))
+  if((length > 0) && (pathEnv[length-1] != pathSep[0]))
     {
     path = vtkString::Append(pathEnv, pathSep);
     ++length;
