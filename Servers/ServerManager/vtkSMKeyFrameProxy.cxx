@@ -34,6 +34,12 @@ vtkSMKeyFrameProxy::~vtkSMKeyFrameProxy()
 }
 
 //----------------------------------------------------------------------------
+void vtkSMKeyFrameProxy::UpdateValue(double vtkNotUsed(currenttime), 
+  vtkSMAnimationCueProxy* vtkNotUsed(cueProxy), vtkSMKeyFrameProxy* vtkNotUsed(next))
+{
+}
+
+//----------------------------------------------------------------------------
 void vtkSMKeyFrameProxy::SaveInBatchScript(ofstream* file)
 {
   *file << endl;

@@ -350,7 +350,7 @@ void vtkSMKeyFrameAnimationCueManipulatorProxy::SaveInBatchScript(ofstream* file
 
 //----------------------------------------------------------------------------
 void vtkSMKeyFrameAnimationCueManipulatorProxy::ExecuteEvent(
-  vtkObject* obj, unsigned long event, void* calldata)
+  vtkObject* obj, unsigned long event, void* )
 {
   vtkSMKeyFrameProxy* keyframe = vtkSMKeyFrameProxy::SafeDownCast(obj);
 
