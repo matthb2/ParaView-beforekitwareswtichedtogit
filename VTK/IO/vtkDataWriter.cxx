@@ -744,6 +744,8 @@ int vtkDataWriter::WriteScalarData(ostream *fp, vtkDataArray *scalars, int num)
       }
 
     *fp << "\n";
+    delete[] scalarsName;
+
     }
 
   //if lookup table, write it out
