@@ -31,7 +31,8 @@ vtkCxxSetObjectMacro(vtkCompositeRenderManager, Compositer, vtkCompositer);
 //----------------------------------------------------------------------------
 vtkCompositeRenderManager::vtkCompositeRenderManager()
 {
-  this->SetCompositer( vtkCompressCompositer::New() );
+  this->Compositer = vtkCompressCompositer::New();
+  this->Compositer->Register( this );
   this->Compositer->Delete();
 
   this->DepthData = vtkFloatArray::New();
