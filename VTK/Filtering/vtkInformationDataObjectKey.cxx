@@ -15,7 +15,6 @@
 #include "vtkInformationDataObjectKey.h"
 
 #include "vtkDataObject.h"
-#include "vtkGarbageCollector.h"
 
 vtkCxxRevisionMacro(vtkInformationDataObjectKey, "$Revision$");
 
@@ -67,5 +66,5 @@ void vtkInformationDataObjectKey::Copy(vtkInformation* from,
 void vtkInformationDataObjectKey::Report(vtkInformation* info,
                                          vtkGarbageCollector* collector)
 {
-  collector->ReportReference(this->Get(info), this->GetName());
+  this->ReportAsObjectBase(info, collector);
 }

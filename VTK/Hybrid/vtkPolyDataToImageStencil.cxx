@@ -286,24 +286,9 @@ void vtkPolyDataToImageStencil::ThreadedExecute(vtkImageStencilData *data,
 void vtkPolyDataToImageStencil::ReportReferences(vtkGarbageCollector* collector)
 {
   this->Superclass::ReportReferences(collector);
-#ifdef VTK_USE_EXECUTIVES
   // This filter shares our input and is therefore involved in a
   // reference loop.
-  collector->ReportReference(this->OBBTree, "OBBTree");
-#endif
-}
-
-//----------------------------------------------------------------------------
-void vtkPolyDataToImageStencil::RemoveReferences()
-{
-#ifdef VTK_USE_EXECUTIVES
-  if(this->OBBTree)
-    {
-    this->OBBTree->Delete();
-    this->OBBTree = 0;
-    }
-#endif
-  this->Superclass::RemoveReferences();
+  vtkGarbageCollectorReport(collector, this->OBBTree, "OBBTree");
 }
 
 void vtkPolyDataToImageStencil::ExecuteInformation()

@@ -13,8 +13,10 @@
 
 =========================================================================*/
 #include "vtkCollection.h"
-#include "vtkObjectFactory.h"
+
 #include "vtkCollectionIterator.h"
+#include "vtkGarbageCollector.h"
+#include "vtkObjectFactory.h"
 
 #include <stdlib.h>
 #include <math.h>
@@ -296,4 +298,26 @@ vtkCollectionIterator* vtkCollection::NewIterator()
   vtkCollectionIterator* it = vtkCollectionIterator::New();
   it->SetCollection(this);
   return it;
+}
+
+//----------------------------------------------------------------------------
+void vtkCollection::Register(vtkObjectBase* o)
+{
+  this->RegisterInternal(o, 1);
+}
+
+//----------------------------------------------------------------------------
+void vtkCollection::UnRegister(vtkObjectBase* o)
+{
+  this->UnRegisterInternal(o, 1);
+}
+
+//----------------------------------------------------------------------------
+void vtkCollection::ReportReferences(vtkGarbageCollector* collector)
+{
+  this->Superclass::ReportReferences(collector);
+  for(vtkCollectionElement* elem = this->Top; elem; elem = elem->Next)
+    {
+    vtkGarbageCollectorReport(collector, elem->Item, "Element");
+    }
 }

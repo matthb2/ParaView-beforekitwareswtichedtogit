@@ -32,6 +32,11 @@ public:
     {
     return info->GetAsObjectBase(key);
     }
+  static void ReportAsObjectBase(vtkInformation* info, vtkInformationKey* key,
+                                 vtkGarbageCollector* collector)
+    {
+    info->ReportAsObjectBase(key, collector);
+    }
 };
 
 //----------------------------------------------------------------------------
@@ -99,6 +104,14 @@ void vtkInformationKey::Remove(vtkInformation* info)
 void vtkInformationKey::Report(vtkInformation*, vtkGarbageCollector*)
 {
   // Report nothing by default.
+}
+
+//----------------------------------------------------------------------------
+void vtkInformationKey::ReportAsObjectBase(vtkInformation* info,
+                                           vtkGarbageCollector* collector)
+{
+  vtkInformationKeyToInformationFriendship::ReportAsObjectBase(info, this,
+                                                               collector);
 }
 
 //----------------------------------------------------------------------------

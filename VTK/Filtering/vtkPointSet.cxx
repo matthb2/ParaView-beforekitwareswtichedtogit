@@ -319,18 +319,7 @@ void vtkPointSet::Squeeze()
 void vtkPointSet::ReportReferences(vtkGarbageCollector* collector)
 {
   this->Superclass::ReportReferences(collector);
-  collector->ReportReference(this->Locator, "Locator");
-}
-
-//----------------------------------------------------------------------------
-void vtkPointSet::RemoveReferences()
-{
-  if(this->Locator)
-    {
-    this->Locator->UnRegister(this);
-    this->Locator = 0;
-    }
-  this->Superclass::RemoveReferences();
+  vtkGarbageCollectorReport(collector, this->Locator, "Locator");
 }
 
 //----------------------------------------------------------------------------

@@ -14,7 +14,6 @@
 =========================================================================*/
 #include "vtkInformationInformationVectorKey.h"
 
-#include "vtkGarbageCollector.h"
 #include "vtkInformationVector.h"
 
 vtkCxxRevisionMacro(vtkInformationInformationVectorKey, "$Revision$");
@@ -68,5 +67,5 @@ void vtkInformationInformationVectorKey::Copy(vtkInformation* from,
 void vtkInformationInformationVectorKey::Report(vtkInformation* info,
                                                 vtkGarbageCollector* collector)
 {
-  collector->ReportReference(this->Get(info), this->GetName());
+  this->ReportAsObjectBase(info, collector);
 }

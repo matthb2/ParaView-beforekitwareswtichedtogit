@@ -350,16 +350,6 @@ void vtkSampleFunction::PrintSelf(ostream& os, vtkIndent indent)
 void vtkSampleFunction::ReportReferences(vtkGarbageCollector* collector)
 {
   this->Superclass::ReportReferences(collector);
-#ifdef VTK_USE_EXECUTIVES
-  collector->ReportReference(this->ImplicitFunction, "ImplicitFunction");
-#endif
-}
-
-//----------------------------------------------------------------------------
-void vtkSampleFunction::RemoveReferences()
-{
-#ifdef VTK_USE_EXECUTIVES
-  this->SetImplicitFunction(0);
-#endif
-  this->Superclass::RemoveReferences();
+  vtkGarbageCollectorReport(collector, this->ImplicitFunction,
+                            "ImplicitFunction");
 }

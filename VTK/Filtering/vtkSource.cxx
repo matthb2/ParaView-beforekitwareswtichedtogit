@@ -501,22 +501,8 @@ void vtkSource::ReportReferences(vtkGarbageCollector* collector)
   this->Superclass::ReportReferences(collector);
   for(int i=0; i < this->NumberOfOutputs; ++i)
     {
-    collector->ReportReference(this->Outputs[i], "Outputs");
+    vtkGarbageCollectorReport(collector, this->Outputs[i], "Outputs");
     }
-}
-
-//----------------------------------------------------------------------------
-void vtkSource::RemoveReferences()
-{
-  for(int i=0; i < this->NumberOfOutputs; ++i)
-    {
-    if(this->Outputs[i])
-      {
-      this->Outputs[i]->UnRegister(this);
-      this->Outputs[i] = 0;
-      }
-    }
-  this->Superclass::RemoveReferences();
 }
 
 //----------------------------------------------------------------------------

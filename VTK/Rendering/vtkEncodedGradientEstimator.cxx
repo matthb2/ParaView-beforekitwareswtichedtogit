@@ -371,24 +371,9 @@ void vtkEncodedGradientEstimator::PrintSelf(ostream& os, vtkIndent indent)
 }
 
 //----------------------------------------------------------------------------
-void vtkEncodedGradientEstimator::ReportReferences(
-  vtkGarbageCollector* collector)
+void
+vtkEncodedGradientEstimator::ReportReferences(vtkGarbageCollector* collector)
 {
   this->Superclass::ReportReferences(collector);
-#ifdef VTK_USE_EXECUTIVES
-  collector->ReportReference(this->Input, "Input");
-#endif
-}
-
-//----------------------------------------------------------------------------
-void vtkEncodedGradientEstimator::RemoveReferences()
-{
-#ifdef VTK_USE_EXECUTIVES
-  if(this->Input)
-    {
-    this->Input->Delete();
-    this->Input = 0;
-    }
-#endif
-  this->Superclass::RemoveReferences();
+  vtkGarbageCollectorReport(collector, this->Input, "Input");
 }
