@@ -46,7 +46,7 @@ void vtkOpenGLPolyDataMapper2D::RenderOverlay(vtkViewport* viewport,
                                               vtkActor2D* actor)
 {
   int            numPts;
-  vtkPolyData    *input= (vtkPolyData *)this->Input;
+  vtkPolyData    *input= (vtkPolyData *)this->GetInput();
   int            j;
   vtkPoints      *p, *displayPts;
   vtkCellArray   *aPrim;
