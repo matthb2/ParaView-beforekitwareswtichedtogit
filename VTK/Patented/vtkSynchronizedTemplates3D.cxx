@@ -648,6 +648,7 @@ void vtkSynchronizedTemplates3D::ThreadedExecute(vtkImageData *data,
   if (inScalars == NULL)
     {
     vtkErrorMacro("No scalars for contouring.");
+    return;
     }
   int numComps = inScalars->GetNumberOfComponents();
   

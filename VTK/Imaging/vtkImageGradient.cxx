@@ -226,6 +226,10 @@ void vtkImageGradient::ThreadedExecute(vtkImageData *inData,
   double *outPtr = (double *)(outData->GetScalarPointerForExtent(outExt));
   
   inArray = inData->GetPointData()->GetScalars(this->InputScalarsSelection);
+  if (!inArray)
+    {
+    return;
+    }
   inPtr = inArray->GetVoidPointer(0);
 
   vtkDebugMacro(<< "Execute: inData = " << inData 

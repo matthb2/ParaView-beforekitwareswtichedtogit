@@ -404,6 +404,12 @@ void vtkImageMedian3D::ExecuteData(vtkDataObject *out)
 
   // Do not copy the array we will be generating.
   inArray = input->GetPointData()->GetScalars(this->InputScalarsSelection);
+
+  if (!inArray)
+    {
+    return;
+    }
+
   // Scalar copy flag trumps the array copy flag.
   if (inArray == input->GetPointData()->GetScalars())
     {
