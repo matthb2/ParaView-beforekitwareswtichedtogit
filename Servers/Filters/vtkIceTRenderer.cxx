@@ -317,6 +317,11 @@ int vtkIceTRenderer::UpdateGeometry()
   return this->NumberOfPropsRendered;
 }
 
+void vtkIceTRenderer::StereoMidpoint()
+{
+  this->ComposeNextFrame = 1;
+}
+
 void vtkIceTRenderer::PrintSelf(ostream &os, vtkIndent indent)
 {
   this->vtkOpenGLRenderer::PrintSelf(os, indent);
