@@ -68,7 +68,6 @@ void vtkExtractEdges::Execute()
   numPts=input->GetNumberOfPoints();
   if ( (numCells=input->GetNumberOfCells()) < 1 || numPts < 1 )
     {
-    vtkErrorMacro(<<"No input data!");
     return;
     }
 
