@@ -889,7 +889,7 @@ void vtkXdmfReader::ExecuteInformation()
 {
   vtkDebugMacro("ExecuteInformation");
   vtkIdType cc;
-  char         *CurrentFileName;
+  XdmfConstString CurrentFileName;
   XdmfInt32    Rank;
   XdmfInt64    Dimensions[ XDMF_MAX_DIMENSION ];
   XdmfInt64    EndExtent[ XDMF_MAX_DIMENSION ];
