@@ -296,6 +296,8 @@ void vtkTextActor::PrintSelf(ostream& os, vtkIndent indent)
 
   os << indent << "MaximumLineHeight: " << this->MaximumLineHeight << endl;
   os << indent << "MinimumSize: " << this->MinimumSize[0] << " " << this->MinimumSize[1] << endl;
+  os << indent << "ScaledText: " << this->ScaledText << endl;
+  os << indent << "AlignmentPoint: " << this->AlignmentPoint << endl;
 }
 // ----------------------------------------------------------------------------
 #define SetStuffMacro(function,param)          \
