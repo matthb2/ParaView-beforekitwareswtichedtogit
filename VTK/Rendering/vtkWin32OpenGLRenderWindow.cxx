@@ -64,6 +64,11 @@ vtkWin32OpenGLRenderWindow::~vtkWin32OpenGLRenderWindow()
     this->ShowCursor();
     }
 
+  if (this->OffScreenRendering)
+    {
+    this->CleanUpOffScreenRendering();
+    }
+
   if (this->WindowId && this->OwnWindow)
     {
     this->Clean();
