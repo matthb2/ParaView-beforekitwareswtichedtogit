@@ -87,12 +87,12 @@ void vtkInteractorStyleImage::OnMouseMove(int ctrl,
   switch (this->State) 
     {
     case VTKIS_WINDOW_LEVEL:
-      this->FindPokedCamera(x, y);
+      this->FindPokedRenderer(x, y);
       this->WindowLevel();
       break;
 
     case VTKIS_PICK:
-      this->FindPokedCamera(x, y);
+      this->FindPokedRenderer(x, y);
       this->Pick();
       break;
     }
