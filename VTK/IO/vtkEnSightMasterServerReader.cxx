@@ -100,8 +100,6 @@ void vtkEnSightMasterServerReader::ExecuteInformation()
 //----------------------------------------------------------------------------
 int vtkEnSightMasterServerReader::DetermineFileName(int piece)
 {
-  char line[1024];
-
   if (!this->CaseFileName)
     {
     vtkErrorMacro("A case file name must be specified.");
