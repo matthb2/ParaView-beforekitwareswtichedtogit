@@ -21,12 +21,15 @@
 #include "vtkDataObject.h"
 #include "vtkDataSet.h"
 #include "vtkGarbageCollector.h"
+#include "vtkHierarchicalBoxDataSet.h"
+#include "vtkHierarchicalDataSet.h"
 #include "vtkInformation.h"
 #include "vtkInformationIntegerKey.h"
 #include "vtkInformationKeyVectorKey.h"
 #include "vtkInformationUnsignedLongKey.h"
 #include "vtkInformationVector.h"
 #include "vtkInstantiator.h"
+#include "vtkMultiBlockDataSet.h"
 #include "vtkObjectFactory.h"
 #include "vtkPointData.h"
 #include "vtkSmartPointer.h"
@@ -893,6 +896,18 @@ vtkDataObject* vtkDemandDrivenPipeline::NewDataObject(const char* type)
   else if(strcmp(type, "vtkUnstructuredGrid") == 0)
     {
     return vtkUnstructuredGrid::New();
+    }
+  else if(strcmp(type, "vtkMultiBlockDataSet") == 0)
+    {
+    return vtkMultiBlockDataSet::New();
+    }
+  else if(strcmp(type, "vtkHierarchicalDataSet") == 0)
+    {
+    return vtkHierarchicalDataSet::New();
+    }
+  else if(strcmp(type, "vtkHierarchicalBoxDataSet") == 0)
+    {
+    return vtkHierarchicalBoxDataSet::New();
     }
   else if(vtkObject* obj = vtkInstantiator::CreateInstance(type))
     {
