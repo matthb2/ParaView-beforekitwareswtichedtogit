@@ -23,7 +23,7 @@
 #include <vtkLight.h>
 #include <vtkTimerLog.h>
 #include <vtkLightCollection.h>
-#include <vtkFloatArray.h>
+#include <vtkDoubleArray.h>
 #include <vtkUnsignedCharArray.h>
 #include "vtkMultiProcessController.h"
 

@@ -46,7 +46,7 @@ void vtkIceTRenderer::ComputeAspect()
     return;
     }
 
-  float aspect[2];
+  double aspect[2];
   this->GetAspect(aspect);
 
   int global_viewport[4];
