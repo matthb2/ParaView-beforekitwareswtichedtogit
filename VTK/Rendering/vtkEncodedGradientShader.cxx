@@ -577,5 +577,6 @@ void vtkEncodedGradientShader::PrintSelf(ostream& os, vtkIndent indent)
 
   os << indent << "Zero Normal Specular Intensity: " <<
     this->ZeroNormalSpecularIntensity << endl;
+  os << indent << "ActiveComponent: " << this->ActiveComponent << endl;
 }
 
