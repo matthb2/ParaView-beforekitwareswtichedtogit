@@ -97,6 +97,7 @@ void vtkTubeFilter::Execute()
   newPts = vtkPoints::New();
   newPts->Allocate(numNewPts);
   newNormals = vtkFloatArray::New();
+  newNormals->SetName("TubeNormals");
   newNormals->SetNumberOfComponents(3);
   newNormals->Allocate(3*numNewPts);
   newStrips = vtkCellArray::New();
