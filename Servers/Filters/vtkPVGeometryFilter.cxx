@@ -41,7 +41,7 @@ vtkStandardNewMacro(vtkPVGeometryFilter);
 vtkPVGeometryFilter::vtkPVGeometryFilter ()
 {
   this->OutlineFlag = 0;
-  this->UseOutline = 0;
+  this->UseOutline = 1;
   this->NumberOfRequiredInputs = 0;
 }
 
