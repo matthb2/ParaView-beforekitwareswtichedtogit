@@ -192,5 +192,12 @@ void vtkTextProperty::PrintSelf(ostream& os, vtkIndent indent)
   os << indent << "Line Offset: " << this->LineOffset << "\n";
   os << indent << "Line Spacing: " << this->LineSpacing << "\n";
   os << indent << "AntiAliasing: " << this->AntiAliasing << "\n";
-  os << indent << "FaceFileName: " << this->FaceFileName << "\n";
+  if (this->FaceFileName)
+    {
+    os << indent << "FaceFileName: " << this->FaceFileName << "\n";
+    }
+  else
+    {
+    os << indent << "FaceFileName: (none)\n";
+    }
 }
