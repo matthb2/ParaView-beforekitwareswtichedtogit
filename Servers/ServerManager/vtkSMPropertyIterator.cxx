@@ -38,10 +38,7 @@ vtkSMPropertyIterator::vtkSMPropertyIterator()
 //---------------------------------------------------------------------------
 vtkSMPropertyIterator::~vtkSMPropertyIterator()
 {
-  if (this->Proxy)
-    {
-    this->Proxy->Delete();
-    }
+  this->SetProxy(0);
   delete this->Internals;
 }
 
