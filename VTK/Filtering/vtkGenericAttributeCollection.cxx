@@ -377,7 +377,6 @@ void vtkGenericAttributeCollection::ComputeNumbers()
     unsigned long memory=0;
     int firstComponentIndex=0;
     
-    
     int c = this->GetNumberOfAttributes();
     
     for(int i = 0; i < c; ++i)
@@ -396,7 +395,6 @@ void vtkGenericAttributeCollection::ComputeNumbers()
         firstComponentIndex=firstComponentIndex+count;
         }
       }
-    
     this->NumberOfComponents = nb;
     this->NumberOfPointCenteredComponents = pnb;
     this->MaxNumberOfComponents = maxNb;
