@@ -362,11 +362,13 @@ vtkCarbonRenderWindow::~vtkCarbonRenderWindow()
     {
     this->ShowCursor();
     }
-  if (this->WindowId && this->OwnWindow)
+  if (this->WindowId)
     {
     this->Clean();
+    }
+  if (this->WindowId && this->OwnWindow)
+    {
     // can't set WindowId=NULL, needed for DestroyWindow
-
     DisposeWindow(this->WindowId);
     }
 }
