@@ -535,6 +535,13 @@ void vtkSMProxy::UpdateInformation()
         prop->UpdateDependentDomains();
         }
       }
+    
+    vtkSMProxyInternals::ProxyMap::iterator it2 =
+      this->Internals->SubProxies.begin();
+    for( ; it2 != this->Internals->SubProxies.end(); it2++)
+      {
+      it2->second.GetPointer()->UpdateInformation();
+      }
     }
 }
 
