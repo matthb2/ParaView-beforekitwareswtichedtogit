@@ -344,6 +344,10 @@ unsigned int vtkSMPropertyAdaptor::GetNumberOfRangeElements()
     {
     return this->IntVectorProperty->GetNumberOfElements();
     }
+  if (this->StringVectorProperty)
+    {
+    return this->StringVectorProperty->GetNumberOfElements();
+    }
   return 0;
 }
 
@@ -370,6 +374,10 @@ const char* vtkSMPropertyAdaptor::GetRangeValue(unsigned int idx)
     elemV << this->IntVectorProperty->GetElement(idx) << ends;
     return this->ElemValue;
     }
+  if (this->StringVectorProperty)
+    {
+    return this->StringVectorProperty->GetElement(idx);
+    }
   return 0;
 }
 
@@ -387,6 +395,10 @@ int vtkSMPropertyAdaptor::SetRangeValue(unsigned int idx, const char* value)
   if (this->IntVectorProperty)
     {
     return this->IntVectorProperty->SetElement(idx, atoi(value));
+    }
+  if (this->StringVectorProperty)
+    {
+    return this->StringVectorProperty->SetElement(idx, value);
     }
   return 0;
 }
