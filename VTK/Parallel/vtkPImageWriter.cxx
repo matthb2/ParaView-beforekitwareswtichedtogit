@@ -15,12 +15,11 @@
      PURPOSE.  See the above copyright notice for more information.
 
 =========================================================================*/
-#include <stdio.h>
-#include <ctype.h>
-#include <string.h>
 #include "vtkPImageWriter.h"
+
 #include "vtkObjectFactory.h"
 #include "vtkPipelineSize.h"
+#include "vtkImageData.h"
 
 #define vtkPIWCloseFile \
     if (file && fileOpenedHere) \

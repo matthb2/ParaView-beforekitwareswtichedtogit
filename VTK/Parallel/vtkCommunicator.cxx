@@ -16,18 +16,20 @@
 
 =========================================================================*/
 #include "vtkCommunicator.h"
+
+#include "vtkCharArray.h"
 #include "vtkDataSetReader.h"
 #include "vtkDataSetWriter.h"
+#include "vtkDoubleArray.h"
+#include "vtkFloatArray.h"
+#include "vtkIdTypeArray.h"
+#include "vtkImageClip.h"
+#include "vtkIntArray.h"
+#include "vtkStructuredPoints.h"
 #include "vtkStructuredPointsReader.h"
 #include "vtkStructuredPointsWriter.h"
-#include "vtkImageClip.h"
-#include "vtkCharArray.h"
 #include "vtkUnsignedCharArray.h"
-#include "vtkIntArray.h"
 #include "vtkUnsignedLongArray.h"
-#include "vtkFloatArray.h"
-#include "vtkDoubleArray.h"
-#include "vtkIdTypeArray.h"
 
 vtkCxxRevisionMacro(vtkCommunicator, "$Revision$");
 
