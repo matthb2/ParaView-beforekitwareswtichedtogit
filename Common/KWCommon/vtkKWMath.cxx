@@ -160,68 +160,6 @@ int vtkKWMath::GetAdjustedScalarRange(
 }
 
 //----------------------------------------------------------------------------
-template <class T>
-void vtkKWMathGetScalarMinDelta(
-  vtkDataArray *array, int comp, double *delta, T *)
-{
-  if (!array || comp < 0 || comp >= array->GetNumberOfComponents() || !delta)
-    {
-    return;
-    }
-
-  vtkIdType nb_of_scalars = array->GetNumberOfTuples();
-  int nb_of_components = array->GetNumberOfComponents();
-
-  T *data = (T*)array->GetVoidPointer(0) + comp;
-  T *data_end = data + nb_of_scalars * nb_of_components;
-
-  T min1 = (T)array->GetRange(comp)[0];
-  T min2 = (T)array->GetRange(comp)[1];
-
-  if (nb_of_components > 1)
-    {
-    while (data < data_end)
-      {
-      if (*data < min2 && *data > min1)
-        {
-        min2 = *data;
-        }
-      data += nb_of_components;
-      }
-    }
-  else
-    {
-    while (data < data_end)
-      {
-      if (*data < min2 && *data > min1)
-        {
-        min2 = *data;
-        }
-      data++;
-      }
-    }
-
-  *delta = (double)min2 - (double)min1;
-}
-
-//----------------------------------------------------------------------------
-int vtkKWMath::GetScalarMinDelta(vtkDataArray *array, int comp, double *delta)
-{
-  if (!array || comp < 0 || comp >= array->GetNumberOfComponents() || !delta)
-    {
-    return 0;
-    }
-
-  switch (array->GetDataType())
-    {
-    vtkTemplateMacro4(vtkKWMathGetScalarMinDelta,
-                      array, comp, delta, static_cast<VTK_TT *>(0));
-    }
-  
-  return 1;
-}
-
-//----------------------------------------------------------------------------
 int vtkKWMath::GetScalarTypeFittingRange(
   double range_min, double range_max, double scale, double shift)
 {
