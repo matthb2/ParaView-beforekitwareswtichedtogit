@@ -16,6 +16,7 @@
 
 #include "vtkImageData.h"
 #include "vtkObjectFactory.h"
+#include "vtkToolkits.h"
 
 #include <sys/stat.h>
 
