@@ -137,18 +137,6 @@ static inline void SmallCovarianceMatrix(double **a, double **c,
 } 
 
 //------------------------------------------------------------------------
-static inline void MatrixTranspose(double **a, double **b, int rows, int cols)
-{
-  for(int i = 0; i < rows; i++) {
-    for(int j = 0; j < cols; j++) {
-      double tmp = a[i][j];
-      b[i][j] = a[j][i];
-      b[j][i] = tmp;
-    }
-  }
-}
-
-//------------------------------------------------------------------------
 static inline double* NewVector(int length)
 {
   double *vec = new double[length];
