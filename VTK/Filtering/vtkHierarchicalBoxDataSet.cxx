@@ -145,6 +145,7 @@ void vtkHierarchicalBoxDataSet::GenerateVisibilityArrays()
       boxes.push_back(coarsebox);
       }
 
+    numDataSets = this->GetNumberOfDataSets(levelIdx);
     for (dataSetIdx=0; dataSetIdx<numDataSets; dataSetIdx++)
       {
       vtkAMRBox box;
