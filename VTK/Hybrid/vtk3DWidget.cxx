@@ -118,10 +118,9 @@ float vtk3DWidget::SizeHandles(float factor)
 {
   int i;
   vtkRenderer *renderer;
-  vtkCamera *camera;
 
   if ( !this->ValidPick || !(renderer=this->CurrentRenderer) || 
-       !(camera=renderer->GetActiveCamera()) )
+       !renderer->GetActiveCamera() )
     {
     return (this->HandleSize * factor * this->InitialLength);
     }
