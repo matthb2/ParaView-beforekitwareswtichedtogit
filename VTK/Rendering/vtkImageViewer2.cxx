@@ -89,7 +89,9 @@ public:
   static vtkImageViewer2Callback *New() {
     return new vtkImageViewer2Callback; }
   
-  void Execute(vtkObject *caller, unsigned long event, void *callData)
+  void Execute(vtkObject *caller, 
+               unsigned long event, 
+               void *vtkNotUsed(callData))
     {
       if (this->IV->GetInput() == NULL)
         {
