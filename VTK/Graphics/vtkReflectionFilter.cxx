@@ -24,6 +24,7 @@ vtkStandardNewMacro(vtkReflectionFilter);
 //---------------------------------------------------------------------------
 vtkReflectionFilter::vtkReflectionFilter()
 {
+  this->Plane = VTK_USE_X_MIN;
 }
 
 //---------------------------------------------------------------------------
