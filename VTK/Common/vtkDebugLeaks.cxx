@@ -300,7 +300,6 @@ void vtkDebugLeaks::PrintCurrentLeaks()
   // print the table
   strstream leaks;
   vtkDebugLeaks::MemoryTable->PrintTable(leaks);
-  leaks << ends;
   
 #ifdef _WIN32
   int cancel=0;
