@@ -742,9 +742,9 @@ void vtkUnstructuredGridBunykRayCastFunction::ComputePixelIntersections()
                     {
                     test = test->Next;
                     }
-                  Intersection *tmp = test->Next;
+                  Intersection *tmpNext = test->Next;
                   test->Next = intersect;
-                  intersect->Next = tmp;
+                  intersect->Next = tmpNext;
                   }
                 }
               }
