@@ -95,12 +95,13 @@ vtkCompositeManager::vtkCompositeManager()
   this->RenderWindow = NULL;
   this->RenderWindowInteractor = NULL;
   this->Controller = vtkMultiProcessController::GetGlobalController();
+
+  Sleep(15000);
   if (this->Controller)
     {
     this->Controller->Register(this);
     this->NumberOfProcesses = this->Controller->GetNumberOfProcesses();
     }
-  this->NumberOfProcesses = 1;
 
   this->RendererSize[0] = this->RendererSize[1] = 0;
 
