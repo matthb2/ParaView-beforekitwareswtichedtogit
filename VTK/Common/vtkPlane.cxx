@@ -67,6 +67,21 @@ void vtkPlane::ProjectPoint(double x[3], double origin[3], double normal[3], dou
   xproj[2] = x[2] - t * normal[2];
 }
 
+void vtkPlane::Push(float distance)
+{
+  int i;
+
+  if ( distance == 0.0 )
+    {
+    return;
+    }
+  for (i=0; i < 3; i++ )
+    {
+    this->Origin[i] += distance * this->Normal[i];
+    }
+  this->Modified();
+}
+
 // Project a point x onto plane defined by origin and normal. The 
 // projected point is returned in xproj. NOTE : normal NOT required to
 // have magnitude 1.
