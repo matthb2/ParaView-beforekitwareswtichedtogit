@@ -451,7 +451,15 @@ void vtkWin32OpenGLRenderWindow::SetupPixelFormat(HDC hDC, DWORD dwFlags,
                      "Invalid pixel format, no OpenGL support",
                      "Error",
                      MB_ICONERROR | MB_OK);
-          exit(1);
+          if (this->HasObserver(vtkCommand::ExitEvent))
+            {
+              this->InvokeEvent(vtkCommand::ExitEvent, NULL);
+              return;
+            }
+          else
+            {
+              exit(1);
+            }
         }         
     }
   else
@@ -462,7 +470,15 @@ void vtkWin32OpenGLRenderWindow::SetupPixelFormat(HDC hDC, DWORD dwFlags,
         {
           MessageBox(WindowFromDC(hDC), "ChoosePixelFormat failed.", "Error",
                      MB_ICONERROR | MB_OK);
-          exit(1);
+          if (this->HasObserver(vtkCommand::ExitEvent))
+            {
+              this->InvokeEvent(vtkCommand::ExitEvent, NULL);
+              return;
+            }
+          else
+            {
+              exit(1);
+            }
         }
       DescribePixelFormat(hDC, pixelFormat,sizeof(pfd), &pfd); 
       if (SetPixelFormat(hDC, pixelFormat, &pfd) != TRUE) 
@@ -470,7 +486,15 @@ void vtkWin32OpenGLRenderWindow::SetupPixelFormat(HDC hDC, DWORD dwFlags,
           // int err = GetLastError();
           MessageBox(WindowFromDC(hDC), "SetPixelFormat failed.", "Error",
                      MB_ICONERROR | MB_OK);
-          exit(1);
+          if (this->HasObserver(vtkCommand::ExitEvent))
+            {
+              this->InvokeEvent(vtkCommand::ExitEvent, NULL);
+              return;
+            }
+          else
+            {
+              exit(1);
+            }
         }
     }
   if (debug && (dwFlags & PFD_STEREO) && !(pfd.dwFlags & PFD_STEREO))

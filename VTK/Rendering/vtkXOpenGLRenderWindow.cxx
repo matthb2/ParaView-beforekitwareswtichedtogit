@@ -392,15 +392,40 @@ void vtkXOpenGLRenderWindow::WindowInitialize (void)
     if(!glXQueryExtension(this->DisplayId, NULL, NULL)) 
       {
       vtkErrorMacro("GLX not found.  Aborting.");
-      abort();
+      if (this->HasObserver(vtkCommand::ExitEvent))
+        {
+          this->InvokeEvent(vtkCommand::ExitEvent, NULL);
+          return;
+        }
+      else
+        {
+        abort();
+        }
       }
     
     this->Internal->ContextId = glXCreateContext(this->DisplayId, v, 0, GL_TRUE);
 
+    if (this->HasObserver(vtkCommand::ExitEvent))
+      {
+        this->InvokeEvent(vtkCommand::ExitEvent, NULL);
+      }
+    else
+      {
+        cout <<"no exit event" << endl;
+      }
+
     if(!this->Internal->ContextId)
       {
       vtkErrorMacro("Cannot create GLX context.  Aborting.");
-      abort();
+      if (this->HasObserver(vtkCommand::ExitEvent))
+        {
+          this->InvokeEvent(vtkCommand::ExitEvent, NULL);
+          return;
+        }
+      else
+        {
+        abort();
+        }
       }
     this->MakeCurrent();
     
