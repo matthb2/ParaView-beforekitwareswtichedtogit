@@ -151,6 +151,11 @@ int vtkSMPropertyStatusManager::HasPropertyChangedInternal(
     {
     return 1;
     }
+
+  if (static_cast<unsigned int>(index) >= num_elems)
+    {// index is beyond range, we know nothing about it.
+    return 0;
+    }
   
   vtkSMDoubleVectorProperty* sdvp = vtkSMDoubleVectorProperty::SafeDownCast(src);
   vtkSMIntVectorProperty* sivp = vtkSMIntVectorProperty::SafeDownCast(src);
