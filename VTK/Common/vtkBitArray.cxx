@@ -21,13 +21,6 @@
 vtkCxxRevisionMacro(vtkBitArray, "$Revision$");
 vtkStandardNewMacro(vtkBitArray);
 
-vtkDataArray *vtkBitArray::MakeObject()
-{
-  vtkDataArray *a = vtkBitArray::New();
-  a->SetNumberOfComponents(this->NumberOfComponents);
-  return a;
-}
-
 // Instantiate object.
 vtkBitArray::vtkBitArray(vtkIdType numComp)
 {

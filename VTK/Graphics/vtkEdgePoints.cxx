@@ -92,7 +92,8 @@ void vtkEdgePoints::Execute()
   newPts->Allocate(estimatedSize, estimatedSize/2);
   newVerts = vtkCellArray::New();
   newVerts->Allocate(estimatedSize, estimatedSize/2);
-  cellScalars = inScalars->MakeObject();
+  cellScalars = inScalars->NewInstance();
+  cellScalars->SetNumberOfComponents(inScalars->GetNumberOfComponents());
   cellScalars->Allocate(VTK_CELL_SIZE*inScalars->GetNumberOfComponents());
   
   this->Locator->InitPointInsertion (newPts, input->GetBounds());

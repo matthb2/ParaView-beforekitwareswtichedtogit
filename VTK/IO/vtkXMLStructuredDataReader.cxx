@@ -340,7 +340,8 @@ vtkXMLStructuredDataReader
       unsigned int rowTuples = subDimensions[0];
       unsigned int partialSliceTuples = inDimensions[0]*subDimensions[1];
       unsigned long tupleSize = components*array->GetDataTypeSize();
-      vtkDataArray* temp = array->MakeObject();
+      vtkDataArray* temp = array->NewInstance();
+      temp->SetNumberOfComponents(array->GetNumberOfComponents());
       temp->SetNumberOfTuples(partialSliceTuples);
       int k;
       for(k=0;k < subDimensions[2];++k)

@@ -21,13 +21,6 @@
 vtkCxxRevisionMacro(vtkUnsignedShortArray, "$Revision$");
 vtkStandardNewMacro(vtkUnsignedShortArray);
 
-vtkDataArray *vtkUnsignedShortArray::MakeObject()
-{
-  vtkDataArray *a = vtkUnsignedShortArray::New();
-  a->SetNumberOfComponents(this->NumberOfComponents);
-  return a;
-}
-
 // Instantiate object.
 vtkUnsignedShortArray::vtkUnsignedShortArray(vtkIdType numComp)
 {

@@ -275,7 +275,7 @@ vtkDataArray* vtkSplitField::SplitArray(vtkDataArray* da, int component)
     return 0;
     }
 
-  vtkDataArray* output = da->MakeObject();
+  vtkDataArray* output = da->NewInstance();
   output->SetNumberOfComponents(1);
   int numTuples = da->GetNumberOfTuples();
   output->SetNumberOfTuples(numTuples);

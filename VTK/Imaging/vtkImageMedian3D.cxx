@@ -440,7 +440,7 @@ void vtkImageMedian3D::ExecuteData(vtkDataObject *out)
     }
 
   // Now create the scalars array that will hold the output data.
-  outArray = inArray->MakeObject();
+  outArray = inArray->NewInstance();
   outArray->SetNumberOfComponents(inArray->GetNumberOfComponents());
   outArray->SetNumberOfTuples(output->GetNumberOfPoints());
   outArray->SetName(inArray->GetName());

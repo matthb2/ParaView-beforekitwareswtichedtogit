@@ -239,7 +239,8 @@ VTK_THREAD_RETURN_TYPE vtkStreamer::ThreadedIntegrate( void *arg )
   cellVectors->Allocate(3*VTK_CELL_SIZE);
   if (inScalars)
     {
-    cellScalars = inScalars->MakeObject();
+    cellScalars = inScalars->NewInstance();
+    cellScalars->SetNumberOfComponents(inScalars->GetNumberOfComponents());
     cellScalars->Allocate(inScalars->GetNumberOfComponents()*VTK_CELL_SIZE);
     }
 
@@ -480,7 +481,8 @@ void vtkStreamer::Integrate()
 
   if (inScalars)
     {
-    cellScalars = inScalars->MakeObject();
+    cellScalars = inScalars->NewInstance();
+    cellScalars->SetNumberOfComponents(cellScalars->GetNumberOfComponents());
     cellScalars->Allocate(cellScalars->GetNumberOfComponents()*VTK_CELL_SIZE);
     }
   

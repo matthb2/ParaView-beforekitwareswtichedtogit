@@ -21,13 +21,6 @@
 vtkCxxRevisionMacro(vtkLongArray, "$Revision$");
 vtkStandardNewMacro(vtkLongArray);
 
-vtkDataArray *vtkLongArray::MakeObject()
-{
-  vtkDataArray *a = vtkLongArray::New();
-  a->SetNumberOfComponents(this->NumberOfComponents);
-  return a;
-}
-
 // Instantiate object.
 vtkLongArray::vtkLongArray(vtkIdType numComp)
 {

@@ -251,7 +251,8 @@ void vtkGlyph3D::Execute()
     }
   if ( this->ColorMode == VTK_COLOR_BY_SCALAR && inScalars )
     {
-    newScalars =  inScalars->MakeObject ();
+    newScalars = inScalars->NewInstance();
+    newScalars->SetNumberOfComponents(inScalars->GetNumberOfComponents());
     newScalars->Allocate(inScalars->GetNumberOfComponents()*numPts*numSourcePts);
     newScalars->SetName(inScalars->GetName());
     }

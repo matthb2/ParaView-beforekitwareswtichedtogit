@@ -142,7 +142,8 @@ void vtkQuadraticEdge::Contour(float value, vtkDataArray *cellScalars,
                                vtkCellData *outCd)
 {
   int i;
-  vtkDataArray *lineScalars=cellScalars->MakeObject();
+  vtkDataArray *lineScalars=cellScalars->NewInstance();
+  lineScalars->SetNumberOfComponents(cellScalars->GetNumberOfComponents());
   lineScalars->SetNumberOfTuples(2);
 
   for ( i=0; i < 2; i++)

@@ -21,13 +21,6 @@
 vtkCxxRevisionMacro(vtkFloatArray, "$Revision$");
 vtkStandardNewMacro(vtkFloatArray);
 
-vtkDataArray *vtkFloatArray::MakeObject()
-{
-  vtkDataArray *a = vtkFloatArray::New();
-  a->SetNumberOfComponents(this->NumberOfComponents);
-  return a;
-}
-
 // Instantiate object with 1 components.
 vtkFloatArray::vtkFloatArray(vtkIdType numComp)
 {

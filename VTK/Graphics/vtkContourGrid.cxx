@@ -128,8 +128,9 @@ void vtkContourGridExecute(vtkContourGrid *self, vtkDataSet *input,
   newLines->Allocate(estimatedSize,estimatedSize);
   newPolys = vtkCellArray::New();
   newPolys->Allocate(estimatedSize,estimatedSize);
-  cellScalars = inScalars->MakeObject();
-  cellScalars->Allocate(VTK_CELL_SIZE*inScalars->GetNumberOfComponents());
+  cellScalars = inScalars->NewInstance();
+  cellScalars->SetNumberOfComponents(inScalars->GetNumberOfComponents());
+   cellScalars->Allocate(VTK_CELL_SIZE*inScalars->GetNumberOfComponents());
   
    // locator used to merge potentially duplicate points
   locator->InitPointInsertion (newPts, input->GetBounds(),estimatedSize);

@@ -991,3 +991,14 @@ void vtkDataArray::PrintSelf(ostream& os, vtkIndent indent)
     os << indent << "LookupTable: (none)\n";
     }
 }
+
+//----------------------------------------------------------------------------
+#ifndef VTK_REMOVE_LEGACY_CODE
+vtkDataArray* vtkDataArray::MakeObject()
+{
+  VTK_LEGACY_METHOD(MakeObject, "4.2");
+  vtkDataArray* a = this->NewInstance();
+  a->SetNumberOfComponents(this->NumberOfComponents);
+  return a;
+}
+#endif
