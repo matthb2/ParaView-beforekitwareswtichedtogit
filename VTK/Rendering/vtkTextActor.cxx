@@ -214,7 +214,7 @@ int vtkTextActor::RenderOpaqueGeometry(vtkViewport *viewport)
         {
         size[1] = this->MinimumSize[1];
         }    
-      int max_height = this->MaximumLineHeight * size[1];
+      int max_height = (int)(this->MaximumLineHeight * (float)size[1]);
 
       oldfontsize = fontSize;
       fontSize = mapper->GetConstrainedFontSize(
