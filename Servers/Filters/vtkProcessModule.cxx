@@ -275,7 +275,6 @@ void vtkProcessModule::InitializeInterpreter()
   // Create the interpreter and supporting stream.
   this->Interpreter = vtkClientServerInterpreter::New();
   this->ClientServerStream = new vtkClientServerStream;
-  //this->Interpreter->SetLogFile("./cs.log");
   
   // Setup a callback for the interpreter to report errors.
   this->InterpreterObserver = vtkCallbackCommand::New();
