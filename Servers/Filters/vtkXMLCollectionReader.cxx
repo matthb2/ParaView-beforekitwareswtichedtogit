@@ -729,6 +729,26 @@ int vtkXMLCollectionReader::GetAttributeValueIndex(const char* name,
 }
 
 //----------------------------------------------------------------------------
+vtkXMLDataElement* vtkXMLCollectionReader::GetOutputXMLDataElement(int index)
+{
+  // We must call UpdateInformation to make sure the set of outputs is
+  // up to date.
+  this->UpdateInformation();
+  
+  // Make sure the index is in range.
+  if(index < 0 ||
+     index >= static_cast<int>(this->Internal->RestrictedDataSets.size()))
+    {
+    vtkErrorMacro("Attempt to get XMLDataElement for output index "
+                  << index << " from a reader with "
+                  << this->Internal->RestrictedDataSets.size()
+                  << " outputs.");
+    return 0;
+    }
+  return this->Internal->RestrictedDataSets[index];
+}
+
+//----------------------------------------------------------------------------
 const vtkXMLCollectionReaderEntry
 vtkXMLCollectionReaderInternals::ReaderList[] =
 {
