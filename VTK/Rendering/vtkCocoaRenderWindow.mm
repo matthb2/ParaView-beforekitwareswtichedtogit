@@ -638,6 +638,6 @@ void vtkCocoaRenderWindow::ShowCursor()
     }
   this->CursorHidden = 0;
 
-  [NSCursor show];
+  [NSCursor unhide];
 }				   
 
