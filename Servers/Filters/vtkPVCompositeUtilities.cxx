@@ -327,7 +327,8 @@ int vtkPVCompositeUtilities::GetCompressedLength(vtkFloatArray *zArray)
 
     if (zRun == zIn)
       { 
-      *zIn++;
+      //*zIn++;
+      zIn++;
       }
     }
   return length;

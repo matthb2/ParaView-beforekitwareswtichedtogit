@@ -68,9 +68,9 @@ void vtkPVEnSightMasterServerTranslator::PrintSelf(ostream& os, vtkIndent indent
 
 //----------------------------------------------------------------------------
 int
-vtkPVEnSightMasterServerTranslator::PieceToExtentThreadSafe(int piece,
-                                                            int numPieces, 
-                                                            int ghostLevel, 
+vtkPVEnSightMasterServerTranslator::PieceToExtentThreadSafe(int vtkNotUsed(piece),
+                                                            int vtkNotUsed(numPieces), 
+                                                            int vtkNotUsed(ghostLevel), 
                                                             int *wholeExtent, 
                                                             int *resultExtent, 
                                                             int splitMode, 

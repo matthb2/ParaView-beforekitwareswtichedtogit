@@ -23,7 +23,7 @@ vtkCxxRevisionMacro(vtkPVClipDataSet, "$Revision$");
 vtkStandardNewMacro(vtkPVClipDataSet);
 
 //----------------------------------------------------------------------------
-vtkPVClipDataSet::vtkPVClipDataSet(vtkImplicitFunction *cf)
+vtkPVClipDataSet::vtkPVClipDataSet(vtkImplicitFunction *vtkNotUsed(cf))
 {
 }
 
