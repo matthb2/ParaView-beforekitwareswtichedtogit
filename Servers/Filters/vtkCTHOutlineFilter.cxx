@@ -56,7 +56,8 @@ void vtkCTHOutlineFilter::Execute()
   int *dimensions;
   int ghostLevels;
   
-  dimensions = input->GetDimensions();
+  // Hack
+  dimensions = input->GetBlockPointDimensions(0);
   ghostLevels = input->GetNumberOfGhostLevels();
 
   numBlocks = input->GetNumberOfBlocks();
