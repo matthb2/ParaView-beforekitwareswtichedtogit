@@ -101,6 +101,7 @@ void vtkSMApplication::Initialize()
 
   vtkSMProxyManager* proxyM = vtkSMProxyManager::New();
   this->SetProxyManager(proxyM);
+  this->SetApplication(this);
 
   vtkSMXMLParser* parser = vtkSMXMLParser::New();
 
