@@ -70,7 +70,8 @@ void vtkArcPlotter::Execute()
   vtkIdType numPts, i;
   float x[3], normal[3], point[3], aveNormal[3];
   int id;
-  vtkIdType *pts, npts;
+  vtkIdType *pts = 0;
+  vtkIdType npts = 0;
   float *x1, *x2, x21[3], n[3];
   vtkFloatArray *lineNormals;
   vtkPoints *newPts;

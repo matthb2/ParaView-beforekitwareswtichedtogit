@@ -58,6 +58,20 @@ struct vtkCompositeRendererInfo
   float Background[3];
 };
 
+#define vtkInitializeVector3(v) { v[0] = 0; v[1] = 0; v[2] = 0; }
+#define vtkInitializeVector2(v) { v[0] = 0; v[1] = 0; }
+#define vtkInitializeCompositeRendererInfoMacro(r)      \
+  {                                                     \
+  vtkInitializeVector3(r.CameraPosition);               \
+  vtkInitializeVector3(r.CameraFocalPoint);             \
+  vtkInitializeVector3(r.CameraViewUp);                 \
+  vtkInitializeVector2(r.CameraClippingRange);          \
+  vtkInitializeVector3(r.LightPosition);                \
+  vtkInitializeVector3(r.LightFocalPoint);              \
+  vtkInitializeVector3(r.Background);                   \
+  }
+  
+
 
 //-------------------------------------------------------------------------
 vtkCompositeManager::vtkCompositeManager()
@@ -449,6 +463,7 @@ void vtkCompositeManager::RenderRMI()
   vtkMultiProcessController *controller = this->Controller;
   
   vtkDebugMacro("RenderRMI");
+  vtkInitializeCompositeRendererInfoMacro(renInfo);
   
   // Receive the window size.
   controller->Receive((char*)(&winInfo), 

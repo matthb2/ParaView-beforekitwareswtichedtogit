@@ -773,7 +773,8 @@ void vtkImageToPolyDataFilter::GeneratePolygons(vtkPolyData *edges,
 {
   vtkCellArray *newPolys, *inPolys;
   int i, numPts;
-  vtkIdType *pts, npts;
+  vtkIdType *pts = 0;
+  vtkIdType npts = 0;
   
   // Copy the points via reference counting
   //
