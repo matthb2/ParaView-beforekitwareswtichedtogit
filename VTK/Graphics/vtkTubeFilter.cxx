@@ -236,6 +236,12 @@ void vtkTubeFilter::Execute()
     }//for all polylines
 
   singlePolyline->Delete();
+  
+  // reset the radius to ite orginal value if necessary
+  if (this->VaryRadius == VTK_VARY_RADIUS_BY_ABSOLUTE_SCALAR)
+      {
+      this->Radius = oldRadius;
+      }
 
   // Update ourselves
   //
