@@ -695,6 +695,10 @@ void vtkCompositeManager::StartRender()
 //-------------------------------------------------------------------------
 void vtkCompositeManager::EndRender()
 {
+  if (!this->UseCompositing)
+    {
+    return;
+    }  
 
   if (this->FirstRender)
     {
