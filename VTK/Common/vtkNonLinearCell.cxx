@@ -19,7 +19,6 @@
 #include "vtkPolyData.h"
 #include "vtkUnstructuredGrid.h"
 #include "vtkDataSet.h"
-#include "vtkPointLocator.h"
 #include "vtkObjectFactory.h"
 
 vtkCxxRevisionMacro(vtkNonLinearCell, "$Revision$");
