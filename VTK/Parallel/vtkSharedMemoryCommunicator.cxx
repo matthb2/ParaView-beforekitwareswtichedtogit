@@ -322,7 +322,7 @@ vtkSharedMemoryCommunicatorMessage
 
   if (object)
     {
-    message->Object = object->MakeObject();
+    message->Object = object->NewInstance();
     if (this->ForceDeepCopy)
       {
       message->Object->DeepCopy(object);
@@ -358,7 +358,7 @@ vtkSharedMemoryCommunicatorMessage
 
   if (object)
     {
-    message->Array = object->MakeObject();
+    message->Array = object->NewInstance();
     if (this->ForceDeepCopy)
       {
       message->Array->DeepCopy(object);
