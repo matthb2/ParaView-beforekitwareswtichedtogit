@@ -298,7 +298,7 @@ int vtkOpenGLImageWindow::GetDesiredDepth()
 Visual *vtkOpenGLImageWindow::GetDesiredVisual ()
 {
   XVisualInfo *v;
-  Visual *vis;
+  Visual *vis=0;
   
   // get the default visual to use 
   v = this->GetDesiredVisualInfo();
