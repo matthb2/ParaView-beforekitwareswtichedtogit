@@ -183,6 +183,10 @@ void vtkAnimationScene::Play()
       }
     while (!this->StopPlay && this->CueState != vtkAnimationCue::INACTIVE);
     this->Finalize();
+    if (this->Loop)
+      {
+      this->CurrentTime = this->StartTime;
+      }
     }
   while (this->Loop && !this->StopPlay);
   this->StopPlay = 0;
