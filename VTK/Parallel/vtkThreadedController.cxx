@@ -225,6 +225,11 @@ int vtkThreadedController::IsBarrierInProgress=0;
 
 void vtkThreadedController::Barrier()
 {
+  if (this->NumberOfProcesses == 0)
+    {
+    return;
+    }
+
   vtkThreadedController::InitializeBarrier();
 
   // If there was a barrier before this one, we need to
