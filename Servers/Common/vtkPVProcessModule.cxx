@@ -65,12 +65,14 @@ vtkPVProcessModule::vtkPVProcessModule()
   this->UseTriangleStrips = 0;
   this->UseImmediateMode = 1;
   this->Options = 0;
+  this->ApplicationInstallationDirectory = 0;
 }
 
 //----------------------------------------------------------------------------
 vtkPVProcessModule::~vtkPVProcessModule()
 { 
   this->SetDemoPath(0);
+  this->SetApplicationInstallationDirectory(0);
   this->FinalizeInterpreter();
   this->ServerInformation->Delete();
 }
