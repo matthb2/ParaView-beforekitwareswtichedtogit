@@ -100,6 +100,21 @@ int vtkDataArraySelection::ArrayIsEnabled(const char* name)
 }
 
 //----------------------------------------------------------------------------
+int vtkDataArraySelection::ArrayExists(const char* name)
+{
+  // Check if there is a specific entry for this array.
+  vtkIdType pos=0;
+  int result=0;
+  if( this->ArrayNames->FindItem(name, pos) == VTK_OK )
+    {
+    return 1;
+    }
+  
+  // The array does not have an entry. 
+  return 0;
+}
+
+//----------------------------------------------------------------------------
 void vtkDataArraySelection::EnableAllArrays()
 {
   int modified = 0;
