@@ -398,12 +398,6 @@ void vtkInteractorStyleTrackballActor::ScaleXY(int vtkNotUsed(x), int y,
 void vtkInteractorStyleTrackballActor::OnLeftButtonDown(int ctrl, int shift, 
                                                         int x, int y) 
 {
-  if (this->HasObserver(vtkCommand::LeftButtonPressEvent)) 
-    {
-    this->InvokeEvent(vtkCommand::LeftButtonPressEvent,NULL);
-    return;
-    }
-
   this->FindPokedRenderer(x, y);
   this->FindPickedActor(x, y);
   
@@ -440,11 +434,6 @@ void vtkInteractorStyleTrackballActor::OnLeftButtonUp(int vtkNotUsed(ctrl),
 void vtkInteractorStyleTrackballActor::OnMiddleButtonDown(int ctrl, int shift, 
                                                           int x, int y) 
 {
-  if (this->HasObserver(vtkCommand::MiddleButtonPressEvent)) 
-    {
-    this->InvokeEvent(vtkCommand::MiddleButtonPressEvent,NULL);
-    return;
-    }
   this->FindPokedRenderer(x, y);
   this->FindPickedActor(x, y);
   
@@ -477,11 +466,6 @@ void vtkInteractorStyleTrackballActor::OnRightButtonDown(int vtkNotUsed(ctrl),
                                                          int vtkNotUsed(shift), 
                                                          int x, int y) 
 {
-  if (this->HasObserver(vtkCommand::RightButtonPressEvent)) 
-    {
-    this->InvokeEvent(vtkCommand::RightButtonPressEvent,NULL);
-    return;
-    }
   this->FindPokedRenderer(x, y);
   this->FindPickedActor(x, y);
   
