@@ -1,4 +1,4 @@
-/*=========================================================================
+n/*=========================================================================
 
   Program:   Visualization Toolkit
   Module:    $RCSfile$
@@ -59,6 +59,8 @@ vtkXMLDataParser::vtkXMLDataParser()
 #else
   this->ByteOrder = vtkXMLDataParser::LittleEndian;
 #endif
+
+  this->AttributesEncoding = VTK_ENCODING_NONE;
 }
 
 //----------------------------------------------------------------------------
@@ -94,6 +96,7 @@ void vtkXMLDataParser::PrintSelf(ostream& os, vtkIndent indent)
     }
   os << indent << "Progress: " << this->Progress << "\n";
   os << indent << "Abort: " << this->Abort << "\n";
+  os << indent << "AttributesEncoding: " << this->AttributesEncoding << "\n";
 }
 
 //----------------------------------------------------------------------------
@@ -134,7 +137,7 @@ void vtkXMLDataParser::StartElement(const char* name, const char** atts)
   vtkXMLDataElement* element = vtkXMLDataElement::New();
   element->SetName(name);
   element->SetXMLByteIndex(this->GetXMLByteIndex());
-  element->ReadXMLAttributes(atts);
+  element->ReadXMLAttributes(atts, this->AttributesEncoding);
   const char* id = element->GetAttribute("id");
   if(id)
     {
