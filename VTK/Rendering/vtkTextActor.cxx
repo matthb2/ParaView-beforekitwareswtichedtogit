@@ -18,6 +18,7 @@
 #include "vtkTextActor.h"
 
 #include "vtkObjectFactory.h"
+#include "vtkTextMapper.h"
 #include "vtkTextProperty.h"
 #include "vtkViewport.h"
 
