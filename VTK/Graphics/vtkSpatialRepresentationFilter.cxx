@@ -100,7 +100,46 @@ void vtkSpatialRepresentationFilter::ResetOutput()
     if ( this->OutputList[i] != NULL ) delete this->OutputList[i];
     }
 }
+
     
+// Description:
+// Update input to this filter and the filter itself.
+void vtkSpatialRepresentationFilter::Update()
+{
+  // make sure input is available
+  if ( !this->Input )
+    {
+    vtkErrorMacro(<< "No input...can't execute!");
+    return;
+    }
+
+  // prevent chasing our tail
+  if (this->Updating) return;
+
+  this->Updating = 1;
+  this->Input->Update();
+  this->Updating = 0;
+
+  if (this->Input->GetMTime() > this->ExecuteTime ||
+      this->SpatialRepresentation->GetBuildTime() > this->ExecuteTime ||
+      this->GetMTime() > this->ExecuteTime )
+    {
+    if ( this->Input->GetDataReleased() )
+      {
+      this->Input->ForceUpdate();
+      }
+
+    if ( this->StartMethod ) (*this->StartMethod)(this->StartMethodArg);
+    this->Output->Initialize(); //clear output
+    this->Execute();
+    this->ExecuteTime.Modified();
+    this->SetDataReleased(0);
+    if ( this->EndMethod ) (*this->EndMethod)(this->EndMethodArg);
+    }
+
+  if ( this->Input->ShouldIReleaseData() ) this->Input->ReleaseData();
+}
+
 
 // Build OBB tree
 void vtkSpatialRepresentationFilter::Execute()

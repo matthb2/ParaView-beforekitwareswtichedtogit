@@ -112,6 +112,8 @@ public:
   // reset requested output levels
   void ResetOutput();
 
+  void Update();
+
 protected:
   void Execute();
   void GenerateOutput();
