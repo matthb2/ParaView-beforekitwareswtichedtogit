@@ -50,6 +50,8 @@
 vtkCxxRevisionMacro(vtkSliceCubes, "$Revision$");
 vtkStandardNewMacro(vtkSliceCubes);
 
+vtkCxxSetObjectMacro(vtkSliceCubes,Reader,vtkVolumeReader);
+
 // Description:
 // Construct with NULL reader, output FileName specification, and limits 
 // FileName.
