@@ -116,7 +116,6 @@ void vtkEdgeTable::Reset()
     }
     
   this->NumberOfEdges = 0;
-  this->StoreAttributes = 0;
 }
 
 vtkEdgeTable::~vtkEdgeTable()
