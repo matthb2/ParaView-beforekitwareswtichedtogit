@@ -74,6 +74,10 @@ vtkRenderWindowInteractor::~vtkRenderWindowInteractor()
     {
     this->Picker->UnRegister(this);
     }
+  if ( this->KeySym )
+    {
+    delete [] this->KeySym;
+    }
 }
 
 vtkRenderWindowInteractor *vtkRenderWindowInteractor::New()
