@@ -98,7 +98,6 @@ void vtkCleanUnstructuredGrid::Execute()
   vtkIdList *cellPoints = vtkIdList::New();
   num = input->GetNumberOfCells();
   output->Allocate(num);
-  vtkIdType cellPtId;
   for (id = 0; id < num; ++id)
     {
     input->GetCellPoints(id, cellPoints);
