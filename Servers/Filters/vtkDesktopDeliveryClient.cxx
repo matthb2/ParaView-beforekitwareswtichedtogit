@@ -218,7 +218,7 @@ void vtkDesktopDeliveryClient::PostRenderProcessing()
       else
         {
         this->ReadReducedImage();
-        //this->SetRenderWindowPixelData(this->ReducedImage, this->ReducedImageSize);
+        this->SetRenderWindowPixelData(this->ReducedImage, this->ReducedImageSize);
         }
       this->RenderWindowImageUpToDate = true;
       }
