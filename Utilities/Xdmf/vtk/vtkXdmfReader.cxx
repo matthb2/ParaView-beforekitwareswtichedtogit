@@ -1315,6 +1315,7 @@ Param = this->DOM->GetParameter(Index);
 if(!Param) {
 	return(-1);
 }
+this->Modified();
 return(Param->SetCurrentIndex(CurrentIndex));
 }
 
@@ -1348,6 +1349,7 @@ for(int i=0 ; i < this->DOM->FindNumberOfParameters() ;  i++){
 	}
 	if(XDMF_WORD_CMP(Param->GetParameterName(), ParameterName)){
 		Status = Param->SetCurrentIndex(CurrentIndex);
+    this->Modified();
 		if(Status <= 0 ) return(Status);
 		}
 }
