@@ -405,6 +405,12 @@ void vtkImageMathematics::ThreadedRequestData(
         }
       }
 
+    if (!inData[1] || ! inData[1][0])
+      {
+      vtkErrorMacro("ImageMathematics requested to perform a two input operation with only one input\n");
+      return;
+      }
+    
     inPtr2 = inData[1][0]->GetScalarPointerForExtent(outExt);
 
     // this filter expects that input is the same type as output.
