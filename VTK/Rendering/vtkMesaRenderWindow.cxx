@@ -30,3 +30,4 @@
 #undef vtkOpenGLRenderWindow
 
 vtkCxxRevisionMacro(vtkMesaRenderWindow, "$Revision$");
+vtkStandardNewMacro(vtkMesaRenderWindow);
