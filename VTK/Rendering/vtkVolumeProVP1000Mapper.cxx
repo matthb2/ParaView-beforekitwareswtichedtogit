@@ -22,6 +22,7 @@
 #include "vtkDebugLeaks.h"
 #include "vtkGraphicsFactory.h"
 #include "vtkLight.h"
+#include "vtkLightCollection.h"
 #include "vtkObjectFactory.h"
 #include "vtkOpenGLVolumeProVP1000Mapper.h"
 #include "vtkPiecewiseFunction.h"
