@@ -14,6 +14,8 @@
 =========================================================================*/
 #include "vtkInformationStringKey.h"
 
+#include "vtkDebugLeaks.h"
+
 #include <vtkstd/string>
 
 vtkCxxRevisionMacro(vtkInformationStringKey, "$Revision$");
@@ -49,7 +51,9 @@ void vtkInformationStringKey::Set(vtkInformation* info, const char* value)
   if(value)
     {
     vtkInformationStringValue* v = new vtkInformationStringValue;
-    this->ConstructClass("vtkInformationStringValue");
+#ifdef VTK_DEBUG_LEAKS
+    vtkDebugLeaks::ConstructClass("vtkInformationStringValue");
+#endif
     v->Value = value;
     this->SetAsObjectBase(info, v);
     v->Delete();

@@ -14,6 +14,8 @@
 =========================================================================*/
 #include "vtkInformationIntegerKey.h"
 
+#include "vtkDebugLeaks.h"
+
 vtkCxxRevisionMacro(vtkInformationIntegerKey, "$Revision$");
 
 //----------------------------------------------------------------------------
@@ -55,7 +57,9 @@ void vtkInformationIntegerKey::Set(vtkInformation* info, int value)
     {
     // Allocate a new value.
     vtkInformationIntegerValue* v = new vtkInformationIntegerValue;
-    this->ConstructClass("vtkInformationIntegerValue");
+#ifdef VTK_DEBUG_LEAKS
+    vtkDebugLeaks::ConstructClass("vtkInformationIntegerValue");
+#endif
     v->Value = value;
     this->SetAsObjectBase(info, v);
     v->Delete();
