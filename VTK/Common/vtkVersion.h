@@ -64,7 +64,7 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 class VTK_EXPORT vtkVersion : public vtkObject {
 public:
   static vtkVersion *New();
-  const char *GetClassName() {return "vtkVersion";};
+  vtkTypeMacro(vtkVersion,vtkObject);
 
   // Description: 
   // Return the version of vtk this object is a part of.
