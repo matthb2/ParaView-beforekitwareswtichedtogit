@@ -331,7 +331,7 @@ unsigned long vtkAbstractTransform::GetMTime()
 //----------------------------------------------------------------------------
 // We need to handle the circular reference between a transform and its
 // inverse.
-void vtkAbstractTransform::UnRegister(vtkObject *o)
+void vtkAbstractTransform::UnRegister(vtkObjectBase *o)
 {
   if (this->InUnRegister)
     { // we don't want to go into infinite recursion...

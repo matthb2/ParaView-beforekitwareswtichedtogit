@@ -714,7 +714,7 @@ int vtkSource::InRegisterLoop(vtkObject *o)
   return 0;
 }
                            
-void vtkSource::UnRegister(vtkObject *o)
+void vtkSource::UnRegister(vtkObjectBase *o)
 {
   int idx;
   int done = 0;

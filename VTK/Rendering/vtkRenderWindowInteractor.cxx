@@ -108,7 +108,7 @@ void vtkRenderWindowInteractor::Render()
 
 // treat renderWindow and interactor as one object.
 // it might be easier if the GetReference count method were redefined.
-void vtkRenderWindowInteractor::UnRegister(vtkObject *o)
+void vtkRenderWindowInteractor::UnRegister(vtkObjectBase *o)
 {
   if (this->RenderWindow && this->RenderWindow->GetInteractor() == this &&
       this->RenderWindow != o)

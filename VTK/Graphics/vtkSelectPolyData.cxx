@@ -588,7 +588,7 @@ void vtkSelectPolyData::PrintSelf(ostream& os, vtkIndent indent)
     }
 }
 
-void vtkSelectPolyData::UnRegister(vtkObject *o)
+void vtkSelectPolyData::UnRegister(vtkObjectBase *o)
 {
   // detect the circular loop source <-> data
   // If we have two references and one of them is my data
