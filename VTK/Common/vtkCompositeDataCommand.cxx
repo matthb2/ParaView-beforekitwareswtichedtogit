@@ -15,22 +15,22 @@
      PURPOSE.  See the above copyright notice for more information.
 
 =========================================================================*/
-#include "vtkCompositeDataVisitorCommand.h"
+#include "vtkCompositeDataCommand.h"
 
-vtkCxxRevisionMacro(vtkCompositeDataVisitorCommand, "$Revision$");
+vtkCxxRevisionMacro(vtkCompositeDataCommand, "$Revision$");
 
 //----------------------------------------------------------------------------
-vtkCompositeDataVisitorCommand::vtkCompositeDataVisitorCommand()
+vtkCompositeDataCommand::vtkCompositeDataCommand()
 {
 }
 
 //----------------------------------------------------------------------------
-vtkCompositeDataVisitorCommand::~vtkCompositeDataVisitorCommand()
+vtkCompositeDataCommand::~vtkCompositeDataCommand()
 {
 }
 
 //----------------------------------------------------------------------------
-void vtkCompositeDataVisitorCommand::PrintSelf(ostream& os, vtkIndent indent)
+void vtkCompositeDataCommand::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os,indent);
 }

@@ -17,13 +17,13 @@
 =========================================================================*/
 #include "vtkCompositeDataVisitor.h"
 
-#include "vtkCompositeDataVisitorCommand.h"
+#include "vtkCompositeDataCommand.h"
 
 vtkCxxRevisionMacro(vtkCompositeDataVisitor, "$Revision$");
 
 vtkCxxSetObjectMacro(vtkCompositeDataVisitor,
                      Command, 
-                     vtkCompositeDataVisitorCommand);
+                     vtkCompositeDataCommand);
 
 //----------------------------------------------------------------------------
 vtkCompositeDataVisitor::vtkCompositeDataVisitor()

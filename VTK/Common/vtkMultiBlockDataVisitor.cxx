@@ -20,7 +20,7 @@
 #include "vtkCompositeDataSet.h"
 #include "vtkDataSet.h"
 #include "vtkMultiBlockDataIterator.h"
-#include "vtkCompositeDataVisitorCommand.h"
+#include "vtkCompositeDataCommand.h"
 #include "vtkObjectFactory.h"
 
 vtkCxxRevisionMacro(vtkMultiBlockDataVisitor, "$Revision$");

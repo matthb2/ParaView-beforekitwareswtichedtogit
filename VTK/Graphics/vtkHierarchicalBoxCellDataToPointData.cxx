@@ -62,7 +62,7 @@ void vtkHierarchicalBoxCellDataToPointData::ExecuteData(vtkDataObject* dooutput)
 
   vtkHierarchicalBoxDataSet* output = comm->GetOutput();
 
-  this->GetOutput()->ShallowCopy(output);
+  dooutput->ShallowCopy(output);
 
   comm->Delete();
   visitor->Delete();

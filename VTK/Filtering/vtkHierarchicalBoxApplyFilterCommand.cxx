@@ -62,7 +62,7 @@ void vtkHierarchicalBoxApplyFilterCommand::Initialize()
 
 //----------------------------------------------------------------
 void vtkHierarchicalBoxApplyFilterCommand::Execute(
-  vtkCompositeDataVisitor *caller, vtkDataObject *input, void* callData)
+  vtkCompositeDataVisitor *, vtkDataObject *input, void* callData)
 {
   if (!this->Output)
     {

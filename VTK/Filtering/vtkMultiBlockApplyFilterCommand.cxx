@@ -52,7 +52,7 @@ void vtkMultiBlockApplyFilterCommand::Initialize()
 }
 
 //----------------------------------------------------------------
-void vtkMultiBlockApplyFilterCommand::Execute(vtkCompositeDataVisitor *caller, 
+void vtkMultiBlockApplyFilterCommand::Execute(vtkCompositeDataVisitor *, 
                                               vtkDataObject *input,
                                               void*)
 {
