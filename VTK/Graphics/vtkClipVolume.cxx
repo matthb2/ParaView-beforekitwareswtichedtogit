@@ -143,7 +143,7 @@ void vtkClipVolume::Execute()
   
   for (dimension=3, i=0; i<3; i++)
     {
-    if ( dims[0] <= 1 )
+    if ( dims[i] <= 1 )
       {
       dimension--;
       }
