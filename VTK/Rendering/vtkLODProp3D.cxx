@@ -975,6 +975,7 @@ void vtkLODProp3D::PrintSelf(ostream& os, vtkIndent indent)
 
   os << indent << "SelectedPickLODID: " << this->SelectedPickLODID << endl;
   
+  os << indent << "CurrentIndex: " << this->CurrentIndex << endl;
 }
 
 void vtkLODProp3D::GetActors(vtkPropCollection *ac)
