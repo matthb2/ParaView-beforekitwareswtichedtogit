@@ -28,7 +28,7 @@
 
 vtkCxxRevisionMacro(vtkParametricFunctionSource, "$Revision$");
 
-vtkParametricFunctionSource::vtkParametricFunctionSource(void) :
+vtkParametricFunctionSource::vtkParametricFunctionSource() :
   NumberOfUPoints(0)
   , NumberOfVPoints(0)
   , MinimumU(0)
@@ -45,7 +45,7 @@ vtkParametricFunctionSource::vtkParametricFunctionSource(void) :
 {}
 
 
-vtkParametricFunctionSource::~vtkParametricFunctionSource(void)
+vtkParametricFunctionSource::~vtkParametricFunctionSource()
 {
 }
 
