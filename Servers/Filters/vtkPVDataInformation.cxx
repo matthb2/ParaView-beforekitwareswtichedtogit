@@ -372,7 +372,11 @@ unsigned char* vtkPVDataInformation::NewMessage(int &length)
   length += this->CellDataInformation->GetMessageLength();
 
   // One char for length,
-  int nameLength = strlen(this->Name);
+  int nameLength = 0;
+  if (this->Name)
+    {
+    nameLength = strlen(this->Name);
+    }
   if (nameLength > 255)
     {
     nameLength = 255;
