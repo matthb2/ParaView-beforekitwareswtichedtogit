@@ -85,7 +85,7 @@ void vtkWarpScalar::Execute()
   inScalars = pd->GetScalars(this->InputScalarsSelection);
   if ( !inPts || !inScalars )
     {
-    vtkErrorMacro(<<"No data to warp");
+    vtkDebugMacro(<<"No data to warp");
     return;
     }
 

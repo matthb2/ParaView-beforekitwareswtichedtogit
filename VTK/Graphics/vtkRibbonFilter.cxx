@@ -417,7 +417,7 @@ void vtkRibbonFilter::GenerateTextureCoords(vtkIdType offset,
     {
     newTCoords->InsertTuple2(offset+k,0.0,0.0);
     }
-  if ( this->GenerateTCoords == VTK_TCOORDS_FROM_SCALARS )
+  if ( this->GenerateTCoords == VTK_TCOORDS_FROM_SCALARS && inScalars)
     {
     s0 = inScalars->GetTuple1(pts[0]);
     for (i=1; i < npts; i++)
