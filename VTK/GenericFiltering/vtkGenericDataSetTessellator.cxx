@@ -124,7 +124,7 @@ void vtkGenericDataSetTessellator::Execute()
     ++i;
     }
   
-  vtkIdTypeArray *cellIdArray;
+  vtkIdTypeArray *cellIdArray=0;
   
   if(this->KeepCellIds)
     {
