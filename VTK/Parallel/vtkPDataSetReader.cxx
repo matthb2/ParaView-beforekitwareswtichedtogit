@@ -1180,6 +1180,11 @@ void vtkPDataSetReader::ImageDataExecute()
             }
           }
         output->CopyAndCastFrom(reader->GetOutput(), ext);
+        vtkDataArray *scalars = reader->GetOutput()->GetPointData()->GetScalars();
+        if (scalars && scalars->GetName())
+          {
+          output->GetPointData()->GetScalars()->SetName(scalars->GetName());
+          }
         }
       }
     }
