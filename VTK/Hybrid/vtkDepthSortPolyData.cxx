@@ -18,8 +18,11 @@
 #include "vtkDepthSortPolyData.h"
 
 #include "vtkCamera.h"
+#include "vtkCellData.h"
+#include "vtkGenericCell.h"
 #include "vtkMath.h"
 #include "vtkObjectFactory.h"
+#include "vtkPointData.h"
 #include "vtkPolyData.h"
 #include "vtkProp3D.h"
 #include "vtkTransform.h"

@@ -18,10 +18,13 @@
 #include "vtkImageToPolyDataFilter.h"
 
 #include "vtkAppendPolyData.h"
+#include "vtkCellArray.h"
+#include "vtkCellData.h"
 #include "vtkEdgeTable.h"
 #include "vtkImageData.h"
 #include "vtkLine.h"
 #include "vtkObjectFactory.h"
+#include "vtkPointData.h"
 #include "vtkPolyData.h"
 #include "vtkScalarsToColors.h"
 #include "vtkUnsignedCharArray.h"

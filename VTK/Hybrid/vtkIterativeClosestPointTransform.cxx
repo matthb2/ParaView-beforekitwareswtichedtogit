@@ -22,6 +22,7 @@
 #include "vtkLandmarkTransform.h"
 #include "vtkMath.h"
 #include "vtkObjectFactory.h"
+#include "vtkPoints.h"
 #include "vtkTransform.h"
 
 vtkCxxRevisionMacro(vtkIterativeClosestPointTransform, "$Revision$");

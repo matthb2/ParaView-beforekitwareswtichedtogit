@@ -19,11 +19,13 @@
 
 #include "vtkActor.h"
 #include "vtkAppendPolyData.h"
+#include "vtkCellArray.h"
 #include "vtkFloatArray.h"
 #include "vtkGlyph2D.h"
 #include "vtkGlyph3D.h"
 #include "vtkMath.h"
 #include "vtkObjectFactory.h"
+#include "vtkPointData.h"
 #include "vtkPolyData.h"
 #include "vtkPolyDataMapper.h"
 #include "vtkPolyDataMapper2D.h"

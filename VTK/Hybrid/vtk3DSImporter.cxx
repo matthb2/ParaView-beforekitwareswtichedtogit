@@ -20,6 +20,7 @@
 #include "vtkActor.h"
 #include "vtkByteSwap.h"
 #include "vtkCamera.h"
+#include "vtkCellArray.h"
 #include "vtkLight.h"
 #include "vtkObjectFactory.h"
 #include "vtkPolyData.h"

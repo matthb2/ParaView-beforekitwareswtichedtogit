@@ -18,6 +18,7 @@
 #include "vtkLegendBoxActor.h"
 
 #include "vtkActor.h"
+#include "vtkCellArray.h"
 #include "vtkFloatArray.h"
 #include "vtkObjectFactory.h"
 #include "vtkPolyData.h"

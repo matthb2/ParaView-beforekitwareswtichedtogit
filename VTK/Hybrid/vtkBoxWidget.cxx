@@ -19,9 +19,11 @@
 
 #include "vtkActor.h"
 #include "vtkAssemblyNode.h"
+#include "vtkAssemblyPath.h"
 #include "vtkCallbackCommand.h"
-#include "vtkCellPicker.h"
 #include "vtkCamera.h"
+#include "vtkCellArray.h"
+#include "vtkCellPicker.h"
 #include "vtkDoubleArray.h"
 #include "vtkFloatArray.h"
 #include "vtkMath.h"
@@ -30,9 +32,9 @@
 #include "vtkPolyData.h"
 #include "vtkPolyDataMapper.h"
 #include "vtkProperty.h"
+#include "vtkRenderWindowInteractor.h"
 #include "vtkRenderer.h"
 #include "vtkSphereSource.h"
-#include "vtkRenderWindowInteractor.h"
 #include "vtkTransform.h"
 
 vtkCxxRevisionMacro(vtkBoxWidget, "$Revision$");

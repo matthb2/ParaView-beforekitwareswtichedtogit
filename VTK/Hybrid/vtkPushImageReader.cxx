@@ -21,6 +21,7 @@
 #include "vtkCommand.h"
 #include "vtkImageData.h"
 #include "vtkObjectFactory.h"
+#include "vtkPointData.h"
 #include "vtkPushPipeline.h"
 
 class vtkPIRIncrementSlice : public vtkCommand

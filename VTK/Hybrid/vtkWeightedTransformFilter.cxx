@@ -22,6 +22,7 @@
 #include "vtkFloatArray.h"
 #include "vtkLinearTransform.h"
 #include "vtkMath.h"
+#include "vtkMatrix4x4.h"
 #include "vtkObjectFactory.h"
 #include "vtkPointData.h"
 #include "vtkPointSet.h"

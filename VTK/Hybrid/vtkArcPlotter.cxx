@@ -18,10 +18,12 @@
 #include "vtkArcPlotter.h"
 
 #include "vtkCamera.h"
+#include "vtkCellArray.h"
 #include "vtkFloatArray.h"
 #include "vtkMath.h"
 #include "vtkObjectFactory.h"
 #include "vtkPlane.h"
+#include "vtkPointData.h"
 #include "vtkPolyData.h"
 
 vtkCxxRevisionMacro(vtkArcPlotter, "$Revision$");

@@ -16,8 +16,10 @@
 
 =========================================================================*/
 #include "vtkThinPlateSplineTransform.h"
+
 #include "vtkMath.h"
 #include "vtkObjectFactory.h"
+#include "vtkPoints.h"
 
 vtkCxxRevisionMacro(vtkThinPlateSplineTransform, "$Revision$");
 vtkStandardNewMacro(vtkThinPlateSplineTransform);
