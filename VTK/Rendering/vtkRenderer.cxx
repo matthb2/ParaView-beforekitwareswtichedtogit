@@ -664,6 +664,12 @@ void vtkRenderer::ComputeVisiblePropBounds( float allBounds[6] )
     }
 }
 
+float *vtkRenderer::ComputeVisiblePropBounds()
+  {
+  this->ComputeVisiblePropBounds(this->ComputedVisiblePropBounds);
+  return this->ComputedVisiblePropBounds;
+  }
+
 // Automatically set up the camera based on the visible actors.
 // The camera will reposition itself to view the center point of the actors,
 // and move along its initial view plane normal (i.e., vector defined from 
