@@ -512,7 +512,14 @@ void vtkSMProxy::UpdateInformation()
       vtkSMProperty* prop = it->second.Property.GetPointer();
       if (prop->GetInformationOnly())
         {
-        prop->UpdateInformation(this->Servers, this->Internals->IDs[0]);
+        if (prop->GetUpdateSelf())
+          {
+          prop->UpdateInformation(vtkProcessModule::CLIENT, this->SelfID);
+          }
+        else
+          {
+          prop->UpdateInformation(this->Servers, this->Internals->IDs[0]);
+          }
         }
       }
 
