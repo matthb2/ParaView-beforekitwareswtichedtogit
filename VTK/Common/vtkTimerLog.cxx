@@ -86,6 +86,12 @@ void vtkTimerLog::AllocateLog()
   vtkTimerLog::TimerLog = new vtkTimerLogEntry[vtkTimerLog::MaxEntries];
 }
 
+//----------------------------------------------------------------------------
+// Remove timer log.
+void vtkTimerLog::CleanupLog()
+{
+  delete [] vtkTimerLog::TimerLog;
+}
 
 //----------------------------------------------------------------------------
 // Clear the timing table.  walltime and cputime will also be set
