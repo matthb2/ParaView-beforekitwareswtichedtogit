@@ -295,7 +295,9 @@ void vtkThreadedController::Start(int threadId)
 #elif defined VTK_USE_WIN32_THREADS
   localController->ThreadId = GetCurrentThreadId();
 #endif
-  
+
+  this->Barrier();
+
   if (this->MultipleMethodFlag)
     {
     if (this->MultipleMethod[threadId])
