@@ -531,4 +531,5 @@ void vtkPVGeometryFilter::PrintSelf(ostream& os, vtkIndent indent)
   os << indent << "UseOutline: " << (this->UseOutline?"on":"off") << endl;
   os << indent << "UseStrips: " << (this->UseStrips?"on":"off") << endl;
   os << indent << "GenerateCellNormals: " << (this->GenerateCellNormals?"on":"off") << endl;
+  os << indent << "Controller: " << this->Controller << endl;
 }
