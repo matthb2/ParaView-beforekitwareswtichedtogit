@@ -64,6 +64,8 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "XdmfTransform.h"
 #include "XdmfGrid.h"
 #include "XdmfXNode.h"
+#include "XdmfGeometry.h"
+#include "XdmfAttribute.h"
 
 #include <sys/stat.h>
 #include <string>
