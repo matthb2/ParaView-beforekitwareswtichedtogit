@@ -1786,6 +1786,11 @@ void vtkPolyData::ShallowCopy(vtkDataObject *dataObject)
 //----------------------------------------------------------------------------
 void vtkPolyData::DeepCopy(vtkDataObject *dataObject)
 {
+  // Do superclass
+  // We have to do this BEFORE we call BuildLinks, else there are no points
+  // to build the links on (the parent DeepCopy copies the points)
+  this->vtkPointSet::DeepCopy(dataObject);
+
   vtkPolyData *polyData = vtkPolyData::SafeDownCast(dataObject);
 
   if ( polyData != NULL )
@@ -1831,9 +1836,6 @@ void vtkPolyData::DeepCopy(vtkDataObject *dataObject)
       this->BuildLinks();
       }
     }
-
-  // Do superclass
-  this->vtkPointSet::DeepCopy(dataObject);
 }
 
 void vtkPolyData::Crop()
