@@ -134,7 +134,7 @@ void vtkContourFilter::Execute()
     inScalars = input->GetPointData()->GetScalars(this->InputScalarsSelection);
     if ( ! inScalars || numCells < 1 )
       {
-      vtkErrorMacro(<<"No data to contour");
+      vtkDebugMacro(<<"No data to contour");
       return;
       }
 
