@@ -45,7 +45,6 @@ void vtkImageHybridMedian2DExecute(vtkImageHybridMedian2D *self,
                              vtkImageData *outData, T *outPtr2,
                              int outExt[6], int id)
 {
-  int inExt[6];
   int idx0, idx1, idx2, idxC;
   int inInc0, inInc1, inInc2;
   int outInc0, outInc1, outInc2;
