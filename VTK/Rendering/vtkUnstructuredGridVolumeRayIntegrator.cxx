@@ -1,5 +1,3 @@
-// -*- c++ -*-
-
 /*=========================================================================
 
   Program:   Visualization Toolkit
@@ -19,7 +17,6 @@
 vtkCxxRevisionMacro(vtkUnstructuredGridVolumeRayIntegrator, "$Revision$");
 
 //----------------------------------------------------------------------------
-
 vtkUnstructuredGridVolumeRayIntegrator::vtkUnstructuredGridVolumeRayIntegrator()
 {
 }
