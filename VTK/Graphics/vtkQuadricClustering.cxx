@@ -162,7 +162,13 @@ void vtkQuadricClustering::Execute()
     this->EndAppend();
     }
 
-  
+  // Free this memory.  It can be quite large.
+  if (this->QuadricArray)
+    {
+    delete [] this->QuadricArray;
+    this->QuadricArray = NULL;
+    }
+
   if ( this->Debug )
     {
     tlog->StopTimer();
