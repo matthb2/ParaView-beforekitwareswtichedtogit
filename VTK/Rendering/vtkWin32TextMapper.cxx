@@ -62,7 +62,7 @@ void vtkWin32TextMapper::GetSize(vtkViewport* viewport, int *size)
     return;
     }
 
-  if (this->Input == NULL)
+  if (this->Input == NULL || this->Input[0] == '\0') 
     {
     size[0] = 0; size[1] = 0;
     return;
