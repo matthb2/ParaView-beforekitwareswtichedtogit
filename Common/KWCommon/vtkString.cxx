@@ -591,7 +591,7 @@ char* vtkString::AddSpaceToUpperFirstString(const char *str, char *res)
     *ptr++ = *str++;
     while (*str)
       {
-      if (isupper(*str) && !isupper(*(str - 1)))
+      if (isupper(*str) && !isspace(*(str - 1)) && !isupper(*(str - 1)))
         {
         *ptr++ = ' ';
         }
