@@ -95,6 +95,13 @@ int vtkXMLUnstructuredDataWriter::ProcessRequest(
     {
     this->SetErrorCode(vtkErrorCode::NoError);
 
+    if(!this->Stream && !this->FileName)
+      {
+      this->SetErrorCode(vtkErrorCode::NoFileNameError);
+      vtkErrorMacro("The FileName or Stream must be set first.");
+      return 0;
+      }
+
     // We don't want to write more pieces than the pipeline can produce,
     // but we need to preserve the user's requested number of pieces in
     // case the input changes later.  If MaximumNumberOfPieces is lower
