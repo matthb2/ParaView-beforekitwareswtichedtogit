@@ -108,6 +108,7 @@ vtkImagePlaneWidget::vtkImagePlaneWidget()
   this->Texture = NULL;
   this->LookupTable = NULL;
   this->ColorMap = NULL;
+  this->DummyTransform = NULL;
 }
 
 vtkImagePlaneWidget::~vtkImagePlaneWidget()
@@ -1146,6 +1147,10 @@ float vtkImagePlaneWidget::GetSlicePosition()
 
 void vtkImagePlaneWidget::SetSliceIndex(int index)
 {
+  if (!this->Reslice)
+    {
+    return;
+    }
   this->ImageData = this->Reslice->GetInput();
   this->ImageData->UpdateInformation();
   float origin[3];
@@ -1193,6 +1198,10 @@ void vtkImagePlaneWidget::SetSliceIndex(int index)
 
 int vtkImagePlaneWidget::GetSliceIndex()
 {
+  if (!this->Reslice)
+    {
+      return 0;
+    }
   this->ImageData = this->Reslice->GetInput();
   this->ImageData->UpdateInformation();
   float origin[3];
