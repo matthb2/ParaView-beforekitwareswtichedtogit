@@ -209,8 +209,8 @@ int vtkXMLPVDWriter::WriteInternal()
         {
         for (j = 0; j < i; j++)
           {
-          vtkstd::string fname = this->Internal->CreatePieceFileName(i);
-          vtkstd::string full = this->Internal->FilePath;
+          fname = this->Internal->CreatePieceFileName(i);
+          full = this->Internal->FilePath;
           full += fname;
           unlink(full.c_str());
           }

@@ -502,7 +502,6 @@ void vtkCTHFractal::PrintSelf(ostream& os, vtkIndent indent)
   os << indent << "Dimensions: " << this->Dimensions << endl;
   os << indent << "FractalValue: " << this->FractalValue << endl;
   os << indent << "MaximumLevel: " << this->MaximumLevel << endl;
-
-
+  os << indent << "GhostLevels: " << this->GhostLevels << endl;
 }
 
