@@ -21,9 +21,18 @@
 
 #include <ctype.h>
 
+// because of warnings in windows header push and pop the warning level
+#ifdef _MSC_VER
+#pragma warning (push, 3)
+#endif
+
 #include "vtkWindows.h"
 #include <winuser.h>
 #include <vfw.h>
+
+#ifdef _MSC_VER
+#pragma warning (pop)
+#endif
 
 class vtkWin32VideoSourceInternal
 {
