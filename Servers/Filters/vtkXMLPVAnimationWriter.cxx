@@ -265,7 +265,7 @@ void vtkXMLPVAnimationWriter::Finish()
   this->FinishCalled = 1;
   
   // Just write the output file with the current set of entries.
-  this->Write();
+  this->WriteInternal();
 
   if (this->ErrorCode == vtkErrorCode::OutOfDiskSpaceError)
     {
