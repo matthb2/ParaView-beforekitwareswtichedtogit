@@ -118,8 +118,10 @@ void vtkVolumeMapper::SetUseImageClipper(int arg)
   // Force a change of the input to reconnect the pipeline correctly
 
   vtkImageData *input = this->GetInput();
+  input->Register(this);
   this->SetInput(NULL);
   this->SetInput(input);
+  input->UnRegister(this);
 }
 
 void vtkVolumeMapper::SetInput( vtkImageData *input )
