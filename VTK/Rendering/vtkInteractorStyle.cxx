@@ -57,8 +57,6 @@ vtkInteractorStyle::vtkInteractorStyle()
 
   this->KeyPressActivation  = 0; 
 
-  this->CurrentRenderer     = NULL;
-
   this->Outline             = vtkOutlineSource::New();
   this->OutlineActor        = NULL;
   this->OutlineMapper       = vtkPolyDataMapper::New();
@@ -107,11 +105,7 @@ vtkInteractorStyle::~vtkInteractorStyle()
   this->Outline->Delete();
   this->Outline = NULL;
 
-  if ( this->CurrentRenderer)
-    {
-    this->CurrentRenderer->UnRegister(this);
-    this->CurrentRenderer = NULL;
-    }
+  this->SetCurrentRenderer(NULL);
 }
 
 //----------------------------------------------------------------------------
