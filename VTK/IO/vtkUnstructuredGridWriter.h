@@ -1,42 +1,42 @@
 /*=========================================================================
 
-  Program:   Visualization Library
+  Program:   Visualization Toolkit
   Module:    $RCSfile$
   Language:  C++
   Date:      $Date$
   Version:   $Revision$
 
-This file is part of the Visualization Library. No part of this file
+This file is part of the Visualization Toolkit. No part of this file
 or its contents may be copied, reproduced or altered in any way
 without the express written consent of the authors.
 
 Copyright (c) Ken Martin, Will Schroeder, Bill Lorensen 1993, 1994 
 
 =========================================================================*/
-// .NAME vlUnstructuredGridWriter - write vl unstructured grid data file
+// .NAME vtkUnstructuredGridWriter - write vtk unstructured grid data file
 // .SECTION Description
-// vlUnstructuredGridWriter is a source object that writes ASCII or binary 
-// unstructured grid data files in vl format. See text for format details.
+// vtkUnstructuredGridWriter is a source object that writes ASCII or binary 
+// unstructured grid data files in vtk format. See text for format details.
 // .SECTION Caveats
 // Binary files written on one system may not be readable on other systems.
 
-#ifndef __vlUnstructuredGridWriter_hh
-#define __vlUnstructuredGridWriter_hh
+#ifndef __vtkUnstructuredGridWriter_hh
+#define __vtkUnstructuredGridWriter_hh
 
-#include "vlDataW.hh"
+#include "vtkDataW.hh"
 #include "UGrid.hh"
 
-class vlUnstructuredGridWriter : public vlDataWriter
+class vtkUnstructuredGridWriter : public vtkDataWriter
 {
 public:
-  vlUnstructuredGridWriter() {};
-  ~vlUnstructuredGridWriter() {};
-  char *GetClassName() {return "vlUnstructuredGridWriter";};
-  void PrintSelf(ostream& os, vlIndent indent);
+  vtkUnstructuredGridWriter() {};
+  ~vtkUnstructuredGridWriter() {};
+  char *GetClassName() {return "vtkUnstructuredGridWriter";};
+  void PrintSelf(ostream& os, vtkIndent indent);
 
-  void SetInput(vlUnstructuredGrid *input);
-  void SetInput(vlUnstructuredGrid &input) {this->SetInput(&input);};
-  vlUnstructuredGrid *GetInput() {return (vlUnstructuredGrid *)this->Input;};
+  void SetInput(vtkUnstructuredGrid *input);
+  void SetInput(vtkUnstructuredGrid &input) {this->SetInput(&input);};
+  vtkUnstructuredGrid *GetInput() {return (vtkUnstructuredGrid *)this->Input;};
                                
 protected:
   void WriteData();

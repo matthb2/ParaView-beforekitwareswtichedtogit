@@ -1,76 +1,76 @@
 /*=========================================================================
 
-  Program:   Visualization Library
+  Program:   Visualization Toolkit
   Module:    $RCSfile$
   Language:  C++
   Date:      $Date$
   Version:   $Revision$
 
-This file is part of the Visualization Library. No part of this file
+This file is part of the Visualization Toolkit. No part of this file
 or its contents may be copied, reproduced or altered in any way
 without the express written consent of the authors.
 
 Copyright (c) Ken Martin, Will Schroeder, Bill Lorensen 1993, 1994 
 
 =========================================================================*/
-#include "vlDSW.hh"
-#include "vlPolyW.hh"
-#include "vlSPtsW.hh"
-#include "vlSGridW.hh"
-#include "vlUGridW.hh"
+#include "vtkDSW.hh"
+#include "vtkPolyW.hh"
+#include "vtkSPtsW.hh"
+#include "vtkSGridW.hh"
+#include "vtkUGridW.hh"
 
 // Description:
 // Specify the input data or filter.
-void vlDataSetWriter::SetInput(vlDataSet *input)
+void vtkDataSetWriter::SetInput(vtkDataSet *input)
 {
   if ( this->Input != input )
     {
-    vlDebugMacro(<<" setting Input to " << (void *)input);
+    vtkDebugMacro(<<" setting Input to " << (void *)input);
     this->Input = input;
     this->Modified();
     }
 }
 
-void vlDataSetWriter::WriteData()
+void vtkDataSetWriter::WriteData()
 {
   FILE *fp;
   char *type;
-  vlPolyWriter pwriter;
-  vlStructuredPointsWriter spwriter;
-  vlStructuredGridWriter sgwriter;
-  vlUnstructuredGridWriter ugwriter;
-  vlDataWriter *writer;
+  vtkPolyWriter pwriter;
+  vtkStructuredPointsWriter spwriter;
+  vtkStructuredGridWriter sgwriter;
+  vtkUnstructuredGridWriter ugwriter;
+  vtkDataWriter *writer;
 
-  vlDebugMacro(<<"Writing vl dataset...");
+  vtkDebugMacro(<<"Writing vtk dataset...");
 
   type = this->Input->GetDataType();
-  if ( ! strcmp(type,"vlPolyData") )
+  if ( ! strcmp(type,"vtkPolyData") )
     {
-    pwriter.SetInput((vlPolyData *)this->Input);
-    writer = (vlDataWriter *)&pwriter;
+    pwriter.SetInput((vtkPolyData *)this->Input);
+    writer = (vtkDataWriter *)&pwriter;
     }
 
-  else if ( ! strcmp(type,"vlStructuredPoints") )
+  else if ( ! strcmp(type,"vtkStructuredPoints") )
     {
-    spwriter.SetInput((vlStructuredPoints *)this->Input);
-    writer = (vlDataWriter *)&spwriter;
+    spwriter.SetInput((vtkStructuredPoints *)this->Input);
+    writer = (vtkDataWriter *)&spwriter;
     }
 
-  else if ( ! strcmp(type,"vlStructuredGrid") )
+  else if ( ! strcmp(type,"vtkStructuredGrid") )
     {
-    sgwriter.SetInput((vlStructuredGrid *)this->Input);
-    writer = (vlDataWriter *)&sgwriter;
+    sgwriter.SetInput((vtkStructuredGrid *)this->Input);
+    writer = (vtkDataWriter *)&sgwriter;
     }
 
-  else if ( ! strcmp(type,"vlUnstructuredGrid") )
+  else if ( ! strcmp(type,"vtkUnstructuredGrid") )
     {
-    ugwriter.SetInput((vlUnstructuredGrid *)this->Input);
-    writer = (vlDataWriter *)&ugwriter;
+    ugwriter.SetInput((vtkUnstructuredGrid *)this->Input);
+    writer = (vtkDataWriter *)&ugwriter;
     }
 
   else
     {
-    vlErrorMacro(<< "Cannot write dataset type: " << type);
+    vtkErrorMacro(<< "Cannot write dataset type: " << type);
     return;
     }
 
@@ -85,7 +85,7 @@ void vlDataSetWriter::WriteData()
 
 }
 
-void vlDataSetWriter::PrintSelf(ostream& os, vlIndent indent)
+void vtkDataSetWriter::PrintSelf(ostream& os, vtkIndent indent)
 {
-  vlDataWriter::PrintSelf(os,indent);
+  vtkDataWriter::PrintSelf(os,indent);
 }

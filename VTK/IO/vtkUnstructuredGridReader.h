@@ -1,40 +1,40 @@
 /*=========================================================================
 
-  Program:   Visualization Library
+  Program:   Visualization Toolkit
   Module:    $RCSfile$
   Language:  C++
   Date:      $Date$
   Version:   $Revision$
 
-This file is part of the Visualization Library. No part of this file
+This file is part of the Visualization Toolkit. No part of this file
 or its contents may be copied, reproduced or altered in any way
 without the express written consent of the authors.
 
 Copyright (c) Ken Martin, Will Schroeder, Bill Lorensen 1993, 1994 
 
 =========================================================================*/
-// .NAME vlUnstructuredGridReader - read vl unstructured grid data file
+// .NAME vtkUnstructuredGridReader - read vtk unstructured grid data file
 // .SECTION Description
-// vlUnstructuredGridReader is a source object that reads ASCII or binary 
-// unstructured grid data files in vl format. See text for format details.
+// vtkUnstructuredGridReader is a source object that reads ASCII or binary 
+// unstructured grid data files in vtk format. See text for format details.
 // .SECTION Caveats
 // Binary files written on one system may not be readable on other systems.
 
-#ifndef __vlUnstructuredGridReader_h
-#define __vlUnstructuredGridReader_h
+#ifndef __vtkUnstructuredGridReader_h
+#define __vtkUnstructuredGridReader_h
 
 #include "UGridSrc.hh"
-#include "vlDataR.hh"
+#include "vtkDataR.hh"
 
-class vlUnstructuredGridReader : public vlUnstructuredGridSource
+class vtkUnstructuredGridReader : public vtkUnstructuredGridSource
 {
 public:
-  vlUnstructuredGridReader();
-  ~vlUnstructuredGridReader();
-  char *GetClassName() {return "vlUnstructuredGridReader";};
-  void PrintSelf(ostream& os, vlIndent indent);
+  vtkUnstructuredGridReader();
+  ~vtkUnstructuredGridReader();
+  char *GetClassName() {return "vtkUnstructuredGridReader";};
+  void PrintSelf(ostream& os, vtkIndent indent);
 
-  // overload because of vlDataReader ivar
+  // overload because of vtkDataReader ivar
   unsigned long int GetMTime();
 
   void SetFilename(char *name);
@@ -62,7 +62,7 @@ public:
 
 protected:
   void Execute();
-  vlDataReader Reader;
+  vtkDataReader Reader;
 
 };
 

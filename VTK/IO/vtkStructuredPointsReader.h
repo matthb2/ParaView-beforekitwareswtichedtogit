@@ -1,40 +1,40 @@
 /*=========================================================================
 
-  Program:   Visualization Library
+  Program:   Visualization Toolkit
   Module:    $RCSfile$
   Language:  C++
   Date:      $Date$
   Version:   $Revision$
 
-This file is part of the Visualization Library. No part of this file
+This file is part of the Visualization Toolkit. No part of this file
 or its contents may be copied, reproduced or altered in any way
 without the express written consent of the authors.
 
 Copyright (c) Ken Martin, Will Schroeder, Bill Lorensen 1993, 1994 
 
 =========================================================================*/
-// .NAME vlStructuredPointsReader - read vl structured points data file
+// .NAME vtkStructuredPointsReader - read vtk structured points data file
 // .SECTION Description
-// vlStructuredPointsReader is a source object that reads ASCII or binary 
-// structured points data files in vl format. See text for format details.
+// vtkStructuredPointsReader is a source object that reads ASCII or binary 
+// structured points data files in vtk format. See text for format details.
 // .SECTION Caveats
 // Binary files written on one system may not be readable on other systems.
 
-#ifndef __vlStructuredPointsReader_h
-#define __vlStructuredPointsReader_h
+#ifndef __vtkStructuredPointsReader_h
+#define __vtkStructuredPointsReader_h
 
 #include "SPtsSrc.hh"
-#include "vlDataR.hh"
+#include "vtkDataR.hh"
 
-class vlStructuredPointsReader : public vlStructuredPointsSource
+class vtkStructuredPointsReader : public vtkStructuredPointsSource
 {
 public:
-  vlStructuredPointsReader();
-  ~vlStructuredPointsReader();
-  char *GetClassName() {return "vlStructuredPointsReader";};
-  void PrintSelf(ostream& os, vlIndent indent);
+  vtkStructuredPointsReader();
+  ~vtkStructuredPointsReader();
+  char *GetClassName() {return "vtkStructuredPointsReader";};
+  void PrintSelf(ostream& os, vtkIndent indent);
 
-  // overload because of vlDataReader ivar
+  // overload because of vtkDataReader ivar
   unsigned long int GetMTime();
 
   void SetFilename(char *name);
@@ -62,7 +62,7 @@ public:
 
 protected:
   void Execute();
-  vlDataReader Reader;
+  vtkDataReader Reader;
 };
 
 #endif
