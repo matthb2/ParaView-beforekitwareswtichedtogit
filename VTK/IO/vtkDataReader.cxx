@@ -41,6 +41,8 @@
 vtkCxxRevisionMacro(vtkDataReader, "$Revision$");
 vtkStandardNewMacro(vtkDataReader);
 
+vtkCxxSetObjectMacro(vtkDataReader, InputArray, vtkCharArray);
+
 // this undef is required on the hp. vtkMutexLock ends up including
 // /usr/inclue/dce/cma_ux.h which has the gall to #define read as cma_read
 

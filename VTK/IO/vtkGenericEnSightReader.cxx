@@ -16,6 +16,7 @@
 
 =========================================================================*/
 #include "vtkGenericEnSightReader.h"
+
 #include "vtkEnSight6Reader.h"
 #include "vtkEnSight6BinaryReader.h"
 #include "vtkEnSightGoldReader.h"
@@ -24,6 +25,9 @@
 
 vtkCxxRevisionMacro(vtkGenericEnSightReader, "$Revision$");
 vtkStandardNewMacro(vtkGenericEnSightReader);
+
+vtkCxxSetObjectMacro(vtkGenericEnSightReader,TimeSetTimeValuesCollection, 
+                     vtkCollection);
 
 //----------------------------------------------------------------------------
 vtkGenericEnSightReader::vtkGenericEnSightReader()

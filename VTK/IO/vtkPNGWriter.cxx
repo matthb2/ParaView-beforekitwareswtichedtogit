@@ -23,6 +23,8 @@
 vtkCxxRevisionMacro(vtkPNGWriter, "$Revision$");
 vtkStandardNewMacro(vtkPNGWriter);
 
+vtkCxxSetObjectMacro(vtkPNGWriter,Result,vtkUnsignedCharArray);
+
 vtkPNGWriter::vtkPNGWriter()
 {
   this->FileLowerLeft = 1;

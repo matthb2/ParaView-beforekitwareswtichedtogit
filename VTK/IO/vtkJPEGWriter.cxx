@@ -25,6 +25,8 @@ extern "C" {
 vtkCxxRevisionMacro(vtkJPEGWriter, "$Revision$");
 vtkStandardNewMacro(vtkJPEGWriter);
 
+vtkCxxSetObjectMacro(vtkJPEGWriter,Result,vtkUnsignedCharArray);
+
 vtkJPEGWriter::vtkJPEGWriter()
 {
   this->FileLowerLeft = 1;

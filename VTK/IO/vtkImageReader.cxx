@@ -16,15 +16,15 @@
 
 =========================================================================*/
 #include "vtkImageReader.h"
-#include "vtkObjectFactory.h"
-#include "vtkByteSwap.h"
 
-#include <stdio.h>
-#include <ctype.h>
-#include <string.h>
+#include "vtkByteSwap.h"
+#include "vtkObjectFactory.h"
+#include "vtkTransform.h"
 
 vtkCxxRevisionMacro(vtkImageReader, "$Revision$");
 vtkStandardNewMacro(vtkImageReader);
+
+vtkCxxSetObjectMacro(vtkImageReader,Transform,vtkTransform);
 
 #ifdef read
 #undef read
