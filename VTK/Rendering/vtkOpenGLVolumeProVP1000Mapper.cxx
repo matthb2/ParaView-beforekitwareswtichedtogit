@@ -250,3 +250,9 @@ void vtkOpenGLVolumeProVP1000Mapper::RenderBoundingBox(vtkRenderer *ren,
   glEnable( GL_LIGHTING );
   glFlush();
 }
+
+//----------------------------------------------------------------------------
+void vtkOpenGLVolumeProVP1000Mapper::PrintSelf(ostream& os, vtkIndent indent)
+{
+  this->Superclass::PrintSelf(os,indent);
+}
