@@ -180,7 +180,7 @@ void vtkMultiProcessController::PrintSelf(ostream& os, vtkIndent indent)
     }
   else
     {
-    os << "(nil)" << endl;
+    os << "(none)" << endl;
     }
   os << indent << "Communicator: ";
   if (this->Communicator)
@@ -190,7 +190,7 @@ void vtkMultiProcessController::PrintSelf(ostream& os, vtkIndent indent)
     }
   else
     {
-    os << "(nil)" << endl;
+    os << "(none)" << endl;
     }
   os << indent << "RMI communicator: ";
   if (this->RMICommunicator)
@@ -200,7 +200,7 @@ void vtkMultiProcessController::PrintSelf(ostream& os, vtkIndent indent)
     }
   else
     {
-    os << "(nil)" << endl;
+    os << "(none)" << endl;
     }
   os << indent << "RMIs: \n";
   
