@@ -16,7 +16,9 @@
 
 =========================================================================*/
 #include "vtkFieldData.h"
+
 #include "vtkObjectFactory.h"
+#include "vtkIdList.h"
 
 vtkCxxRevisionMacro(vtkFieldData, "$Revision$");
 vtkStandardNewMacro(vtkFieldData);

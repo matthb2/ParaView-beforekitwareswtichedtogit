@@ -16,6 +16,8 @@
 
 =========================================================================*/
 #include "vtkRungeKutta4.h"
+
+#include "vtkFunctionSet.h"
 #include "vtkObjectFactory.h"
 
 vtkCxxRevisionMacro(vtkRungeKutta4, "$Revision$");

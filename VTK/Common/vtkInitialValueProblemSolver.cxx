@@ -17,6 +17,8 @@
 =========================================================================*/
 #include "vtkInitialValueProblemSolver.h"
 
+#include "vtkFunctionSet.h"
+
 vtkCxxRevisionMacro(vtkInitialValueProblemSolver, "$Revision$");
 
 vtkInitialValueProblemSolver::vtkInitialValueProblemSolver() 

@@ -16,8 +16,10 @@
 
 =========================================================================*/
 #include "vtkProcessObject.h"
+
 #include "vtkObjectFactory.h"
 #include "vtkOldStyleCallbackCommand.h"
+#include "vtkDataObject.h"
 
 vtkCxxRevisionMacro(vtkProcessObject, "$Revision$");
 
