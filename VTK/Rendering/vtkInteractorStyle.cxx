@@ -1135,6 +1135,7 @@ void vtkInteractorStyle::SetInteractor(vtkRenderWindowInteractor *i)
     i->AddObserver(vtkCommand::KeyPressEvent, this->EventCallbackCommand);
     i->AddObserver(vtkCommand::KeyReleaseEvent, this->EventCallbackCommand);
     i->AddObserver(vtkCommand::CharEvent, this->EventCallbackCommand);
+    i->AddObserver(vtkCommand::DeleteEvent, this->EventCallbackCommand);
     }
 }
 
@@ -1464,6 +1465,9 @@ void vtkInteractorStyle::ProcessEvents(vtkObject* object, unsigned long event,
     case vtkCommand::CharEvent:
       self->OnChar(rwi->GetControlKey(), rwi->GetShiftKey(),
                    rwi->GetKeyCode(), rwi->GetRepeatCount());
+      break;
+    case vtkCommand::DeleteEvent:
+      self->Interactor = 0;
       break;
     }
 }
