@@ -145,7 +145,7 @@ void vtkCamera::SetPosition(double x, double y, double z)
   this->Modified();
 }
 
-void vtkCamera::SetUserTransform(vtkLinearTransform *transform)
+void vtkCamera::SetUserTransform(vtkHomogeneousTransform *transform)
 {
   if (transform == this->UserTransform) 
     { 
