@@ -118,13 +118,7 @@ vtkXdmfReader::vtkXdmfReader()
 
   // I have this flag because I do not want to change the initialization
   // of the output to the generic output.  It might break something;
-  vtkStructuredGrid *output = vtkStructuredGrid::New();
-  this->SetOutput(output);
   this->OutputsInitialized = 0;
-  // Releasing data for pipeline parallism.
-  // Filters will know it is empty. 
-  output->ReleaseData();
-  output->Delete();
 
   this->DOM = 0;
   this->FormatMulti = 0;
@@ -191,6 +185,26 @@ vtkXdmfReader::~vtkXdmfReader()
 
   delete this->Internals;
   H5garbage_collect();
+}
+
+//----------------------------------------------------------------------------
+int vtkXdmfReader::ProcessRequest(vtkInformation* request,
+                                  vtkInformationVector** inputVector,
+                                  vtkInformationVector* outputVector)
+{
+  // generate the data
+  if(request->Has(vtkDemandDrivenPipeline::REQUEST_DATA_OBJECT()))
+    {
+    vtkInformation* outputInf = outputVector->GetInformationObject(0);
+    if (!outputInf->Get(vtkDataObject::DATA_OBJECT()))
+      {
+      vtkStructuredGrid *output = vtkStructuredGrid::New();
+      this->GetExecutive()->SetOutputData(0, output);
+      output->Delete();
+      }
+    return 1;
+    }
+  return this->Superclass::ProcessRequest(request, inputVector, outputVector);
 }
 
 //----------------------------------------------------------------------------
