@@ -453,7 +453,14 @@ char* vtkString::CropString(char* str, size_t max_len)
   // Crop the string
 
   size_t middle = max_len / 2;
-  strcpy(str + middle, str + str_len - (max_len - middle));
+  char* src = str + str_len - (max_len - middle);
+  char* dst = str + middle;
+  size_t len = strlen(src);
+  size_t cc;
+  for ( cc = 0; cc < len; cc ++ )
+    {
+    dst[cc] = src[cc];
+    }
 
   // Add the ellipsis
 
