@@ -404,7 +404,14 @@ void vtkPointSet::DeepCopy(vtkDataObject *dataObject)
     {
     if (this->Points == NULL)
       {
-      this->Points = vtkPoints::New();
+      if ( pointSet->GetPoints() != NULL )
+        {
+        this->Points = pointSet->GetPoints()->MakeObject();
+        }
+      else
+        {
+        this->Points = vtkPoints::New();
+        }
       }
     this->Points->DeepCopy(pointSet->GetPoints());
     }
