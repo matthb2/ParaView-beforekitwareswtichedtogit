@@ -56,7 +56,7 @@ int vtkConeSource::RequestData(
   vtkInformation *vtkNotUsed(request),
   vtkInformationVector **vtkNotUsed(inputVector),
   vtkInformationVector *outputVector)
-  {
+{
   // get the info objects
   vtkInformation *outInfo = outputVector->GetInformationObject(0);
 
