@@ -18,7 +18,7 @@
 #include "vtkImageFlip.h"
 #include "vtkObjectFactory.h"
 #include "vtkBase64Utilities.h"
-#include "zlib.h"
+#include "vtk_zlib.h"
 
 #include "Resources/icons.h"
 
