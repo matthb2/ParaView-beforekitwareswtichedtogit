@@ -42,9 +42,14 @@ void vtkStructuredGridOutlineFilter::Execute()
   int edgeFlag;
   int i;
 
+  inPts = input->GetPoints();
+  if (!inPts)
+    {
+    return;
+    }
+  
   newLines = vtkCellArray::New();
   newPts = vtkPoints::New();
-  inPts = input->GetPoints();
 
   ext = input->GetExtent();
   wExt = input->GetWholeExtent();
