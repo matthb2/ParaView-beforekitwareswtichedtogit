@@ -34,7 +34,7 @@ vtkCxxRevisionMacro(vtkVolumeRayCastFunction, "$Revision$");
 void vtkVolumeRayCastFunction::FunctionInitialize( 
                                 vtkRenderer *ren, 
                                 vtkVolume *vol,
-                                VTKVRCStaticInfo *staticInfo )
+                                vtkVolumeRayCastStaticInfo *staticInfo )
 {
   vtkVolumeRayCastMapper *mapper = 
     vtkVolumeRayCastMapper::SafeDownCast( vol->GetMapper() );
