@@ -65,8 +65,13 @@ private:
 #endif  
 };
 
+#ifdef VTK_OPENGL_HAS_OSMESA
 vtkXOpenGLRenderWindowInternal::vtkXOpenGLRenderWindowInternal(
   vtkRenderWindow *rw)
+#else
+vtkXOpenGLRenderWindowInternal::vtkXOpenGLRenderWindowInternal(
+  vtkRenderWindow * vtkNotUsed(rw))
+#endif
 {
   this->ContextId = NULL;
   
@@ -76,8 +81,6 @@ vtkXOpenGLRenderWindowInternal::vtkXOpenGLRenderWindowInternal(
   this->OffScreenWindow = NULL;
   this->ScreenMapped = rw->GetMapped();
   this->ScreenDoubleBuffer = rw->GetDoubleBuffer();
-#else
-  rw = 0;
 #endif
 }
 
