@@ -67,7 +67,6 @@ void vtkRotationFilter::Execute()
 
   outPoints = vtkPoints::New();
 
-  int counter = 0;
   vtkIdType numPts = input->GetNumberOfPoints();
   vtkIdType numCells = input->GetNumberOfCells();
 
