@@ -204,8 +204,6 @@ void vtkTubeFilter::Execute()
     if ( this->GenerateTCoords != VTK_TCOORDS_OFF )
       {
       this->GenerateTextureCoords(offset,npts,pts,inPts,inScalars,newTCoords);
-      outPD->SetTCoords(newTCoords);
-      newTCoords->Delete();
       }
 
     // Compute the new offset for the next polyline
@@ -220,6 +218,12 @@ void vtkTubeFilter::Execute()
   if ( deleteNormals )
     {
     inNormals->Delete();
+    }
+
+  if ( this->GenerateTCoords != VTK_TCOORDS_OFF )
+    {
+    outPD->SetTCoords(newTCoords);
+    newTCoords->Delete();
     }
 
   output->SetPoints(newPts);
