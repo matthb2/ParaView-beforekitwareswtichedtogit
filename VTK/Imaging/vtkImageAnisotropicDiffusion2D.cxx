@@ -39,13 +39,13 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 
 =========================================================================*/
 #include <math.h>
-#include "vtkImageAnisotropicDiffusion2d.h"
+#include "vtkImageAnisotropicDiffusion2D.h"
 
 
 //----------------------------------------------------------------------------
 // Description:
-// Construct an instance of vtkImageAnisotropicDiffusion2d fitler.
-vtkImageAnisotropicDiffusion2d::vtkImageAnisotropicDiffusion2d()
+// Construct an instance of vtkImageAnisotropicDiffusion2D fitler.
+vtkImageAnisotropicDiffusion2D::vtkImageAnisotropicDiffusion2D()
 {
   this->SetAxes(VTK_IMAGE_X_AXIS, VTK_IMAGE_Y_AXIS);
   
@@ -59,7 +59,7 @@ vtkImageAnisotropicDiffusion2d::vtkImageAnisotropicDiffusion2d()
 
 //----------------------------------------------------------------------------
 void 
-vtkImageAnisotropicDiffusion2d::PrintSelf(ostream& os, vtkIndent indent)
+vtkImageAnisotropicDiffusion2D::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->vtkImageSpatialFilter::PrintSelf(os, indent);
   os << indent << "NumberOfIterations: " << this->NumberOfIterations << "\n";
@@ -72,7 +72,7 @@ vtkImageAnisotropicDiffusion2d::PrintSelf(ostream& os, vtkIndent indent)
 // Description:
 // This method sets the number of inputs which also affects the
 // input neighborhood needed to compute one output pixel.
-void vtkImageAnisotropicDiffusion2d::SetNumberOfIterations(int num)
+void vtkImageAnisotropicDiffusion2D::SetNumberOfIterations(int num)
 {
   int temp;
   
@@ -97,7 +97,7 @@ void vtkImageAnisotropicDiffusion2d::SetNumberOfIterations(int num)
 // This method contains a switch statement that calls the correct
 // templated function for the input region type.  The input and output regions
 // must have the same data type.
-void vtkImageAnisotropicDiffusion2d::Execute(vtkImageRegion *inRegion, 
+void vtkImageAnisotropicDiffusion2D::Execute(vtkImageRegion *inRegion, 
 						     vtkImageRegion *outRegion)
 {
   int idx;
@@ -148,7 +148,7 @@ void vtkImageAnisotropicDiffusion2d::Execute(vtkImageRegion *inRegion,
 // This method performs one pass of the diffusion filter.
 // The inRegion and outRegion are assumed to have data type float,
 // and have the same extent.
-void vtkImageAnisotropicDiffusion2d::Iterate(vtkImageRegion *inRegion, 
+void vtkImageAnisotropicDiffusion2D::Iterate(vtkImageRegion *inRegion, 
 						   vtkImageRegion *outRegion,
 						   float ar0, float ar1)
 {

@@ -38,24 +38,24 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 
 
 =========================================================================*/
-// .NAME vtkImageAnisotropicDiffusion2d - edge preserving smoothing.
+// .NAME vtkImageAnisotropicDiffusion2D - edge preserving smoothing.
 // .SECTION Description
-// vtkImageAnisotropicDiffusion2d  diffuses if pixel
+// vtkImageAnisotropicDiffusion2D  diffuses if pixel
 // difference is below a threshold.  It diffuses with all 8 neighbors.
 // Input and output can be any type.
 
 
-#ifndef __vtkImageAnisotropicDiffusion2d_h
-#define __vtkImageAnisotropicDiffusion2d_h
+#ifndef __vtkImageAnisotropicDiffusion2D_h
+#define __vtkImageAnisotropicDiffusion2D_h
 
 
 #include "vtkImageSpatialFilter.h"
 
-class vtkImageAnisotropicDiffusion2d : public vtkImageSpatialFilter
+class vtkImageAnisotropicDiffusion2D : public vtkImageSpatialFilter
 {
 public:
-  vtkImageAnisotropicDiffusion2d();
-  char *GetClassName() {return "vtkImageAnisotropicDiffusion2d";};
+  vtkImageAnisotropicDiffusion2D();
+  char *GetClassName() {return "vtkImageAnisotropicDiffusion2D";};
   void PrintSelf(ostream& os, vtkIndent indent);
 
   void SetNumberOfIterations(int num);

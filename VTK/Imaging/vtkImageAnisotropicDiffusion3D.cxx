@@ -39,13 +39,13 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 
 =========================================================================*/
 #include <math.h>
-#include "vtkImageAnisotropicDiffusion3d.h"
+#include "vtkImageAnisotropicDiffusion3D.h"
 
 
 //----------------------------------------------------------------------------
 // Description:
-// Construct an instance of vtkImageAnisotropicDiffusion3d fitler.
-vtkImageAnisotropicDiffusion3d::vtkImageAnisotropicDiffusion3d()
+// Construct an instance of vtkImageAnisotropicDiffusion3D fitler.
+vtkImageAnisotropicDiffusion3D::vtkImageAnisotropicDiffusion3D()
 {
   this->SetAxes(VTK_IMAGE_X_AXIS, VTK_IMAGE_Y_AXIS, VTK_IMAGE_Z_AXIS);
   
@@ -63,7 +63,7 @@ vtkImageAnisotropicDiffusion3d::vtkImageAnisotropicDiffusion3d()
 
 //----------------------------------------------------------------------------
 void 
-vtkImageAnisotropicDiffusion3d::PrintSelf(ostream& os, vtkIndent indent)
+vtkImageAnisotropicDiffusion3D::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->vtkImageSpatialFilter::PrintSelf(os, indent);
   os << indent << "NumberOfIterations: " << this->NumberOfIterations << "\n";
@@ -113,7 +113,7 @@ vtkImageAnisotropicDiffusion3d::PrintSelf(ostream& os, vtkIndent indent)
 // Description:
 // This method sets the number of inputs which also affects the
 // input neighborhood needed to compute one output pixel.
-void vtkImageAnisotropicDiffusion3d::SetNumberOfIterations(int num)
+void vtkImageAnisotropicDiffusion3D::SetNumberOfIterations(int num)
 {
   int temp;
   
@@ -140,7 +140,7 @@ void vtkImageAnisotropicDiffusion3d::SetNumberOfIterations(int num)
 // This method contains a switch statement that calls the correct
 // templated function for the input region type.  The input and output regions
 // must have the same data type.
-void vtkImageAnisotropicDiffusion3d::Execute(vtkImageRegion *inRegion, 
+void vtkImageAnisotropicDiffusion3D::Execute(vtkImageRegion *inRegion, 
 					     vtkImageRegion *outRegion)
 {
   int idx;
@@ -195,7 +195,7 @@ void vtkImageAnisotropicDiffusion3d::Execute(vtkImageRegion *inRegion,
 // This method performs one pass of the diffusion filter.
 // The inRegion and outRegion are assumed to have data type float,
 // and have the same extent.
-void vtkImageAnisotropicDiffusion3d::Iterate(vtkImageRegion *inRegion, 
+void vtkImageAnisotropicDiffusion3D::Iterate(vtkImageRegion *inRegion, 
 					     vtkImageRegion *outRegion,
 					     float ar0, float ar1, float ar2,
 					     int *coreExtent, int count)
