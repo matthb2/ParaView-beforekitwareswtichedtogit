@@ -122,6 +122,92 @@ const char* vtkSMProxyGroupDomain::GetGroup(unsigned int idx)
 }
 
 //---------------------------------------------------------------------------
+unsigned int vtkSMProxyGroupDomain::GetNumberOfProxies()
+{
+  unsigned int numProxies = 0;
+
+  vtkSMProxyManager* pm = this->GetProxyManager();
+  if (pm)
+    {
+    vtkstd::vector<vtkStdString>::iterator it = 
+      this->PGInternals->Groups.begin();
+    for (; it != this->PGInternals->Groups.end(); it++)
+      {
+      numProxies += pm->GetNumberOfProxies(it->c_str());
+      }
+    }
+  return numProxies;
+}
+
+//---------------------------------------------------------------------------
+const char* vtkSMProxyGroupDomain::GetProxyName(unsigned int idx)
+{
+  const char* proxyName = 0;
+  unsigned int proxyCount = 0;
+  unsigned int prevProxyCount = 0;
+
+  vtkSMProxyManager* pm = this->GetProxyManager();
+  if (pm)
+    {
+    vtkstd::vector<vtkStdString>::iterator it = 
+      this->PGInternals->Groups.begin();
+    for (; it != this->PGInternals->Groups.end(); it++)
+      {
+      prevProxyCount = proxyCount;
+      proxyCount += pm->GetNumberOfProxies(it->c_str());
+      if (idx < proxyCount)
+        {
+        proxyName = pm->GetProxyName(it->c_str(), idx-prevProxyCount);
+        break;
+        }
+      }
+    }
+  return proxyName;
+}
+
+//---------------------------------------------------------------------------
+const char* vtkSMProxyGroupDomain::GetProxyName(vtkSMProxy* proxy)
+{
+  const char* proxyName = 0;
+
+  vtkSMProxyManager* pm = this->GetProxyManager();
+  if (pm)
+    {
+    vtkstd::vector<vtkStdString>::iterator it = 
+      this->PGInternals->Groups.begin();
+    for (; it != this->PGInternals->Groups.end(); it++)
+      {
+      proxyName = pm->GetProxyName(it->c_str(), proxy);
+      if (proxyName)
+        {
+        break;
+        }
+      }
+    }
+  return proxyName;
+}
+
+//---------------------------------------------------------------------------
+vtkSMProxy* vtkSMProxyGroupDomain::GetProxy(const char* name)
+{
+  vtkSMProxyManager* pm = this->GetProxyManager();
+  if (pm)
+    {
+    vtkstd::vector<vtkStdString>::iterator it = 
+      this->PGInternals->Groups.begin();
+    for (; it != this->PGInternals->Groups.end(); it++)
+      {
+      vtkSMProxy* proxy = pm->GetProxy(it->c_str(), name);
+      if (proxy)
+        {
+        return proxy;
+        }
+      }
+    }
+  return 0;
+}
+
+//---------------------------------------------------------------------------
 int vtkSMProxyGroupDomain::ReadXMLAttributes(vtkSMProperty* prop, vtkPVXMLElement* element)
 {
   this->Superclass::ReadXMLAttributes(prop, element);
