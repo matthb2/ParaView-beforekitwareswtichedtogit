@@ -250,7 +250,7 @@ void vtkLookupTable::Build()
 {
   if (this->Table->GetNumberOfTuples() < 1 ||
       (this->GetMTime() > this->BuildTime && 
-       this->InsertTime < this->BuildTime))
+       this->InsertTime <= this->BuildTime))
     {
     this->ForceBuild();
     }
@@ -836,6 +836,11 @@ void vtkLookupTable::MapScalarsThroughTable2(void *input,
 // that the allocated memory is not initialized according to HSVA ramps.
 void vtkLookupTable::SetNumberOfTableValues(vtkIdType number)
 {
+  if (this->NumberOfColors == number)
+    {
+    return;
+    }
+  this->Modified();
   this->NumberOfColors = number;
   this->Table->SetNumberOfTuples(number);
 }
