@@ -244,7 +244,7 @@ void vtkIVExporter::WriteAnActor(vtkActor *anActor, FILE *fp)
   vtkPolyData *pd;
   vtkGeometryFilter *gf = NULL;
   vtkPointData *pntData;
-  vtkPoints *points = NULL;
+  vtkPoints *points;
   vtkDataArray *normals = NULL;
   vtkDataArray *tcoords = NULL;
   int i;

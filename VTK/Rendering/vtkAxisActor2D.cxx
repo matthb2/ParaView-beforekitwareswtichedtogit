@@ -681,7 +681,7 @@ int vtkAxisActor2DComputeTicks(double sRange[2], double &interval,
                                double &root)
 {  
   // first we try assuming the first value is reasonable
-  int numTicks = 0;
+  int numTicks;
   double range    = fabs(sRange[1]-sRange[0]);
   int rootPower   = static_cast<int>(floor(log10(range)-1));
   root     = pow(10.0,rootPower);

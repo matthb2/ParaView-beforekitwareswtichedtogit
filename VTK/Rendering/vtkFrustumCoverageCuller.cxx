@@ -106,7 +106,6 @@ double vtkFrustumCoverageCuller::Cull( vtkRenderer *ren,
       if (!vtkMath::AreBoundsInitialized(bounds))
         {
         coverage = 0.0;
-        i = 7;
         }
       else
         {

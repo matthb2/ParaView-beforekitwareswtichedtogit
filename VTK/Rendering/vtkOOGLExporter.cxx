@@ -272,7 +272,7 @@ void vtkOOGLExporter::WriteAnActor(vtkActor *anActor, FILE *fp, int count)
   vtkDataSet *ds;
   vtkPolyData *pd;
   vtkGeometryFilter *gf = NULL;
-  vtkPoints *points = NULL;
+  vtkPoints *points;
   int i;
   vtkProperty *prop;
   static double defcolor[3] = {  1.0, 1.0, 1.0 };

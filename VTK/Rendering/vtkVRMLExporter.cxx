@@ -236,7 +236,7 @@ void vtkVRMLExporter::WriteAnActor(vtkActor *anActor, FILE *fp)
   vtkPolyData *pd;
   vtkGeometryFilter *gf = NULL;
   vtkPointData *pntData;
-  vtkPoints *points = NULL;
+  vtkPoints *points;
   vtkDataArray *normals = NULL;
   vtkDataArray *tcoords = NULL;
   int i, i1, i2;

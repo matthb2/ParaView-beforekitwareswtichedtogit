@@ -531,7 +531,7 @@ void vtkVolume::UpdateTransferFunctions( vtkRenderer *vtkNotUsed(ren) )
   vtkColorTransferFunction  *rgbtf;
   int                        colorChannels;
   
-  int                        arraySize = 0;
+  int                        arraySize;
   
   // Check that we have scalars
   if ( this->Mapper == NULL ||
