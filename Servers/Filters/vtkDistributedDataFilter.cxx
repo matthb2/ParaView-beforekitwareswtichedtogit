@@ -169,7 +169,7 @@ const char *vtkDistributedDataFilter::GetGlobalNodeIdArray(vtkDataSet *set)
      };
   //------------------------------------------------
 
-  if (this->GlobalIdArrayName && (this->GlobalIdArrayName[0] == NULL))
+  if (this->GlobalIdArrayName && (!this->GlobalIdArrayName[0]))
     {
     delete [] this->GlobalIdArrayName;
     this->GlobalIdArrayName = NULL;
