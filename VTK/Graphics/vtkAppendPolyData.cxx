@@ -231,7 +231,7 @@ int vtkAppendPolyData::RequestData(
 
   if ( numPts < 1 || numCells < 1 )
     {
-    //vtkErrorMacro(<<"No data to append!");
+    vtkDebugMacro(<<"No data to append!");
     return 1;
     }
   this->UpdateProgress(0.10);

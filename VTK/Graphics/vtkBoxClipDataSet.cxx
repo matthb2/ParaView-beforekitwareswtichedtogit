@@ -169,7 +169,7 @@ int vtkBoxClipDataSet::RequestData(
   //
   if ( numPts < 1 )
     {
-    //vtkErrorMacro(<<"No data to clip");
+    vtkDebugMacro(<<"No data to clip");
     return 1;
     }
   

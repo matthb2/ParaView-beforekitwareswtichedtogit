@@ -180,7 +180,7 @@ int vtkAppendFilter::RequestData(
 
   if ( numPts < 1)
     {
-    //vtkErrorMacro(<<"No data to append!");
+    vtkDebugMacro(<<"No data to append!");
     return 1;
     }
   

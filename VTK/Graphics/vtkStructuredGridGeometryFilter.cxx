@@ -71,7 +71,7 @@ int vtkStructuredGridGeometryFilter::RequestData(
 
   if ( input->GetPoints() == NULL)
     {
-    //vtkErrorMacro(<<"No data to extract");
+    vtkDebugMacro(<<"No data to extract");
     return 1;
     }
 

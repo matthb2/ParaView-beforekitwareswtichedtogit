@@ -868,7 +868,7 @@ ifstream *vtkPDataSetReader::OpenFile(const char* filename)
 
   if (!filename || filename[0] == '\0')
     {
-    //vtkErrorMacro(<<"A FileName must be specified.");
+    vtkDebugMacro(<<"A FileName must be specified.");
     return NULL;
     }
   

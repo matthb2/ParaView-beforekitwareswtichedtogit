@@ -119,7 +119,7 @@ int vtkFeatureEdges::RequestData(
   if ( (numPts=input->GetNumberOfPoints()) < 1 || !inPts || 
        (numPolys < 1 && numStrips < 1) )
     {
-    //vtkErrorMacro(<<"No input data!");
+    vtkDebugMacro(<<"No input data!");
     return 1;
     }
 

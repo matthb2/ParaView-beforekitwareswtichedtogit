@@ -143,7 +143,7 @@ int vtkClipPolyData::RequestData(
   //
   if ( numPts < 1 || inPts == NULL )
     {
-    //vtkErrorMacro(<<"No data to clip");
+    vtkDebugMacro(<<"No data to clip");
     return 1;
     }
 

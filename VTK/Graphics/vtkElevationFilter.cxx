@@ -77,7 +77,7 @@ int vtkElevationFilter::RequestData(
 
   if ( ((numPts=input->GetNumberOfPoints()) < 1) )
     {
-    //vtkErrorMacro(<< "No input!");
+    vtkDebugMacro(<< "No input!");
     return 1;
     }
 

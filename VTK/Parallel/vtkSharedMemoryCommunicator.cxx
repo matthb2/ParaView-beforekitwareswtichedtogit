@@ -283,7 +283,7 @@ int vtkSharedMemoryCommunicator::Receive(vtkDataArray* object,
     message = this->FindMessage(remoteThreadId, tag);
     if (message == NULL)
       {
-      //vtkErrorMacro("I passed through the gate, but there is no message.");
+      vtkDebugMacro("I passed through the gate, but there is no message.");
       }
     }
 

@@ -525,7 +525,7 @@ void vtkGenericEdgeTable::Initialize(vtkIdType start)
   if(this->LastPointId)
     {
     //if different from zero then raise problem:
-    //vtkErrorMacro( << "You are not supposed to initialize during algorithm" );
+    vtkDebugMacro( << "You are not supposed to initialize during algorithm" );
     return;
     }
 
