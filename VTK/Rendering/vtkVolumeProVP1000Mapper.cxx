@@ -453,8 +453,8 @@ void vtkVolumeProVP1000Mapper::UpdateProperties( vtkRenderer *vtkNotUsed(ren),
       }
 
     gradientTable = new double [this->GradientTableSize];
-    float *spacing = this->GetInput()->GetSpacing();
-    float avgSpacing = 0.333*(spacing[0] + spacing[1] + spacing[2]);
+    double *spacing = this->GetInput()->GetSpacing();
+    double avgSpacing = 0.333*(spacing[0] + spacing[1] + spacing[2]);
     scale = scale/(avgSpacing*(this->GradientTableSize-1));
     
     for ( i = 0; i < this->GradientTableSize; i++ )
@@ -611,8 +611,8 @@ void vtkVolumeProVP1000Mapper::UpdateVolume( vtkRenderer * vtkNotUsed(ren), vtkV
   vtkTransform              *correctionTransform;
   vtkTransform              *modelTransform;
   int                       i, j;
-  float                     dataOrigin[3];
-  float                     dataSpacing[3];
+  double                    dataOrigin[3];
+  double                    dataSpacing[3];
   VLIStatus                 status;
   double                    range[2];
   
