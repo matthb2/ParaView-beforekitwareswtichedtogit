@@ -103,7 +103,8 @@ void vtkOBJExporter::WriteData()
   
   ac = ren->GetActors();
   vtkAssemblyPath *apath;
-  for (ac->InitTraversal(); (anActor = ac->GetNextActor()); )
+  vtkCollectionSimpleIterator ait;
+  for (ac->InitTraversal(ait); (anActor = ac->GetNextActor(ait)); )
     {
     for (anActor->InitPathTraversal(); (apath=anActor->GetNextPath()); )
       {

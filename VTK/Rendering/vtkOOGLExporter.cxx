@@ -221,7 +221,8 @@ void vtkOOGLExporter::WriteData()
   ac = ren->GetActors();
   vtkAssemblyPath *apath;
   count = 0;
-  for (ac->InitTraversal(); (anActor = ac->GetNextActor()); )
+  vtkCollectionSimpleIterator ait;
+  for (ac->InitTraversal(ait); (anActor = ac->GetNextActor(ait)); )
     {
     for (anActor->InitPathTraversal(); (apath=anActor->GetNextPath()); )
       {

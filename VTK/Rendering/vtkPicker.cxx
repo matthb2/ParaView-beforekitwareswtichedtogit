@@ -269,7 +269,8 @@ int vtkPicker::Pick(double selectionX, double selectionY, double selectionZ,
   vtkAssemblyPath *path;
   vtkProperty *tempProperty;
   this->Transform->PostMultiply();
-  for ( props->InitTraversal(); (prop=props->GetNextProp()); )
+  vtkCollectionSimpleIterator pit;
+  for ( props->InitTraversal(pit); (prop=props->GetNextProp(pit)); )
     {
     for ( prop->InitPathTraversal(); (path=prop->GetNextPath()); )
       {

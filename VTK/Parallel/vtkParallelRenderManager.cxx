@@ -373,8 +373,9 @@ void vtkParallelRenderManager::InitializePieces()
   while ( (ren = rens->GetNextRenderer(rsit)) )
     {
     actors = ren->GetActors();
-    actors->InitTraversal();
-    while ( (actor = actors->GetNextItem()) )
+    vtkCollectionSimpleIterator ait;
+    actors->InitTraversal(ait);
+    while ( (actor = actors->GetNextActor(ait)) )
       {
       mapper = actor->GetMapper();
       pdMapper = vtkPolyDataMapper::SafeDownCast(mapper);
