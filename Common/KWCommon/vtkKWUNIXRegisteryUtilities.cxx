@@ -139,11 +139,6 @@ int vtkKWUNIXRegisteryUtilities::OpenInternal(const char *toplevel,
         break;
         }
       }
-    if ( !found )
-      {
-      res = 0;
-      }
-    
     }
   ifs->close();
   this->SetSubKey( subkey );
