@@ -68,6 +68,7 @@ void vtkImageViewer::PrintSelf(ostream& os, vtkIndent indent)
   os << indent << *this->ImageMapper << endl;
   os << indent << *this->RenderWindow << endl;
   os << indent << *this->Renderer << endl;
+  os << indent << *this->Actor2D << endl;
 }
 
 
