@@ -313,12 +313,11 @@ vtkPlane *vtkPlanes::GetPlane(int i)
   
   if ( i >= 0 && i < this->GetNumberOfPlanes() )
     {
-    vtkPlane *plane = vtkPlane::New();
     this->Normals->GetTuple(i,normal);
     this->Points->GetPoint(i,point);
-    plane->SetNormal(normal);
-    plane->SetOrigin(point);
-    return plane;
+    this->Plane->SetNormal(normal);
+    this->Plane->SetOrigin(point);
+    return this->Plane;
     }
   else
     {
