@@ -52,8 +52,6 @@ vtkTexture::~vtkTexture()
     {
     this->LookupTable->UnRegister(this);
     }
-
-  this->SetInput(NULL);
 }
 
 // return the correct type of Texture 
