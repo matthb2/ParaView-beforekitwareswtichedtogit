@@ -74,6 +74,7 @@ public:
   // Get a command from its index.
   char *GetString(int idx);
   
+  vtkGetMacro(NumberOfStrings, int);
   
 protected:
   vtkStringList();
