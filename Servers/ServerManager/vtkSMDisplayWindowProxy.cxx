@@ -191,7 +191,7 @@ void vtkSMDisplayWindowProxy::CreateVTKObjects(int numObjects)
         << vtkClientServerStream::End;
     }
 
-  this->CompositeProxy->SetVTKClassName("vtkCompositeManager");
+  this->CompositeProxy->SetVTKClassName("vtkCompositeRenderManager");
   this->CompositeProxy->CreateVTKObjects(numObjects);
   for (i=0; i<numObjects; i++)
     {
