@@ -158,7 +158,7 @@ void vtkPVXMLParser::PrintXML(ostream& os)
 }
 
 //----------------------------------------------------------------------------
-vtkPVXMLElement* vtkPVXMLParser::GetRootElement()
+vtkPVXMLElement* vtkPVXMLParser::GetRootElement() 
 {
   return this->RootElement;
 }
