@@ -505,7 +505,7 @@ void vtkClientCompositeManager::ReceiveAndSetColorBuffer()
   this->SavedCamera->SetClippingRange(cam->GetClippingRange());
   this->SavedCamera->SetViewAngle(cam->GetViewAngle());
   double* tmp = cam->GetWindowCenter();
-  this->SavedCamera->SetWindowCenter(tmp[0], tmp[1]);
+  //this->SavedCamera->SetWindowCenter(tmp[0], tmp[1]);
 
   cam->ParallelProjectionOn();
   cam->SetParallelScale(
