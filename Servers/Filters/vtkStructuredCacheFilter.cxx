@@ -82,6 +82,7 @@ void vtkStructuredCacheFilter::UpdateData(vtkDataObject *outObject)
   vtkDataSet *output = this->GetOutput();
 
   vtkTimerLog::MarkStartEvent("Update StructuredCache");
+  output->Initialize();
 
   this->BuildExtentMap(input, output);
 
