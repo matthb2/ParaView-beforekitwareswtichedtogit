@@ -517,9 +517,10 @@ void vtkVolume::UpdateTransferFunctions( vtkRenderer *vtkNotUsed(ren) )
   vtkPiecewiseFunction      *graytf;
   vtkColorTransferFunction  *rgbtf;
   int                        colorChannels;
-  int                        sotfNeedsUpdate = 0;
-  int                        rgbtfNeedsUpdate = 0;
-  int                        graytfNeedsUpdate = 0;
+  
+  //int                        sotfNeedsUpdate = 0;
+  //int                        rgbtfNeedsUpdate = 0;
+  //int                        graytfNeedsUpdate = 0;
   int                        arraySize = 0;
   
   // Check that we have scalars
