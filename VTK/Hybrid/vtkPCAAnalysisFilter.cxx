@@ -334,6 +334,7 @@ void vtkPCAAnalysisFilter::GetParameterisedShape(vtkFloatArray *b, vtkPointSet* 
     shape->GetPoints()->SetPoint(i,shapevec[i*3  ], shapevec[i*3+1], shapevec[i*3+2]);
   }
   
+  DeleteVector(shapevec);
   DeleteVector(w);
 }
 
