@@ -19,7 +19,6 @@
 #include "vtkImageMapper.h"
 
 #include "vtkActor2D.h"
-#include "vtkImager.h"
 #include "vtkViewport.h"
 #include "vtkWindow.h"
 #include "vtkImageData.h"
