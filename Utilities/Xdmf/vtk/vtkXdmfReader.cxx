@@ -1778,7 +1778,7 @@ int vtkXdmfReader::GetParameterIndex(int Index)
 int vtkXdmfReader::SetParameterIndex(const char *ParameterName, int CurrentIndex) 
 {
   XdmfParameter *Param;
-  int Status;
+  int Status=-1;
 
   if(!this->DOM) 
     {
