@@ -749,6 +749,18 @@ void vtkIceTRenderManager::PrintSelf(ostream &os, vtkIndent indent)
     case OVER:    os << "Porter and Duff OVER operator"; break;
     }
   os << endl;
+
+  vtkIndent i2 = indent.GetNextIndent();
+  os << indent << "Sorting Kd tree: ";
+  if (this->SortingKdTree)
+    {
+    os << endl;
+    this->SortingKdTree->PrintSelf(os, i2);
+    }
+  else
+    {
+    os << "(none)" << endl;
+    }
 }
 
 
