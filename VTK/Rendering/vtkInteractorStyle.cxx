@@ -326,7 +326,7 @@ void vtkInteractorStyle::HighlightActor2D(vtkActor2D *actor2D)
       }
     else
       {
-      float tmpColor[3];
+      double tmpColor[3];
       actor2D->GetProperty()->GetColor(tmpColor);
       actor2D->GetProperty()->SetColor(this->PickColor);
       this->PickColor[0] = tmpColor[0];
@@ -338,7 +338,7 @@ void vtkInteractorStyle::HighlightActor2D(vtkActor2D *actor2D)
     {
     if ( this->PickedActor2D )
       {
-      float tmpColor[3];
+      double tmpColor[3];
       this->PickedActor2D->GetProperty()->GetColor(tmpColor);
       this->PickedActor2D->GetProperty()->SetColor(this->PickColor);
       this->PickColor[0] = tmpColor[0];
