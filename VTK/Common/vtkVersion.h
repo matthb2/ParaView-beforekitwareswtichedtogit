@@ -54,10 +54,10 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 
 #include "vtkObject.h"
 
-#define VTK_VERSION "2.2.2"
+#define VTK_VERSION "2.3.0"
 #define VTK_MAJOR_VERSION 2
-#define VTK_MINOR_VERSION 2
-#define VTK_BUILD_VERSION 2
+#define VTK_MINOR_VERSION 3
+#define VTK_BUILD_VERSION 0
 #define VTK_SOURCE_VERSION "vtk version " VTK_VERSION ", vtk source $Revision$, $Date$ (GMT)"
 
 
