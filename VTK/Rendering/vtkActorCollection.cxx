@@ -29,7 +29,8 @@ void vtkActorCollection::ApplyProperties(vtkProperty *p)
     return;
     }
   
-  for ( this->InitTraversal(); (actor=this->GetNextActor()); )
+  vtkCollectionSimpleIterator ait;
+  for ( this->InitTraversal(ait); (actor=this->GetNextActor(ait)); )
     {
     actor->GetProperty()->DeepCopy(p);
     }
