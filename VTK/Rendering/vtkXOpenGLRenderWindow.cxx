@@ -253,7 +253,10 @@ vtkXOpenGLRenderWindow::~vtkXOpenGLRenderWindow()
   // free the cursors
   if (this->DisplayId)
     {
-    XUndefineCursor(this->DisplayId,this->WindowId);
+    if (this->WindowId)
+      {
+      XUndefineCursor(this->DisplayId,this->WindowId);
+      }
     if (this->XCArrow)
       {
       XFreeCursor(this->DisplayId,this->XCArrow);
