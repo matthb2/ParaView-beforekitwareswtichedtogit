@@ -481,6 +481,7 @@ int vtkSubjectHelper::InvokeEvent(unsigned long event, void *callData,
       elem->Visited = 1;
       vtkCommand* command = elem->Command;
       command->Register(command);
+      command->SetAbortFlag(0);
       elem->Command->Execute(self,event,callData);
       // if the command set the abort flag, then stop firing events
       // and return
