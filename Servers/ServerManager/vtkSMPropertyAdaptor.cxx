@@ -468,6 +468,12 @@ const char* vtkSMPropertyAdaptor::GetEnumerationValue()
     return 0;
     }
 
+  // For empty domains, assume value is always correct.
+  if ( this->GetNumberOfEnumerationElements() == 0 )
+    {
+    return name;
+    }
+
   unsigned int cc;
   for ( cc = 0; cc < this->GetNumberOfEnumerationElements(); cc ++ )
     {
