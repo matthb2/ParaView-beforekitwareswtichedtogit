@@ -259,8 +259,6 @@ void vtkPlaneWidget::SetEnabled(int enabling)
 
     this->SelectRepresentation();
     this->InvokeEvent(vtkCommand::EnableEvent,NULL);
-    cout << "Plane enabled" << endl;
-    this->Print(cout);
     }
   
   else //disabling----------------------------------------------------------
