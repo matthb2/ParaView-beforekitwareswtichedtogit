@@ -108,7 +108,7 @@ int vtkGenericInterpolatedVelocityField::FunctionValues(
   double* f)
 {
   int i, subId;
-  vtkGenericAttribute *vectors;
+  vtkGenericAttribute *vectors=0;
   double dist2;
   int ret;
   int attrib;
