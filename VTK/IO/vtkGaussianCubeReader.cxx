@@ -173,7 +173,7 @@ void vtkGaussianCubeReader::PrintSelf(ostream& os, vtkIndent indent)
   if( this->Transform )
     {
     os << endl;
-    os << indent << this->Transform->PrintSelf(os, indent.GetNextIndent());
+    this->Transform->PrintSelf(os, indent.GetNextIndent());
     }
   else
     {
