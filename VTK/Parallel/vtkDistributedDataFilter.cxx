@@ -4245,7 +4245,6 @@ vtkUnstructuredGrid *vtkDistributedDataFilter::SetMergeGhostGrid(
 
   return mergedGrid;
 }
-#include <unistd.h>
 vtkUnstructuredGrid *vtkDistributedDataFilter::MergeGrids(
          vtkDataSet **sets, int nsets, int deleteDataSets,
          const char *globalNodeIdArrayName, float pointMergeTolerance, 
