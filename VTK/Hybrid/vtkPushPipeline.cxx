@@ -30,9 +30,15 @@
 #include "vtkSource.h"
 #include "vtkVolumeMapper.h"
 
+#ifdef _MSC_VER
+#pragma warning (push, 3)
+#endif
 #include <vector>
 #include <map>
 #include <algorithm>
+#ifdef _MSC_VER
+#pragma warning(pop)
+#endif
 
 typedef vtkstd::vector< vtkSmartPointer<vtkRenderWindow> > WindowsTypeBase;
 typedef vtkstd::map< vtkSmartPointer<vtkProcessObject>,

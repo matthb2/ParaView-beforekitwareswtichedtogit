@@ -23,7 +23,13 @@
 #include "vtkObjectFactory.h"
 #include "vtkPointData.h"
 
+#ifdef _MSC_VER
+#pragma warning (push, 3)
+#endif
 #include <vector>
+#ifdef _MSC_VER
+#pragma warning(pop)
+#endif
 
 vtkCxxRevisionMacro(vtkInterpolatedVelocityField, "$Revision$");
 vtkStandardNewMacro(vtkInterpolatedVelocityField);
