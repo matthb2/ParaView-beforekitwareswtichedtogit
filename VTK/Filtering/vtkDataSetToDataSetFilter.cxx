@@ -171,7 +171,11 @@ vtkDataSet *vtkDataSetToDataSetFilter::GetInput()
 // copy information
 void vtkDataSetToDataSetFilter::ExecuteInformation()
 {
-  this->GetOutput()->CopyTypeSpecificInformation( this->GetInput() );
+  vtkDataSet* output = this->GetOutput();
+  if(output)
+    {
+    output->CopyTypeSpecificInformation( this->GetInput() );
+    }
 }
 
 //----------------------------------------------------------------------------
