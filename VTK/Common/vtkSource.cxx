@@ -223,6 +223,10 @@ void vtkSource::UpdateInformation()
       }
     
     this->ExecuteInformation();
+
+    // Information gets invalidated as soon as Update is called,
+    // so validate it again here.
+    this->InformationTime.Modified();
     }
 }
 
@@ -434,9 +438,6 @@ void vtkSource::UpdateData(vtkDataObject *output)
       }  
     }
   
-  // Information gets invalidated as soon as Update is called,
-  // so validate it again here.
-  this->InformationTime.Modified();
 }
 
 //----------------------------------------------------------------------------
