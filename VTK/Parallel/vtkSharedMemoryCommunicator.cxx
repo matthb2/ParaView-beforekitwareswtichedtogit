@@ -260,7 +260,7 @@ int vtkSharedMemoryCommunicator::Receive(vtkDataObject* object,
 }
 
 int vtkSharedMemoryCommunicator::Receive(vtkDataArray* object, 
-                                         int dataLength,
+                                         int vtkNotUsed(dataLength),
                                          int remoteThreadId, int tag)
 {
   vtkSharedMemoryCommunicatorMessage* message;

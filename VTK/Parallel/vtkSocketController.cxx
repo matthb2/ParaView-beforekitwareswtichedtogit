@@ -64,7 +64,7 @@ void vtkSocketController::Initialize(int* , char***)
 
 }
 
-void vtkSocketController::SetNumberOfProcesses(int num)
+void vtkSocketController::SetNumberOfProcesses(int vtkNotUsed(num))
 {
   vtkErrorMacro("Can not change the number of processes.");
   return;
