@@ -102,7 +102,7 @@ int vtkKitwareContourFilter::RequestUpdateExtent(
       syncTemp3D->SetComputeNormals (this->ComputeNormals);
       syncTemp3D->SetComputeGradients (this->ComputeGradients);
       syncTemp3D->SetComputeScalars (this->ComputeScalars);
-      syncTemp3D->ComputeInputUpdateExtents(output);
+      syncTemp3D->RequestUpdateExtent(request, inputVector, outputVector);
       syncTemp3D->Delete();
       return 1;
       }
