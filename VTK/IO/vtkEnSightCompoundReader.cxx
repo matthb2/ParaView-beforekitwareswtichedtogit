@@ -183,4 +183,9 @@ void vtkEnSightCompoundReader::UpdateInformation()
 void vtkEnSightCompoundReader::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os,indent);
+  os << indent << "Current piece: " << this->CurrentPiece << endl;
+  os << indent << "Piece Case File name: " 
+     << (this->PieceCaseFileName?this->PieceCaseFileName:"<none>") << endl;
+  os << indent << "Maximum numbe of pieces: " << this->MaxNumberOfPieces 
+     << endl;
 }
