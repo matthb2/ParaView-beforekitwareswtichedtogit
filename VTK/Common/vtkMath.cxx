@@ -1936,7 +1936,11 @@ inline void vtkOrthogonalize3x3(const T1 A[3][3], T2 B[3][3])
       {
       largest = tmp;
       }
-    scale[i] = T2(1.0)/largest;
+    scale[i] = 1.0;
+    if (largest != 0)
+      {
+      scale[i] = T2(1.0)/largest;
+      }
     }
 
   // first column
