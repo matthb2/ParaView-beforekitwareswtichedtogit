@@ -144,7 +144,7 @@ void vtkSweptSurface::ExecuteInformation(vtkImageData *input,
 void vtkSweptSurface::ExecuteData(vtkDataObject *)
 {
   vtkIdType i, numOutPts;
-  vtkPointData *pd, *outPD;
+  vtkPointData *pd;
   vtkDataArray *inScalars, *newScalars;
   float inSpacing[3], inOrigin[3];
   int inDim[3];
@@ -172,7 +172,6 @@ void vtkSweptSurface::ExecuteData(vtkDataObject *)
     return;
     }
   pd = input->GetPointData();
-  outPD = output->GetPointData();
   
   inScalars = pd->GetScalars();
   if ( input->GetNumberOfPoints() < 1 ||
