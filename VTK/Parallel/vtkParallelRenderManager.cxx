@@ -79,7 +79,7 @@ vtkParallelRenderManager::vtkParallelRenderManager()
   this->ObservingRenderer = 0;
   this->ObservingAbort = 0;
 
-  this->Controller = NULL;
+  this->Controller = vtkMultiProcessController::GetGlobalController();
   this->RootProcessId = 0;
 
   this->Lock = 0;
