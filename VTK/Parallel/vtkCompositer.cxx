@@ -25,8 +25,6 @@
 vtkCxxRevisionMacro(vtkCompositer, "$Revision$");
 vtkStandardNewMacro(vtkCompositer);
 
-vtkCxxSetObjectMacro(vtkCompositer,Controller,vtkMultiProcessController);
-
 //-------------------------------------------------------------------------
 vtkCompositer::vtkCompositer()
 {
@@ -34,6 +32,7 @@ vtkCompositer::vtkCompositer()
   if (this->Controller)
     {
     this->Controller->Register(this);
+    this->NumberOfProcesses = this->Controller->GetNumberOfProcesses();
     }
 }
   
@@ -41,6 +40,26 @@ vtkCompositer::vtkCompositer()
 vtkCompositer::~vtkCompositer()
 {
   this->SetController(NULL);
+}
+
+
+//-------------------------------------------------------------------------
+void vtkCompositer::SetController(vtkMultiProcessController *mpc)
+{
+  if (this->Controller == mpc)
+    {
+    return;
+    }
+  if (mpc)
+    {
+    mpc->Register(this);
+    this->NumberOfProcesses = mpc->GetNumberOfProcesses();
+    }
+  if (this->Controller)
+    {
+    this->Controller->UnRegister(this);
+    }
+  this->Controller = mpc;
 }
 
 //-------------------------------------------------------------------------
@@ -58,6 +77,7 @@ void vtkCompositer::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->vtkObject::PrintSelf(os, indent);
   os << indent << "Controller: (" << this->Controller << ")\n";
+  os << indent << "NumberOfProcesses: " << this->NumberOfProcesses << endl;
 }
 
 

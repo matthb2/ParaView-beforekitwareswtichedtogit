@@ -179,7 +179,7 @@ void vtkTreeCompositer::CompositeBuffer(vtkDataArray *pBuf,
                                                                vtkFloatArray *zTmp)
 {
   int myId = this->Controller->GetLocalProcessId();
-  int numProcs = this->Controller->GetNumberOfProcesses();
+  int numProcs = this->NumberOfProcesses;
   int totalPixels;
   int pSize, zSize;
   int i, id;
