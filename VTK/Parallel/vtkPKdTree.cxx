@@ -416,6 +416,8 @@ done:
   FreeObject(this->SubGroup);
 
   this->UpdateBuildTime();
+  
+  this->SetCalculator(this->Top);
 
   return;
 }
