@@ -34,7 +34,6 @@
 #include "vtkTexture.h"
 #include "vtkTransform.h"
 #include "vtkTriangleStrip.h"
-#include "vtkVersion.h"
 
 vtkCxxRevisionMacro(vtkOOGLExporter, "$Revision$");
 vtkStandardNewMacro(vtkOOGLExporter);
@@ -46,10 +45,7 @@ vtkOOGLExporter::vtkOOGLExporter()
 
 vtkOOGLExporter::~vtkOOGLExporter()
 {
-  if ( this->FileName )
-    {
-    delete [] this->FileName;
-    }
+  this->SetFileName( 0 );
 }
 
 static char indent[256];
