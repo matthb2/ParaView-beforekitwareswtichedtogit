@@ -152,6 +152,7 @@ void vtkVRMLSource::CopyImporterToOutputs()
     if (mapper)
       {
       input = mapper->GetInput();
+      input->Update();
       output = this->GetOutput(idx);
       output->CopyStructure(input);
       // Only copy well formed arrays.
