@@ -1237,7 +1237,7 @@ void vtkImagePlaneWidget::SetPlaneOrientation(int i)
 
   // This method must be called _after_ SetInput
   //
-  this->ImageData = this->Reslice->GetInput();
+  this->ImageData = vtkImageData::SafeDownCast(this->Reslice->GetInput());
   if ( !this->ImageData )
     {
     vtkErrorMacro(<<"SetInput() before setting plane orientation.");
@@ -1352,7 +1352,7 @@ void vtkImagePlaneWidget::UpdateOrigin()
       {
       return;
       }
-    this->ImageData = this->Reslice->GetInput();
+    this->ImageData = vtkImageData::SafeDownCast(this->Reslice->GetInput());
     if ( !this->ImageData )
       {
       return;
@@ -1494,7 +1494,7 @@ void vtkImagePlaneWidget::UpdateNormal()
 
   this->Reslice->SetResliceAxes(this->ResliceAxes);
 
-  this->ImageData = this->Reslice->GetInput();
+  this->ImageData = vtkImageData::SafeDownCast(this->Reslice->GetInput());
   if (!this->ImageData)
     {
     return;
@@ -1762,7 +1762,7 @@ void vtkImagePlaneWidget::SetSliceIndex(int index)
     {
       return;
     }
-  this->ImageData = this->Reslice->GetInput();
+  this->ImageData = vtkImageData::SafeDownCast(this->Reslice->GetInput());
   if ( !this->ImageData )
     {
     return;
@@ -1817,7 +1817,7 @@ int vtkImagePlaneWidget::GetSliceIndex()
     {
     return 0;
     }
-  this->ImageData = this->Reslice->GetInput();
+  this->ImageData = vtkImageData::SafeDownCast(this->Reslice->GetInput());
   if ( ! this->ImageData )
     {
     return 0;
@@ -1905,7 +1905,7 @@ void vtkImagePlaneWidget::ActivateText(int i)
 
 void vtkImagePlaneWidget::UpdateCursor(int X, int Y )
 {
-  this->ImageData = this->Reslice->GetInput();
+  this->ImageData = vtkImageData::SafeDownCast(this->Reslice->GetInput());
   if ( !this->ImageData )
     {
     return;
