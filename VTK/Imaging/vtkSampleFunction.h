@@ -1,10 +1,10 @@
 /*=========================================================================
 
   Program:   Visualization Library
-  Module:    $RCSfile$
+  Module:    SampleF.hh
   Language:  C++
-  Date:      $Date$
-  Version:   $Revision$
+  Date:      7/15/94
+  Version:   1.2
 
 Description:
 ---------------------------------------------------------------------------

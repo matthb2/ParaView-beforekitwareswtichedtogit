@@ -1,10 +1,10 @@
 /*=========================================================================
 
   Program:   Visualization Library
-  Module:    $RCSfile$
+  Module:    BYURead.hh
   Language:  C++
-  Date:      $Date$
-  Version:   $Revision$
+  Date:      7/20/94
+  Version:   1.2
 
 Description:
 ---------------------------------------------------------------------------

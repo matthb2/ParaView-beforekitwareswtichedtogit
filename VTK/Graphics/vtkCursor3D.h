@@ -1,10 +1,10 @@
 /*=========================================================================
 
   Program:   Visualization Library
-  Module:    $RCSfile$
+  Module:    Cursor3D.hh
   Language:  C++
-  Date:      $Date$
-  Version:   $Revision$
+  Date:      5/16/94
+  Version:   1.1
 
 Description:
 ---------------------------------------------------------------------------
