@@ -113,8 +113,12 @@ void vtkExtractCells::Execute()
 
   if (numCells == numCellsInput)  
     {
+    #if 0
     this->Copy();
     return;
+   #else
+    // The Copy method seems to have a bug, causing codes using ExtractCells to die
+    #endif
     }
   vtkPointData *PD = input->GetPointData();
   vtkCellData *CD = input->GetCellData();
