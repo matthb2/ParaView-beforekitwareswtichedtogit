@@ -81,4 +81,5 @@ void vtkSMVectorProperty::PrintSelf(ostream& os, vtkIndent indent)
   os << indent << "NumberOfElementsPerCommand: " 
      << this->GetNumberOfElementsPerCommand() << endl;
   os << indent << "RepeatCommand: " << this->RepeatCommand << endl;
+  os << indent << "UseIndex: " << this->UseIndex << endl;
 }

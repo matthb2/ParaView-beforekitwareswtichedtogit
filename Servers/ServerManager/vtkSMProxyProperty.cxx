@@ -83,4 +83,6 @@ void vtkSMProxyProperty::AppendCommandToStream(
 void vtkSMProxyProperty::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os, indent);
+
+  os << indent << "Proxy: " << this->Proxy << endl;
 }

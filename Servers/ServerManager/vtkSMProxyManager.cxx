@@ -137,13 +137,6 @@ vtkSMProxy* vtkSMProxyManager::NewProxy(vtkPVXMLElement* pelement)
 }
 
 //---------------------------------------------------------------------------
-int vtkSMProxyManager::DeleteProxy(vtkSMProxy* proxy)
-{
-  proxy->Delete();
-  return 1;
-}
-
-//---------------------------------------------------------------------------
 void vtkSMProxyManager::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os, indent);
