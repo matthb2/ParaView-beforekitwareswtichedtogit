@@ -103,6 +103,7 @@ void vtkProjectedTexture::Execute()
   //
 
   newTCoords = vtkFloatArray::New();
+  newTCoords->SetName("ProjectedTextureCoordinates");
   newTCoords->SetNumberOfComponents(2);
   newTCoords->SetNumberOfTuples(numPts);
 
