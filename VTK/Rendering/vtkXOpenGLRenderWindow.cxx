@@ -1340,7 +1340,11 @@ void *vtkXOpenGLRenderWindow::GetGenericWindowId()
 void vtkXOpenGLRenderWindow::SetCurrentCursor(int shape)
 {
   this->Superclass::SetCurrentCursor(shape);
-
+  if (!this->DisplayId || !this->WindowId)
+    {
+    return;
+    }
+  
   if (shape == VTK_CURSOR_DEFAULT)
     {
     XUndefineCursor(this->DisplayId,this->WindowId);
