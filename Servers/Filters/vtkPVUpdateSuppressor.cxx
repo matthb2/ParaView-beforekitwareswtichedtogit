@@ -82,6 +82,7 @@ void vtkPVUpdateSuppressor::ForceUpdate()
   // connected to a pipeline.
   if (input && input->GetSource() && 
        (input->GetSource()->IsA("vtkCollectPolyData") ||
+        input->GetSource()->IsA("vtkMPIDuplicatePolyData") ||
         input->GetSource()->IsA("vtkPVDuplicatePolyData")))
     {
     input->GetSource()->Modified();
