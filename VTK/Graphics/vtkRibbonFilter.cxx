@@ -485,5 +485,7 @@ void vtkRibbonFilter::PrintSelf(ostream& os, vtkIndent indent)
   os << indent << "Generate TCoords: " 
      << this->GetGenerateTCoordsAsString() << endl;
   os << indent << "Texture Length: " << this->TextureLength << endl;
+  os << indent << "InputVectorsSelection: " 
+     << (this->InputVectorsSelection ? InputVectorsSelection : "(null)") << endl;
 }
 
