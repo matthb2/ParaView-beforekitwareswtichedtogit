@@ -482,9 +482,7 @@ int *vtkWedge::GetFaceArray(int faceId)
 //----------------------------------------------------------------------------
 vtkCell *vtkWedge::GetFace(int faceId)
 {
-  int *verts;
-
-  verts = faces[faceId];
+  int *verts = faces[faceId];
 
   if ( verts[3] != -1 ) // quad cell
     {
