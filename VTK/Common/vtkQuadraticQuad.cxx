@@ -85,8 +85,8 @@ vtkCell *vtkQuadraticQuad::GetEdge(int edgeId)
   return this->Edge;
 }
 
-static float linearQuads[4][4] = { {0,4,8,7}, {8,4,1,5}, 
-                                   {8,5,2,6}, {7,8,6,3} };
+static int linearQuads[4][4] = { {0,4,8,7}, {8,4,1,5}, 
+                                 {8,5,2,6}, {7,8,6,3} };
 
 void vtkQuadraticQuad::ComputeMidQuadNode(float *weights)
 {
