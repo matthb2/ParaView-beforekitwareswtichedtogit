@@ -55,9 +55,10 @@ const char* vtkSMStringListDomain::GetString(unsigned int idx)
 }
 
 //---------------------------------------------------------------------------
-void vtkSMStringListDomain::AddString(const char* string)
+unsigned int vtkSMStringListDomain::AddString(const char* string)
 {
   this->SLInternals->Strings.push_back(string);
+  return this->SLInternals->Strings.size() - 1;
 }
 
 //---------------------------------------------------------------------------
