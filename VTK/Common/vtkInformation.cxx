@@ -122,6 +122,25 @@ void vtkInformation::Copy(vtkInformation* from)
     }
 }
 
+
+//----------------------------------------------------------------------------
+void vtkInformation::CopyEntry(vtkInformation* from, vtkInformationKey* key)
+{
+  key->Copy(from, this);
+}
+
+//----------------------------------------------------------------------------
+void vtkInformation::CopyEntries(vtkInformation* from,
+                                 vtkInformationKeyVectorKey* key)
+{
+  int numberOfKeys = from->Length(key);
+  vtkInformationKey** keys = from->Get(key);
+  for(int i=0; i < numberOfKeys; ++i)
+    {
+    this->CopyEntry(from, keys[i]);
+    }
+}
+
 //----------------------------------------------------------------------------
 #define VTK_INFORMATION_DEFINE_SCALAR_PROPERTY(name, type)                  \
   void vtkInformation::Set(vtkInformation##name##Key* key, type value)      \
