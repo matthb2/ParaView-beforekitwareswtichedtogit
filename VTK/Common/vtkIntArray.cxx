@@ -376,11 +376,11 @@ float vtkIntArray::GetComponent(const vtkIdType i, const int j)
 // SetNumberOfComponents()).
 void vtkIntArray::SetComponent(const vtkIdType i, const int j, const float c)
 {
-  this->SetValue(i*this->NumberOfComponents + j, static_cast<int>(c));
+  this->SetValue(i*this->NumberOfComponents + j, static_cast<const int>(c));
 }
 
 void vtkIntArray::InsertComponent(const vtkIdType i, const int j, 
                                   const float c)
 {
-  this->InsertValue(i*this->NumberOfComponents + j, static_cast<int>(c));
+  this->InsertValue(i*this->NumberOfComponents + j, static_cast<const int>(c));
 }

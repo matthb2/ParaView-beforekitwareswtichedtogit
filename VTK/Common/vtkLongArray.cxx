@@ -378,12 +378,12 @@ float vtkLongArray::GetComponent(const vtkIdType i, const int j)
 // SetNumberOfComponents()).
 void vtkLongArray::SetComponent(const vtkIdType i, const int j, const float c)
 {
-  this->SetValue(i*this->NumberOfComponents + j, static_cast<long>(c));
+  this->SetValue(i*this->NumberOfComponents + j, static_cast<const long>(c));
 }
 
 void vtkLongArray::InsertComponent(const vtkIdType i, const int j, 
                                    const float c)
 {
   this->InsertValue(i*this->NumberOfComponents + j, 
-                    static_cast<long>(c));
+                    static_cast<const long>(c));
 }

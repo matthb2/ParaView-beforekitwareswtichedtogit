@@ -379,7 +379,7 @@ float vtkShortArray::GetComponent(const vtkIdType i, const int j)
 // SetNumberOfComponents()).
 void vtkShortArray::SetComponent(const vtkIdType i, const int j, const float c)
 {
-  this->SetValue(i*this->NumberOfComponents + j, static_cast<short>(c));
+  this->SetValue(i*this->NumberOfComponents + j, static_cast<const short>(c));
 }
 
 // Insert the data component at ith tuple and jth component location. 
@@ -387,6 +387,6 @@ void vtkShortArray::SetComponent(const vtkIdType i, const int j, const float c)
 void vtkShortArray::InsertComponent(const vtkIdType i, const int j,
                                     const float c)
 {
-  this->InsertValue(i*this->NumberOfComponents + j, static_cast<short>(c));
+  this->InsertValue(i*this->NumberOfComponents + j, static_cast<const short>(c));
 }
 
