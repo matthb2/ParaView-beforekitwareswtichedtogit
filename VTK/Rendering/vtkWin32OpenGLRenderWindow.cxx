@@ -17,6 +17,7 @@
 =========================================================================*/
 #include "vtkWin32OpenGLRenderWindow.h"
 
+#include "vtkIdList.h"
 #include "vtkObjectFactory.h"
 #include "vtkOpenGLActor.h"
 #include "vtkOpenGLCamera.h"
