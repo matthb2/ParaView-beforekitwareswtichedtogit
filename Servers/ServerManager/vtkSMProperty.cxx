@@ -35,6 +35,7 @@ vtkCxxRevisionMacro(vtkSMProperty, "$Revision$");
 
 vtkCxxSetObjectMacro(vtkSMProperty, Proxy, vtkSMProxy);
 vtkCxxSetObjectMacro(vtkSMProperty, InformationHelper, vtkSMInformationHelper);
+vtkCxxSetObjectMacro(vtkSMProperty, InformationProperty, vtkSMProperty);
 
 int vtkSMProperty::CheckDomains = 1;
 int vtkSMProperty::ModifiedAtCreation = 1;
