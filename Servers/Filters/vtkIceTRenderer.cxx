@@ -298,6 +298,8 @@ int vtkIceTRenderer::UpdateGeometry()
 void vtkIceTRenderer::PrintSelf(ostream &os, vtkIndent indent)
 {
   this->vtkOpenGLRenderer::PrintSelf(os, indent);
+
+  os << indent << "ComposeNextFrame: " << this->ComposeNextFrame << endl);
 }
 
 //******************************************************************
