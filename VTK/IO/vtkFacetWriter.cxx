@@ -250,8 +250,8 @@ int vtkFacetWriter::WriteDataToStream(ostream* ost, vtkPolyData* data)
       {
       for ( cc = 0; cc < numPts; cc ++ )
         {
-        vtkIdType point = pts[cc] + 1;
-        *ost << point << " ";
+        vtkIdType pointindex = pts[cc] + 1;
+        *ost << pointindex << " ";
         }
       *ost << material << " " << part << endl;
       cnt ++;
