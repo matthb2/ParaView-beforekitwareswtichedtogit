@@ -657,6 +657,9 @@ public:
         ((vtkObjectFactoryCollectionIterator*)this->Source)->Top;
     }
   vtkCollection* Source;
+private:
+  vtkObjectFactoryCollectionIterator(const vtkObjectFactoryCollectionIterator&);
+  void operator=(const vtkObjectFactoryCollectionIterator&);
 };
 
 

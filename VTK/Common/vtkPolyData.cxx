@@ -304,7 +304,8 @@ vtkCell *vtkPolyData::GetCell(vtkIdType cellId)
 void vtkPolyData::GetCell(vtkIdType cellId, vtkGenericCell *cell)
 {
   int             i, loc;
-  vtkIdType       *pts, numPts;
+  vtkIdType       *pts=0;
+  vtkIdType       numPts;
   unsigned char   type;
   float           x[3];
 

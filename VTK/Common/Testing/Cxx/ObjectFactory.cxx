@@ -36,6 +36,9 @@ public:
   vtkTypeRevisionMacro(vtkTestVertex,vtkVertex);
   static vtkTestVertex* New() { return new vtkTestVertex; }
   vtkTestVertex() {  }
+private:
+  vtkTestVertex(const vtkTestVertex&);
+  void operator=(const vtkTestVertex&);
 };
 
 vtkCxxRevisionMacro(vtkTestVertex, "$Revision$");
@@ -51,6 +54,9 @@ public:
   vtkTypeRevisionMacro(vtkTestVertex2,vtkVertex);
   static vtkTestVertex2* New() { return new vtkTestVertex2; }
   vtkTestVertex2() { }
+private:
+  vtkTestVertex2(const vtkTestVertex2&);
+  void operator=(const vtkTestVertex2&);
 };
 
 vtkCxxRevisionMacro(vtkTestVertex2, "$Revision$");
