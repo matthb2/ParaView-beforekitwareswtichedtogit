@@ -296,6 +296,20 @@ int vtkParametricSpline::Initialize()
       }
     }
 
+  // Specify the parametric range that the spline can take
+  if ( ! this->Closed )
+    {
+    this->XSpline->SetParametricRange(0.0,this->Length);
+    this->YSpline->SetParametricRange(0.0,this->Length);
+    this->ZSpline->SetParametricRange(0.0,this->Length);
+    }
+  else
+    {
+    this->XSpline->SetParametricRange(0.0,this->ClosedLength);
+    this->YSpline->SetParametricRange(0.0,this->ClosedLength);
+    this->ZSpline->SetParametricRange(0.0,this->ClosedLength);
+    }
+
   this->InitializeTime = this->GetMTime();
   return 1;
 }
