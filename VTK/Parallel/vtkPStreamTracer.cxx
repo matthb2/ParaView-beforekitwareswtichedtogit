@@ -100,9 +100,9 @@ void vtkPStreamTracer::ForwardTask(float seed[3],
 
 int vtkPStreamTracer::ReceiveAndProcessTask()
 {
-  int isNewSeed;
-  int lastid;
-  int currentLine;
+  int isNewSeed = 0;
+  int lastid = 0;
+  int currentLine = 0;
   int direction=FORWARD;
   float seed[3] = {0.0, 0.0, 0.0};
   int myid = this->Controller->GetLocalProcessId();
