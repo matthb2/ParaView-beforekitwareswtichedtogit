@@ -309,7 +309,7 @@ int vtkSLCReader::CanReadFile(const char* fname)
     return 0;
     }
   fclose(fp);
-  return 1;
+  return 3;
 }
 
 
