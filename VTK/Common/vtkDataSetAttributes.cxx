@@ -182,6 +182,10 @@ void vtkDataSetAttributes::ShallowCopy(vtkFieldData *fd)
 void vtkDataSetAttributes::InitializeFields()
 {
   this->vtkFieldData::InitializeFields();
+  for(int attributeType=0; attributeType<NUM_ATTRIBUTES; attributeType++)
+    {
+    this->AttributeIndices[attributeType] = -1;
+    }
 }
 
 // Initialize all of the object's data to NULL
@@ -1546,7 +1550,7 @@ int vtkDataSetAttributes::CheckNumberOfComponents(vtkDataArray* da,
 vtkDataArray* vtkDataSetAttributes::GetAttribute(int attributeType)
 {
   int index = this->AttributeIndices[attributeType];
-  if (index == -1 || this->Data == NULL)
+  if (index == -1)
     {
     return 0;
     }
