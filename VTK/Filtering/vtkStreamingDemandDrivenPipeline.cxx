@@ -313,9 +313,19 @@ vtkStreamingDemandDrivenPipeline
         {
         if (!outInfo->Has(MAXIMUM_NUMBER_OF_PIECES()))
           {
-          // Since most unstructured filters in VTK generate all their
-          // data once, set the default maximum number of pieces to 1.
-          outInfo->Set(MAXIMUM_NUMBER_OF_PIECES(), 1);
+          if (this->GetNumberOfInputPorts() > 0)
+            {
+            // must have structured input; MAXIMUM_NUMBER_OF_PIECES will
+            // not be copied above (CopyEntry does nothing since key not set
+            // in inInfo); set to -1
+            outInfo->Set(MAXIMUM_NUMBER_OF_PIECES(), -1);
+            }
+          else
+            {
+            // Since most unstructured filters in VTK generate all their
+            // data once, set the default maximum number of pieces to 1.
+            outInfo->Set(MAXIMUM_NUMBER_OF_PIECES(), 1);
+            }
           }
         }
       else if(dataInfo->Get(vtkDataObject::DATA_EXTENT_TYPE()) == VTK_3D_EXTENT)
