@@ -420,7 +420,7 @@ void vtkCarbonRenderWindow::Clean()
 }
 
 //--------------------------------------------------------------------------
-void vtkCarbonRenderWindow::SetWindowName( char * _arg )
+void vtkCarbonRenderWindow::SetWindowName( const char * _arg )
 {
   vtkWindow::SetWindowName(_arg);
   Str255 newTitle = "\p"; // SetWTitle takes a pascal string
