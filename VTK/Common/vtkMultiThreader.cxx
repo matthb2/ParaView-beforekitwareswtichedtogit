@@ -163,6 +163,18 @@ vtkMultiThreader::~vtkMultiThreader()
 {
 }
 
+//----------------------------------------------------------------------------
+int vtkMultiThreader::GetNumberOfThreads()
+{
+  int num = this->NumberOfThreads;
+  if(vtkMultiThreaderGlobalMaximumNumberOfThreads > 0 &&
+     num > vtkMultiThreaderGlobalMaximumNumberOfThreads)
+    {
+    num = vtkMultiThreaderGlobalMaximumNumberOfThreads;
+    }
+  return num;
+}
+
 // Set the user defined method that will be run on NumberOfThreads threads
 // when SingleMethodExecute is called.
 void vtkMultiThreader::SetSingleMethod( vtkThreadFunctionType f, 
