@@ -84,6 +84,8 @@ vtkViewport::~vtkViewport()
 {
   this->Actors2D->Delete();
   this->Actors2D = NULL;
+  
+  this->RemoveAllProps();
   this->Props->Delete();
   this->Props = NULL;
   
@@ -109,12 +111,14 @@ void vtkViewport::RemoveActor2D(vtkProp* p)
 void vtkViewport::AddProp(vtkProp *p)
 {
   this->Props->AddItem(p);
+  p->AddConsumer(this);
 }
 void vtkViewport::RemoveProp(vtkProp *p)
 {
   if (p)
     {
     p->ReleaseGraphicsResources(this->VTKWindow);
+    p->RemoveConsumer(this);
     this->Props->RemoveItem(p);
     }
 }
@@ -126,6 +130,7 @@ void vtkViewport::RemoveAllProps(void)
        (aProp = this->Props->GetNextProp()); )
     {
     aProp->ReleaseGraphicsResources(this->VTKWindow);
+    aProp->RemoveConsumer(this);
     }
   this->Props->RemoveAllItems();
 }

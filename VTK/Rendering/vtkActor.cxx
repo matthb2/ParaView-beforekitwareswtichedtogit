@@ -504,3 +504,23 @@ int vtkActor::GetNumberOfParts()
 }
 
 
+void vtkActor::SetMapper(vtkMapper *args)
+{
+  vtkDebugMacro(<< this->GetClassName() << " (" << this         
+  << "): setting Mapper to " << args );     
+  if (this->Mapper != args)                                       
+    {                                                           
+    if (this->Mapper != NULL) 
+      { 
+      this->Mapper->RemoveConsumer(this);
+      this->Mapper->UnRegister(this); 
+      }   
+    this->Mapper = args;                                          
+    if (this->Mapper != NULL) 
+      { 
+      this->Mapper->Register(this); 
+      this->Mapper->AddConsumer(this);
+      }     
+    this->Modified();                                           
+    }                                                           
+}
