@@ -357,7 +357,7 @@ void vtkSMPartDisplay::CreateVTKObjects(int num)
 
   // Now create the object for volume rendering if applicable
   this->VolumeProxy = vtkSMProxy::New();
-  this->VolumeProxy->SetVTKClassName("vtkVolume");
+  this->VolumeProxy->SetVTKClassName("vtkPVLODVolume");
   this->VolumeProxy->SetServersSelf(vtkProcessModule::CLIENT_AND_SERVERS);
   // Share properties.
   this->VolumeProxy->AddProperty("Visibility", this->VolumeVisibilityProperty);
