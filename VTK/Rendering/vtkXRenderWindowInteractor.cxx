@@ -227,11 +227,11 @@ void vtkXRenderWindowInteractor::Initialize()
     }
   if (!vtkXRenderWindowInteractor::NumAppInitialized)
     {
-    vtkDebugMacro("toolkit init");
+    vtkDebugMacro( << "Toolkit init :" << vtkXRenderWindowInteractor::App );
     XtToolkitInitialize();
     vtkXRenderWindowInteractor::App = XtCreateApplicationContext();
     this->OwnApp = 1;
-    vtkDebugMacro("app ctx " << vtkXRenderWindowInteractor::App);
+    vtkDebugMacro( << "App context :" << vtkXRenderWindowInteractor::App);
     vtkXRenderWindowInteractor::NumAppInitialized = 1;
     }
   
