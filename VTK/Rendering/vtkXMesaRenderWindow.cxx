@@ -28,6 +28,9 @@
 #include "vtkMesaLight.h"
 #include "vtkMesaActor.h"
 #include "vtkMesaPolyDataMapper.h"
+#include "MangleMesaInclude/glx_mangle.h"
+#include "MangleMesaInclude/glx.h"
+#include "MangleMesaInclude/osmesa.h"
 
 
 #define vtkXOpenGLRenderWindow vtkXMesaRenderWindow
@@ -45,6 +48,7 @@
 #define vtkXOpenGLRenderWindowFoundMatch vtkXMesaRenderWindowFoundMatch
 #define vtkXError vtkMesaXError
 #define vtkXOpenGLRenderWindowTryForVisual vtkXMesaRenderWindowTryForVisual
+#define vtkXOpenGLRenderWindowInternal vtkXMesaRenderWindowInternal
 #define VTK_OPENGL_HAS_OSMESA 1
 // now include the source for vtkXOpenGLRenderWindow
 #include "vtkXOpenGLRenderWindow.cxx"

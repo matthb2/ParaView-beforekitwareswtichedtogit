@@ -28,6 +28,7 @@
 #include "vtkMesaCamera.h"
 #include "vtkMesaLight.h"
 #include "vtkCuller.h"
+#include "vtkToolkits.h"
 
 
 // make sure this file is included before the #define takes place
