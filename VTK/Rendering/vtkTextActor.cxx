@@ -311,7 +311,7 @@ int vtkTextActor::RenderOpaqueGeometry(vtkViewport *viewport)
           size[0], 
           (size[1] < max_height ? size[1] : max_height));
         // apply non-linear scaling
-        fsize = static_cast<int>(pow(fsize,this->FontScaleExponent)*
+        fsize = static_cast<int>(pow(static_cast<double>(fsize),this->FontScaleExponent)*
           pow(this->FontScaleTarget, 1.0 - this->FontScaleExponent));
         tpropmapper->SetFontSize(fsize);
         }
