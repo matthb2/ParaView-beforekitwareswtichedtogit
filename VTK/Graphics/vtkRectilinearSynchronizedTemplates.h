@@ -11,26 +11,13 @@
      the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR
      PURPOSE.  See the above copyright notice for more information.
 
-
-     THIS CLASS IS PATENT PENDING.
-
-     Application of this software for commercial purposes requires 
-     a license grant from Kitware. Contact:
-         Ken Martin
-         Kitware
-         28 Corporate Drive Suite 204,
-         Clifton Park, NY 12065
-         Phone:1-518-371-3971 
-     for more information.
-
 =========================================================================*/
 // .NAME vtkRectilinearSynchronizedTemplates - generate isosurface from rectilinear grid
 
 // .SECTION Description
 // vtkRectilinearSynchronizedTemplates is a 3D implementation (for rectilinear
 // grids) of the synchronized template algorithm. Note that vtkContourFilter
-// will automatically use this class when appropriate if vtk was built with
-// patents.
+// will automatically use this class when appropriate.
 
 // .SECTION Caveats
 // This filter is specialized to rectilinear grids.
@@ -48,7 +35,7 @@ class vtkRectilinearGrid;
 class vtkKitwareContourFilter;
 class vtkDataArray;
 
-class VTK_PATENTED_EXPORT vtkRectilinearSynchronizedTemplates : public vtkPolyDataAlgorithm
+class VTK_GRAPHICS_EXPORT vtkRectilinearSynchronizedTemplates : public vtkPolyDataAlgorithm
 {
 public:
   static vtkRectilinearSynchronizedTemplates *New();

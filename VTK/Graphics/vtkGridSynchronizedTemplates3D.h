@@ -11,18 +11,6 @@
      the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR
      PURPOSE.  See the above copyright notice for more information.
 
-
-     THIS CLASS IS PATENT PENDING.
-
-     Application of this software for commercial purposes requires 
-     a license grant from Kitware. Contact:
-         Ken Martin
-         Kitware
-         28 Corporate Drive Suite 204,
-         Clifton Park, NY 12065
-         Phone:1-518-371-3971 
-     for more information.
-
 =========================================================================*/
 // .NAME vtkGridSynchronizedTemplates3D - generate isosurface from structured grids
 
@@ -46,7 +34,7 @@ class vtkKitwareContourFilter;
 class vtkMultiThreader;
 class vtkStructuredGrid;
 
-class VTK_PATENTED_EXPORT vtkGridSynchronizedTemplates3D : public vtkPolyDataAlgorithm
+class VTK_GRAPHICS_EXPORT vtkGridSynchronizedTemplates3D : public vtkPolyDataAlgorithm
 {
 public:
   static vtkGridSynchronizedTemplates3D *New();
