@@ -65,6 +65,7 @@ void vtkCTHOutlineFilter::Execute()
   numBlocks = input->GetNumberOfBlocks();
   for (blockId = 0; blockId < numBlocks; ++blockId)
     {
+    this->UpdateProgress(static_cast<double>(blockId)/static_cast<double>(numBlocks));
     origin = input->GetBlockOrigin(blockId);
     spacing = input->GetBlockSpacing(blockId);
     bounds[0] = origin[0] + spacing[0]*ghostLevels;
