@@ -63,7 +63,7 @@ vtkWinCEOpenGLRenderWindow::vtkWinCEOpenGLRenderWindow()
 
 vtkWinCEOpenGLRenderWindow::~vtkWinCEOpenGLRenderWindow()
 {
-  this->Deinitialize();
+  this->Finalize();
 }
 
 void vtkWinCEOpenGLRenderWindow::Clean()
@@ -476,7 +476,7 @@ void vtkWinCEOpenGLRenderWindow::Initialize (void)
   this->WindowInitialize();
 }
 
-void vtkWinCEOpenGLRenderWindow::Deinitialize (void)
+void vtkWinCEOpenGLRenderWindow::Finalize (void)
 {
   if (this->CursorHidden)
     {
@@ -628,7 +628,7 @@ void vtkWinCEOpenGLRenderWindow::PrefFullScreen()
 // Remap the window.
 void vtkWinCEOpenGLRenderWindow::WindowRemap()
 {
-  this->Deinitialize();
+  this->Finalize();
 
   // set the default windowid 
   this->WindowId = this->NextWindowId;

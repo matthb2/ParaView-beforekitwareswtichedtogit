@@ -71,7 +71,7 @@ vtkWin32OpenGLRenderWindow::vtkWin32OpenGLRenderWindow()
 
 vtkWin32OpenGLRenderWindow::~vtkWin32OpenGLRenderWindow()
 {
-  this->Deinitialize();
+  this->Finalize();
   delete[] this->Capabilities;
 }
 
@@ -778,7 +778,7 @@ void vtkWin32OpenGLRenderWindow::Initialize (void)
     }
 }
 
-void vtkWin32OpenGLRenderWindow::Deinitialize (void)
+void vtkWin32OpenGLRenderWindow::Finalize (void)
 {
   if (this->CursorHidden)
     {
@@ -936,7 +936,7 @@ void vtkWin32OpenGLRenderWindow::PrefFullScreen()
 void vtkWin32OpenGLRenderWindow::WindowRemap()
 {
   // close everything down
-  this->Deinitialize();
+  this->Finalize();
   
   // set the default windowid 
   this->WindowId = this->NextWindowId;
