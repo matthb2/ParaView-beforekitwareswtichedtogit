@@ -1720,7 +1720,6 @@ int vtkEnSightGoldReader::CreateStructuredGridOutput(int partId,
   output->SetPoints(points);
   if (iblanked)
     {
-    output->BlankingOn();
     for (i = 0; i < numPts; i++)
       {
       this->ReadNextDataLine(line);

@@ -2084,7 +2084,6 @@ int vtkEnSight6Reader::CreateStructuredGridOutput(int partId,
   output->SetPoints(points);
   if (iblanked)
     {
-    output->BlankingOn();
     for (i = 0; i < numLines; i++)
       {
       this->ReadNextDataLine(line);

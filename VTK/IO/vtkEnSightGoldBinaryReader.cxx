@@ -2568,7 +2568,6 @@ int vtkEnSightGoldBinaryReader::CreateStructuredGridOutput(int partId,
   output->SetPoints(points);
   if (iblanked)
     {
-    ((vtkStructuredGrid*)this->GetOutput(partId))->BlankingOn();
     int *iblanks = new int[numPts];
     this->ReadIntArray(iblanks, numPts);
     

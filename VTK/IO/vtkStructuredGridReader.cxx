@@ -20,6 +20,7 @@
 #include "vtkFieldData.h"
 #include "vtkObjectFactory.h"
 #include "vtkStructuredGrid.h"
+#include "vtkUnsignedCharArray.h"
 
 vtkCxxRevisionMacro(vtkStructuredGridReader, "$Revision$");
 vtkStandardNewMacro(vtkStructuredGridReader);
@@ -236,8 +237,7 @@ void vtkStructuredGridReader::Execute()
 
         if ( data != NULL )
           {
-          output->BlankingOn();
-          output->SetPointVisibility(data);
+          output->SetPointVisibilityArray(data);
           data->Delete();
           }
         }
