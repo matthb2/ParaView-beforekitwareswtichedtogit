@@ -533,7 +533,7 @@ void vtkScalarBarActor::AllocateAndSizeLabels(int *labelSize,
       {
       float lval = log10(range[0]) + (float)i/(this->NumberOfLabels-1) *
         (log10(range[1])-log10(range[0]));
-      val = pow(10,lval);
+      val = pow(10.0f,lval);
       }
     else
       {
