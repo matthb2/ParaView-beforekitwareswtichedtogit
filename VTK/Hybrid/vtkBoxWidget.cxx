@@ -37,6 +37,7 @@ vtkStandardNewMacro(vtkBoxWidget);
 
 vtkBoxWidget::vtkBoxWidget()
 {
+  this->State = vtkBoxWidget::Start;
   this->EventCallbackCommand->SetCallback(vtkBoxWidget::ProcessEvents);
   
   // Enable/disable the translation, rotation, and scaling of the widget
