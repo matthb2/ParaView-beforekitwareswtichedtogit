@@ -187,6 +187,12 @@ int vtkThresholdPoints::RequestData(
   return 1;
 }
 
+int vtkThresholdPoints::FillInputPortInformation(int, vtkInformation *info)
+{
+  info->Set(vtkAlgorithm::INPUT_REQUIRED_DATA_TYPE(), "vtkDataSet");
+  return 1;
+}
+
 void vtkThresholdPoints::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os,indent);

@@ -66,3 +66,9 @@ int vtkOutlineFilter::RequestData(
 
   return 1;
 }
+
+int vtkOutlineFilter::FillInputPortInformation(int, vtkInformation *info)
+{
+  info->Set(vtkAlgorithm::INPUT_REQUIRED_DATA_TYPE(), "vtkDataSet");
+  return 1;
+}

@@ -419,6 +419,12 @@ void vtkImageDataGeometryFilter::SetExtent(int extent[6])
     }
 }
 
+int vtkImageDataGeometryFilter::FillInputPortInformation(int, vtkInformation *info)
+{
+  info->Set(vtkAlgorithm::INPUT_REQUIRED_DATA_TYPE(), "vtkImageData");
+  return 1;
+}
+
 void vtkImageDataGeometryFilter::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os,indent);

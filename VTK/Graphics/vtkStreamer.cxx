@@ -690,12 +690,13 @@ void vtkStreamer::Integrate(vtkDataSet *input, vtkDataSet *source)
 
 int vtkStreamer::FillInputPortInformation(int port, vtkInformation *info)
 {
-  int retval = this->Superclass::FillInputPortInformation(port, info);
+  info->Set(vtkAlgorithm::INPUT_REQUIRED_DATA_TYPE(), "vtkDataSet");
+
   if (port == 1)
     {
     info->Set(vtkAlgorithm::INPUT_IS_OPTIONAL(), 1);
     }
-  return retval;
+  return 1;
 }
 
 void vtkStreamer::PrintSelf(ostream& os, vtkIndent indent)

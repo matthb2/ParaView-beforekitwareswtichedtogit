@@ -556,6 +556,12 @@ void vtkImageToPolyDataFilter::BuildTable(unsigned char *vtkNotUsed(inPixels))
     }
 }
 
+int vtkImageToPolyDataFilter::FillInputPortInformation(int, vtkInformation *info)
+{
+  info->Set(vtkAlgorithm::INPUT_REQUIRED_DATA_TYPE(), "vtkImageData");
+  return 1;
+}
+
 void vtkImageToPolyDataFilter::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os,indent);

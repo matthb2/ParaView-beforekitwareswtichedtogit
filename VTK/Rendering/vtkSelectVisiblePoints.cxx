@@ -218,6 +218,12 @@ unsigned long int vtkSelectVisiblePoints::GetMTime()
   return mTime;
 }
 
+int vtkSelectVisiblePoints::FillInputPortInformation(int, vtkInformation *info)
+{
+  info->Set(vtkAlgorithm::INPUT_REQUIRED_DATA_TYPE(), "vtkDataSet");
+  return 1;
+}
+
 void vtkSelectVisiblePoints::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os,indent);

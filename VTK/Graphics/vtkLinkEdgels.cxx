@@ -347,6 +347,12 @@ void vtkLinkEdgels::LinkEdgels(int xdim, int ydim, double *image,
   delete [] backward;
 }
 
+int vtkLinkEdgels::FillInputPortInformation(int, vtkInformation *info)
+{
+  info->Set(vtkAlgorithm::INPUT_REQUIRED_DATA_TYPE(), "vtkImageData");
+  return 1;
+}
+
 void vtkLinkEdgels::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os,indent);

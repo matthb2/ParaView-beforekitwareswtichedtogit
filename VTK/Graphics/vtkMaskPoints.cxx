@@ -166,6 +166,13 @@ int vtkMaskPoints::RequestData(
 }
 
 //----------------------------------------------------------------------------
+int vtkMaskPoints::FillInputPortInformation(int, vtkInformation *info)
+{
+  info->Set(vtkAlgorithm::INPUT_REQUIRED_DATA_TYPE(), "vtkDataSet");
+  return 1;
+}
+
+//----------------------------------------------------------------------------
 void vtkMaskPoints::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os,indent);

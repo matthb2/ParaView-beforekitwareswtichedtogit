@@ -449,7 +449,8 @@ int vtkTensorGlyph::FillInputPortInformation(int port, vtkInformation *info)
     info->Set(vtkAlgorithm::INPUT_REQUIRED_DATA_TYPE(), "vtkPolyData");
     return 1;
     }
-  return this->Superclass::FillInputPortInformation(port, info);
+  info->Set(vtkAlgorithm::INPUT_REQUIRED_DATA_TYPE(), "vtkDataSet");
+  return 1;
 }
 
 void vtkTensorGlyph::PrintSelf(ostream& os, vtkIndent indent)

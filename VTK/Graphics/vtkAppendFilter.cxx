@@ -270,10 +270,7 @@ int vtkAppendFilter::RequestData(
 //----------------------------------------------------------------------------
 int vtkAppendFilter::FillInputPortInformation(int port, vtkInformation *info)
 {
-  if (!this->Superclass::FillInputPortInformation(port, info))
-    {
-    return 0;
-    }
+  info->Set(vtkAlgorithm::INPUT_REQUIRED_DATA_TYPE(), "vtkDataSet");
   info->Set(vtkAlgorithm::INPUT_IS_REPEATABLE(), 1);
   return 1;
 }

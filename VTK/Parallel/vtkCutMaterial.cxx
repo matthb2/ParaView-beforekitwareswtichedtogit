@@ -210,6 +210,12 @@ void vtkCutMaterial::ComputeMaximumPoint(vtkDataSet *input)
   this->MaximumPoint[2] = (bds[4] + bds[5]) * 0.5;  
 }
 
+int vtkCutMaterial::FillInputPortInformation(int, vtkInformation *info)
+{
+  info->Set(vtkAlgorithm::INPUT_REQUIRED_DATA_TYPE(), "vtkDataSet");
+  return 1;
+}
+
 void vtkCutMaterial::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os,indent);

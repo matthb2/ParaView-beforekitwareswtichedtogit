@@ -236,6 +236,12 @@ void vtkExtractEdges::CreateDefaultLocator()
     }
 }
 
+int vtkExtractEdges::FillInputPortInformation(int, vtkInformation *info)
+{
+  info->Set(vtkAlgorithm::INPUT_REQUIRED_DATA_TYPE(), "vtkDataSet");
+  return 1;
+}
+
 void vtkExtractEdges::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os,indent);

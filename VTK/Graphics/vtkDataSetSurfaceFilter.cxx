@@ -683,6 +683,13 @@ int vtkDataSetSurfaceFilter::RequestUpdateExtent(
 }
 
 //----------------------------------------------------------------------------
+int vtkDataSetSurfaceFilter::FillInputPortInformation(int, vtkInformation *info)
+{
+  info->Set(vtkAlgorithm::INPUT_REQUIRED_DATA_TYPE(), "vtkDataSet");
+  return 1;
+}
+
+//----------------------------------------------------------------------------
 void vtkDataSetSurfaceFilter::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os,indent);

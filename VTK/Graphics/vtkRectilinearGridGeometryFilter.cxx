@@ -419,6 +419,13 @@ void vtkRectilinearGridGeometryFilter::SetExtent(int extent[6])
     }
 }
 
+int vtkRectilinearGridGeometryFilter::FillInputPortInformation(
+  int, vtkInformation *info)
+{
+  info->Set(vtkAlgorithm::INPUT_REQUIRED_DATA_TYPE(), "vtkRectilinearGrid");
+  return 1;
+}
+
 void vtkRectilinearGridGeometryFilter::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os,indent);

@@ -821,6 +821,14 @@ void vtkRectilinearSynchronizedTemplates::ComputeSpacing(
 }
 
 //----------------------------------------------------------------------------
+int vtkRectilinearSynchronizedTemplates::FillInputPortInformation(
+  int, vtkInformation *info)
+{
+  info->Set(vtkAlgorithm::INPUT_REQUIRED_DATA_TYPE(), "vtkRectilinearGrid");
+  return 1;
+}
+
+//----------------------------------------------------------------------------
 void vtkRectilinearSynchronizedTemplates::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os,indent);

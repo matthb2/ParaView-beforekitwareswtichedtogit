@@ -1187,7 +1187,8 @@ int vtkStreamTracer::FillInputPortInformation(int port, vtkInformation *info)
     {
     info->Set(vtkAlgorithm::INPUT_IS_OPTIONAL(), 1);
     }
-  return this->Superclass::FillInputPortInformation(port, info);
+  info->Set(vtkAlgorithm::INPUT_REQUIRED_DATA_TYPE(), "vtkDataSet");
+  return 1;
 }
 
 void vtkStreamTracer::PrintSelf(ostream& os, vtkIndent indent)

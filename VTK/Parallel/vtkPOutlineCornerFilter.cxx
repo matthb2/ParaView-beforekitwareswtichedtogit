@@ -137,6 +137,12 @@ int vtkPOutlineCornerFilter::RequestInformation(
   return 1;
 }
 
+int vtkPOutlineCornerFilter::FillInputPortInformation(int, vtkInformation *info)
+{
+  info->Set(vtkAlgorithm::INPUT_REQUIRED_DATA_TYPE(), "vtkDataSet");
+  return 1;
+}
+
 void vtkPOutlineCornerFilter::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os,indent);

@@ -131,6 +131,11 @@ int vtkPOutlineFilter::RequestInformation(
   return 1;
 }
 
+int vtkPOutlineFilter::FillInputPortInformation(int, vtkInformation *info)
+{
+  info->Set(vtkAlgorithm::INPUT_REQUIRED_DATA_TYPE(), "vtkDataSet");
+  return 1;
+}
 
 void vtkPOutlineFilter::PrintSelf(ostream& os, vtkIndent indent)
 {

@@ -489,6 +489,13 @@ void vtkBoxClipDataSet::SetBoxClip(double xmin,double xmax,
 }
 
 //----------------------------------------------------------------------------
+int vtkBoxClipDataSet::FillInputPortInformation(int port, vtkInformation *info)
+{
+  info->Set(vtkAlgorithm::INPUT_REQUIRED_DATA_TYPE(), "vtkDataSet");
+  return 1;
+}
+
+//----------------------------------------------------------------------------
 void vtkBoxClipDataSet::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os,indent);

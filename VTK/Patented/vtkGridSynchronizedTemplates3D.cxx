@@ -862,6 +862,14 @@ int vtkGridSynchronizedTemplates3D::RequestUpdateExtent(
 }
 
 //----------------------------------------------------------------------------
+int vtkGridSynchronizedTemplates3D::FillInputPortInformation(
+  int, vtkInformation *info)
+{
+  info->Set(vtkAlgorithm::INPUT_REQUIRED_DATA_TYPE(), "vtkStructuredGrid");
+  return 1;
+}
+
+//----------------------------------------------------------------------------
 void vtkGridSynchronizedTemplates3D::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os,indent);

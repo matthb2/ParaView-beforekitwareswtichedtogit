@@ -787,7 +787,8 @@ int vtkGlyph3D::FillInputPortInformation(int port, vtkInformation *info)
 {
   if (port == 0)
     {
-    return this->Superclass::FillInputPortInformation(port, info);
+    info->Set(vtkAlgorithm::INPUT_REQUIRED_DATA_TYPE(), "vtkDataSet");
+    return 1;
     }
   else if (port == 1)
     {

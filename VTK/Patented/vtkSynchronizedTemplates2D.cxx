@@ -478,6 +478,13 @@ int vtkSynchronizedTemplates2D::RequestData(
 }
 
 //----------------------------------------------------------------------------
+int vtkSynchronizedTemplates2D::FillInputPortInformation(int, vtkInformation *info)
+{
+  info->Set(vtkAlgorithm::INPUT_REQUIRED_DATA_TYPE(), "vtkImageData");
+  return 1;
+}
+
+//----------------------------------------------------------------------------
 void vtkSynchronizedTemplates2D::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os,indent);

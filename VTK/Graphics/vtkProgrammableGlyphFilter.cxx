@@ -317,7 +317,8 @@ int vtkProgrammableGlyphFilter::FillInputPortInformation(int port,
 {
   if (port == 0)
     {
-    return this->Superclass::FillInputPortInformation(port, info);
+    info->Set(vtkAlgorithm::INPUT_REQUIRED_DATA_TYPE(), "vtkDataSet");
+    return 1;
     }
   info->Set(vtkAlgorithm::INPUT_REQUIRED_DATA_TYPE(), "vtkPolyData");
   return 1;

@@ -800,6 +800,12 @@ int vtkHyperStreamline::BuildTube(vtkDataSet *input, vtkPolyData *output)
   return 1;
 }
 
+int vtkHyperStreamline::FillInputPortInformation(int, vtkInformation *info)
+{
+  info->Set(vtkAlgorithm::INPUT_REQUIRED_DATA_TYPE(), "vtkDataSet");
+  return 1;
+}
+
 void vtkHyperStreamline::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os,indent);

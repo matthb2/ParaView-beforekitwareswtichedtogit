@@ -873,6 +873,13 @@ int *vtkImageMarchingCubes::GetLocatorPointer(int cellX,int cellY,int edge)
 }
 
 //----------------------------------------------------------------------------
+int vtkImageMarchingCubes::FillInputPortInformation(int, vtkInformation *info)
+{
+  info->Set(vtkAlgorithm::INPUT_REQUIRED_DATA_TYPE(), "vtkImageData");
+  return 1;
+}
+
+//----------------------------------------------------------------------------
 void vtkImageMarchingCubes::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os,indent);
