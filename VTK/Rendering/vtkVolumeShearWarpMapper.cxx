@@ -13,6 +13,7 @@
 
 =========================================================================*/
 #include "vtkVolumeShearWarpMapper.h"
+#include "vtkVolumeShearWarpDataStructure.h"
 
 #include "vtkVolume.h"
 #include "vtkRenderer.h"
@@ -47,6 +48,9 @@
   B[2] = A[0]*M[2]  + A[1]*M[6]  + A[2]*M[10]
   
 vtkCxxRevisionMacro(vtkVolumeShearWarpMapper, "$Revision$");
+vtkCxxRevisionMacro(vtkShearWarpBase,"$Revision$");
+vtkCxxRevisionMacro(vtkShearWarpOctree<unsigned char>,"$Revision$");
+vtkCxxRevisionMacro(vtkShearWarpOctree<unsigned short>,"$Revision$");
 
 //----------------------------------------------------------------------------
 // Needed when we don't use the vtkStandardNewMacro.
