@@ -39,100 +39,84 @@ OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 =========================================================================*/
-// .NAME vtkActorCollection - a list of actors
+// .NAME vtkAssemblyPaths - a list of lists of props representing an assembly hierarchy
 // .SECTION Description
-// vtkActorCollection represents and provides methods to manipulate a list of
-// actors (i.e., vtkActor and subclasses). The list is unsorted and duplicate
-// entries are not prevented.
+// vtkAssemblyPaths represents an assembly hierarchy as a list of 
+// vtkAssemblyPath. Each path represents the complete path from the
+// top level assembly (if any) down to the leaf prop.
 
 // .SECTION see also
-// vtkActor vtkCollection 
+// vtkAssemblyPath vtkAssemblyNode vtkPicker vtkAssembly vtkProp
 
-#ifndef __vtkActorC_h
-#define __vtkActorC_h
+#ifndef __vtkAssemblyPaths_h
+#define __vtkAssemblyPaths_h
 
-#include "vtkPropCollection.h"
+#include "vtkCollection.h"
+#include "vtkAssemblyPath.h"
+
 class vtkActor;
-class vtkProperty;
 
-class VTK_EXPORT vtkActorCollection : public vtkPropCollection
+class VTK_EXPORT vtkAssemblyPaths : public vtkCollection
 {
 public:
-  static vtkActorCollection *New();
-  vtkTypeMacro(vtkActorCollection,vtkPropCollection);
+  static vtkAssemblyPaths *New();
+  const char *GetClassName() {return "vtkAssemblyPaths";};
 
   // Description:
-  // Add an actor to the list.
-  void AddItem(vtkActor *a);
+  // Add a path to the list.
+  void AddItem(vtkAssemblyPath *p);
 
   // Description:
-  // Get the next actor in the list.
-  vtkActor *GetNextActor();
+  // Remove a path from the list.
+  void RemoveItem(vtkAssemblyPath *p);
 
   // Description:
-  // Get the last actor in the list.
-  vtkActor *GetLastActor();
+  // Determine whether a particular path is present. Returns its position
+  // in the list.
+  int IsItemPresent(vtkAssemblyPath *p);
 
   // Description:
-  // Access routines that are provided for compatibility with previous
-  // version of VTK.  Please use the GetNextActor(), GetLastActor() variants
-  // where possible.
-  vtkActor *GetNextItem();
-  vtkActor *GetLastItem();
+  // Get the next path in the list.
+  vtkAssemblyPath *GetNextItem();
 
   // Description:
-  // Apply properties to all actors in this collection.
-  void ApplyProperties(vtkProperty *p); 
+  // Override the standard GetMTime() to check for the modified times
+  // of the paths.
+  virtual unsigned long GetMTime();
 
 protected:
-  vtkActorCollection() {};
-  ~vtkActorCollection() {};
-  vtkActorCollection(const vtkActorCollection&) {};
-  void operator=(const vtkActorCollection&) {};
-    
-
+  vtkAssemblyPaths() {};
+  ~vtkAssemblyPaths() {};
+  vtkAssemblyPaths(const vtkAssemblyPaths&) {};
+  void operator=(const vtkAssemblyPaths&) {};
+  
 private:
   // hide the standard AddItem from the user and the compiler.
   void AddItem(vtkObject *o) { this->vtkCollection::AddItem(o); };
-  void AddItem(vtkProp *o) { this->vtkPropCollection::AddItem(o); };
-
+  void RemoveItem(vtkObject *o) { this->vtkCollection::RemoveItem(o); };
+  void RemoveItem(int i) { this->vtkCollection::RemoveItem(i); };
+  int  IsItemPresent(vtkObject *o) 
+    { return this->vtkCollection::IsItemPresent(o);};
 };
 
-inline void vtkActorCollection::AddItem(vtkActor *a) 
+inline void vtkAssemblyPaths::AddItem(vtkAssemblyPath *p) 
 {
-  this->vtkCollection::AddItem((vtkObject *)a);
+  this->vtkCollection::AddItem((vtkObject *)p);
 }
 
-inline vtkActor *vtkActorCollection::GetNextActor() 
-{ 
-  return (vtkActor *)(this->GetNextItemAsObject());
-}
-
-inline vtkActor *vtkActorCollection::GetLastActor() 
-{ 
-  if ( this->Bottom == NULL )
-    {
-    return NULL;
-    }
-  else
-    {
-    return (vtkActor *)(this->Bottom->Item);
-    }
-}
-
-inline vtkActor *vtkActorCollection::GetNextItem() 
-{ 
-  return this->GetNextActor();
-}
-
-inline vtkActor *vtkActorCollection::GetLastItem() 
+inline void vtkAssemblyPaths::RemoveItem(vtkAssemblyPath *p) 
 {
-  return this->GetLastActor();
+  this->vtkCollection::RemoveItem((vtkObject *)p);
+}
+
+inline int vtkAssemblyPaths::IsItemPresent(vtkAssemblyPath *p) 
+{
+  return this->vtkCollection::IsItemPresent((vtkObject *)p);
+}
+
+inline vtkAssemblyPath *vtkAssemblyPaths::GetNextItem() 
+{ 
+  return (vtkAssemblyPath *)(this->GetNextItemAsObject());
 }
 
 #endif
-
-
-
-
-

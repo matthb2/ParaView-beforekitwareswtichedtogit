@@ -79,6 +79,7 @@ typedef int vtkMutexType;
 class VTK_EXPORT vtkSimpleMutexLock
 {
 public:
+  // left public purposely
   vtkSimpleMutexLock();
   virtual ~vtkSimpleMutexLock();
 

@@ -41,7 +41,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 =========================================================================*/
 #include "vtkPropCollection.h"
 #include "vtkObjectFactory.h"
-
+#include "vtkProp.h"
 
 
 //------------------------------------------------------------------------------
@@ -55,6 +55,18 @@ vtkPropCollection* vtkPropCollection::New()
     }
   // If the factory was unable to create the object, then create it here.
   return new vtkPropCollection;
+}
+
+int vtkPropCollection::GetNumberOfPaths()
+{
+  int numPaths=0;
+  vtkProp *aProp;
+
+  for ( this->InitTraversal(); aProp=this->GetNextProp(); )
+    {
+    numPaths += aProp->GetNumberOfPaths();
+    }
+  return numPaths;
 }
 
 

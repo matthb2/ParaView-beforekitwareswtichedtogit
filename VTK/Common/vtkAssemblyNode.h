@@ -39,69 +39,73 @@ OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 =========================================================================*/
-// .NAME vtkPropPicker - pick an actor/prop using graphics hardware
+// .NAME vtkAssemblyNode - represent a node in an assembly
 // .SECTION Description
-// vtkPropPicker is used to pick an actor/prop given a selection
-// point (in display coordinates) and a renderer. This class uses
-// graphics hardware/rendering system to pick rapidly (as compared
-// to using ray casting as does vtkCellPicker and vtkPointPicker).
-// This class determines the actor/prop and pick position in world
-// coordinates; point and cell ids are not determined.
+// vtkAssemblyNode represents a node in an assembly. It is used by
+// vtkAssemblyPath to create hierarchical assemblies of props. The
+// props can be either 2D or 3D.
+//
+// An assembly node refers to a vtkProp, and possibly a vtkMatrix4x4.
+// Nodes are used by vtkAssemblyPath to build fully evaluated path
+// (matrices are concatenated through the path) that is used by picking
+// and other operations involving assemblies.
 
-// .SECTION See Also 
-// vtkPicker vtkWorldPointPicker vtkCellPicker vtkPointPicker 
+// .SECTION Caveats
+// The assembly node is guaranteed to contain a reference to an instance
+// of vtkMatrix4x4 if the prop referred to by the node is of type
+// vtkProp3D (or subclass). The matrix is evaluated through the assembly
+// path, so the assembly node's matrix is a function of its location in 
+// the vtkAssemblyPath.
 
-#ifndef __vtkPropPicker_h
-#define __vtkPropPicker_h
+// .SECTION see also
+// vtkAssemblyPath vtkProp vtkPicker vtkMatrix4x4
 
-#include "vtkAbstractPropPicker.h"
+#ifndef __vtkAssemblyNode_h
+#define __vtkAssemblyNode_h
 
-class vtkProp;
-class vtkWorldPointPicker;
+#include "vtkObject.h"
+#include "vtkProp.h"
+#include "vtkMatrix4x4.h"
 
-class VTK_EXPORT vtkPropPicker : public vtkAbstractPropPicker
+class VTK_EXPORT vtkAssemblyNode : public vtkObject
 {
 public:
-  static vtkPropPicker *New();
+  // Description:
+  // Create an assembly node.
+  static vtkAssemblyNode *New();
 
-  vtkTypeMacro(vtkPropPicker,vtkAbstractPropPicker);
+  vtkTypeMacro(vtkAssemblyNode,vtkObject);
   void PrintSelf(ostream& os, vtkIndent indent);
 
   // Description:
-  // Perform the pick and set the PickedProp ivar. If something is picked, a
-  // 1 is returned, otherwise 0 is returned.  Use the GetProp() method
-  // to get the instance of vtkProp that was picked.  Props are picked from
-  // the renderers list of pickable Props.
-  int PickProp(float selectionX, float selectionY, vtkRenderer *renderer);  
-
+  // Set/Get the prop that this assembly node refers to.
+  vtkSetObjectMacro(Prop, vtkProp);
+  vtkGetObjectMacro(Prop, vtkProp);
+  
   // Description:
-  // Perform a pick from the user-provided list of vtkProps and not from the
-  // list of vtkProps that the render maintains.
-  int PickProp(float selectionX, float selectionY, vtkRenderer *renderer, 
-	       vtkPropCollection* pickfrom);  
-
+  // Specify a transformation matrix associated with the prop.
+  // Note: if the prop is not a type of vtkProp3D, then the
+  // transformation matrix is ignored (and expected to be NULL).
+  // Also, internal to this object the matrix is copied because
+  // the matrix is used for computation by vtkAssemblyPath.
+  void SetMatrix(vtkMatrix4x4 *matrix);
+  vtkGetObjectMacro(Matrix, vtkMatrix4x4);
+  
   // Description:
-  // Overide superclasses' Pick() method.
-  int Pick(float selectionX, float selectionY, float selectionZ, 
-           vtkRenderer *renderer);  
-  int Pick(float selectionPt[3], vtkRenderer *renderer)
-    { return this->Pick( selectionPt[0], 
-			 selectionPt[1], selectionPt[2], renderer); };  
+  // Override the standard GetMTime() to check for the modified times
+  // of the prop and matrix.
+  virtual unsigned long GetMTime();
 
 protected:
-  vtkPropPicker();
-  ~vtkPropPicker();
-  vtkPropPicker(const vtkPropPicker&) {};
-  void operator=(vtkPropPicker&) {};
+  vtkAssemblyNode();
+  ~vtkAssemblyNode();
+  vtkAssemblyNode(const vtkAssemblyNode &) {};
+  void operator=(const vtkAssemblyNode &) {};
 
-  void Initialize();
+private:
+  vtkProp *Prop; //reference to vtkProp
+  vtkMatrix4x4 *Matrix; //associated matrix
   
-  vtkPropCollection* PickFromProps;
-  
-  // Used to get x-y-z pick position
-  vtkWorldPointPicker *WorldPointPicker;
 };
 
 #endif
-
-

@@ -5,7 +5,7 @@
   Language:  C++
   Date:      $Date$
   Version:   $Revision$
-  Thanks:    Thanks to Matt Turek who developed this class.
+
 
 Copyright (c) 1993-2000 Ken Martin, Will Schroeder, Bill Lorensen 
 All rights reserved.
@@ -39,76 +39,100 @@ OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 =========================================================================*/
-// .NAME vtkImager - Renders into part of a ImageWindow
-// .SECTION Description
-// vtkImager is the 2D counterpart to vtkRenderer. An Imager renders
-// 2D actors into a viewport of an image window. 
+#include "vtkAssemblyNode.h"
+#include "vtkProp.h"
+#include "vtkMatrix4x4.h"
+#include "vtkObjectFactory.h"
 
-// .SECTION See Also
-//  vtkImageWindow vtkViewport
-   
+//-------------------------------------------------------------------------
+vtkAssemblyNode* vtkAssemblyNode::New()
+{
+  // First try to create the object from the vtkObjectFactory
+  vtkObject* ret = vtkObjectFactory::CreateInstance("vtkAssemblyNode");
+  if(ret)
+    {
+    return (vtkAssemblyNode*)ret;
+    }
+  // If the factory was unable to create the object, then create it here.
+  return new vtkAssemblyNode;
+}
 
-#ifndef __vtkImager_h
-#define __vtkImager_h
+vtkAssemblyNode::vtkAssemblyNode()
+{
+  this->Prop = NULL;
+  this->Matrix = NULL;
+}
 
-#include "vtkObject.h"
-#include "vtkActor2DCollection.h"
-#include "vtkActor2D.h"
-#include "vtkViewport.h"
+vtkAssemblyNode::~vtkAssemblyNode()
+{
+  if ( this->Prop )
+    {
+    this->Prop->Delete();
+    }
+  if ( this->Matrix )
+    {
+    this->Matrix->Delete();
+    }
+}
 
+void vtkAssemblyNode::SetMatrix(vtkMatrix4x4 *matrix)
+{
+  // delete previous
+  if ( this->Matrix != NULL )
+    {
+    this->Matrix->Delete();
+    this->Matrix = NULL;
+    }
+  // return if NULL matrix specified
+  if ( matrix == NULL )
+    {
+    return;
+    }
 
-class vtkImageWindow;
+  // else create a copy of the matrix
+  vtkMatrix4x4 *newMatrix = vtkMatrix4x4::New();
+  newMatrix->DeepCopy(matrix);
+  this->Matrix = newMatrix;
+}
 
-class VTK_EXPORT vtkImager : public vtkViewport
-{ 
-public:
-  static vtkImager *New();
-  vtkTypeMacro(vtkImager,vtkViewport);
-
-  // Description:
-  // Renders an imager.  Passes Render message on the 
-  // the imager's actor2D collection.
-  virtual int RenderOpaqueGeometry();
-  virtual int RenderTranslucentGeometry();
-  virtual int RenderOverlay();
-
-  // Description:
-  // Get the image window that an imager is attached to.
-  vtkImageWindow* GetImageWindow() {return (vtkImageWindow*) this->VTKWindow;};
-  vtkWindow *GetVTKWindow() {return (vtkWindow*) this->VTKWindow;};
-
+unsigned long vtkAssemblyNode::GetMTime()
+{
+  unsigned long propMTime=0;
+  unsigned long matrixMTime=0;
   
-  //BTX
-  // Description:
-  // These set methods are used by the image window, and should not be
-  // used by anyone else.  They do not reference count the window.
-  void SetImageWindow (vtkImageWindow* win);
-  void SetVTKWindow (vtkWindow* win);  
-  //ETX
+  if ( this->Prop != NULL )
+    {
+    propMTime = this->Prop->GetMTime();
+    }
+  if ( this->Matrix != NULL )
+    {
+    matrixMTime = this->Matrix->GetMTime();
+    }
   
-  // Description:
-  // Erase the contents of the imager in the window.
-  virtual void Erase(){vtkErrorMacro(<<"vtkImager::Erase - Not implemented!");};
+  return (propMTime > matrixMTime ? propMTime : matrixMTime);
+}
 
-  virtual vtkAssemblyPath* PickProp(float selectionX, float selectionY);
-  virtual float GetPickedZ();
+void vtkAssemblyNode::PrintSelf(ostream& os, vtkIndent indent)
+{
+  vtkObject::PrintSelf(os,indent);
 
-protected:
-  vtkImager();
-  ~vtkImager();
-  vtkImager(const vtkImager&) {};
-  void operator=(const vtkImager&) {};
+  if ( this->Prop )
+    {
+    os << indent << "Prop: " << this->Prop << "\n";
+    }
+  else
+    {
+    os << indent << "Prop: (none)\n";
+    }
 
-  virtual void StartPick(unsigned int pickFromSize);
-  virtual void UpdatePickId();
-  virtual void DonePick(); 
-  virtual unsigned int GetPickedId();
-  virtual void DevicePickRender();
-};
-
-
-#endif
-
-
+  if ( this->Matrix )
+    {
+    os << indent << "Matrix: " << this->Matrix << "\n";
+    }
+  else
+    {
+    os << indent << "Matrix: (none)\n";
+    }
+}
 
 

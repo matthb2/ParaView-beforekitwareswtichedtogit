@@ -5,7 +5,7 @@
   Language:  C++
   Date:      $Date$
   Version:   $Revision$
-  Thanks:    Thanks to Matt Turek who developed this class.
+
 
 Copyright (c) 1993-2000 Ken Martin, Will Schroeder, Bill Lorensen 
 All rights reserved.
@@ -39,76 +39,38 @@ OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 =========================================================================*/
-// .NAME vtkImager - Renders into part of a ImageWindow
-// .SECTION Description
-// vtkImager is the 2D counterpart to vtkRenderer. An Imager renders
-// 2D actors into a viewport of an image window. 
+#include "vtkAssemblyPaths.h"
+#include "vtkObjectFactory.h"
 
-// .SECTION See Also
-//  vtkImageWindow vtkViewport
-   
+//----------------------------------------------------------------------------
+vtkAssemblyPaths* vtkAssemblyPaths::New()
+{
+  // First try to create the object from the vtkObjectFactory
+  vtkObject* ret = vtkObjectFactory::CreateInstance("vtkAssemblyPaths");
+  if(ret)
+    {
+    return (vtkAssemblyPaths*)ret;
+    }
+  // If the factory was unable to create the object, then create it here.
+  return new vtkAssemblyPaths;
+}
 
-#ifndef __vtkImager_h
-#define __vtkImager_h
-
-#include "vtkObject.h"
-#include "vtkActor2DCollection.h"
-#include "vtkActor2D.h"
-#include "vtkViewport.h"
-
-
-class vtkImageWindow;
-
-class VTK_EXPORT vtkImager : public vtkViewport
-{ 
-public:
-  static vtkImager *New();
-  vtkTypeMacro(vtkImager,vtkViewport);
-
-  // Description:
-  // Renders an imager.  Passes Render message on the 
-  // the imager's actor2D collection.
-  virtual int RenderOpaqueGeometry();
-  virtual int RenderTranslucentGeometry();
-  virtual int RenderOverlay();
-
-  // Description:
-  // Get the image window that an imager is attached to.
-  vtkImageWindow* GetImageWindow() {return (vtkImageWindow*) this->VTKWindow;};
-  vtkWindow *GetVTKWindow() {return (vtkWindow*) this->VTKWindow;};
-
+unsigned long vtkAssemblyPaths::GetMTime()
+{
+  unsigned long mtime=this->vtkCollection::GetMTime();
+  unsigned long pathMTime;
+  vtkAssemblyPath *path;
   
-  //BTX
-  // Description:
-  // These set methods are used by the image window, and should not be
-  // used by anyone else.  They do not reference count the window.
-  void SetImageWindow (vtkImageWindow* win);
-  void SetVTKWindow (vtkWindow* win);  
-  //ETX
-  
-  // Description:
-  // Erase the contents of the imager in the window.
-  virtual void Erase(){vtkErrorMacro(<<"vtkImager::Erase - Not implemented!");};
-
-  virtual vtkAssemblyPath* PickProp(float selectionX, float selectionY);
-  virtual float GetPickedZ();
-
-protected:
-  vtkImager();
-  ~vtkImager();
-  vtkImager(const vtkImager&) {};
-  void operator=(const vtkImager&) {};
-
-  virtual void StartPick(unsigned int pickFromSize);
-  virtual void UpdatePickId();
-  virtual void DonePick(); 
-  virtual unsigned int GetPickedId();
-  virtual void DevicePickRender();
-};
-
-
-#endif
-
+  for ( this->InitTraversal(); (path = this->GetNextItem()); )
+    {
+    pathMTime = path->GetMTime();
+    if ( pathMTime > mtime )
+      {
+      mtime = pathMTime;
+      }
+    }
+  return mtime;
+}
 
 
 
