@@ -84,6 +84,9 @@ void vtkUnstructuredGridPreIntegration::PrintSelf(ostream &os, vtkIndent indent)
      << this->IntegrationTableScalarResolution << endl;
   os << indent << "IntegrationTableLengthResolution: "
      << this->IntegrationTableLengthResolution << endl;
+
+  os << indent << "IncrementalPreIntegration: "
+     << this->IncrementalPreIntegration << endl;
 }
 
 //-----------------------------------------------------------------------------
