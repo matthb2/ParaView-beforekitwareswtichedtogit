@@ -786,6 +786,12 @@ void vtkRenderer::ResetCameraClippingRange( float bounds[6] )
   double  range[2], dist;
   int     i, j, k;
 
+  // Don't reset the clipping range when we don't have any 3D visible props
+  if ( bounds[0] == VTK_LARGE_FLOAT )
+    {
+    return;
+    }
+  
   this->GetActiveCamera();
   if ( this->ActiveCamera == NULL )
     {
