@@ -1292,3 +1292,10 @@ void vtkPlaneWidget::GetPolyData(vtkPolyData *pd)
 { 
   pd->ShallowCopy(this->PlaneSource->GetOutput()); 
 }
+
+
+void vtkPlaneWidget::RealiseGeometry(void)
+{
+  this->PlaneSource->Update();
+  this->PositionHandles();
+}
