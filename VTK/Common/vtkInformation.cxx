@@ -111,6 +111,12 @@ vtkObjectBase* vtkInformation::GetAsObjectBase(vtkInformationKey* key)
 }
 
 //----------------------------------------------------------------------------
+void vtkInformation::Clear()
+{
+  this->Copy(0);
+}
+
+//----------------------------------------------------------------------------
 void vtkInformation::Copy(vtkInformation* from)
 {
   if(from)
