@@ -133,8 +133,15 @@ void vtkXMLDataReader::SetupOutputInformation()
       if(this->PointDataArrayIsEnabled(eNested))
         {
         vtkDataArray* array = this->CreateDataArray(eNested);
-        pointData->AddArray(array);
-        array->Delete();
+        if(array)
+          {
+          pointData->AddArray(array);
+          array->Delete();
+          }
+        else
+          {
+          this->InformationError = 1;
+          }
         }
       }
     }
@@ -147,8 +154,15 @@ void vtkXMLDataReader::SetupOutputInformation()
       if(this->CellDataArrayIsEnabled(eNested))
         {
         vtkDataArray* array = this->CreateDataArray(eNested);
-        cellData->AddArray(array);
-        array->Delete();
+        if(array)
+          {
+          cellData->AddArray(array);
+          array->Delete();
+          }
+        else
+          {
+          this->InformationError = 1;
+          }
         }
       }
     }
