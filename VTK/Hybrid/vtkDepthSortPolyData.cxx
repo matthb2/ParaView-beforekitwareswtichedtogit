@@ -16,12 +16,18 @@
 
 =========================================================================*/
 #include "vtkDepthSortPolyData.h"
+
+#include "vtkCamera.h"
 #include "vtkMath.h"
-#include "vtkUnsignedIntArray.h"
 #include "vtkObjectFactory.h"
+#include "vtkProp3D.h"
+#include "vtkTransform.h"
+#include "vtkUnsignedIntArray.h"
 
 vtkCxxRevisionMacro(vtkDepthSortPolyData, "$Revision$");
 vtkStandardNewMacro(vtkDepthSortPolyData);
+
+vtkCxxSetObjectMacro(vtkDepthSortPolyData,Camera,vtkCamera);
 
 vtkDepthSortPolyData::vtkDepthSortPolyData()
 {
