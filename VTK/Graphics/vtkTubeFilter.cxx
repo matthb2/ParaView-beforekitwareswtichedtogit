@@ -185,7 +185,7 @@ int vtkTubeFilter::RequestData(
   //
   numNewCells = inLines->GetNumberOfCells() * this->NumberOfSides + 2;
   outCD->CopyNormalsOff();
-  outCD->CopyAllocate(pd,numNewCells);
+  outPD->CopyAllocate(pd,numNewCells);
 
   //  Create points along each polyline that are connected into NumberOfSides
   //  triangle strips. Texture coordinates are optionally generated.
