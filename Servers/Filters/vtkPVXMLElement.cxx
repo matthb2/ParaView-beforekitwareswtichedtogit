@@ -125,6 +125,11 @@ void vtkPVXMLElement::AddNestedElement(vtkPVXMLElement* element)
 }
 
 //----------------------------------------------------------------------------
+void vtkPVXMLElement::AddCharacterData(const char*, int)
+{
+}
+
+//----------------------------------------------------------------------------
 const char* vtkPVXMLElement::GetAttribute(const char* name)
 {
   unsigned int i;

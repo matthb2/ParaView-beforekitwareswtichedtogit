@@ -93,6 +93,16 @@ void vtkPVXMLParser::EndElement(const char* vtkNotUsed(name))
 }
 
 //----------------------------------------------------------------------------
+void vtkPVXMLParser::CharacterDataHandler(const char* data, int length)
+{
+  unsigned int numOpen = this->NumberOfOpenElements;
+  if(numOpen > 0)
+    {
+    this->OpenElements[numOpen-1]->AddCharacterData(data, length);
+    }
+}
+
+//----------------------------------------------------------------------------
 void vtkPVXMLParser::PushOpenElement(vtkPVXMLElement* element)
 {
   if(this->NumberOfOpenElements == this->OpenElementsSize)
