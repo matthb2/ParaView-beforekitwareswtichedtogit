@@ -176,7 +176,15 @@ void vtkKWIcon::SetImageData(const unsigned char* pixels, int width, int height,
   if ( data_ptr )
     {
     this->SetData(data_ptr, width, height);
-    delete [] data_ptr;
+    }
+  if (base64)
+    {
+    delete [] base64_buffer;
+    }
+
+  if (zlib)
+    {
+    delete [] zlib_buffer;
     }
 }
 
