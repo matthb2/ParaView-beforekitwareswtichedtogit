@@ -220,6 +220,9 @@ void vtkInteractorObserver::PrintSelf(ostream& os, vtkIndent indent)
      << (this->KeyPressActivation ? "On" : "Off") << "\n";
   os << indent << "Key Press Activation Value: " 
      << this->KeyPressActivationValue << "\n";
+  os << indent << "LastPos: (" << this->LastPos[0] << ", " 
+                               << this->LastPos[1] << ")\n";  
+
 }
 
 

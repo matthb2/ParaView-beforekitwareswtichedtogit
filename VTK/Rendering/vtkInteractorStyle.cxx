@@ -1299,6 +1299,7 @@ void vtkInteractorStyle::PrintSelf(ostream& os, vtkIndent indent)
   
   os << indent << "State: " << this->State << endl;
   os << indent << "UseTimers: " << this->UseTimers << endl;
+  os << indent << "HandleObservers: " << this->HandleObservers << endl;
 }
 
 //----------------------------------------------------------------------------
