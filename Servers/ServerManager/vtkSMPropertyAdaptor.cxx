@@ -382,6 +382,12 @@ const char* vtkSMPropertyAdaptor::GetRangeValue(unsigned int idx)
 }
 
 //---------------------------------------------------------------------------
+int vtkSMPropertyAdaptor::SetGenericValue(unsigned int idx, const char* value)
+{
+  return this->SetRangeValue(idx, value);
+}
+
+//---------------------------------------------------------------------------
 int vtkSMPropertyAdaptor::SetRangeValue(unsigned int idx, const char* value)
 {
   if (this->DoubleVectorProperty)
@@ -650,7 +656,7 @@ const char* vtkSMPropertyAdaptor::GetSelectionMaximum(unsigned int idx)
   if (this->StringListRangeDomain)
     {
     int exists=0;
-    int max = this->StringListRangeDomain->GetMinimum(idx, exists);
+    int max = this->StringListRangeDomain->GetMaximum(idx, exists);
     if (exists)
       {
       sprintf(this->Maximum, "%d", max);
