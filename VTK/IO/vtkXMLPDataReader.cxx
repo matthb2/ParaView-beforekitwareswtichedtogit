@@ -361,10 +361,10 @@ int vtkXMLPDataReader::CanReadPiece(int index)
 //----------------------------------------------------------------------------
 char* vtkXMLPDataReader::CreatePieceFileName(const char* fileName)
 {
-  ostrstream fn;
-  if(this->PathName) { fn << this->PathName; }
-  fn << fileName << ends;
-  return fn.str();
+  ostrstream fn_with_warning_C4701;
+  if(this->PathName) { fn_with_warning_C4701 << this->PathName; }
+  fn_with_warning_C4701 << fileName << ends;
+  return fn_with_warning_C4701.str();
 }
 
 //----------------------------------------------------------------------------
