@@ -13,6 +13,8 @@
 
 =========================================================================*/
 #include "vtkImplicitWindowFunction.h"
+
+#include "vtkGarbageCollector.h"
 #include "vtkObjectFactory.h"
 
 vtkCxxRevisionMacro(vtkImplicitWindowFunction, "$Revision$");
@@ -129,4 +131,29 @@ void vtkImplicitWindowFunction::PrintSelf(ostream& os, vtkIndent indent)
   os << indent << "Window Values: (" << this->WindowValues[0] 
      << ", " << this->WindowValues[1] << ")\n";
 
+}
+
+//----------------------------------------------------------------------------
+void vtkImplicitWindowFunction::ReportReferences(
+  vtkGarbageCollector* collector)
+{
+  this->Superclass::ReportReferences(collector);
+#ifdef VTK_USE_EXECUTIVES
+  // These filters share our input and are therefore involved in a
+  // reference loop.
+  collector->ReportReference(this->ImplicitFunction, "ImplicitFunction");
+#endif
+}
+
+//----------------------------------------------------------------------------
+void vtkImplicitWindowFunction::RemoveReferences()
+{
+#ifdef VTK_USE_EXECUTIVES
+  if(this->ImplicitFunction)
+    {
+    this->ImplicitFunction->Delete();
+    this->ImplicitFunction = 0;
+    }
+#endif
+  this->Superclass::RemoveReferences();
 }

@@ -200,6 +200,7 @@ int vtkMemoryLimitImageDataStreamer::ProcessUpstreamRequest(
       
       // undo the last *2
       this->NumberOfStreamDivisions = this->NumberOfStreamDivisions/2;
+      sizer->Delete();
       }    
     return
       this->Superclass::ProcessUpstreamRequest(request,

@@ -16,6 +16,7 @@
 
 #include "vtkCell.h"
 #include "vtkDataSet.h"
+#include "vtkGarbageCollector.h"
 #include "vtkObjectFactory.h"
 #include "vtkPointData.h"
 
@@ -182,4 +183,28 @@ void vtkImplicitDataSet::PrintSelf(ostream& os, vtkIndent indent)
     {
     os << indent << "Data Set: (none)\n";
     }
+}
+
+//----------------------------------------------------------------------------
+void vtkImplicitDataSet::ReportReferences(vtkGarbageCollector* collector)
+{
+  this->Superclass::ReportReferences(collector);
+#ifdef VTK_USE_EXECUTIVES
+  // These filters share our input and are therefore involved in a
+  // reference loop.
+  collector->ReportReference(this->DataSet, "DataSet");
+#endif
+}
+
+//----------------------------------------------------------------------------
+void vtkImplicitDataSet::RemoveReferences()
+{
+#ifdef VTK_USE_EXECUTIVES
+  if(this->DataSet)
+    {
+    this->DataSet->Delete();
+    this->DataSet = 0;
+    }
+#endif
+  this->Superclass::RemoveReferences();
 }
