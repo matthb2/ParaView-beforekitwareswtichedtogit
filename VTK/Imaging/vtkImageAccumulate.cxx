@@ -360,11 +360,10 @@ void vtkImageAccumulate::ExecuteInformation(vtkImageData *input,
 //----------------------------------------------------------------------------
 // Get ALL of the input.
 void vtkImageAccumulate::ComputeInputUpdateExtent(int inExt[6], 
-                                                  int outExt[6])
+                                                  int *vtkNotUsed(outExt))
 {
   int *wholeExtent;
 
-  outExt = outExt;
   wholeExtent = this->GetInput()->GetWholeExtent();
   memcpy(inExt, wholeExtent, 6*sizeof(int));
 }
