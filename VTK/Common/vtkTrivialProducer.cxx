@@ -122,7 +122,7 @@ vtkTrivialProducer::ProcessDownstreamRequest(vtkInformation* request,
      request->Has(vtkDemandDrivenPipeline::REQUEST_DATA()))
     {
     vtkInformation* info = outputVector->GetInformationObject(0);
-    info->Set(vtkInformation::DATA_OBJECT(), this->Output);
+    info->Set(vtkDataObject::DATA_OBJECT(), this->Output);
     }
   if(request->Has(vtkDemandDrivenPipeline::REQUEST_INFORMATION()) &&
      this->Output)

@@ -59,7 +59,7 @@ vtkStructuredGridToPolyDataFilter
     {
     return 0;
     }
-  info->Set(vtkInformation::INPUT_REQUIRED_DATA_TYPE(), "vtkStructuredGrid");
+  info->Set(vtkAlgorithm::INPUT_REQUIRED_DATA_TYPE(), "vtkStructuredGrid");
   return 1;
 }
 

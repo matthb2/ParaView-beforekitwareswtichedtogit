@@ -55,7 +55,7 @@ int vtkDataSetSource::FillOutputPortInformation(int port, vtkInformation* info)
     {
     return 0;
     }
-  info->Set(vtkInformation::OUTPUT_DATA_TYPE(), "vtkDataSet");
+  info->Set(vtkDataObject::DATA_TYPE_NAME(), "vtkDataSet");
   return 1;
 }
 

@@ -59,7 +59,7 @@ vtkRectilinearGridToPolyDataFilter
     {
     return 0;
     }
-  info->Set(vtkInformation::INPUT_REQUIRED_DATA_TYPE(), "vtkRectilinearGrid");
+  info->Set(vtkAlgorithm::INPUT_REQUIRED_DATA_TYPE(), "vtkRectilinearGrid");
   return 1;
 }
 

@@ -86,7 +86,8 @@ int vtkStructuredPointsSource::FillOutputPortInformation(int port,
     {
     return 0;
     }
-  info->Set(vtkInformation::OUTPUT_DATA_TYPE(), "vtkStructuredPoints");
+  info->Set(vtkDataObject::DATA_TYPE_NAME(), "vtkStructuredPoints");
+  info->Set(vtkDataObject::DATA_EXTENT_TYPE(), VTK_3D_EXTENT);
   return 1;
 }
 

@@ -345,7 +345,7 @@ int vtkImageStencil::FillInputPortInformation(int port, vtkInformation* info)
     {
     return 0;
     }
-  info->Set(vtkInformation::INPUT_REQUIRED_DATA_TYPE(), "vtkDataObject");
+  info->Set(vtkAlgorithm::INPUT_REQUIRED_DATA_TYPE(), "vtkDataObject");
   return 1;
 }
 

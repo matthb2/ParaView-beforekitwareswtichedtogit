@@ -58,7 +58,7 @@ int vtkDataObjectSource::FillOutputPortInformation(int port,
     {
     return 0;
     }
-  info->Set(vtkInformation::OUTPUT_DATA_TYPE(), "vtkDataObject");
+  info->Set(vtkDataObject::DATA_TYPE_NAME(), "vtkDataObject");
   return 1;
 }
 

@@ -64,7 +64,8 @@ int vtkStructuredGridSource::FillOutputPortInformation(int port,
     {
     return 0;
     }
-  info->Set(vtkInformation::OUTPUT_DATA_TYPE(), "vtkStructuredGrid");
+  info->Set(vtkDataObject::DATA_TYPE_NAME(), "vtkStructuredGrid");
+  info->Set(vtkDataObject::DATA_EXTENT_TYPE(), VTK_3D_EXTENT);
   return 1;
 }
 

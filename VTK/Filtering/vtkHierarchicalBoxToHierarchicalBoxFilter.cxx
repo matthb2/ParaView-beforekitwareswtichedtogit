@@ -60,7 +60,7 @@ vtkHierarchicalBoxToHierarchicalBoxFilter
     {
     return 0;
     }
-  info->Set(vtkInformation::INPUT_REQUIRED_DATA_TYPE(), "vtkHierarchicalBoxDataSet");
+  info->Set(vtkAlgorithm::INPUT_REQUIRED_DATA_TYPE(), "vtkHierarchicalBoxDataSet");
   return 1;
 }
 

@@ -1120,7 +1120,7 @@ int vtkDelaunay2D::FillInputPortInformation(int port, vtkInformation* info)
     {
     return 0;
     }
-  info->Set(vtkInformation::INPUT_REQUIRED_DATA_TYPE(), "vtkPointSet");
+  info->Set(vtkAlgorithm::INPUT_REQUIRED_DATA_TYPE(), "vtkPointSet");
   return 1;
 }
 
