@@ -106,7 +106,7 @@ void vtkImageChangeInformation::ExecuteInformation(vtkImageData *inData,
 {
   int i;
   int extent[6], inExtent[6];
-  float spacing[3], origin[3];
+  double spacing[3], origin[3];
   
   inData->GetWholeExtent(inExtent);
 

@@ -40,8 +40,8 @@ vtkImageFlip::vtkImageFlip()
 void vtkImageFlip::ExecuteInformation(vtkImageData *input, 
                                       vtkImageData *output) 
 {
-  float spacing[3];
-  float origin[3];
+  double spacing[3];
+  double origin[3];
   int wholeExt[6];
    
   input->GetWholeExtent(wholeExt);
