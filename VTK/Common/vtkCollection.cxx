@@ -45,8 +45,8 @@ vtkCollection::~vtkCollection()
     elem = this->Top;
     this->Top = elem->Next;
     this->Current = elem->Next;
-    this->DeleteElement(elem);
     this->NumberOfItems--;    
+    this->DeleteElement(elem);
     }
 }
 
@@ -125,8 +125,8 @@ void vtkCollection::RemoveAllItems()
     elem = this->Top;
     this->Top = elem->Next;
     this->Current = elem->Next;
-    this->DeleteElement(elem);
     this->NumberOfItems--;    
+    this->DeleteElement(elem);
     }
   
   this->Modified();
@@ -290,8 +290,8 @@ void vtkCollection::RemoveItem(int i)
     this->Current = elem->Next;
     }
 
-  this->DeleteElement(elem);
   this->NumberOfItems--;
+  this->DeleteElement(elem);
 }
 
 vtkCollectionIterator* vtkCollection::NewIterator()
