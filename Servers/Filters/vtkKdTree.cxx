@@ -2934,6 +2934,49 @@ int vtkKdTree::IntersectsFrustum(int *ids, int len, vtkRenderer *ren,
   return howmany;
 }
 
+void vtkKdTree::OmitXPartitioning() 
+{
+  this->Modified();
+  this->ValidDirections = (1 << vtkKdTree::ydim) | (1 << vtkKdTree::zdim);
+}
+
+void vtkKdTree::OmitYPartitioning()    
+{
+  this->Modified();
+  this->ValidDirections = (1 << vtkKdTree::zdim) | (1 << vtkKdTree::xdim);
+}
+
+void vtkKdTree::OmitZPartitioning()    
+{
+  this->Modified();
+  this->ValidDirections = (1 << vtkKdTree::xdim) | (1 << vtkKdTree::ydim);
+}
+
+void vtkKdTree::OmitXYPartitioning()
+{
+  this->Modified();
+  this->ValidDirections = (1 << vtkKdTree::zdim);
+}
+
+void vtkKdTree::OmitYZPartitioning()
+{
+  this->Modified();
+  this->ValidDirections = (1 << vtkKdTree::xdim);
+}
+
+void vtkKdTree::OmitZXPartitioning()
+{
+  this->Modified();
+  this->ValidDirections = (1 << vtkKdTree::ydim);
+}
+
+void vtkKdTree::OmitNoPartitioning()
+{
+  this->Modified();
+  this->ValidDirections =
+    ((1 << vtkKdTree::xdim)|(1 << vtkKdTree::ydim)|(1 << vtkKdTree::zdim));
+}
+
 //---------------------------------------------------------------------------
 
 void vtkKdTree::PrintTiming(ostream& os, vtkIndent )

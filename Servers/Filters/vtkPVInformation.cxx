@@ -21,7 +21,7 @@ modification, are permitted provided that the following conditions are met:
    and/or other materials provided with the distribution.
 
  * Neither the name of Kitware nor the names of any contributors may be used
-   to endorse or promote products derived from this software without specific 
+   to endorse or promote products derived from this software without specific
    prior written permission.
 
  * Modified source versions must be plainly marked as such, and must not be
@@ -40,11 +40,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 =========================================================================*/
 #include "vtkPVInformation.h"
-#include "vtkObjectFactory.h"
 
-
-//----------------------------------------------------------------------------
-vtkStandardNewMacro(vtkPVInformation);
 vtkCxxRevisionMacro(vtkPVInformation, "$Revision$");
 
 //----------------------------------------------------------------------------
@@ -54,34 +50,8 @@ vtkPVInformation::vtkPVInformation()
 }
 
 //----------------------------------------------------------------------------
-void vtkPVInformation::CopyFromObject(vtkObject*)
+vtkPVInformation::~vtkPVInformation()
 {
-  vtkErrorMacro("CopyFromObject not implemented.");
-}
-
-//----------------------------------------------------------------------------
-void vtkPVInformation::CopyFromMessage(unsigned char*)
-{
-  vtkErrorMacro("CopyFromMessage not implemented.");
-}
-
-//----------------------------------------------------------------------------
-void vtkPVInformation::AddInformation(vtkPVInformation* vtkNotUsed(info))
-{
-  vtkErrorMacro("AddInformation not implemented.");
-}
-
-//----------------------------------------------------------------------------
-int vtkPVInformation::GetMessageLength()
-{
-  vtkErrorMacro("GetMessageLength not implemented.");
-  return 0;
-}
-
-//----------------------------------------------------------------------------
-void vtkPVInformation::WriteMessage(unsigned char*)
-{
-  vtkErrorMacro("WriteMessage not implemented.");
 }
 
 //----------------------------------------------------------------------------
@@ -89,4 +59,22 @@ void vtkPVInformation::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os,indent);
   os << indent << "RootOnly: " << this->RootOnly;
+}
+
+//----------------------------------------------------------------------------
+void vtkPVInformation::CopyFromObject(vtkObject*)
+{
+  vtkErrorMacro("CopyFromObject not implemented.");
+}
+
+//----------------------------------------------------------------------------
+void vtkPVInformation::AddInformation(vtkPVInformation*)
+{
+  vtkErrorMacro("AddInformation not implemented.");
+}
+
+//----------------------------------------------------------------------------
+void vtkPVInformation::CopyFromStream(const vtkClientServerStream*)
+{
+  vtkErrorMacro("CopyFromStream not implemented.");
 }
