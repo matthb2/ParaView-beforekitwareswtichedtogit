@@ -220,7 +220,7 @@ void vtkMergeArrays::PrintSelf(ostream& os, vtkIndent indent)
       os << indent << "No Input\n";
       }
     } 
-  if( ( output = this->GetOutput() ) )
+  if( num && ( output = this->GetOutput() ) )
     {
     os << indent << "Output: (" << output << ")\n";
     }
