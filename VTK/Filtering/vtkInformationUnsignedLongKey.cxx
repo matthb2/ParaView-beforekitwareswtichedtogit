@@ -45,11 +45,22 @@ public:
 void vtkInformationUnsignedLongKey::Set(vtkInformation* info,
                                         unsigned long value)
 {
-  vtkInformationUnsignedLongValue* v = new vtkInformationUnsignedLongValue;
-  this->ConstructClass("vtkInformationUnsignedLongValue");
-  v->Value = value;
-  this->SetAsObjectBase(info, v);
-  v->Delete();
+  if(vtkInformationUnsignedLongValue* oldv =
+     vtkInformationUnsignedLongValue::SafeDownCast(
+       this->GetAsObjectBase(info)))
+    {
+    // Replace the existing value.
+    oldv->Value = value;
+    }
+  else
+    {
+    // Allocate a new value.
+    vtkInformationUnsignedLongValue* v = new vtkInformationUnsignedLongValue;
+    this->ConstructClass("vtkInformationUnsignedLongValue");
+    v->Value = value;
+    this->SetAsObjectBase(info, v);
+    v->Delete();
+    }
 }
 
 //----------------------------------------------------------------------------
@@ -75,4 +86,17 @@ void vtkInformationUnsignedLongKey::Copy(vtkInformation* from,
                                          vtkInformation* to)
 {
   this->Set(to, this->Get(from));
+}
+
+//----------------------------------------------------------------------------
+unsigned long*
+vtkInformationUnsignedLongKey::GetWatchAddress(vtkInformation* info)
+{
+  if(vtkInformationUnsignedLongValue* v =
+     vtkInformationUnsignedLongValue::SafeDownCast(
+       this->GetAsObjectBase(info)))
+    {
+    return &v->Value;
+    }
+  return 0;
 }

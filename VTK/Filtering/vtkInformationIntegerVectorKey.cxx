@@ -16,6 +16,7 @@
 
 #include "vtkInformation.h" // For vtkErrorWithObjectMacro
 
+#include <vtkstd/algorithm>
 #include <vtkstd/vector>
 
 vtkCxxRevisionMacro(vtkInformationIntegerVectorKey, "$Revision$");
@@ -80,12 +81,25 @@ void vtkInformationIntegerVectorKey::Set(vtkInformation* info, int* value,
       this->SetAsObjectBase(info, 0);
       return;
       }
-    vtkInformationIntegerVectorValue* v =
-      new vtkInformationIntegerVectorValue;
-    this->ConstructClass("vtkInformationIntegerVectorValue");
-    v->Value.insert(v->Value.begin(), value, value+length);
-    this->SetAsObjectBase(info, v);
-    v->Delete();
+
+    vtkInformationIntegerVectorValue* oldv =
+      vtkInformationIntegerVectorValue::SafeDownCast(
+        this->GetAsObjectBase(info));
+    if(oldv && static_cast<int>(oldv->Value.size()) == length)
+      {
+      // Replace the existing value.
+      vtkstd::copy(value, value+length, oldv->Value.begin());
+      }
+    else
+      {
+      // Allocate a new value.
+      vtkInformationIntegerVectorValue* v =
+        new vtkInformationIntegerVectorValue;
+      this->ConstructClass("vtkInformationIntegerVectorValue");
+      v->Value.insert(v->Value.begin(), value, value+length);
+      this->SetAsObjectBase(info, v);
+      v->Delete();
+      }
     }
   else
     {
@@ -142,4 +156,16 @@ void vtkInformationIntegerVectorKey::Copy(vtkInformation* from,
                                           vtkInformation* to)
 {
   this->Set(to, this->Get(from), this->Length(from));
+}
+
+//----------------------------------------------------------------------------
+int* vtkInformationIntegerVectorKey::GetWatchAddress(vtkInformation* info)
+{
+  if(vtkInformationIntegerVectorValue* v =
+     vtkInformationIntegerVectorValue::SafeDownCast(
+       this->GetAsObjectBase(info)))
+    {
+    return &v->Value[0];
+    }
+  return 0;
 }
