@@ -402,7 +402,8 @@ void vtkRenderWindowInteractor::PrintSelf(ostream& os, vtkIndent indent)
   os << indent << "ControlKey: " << this->ControlKey << "\n";
   os << indent << "ShiftKey: " << this->ShiftKey << "\n";
   os << indent << "KeyCode: " << this->KeyCode << "\n";
-  os << indent << "KeySym: " << this->KeySym << "\n";
+  os << indent << "KeySym: " << (this->KeySym ? this->KeySym : "(null)") 
+     << "\n";
   os << indent << "RepeatCount: " << this->RepeatCount << "\n";
 }
 
