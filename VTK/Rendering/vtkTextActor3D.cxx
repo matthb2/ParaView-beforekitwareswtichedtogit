@@ -313,6 +313,8 @@ void vtkTextActor3D::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os,indent);
 
+  os << indent << "Input: " << (this->Input ? this->Input : "(none)") << "\n";
+
   if (this->TextProperty)
     {
     os << indent << "Text Property:\n";
