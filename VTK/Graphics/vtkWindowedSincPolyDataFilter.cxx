@@ -681,9 +681,9 @@ void vtkWindowedSincPolyDataFilter::Execute()
 
     // update the pointers. three is always three. all other pointers
     // shift by one and wrap.
-    zero = (++zero)%3;
-    one = (++one)%3;
-    two = (++two)%3;
+    zero = (1+zero)%3;
+    one = (1+one)%3;
+    two = (1+two)%3;
     
     }//for all iterations or until converge
   
