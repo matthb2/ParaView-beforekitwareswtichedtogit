@@ -15,7 +15,7 @@
 #include "vtkPVServerTimeSteps.h"
 
 #include "vtkAlgorithm.h"
-#include "vtkDemandDrivenPipeline.h"
+#include "vtkStreamingDemandDrivenPipeline.h"
 #include "vtkExecutive.h"
 #include "vtkInformation.h"
 #include "vtkInformationDoubleVectorKey.h"
@@ -63,10 +63,10 @@ const vtkClientServerStream& vtkPVServerTimeSteps::GetTimeSteps(
   if (outInfo)
     {
     const  double* timeSteps = 
-      outInfo->Get(vtkDemandDrivenPipeline::TIME_STEPS());
+      outInfo->Get(vtkStreamingDemandDrivenPipeline::TIME_STEPS());
     if (timeSteps)
       {
-      int len = outInfo->Length(vtkDemandDrivenPipeline::TIME_STEPS());
+      int len = outInfo->Length(vtkStreamingDemandDrivenPipeline::TIME_STEPS());
       if (len > 0)
         {
         this->Internal->Result 
