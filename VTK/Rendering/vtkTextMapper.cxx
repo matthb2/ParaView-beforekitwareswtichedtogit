@@ -186,8 +186,8 @@ int vtkTextMapper::SetConstrainedFontSize(vtkViewport *viewport,
 
   // While the size is too small increase it
 
-  while (tempi[1] < targetHeight &&
-         tempi[0] < targetWidth && 
+  while (tempi[1] <= targetHeight &&
+         tempi[0] <= targetWidth && 
          fontSize < 100)
     {
     fontSize++;
