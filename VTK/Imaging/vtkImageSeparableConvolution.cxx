@@ -183,10 +183,10 @@ void vtkImageSeparableConvolution::ComputeInputUpdateExtent(int inExt[6],
 }
 
 template <class T>
-static void vtkImageSeparableConvolutionExecute ( vtkImageSeparableConvolution* self,
-                                                  vtkImageData* inData,
-                                                  vtkImageData* outData,
-                                                  T* vtkNotUsed ( dummy ) )
+void vtkImageSeparableConvolutionExecute ( vtkImageSeparableConvolution* self,
+                                           vtkImageData* inData,
+                                           vtkImageData* outData,
+                                           T* vtkNotUsed ( dummy ) )
 {
   T *inPtr0, *inPtr1, *inPtr2;
   float *outPtr0, *outPtr1, *outPtr2;

@@ -117,11 +117,11 @@ void vtkImageRange3D::ExecuteInformation(vtkImageData *vtkNotUsed(inData),
 // If the filter needs to be faster, the function could be duplicated
 // for strictly center (no boundary ) processing.
 template <class T>
-static void vtkImageRange3DExecute(vtkImageRange3D *self,
-                                   vtkImageData *mask,
-                                   vtkImageData *inData, T *inPtr, 
-                                   vtkImageData *outData, int *outExt, 
-                                   float *outPtr, int id)
+void vtkImageRange3DExecute(vtkImageRange3D *self,
+                            vtkImageData *mask,
+                            vtkImageData *inData, T *inPtr, 
+                            vtkImageData *outData, int *outExt, 
+                            float *outPtr, int id)
 {
   int *kernelMiddle, *kernelSize;
   // For looping though output (and input) pixels.

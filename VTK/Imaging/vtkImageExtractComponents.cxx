@@ -111,10 +111,10 @@ void vtkImageExtractComponents::ExecuteInformation(
 
 //----------------------------------------------------------------------------
 template <class T>
-static void vtkImageExtractComponentsExecute(vtkImageExtractComponents *self,
-                                             vtkImageData *inData, T *inPtr,
-                                             vtkImageData *outData, T *outPtr,
-                                             int outExt[6], int id)
+void vtkImageExtractComponentsExecute(vtkImageExtractComponents *self,
+                                      vtkImageData *inData, T *inPtr,
+                                      vtkImageData *outData, T *outPtr,
+                                      int outExt[6], int id)
 {
   int idxR, idxY, idxZ;
   int maxX, maxY, maxZ;

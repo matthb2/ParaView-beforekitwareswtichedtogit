@@ -59,10 +59,10 @@ void vtkImageSobel2D::ExecuteInformation(vtkImageData *vtkNotUsed(inData),
 // it handles boundaries. Pixels are just replicated to get values 
 // out of extent.
 template <class T>
-static void vtkImageSobel2DExecute(vtkImageSobel2D *self,
-                                   vtkImageData *inData, T *inPtr, 
-                                   vtkImageData *outData, int *outExt, 
-                                   float *outPtr, int id)
+void vtkImageSobel2DExecute(vtkImageSobel2D *self,
+                            vtkImageData *inData, T *inPtr, 
+                            vtkImageData *outData, int *outExt, 
+                            float *outPtr, int id)
 {
   float r0, r1, *r;
   // For looping though output (and input) pixels.
