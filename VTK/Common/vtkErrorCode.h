@@ -38,110 +38,40 @@ OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 =========================================================================*/
+// .NAME vtkErrorCode - superclass for error codes
+// .SECTION Description
+// vtkErrorCode is an mechanism for (currently) reader object to
+// return errors during reading file.
 
-#include <string.h>
-#include <ctype.h>
-#include "vtkCommand.h"
+#ifndef __vtkErrorCode_h
+#define __vtkErrorCode_h
 
-// this list should only contain the initial, contiguous
-// set of events and should not include UserEvent
-static const char *vtkCommandEventStrings[] = {
-  "NoEvent", 
-  "AnyEvent",
-  "DeleteEvent",
-  "StartEvent",
-  "EndEvent",
-  "ProgressEvent",
-  "PickEvent",
-  "StartPickEvent",
-  "EndPickEvent",
-  "AbortCheckEvent",
-  "ExitEvent", 
-  "LeftButtonPressEvent",
-  "LeftButtonReleaseEvent",
-  "MiddleButtonPressEvent",
-  "MiddleButtonReleaseEvent",
-  "RightButtonPressEvent",
-  "RightButtonReleaseEvent",
-  "EnterEvent",
-  "LeaveEvent",
-  "KeyPressEvent",
-  "KeyReleaseEvent",
-  "CharEvent",
-  "ConfigureEvent",
-  "TimerEvent",
-  "MouseMoveEvent",
-  "ResetCameraEvent",
-  "ResetCameraClippingRangeEvent",
-  "ModifiedEvent",
-  "WindowLevelEvent",
-  "NextDataEvent",
-  "PushDataStartEvent",
-  "EndOfDataEvent",
-  "ErrorEvent",
-  NULL
+// The superclass that all commands should be subclasses of
+class vtkErrorCode
+{
+public:
+  static const char *GetStringFromErrorCode(unsigned long event);
+  static unsigned long GetErrorCodeFromString(const char *event);
+
+//BTX
+  // all the currently defined error codes
+  // developers can use -- vtkErrorCode::UserError + int to
+  // specify their own errors. 
+  // if this list is adjusted, be sure to adjust vtkErrorCodeErrorStrings
+  // in vtkErrorCode.cxx to match.
+  enum ErrorIds {
+    NoError = 0,
+    FileNotFoundError,
+    CannotOpenFileError,
+    UnrecognizedFileTypeError,
+    PrematureEndOfFileError,
+    FileFormatError,
+    NoFileNameError,
+    UnknownError,
+    UserError = 1000
+  };
+//ETX
 };
 
-//----------------------------------------------------------------
-void vtkCommand::Register()
-{
-  this->ReferenceCount++;
-}
-
-void vtkCommand::UnRegister()
-{
-  if (--this->ReferenceCount <= 0)
-    {
-    delete this;
-    }
-}
-
-const char *vtkCommand::GetStringFromEventId(unsigned long event)
-{
-  static unsigned long numevents = 0;
-  
-  // find length of table
-  if (!numevents)
-    {
-    while (vtkCommandEventStrings[numevents] != NULL)
-      {
-      numevents++;
-      }
-    }
-
-  if (event < numevents)
-    {
-    return vtkCommandEventStrings[event];
-    }
-  else if (event == vtkCommand::UserEvent)
-    {
-    return "UserEvent";
-    }
-  else
-    {
-    return "NoEvent";
-    }
-}
-  
-unsigned long vtkCommand::GetEventIdFromString(const char *event)
-{  
-  unsigned long i;
-
-  for (i = 0; vtkCommandEventStrings[i] != NULL; i++)
-    { 
-    if (!strcmp(vtkCommandEventStrings[i],event))
-      {
-      return i;
-      }
-    }
-  if (!strcmp("UserEvent",event))
-    {
-    return vtkCommand::UserEvent;
-    }
-  return vtkCommand::NoEvent;
-}
-
-  
-
-
-
+#endif /* __vtkErrorCode_h */
+ 
