@@ -21,6 +21,7 @@
 #include "vtkArrayMap.txx"
 #include "vtkCommand.h"
 #include "vtkImageActor.h"
+#include "vtkImageData.h"
 #include "vtkObjectFactory.h"
 #include "vtkPushImageReader.h"
 #include "vtkRenderWindow.h"

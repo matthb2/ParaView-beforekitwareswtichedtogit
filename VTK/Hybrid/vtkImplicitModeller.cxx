@@ -21,6 +21,7 @@
 #include "vtkClipPolyData.h"
 #include "vtkCommand.h"
 #include "vtkFloatArray.h"
+#include "vtkImageData.h"
 #include "vtkMath.h"
 #include "vtkMultiThreader.h"
 #include "vtkMutexLock.h"

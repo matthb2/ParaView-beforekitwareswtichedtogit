@@ -18,6 +18,7 @@
 #include "vtkRenderLargeImage.h"
 
 #include "vtkCamera.h"
+#include "vtkImageData.h"
 #include "vtkObjectFactory.h"
 #include "vtkRenderWindow.h"
 #include "vtkRenderer.h"

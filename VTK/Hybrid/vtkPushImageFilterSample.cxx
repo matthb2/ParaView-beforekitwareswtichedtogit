@@ -15,9 +15,10 @@
      PURPOSE.  See the above copyright notice for more information.
 
 =========================================================================*/
+#include "vtkPushImageFilterSample.h"
 
 #include "vtkCommand.h"
-#include "vtkPushImageFilterSample.h"
+#include "vtkImageData.h"
 #include "vtkObjectFactory.h"
 #include "vtkPushPipeline.h"
 

@@ -31,6 +31,7 @@
 =========================================================================*/
 #include "vtkSweptSurface.h"
 
+#include "vtkImageData.h"
 #include "vtkMath.h"
 #include "vtkObjectFactory.h"
 #include "vtkTransformCollection.h"

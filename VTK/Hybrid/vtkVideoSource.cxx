@@ -18,9 +18,12 @@
 #include "vtkVideoSource.h"
 
 #include "vtkCriticalSection.h"
+#include "vtkDataArray.h"
+#include "vtkImageData.h"
 #include "vtkMultiThreader.h"
 #include "vtkObjectFactory.h"
 #include "vtkTimerLog.h"
+#include "vtkUnsignedCharArray.h"
 
 #include <ctype.h>
 #include <time.h>

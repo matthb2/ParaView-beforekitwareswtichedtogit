@@ -16,10 +16,15 @@
 
 =========================================================================*/
 #include "vtkWeightedTransformFilter.h"
-#include "vtkObjectFactory.h"
-#include "vtkLinearTransform.h"
+
+#include "vtkCellData.h"
+#include "vtkFieldData.h"
 #include "vtkFloatArray.h"
+#include "vtkLinearTransform.h"
 #include "vtkMath.h"
+#include "vtkObjectFactory.h"
+#include "vtkPointData.h"
+#include "vtkPointSet.h"
 
 vtkCxxRevisionMacro(vtkWeightedTransformFilter, "$Revision$");
 vtkStandardNewMacro(vtkWeightedTransformFilter);

@@ -23,6 +23,7 @@
 #include "vtkImageData.h"
 #include "vtkMergePoints.h"
 #include "vtkObjectFactory.h"
+#include "vtkPolyData.h"
 #include "vtkScalarTree.h"
 #include "vtkStructuredGrid.h"
 #include "vtkSynchronizedTemplates2D.h"

@@ -19,6 +19,7 @@
 
 #include "vtkAbstractTransform.h"
 #include "vtkIdentityTransform.h"
+#include "vtkImageData.h"
 #include "vtkObjectFactory.h"
 
 vtkCxxRevisionMacro(vtkTransformToGrid, "$Revision$");

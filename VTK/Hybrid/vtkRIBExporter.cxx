@@ -28,6 +28,7 @@
 #include "vtkMapper.h"
 #include "vtkMath.h"
 #include "vtkObjectFactory.h"
+#include "vtkPolyData.h"
 #include "vtkPolygon.h"
 #include "vtkRIBLight.h"
 #include "vtkRIBProperty.h"
