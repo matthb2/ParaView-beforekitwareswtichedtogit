@@ -75,6 +75,10 @@ vtkIceTRenderManager::vtkIceTRenderManager()
   this->ReducedImageSharesData = 0;
 
   this->DataReplicationGroup = NULL;
+
+  // Reload the controller so that we make an ICE-T context.
+  this->Superclass::SetController(NULL);
+  this->SetController(vtkMultiProcessController::GetGlobalController());  
 }
 
 vtkIceTRenderManager::~vtkIceTRenderManager()
