@@ -101,7 +101,7 @@ vtkQuadricClustering::~vtkQuadricClustering()
 void vtkQuadricClustering::Execute()
 {
   vtkPolyData *input = this->GetInput();
-  vtkTimerLog *tlog;
+  vtkTimerLog *tlog=NULL;
 
   if (input == NULL)
     {
