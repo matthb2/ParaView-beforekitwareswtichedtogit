@@ -925,6 +925,11 @@ void vtkXdmfWriter::Write()
 
     vtkXdmfWriterInternal::MapOfCellTypes cellTypes;
     vtkXdmfWriterInternal::DetermineCellTypes(vtkPointSet::SafeDownCast(ds), cellTypes);
+    if ( cellTypes.size() > 1 )
+      {
+      vtkErrorMacro("Xdmf Writer only supports unstructured data of single cell type");
+      continue;
+      }
     ofs << "<Domain";
     if ( this->DomainName )
       {
