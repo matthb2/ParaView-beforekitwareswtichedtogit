@@ -561,7 +561,6 @@ vtkIdType vtkCTHData::GetNumberOfPoints()
 //----------------------------------------------------------------------------
 int vtkCTHData::GetDataDimension()
 {
-  int fixme;
   return vtkStructuredData::GetDataDimension(this->DataDescription);
 }
 
