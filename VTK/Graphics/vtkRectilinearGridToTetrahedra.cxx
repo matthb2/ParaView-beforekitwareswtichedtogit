@@ -82,7 +82,7 @@ void vtkRectilinearGridToTetrahedra::SetInput(const float ExtentX,
   float Spacing[3];
   Extent[0]  = ExtentX;    Extent[1] = ExtentY;    Extent[2] = ExtentZ;
   Spacing[0] = SpacingX;  Spacing[1] = SpacingY;  Spacing[2] = SpacingZ;
-  return this->SetInput(Extent,Spacing);
+  return this->SetInput(Extent,Spacing,tol);
 }
 
 
