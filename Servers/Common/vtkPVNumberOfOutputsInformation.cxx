@@ -16,6 +16,7 @@
 
 #include "vtkAlgorithm.h"
 #include "vtkClientServerStream.h"
+#include "vtkDemandDrivenPipeline.h"
 #include "vtkObjectFactory.h"
 #include "vtkSource.h"
 
@@ -45,14 +46,21 @@ void vtkPVNumberOfOutputsInformation::PrintSelf(ostream &os, vtkIndent indent)
 void vtkPVNumberOfOutputsInformation::CopyFromObject(vtkObject* obj)
 {
   this->NumberOfOutputs = 0;
+
   vtkAlgorithm* algorithm = vtkAlgorithm::SafeDownCast(obj);
-  vtkSource* source = vtkSource::SafeDownCast(obj);
   if(!algorithm)
     {
     vtkErrorMacro("Could not downcast vtkAlgorithm.");
     return;
     }
-  if(source)
+  vtkDemandDrivenPipeline* pipeline = 
+    vtkDemandDrivenPipeline::SafeDownCast(algorithm->GetExecutive());
+  if (pipeline)
+    {
+    pipeline->UpdateDataObject();
+    }
+  vtkSource* source = vtkSource::SafeDownCast(obj);
+  if (source)
     {
     this->NumberOfOutputs = source->GetNumberOfOutputs();
     }
