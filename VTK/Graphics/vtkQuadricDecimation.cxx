@@ -86,6 +86,8 @@ vtkQuadricDecimation::vtkQuadricDecimation()
   this->NormalsWeight = 0.1f;
   this->TCoordsWeight = 0.1f;
   this->TensorsWeight = 0.1f;
+
+  this->ActualReduction = 0.00f;
 }
 
 //----------------------------------------------------------------------------
