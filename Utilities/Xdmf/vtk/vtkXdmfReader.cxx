@@ -446,7 +446,7 @@ void vtkXdmfReader::Execute()
       ( Geometry->GetGeometryType() == XDMF_GEOMETRY_XYZ ) ||
       ( Geometry->GetGeometryType() == XDMF_GEOMETRY_XY ) )
       {
-      float *pp;
+      double *pp;
       XdmfInt64   Length;
       vtkPoints   *Points;
       vtkPointSet *Pointset = ( vtkPointSet *)this->Outputs[idx];
