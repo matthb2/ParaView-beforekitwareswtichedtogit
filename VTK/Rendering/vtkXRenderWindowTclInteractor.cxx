@@ -150,15 +150,10 @@ void  vtkXRenderWindowTclInteractor::Start()
     return;
     }
 
-  if ( this->ExitTag )
-    {
-    this->RemoveObserver(this->ExitTag);
-    }
-  
   vtkOldStyleCallbackCommand *cbc = vtkOldStyleCallbackCommand::New();
   cbc->Callback = vtkBreakTclLoop;
   cbc->ClientData = this;
-  this->ExitTag = this->AddObserver(vtkCommand::ExitEvent,cbc);
+  unsigned long ExitTag = this->AddObserver(vtkCommand::ExitEvent,cbc, 0.5);
   cbc->Delete();
   
   this->BreakLoopFlag = 0;
@@ -166,7 +161,7 @@ void  vtkXRenderWindowTclInteractor::Start()
     {
     Tk_DoOneEvent(0);
     }
-  this->RemoveObserver(this->ExitTag);
+  this->RemoveObserver(ExitTag);
 }
 
 // Initializes the event handlers
