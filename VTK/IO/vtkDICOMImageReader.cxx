@@ -417,3 +417,27 @@ const char* vtkDICOMImageReader::GetTransferSyntaxUID()
   return this->AppHelper->GetTransferSyntaxUID().c_str();
 }
 
+float vtkDICOMImageReader::GetRescaleSlope()
+{
+  return this->AppHelper->GetRescaleSlope();
+}
+
+float vtkDICOMImageReader::GetRescaleOffset()
+{
+  return this->AppHelper->GetRescaleOffset();
+}
+
+const char* vtkDICOMImageReader::GetPatientName()
+{
+  return this->AppHelper->GetPatientName().c_str();
+}
+
+const char* vtkDICOMImageReader::GetStudyUID()
+{
+  return this->AppHelper->GetStudyUID().c_str();
+}
+
+float vtkDICOMImageReader::GetGantryAngle()
+{
+  return this->AppHelper->GetGantryAngle();
+}
