@@ -217,8 +217,6 @@ vtkUnsignedCharArray *vtkMapper::MapScalars(double alpha)
     {
     if (this->LookupTable && this->LookupTable->GetAlpha() == alpha)
       {
-        GetScalars(this->GetInput(), this->ScalarMode, this->ArrayAccessMode,
-                   this->ArrayId, this->ArrayName, this->ArrayComponent);
       if (this->GetMTime() < this->Colors->GetMTime() &&
           this->GetInput() && 
           this->GetInput()->GetMTime() < this->Colors->GetMTime())
