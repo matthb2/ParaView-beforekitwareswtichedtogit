@@ -31,7 +31,6 @@
 #include "vtkProperty.h"
 #include "vtkQuadricClustering.h"
 #include "vtkRectilinearGrid.h"
-#include "vtkString.h"
 #include "vtkStructuredGrid.h"
 #include "vtkTimerLog.h"
 #include "vtkToolkits.h"

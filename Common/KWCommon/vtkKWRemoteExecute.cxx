@@ -14,7 +14,6 @@
 #include "vtkKWRemoteExecute.h"
 
 #include "vtkObjectFactory.h"
-#include "vtkString.h"
 #include "vtkMultiThreader.h"
 
 #ifdef _MSC_VER

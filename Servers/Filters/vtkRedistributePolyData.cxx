@@ -33,7 +33,6 @@
 #include "vtkPolyData.h"
 #include "vtkPolyDataWriter.h"
 #include "vtkShortArray.h"
-#include "vtkString.h"
 #include "vtkTimerLog.h"
 #include "vtkUnsignedCharArray.h"
 #include "vtkUnsignedIntArray.h"

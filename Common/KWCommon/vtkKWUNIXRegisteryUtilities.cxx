@@ -14,7 +14,6 @@
 #include "vtkKWUNIXRegisteryUtilities.h"
 
 #include "vtkObjectFactory.h"
-#include "vtkString.h"
 
 #include "vtkStdString.h"
 #include <vtkstd/map>

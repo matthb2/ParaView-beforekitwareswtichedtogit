@@ -31,7 +31,6 @@
 #include "vtkUnsignedLongArray.h"
 #include "vtkUnsignedShortArray.h"
 #include "vtkMapper.h"
-#include "vtkString.h"
 #ifdef VTK_USE_MPI
 #include "vtkMPIController.h"
 #include "vtkMPICommunicator.h"
