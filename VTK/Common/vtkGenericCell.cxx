@@ -171,6 +171,11 @@ int vtkGenericCell::GetParametricCenter(float pcoords[3])
   return this->Cell->GetParametricCenter(pcoords);
 }
 
+int vtkGenericCell::IsPrimaryCell()
+{
+  return this->Cell->IsPrimaryCell();
+}
+
 // Set the type of dereferenced cell. Checks to see whether cell type
 // has changed and creates a new cell only if necessary.
 void vtkGenericCell::SetCellType(int cellType)
