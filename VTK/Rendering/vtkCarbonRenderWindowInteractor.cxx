@@ -130,12 +130,6 @@ static pascal OSStatus myWinEvtHndlr(EventHandlerCallRef nextHandler,
                             NULL, sizeof(bounds), NULL, &bounds);
           me->UpdateSize(bounds.right-bounds.left, bounds.bottom-bounds.top);
           me->InvokeEvent(vtkCommand::ConfigureEvent,NULL);
-          ren->MakeCurrent();
-          aglUpdateContext (ren->GetContextId());
-
-          glViewport (0, 0,
-                      bounds.right - bounds.left, 
-                      bounds.bottom - bounds.top);
           ren->Render();
           result = noErr;
           break;

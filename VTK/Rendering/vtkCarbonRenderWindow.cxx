@@ -499,7 +499,7 @@ void vtkCarbonRenderWindow::SetSize(int x, int y)
           {
           SizeWindow(this->WindowId, x, y, TRUE);
           }
-
+        aglUpdateContext(this->ContextId);
         resizing = 0;
         }
       }
