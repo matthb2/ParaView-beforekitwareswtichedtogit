@@ -584,14 +584,6 @@ void vtkXMLPVDWriter::ReportReferences(vtkGarbageCollector* collector)
   int size = static_cast<int>(this->Internal->Writers.size());
   for(int i=0; i < size; ++i)
     {
-    collector->ReportReference(this->Internal->Writers[i].GetPointer(),
-                               "Writer");
+    vtkGarbageCollectorReport(collector, this->Internal->Writers[i], "Writer");
     }
-}
-
-//----------------------------------------------------------------------------
-void vtkXMLPVDWriter::RemoveReferences()
-{
-  this->Internal->Writers.resize(0);
-  this->Superclass::RemoveReferences();
 }

@@ -129,18 +129,7 @@ void vtkPVGlyphFilter::Execute()
 void vtkPVGlyphFilter::ReportReferences(vtkGarbageCollector* collector)
 {
   this->Superclass::ReportReferences(collector);
-  collector->ReportReference(this->MaskPoints, "MaskPoints");
-}
-
-//-----------------------------------------------------------------------------
-void vtkPVGlyphFilter::RemoveReferences()
-{
-  if(this->MaskPoints)
-    {
-    this->MaskPoints->Delete();
-    this->MaskPoints = 0;
-    }
-  this->Superclass::RemoveReferences();
+  vtkGarbageCollectorReport(collector, this->MaskPoints, "MaskPoints");
 }
 
 //-----------------------------------------------------------------------------
