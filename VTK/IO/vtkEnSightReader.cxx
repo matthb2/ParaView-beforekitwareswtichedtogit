@@ -103,7 +103,7 @@ vtkEnSightReader::vtkEnSightReader()
 //----------------------------------------------------------------------------
 vtkEnSightReader::~vtkEnSightReader()
 {
-  int i, j;
+  int i;
 
   if (this->CellIds)
     {
@@ -1940,7 +1940,7 @@ vtkIdList* vtkEnSightReader::GetCellIds(int index, int cellType)
     }
   
   // Get the index of the actual vtkIdList requested.
-  int cellIdsIndex = index*16 + cellType;
+  unsigned int cellIdsIndex = index*16 + cellType;
   
   // Make sure the container is large enough for this index.
   if(cellIdsIndex+1 > this->CellIds->size())
