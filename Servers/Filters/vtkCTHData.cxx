@@ -179,8 +179,8 @@ void vtkCTHData::SetNumberOfBlocks(int num)
   this->BlockLevels->SetNumberOfTuples(num);
   this->BlockCellExtents->SetNumberOfTuples(num);
 
-  memset(this->BlockOrigins->GetPointer(0), 0, num*3*sizeof(double));
-  memset(this->BlockSpacings->GetPointer(0), 0, num*3*sizeof(double));
+  memset(this->BlockOrigins->GetPointer(0), 0, num*3*sizeof(float));
+  memset(this->BlockSpacings->GetPointer(0), 0, num*3*sizeof(float));
   memset(this->BlockLevels->GetPointer(0), 0, num*sizeof(int));
   memset(this->BlockCellExtents->GetPointer(0), 0, num*6*sizeof(int));
 }
