@@ -34,6 +34,8 @@ vtkStandardNewMacro(vtkGAMBITReader);
 vtkGAMBITReader::vtkGAMBITReader()
 {
   this->FileName = NULL;
+  this->NumberOfCells = 0;
+  this->NumberOfNodes = 0;
   this->NumberOfNodeFields = 0;
   this->NumberOfCellFields = 0;
   this->FileStream = NULL;
