@@ -17,8 +17,11 @@
 =========================================================================*/
 
 #include "vtkVolumeRayCastFunction.h"
-#include "vtkVolumeRayCastMapper.h"
+
+#include "vtkEncodedGradientEstimator.h"
+#include "vtkEncodedGradientShader.h"
 #include "vtkVolume.h"
+#include "vtkVolumeRayCastMapper.h"
 
 vtkCxxRevisionMacro(vtkVolumeRayCastFunction, "$Revision$");
 
