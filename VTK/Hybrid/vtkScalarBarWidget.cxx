@@ -427,6 +427,7 @@ void vtkScalarBarWidget::OnLeftButtonUp()
   // stop adjusting
   this->State = vtkScalarBarWidget::Outside;
   this->EventCallbackCommand->SetAbortFlag(1);
+  this->Interactor->GetRenderWindow()->SetCurrentCursor(VTK_CURSOR_DEFAULT);
   this->EndInteraction();
   this->InvokeEvent(vtkCommand::EndInteractionEvent,NULL);
 }
