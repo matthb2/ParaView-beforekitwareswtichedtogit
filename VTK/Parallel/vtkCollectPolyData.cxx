@@ -72,7 +72,6 @@ void vtkCollectPolyData::Execute()
 {
   vtkPolyData *input = this->GetInput();
   vtkPolyData *output = this->GetOutput();
-  int updateGhostLevel = output->GetUpdateGhostLevel();
   unsigned long size, tmp;
   int numProcs, myId;
   int idx;
