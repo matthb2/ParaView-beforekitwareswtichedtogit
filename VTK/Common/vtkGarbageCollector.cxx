@@ -470,8 +470,8 @@ void vtkGarbageCollectorInternals::DeleteComponent()
 //----------------------------------------------------------------------------
 // The reference map singleton.  This MUST be default initialized to
 // zero by the compiler and is therefore not initialized here.
-typedef vtkstd::map<vtkObjectBase*, int> vtkGarbageCollectorMapType;
-static vtkGarbageCollectorMapType* vtkGarbageCollectorMap;
+//typedef vtkstd::map<vtkObjectBase*, int> vtkGarbageCollectorMapType;
+//static vtkGarbageCollectorMapType* vtkGarbageCollectorMap;
 
 //----------------------------------------------------------------------------
 void vtkGarbageCollector::ClassInitialize()
