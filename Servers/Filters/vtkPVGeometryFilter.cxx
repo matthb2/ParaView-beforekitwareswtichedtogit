@@ -316,7 +316,8 @@ void vtkPVGeometryFilter::ExecuteCellNormals(vtkPolyData *output)
     return;
     }
 
-  output->GetCellData()->SetNormals(cellNormals);
+  output->GetCellData()->AddArray(cellNormals);
+  output->GetCellData()->SetActiveNormals(cellNormals->GetName());
   cellNormals->Delete();
   cellNormals = NULL;
 }
