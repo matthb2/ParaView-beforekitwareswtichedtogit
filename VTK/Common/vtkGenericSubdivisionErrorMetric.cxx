@@ -191,5 +191,8 @@ void vtkGenericSubdivisionErrorMetric::PrintSelf(ostream& os, vtkIndent indent)
   this->Superclass::PrintSelf(os,indent);
 
   os << indent << "Error: "  << this->Error << endl;
+  
+  os << indent << "AttributeCollection: "  << this->AttributeCollection << endl;
+  os << indent << "GenericCell: "  << this->GenericCell << endl;
 }
 
