@@ -788,6 +788,5 @@ void vtkLineWidget::PlaceWidget(float bds[6])
     {
     this->HandleGeometry[i]->SetRadius(0.025*this->InitialLength);
     }
-  this->InvokeEvent(vtkCommand::InteractionEvent,NULL);  
 }
 
