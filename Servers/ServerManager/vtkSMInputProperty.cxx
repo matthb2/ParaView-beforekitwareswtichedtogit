@@ -95,6 +95,16 @@ int vtkSMInputProperty::ReadXMLAttributes(vtkPVXMLElement* element)
   return 1;
 }
 
+int vtkSMInputProperty::GetInputsUpdateImmediately()
+{
+  return vtkSMInputProperty::InputsUpdateImmediately;
+}
+
+void vtkSMInputProperty::SetInputsUpdateImmediately(int up)
+{
+  vtkSMInputProperty::InputsUpdateImmediately = up;
+}
+
 //---------------------------------------------------------------------------
 void vtkSMInputProperty::PrintSelf(ostream& os, vtkIndent indent)
 {
