@@ -39,6 +39,7 @@ vtkCollectPolyData::vtkCollectPolyData()
 //----------------------------------------------------------------------------
 vtkCollectPolyData::~vtkCollectPolyData()
 {
+  this->SetController(0);
 }
 
 //----------------------------------------------------------------------------
