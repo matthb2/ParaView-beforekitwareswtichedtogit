@@ -483,7 +483,7 @@ int vtkCommunicator::WriteDataSet(vtkDataSet *data)
   copy->ShallowCopy(data);
 
   // There is a problem with binary files with no data.
-  if (copy->GetNumberOfCells() > 0)
+  if (copy->GetNumberOfCells() + copy->GetNumberOfPoints() > 0)
     {
     writer->SetFileTypeToBinary();
     }
