@@ -53,8 +53,14 @@ vtkIceTRenderer::~vtkIceTRenderer()
 
 void vtkIceTRenderer::ComputeAspect()
 {
-  float aspect[2];
   this->Superclass::ComputeAspect();
+
+  if (! this->ComposeNextFrame)
+    {
+    return;
+    }
+
+  float aspect[2];
   this->GetAspect(aspect);
 
   int global_viewport[4];
