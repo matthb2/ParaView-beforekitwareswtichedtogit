@@ -54,7 +54,7 @@ void vtkSplineFilter::Execute()
   vtkCellArray *inLines = NULL;
   
   vtkPoints *inPts;
-  vtkIdType numPts = 0;
+  vtkIdType numPts;
   vtkIdType numLines;
   vtkCellArray *newLines;
   vtkIdType numNewPts, numNewCells;
