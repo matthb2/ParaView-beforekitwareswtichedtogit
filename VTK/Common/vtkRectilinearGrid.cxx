@@ -27,6 +27,10 @@
 vtkCxxRevisionMacro(vtkRectilinearGrid, "$Revision$");
 vtkStandardNewMacro(vtkRectilinearGrid);
 
+vtkCxxSetObjectMacro(vtkRectilinearGrid,XCoordinates,vtkDataArray);
+vtkCxxSetObjectMacro(vtkRectilinearGrid,YCoordinates,vtkDataArray);
+vtkCxxSetObjectMacro(vtkRectilinearGrid,ZCoordinates,vtkDataArray);
+
 //----------------------------------------------------------------------------
 vtkRectilinearGrid::vtkRectilinearGrid()
 {
