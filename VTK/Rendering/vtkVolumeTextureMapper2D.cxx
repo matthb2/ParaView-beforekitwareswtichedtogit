@@ -59,7 +59,7 @@ void vtkVolumeTextureMapper2D_TraverseVolume( T *data_ptr,
   int              shade;
   float            tmpval;
   int              cropping, croppingFlags;
-  float            *croppingBounds;
+  double           *croppingBounds;
   int              flag[3], tmpFlag, index;
   int              clipLow = 0, clipHigh = 0;
   vtkRenderWindow  *renWin = me->GetRenderWindow();
