@@ -409,7 +409,6 @@ void vtkSMPartDisplay::CreateVTKObjects(int num)
     end << vtkClientServerStream::Invoke << pm->GetProcessModuleID() 
         << "LogEndEvent" << "Execute Geometry" 
         << vtkClientServerStream::End;
-    vtkClientServerStream stream;
     stream << vtkClientServerStream::Invoke 
            << this->GeometryProxy->GetID(i) 
            << "AddObserver"
