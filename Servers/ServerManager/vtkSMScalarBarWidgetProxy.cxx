@@ -725,10 +725,8 @@ void vtkSMScalarBarWidgetProxy::PrintSelf(ostream& os, vtkIndent indent)
   this->Superclass::PrintSelf(os,indent);
 
   os << indent << "Position1: " 
-    << this->Position1[0] << ", " << this->Position1[1]
-    << ", " << this->Position1[2] << endl;
+    << this->Position1[0] << ", " << this->Position1[1] << endl;
   os << indent << "Position2: " 
-    << this->Position2[0] << ", " << this->Position2[1]
-    << ", " << this->Position2[2] << endl;
+    << this->Position2[0] << ", " << this->Position2[1] << endl;
   os << indent << "Orientation: " << this->Orientation << endl;
 }
