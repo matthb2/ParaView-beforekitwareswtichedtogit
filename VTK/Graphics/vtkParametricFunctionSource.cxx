@@ -24,6 +24,7 @@
 #include "vtkPolyData.h"
 
 #include <cmath>
+#include <vtkstd/string>
 
 vtkCxxRevisionMacro(vtkParametricFunctionSource, "$Revision$");
 
