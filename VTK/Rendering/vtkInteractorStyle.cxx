@@ -1084,7 +1084,7 @@ void vtkInteractorStyle::ProcessEvents(vtkObject* vtkNotUsed(object),
       break;
 
     case vtkCommand::DeleteEvent:
-      self->Interactor = 0;
+      self->SetInteractor(0);
       break;
     }
 }
