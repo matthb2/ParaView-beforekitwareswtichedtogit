@@ -90,9 +90,6 @@ void vtkSMKeyFrameAnimationCueManipulatorProxy::Initialize()
 //----------------------------------------------------------------------------
 int vtkSMKeyFrameAnimationCueManipulatorProxy::AddKeyFrame(vtkSMKeyFrameProxy* keyframe)
 {
-  vtkSMKeyFrameAnimationCueManipulatorProxyInternals::DoubleToKeyFrameVector::
-    iterator iter;
-
   int index = this->AddKeyFrameInternal(keyframe);
   if (index != -1)
     {
