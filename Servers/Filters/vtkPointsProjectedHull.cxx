@@ -217,7 +217,7 @@ int vtkPointsProjectedHull::rectangleIntersection(double hmin, double hmax,
 //
 int vtkPointsProjectedHull::grahamScanAlgorithm(int dir)
 {
-int horizAxis, vertAxis;
+int horizAxis = 0, vertAxis = 0;
 int incrVertAxis(const void *p1, const void *p2);
 int ccw(const void *p1, const void *p2);
 int i,j;

@@ -86,7 +86,7 @@ vtkFloatArray* vtkPVCompositeUtilities::NewFloatArray(int numTuples,
                                                       int numComps)
 {
   vtkFloatArray* best = NULL;
-  int bestLength;
+  int bestLength = 0;
   vtkFloatArray* a;
   int length;
   vtkObject* o;
@@ -155,7 +155,7 @@ vtkPVCompositeUtilities::NewUnsignedCharArray(int numTuples,
                                               int numComps)
 {
   vtkUnsignedCharArray* best = NULL;
-  int bestLength;
+  int bestLength = 0;
   vtkUnsignedCharArray* a;
   int length;
   vtkObject* o;

@@ -1076,7 +1076,7 @@ int vtkPlanesIntersection::EvaluateFacePlane(int plane, vtkPoints *R)
 }
 int vtkPlanesIntersection::IntersectsProjection(vtkPoints *R, int dir)
 {
-  int intersects;
+  int intersects = 0;
 
   switch (dir)
     {

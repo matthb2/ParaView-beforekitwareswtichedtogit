@@ -207,7 +207,7 @@ int vtkMergeCells::MergeDataSet(vtkDataSet *set)
 }
 vtkIdType vtkMergeCells::AddNewCellsDataSet(vtkDataSet *set, vtkIdType *idMap)
 {
-  vtkIdType oldCellId, id, newPtId, newCellId, oldPtId;
+  vtkIdType oldCellId, id, newPtId, newCellId = 0, oldPtId;
 
   vtkUnstructuredGrid *ugrid = this->UnstructuredGrid;
   vtkCellData *cellArrays = set->GetCellData();
