@@ -375,3 +375,25 @@ void vtkSplitField::PrintSelf(ostream& os, vtkIndent indent)
   os << indent << "Components: " << endl;
   this->PrintAllComponents(os, indent.GetNextIndent());
 }
+
+void vtkSplitField::PrintComponent(Component* op, ostream& os,
+                                   vtkIndent indent)
+{
+  os << indent << "Field name: " << op->FieldName << endl;
+  os << indent << "Component index: " << op->Index << endl;
+}
+
+void vtkSplitField::PrintAllComponents(ostream& os, vtkIndent indent)
+{
+  Component* cur = this->GetFirst();
+  if (!cur) { return; }
+  Component* before;
+  do
+    {
+    before = cur;
+    cur = cur->Next;
+    os << endl;
+    this->PrintComponent(before, os, indent);
+    } 
+  while (cur);
+}
