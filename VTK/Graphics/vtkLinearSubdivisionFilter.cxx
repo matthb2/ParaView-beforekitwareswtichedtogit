@@ -44,6 +44,9 @@ void vtkLinearSubdivisionFilter::GenerateSubdivisionPoints (vtkPolyData *inputDS
 
   pointIds->SetNumberOfIds(2);
 
+  double total = inputPolys->GetNumberOfCells();
+  double curr = 0;
+
   // Generate new points for subdivisions surface
   for (cellId=0, inputPolys->InitTraversal();
        inputPolys->GetNextCell(npts, pts); cellId++)
@@ -83,6 +86,8 @@ void vtkLinearSubdivisionFilter::GenerateSubdivisionPoints (vtkPolyData *inputDS
         p2 = pts[edgeId + 1];
         }
       } // each edge
+    this->UpdateProgress(curr / total);
+    curr += 1;
     } // each cell
 
   edgeTable->Delete();
