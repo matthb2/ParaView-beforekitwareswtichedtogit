@@ -27,6 +27,8 @@ vtkStandardNewMacro(vtkVolumeProperty);
 // Construct a new vtkVolumeProperty with default values
 vtkVolumeProperty::vtkVolumeProperty()
 {
+  this->IndependentComponents = 1;
+
   this->InterpolationType               = VTK_NEAREST_INTERPOLATION;
 
   for ( int i = 0; i < VTK_MAX_VRCOMP; i++ )
@@ -525,6 +527,9 @@ void vtkVolumeProperty::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os,indent);
 
+  os << indent << "Independent Components: " << 
+    (this->IndependentComponents ? "On\n" : "Off\n");
+  
   os << indent << "Interpolation Type: "
      << this->GetInterpolationTypeAsString() << "\n";
 
