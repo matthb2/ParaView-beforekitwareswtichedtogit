@@ -298,8 +298,8 @@ void vtkInteractorEventRecorder::ProcessCharEvent(vtkObject* object,
   switch(event)
     {
     case vtkCommand::DeleteEvent:
-      self->Interactor = NULL; //its going bye bye
-      self->Enabled = 0;
+      //self->Interactor = NULL; //its going bye bye
+      //self->Enabled = 0;       //can't write to a deleted object
       break;
 
     case vtkCommand::CharEvent:
