@@ -54,17 +54,21 @@ vtkHeap::~vtkHeap()
 
 void* vtkHeap::AllocateMemory(size_t n)
 {
+  if ( n%4 ) //4-byte word alignement
+    {
+    n += 4 - (n%4);
+    }
+
   size_t blockSize = (n > this->BlockSize ? n : this->BlockSize );
   this->NumberOfAllocations++;
-  char* ptr;
   
-  if ( ! this->Current || (this->Current->Data + this->Position + n) >= 
-       (this->Current->Data + this->Current->Size) )
+  if ( ! this->Current || 
+       (this->Position + n) >= this->Current->Size )
     {
     this->Add(blockSize);
     }
   
-  ptr = this->Current->Data + this->Position;
+  char *ptr = this->Current->Data + this->Position;
   this->Position += n;
 
   return ptr;
