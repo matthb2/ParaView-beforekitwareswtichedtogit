@@ -202,7 +202,7 @@ int vtkXMLParser::ParseBuffer(const char* buffer, unsigned int count)
 //----------------------------------------------------------------------------
 int vtkXMLParser::ParseBuffer(const char* buffer)
 {
-  return this->ParseBuffer(buffer, strlen(buffer));
+  return this->ParseBuffer(buffer, static_cast<int>(strlen(buffer)));
 }
 
 //----------------------------------------------------------------------------

@@ -188,10 +188,11 @@ void vtkMCubesReader::Execute()
     for (j=0; j<3; j++) 
       {
       int val;
-      val = fread (&point, sizeof(pointType), 1, fp);
+      val = fread (&point, static_cast<int>(sizeof(pointType)), 1, fp);
       if (val != 1)
          {
-         vtkErrorMacro(<<"Error reading triange " << i << " (" << numTris << "), point/normal " << j);
+         vtkErrorMacro(<<"Error reading triange " << i 
+                       << " (" << numTris << "), point/normal " << j);
          }
 
       // swap bytes if necc
