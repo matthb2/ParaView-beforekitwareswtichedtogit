@@ -462,7 +462,7 @@ int vtkCommunicator::ReadDataSet(vtkDataSet* object)
   
   // We will read data from a string stream.
   istrstream istr(this->MarshalString, this->MarshalDataLength);
-  vtkDataSet* output;
+  vtkDataSet* output = 0;
   vtkXMLDataReader* reader = 0;
   
   if(strcmp(object->GetClassName(), "vtkImageData") == 0)
