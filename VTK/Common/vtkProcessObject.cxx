@@ -48,6 +48,7 @@ vtkProcessObject::~vtkProcessObject()
     {
     if (this->Inputs[idx])
       {
+      this->Inputs[idx]->RemoveConsumer(this);
       this->Inputs[idx]->UnRegister(this);
       this->Inputs[idx] = NULL;
       this->SortedInputs[idx] = NULL;
