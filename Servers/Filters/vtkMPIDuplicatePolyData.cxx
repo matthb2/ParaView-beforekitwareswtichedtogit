@@ -216,7 +216,7 @@ void vtkMPIDuplicatePolyData::ServerExecute(vtkMPICommunicator* com,
   
   // Get the marshaled data sets.
   char* allbuffers = new char[sum];
-  com->AllGatherV(buf, size, allbuffers, recvLengths, recvOffsets);
+  com->AllGatherV(buf, allbuffers, size, recvLengths, recvOffsets);
 
   if (myId == 0)
     {
