@@ -268,7 +268,7 @@ int vtkAppendFilter::RequestData(
 }
 
 //----------------------------------------------------------------------------
-int vtkAppendFilter::FillInputPortInformation(int port, vtkInformation *info)
+int vtkAppendFilter::FillInputPortInformation(int, vtkInformation *info)
 {
   info->Set(vtkAlgorithm::INPUT_REQUIRED_DATA_TYPE(), "vtkDataSet");
   info->Set(vtkAlgorithm::INPUT_IS_REPEATABLE(), 1);
