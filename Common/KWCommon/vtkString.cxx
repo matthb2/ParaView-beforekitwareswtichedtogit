@@ -290,6 +290,34 @@ char* vtkString::ReplaceChars(char* str, const char *toreplace, char replacement
 }
 
 //----------------------------------------------------------------------------
+char* vtkString::RemoveChars(const char* str, const char *toremove)
+{
+  if (!str)
+    {
+    return 0;
+    }
+
+  char *clean_str = new char [strlen(str) + 1];
+  char *ptr = clean_str;
+
+  while (*str)
+    {
+    const char *str2 = toremove;
+    while (*str2 && *str != *str2)
+      {
+      ++str2;
+      }
+    if (!*str2)
+      {
+      *ptr++ = *str;
+      }
+    ++str;
+    }
+  *ptr = '\0';
+  return clean_str;
+}
+
+//----------------------------------------------------------------------------
 unsigned int vtkString::CountChar(const char* str, const char c)
 {
   int count = 0;
