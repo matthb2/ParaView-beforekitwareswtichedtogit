@@ -941,7 +941,7 @@ double *vtkCTHData::GetPoint(vtkIdType ptId)
 vtkIdType vtkCTHData::FindPoint(double x[3])
 {
   int numPointsPerBlock = this->GetNumberOfPointsPerBlock();
-  int blockId, numBlocks, bestBlock, bestBlockPtId;
+  int blockId, numBlocks, bestBlock = 0, bestBlockPtId = 0;
   int i, loc[3];
   double d;
   double dist, bestDist;
