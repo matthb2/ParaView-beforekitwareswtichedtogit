@@ -18,8 +18,10 @@
 #include "vtkLabeledDataMapper.h"
 
 #include "vtkActor2D.h"
+#include "vtkDataArray.h"
 #include "vtkDataSet.h"
 #include "vtkObjectFactory.h"
+#include "vtkPointData.h"
 #include "vtkTextMapper.h"
 #include "vtkTextProperty.h"
 

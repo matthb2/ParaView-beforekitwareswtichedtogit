@@ -21,6 +21,7 @@
 #include "vtkTextMapper.h"
 #include "vtkTextProperty.h"
 #include "vtkViewport.h"
+#include "vtkWindow.h"
 
 vtkCxxRevisionMacro(vtkTextActor, "$Revision$");
 vtkStandardNewMacro(vtkTextActor);

@@ -24,6 +24,7 @@
 #include "vtkMatrix4x4.h"
 #include "vtkObjectFactory.h"
 #include "vtkPiecewiseFunction.h"
+#include "vtkPointData.h"
 #include "vtkRenderer.h"
 #include "vtkTransform.h"
 #include "vtkVolumeCollection.h"

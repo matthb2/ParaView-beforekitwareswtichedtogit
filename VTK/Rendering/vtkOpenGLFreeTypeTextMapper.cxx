@@ -15,19 +15,22 @@
      PURPOSE.  See the above copyright notice for more information.
 
 =========================================================================*/
-
 #include "vtkOpenGLFreeTypeTextMapper.h"
+
+#include "vtkActor2D.h"
 #include "vtkObjectFactory.h"
 #include "vtkProperty2D.h"
 #include "vtkTextProperty.h"
 #include "vtkViewport.h"
+#include "vtkWindow.h"
 
 #include "vtkFreeTypeFontCache.h"
 #include "vtkfreetypeConfig.h"
 #include "vtkftglConfig.h"
-#include "FTFont.h"
 
 #include "vtkgluPickMatrix.h"
+
+#include "FTFont.h"
 
 //----------------------------------------------------------------------------
 // Print debug info

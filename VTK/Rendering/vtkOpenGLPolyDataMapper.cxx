@@ -17,12 +17,16 @@
 =========================================================================*/
 #include "vtkOpenGLPolyDataMapper.h"
 
+#include "vtkCellArray.h"
+#include "vtkCellData.h"
 #include "vtkCommand.h"
 #include "vtkDataArray.h"
+#include "vtkMatrix4x4.h"
 #include "vtkObjectFactory.h"
 #include "vtkOpenGLRenderer.h"
 #include "vtkPlane.h"
 #include "vtkPlaneCollection.h"
+#include "vtkPointData.h"
 #include "vtkPolyData.h"
 #include "vtkPolygon.h"
 #include "vtkProperty.h"

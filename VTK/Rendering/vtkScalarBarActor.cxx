@@ -17,6 +17,8 @@
 =========================================================================*/
 #include "vtkScalarBarActor.h"
 
+#include "vtkCellArray.h"
+#include "vtkCellData.h"
 #include "vtkObjectFactory.h"
 #include "vtkPolyData.h"
 #include "vtkPolyDataMapper2D.h"

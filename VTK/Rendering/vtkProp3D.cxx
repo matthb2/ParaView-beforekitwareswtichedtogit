@@ -18,6 +18,7 @@
 #include "vtkProp3D.h"
 
 #include "vtkActor.h"
+#include "vtkAssemblyPaths.h"
 #include "vtkMatrixToLinearTransform.h"
 #include "vtkTransform.h"
 

@@ -21,6 +21,7 @@
 #include "vtkImageData.h"
 #include "vtkMapper.h"
 #include "vtkObjectFactory.h"
+#include "vtkPointData.h"
 #include "vtkRenderWindow.h"
 #include "vtkRenderer.h"
 #include "vtkUnsignedCharArray.h"

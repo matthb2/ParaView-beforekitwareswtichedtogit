@@ -21,6 +21,7 @@
 #include "vtkLookupTable.h"
 #include "vtkObjectFactory.h"
 #include "vtkOpenGLRenderer.h"
+#include "vtkPointData.h"
 #include "vtkRenderWindow.h"
 
 #ifdef VTK_USE_CARBON

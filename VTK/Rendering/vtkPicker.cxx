@@ -19,6 +19,7 @@
 
 #include "vtkActor.h"
 #include "vtkAssemblyNode.h"
+#include "vtkAssemblyPath.h"
 #include "vtkCamera.h"
 #include "vtkCommand.h"
 #include "vtkImageData.h"
@@ -26,6 +27,7 @@
 #include "vtkMapper.h"
 #include "vtkMath.h"
 #include "vtkObjectFactory.h"
+#include "vtkPoints.h"
 #include "vtkProp3DCollection.h"
 #include "vtkProperty.h"
 #include "vtkRenderWindow.h"
