@@ -461,6 +461,7 @@ int vtkQuadraticPyramid::Triangulate(int vtkNotUsed(index), vtkIdList *ptIds,
                                       vtkPoints *pts)
 {
   int i;
+  int ii;
   pts->Reset();
   ptIds->Reset();
 
@@ -473,7 +474,7 @@ int vtkQuadraticPyramid::Triangulate(int vtkNotUsed(index), vtkIdList *ptIds,
       }
     }
 
-  for (int ii=0, i=6 ; i < 10; i++, ii++)
+  for (ii=0, i=6 ; i < 10; i++, ii++)
     {
     for ( int j=0; j < 4; j++)
       {
