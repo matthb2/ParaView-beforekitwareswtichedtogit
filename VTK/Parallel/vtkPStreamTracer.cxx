@@ -334,7 +334,6 @@ void vtkPStreamTracer::Execute()
                         this->IntegrationDirections);
   
   int myid = this->Controller->GetLocalProcessId();
-  float lastPoint[3];
   if (this->Seeds)
     {
     if (myid == 0)
