@@ -72,6 +72,8 @@ vtkMeshQuality::vtkMeshQuality()
   this->QuadQualityMeasure = VTK_QUALITY_EDGE_RATIO;
   this->TetQualityMeasure = VTK_QUALITY_RADIUS_RATIO;
   this->HexQualityMeasure = VTK_QUALITY_RADIUS_RATIO;
+  this->Volume = 0;
+  this->CompatibilityMode = 0;
 }
 
 vtkMeshQuality::~vtkMeshQuality()
@@ -160,6 +162,7 @@ void vtkMeshQuality::Execute()
       break;
     case VTK_QUALITY_EDGE_RATIO:
       TetQuality = TetEdgeRatio;
+      break;
     default:
       vtkWarningMacro( "Bad TetQualityMeasure ("
         << this->GetTetQualityMeasure() << "), using RadiusRatio instead");
