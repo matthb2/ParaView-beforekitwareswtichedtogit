@@ -79,7 +79,7 @@ void vtkTubeFilter::Execute()
   vtkFloatArray *newTCoords=NULL;
   int abort=0;
   vtkIdType inCellId;
-  float oldRadius;
+  float oldRadius=1.0;
 
   // Check input and initialize
   //
@@ -239,9 +239,9 @@ void vtkTubeFilter::Execute()
   
   // reset the radius to ite orginal value if necessary
   if (this->VaryRadius == VTK_VARY_RADIUS_BY_ABSOLUTE_SCALAR)
-      {
-      this->Radius = oldRadius;
-      }
+    {
+    this->Radius = oldRadius;
+    }
 
   // Update ourselves
   //
