@@ -27,6 +27,7 @@
 #include "vtkMath.h"
 #include "vtkOutputWindow.h"
 #include "vtkPicker.h"
+#include "vtkProp3DCollection.h"
 #include "vtkRenderWindow.h"
 #include "vtkTimerLog.h"
 #include "vtkVolume.h"

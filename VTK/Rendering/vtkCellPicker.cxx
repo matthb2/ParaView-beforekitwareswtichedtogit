@@ -16,6 +16,8 @@
 
 =========================================================================*/
 #include "vtkCellPicker.h"
+
+#include "vtkMapper.h"
 #include "vtkObjectFactory.h"
 #include "vtkVolumeMapper.h"
 
