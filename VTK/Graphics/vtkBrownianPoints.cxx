@@ -104,6 +104,8 @@ void vtkBrownianPoints::Execute()
   //
   output->GetPointData()->CopyVectorsOff();
   output->GetPointData()->PassData(input->GetPointData());
+  output->GetCellData()->PassData(input->GetCellData());
+  output->GetFieldData()->PassData(input->GetFieldData());
 
   output->GetPointData()->SetVectors(newVectors);
   newVectors->Delete();
