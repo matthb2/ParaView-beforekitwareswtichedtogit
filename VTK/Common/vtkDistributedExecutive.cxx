@@ -109,7 +109,7 @@ int vtkDistributedExecutive::Update(vtkAlgorithm* algorithm)
 }
 
 //----------------------------------------------------------------------------
-vtkDataObject* vtkDistributedExecutive::GetOutputData(int port)
+vtkDataObject* vtkDistributedExecutive::GetOutputData(int)
 {
   vtkErrorMacro("GetOutputData(int) must be implemented for this executive.");
   return 0;
