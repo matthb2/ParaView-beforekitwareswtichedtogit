@@ -484,6 +484,7 @@ int vtkPVOptions::GetLastArgument()
 void vtkPVOptions::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os, indent);
+  os << indent << "ParaViewDataName: " << (this->ParaViewDataName?this->ParaViewDataName:"(none)") << endl;
   os << indent << "XMLConfigFile: " << (this->XMLConfigFile?this->XMLConfigFile:"(none)") << endl;
   os << indent << "UnknownArgument: " << (this->UnknownArgument?this->UnknownArgument:"(none)") << endl;
   os << indent << "ErrorMessage: " << (this->ErrorMessage?this->ErrorMessage:"(none)") << endl;
