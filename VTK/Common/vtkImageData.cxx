@@ -980,7 +980,8 @@ int vtkImageData::ComputeStructuredCoordinates(float x[3], int ijk[3],
     {
     d = x[i] - origin[i];
     floatLoc = d / spacing[i];
-    ijk[i] = (int) floatLoc;
+    // Floor for negtive indexes.
+    ijk[i] = (int) (floor(floatLoc));
     if ( ijk[i] >= this->Extent[i*2] && ijk[i] < this->Extent[i*2 + 1] )
       {
       pcoords[i] = floatLoc - (float)ijk[i];
