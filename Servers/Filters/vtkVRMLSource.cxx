@@ -272,5 +272,7 @@ void vtkVRMLSource::PrintSelf(ostream& os, vtkIndent indent)
     {
     os << indent << "FileName: " << this->FileName << endl;
     }
+  os << indent << "Color: " << this->Color << endl;
+  os << indent << "Append: " << this->Append << endl;
 }
 
