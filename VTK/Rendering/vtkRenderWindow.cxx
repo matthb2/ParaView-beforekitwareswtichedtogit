@@ -672,6 +672,7 @@ void vtkRenderWindow::PrintSelf(ostream& os, vtkIndent indent)
   this->Superclass::PrintSelf(os,indent);
 
   os << indent << "Borders: " << (this->Borders ? "On\n":"Off\n");
+  os << indent << "IsPicking: " << (this->IsPicking ? "On\n":"Off\n");
   os << indent << "Double Buffer: " << (this->DoubleBuffer ? "On\n":"Off\n");
   os << indent << "Full Screen: " << (this->FullScreen ? "On\n":"Off\n");
   os << indent << "Renderers:\n";
