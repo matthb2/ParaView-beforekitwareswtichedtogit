@@ -362,7 +362,7 @@ int vtkPickFilter::CompareProcesses(double bestDist2)
 // I made this general so we could grow the region from the seed.
 void vtkPickFilter::CreateOutput(vtkIdList* regionCellIds)
 {
-  if (this->BestInputIndex < 0)
+  if (this->BestInputIndex < 0 || this->RegionPtIds == 0)
     {
     return;
     }
