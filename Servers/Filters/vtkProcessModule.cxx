@@ -115,6 +115,20 @@ void vtkProcessModule::SendStreamToClient()
 }
 
 //----------------------------------------------------------------------------
+void vtkProcessModule::SendStreamToServerTemp(vtkClientServerStream* stream)
+{
+  this->Interpreter->ProcessStream(*stream);
+  stream->Reset();
+}
+
+//----------------------------------------------------------------------------
+void vtkProcessModule::SendStreamToServerRootTemp(vtkClientServerStream* stream)
+{
+  this->Interpreter->ProcessStream(*stream);
+  stream->Reset();
+}
+
+//----------------------------------------------------------------------------
 void vtkProcessModule::SendStreamToServer()
 {
   this->Interpreter->ProcessStream(*this->ClientServerStream);
