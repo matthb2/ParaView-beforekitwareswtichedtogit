@@ -120,11 +120,10 @@ void vtkObjectFactory::LoadDynamicFactories()
 #ifndef _WIN32_WCE
   LoadPath = getenv("VTK_AUTOLOAD_PATH");
 #endif
-  if(LoadPath == 0)
+  if(LoadPath == 0 || strlen(LoadPath) == 0)
     {
     return;
     }
-  
   char* CurrentPath = new char[strlen(LoadPath)+1];
   char* SeparatorPosition = LoadPath; // initialize to env variable
   while(SeparatorPosition)
