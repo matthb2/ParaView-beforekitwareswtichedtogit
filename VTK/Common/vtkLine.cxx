@@ -44,13 +44,6 @@ vtkLine::vtkLine()
     }
 }
 
-vtkCell *vtkLine::MakeObject()
-{
-  vtkCell *cell = vtkLine::New();
-  cell->DeepCopy(this);
-  return cell;
-}
-
 static const int VTK_NO_INTERSECTION=0;
 static const int VTK_YES_INTERSECTION=2;
 static const int VTK_ON_LINE=3;

@@ -34,13 +34,6 @@ vtkPolyLine::~vtkPolyLine()
   this->Line->Delete();
 }
 
-vtkCell *vtkPolyLine::MakeObject()
-{
-  vtkCell *cell = vtkPolyLine::New();
-  cell->DeepCopy(this);
-  return cell;
-}
-
 // Given points and lines, compute normals to lines. These are not true 
 // normals, they are "orientation" normals used by classes like vtkTubeFilter
 // that control the rotation around the line. The normals try to stay pointing

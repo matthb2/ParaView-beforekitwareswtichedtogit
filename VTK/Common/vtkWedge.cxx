@@ -54,13 +54,6 @@ vtkWedge::~vtkWedge()
   this->Quad->Delete();
 }
 
-vtkCell *vtkWedge::MakeObject()
-{
-  vtkCell *cell = vtkWedge::New();
-  cell->DeepCopy(this);
-  return cell;
-}
-
 static const int VTK_MAX_ITERATION=10;
 static const float VTK_CONVERGED=1.e-03;
 int vtkWedge::EvaluatePosition(float x[3], float* closestPoint,

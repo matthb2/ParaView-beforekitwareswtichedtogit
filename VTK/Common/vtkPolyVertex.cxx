@@ -37,13 +37,6 @@ vtkPolyVertex::~vtkPolyVertex()
   this->Vertex->Delete();
 }
 
-vtkCell *vtkPolyVertex::MakeObject()
-{
-  vtkCell *cell = vtkPolyVertex::New();
-  cell->DeepCopy(this);
-  return cell;
-}
-
 int vtkPolyVertex::EvaluatePosition(float x[3], float* closestPoint,
                                    int& subId, float pcoords[3], 
                                    float& minDist2, float *weights)

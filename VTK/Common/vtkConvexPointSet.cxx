@@ -53,13 +53,6 @@ vtkConvexPointSet::~vtkConvexPointSet()
   this->Triangle->Delete();
 }
 
-vtkCell *vtkConvexPointSet::MakeObject()
-{
-  vtkCell *cell = vtkConvexPointSet::New();
-  cell->DeepCopy(this);
-  return cell;
-}
-
 // Should be called by GetCell() prior to any other method invocation
 void vtkConvexPointSet::Initialize()
 {

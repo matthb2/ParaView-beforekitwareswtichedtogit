@@ -36,13 +36,6 @@ vtkTriangleStrip::~vtkTriangleStrip()
   this->Triangle->Delete();
 }
 
-vtkCell *vtkTriangleStrip::MakeObject()
-{
-  vtkCell *cell = vtkTriangleStrip::New();
-  cell->DeepCopy(this);
-  return cell;
-}
-
 int vtkTriangleStrip::EvaluatePosition(float x[3], float* closestPoint,
                                       int& subId, float pcoords[3], 
                                       float& minDist2, float *weights)

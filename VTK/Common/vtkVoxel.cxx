@@ -54,13 +54,6 @@ vtkVoxel::~vtkVoxel()
   this->Pixel->Delete();
 }
 
-vtkCell *vtkVoxel::MakeObject()
-{
-  vtkCell *cell = vtkVoxel::New();
-  cell->DeepCopy(this);
-  return cell;
-}
-
 int vtkVoxel::EvaluatePosition(float x[3], float* closestPoint,
                               int& subId, float pcoords[3], 
                               float& dist2, float *weights)

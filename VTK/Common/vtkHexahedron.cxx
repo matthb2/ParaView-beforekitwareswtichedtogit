@@ -57,13 +57,6 @@ vtkHexahedron::~vtkHexahedron()
   this->Quad->Delete();
 }
 
-vtkCell *vtkHexahedron::MakeObject()
-{
-  vtkCell *cell = vtkHexahedron::New();
-  cell->DeepCopy(this);
-  return cell;
-}
-
 //  Method to calculate parametric coordinates in an eight noded
 //  linear hexahedron element from global coordinates.
 //

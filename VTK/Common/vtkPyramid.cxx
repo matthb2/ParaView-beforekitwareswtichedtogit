@@ -54,13 +54,6 @@ vtkPyramid::~vtkPyramid()
   this->Quad->Delete();
 }
 
-vtkCell *vtkPyramid::MakeObject()
-{
-  vtkCell *cell = vtkPyramid::New();
-  cell->DeepCopy(this);
-  return cell;
-}
-
 static const int VTK_MAX_ITERATION=10;
 static const float VTK_CONVERGED=1.e-03;
 int vtkPyramid::EvaluatePosition(float x[3], float closestPoint[3],

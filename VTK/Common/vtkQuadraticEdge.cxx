@@ -47,13 +47,6 @@ vtkQuadraticEdge::~vtkQuadraticEdge()
 }
 
 
-vtkCell *vtkQuadraticEdge::MakeObject()
-{
-  vtkQuadraticEdge *cell = vtkQuadraticEdge::New();
-  cell->DeepCopy(this);
-  return (vtkCell *)cell;
-}
-
 int vtkQuadraticEdge::EvaluatePosition(float* x, float* closestPoint, 
                                        int& subId, float pcoords[3],
                                        float& minDist2, float *weights)

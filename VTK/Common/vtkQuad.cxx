@@ -55,13 +55,6 @@ vtkQuad::~vtkQuad()
   this->Line->Delete();
 }
 
-vtkCell *vtkQuad::MakeObject()
-{
-  vtkCell *cell = vtkQuad::New();
-  cell->DeepCopy(this);
-  return cell;
-}
-
 static const int VTK_QUAD_MAX_ITERATION=20;
 static const float VTK_QUAD_CONVERGED=1.e-05;
 

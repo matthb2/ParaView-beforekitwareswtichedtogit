@@ -52,13 +52,6 @@ vtkTetra::~vtkTetra()
   this->Line->Delete();
 }
 
-vtkCell *vtkTetra::MakeObject()
-{
-  vtkCell *cell = vtkTetra::New();
-  cell->DeepCopy(this);
-  return cell;
-}
-
 int vtkTetra::EvaluatePosition(float x[3], float* closestPoint,
                               int& subId, float pcoords[3], 
                               float& minDist2, float *weights)

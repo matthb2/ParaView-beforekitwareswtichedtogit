@@ -68,13 +68,6 @@ vtkQuadraticHexahedron::~vtkQuadraticHexahedron()
 }
 
 
-vtkCell *vtkQuadraticHexahedron::MakeObject()
-{
-  vtkQuadraticHexahedron *cell = vtkQuadraticHexahedron::New();
-  cell->DeepCopy(this);
-  return (vtkCell *)cell;
-}
-
 static int LinearHexs[8][8] = { {0,8,24,11,16,22,26,20},
                                 {8,1,9,24,22,17,21,26},
                                 {11,24,10,3,20,26,23,19},

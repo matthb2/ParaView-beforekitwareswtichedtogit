@@ -50,13 +50,6 @@ vtkPolygon::~vtkPolygon()
   this->Line->Delete();
 }
 
-vtkCell *vtkPolygon::MakeObject()
-{
-  vtkCell *cell = vtkPolygon::New();
-  cell->DeepCopy(this);
-  return cell;
-}
-
 #define VTK_POLYGON_FAILURE -1
 #define VTK_POLYGON_OUTSIDE 0
 #define VTK_POLYGON_INSIDE 1

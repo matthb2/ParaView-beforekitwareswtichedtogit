@@ -61,13 +61,6 @@ vtkQuadraticQuad::~vtkQuadraticQuad()
   this->Scalars->Delete();
 }
 
-vtkCell *vtkQuadraticQuad::MakeObject()
-{
-  vtkQuadraticQuad *cell = vtkQuadraticQuad::New();
-  cell->DeepCopy(this);
-  return (vtkCell *)cell;
-}
-
 vtkCell *vtkQuadraticQuad::GetEdge(int edgeId)
 {
   edgeId = (edgeId < 0 ? 0 : (edgeId > 3 ? 3 : edgeId ));

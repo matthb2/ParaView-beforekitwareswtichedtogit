@@ -53,13 +53,6 @@ vtkGenericCell::~vtkGenericCell()
   this->Cell->Delete();
 }
 
-// The following methods dereference vtkCell virtual functions to allow
-// vtkCell to act like a concrete object.
-vtkCell *vtkGenericCell::MakeObject()
-{
-  return this->Cell->MakeObject();
-}
-
 void vtkGenericCell::ShallowCopy(vtkCell *c)
 {
   this->Cell->ShallowCopy(c);
