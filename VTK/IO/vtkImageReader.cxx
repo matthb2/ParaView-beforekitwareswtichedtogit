@@ -256,6 +256,7 @@ static void vtkImageReaderUpdate2(vtkImageReader *self, vtkImageData *data,
     {
     if ( !self->OpenAndSeekFile(dataExtent,0) )
       {
+      delete [] buf;
       return;
       }
     }
@@ -265,6 +266,7 @@ static void vtkImageReaderUpdate2(vtkImageReader *self, vtkImageData *data,
       {
       if ( !self->OpenAndSeekFile(dataExtent,idx2) )
         {
+        delete [] buf;
         return;
         }
       }
