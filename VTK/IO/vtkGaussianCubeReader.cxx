@@ -184,7 +184,7 @@ void vtkGaussianCubeReader::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os,indent);
 
-  os << "Filename: " << this->FileName << "\n";
+  os << "Filename: " << (this->FileName?this->FileName:"<null>") << "\n";
   os << indent << "Xform: ";
   //os << indent << this->Transform->PrintSelf(os, indent);
 }
