@@ -63,7 +63,7 @@ int vtkShrinkFilter::RequestData(
   numPts = input->GetNumberOfPoints();
   if (numCells < 1 || numPts < 1)
     {
-    vtkErrorMacro(<<"No data to shrink!");
+    vtkDebugMacro("No data to shrink!");
     return 1;
     }
 
