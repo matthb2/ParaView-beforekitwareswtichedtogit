@@ -434,7 +434,9 @@ int vtkDemandDrivenPipeline::ExecuteData(int outputPort)
   // prepare for executing the algorithm
   this->Algorithm->InvokeEvent(vtkCommand::StartEvent,NULL);
   this->Algorithm->SetAbortExecute(0);
-  this->Algorithm->SetProgress(0.0);
+  // Directly setting Progress instead of using SetProgress() because
+  // modifying the algorithm causes multiple executions.
+  this->Algorithm->Progress = 0.0;
 
   // Invoke the request on the algorithm.
   vtkSmartPointer<vtkInformation> r = vtkSmartPointer<vtkInformation>::New();
