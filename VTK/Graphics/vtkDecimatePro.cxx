@@ -978,6 +978,9 @@ void vtkDecimatePro::SplitVertex(vtkIdType ptId, int type,
      //changes in group size control how to split loop
     if ( numTris <= 1 )
       {
+      triangles->Delete();
+      cellIds->Delete();
+      group->Delete();
       return; //prevents infinite recursion
       }
     maxGroupSize = ( numTris < this->VertexDegree ? numTris : (this->VertexDegree - 1));
