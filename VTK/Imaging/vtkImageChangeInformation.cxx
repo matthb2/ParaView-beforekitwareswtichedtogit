@@ -181,6 +181,10 @@ void vtkImageChangeInformation::ExecuteData(vtkDataObject *data)
     }
 
   vtkImageData *inData = this->GetInput();
+  if (!inData)
+    {
+    return;
+    }
   vtkImageData *outData = (vtkImageData *)(data);
   int extent[6];
   
