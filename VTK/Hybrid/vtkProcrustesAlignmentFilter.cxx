@@ -328,13 +328,7 @@ void vtkProcrustesAlignmentFilter::SetNumberOfInputs(int n)
 //----------------------------------------------------------------------------
 // public
 void vtkProcrustesAlignmentFilter::SetInput(int idx,vtkPointSet* p) 
-{ 
-  if(idx<0 || idx>=this->vtkProcessObject::GetNumberOfInputs())
-    {
-    vtkErrorMacro(<<"Index out of bounds in SetInput!");
-    return;
-    }
-  
+{
   this->vtkProcessObject::SetNthInput(idx,p);
 }
 
