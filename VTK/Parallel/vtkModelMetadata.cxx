@@ -35,6 +35,7 @@ vtkStandardNewMacro(vtkModelMetadata);
 
 #include <vtkstd/set>
 #include <vtkstd/map>
+#include <vtkstd/algorithm>
 
 class vtkModelMetadataSTLCloak
 {
@@ -3611,7 +3612,7 @@ vtkModelMetadata *vtkModelMetadata::ExtractModelMetadata(
       {
       grid->GetCellPoints(c, ptIds);
 
-      int npoints = ptIds->GetNumberOfIds();
+      vtkIdType npoints = ptIds->GetNumberOfIds();
 
       for (i=0; i<npoints; i++)
         {
