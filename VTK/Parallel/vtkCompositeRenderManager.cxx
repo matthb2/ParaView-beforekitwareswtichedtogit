@@ -14,7 +14,6 @@
 =========================================================================*/
 #include "vtkCompositeRenderManager.h"
 
-#include "vtkCompositer.h"
 #include "vtkCompressCompositer.h"
 #include "vtkFloatArray.h"
 #include "vtkMultiProcessController.h"
