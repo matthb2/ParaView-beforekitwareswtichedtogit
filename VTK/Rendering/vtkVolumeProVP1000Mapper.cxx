@@ -21,18 +21,19 @@
 #include "vtkColorTransferFunction.h"
 #include "vtkDebugLeaks.h"
 #include "vtkGraphicsFactory.h"
+#include "vtkImageData.h"
 #include "vtkLight.h"
 #include "vtkLightCollection.h"
 #include "vtkObjectFactory.h"
 #include "vtkOpenGLVolumeProVP1000Mapper.h"
 #include "vtkPiecewiseFunction.h"
+#include "vtkPointData.h"
 #include "vtkRenderWindow.h"
 #include "vtkRenderer.h"
 #include "vtkToolkits.h"
+#include "vtkTransform.h"
 #include "vtkVolume.h"
 #include "vtkVolumeProperty.h"
-#include "vtkImageData.h"
-#include "vtkTransform.h"
 
 #include <stdio.h>
 #include <math.h>
