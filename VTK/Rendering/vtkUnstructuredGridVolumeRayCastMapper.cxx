@@ -48,7 +48,6 @@ vtkUnstructuredGridVolumeRayCastMapper::vtkUnstructuredGridVolumeRayCastMapper()
   this->MinimumImageSampleDistance =  1.0;
   this->MaximumImageSampleDistance = 10.0;
   this->AutoAdjustSampleDistances  =  1;
-//  this->VolumeRayCastFunction      = NULL;
   
   this->ImageMemorySize[0]     = 0;
   this->ImageMemorySize[1]     = 0;
@@ -81,8 +80,6 @@ vtkUnstructuredGridVolumeRayCastMapper::vtkUnstructuredGridVolumeRayCastMapper()
 // Destruct a vtkUnstructuredGridVolumeRayCastMapper - clean up any memory used
 vtkUnstructuredGridVolumeRayCastMapper::~vtkUnstructuredGridVolumeRayCastMapper()
 {
-//  this->SetVolumeRayCastFunction(NULL);
-  
   this->Threader->Delete();
   
   if ( this->Image )
