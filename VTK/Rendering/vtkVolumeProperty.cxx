@@ -43,7 +43,7 @@ vtkVolumeProperty::vtkVolumeProperty()
     this->DefaultGradientOpacity[i]          = NULL;
     this->DisableGradientOpacity[i]          = 0;
     
-    this->ComponentWeight[i]                 = 0.0;
+    this->ComponentWeight[i]                 = 1.0;
 
     this->Shade[i]                           = 0;  
     this->Ambient[i]                         = 0.1;
@@ -51,8 +51,6 @@ vtkVolumeProperty::vtkVolumeProperty()
     this->Specular[i]                        = 0.2;
     this->SpecularPower[i]                   = 10.0;
     }
-
-  this->ComponentWeight[0]                   = 1.0;
 }
 
 // Destruct a vtkVolumeProperty
