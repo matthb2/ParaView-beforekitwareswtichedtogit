@@ -83,6 +83,7 @@ void vtkXMLUnstructuredGridWriter::SetInputUpdateExtent(int piece,
 //----------------------------------------------------------------------------
 void vtkXMLUnstructuredGridWriter::WriteInlinePieceAttributes()
 {
+  this->Superclass::WriteInlinePieceAttributes();
   vtkUnstructuredGrid* input = this->GetInput();
   this->WriteScalarAttribute("NumberOfCells", input->GetNumberOfCells());
 }
