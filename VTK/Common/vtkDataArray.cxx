@@ -249,21 +249,6 @@ void vtkDataArray::SetLookupTable(vtkLookupTable* lut)
     }
 }
 
-// default double behaviour
-void vtkDataArray::GetTuple(vtkIdType i, double * tuple)
-{
-  int c;
-  int numComp=this->GetNumberOfComponents();
-  double *ftuple=new double[numComp];
-  this->GetTuple(i,ftuple);
-  for (c = 0; c < numComp;  c++)
-    {
-    tuple[c] = ftuple[c];
-    }
-  delete [] ftuple;
-}
-
-
 double* vtkDataArray::GetTupleN(vtkIdType i, int n)
 {
   int numComp = this->GetNumberOfComponents();
