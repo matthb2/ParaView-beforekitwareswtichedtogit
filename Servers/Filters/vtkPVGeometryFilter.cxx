@@ -28,8 +28,6 @@
 #include "vtkRectilinearGrid.h"
 #include "vtkRectilinearGridOutlineFilter.h"
 #include "vtkStripper.h"
-#include "vtkCTHData.h"
-#include "vtkCTHOutlineFilter.h"
 #include "vtkStructuredGrid.h"
 #include "vtkStructuredGridOutlineFilter.h"
 #include "vtkUnstructuredGrid.h"
@@ -70,12 +68,6 @@ void vtkPVGeometryFilter::Execute()
     return;
     }
 
-  if (input->IsA("vtkCTHData"))
-    {
-    this->CTHDataExecute((vtkCTHData*)input);
-    return;
-    }
-
   if (input->IsA("vtkStructuredGrid"))
     {
     this->StructuredGridExecute((vtkStructuredGrid*)input);
@@ -99,30 +91,22 @@ void vtkPVGeometryFilter::Execute()
     return;
     }
 
-  // We are not stripping unstructured grids ...
-  this->vtkDataSetSurfaceFilter::Execute();
-  // I think this filter is misbehaving.
+  this->DataSetExecute(input);
   return;
 }
 
 //----------------------------------------------------------------------------
-void vtkPVGeometryFilter::CTHDataExecute(vtkCTHData *input)
+void vtkPVGeometryFilter::DataSetExecute(vtkDataSet *input)
 {
-  //vtkCTHData* tmp;
-  //vtkCTHOutlineFilter *outline = vtkCTHOutlineFilter::New();
   vtkOutlineSource* outline = vtkOutlineSource::New();
   vtkPolyData *output = this->GetOutput();
 
-  //tmp = vtkCTHData::New();
-  //tmp->ShallowCopy(input);
-  //outline->SetInput(tmp);
   outline->SetBounds(input->GetBounds());
   outline->Update();
 
   output->SetPoints(outline->GetOutput()->GetPoints());
   output->SetLines(outline->GetOutput()->GetLines());
   outline->Delete();
-  //tmp->Delete();
 }
 
 //----------------------------------------------------------------------------
