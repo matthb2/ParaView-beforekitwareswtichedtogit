@@ -47,7 +47,7 @@ vtkCurvatures* vtkCurvatures::New()
 vtkCurvatures::vtkCurvatures()
 {
   this->CurvatureType = VTK_CURVATURE_GAUSS;
-  this->InvertMeanCurvature = false;
+  this->InvertMeanCurvature = 0;
 }
 //-------------------------------------------------------//
 void vtkCurvatures::GetMeanCurvature()
