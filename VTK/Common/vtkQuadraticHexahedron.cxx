@@ -127,7 +127,9 @@ void vtkQuadraticHexahedron::Subdivide(vtkPointData *inPd, vtkCellData *inCd,
   double weights[20];
   double x[3];
 
-  //Copy point and cell attribute data
+  //Copy point and cell attribute data, first make sure it's empty:
+  this->PointData->Initialize();
+  this->CellData->Initialize();
   this->PointData->CopyAllocate(inPd,27);
   this->CellData->CopyAllocate(inCd,8);
   for (i=0; i<20; i++)

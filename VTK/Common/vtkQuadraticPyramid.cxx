@@ -311,7 +311,9 @@ void vtkQuadraticPyramid::Subdivide(vtkPointData *inPd, vtkCellData *inCd,
   double weights[13];
   double x[3];
 
-  //Copy point and cell attribute data
+  //Copy point and cell attribute data, first make sure it's empty:
+  this->PointData->Initialize();
+  this->CellData->Initialize();
   this->PointData->CopyAllocate(inPd,14);
   this->CellData->CopyAllocate(inCd,5);
   for (i=0; i<13; i++)
