@@ -130,7 +130,6 @@ void vtkAnimationScene::FinalizeChildren()
 //----------------------------------------------------------------------------
 void vtkAnimationScene::Play()
 {
-  cout << "LOOP: " << this->Loop << endl;
   if (this->InPlay)
     {
     return;
