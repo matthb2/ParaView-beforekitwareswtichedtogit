@@ -1,10 +1,10 @@
 /*=========================================================================
 
   Program:   Visualization Library
-  Module:    $RCSfile$
+  Module:    PtS2PtSF.cc
   Language:  C++
-  Date:      $Date$
-  Version:   $Revision$
+  Date:      11/6/94
+  Version:   1.8
 
 This file is part of the Visualization Library. No part of this file
 or its contents may be copied, reproduced or altered in any way
