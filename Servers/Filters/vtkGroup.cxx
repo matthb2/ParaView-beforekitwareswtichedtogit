@@ -116,6 +116,7 @@ void vtkGroup::ExecuteInformation()
     else
       {
       output->CopyInformation(input);
+      output->SetPipelineMTime(input->GetPipelineMTime());
       }
     } 
 }
