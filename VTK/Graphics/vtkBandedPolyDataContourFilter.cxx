@@ -235,9 +235,10 @@ void vtkBandedPolyDataContourFilter::Execute()
 
   //  Check input
   //
-  numPts = inPts->GetNumberOfPoints();
+  
   numCells = input->GetNumberOfCells();
-  if ( !inScalars || numCells < 1 || numPts < 1 )
+  if ( !inPts || (numPts=inPts->GetNumberOfPoints()) < 1 || 
+       !inScalars || numCells < 1 )
     {
     vtkErrorMacro(<<"No input data!");
     return;
