@@ -66,7 +66,7 @@ vtkCxxRevisionMacro(vtkPVEnSightMasterServerReader, "$Revision$");
 
 #ifdef VTK_USE_MPI
 vtkCxxSetObjectMacro(vtkPVEnSightMasterServerReader, Controller,
-                     vtkMultiProcessController);
+                     vtkMPIController);
 vtkMultiProcessController* vtkPVEnSightMasterServerReader::GetController()
 {
   return this->Controller;
