@@ -16,13 +16,14 @@
 
 =========================================================================*/
 #include "vtkSTLReader.h"
+
 #include "vtkByteSwap.h"
+#include "vtkFloatArray.h"
 #include "vtkMergePoints.h"
 #include "vtkObjectFactory.h"
-#include "vtkFloatArray.h"
+#include "vtkPolyData.h"
 
 #include <ctype.h>
-#include <string.h>
 
 vtkCxxRevisionMacro(vtkSTLReader, "$Revision$");
 vtkStandardNewMacro(vtkSTLReader);

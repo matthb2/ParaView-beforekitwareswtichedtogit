@@ -16,10 +16,12 @@
 
 =========================================================================*/
 #include "vtkMCubesReader.h"
-#include "vtkMergePoints.h"
+
 #include "vtkByteSwap.h"
-#include "vtkObjectFactory.h"
 #include "vtkFloatArray.h"
+#include "vtkMergePoints.h"
+#include "vtkObjectFactory.h"
+#include "vtkPolyData.h"
 
 #include <sys/types.h>
 #include <sys/stat.h>

@@ -16,11 +16,13 @@
 
 =========================================================================*/
 #include "vtkParticleReader.h"
-#include "vtkFloatArray.h"
-#include "vtkCellArray.h"
-#include "vtkPoints.h"
-#include "vtkObjectFactory.h"
+
 #include "vtkByteSwap.h"
+#include "vtkCellArray.h"
+#include "vtkFloatArray.h"
+#include "vtkObjectFactory.h"
+#include "vtkPoints.h"
+#include "vtkPolyData.h"
 
 vtkCxxRevisionMacro(vtkParticleReader, "$Revision$");
 vtkStandardNewMacro(vtkParticleReader);

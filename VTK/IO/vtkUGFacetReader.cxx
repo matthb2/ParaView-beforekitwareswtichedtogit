@@ -21,6 +21,7 @@
 #include "vtkFloatArray.h"
 #include "vtkMergePoints.h"
 #include "vtkObjectFactory.h"
+#include "vtkPolyData.h"
 #include "vtkShortArray.h"
 
 vtkCxxRevisionMacro(vtkUGFacetReader, "$Revision$");

@@ -16,9 +16,11 @@
 
 =========================================================================*/
 #include "vtkPLYReader.h"
-#include "vtkPLY.h"
+
 #include "vtkFloatArray.h"
 #include "vtkObjectFactory.h"
+#include "vtkPLY.h"
+#include "vtkPolyData.h"
 
 #include <ctype.h>
 #include <stddef.h>
