@@ -48,6 +48,7 @@ vtkImageReader::vtkImageReader()
   this->Transform = NULL;
   
   this->ScalarArrayName = NULL;
+  this->SetScalarArrayName("ImageFile");
 }
 
 //----------------------------------------------------------------------------
@@ -424,11 +425,6 @@ void vtkImageReader::ExecuteData(vtkDataObject *output)
     }
 
   ext = data->GetExtent();
-
-  if (!this->ScalarArrayName)
-    {
-    this->SetScalarArrayName("ImageFile");
-    }
   data->GetPointData()->GetScalars()->SetName(this->ScalarArrayName);
 
   vtkDebugMacro("Reading extent: " << ext[0] << ", " << ext[1] << ", " 
