@@ -200,7 +200,7 @@ void vtkWeightedRedistributePolyData::MakeSchedule ( vtkCommSched* localSched)
           }
         else
           {
-          goalNumCells[type][id] = 0.0;
+          goalNumCells[type][id] = 0;
           }
         numCellsLeftToDivideUp -= goalNumCells[type][id];
         weightTotalOfRemainingProcesses -= Weights[id];
