@@ -200,6 +200,7 @@ int vtkKWUNIXRegisteryUtilities::CloseInternal()
   this->EntriesMap->Delete();
   this->EntriesMap = 0;
   ofs->close();
+  delete ofs;
   res = 1;
   this->SetSubKey(0);
   this->Empty = 1;
