@@ -250,3 +250,23 @@ void vtkImageViewer::Render()
 
   this->RenderWindow->Render();
 }
+
+void vtkImageViewer::SetOffScreenRendering(int i)
+{
+  this->RenderWindow->SetOffScreenRendering(i);
+}
+
+int vtkImageViewer::GetOffScreenRendering(int i)
+{
+  return this->RenderWindow->GetOffScreenRendering();
+}
+
+void vtkImageViewer::OffScreenRenderingOn()
+{
+  this->SetOffScreenRendering(1);
+}
+
+void vtkImageViewer::OffScreenRenderingOff()
+{
+  this->SetOffScreenRendering(0);
+}
