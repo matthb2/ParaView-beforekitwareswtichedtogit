@@ -483,11 +483,8 @@ int vtkMergeFilter::RequestData(
 int vtkMergeFilter::RequestUpdateExtent(
   vtkInformation *vtkNotUsed(request),
   vtkInformationVector **inputVector,
-  vtkInformationVector *outputVector)
+  vtkInformationVector *vtkNotUsed(outputVector))
 {
-  // get the info object
-  vtkInformation *outInfo = outputVector->GetInformationObject(0);
-
   vtkInformation *inputInfo;
   int idx;
   
