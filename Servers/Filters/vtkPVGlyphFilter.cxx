@@ -95,4 +95,8 @@ void vtkPVGlyphFilter::PrintSelf(ostream& os, vtkIndent indent)
   
   os << indent << "MaximumNumberOfPoints: " << this->GetMaximumNumberOfPoints()
      << endl;
+
+  os << indent << "UseMaskPoints: " << (this->UseMaskPoints?"on":"off") << endl;
+
+  os << indent << "NumberOfProcesses: " << this->NumberOfProcesses << endl;
 }
