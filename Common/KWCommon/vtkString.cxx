@@ -318,6 +318,57 @@ char* vtkString::RemoveChars(const char* str, const char *toremove)
 }
 
 //----------------------------------------------------------------------------
+char* vtkString::RemoveAllButChars(const char* str, const char *tokeep)
+{
+  if (!str)
+    {
+    return 0;
+    }
+
+  char *clean_str = new char [strlen(str) + 1];
+  char *ptr = clean_str;
+
+  while (*str)
+    {
+    const char *str2 = tokeep;
+    while (*str2 && *str != *str2)
+      {
+      ++str2;
+      }
+    if (*str2)
+      {
+      *ptr++ = *str;
+      }
+    ++str;
+    }
+  *ptr = '\0';
+  return clean_str;
+}
+
+//----------------------------------------------------------------------------
+char* vtkString::RemoveAllButUpperHex(const char* str)
+{
+  if (!str)
+    {
+    return 0;
+    }
+
+  char *clean_str = new char [strlen(str) + 1];
+  char *ptr = clean_str;
+
+  while (*str)
+    {
+    if ((*str >= '0' && *str <= '9') || (*str >= 'A' && *str <= 'H'))
+      {
+      *ptr++ = *str;
+      }
+    ++str;
+    }
+  *ptr = '\0';
+  return clean_str;
+}
+
+//----------------------------------------------------------------------------
 unsigned int vtkString::CountChar(const char* str, const char c)
 {
   int count = 0;
