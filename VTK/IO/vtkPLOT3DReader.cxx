@@ -22,6 +22,7 @@
 #include "vtkFloatArray.h"
 #include "vtkIntArray.h"
 #include "vtkObjectFactory.h"
+#include "vtkStructuredGrid.h"
 #include "vtkUnsignedCharArray.h"
 
 vtkCxxRevisionMacro(vtkPLOT3DReader, "$Revision$");
@@ -1710,6 +1711,23 @@ const char *vtkPLOT3DReader::GetByteOrderAsString()
     {
     return "BigEndian";
     }
+}
+
+void vtkPLOT3DReader::SetOutput(int idx, vtkStructuredGrid *output)
+{ 
+  this->Superclass::SetNthOutput(idx, output); 
+}
+
+void vtkPLOT3DReader::AddFunction(int functionNumber)
+{
+  this->FunctionList->InsertNextValue(functionNumber); 
+  this->Modified();
+}
+
+void vtkPLOT3DReader::RemoveAllFunctions()
+{
+  this->FunctionList->Reset();
+  this->Modified();
 }
 
 void vtkPLOT3DReader::PrintSelf(ostream& os, vtkIndent indent)
