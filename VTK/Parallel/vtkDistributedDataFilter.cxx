@@ -507,7 +507,7 @@ int vtkDistributedDataFilter::RequestData(
   vtkInformation *outInfo = outputVector->GetInformationObject(0);
 
   // get the input and ouptut
-  vtkUnstructuredGrid *input = vtkUnstructuredGrid::SafeDownCast(
+  vtkDataSet *input = vtkDataSet::SafeDownCast(
     inInfo->Get(vtkDataObject::DATA_OBJECT()));
   vtkUnstructuredGrid *output = vtkUnstructuredGrid::SafeDownCast(
     outInfo->Get(vtkDataObject::DATA_OBJECT()));
