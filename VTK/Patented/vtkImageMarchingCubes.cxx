@@ -540,10 +540,10 @@ void vtkImageMarchingCubesHandleCube(vtkImageMarchingCubes *self,
   float value;
   int cubeIndex, ii;
   vtkIdType pointIds[3];
-  VTK_TRIANGLE_CASES *triCase, *triCases;
+  vtkMarchingCubesTriangleCases *triCase, *triCases;
   EDGE_LIST  *edge;
 
-  triCases =  VTK_TRIANGLE_CASES::GetCases();
+  triCases =  vtkMarchingCubesTriangleCases::GetCases();
 
   inData->GetIncrements(inc0, inc1, inc2);
   for (valueIdx = 0; valueIdx < numContours; ++valueIdx)
