@@ -97,8 +97,7 @@ void vtkMultiProcessLog::DumpLog(char *filename)
 }
 
   
-
-
-
-
-
+void vtkMultiProcessLog::PrintSelf(ostream& os, vtkIndent indent)
+{
+  this->Superclass::PrintSelf(os,indent);
+}

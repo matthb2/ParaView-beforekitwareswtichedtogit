@@ -99,9 +99,8 @@ void vtkThreadSafeLog::DumpLog(char *filename, int nMode)
   os << endl;
 }
 
+void vtkThreadSafeLog::PrintSelf(ostream& os, vtkIndent indent)
+{
+  this->Superclass::PrintSelf(os,indent);
+}
   
-
-
-
-
-
