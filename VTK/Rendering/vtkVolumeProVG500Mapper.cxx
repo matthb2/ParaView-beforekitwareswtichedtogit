@@ -16,14 +16,17 @@
 
 =========================================================================*/
 #include "vtkVolumeProVG500Mapper.h"
+
+#include "vtkCamera.h"
+#include "vtkDebugLeaks.h"
+#include "vtkGraphicsFactory.h"
+#include "vtkLight.h"
+#include "vtkObjectFactory.h"
 #include "vtkOpenGLVolumeProVG500Mapper.h"
 #include "vtkRenderWindow.h"
 #include "vtkRenderer.h"
-#include "vtkVolume.h"
-#include "vtkObjectFactory.h"
-#include "vtkGraphicsFactory.h"
 #include "vtkToolkits.h"
-#include "vtkDebugLeaks.h"
+#include "vtkVolume.h"
 
 #include <math.h>
 
