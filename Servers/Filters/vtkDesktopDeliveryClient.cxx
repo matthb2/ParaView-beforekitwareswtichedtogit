@@ -284,7 +284,7 @@ void vtkDesktopDeliveryClient::ComputeVisiblePropBounds(vtkRenderer *ren,
 }
 
 void vtkDesktopDeliveryClient
-    ::SetImageReductionFactorForUpdateRate(float DesiredUpdateRate)
+    ::SetImageReductionFactorForUpdateRate(double DesiredUpdateRate)
 {
   this->Superclass::SetImageReductionFactorForUpdateRate(DesiredUpdateRate);
   if (this->Squirt)
