@@ -541,6 +541,9 @@ void vtkStreamTracer::Execute()
       {
       vtkErrorMacro("No appropriate inputs have been found. Can not execute.");
       func->Delete();
+      seeds->Delete();
+      integrationDirections->Delete();
+      seedIds->Delete();
       return;
       }
     this->Integrate(this->GetOutput(),
