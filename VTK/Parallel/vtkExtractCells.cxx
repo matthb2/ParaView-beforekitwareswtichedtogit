@@ -518,3 +518,7 @@ void vtkExtractCells::GetCellIds( vtkIdList *array )
     }
 }   
 
+void vtkExtractCells::FreeCellList()
+{
+   vtkErrorMacro( "TODO" );
+}
