@@ -134,6 +134,8 @@ vtkVolumeRayCastMapper::~vtkVolumeRayCastMapper()
   
   this->VoxelsTransform->Delete();
   this->VoxelsToViewTransform->Delete();
+  this->PerspectiveTransform->Delete();
+  
   
   this->Threader->Delete();
   
