@@ -14,8 +14,6 @@
 =========================================================================*/
 #include "vtkInformationUnsignedLongKey.h"
 
-#include "vtkDebugLeaks.h"
-
 vtkCxxRevisionMacro(vtkInformationUnsignedLongKey, "$Revision$");
 
 //----------------------------------------------------------------------------
@@ -58,9 +56,7 @@ void vtkInformationUnsignedLongKey::Set(vtkInformation* info,
     {
     // Allocate a new value.
     vtkInformationUnsignedLongValue* v = new vtkInformationUnsignedLongValue;
-#ifdef VTK_DEBUG_LEAKS
-    vtkDebugLeaks::ConstructClass("vtkInformationUnsignedLongValue");
-#endif
+    this->ConstructClass("vtkInformationUnsignedLongValue");
     v->Value = value;
     this->SetAsObjectBase(info, v);
     v->Delete();
