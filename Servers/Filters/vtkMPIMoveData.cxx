@@ -80,6 +80,15 @@ vtkMPIMoveData::~vtkMPIMoveData()
 }
 
 //-----------------------------------------------------------------------------
+int vtkMPIMoveData::CreateOutput(vtkInformation* request,
+                                 vtkInformationVector** inputVector,
+                                 vtkInformationVector* outputVector)
+{
+  this->Superclass::CreateOutput(request, inputVector, outputVector);
+  return 1;
+}
+
+//-----------------------------------------------------------------------------
 // Since this data set to data set fitler may not have an input,
 // We need to circumvent the check by the superclass.
 vtkDataSet* vtkMPIMoveData::GetOutput()
