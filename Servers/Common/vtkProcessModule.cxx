@@ -422,6 +422,7 @@ void vtkProcessModule::PrintSelf(ostream& os, vtkIndent indent)
   os << indent << "ProgressHandler: " << this->ProgressHandler << endl;
   os << indent << "ReportInterpreterErrors: "
      << this->ReportInterpreterErrors << endl;
+  os << indent << "RenderModuleName: " << (this->RenderModuleName?this->RenderModuleName:"(none)") << endl;
 }
 
 //----------------------------------------------------------------------------
