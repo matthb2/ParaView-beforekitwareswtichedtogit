@@ -374,6 +374,12 @@ vtkDataObject* vtkAlgorithm::GetOutputDataObject(int port)
 }
 
 //----------------------------------------------------------------------------
+void vtkAlgorithm::RemoveAllInputs()
+{
+  this->SetInputConnection(0, 0);
+}
+
+//----------------------------------------------------------------------------
 void vtkAlgorithm::SetInputConnection(int port, vtkAlgorithmOutput* input)
 {
   if(!this->InputPortIndexInRange(port, "connect"))
