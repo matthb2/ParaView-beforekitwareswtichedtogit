@@ -554,7 +554,8 @@ void vtkXMLCollectionReader::ReadXMLData()
       {
       int p = this->Outputs[this->CurrentOutput]->GetUpdatePiece();
       int n = this->Outputs[this->CurrentOutput]->GetUpdateNumberOfPieces();
-      out->SetUpdateExtent(p,n);
+      int g = this->Outputs[this->CurrentOutput]->GetUpdateGhostLevel();
+      out->SetUpdateExtent(p, n, g);
       }
     else
       {
