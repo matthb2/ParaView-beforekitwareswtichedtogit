@@ -70,9 +70,12 @@ void vtkInteractorObserver::SetInteractor(vtkRenderWindowInteractor* i)
   if (i)
     {
     i->AddObserver(vtkCommand::CharEvent, 
-                   this->KeyPressCallbackCommand, this->Priority);
+                   this->KeyPressCallbackCommand, 
+                   this->Priority);
+
     i->AddObserver(vtkCommand::DeleteEvent, 
-                   this->KeyPressCallbackCommand, this->Priority);
+                   this->KeyPressCallbackCommand, 
+                   this->Priority);
     }
   
   this->Modified();
