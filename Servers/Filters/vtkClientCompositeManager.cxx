@@ -334,7 +334,8 @@ void vtkClientCompositeManager::StartRender()
   // If we are the satellite ...
   if ( ! this->ClientFlag)
     {
-    return this->SatelliteStartRender();
+    this->SatelliteStartRender();
+    return;
     }
 
   struct vtkClientRenderWindowInfo winInfo;
@@ -569,7 +570,8 @@ void vtkClientCompositeManager::EndRender()
   // If we are the satellite ...
   if ( ! this->ClientFlag)
     {
-    return this->SatelliteEndRender();
+    this->SatelliteEndRender();
+    return;
     }
 
   if (this->CompositeData->GetScalarType() != VTK_UNSIGNED_CHAR)
