@@ -64,6 +64,12 @@ void vtkPolyDataAlgorithm::SetOutput(vtkDataObject* d)
 }
 
 //----------------------------------------------------------------------------
+vtkDataObject* vtkPolyDataAlgorithm::GetInput()
+{
+  return this->GetInput(0);
+}
+
+//----------------------------------------------------------------------------
 vtkDataObject* vtkPolyDataAlgorithm::GetInput(int port)
 {
   if (this->GetNumberOfInputConnections(port) < 1)
