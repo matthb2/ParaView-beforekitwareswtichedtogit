@@ -34,6 +34,8 @@ vtkBandedPolyDataContourFilter::vtkBandedPolyDataContourFilter()
   this->SetNthOutput(1,vtkPolyData::New());
   this->Outputs[1]->Delete();
   this->ClipTolerance = FLT_EPSILON;
+  this->GenerateContourEdges = 0;
+  
 }
 
 vtkBandedPolyDataContourFilter::~vtkBandedPolyDataContourFilter()
