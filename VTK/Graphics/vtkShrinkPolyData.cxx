@@ -94,7 +94,8 @@ void vtkShrinkPolyDataExecute(vtkShrinkPolyData *self, T *inPts, float shrinkFac
 
   pointData->CopyAllocate(pd);
 
-  newPoints = vtkPoints::SafeDownCast(input->GetPoints()->MakeObject());
+  newPoints = input->GetPoints()->NewInstance();
+  newPoints->SetDataType(input->GetPoints()->GetDataType());
   newPoints->Allocate(numNewPts);
   newPoints->SetNumberOfPoints(numNewPts);
   T *outPts = (T *)newPoints->GetVoidPointer(0);

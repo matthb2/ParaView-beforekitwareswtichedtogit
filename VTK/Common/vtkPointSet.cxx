@@ -390,7 +390,8 @@ void vtkPointSet::DeepCopy(vtkDataObject *dataObject)
       {
       if ( pointSet->GetPoints() != NULL )
         {
-        this->Points = pointSet->GetPoints()->MakeObject();
+        this->Points = pointSet->GetPoints()->NewInstance();
+        this->Points->SetDataType(pointSet->GetPoints()->GetDataType());
         this->Points->Register(this);
         this->Points->Delete();
         }
