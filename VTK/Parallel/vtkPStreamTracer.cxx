@@ -376,7 +376,7 @@ int vtkPStreamTracer::RequestData(
       append->AddInput(inp);
       }
     }
-  if (append->GetNumberOfInputs() > 0)
+  if (append->GetNumberOfInputConnections(0) > 0)
     {
     append->Update();
     vtkPolyData* appoutput = append->GetOutput();
