@@ -54,7 +54,7 @@ public:
   // Order entries by object pointer for quick lookup.
   struct EntryCompare
   {
-    std::less<vtkObjectBase*> Compare;
+    vtkstd::less<vtkObjectBase*> Compare;
     vtkstd_bool operator()(Entry* l, Entry* r) const
       { return Compare(l->Object, r->Object); }
   };
@@ -154,8 +154,6 @@ void vtkGarbageCollector::Check(vtkObjectBase* root)
   //  {
   //  collector.SetDebug(obj->GetDebug());
   //  }
-
-  collector.SetDebug(1);
 
   // Do collection if necessary.
   collector.CheckReferenceLoops(root);
