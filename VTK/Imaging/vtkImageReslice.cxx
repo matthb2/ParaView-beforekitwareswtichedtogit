@@ -517,6 +517,8 @@ void vtkImageReslice::ExecuteInformation()
 {
   this->Superclass::ExecuteInformation();
 
+  this->GetIndexMatrix();
+
   vtkImageData *input = this->GetInput();
   vtkImageStencilData *stencil = this->GetStencil();
   if (stencil && input)
@@ -1880,7 +1882,7 @@ void vtkResliceOptimizedComputeInputUpdateExtent(vtkImageReslice *self,
 void vtkImageReslice::OptimizedComputeInputUpdateExtent(int inExt[6], 
                                                         int outExt[6])
 {
-  vtkMatrix4x4 *matrix = this->GetIndexMatrix();
+  vtkMatrix4x4 *matrix = this->IndexMatrix;
 
   if (this->GetOptimizedTransform() != NULL)
     { // update the entire input extent
