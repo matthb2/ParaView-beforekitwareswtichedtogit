@@ -1485,7 +1485,7 @@ void vtkKdTree::CreateCellList()
   this->CreateCellList(this->DataSets[0], (int *)NULL, 0);
   return;
 }
-void vtkKdTree::CreateCellList(int *regionList, int listSize)
+void vtkKdTree::CreateCellList(vtkIdType *regionList, int listSize)
 {
   this->CreateCellList(this->DataSets[0], regionList, listSize);
   return;
