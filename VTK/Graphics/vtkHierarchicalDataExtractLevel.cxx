@@ -133,7 +133,7 @@ int vtkHierarchicalDataExtractLevel::RequestInformation(
     for (unsigned int j=0; j<numDataSets; j++)
       {
       vtkInformation* outInfo = compInfo->GetInformation(i, j);
-      vtkInformation* inInfo = inCompInfo->GetInformation(i, j);
+      inInfo = inCompInfo->GetInformation(i, j);
       outInfo->Copy(inInfo);
       }
     }
@@ -257,4 +257,10 @@ int vtkHierarchicalDataExtractLevel::RequestData(
 void vtkHierarchicalDataExtractLevel::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os,indent);
+
+  os << indent << "MinLevel:" << this->MinLevel << endl;
+  os << indent << "MaxLevel:" << this->MaxLevel << endl;
+  os << indent << "InputLevels: (" << this->InputLevels[0] << "," 
+                                   << this->InputLevels[1] << ")" << endl;
+
 }
