@@ -43,7 +43,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "vtkCell.h"
 #include "vtkMergePoints.h"
 #include "vtkContourValues.h"
-#include "vtkScalarTree.h"
+#include "vtkSimpleScalarTree.h"
 #include "vtkObjectFactory.h"
 #include "vtkTimerLog.h"
 #include "vtkUnstructuredGrid.h"
@@ -229,7 +229,7 @@ void vtkContourFilter::Execute()
       vtkCell *cell;
       if ( this->ScalarTree == NULL )
         {
-        this->ScalarTree = vtkScalarTree::New();
+        this->ScalarTree = vtkSimpleScalarTree::New();
         }
       this->ScalarTree->SetDataSet(input);
       // Loop over all contour values.  Then for each contour value, 
@@ -329,10 +329,19 @@ void vtkContourFilter::PrintSelf(ostream& os, vtkIndent indent)
      << (this->ComputeNormals ? "On\n" : "Off\n");
   os << indent << "Compute Scalars: " 
      << (this->ComputeScalars ? "On\n" : "Off\n");
-  os << indent << "Use Scalar Tree: " 
-     << (this->UseScalarTree ? "On\n" : "Off\n");
 
   this->ContourValues->PrintSelf(os,indent);
+
+  os << indent << "Use Scalar Tree: " 
+     << (this->UseScalarTree ? "On\n" : "Off\n");
+  if ( this->ScalarTree )
+    {
+    os << indent << "Scalar Tree: " << this->ScalarTree << "\n";
+    }
+  else
+    {
+    os << indent << "Scalar Tree: (none)\n";
+    }
 
   if ( this->Locator )
     {

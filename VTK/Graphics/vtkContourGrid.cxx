@@ -43,7 +43,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "vtkCell.h"
 #include "vtkMergePoints.h"
 #include "vtkContourValues.h"
-#include "vtkScalarTree.h"
+#include "vtkSimpleScalarTree.h"
 #include "vtkObjectFactory.h"
 #include "vtkUnstructuredGrid.h"
 #include "vtkFloatArray.h"
@@ -236,7 +236,7 @@ static void vtkContourGridExecute(vtkContourGrid *self,
     {
     if ( scalarTree == NULL )
       {
-      scalarTree = vtkScalarTree::New();
+      scalarTree = vtkSimpleScalarTree::New();
       }
     scalarTree->SetDataSet(input);
     //
