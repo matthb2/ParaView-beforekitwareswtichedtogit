@@ -247,7 +247,7 @@ void vtkClipDataSet::Execute()
     clipScalars = inPD->GetScalars(this->InputScalarsSelection);
     if ( !clipScalars )
       {
-      for (int i=0; i<2; i++)
+      for ( i=0; i<2; i++ )
         {
         if (conn[i])
           {
