@@ -359,7 +359,7 @@ void vtkUnstructuredGridVolumeRayCastMapper::Render( vtkRenderer *ren, vtkVolume
   this->RayCastFunction->Initialize( ren, vol );
 
   // Need a better query of the scalars.
-  this->RayIntegrator->Initialize(vol->GetProperty(),
+  this->RayIntegrator->Initialize(vol,
                                 this->GetInput()->GetPointData()->GetScalars());
   
   // Save the volume and mapper temporarily so that they can be accessed later

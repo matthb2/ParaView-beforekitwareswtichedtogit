@@ -26,6 +26,7 @@
 
 #include "vtkObjectFactory.h"
 #include "vtkVolumeProperty.h"
+#include "vtkVolume.h"
 #include "vtkDoubleArray.h"
 #include "vtkPiecewiseFunction.h"
 #include "vtkColorTransferFunction.h"
@@ -215,9 +216,11 @@ void vtkUnstructuredGridPartialPreIntegration::PrintSelf(ostream &os,
 //-----------------------------------------------------------------------------
 
 void vtkUnstructuredGridPartialPreIntegration::Initialize(
-                                                    vtkVolumeProperty *property,
+                                                    vtkVolume *volume,
                                                     vtkDataArray *scalars)
 {
+  vtkVolumeProperty *property = volume->GetProperty();
+
   if (   (property == this->Property)
       && (this->TransferFunctionsModified > property->GetMTime()) )
     {

@@ -17,6 +17,7 @@
 #include "vtkObjectFactory.h"
 #include "vtkDoubleArray.h"
 #include "vtkVolumeProperty.h"
+#include "vtkVolume.h"
 #include "vtkColorTransferFunction.h"
 #include "vtkPiecewiseFunction.h"
 
@@ -351,9 +352,11 @@ void vtkUnstructuredGridTestRayIntegrator::UpdateColorTable(
 //-----------------------------------------------------------------------------
 
 void vtkUnstructuredGridTestRayIntegrator::Initialize(
-                                                  vtkVolumeProperty *property,
+                                                  vtkVolume *volume,
                                                   vtkDataArray *scalars)
 {
+  vtkVolumeProperty *property = volume->GetProperty();
+
   this->UpdateColorTable(property, scalars);
 
   this->ScalarOpacityUnitDistance = property->GetScalarOpacityUnitDistance();
