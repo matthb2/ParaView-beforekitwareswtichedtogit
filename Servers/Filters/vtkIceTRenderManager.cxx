@@ -654,7 +654,6 @@ void vtkIceTRenderManager::ReceiveWindowInformation()
 void vtkIceTRenderManager::PreRenderProcessing()
 {
   vtkDebugMacro("PreRenderProcessing");
-  vtkCamera* cam;
   vtkRenderWindow* renWin = this->RenderWindow;
   vtkRendererCollection *rens = renWin->GetRenderers();
   vtkRenderer* ren;
