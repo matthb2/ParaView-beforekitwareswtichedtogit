@@ -1213,7 +1213,7 @@ const char* vtkXOpenGLRenderWindow::ReportCapabilities()
         strm << extlist[i] << endl;
       }
     }
-
+  strm << ends;
   return strm.str();
 }
 
