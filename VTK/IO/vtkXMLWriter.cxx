@@ -28,7 +28,7 @@
 #include "vtkUnsignedCharArray.h"
 #include "vtkZLibDataCompressor.h"
 
-#ifndef _WIN32
+#if !defined(_WIN32) || defined(__CYGWIN__)
 # include <unistd.h> /* unlink */
 #endif
 
