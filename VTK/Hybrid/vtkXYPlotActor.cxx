@@ -1067,7 +1067,7 @@ void vtkXYPlotActor::ComputeYRange(float range[2])
 {
   vtkDataSet *ds;
   vtkDataArray *scalars;
-  float sRange[2];
+  double sRange[2];
   int count;
   int component;
 

@@ -1314,7 +1314,7 @@ void vtkImagePlaneWidget::SetInput(vtkDataSet* input)
     return;
     }
 
-  float range[2];
+  double range[2];
   this->ImageData->GetScalarRange(range);
 
   if ( !this->UserControlledLookupTable )
@@ -1685,7 +1685,7 @@ void vtkImagePlaneWidget::SetLookupTable(vtkLookupTable* table)
 
   if( this->ImageData && !this->UserControlledLookupTable)
     {
-    float range[2];
+    double range[2];
     this->ImageData->GetScalarRange(range);
 
     this->LookupTable->SetTableRange(range[0],range[1]);

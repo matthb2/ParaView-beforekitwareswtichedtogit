@@ -216,7 +216,7 @@ void vtkBandedPolyDataContourFilter::Execute()
   // list of clip values including the extreme min/max values.
   this->NumberOfClipValues = this->ContourValues->GetNumberOfContours() + 2;
   this->ClipValues = new float[this->NumberOfClipValues];
-  float range[2];
+  double range[2];
   inScalars->GetRange(range);
 
   // base clip tolerance on overall input scalar range

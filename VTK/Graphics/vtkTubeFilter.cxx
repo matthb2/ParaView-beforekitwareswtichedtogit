@@ -69,14 +69,14 @@ void vtkTubeFilter::Execute()
   int deleteNormals=0;
   vtkFloatArray *newNormals;
   vtkIdType i;
-  float range[2], maxSpeed=0;
+  double range[2], maxSpeed=0;
   vtkCellArray *newStrips;
   vtkIdType npts=0, *pts=NULL;
   vtkIdType offset=0;
   vtkFloatArray *newTCoords=NULL;
   int abort=0;
   vtkIdType inCellId;
-  float oldRadius=1.0;
+  double oldRadius=1.0;
 
   // Check input and initialize
   //
@@ -271,8 +271,8 @@ int vtkTubeFilter::GeneratePoints(vtkIdType offset,
                                   vtkPoints *inPts, vtkPoints *newPts, 
                                   vtkPointData *pd, vtkPointData *outPD,
                                   vtkFloatArray *newNormals,
-                                  vtkDataArray *inScalars, float range[2],
-                                  vtkDataArray *inVectors, float maxSpeed,
+                                  vtkDataArray *inScalars, double range[2],
+                                  vtkDataArray *inVectors, double maxSpeed,
                                   vtkDataArray *inNormals)
 {
   vtkIdType j;

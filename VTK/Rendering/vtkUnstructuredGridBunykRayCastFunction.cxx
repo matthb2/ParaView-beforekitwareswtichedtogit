@@ -884,7 +884,7 @@ void vtkUnstructuredGridBunykRayCastFunction::UpdateColorTable()
   float tmpArray[3*65536];
   
   // Find the scalar range
-  float *scalarRange = new float [2*components];
+  double *scalarRange = new double [2*components];
   for ( c = 0; c < components; c++ )
     {
     input->GetPointData()->GetScalars()->GetRange((scalarRange+2*c), c);

@@ -73,7 +73,7 @@ void vtkRibbonFilter::Execute()
   int deleteNormals=0;
   vtkFloatArray *newNormals;
   vtkIdType i;
-  float range[2];
+  double range[2];
   vtkCellArray *newStrips;
   vtkIdType npts=0, *pts=NULL;
   vtkIdType offset=0;
@@ -251,7 +251,7 @@ int vtkRibbonFilter::GeneratePoints(vtkIdType offset,
                                   vtkPoints *inPts, vtkPoints *newPts, 
                                   vtkPointData *pd, vtkPointData *outPD,
                                   vtkFloatArray *newNormals,
-                                  vtkDataArray *inScalars, float range[2],
+                                  vtkDataArray *inScalars, double range[2],
                                   vtkDataArray *inNormals)
 {
   vtkIdType j;
