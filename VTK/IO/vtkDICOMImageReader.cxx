@@ -552,3 +552,20 @@ float vtkDICOMImageReader::GetGantryAngle()
 {
   return this->AppHelper->GetGantryAngle();
 }
+
+//----------------------------------------------------------------------------
+int vtkDICOMImageReader::GetNumberOfFileNames()
+{
+  return static_cast<int>(this->DICOMFileNames->size());
+}
+
+//----------------------------------------------------------------------------
+const char* vtkDICOMImageReader::GetFileName(int index)
+{
+  if(index >= 0 && index < this->GetNumberOfFileNames())
+    {
+    return (*this->DICOMFileNames)[index].c_str();
+    }
+  return 0;
+}
+
