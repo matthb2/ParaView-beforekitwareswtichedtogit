@@ -778,6 +778,7 @@ void vtkXMLDataElementVectorAttributeSet(vtkXMLDataElement *elem, const char* na
     }
   vstr << ends;
   elem->SetAttribute(name, vstr.str());
+  vstr.rdbuf()->freeze(0);
 }
 
 //----------------------------------------------------------------------------
