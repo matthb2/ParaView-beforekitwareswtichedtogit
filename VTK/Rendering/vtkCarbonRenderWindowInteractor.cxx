@@ -337,7 +337,6 @@ void vtkCarbonRenderWindowInteractor::Initialize()
 void vtkCarbonRenderWindowInteractor::Enable()
 {
   vtkCarbonRenderWindow *ren;
-  vtkCarbonRenderWindow *tmp;
   if (this->Enabled)
     {
     return;
@@ -383,7 +382,6 @@ void vtkCarbonRenderWindowInteractor::Enable()
 //--------------------------------------------------------------------------
 void vtkCarbonRenderWindowInteractor::Disable()
 {
-  vtkCarbonRenderWindow *tmp;
   if (!this->Enabled)
     {
     return;
@@ -399,7 +397,7 @@ void vtkCarbonRenderWindowInteractor::TerminateApp(void)
 }
 
 //--------------------------------------------------------------------------
-pascal void TimerAction (EventLoopTimerRef theTimer, void* userData)
+pascal void TimerAction (EventLoopTimerRef, void* userData)
 {
   if (NULL != userData)
     {
