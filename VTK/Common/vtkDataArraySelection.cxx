@@ -18,17 +18,9 @@
 #include "vtkDataArraySelection.h"
 #include "vtkObjectFactory.h"
 
-#ifdef _MSC_VER
-#pragma warning (push, 2)
-#endif
-
-#include <vector>
-#include <string>
-#include <algorithm>
-
-#ifdef _MSC_VER
-#pragma warning(pop)
-#endif
+#include <vtkstd/vector>
+#include <vtkstd/string>
+#include <vtkstd/algorithm>
 
 vtkCxxRevisionMacro(vtkDataArraySelection, "$Revision$");
 vtkStandardNewMacro(vtkDataArraySelection);

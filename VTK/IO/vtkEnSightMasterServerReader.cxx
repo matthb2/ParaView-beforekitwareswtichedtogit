@@ -19,16 +19,9 @@
 
 #include "vtkObjectFactory.h"
 
-#ifdef _MSC_VER
-#pragma warning (push, 3)
-#endif
+#include <vtkstd/string>
 
-#include <string>
-
-#ifdef _MSC_VER
-#pragma warning(pop)
-#endif
-
+//----------------------------------------------------------------------------
 vtkCxxRevisionMacro(vtkEnSightMasterServerReader, "$Revision$");
 vtkStandardNewMacro(vtkEnSightMasterServerReader);
 

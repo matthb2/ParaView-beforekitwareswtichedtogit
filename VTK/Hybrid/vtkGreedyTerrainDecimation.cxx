@@ -26,15 +26,7 @@
 #include "vtkTriangle.h"
 #include "vtkDoubleArray.h"
 
-#ifdef _MSC_VER
-#pragma warning (push, 3)
-#endif
-
-#include <vector>
-
-#ifdef _MSC_VER
-#pragma warning(pop)
-#endif
+#include <vtkstd/vector>
 
 vtkCxxRevisionMacro(vtkGreedyTerrainDecimation, "$Revision$");
 vtkStandardNewMacro(vtkGreedyTerrainDecimation);

@@ -28,16 +28,8 @@
 #include "vtkStructuredPoints.h"
 #include "vtkUnstructuredGrid.h"
 
-#ifdef _MSC_VER
-#pragma warning (push, 3)
-#endif
-
-#include <string>
-#include <vector>
-
-#ifdef _MSC_VER
-#pragma warning(pop)
-#endif
+#include <vtkstd/string>
+#include <vtkstd/vector>
 
 vtkCxxRevisionMacro(vtkEnSightReader, "$Revision$");
 
