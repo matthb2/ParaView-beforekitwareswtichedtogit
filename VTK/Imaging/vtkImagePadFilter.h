@@ -65,6 +65,11 @@ public:
   void GetOutputImageExtent(int num, int *extent);
   vtkImageGetExtentMacro(OutputImageExtent);
   
+  // Description:
+  // This affects the OutputImage Extent
+  void SetAxes(int num, int *axes);
+  vtkImageSetMacro(Axes,int);
+  
 protected:
   int OutputImageExtent[VTK_IMAGE_EXTENT_DIMENSIONS];
 
@@ -72,6 +77,9 @@ protected:
 				     vtkImageRegion *outRegion);
   void ComputeRequiredInputRegionExtent(vtkImageRegion *outRegion,
 					vtkImageRegion *inRegion);
+
+void ChangeExtentCoordinateSystem(int *extentIn, int *axesIn,
+				  int *extentOut, int *axesOut);
 };
 
 #endif
