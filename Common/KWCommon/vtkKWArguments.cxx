@@ -342,7 +342,7 @@ void vtkKWArguments::GenerateHelp()
       }
     }
   char format[80];
-  sprintf(format, "%%%ds", maxlen);
+  sprintf(format, "%%%ds", static_cast<unsigned int>(maxlen));
   for ( mpit = mp.begin();
     mpit != mp.end();
     mpit ++ )
