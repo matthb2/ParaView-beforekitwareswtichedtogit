@@ -259,6 +259,8 @@ void vtkPVDataInformation::CopyFromGenericDataSet(vtkGenericDataSet *data)
   this->SetDataClassName(data->GetClassName());
   this->DataSetType = data->GetDataObjectType();
 
+  this->NumberOfDataSets = 1;
+
   // Look for a name stored in Field Data.
   vtkDataArray *nameArray = data->GetFieldData()->GetArray("Name");
   if (nameArray)
