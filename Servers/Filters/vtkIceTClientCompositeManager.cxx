@@ -49,6 +49,8 @@ vtkCxxRevisionMacro(vtkIceTClientCompositeManager, "$Revision$");
 vtkStandardNewMacro(vtkIceTClientCompositeManager);
 
 vtkCxxSetObjectMacro(vtkIceTClientCompositeManager,IceTManager,vtkIceTRenderManager);
+vtkCxxSetObjectMacro(vtkIceTClientCompositeManager,CompositeController,vtkMultiProcessController);
+vtkCxxSetObjectMacro(vtkIceTClientCompositeManager,ClientController,vtkSocketController);
 
 // Structures to communicate render info.
 struct vtkClientRenderWindowInfo 
@@ -499,46 +501,6 @@ void vtkIceTClientCompositeManager::SetRenderWindow(vtkRenderWindow *renWin)
       renWin->FullScreenOn();
       }
     }
-}
-
-
-//-------------------------------------------------------------------------
-void vtkIceTClientCompositeManager::SetCompositeController(
-                                          vtkMultiProcessController *mpc)
-{
-  if (this->CompositeController == mpc)
-    {
-    return;
-    }
-  if (mpc)
-    {
-    mpc->Register(this);
-    }
-  if (this->CompositeController)
-    {
-    this->CompositeController->UnRegister(this);
-    }
-  this->CompositeController = mpc;
-}
-
-
-//-------------------------------------------------------------------------
-void vtkIceTClientCompositeManager::SetClientController(
-                                          vtkSocketController *mpc)
-{
-  if (this->ClientController == mpc)
-    {
-    return;
-    }
-  if (mpc)
-    {
-    mpc->Register(this);
-    }
-  if (this->ClientController)
-    {
-    this->ClientController->UnRegister(this);
-    }
-  this->ClientController = mpc;
 }
 
 
