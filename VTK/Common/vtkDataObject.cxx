@@ -262,8 +262,11 @@ void vtkDataObject::Update()
     {
     // Since update has been called on the data object, the update
     // extent was probably set as well.
-    sddp->GetOutputInformation(index)
-      ->Set(vtkInformation::UPDATE_EXTENT(), this->UpdateExtent, 6);
+    if(this->UpdateExtentInitialized)
+      {
+      sddp->GetOutputInformation(index)
+        ->Set(vtkInformation::UPDATE_EXTENT(), this->UpdateExtent, 6);
+      }
 
     // Update this output.
     sddp->Update(producer, index);
@@ -334,8 +337,11 @@ void vtkDataObject::PropagateUpdateExtent()
     {
     // Since update has been called on the data object, the update
     // extent was probably set as well.
-    sddp->GetOutputInformation(index)
-      ->Set(vtkInformation::UPDATE_EXTENT(), this->UpdateExtent, 6);
+    if(this->UpdateExtentInitialized)
+      {
+      sddp->GetOutputInformation(index)
+        ->Set(vtkInformation::UPDATE_EXTENT(), this->UpdateExtent, 6);
+      }
 
     // Propagate the extent.
     sddp->PropagateUpdateExtent(this->ProducerPort->GetIndex());
