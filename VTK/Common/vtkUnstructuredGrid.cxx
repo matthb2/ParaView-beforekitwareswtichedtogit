@@ -129,6 +129,10 @@ vtkUnstructuredGrid::~vtkUnstructuredGrid()
   this->Wedge->Delete();
   this->Pyramid->Delete();
   this->QuadraticEdge->Delete();
+  this->QuadraticTriangle->Delete();
+  this->QuadraticQuad->Delete();
+  this->QuadraticTetra->Delete();
+  this->QuadraticHexahedron->Delete();
 }
 
 // Copy the geometric and topological structure of an input unstructured grid.
