@@ -818,3 +818,10 @@ void vtkTetra::Clip(float value, vtkDataArray *cellScalars,
                     inCD, cellId, outCD, insideOut);
     }
 }
+static float CellPCoords[12] = {0.0,0.0,0.0, 1.0,0.0,0.0,
+                                0.0,1.0,0.0, 0.0,0.0,1.0};
+
+float *vtkTetra::GetParametricCoords()
+{
+  return CellPCoords;
+}

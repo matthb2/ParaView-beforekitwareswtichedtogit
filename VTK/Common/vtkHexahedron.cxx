@@ -713,3 +713,13 @@ void vtkHexahedron::GetFacePoints(int faceId, int* &pts)
 {
   pts = this->GetFaceArray(faceId);
 }
+
+static float CellPCoords[24] = {0.0,0.0,0.0, 1.0,0.0,0.0,
+                                1.0,1.0,0.0, 0.0,1.0,0.0,
+                                0.0,0.0,1.0, 1.0,0.0,1.0,
+                                1.0,1.0,1.0, 0.0,1.0,1.0};
+
+float *vtkHexahedron::GetParametricCoords()
+{
+  return CellPCoords;
+}
