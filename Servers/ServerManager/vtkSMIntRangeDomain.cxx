@@ -52,6 +52,11 @@ vtkSMIntRangeDomain::~vtkSMIntRangeDomain()
 //---------------------------------------------------------------------------
 int vtkSMIntRangeDomain::IsInDomain(vtkSMProperty* property)
 {
+  if (this->IsOptional)
+    {
+    return 1;
+    }
+
   if (!property)
     {
     return 0;

@@ -62,6 +62,11 @@ int vtkSMNumberOfPartsDomain::IsInDomain(vtkSMProperty* property)
 //---------------------------------------------------------------------------
 int vtkSMNumberOfPartsDomain::IsInDomain(vtkSMSourceProxy* proxy)
 {
+  if (this->IsOptional)
+    {
+    return 1;
+    }
+
   if (!proxy)
     {
     return 0;

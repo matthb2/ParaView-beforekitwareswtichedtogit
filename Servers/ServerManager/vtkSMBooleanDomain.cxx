@@ -34,6 +34,11 @@ vtkSMBooleanDomain::~vtkSMBooleanDomain()
 //---------------------------------------------------------------------------
 int vtkSMBooleanDomain::IsInDomain(vtkSMProperty* property)
 {
+  if (this->IsOptional)
+    {
+    return 1;
+    }
+
   if (!property)
     {
     return 0;

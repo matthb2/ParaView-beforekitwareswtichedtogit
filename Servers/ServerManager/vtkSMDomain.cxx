@@ -35,6 +35,7 @@ vtkSMDomain::vtkSMDomain()
 {
   this->XMLName = 0;
   this->Internals = new vtkSMDomainInternals;
+  this->IsOptional = 0;
 }
 
 //---------------------------------------------------------------------------
@@ -75,6 +76,13 @@ void vtkSMDomain::RemoveRequiredProperty(vtkSMProperty* prop)
 //---------------------------------------------------------------------------
 int vtkSMDomain::ReadXMLAttributes(vtkSMProperty* prop, vtkPVXMLElement* element)
 {
+  int isOptional;
+  int retVal = element->GetScalarAttribute("optional", &isOptional);
+  if(retVal) 
+    { 
+    this->SetIsOptional(isOptional); 
+    }
+
   for(unsigned int i=0; i < element->GetNumberOfNestedElements(); ++i)
     {
     vtkPVXMLElement* domainEl = element->GetNestedElement(i);
