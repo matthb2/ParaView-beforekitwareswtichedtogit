@@ -30,6 +30,9 @@
 #include "vtkRenderer.h"
 #include "vtkToolkits.h"
 #include "vtkVolume.h"
+#include "vtkVolumeProperty.h"
+#include "vtkImageData.h"
+#include "vtkTransform.h"
 
 #include <stdio.h>
 #include <math.h>
