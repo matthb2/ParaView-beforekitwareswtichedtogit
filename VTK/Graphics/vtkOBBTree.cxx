@@ -79,7 +79,7 @@ vtkOBBTree::vtkOBBTree()
   this->Tree = NULL;
   this->PointsList = NULL;
   this->InsertedPoints = NULL;
-  this->OBBCount = 0;
+  this->OBBCount = this->DeepestLevel = 0;
 }
 
 vtkOBBTree::~vtkOBBTree()
