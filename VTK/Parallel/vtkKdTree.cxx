@@ -48,8 +48,8 @@
 #ifdef _MSC_VER
 #pragma warning ( disable : 4100 )
 #endif
-#include <vtkstd/algorithm>
 #include <vtkstd/set>
+#include <vtkstd/algorithm>
 
 vtkCxxRevisionMacro(vtkKdTree, "$Revision$");
 
@@ -4328,8 +4328,8 @@ vtkIdType vtkKdTree::GetCellLists(vtkIntArray *regions, vtkDataSet *set,
   vtkstd::set<vtkIdType> ids;
   vtkstd::pair<vtkstd::set<vtkIdType>::iterator, bool> idRec;
 
-  int totalRegionCells = 0;
-  int totalBoundaryCells = 0;
+  vtkIdType totalRegionCells = 0;
+  vtkIdType totalBoundaryCells = 0;
 
   vtkIdList **inRegionList = new vtkIdList * [nregions];
 
