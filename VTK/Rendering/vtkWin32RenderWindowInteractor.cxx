@@ -78,7 +78,7 @@ vtkWin32RenderWindowInteractor::~vtkWin32RenderWindowInteractor()
     {
     vtkWin32OpenGLRenderWindow *ren;
     ren = static_cast<vtkWin32OpenGLRenderWindow *>(this->RenderWindow);
-    tmp = (vtkWin32OpenGLRenderWindow *)(GetWindowLongPtr(this->WindowId,4));
+    tmp = (vtkWin32OpenGLRenderWindow *)(vtkGetWindowLong(this->WindowId,4));
     // watch for odd conditions
     if ((tmp != ren) && (ren != NULL)) 
       {
