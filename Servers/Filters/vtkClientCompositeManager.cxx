@@ -584,7 +584,6 @@ void vtkClientCompositeManager::EndRender()
   
   vtkRenderer *ren = vtkRenderer::New();
   ren->SetRenderWindow(this->RenderWindow);
-  ren->SetLayer(1);
   renderers->ReplaceItem(0, ren);
   
   vtkImageActor *imageActor = vtkImageActor::New();
