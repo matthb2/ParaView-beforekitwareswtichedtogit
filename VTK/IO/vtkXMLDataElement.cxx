@@ -65,6 +65,7 @@ vtkXMLDataElement::vtkXMLDataElement()
   this->NestedElements = new vtkXMLDataElement*[this->NestedElementsSize];
   
   this->InlineDataPosition = 0;
+  this->XMLByteIndex = 0;
 }
 
 //----------------------------------------------------------------------------
