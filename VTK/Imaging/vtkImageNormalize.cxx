@@ -37,10 +37,10 @@ void vtkImageNormalize::ExecuteInformation(vtkImageData *vtkNotUsed(inData),
 // it handles boundaries. Pixels are just replicated to get values 
 // out of extent.
 template <class T>
-static void vtkImageNormalizeExecute(vtkImageNormalize *self,
-                                     vtkImageData *inData,
-                                     vtkImageData *outData,
-                                     int outExt[6], int id, T *)
+void vtkImageNormalizeExecute(vtkImageNormalize *self,
+                              vtkImageData *inData,
+                              vtkImageData *outData,
+                              int outExt[6], int id, T *)
 {
   vtkImageIterator<T> inIt(inData, outExt);
   vtkImageProgressIterator<float> outIt(outData, outExt, self, id);

@@ -175,10 +175,10 @@ double *vtkImageMedian3DAccumulateMedian(int &UpNum, int &DownNum,
 // This method contains the second switch statement that calls the correct
 // templated function for the mask types.
 template <class T>
-static void vtkImageMedian3DExecute(vtkImageMedian3D *self,
-                                    vtkImageData *inData, T *inPtr, 
-                                    vtkImageData *outData, T *outPtr,
-                                    int outExt[6], int id)
+void vtkImageMedian3DExecute(vtkImageMedian3D *self,
+                             vtkImageData *inData, T *inPtr, 
+                             vtkImageData *outData, T *outPtr,
+                             int outExt[6], int id)
 {
   int *kernelMiddle, *kernelSize;
   int NumberOfElements;

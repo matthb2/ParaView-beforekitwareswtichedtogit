@@ -78,10 +78,10 @@ void vtkImagePermute::ComputeInputUpdateExtent(int inExt[6],
 //----------------------------------------------------------------------------
 // This templated function executes the filter for any type of data.
 template <class T>
-static void vtkImagePermuteExecute(vtkImagePermute *self,
-                                   vtkImageData *inData, T *inPtr,
-                                   vtkImageData *outData, T *outPtr,
-                                   int outExt[6], int id)
+void vtkImagePermuteExecute(vtkImagePermute *self,
+                            vtkImageData *inData, T *inPtr,
+                            vtkImageData *outData, T *outPtr,
+                            int outExt[6], int id)
 {
   int idxX, idxY, idxZ, idxC;
   int maxX, maxY, maxZ;
