@@ -43,17 +43,19 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #include "vtkActor.h"
 #include "vtkActorCollection.h"
+#include "vtkDataSet.h"
 #include "vtkMapper.h"
 #include "vtkMultiProcessController.h"
 #include "vtkObjectFactory.h"
+#include "vtkPVRenderView.h"
+#include "vtkRenderWindow.h"
+#include "vtkRendererCollection.h"
+
 #ifdef VTK_USE_MPI
 #include "vtkMPIController.h"
 #else
 #include "vtkMultiProcessController.h"
 #endif
-#include "vtkRendererCollection.h"
-#include "vtkRenderWindow.h"
-#include "vtkPVRenderView.h"
 
 //-------------------------------------------------------------------------
 vtkStandardNewMacro(vtkPVTreeComposite);
