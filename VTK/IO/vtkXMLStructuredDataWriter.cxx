@@ -212,8 +212,6 @@ int vtkXMLStructuredDataWriter::WriteHeader()
     int i;
     for(i=0; i < this->NumberOfPieces; ++i)
       {
-      vtkDataSet* input = this->GetInputAsDataSet();
-      
       // Update the piece's extent.
       this->ExtentTranslator->SetPiece(i);
       this->ExtentTranslator->PieceToExtent();
