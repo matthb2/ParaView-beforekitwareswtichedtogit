@@ -284,6 +284,7 @@ void vtkLineWidget::SetEnabled(int enabling)
       this->CurrentRenderer->AddActor(this->Handle[j]);
       this->Handle[j]->SetProperty(this->HandleProperty);
       }
+    
     this->BuildRepresentation();
     this->SizeHandles();
 
@@ -313,6 +314,11 @@ void vtkLineWidget::SetEnabled(int enabling)
       this->CurrentRenderer->RemoveActor(this->Handle[i]);
       }
 
+    if (this->CurrentPointWidget)
+      {
+      this->CurrentPointWidget->EnabledOff();
+      }
+    
     this->CurrentHandle = NULL;
     this->InvokeEvent(vtkCommand::DisableEvent,NULL);
     }
