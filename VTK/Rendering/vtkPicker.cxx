@@ -21,6 +21,7 @@
 #include "vtkAssemblyNode.h"
 #include "vtkCamera.h"
 #include "vtkCommand.h"
+#include "vtkImageData.h"
 #include "vtkLODProp3D.h"
 #include "vtkMapper.h"
 #include "vtkMath.h"

@@ -19,6 +19,7 @@
 
 #include "vtkCamera.h"
 #include "vtkGraphicsFactory.h"
+#include "vtkImageData.h"
 #include "vtkLargeInteger.h"
 #include "vtkMatrix4x4.h"
 #include "vtkRenderWindow.h"

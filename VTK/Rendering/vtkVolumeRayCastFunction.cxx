@@ -19,6 +19,7 @@
 
 #include "vtkEncodedGradientEstimator.h"
 #include "vtkEncodedGradientShader.h"
+#include "vtkImageData.h"
 #include "vtkVolume.h"
 #include "vtkVolumeProperty.h"
 #include "vtkVolumeRayCastMapper.h"

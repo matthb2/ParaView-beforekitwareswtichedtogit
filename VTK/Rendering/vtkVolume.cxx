@@ -19,6 +19,7 @@
 
 #include "vtkCamera.h"
 #include "vtkColorTransferFunction.h"
+#include "vtkImageData.h"
 #include "vtkLinearTransform.h"
 #include "vtkMatrix4x4.h"
 #include "vtkObjectFactory.h"

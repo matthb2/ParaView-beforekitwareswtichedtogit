@@ -19,6 +19,7 @@
 
 #include "vtkAssemblyPaths.h"
 #include "vtkGraphicsFactory.h"
+#include "vtkImageData.h"
 #include "vtkLinearTransform.h"
 #include "vtkMapper.h"
 #include "vtkPropCollection.h"

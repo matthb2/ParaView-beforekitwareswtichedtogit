@@ -1016,6 +1016,7 @@ void vtkRenderWindow::UnRegister(vtkObjectBase *o)
   this->vtkObject::UnRegister(o);
 }
 
-     
-
-
+const char *vtkRenderWindow::GetRenderLibrary() 
+{
+  return vtkGraphicsFactory::GetRenderLibrary();
+}

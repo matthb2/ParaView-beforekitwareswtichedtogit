@@ -17,6 +17,7 @@
 =========================================================================*/
 #include "vtkPointPicker.h"
 
+#include "vtkImageData.h"
 #include "vtkMath.h"
 #include "vtkMapper.h"
 #include "vtkVolumeMapper.h"

@@ -16,11 +16,12 @@
 
 =========================================================================*/
 #include "vtkTexture.h"
+
 #include "vtkRenderer.h"
 #include "vtkRenderWindow.h"
 #include "vtkGraphicsFactory.h"
-
-#include <stdlib.h>
+#include "vtkImageData.h"
+#include "vtkLookupTable.h"
 
 vtkCxxRevisionMacro(vtkTexture, "$Revision$");
 

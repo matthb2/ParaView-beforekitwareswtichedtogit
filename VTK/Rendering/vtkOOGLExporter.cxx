@@ -20,6 +20,7 @@
 #include "vtkAssemblyNode.h"
 #include "vtkCamera.h"
 #include "vtkGeometryFilter.h"
+#include "vtkImageData.h"
 #include "vtkLight.h"
 #include "vtkLightCollection.h"
 #include "vtkMath.h"
