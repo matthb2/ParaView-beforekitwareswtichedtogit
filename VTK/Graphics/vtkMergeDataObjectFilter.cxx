@@ -103,10 +103,6 @@ void vtkMergeDataObjectFilter::Execute()
       output->GetPointData()->AddArray(fd->GetArray(i));
       }
     }
-  else //( this->OutputField == VTK_DATA_OBJECT_FIELD )
-    {
-    output->SetFieldData(fd);
-    }
 }
 
 

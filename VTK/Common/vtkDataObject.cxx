@@ -663,9 +663,32 @@ void vtkDataObject::CopyInformation( vtkDataObject *data )
 //----------------------------------------------------------------------------
 void vtkDataObject::ShallowCopy(vtkDataObject *src)
 {
+  if (!src)
+    {
+    vtkWarningMacro("Attempted to ShallowCopy from null.");
+    return;
+    }
+
   this->InternalDataObjectCopy(src);
 
-  this->SetFieldData(src->GetFieldData());
+  if (!src->FieldData)
+    {
+    this->SetFieldData(0);
+    }
+  else
+    {
+    if (this->FieldData)
+      {
+      this->FieldData->ShallowCopy(src->FieldData);
+      }
+    else
+      {
+      vtkFieldData* fd = vtkFieldData::New();
+      fd->ShallowCopy(src->FieldData);
+      this->SetFieldData(fd);
+      fd->Delete();
+      }
+    }
 }
 
 //----------------------------------------------------------------------------

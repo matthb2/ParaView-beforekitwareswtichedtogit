@@ -324,11 +324,6 @@ void vtkDataObjectToDataSetFilter::Execute()
       vtkErrorMacro(<<"Unsupported dataset type!");
     }
 
-  //Pass field data through to output
-  if ( this->GetOutput() )
-    {
-    this->GetOutput()->SetFieldData(input->GetFieldData());
-    }
 }
 
 // Get the output as vtkPolyData.
