@@ -789,15 +789,7 @@ void vtkCarbonRenderWindow::Initialize (void)
     return;
     }
 
-  // now initialize the window
-  if (this->OffScreenRendering) // always fails since OffScreen not done yet
-    {
-    this->InitializeApplication();
-    }
-  else
-    {
-    this->WindowInitialize();
-    }
+  this->WindowInitialize();
 }
 
 //--------------------------------------------------------------------------
