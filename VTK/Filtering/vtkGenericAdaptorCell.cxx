@@ -539,8 +539,8 @@ void vtkGenericAdaptorCell::Tessellate(vtkGenericAttributeCollection *attributes
           pd->GetArray(j)->InsertTuple(pts[i],
                                        internalPd->GetArray(j)->GetTuple(dataIndex));
           ++j;
-          ++dataIndex;
           }
+        ++dataIndex;
         }
       }
     }
@@ -624,8 +624,8 @@ void vtkGenericAdaptorCell::TriangulateFace(vtkGenericAttributeCollection *attri
         pd->GetArray(j)->InsertTuple(pts[i],
                                      internalPd->GetArray(j)->GetTuple(dataIndex));
         ++j;
-        ++dataIndex;
         }
+      ++dataIndex;
       }
     }
 }
