@@ -22,6 +22,8 @@
 vtkCxxRevisionMacro(vtkParallelCoordinatesActor, "$Revision$");
 vtkStandardNewMacro(vtkParallelCoordinatesActor);
 
+vtkCxxSetObjectMacro(vtkParallelCoordinatesActor,Input,vtkDataObject);
+
 // Instantiate object
 vtkParallelCoordinatesActor::vtkParallelCoordinatesActor()
 {
