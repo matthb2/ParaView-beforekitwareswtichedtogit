@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   Visualization Library
+  Program:   Visualization Toolkit
   Module:    $RCSfile$
   Language:  C++
   Date:      $Date$
