@@ -80,7 +80,7 @@ void vtkThreadSafeLog::DumpLog(char *filename)
 //----------------------------------------------------------------------------
 void vtkThreadSafeLog::DumpLog(char *filename, int nMode)
 {
-  ofstream os(filename, nMode);
+  ofstream os(filename, static_cast<ios::openmode>(nMode));
   int idx;
   
   if (nMode == ios::out)
