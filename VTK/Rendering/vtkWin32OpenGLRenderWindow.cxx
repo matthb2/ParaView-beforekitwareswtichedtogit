@@ -232,7 +232,7 @@ void vtkWin32OpenGLRenderWindow::MakeCurrent()
 
 void vtkWin32OpenGLRenderWindow::SetForceMakeCurrent()
 {
-  this.ForceMakeCurrent = 1;
+  this->ForceMakeCurrent = 1;
 }
 
 void vtkWin32OpenGLRenderWindow::SetSize(int x, int y)

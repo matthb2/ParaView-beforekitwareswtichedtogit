@@ -176,7 +176,7 @@ void vtkWinCEOpenGLRenderWindow::MakeCurrent()
 
 void vtkWinCEOpenGLRenderWindow::SetForceMakeCurrent()
 {
-  this.ForceMakeCurrent = 1;
+  this->ForceMakeCurrent = 1;
 }
 
 void vtkWinCEOpenGLRenderWindow::SetSize(int x, int y)
