@@ -41,7 +41,7 @@ vtkDesktopDeliveryClient::vtkDesktopDeliveryClient()
   this->SquirtCompressionLevel = 5;
   this->SquirtBuffer = vtkUnsignedCharArray::New();
   this->UseCompositing = 0;
-  this->RemoteDisplay = 0;
+  this->RemoteDisplay = 1;
 }
 
 vtkDesktopDeliveryClient::~vtkDesktopDeliveryClient()
