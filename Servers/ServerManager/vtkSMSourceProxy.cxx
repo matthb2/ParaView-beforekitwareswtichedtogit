@@ -316,7 +316,6 @@ void vtkSMSourceProxy::SetInput(
     cm->SendStreamToServers(&stream, 
                             this->GetNumberOfServerIDs(),
                             this->GetServerIDs());
-    stream.Print(cout);
     }
   else
     {
@@ -340,7 +339,6 @@ void vtkSMSourceProxy::SetInput(
     cm->SendStreamToServers(&stream, 
                             this->GetNumberOfServerIDs(),
                             this->GetServerIDs());
-    stream.Print(cout);
     }
 }
 

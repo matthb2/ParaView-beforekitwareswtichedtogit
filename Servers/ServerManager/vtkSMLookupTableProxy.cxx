@@ -49,7 +49,6 @@ void vtkSMLookupTableProxy::Build()
  cm->SendStreamToServers(&stream, 
                          this->GetNumberOfServerIDs(),
                          this->GetServerIDs());
- stream.Print(cout);
 }
 
 //---------------------------------------------------------------------------

@@ -259,8 +259,6 @@ void vtkSMDisplayerProxy::SetScalarVisibility(int vis)
   cm->SendStreamToServers(&stream, 
                           this->GetNumberOfServerIDs(),
                           this->GetServerIDs());
-  stream.Print(cout);
-
 }
 
 //----------------------------------------------------------------------------
@@ -303,7 +301,6 @@ void vtkSMDisplayerProxy::DrawWireframe()
   cm->SendStreamToServers(&stream, 
                           this->GetNumberOfServerIDs(),
                           this->GetServerIDs());
-  stream.Print(cout);
 }
 
 //----------------------------------------------------------------------------
@@ -434,8 +431,6 @@ void vtkSMDisplayerProxy::CreateVTKObjects(int numObjects)
   cm->SendStreamToServers(&str, 
                           this->GetNumberOfServerIDs(),
                           this->GetServerIDs());
-  str.Print(cout);
-
 }
 
 //---------------------------------------------------------------------------
