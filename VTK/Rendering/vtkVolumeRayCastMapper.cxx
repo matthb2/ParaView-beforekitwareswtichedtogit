@@ -374,8 +374,8 @@ void vtkVolumeRayCastMapper::Render( vtkRenderer *ren, vtkVolume *vol )
 
     // Do we need to capture the z buffer to intermix intersecting
     // geometry? If so, do it here
-    if ( this->IntermixIntersectingGeometry &&
-         ren->GetNumberOfPropsRenderedAsGeometry() )
+    if ( this->IntermixIntersectingGeometry && 
+         ren->GetNumberOfPropsRendered() )
       {
       int x1, x2, y1, y2;
       
