@@ -850,7 +850,7 @@ void vtkGarbageCollector::DeferredCollectionPush()
   // Forward the call to the singleton.
   if(vtkGarbageCollectorSingletonInstance)
     {
-    return vtkGarbageCollectorSingletonInstance->DeferredCollectionPush();
+    vtkGarbageCollectorSingletonInstance->DeferredCollectionPush();
     }
 }
 
