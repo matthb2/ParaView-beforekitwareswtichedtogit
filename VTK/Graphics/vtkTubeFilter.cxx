@@ -654,19 +654,19 @@ void vtkTubeFilter::GenerateTextureCoords(vtkIdType offset,
   // Capping, set the endpoints as appropriate
   if ( this->Capping )
     {
-    int k;
+    int ik;
     vtkIdType startIdx = offset + npts*numSides;
 
     //start cap
-    for (k=0; k < this->NumberOfSides; k++)
+    for (ik=0; ik < this->NumberOfSides; ik++)
       {
-      newTCoords->InsertTuple2(startIdx+k,0.0,0.0);
+      newTCoords->InsertTuple2(startIdx+ik,0.0,0.0);
       }
 
     //end cap
-    for (k=0; k < this->NumberOfSides; k++)
+    for (ik=0; ik < this->NumberOfSides; ik++)
       {
-      newTCoords->InsertTuple2(startIdx+this->NumberOfSides+k,tc,0.0);
+      newTCoords->InsertTuple2(startIdx+this->NumberOfSides+ik,tc,0.0);
       }
     }
 }

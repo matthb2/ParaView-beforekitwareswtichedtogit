@@ -261,7 +261,7 @@ int vtkDistributedStreamTracer::ProcessTask(float seed[3],
   // moving outside the domain, move to the next seed.
   if (numPoints == 0 || resTerm != vtkStreamTracer::OUT_OF_DOMAIN)
     {
-    int retVal = this->ProcessNextLine(currentLine);
+    retVal = this->ProcessNextLine(currentLine);
     seeds->Delete(); 
     seedIds->Delete();
     integrationDirections->Delete();
