@@ -160,7 +160,7 @@ void vtkImageShrink3D::ExecuteInformation(vtkImageData *inData,
   for (idx = 0; idx < 3; ++idx)
     {
     // Avoid dividing by 0.
-    if (this->ShrinkFactors[idx])
+      if (this->ShrinkFactors[idx] == 0)
       {
       this->ShrinkFactors[idx] = 1;
       }
