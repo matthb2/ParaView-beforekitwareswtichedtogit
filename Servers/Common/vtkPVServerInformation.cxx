@@ -35,8 +35,6 @@ vtkPVServerInformation::~vtkPVServerInformation()
 //----------------------------------------------------------------------------
 void vtkPVServerInformation::PrintSelf(ostream& os, vtkIndent indent)
 {
-  vtkIndent i2 = indent.GetNextIndent();
-
   this->Superclass::PrintSelf(os,indent);
   os << indent << "RemoteRendering: " << this->RemoteRendering << endl;
 }
