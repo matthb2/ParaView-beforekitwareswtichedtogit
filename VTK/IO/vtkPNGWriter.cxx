@@ -161,6 +161,10 @@ extern "C"
   }
 }
 
+// we disable this warning because even though this is a C++ file, between
+// the setjmp and resulting longjmp there should not be any C++ constructors
+// or destructors.
+#pragma warning ( disable : 4611 )
 void vtkPNGWriter::WriteSlice(vtkImageData *data)
 {
   // Call the correct templated function for the output
