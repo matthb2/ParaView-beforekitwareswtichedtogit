@@ -157,7 +157,7 @@ int vtkEdgeTable::InitEdgeInsertion(vtkIdType numPoints, int storeAttributes)
     numPoints = 1;
     }
 
-  // Discard old memory if not enough has benn previously allocated
+  // Discard old memory if not enough has been previously allocated
   if ( numPoints > this->TableSize )
     {
     this->Initialize();
