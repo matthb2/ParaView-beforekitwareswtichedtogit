@@ -199,6 +199,10 @@ int i,j;
   if ((this->npts == 0) || (this->GetMTime() > this->ptsTime)){
     getPoints();
   }
+  if ( this->npts == 0 )
+    {
+    return 0;
+    }
 
   switch (dir){
     case xdim:
