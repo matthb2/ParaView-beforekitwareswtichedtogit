@@ -1819,5 +1819,7 @@ void vtkPLOT3DReader::PrintSelf(ostream& os, vtkIndent indent)
   os << indent << "ForceRead: " << this->ForceRead << endl;
   os << indent << "IBlanking: " << this->IBlanking << endl;
   os << indent << "ByteOrder: " << this->ByteOrder << endl;
+  os << indent << "TwoDimensionalGeometry: " << (this->TwoDimensionalGeometry?"on":"off") 
+     << endl;
 }
 

@@ -83,6 +83,9 @@ void vtkInterpolatedVelocityField::PrintSelf(ostream& os, vtkIndent indent)
     os << "off." << endl;
     }
 
+  os << indent << "VectorsSelection: " 
+     << (this->VectorsSelection?this->VectorsSelection:"(none)") << endl;
+
 }
 
 // Evaluate u,v,w at x,y,z,t
