@@ -181,7 +181,7 @@ void vtkBandedPolyDataContourFilter::Execute()
   vtkPolyData *input = this->GetInput();
   vtkPointData *pd = input->GetPointData();
   vtkPolyData *output = this->GetOutput();
-  vtkPointData *outPD = input->GetPointData();
+  vtkPointData *outPD = output->GetPointData();
   vtkCellData *outCD = output->GetCellData();
   vtkPoints *inPts = input->GetPoints();
   vtkDataArray *inScalars = pd->GetScalars(this->InputScalarsSelection);
