@@ -732,6 +732,7 @@ void vtkDataObject::InternalDataObjectCopy(vtkDataObject *src)
   this->UpdateGhostLevel = src->UpdateGhostLevel;
   this->ReleaseDataFlag = src->ReleaseDataFlag;
   this->PipelineMTime = src->PipelineMTime;
+  this->UpdateTime = src->UpdateTime;
   this->Locality = src->Locality;
 }
 
