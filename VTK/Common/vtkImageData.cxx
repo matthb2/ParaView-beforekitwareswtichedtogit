@@ -2382,10 +2382,16 @@ void vtkImageData::ComputeInternalExtent(int *intExt, int *tgtExt, int *bnds)
 void vtkImageData::CopyDownstreamIVarsFromInformation(vtkInformation* info)
 {
   this->Superclass::CopyDownstreamIVarsFromInformation(info);
-  this->ScalarType =
-    info->Get(vtkDataObject::SCALAR_TYPE());
-  this->NumberOfScalarComponents =
-    info->Get(vtkDataObject::SCALAR_NUMBER_OF_COMPONENTS());
+  if (info->Has(vtkDataObject::SCALAR_TYPE()))
+    {
+    this->ScalarType =
+      info->Get(vtkDataObject::SCALAR_TYPE());
+    }
+  if (info->Has(vtkDataObject::SCALAR_NUMBER_OF_COMPONENTS()))
+    {
+    this->NumberOfScalarComponents =
+      info->Get(vtkDataObject::SCALAR_NUMBER_OF_COMPONENTS());
+    }
 }
 
 //----------------------------------------------------------------------------
