@@ -33,7 +33,7 @@
 
 #include "vtkToolkits.h"
 #ifdef VTK_OPENGL_HAS_OSMESA
-#include "GL/osmesa.h"
+#include "MangleMesaInclude/osmesa.h"
 #endif
 
 
