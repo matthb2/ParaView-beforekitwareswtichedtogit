@@ -513,6 +513,7 @@ void vtkAVSucdReader::ReadBinaryCellTopology(vtkIntArray *materials,
       case vtkAVSucdReader::HEX:   types[i] = VTK_HEXAHEDRON; break;
       default:
         vtkErrorMacro( << "cell type: " << Ctype[4*i+3] << "not supported\n");
+        delete [] Ctype;
         return;
       }
     }
