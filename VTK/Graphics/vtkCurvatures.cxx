@@ -236,7 +236,6 @@ void vtkCurvatures::GetGaussCurvature()
     vtkTriangle* facet = vtkTriangle::New();
 
     // other data
-    vtkIdType Nf   = output->GetNumberOfCells ();
     vtkIdType Nv   = output->GetNumberOfPoints();
 
     double* K = new double[Nv];
@@ -252,7 +251,7 @@ void vtkCurvatures::GetGaussCurvature()
 
     double A, alpha0, alpha1, alpha2;
 
-    vtkIdType f, *vert;
+    vtkIdType f, *vert=0;
     facets->InitTraversal();
     while (facets->GetNextCell(f,vert))
       {
