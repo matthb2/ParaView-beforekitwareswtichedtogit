@@ -1,30 +1,21 @@
-// -*- c++ -*-
-
 /*=========================================================================
 
-Program:   Visualization Toolkit
-Module:  $RCSfile$
-Language:  C++
-Date:    $Date$
-Version:   $Revision$
-Copyright (c) 1993-2002 Ken Martin, Will Schroeder, Bill Lorensen
-All rights reserved.
-See Copyright.txt or http://www.kitware.com/Copyright.htm for details.
+  Program:   ParaView
+  Module:    $RCSfile$
 
-Copyright (C) 2003 Sandia Corporation
-Under the terms of Contract DE-AC04-94AL85000, there is a non-exclusive
-license for use of this work by or on behalf of the U.S. Government.
-Redistribution and use in source and binary forms, with or without
-modification, are permitted provided that this Notice and any statement
-of authorship are reproduced on all copies.
+  Copyright (c) Kitware, Inc.
+  All rights reserved.
+  See Copyright.txt or http://www.paraview.org/HTML/Copyright.html for details.
 
-Contact: Lee Ann Fisk, lafisk@sandia.gov
-
-This software is distributed WITHOUT ANY WARRANTY; without even
-the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR
-PURPOSE.  See the above copyright notice for more information.
+     This software is distributed WITHOUT ANY WARRANTY; without even
+     the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR
+     PURPOSE.  See the above copyright notice for more information.
 
 =========================================================================*/
+/*----------------------------------------------------------------------------
+ Copyright (c) Sandia Corporation
+ See Copyright.txt or http://www.paraview.org/HTML/Copyright.html for details.
+----------------------------------------------------------------------------*/
 
 #include "vtkMath.h"
 #include "vtkPlanesIntersection.h"
