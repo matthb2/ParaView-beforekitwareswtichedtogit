@@ -15,10 +15,15 @@
      PURPOSE.  See the above copyright notice for more information.
 
 =========================================================================*/
-#include <math.h>
 #include "vtkVectorNorm.h"
-#include "vtkObjectFactory.h"
+
+#include "vtkCellData.h"
+#include "vtkDataSet.h"
 #include "vtkFloatArray.h"
+#include "vtkObjectFactory.h"
+#include "vtkPointData.h"
+
+#include <math.h>
 
 vtkCxxRevisionMacro(vtkVectorNorm, "$Revision$");
 vtkStandardNewMacro(vtkVectorNorm);

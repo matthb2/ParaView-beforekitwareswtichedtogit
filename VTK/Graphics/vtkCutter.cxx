@@ -16,11 +16,15 @@
 
 =========================================================================*/
 #include "vtkCutter.h"
-#include "vtkMergePoints.h"
-#include "vtkImplicitFunction.h"
+
 #include "vtkContourValues.h"
-#include "vtkObjectFactory.h"
+#include "vtkDataSet.h"
 #include "vtkFloatArray.h"
+#include "vtkGenericCell.h"
+#include "vtkImplicitFunction.h"
+#include "vtkMergePoints.h"
+#include "vtkObjectFactory.h"
+#include "vtkPolyData.h"
 
 #include <math.h>
 

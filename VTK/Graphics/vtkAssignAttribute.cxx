@@ -16,8 +16,10 @@
 
 =========================================================================*/
 #include "vtkAssignAttribute.h"
-#include "vtkObjectFactory.h"
+
+#include "vtkDataSet.h"
 #include "vtkDataSetAttributes.h"
+#include "vtkObjectFactory.h"
 
 vtkCxxRevisionMacro(vtkAssignAttribute, "$Revision$");
 vtkStandardNewMacro(vtkAssignAttribute);

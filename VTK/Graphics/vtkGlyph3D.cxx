@@ -16,11 +16,14 @@
 
 =========================================================================*/
 #include "vtkGlyph3D.h"
-#include "vtkTransform.h"
+
+#include "vtkDataSet.h"
+#include "vtkFloatArray.h"
 #include "vtkMath.h"
 #include "vtkObjectFactory.h"
+#include "vtkPolyData.h"
+#include "vtkTransform.h"
 #include "vtkUnsignedCharArray.h"
-#include "vtkFloatArray.h"
 
 vtkCxxRevisionMacro(vtkGlyph3D, "$Revision$");
 vtkStandardNewMacro(vtkGlyph3D);

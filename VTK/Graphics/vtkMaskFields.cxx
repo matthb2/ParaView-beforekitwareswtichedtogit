@@ -16,8 +16,10 @@
 
 =========================================================================*/
 #include "vtkMaskFields.h"
-#include "vtkObjectFactory.h"
+
+#include "vtkDataSet.h"
 #include "vtkDataSetAttributes.h"
+#include "vtkObjectFactory.h"
 
 vtkCxxRevisionMacro(vtkMaskFields, "$Revision$");
 vtkStandardNewMacro(vtkMaskFields);

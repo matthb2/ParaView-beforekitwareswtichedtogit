@@ -16,6 +16,8 @@
 
 =========================================================================*/
 #include "vtkCellDerivatives.h"
+
+#include "vtkDataSet.h"
 #include "vtkFloatArray.h"
 #include "vtkObjectFactory.h"
 #include "vtkTensor.h"

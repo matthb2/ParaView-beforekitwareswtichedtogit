@@ -16,8 +16,11 @@
 
 =========================================================================*/
 #include "vtkEdgePoints.h"
-#include "vtkObjectFactory.h"
+
+#include "vtkDataSet.h"
 #include "vtkFloatArray.h"
+#include "vtkObjectFactory.h"
+#include "vtkPolyData.h"
 
 vtkCxxRevisionMacro(vtkEdgePoints, "$Revision$");
 vtkStandardNewMacro(vtkEdgePoints);

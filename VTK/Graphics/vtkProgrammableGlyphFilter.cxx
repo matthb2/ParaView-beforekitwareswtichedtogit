@@ -16,10 +16,14 @@
 
 =========================================================================*/
 #include "vtkProgrammableGlyphFilter.h"
-#include "vtkTransform.h"
+
+#include "vtkCellData.h"
+#include "vtkDataSet.h"
 #include "vtkFloatArray.h"
 #include "vtkMath.h"
 #include "vtkObjectFactory.h"
+#include "vtkPolyData.h"
+#include "vtkTransform.h"
 
 vtkCxxRevisionMacro(vtkProgrammableGlyphFilter, "$Revision$");
 vtkStandardNewMacro(vtkProgrammableGlyphFilter);

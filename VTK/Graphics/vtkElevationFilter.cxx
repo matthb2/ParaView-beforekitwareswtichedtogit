@@ -16,9 +16,11 @@
 
 =========================================================================*/
 #include "vtkElevationFilter.h"
+
+#include "vtkDataSet.h"
+#include "vtkFloatArray.h"
 #include "vtkMath.h"
 #include "vtkObjectFactory.h"
-#include "vtkFloatArray.h"
 
 vtkCxxRevisionMacro(vtkElevationFilter, "$Revision$");
 vtkStandardNewMacro(vtkElevationFilter);

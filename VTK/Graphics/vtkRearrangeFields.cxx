@@ -16,8 +16,10 @@
 
 =========================================================================*/
 #include "vtkRearrangeFields.h"
-#include "vtkObjectFactory.h"
+
+#include "vtkDataSet.h"
 #include "vtkDataSetAttributes.h"
+#include "vtkObjectFactory.h"
 
 vtkCxxRevisionMacro(vtkRearrangeFields, "$Revision$");
 vtkStandardNewMacro(vtkRearrangeFields);

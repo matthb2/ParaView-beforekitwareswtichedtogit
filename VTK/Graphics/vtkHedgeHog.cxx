@@ -16,7 +16,12 @@
 
 =========================================================================*/
 #include "vtkHedgeHog.h"
+
+#include "vtkCellArray.h"
 #include "vtkObjectFactory.h"
+#include "vtkPointData.h"
+#include "vtkPoints.h"
+#include "vtkPolyData.h"
 
 vtkCxxRevisionMacro(vtkHedgeHog, "$Revision$");
 vtkStandardNewMacro(vtkHedgeHog);

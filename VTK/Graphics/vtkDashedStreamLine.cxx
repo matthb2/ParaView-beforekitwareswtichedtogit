@@ -16,8 +16,12 @@
 
 =========================================================================*/
 #include "vtkDashedStreamLine.h"
-#include "vtkObjectFactory.h"
+
+#include "vtkCellArray.h"
+#include "vtkDataSet.h"
 #include "vtkFloatArray.h"
+#include "vtkObjectFactory.h"
+#include "vtkPolyData.h"
 
 vtkCxxRevisionMacro(vtkDashedStreamLine, "$Revision$");
 vtkStandardNewMacro(vtkDashedStreamLine);

@@ -16,7 +16,14 @@
 
 =========================================================================*/
 #include "vtkCellCenters.h"
+
+#include "vtkCell.h"
+#include "vtkCellData.h"
+#include "vtkDataSet.h"
 #include "vtkObjectFactory.h"
+#include "vtkPointData.h"
+#include "vtkPoints.h"
+#include "vtkPolyData.h"
 
 vtkCxxRevisionMacro(vtkCellCenters, "$Revision$");
 vtkStandardNewMacro(vtkCellCenters);

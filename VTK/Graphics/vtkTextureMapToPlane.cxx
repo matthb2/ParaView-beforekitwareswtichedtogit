@@ -16,8 +16,10 @@
 
 =========================================================================*/
 #include "vtkTextureMapToPlane.h"
-#include "vtkMath.h"
+
+#include "vtkDataSet.h"
 #include "vtkFloatArray.h"
+#include "vtkMath.h"
 #include "vtkObjectFactory.h"
 
 vtkCxxRevisionMacro(vtkTextureMapToPlane, "$Revision$");

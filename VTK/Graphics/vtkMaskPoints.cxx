@@ -16,8 +16,13 @@
 
 =========================================================================*/
 #include "vtkMaskPoints.h"
+
+#include "vtkDataSet.h"
 #include "vtkMath.h"
 #include "vtkObjectFactory.h"
+#include "vtkPointData.h"
+#include "vtkPoints.h"
+#include "vtkPolyData.h"
 
 vtkCxxRevisionMacro(vtkMaskPoints, "$Revision$");
 vtkStandardNewMacro(vtkMaskPoints);

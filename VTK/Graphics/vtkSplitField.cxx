@@ -16,8 +16,10 @@
 
 =========================================================================*/
 #include "vtkSplitField.h"
-#include "vtkObjectFactory.h"
+
+#include "vtkDataSet.h"
 #include "vtkDataSetAttributes.h"
+#include "vtkObjectFactory.h"
 
 vtkCxxRevisionMacro(vtkSplitField, "$Revision$");
 vtkStandardNewMacro(vtkSplitField);

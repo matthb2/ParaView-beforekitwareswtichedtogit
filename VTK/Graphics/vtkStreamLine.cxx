@@ -16,11 +16,14 @@
 
 =========================================================================*/
 #include "vtkStreamLine.h"
-#include "vtkObjectFactory.h"
-#include "vtkPolyLine.h"
+
+#include "vtkDataSet.h"
+#include "vtkFloatArray.h"
 #include "vtkFloatArray.h"
 #include "vtkMath.h"
-#include "vtkFloatArray.h"
+#include "vtkObjectFactory.h"
+#include "vtkPolyData.h"
+#include "vtkPolyLine.h"
 
 vtkCxxRevisionMacro(vtkStreamLine, "$Revision$");
 vtkStandardNewMacro(vtkStreamLine);

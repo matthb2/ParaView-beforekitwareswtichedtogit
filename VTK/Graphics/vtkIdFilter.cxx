@@ -16,8 +16,13 @@
 
 =========================================================================*/
 #include "vtkIdFilter.h"
+
+#include "vtkCellData.h"
+#include "vtkDataSet.h"
+#include "vtkDataSet.h"
 #include "vtkIdTypeArray.h"
 #include "vtkObjectFactory.h"
+#include "vtkPointData.h"
 
 vtkCxxRevisionMacro(vtkIdFilter, "$Revision$");
 vtkStandardNewMacro(vtkIdFilter);

@@ -16,8 +16,14 @@
 
 =========================================================================*/
 #include "vtkStreamPoints.h"
-#include "vtkObjectFactory.h"
+
+#include "vtkCellArray.h"
+#include "vtkDataSet.h"
 #include "vtkFloatArray.h"
+#include "vtkIdList.h"
+#include "vtkObjectFactory.h"
+#include "vtkPoints.h"
+#include "vtkPolyData.h"
 
 vtkCxxRevisionMacro(vtkStreamPoints, "$Revision$");
 vtkStandardNewMacro(vtkStreamPoints);

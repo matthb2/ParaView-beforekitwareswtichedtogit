@@ -16,10 +16,16 @@
 
 =========================================================================*/
 #include "vtkTensorGlyph.h"
-#include "vtkTransform.h"
+
+#include "vtkCell.h"
+#include "vtkCellArray.h"
+#include "vtkDataSet.h"
+#include "vtkFloatArray.h"
 #include "vtkMath.h"
 #include "vtkObjectFactory.h"
-#include "vtkFloatArray.h"
+#include "vtkPointData.h"
+#include "vtkPolyData.h"
+#include "vtkTransform.h"
 
 vtkCxxRevisionMacro(vtkTensorGlyph, "$Revision$");
 vtkStandardNewMacro(vtkTensorGlyph);

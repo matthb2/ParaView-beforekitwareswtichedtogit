@@ -16,9 +16,11 @@
 
 =========================================================================*/
 #include "vtkExtractTensorComponents.h"
+
+#include "vtkDataSet.h"
+#include "vtkFloatArray.h"
 #include "vtkMath.h"
 #include "vtkObjectFactory.h"
-#include "vtkFloatArray.h"
 
 vtkCxxRevisionMacro(vtkExtractTensorComponents, "$Revision$");
 vtkStandardNewMacro(vtkExtractTensorComponents);

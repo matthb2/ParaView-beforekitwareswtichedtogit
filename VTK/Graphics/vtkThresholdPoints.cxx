@@ -16,7 +16,13 @@
 
 =========================================================================*/
 #include "vtkThresholdPoints.h"
+
+#include "vtkCellArray.h"
+#include "vtkDataArray.h"
+#include "vtkDataSet.h"
 #include "vtkObjectFactory.h"
+#include "vtkPoints.h"
+#include "vtkPolyData.h"
 
 vtkCxxRevisionMacro(vtkThresholdPoints, "$Revision$");
 vtkStandardNewMacro(vtkThresholdPoints);

@@ -16,6 +16,8 @@
 
 =========================================================================*/
 #include "vtkDicer.h"
+
+#include "vtkDataSet.h"
 #include "vtkMath.h"
 
 vtkCxxRevisionMacro(vtkDicer, "$Revision$");

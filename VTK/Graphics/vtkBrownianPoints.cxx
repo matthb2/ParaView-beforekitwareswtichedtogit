@@ -16,6 +16,8 @@
 
 =========================================================================*/
 #include "vtkBrownianPoints.h"
+
+#include "vtkDataSet.h"
 #include "vtkMath.h"
 #include "vtkFloatArray.h"
 #include "vtkObjectFactory.h"

@@ -16,6 +16,9 @@
 
 =========================================================================*/
 #include "vtkMergeDataObjectFilter.h"
+
+#include "vtkDataSet.h"
+#include "vtkFieldData.h"
 #include "vtkObjectFactory.h"
 
 vtkCxxRevisionMacro(vtkMergeDataObjectFilter, "$Revision$");

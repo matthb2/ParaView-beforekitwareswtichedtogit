@@ -16,7 +16,11 @@
 
 =========================================================================*/
 #include "vtkPointDataToCellData.h"
+
+#include "vtkDataSet.h"
+#include "vtkIdList.h"
 #include "vtkObjectFactory.h"
+#include "vtkPointData.h"
 
 vtkCxxRevisionMacro(vtkPointDataToCellData, "$Revision$");
 vtkStandardNewMacro(vtkPointDataToCellData);

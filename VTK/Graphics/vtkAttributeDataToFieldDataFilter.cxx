@@ -16,6 +16,8 @@
 
 =========================================================================*/
 #include "vtkAttributeDataToFieldDataFilter.h"
+
+#include "vtkDataSet.h"
 #include "vtkObjectFactory.h"
 
 vtkCxxRevisionMacro(vtkAttributeDataToFieldDataFilter, "$Revision$");

@@ -16,11 +16,13 @@
 
 =========================================================================*/
 #include "vtkTextureMapToCylinder.h"
-#include "vtkMath.h"
+
+#include "vtkDataSet.h"
+#include "vtkFloatArray.h"
 #include "vtkLine.h"
+#include "vtkMath.h"
 #include "vtkOBBTree.h"
 #include "vtkObjectFactory.h"
-#include "vtkFloatArray.h"
 
 vtkCxxRevisionMacro(vtkTextureMapToCylinder, "$Revision$");
 vtkStandardNewMacro(vtkTextureMapToCylinder);

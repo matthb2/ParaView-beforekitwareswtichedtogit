@@ -16,9 +16,14 @@
 
 =========================================================================*/
 #include "vtkHyperStreamline.h"
+
+#include "vtkCellArray.h"
+#include "vtkDataSet.h"
+#include "vtkFloatArray.h"
 #include "vtkMath.h"
 #include "vtkObjectFactory.h"
-#include "vtkFloatArray.h"
+#include "vtkPointData.h"
+#include "vtkPolyData.h"
 
 vtkCxxRevisionMacro(vtkHyperStreamline, "$Revision$");
 vtkStandardNewMacro(vtkHyperStreamline);

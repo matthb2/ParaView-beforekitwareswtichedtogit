@@ -16,9 +16,12 @@
 
 =========================================================================*/
 #include "vtkArrayCalculator.h"
-#include "vtkFunctionParser.h"
+
+#include "vtkDataSet.h"
 #include "vtkDoubleArray.h"
+#include "vtkFunctionParser.h"
 #include "vtkObjectFactory.h"
+#include "vtkPointData.h"
 
 vtkCxxRevisionMacro(vtkArrayCalculator, "$Revision$");
 vtkStandardNewMacro(vtkArrayCalculator);

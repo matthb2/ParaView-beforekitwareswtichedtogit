@@ -16,9 +16,11 @@
 
 =========================================================================*/
 #include "vtkTransformTextureCoords.h"
-#include "vtkTransform.h"
-#include "vtkObjectFactory.h"
+
+#include "vtkDataSet.h"
 #include "vtkFloatArray.h"
+#include "vtkObjectFactory.h"
+#include "vtkTransform.h"
 
 vtkCxxRevisionMacro(vtkTransformTextureCoords, "$Revision$");
 vtkStandardNewMacro(vtkTransformTextureCoords);

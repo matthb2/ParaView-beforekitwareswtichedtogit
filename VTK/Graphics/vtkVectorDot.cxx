@@ -16,9 +16,12 @@
 
 =========================================================================*/
 #include "vtkVectorDot.h"
+
+#include "vtkDataSet.h"
+#include "vtkFloatArray.h"
 #include "vtkMath.h"
 #include "vtkObjectFactory.h"
-#include "vtkFloatArray.h"
+#include "vtkPointData.h"
 
 vtkCxxRevisionMacro(vtkVectorDot, "$Revision$");
 vtkStandardNewMacro(vtkVectorDot);
