@@ -98,6 +98,8 @@ void vtkUnstructuredGridWriter::WriteData()
   //
   // Cell types are a little more work
   //
+  if ( input->GetCells() )
+    {
   ncells = input->GetCells()->GetNumberOfCells();
   types = new int[ncells];
   for (cellId=0; cellId < ncells; cellId++)
@@ -120,6 +122,7 @@ void vtkUnstructuredGridWriter::WriteData()
     }
   *fp << "\n";
   delete [] types;
+    }
 
   if (!this->WriteCellData(fp, input))
     {

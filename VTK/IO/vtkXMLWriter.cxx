@@ -1284,6 +1284,7 @@ int vtkXMLWriter::WriteAsciiData(void* data, int numWords, int wordType,
   void* b = data;
   int nw = numWords;
   vtkIndent i = indent;
+  this->Stream->precision(11);
   ostream& os = *(this->Stream);
   switch(wordType)
     {
