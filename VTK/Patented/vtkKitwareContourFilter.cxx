@@ -128,7 +128,7 @@ int vtkKitwareContourFilter::RequestUpdateExtent(
       gridTemp3D->SetComputeGradients (this->ComputeGradients);
       gridTemp3D->SetComputeScalars (this->ComputeScalars);
       gridTemp3D->SetDebug(this->Debug);
-      gridTemp3D->ComputeInputUpdateExtents(output);
+      gridTemp3D->RequestUpdateExtent(request, inputVector, outputVector);
       gridTemp3D->Delete();
       return 1;
       }
