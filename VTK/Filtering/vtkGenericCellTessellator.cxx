@@ -1366,8 +1366,6 @@ void vtkGenericCellTessellator::Tessellate(vtkGenericAdaptorCell *cell,
 
   // Init the edge table
   
-  cout<<"internalPd->GetNumberOfComponents()="<<internalPd->GetNumberOfComponents()<<endl;
-  
   this->EdgeTable->SetNumberOfComponents(internalPd->GetNumberOfComponents());
   
   this->AllocateScalars(internalPd->GetNumberOfComponents());
