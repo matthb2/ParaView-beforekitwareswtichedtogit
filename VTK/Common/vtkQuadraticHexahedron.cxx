@@ -498,7 +498,7 @@ void vtkQuadraticHexahedron::Derivatives(int vtkNotUsed(subId),
 // Clip this quadratic hex using scalar value provided. Like contouring, 
 // except that it cuts the hex to produce tetrahedra.
 void vtkQuadraticHexahedron::Clip(float value, 
-                                  vtkDataArray* cellScalars, 
+                                  vtkDataArray* vtkNotUsed(cellScalars), 
                                   vtkPointLocator* locator,
                                   vtkCellArray* tets,
                                   vtkPointData* inPd, 
