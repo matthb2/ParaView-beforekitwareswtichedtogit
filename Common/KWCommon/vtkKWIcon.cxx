@@ -366,6 +366,14 @@ void vtkKWIcon::SetImageData(int image)
         image_layout_buffer_length);
       break;
 
+    case vtkKWIcon::ICON_LOCK:
+      this->SetImageData(
+        image_lock, 
+        image_lock_width, image_lock_height,
+        image_lock_pixel_size, 
+        image_lock_buffer_length);
+      break;
+
     case vtkKWIcon::ICON_MACROS:
       this->SetImageData(
         image_macros, 
@@ -492,6 +500,14 @@ void vtkKWIcon::SetImageData(int image)
         image_warning_mini_width, image_warning_mini_height,
         image_warning_mini_pixel_size, 
         image_warning_mini_buffer_length);
+      break;
+
+    case vtkKWIcon::ICON_WINDOW_LEVEL:
+      this->SetImageData(
+        image_window_level, 
+        image_window_level_width, image_window_level_height,
+        image_window_level_pixel_size, 
+        image_window_level_buffer_length);
       break;
     }
   this->Internal = image;
