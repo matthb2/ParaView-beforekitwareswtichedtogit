@@ -89,6 +89,29 @@ vtkRenderer *vtkIceTRenderManager::MakeRenderer()
   return vtkIceTRenderer::New();
 }
 
+//-------------------------------------------------------------------------
+// Only client needs start and end render callbacks.
+void vtkIceTRenderManager::SetRenderWindow(vtkRenderWindow *renWin)
+{
+  this->Superclass::SetRenderWindow(renWin);
+
+  if (this->Controller && renWin)
+    {
+    // Set the tile settings for 2D widgets.
+    int tileIdx = this->Controller->GetLocalProcessId();
+    int y = tileIdx/this->NumTilesX;
+    int x = tileIdx - y*this->NumTilesX;
+    // Flip the y axis to match IceT
+    y = this->NumTilesY-1-y;
+    // Setup the window for this tile.
+    renWin->SetTileScale(this->NumTilesX, this->NumTilesY);
+    renWin->SetTileViewport(x*(1.0/(float)(this->NumTilesX)), 
+                            y*(1.0/(float)(this->NumTilesY)), 
+                            (x+1.0)*(1.0/(float)(this->NumTilesX)), 
+                            (y+1.0)*(1.0/(float)(this->NumTilesY)));
+    }
+}
+
 void vtkIceTRenderManager::SetController(vtkMultiProcessController *controller)
 {
   vtkDebugMacro("SetController to " << controller);
@@ -566,7 +589,11 @@ void vtkIceTRenderManager::PreRenderProcessing()
     }
 
   this->UpdateIceTContext();
-  for (rens->InitTraversal(), i = 0; (ren = rens->GetNextItem()); i++)
+  // Only composite the first frame.
+  rens->InitTraversal();
+  ren = rens->GetNextItem();
+  i == 0;
+  //for (rens->InitTraversal(), i = 0; (ren = rens->GetNextItem()); i++)
     {
     vtkIceTRenderer *icetRen = vtkIceTRenderer::SafeDownCast(ren);
     if (icetRen == NULL)
