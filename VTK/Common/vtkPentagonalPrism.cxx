@@ -407,7 +407,6 @@ void vtkPentagonalPrism::Contour(double value, vtkDataArray* cellScalars,
                                  vtkCellData *inCd, vtkIdType cellId,
                                  vtkCellData *outCd)
 {
-  int i;
   double s1, s2;
 
   // subdivide into 5 internal wedges with two points added in the middle
@@ -457,7 +456,6 @@ void vtkPentagonalPrism::Clip(double value, vtkDataArray *cellScalars,
                               vtkCellData *inCd, vtkIdType cellId, 
                               vtkCellData *outCd, int insideOut)
 {
-  int i;
   double s1, s2;
 
   // subdivide into 5 internal wedges with two points added in the middle
