@@ -197,7 +197,6 @@ void vtkMoleculeReaderBase::Execute()
   vtkDebugMacro(<< "opening base file " << this->FileName);
   this->ReadMolecule(fp);
   fclose(fp);
-  this->GetOutput()->Print();
 
   this->GetOutput()->Squeeze();
 }
