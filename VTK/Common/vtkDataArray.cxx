@@ -156,7 +156,7 @@ float vtkDataArray::GetComponent(const vtkIdType i, const int j)
   return c;
 }
 
-void vtkDataArray::SetComponent(const vtkIdType i, const int j, const float c)
+void vtkDataArray::SetComponent(const vtkIdType i, const int j, float c)
 {
   float *tuple=new float[this->NumberOfComponents];
 
@@ -178,8 +178,7 @@ void vtkDataArray::SetComponent(const vtkIdType i, const int j, const float c)
   delete [] tuple;
 }
 
-void vtkDataArray::InsertComponent(const vtkIdType i, const int j,
-                                   const float c)
+void vtkDataArray::InsertComponent(const vtkIdType i, const int j, float c)
 {
   float *tuple=new float[this->NumberOfComponents];
 
