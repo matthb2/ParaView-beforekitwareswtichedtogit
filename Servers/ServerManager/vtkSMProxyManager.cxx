@@ -23,7 +23,7 @@
 
 #include <vtkstd/map>
 
-#include "vtkStdString.h"
+//#include "vtkStdString.h"
 
 #include "vtkSMProxyManagerInternals.h"
 
@@ -67,12 +67,11 @@ void vtkSMProxyManager::InstantiateGroupPrototypes(const char* groupName)
       vtkPVXMLElement* element = it2->second.GetPointer();
       if (!this->GetProxy(newgroupname.str(), it2->first.c_str()))
         {
-      vtkSMProxy* proxy = this->NewProxy(element, groupName);
-      this->RegisterProxy(newgroupname.str(), it2->first.c_str(), proxy);
-      proxy->Delete();
+        vtkSMProxy* proxy = this->NewProxy(element, groupName);
+        this->RegisterProxy(newgroupname.str(), it2->first.c_str(), proxy);
+        proxy->Delete();
+        }
       }
-      }
-
     }
   delete[] newgroupname.str();
 }
@@ -110,6 +109,8 @@ vtkSMProxy* vtkSMProxyManager::NewProxy(
       return this->NewProxy(element, groupName);
       }
     }
+  vtkErrorMacro( << "No Proxy where found that matches: group=" << groupName 
+                 << " and proxy=" << proxyName );
   return 0;
 }
 
