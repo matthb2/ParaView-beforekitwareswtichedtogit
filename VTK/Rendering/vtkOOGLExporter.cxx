@@ -30,6 +30,7 @@
 #include "vtkRendererCollection.h"
 #include "vtkSystemIncludes.h"
 #include "vtkTexture.h"
+#include "vtkTransform.h"
 #include "vtkTriangleStrip.h"
 #include "vtkVersion.h"
 

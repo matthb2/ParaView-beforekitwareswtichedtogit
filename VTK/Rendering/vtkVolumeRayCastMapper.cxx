@@ -27,6 +27,8 @@
 #include "vtkRenderWindow.h"
 #include "vtkRenderer.h"
 #include "vtkTimerLog.h"
+#include "vtkTransform.h"
+#include "vtkVolumeProperty.h"
 #include "vtkVolumeRayCastFunction.h"
 
 #include <math.h>

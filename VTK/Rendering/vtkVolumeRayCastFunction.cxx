@@ -15,12 +15,12 @@
      PURPOSE.  See the above copyright notice for more information.
 
 =========================================================================*/
-
 #include "vtkVolumeRayCastFunction.h"
 
 #include "vtkEncodedGradientEstimator.h"
 #include "vtkEncodedGradientShader.h"
 #include "vtkVolume.h"
+#include "vtkVolumeProperty.h"
 #include "vtkVolumeRayCastMapper.h"
 
 vtkCxxRevisionMacro(vtkVolumeRayCastFunction, "$Revision$");

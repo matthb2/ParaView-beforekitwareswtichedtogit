@@ -33,6 +33,7 @@
 #include "vtkRenderer.h"
 #include "vtkSphereSource.h"
 #include "vtkRenderWindowInteractor.h"
+#include "vtkTransform.h"
 
 vtkCxxRevisionMacro(vtkBoxWidget, "$Revision$");
 vtkStandardNewMacro(vtkBoxWidget);

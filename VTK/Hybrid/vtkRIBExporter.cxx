@@ -33,6 +33,7 @@
 #include "vtkRIBProperty.h"
 #include "vtkRenderWindow.h"
 #include "vtkRendererCollection.h"
+#include "vtkStructuredPoints.h"
 #include "vtkTIFFWriter.h"
 #include "vtkTexture.h"
 

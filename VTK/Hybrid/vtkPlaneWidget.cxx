@@ -28,15 +28,16 @@
 #include "vtkLineSource.h"
 #include "vtkMath.h"
 #include "vtkObjectFactory.h"
+#include "vtkPlane.h"
 #include "vtkPlaneSource.h"
 #include "vtkPlanes.h"
 #include "vtkPolyData.h"
 #include "vtkPolyDataMapper.h"
 #include "vtkProperty.h"
-#include "vtkRenderer.h"
 #include "vtkRenderWindowInteractor.h"
+#include "vtkRenderer.h"
 #include "vtkSphereSource.h"
-#include "vtkPlane.h"
+#include "vtkTransform.h"
 
 vtkCxxRevisionMacro(vtkPlaneWidget, "$Revision$");
 vtkStandardNewMacro(vtkPlaneWidget);

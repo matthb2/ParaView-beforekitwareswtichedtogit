@@ -18,6 +18,7 @@
 #include "vtkOpenGLActor.h"
 
 #include "vtkMapper.h"
+#include "vtkMatrix4x4.h"
 #include "vtkObjectFactory.h"
 #include "vtkOpenGLRenderer.h"
 #include "vtkProperty.h"

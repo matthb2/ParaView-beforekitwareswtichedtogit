@@ -38,6 +38,7 @@
 #include "vtkPlane.h"
 #include "vtkFeatureEdges.h"
 #include "vtkTransform.h"
+#include "vtkImageData.h"
 
 vtkCxxRevisionMacro(vtkImplicitPlaneWidget, "$Revision$");
 vtkStandardNewMacro(vtkImplicitPlaneWidget);

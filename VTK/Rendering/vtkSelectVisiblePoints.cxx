@@ -18,6 +18,7 @@
 #include "vtkSelectVisiblePoints.h"
 
 #include "vtkCamera.h"
+#include "vtkMatrix4x4.h"
 #include "vtkObjectFactory.h"
 #include "vtkRenderWindow.h"
 #include "vtkRenderer.h"

@@ -15,10 +15,13 @@
      PURPOSE.  See the above copyright notice for more information.
 
 =========================================================================*/
-#include <math.h>
-
 #include "vtkOpenGLVolumeRayCastMapper.h"
+
+#include "vtkMatrix4x4.h"
 #include "vtkObjectFactory.h"
+#include "vtkVolume.h"
+#include "vtkRenderer.h"
+
 #ifndef VTK_IMPLEMENT_MESA_CXX
 #ifdef __APPLE__
 #include <OpenGL/gl.h>
@@ -26,7 +29,8 @@
 #include <GL/gl.h>
 #endif
 #endif
-#include "vtkRenderer.h"
+
+#include <math.h>
 
 #ifndef VTK_IMPLEMENT_MESA_CXX
 vtkCxxRevisionMacro(vtkOpenGLVolumeRayCastMapper, "$Revision$");

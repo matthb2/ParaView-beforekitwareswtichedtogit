@@ -20,10 +20,12 @@
 
 #include "vtkCamera.h"
 #include "vtkMath.h"
+#include "vtkMatrix4x4.h"
 #include "vtkObjectFactory.h"
 #include "vtkProperty.h"
 #include "vtkRenderer.h"
 #include "vtkTexture.h"
+#include "vtkTransform.h"
 
 #include <math.h>
 

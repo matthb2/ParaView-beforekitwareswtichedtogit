@@ -19,11 +19,15 @@
 
 #include "vtkCamera.h"
 #include "vtkColorTransferFunction.h"
+#include "vtkLinearTransform.h"
+#include "vtkMatrix4x4.h"
 #include "vtkObjectFactory.h"
-#include "vtkRenderer.h"
-#include "vtkVolumeCollection.h"
-#include "vtkVolumeRayCastMapper.h"
 #include "vtkPiecewiseFunction.h"
+#include "vtkRenderer.h"
+#include "vtkTransform.h"
+#include "vtkVolumeCollection.h"
+#include "vtkVolumeProperty.h"
+#include "vtkVolumeRayCastMapper.h"
 
 #include <math.h>
 

@@ -29,6 +29,7 @@
 #include "vtkRenderWindow.h"
 #include "vtkRendererCollection.h"
 #include "vtkTexture.h"
+#include "vtkTransform.h"
 #include "vtkUnsignedCharArray.h"
 
 vtkCxxRevisionMacro(vtkIVExporter, "$Revision$");

@@ -16,8 +16,10 @@
 
 =========================================================================*/
 #include "vtkImageActor.h"
+
 #include "vtkGraphicsFactory.h"
 #include "vtkRenderer.h"
+#include "vtkImageData.h"
 
 vtkCxxRevisionMacro(vtkImageActor, "$Revision$");
 

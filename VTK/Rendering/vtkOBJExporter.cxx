@@ -26,6 +26,7 @@
 #include "vtkProperty.h"
 #include "vtkRenderWindow.h"
 #include "vtkRendererCollection.h"
+#include "vtkTransform.h"
 
 vtkCxxRevisionMacro(vtkOBJExporter, "$Revision$");
 vtkStandardNewMacro(vtkOBJExporter);
