@@ -171,7 +171,7 @@ void vtkPolyDataToImageStencil::ThreadedExecute(vtkImageStencilData *data,
   int *zlist = 0;
   int zlistlen = 0;
   int zlistidx = 0;
-  if (extent[4] != extent[5])
+  if (extent[4] < extent[5])
     {
     tree->IntersectWithLine(p0, p1, points, 0);
     vtkTurnPointsIntoList(points, zlist, zlistlen,
