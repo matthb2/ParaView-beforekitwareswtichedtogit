@@ -220,7 +220,6 @@ void vtkRotationalExtrusionFilter::Execute()
   if ( this->Capping && (this->Angle != 360.0 || this->DeltaRadius != 0.0 
                          || this->Translation != 0.0) )
     {
-    vtkIdType newCellId=0;
     if ( inPolys->GetNumberOfCells() > 0 )
       {
       newPolys = vtkCellArray::New();
