@@ -313,7 +313,7 @@ void vtkPointSet::Squeeze()
 void vtkPointSet::ReportReferences(vtkGarbageCollector* collector)
 {
   this->Superclass::ReportReferences(collector);
-  collector->ReportReference(this->Locator);
+  collector->ReportReference(this->Locator, "Locator");
 }
 
 //----------------------------------------------------------------------------

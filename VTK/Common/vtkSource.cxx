@@ -756,7 +756,7 @@ void vtkSource::ReportReferences(vtkGarbageCollector* collector)
   this->Superclass::ReportReferences(collector);
   for(int i=0; i < this->NumberOfOutputs; ++i)
     {
-    collector->ReportReference(this->Outputs[i]);
+    collector->ReportReference(this->Outputs[i], "Outputs");
     }
 }
 

@@ -97,7 +97,7 @@ void vtkLocator::UnRegister(vtkObjectBase* o)
 void vtkLocator::ReportReferences(vtkGarbageCollector* collector)
 {
   this->Superclass::ReportReferences(collector);
-  collector->ReportReference(this->GetDataSet());
+  collector->ReportReference(this->GetDataSet(), "DataSet");
 }
 
 //----------------------------------------------------------------------------

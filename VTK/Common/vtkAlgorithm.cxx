@@ -596,7 +596,8 @@ void vtkAlgorithm::UnRegister(vtkObjectBase* o)
 void vtkAlgorithm::ReportReferences(vtkGarbageCollector* collector)
 {
   this->Superclass::ReportReferences(collector);
-  collector->ReportReference(this->AlgorithmInternal->Executive.GetPointer());
+  collector->ReportReference(this->AlgorithmInternal->Executive.GetPointer(),
+                             "Executive");
   vtkstd::vector<vtkAlgorithmInternals::Port>::iterator i;
 
   // Report producers.
@@ -606,7 +607,7 @@ void vtkAlgorithm::ReportReferences(vtkGarbageCollector* collector)
     for(vtkAlgorithmInternals::Port::iterator j = i->begin();
         j != i->end(); ++j)
       {
-      collector->ReportReference(j->Algorithm.GetPointer());
+      collector->ReportReference(j->Algorithm.GetPointer(), "InputPorts");
       }
     }
 
@@ -617,7 +618,7 @@ void vtkAlgorithm::ReportReferences(vtkGarbageCollector* collector)
     for(vtkAlgorithmInternals::Port::iterator j = i->begin();
         j != i->end(); ++j)
       {
-      collector->ReportReference(j->Algorithm.GetPointer());
+      collector->ReportReference(j->Algorithm.GetPointer(), "OutputPorts");
       }
     }
 }

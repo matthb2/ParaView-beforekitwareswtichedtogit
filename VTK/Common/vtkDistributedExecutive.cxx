@@ -87,7 +87,7 @@ vtkAlgorithm* vtkDistributedExecutive::GetAlgorithm()
 void vtkDistributedExecutive::ReportReferences(vtkGarbageCollector* collector)
 {
   // Report reference to our algorithm.
-  collector->ReportReference(this->GetAlgorithm());
+  collector->ReportReference(this->GetAlgorithm(), "Algorithm");
 }
 
 //----------------------------------------------------------------------------

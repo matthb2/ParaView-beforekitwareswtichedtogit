@@ -724,7 +724,7 @@ void vtkDataObject::Crop()
 void vtkDataObject::ReportReferences(vtkGarbageCollector* collector)
 {
   this->Superclass::ReportReferences(collector);
-  collector->ReportReference(this->GetSource());
+  collector->ReportReference(this->GetSource(), "Source");
 }
 
 //----------------------------------------------------------------------------

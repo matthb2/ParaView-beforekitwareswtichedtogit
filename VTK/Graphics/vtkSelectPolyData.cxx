@@ -606,8 +606,8 @@ void vtkSelectPolyData::PrintSelf(ostream& os, vtkIndent indent)
 void vtkSelectPolyData::ReportReferences(vtkGarbageCollector* collector)
 {
   this->Superclass::ReportReferences(collector);
-  collector->ReportReference(this->UnselectedOutput);
-  collector->ReportReference(this->SelectionEdges);
+  collector->ReportReference(this->UnselectedOutput, "UnselectedOutput");
+  collector->ReportReference(this->SelectionEdges, "SelectionEdges");
 }
 
 //----------------------------------------------------------------------------
