@@ -696,10 +696,12 @@ LRESULT CALLBACK vtkHandleMessage2(HWND hWnd,UINT uMsg, WPARAM wParam,
       break;
       
     case WM_KEYDOWN:
+    case WM_SYSKEYDOWN:
       me->OnKeyDown(hWnd,wParam,LOWORD(lParam),HIWORD(lParam));
       break;
 
     case WM_KEYUP:
+    case WM_SYSKEYUP:
       me->OnKeyUp(hWnd,wParam,LOWORD(lParam),HIWORD(lParam));
       break;
 
