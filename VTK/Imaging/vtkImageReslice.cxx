@@ -706,7 +706,7 @@ void vtkImageReslice::ExecuteInformation(vtkImageData *input,
         {
         d = maxBounds[2*i+1] - maxBounds[2*i];
         }
-      outWholeExt[2*i] = vtkResliceRound(e + 0.5);
+      outWholeExt[2*i] = vtkResliceRound(e);
       outWholeExt[2*i+1] = vtkResliceRound(outWholeExt[2*i] + 
                                            fabs(d/outSpacing[i]));
       }
