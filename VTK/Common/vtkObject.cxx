@@ -82,6 +82,7 @@ public:
   
   unsigned long AddObserver(unsigned long event, vtkCommand *cmd, float p);
   void RemoveObserver(unsigned long tag);
+  void RemoveObservers(unsigned long event);
   void InvokeEvent(unsigned long event, void *callData, vtkObject *self);
   vtkCommand *GetCommand(unsigned long tag);
   unsigned long GetTag(vtkCommand*);
@@ -398,6 +399,39 @@ void vtkSubjectHelper::RemoveObserver(unsigned long tag)
     }
 }
 
+void vtkSubjectHelper::RemoveObservers(unsigned long event)
+{
+  vtkObserver *elem;
+  vtkObserver *prev;
+  vtkObserver *next;
+  
+  elem = this->Start;
+  prev = NULL;
+  while (elem)
+    {
+    if (elem->Event == event)
+      {
+      if (prev)
+        {
+        prev->Next = elem->Next;
+        next = prev->Next;
+        }
+      else
+        {
+        this->Start = elem->Next;
+        next = this->Start;
+        }
+      delete elem;
+      elem = next;
+      }
+    else
+      {
+      prev = elem;
+      elem = elem->Next;
+      }
+    }
+}
+
 int vtkSubjectHelper::HasObserver(unsigned long event)
 {
   vtkObserver *elem = this->Start;
@@ -525,6 +559,19 @@ void vtkObject::RemoveObserver(vtkCommand* c)
       tag = this->SubjectHelper->GetTag(c);
       }
     }
+}
+
+void vtkObject::RemoveObservers(unsigned long event)
+{
+  if (this->SubjectHelper)
+    {
+    this->SubjectHelper->RemoveObservers(event);
+    }
+}
+
+void vtkObject::RemoveObservers(const char *event)
+{
+  this->RemoveObservers(vtkCommand::GetEventIdFromString(event));
 }
 
 void vtkObject::InvokeEvent(unsigned long event, void *callData)
