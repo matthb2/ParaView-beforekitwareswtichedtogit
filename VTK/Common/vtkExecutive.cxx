@@ -14,6 +14,7 @@
 =========================================================================*/
 #include "vtkExecutive.h"
 
+#include "vtkDataObject.h"
 #include "vtkGarbageCollector.h"
 #include "vtkInformation.h"
 
@@ -61,6 +62,14 @@ void vtkExecutive::SetOutputDataInternal(vtkAlgorithm* algorithm, int port,
   if(vtkInformation* info = this->GetOutputInformation(algorithm, port))
     {
     info->Set(vtkInformation::DATA_OBJECT(), output);
+    if(output)
+      {
+      info->Set(vtkInformation::EXTENT_TYPE(), output->GetExtentType());
+      }
+    else
+      {
+      info->Remove(vtkInformation::EXTENT_TYPE());
+      }
     }
 }
 
