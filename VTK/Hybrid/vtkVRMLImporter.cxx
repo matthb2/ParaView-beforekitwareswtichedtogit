@@ -5838,9 +5838,9 @@ vtkVRMLImporter::exitNode()
         // count of tcoords and points is the same, must run through indices to see if they
         // correspond by index point-for-point
         tcoords_correspond=1; // assume true until found otherwise
-        int DUMMY_WARNING_PREVENTION_MECHANISM;
-        int n_pts=-1,*pts = &DUMMY_WARNING_PREVENTION_MECHANISM;
-        int n_tcoord_pts=-1,*tcoord_pts = &DUMMY_WARNING_PREVENTION_MECHANISM;
+        vtkIdType DUMMY_WARNING_PREVENTION_MECHANISM;
+        vtkIdType n_pts=-1,*pts = &DUMMY_WARNING_PREVENTION_MECHANISM;
+        vtkIdType n_tcoord_pts=-1,*tcoord_pts = &DUMMY_WARNING_PREVENTION_MECHANISM;
         this->CurrentMapper->GetInput()->GetPolys()->InitTraversal();
         this->CurrentTCoordCells->InitTraversal();
         int i,j;
@@ -5905,9 +5905,9 @@ vtkVRMLImporter::exitNode()
       this->CurrentMapper->GetInput()->GetPolys()->InitTraversal();
       this->CurrentTCoordCells->InitTraversal();
       int i,j;
-      int DUMMY_WARNING_PREVENTION_MECHANISM;
-      int n_pts=-1,*pts = &DUMMY_WARNING_PREVENTION_MECHANISM;
-      int n_tcoord_pts=-1,*tcoord_pts = &DUMMY_WARNING_PREVENTION_MECHANISM;
+      vtkIdType DUMMY_WARNING_PREVENTION_MECHANISM;
+      vtkIdType n_pts=-1,*pts = &DUMMY_WARNING_PREVENTION_MECHANISM;
+      vtkIdType n_tcoord_pts=-1,*tcoord_pts = &DUMMY_WARNING_PREVENTION_MECHANISM;
       for (i=0;i<this->CurrentMapper->GetInput()->GetPolys()->GetNumberOfCells();i++) 
         {
 
