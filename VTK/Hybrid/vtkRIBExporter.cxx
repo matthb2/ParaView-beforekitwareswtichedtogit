@@ -31,8 +31,9 @@
 #include "vtkRIBLight.h"
 #include "vtkRIBProperty.h"
 #include "vtkRenderWindow.h"
-#include "vtkTIFFWriter.h"
 #include "vtkRendererCollection.h"
+#include "vtkTIFFWriter.h"
+#include "vtkTexture.h"
 
 vtkCxxRevisionMacro(vtkRIBExporter, "$Revision$");
 vtkStandardNewMacro(vtkRIBExporter);

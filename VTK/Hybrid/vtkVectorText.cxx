@@ -21,8 +21,6 @@
 #include "vtkPolyDataReader.h"
 #include "vtkObjectFactory.h"
 
-#include <stdlib.h>
-
 vtkCxxRevisionMacro(vtkVectorText, "$Revision$");
 vtkStandardNewMacro(vtkVectorText);
 

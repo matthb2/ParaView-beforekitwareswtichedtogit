@@ -19,8 +19,6 @@
 #include "vtkObjectFactory.h"
 
 #include <ctype.h>
-#include <string.h>
-#include <stdlib.h>
 
 // VFW compressed formats are listed at http://www.webartz.com/fourcc/
 #define VTK_BI_UYVY 0x59565955
