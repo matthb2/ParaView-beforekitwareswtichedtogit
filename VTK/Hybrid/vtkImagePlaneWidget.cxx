@@ -138,6 +138,9 @@ vtkImagePlaneWidget::vtkImagePlaneWidget()
   this->GenerateTexturePlane();
   this->GenerateCursor();
   this->GenerateText();
+  
+  this->CursorActor->VisibilityOff();
+  
 }
 
 vtkImagePlaneWidget::~vtkImagePlaneWidget()
