@@ -507,7 +507,7 @@ void vtkCompositeManager::SetCompositer(vtkCompositer *c)
     }
   if (this->Compositer)
     {
-    this->Compositer->Delete();
+    this->Compositer->UnRegister(this);
     this->Compositer = NULL;
     }
   this->Compositer = c;

@@ -33,7 +33,9 @@ vtkImageFlip::vtkImageFlip()
 
   if (!this->ResliceAxes)
     {
-    this->ResliceAxes = vtkMatrix4x4::New();
+    // for consistent register/unregister
+    this->SetResliceAxes(vtkMatrix4x4::New());
+    this->ResliceAxes->Delete();
     }
 }
 
