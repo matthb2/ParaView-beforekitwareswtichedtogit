@@ -55,4 +55,8 @@ void vtkStructuredGridSource::SetOutput(vtkStructuredGrid *output)
   this->vtkSource::SetNthOutput(0, output);
 }
 
-
+//----------------------------------------------------------------------------
+void vtkStructuredGridSource::PrintSelf(ostream& os, vtkIndent indent)
+{
+  this->Superclass::PrintSelf(os,indent);
+}

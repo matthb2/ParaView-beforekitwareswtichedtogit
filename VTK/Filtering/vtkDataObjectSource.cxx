@@ -47,3 +47,9 @@ void vtkDataObjectSource::SetOutput(vtkDataObject *output)
   this->vtkSource::SetNthOutput(0, output);
 }
 
+
+//----------------------------------------------------------------------------
+void vtkDataObjectSource::PrintSelf(ostream& os, vtkIndent indent)
+{
+  this->Superclass::PrintSelf(os,indent);
+}

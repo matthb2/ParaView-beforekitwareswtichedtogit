@@ -16,12 +16,15 @@
 
 =========================================================================*/
 #include "vtkImplicitVolume.h"
-#include "vtkVoxel.h"
-#include "vtkObjectFactory.h"
+
 #include "vtkFloatArray.h"
+#include "vtkImageData.h"
+#include "vtkObjectFactory.h"
+#include "vtkVoxel.h"
 
 vtkCxxRevisionMacro(vtkImplicitVolume, "$Revision$");
 vtkStandardNewMacro(vtkImplicitVolume);
+vtkCxxSetObjectMacro(vtkImplicitVolume,Volume,vtkImageData);
 
 // Construct an vtkImplicitVolume with no initial volume; the OutValue
 // set to a large negative number; and the OutGradient set to (0,0,1).

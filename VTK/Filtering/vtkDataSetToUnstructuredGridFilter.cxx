@@ -40,3 +40,9 @@ vtkDataSet *vtkDataSetToUnstructuredGridFilter::GetInput()
   return (vtkDataSet *)(this->Inputs[0]);
 }
 
+
+//----------------------------------------------------------------------------
+void vtkDataSetToUnstructuredGridFilter::PrintSelf(ostream& os, vtkIndent indent)
+{
+  this->Superclass::PrintSelf(os,indent);
+}

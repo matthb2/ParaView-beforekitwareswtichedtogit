@@ -48,3 +48,9 @@ vtkDataSet *vtkDataSetSource::GetOutput(int idx)
 {
   return static_cast<vtkDataSet *>( this->vtkSource::GetOutput(idx) ); 
 }
+
+//----------------------------------------------------------------------------
+void vtkDataSetSource::PrintSelf(ostream& os, vtkIndent indent)
+{
+  this->Superclass::PrintSelf(os,indent);
+}

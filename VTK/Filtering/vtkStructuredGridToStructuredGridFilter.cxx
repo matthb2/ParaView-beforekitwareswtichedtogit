@@ -40,3 +40,9 @@ vtkStructuredGrid *vtkStructuredGridToStructuredGridFilter::GetInput()
   return (vtkStructuredGrid *)(this->Inputs[0]);
 }
 
+
+//----------------------------------------------------------------------------
+void vtkStructuredGridToStructuredGridFilter::PrintSelf(ostream& os, vtkIndent indent)
+{
+  this->Superclass::PrintSelf(os,indent);
+}

@@ -53,3 +53,9 @@ void vtkStructuredPointsToUnstructuredGridFilter::ComputeInputUpdateExtents(
     this->GetInput()->RequestExactExtentOn();
     }
 }
+
+//----------------------------------------------------------------------------
+void vtkStructuredPointsToUnstructuredGridFilter::PrintSelf(ostream& os, vtkIndent indent)
+{
+  this->Superclass::PrintSelf(os,indent);
+}

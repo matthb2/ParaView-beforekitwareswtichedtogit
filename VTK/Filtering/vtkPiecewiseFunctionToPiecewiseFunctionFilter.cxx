@@ -17,6 +17,8 @@
 =========================================================================*/
 #include "vtkPiecewiseFunctionToPiecewiseFunctionFilter.h"
 
+#include "vtkPiecewiseFunction.h"
+
 vtkCxxRevisionMacro(vtkPiecewiseFunctionToPiecewiseFunctionFilter, "$Revision$");
 
 //----------------------------------------------------------------------------
@@ -42,4 +44,10 @@ vtkPiecewiseFunction *vtkPiecewiseFunctionToPiecewiseFunctionFilter::GetInput()
     }
   
   return (vtkPiecewiseFunction *)(this->Inputs[0]);
+}
+
+//----------------------------------------------------------------------------
+void vtkPiecewiseFunctionToPiecewiseFunctionFilter::PrintSelf(ostream& os, vtkIndent indent)
+{
+  this->Superclass::PrintSelf(os,indent);
 }

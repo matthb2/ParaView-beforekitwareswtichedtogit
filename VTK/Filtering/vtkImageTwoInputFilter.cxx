@@ -16,6 +16,8 @@
 
 =========================================================================*/
 #include "vtkImageTwoInputFilter.h"
+
+#include "vtkImageData.h"
 #include "vtkObjectFactory.h"
 
 vtkCxxRevisionMacro(vtkImageTwoInputFilter, "$Revision$");
@@ -47,13 +49,8 @@ void vtkImageTwoInputFilter::SetInput2(vtkImageData *input)
   this->vtkImageMultipleInputFilter::SetNthInput(1,input);
 }
 
-
-
-
-
-
-
-
-
-
-
+//----------------------------------------------------------------------------
+void vtkImageTwoInputFilter::PrintSelf(ostream& os, vtkIndent indent)
+{
+  this->Superclass::PrintSelf(os,indent);
+}

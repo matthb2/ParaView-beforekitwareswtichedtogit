@@ -17,6 +17,8 @@
 =========================================================================*/
 #include "vtkSimpleImageToImageFilter.h"
 
+#include "vtkImageData.h"
+
 vtkCxxRevisionMacro(vtkSimpleImageToImageFilter, "$Revision$");
 
 //----------------------------------------------------------------------------
@@ -96,4 +98,10 @@ void vtkSimpleImageToImageFilter::ExecuteData(vtkDataObject *vtkNotUsed(out))
   output->AllocateScalars();
 
   this->SimpleExecute(input, output);
+}
+
+//----------------------------------------------------------------------------
+void vtkSimpleImageToImageFilter::PrintSelf(ostream& os, vtkIndent indent)
+{
+  this->Superclass::PrintSelf(os,indent);
 }

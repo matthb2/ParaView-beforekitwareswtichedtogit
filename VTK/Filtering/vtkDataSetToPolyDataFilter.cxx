@@ -17,6 +17,8 @@
 =========================================================================*/
 #include "vtkDataSetToPolyDataFilter.h"
 
+#include "vtkDataSet.h"
+
 vtkCxxRevisionMacro(vtkDataSetToPolyDataFilter, "$Revision$");
 
 //----------------------------------------------------------------------------
@@ -52,4 +54,10 @@ void vtkDataSetToPolyDataFilter::ComputeInputUpdateExtents(vtkDataObject *output
   
   this->vtkPolyDataSource::ComputeInputUpdateExtents(output);
   input->RequestExactExtentOn();
+}
+
+//----------------------------------------------------------------------------
+void vtkDataSetToPolyDataFilter::PrintSelf(ostream& os, vtkIndent indent)
+{
+  this->Superclass::PrintSelf(os,indent);
 }

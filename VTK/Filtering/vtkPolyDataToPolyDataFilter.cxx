@@ -46,5 +46,8 @@ vtkPolyData *vtkPolyDataToPolyDataFilter::GetInput()
   return (vtkPolyData *)(this->Inputs[0]);
 }
 
-
-
+//----------------------------------------------------------------------------
+void vtkPolyDataToPolyDataFilter::PrintSelf(ostream& os, vtkIndent indent)
+{
+  this->Superclass::PrintSelf(os,indent);
+}

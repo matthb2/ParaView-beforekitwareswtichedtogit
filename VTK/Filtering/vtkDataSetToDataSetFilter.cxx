@@ -190,3 +190,15 @@ void vtkDataSetToDataSetFilter::ComputeInputUpdateExtents(vtkDataObject *output)
   input->SetUpdateExtent( output->GetUpdateExtent() );
   input->RequestExactExtentOn();
 }
+
+//----------------------------------------------------------------------------
+vtkDataSet *vtkDataSetToDataSetFilter::GetOutput(int idx)
+{
+  return (vtkDataSet *) this->vtkDataSetSource::GetOutput(idx); 
+}
+
+//----------------------------------------------------------------------------
+void vtkDataSetToDataSetFilter::PrintSelf(ostream& os, vtkIndent indent)
+{
+  this->Superclass::PrintSelf(os,indent);
+}

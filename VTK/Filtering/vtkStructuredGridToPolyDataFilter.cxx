@@ -40,5 +40,8 @@ vtkStructuredGrid *vtkStructuredGridToPolyDataFilter::GetInput()
   return (vtkStructuredGrid *)(this->Inputs[0]);
 }
 
-
-
+//----------------------------------------------------------------------------
+void vtkStructuredGridToPolyDataFilter::PrintSelf(ostream& os, vtkIndent indent)
+{
+  this->Superclass::PrintSelf(os,indent);
+}

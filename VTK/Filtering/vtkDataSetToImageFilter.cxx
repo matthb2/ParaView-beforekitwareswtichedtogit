@@ -17,6 +17,9 @@
 =========================================================================*/
 #include "vtkDataSetToImageFilter.h"
 
+#include "vtkDataSet.h"
+#include "vtkImageData.h"
+
 vtkCxxRevisionMacro(vtkDataSetToImageFilter, "$Revision$");
 
 //----------------------------------------------------------------------------
@@ -62,9 +65,8 @@ void vtkDataSetToImageFilter::ComputeInputUpdateExtents(
   input->SetUpdateExtent(0, 1, 0);
 }
 
-    
-
-
-
-
-
+//----------------------------------------------------------------------------
+void vtkDataSetToImageFilter::PrintSelf(ostream& os, vtkIndent indent)
+{
+  this->Superclass::PrintSelf(os,indent);
+}

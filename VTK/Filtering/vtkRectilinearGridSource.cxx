@@ -55,3 +55,9 @@ void vtkRectilinearGridSource::SetOutput(vtkRectilinearGrid *output)
   this->vtkSource::SetNthOutput(0, output);
 }
 
+
+//----------------------------------------------------------------------------
+void vtkRectilinearGridSource::PrintSelf(ostream& os, vtkIndent indent)
+{
+  this->Superclass::PrintSelf(os,indent);
+}

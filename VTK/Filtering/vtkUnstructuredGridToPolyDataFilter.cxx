@@ -53,3 +53,9 @@ void vtkUnstructuredGridToPolyDataFilter::ComputeInputUpdateExtents(vtkDataObjec
     input->RequestExactExtentOn();
     }
 }
+
+//----------------------------------------------------------------------------
+void vtkUnstructuredGridToPolyDataFilter::PrintSelf(ostream& os, vtkIndent indent)
+{
+  this->Superclass::PrintSelf(os,indent);
+}

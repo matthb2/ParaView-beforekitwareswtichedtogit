@@ -20,6 +20,7 @@
 
 vtkCxxRevisionMacro(vtkImplicitWindowFunction, "$Revision$");
 vtkStandardNewMacro(vtkImplicitWindowFunction);
+vtkCxxSetObjectMacro(vtkImplicitWindowFunction,ImplicitFunction,vtkImplicitFunction);
 
 // Construct object with window range (0,1) and window values (0,1).
 vtkImplicitWindowFunction::vtkImplicitWindowFunction()

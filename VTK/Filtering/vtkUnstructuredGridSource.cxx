@@ -79,3 +79,9 @@ vtkUnstructuredGrid *vtkUnstructuredGridSource::GetOutput(int idx)
 {
   return static_cast<vtkUnstructuredGrid *>( this->vtkSource::GetOutput(idx) ); 
 }
+
+//----------------------------------------------------------------------------
+void vtkUnstructuredGridSource::PrintSelf(ostream& os, vtkIndent indent)
+{
+  this->Superclass::PrintSelf(os,indent);
+}

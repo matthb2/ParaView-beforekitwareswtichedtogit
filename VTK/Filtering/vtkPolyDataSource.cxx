@@ -94,12 +94,8 @@ void vtkPolyDataSource::ComputeInputUpdateExtents(vtkDataObject *data)
   this->ExecuteGhostLevel = ghostLevel;
 }
 
-  
-
-
-
-
-
-
-
-
+//----------------------------------------------------------------------------
+void vtkPolyDataSource::PrintSelf(ostream& os, vtkIndent indent)
+{
+  this->Superclass::PrintSelf(os,indent);
+}

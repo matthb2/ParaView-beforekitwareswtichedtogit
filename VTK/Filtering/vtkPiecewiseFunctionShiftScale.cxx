@@ -16,7 +16,9 @@
 
 =========================================================================*/
 #include "vtkPiecewiseFunctionShiftScale.h"
+
 #include "vtkObjectFactory.h"
+#include "vtkPiecewiseFunction.h"
 
 vtkCxxRevisionMacro(vtkPiecewiseFunctionShiftScale, "$Revision$");
 vtkStandardNewMacro(vtkPiecewiseFunctionShiftScale);

@@ -40,4 +40,8 @@ vtkUnstructuredGrid *vtkUnstructuredGridToUnstructuredGridFilter::GetInput()
   return (vtkUnstructuredGrid *)(this->Inputs[0]);
 }
 
-
+//----------------------------------------------------------------------------
+void vtkUnstructuredGridToUnstructuredGridFilter::PrintSelf(ostream& os, vtkIndent indent)
+{
+  this->Superclass::PrintSelf(os,indent);
+}

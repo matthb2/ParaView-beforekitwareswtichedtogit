@@ -16,6 +16,8 @@
 
 =========================================================================*/
 #include "vtkImplicitBoolean.h"
+
+#include "vtkImplicitFunctionCollection.h"
 #include "vtkObjectFactory.h"
 
 #include <math.h>

@@ -40,3 +40,8 @@ vtkRectilinearGrid *vtkRectilinearGridToPolyDataFilter::GetInput()
   return (vtkRectilinearGrid *)(this->Inputs[0]);
 }
 
+//----------------------------------------------------------------------------
+void vtkRectilinearGridToPolyDataFilter::PrintSelf(ostream& os, vtkIndent indent)
+{
+  this->Superclass::PrintSelf(os,indent);
+}

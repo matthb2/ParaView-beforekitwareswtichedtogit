@@ -45,4 +45,8 @@ void vtkCastToConcrete::ExecuteInformation()
   output->CopyInformation(input);
 }
 
-
+//----------------------------------------------------------------------------
+void vtkCastToConcrete::PrintSelf(ostream& os, vtkIndent indent)
+{
+  this->Superclass::PrintSelf(os,indent);
+}

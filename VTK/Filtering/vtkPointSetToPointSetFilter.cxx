@@ -148,17 +148,8 @@ void vtkPointSetToPointSetFilter::ComputeInputUpdateExtents(vtkDataObject *outpu
   input->RequestExactExtentOn();  
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+//----------------------------------------------------------------------------
+void vtkPointSetToPointSetFilter::PrintSelf(ostream& os, vtkIndent indent)
+{
+  this->Superclass::PrintSelf(os,indent);
+}

@@ -70,3 +70,9 @@ void vtkStructuredPointsToStructuredPointsFilter::ComputeInputUpdateExtents(
   // assume that we cannot handle more than the requested extent.
   this->GetInput()->RequestExactExtentOn();
 }
+
+//----------------------------------------------------------------------------
+void vtkStructuredPointsToStructuredPointsFilter::PrintSelf(ostream& os, vtkIndent indent)
+{
+  this->Superclass::PrintSelf(os,indent);
+}

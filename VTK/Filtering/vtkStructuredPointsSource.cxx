@@ -75,5 +75,8 @@ void vtkStructuredPointsSource::ExecuteInformation()
   output->SetWholeExtent(output->GetExtent());
 }
 
-
-
+//----------------------------------------------------------------------------
+void vtkStructuredPointsSource::PrintSelf(ostream& os, vtkIndent indent)
+{
+  this->Superclass::PrintSelf(os,indent);
+}

@@ -155,3 +155,9 @@ vtkMergePoints::InsertUniquePoint(const float x[3], vtkIdType &id)
 
   return 1;
 }
+
+//----------------------------------------------------------------------------
+void vtkMergePoints::PrintSelf(ostream& os, vtkIndent indent)
+{
+  this->Superclass::PrintSelf(os,indent);
+}
