@@ -222,7 +222,11 @@ int vtkPNMReader::CanReadFile(const char* fname)
             iseol(magic[2]) &&
             (magic[1] >= '1' && magic[1] <= '6'));
   fclose(fp);
-  return ok;
+  if (ok)
+    {
+    return 3;
+    }
+  return 0;
 }
 
 //----------------------------------------------------------------------------
