@@ -27,6 +27,10 @@ vtkStandardNewMacro(vtkBMPReader);
 #undef read
 #endif
 
+#ifdef close
+#undef close
+#endif
+
 vtkBMPReader::vtkBMPReader()
 {
   this->Colors = NULL;
@@ -459,6 +463,7 @@ void vtkBMPReaderUpdate2(vtkBMPReader *self, vtkImageData *data, OT *outPtr)
                                << ", FilePos = " << static_cast<vtkIdType>(self->GetFile()->tellg())
                                << ", FileName = " << self->GetInternalFileName()
                                );
+        self->GetFile()->close();
         return;
         }
       
@@ -496,6 +501,8 @@ void vtkBMPReaderUpdate2(vtkBMPReader *self, vtkImageData *data, OT *outPtr)
     self->GetFile()->seekg(static_cast<long>(self->GetFile()->tellg()) + streamSkip1, ios::beg);
     outPtr2 += outIncr[2];
     }
+
+  self->GetFile()->close();
 
   // delete the temporary buffer
   delete [] buf;
