@@ -132,6 +132,8 @@ vtkImageReader2* vtkImageReader2Factory::CreateImageReader2(const char* path)
     {
     if(ret->CanReadFile(path))
       {
+      ret->Register(ret); // up the reference count for return as this is
+      // like a new call
       return ret;
       }
     }
