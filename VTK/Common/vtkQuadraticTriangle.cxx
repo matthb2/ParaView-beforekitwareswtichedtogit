@@ -79,7 +79,7 @@ vtkCell *vtkQuadraticTriangle::GetEdge(int edgeId)
 }
 
 // order picked carefully for parametric coordinate conversion
-static float linearTris[4][3] = { {0,3,5}, {3, 1,4}, {5,4,2}, {4,5,3} };
+static int linearTris[4][3] = { {0,3,5}, {3, 1,4}, {5,4,2}, {4,5,3} };
 
 int vtkQuadraticTriangle::EvaluatePosition(float* x, float* closestPoint, 
                                            int& subId, float pcoords[3],
