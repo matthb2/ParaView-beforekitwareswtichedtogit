@@ -838,7 +838,6 @@ void vtkRenderWindow::StereoRenderComplete(void)
       unsigned char* result;
       int *size;
       int x,y;
-      int res;
       int m0, m1, ave0, ave1;
       int avecolor[256][3], satcolor[256];
       float a;
