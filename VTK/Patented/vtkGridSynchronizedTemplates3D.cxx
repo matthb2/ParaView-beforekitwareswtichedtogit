@@ -929,8 +929,8 @@ VTK_THREAD_RETURN_TYPE vtkGridSyncTempThreadedExecute( void *arg )
 void vtkGridSynchronizedTemplates3D::Execute()
 {
   int idx;
-  vtkIdType numCellPts, inId, outId, offset, num, ptIdx, newIdx;
-  vtkIdType newCellPts[3], *cellPts;
+  vtkIdType numCellPts=0, inId, outId, offset, num, ptIdx, newIdx;
+  vtkIdType newCellPts[3], *cellPts = 0;
   vtkPolyData *output = this->GetOutput();
   vtkPointData *outPD;
   vtkCellData *outCD;

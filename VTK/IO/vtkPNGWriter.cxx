@@ -117,7 +117,7 @@ void vtkPNGWriteInit(png_structp png_ptr, png_bytep data,
     }
 }
 
-void vtkPNGWriteFlush(png_structp png_ptr)
+void vtkPNGWriteFlush(png_structp vtkNotUsed(png_ptr))
 {
 }
 

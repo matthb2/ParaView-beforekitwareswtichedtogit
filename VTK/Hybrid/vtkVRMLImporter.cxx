@@ -6080,7 +6080,8 @@ vtkVRMLImporter::exitField()
     {
     vtkCellArray *cells;
     int index, j;
-    vtkIdType *pts, npts;
+    vtkIdType *pts=0;
+    vtkIdType npts;
     vtkPolyData *pd = (vtkPolyData *)this->CurrentMapper->GetInput();
     if (pd->GetNumberOfPolys() > 0)
       cells = pd->GetPolys();

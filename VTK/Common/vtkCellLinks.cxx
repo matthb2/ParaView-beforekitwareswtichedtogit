@@ -204,8 +204,8 @@ void vtkCellLinks::BuildLinks(vtkDataSet *data, vtkCellArray *Connectivity)
   vtkIdType numPts = data->GetNumberOfPoints();
   vtkIdType j, cellId;
   unsigned short *linkLoc;
-  vtkIdType npts;
-  vtkIdType *pts;
+  vtkIdType npts=0;
+  vtkIdType *pts=0;
   vtkIdType loc = Connectivity->GetTraversalLocation();
   
   // traverse data to determine number of uses of each point

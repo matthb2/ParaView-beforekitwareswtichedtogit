@@ -891,10 +891,7 @@ int vtkPolygon::EarCutTriangulation ()
     {
     return (this->SuccessfulTriangulation=0);
     }
-  else
-    {
-    return (this->SuccessfulTriangulation=1);
-    }
+  return (this->SuccessfulTriangulation=1);
 }
 
 
