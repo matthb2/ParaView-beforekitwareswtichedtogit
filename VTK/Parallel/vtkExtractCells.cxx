@@ -134,7 +134,7 @@ void vtkExtractCells::Execute()
     output->GetCellData()->CopyAllocate(CD, 1);
 
     vtkPoints *pts = vtkPoints::New();
-    pts->SetNumberOfPoints(VTK_CELL_SIZE);
+    pts->SetNumberOfPoints(0);
 
     output->SetPoints(pts);
 
