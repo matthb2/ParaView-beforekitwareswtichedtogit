@@ -4189,4 +4189,8 @@ void vtkModelMetadata::PrintSelf(ostream& os, vtkIndent indent)
                    this->NodeVariableNames << endl;
   os << indent << "ElementVariableTruthTable: " <<  \
                    this->ElementVariableTruthTable << endl;
+  os << indent << "TimeStepIndex: " <<  \
+                   this->TimeStepIndex << endl;
+  os << indent << "AllVariablesDefinedInAllBlocks: " <<  \
+                   this->AllVariablesDefinedInAllBlocks << endl;
 }
