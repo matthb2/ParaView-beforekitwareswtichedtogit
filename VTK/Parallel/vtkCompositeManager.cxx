@@ -1662,6 +1662,15 @@ void vtkCompositeManager::PrintSelf(ostream& os, vtkIndent indent)
     {
     os << indent << "RenderWindow: (none)\n";
     }
+
+  if (this->DoMagnifyBuffer)
+    {
+    os << indent << "DoMagnifyBuffer: On\n";
+    }
+  else
+    {
+    os << indent << "DoMagnifyBuffer: Off\n";
+    }  
   
   os << indent << "SetBuffersTime: " << this->SetBuffersTime << "\n";
   os << indent << "GetBuffersTime: " << this->GetGetBuffersTime() << "\n";
