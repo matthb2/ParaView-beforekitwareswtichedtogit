@@ -266,7 +266,7 @@ void vtkImageMask::ThreadedRequestData(
 
 //----------------------------------------------------------------------------
 // The output extent is the intersection.
-void vtkImageMask::RequestInformation (
+int vtkImageMask::RequestInformation (
   vtkInformation * vtkNotUsed(request),
   vtkInformationVector **inputVector,
   vtkInformationVector *outputVector)
@@ -293,10 +293,9 @@ void vtkImageMask::RequestInformation (
     }
   
   outInfo->Set(vtkStreamingDemandDrivenPipeline::WHOLE_EXTENT(),ext,6);
+
+  return 1;
 }
-
-
-
 
 void vtkImageMask::PrintSelf(ostream& os, vtkIndent indent)
 {

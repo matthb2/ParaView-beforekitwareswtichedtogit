@@ -334,10 +334,10 @@ void vtkImageContinuousErode3D::ThreadedRequestData(
 }
 
 //----------------------------------------------------------------------------
-void vtkImageContinuousErode3D::RequestData(vtkInformation *request,
+int vtkImageContinuousErode3D::RequestData(vtkInformation *request,
                                             vtkInformationVector **inputVector,
                                             vtkInformationVector *outputVector)
 {
   this->Ellipse->GetOutput()->Update();
-  this->Superclass::RequestData(request, inputVector, outputVector);
+  return this->Superclass::RequestData(request, inputVector, outputVector);
 }

@@ -84,7 +84,7 @@ vtkImageData *vtkImageStencil::GetBackgroundInput()
 }
 
 //----------------------------------------------------------------------------
-void vtkImageStencil::RequestInformation (
+int vtkImageStencil::RequestInformation (
   vtkInformation * vtkNotUsed(request),
   vtkInformationVector **inputVector,
   vtkInformationVector *vtkNotUsed(outputVector))
@@ -99,6 +99,8 @@ void vtkImageStencil::RequestInformation (
     stencil->SetSpacing(inInfo->Get(vtkDataObject::SPACING()));
     stencil->SetOrigin(inInfo->Get(vtkDataObject::ORIGIN()));
     }
+
+  return 1;
 }
 
 //----------------------------------------------------------------------------

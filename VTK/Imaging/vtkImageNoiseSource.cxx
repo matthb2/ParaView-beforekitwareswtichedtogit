@@ -80,7 +80,7 @@ void vtkImageNoiseSource::SetWholeExtent(int xMin, int xMax,
     }
 }
 //----------------------------------------------------------------------------
-void vtkImageNoiseSource::RequestInformation (
+int vtkImageNoiseSource::RequestInformation (
   vtkInformation * vtkNotUsed(request),
   vtkInformationVector** vtkNotUsed( inputVector ),
   vtkInformationVector *outputVector)
@@ -92,6 +92,8 @@ void vtkImageNoiseSource::RequestInformation (
                this->WholeExtent,6);
   outInfo->Set(vtkDataObject::SCALAR_TYPE(),VTK_DOUBLE);
   outInfo->Set(vtkDataObject::SCALAR_NUMBER_OF_COMPONENTS(),1);
+
+  return 1;
 }
 
 void vtkImageNoiseSource::ExecuteData(vtkDataObject *output)

@@ -73,7 +73,7 @@ void vtkVoxelModeller::SetModelBounds(double xmin, double xmax, double ymin,
     }
 }
 
-void vtkVoxelModeller::RequestInformation (
+int vtkVoxelModeller::RequestInformation (
   vtkInformation * vtkNotUsed(request),
   vtkInformationVector ** vtkNotUsed( inputVector ),
   vtkInformationVector *outputVector)
@@ -107,9 +107,11 @@ void vtkVoxelModeller::RequestInformation (
     }
   outInfo->Set(vtkDataObject::ORIGIN(),origin,3);
   outInfo->Set(vtkDataObject::SPACING(),ar,3);
+
+  return 1;
 }
 
-void vtkVoxelModeller::RequestData(
+int vtkVoxelModeller::RequestData(
   vtkInformation* vtkNotUsed( request ),
   vtkInformationVector** inputVector,
   vtkInformationVector* outputVector)
@@ -224,6 +226,8 @@ void vtkVoxelModeller::RequestData(
       }
     }
   delete [] weights;
+
+  return 1;
 }
 
 // Compute the ModelBounds based on the input geometry.

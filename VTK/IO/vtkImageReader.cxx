@@ -94,7 +94,7 @@ void vtkImageReader::PrintSelf(ostream& os, vtkIndent indent)
 
 
 // This method returns the largest data that can be generated.
-void vtkImageReader::RequestInformation (
+int vtkImageReader::RequestInformation (
   vtkInformation       * vtkNotUsed( request ),
   vtkInformationVector** vtkNotUsed( inputVector ),
   vtkInformationVector * outputVector)
@@ -133,9 +133,9 @@ void vtkImageReader::RequestInformation (
   outInfo->Set(vtkDataObject::SCALAR_TYPE(), this->DataScalarType);
   outInfo->Set(vtkDataObject::SCALAR_NUMBER_OF_COMPONENTS(),
                this->NumberOfScalarComponents);
+
+  return 1;
 }
-
-
 
 int vtkImageReader::OpenAndSeekFile(int dataExtent[6], int idx)
 {

@@ -210,7 +210,7 @@ VTK_THREAD_RETURN_TYPE vtkThreadedImageAlgorithmThreadedExecute( void *arg )
 //----------------------------------------------------------------------------
 // This is the superclasses style of Execute method.  Convert it into
 // an imaging style Execute method.
-void vtkThreadedImageAlgorithm::RequestData(
+int vtkThreadedImageAlgorithm::RequestData(
   vtkInformation* request,
   vtkInformationVector** inputVector,
   vtkInformationVector* outputVector)
@@ -301,6 +301,8 @@ void vtkThreadedImageAlgorithm::RequestData(
     {
     delete [] str.Outputs;  
     }
+
+  return 1;
 }
 
 //----------------------------------------------------------------------------

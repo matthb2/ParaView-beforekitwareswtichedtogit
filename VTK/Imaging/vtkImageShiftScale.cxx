@@ -36,10 +36,8 @@ vtkImageShiftScale::vtkImageShiftScale()
   this->ClampOverflow = 0;
 }
 
-
-
 //----------------------------------------------------------------------------
-void vtkImageShiftScale::RequestInformation (
+int vtkImageShiftScale::RequestInformation (
   vtkInformation * vtkNotUsed(request),
   vtkInformationVector ** vtkNotUsed( inputVector ), 
   vtkInformationVector * outputVector)
@@ -50,10 +48,9 @@ void vtkImageShiftScale::RequestInformation (
     vtkInformation* outInfo = outputVector->GetInformationObject(0);
     outInfo->Set(vtkDataObject::SCALAR_TYPE(),this->OutputScalarType);
     }
+
+  return 1;
 }
-
-
-
 
 //----------------------------------------------------------------------------
 // This templated function executes the filter for any type of data.

@@ -97,7 +97,7 @@ void vtkImageThreshold::ThresholdBetween(double lower, double upper)
 }
 
 //----------------------------------------------------------------------------
-void vtkImageThreshold::RequestInformation (
+int vtkImageThreshold::RequestInformation (
   vtkInformation * vtkNotUsed(request),
   vtkInformationVector **inputVector,
   vtkInformationVector *outputVector)
@@ -115,6 +115,8 @@ void vtkImageThreshold::RequestInformation (
     outInfo->Set(vtkDataObject::SCALAR_TYPE(),
                  inInfo->Get(vtkDataObject::SCALAR_TYPE()));
     }
+
+  return 1;
 }
 
 //----------------------------------------------------------------------------

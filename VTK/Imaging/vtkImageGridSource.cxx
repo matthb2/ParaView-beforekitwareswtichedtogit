@@ -51,7 +51,7 @@ vtkImageGridSource::vtkImageGridSource()
 }
 
 //----------------------------------------------------------------------------
-void vtkImageGridSource::RequestInformation (
+int vtkImageGridSource::RequestInformation (
   vtkInformation * vtkNotUsed(request),
   vtkInformationVector ** vtkNotUsed( inputVector ),
   vtkInformationVector *outputVector)
@@ -65,6 +65,8 @@ void vtkImageGridSource::RequestInformation (
                this->DataExtent,6);
   outInfo->Set(vtkDataObject::SCALAR_TYPE(),this->DataScalarType);
   outInfo->Set(vtkDataObject::SCALAR_NUMBER_OF_COMPONENTS(),1);
+
+  return 1;
 }
 
 //----------------------------------------------------------------------------
