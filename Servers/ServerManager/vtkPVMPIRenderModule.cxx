@@ -20,6 +20,7 @@
 #include "vtkPVTreeComposite.h"
 #include "vtkClientServerStream.h"
 #include "vtkPVServerInformation.h"
+#include "vtkPVOptions.h"
 
 
 //----------------------------------------------------------------------------
@@ -61,7 +62,7 @@ void vtkPVMPIRenderModule::SetProcessModule(vtkProcessModule *pm)
     pm->SendStream(vtkProcessModule::CLIENT|vtkProcessModule::RENDER_SERVER);
     }
 
-  if (this->ProcessModule->GetClientMode() || this->ProcessModule->GetServerMode())
+  if (this->ProcessModule->GetOptions()->GetClientMode() || this->ProcessModule->GetOptions()->GetServerMode())
     {
     this->Composite = NULL;
     this->CompositeID = pm->NewStreamObject("vtkClientCompositeManager");

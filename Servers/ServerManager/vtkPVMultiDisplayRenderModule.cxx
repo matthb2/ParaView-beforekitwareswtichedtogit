@@ -24,6 +24,7 @@
 #include "vtkTimerLog.h"
 #include "vtkClientServerStream.h"
 #include "vtkPVServerInformation.h"
+#include "vtkPVOptions.h"
 
 #define DUPLICATE_CODE 0
 
@@ -73,7 +74,7 @@ void vtkPVMultiDisplayRenderModule::SetProcessModule(vtkProcessModule *pm)
     << vtkClientServerStream::End;
   pm->SendStream(vtkProcessModule::CLIENT|vtkProcessModule::RENDER_SERVER);
 
-  if (this->ProcessModule->GetClientMode())
+  if (this->ProcessModule->GetOptions()->GetClientMode())
     {
     pm->GetStream()
       << vtkClientServerStream::Invoke

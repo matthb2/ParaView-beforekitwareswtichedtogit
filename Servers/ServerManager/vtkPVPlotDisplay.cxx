@@ -38,7 +38,7 @@
 #include "vtkPVArrayInformation.h"
 #include "vtkMPIMoveData.h"
 #include "vtkMath.h"
-
+#include "vtkPVOptions.h"
 
 //----------------------------------------------------------------------------
 vtkStandardNewMacro(vtkPVPlotDisplay);
@@ -147,7 +147,7 @@ void vtkPVPlotDisplay::CreateParallelTclObjects(vtkPVProcessModule *pm)
   pm->SendStream(vtkProcessModule::CLIENT);
   // if running in client mode
   // then set the server to be servermode
-  if(pm->GetClientMode())
+  if(pm->GetOptions()->GetClientMode())
     {
     pm->GetStream()
       << vtkClientServerStream::Invoke
@@ -156,7 +156,7 @@ void vtkPVPlotDisplay::CreateParallelTclObjects(vtkPVProcessModule *pm)
     pm->SendStream(vtkProcessModule::DATA_SERVER);
     }
   // if running in render server mode
-  if(pm->GetRenderServerMode())
+  if(pm->GetOptions()->GetRenderServerMode())
     {
     pm->GetStream()
       << vtkClientServerStream::Invoke
@@ -166,7 +166,7 @@ void vtkPVPlotDisplay::CreateParallelTclObjects(vtkPVProcessModule *pm)
     }  
   this->DuplicatePolyDataID = id;
     
-  if(pm->GetClientMode())
+  if(pm->GetOptions()->GetClientMode())
     {
     // We need this because the socket controller has no way of distinguishing
     // between processes.

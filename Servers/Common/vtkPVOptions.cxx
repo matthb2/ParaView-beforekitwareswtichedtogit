@@ -320,6 +320,8 @@ int vtkPVOptions::UnknownArgumentHandler(const char* argument, void* call_data)
 void vtkPVOptions::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os, indent);
+  os << indent << "UnknownArgument: " << (this->UnknownArgument?this->UnknownArgument:"(none)") << endl;
+  os << indent << "ErrorMessage: " << (this->ErrorMessage?this->ErrorMessage:"(none)") << endl;
 
   os << indent << "ServerMode: " << this->ServerMode << endl;
   os << indent << "RenderServerMode: " << this->RenderServerMode << endl;
@@ -352,9 +354,8 @@ void vtkPVOptions::PrintSelf(ostream& os, vtkIndent indent)
   os << indent << "HelpSelected: " << this->HelpSelected << endl;
   os << indent << "DisableComposite: " << this->DisableComposite << endl;
   os << indent << "ReverseConnection: " << this->ReverseConnection << endl;
-  os << indent << "UnknownArgument: " << (this->UnknownArgument?this->UnknownArgument:"(none)") << endl;
   os << indent << "GroupFileName: " << (this->GroupFileName?this->UnknownArgument:"(none)") << endl;
-  os << indent << "ErrorMessage: " << (this->ErrorMessage?this->ErrorMessage:"(none)") << endl;
+
 }
 
 //----------------------------------------------------------------------------

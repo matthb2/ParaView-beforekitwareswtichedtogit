@@ -35,6 +35,7 @@
 #include "vtkStructuredGrid.h"
 #include "vtkTimerLog.h"
 #include "vtkToolkits.h"
+#include "vtkPVOptions.h"
 
 //----------------------------------------------------------------------------
 vtkStandardNewMacro(vtkPVLODPartDisplay);
@@ -226,7 +227,7 @@ void vtkPVLODPartDisplay::CreateParallelTclObjects(vtkPVProcessModule *pm)
     << vtkClientServerStream::End;
   pm->SendStream(vtkProcessModule::CLIENT_AND_SERVERS);
 
-  if ( pm->GetNumberOfPartitions() == 1 && !pm->GetClientMode() )
+  if ( pm->GetNumberOfPartitions() == 1 && !pm->GetOptions()->GetClientMode() )
     {
     this->PointLabelMapperID = pm->NewStreamObject("vtkLabeledDataMapper");
     this->PointLabelActorID = pm->NewStreamObject("vtkActor2D");

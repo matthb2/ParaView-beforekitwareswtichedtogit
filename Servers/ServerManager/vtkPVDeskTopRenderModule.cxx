@@ -23,6 +23,7 @@
 #include "vtkCallbackCommand.h"
 #include "vtkClientServerStream.h"
 #include "vtkCompositeRenderManager.h"
+#include "vtkPVOptions.h"
 
 //----------------------------------------------------------------------------
 vtkStandardNewMacro(vtkPVDeskTopRenderModule);
@@ -103,7 +104,7 @@ void vtkPVDeskTopRenderModule::SetProcessModule(vtkProcessModule *pm)
     vtkRenderWindow::SafeDownCast(
       pvm->GetObjectFromID(this->RenderWindowID));
   
-  if (pvm->GetUseStereoRendering())
+  if (pvm->GetOptions()->GetUseStereoRendering())
     {
     this->RenderWindow->StereoCapableWindowOn();
     this->RenderWindow->StereoRenderOn();

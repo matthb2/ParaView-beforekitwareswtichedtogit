@@ -24,6 +24,7 @@
 #include "vtkClientServerStream.h"
 #include "vtkCompositeRenderManager.h"
 #include "vtkPVServerInformation.h"
+#include "vtkPVOptions.h"
 
 //----------------------------------------------------------------------------
 vtkStandardNewMacro(vtkPVIceTRenderModule);
@@ -102,7 +103,7 @@ void vtkPVIceTRenderModule::SetProcessModule(vtkProcessModule *pm)
     << "FullScreenOn" 
     << vtkClientServerStream::End;
 
-  if (pvm->GetUseStereoRendering())
+  if (pvm->GetOptions()->GetUseStereoRendering())
     {
     stream << vtkClientServerStream::Invoke << this->RenderWindowID 
       << "StereoCapableWindowOn" 
