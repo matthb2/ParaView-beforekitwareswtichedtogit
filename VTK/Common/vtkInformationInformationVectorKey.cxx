@@ -14,6 +14,8 @@
 =========================================================================*/
 #include "vtkInformationInformationVectorKey.h"
 
+#include "vtkInformationVector.h"
+
 vtkCxxRevisionMacro(vtkInformationInformationVectorKey, "$Revision$");
 
 //----------------------------------------------------------------------------
@@ -31,4 +33,24 @@ vtkInformationInformationVectorKey::~vtkInformationInformationVectorKey()
 void vtkInformationInformationVectorKey::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os, indent);
+}
+
+//----------------------------------------------------------------------------
+void vtkInformationInformationVectorKey::Set(vtkInformation* info,
+                                             vtkInformationVector* value)
+{
+  this->SetAsObjectBase(info, value);
+}
+
+//----------------------------------------------------------------------------
+vtkInformationVector*
+vtkInformationInformationVectorKey::Get(vtkInformation* info)
+{
+  return vtkInformationVector::SafeDownCast(this->GetAsObjectBase(info));
+}
+
+//----------------------------------------------------------------------------
+int vtkInformationInformationVectorKey::Has(vtkInformation* info)
+{
+  return vtkInformationVector::SafeDownCast(this->GetAsObjectBase(info))?1:0;
 }
