@@ -157,16 +157,30 @@ int vtkGenericAttributeCollection::FindAttribute(const char *name)
 {
   assert("pre: name_exists:" && name!=0);
 
+  int result=-1;
+  
+  const char *attributeName=0;
   int numAtt = this->GetNumberOfAttributes();
-  for( int i = 0; i < numAtt; ++i )
+  int i=0;
+  
+  while((i<numAtt)&&(result==-1))
     {
-    if( strcmp( this->GetAttribute(i)->GetName(), name ) == 0)
+    attributeName=this->GetAttribute(i)->GetName();
+    if(attributeName!=0)
       {
-      return i;
+      if(strcmp( attributeName, name ) == 0)
+        {
+        result=i;
+        }
       }
+    ++i;
     }
-
-  return -1;
+  
+  assert("post: valid_result" && ((result==-1) ||
+                                  ((result>=0) &&
+                                   (result<=this->GetNumberOfAttributes()))));
+ 
+  return result;
 }
 
 //----------------------------------------------------------------------------
