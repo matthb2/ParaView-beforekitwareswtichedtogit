@@ -242,7 +242,7 @@ int vtkDistributedStreamTracer::ProcessTask(float seed[3],
   vtkIntArray* streamIds = vtkIntArray::New();
   streamIds->SetNumberOfTuples(1);
   streamIds->SetName("Streamline Ids");
-  lastCellId = this->TmpOutputs.size() - 1;
+  lastCellId = static_cast<int>(this->TmpOutputs.size()) - 1;
   streamIds->SetComponent(0, 0, lastCellId);
   tmpOutput->GetCellData()->AddArray(streamIds);
   streamIds->Delete();
