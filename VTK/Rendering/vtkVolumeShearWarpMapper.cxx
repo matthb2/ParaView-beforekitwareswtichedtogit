@@ -679,8 +679,8 @@ void CompositeIntermediateNearestSimple(vtkShearWarpRLEImage *image, vtkVolumeSh
   int plane = dimensions[0]*dimensions[1];
   int halfDistance = myThis->ImageSampleDistance / 2;
 
-  float depthCueFactor;
-  float depthCueRatio;
+  //float depthCueFactor;
+  //float depthCueRatio;
 
   if (myThis->ReverseOrder)
   {
