@@ -65,7 +65,12 @@ vtkSMProperty* vtkSMProxyManager::NewProperty(vtkPVXMLElement* pelement)
   vtkSMProperty* property = vtkSMProperty::SafeDownCast(object);
   if (property)
     {
-    property->ReadXMLAttributes(pelement);
+    if (!property->ReadXMLAttributes(pelement))
+      {
+      vtkErrorMacro("Could not parse property: " << pelement->GetName());
+      property->Delete();
+      return 0;
+      }
     }
   else
     {

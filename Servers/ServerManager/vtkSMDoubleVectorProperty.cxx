@@ -282,6 +282,7 @@ void vtkSMDoubleVectorProperty::SaveState(
           << i << "\" " << "value=\"" << this->GetElement(i) << "\"/>"
           << endl;
     }
+  this->Superclass::SaveState(name, file, indent);
   *file << indent << "</Property>" << endl;
 }
 
