@@ -152,7 +152,7 @@ LRESULT PASCAL vtkWin32VideoSourceCapControlProc(HWND hwndC, int nState)
 LRESULT PASCAL vtkWin32VideoSourceCallbackProc(HWND hwndC, LPVIDEOHDR lpVHdr)
 {
   vtkWin32VideoSource *self = (vtkWin32VideoSource *)(capGetUserData(hwndC));
-  self->InternalGrab(lpVHdr);
+  self->LocalInternalGrab(lpVHdr);
 
   return 0;
 }
@@ -470,7 +470,7 @@ void vtkWin32VideoSource::OnParentWndDestroy()
 //----------------------------------------------------------------------------
 // copy the Device Independent Bitmap from the VFW framebuffer into the
 // vtkVideoSource framebuffer (don't do the unpacking yet)
-void vtkWin32VideoSource::InternalGrab(void* lpptr)
+void vtkWin32VideoSource::LocalInternalGrab(void* lpptr)
 {
   LPVIDEOHDR lpVHdr = static_cast<LPVIDEOHDR>(lpptr);
   // cerr << "Grabbed\n";
