@@ -865,7 +865,7 @@ void vtkPDataSetReader::Execute()
       {
       return;
       }
-    if (output->CheckAttributes())
+    if (data->CheckAttributes())
       {
       vtkErrorMacro("Attribute Mismatch.");
       return;
