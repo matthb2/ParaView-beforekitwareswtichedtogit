@@ -844,7 +844,7 @@ void vtkPLOT3DReader::Execute()
         nthOutput->SetPointVisibilityArray(this->IBlankCache[i]);
         }
       }
- }
+    }
 
   // Now read the solution.
   if (this->QFileName && this->QFileName[0] != '\0')
