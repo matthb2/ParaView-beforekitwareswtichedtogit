@@ -464,7 +464,7 @@ void vtkActor::PrintSelf(ostream& os, vtkIndent indent)
 
   if ( this->Texture )
     {
-    os << indent << "Texture: this->Texture\n";
+    os << indent << "Texture: " << this->Texture << "\n";
     }
   else
     {
