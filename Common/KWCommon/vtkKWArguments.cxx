@@ -40,6 +40,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #ifdef _MSC_VER
 #pragma warning (push, 1)
 #pragma warning (disable: 4702)
+#pragma warning (disable: 4503)
 #endif
 
 #include <vector>
