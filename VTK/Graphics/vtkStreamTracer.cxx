@@ -498,6 +498,10 @@ void vtkStreamTracer::InitializeSeeds(vtkDataArray*& seeds,
     seeds->SetNumberOfComponents(3);
     seeds->InsertNextTuple(this->StartPosition);
     seedIds->InsertNextId(0);
+    if (this->IntegrationDirection == BOTH)
+      {
+      seedIds->InsertNextId(0);
+      }
     }
 
   if (seeds)
