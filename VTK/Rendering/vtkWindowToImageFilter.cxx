@@ -160,7 +160,7 @@ void vtkWindowToImageFilter::ExecuteData(vtkDataObject *vtkNotUsed(data))
     cams[i]->GetWindowCenter(windowCenters+i*2);
     viewAngles[i] = cams[i]->GetViewAngle();
     parallelScale[i] = cams[i]->GetParallelScale();
-    cam = vtkCamera::New();
+    cam = cams[i]->NewInstance();
     cam->SetPosition(cams[i]->GetPosition());
     cam->SetFocalPoint(cams[i]->GetFocalPoint());    
     cam->SetViewUp(cams[i]->GetViewUp());
