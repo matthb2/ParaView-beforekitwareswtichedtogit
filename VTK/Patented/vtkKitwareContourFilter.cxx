@@ -67,7 +67,7 @@ int vtkKitwareContourFilter::RequestUpdateExtent(
     return 0;
     }
 
-  const char* inputObjectType = inInfo->Get(vtkDataObject::DATA_TYPE_NAME());
+  const char* inputObjectType = input->GetClassName();
 
   if ( !strcmp(inputObjectType, "vtkStructuredPoints") ||
        !strcmp(inputObjectType, "vtkImageData"))
