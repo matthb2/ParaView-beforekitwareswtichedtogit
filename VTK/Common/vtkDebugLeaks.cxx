@@ -13,8 +13,11 @@
 
 =========================================================================*/
 #include "vtkDebugLeaks.h"
-#include "vtkObjectFactory.h"
+
 #include "vtkCriticalSection.h"
+#include "vtkObjectFactory.h"
+#include "vtkWindows.h"
+
 #include <vtkstd/string>
 
 static const char *vtkDebugLeaksIgnoreClasses[] = {

@@ -16,6 +16,7 @@
 
 #include "vtkMutexLock.h"
 #include "vtkObjectFactory.h"
+#include "vtkWindows.h"
 
 vtkCxxRevisionMacro(vtkMultiThreader, "$Revision$");
 vtkStandardNewMacro(vtkMultiThreader);
@@ -38,10 +39,6 @@ vtkStandardNewMacro(vtkMultiThreader);
 extern "C" { typedef void *(*vtkExternCThreadFunctionType)(void *); }
 #else
 typedef vtkThreadFunctionType vtkExternCThreadFunctionType;
-#endif
-
-#ifdef VTK_USE_WIN32_THREADS
-# include "vtkWindows.h"
 #endif
 
 #ifdef __APPLE__
