@@ -245,4 +245,5 @@ void vtkKWRemoteExecute::PrintSelf(ostream& os, vtkIndent indent)
   os << indent << "SSHCommand: " << (this->SSHCommand?this->SSHCommand:"(none)") << endl;
   os << indent << "Result: " << this->Result << endl;
   os << indent << "SSHArguments: " << (this->SSHArguments?this->SSHArguments:"(none)") << endl;
+  os << indent << "SSHUser: " << (this->SSHUser?this->SSHUser:"(none)") << endl;
 }
