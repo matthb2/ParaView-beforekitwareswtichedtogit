@@ -18,6 +18,7 @@
 #include "vtkDataSetSurfaceFilter.h"
 #include "vtkGarbageCollector.h"
 #include "vtkObjectFactory.h"
+#include "vtkPolyData.h"
 #include "vtkPolyDataMapper.h"
 
 vtkCxxRevisionMacro(vtkDataSetMapper, "$Revision$");
@@ -109,7 +110,7 @@ void vtkDataSetMapper::Render(vtkRenderer *ren, vtkActor *act)
   //
   if ( this->GetInput()->GetDataObjectType() == VTK_POLY_DATA )
     {
-    this->PolyDataMapper->SetInput((vtkPolyData *)(this->GetInput()));
+    this->PolyDataMapper->SetInput(static_cast<vtkPolyData*>(this->GetInput()));
     }
   else
     {

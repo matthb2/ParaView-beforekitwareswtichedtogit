@@ -24,6 +24,7 @@
 #include "vtkPropCollection.h"
 #include "vtkProperty.h"
 #include "vtkRenderWindow.h"
+#include "vtkRenderer.h"
 #include "vtkTexture.h"
 #include "vtkTransform.h"
 
@@ -141,7 +142,7 @@ int vtkActor::GetIsOpaque()
 int vtkActor::RenderOpaqueGeometry(vtkViewport *vp)
 {
   int          renderedSomething = 0; 
-  vtkRenderer  *ren = (vtkRenderer *)vp;
+  vtkRenderer* ren = static_cast<vtkRenderer*>(vp);
 
   if ( ! this->Mapper )
     {
@@ -183,7 +184,7 @@ int vtkActor::RenderOpaqueGeometry(vtkViewport *vp)
 int vtkActor::RenderTranslucentGeometry(vtkViewport *vp)
 {
   int          renderedSomething = 0; 
-  vtkRenderer *ren = (vtkRenderer *)vp;
+  vtkRenderer* ren = static_cast<vtkRenderer*>(vp);
 
   if ( ! this->Mapper )
     {
