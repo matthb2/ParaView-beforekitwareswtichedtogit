@@ -203,7 +203,9 @@ METHODDEF(void)
 // we disable this warning because even though this is a C++ file, between
 // the setjmp and resulting longjmp there should not be any C++ constructors
 // or destructors.
+#if defined(_MSC_VER) && !defined(VTK_DISPLAY_WIN32_WARNINGS)
 #pragma warning ( disable : 4611 )
+#endif
 void vtkJPEGWriter::WriteSlice(vtkImageData *data)
 {
   // Call the correct templated function for the output
