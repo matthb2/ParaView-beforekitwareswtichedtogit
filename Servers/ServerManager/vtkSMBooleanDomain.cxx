@@ -53,6 +53,22 @@ int vtkSMBooleanDomain::IsInDomain(vtkSMProperty* property)
 }
 
 //---------------------------------------------------------------------------
+void vtkSMBooleanDomain::SetAnimationValue(vtkSMProperty* property,
+  int idx, double value)
+{
+  if (!property)
+    {
+    return;
+    }
+  vtkSMIntVectorProperty* ivp = 
+    vtkSMIntVectorProperty::SafeDownCast(property);
+  if (ivp)
+    {
+    ivp->SetElement(idx, static_cast<int>(value));
+    }
+}
+
+//---------------------------------------------------------------------------
 void vtkSMBooleanDomain::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os, indent);

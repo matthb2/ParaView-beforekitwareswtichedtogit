@@ -144,6 +144,12 @@ vtkSMDomain* vtkSMProperty::GetDomain(const char* name)
 }
 
 //---------------------------------------------------------------------------
+unsigned int vtkSMProperty::GetNumberOfDomains()
+{
+  return this->PInternals->Domains.size();
+}
+
+//---------------------------------------------------------------------------
 vtkSMDomainIterator* vtkSMProperty::NewDomainIterator()
 {
   vtkSMDomainIterator* iter = vtkSMDomainIterator::New();
