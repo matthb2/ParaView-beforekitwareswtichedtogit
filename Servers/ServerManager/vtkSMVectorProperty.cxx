@@ -32,11 +32,12 @@ vtkSMVectorProperty::~vtkSMVectorProperty()
 }
 
 //---------------------------------------------------------------------------
-int vtkSMVectorProperty::ReadXMLAttributes(vtkPVXMLElement* element)
+int vtkSMVectorProperty::ReadXMLAttributes(vtkSMProxy* parent, 
+                                           vtkPVXMLElement* element)
 {
   int retVal;
 
-  retVal = this->Superclass::ReadXMLAttributes(element);
+  retVal = this->Superclass::ReadXMLAttributes(parent, element);
   if (!retVal)
     {
     return retVal;

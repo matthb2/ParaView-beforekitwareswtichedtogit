@@ -12,56 +12,48 @@
      PURPOSE.  See the above copyright notice for more information.
 
 =========================================================================*/
-// .NAME vtkSMStringListDomain -
+// .NAME vtkSMDataTypeDomain -
 // .SECTION Description
 // .SECTION See Also
 // vtkSMDomain 
 
-#ifndef __vtkSMStringListDomain_h
-#define __vtkSMStringListDomain_h
+#ifndef __vtkSMDataTypeDomain_h
+#define __vtkSMDataTypeDomain_h
 
 #include "vtkSMDomain.h"
 
+class vtkSMSourceProxy;
 //BTX
-struct vtkSMStringListDomainInternals;
+struct vtkSMDataTypeDomainInternals;
 //ETX
 
-class VTK_EXPORT vtkSMStringListDomain : public vtkSMDomain
+class VTK_EXPORT vtkSMDataTypeDomain : public vtkSMDomain
 {
 public:
-  static vtkSMStringListDomain* New();
-  vtkTypeRevisionMacro(vtkSMStringListDomain, vtkSMDomain);
+  static vtkSMDataTypeDomain* New();
+  vtkTypeRevisionMacro(vtkSMDataTypeDomain, vtkSMDomain);
   void PrintSelf(ostream& os, vtkIndent indent);
 
   // Description:
-  // Returns true if the value of the property is in the domain.
-  // The propery has to be a vtkSMStringVectorProperty. If all 
-  // vector values are in the domain, it returns 1. It returns
-  // 0 otherwise.
+  // Returns true if the value of the propery is in the domain.
+  // The propery has to be a vtkSMProxyProperty which points
+  // to a vtkSMSourceProxy. If all data types of the input's
+  // parts are in the domain, it returns. It returns 0 otherwise.
   virtual int IsInDomain(vtkSMProperty* property);
 
   // Description:
-  // Returns true if the string is in the domain.
-  int IsInDomain(const char* string, unsigned int& idx);
+  // Returns true if all parts of the source proxy are in the domain.
+  int IsInDomain(vtkSMSourceProxy* proxy);
 
   // Description:
-  unsigned int GetNumberOfStrings();
+  unsigned int GetNumberOfDataTypes();
 
   // Description:
-  const char* GetString(unsigned int idx);
-
-  // Description:
-  void AddString(const char* string);
-
-  // Description:
-  void RemoveString(const char* string);
-
-  // Description:
-  void RemoveAllStrings();
+  const char* GetDataType(unsigned int idx);
 
 protected:
-  vtkSMStringListDomain();
-  ~vtkSMStringListDomain();
+  vtkSMDataTypeDomain();
+  ~vtkSMDataTypeDomain();
 
   // Description:
   // Set the appropriate ivars from the xml element. Should
@@ -70,11 +62,11 @@ protected:
 
   virtual void SaveState(const char* name, ofstream* file, vtkIndent indent);
 
-  vtkSMStringListDomainInternals* SLInternals;
+  vtkSMDataTypeDomainInternals* DTInternals;
 
 private:
-  vtkSMStringListDomain(const vtkSMStringListDomain&); // Not implemented
-  void operator=(const vtkSMStringListDomain&); // Not implemented
+  vtkSMDataTypeDomain(const vtkSMDataTypeDomain&); // Not implemented
+  void operator=(const vtkSMDataTypeDomain&); // Not implemented
 };
 
 #endif

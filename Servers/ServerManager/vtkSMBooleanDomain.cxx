@@ -48,12 +48,6 @@ int vtkSMBooleanDomain::IsInDomain(vtkSMProperty* property)
 }
 
 //---------------------------------------------------------------------------
-int vtkSMBooleanDomain::ReadXMLAttributes(vtkPVXMLElement* /*element*/)
-{
-  return 1;
-}
-
-//---------------------------------------------------------------------------
 void vtkSMBooleanDomain::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os, indent);

@@ -221,8 +221,10 @@ void vtkSMIntRangeDomain::SaveState(
 }
 
 //---------------------------------------------------------------------------
-int vtkSMIntRangeDomain::ReadXMLAttributes(vtkPVXMLElement* element)
+int vtkSMIntRangeDomain::ReadXMLAttributes(vtkSMProperty* prop, vtkPVXMLElement* element)
 {
+  this->Superclass::ReadXMLAttributes(prop, element);
+
   const int MAX_NUM = 128;
   int values[MAX_NUM];
 
