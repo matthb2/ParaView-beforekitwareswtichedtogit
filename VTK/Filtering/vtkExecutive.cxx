@@ -289,7 +289,11 @@ void vtkExecutive::ReportReferences(vtkGarbageCollector* collector)
 //----------------------------------------------------------------------------
 int vtkExecutive::Update()
 {
-  return this->Update(0);
+  if (this->Algorithm->GetNumberOfOutputPorts())
+    {
+    return this->Update(0);
+    }
+  return this->Update(-1);
 }
 
 //----------------------------------------------------------------------------
