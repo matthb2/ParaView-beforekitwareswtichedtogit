@@ -52,7 +52,8 @@ public:
     {
     ostream *out = reinterpret_cast<ostream *>(fd);
 
-    ios::seekdir dir;
+    streampos dir;
+    //ios::seekdir dir;
     switch (whence) 
       {
     case SEEK_SET:
