@@ -72,6 +72,13 @@ void vtkXMLPDataWriter::SetWriteSummaryFile(int flag)
 //----------------------------------------------------------------------------
 int vtkXMLPDataWriter::Write()
 {
+  // Make sure we have input.
+  if(!this->Inputs || !this->Inputs[0])
+    {
+    vtkErrorMacro("No input provided!");
+    return 0;
+    }
+  
   // Make sure we have a file to write.
   if(!this->FileName)
     {
