@@ -105,6 +105,8 @@ vtkGenericEnSightReader::vtkGenericEnSightReader()
                                             this->SelectionObserver);
   this->SelectionModifiedDoNotCallModified = 0;
   this->TranslationTable = new TranslationTableType;
+
+  this->SetNumberOfOutputPorts(0);
 }
 
 //----------------------------------------------------------------------------
