@@ -17,8 +17,10 @@
 vtkCxxRevisionMacro(vtkInformationKey, "$Revision$");
 
 //----------------------------------------------------------------------------
-vtkInformationKey::vtkInformationKey()
+vtkInformationKey::vtkInformationKey(const char* name, const char* location)
 {
+  this->Name = name;
+  this->Location = location;
 }
 
 //----------------------------------------------------------------------------
@@ -41,4 +43,16 @@ void vtkInformationKey::Register(vtkObjectBase*)
 //----------------------------------------------------------------------------
 void vtkInformationKey::UnRegister(vtkObjectBase*)
 {
+}
+
+//----------------------------------------------------------------------------
+const char* vtkInformationKey::GetName()
+{
+  return this->Name;
+}
+
+//----------------------------------------------------------------------------
+const char* vtkInformationKey::GetLocation()
+{
+  return this->Location;
 }

@@ -17,7 +17,8 @@
 vtkCxxRevisionMacro(vtkInformationIntegerVectorKey, "$Revision$");
 
 //----------------------------------------------------------------------------
-vtkInformationIntegerVectorKey::vtkInformationIntegerVectorKey()
+vtkInformationIntegerVectorKey::vtkInformationIntegerVectorKey(const char* name, const char* location):
+  vtkInformationKey(name, location)
 {
 }
 

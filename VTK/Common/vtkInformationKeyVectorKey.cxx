@@ -17,7 +17,8 @@
 vtkCxxRevisionMacro(vtkInformationKeyVectorKey, "$Revision$");
 
 //----------------------------------------------------------------------------
-vtkInformationKeyVectorKey::vtkInformationKeyVectorKey()
+vtkInformationKeyVectorKey::vtkInformationKeyVectorKey(const char* name, const char* location):
+  vtkInformationKey(name, location)
 {
 }
 
