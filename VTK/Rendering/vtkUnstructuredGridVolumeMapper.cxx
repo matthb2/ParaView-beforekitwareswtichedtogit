@@ -81,7 +81,7 @@ void vtkUnstructuredGridVolumeMapper::PrintSelf(ostream& os, vtkIndent indent)
 
 //----------------------------------------------------------------------------
 int vtkUnstructuredGridVolumeMapper::FillInputPortInformation(
-  int port, vtkInformation* info)
+  int vtkNotUsed( port ), vtkInformation* info)
 {
   info->Set(vtkAlgorithm::INPUT_REQUIRED_DATA_TYPE(), "vtkUnstructuredGrid");
   return 1;

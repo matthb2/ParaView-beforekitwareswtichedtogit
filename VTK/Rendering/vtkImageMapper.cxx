@@ -274,7 +274,8 @@ int vtkImageMapper::GetWholeZMax()
 }
 
 //----------------------------------------------------------------------------
-int vtkImageMapper::FillInputPortInformation(int port, vtkInformation* info)
+int vtkImageMapper::FillInputPortInformation(
+  int vtkNotUsed( port ), vtkInformation* info)
 {
   info->Set(vtkAlgorithm::INPUT_REQUIRED_DATA_TYPE(), "vtkImageData");
   return 1;

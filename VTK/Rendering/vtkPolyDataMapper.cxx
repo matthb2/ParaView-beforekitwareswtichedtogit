@@ -164,7 +164,8 @@ void vtkPolyDataMapper::PrintSelf(ostream& os, vtkIndent indent)
 }
 
 //----------------------------------------------------------------------------
-int vtkPolyDataMapper::FillInputPortInformation(int port, vtkInformation* info)
+int vtkPolyDataMapper::FillInputPortInformation(
+  int vtkNotUsed( port ), vtkInformation* info)
 {
   info->Set(vtkAlgorithm::INPUT_REQUIRED_DATA_TYPE(), "vtkPolyData");
   return 1;
