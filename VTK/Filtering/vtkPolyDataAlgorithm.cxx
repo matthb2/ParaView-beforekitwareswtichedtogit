@@ -60,7 +60,7 @@ vtkPolyData* vtkPolyDataAlgorithm::GetOutput(int port)
 //----------------------------------------------------------------------------
 vtkDataObject* vtkPolyDataAlgorithm::GetInput(int port)
 {
-  return this->GetExecutive()->GetInputData(this,port,0);
+  return this->GetExecutive()->GetInputData(port, 0);
 }
 
 //----------------------------------------------------------------------------

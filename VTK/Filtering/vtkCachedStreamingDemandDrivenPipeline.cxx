@@ -136,19 +136,6 @@ int vtkCachedStreamingDemandDrivenPipeline::Update(int port)
 }
 
 //----------------------------------------------------------------------------
-int vtkCachedStreamingDemandDrivenPipeline::Update(vtkAlgorithm* algorithm)
-{
-  return this->Superclass::Update(algorithm);
-}
-
-//----------------------------------------------------------------------------
-int vtkCachedStreamingDemandDrivenPipeline::Update(vtkAlgorithm* algorithm, int port)
-{
-  return this->Superclass::Update(algorithm, port);
-}
-
-
-//----------------------------------------------------------------------------
 int vtkCachedStreamingDemandDrivenPipeline::NeedToExecuteData(int outputPort)
 {
   // If no port is specified, check all ports.  This behavior is

@@ -350,7 +350,7 @@ void vtkDataObject::SetSource(vtkSource* newSource)
     int index = newSource->GetOutputIndex(this);
     if(index >= 0)
       {
-      newSource->GetExecutive()->SetOutputData(newSource, index, this);
+      newSource->GetExecutive()->SetOutputData(index, this);
       }
     else
       {

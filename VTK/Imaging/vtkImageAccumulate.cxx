@@ -120,7 +120,7 @@ vtkImageStencilData *vtkImageAccumulate::GetStencil()
     return 0;
     }
   return vtkImageStencilData::SafeDownCast(
-    this->GetExecutive()->GetInputData(this,1,0));
+    this->GetExecutive()->GetInputData(1, 0));
 }
 
 
