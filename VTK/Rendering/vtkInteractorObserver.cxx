@@ -41,7 +41,8 @@ vtkInteractorObserver::vtkInteractorObserver()
  
   this->CurrentRenderer = NULL;
 
-  this->Priority = 1.0;
+  this->Priority = 0.0;
+
   this->KeyPressActivation = 1;
   this->KeyPressActivationValue = 'i';
 }
