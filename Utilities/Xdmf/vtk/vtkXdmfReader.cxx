@@ -1028,7 +1028,7 @@ void vtkXdmfReader::ExecuteInformation()
     this->Internals->DataDescriptions[currentGrid] = grid->GetShapeDesc();
     Rank = this->Internals->DataDescriptions[currentGrid]->GetShape( Dimensions );
     int i;
-    for(i = Rank ; i < 3 ; i++)
+    for(i = Rank ; i < XDMF_MAX_DIMENSION ; i++)
       {
       Dimensions[i] = 1;
       }
