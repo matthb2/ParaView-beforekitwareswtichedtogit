@@ -95,6 +95,7 @@ void vtkTransmitPolyDataPiece::ExecuteInformation()
     vtkErrorMacro("Missing output");
     return;
     }
+  this->GetOutput()->CopyInformation(this->GetInput());
   this->GetOutput()->SetMaximumNumberOfPieces(-1);
 }
   
