@@ -336,7 +336,7 @@ char* vtkTesting::IncrementFileName(const char* fname, int count)
     {
     newFileName[marker] = counts[i];
     }
-  strncpy( newFileName + marker, ".png", 4 );
+  strcpy( newFileName + marker, ".png" );
   
   return newFileName;
 }
