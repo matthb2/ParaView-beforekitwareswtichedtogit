@@ -713,7 +713,7 @@ void vtkImplicitModeller::ExecuteInformation()
 
 
 //----------------------------------------------------------------------------
-void vtkImplicitModeller::ExecuteData(vtkDataObject *outp)
+void vtkImplicitModeller::ExecuteData(vtkDataObject *)
 {
   vtkDebugMacro(<< "Executing implicit model");
 
