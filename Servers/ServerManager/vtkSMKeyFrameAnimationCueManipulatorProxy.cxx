@@ -82,9 +82,18 @@ vtkSMKeyFrameAnimationCueManipulatorProxy::~vtkSMKeyFrameAnimationCueManipulator
 }
 
 //----------------------------------------------------------------------------
-void vtkSMKeyFrameAnimationCueManipulatorProxy::Initialize()
+void vtkSMKeyFrameAnimationCueManipulatorProxy::Initialize(vtkSMAnimationCueProxy*)
 {
   this->SendEndEvent = 1;
+}
+
+//----------------------------------------------------------------------------
+void vtkSMKeyFrameAnimationCueManipulatorProxy::Finalize(vtkSMAnimationCueProxy* cue)
+{
+  if (this->SendEndEvent)
+    {
+    this->UpdateValue(1.0, cue);
+    }
 }
 
 //----------------------------------------------------------------------------
