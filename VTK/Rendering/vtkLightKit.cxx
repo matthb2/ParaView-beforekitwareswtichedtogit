@@ -470,7 +470,7 @@ vtkLightKit::LightKitSubType vtkLightKit::GetSubType(vtkLightKit::LightKitType t
   const LightKitSubType BackLightSubType[4] = { Warmth, KBRatio, Elevation, Azimuth };
   const LightKitSubType HeadLightSubType[2] = { Warmth, KHRatio };
 
-  LightKitSubType subtype;
+  LightKitSubType subtype = Warmth; // please VS6
   switch(type)
     {
     case TKeyLight:
@@ -489,3 +489,4 @@ vtkLightKit::LightKitSubType vtkLightKit::GetSubType(vtkLightKit::LightKitType t
 
   return subtype;
 }
+
