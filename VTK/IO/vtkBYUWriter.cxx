@@ -126,7 +126,7 @@ void vtkBYUWriter::WriteData()
       errorMessage << this->DisplacementFileName << " ";
       }
     unlink(this->ScalarFileName);
-    errorMessage << this->ScalarFileName << endl;
+    errorMessage << this->ScalarFileName << ends;
     vtkErrorMacro( << errorMessage.str());
     errorMessage.rdbuf()->freeze(0);
     return;
@@ -150,7 +150,7 @@ void vtkBYUWriter::WriteData()
       errorMessage << this->ScalarFileName << " ";
       }
     unlink(this->TextureFileName);
-    errorMessage << this->TextureFileName << endl;
+    errorMessage << this->TextureFileName << ends;
     vtkErrorMacro( << errorMessage.str());
     errorMessage.rdbuf()->freeze(0);
     return;
