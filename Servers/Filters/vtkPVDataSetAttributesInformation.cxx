@@ -131,7 +131,7 @@ void vtkPVDataSetAttributesInformation::CopyFromDataSetAttributes(vtkDataSetAttr
   for (idx = 0; idx < num; ++idx)
     {
     array = da->GetArray(idx);
-    if (array->GetName() )
+    if (array->GetName() && strcmp(array->GetName(),"vtkGhostLevels") != 0)
       {
       vtkPVArrayInformation *info = vtkPVArrayInformation::New();
       info->CopyFromArray(array);
