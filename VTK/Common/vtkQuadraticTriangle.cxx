@@ -42,9 +42,6 @@ vtkQuadraticTriangle::vtkQuadraticTriangle()
   for (i = 0; i < 6; i++)
     {
     this->Points->SetPoint(i, 0.0, 0.0, 0.0);
-    }
-  for (i = 0; i < 6; i++)
-    {
     this->PointIds->SetId(i,0);
     }
   

@@ -37,12 +37,8 @@ vtkQuadraticEdge::vtkQuadraticEdge()
   for (i = 0; i < 3; i++)
     {
     this->Points->SetPoint(i, 0.0, 0.0, 0.0);
-    }
-  for (i = 0; i < 3; i++)
-    {
     this->PointIds->SetId(i,0);
     }
-  
 }
 
 vtkQuadraticEdge::~vtkQuadraticEdge()
