@@ -378,7 +378,7 @@ vtkIdType vtkMergeCells::AddNewCellsUnstructuredGrid(vtkDataSet *set,
   
   vtkCellArray *cellArray = NULL;
   vtkIdType *cells = NULL;
-  int *locs = NULL;
+  vtkIdType *locs = NULL;
   unsigned char *types = NULL;
 
   int numCells = 0;
