@@ -2508,6 +2508,8 @@ void vtkKdTree::PrintSelf(ostream& os, vtkIndent indent)
 
   //os << indent << "NumberOfUsers: " << this->NumberOfUsers << endl;
   //os << indent << "Users: " << this->Users << endl;
+  os << indent << "Level: " << this->Level << endl;
+  os << indent << "MaxLevel: " << this->MaxLevel << endl;
 
 }
 
