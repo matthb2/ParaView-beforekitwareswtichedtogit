@@ -364,10 +364,10 @@ int vtkGenericEnSightReader::DetermineEnSightVersion()
               } // end if IFile == NULL
           
             this->ReadBinaryLine(binaryLine);
+            binaryLine[80] = '\0';
             sscanf(binaryLine, " %*s %s", subLine);
             // If the file is ascii, there might not be a null
             // terminator. This leads to a UMR in sscanf
-            binaryLine[80] = '\0';
             if (strcmp(subLine, "Binary") == 0 ||
                 strcmp(subLine, "binary") == 0)
               {
