@@ -150,6 +150,11 @@ void vtkPKdTree::SetController(vtkMultiProcessController *c)
     this->Controller = NULL;
     }
 
+  if (c == NULL)
+    {
+    return;
+    }
+
   vtkSocketController *sc = vtkSocketController::SafeDownCast(c);
 
   if (sc)
