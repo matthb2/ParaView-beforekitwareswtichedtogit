@@ -17,7 +17,8 @@
 =========================================================================*/
 #include "vtkWin32VideoSource.h"
 #include "vtkObjectFactory.h"
-
+#include "vtkTimerLog.h"
+#include "vtkCriticalSection.h"
 #include <ctype.h>
 
 // VFW compressed formats are listed at http://www.webartz.com/fourcc/
