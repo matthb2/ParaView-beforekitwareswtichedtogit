@@ -843,9 +843,6 @@ void vtkOpenGLFreeTypeTextMapper::RenderOverlay(vtkViewport* viewport,
     glOrtho(0, vsize[0] - 1, 0, vsize[1] - 1, -1, 0);
     }
 
-  int front = 
-    (actor->GetProperty()->GetDisplayLocation() == VTK_FOREGROUND_LOCATION);
-
   int *winSize = viewport->GetVTKWindow()->GetSize();
 
   int xoff = static_cast<int>(pos[0] - winSize[0] * (visVP[0] - vport[0]));
