@@ -17,9 +17,11 @@
 =========================================================================*/
 #include "vtkWin32VideoSource.h"
 
+#include "vtkCriticalSection.h"
 #include "vtkObjectFactory.h"
 #include "vtkTimerLog.h"
-#include "vtkCriticalSection.h"
+#include "vtkUnsignedCharArray.h"
+
 #include <ctype.h>
 
 #include <windows.h>
