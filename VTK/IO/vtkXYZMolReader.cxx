@@ -80,7 +80,7 @@ char* vtkXYZMolReader::GetNextLine(FILE* fp, char* line, int maxlen)
       //cout << "Problem when reading. EOF?" << endl;
       return 0;
       }
-    len = strlen(line);
+    len = static_cast<int>(strlen(line));
     for ( cc = 0; cc < len; cc ++ )
       {
       int ch = line[cc];
@@ -101,7 +101,7 @@ char* vtkXYZMolReader::GetNextLine(FILE* fp, char* line, int maxlen)
     } 
   while ( comment );
   //cout << "Have line that is not a comment: [" << line << "]" << endl;
-  len = strlen(line);
+  len = static_cast<int>(strlen(line));
   int ft = 0;
   ptr = line;
   for ( cc = 0; cc < len; cc ++ )
