@@ -954,6 +954,7 @@ void vtkUnstructuredGrid::RemoveGhostCells(int level)
   if (temp == NULL)
     {
     vtkDebugMacro("Could not find cell ghost level array.");
+    newGrid->Delete();
     return;
     }
   if ( (temp->GetDataType() != VTK_UNSIGNED_CHAR)
@@ -961,6 +962,7 @@ void vtkUnstructuredGrid::RemoveGhostCells(int level)
        || (temp->GetNumberOfTuples() < this->GetNumberOfCells()))
     {
     vtkErrorMacro("Poorly formed ghost level array.");
+    newGrid->Delete();
     return;
     }
   cellGhostLevels =((vtkUnsignedCharArray*)temp)->GetPointer(0);
