@@ -44,7 +44,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "vtkUnstructuredGrid.h"
 #include "vtkStructuredGrid.h"
 #include "vtkRectilinearGrid.h"
-#include "vtkStructuredPoints.h"
+#include "vtkImageData.h"
 #include "vtkFloatArray.h"
 #include <ctype.h>
 
@@ -103,11 +103,13 @@ int vtkEnSightGoldReader::ReadGeometryFile()
   // Skip the 2 description lines.
   this->ReadNextDataLine(line);
   sscanf(line, " %*s %s", subLine);
-  if (strcmp(subLine, "binary") == 0)
+  if (strcmp(subLine, "Binary") == 0)
     {
-    vtkErrorMacro("Reading binary files is not implemented yet.");
+    vtkErrorMacro("This is a binary data set. Try "
+                  <<"vtkEnSightGoldBinaryReader.");
     return 0;
     }
+  
   this->ReadNextDataLine(line);
   // Skip the node id and element id lines.
   this->ReadNextDataLine(line);
@@ -143,7 +145,7 @@ int vtkEnSightGoldReader::ReadGeometryFile()
         else if (strcmp(subLine, "uniform") == 0)
           {
           // block uniform
-          lineRead = this->CreateStructuredPointsOutput(partId, line);
+          lineRead = this->CreateImageDataOutput(partId, line);
           }
         else
           {
@@ -1426,8 +1428,7 @@ int vtkEnSightGoldReader::CreateRectilinearGridOutput(int partId,
 }
 
 //----------------------------------------------------------------------------
-int vtkEnSightGoldReader::CreateStructuredPointsOutput(int partId,
-                                                       char line[256])
+int vtkEnSightGoldReader::CreateImageDataOutput(int partId, char line[256])
 {
   char subLine[256];
   int lineRead = 1;
@@ -1439,10 +1440,10 @@ int vtkEnSightGoldReader::CreateStructuredPointsOutput(int partId,
   
   if (this->GetOutput(partId) == NULL)
     {
-    vtkDebugMacro("creating new structured grid output");
-    vtkStructuredPoints* spoints = vtkStructuredPoints::New();
-    this->SetNthOutput(partId, spoints);
-    spoints->Delete();
+    vtkDebugMacro("creating new image data output");
+    vtkImageData* idata = vtkImageData::New();
+    this->SetNthOutput(partId, idata);
+    idata->Delete();
     }
   
   if (sscanf(line, " %*s %*s %s", subLine) == 1)
@@ -1455,23 +1456,21 @@ int vtkEnSightGoldReader::CreateStructuredPointsOutput(int partId,
 
   this->ReadNextDataLine(line);
   sscanf(line, " %d %d %d", &dimensions[0], &dimensions[1], &dimensions[2]);
-  ((vtkStructuredPoints*)this->GetOutput(partId))->SetDimensions(dimensions);
-  ((vtkStructuredPoints*)this->GetOutput(partId))->
+  ((vtkImageData*)this->GetOutput(partId))->SetDimensions(dimensions);
+  ((vtkImageData*)this->GetOutput(partId))->
     SetWholeExtent(0, dimensions[0]-1, 0, dimensions[1]-1, 0, dimensions[2]-1);
   this->ReadNextDataLine(line);
   sscanf(line, " %f %f %f", &origin[0], &origin[1], &origin[2]);
-  ((vtkStructuredPoints*)this->GetOutput(partId))->SetOrigin(origin[0],
-                                                             origin[1],
-                                                             origin[2]);
+  ((vtkImageData*)this->GetOutput(partId))->SetOrigin(origin[0], origin[1],
+                                                      origin[2]);
   this->ReadNextDataLine(line);
   sscanf(line, " %f %f %f", &delta[0], &delta[1], &delta[2]);
-  ((vtkStructuredPoints*)this->GetOutput(partId))->SetSpacing(delta[0],
-                                                              delta[1],
-                                                              delta[2]);
+  ((vtkImageData*)this->GetOutput(partId))->SetSpacing(delta[0], delta[1],
+                                                       delta[2]);
   
   if (iblanked)
     {
-    vtkWarningMacro("VTK does not handle blanking for structured points.");
+    vtkWarningMacro("VTK does not handle blanking for image data.");
     numPts = dimensions[0] * dimensions[1] * dimensions[2];
     for (i = 0; i < numPts; i++)
       {
