@@ -2459,6 +2459,62 @@ void vtkMath::HSVToRGB(double h, double s, double v,
 }
 
 //----------------------------------------------------------------------------
+void vtkMath::ClampValues(double *values, 
+                          int nb_values, 
+                          const double range[2])
+{
+  if (!values || nb_values <= 0 || !range)
+    {
+    return;
+    }
+
+  const double *values_end = values + nb_values;
+  while (values < values_end)
+    {
+    if (*values < range[0])
+      {
+      *values = range[0];
+      }
+    else if (*values > range[1])
+      {
+      *values = range[1];
+      }
+    values++;
+    }
+}
+
+//----------------------------------------------------------------------------
+void vtkMath::ClampValues(const double *values, 
+                          int nb_values, 
+                          const double range[2],
+                          double *clamped_values)
+{
+  if (!values || nb_values <= 0 || !range || !clamped_values)
+    {
+    return;
+    }
+
+  const double *values_end = values + nb_values;
+  while (values < values_end)
+    {
+    if (*values < range[0])
+      {
+      *clamped_values = range[0];
+      }
+    else if (*values > range[1])
+      {
+      *clamped_values = range[1];
+      }
+    else
+      {
+      *clamped_values = *values;
+      }
+    values++;
+    clamped_values++;
+    }
+}
+
+//----------------------------------------------------------------------------
 void vtkMath::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os,indent);
