@@ -16,7 +16,9 @@
 
 =========================================================================*/
 #include "vtkWriter.h"
+
 #include "vtkCommand.h"
+#include "vtkDataObject.h"
 
 vtkCxxRevisionMacro(vtkWriter, "$Revision$");
 
