@@ -104,6 +104,8 @@ vtkParallelRenderManager::vtkParallelRenderManager()
   this->FullImageUpToDate = 0;
   this->ReducedImageUpToDate = 0;
   this->RenderWindowImageUpToDate = 0;
+  this->FullImageSize[0] = 0;
+  this->FullImageSize[1] = 0;
 
   this->Viewports = vtkDoubleArray::New();
   this->Viewports->SetNumberOfComponents(4);
