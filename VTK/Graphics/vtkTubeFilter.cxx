@@ -504,6 +504,8 @@ void vtkTubeFilter::PrintSelf(ostream& os, vtkIndent indent)
 
   os << indent << "Use Default Normal: " 
      << (this->UseDefaultNormal ? "On\n" : "Off\n");
+  os << indent << "Sides Share Vertices: " 
+     << (this->SidesShareVertices ? "On\n" : "Off\n");
   os << indent << "Default Normal: " << "( " << this->DefaultNormal[0] <<
      ", " << this->DefaultNormal[1] << ", " << this->DefaultNormal[2] <<
      " )\n";
