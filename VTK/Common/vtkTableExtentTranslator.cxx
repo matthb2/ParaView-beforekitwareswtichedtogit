@@ -161,7 +161,7 @@ vtkTableExtentTranslator::PieceToExtentThreadSafe(int piece, int numPieces,
                                                   int ghostLevel, 
                                                   int *wholeExtent, 
                                                   int *resultExtent, 
-                                                  int splitMode, 
+                                                  int vtkNotUsed(splitMode), 
                                                   int byPoints)
 {
   if (byPoints)
