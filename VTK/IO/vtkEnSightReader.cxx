@@ -82,7 +82,6 @@ vtkEnSightReader::vtkEnSightReader()
   this->NumberOfGeometryParts = 0;
 
   this->NumberOfMeasuredPoints = 0;
-  this->MeasuredNodeIds = vtkIdList::New();
   
   this->OutputsAreValid = 1;
   this->InitialRead = 1;
@@ -134,9 +133,6 @@ vtkEnSightReader::~vtkEnSightReader()
   this->UnstructuredPartIds->Delete();
   this->UnstructuredPartIds = NULL;  
     
-  this->MeasuredNodeIds->Delete();
-  this->MeasuredNodeIds = NULL;
-  
   this->VariableTimeSetIds->Delete();
   this->VariableTimeSetIds = NULL;
   this->ComplexVariableTimeSetIds->Delete();
