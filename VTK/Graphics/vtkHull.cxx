@@ -266,7 +266,8 @@ void  vtkHull::SetPlanes( vtkPlanes *planes )
       {
       for (i=0; i<planes->GetNumberOfPlanes(); i++)
         {
-        float *point = points->GetPoint(i);
+        float point[3];
+        points->GetPoint(i, point);
         if ( (idx=this->AddPlane(normals->GetTuple(i))) >= 0)
           { 
           idx *= 4;

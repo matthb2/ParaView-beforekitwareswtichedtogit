@@ -285,7 +285,7 @@ int vtkTubeFilter::GeneratePoints(vtkIdType offset,
   float sNext[3];
   float sPrev[3];
   float startCapNorm[3], endCapNorm[3];
-  float *n;
+  float n[3];
   float s[3];
   double bevelAngle;
   float w[3];
@@ -335,7 +335,7 @@ int vtkTubeFilter::GeneratePoints(vtkIdType offset,
         }
       }
 
-    n = inNormals->GetTuple(pts[j]);
+    inNormals->GetTuple(pts[j], n);
 
     if ( vtkMath::Normalize(sNext) == 0.0 )
       {

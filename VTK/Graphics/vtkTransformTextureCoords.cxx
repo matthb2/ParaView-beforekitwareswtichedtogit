@@ -67,7 +67,7 @@ void vtkTransformTextureCoords::Execute()
   int i, j, texDim;
   vtkTransform *transform;
   vtkMatrix4x4 *matrix;
-  float *TC, newTC[3];
+  float TC[3], newTC[3];
 
   vtkDebugMacro(<<"Transforming texture coordinates...");
 
@@ -132,7 +132,7 @@ void vtkTransformTextureCoords::Execute()
       abort = this->GetAbortExecute();
       }
 
-    TC = inTCoords->GetTuple(ptId);
+    inTCoords->GetTuple(ptId, TC);
     for (i=0; i<texDim; i++)
       {
       newTC[i] = matrix->Element[i][3];

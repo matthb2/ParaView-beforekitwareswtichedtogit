@@ -118,7 +118,7 @@ void vtkMassProperties::Execute()
   vtkIdList *ptIds;
   vtkPolyData *input = this->GetInput();
   vtkIdType cellId, numCells, numPts, numIds;
-  float *p;
+  float p[3];
   
   numCells=input->GetNumberOfCells();
   numPts = input->GetNumberOfPoints();
@@ -169,7 +169,7 @@ void vtkMassProperties::Execute()
     //
     for (idx=0; idx < numIds; idx++)
       {
-      p = input->GetPoint(ptIds->GetId(idx));
+      input->GetPoint(ptIds->GetId(idx), p);
       x[idx] = p[0]; y[idx] = p[1]; z[idx] = p[2];
       }
 

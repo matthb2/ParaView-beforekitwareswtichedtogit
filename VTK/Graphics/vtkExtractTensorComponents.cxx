@@ -60,7 +60,7 @@ vtkExtractTensorComponents::vtkExtractTensorComponents()
 void vtkExtractTensorComponents::Execute()
 {
   vtkDataArray *inTensors;
-  float *tensor;
+  float tensor[9];
   vtkDataSet *input = this->GetInput();
   vtkPointData *pd = input->GetPointData();
   vtkPointData *outPD = this->GetOutput()->GetPointData();
@@ -133,7 +133,7 @@ void vtkExtractTensorComponents::Execute()
   //
   for (ptId=0; ptId < numPts; ptId++)
     {
-    tensor = inTensors->GetTuple(ptId);
+    inTensors->GetTuple(ptId, tensor);
 
     if ( this->ExtractScalars )
       {

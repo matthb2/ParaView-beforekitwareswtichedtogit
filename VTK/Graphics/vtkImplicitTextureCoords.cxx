@@ -54,7 +54,7 @@ void vtkImplicitTextureCoords::Execute()
   int tcoordDim;
   vtkFloatArray *newTCoords;
   float min[3], max[3], scale[3];
-  float tCoord[3], *tc, *x;
+  float tCoord[3], tc[3], x[3];
   int i;
   vtkDataSet *input = this->GetInput();
   vtkDataSet *output = this->GetOutput();
@@ -113,7 +113,7 @@ void vtkImplicitTextureCoords::Execute()
     }
   for (ptId=0; ptId<numPts; ptId++) //compute texture coordinates
     {
-    x = input->GetPoint(ptId);
+    input->GetPoint(ptId, x);
     tCoord[0] = this->RFunction->FunctionValue(x);
     if ( this->SFunction )
       {
@@ -175,7 +175,7 @@ void vtkImplicitTextureCoords::Execute()
     }
   for (ptId=0; ptId<numPts; ptId++)
     {
-    tc = newTCoords->GetTuple(ptId);
+     newTCoords->GetTuple(ptId, tc);
     for (i=0; i<tcoordDim; i++)
       {
       tCoord[i] = 0.5 + scale[i] * tc[i];

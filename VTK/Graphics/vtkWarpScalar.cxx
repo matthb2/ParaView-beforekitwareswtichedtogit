@@ -72,7 +72,7 @@ void vtkWarpScalar::Execute()
   vtkPointData *pd;
   int i;
   vtkIdType ptId, numPts;
-  float *x, *n, s, newX[3];
+  float x[3], *n, s, newX[3];
   vtkPointSet *input = this->GetInput();
   vtkPointSet *output = this->GetOutput();
   
@@ -126,7 +126,7 @@ void vtkWarpScalar::Execute()
         }
       }
 
-    x = inPts->GetPoint(ptId);
+    inPts->GetPoint(ptId, x);
     n = (this->*(this->PointNormal))(ptId,inNormals);
     if ( this->XYPlane )
       {

@@ -70,7 +70,7 @@ void vtkOBBDicer::BuildTree(vtkIdList *ptIds, vtkOBBNode *OBBptr)
     RHlist->Allocate(numPts/2);
     LHnode->Parent = OBBptr;
     RHnode->Parent = OBBptr;
-    float n[3], p[3], *x, val;
+    float n[3], p[3], x[3], val;
 
     //split the longest axis down the middle
     for (i=0; i < 3; i++) //compute split point
@@ -90,7 +90,7 @@ void vtkOBBDicer::BuildTree(vtkIdList *ptIds, vtkOBBNode *OBBptr)
     for ( i=0; i < numPts; i++ )
       {
       ptId = ptIds->GetId(i);
-      x = input->GetPoint(ptId);
+      input->GetPoint(ptId, x);
       val = n[0]*(x[0]-p[0]) + n[1]*(x[1]-p[1]) + n[2]*(x[2]-p[2]);
 
       if ( val < 0.0 ) 

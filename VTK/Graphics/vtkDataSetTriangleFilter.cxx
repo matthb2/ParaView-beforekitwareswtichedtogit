@@ -199,7 +199,7 @@ void vtkDataSetTriangleFilter::UnstructuredExecute()
   int numPts, type;
   int numSimplices, dim;
   vtkIdType pts[4];
-  float *xPtr;
+  float x[3];
 
   if (numCells == 0)
     {
@@ -239,8 +239,8 @@ void vtkDataSetTriangleFilter::UnstructuredExecute()
       for (p=pPtr, j=0; j<numPts; j++, p+=3)
         {
         ptId = cell->PointIds->GetId(j);
-        xPtr = cell->Points->GetPoint(j);
-        this->Triangulator->InsertPoint(ptId, xPtr, p, 0);
+        cell->Points->GetPoint(j, x);
+        this->Triangulator->InsertPoint(ptId, x, p, 0);
         }//for all cell points
       if ( cell->IsPrimaryCell() ) //use templates if topology is fixed
         {

@@ -52,7 +52,7 @@ void vtkElevationFilter::Execute()
   vtkIdType numPts, i;
   int j;
   vtkFloatArray *newScalars;
-  float l, *x, s, v[3];
+  float l, x[3], s, v[3];
   float diffVector[3], diffScalar;
   vtkDataSet *input = this->GetInput();
   int abort=0;
@@ -100,7 +100,7 @@ void vtkElevationFilter::Execute()
       abort = this->GetAbortExecute();
       }
 
-    x = input->GetPoint(i);
+    input->GetPoint(i, x);
     for (j=0; j<3; j++)
       {
       v[j] = x[j] - this->LowPoint[j];

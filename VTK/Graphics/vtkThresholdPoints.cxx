@@ -79,7 +79,7 @@ void vtkThresholdPoints::Execute()
   vtkPointData *pd, *outPD;
   vtkCellArray *verts;
   vtkIdType ptId, numPts, pts[1];
-  float *x;
+  float x[3];
   vtkDataSet *input = this->GetInput();
   vtkPolyData *output = this->GetOutput();
 
@@ -114,7 +114,7 @@ void vtkThresholdPoints::Execute()
 
     if ( (this->*(this->ThresholdFunction))(inScalars->GetComponent(ptId,0)) ) 
       {
-      x = input->GetPoint(ptId);
+      input->GetPoint(ptId, x);
       pts[0] = newPoints->InsertNextPoint(x);
       outPD->CopyData(pd,ptId,pts[0]);
       verts->InsertNextCell(1,pts);

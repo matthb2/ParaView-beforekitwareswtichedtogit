@@ -52,7 +52,7 @@ void vtkRotationalExtrusionFilter::Execute()
   vtkIdType *pts = 0;
   vtkIdType npts = 0;
   vtkIdType cellId, ptId, ncells;
-  float *x, newX[3], radius, angleIncr, radIncr, transIncr;
+  float x[3], newX[3], radius, angleIncr, radIncr, transIncr;
   float psi, theta;
   vtkPoints *newPts;
   vtkCellArray *newLines=NULL, *newPolys=NULL, *newStrips=NULL;
@@ -130,7 +130,7 @@ void vtkRotationalExtrusionFilter::Execute()
     this->UpdateProgress(0.1 + 0.5*(i-1)/this->Resolution);
     for (ptId=0; ptId < numPts; ptId++)
       {
-      x = inPts->GetPoint(ptId);
+      inPts->GetPoint(ptId, x);
       //convert to cylindrical
       radius = sqrt(x[0]*x[0] + x[1]*x[1]);
       if (radius > 0.0)

@@ -57,7 +57,7 @@ void vtkExtractEdges::Execute()
   int i, abort = 0;
   vtkIdType pts[2];
   vtkIdType pt1 = 0, pt2;
-  float *x;
+  float x[3];
   vtkEdgeTable *edgeTable;
   vtkGenericCell *cell;
   vtkCell *edge;
@@ -133,12 +133,12 @@ void vtkExtractEdges::Execute()
           {
           pt1 = edgeIds->GetId(2*i);
           pt2 = edgeIds->GetId(2*i+1);
-          x = edgePts->GetPoint(2*i);
+          edgePts->GetPoint(2*i, x);
           if ( this->Locator->InsertUniquePoint(x, pts[0]) )
             {
             outPD->CopyData (pd,pt1,pts[0]);
             }
-          x = edgePts->GetPoint(2*i+1);
+          edgePts->GetPoint(2*i+1, x);
           if ( this->Locator->InsertUniquePoint(x, pts[1]) )
             {
             outPD->CopyData (pd,pt2,pts[1]);
@@ -160,7 +160,7 @@ void vtkExtractEdges::Execute()
         for ( i=0; i < numEdgePts; i++, pt1=pt2, pts[0]=pts[1] )
           {
           pt2 = edgeIds->GetId(i);
-          x = edgePts->GetPoint(i);
+          edgePts->GetPoint(i, x);
           if ( this->Locator->InsertUniquePoint(x, pts[1]) )
             {
             outPD->CopyData (pd,pt2,pts[1]);
