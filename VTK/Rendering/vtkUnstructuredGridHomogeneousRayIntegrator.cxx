@@ -172,10 +172,10 @@ void vtkUnstructuredGridHomogeneousRayIntegrator::Initialize(vtkVolume *volume,
 //-----------------------------------------------------------------------------
 
 void vtkUnstructuredGridHomogeneousRayIntegrator::Integrate(
-                                            vtkDoubleArray *intersectionLengths,
-                                            vtkDataArray *nearIntersections,
-                                            vtkDataArray *farIntersections,
-                                            float color[4])
+                                     vtkDoubleArray *intersectionLengths,
+                                     vtkDataArray *nearIntersections,
+                                     vtkDataArray *vtkNotUsed(farIntersections),
+                                     float color[4])
 {
   vtkIdType numIntersections = intersectionLengths->GetNumberOfTuples();
 
