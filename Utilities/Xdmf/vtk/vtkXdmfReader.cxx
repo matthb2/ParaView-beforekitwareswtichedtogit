@@ -1234,7 +1234,7 @@ int vtkXdmfReader::RequestInformation(
       // Put this here so that GetOutput 
       // does not call ExecuteInformation again.
       this->OutputsInitialized = 1;
-      if ( this->GetNumberOfOutputPorts() <= idx || outInfo->Get(vtkDataObject::DATA_TYPE_NAME()) != vGrid->GetClassName() )
+      if ( this->GetNumberOfOutputPorts() <= idx || this->GetOutput(idx)->GetClassName() != vGrid->GetClassName() )
         {
         if ( this->GetNumberOfOutputPorts() > idx && this->GetOutput(idx) )
           {
