@@ -142,12 +142,19 @@ int vtkDirectory::Open(const char* name)
   return _findclose(srchHandle) != -1;
 }
 
+const char* vtkDirectory::GetCurrentWorkingDirectory(char* buf, 
+                                                     unsigned int len)
+{
+  return _getcwd(buf, len);
+}
+
 #else
 
 // Now the POSIX style directory access
 
 #include <sys/types.h>
 #include <dirent.h>
+#include <unistd.h>
 
 int vtkDirectory::Open(const char* name)
 {
@@ -180,6 +187,12 @@ int vtkDirectory::Open(const char* name)
   this->Path = strcpy(new char[strlen(name)+1], name);
   closedir(dir);
   return 1;
+}
+
+const char* vtkDirectory::GetCurrentWorkingDirectory(char* buf, 
+                                                     unsigned int len)
+{
+  return getcwd(buf, len);
 }
 
 #endif
