@@ -257,6 +257,19 @@ vtkUnsignedCharArray *vtkMapper::MapScalars(float alpha)
   return this->Colors;
 }
 
+
+void vtkMapper::SelectColorArray(int arrayNum)
+{
+  this->ColorByArrayComponent(arrayNum, -1);
+}
+ 
+
+void vtkMapper::SelectColorArray(const char* arrayName)
+{
+  this->ColorByArrayComponent(arrayName, -1);
+}
+
+
 void vtkMapper::ColorByArrayComponent(int arrayNum, int component)
 {
   if (this->ArrayId == arrayNum && component == this->ArrayComponent &&
