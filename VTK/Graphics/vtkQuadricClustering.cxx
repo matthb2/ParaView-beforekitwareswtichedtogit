@@ -1330,3 +1330,4 @@ void vtkQuadricClustering::PrintSelf(ostream& os, vtkIndent indent)
   os << indent << "UseFeaturePoints: " << this->UseFeaturePoints << endl;
   os << indent << "CopyCellData : " << this->CopyCellData << endl;
 }
+
