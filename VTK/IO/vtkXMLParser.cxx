@@ -254,6 +254,12 @@ int vtkXMLParser::ParseXML()
         }
       }
     }
+  
+  // Clear the fail and eof bits on the input stream so we can later
+  // seek back to read data.
+  this->Stream->clear(this->Stream->rdstate() & ~ios::eofbit);
+  this->Stream->clear(this->Stream->rdstate() & ~ios::failbit);
+  
   return 1;
 }
 
