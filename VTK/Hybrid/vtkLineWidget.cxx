@@ -491,12 +491,6 @@ void vtkLineWidget::OnLeftButtonUp()
   this->EndInteraction();
   this->InvokeEvent(vtkCommand::EndInteractionEvent,NULL);
 
-  vtkRenderWindow *renWin = this->Interactor->GetRenderWindow();
-  if (renWin)
-    {
-    renWin->SetDesiredUpdateRate(this->Interactor->GetStillUpdateRate());
-    }
-
   this->Interactor->Render();
 }
 
