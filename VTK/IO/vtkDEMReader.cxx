@@ -18,6 +18,7 @@
 #include "vtkInformationVector.h"
 #include "vtkObjectFactory.h"
 #include "vtkStreamingDemandDrivenPipeline.h"
+#include "vtkPointData.h"
 
 vtkCxxRevisionMacro(vtkDEMReader, "$Revision$");
 vtkStandardNewMacro(vtkDEMReader);
@@ -158,6 +159,9 @@ void vtkDEMReader::RequestData(
     //
     this->ReadProfiles (output);
     }
+
+  // Name the scalars.
+  output->GetPointData()->GetScalars()->SetName("Elevation");
 }
 
 int vtkDEMReader::ReadTypeARecord ()
