@@ -134,10 +134,17 @@ void vtkLookupTable::ForceBuild()
 
   int maxIndex = this->NumberOfColors - 1;
 
-  hinc = (this->HueRange[1] - this->HueRange[0])/maxIndex;
-  sinc = (this->SaturationRange[1] - this->SaturationRange[0])/maxIndex;
-  vinc = (this->ValueRange[1] - this->ValueRange[0])/maxIndex;
-  ainc = (this->AlphaRange[1] - this->AlphaRange[0])/maxIndex;
+  if( maxIndex )
+    {
+    hinc = (this->HueRange[1] - this->HueRange[0])/maxIndex;
+    sinc = (this->SaturationRange[1] - this->SaturationRange[0])/maxIndex;
+    vinc = (this->ValueRange[1] - this->ValueRange[0])/maxIndex;
+    ainc = (this->AlphaRange[1] - this->AlphaRange[0])/maxIndex;
+    }
+  else
+    {
+    hinc = sinc = vinc = ainc = 0.0; 
+    }
 
   for (i = 0; i <= maxIndex; i++) 
     {
