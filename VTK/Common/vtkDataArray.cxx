@@ -65,7 +65,7 @@ void vtkDataArray::SetName(const char* name)
   this->Name = 0;
   if (name)
     {
-    int size = strlen(name);
+    int size = static_cast<int>(strlen(name));
     this->Name = new char[size+1];
     strcpy(this->Name, name);
     }

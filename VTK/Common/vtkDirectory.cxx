@@ -73,7 +73,7 @@ void vtkDirectory::PrintSelf(ostream& os, vtkIndent indent)
 int vtkDirectory::Open(const char* name)
 {
   char* buf=0;
-  int n = strlen(name);
+  int n = static_cast<int>(strlen(name));
   if (name[n - 1] == '/') 
     {
     buf = new char[n + 1 + 1];
