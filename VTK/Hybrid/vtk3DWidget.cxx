@@ -49,6 +49,7 @@ vtk3DWidget::~vtk3DWidget()
     this->Input->Delete();
     this->Input = NULL;
     }
+  this->WidgetCallbackCommand->Delete();
 }
 
 void vtk3DWidget::PlaceWidget()
