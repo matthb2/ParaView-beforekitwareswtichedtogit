@@ -100,10 +100,10 @@ void vtkGeometricErrorMetric::SetRelativeGeometricTolerance(double value,
 }
 
 //-----------------------------------------------------------------------------
-int vtkGeometricErrorMetric::NeedEdgeSubdivision(double *leftPoint,
-                                                 double *midPoint,
-                                                 double *rightPoint,
-                                                 double vtkNotUsed(alpha))
+int vtkGeometricErrorMetric::RequiresEdgeSubdivision(double *leftPoint,
+                                                     double *midPoint,
+                                                     double *rightPoint,
+                                                     double vtkNotUsed(alpha))
 {
   assert("pre: leftPoint_exists" && leftPoint!=0);
   assert("pre: midPoint_exists" && midPoint!=0);
