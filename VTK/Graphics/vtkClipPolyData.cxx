@@ -16,11 +16,13 @@
 
 =========================================================================*/
 #include "vtkClipPolyData.h"
+
 #include "vtkMergePoints.h"
 #include "vtkLine.h"
 #include "vtkTriangle.h"
 #include "vtkObjectFactory.h"
 #include "vtkFloatArray.h"
+#include "vtkPolyData.h"
 
 #include <math.h>
 

@@ -16,10 +16,12 @@
 
 =========================================================================*/
 #include "vtkTexturedSphereSource.h"
-#include "vtkPoints.h"
+
+#include "vtkFloatArray.h"
 #include "vtkMath.h"
 #include "vtkObjectFactory.h"
-#include "vtkFloatArray.h"
+#include "vtkPoints.h"
+#include "vtkPolyData.h"
 
 vtkCxxRevisionMacro(vtkTexturedSphereSource, "$Revision$");
 vtkStandardNewMacro(vtkTexturedSphereSource);

@@ -16,12 +16,14 @@
 
 =========================================================================*/
 #include "vtkDecimatePro.h"
-#include "vtkMath.h"
-#include "vtkTriangle.h"
-#include "vtkPlane.h"
-#include "vtkLine.h"
+
 #include "vtkFloatArray.h"
+#include "vtkLine.h"
+#include "vtkMath.h"
 #include "vtkObjectFactory.h"
+#include "vtkPlane.h"
+#include "vtkPolyData.h"
+#include "vtkTriangle.h"
 
 vtkCxxRevisionMacro(vtkDecimatePro, "$Revision$");
 vtkStandardNewMacro(vtkDecimatePro);

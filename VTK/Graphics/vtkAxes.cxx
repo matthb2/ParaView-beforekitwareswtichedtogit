@@ -16,8 +16,10 @@
 
 =========================================================================*/
 #include "vtkAxes.h"
+
 #include "vtkFloatArray.h"
 #include "vtkObjectFactory.h"
+#include "vtkPolyData.h"
 
 vtkCxxRevisionMacro(vtkAxes, "$Revision$");
 vtkStandardNewMacro(vtkAxes);

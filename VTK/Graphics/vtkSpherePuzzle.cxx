@@ -15,14 +15,17 @@
      PURPOSE.  See the above copyright notice for more information.
 
 =========================================================================*/
-#include <math.h>
 #include "vtkSpherePuzzle.h"
-#include "vtkSphereSource.h"
-#include "vtkTransformFilter.h"
-#include "vtkLinearExtrusionFilter.h"
+
 #include "vtkAppendPolyData.h"
+#include "vtkLinearExtrusionFilter.h"
 #include "vtkMath.h"
 #include "vtkObjectFactory.h"
+#include "vtkPolyData.h"
+#include "vtkSphereSource.h"
+#include "vtkTransformFilter.h"
+
+#include <math.h>
 
 vtkCxxRevisionMacro(vtkSpherePuzzle, "$Revision$");
 vtkStandardNewMacro(vtkSpherePuzzle);

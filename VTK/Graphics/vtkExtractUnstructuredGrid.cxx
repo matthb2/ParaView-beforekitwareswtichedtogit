@@ -16,8 +16,10 @@
 
 =========================================================================*/
 #include "vtkExtractUnstructuredGrid.h"
+
 #include "vtkMergePoints.h"
 #include "vtkObjectFactory.h"
+#include "vtkUnstructuredGrid.h"
 
 vtkCxxRevisionMacro(vtkExtractUnstructuredGrid, "$Revision$");
 vtkStandardNewMacro(vtkExtractUnstructuredGrid);

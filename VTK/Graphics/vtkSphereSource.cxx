@@ -16,10 +16,12 @@
 
 =========================================================================*/
 #include "vtkSphereSource.h"
-#include "vtkPoints.h"
+
 #include "vtkFloatArray.h"
 #include "vtkMath.h"
 #include "vtkObjectFactory.h"
+#include "vtkPoints.h"
+#include "vtkPolyData.h"
 
 #include <math.h>
 

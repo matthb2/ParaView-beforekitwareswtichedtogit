@@ -16,8 +16,10 @@
 
 =========================================================================*/
 #include "vtkExtractGeometry.h"
+
 #include "vtkFloatArray.h"
 #include "vtkObjectFactory.h"
+#include "vtkUnstructuredGrid.h"
 
 vtkCxxRevisionMacro(vtkExtractGeometry, "$Revision$");
 vtkStandardNewMacro(vtkExtractGeometry);

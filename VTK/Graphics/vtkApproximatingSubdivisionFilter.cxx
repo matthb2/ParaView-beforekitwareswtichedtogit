@@ -16,7 +16,9 @@
 
 =========================================================================*/
 #include "vtkApproximatingSubdivisionFilter.h"
+
 #include "vtkEdgeTable.h"
+#include "vtkPolyData.h"
 #include "vtkUnsignedCharArray.h"
 
 vtkCxxRevisionMacro(vtkApproximatingSubdivisionFilter, "$Revision$");

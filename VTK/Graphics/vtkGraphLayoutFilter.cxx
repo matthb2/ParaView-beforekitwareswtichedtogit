@@ -16,8 +16,10 @@
 
 =========================================================================*/
 #include "vtkGraphLayoutFilter.h"
+
 #include "vtkMath.h"
 #include "vtkObjectFactory.h"
+#include "vtkPolyData.h"
 
 vtkCxxRevisionMacro(vtkGraphLayoutFilter, "$Revision$");
 vtkStandardNewMacro(vtkGraphLayoutFilter);

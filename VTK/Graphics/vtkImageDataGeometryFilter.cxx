@@ -16,7 +16,10 @@
 
 =========================================================================*/
 #include "vtkImageDataGeometryFilter.h"
+
 #include "vtkObjectFactory.h"
+#include "vtkImageData.h"
+#include "vtkPolyData.h"
 
 vtkCxxRevisionMacro(vtkImageDataGeometryFilter, "$Revision$");
 vtkStandardNewMacro(vtkImageDataGeometryFilter);

@@ -16,9 +16,11 @@
 
 =========================================================================*/
 #include "vtkTextSource.h"
-#include "vtkPoints.h"
-#include "vtkUnsignedCharArray.h"
+
 #include "vtkObjectFactory.h"
+#include "vtkPoints.h"
+#include "vtkPolyData.h"
+#include "vtkUnsignedCharArray.h"
 
 vtkCxxRevisionMacro(vtkTextSource, "$Revision$");
 vtkStandardNewMacro(vtkTextSource);

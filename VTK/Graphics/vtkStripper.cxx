@@ -16,7 +16,9 @@
 
 =========================================================================*/
 #include "vtkStripper.h"
+
 #include "vtkObjectFactory.h"
+#include "vtkPolyData.h"
 
 vtkCxxRevisionMacro(vtkStripper, "$Revision$");
 vtkStandardNewMacro(vtkStripper);

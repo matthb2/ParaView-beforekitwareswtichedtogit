@@ -16,11 +16,13 @@
 
 =========================================================================*/
 #include "vtkDataSetTriangleFilter.h"
-#include "vtkStructuredPoints.h"
+
 #include "vtkImageData.h"
-#include "vtkStructuredGrid.h"
-#include "vtkOrderedTriangulator.h"
 #include "vtkObjectFactory.h"
+#include "vtkOrderedTriangulator.h"
+#include "vtkStructuredGrid.h"
+#include "vtkStructuredPoints.h"
+#include "vtkUnstructuredGrid.h"
 
 vtkCxxRevisionMacro(vtkDataSetTriangleFilter, "$Revision$");
 vtkStandardNewMacro(vtkDataSetTriangleFilter);

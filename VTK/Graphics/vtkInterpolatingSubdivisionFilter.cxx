@@ -16,7 +16,9 @@
 
 =========================================================================*/
 #include "vtkInterpolatingSubdivisionFilter.h"
+
 #include "vtkEdgeTable.h"
+#include "vtkPolyData.h"
 
 vtkCxxRevisionMacro(vtkInterpolatingSubdivisionFilter, "$Revision$");
 

@@ -16,11 +16,12 @@
 
 =========================================================================*/
 #include "vtkLinkEdgels.h"
-#include "vtkMath.h"
-#include "vtkFloatArray.h"
-#include "vtkObjectFactory.h"
 
-#include <stdlib.h>
+#include "vtkFloatArray.h"
+#include "vtkImageData.h"
+#include "vtkMath.h"
+#include "vtkObjectFactory.h"
+#include "vtkPolyData.h"
 
 vtkCxxRevisionMacro(vtkLinkEdgels, "$Revision$");
 vtkStandardNewMacro(vtkLinkEdgels);

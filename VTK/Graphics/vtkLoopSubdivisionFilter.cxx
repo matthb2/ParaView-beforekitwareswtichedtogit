@@ -16,8 +16,10 @@
 
 =========================================================================*/
 #include "vtkLoopSubdivisionFilter.h"
+
 #include "vtkEdgeTable.h"
 #include "vtkObjectFactory.h"
+#include "vtkPolyData.h"
 
 vtkCxxRevisionMacro(vtkLoopSubdivisionFilter, "$Revision$");
 vtkStandardNewMacro(vtkLoopSubdivisionFilter);

@@ -16,7 +16,9 @@
 
 =========================================================================*/
 #include "vtkSpatialRepresentationFilter.h"
+
 #include "vtkObjectFactory.h"
+#include "vtkPolyData.h"
 
 vtkCxxRevisionMacro(vtkSpatialRepresentationFilter, "$Revision$");
 vtkStandardNewMacro(vtkSpatialRepresentationFilter);

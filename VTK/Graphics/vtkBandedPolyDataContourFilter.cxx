@@ -16,10 +16,13 @@
 
 =========================================================================*/
 #include "vtkBandedPolyDataContourFilter.h"
+
 #include "vtkEdgeTable.h"
 #include "vtkFloatArray.h"
-#include "vtkTriangleStrip.h"
 #include "vtkObjectFactory.h"
+#include "vtkPolyData.h"
+#include "vtkTriangleStrip.h"
+
 #include <float.h>
 
 vtkCxxRevisionMacro(vtkBandedPolyDataContourFilter, "$Revision$");
@@ -706,6 +709,10 @@ void vtkBandedPolyDataContourFilter::Execute()
   output->Squeeze();
 }
 
+vtkPolyData *vtkBandedPolyDataContourFilter::GetContourEdgesOutput()
+{
+  return static_cast<vtkPolyData *>(this->Outputs[1]);
+}
 
 unsigned long int vtkBandedPolyDataContourFilter::GetMTime()
 {

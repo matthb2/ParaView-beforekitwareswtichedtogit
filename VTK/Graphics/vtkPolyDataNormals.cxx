@@ -16,11 +16,13 @@
 
 =========================================================================*/
 #include "vtkPolyDataNormals.h"
-#include "vtkMath.h"
+
 #include "vtkFloatArray.h"
+#include "vtkMath.h"
+#include "vtkObjectFactory.h"
+#include "vtkPolyData.h"
 #include "vtkPolygon.h"
 #include "vtkTriangleStrip.h"
-#include "vtkObjectFactory.h"
 
 vtkCxxRevisionMacro(vtkPolyDataNormals, "$Revision$");
 vtkStandardNewMacro(vtkPolyDataNormals);

@@ -16,7 +16,9 @@
 
 =========================================================================*/
 #include "vtkShrinkPolyData.h"
+
 #include "vtkObjectFactory.h"
+#include "vtkPolyData.h"
 
 vtkCxxRevisionMacro(vtkShrinkPolyData, "$Revision$");
 vtkStandardNewMacro(vtkShrinkPolyData);

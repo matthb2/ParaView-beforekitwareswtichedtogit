@@ -16,9 +16,11 @@
 
 =========================================================================*/
 #include "vtkRotationalExtrusionFilter.h"
-#include "vtkMath.h"
+
 #include "vtkIdList.h"
+#include "vtkMath.h"
 #include "vtkObjectFactory.h"
+#include "vtkPolyData.h"
 
 vtkCxxRevisionMacro(vtkRotationalExtrusionFilter, "$Revision$");
 vtkStandardNewMacro(vtkRotationalExtrusionFilter);

@@ -16,12 +16,14 @@
 
 =========================================================================*/
 #include "vtkDelaunay2D.h"
-#include "vtkMath.h"
-#include "vtkTriangle.h"
-#include "vtkPolygon.h"
-#include "vtkPlane.h"
+
 #include "vtkDoubleArray.h"
+#include "vtkMath.h"
 #include "vtkObjectFactory.h"
+#include "vtkPlane.h"
+#include "vtkPolyData.h"
+#include "vtkPolygon.h"
+#include "vtkTriangle.h"
 
 vtkCxxRevisionMacro(vtkDelaunay2D, "$Revision$");
 vtkStandardNewMacro(vtkDelaunay2D);

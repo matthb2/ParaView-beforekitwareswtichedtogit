@@ -15,12 +15,14 @@
      PURPOSE.  See the above copyright notice for more information.
 
 =========================================================================*/
-#include "vtkMath.h"
 #include "vtkRibbonFilter.h"
-#include "vtkPoints.h"
-#include "vtkPolyLine.h"
-#include "vtkObjectFactory.h"
+
 #include "vtkFloatArray.h"
+#include "vtkMath.h"
+#include "vtkObjectFactory.h"
+#include "vtkPoints.h"
+#include "vtkPolyData.h"
+#include "vtkPolyLine.h"
 
 vtkCxxRevisionMacro(vtkRibbonFilter, "$Revision$");
 vtkStandardNewMacro(vtkRibbonFilter);

@@ -16,9 +16,11 @@
 
 =========================================================================*/
 #include "vtkHull.h"
+
 #include "vtkPlanes.h"
 #include "vtkMath.h"
 #include "vtkObjectFactory.h"
+#include "vtkPolyData.h"
 
 vtkCxxRevisionMacro(vtkHull, "$Revision$");
 vtkStandardNewMacro(vtkHull);

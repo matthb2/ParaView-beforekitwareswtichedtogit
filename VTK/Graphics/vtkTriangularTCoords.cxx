@@ -16,8 +16,10 @@
 
 =========================================================================*/
 #include "vtkTriangularTCoords.h"
+
 #include "vtkFloatArray.h"
 #include "vtkObjectFactory.h"
+#include "vtkPolyData.h"
 
 #include <math.h>
 

@@ -16,7 +16,9 @@
 
 =========================================================================*/
 #include "vtkLinearExtrusionFilter.h"
+
 #include "vtkObjectFactory.h"
+#include "vtkPolyData.h"
 
 vtkCxxRevisionMacro(vtkLinearExtrusionFilter, "$Revision$");
 vtkStandardNewMacro(vtkLinearExtrusionFilter);

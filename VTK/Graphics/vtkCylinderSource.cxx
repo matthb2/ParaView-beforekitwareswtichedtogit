@@ -16,9 +16,11 @@
 
 =========================================================================*/
 #include "vtkCylinderSource.h"
-#include "vtkPoints.h"
+
 #include "vtkFloatArray.h"
 #include "vtkObjectFactory.h"
+#include "vtkPoints.h"
+#include "vtkPolyData.h"
 
 #include <math.h>
 

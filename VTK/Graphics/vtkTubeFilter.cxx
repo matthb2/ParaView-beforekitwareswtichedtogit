@@ -16,10 +16,12 @@
 
 =========================================================================*/
 #include "vtkTubeFilter.h"
-#include "vtkPolyLine.h"
+
+#include "vtkFloatArray.h"
 #include "vtkMath.h"
 #include "vtkObjectFactory.h"
-#include "vtkFloatArray.h"
+#include "vtkPolyData.h"
+#include "vtkPolyLine.h"
 
 vtkCxxRevisionMacro(vtkTubeFilter, "$Revision$");
 vtkStandardNewMacro(vtkTubeFilter);

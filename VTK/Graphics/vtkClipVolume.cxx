@@ -16,11 +16,14 @@
 
 =========================================================================*/
 #include "vtkClipVolume.h"
-#include "vtkMergePoints.h"
-#include "vtkVoxel.h"
-#include "vtkOrderedTriangulator.h"
-#include "vtkObjectFactory.h"
+
 #include "vtkFloatArray.h"
+#include "vtkImageData.h"
+#include "vtkMergePoints.h"
+#include "vtkObjectFactory.h"
+#include "vtkOrderedTriangulator.h"
+#include "vtkUnstructuredGrid.h"
+#include "vtkVoxel.h"
 
 vtkCxxRevisionMacro(vtkClipVolume, "$Revision$");
 vtkStandardNewMacro(vtkClipVolume);

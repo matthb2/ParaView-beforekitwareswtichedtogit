@@ -15,10 +15,12 @@
      PURPOSE.  See the above copyright notice for more information.
 
 =========================================================================*/
-#include "vtkMath.h"
 #include "vtkSubPixelPositionEdgels.h"
+
 #include "vtkFloatArray.h"
+#include "vtkMath.h"
 #include "vtkObjectFactory.h"
+#include "vtkPolyData.h"
 
 vtkCxxRevisionMacro(vtkSubPixelPositionEdgels, "$Revision$");
 vtkStandardNewMacro(vtkSubPixelPositionEdgels);

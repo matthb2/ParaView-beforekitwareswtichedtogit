@@ -16,9 +16,15 @@
 
 =========================================================================*/
 #include "vtkConnectivityFilter.h"
+
+#include "vtkDataSet.h"
+#include "vtkFloatArray.h"
+#include "vtkIdList.h"
+#include "vtkIntArray.h"
 #include "vtkMath.h"
 #include "vtkObjectFactory.h"
-#include "vtkFloatArray.h"
+#include "vtkPoints.h"
+#include "vtkUnstructuredGrid.h"
 
 vtkCxxRevisionMacro(vtkConnectivityFilter, "$Revision$");
 vtkStandardNewMacro(vtkConnectivityFilter);

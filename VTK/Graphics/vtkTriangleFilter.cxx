@@ -16,9 +16,11 @@
 
 =========================================================================*/
 #include "vtkTriangleFilter.h"
+
 #include "vtkPolygon.h"
 #include "vtkTriangleStrip.h"
 #include "vtkObjectFactory.h"
+#include "vtkPolyData.h"
 
 vtkCxxRevisionMacro(vtkTriangleFilter, "$Revision$");
 vtkStandardNewMacro(vtkTriangleFilter);

@@ -16,8 +16,11 @@
 
 =========================================================================*/
 #include "vtkStructuredGridGeometryFilter.h"
+
 #include "vtkExtentTranslator.h"
 #include "vtkObjectFactory.h"
+#include "vtkStructuredGrid.h"
+#include "vtkPolyData.h"
 
 vtkCxxRevisionMacro(vtkStructuredGridGeometryFilter, "$Revision$");
 vtkStandardNewMacro(vtkStructuredGridGeometryFilter);

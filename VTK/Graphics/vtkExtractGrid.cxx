@@ -16,7 +16,9 @@
 
 =========================================================================*/
 #include "vtkExtractGrid.h"
+
 #include "vtkObjectFactory.h"
+#include "vtkStructuredGrid.h"
 
 vtkCxxRevisionMacro(vtkExtractGrid, "$Revision$");
 vtkStandardNewMacro(vtkExtractGrid);

@@ -16,8 +16,10 @@
 
 =========================================================================*/
 #include "vtkSpherePuzzleArrows.h"
+
 #include "vtkMath.h"
 #include "vtkObjectFactory.h"
+#include "vtkPolyData.h"
 
 #include <math.h>
 

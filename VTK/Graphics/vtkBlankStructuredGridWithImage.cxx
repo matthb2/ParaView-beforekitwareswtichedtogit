@@ -16,8 +16,10 @@
 
 =========================================================================*/
 #include "vtkBlankStructuredGridWithImage.h"
+
 #include "vtkImageData.h"
 #include "vtkObjectFactory.h"
+#include "vtkStructuredGrid.h"
 
 vtkCxxRevisionMacro(vtkBlankStructuredGridWithImage, "$Revision$");
 vtkStandardNewMacro(vtkBlankStructuredGridWithImage);

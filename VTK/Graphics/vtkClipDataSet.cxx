@@ -16,9 +16,11 @@
 
 =========================================================================*/
 #include "vtkClipDataSet.h"
+
+#include "vtkFloatArray.h"
 #include "vtkMergePoints.h"
 #include "vtkObjectFactory.h"
-#include "vtkFloatArray.h"
+#include "vtkUnstructuredGrid.h"
 
 #include <math.h>
 

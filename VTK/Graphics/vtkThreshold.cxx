@@ -16,7 +16,9 @@
 
 =========================================================================*/
 #include "vtkThreshold.h"
+
 #include "vtkObjectFactory.h"
+#include "vtkUnstructuredGrid.h"
 
 vtkCxxRevisionMacro(vtkThreshold, "$Revision$");
 vtkStandardNewMacro(vtkThreshold);

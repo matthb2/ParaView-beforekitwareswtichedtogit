@@ -16,12 +16,14 @@
 
 =========================================================================*/
 #include "vtkSmoothPolyDataFilter.h"
-#include "vtkMath.h"
-#include "vtkTriangleFilter.h"
-#include "vtkPolygon.h"
+
 #include "vtkCellLocator.h"
-#include "vtkObjectFactory.h"
 #include "vtkFloatArray.h"
+#include "vtkMath.h"
+#include "vtkObjectFactory.h"
+#include "vtkPolyData.h"
+#include "vtkPolygon.h"
+#include "vtkTriangleFilter.h"
 
 vtkCxxRevisionMacro(vtkSmoothPolyDataFilter, "$Revision$");
 vtkStandardNewMacro(vtkSmoothPolyDataFilter);

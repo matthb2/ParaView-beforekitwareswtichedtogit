@@ -16,12 +16,14 @@
 
 =========================================================================*/
 #include "vtkArrowSource.h"
-#include "vtkCylinderSource.h"
+
+#include "vtkAppendPolyData.h"
 #include "vtkConeSource.h"
+#include "vtkCylinderSource.h"
+#include "vtkObjectFactory.h"
+#include "vtkPolyData.h"
 #include "vtkTransform.h"
 #include "vtkTransformFilter.h"
-#include "vtkAppendPolyData.h"
-#include "vtkObjectFactory.h"
 
 vtkCxxRevisionMacro(vtkArrowSource, "$Revision$");
 vtkStandardNewMacro(vtkArrowSource);

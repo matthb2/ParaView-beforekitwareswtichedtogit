@@ -16,9 +16,12 @@
 
 =========================================================================*/
 #include "vtkPolyDataConnectivityFilter.h"
+
+#include "vtkFloatArray.h"
+#include "vtkIdTypeArray.h"
 #include "vtkMath.h"
 #include "vtkObjectFactory.h"
-#include "vtkFloatArray.h"
+#include "vtkPolyData.h"
 
 vtkCxxRevisionMacro(vtkPolyDataConnectivityFilter, "$Revision$");
 vtkStandardNewMacro(vtkPolyDataConnectivityFilter);

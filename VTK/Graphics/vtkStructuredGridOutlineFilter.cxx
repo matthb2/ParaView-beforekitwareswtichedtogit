@@ -16,7 +16,10 @@
 
 =========================================================================*/
 #include "vtkStructuredGridOutlineFilter.h"
+
 #include "vtkObjectFactory.h"
+#include "vtkStructuredGrid.h"
+#include "vtkPolyData.h"
 
 vtkCxxRevisionMacro(vtkStructuredGridOutlineFilter, "$Revision$");
 vtkStandardNewMacro(vtkStructuredGridOutlineFilter);

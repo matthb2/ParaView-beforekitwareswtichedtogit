@@ -16,13 +16,15 @@
 
 =========================================================================*/
 #include "vtkFeatureEdges.h"
-#include "vtkMath.h"
-#include "vtkPolygon.h"
-#include "vtkMergePoints.h"
-#include "vtkUnsignedCharArray.h"
-#include "vtkTriangleStrip.h"
-#include "vtkObjectFactory.h"
+
 #include "vtkFloatArray.h"
+#include "vtkMath.h"
+#include "vtkMergePoints.h"
+#include "vtkObjectFactory.h"
+#include "vtkPolyData.h"
+#include "vtkPolygon.h"
+#include "vtkTriangleStrip.h"
+#include "vtkUnsignedCharArray.h"
 
 vtkCxxRevisionMacro(vtkFeatureEdges, "$Revision$");
 vtkStandardNewMacro(vtkFeatureEdges);

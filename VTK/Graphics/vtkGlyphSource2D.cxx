@@ -16,9 +16,11 @@
 
 =========================================================================*/
 #include "vtkGlyphSource2D.h"
+
 #include "vtkMath.h"
 #include "vtkObjectFactory.h"
 #include "vtkUnsignedCharArray.h"
+#include "vtkPolyData.h"
 
 vtkCxxRevisionMacro(vtkGlyphSource2D, "$Revision$");
 vtkStandardNewMacro(vtkGlyphSource2D);

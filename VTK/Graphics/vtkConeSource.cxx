@@ -16,10 +16,12 @@
 
 =========================================================================*/
 #include "vtkConeSource.h"
+
 #include "vtkFloatArray.h"
-#include "vtkTransform.h"
 #include "vtkMath.h"
 #include "vtkObjectFactory.h"
+#include "vtkPolyData.h"
+#include "vtkTransform.h"
 
 #include <math.h>
 

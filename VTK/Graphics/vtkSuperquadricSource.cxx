@@ -21,12 +21,13 @@
    Based on "Rigid physically based superquadrics", A. H. Barr,
    in "Graphics Gems III", David Kirk, ed., Academic Press, 1992.
 */
-
 #include "vtkSuperquadricSource.h"
-#include "vtkPoints.h"
+
+#include "vtkFloatArray.h"
 #include "vtkMath.h"
 #include "vtkObjectFactory.h"
-#include "vtkFloatArray.h"
+#include "vtkPoints.h"
+#include "vtkPolyData.h"
 
 #include <math.h>
 

@@ -16,7 +16,9 @@
 
 =========================================================================*/
 #include "vtkShrinkFilter.h"
+
 #include "vtkObjectFactory.h"
+#include "vtkUnstructuredGrid.h"
 
 vtkCxxRevisionMacro(vtkShrinkFilter, "$Revision$");
 vtkStandardNewMacro(vtkShrinkFilter);

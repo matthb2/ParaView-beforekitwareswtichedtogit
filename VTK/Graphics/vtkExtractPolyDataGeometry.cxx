@@ -16,8 +16,10 @@
 
 =========================================================================*/
 #include "vtkExtractPolyDataGeometry.h"
+
 #include "vtkFloatArray.h"
 #include "vtkObjectFactory.h"
+#include "vtkPolyData.h"
 
 vtkCxxRevisionMacro(vtkExtractPolyDataGeometry, "$Revision$");
 vtkStandardNewMacro(vtkExtractPolyDataGeometry);

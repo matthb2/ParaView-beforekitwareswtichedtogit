@@ -16,8 +16,10 @@
 
 =========================================================================*/
 #include "vtkButterflySubdivisionFilter.h"
+
 #include "vtkEdgeTable.h"
 #include "vtkObjectFactory.h"
+#include "vtkPolyData.h"
 
 vtkCxxRevisionMacro(vtkButterflySubdivisionFilter, "$Revision$");
 vtkStandardNewMacro(vtkButterflySubdivisionFilter);
