@@ -1385,10 +1385,13 @@ int vtkDataSetAttributes::SetActiveAttribute(int index, int attributeType)
     this->Modified();
     return index;
     }
-  else
+  else if (index == -1)
     {
-    return -1;
+    this->AttributeIndices[attributeType] = index;
+    this->Modified();
     }
+
+  return -1;
 }
 
 const int vtkDataSetAttributes
