@@ -321,6 +321,11 @@ void vtkSMProxyManager::UpdateRegisteredProxies(const char* groupname)
       {
       it2->second->UpdateVTKObjects();
       }
+      
+    for (it2 = it->second.begin(); it2 != it->second.end(); it2++)
+      {
+      it2->second->UpdateInformation();
+      }
     }
 }
 
@@ -336,6 +341,11 @@ void vtkSMProxyManager::UpdateRegisteredProxies()
     for (; it2 != it->second.end(); it2++)
       {
       it2->second->UpdateVTKObjects();
+      }
+
+    for (it2 = it->second.begin(); it2 != it->second.end(); it2++)
+      {
+      it2->second->UpdateInformation();
       }
     }
 }
