@@ -25,7 +25,6 @@
 #include "vtkDataSetAttributes.h"
 #include "vtkInstantiator.h"
 #include "vtkObjectFactory.h"
-#include "vtkString.h"
 #include "vtkXMLDataElement.h"
 #include "vtkXMLDataParser.h"
 #include "vtkXMLFileReadTester.h"
@@ -550,7 +549,8 @@ void vtkXMLReader::SetDataArraySelections(vtkXMLDataElement* eDSA,
   for(i=0;i < numArrays;++i)
     {
     vtkXMLDataElement* eNested = eDSA->GetNestedElement(i);
-    names[i] = vtkString::Duplicate(eNested->GetAttribute("Name"));
+    names[i] = new char[ strlen(eNested->GetAttribute("Name"))+1 ];
+    strcpy(names[i], eNested->GetAttribute("Name"));
     }
   sel->SetArrays(names, numArrays);
   this->DestroyStringArray(numArrays, names);
