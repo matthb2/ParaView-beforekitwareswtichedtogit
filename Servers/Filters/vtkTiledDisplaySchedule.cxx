@@ -391,9 +391,7 @@ void vtkTiledDisplaySchedule::PrintSelf(ostream& os, vtkIndent indent)
   vtkIndent i2 = indent.GetNextIndent();
 
   this->Superclass::PrintSelf(os, indent);
-
-  os << indent << "Schedule: (" << this << ")\n";
-
+  os << indent << "NumberOfTiles: " << this->NumberOfTiles << "\n";
   for (pIdx = 0; pIdx < this->NumberOfProcesses; ++pIdx)
     {
     p = this->Processes[pIdx];

@@ -1261,6 +1261,7 @@ void vtkPVTiledDisplayManager::PrintSelf(ostream& os, vtkIndent indent)
     {
     os << indent << "RenderWindow: (none)\n";
     }
+  os << indent << "UseCompositing: " << this->UseCompositing << "\n";
   os << indent << "LODReductionFactor: " << this->LODReductionFactor << "\n";
   
   os << indent << "Tile Dimensions: " << this->TileDimensions[0] << ", "
