@@ -56,6 +56,10 @@ vtkContourGrid::~vtkContourGrid()
     this->Locator->UnRegister(this);
     this->Locator = NULL;
     }
+  if ( this->ScalarTree )
+    {
+    this->ScalarTree->Delete();
+    }
   this->SetInputScalarsSelection(NULL);
 }
 
