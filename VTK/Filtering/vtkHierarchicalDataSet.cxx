@@ -62,7 +62,6 @@ vtkHDSNode* vtkHierarchicalDataSet::NewNode()
 void vtkHierarchicalDataSet::InitializeDataSets()
 {
   this->Internal->DataSets.clear();
-  this->HierarchicalDataInformation->Clear();
 }
 
 //----------------------------------------------------------------------------
