@@ -66,7 +66,8 @@ void vtkQuadricDecimation::Execute()
   vtkIdType numPts = input->GetNumberOfPoints();
   vtkIdType edgeId, i, newCellPts[3];
   int j;
-  vtkIdType *cellPts, numCellPts;
+  vtkIdType *cellPts = 0;
+  vtkIdType numCellPts;
   float cost, x[3];
   vtkPoints *targetPoints = vtkPoints::New();
   vtkPointData *targetPointData = vtkPointData::New();

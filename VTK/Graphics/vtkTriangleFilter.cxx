@@ -27,7 +27,10 @@ void vtkTriangleFilter::Execute()
 {
   vtkPolyData *input = this->GetInput();
   vtkIdType numCells=input->GetNumberOfCells();
-  vtkIdType cellNum=0, numPts, newId, npts, *pts;
+  vtkIdType cellNum=0;
+  vtkIdType numPts, newId;
+  vtkIdType npts = 0;
+  vtkIdType *pts = 0;
   int i, j;
   vtkPolyData *output=this->GetOutput();
   vtkCellData *inCD=input->GetCellData();

@@ -181,8 +181,10 @@ void vtkBandedPolyDataContourFilter::Execute()
   vtkDataArray *inScalars = pd->GetScalars();
   int abort=0;
   vtkPoints *newPts;
-  int i, j, idx=0, npts, cellId=0;
-  vtkIdType *pts;
+  int i, j, idx=0;
+  vtkIdType npts = 0;
+  vtkIdType cellId=0;
+  vtkIdType *pts = 0;
   int numEdgePts, numNewPts, maxCellSize;
   vtkIdType v, vR, *intPts;
   int intLoc, intsIdx, reverse;

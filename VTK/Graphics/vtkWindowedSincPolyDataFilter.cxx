@@ -61,8 +61,8 @@ void vtkWindowedSincPolyDataFilter::Execute()
 {
   vtkIdType numPts, numCells, numPolys, numStrips, i;
   int j, k;
-  vtkIdType npts;
-  vtkIdType *pts;
+  vtkIdType npts = 0;
+  vtkIdType *pts = 0;
   vtkIdType p1, p2;
   float *x, *y, deltaX[3], xNew[3];
   float x1[3], x2[3], x3[3], l1[3], l2[3];

@@ -40,7 +40,8 @@ void vtkMaskPolyData::Execute()
   vtkIdType id, interval;
   vtkPointData *pd;
   vtkIdType numCells;
-  vtkIdType *pts, npts;
+  vtkIdType *pts = 0;
+  vtkIdType npts = 0;
   vtkPolyData *input= this->GetInput();
   vtkPolyData *output = this->GetOutput();
   

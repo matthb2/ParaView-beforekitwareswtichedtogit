@@ -383,7 +383,8 @@ int vtkUnstructuredGrid::InsertNextCell(int type, int npts, vtkIdType *pts)
 void vtkUnstructuredGrid::SetCells(int *types, vtkCellArray *cells)
 {
   int i;
-  vtkIdType *pts, npts;
+  vtkIdType *pts = 0;
+  vtkIdType npts = 0;
   
   // set cell array
   if ( this->Connectivity )

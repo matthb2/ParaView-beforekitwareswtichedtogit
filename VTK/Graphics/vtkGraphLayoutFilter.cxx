@@ -80,7 +80,8 @@ void vtkGraphLayoutFilter::Execute()
   int numPts = input->GetNumberOfPoints();  //Number of points/vertices.
   float diff[3], len;  //The difference vector.
   int i, j, l;  //Iteration variables.
-  vtkIdType npts, *cellPts;
+  vtkIdType npts = 0;
+  vtkIdType *cellPts = 0;
   float fa, fr, minimum;
 
   vtkDebugMacro(<<"Drawing graph");

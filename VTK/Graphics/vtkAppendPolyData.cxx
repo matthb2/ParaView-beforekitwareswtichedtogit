@@ -124,7 +124,10 @@ void vtkAppendPolyData::Execute()
   vtkDataArray *newPtTCoords = NULL;
   vtkDataArray *newPtTensors = NULL;
   int i;
-  vtkIdType *pts, *pPolys, npts, ptId, cellId;
+  vtkIdType *pts = 0;
+  vtkIdType *pPolys;
+  vtkIdType npts = 0;
+  vtkIdType ptId, cellId;
   
   vtkDebugMacro(<<"Appending polydata");
 

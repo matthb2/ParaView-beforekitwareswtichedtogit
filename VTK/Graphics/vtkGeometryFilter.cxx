@@ -557,8 +557,8 @@ void vtkGeometryFilter::UnstructuredGridExecute()
   vtkIdType cellId;
   int i;
   int allVisible;
-  vtkIdType npts;
-  vtkIdType *pts;
+  vtkIdType npts = 0;
+  vtkIdType *pts = 0;
   vtkPoints *p = input->GetPoints();
   vtkIdType numCells=input->GetNumberOfCells();
   vtkPointData *pd = input->GetPointData();

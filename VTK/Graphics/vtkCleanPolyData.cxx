@@ -131,8 +131,8 @@ void vtkCleanPolyData::Execute()
   vtkIdType inCellID, newId;
   int i;
   vtkIdType ptId;
-  vtkIdType npts;
-  vtkIdType *pts;
+  vtkIdType npts = 0;
+  vtkIdType *pts = 0;
   float x[3];
   float newx[3];
   vtkIdType *pointMap=0; //used if no merging
