@@ -138,6 +138,25 @@ int vtkPolyDataAlgorithm::RequestInformation(
 }
 
 //----------------------------------------------------------------------------
+int vtkPolyDataAlgorithm::RequestUpdateExtent(
+  vtkInformation* vtkNotUsed(request),
+  vtkInformationVector** inputVector,
+  vtkInformationVector* vtkNotUsed(outputVector))
+{
+  int numInputPorts = this->GetNumberOfInputPorts();
+  for (int i=0; i<numInputPorts; i++)
+    {
+    int numInputConnections = this->GetNumberOfInputConnections(i);
+    for (int j=0; j<numInputConnections; j++)
+      {
+      vtkInformation* inputInfo = inputVector[i]->GetInformationObject(j);
+      inputInfo->Set(vtkStreamingDemandDrivenPipeline::EXACT_EXTENT(), 1);
+      }
+    }
+  return 1;
+}
+
+//----------------------------------------------------------------------------
 // This is the superclasses style of Execute method.  Convert it into
 // an imaging style Execute method.
 int vtkPolyDataAlgorithm::RequestData(
