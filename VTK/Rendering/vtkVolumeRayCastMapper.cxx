@@ -1626,6 +1626,7 @@ void vtkVolumeRayCastMapper::InitializeClippingPlanes(
   float    t;
   
   count = planes->GetNumberOfItems();
+  staticInfo->NumberOfClippingPlanes = count;
 
   if ( !count )
     {
@@ -1636,7 +1637,6 @@ void vtkVolumeRayCastMapper::InitializeClippingPlanes(
   voxelsToWorldMatrix = staticInfo->VoxelsToWorldMatrix;
 
   staticInfo->ClippingPlane = new float [4*count];
-  staticInfo->NumberOfClippingPlanes = count;
   
   // loop through all the clipping planes
   for ( i = 0; i < count; i++ )
