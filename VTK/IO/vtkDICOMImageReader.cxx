@@ -75,7 +75,7 @@ vtkDICOMImageReader::~vtkDICOMImageReader()
 
 void vtkDICOMImageReader::PrintSelf(ostream& os, vtkIndent indent)
 {
-  this->vtkImageReader2::PrintSelf(os, indent);
+  this->Superclass::PrintSelf(os, indent);
   if (this->DirectoryName)
     {
     os << "DirectoryName : " << this->DirectoryName << "\n";

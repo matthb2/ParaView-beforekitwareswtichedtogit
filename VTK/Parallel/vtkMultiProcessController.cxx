@@ -252,9 +252,10 @@ void vtkMultiProcessController::SetMultipleMethod( int index,
                                  vtkProcessFunctionType f, void *data )
 { 
   // You can only set the method for 0 through NumberOfProcesses-1
-  if ( index >= this->NumberOfProcesses ) {
+  if ( index >= this->NumberOfProcesses )
+    {
     vtkErrorMacro( << "Can't set method " << index << 
-    " with a processes count of " << this->NumberOfProcesses );
+      " with a processes count of " << this->NumberOfProcesses );
     }
   else
     {
@@ -348,8 +349,7 @@ void vtkMultiProcessController::ProcessRMIs()
   
   while (1)
     {
-    if (!this->RMICommunicator->Receive(triggerMessage, 3, ANY_SOURCE, 
-                                        RMI_TAG))
+    if (!this->RMICommunicator->Receive(triggerMessage, 3, ANY_SOURCE, RMI_TAG))
       {
       vtkErrorMacro("Could not receive RMI trigger message.");
       break;

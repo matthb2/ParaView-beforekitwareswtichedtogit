@@ -430,7 +430,7 @@ vtkPointSet* vtkPCAAnalysisFilter::GetOutput(int idx)
 void vtkPCAAnalysisFilter::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os,indent);
-  this->Evals->PrintSelf(os,indent);
+  this->Evals->PrintSelf(os,indent.GetNextIndent());
 }
 
 //----------------------------------------------------------------------------

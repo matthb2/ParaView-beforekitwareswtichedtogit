@@ -703,7 +703,7 @@ void vtkCompressCompositer::CompositeBuffer(vtkDataArray *pBuf,
 //----------------------------------------------------------------------------
 void vtkCompressCompositer::PrintSelf(ostream& os, vtkIndent indent)
 {
-  this->vtkCompositer::PrintSelf(os, indent);
+  this->Superclass::PrintSelf(os, indent);
 }
 
 

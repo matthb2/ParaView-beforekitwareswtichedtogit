@@ -259,7 +259,7 @@ void vtkTreeCompositer::CompositeBuffer(vtkDataArray *pBuf,
 
 void vtkTreeCompositer::PrintSelf(ostream& os, vtkIndent indent)
 {
-  this->vtkCompositer::PrintSelf(os, indent);
+  this->Superclass::PrintSelf(os, indent);
 }
 
 

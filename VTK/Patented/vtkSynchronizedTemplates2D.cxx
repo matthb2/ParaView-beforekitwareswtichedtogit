@@ -509,7 +509,7 @@ void vtkSynchronizedTemplates2D::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os,indent);
 
-  this->ContourValues->PrintSelf(os,indent);
+  this->ContourValues->PrintSelf(os,indent.GetNextIndent());
   if (this->ComputeScalars)
     {
     os << indent << "ComputeScalarsOn\n";

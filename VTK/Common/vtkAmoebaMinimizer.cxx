@@ -86,7 +86,7 @@ vtkAmoebaMinimizer::~vtkAmoebaMinimizer()
 //----------------------------------------------------------------------------
 void vtkAmoebaMinimizer::PrintSelf(ostream& os, vtkIndent indent)
 {
-  this->vtkObject::PrintSelf(os, indent);
+  this->Superclass::PrintSelf(os, indent);
   os << indent << "NumberOfParameters: " << this->GetNumberOfParameters() << "\n";
   if (this->NumberOfParameters > 0)
     {

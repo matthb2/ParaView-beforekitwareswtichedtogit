@@ -457,7 +457,7 @@ void vtkGenericCutter::PrintSelf(ostream& os, vtkIndent indent)
     os << indent << "Locator: (none)\n";
     }
 
-  this->ContourValues->PrintSelf(os,indent);
+  this->ContourValues->PrintSelf(os,indent.GetNextIndent());
 
   os << indent << "Generate Cut Scalars: " 
      << (this->GenerateCutScalars ? "On\n" : "Off\n");

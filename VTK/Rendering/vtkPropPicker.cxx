@@ -105,7 +105,7 @@ int vtkPropPicker::PickProp(double selectionX, double selectionY,
 
 void vtkPropPicker::PrintSelf(ostream& os, vtkIndent indent)
 {
-  this->vtkAbstractPropPicker::PrintSelf(os, indent);
+  this->Superclass::PrintSelf(os, indent);
 
   if (this->PickFromProps)
     {

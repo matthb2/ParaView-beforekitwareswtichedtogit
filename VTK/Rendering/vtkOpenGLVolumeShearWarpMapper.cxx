@@ -433,6 +433,6 @@ void vtkOpenGLVolumeShearWarpMapper::RenderTexture(vtkRenderer *ren, vtkVolume *
 // Print the vtkOpenGLVolumeShearWarpMapper
 void vtkOpenGLVolumeShearWarpMapper::PrintSelf(ostream& os, vtkIndent indent)
 {
-  this->vtkVolumeShearWarpMapper::PrintSelf(os,indent);
+  this->Superclass::PrintSelf(os,indent);
 }
 

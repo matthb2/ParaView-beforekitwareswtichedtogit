@@ -77,7 +77,7 @@ vtkOutputWindow::~vtkOutputWindow()
 
 void vtkOutputWindow::PrintSelf(ostream& os, vtkIndent indent)
 {
-  this->vtkObject::PrintSelf(os, indent);
+  this->Superclass::PrintSelf(os, indent);
 
   os << indent << "vtkOutputWindow Single instance = "
      << (void*)vtkOutputWindow::Instance << endl;
