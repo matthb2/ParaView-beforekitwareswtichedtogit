@@ -37,7 +37,7 @@ vtkStandardNewMacro(vtk3DSImporter);
 #ifdef __APPLE_CC__
 extern "C"
 {
-  void oft_initHyb() 
+  void oft_initHybrid() 
   {
   extern void _ZNSt8ios_base4InitC4Ev();
   _ZNSt8ios_base4InitC4Ev();
