@@ -29,7 +29,6 @@
 #include "vtkImplicitFunction.h"
 #include "vtkGenericAttributeCollection.h"
 #include "vtkGenericAttribute.h"
-#include "vtkGenericCellType.h"
 #include "vtkGenericCellTessellator.h"
 
 vtkCxxRevisionMacro(vtkGenericAdaptorCell, "$Revision$");
