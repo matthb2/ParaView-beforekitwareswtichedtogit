@@ -51,10 +51,6 @@ vtkImageSource::vtkImageSource()
 
 
 //----------------------------------------------------------------------------
-// Description:
-// Destructor: Deleting a vtkImageRegion automatically deletes the associated
-// vtkImageData.  However, since the data is reference counted, it may not 
-// actually be deleted.
 void vtkImageSource::PrintSelf(ostream& os, vtkIndent indent)
 {
   vtkObject::PrintSelf(os,indent);
