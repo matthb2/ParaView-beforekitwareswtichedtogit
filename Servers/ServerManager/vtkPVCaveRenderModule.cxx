@@ -70,7 +70,6 @@ void vtkPVCaveRenderModule::SetProcessModule(vtkProcessModule *pm)
            << vtkClientServerStream::End;
     }
 
-  this->Composite = NULL;
   this->CompositeID = pm->NewStreamObject("vtkCaveRenderManager", stream);
   pm->SendStream(
     vtkProcessModule::CLIENT|vtkProcessModule::RENDER_SERVER, stream);

@@ -66,8 +66,8 @@ vtkSMCompositePartDisplay::~vtkSMCompositePartDisplay()
 //----------------------------------------------------------------------------
 void vtkSMCompositePartDisplay::SetupCollectionFilter(vtkSMProxy* collectProxy)
 { 
-  vtkPVProcessModule* pm = static_cast<vtkPVProcessModule*>(
-    vtkProcessModule::GetProcessModule());
+  vtkPVProcessModule* pm = 
+    vtkPVProcessModule::SafeDownCast(vtkProcessModule::GetProcessModule());
 
   int i, num;
   
@@ -123,8 +123,8 @@ void vtkSMCompositePartDisplay::SetupCollectionFilter(vtkSMProxy* collectProxy)
 //----------------------------------------------------------------------------
 void vtkSMCompositePartDisplay::CreateVTKObjects(int num)
 {
-  vtkPVProcessModule* pm = static_cast<vtkPVProcessModule*>(
-    vtkProcessModule::GetProcessModule());
+  vtkPVProcessModule* pm = 
+    vtkPVProcessModule::SafeDownCast(vtkProcessModule::GetProcessModule());
   
   this->Superclass::CreateVTKObjects(num);
 

@@ -334,5 +334,4 @@ void vtkSMIntRangeDomain::SetAnimationValue(vtkSMProperty *property, int idx,
 void vtkSMIntRangeDomain::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os, indent);
-
 }
