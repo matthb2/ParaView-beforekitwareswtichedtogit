@@ -133,8 +133,8 @@ void vtkDesktopDeliveryServer
       ren = rens->GetNextItem();
       if (ren)
         {
-        rens->RemoveObserver(this->StartRenderTag);
-        rens->RemoveObserver(this->EndRenderTag);
+        ren->RemoveObserver(this->StartRenderTag);
+        ren->RemoveObserver(this->EndRenderTag);
         this->ObservingRenderWindow = false;
         }
       }
