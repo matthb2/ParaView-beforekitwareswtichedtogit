@@ -127,12 +127,12 @@ void* vtkDynamicLoader::GetSymbolAddress(vtkLibHandle, const char* sym)
 
 const char* vtkDynamicLoader::LibPrefix()
 {
-  return "";
+  return "lib";
 }
 
 const char* vtkDynamicLoader::LibExtension()
 {
-  return ".dylib";
+  return ".so";
 }
 
 const char* vtkDynamicLoader::LastError()
