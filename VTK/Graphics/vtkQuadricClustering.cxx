@@ -1324,7 +1324,7 @@ void vtkQuadricClustering::AppendFeatureQuadrics(vtkPolyData *pd)
     }
 
   // Release data.
-  this->FeatureEdges->SetInput(NULL);
+  this->FeatureEdges->SetInputConnection(0, 0);
   this->FeatureEdges->GetOutput()->ReleaseData();
   input->Delete();
 }
