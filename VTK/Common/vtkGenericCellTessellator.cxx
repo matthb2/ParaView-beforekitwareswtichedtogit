@@ -567,7 +567,7 @@ int vtkTriangleTile::Refine(vtkGenericCellTessellator* tess, vtkTriangleTile res
 }
 
 //-----------------------------------------------------------------------------
-static void Reorder(vtkIdType in[4], int order[4]) 
+static void Reorder(vtkIdType in[4], vtkIdType order[4]) 
 {
   // Input: in[4] contains pointId of a tetra in right hand rule.
   // Output: this function reorders so that:
@@ -723,7 +723,7 @@ int vtkTetraTile::Refine( vtkGenericCellTessellator* tess,
   if( index )
     {
     // That mean at least one edge was split and thus index != 0
-    int tetra[4], order[4];
+    vtkIdType tetra[4], order[4];
     signed char *cases;
 
     // we compare right away PointId[2] to PointId[3] because we assume 
