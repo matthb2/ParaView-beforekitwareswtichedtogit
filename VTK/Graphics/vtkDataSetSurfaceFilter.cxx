@@ -1032,7 +1032,7 @@ void vtkDataSetSurfaceFilter::UnstructuredGridExecute()
         {
         inPtId = ids[i];
         outPtId = this->GetOutputPointId(inPtId, input, newPts, outputPD); 
-        pts->InsertId(i, outPtId);
+        pts->InsertId(numCellPts/2-i-1, outPtId);
         }
       newPolys->InsertNextCell(pts);
       outputCD->CopyData(cd, cellId, this->NumberOfNewCells++);
