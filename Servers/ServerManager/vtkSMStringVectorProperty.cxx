@@ -228,6 +228,21 @@ int vtkSMStringVectorProperty::SetElement(unsigned int idx, const char* value)
 }
 
 //---------------------------------------------------------------------------
+int vtkSMStringVectorProperty::GetElementIndex(const char *value)
+{
+  unsigned int i;
+  for (i = 0; i < this->GetNumberOfElements(); i++)
+    {
+    if (value && this->Internals->Values[i].c_str() &&
+        !strcmp(value, this->Internals->Values[i].c_str()))
+      {
+      return i;
+      }
+    }
+  return -1;
+}
+
+//---------------------------------------------------------------------------
 int vtkSMStringVectorProperty::ReadXMLAttributes(vtkSMProxy* proxy,
                                                  vtkPVXMLElement* element)
 {
