@@ -51,6 +51,7 @@ vtkUnstructuredGridTestRayIntegrator::vtkUnstructuredGridTestRayIntegrator()
   this->SavedSampleDistance          = 0.0;
   this->SavedNumberOfComponents      = 0;
   this->SavedParametersScalars       = NULL;
+  this->ScalarOpacityUnitDistance    = 0.0;
 }
 
 //-----------------------------------------------------------------------------
