@@ -78,6 +78,7 @@ void vtkDirectory::PrintSelf(ostream& os, vtkIndent indent)
 #include <windows.h>
 #include <io.h>
 #include <ctype.h>
+#include <direct.h>
 #include <fcntl.h>
 #include <stdio.h>
 #include <stdlib.h>
