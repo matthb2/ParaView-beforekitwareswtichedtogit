@@ -641,10 +641,7 @@ LRESULT CALLBACK vtkHandleMessage2(HWND hWnd,UINT uMsg, WPARAM wParam,
         {
         (*me->ClassExitMethod)(me->ClassExitMethodArg);
         }
-      else 
-        {
-        me->TerminateApp();
-        }
+      me->TerminateApp();
       break;
       
     case WM_CHAR:
@@ -724,10 +721,7 @@ void vtkWin32RenderWindowInteractor::ExitCallback()
     {
     (*this->ClassExitMethod)(this->ClassExitMethodArg);
     }
-  else
-    {
-    this->TerminateApp();
-    }
+  this->TerminateApp();
 }
 
 
