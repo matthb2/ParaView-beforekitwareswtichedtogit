@@ -157,7 +157,11 @@ void vtkSMStringListDomain::Update(vtkSMProperty* prop)
 //---------------------------------------------------------------------------
 int vtkSMStringListDomain::ReadXMLAttributes(vtkSMProperty* prop, vtkPVXMLElement* element)
 {
-  this->Superclass::ReadXMLAttributes(prop, element);
+  int retVal = this->Superclass::ReadXMLAttributes(prop, element);
+  if (!retVal)
+    {
+    return 0;
+    }
 
   // Loop over the top-level elements.
   unsigned int i;

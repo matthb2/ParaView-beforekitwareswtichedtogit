@@ -12,48 +12,76 @@
      PURPOSE.  See the above copyright notice for more information.
 
 =========================================================================*/
-// .NAME vtkSMIntRangeDomain - int interval specified by min and max
+// .NAME vtkSMStringListRangeDomain - domain for string lists that also have ranges
 // .SECTION Description
-// vtkSMIntRangeDomain represents an interger interval specified 
-// using a min and a max value.
-// Valid XML attributes are:
-// @verbatim
-// * min 
-// * max
-// @endverbatim
-// Both min and max attributes can have one or more space space
-// separated (int) arguments.
-// .SECTION See Also
-// vtkSMDomain 
+// vtkSMStringListRangeDomain restricts the values of string vectors
+// (works only with vtkSMStringVectorProperty) to a list of strings
+// and either a range or a boolean. This is used with string properties
+// that have tuples of string and int type components. A good example
+// is array selection, where the first entry is the name of the array
+// (string) and the second one is whether it is selected or not (int, bool).
+// Another example is xdmf parameters, where the first entry is the
+// name of the property and the second one it's value (restricted to
+// an int range)
+// .Section See Also
+// vtkSMIntRangeDomain vtkSMBooleanDomain vtkSMStringListDomain
 
-#ifndef __vtkSMIntRangeDomain_h
-#define __vtkSMIntRangeDomain_h
+#ifndef __vtkSMStringListRangeDomain_h
+#define __vtkSMStringListRangeDomain_h
 
 #include "vtkSMDomain.h"
 
-//BTX
-struct vtkSMIntRangeDomainInternals;
-//ETX
+class vtkSMIntRangeDomain;
+class vtkSMBooleanDomain;
+class vtkSMStringListDomain;
 
-class VTK_EXPORT vtkSMIntRangeDomain : public vtkSMDomain
+class VTK_EXPORT vtkSMStringListRangeDomain : public vtkSMDomain
 {
 public:
-  static vtkSMIntRangeDomain* New();
-  vtkTypeRevisionMacro(vtkSMIntRangeDomain, vtkSMDomain);
+  static vtkSMStringListRangeDomain* New();
+  vtkTypeRevisionMacro(vtkSMStringListRangeDomain, vtkSMDomain);
   void PrintSelf(ostream& os, vtkIndent indent);
 
   // Description:
-  // Returns true if the value of the propery is in the domain.
-  // The propery has to be a vtkSMIntVectorProperty. If all 
-  // vector values are in the domain, it returns 1. It returns
-  // 0 otherwise. A value is in the domain if it is between (min, max)
+  // True if every even element is in the list of strings and
+  // every add element is in the range (or boolean), false
+  // otherwise.
   virtual int IsInDomain(vtkSMProperty* property);
 
+  //BTX
+  enum Modes
+  {
+    RANGE,
+    BOOLEAN
+  };
+  //ETX
+
   // Description:
-  // Returns true if the int is in the domain. If value is
-  // in domain, it's index is return in idx.
-  // A value is in the domain if it is between (min, max)
-  int IsInDomain(unsigned int idx, int val);
+  // Set the domain for the integer value. Can be either RANGE
+  // or BOOLEAN
+  vtkSetClampMacro(IntDomainMode, int, 0, 1);
+  vtkGetMacro(IntDomainMode, int);
+
+  // Description:
+  // Returns the number of strings in the domain.
+  unsigned int GetNumberOfStrings();
+
+  // Description:
+  // Returns a string in the domain. The pointer may become
+  // invalid once the domain has been modified.
+  const char* GetString(unsigned int idx);
+
+  // Description:
+  // Adds a new string to the domain.
+  unsigned int AddString(const char* string);
+
+  // Description:
+  // Removes a string from the domain.
+  void RemoveString(const char* string);
+
+  // Description:
+  // Removes all strings from the domain.
+  void RemoveAllStrings();
 
   // Description:
   // Return a min. value if it exists. If the min. exists
@@ -94,25 +122,13 @@ public:
   void RemoveAllMaxima();
 
   // Description:
-  // Returns the number of entries in the internal
-  // maxima/minima list. No maxima/minima exists beyond
-  // this index. Maxima/minima below this number may or
-  // may not exist.
-  unsigned int GetNumberOfEntries();
-
-  // Description:
-  // Update self checking the "unchecked" values of all required
-  // properties. Overwritten by sub-classes.
-  virtual void Update(vtkSMProperty*);
-
-  // Description:
   // Set the value of an element of a property from the animation editor.
   virtual void SetAnimationValue(vtkSMProperty *property, int idx,
                                  double value);
 
 protected:
-  vtkSMIntRangeDomain();
-  ~vtkSMIntRangeDomain();
+  vtkSMStringListRangeDomain();
+  ~vtkSMStringListRangeDomain();
 
   // Description:
   // Set the appropriate ivars from the xml element. Should
@@ -121,27 +137,15 @@ protected:
 
   virtual void SaveState(const char* name, ostream* file, vtkIndent indent);
 
-  // Description:
-  // General purpose method called by both AddMinimum() and AddMaximum()
-  void SetEntry(unsigned int idx, int minOrMax, int set, int value);
+  vtkSMIntRangeDomain* IRDomain;
+  vtkSMBooleanDomain* BDomain;
+  vtkSMStringListDomain* SLDomain;
 
-  // Internal use only.
-  // Set/Get the number of min/max entries.
-  void SetNumberOfEntries(unsigned int size);
-
-  vtkSMIntRangeDomainInternals* IRInternals;
-
-//BTX
-  enum
-  {
-    MIN = 0,
-    MAX = 1
-  };
-//ETX
+  int IntDomainMode;
 
 private:
-  vtkSMIntRangeDomain(const vtkSMIntRangeDomain&); // Not implemented
-  void operator=(const vtkSMIntRangeDomain&); // Not implemented
+  vtkSMStringListRangeDomain(const vtkSMStringListRangeDomain&); // Not implemented
+  void operator=(const vtkSMStringListRangeDomain&); // Not implemented
 };
 
 #endif

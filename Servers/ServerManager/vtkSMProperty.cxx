@@ -323,7 +323,10 @@ int vtkSMProperty::ReadXMLAttributes(vtkSMProxy* proxy,
         }
       else if (ih)
         {
-        this->SetInformationHelper(ih);
+        if (ih->ReadXMLAttributes(this, domainEl))
+          {
+          this->SetInformationHelper(ih);
+          }
         }
       else
         {
