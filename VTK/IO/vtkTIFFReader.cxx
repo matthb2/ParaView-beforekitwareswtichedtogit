@@ -21,11 +21,7 @@
 #include <sys/stat.h>
 
 extern "C" {
-#ifdef VTK_USE_SYSTEM_TIFF
-# include <tiffio.h>
-#else
-# include "vtk_tiff.h"
-#endif
+#include "vtk_tiff.h"
 }
 
 //-------------------------------------------------------------------------

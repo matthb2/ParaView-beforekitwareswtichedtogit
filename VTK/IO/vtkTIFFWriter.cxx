@@ -18,13 +18,7 @@
 #include "vtkImageData.h"
 #include "vtkObjectFactory.h"
 #include "vtkPointData.h"
-#include "vtkToolkits.h"
-
-#ifdef VTK_USE_SYSTEM_TIFF
-# include <tiffio.h>
-#else
-# include "vtk_tiff.h"
-#endif
+#include "vtk_tiff.h"
 
 vtkCxxRevisionMacro(vtkTIFFWriter, "$Revision$");
 vtkStandardNewMacro(vtkTIFFWriter);

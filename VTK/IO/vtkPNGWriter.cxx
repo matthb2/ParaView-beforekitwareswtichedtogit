@@ -18,13 +18,7 @@
 #include "vtkImageData.h"
 #include "vtkObjectFactory.h"
 #include "vtkUnsignedCharArray.h"
-#include "vtkToolkits.h" // for VTK_USE_SYSTEM_PNG
-
-#ifdef VTK_USE_SYSTEM_PNG
-# include <png.h>
-#else
-# include "vtk_png.h"
-#endif
+#include "vtk_png.h"
 
 vtkCxxRevisionMacro(vtkPNGWriter, "$Revision$");
 vtkStandardNewMacro(vtkPNGWriter);
