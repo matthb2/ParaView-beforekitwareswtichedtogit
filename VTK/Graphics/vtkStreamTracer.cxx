@@ -774,9 +774,16 @@ void vtkStreamTracer::Integrate(vtkPolyData* output,
       vorticity->InsertNextTuple(vort);
       // rotation
       // local rotation = vorticity . unit tangent ( i.e. velocity/speed )
-      omega = vtkMath::Dot(vort, velocity);
-      omega /= speed;
-      omega *= this->RotationScale;
+      if (speed != 0.0)
+        {
+          omega = vtkMath::Dot(vort, velocity);
+          omega /= speed;
+          omega *= this->RotationScale;
+        }
+      else
+        {
+          omega = 0.0;
+        }
       angularVel->InsertNextValue(omega);
       rotation->InsertNextValue(0.0);
       }
