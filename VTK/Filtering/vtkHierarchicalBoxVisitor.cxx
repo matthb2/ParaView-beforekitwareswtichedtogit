@@ -67,10 +67,7 @@ void vtkHierarchicalBoxVisitor::Execute()
       info.Level = levelId;
       info.DataSetId = dsId;
       info.Box = box;
-      if (grid)
-        {
-        this->Command->Execute(this, grid, &info);
-        }
+      this->Command->Execute(this, grid, &info);
       }
     }
 }
