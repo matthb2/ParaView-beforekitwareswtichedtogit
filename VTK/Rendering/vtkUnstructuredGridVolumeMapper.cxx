@@ -40,7 +40,7 @@ void vtkUnstructuredGridVolumeMapper::SetInput( vtkDataSet *genericInput )
     }
   else
     {
-    vtkErrorMacro("The SetInput method of this mapper requires vtkImageData as input");
+    vtkErrorMacro("The SetInput method of this mapper requires vtkUnstructuredGrid as input");
     }
 }
 
