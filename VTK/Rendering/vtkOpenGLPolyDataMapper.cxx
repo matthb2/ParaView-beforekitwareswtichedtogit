@@ -22,9 +22,11 @@
 #include "vtkObjectFactory.h"
 #include "vtkOpenGLRenderer.h"
 #include "vtkPlane.h"
+#include "vtkPlaneCollection.h"
 #include "vtkPolyData.h"
 #include "vtkPolygon.h"
 #include "vtkProperty.h"
+#include "vtkTimerLog.h"
 #include "vtkTriangle.h"
 
 #ifdef VTK_USE_CARBON

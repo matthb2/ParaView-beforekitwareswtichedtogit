@@ -16,11 +16,16 @@
 
 =========================================================================*/
 #include "vtkAbstractMapper.h"
+
 #include "vtkDataSet.h"
 #include "vtkObjectFactory.h"
 #include "vtkPlanes.h"
+#include "vtkPlaneCollection.h"
+#include "vtkTimerLog.h"
 
 vtkCxxRevisionMacro(vtkAbstractMapper, "$Revision$");
+
+vtkCxxSetObjectMacro(vtkAbstractMapper,ClippingPlanes,vtkPlaneCollection);
 
 // Construct object.
 vtkAbstractMapper::vtkAbstractMapper()

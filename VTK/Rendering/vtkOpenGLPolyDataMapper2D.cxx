@@ -26,6 +26,8 @@
 #include "vtkUnsignedCharArray.h"
 #include "vtkViewport.h"
 #include "vtkgluPickMatrix.h"
+#include "vtkPlaneCollection.h"
+#include "vtkPlane.h"
 
 #include <math.h>
 

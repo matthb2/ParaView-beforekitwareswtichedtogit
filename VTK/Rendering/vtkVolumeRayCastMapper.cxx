@@ -26,6 +26,7 @@
 #include "vtkPlaneCollection.h"
 #include "vtkRenderWindow.h"
 #include "vtkRenderer.h"
+#include "vtkTimerLog.h"
 #include "vtkVolumeRayCastFunction.h"
 
 #include <math.h>
