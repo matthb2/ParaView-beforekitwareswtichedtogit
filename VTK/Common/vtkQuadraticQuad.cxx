@@ -56,8 +56,10 @@ vtkQuadraticQuad::~vtkQuadraticQuad()
 {
   this->Edge->Delete();
   this->Quad->Delete();
+
   this->PointData->Delete();
   this->CellData->Delete();
+  this->Scalars->Delete();
 }
 
 vtkCell *vtkQuadraticQuad::MakeObject()
