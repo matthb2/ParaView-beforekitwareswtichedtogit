@@ -60,7 +60,7 @@ vtkObject* vtkVolumeRenderingFactory::CreateInstance(const char* vtkclassname )
     if(strcmp(vtkclassname, "vtkVolumeTextureMapper2D") == 0)
       {
 #if defined(VTK_USE_MANGLED_MESA)
-      if ( vtkGraphicsFactory::UseMesaClasses )
+      if ( vtkGraphicsFactory::GetUseMesaClasses() )
         {
         return vtkMesaVolumeTextureMapper2D::New();
         }
@@ -70,7 +70,7 @@ vtkObject* vtkVolumeRenderingFactory::CreateInstance(const char* vtkclassname )
     if(strcmp(vtkclassname, "vtkRayCastImageDisplayHelper") == 0)
       {
 #if defined(VTK_USE_MANGLED_MESA)
-      if ( vtkGraphicsFactory::UseMesaClasses )
+      if ( vtkGraphicsFactory::GetUseMesaClasses() )
         {
         return vtkMesaRayCastImageDisplayHelper::New();
         }
