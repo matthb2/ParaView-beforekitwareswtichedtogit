@@ -774,6 +774,10 @@ int vtkRectilinearGrid::ComputeStructuredCoordinates(float x[3], int ijk[3],
       {
       return 0;
       }
+    if (x[j] == xNext  && this->Dimensions[j] != 1)
+      {
+      return 0;
+      }
 
     for (i=1; i < scalars[j]->GetNumberOfTuples(); i++)
       {
