@@ -118,6 +118,9 @@ vtkClientCompositeManager::vtkClientCompositeManager()
 
   this->Compositer = vtkCompressCompositer::New();
   //this->Compositer = vtkTreeCompositer::New();
+
+  this->UseChar = 1;
+  this->UseRGB = 1;
 }
 
   
