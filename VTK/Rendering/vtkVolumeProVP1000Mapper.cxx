@@ -59,8 +59,12 @@ vtkVolumeProVP1000Mapper::vtkVolumeProVP1000Mapper()
   VLIStatus         status;
   VLIConfiguration  *config;
 
-    // Establish a connection with vli
+  this->ImageBuffer = NULL;
+  this->DepthBuffer = NULL;
+
+  // Establish a connection with vli
   status = VLIOpen();
+  
   if ( status != kVLIOK )
     {
     vtkDebugMacro( << "VLIOpen failed!" );
@@ -111,9 +115,6 @@ vtkVolumeProVP1000Mapper::vtkVolumeProVP1000Mapper()
     vtkErrorMacro( << "Cut plane could not be created!" );
     return;    
     }
-  
-  this->ImageBuffer = NULL;
-  this->DepthBuffer = NULL;
 }
 
 
