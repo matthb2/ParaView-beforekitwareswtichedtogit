@@ -94,7 +94,8 @@ void vtkPickPointWidget::ProcessEvents(vtkObject* object,
 //----------------------------------------------------------------------------
 void vtkPickPointWidget::OnChar()
 {
-  if (this->Interactor->GetKeyCode() == 'p' )
+  if (this->Interactor->GetKeyCode() == 'p' ||
+      this->Interactor->GetKeyCode() == 'P' )
     {
     if (this->RenderModule == NULL)
       {
