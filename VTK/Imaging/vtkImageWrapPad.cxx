@@ -45,7 +45,11 @@ void vtkImageWrapPad::ComputeInputUpdateExtent(int inExt[6],
     imageWidth = imageMax - imageMin + 1;
     
     // convert min max to image extent range.
-    min = ((min - imageMin) % imageWidth);
+    min = 0;
+    if (imageWidth > 0)
+      {
+      min = ((min - imageMin) % imageWidth);
+      }
     if (min < 0)
       { // Mod does not handle negative numbers as I think it should.
       min += imageWidth;

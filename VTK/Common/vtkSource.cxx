@@ -237,7 +237,7 @@ void vtkSource::PropagateUpdateExtent(vtkDataObject *output)
   int idx;
 
   // Check flag to avoid executing forever if there is a loop.
-  if (this->Updating)
+  if (this->Updating || this->NumberOfInputs == 0)
     {
     return;
     }
