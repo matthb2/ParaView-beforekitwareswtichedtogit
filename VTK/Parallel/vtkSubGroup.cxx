@@ -21,7 +21,10 @@
 #include "vtkMultiProcessController.h"
 #include "vtkSubGroup.h"
 
-#include <algorithm>
+#ifdef _MSC_VER
+#pragma warning ( disable : 4100 )
+#endif
+#include <vtkstd/algorithm>
 
 vtkCxxRevisionMacro(vtkSubGroup, "$Revision$");
 vtkStandardNewMacro(vtkSubGroup);
