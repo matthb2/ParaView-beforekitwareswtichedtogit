@@ -48,6 +48,24 @@ public:
 };
 
 //----------------------------------------------------------------------------
+void vtkInformationDataObjectVectorKey::Append(vtkInformation* info,
+                                               vtkDataObject* value)
+{
+  vtkInformationDataObjectVectorValue* v =
+    vtkInformationDataObjectVectorValue::SafeDownCast(
+      this->GetAsObjectBase(info));
+  if(v)
+    {
+    v->References.push_back(value);
+    v->Value.push_back(value);
+    }
+  else
+    {
+    this->Set(info, &value, 1);
+    }
+}
+
+//----------------------------------------------------------------------------
 void vtkInformationDataObjectVectorKey::Set(vtkInformation* info,
                                             vtkDataObject** value, int length)
 {

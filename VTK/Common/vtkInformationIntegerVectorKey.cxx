@@ -44,6 +44,22 @@ public:
 };
 
 //----------------------------------------------------------------------------
+void vtkInformationIntegerVectorKey::Append(vtkInformation* info, int value)
+{
+  vtkInformationIntegerVectorValue* v =
+    vtkInformationIntegerVectorValue::SafeDownCast(
+      this->GetAsObjectBase(info));
+  if(v)
+    {
+    v->Value.push_back(value);
+    }
+  else
+    {
+    this->Set(info, &value, 1);
+    }
+}
+
+//----------------------------------------------------------------------------
 void vtkInformationIntegerVectorKey::Set(vtkInformation* info, int* value,
                                          int length)
 {
