@@ -694,9 +694,9 @@ int vtkXMLWriter::WriteBinaryDataBlock(unsigned char* in_data, int numWords,
     if(data != this->ByteSwapBuffer)
       {
       memcpy(this->ByteSwapBuffer, data, numWords*wordSize);
-      this->PerformByteSwap(this->ByteSwapBuffer, numWords, wordSize);
       data = this->ByteSwapBuffer;
       }
+    this->PerformByteSwap(this->ByteSwapBuffer, numWords, wordSize);
     }
   
   // Now pass the data to the next write phase.
