@@ -16,7 +16,9 @@
 
 =========================================================================*/
 #include "vtkScalarBarActor.h"
+
 #include "vtkObjectFactory.h"
+#include "vtkPolyData.h"
 
 vtkCxxRevisionMacro(vtkScalarBarActor, "$Revision$");
 vtkStandardNewMacro(vtkScalarBarActor);

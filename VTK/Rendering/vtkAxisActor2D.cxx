@@ -16,7 +16,9 @@
 
 =========================================================================*/
 #include "vtkAxisActor2D.h"
+
 #include "vtkObjectFactory.h"
+#include "vtkPolyData.h"
 
 vtkCxxRevisionMacro(vtkAxisActor2D, "$Revision$");
 vtkStandardNewMacro(vtkAxisActor2D);

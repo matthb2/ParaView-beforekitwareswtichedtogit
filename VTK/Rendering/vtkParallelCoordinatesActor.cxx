@@ -16,8 +16,10 @@
 
 =========================================================================*/
 #include "vtkParallelCoordinatesActor.h"
+
 #include "vtkMath.h"
 #include "vtkObjectFactory.h"
+#include "vtkPolyData.h"
 
 vtkCxxRevisionMacro(vtkParallelCoordinatesActor, "$Revision$");
 vtkStandardNewMacro(vtkParallelCoordinatesActor);
