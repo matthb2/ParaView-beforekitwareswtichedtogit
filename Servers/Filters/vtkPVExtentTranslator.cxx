@@ -60,7 +60,6 @@ int vtkPVExtentTranslator::PieceToExtentThreadSafe(int piece, int numPieces,
     }
   else
     {
-    this->OriginalSource->UpdateInformation();
     this->OriginalSource->GetWholeExtent(origWholeExt);
     }
 
