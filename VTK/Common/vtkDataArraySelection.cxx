@@ -25,14 +25,14 @@
 vtkCxxRevisionMacro(vtkDataArraySelection, "$Revision$");
 vtkStandardNewMacro(vtkDataArraySelection);
 
-class vtkDataArraySelection::ArrayNamesType: public vtkstd::vector<vtkstd::string> {};
-class vtkDataArraySelection::ArraySettingsType: public vtkstd::vector<int> {};
+class vtkDataArraySelectionArrayNamesType: public vtkstd::vector<vtkstd::string> {};
+class vtkDataArraySelectionArraySettingsType: public vtkstd::vector<int> {};
 
 //----------------------------------------------------------------------------
 vtkDataArraySelection::vtkDataArraySelection()
 {
-  this->ArrayNames = new ArrayNamesType;
-  this->ArraySettings = new ArraySettingsType;
+  this->ArrayNames = new vtkDataArraySelectionArrayNamesType;
+  this->ArraySettings = new vtkDataArraySelectionArraySettingsType;
 }
 
 //----------------------------------------------------------------------------
@@ -219,8 +219,10 @@ void vtkDataArraySelection::SetArrays(const char* const* names, int numArrays)
   // changed.
   
   // Create a new map for this set of arrays.
-  ArrayNamesType* newNames = new ArrayNamesType;
-  ArraySettingsType* newSettings = new ArraySettingsType;
+  vtkDataArraySelectionArrayNamesType* newNames =
+    new vtkDataArraySelectionArrayNamesType;
+  vtkDataArraySelectionArraySettingsType* newSettings =
+    new vtkDataArraySelectionArraySettingsType;
   
   newNames->reserve(numArrays);
   newSettings->reserve(numArrays);
