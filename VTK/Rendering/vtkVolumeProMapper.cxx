@@ -17,9 +17,6 @@
 #include "vtkRenderer.h"
 #include "vtkToolkits.h"
 
-#if defined (VTK_HAVE_VG500) || defined (VTK_FORCE_COMPILE_VG500)
-#include "vtkVolumeProVG500Mapper.h"
-#endif
 #if defined (VTK_HAVE_VP1000) || defined (VTK_FORCE_COMPILE_VP1000)
 #include "vtkVolumeProVP1000Mapper.h"
 #endif
@@ -125,16 +122,9 @@ vtkVolumeProMapper *vtkVolumeProMapper::New()
   vtkDebugLeaks::DestructClass("vtkVolumeProMapper");
   return vtkVolumeProVP1000Mapper::New();
 #else
-
-#if defined (VTK_HAVE_VG500) || defined (VTK_FORCE_COMPILE_VG500)
-  vtkDebugLeaks::DestructClass("vtkVolumeProMapper");
-  return vtkVolumeProVG500Mapper::New();
-#else
   // if not using vli, then return the stub class, which will render
   // nothing....
   return new vtkVolumeProMapper;
-#endif
-  
 #endif
 }
 
