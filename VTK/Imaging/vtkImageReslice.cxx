@@ -771,16 +771,6 @@ inline int vtkResliceRound(double x)
   return vtkResliceFloor(x + 0.5);
 }
 
-inline int vtkResliceFloor(float x)
-{
-  return vtkResliceFloor((double)x);
-}
-
-inline int vtkResliceCeil(float x)
-{
-  return vtkResliceCeil((double)x);
-}
-
 inline int vtkResliceRound(float x)
 {
   return vtkResliceRound((double)x);
@@ -799,23 +789,12 @@ inline int vtkResliceFloor(double x, double &f)
 // the use of the 'floor' function which is too slow on x86
 
 template<class T>
-inline void vtkResliceRound(float val, T& rnd)
-{
-  rnd = vtkResliceRound(val);
-}
-
-template<class T>
 inline void vtkResliceRound(double val, T& rnd)
 {
   rnd = vtkResliceRound(val);
 }
 
 inline void vtkResliceRound(float val, float& rnd)
-{
-  rnd = val;
-}
-
-inline void vtkResliceRound(float val, double& rnd)
 {
   rnd = val;
 }
