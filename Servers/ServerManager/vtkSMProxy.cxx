@@ -932,4 +932,7 @@ void vtkSMProxy::PrintSelf(ostream& os, vtkIndent indent)
   os << indent << "VTKClassName: " 
      << (this->VTKClassName ? this->VTKClassName : "(null)")
      << endl;
+  os << indent << "XMLName: "
+     << (this->XMLName ? this->XMLName : "(null)")
+     << endl;
 }
