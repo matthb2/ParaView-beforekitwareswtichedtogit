@@ -180,11 +180,11 @@ int vtkRungeKutta45::ComputeNextStep(float* xprev, float* dxprev,
     if (shouldBreak)
       {
       if ( (retVal = 
-	    this->ComputeAStep(xprev, dxprev, xnext, t, delT, estErr)) )
-	{
-	delTActual = delT;
-	return retVal;
-	}
+            this->ComputeAStep(xprev, dxprev, xnext, t, delT, estErr)) )
+        {
+        delTActual = delT;
+        return retVal;
+        }
       break;
       }
     }
