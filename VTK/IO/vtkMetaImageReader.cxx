@@ -645,7 +645,7 @@ int vtkMetaImageReader::GetFileInformation(const char* fname, int populate)
     {
     this->SetHeaderSize(headerlen);
     }
-  return 1;
+  return 3;
 }
 
 //----------------------------------------------------------------------------
