@@ -92,21 +92,6 @@ vtkLight *vtkLight::New()
   return (vtkLight*)ret;
 }
 
-void vtkLight::SetLightTypeToHeadlight() 
-{
-  this->LightType = VTK_LIGHT_TYPE_HEADLIGHT;
-}
-
-void vtkLight::SetLightTypeToCameraLight() 
-{
-  this->LightType = VTK_LIGHT_TYPE_CAMERA_LIGHT;
-}
-
-void vtkLight::SetLightTypeToSceneLight() 
-{
-  this->LightType = VTK_LIGHT_TYPE_SCENE_LIGHT;
-}
-
 int vtkLight::LightTypeIsHeadlight()
 {
   return this->LightType == VTK_LIGHT_TYPE_HEADLIGHT;
