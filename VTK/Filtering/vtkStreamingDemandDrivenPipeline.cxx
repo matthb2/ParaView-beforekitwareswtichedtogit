@@ -477,13 +477,6 @@ int vtkStreamingDemandDrivenPipeline::VerifyOutputInformation(int outputPort)
     return 0;
     }
 
-  // If the data object is a dummy used by vtkProcessObject to store
-  // NULL connections for backward compatibility, then check nothing.
-  if(dataObject->IsA("vtkProcessObjectDummyData"))
-    {
-    return 1;
-    }
-
   // Check extents.
   vtkInformation* dataInfo = dataObject->GetInformation();
   if(dataInfo->Get(vtkDataObject::DATA_EXTENT_TYPE()) == VTK_PIECES_EXTENT)
