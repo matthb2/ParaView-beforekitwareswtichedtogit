@@ -102,11 +102,10 @@ void vtkSweptSurface::ComputeInputUpdateExtent(int inExt[6],
   memcpy(inExt, wholeExtent, 6*sizeof(int));
 }
 
-void vtkSweptSurface::ExecuteInformation()
+void vtkSweptSurface::ExecuteInformation(vtkImageData *input, 
+                                         vtkImageData *output)
 {
   float origin[3], spacing[3], bbox[24];
-  vtkImageData *input = this->GetInput();
-  vtkImageData *output = this->GetOutput();
 
   // make sure there is input
   if (input == NULL)
