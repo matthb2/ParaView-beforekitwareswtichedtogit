@@ -426,6 +426,8 @@ void vtkImageTracerWidget::PrintSelf(ostream& os, vtkIndent indent)
      << (this->SnapToImage ? "On\n" : "Off\n") ;
   os << indent << "CaptureRadius: " << this->CaptureRadius << "\n";
   os << indent << "GlyphAngle: " << this->GlyphAngle << "\n";
+  os << indent << "NumberOfHandles: " << this->NumberOfHandles << "\n";
+  os << indent << "IsClosed: " << this->IsClosed << "\n";
   os << indent << "AutoClose: "
      << (this->AutoClose ? "On\n" : "Off\n") ;
 }
