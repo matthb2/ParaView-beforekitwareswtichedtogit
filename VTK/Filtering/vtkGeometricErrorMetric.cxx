@@ -185,7 +185,7 @@ double vtkGeometricErrorMetric::GetError(double *leftPoint,
 #endif
   if(this->Relative)
     {
-    return sqrt(squareAbsoluteError)*this->SmallestSize;
+    return sqrt(squareAbsoluteError)/this->SmallestSize;
     }
   else
     {
