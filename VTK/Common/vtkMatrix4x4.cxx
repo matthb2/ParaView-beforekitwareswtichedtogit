@@ -50,7 +50,7 @@ void vtkMatrix4x4::Identity(double Elements[16])
 
 //----------------------------------------------------------------------------
 template<class T1, class T2, class T3>
-static inline void vtkMatrixMultiplyPoint(T1 elem[16], T2 in[4], T3 out[4])
+void vtkMatrixMultiplyPoint(T1 elem[16], T2 in[4], T3 out[4])
 {
   T3 v1 = in[0];
   T3 v2 = in[1];
