@@ -143,9 +143,9 @@ int ObjectFactory(int, char *[])
       return 1;
       }
     }
-  
-  oic->InitTraversal();
-  oi = oic->GetNextItem();
+  vtkCollectionSimpleIterator oicit;
+  oic->InitTraversal(oicit);
+  oi = oic->GetNextOverrideInformation(oicit);
   oi->GetObjectFactory();
 
   if(strcmp(oi->GetClassOverrideName(), "vtkVertex"))
@@ -167,7 +167,7 @@ int ObjectFactory(int, char *[])
     failed = 1;
     }
 
-  oi = oic->GetNextItem();
+  oi = oic->GetNextOverrideInformation(oicit);
   if(strcmp(oi->GetClassOverrideName(), "vtkVertex"))
     {
     cout << "failed: GetClassOverrideName should be vtkVertex, is: "
