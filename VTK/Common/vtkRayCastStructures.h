@@ -38,69 +38,57 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 
 
 =========================================================================*/
-// .NAME vtkVolumeRayCastIsosurfaceFunction - An isosurface ray caster for volumes
-//
+
+// .NAME vtkRayCastStructures - the structure definitions for ray casting
+
 // .SECTION Description
-// vtkVolumeRayCastIsosurfaceFunction is a volume ray cast function that
-// intersects a ray with an analytic isosurface in a scalar field. The color
-// and shading parameters are defined in the vtkVolumeProperty of the 
-// vtkVolume, as well as the interpolation type to use when locating the
-// surface (either a nearest neighbor approach or a trilinear interpolation
-// approach)
-//
+// These are the structures required for ray casting.
+
 // .SECTION See Also
-// vtkVolumeRayCastFunction vtkVolumeRayCastMapper vtkVolumeProperty
-// vtkVolumeRayCastCompositeFunction vtkVolumeRayCastMIPFunction
-// vtkVolume vtkVolumeProperty
+// vtkRayCaster
 
-#ifndef __vtkVolumeRayCastIsosurfaceFunction_h
-#define __vtkVolumeRayCastIsosurfaceFunction_h
+#ifndef __vtkRayCastStructures_h
+#define __vtkRayCastStructures_h
 
-#include "vtkVolumeRayCastFunction.h"
-
-class VTK_EXPORT vtkVolumeRayCastIsosurfaceFunction : public vtkVolumeRayCastFunction
+typedef struct 
 {
-public:
-  vtkVolumeRayCastIsosurfaceFunction();
-  ~vtkVolumeRayCastIsosurfaceFunction();
-  const char *GetClassName() {return "vtkVolumeRayCastIsosurfaceFunction";};
-  void PrintSelf( ostream& os, vtkIndent index );
+  // These are the input values that define the ray
+  float Origin[3];
+  float Direction[3];
+  int   Pixel[2];
 
-  // Description:
-  // Construct a new vtkVolumeRayCastIsosurfaceFunction
-  static vtkVolumeRayCastIsosurfaceFunction *New() {
-    return new vtkVolumeRayCastIsosurfaceFunction;};
+  // This input value defines the size of the image
+  int   ImageSize[2];
 
-  // Description:
-  // Get the scalar value below which all scalar values have 0 opacity
-  float GetZeroOpacityThreshold( vtkVolume *vol );
+  // These are input values for clipping but may be changed
+  // along the way
+  float NearClip;
+  float FarClip;
 
-  // Description:
-  // Set/Get the value of IsoValue.
-  vtkSetMacro( IsoValue, float );
-  vtkGetMacro( IsoValue, float );
+  // These are the return values - RGBA and Z
+  float Color[4];
+  float Depth;
 
+
+  // Some additional space that may be useful for the
+  // specific implementation of the ray caster. This structure
+  // is a convenient place to put it, since there is one
+  // per thread so that writing to these locations is safe
+
+  // Ray information transformed into local coordinates
+  float                        TransformedStart[4];
+  float                        TransformedEnd[4];
+  float                        TransformedDirection[4];
+  float                        TransformedIncrement[3];
   
-  // Description:
-  // This is the isovalue at which to view a surface
-  float IsoValue;
+  // The number of steps we want to take if this is
+  // a ray caster that takes steps
+  int                          NumberOfStepsToTake;
+  
+  // The number of steps we actually take if this is
+  // a ray caster that takes steps
+  int                          NumberOfStepsTaken;
 
-  // Description:
-  // These variables are filled in by SpecificFunctionInitialize
-  float       Color[3];
+} VTKRayCastRayInfo;
 
-//BTX
-  void CastRay(	VTKRayCastRayInfo *rayInfo,
-		VTKRayCastVolumeInfo *volumeInfo);
-//ETX
-
-protected:
-
-//BTX
-  void SpecificFunctionInitialize( vtkRenderer *ren,
-				   vtkVolume   *vol,
-				   VTKRayCastVolumeInfo *volumeInfo,
-				   vtkVolumeRayCastMapper *mapper );
-//ETX
-};
 #endif
