@@ -94,9 +94,8 @@ void vtkImageStencilSource::ExecuteData(vtkDataObject *out)
 
 //----------------------------------------------------------------------------
 void vtkImageStencilSource::ThreadedExecute(vtkImageStencilData *vtkNotUsed(o),
-                                            int extent[6], int threadId)
+                                            int [6], int threadId)
 {
-  extent = extent; // this silly line avoids compiler warnings
   if (threadId == 0)
     {
     vtkErrorMacro("subclass should override ThreadedExecute!!!");

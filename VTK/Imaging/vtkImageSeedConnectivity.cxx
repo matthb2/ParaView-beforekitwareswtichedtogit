@@ -95,11 +95,10 @@ void vtkImageSeedConnectivity::AddSeed(int i0, int i1)
 }
 
 //----------------------------------------------------------------------------
-void vtkImageSeedConnectivity::ComputeInputUpdateExtents(vtkDataObject *out)
+void vtkImageSeedConnectivity::ComputeInputUpdateExtents(vtkDataObject *)
 {
   vtkImageData *input = this->GetInput();
 
-  out = out;
   if (input)
     {
     input->SetUpdateExtent(input->GetWholeExtent());

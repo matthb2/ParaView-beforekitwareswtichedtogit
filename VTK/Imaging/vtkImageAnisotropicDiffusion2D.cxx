@@ -256,11 +256,7 @@ void vtkImageAnisotropicDiffusion2D::Iterate(vtkImageData *inData,
   // (Are you sure every one is correct?!!!)
   min2 = inMin2;
   max2 = inMax2;
-  
-  
-  inPtr2 = (double *)(inData->GetScalarPointer(min0, min1, min2));
-  outPtr2 = (double *)(outData->GetScalarPointer(min0, min1, min2));
-
+ 
   for (idxC = 0; idxC < maxC; idxC++)
     {
     inPtr2 = (double *)(inData->GetScalarPointer(min0, min1, min2));

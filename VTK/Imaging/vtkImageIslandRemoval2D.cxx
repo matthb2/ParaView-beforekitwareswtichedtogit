@@ -92,7 +92,6 @@ void vtkImageIslandRemoval2DExecute(vtkImageIslandRemoval2D *self,
   area = self->GetAreaThreshold();
   islandValue = (T)(self->GetIslandValue());
   replaceValue = (T)(self->GetReplaceValue());
-  numPixels = 0;
   // In case all 8 neighbors get added before we test the number.
   pixels = new vtkImage2DIslandPixel [area + 8]; 
   
