@@ -228,5 +228,9 @@ void vtkInteractorStyleSwitch::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os,indent);
   os << indent << "CurrentStyle " << this->CurrentStyle << "\n";
+  if (this->CurrentStyle)
+    {
+    this->CurrentStyle->PrintSelf(os, indent.GetNextIndent());
+    }
 }
 
