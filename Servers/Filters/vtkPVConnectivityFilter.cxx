@@ -32,7 +32,11 @@ void vtkPVConnectivityFilter::Execute()
   this->Superclass::Execute();
   if (this->ColorRegions)
     {
-    this->GetOutput()->GetPointData()->GetScalars()->SetName("RegionId");
+    vtkDataArray* scalars = this->GetOutput()->GetPointData()->GetScalars();
+    if (scalars)
+      {
+      scalars->SetName("RegionId");
+      }
     }
 }
 
