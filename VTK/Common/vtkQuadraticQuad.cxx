@@ -386,13 +386,14 @@ void vtkQuadraticQuad::Derivatives(int vtkNotUsed(subId),
 {
   float *x0, *x1, *x2, deltaX[3], weights[3];
   int i, j;
+  float functionDerivs[16];
 
   x0 = this->Points->GetPoint(0);
   x1 = this->Points->GetPoint(1);
   x2 = this->Points->GetPoint(2);
 
   this->InterpolationFunctions(pcoords,weights);
-  this->InterpolationDerivs(pcoords,derivs);
+  this->InterpolationDerivs(pcoords,functionDerivs);
   
   for (i=0; i<3; i++)
     {
@@ -408,7 +409,7 @@ void vtkQuadraticQuad::Derivatives(int vtkNotUsed(subId),
         }
       else
         {
-        derivs[3*i+j] =0;
+        derivs[3*i+j] = 0;
         }
       }
     }
