@@ -18,6 +18,8 @@
 #include "vtkStructuredPoints.h"
 #include "vtkUnstructuredGrid.h"
 #include "vtkRectilinearGrid.h"
+#include "vtkInformation.h"
+#include "vtkInformationVector.h"
 #include "vtkObjectFactory.h"
 
 vtkCxxRevisionMacro(vtkProgrammableFilter, "$Revision$");
@@ -102,17 +104,32 @@ void vtkProgrammableFilter::SetExecuteMethodArgDelete(void (*f)(void *))
 }
 
 
-void vtkProgrammableFilter::Execute()
+int vtkProgrammableFilter::RequestData(
+  vtkInformation *vtkNotUsed(request),
+  vtkInformationVector **inputVector,
+  vtkInformationVector *outputVector)
 {
+  // get the info objects
+  vtkInformation *inInfo = inputVector[0]->GetInformationObject(0);
+  vtkInformation *outInfo = outputVector->GetInformationObject(0);
+
+  // get the input and ouptut
+  vtkDataSet *input = vtkDataSet::SafeDownCast(
+    inInfo->Get(vtkDataObject::DATA_OBJECT()));
+  vtkDataSet *output = vtkDataSet::SafeDownCast(
+    outInfo->Get(vtkDataObject::DATA_OBJECT()));
+
   vtkDebugMacro(<<"Executing programmable filter");
 
   // First, copy the input to the output as a starting point
-  this->GetOutput()->CopyStructure( this->GetInput() );
+  output->CopyStructure( input );
 
   // Now invoke the procedure, if specified.
   if ( this->ExecuteMethod != NULL )
     {
     (*this->ExecuteMethod)(this->ExecuteMethodArg);
     }
+
+  return 1;
 }
 
