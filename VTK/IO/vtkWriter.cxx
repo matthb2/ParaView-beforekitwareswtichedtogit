@@ -133,10 +133,10 @@ void vtkWriter::EncodeArrayName(char* resname, const char* name)
 
   while( name[cc] )
     {
-    if ( name[cc] < '0' || 
-         name[cc] > '9' && name[cc] < 'A' ||
-         name[cc] > 'Z' && name[cc] < 'a' ||
-         name[cc] > 'z' )
+    // Encode spaces and %'s (and most non-printable ascii characters)
+    // The reader does not support spaces in array names.
+    if ( name[cc] < 33  || name[cc] > 126 ||
+         name[cc] == '\"' || name[cc] == '%' )
       {
       sprintf(buffer, "%2X", name[cc]);
       str << "%%" << buffer; // Two % because it goes through printf format
