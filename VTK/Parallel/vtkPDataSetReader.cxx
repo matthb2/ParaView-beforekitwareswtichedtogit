@@ -446,6 +446,11 @@ int vtkPDataSetReader::CanReadFile(const char* filename)
   type = this->ReadXML(file, &block, &param, &value);
   if (type == 1 && strcmp(block, "File") == 0)
     {
+    // We cannot leave the XML parser in a bad state.
+    // As a quick fix, read to the end of the file block.
+    // A better solution would be to move statics
+    // to ivars and initialize them as needed.
+    while (this->ReadXML(file, &block, &param, &value) != 5) {}
     flag = 1;
     }
 

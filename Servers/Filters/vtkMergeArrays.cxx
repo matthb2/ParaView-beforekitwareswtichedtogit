@@ -99,6 +99,30 @@ vtkDataSet* vtkMergeArrays::GetOutput()
 
 
 //----------------------------------------------------------------------------
+// Copy the update information across
+void vtkMergeArrays::ComputeInputUpdateExtents(vtkDataObject *)
+{
+  int idx;
+  int num;
+  vtkDataSet *input;
+  vtkDataSet *output;
+
+  num = this->NumberOfInputs;
+  output = this->GetOutput();
+  for (idx = 0; idx < num; ++idx)
+    {
+    input = this->GetInput(idx);
+
+    input->SetUpdatePiece( output->GetUpdatePiece() );
+    input->SetUpdateNumberOfPieces( output->GetUpdateNumberOfPieces() );
+    input->SetUpdateGhostLevel( output->GetUpdateGhostLevel() );
+    input->SetUpdateExtent( output->GetUpdateExtent() );
+    }
+}
+
+
+
+//----------------------------------------------------------------------------
 void vtkMergeArrays::ExecuteInformation()
 {
   vtkDataSet *input;

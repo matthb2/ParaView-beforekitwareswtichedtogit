@@ -99,7 +99,7 @@ void vtkBMPReader::ExecuteInformation()
     }
 
   this->ComputeInternalFileName(this->DataExtent[4]);
-  if (this->InternalFileName == NULL)
+  if (this->InternalFileName == NULL || this->InternalFileName[0] == '\0')
     {
     return;
     }

@@ -328,6 +328,8 @@ void vtkPVEnSightMasterServerReader::Execute()
     return;
     }
   
+  //cout << "In execute " << endl;
+
   // Compare the number of outputs.
   int piece = this->Controller->GetLocalProcessId();
   if(piece < this->NumberOfPieces)
@@ -628,6 +630,14 @@ int vtkPVEnSightMasterServerReader::ParseMasterServerFile()
   // data.
   int numProcs = this->Controller->GetNumberOfProcesses();
   this->NumberOfPieces = (numServers < numProcs)? numServers:numProcs;
+
+  for (int i = 0; i < this->GetNumberOfOutputs(); i++)
+    {
+    vtkDataObject* output = this->GetOutput(i);
+
+    output->SetMaximumNumberOfPieces(this->NumberOfPieces);
+    }
+  
   return VTK_OK;
 }
 #else
