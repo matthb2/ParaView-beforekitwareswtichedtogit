@@ -176,6 +176,13 @@ void vtkLightKit::RemoveLightsFromRenderer(vtkRenderer *renderer)
 }
 
 //----------------------------------------------------------------------------
+void vtkLightKit::Modified()
+{
+  this->Update();
+  this->MTime.Modified();
+}
+
+//----------------------------------------------------------------------------
 void vtkLightKit::Update() 
 {
   double *fillLightColor = this->FillLightColor;
