@@ -831,6 +831,11 @@ void vtkLookupTable::MapScalarsThroughTable2(void *input,
                             numberOfValues,inputIncrement,outputFormat);
       break;
       
+    case VTK_ID_TYPE:
+      vtkLookupTableMapData(this,static_cast<vtkIdType *>(input),output,
+                            numberOfValues,inputIncrement,outputFormat);
+      break;
+      
     case VTK_INT:
       vtkLookupTableMapData(this,static_cast<int *>(input),output,
                             numberOfValues,inputIncrement,outputFormat);
