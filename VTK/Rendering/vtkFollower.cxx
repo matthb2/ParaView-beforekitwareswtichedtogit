@@ -25,11 +25,12 @@
 #include "vtkRenderer.h"
 #include "vtkTexture.h"
 
-#include <stdlib.h>
 #include <math.h>
 
 vtkCxxRevisionMacro(vtkFollower, "$Revision$");
 vtkStandardNewMacro(vtkFollower);
+
+vtkCxxSetObjectMacro(vtkFollower,Camera,vtkCamera);
 
 // Creates a follower with no camera set
 vtkFollower::vtkFollower()
