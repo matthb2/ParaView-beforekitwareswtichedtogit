@@ -48,9 +48,20 @@ void vtkXMLPDataSetWriter::PrintSelf(ostream& os, vtkIndent indent)
 }
 
 //----------------------------------------------------------------------------
+void vtkXMLPDataSetWriter::SetInput(vtkDataSet* input)
+{
+  this->vtkProcessObject::SetNthInput(0, input);
+}
+
+//----------------------------------------------------------------------------
 vtkDataSet* vtkXMLPDataSetWriter::GetInput()
 {
-  return static_cast<vtkDataSet*>(this->Superclass::GetInput());
+  if(this->NumberOfInputs < 1)
+    {
+    return 0;
+    }
+  
+  return static_cast<vtkDataSet*>(this->Inputs[0]);
 }
 
 //----------------------------------------------------------------------------
