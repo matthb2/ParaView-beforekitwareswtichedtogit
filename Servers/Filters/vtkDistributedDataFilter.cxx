@@ -3311,8 +3311,9 @@ vtkUnstructuredGrid *vtkDistributedDataFilter::MergeGrids(int nsets,
 
   int totalPoints = 0;
   int totalCells = 0;
+  int i;
 
-  for (int i=0; i<nsets; i++)
+  for (i=0; i<nsets; i++)
     {
     totalPoints += sets[i]->GetNumberOfPoints();
     totalCells += sets[i]->GetNumberOfCells();
@@ -3335,7 +3336,7 @@ vtkUnstructuredGrid *vtkDistributedDataFilter::MergeGrids(int nsets,
     mc->SetGlobalCellIdArrayName(globalCellIdArrayName);
     }
 
-  for (int i=0; i<nsets; i++)
+  for (i=0; i<nsets; i++)
     {
     mc->MergeDataSet(sets[i]);
     sets[i]->Delete();
