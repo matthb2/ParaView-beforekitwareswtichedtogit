@@ -17,6 +17,8 @@
 =========================================================================*/
 #include "vtkObjectFactoryCollection.h"
 
+#include "vtkDebugLeaks.h"
+
 vtkCxxRevisionMacro(vtkObjectFactoryCollection, "$Revision$");
 
 //----------------------------------------------------------------------------
