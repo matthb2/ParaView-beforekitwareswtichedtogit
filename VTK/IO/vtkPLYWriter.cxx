@@ -17,8 +17,9 @@
 =========================================================================*/
 #include "vtkPLYWriter.h"
 
-#include "vtkPLY.h"
 #include "vtkObjectFactory.h"
+#include "vtkPLY.h"
+#include "vtkPolyData.h"
 #include "vtkScalarsToColors.h"
 
 vtkCxxRevisionMacro(vtkPLYWriter, "$Revision$");

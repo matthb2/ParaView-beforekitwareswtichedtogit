@@ -16,7 +16,9 @@
 
 =========================================================================*/
 #include "vtkStructuredGridWriter.h"
+
 #include "vtkObjectFactory.h"
+#include "vtkStructuredGrid.h"
 
 vtkCxxRevisionMacro(vtkStructuredGridWriter, "$Revision$");
 vtkStandardNewMacro(vtkStructuredGridWriter);

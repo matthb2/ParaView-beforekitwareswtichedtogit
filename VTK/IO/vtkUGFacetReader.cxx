@@ -16,10 +16,12 @@
 
 =========================================================================*/
 #include "vtkUGFacetReader.h"
+
 #include "vtkByteSwap.h"
+#include "vtkFloatArray.h"
 #include "vtkMergePoints.h"
 #include "vtkObjectFactory.h"
-#include "vtkFloatArray.h"
+#include "vtkShortArray.h"
 
 vtkCxxRevisionMacro(vtkUGFacetReader, "$Revision$");
 vtkStandardNewMacro(vtkUGFacetReader);

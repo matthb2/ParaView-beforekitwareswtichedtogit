@@ -17,10 +17,11 @@
 =========================================================================*/
 #include "vtkGenericEnSightReader.h"
 
-#include "vtkEnSight6Reader.h"
+#include "vtkCollection.h"
 #include "vtkEnSight6BinaryReader.h"
-#include "vtkEnSightGoldReader.h"
+#include "vtkEnSight6Reader.h"
 #include "vtkEnSightGoldBinaryReader.h"
+#include "vtkEnSightGoldReader.h"
 #include "vtkObjectFactory.h"
 
 vtkCxxRevisionMacro(vtkGenericEnSightReader, "$Revision$");

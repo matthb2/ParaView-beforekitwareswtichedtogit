@@ -19,9 +19,6 @@
 #include "vtkObjectFactory.h"
 #include "vtkByteSwap.h"
 
-#include <stdio.h>
-#include <ctype.h>
-#include <string.h>
 #include <sys/stat.h>
 
 vtkCxxRevisionMacro(vtkImageReader2, "$Revision$");

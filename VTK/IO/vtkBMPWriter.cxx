@@ -16,6 +16,8 @@
 
 =========================================================================*/
 #include "vtkBMPWriter.h"
+
+#include "vtkImageData.h"
 #include "vtkObjectFactory.h"
 
 vtkCxxRevisionMacro(vtkBMPWriter, "$Revision$");

@@ -16,12 +16,18 @@
 
 =========================================================================*/
 #include "vtkDataSetReader.h"
-#include "vtkPolyDataReader.h"
-#include "vtkStructuredPointsReader.h"
-#include "vtkStructuredGridReader.h"
-#include "vtkRectilinearGridReader.h"
-#include "vtkUnstructuredGridReader.h"
+
 #include "vtkObjectFactory.h"
+#include "vtkPolyData.h"
+#include "vtkPolyDataReader.h"
+#include "vtkRectilinearGrid.h"
+#include "vtkRectilinearGridReader.h"
+#include "vtkStructuredGrid.h"
+#include "vtkStructuredGridReader.h"
+#include "vtkStructuredPoints.h"
+#include "vtkStructuredPointsReader.h"
+#include "vtkUnstructuredGrid.h"
+#include "vtkUnstructuredGridReader.h"
 
 vtkCxxRevisionMacro(vtkDataSetReader, "$Revision$");
 vtkStandardNewMacro(vtkDataSetReader);
@@ -336,4 +342,9 @@ void vtkDataSetReader::Update()
 void vtkDataSetReader::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os,indent);
+}
+
+vtkDataSet *vtkDataSetReader::GetOutput(int idx)
+{
+  return static_cast<vtkDataSet *>(this->vtkSource::GetOutput(idx)); 
 }

@@ -16,8 +16,10 @@
 
 =========================================================================*/
 #include "vtkUnstructuredGridWriter.h"
+
 #include "vtkByteSwap.h"
 #include "vtkObjectFactory.h"
+#include "vtkUnstructuredGrid.h"
 
 vtkCxxRevisionMacro(vtkUnstructuredGridWriter, "$Revision$");
 vtkStandardNewMacro(vtkUnstructuredGridWriter);

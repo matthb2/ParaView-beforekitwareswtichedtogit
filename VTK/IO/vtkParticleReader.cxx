@@ -22,10 +22,6 @@
 #include "vtkObjectFactory.h"
 #include "vtkByteSwap.h"
 
-#include <stdio.h>
-#include <ctype.h>
-#include <string.h>
-
 vtkCxxRevisionMacro(vtkParticleReader, "$Revision$");
 vtkStandardNewMacro(vtkParticleReader);
 

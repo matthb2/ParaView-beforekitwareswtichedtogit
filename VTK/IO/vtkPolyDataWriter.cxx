@@ -16,7 +16,9 @@
 
 =========================================================================*/
 #include "vtkPolyDataWriter.h"
+
 #include "vtkObjectFactory.h"
+#include "vtkPolyData.h"
 
 vtkCxxRevisionMacro(vtkPolyDataWriter, "$Revision$");
 vtkStandardNewMacro(vtkPolyDataWriter);

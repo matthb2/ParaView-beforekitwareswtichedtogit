@@ -18,8 +18,6 @@
 #include "vtkPNMReader.h"
 #include "vtkObjectFactory.h"
 
-#include <stdio.h>
-
 vtkCxxRevisionMacro(vtkPNMReader, "$Revision$");
 vtkStandardNewMacro(vtkPNMReader);
 

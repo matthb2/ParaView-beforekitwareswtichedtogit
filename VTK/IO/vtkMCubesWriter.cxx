@@ -16,8 +16,10 @@
 
 =========================================================================*/
 #include "vtkMCubesWriter.h"
+
 #include "vtkByteSwap.h"
 #include "vtkObjectFactory.h"
+#include "vtkPolyData.h"
 
 vtkCxxRevisionMacro(vtkMCubesWriter, "$Revision$");
 vtkStandardNewMacro(vtkMCubesWriter);

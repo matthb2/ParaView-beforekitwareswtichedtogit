@@ -16,7 +16,10 @@
 
 =========================================================================*/
 #include "vtkPNGWriter.h"
+
+#include "vtkImageData.h"
 #include "vtkObjectFactory.h"
+#include "vtkUnsignedCharArray.h"
 
 #include <png.h>
 

@@ -16,11 +16,9 @@
 
 =========================================================================*/
 #include "vtkImageWriter.h"
-#include "vtkObjectFactory.h"
 
-#include <stdio.h>
-#include <ctype.h>
-#include <string.h>
+#include "vtkObjectFactory.h"
+#include "vtkImageData.h"
 
 vtkCxxRevisionMacro(vtkImageWriter, "$Revision$");
 vtkStandardNewMacro(vtkImageWriter);

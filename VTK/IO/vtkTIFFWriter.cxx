@@ -16,7 +16,9 @@
 
 =========================================================================*/
 #include "vtkTIFFWriter.h"
+
 #include "vtkObjectFactory.h"
+#include "vtkImageData.h"
 
 vtkCxxRevisionMacro(vtkTIFFWriter, "$Revision$");
 vtkStandardNewMacro(vtkTIFFWriter);
