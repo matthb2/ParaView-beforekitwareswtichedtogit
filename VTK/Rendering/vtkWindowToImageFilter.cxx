@@ -70,6 +70,7 @@ void vtkWindowToImageFilter::PrintSelf(ostream& os, vtkIndent indent)
     }
   os << indent << "ReadFrontBuffer: " << this->ReadFrontBuffer << "\n";
   os << indent << "Magnification: " << this->Magnification << "\n";
+  os << indent << "ShouldRerender: " << this->ShouldRerender << "\n";
 }
 
 
