@@ -29,6 +29,8 @@
 #include "vtkGenericAdaptorCell.h"
 #include "vtkPolyData.h"
 #include "vtkGenericDataSet.h"
+#include "vtkGenericAttributeCollection.h"
+#include "vtkGenericAttribute.h"
 
 vtkCxxRevisionMacro(vtkGenericContourFilter, "$Revision$");
 vtkStandardNewMacro(vtkGenericContourFilter);
@@ -156,6 +158,19 @@ void vtkGenericContourFilter::Execute()
   //----------- Begin of contouring algorithm --------------------//
   vtkGenericCellIterator *cellIt = input->NewCellIterator();
  
+  if(this->InputScalarsSelection!=0)
+    {
+    int attrib=input->GetAttributes()->FindAttribute(this->InputScalarsSelection);
+    if(attrib!=-1)
+      {
+      vtkGenericAttribute *a=input->GetAttributes()->GetAttribute(attrib);
+      if(a->GetNumberOfComponents()==1)
+        {
+        input->GetAttributes()->SetActiveAttribute(attrib,0);
+        }
+      }
+    }
+    
   for(cellIt->Begin(); !cellIt->IsAtEnd(); cellIt->Next())
     {
     cell = cellIt->GetCell();
@@ -235,6 +250,11 @@ void vtkGenericContourFilter::CreateDefaultLocator()
     }
 }
 
+void vtkGenericContourFilter::SelectInputScalars(const char *fieldName)
+{
+  this->SetInputScalarsSelection(fieldName);
+}
+  
 void vtkGenericContourFilter::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os,indent);
