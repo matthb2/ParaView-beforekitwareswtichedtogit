@@ -12,32 +12,34 @@
      PURPOSE.  See the above copyright notice for more information.
 
 =========================================================================*/
-// .NAME vtkInformationDataObjectKey - Key for vtkDataObject values.
+// .NAME vtkInformationDoubleVectorKey - Key for double vector values.
 // .SECTION Description
-// vtkInformationDataObjectKey is used to represent keys in
-// vtkInformation for values that are vtkDataObject instances.
+// vtkInformationDoubleVectorKey is used to represent keys for double
+// vector values in vtkInformation.h
 
-#ifndef __vtkInformationDataObjectKey_h
-#define __vtkInformationDataObjectKey_h
+#ifndef __vtkInformationDoubleVectorKey_h
+#define __vtkInformationDoubleVectorKey_h
 
 #include "vtkInformationKey.h"
 
-class vtkDataObject;
-
-class VTK_FILTERING_EXPORT vtkInformationDataObjectKey : public vtkInformationKey
+class VTK_FILTERING_EXPORT vtkInformationDoubleVectorKey : public vtkInformationKey
 {
 public:
-  vtkTypeRevisionMacro(vtkInformationDataObjectKey,vtkInformationKey);
+  vtkTypeRevisionMacro(vtkInformationDoubleVectorKey,vtkInformationKey);
   void PrintSelf(ostream& os, vtkIndent indent);
 
-  vtkInformationDataObjectKey(const char* name, const char* location);
-  ~vtkInformationDataObjectKey();
+  vtkInformationDoubleVectorKey(const char* name, const char* location,
+                                 int length=-1);
+  ~vtkInformationDoubleVectorKey();
 
   // Description:
   // Get/Set the value associated with this key in the given
   // information object.
-  void Set(vtkInformation* info, vtkDataObject*);
-  vtkDataObject* Get(vtkInformation* info);
+  void Append(vtkInformation* info, double value);
+  void Set(vtkInformation* info, double* value, int length);
+  double* Get(vtkInformation* info);
+  void Get(vtkInformation* info, double* value);
+  int Length(vtkInformation* info);
   int Has(vtkInformation* info);
 
   // Description:
@@ -46,13 +48,13 @@ public:
   // object for this key, the value is removed from the second.
   virtual void Copy(vtkInformation* from, vtkInformation* to);
 
-  // Description:
-  // Report a reference this key has in the given information object.
-  virtual void Report(vtkInformation* info, vtkGarbageCollector* collector);
+protected:
+  // The required length of the vector value (-1 is no restriction).
+  int RequiredLength;
 
 private:
-  vtkInformationDataObjectKey(const vtkInformationDataObjectKey&);  // Not implemented.
-  void operator=(const vtkInformationDataObjectKey&);  // Not implemented.
+  vtkInformationDoubleVectorKey(const vtkInformationDoubleVectorKey&);  // Not implemented.
+  void operator=(const vtkInformationDoubleVectorKey&);  // Not implemented.
 };
 
 #endif

@@ -94,6 +94,12 @@ void vtkInformationKey::Remove(vtkInformation* info)
   this->SetAsObjectBase(info, 0);
 }
 
+//----------------------------------------------------------------------------
+void vtkInformationKey::Report(vtkInformation*, vtkGarbageCollector*)
+{
+  // Report nothing by default.
+}
+
 #ifdef VTK_DEBUG_LEAKS
 void vtkInformationKey::ConstructClass(const char* name)
 {

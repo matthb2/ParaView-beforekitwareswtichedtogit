@@ -179,14 +179,12 @@ void vtkVolume::SetMapper(vtkAbstractVolumeMapper *mapper)
     {
     if (this->Mapper != NULL) 
       { 
-      this->Mapper->RemoveConsumer(this);
       this->Mapper->UnRegister(this); 
       }   
     this->Mapper = mapper;
     if (this->Mapper != NULL) 
       { 
       this->Mapper->Register(this); 
-      this->Mapper->AddConsumer(this);
       }     
     this->Modified();
     }

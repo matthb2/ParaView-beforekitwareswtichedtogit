@@ -45,7 +45,7 @@ void vtkImageCityBlockDistance::AllocateOutputScalars(vtkImageData *outData)
     updateExtent[idx*2+1] = wholeExtent[idx*2+1];
     }
   outData->SetExtent(updateExtent);
-  this->GetOutput()->AllocateScalars();
+  outData->AllocateScalars();
 }
 
 

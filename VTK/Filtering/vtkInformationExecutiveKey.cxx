@@ -12,59 +12,59 @@
      PURPOSE.  See the above copyright notice for more information.
 
 =========================================================================*/
-#include "vtkInformationDataObjectKey.h"
+#include "vtkInformationExecutiveKey.h"
 
-#include "vtkDataObject.h"
+#include "vtkExecutive.h"
 #include "vtkGarbageCollector.h"
 
-vtkCxxRevisionMacro(vtkInformationDataObjectKey, "$Revision$");
+vtkCxxRevisionMacro(vtkInformationExecutiveKey, "$Revision$");
 
 //----------------------------------------------------------------------------
-vtkInformationDataObjectKey::vtkInformationDataObjectKey(const char* name, const char* location):
+vtkInformationExecutiveKey::vtkInformationExecutiveKey(const char* name, const char* location):
   vtkInformationKey(name, location)
 {
 }
 
 //----------------------------------------------------------------------------
-vtkInformationDataObjectKey::~vtkInformationDataObjectKey()
+vtkInformationExecutiveKey::~vtkInformationExecutiveKey()
 {
 }
 
 //----------------------------------------------------------------------------
-void vtkInformationDataObjectKey::PrintSelf(ostream& os, vtkIndent indent)
+void vtkInformationExecutiveKey::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os, indent);
 }
 
 //----------------------------------------------------------------------------
-void vtkInformationDataObjectKey::Set(vtkInformation* info,
-                                      vtkDataObject* value)
+void vtkInformationExecutiveKey::Set(vtkInformation* info,
+                                     vtkExecutive* value)
 {
   this->SetAsObjectBase(info, value);
 }
 
 //----------------------------------------------------------------------------
-vtkDataObject* vtkInformationDataObjectKey::Get(vtkInformation* info)
+vtkExecutive* vtkInformationExecutiveKey::Get(vtkInformation* info)
 {
-  return vtkDataObject::SafeDownCast(this->GetAsObjectBase(info));
+  return vtkExecutive::SafeDownCast(this->GetAsObjectBase(info));
 }
 
 //----------------------------------------------------------------------------
-int vtkInformationDataObjectKey::Has(vtkInformation* info)
+int vtkInformationExecutiveKey::Has(vtkInformation* info)
 {
-  return vtkDataObject::SafeDownCast(this->GetAsObjectBase(info))?1:0;
+  return vtkExecutive::SafeDownCast(this->GetAsObjectBase(info))?1:0;
 }
 
 //----------------------------------------------------------------------------
-void vtkInformationDataObjectKey::Copy(vtkInformation* from,
-                                       vtkInformation* to)
+void vtkInformationExecutiveKey::Copy(vtkInformation* from,
+                                      vtkInformation* to)
 {
   this->Set(to, this->Get(from));
 }
 
 //----------------------------------------------------------------------------
-void vtkInformationDataObjectKey::Report(vtkInformation* info,
-                                         vtkGarbageCollector* collector)
+void vtkInformationExecutiveKey::Report(vtkInformation* info,
+                                        vtkGarbageCollector* collector)
 {
   collector->ReportReference(this->Get(info), this->GetName());
 }

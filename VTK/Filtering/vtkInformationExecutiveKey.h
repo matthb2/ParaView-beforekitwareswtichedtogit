@@ -12,36 +12,32 @@
      PURPOSE.  See the above copyright notice for more information.
 
 =========================================================================*/
-// .NAME vtkInformationDataObjectVectorKey - Key for vector-of-data values.
+// .NAME vtkInformationExecutiveKey - Key for vtkExecutive values.
 // .SECTION Description
-// vtkInformationDataObjectVectorKey is used to represent keys for
-// values in vtkInformation that are vectors of vtkDataObject
-// instances.
+// vtkInformationExecutiveKey is used to represent keys in
+// vtkInformation for values that are vtkExecutive instances.
 
-#ifndef __vtkInformationDataObjectVectorKey_h
-#define __vtkInformationDataObjectVectorKey_h
+#ifndef __vtkInformationExecutiveKey_h
+#define __vtkInformationExecutiveKey_h
 
 #include "vtkInformationKey.h"
 
-class vtkDataObject;
+class vtkExecutive;
 
-class VTK_FILTERING_EXPORT vtkInformationDataObjectVectorKey : public vtkInformationKey
+class VTK_FILTERING_EXPORT vtkInformationExecutiveKey : public vtkInformationKey
 {
 public:
-  vtkTypeRevisionMacro(vtkInformationDataObjectVectorKey,vtkInformationKey);
+  vtkTypeRevisionMacro(vtkInformationExecutiveKey,vtkInformationKey);
   void PrintSelf(ostream& os, vtkIndent indent);
 
-  vtkInformationDataObjectVectorKey(const char* name, const char* location);
-  ~vtkInformationDataObjectVectorKey();
+  vtkInformationExecutiveKey(const char* name, const char* location);
+  ~vtkInformationExecutiveKey();
 
   // Description:
   // Get/Set the value associated with this key in the given
   // information object.
-  void Append(vtkInformation* info, vtkDataObject* value);
-  void Set(vtkInformation* info, vtkDataObject** value, int length);
-  vtkDataObject** Get(vtkInformation* info);
-  void Get(vtkInformation* info, vtkDataObject** value);
-  int Length(vtkInformation* info);
+  void Set(vtkInformation* info, vtkExecutive*);
+  vtkExecutive* Get(vtkInformation* info);
   int Has(vtkInformation* info);
 
   // Description:
@@ -50,9 +46,13 @@ public:
   // object for this key, the value is removed from the second.
   virtual void Copy(vtkInformation* from, vtkInformation* to);
 
+  // Description:
+  // Report a reference this key has in the given information object.
+  virtual void Report(vtkInformation* info, vtkGarbageCollector* collector);
+
 private:
-  vtkInformationDataObjectVectorKey(const vtkInformationDataObjectVectorKey&);  // Not implemented.
-  void operator=(const vtkInformationDataObjectVectorKey&);  // Not implemented.
+  vtkInformationExecutiveKey(const vtkInformationExecutiveKey&);  // Not implemented.
+  void operator=(const vtkInformationExecutiveKey&);  // Not implemented.
 };
 
 #endif

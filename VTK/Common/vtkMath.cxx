@@ -225,7 +225,7 @@ int vtkMath::SolveLinearSystem(double **A, double *x, int size)
 
     if (det == 0.0)
       {
-      vtkGenericWarningMacro(<<"Unable to solve linear system");
+      // Unable to solve linear system
       return 0;
       }
 
@@ -240,7 +240,7 @@ int vtkMath::SolveLinearSystem(double **A, double *x, int size)
     {
     if (A[0][0] == 0.0)
       {
-      vtkGenericWarningMacro(<<"Unable to solve linear system");
+      // Unable to solve linear system
       return 0;
       }
     

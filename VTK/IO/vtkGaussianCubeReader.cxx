@@ -234,6 +234,5 @@ int vtkGaussianCubeReader::FillOutputPortInformation(int port,
     return this->Superclass::FillOutputPortInformation(port, info);
     }
   info->Set(vtkDataObject::DATA_TYPE_NAME(), "vtkImageData");
-  info->Set(vtkDataObject::DATA_EXTENT_TYPE(), VTK_3D_EXTENT);
   return 1;
 }

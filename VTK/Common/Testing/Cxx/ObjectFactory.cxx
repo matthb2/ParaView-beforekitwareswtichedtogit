@@ -12,13 +12,15 @@
      PURPOSE.  See the above copyright notice for more information.
 
 =========================================================================*/
+
+#include "vtkDebugLeaks.h"
 #include "vtkObjectFactory.h"
+#include "vtkObjectFactoryCollection.h"
+#include "vtkOutputWindow.h"
+#include "vtkOverrideInformation.h"
+#include "vtkOverrideInformationCollection.h"
 #include "vtkVersion.h"
 #include "vtkVertex.h"
-#include "vtkObjectFactoryCollection.h"
-#include "vtkDebugLeaks.h"
-#include "vtkOverrideInformationCollection.h"
-#include "vtkOverrideInformation.h"
 
 int failed = 0;
 
@@ -105,6 +107,7 @@ void TestNewVertex(vtkVertex* v, const char* expectedClassName)
 int ObjectFactory(int, char *[])
 {
   vtkDebugLeaks::PromptUserOff();
+  vtkOutputWindow::GetInstance()->PromptUserOff();
   vtkGenericWarningMacro("Test Generic Warning");
   TestFactory* factory = TestFactory::New();
   vtkObjectFactory::RegisterFactory(factory);
