@@ -152,6 +152,7 @@ vtkMoleculeReaderBase::vtkMoleculeReaderBase()
   this->Points = NULL;
   this->RGB = NULL;
   this->Radii = NULL;
+  this->NumberOfAtoms = 0;
 }
 
 vtkMoleculeReaderBase::~vtkMoleculeReaderBase()
