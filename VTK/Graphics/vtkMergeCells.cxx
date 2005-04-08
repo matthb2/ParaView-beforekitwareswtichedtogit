@@ -209,6 +209,12 @@ int vtkMergeCells::MergeDataSet(vtkDataSet *set)
     {
     if (this->GlobalIdArrayName)   // faster by far
       {
+      // Note:  It has been observed that an input dataset may
+      // have an invalid global ID array.  Using the array to
+      // merge points results in bad geometry.  It may be
+      // worthwhile to do a quick sanity check when merging
+      // points.  Downside is that will slow down this filter.
+
       idMap = this->MapPointsToIdsUsingGlobalIds(set);
       }
     else
