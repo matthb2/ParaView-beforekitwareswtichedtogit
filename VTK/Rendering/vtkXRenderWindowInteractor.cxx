@@ -283,6 +283,9 @@ void vtkXRenderWindowInteractor::Initialize()
     XtRealizeWidget(this->Top);
     XSync(this->DisplayId,False);
     ren->SetWindowId(XtWindow(this->Top));
+    
+    XMapWindow(this->DisplayId, XtWindow(this->Top));
+    XSync(this->DisplayId,False);
     }
   else
     {
@@ -291,6 +294,9 @@ void vtkXRenderWindowInteractor::Initialize()
     XtRealizeWidget(this->Top);
     XSync(this->DisplayId,False);
     ren->SetWindowId(XtWindow(this->Top));
+    
+    XMapWindow(this->DisplayId, XtWindow(this->Top));
+    XSync(this->DisplayId,False);
 
     //  Find the current window size 
     XGetWindowAttributes(this->DisplayId, 
