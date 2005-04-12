@@ -542,7 +542,6 @@ void vtkProcessModule::InterpreterCallback(unsigned long, void* pinfo)
     info->css->PrintMessage(error, info->message);
     error << ends;
     vtkErrorMacro(<< errorMessage << error.str());
-    cerr << errorMessage << endl;
     error.rdbuf()->freeze(0);
     vtkErrorMacro("Aborting execution for debugging purposes.");
     abort();
