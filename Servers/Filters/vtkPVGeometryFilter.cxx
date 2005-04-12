@@ -282,7 +282,9 @@ int vtkPVGeometryFilter::RequestCompositeData(vtkInformation*,
       vtkPolyData* tmpOut = vtkPolyData::New();
       this->ExecuteBlock(ds, tmpOut, 0);
       append->AddInput(tmpOut);
-      tmpOut->Delete();
+      // Call FastDelete() instead of Delete() to avoid garbage
+      // collection checks. This improves the preformance significantly
+      tmpOut->FastDelete();
       numInputs++;
       }
     iter->GoToNextItem();
