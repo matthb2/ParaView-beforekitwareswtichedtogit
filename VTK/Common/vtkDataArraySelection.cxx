@@ -224,6 +224,32 @@ int vtkDataArraySelection::AddArray(const char* name)
 }
 
 //----------------------------------------------------------------------------
+// Description:
+// Remove an array from its index in the list.
+// \pre valid_index: index>=0 && index<GetNumberOfArrays()
+// \post size_decrease: GetNumberOfArray()=old GetNumberOfArray()-1
+void vtkDataArraySelection::RemoveArrayFromIndex(int index)
+{
+  vtkstd::vector<vtkstd::string>::iterator i = this->ArrayNames->begin()+index;
+  this->ArrayNames->erase(i);
+  vtkstd::vector<int>::iterator j = this->ArraySettings->begin()+index;
+  this->ArraySettings->erase(j);
+}
+
+//----------------------------------------------------------------------------
+// Description:
+// Remove an array from its name.
+// \post size_decrease: GetNumberOfArray()=old GetNumberOfArray()-1
+void vtkDataArraySelection::RemoveArrayFromName(const char *name)
+{
+  vtkstd::vector<vtkstd::string>::iterator i =
+    vtkstd::find(this->ArrayNames->begin(), this->ArrayNames->end(), vtkstd::string(name));
+  
+  int index=i-this->ArrayNames->begin();
+  this->RemoveArrayFromIndex(index);
+}
+
+//----------------------------------------------------------------------------
 void vtkDataArraySelection::SetArrays(const char* const* names, int numArrays)
 {
   this->SetArraysWithDefault(names, numArrays, 1);
