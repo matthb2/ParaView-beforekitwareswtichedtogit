@@ -637,7 +637,14 @@ int vtkSpyPlotReader::RequestData(
       while(cc<3)
         {
         extents[2*cc]=0;
-        extents[2*cc+1]=dims[cc];
+        if(dims[cc]==1)
+          {
+          extents[2*cc+1]=0;
+          }
+        else
+          {
+          extents[2*cc+1]=dims[cc];
+          }
         ++cc;
         }
       vtkCellData* cd;
