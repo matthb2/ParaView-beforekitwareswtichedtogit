@@ -95,8 +95,6 @@ int vtkPVProcessModule::Start(int argc, char **argv)
     vtkMultiProcessController::SetGlobalController(this->Controller);
     }
 
-  this->CreateLogFile("NodeLog");
-
   return this->GUIHelper->RunGUIStart(argc, argv, 1, 0);
 }
 
