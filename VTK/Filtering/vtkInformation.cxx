@@ -94,6 +94,7 @@ void vtkInformation::SetAsObjectBase(vtkInformationKey* key,
       {
       this->Internal->Map[key] = value;
       }
+    this->Modified();
     }
 }
 
