@@ -818,8 +818,8 @@ void vtkPKdTree::_select(int L, int R, int K, int dim)
       Z = static_cast<float>(log(float(N))); 
       S = static_cast<int>(.5 * exp(2*Z/3));
       SD = static_cast<int>(.5 * sqrt(Z*S*((float)(N-S)/N)) * sign(I - N/2));
-      LL = max(L, K - static_cast<int>((I*((float)S/N)) + SD));
-      RR = min(R, K + static_cast<int>((N-I) * ((float)S/N) + SD));
+      LL = max(L, K - static_cast<int>((I*((float)S/N))) + SD);
+      RR = min(R, K + static_cast<int>((N-I) * ((float)S/N)) + SD);
       this->_select(LL, RR, K, dim);
       }
 
