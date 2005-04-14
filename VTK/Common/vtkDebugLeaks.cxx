@@ -71,7 +71,7 @@ public:
         {
         char tmp[55];
         sprintf(tmp," has %i %s still around.\n",this->Count,
-                (this->Count == 1) ? "instances" : "instance");
+                (this->Count == 1) ? "instance" : "instances");
         os += "Class ";
         os += this->Key;
         os += tmp;
