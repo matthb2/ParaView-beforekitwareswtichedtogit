@@ -14,6 +14,8 @@
 =========================================================================*/
 #include "vtkInformationIntegerKey.h"
 
+#include "vtkInformation.h"
+
 vtkCxxRevisionMacro(vtkInformationIntegerKey, "$Revision$");
 
 //----------------------------------------------------------------------------
@@ -51,7 +53,11 @@ void vtkInformationIntegerKey::Set(vtkInformation* info, int value)
     {
     // Replace the existing value.
     oldv->Value = value;
-    }
+    // Since this sets a value without call SetAsObjectBase(),
+    // the info has to be modified here (instead of 
+    // vtkInformation::SetAsObjectBase()
+    info->Modified();
+   }
   else
     {
     // Allocate a new value.
