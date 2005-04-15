@@ -53,7 +53,6 @@ void vtkPVUpdateSuppressor::ForceUpdate()
 {
   vtkDataSet *input = vtkDataSet::SafeDownCast(this->GetInput());
   vtkDataSet *output = this->GetOutput();
-
   if (input == 0)
     {
     vtkErrorMacro("Missing input.");
@@ -170,6 +169,11 @@ void vtkPVUpdateSuppressor::CacheUpdate(int idx, int num)
   vtkDataSet *pd;
   vtkDataSet *output;
   int j;
+
+  if (num == -1)
+    {
+    return;
+    }
 
   if (idx < 0 || idx >= num)
     {

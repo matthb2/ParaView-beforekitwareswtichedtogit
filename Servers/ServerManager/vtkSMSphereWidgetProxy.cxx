@@ -139,6 +139,7 @@ void vtkSMSphereWidgetProxy::SaveInBatchScript(ofstream *file)
     *file << endl;
     }
 }
+
 //----------------------------------------------------------------------------
 void vtkSMSphereWidgetProxy::PrintSelf(ostream& os, vtkIndent indent)
 {
