@@ -440,7 +440,7 @@ int vtkSMProperty::GetModifiedAtCreation()
 }
 
 //---------------------------------------------------------------------------
-void vtkSMProperty::DeepCopy(vtkSMProperty* src)
+void vtkSMProperty::DeepCopy(vtkSMProperty* )
 {
 }
 
