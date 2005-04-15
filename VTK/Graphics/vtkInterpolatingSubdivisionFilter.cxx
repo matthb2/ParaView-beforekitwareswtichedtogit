@@ -178,14 +178,15 @@ int vtkInterpolatingSubdivisionFilter::FindEdge (vtkPolyData *mesh,
       if ( (tp1 == p1 && tp2 == p2) ||
            (tp2 == p1 && tp1 == p2))
         {
-        break;
+        // found the edge, return the stored value
+        return (int) edgeData->GetComponent(currentCellId,edgeId);
         }
       tp1 = tp2;
       tp2 = cell->GetPointId(edgeId + 1);
       }
     }
-    // found the edge, return the stored value
-    return (int) edgeData->GetComponent(currentCellId,edgeId);
+  vtkErrorMacro("Edge should have been found... but couldn't find it!!");
+  return 0;
 }
 
 vtkIdType vtkInterpolatingSubdivisionFilter::InterpolatePosition (
