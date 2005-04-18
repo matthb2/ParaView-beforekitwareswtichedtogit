@@ -194,7 +194,10 @@ void vtkSMLODRenderModuleProxy::ComputeTotalVisibleMemorySize()
     if (pDisp && pDisp->GetVisibilityCM())
       {
       vtkPVLODPartDisplayInformation* info = pDisp->GetLODInformation();
-      
+      if (!info)
+        {
+        continue;
+        }
       if (pDisp->GetVolumeRenderMode())
         {
         // If we are volume rendering, count size of total geometry, not

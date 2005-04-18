@@ -677,7 +677,12 @@ void vtkSMRenderModuleProxy::ComputeVisiblePropBounds(double bds[6])
       iter->GetCurrentObject());
     if (pDisp && pDisp->GetVisibilityCM() )
       {
-      double *tmp = pDisp->GetGeometryInformation()->GetBounds();
+      vtkPVGeometryInformation* info = pDisp->GetGeometryInformation();
+      if (!info)
+        {
+        continue;
+        }
+      double *tmp = info->GetBounds();
       if (tmp[0] < bds[0]) { bds[0] = tmp[0]; }  
       if (tmp[1] > bds[1]) { bds[1] = tmp[1]; }  
       if (tmp[2] < bds[2]) { bds[2] = tmp[2]; }  
