@@ -53,13 +53,15 @@ vtkViewport::vtkViewport()
 
   this->Aspect[0] = this->Aspect[1] = 1.0;
   this->PixelAspect[0] = this->PixelAspect[1] = 1.0;
+  this->Center[0] = 0.0;
+  this->Center[1] = 0.0;
 
   this->Size[0] = 0;
   this->Size[1] = 0;
 
   this->Origin[0] = 0;
   this->Origin[1] = 0;
-  
+
   this->PickedProp = NULL;
   this->PickFromProps = NULL;
   this->IsPicking = 0;
