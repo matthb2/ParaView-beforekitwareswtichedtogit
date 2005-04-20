@@ -109,6 +109,11 @@ void vtkSMXYPlotActorProxy::SetPosition2(double x, double y)
     pm->SendStream(this->GetServers(), stream);
     }
 }
+//-----------------------------------------------------------------------------
+void vtkSMXYPlotActorProxy::UpdateInformation()
+{
+  this->vtkSMProxy::UpdateInformation();
+}
 
 //-----------------------------------------------------------------------------
 void vtkSMXYPlotActorProxy::UpdateVTKObjects()

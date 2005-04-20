@@ -178,7 +178,6 @@ void vtkSMArrayListDomain::Update(vtkSMProxyProperty* pp)
       return;
       }
     }
-
 }
 
 //---------------------------------------------------------------------------
