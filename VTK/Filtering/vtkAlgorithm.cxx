@@ -152,6 +152,13 @@ vtkInformation *vtkAlgorithm::GetInputArrayInformation(int idx)
   return inArrayInfo;
 }
 
+void vtkAlgorithm::SetInputArrayToProcess(int idx, vtkInformation *inInfo)
+{
+  vtkInformation *info = this->GetInputArrayInformation(idx);
+  info->Copy(inInfo,1);
+  this->Modified();
+}
+
 void vtkAlgorithm::SetInputArrayToProcess(int idx, int port, int connection, 
                                           int fieldAssociation, 
                                           int attributeType)
@@ -231,6 +238,11 @@ vtkDataArray *vtkAlgorithm::GetInputArrayToProcess(int idx,
       {
       return inputDS->GetPointData()->GetArray(name);
       }
+    if (fieldAssoc == vtkDataObject::FIELD_ASSOCIATION_POINTS_THEN_CELLS
+        && inputDS->GetPointData()->GetArray(name))
+      {
+      return inputDS->GetPointData()->GetArray(name);
+      }
     
     return inputDS->GetCellData()->GetArray(name);
     }
@@ -245,6 +257,11 @@ vtkDataArray *vtkAlgorithm::GetInputArrayToProcess(int idx,
       return NULL;
       }
     if (fieldAssoc == vtkDataObject::FIELD_ASSOCIATION_POINTS)
+      {
+      return inputDS->GetPointData()->GetAttribute(fType);
+      }
+    if (fieldAssoc == vtkDataObject::FIELD_ASSOCIATION_POINTS_THEN_CELLS
+        && inputDS->GetPointData()->GetAttribute(fType))
       {
       return inputDS->GetPointData()->GetAttribute(fType);
       }
