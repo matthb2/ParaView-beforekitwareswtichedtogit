@@ -202,6 +202,23 @@ int vtkSMApplication::ParseConfigurationFile(const char* fname, const char* dir)
 }
 
 //---------------------------------------------------------------------------
+int vtkSMApplication::ParseConfiguration(const char* configuration)
+{
+  vtkSMProxyManager* proxyM = this->GetProxyManager();
+  if (!proxyM)
+    {
+    vtkErrorMacro("No global proxy manager defined. Can not parse file");
+    return 0;
+    }
+
+  vtkSMXMLParser* parser = vtkSMXMLParser::New();
+  int res = parser->Parse(configuration);
+  parser->ProcessConfiguration(proxyM);
+  parser->Delete();
+  return res;
+}
+
+//---------------------------------------------------------------------------
 void vtkSMApplication::Finalize()
 {
   //this->GetProcessModule()->FinalizeInterpreter();
