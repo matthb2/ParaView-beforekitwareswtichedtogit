@@ -72,9 +72,9 @@ int vtkGlyph2D::RequestData(
 
   pd = input->GetPointData();
 
-  inScalars = pd->GetScalars(this->InputScalarsSelection);
-  inVectors = pd->GetVectors(this->InputVectorsSelection);
-  inNormals = pd->GetNormals(this->InputNormalsSelection);
+  inScalars = this->GetInputArrayToProcess(0,inputVector);
+  inVectors = this->GetInputArrayToProcess(1,inputVector);
+  inNormals = this->GetInputArrayToProcess(2,inputVector);
 
   vtkDataArray* temp = 0;
   if (pd)

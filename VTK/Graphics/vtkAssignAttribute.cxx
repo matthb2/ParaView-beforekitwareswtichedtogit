@@ -258,12 +258,13 @@ int vtkAssignAttribute::RequestData(
       // If labeling an attribute as another attribute, we
       // need to get it's index and call SetActiveAttribute()
       // with that index
-      int attributeIndices[vtkDataSetAttributes::NUM_ATTRIBUTES];
-      ods->GetAttributeIndices(attributeIndices);
-      if (attributeIndices[this->InputAttributeType] != -1)
+      //int attributeIndices[vtkDataSetAttributes::NUM_ATTRIBUTES];
+      //ods->GetAttributeIndices(attributeIndices);
+      // if (attributeIndices[this->InputAttributeType] != -1)
+      vtkDataArray *oda = ods->GetAttribute(this->InputAttributeType);
+      if (oda)
         {
-        ods->SetActiveAttribute(attributeIndices[this->InputAttributeType], 
-                                this->AttributeType);
+        ods->SetActiveAttribute(oda->GetName(),this->AttributeType);
         }
       }
     }

@@ -418,7 +418,4 @@ void vtkPStreamTracer::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os,indent);
   os << indent << "Controller: " << this->Controller << endl;
-  os << indent << "InputVectorsSelection: " 
-     << (this->InputVectorsSelection ? this->InputVectorsSelection : "(none)")
-     << endl;
 }

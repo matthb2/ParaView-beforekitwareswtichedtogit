@@ -45,23 +45,6 @@ vtkWarpScalar::~vtkWarpScalar()
 {
 }
 
-void vtkWarpScalar::SelectInputScalars(const char *fieldName)
-{
-  this->SetInputArrayToProcess(0,0,0,vtkDataObject::FIELD_ASSOCIATION_POINTS,fieldName);
-}
-
-const char *vtkWarpScalar::GetInputScalarsSelection()
-{
-  vtkInformation *info = this->GetInputArrayInformation(0);
-  if (info->Has(vtkDataObject::FIELD_NAME()))
-    {
-    return info->Get(vtkDataObject::FIELD_NAME());
-    }
-  
-  return NULL;
-}
-
-
 double *vtkWarpScalar::DataNormal(vtkIdType id, vtkDataArray *normals)
 {
   return normals->GetTuple(id);

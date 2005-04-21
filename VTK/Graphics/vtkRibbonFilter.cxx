@@ -46,14 +46,17 @@ vtkRibbonFilter::vtkRibbonFilter()
   this->GenerateTCoords = 0;
   this->TextureLength = 1.0;
 
-  this->InputVectorsSelection = NULL;
-  this->InputScalarsSelection = NULL;
+  // by default process active point scalars
+  this->SetInputArrayToProcess(0,0,0,vtkDataObject::FIELD_ASSOCIATION_POINTS,
+                               vtkDataSetAttributes::SCALARS);
+
+  // by default process active point vectors
+  this->SetInputArrayToProcess(1,0,0,vtkDataObject::FIELD_ASSOCIATION_POINTS,
+                               vtkDataSetAttributes::NORMALS);
 }
 
 vtkRibbonFilter::~vtkRibbonFilter()
 {
-  this->SetInputVectorsSelection(NULL);
-  this->SetInputScalarsSelection(NULL);
 }
 
 
@@ -78,7 +81,7 @@ int vtkRibbonFilter::RequestData(
   vtkCellData *outCD=output->GetCellData();
   vtkCellArray *inLines;
   vtkDataArray *inNormals;
-  vtkDataArray *inScalars=pd->GetScalars(this->InputScalarsSelection);
+  vtkDataArray *inScalars = this->GetInputArrayToProcess(0,inputVector);
 
   vtkPoints *inPts;
   vtkIdType numPts;
@@ -133,7 +136,7 @@ int vtkRibbonFilter::RequestData(
   outPD->CopyAllocate(pd,numNewPts);
 
   int generateNormals = 0;
-  inNormals = pd->GetNormals(this->InputVectorsSelection);
+  inNormals = this->GetInputArrayToProcess(1,inputVector);
   if ( !inNormals || this->UseDefaultNormal )
     {
     deleteNormals = 1;
@@ -533,9 +536,5 @@ void vtkRibbonFilter::PrintSelf(ostream& os, vtkIndent indent)
   os << indent << "Generate TCoords: " 
      << this->GetGenerateTCoordsAsString() << endl;
   os << indent << "Texture Length: " << this->TextureLength << endl;
-  os << indent << "InputVectorsSelection: " 
-     << (this->InputVectorsSelection ? InputVectorsSelection : "(null)") << endl;
-  os << indent << "InputScalarsSelection: " 
-     << (this->InputScalarsSelection ? InputScalarsSelection : "(null)") << endl;
 }
 
