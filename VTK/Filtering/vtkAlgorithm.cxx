@@ -180,6 +180,12 @@ void vtkAlgorithm::SetInputArrayToProcess(int idx, int port, int connection,
                                           int fieldAssociation, 
                                           const char *name)
 {
+  // ignore empty string
+  if (!name || name[0] == '\0')
+    {
+    return;
+    }
+  
   vtkInformation *info = this->GetInputArrayInformation(idx);
   
   info->Set(INPUT_PORT(), port);
