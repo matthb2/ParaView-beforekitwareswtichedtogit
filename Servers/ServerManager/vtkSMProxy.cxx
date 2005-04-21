@@ -505,6 +505,23 @@ void vtkSMProxy::SetPropertyModifiedFlag(const char* name, int flag)
     }
 }
 
+//-----------------------------------------------------------------------------
+void vtkSMProxy::MarkAllPropertiesAsModified()
+{
+  if (this->DoNotModifyProperty)
+    {
+    return;
+    }
+
+  vtkSMProxyInternals::PropertyInfoMap::iterator it;
+  for (it = this->Internals->Properties.begin();
+       it != this->Internals->Properties.end(); it++)
+    {
+    // Not the most efficient way to set the flag, but probably the safest.
+    this->SetPropertyModifiedFlag(it->first.c_str(), 1);
+    }
+}
+
 //---------------------------------------------------------------------------
 void vtkSMProxy::UpdateInformation()
 {

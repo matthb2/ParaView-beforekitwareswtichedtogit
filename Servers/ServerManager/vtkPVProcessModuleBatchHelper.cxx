@@ -205,7 +205,6 @@ int vtkPVProcessModuleBatchHelper::RunGUIStart(int argc, char **argv, int numSer
   (void)numServerProcs;
 
   this->SMApplication->Initialize();
-  vtkSMProperty::SetModifiedAtCreation(0);
   vtkSMProperty::SetCheckDomains(0);
 
   vtkSMProxyManager* proxm = vtkSMObject::GetProxyManager();
