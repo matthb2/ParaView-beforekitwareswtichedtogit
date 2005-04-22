@@ -233,7 +233,7 @@ void ContourImage(vtkSynchronizedTemplatesCutter3D *self, int *exExt,
       // for each slice compute the scalars
       z = origin[2] + spacing[2]*(k+1);
       x[2] = z;
-      T *scalarsTmp = scalars1;
+      scalarsTmp = scalars1;
       scalars1 = scalars2;
       scalars2 = scalarsTmp;
       // if not the last slice then get more scalars
