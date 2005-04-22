@@ -410,7 +410,6 @@ int vtkSynchronizedTemplates2D::RequestData(
   vtkPolyData *output = vtkPolyData::SafeDownCast(
     outInfo->Get(vtkDataObject::DATA_OBJECT()));
 
-  vtkPointData  *pd;
   vtkPoints     *newPts;
   vtkCellArray  *newLines;
   vtkDataArray  *inScalars;
@@ -424,7 +423,6 @@ int vtkSynchronizedTemplates2D::RequestData(
   
   ext =
     inInfo->Get(vtkStreamingDemandDrivenPipeline::UPDATE_EXTENT());
-  pd = input->GetPointData();
   inScalars = this->GetInputArrayToProcess(0,inputVector);
   if ( inScalars == NULL )
     {
