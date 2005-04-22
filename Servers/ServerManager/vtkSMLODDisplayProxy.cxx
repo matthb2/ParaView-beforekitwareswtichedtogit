@@ -257,9 +257,7 @@ void vtkSMLODDisplayProxy::Update()
 {
   this->Superclass::Update();
 
-  vtkPVProcessModule* pm = vtkPVProcessModule::SafeDownCast(
-    vtkProcessModule::GetProcessModule());
-  if (!this->LODGeometryIsValid && pm->GetGlobalLODFlag() && 
+  if (!this->LODGeometryIsValid && vtkPVProcessModule::GetGlobalLODFlag() && 
     this->LODUpdateSuppressorProxy)
     {
     this->UpdateLODPipeline();
