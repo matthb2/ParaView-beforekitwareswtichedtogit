@@ -12,7 +12,6 @@
      PURPOSE.  See the above copyright notice for more information.
 
 =========================================================================*/
-#include <math.h>
 #include "vtkOpenGLRenderer.h"
 #include "vtkOpenGLProperty.h"
 #ifndef VTK_IMPLEMENT_MESA_CXX
