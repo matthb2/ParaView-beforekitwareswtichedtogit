@@ -542,6 +542,6 @@ int vtkSynchronizedTemplatesCutter3D::RequestData(
 void vtkSynchronizedTemplatesCutter3D::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os,indent);
-
+  os << indent << "Cut Function: " << this->CutFunction << "\n";
 }
 
