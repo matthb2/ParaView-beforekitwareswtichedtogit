@@ -506,6 +506,14 @@ const char* vtkPVDataInformation::GetDataSetTypeAsString()
     {
     return "vtkCompositeDataSet";
     }
+  if (this->DataSetType == VTK_HIERARCHICAL_DATA_SET)
+    {
+    return "vtkHierarchicalDataSet";
+    }
+  if (this->DataSetType == VTK_UNIFORM_GRID)
+    {
+    return "vtkUniformGrid";
+    }
   if (this->DataSetType == VTK_HIERARCHICAL_BOX_DATA_SET)
     {
     return "vtkHierarchicalBoxDataSet";
