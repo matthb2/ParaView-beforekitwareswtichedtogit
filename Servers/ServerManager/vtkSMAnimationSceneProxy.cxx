@@ -22,8 +22,6 @@
 #include "vtkSMRenderModuleProxy.h"
 vtkCxxRevisionMacro(vtkSMAnimationSceneProxy, "$Revision$");
 vtkStandardNewMacro(vtkSMAnimationSceneProxy);
-vtkCxxSetObjectMacro(vtkSMAnimationSceneProxy, RenderModuleProxy, 
-  vtkSMRenderModuleProxy);
 
 //----------------------------------------------------------------------------
 vtkSMAnimationSceneProxy::vtkSMAnimationSceneProxy()
