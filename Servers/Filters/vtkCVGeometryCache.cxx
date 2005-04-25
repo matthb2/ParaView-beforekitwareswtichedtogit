@@ -20,6 +20,7 @@
 #include "vtkMapper.h"
 #include "vtkPolyData.h"
 #include "vtkSmartPointer.h"
+#include "vtkStreamingDemandDrivenPipeline.h"
 #include "vtkXMLPVDWriter.h"
 
 #include <vtkstd/vector>
@@ -62,6 +63,19 @@ int vtkCVGeometryCache::RequestDataObject(
     outInfo->Set(vtkDataObject::DATA_EXTENT_TYPE(), pd->GetExtentType());
     pd->Delete();
     }
+  return 1;
+}
+
+//----------------------------------------------------------------------------
+int vtkCVGeometryCache::RequestInformation(
+  vtkInformation*, vtkInformationVector**, vtkInformationVector* outputVector)
+{
+  vtkInformation* outInfo = outputVector->GetInformationObject(0);
+
+  // RequestData() synchronizes (communicates among processes), so we need
+  // all procs to call RequestData().
+  outInfo->Set(vtkStreamingDemandDrivenPipeline::MAXIMUM_NUMBER_OF_PIECES(), -1);
+
   return 1;
 }
 
