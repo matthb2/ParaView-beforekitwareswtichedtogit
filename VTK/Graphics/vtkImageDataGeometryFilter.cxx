@@ -475,7 +475,10 @@ void vtkImageDataGeometryFilter::PrintSelf(ostream& os, vtkIndent indent)
   this->Superclass::PrintSelf(os,indent);
 
   os << indent << "Extent: \n";
-  os << indent << "  Imin,Imax: (" << this->Extent[0] << ", " << this->Extent[1] << ")\n";
   os << indent << "  Jmin,Jmax: (" << this->Extent[2] << ", " << this->Extent[3] << ")\n";
   os << indent << "  Kmin,Kmax: (" << this->Extent[4] << ", " << this->Extent[5] << ")\n";
+  os << indent << "  Imin,Imax: (" << this->Extent[0] << ", " << this->Extent[1] << ")\n";
+  os << indent << "OutputTriangles " << this->OutputTriangles << "\n";
+  os << indent << "ThresholdValue " << this->ThresholdValue << "\n";
+  os << indent << "ThresholdCells " << this->ThresholdCells << "\n";
 }
