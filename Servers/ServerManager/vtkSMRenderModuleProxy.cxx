@@ -827,6 +827,14 @@ void vtkSMRenderModuleProxy::SynchronizeCameraProperties()
 }
 
 //-----------------------------------------------------------------------------
+void vtkSMRenderModuleProxy::SaveState(const char* name, ostream* file, 
+  vtkIndent indent)
+{
+  this->SynchronizeCameraProperties();
+  this->Superclass::SaveState(name, file, indent);
+}
+
+//-----------------------------------------------------------------------------
 void vtkSMRenderModuleProxy::SaveInBatchScript(ofstream* file)
 {
   if (!this->ObjectsCreated)
