@@ -57,6 +57,7 @@ void vtkSMLinearAnimationCueManipulatorProxy::UpdateValue(double currenttime,
     {
     proxy->UpdateVTKObjects();
     }
+  this->InvokeEvent(vtkSMAnimationCueManipulatorProxy::StateModifiedEvent);
 }
 
 //----------------------------------------------------------------------------
