@@ -174,7 +174,7 @@ int vtkExtractDataOverTime::AllocateOutputData(vtkPointSet *input, vtkPointSet *
   timeArray->SetNumberOfTuples(this->NumberOfTimeSteps);
   if (input->GetPointData()->GetArray("Time"))
     {
-    timeArray->SetName("TimeSteps");
+    timeArray->SetName("TimeData");
     }
   else
     {
