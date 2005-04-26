@@ -105,6 +105,10 @@ void vtkSMCompositeRenderModuleProxy::InitializeCompositingPipeline()
   pp->RemoveAllProxies();
   pp->AddProxy(this->RenderWindowProxy);
 
+  // Update the server process so that the render window is set before
+  // we initialize offscreen rendering.
+  this->CompositeManagerProxy->UpdateVTKObjects();
+
   if (getenv("PV_DISABLE_COMPOSITE_INTERRUPTS"))
     {
     p = this->CompositeManagerProxy->GetProperty("EnableAbort");
