@@ -759,8 +759,9 @@ void vtkIceTRenderManager::PreRenderProcessing()
       vtkIntArray *orderedProcessIds = vtkIntArray::New();
 
       // Order all the regions.
-      this->SortingKdTree->DepthOrderAllProcesses(icetRen->GetActiveCamera(),
-                                                  orderedProcessIds);
+      this->SortingKdTree->DepthOrderAllProcesses(
+                         icetRen->GetActiveCamera()->GetDirectionOfProjection(),
+                         orderedProcessIds);
       // Compiler, optimize away.
       if (sizeof(int) == sizeof(GLint))
         {
