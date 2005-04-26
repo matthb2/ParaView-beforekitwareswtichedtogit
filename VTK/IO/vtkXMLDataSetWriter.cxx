@@ -129,12 +129,6 @@ int vtkXMLDataSetWriter::WriteInternal()
 }
 
 //----------------------------------------------------------------------------
-int vtkXMLDataSetWriter::WriteData()
-{
-  return 0;
-}
-
-//----------------------------------------------------------------------------
 const char* vtkXMLDataSetWriter::GetDataSetName()
 {
   return "DataSet";
@@ -171,6 +165,7 @@ void vtkXMLDataSetWriter::ProgressCallback(vtkAlgorithm* w)
     }
 }
 
+//----------------------------------------------------------------------------
 int vtkXMLDataSetWriter::FillInputPortInformation(
   int vtkNotUsed(port), vtkInformation* info)
 {

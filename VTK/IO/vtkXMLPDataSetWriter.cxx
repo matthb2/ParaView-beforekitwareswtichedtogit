@@ -17,6 +17,7 @@
 #include "vtkCallbackCommand.h"
 #include "vtkDataSet.h"
 #include "vtkImageData.h"
+#include "vtkInformation.h"
 #include "vtkObjectFactory.h"
 #include "vtkPolyData.h"
 #include "vtkRectilinearGrid.h"
@@ -154,4 +155,11 @@ const char* vtkXMLPDataSetWriter::GetDefaultFileExtension()
 vtkXMLWriter* vtkXMLPDataSetWriter::CreatePieceWriter(int)
 {
   return 0;
+}
+//----------------------------------------------------------------------------
+int vtkXMLPDataSetWriter::FillInputPortInformation(
+  int vtkNotUsed(port), vtkInformation* info)
+{
+  info->Set(vtkAlgorithm::INPUT_REQUIRED_DATA_TYPE(), "vtkDataSet");
+  return 1;
 }
