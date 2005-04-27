@@ -309,7 +309,7 @@ void vtkSMAnimationCueProxy::SaveInBatchScript(ofstream* file)
   if (this->AnimatedDomainName)
     {
     *file << "  [$pvTemp" << id << " GetProperty AnimatedDomainName]"
-      << " SetElement 0 " << this->AnimatedDomainName << endl;
+      << " SetElement 0 {" << this->AnimatedDomainName << "}" << endl;
     }
 
   *file << "  [$pvTemp" << id << " GetProperty AnimatedElement]"
