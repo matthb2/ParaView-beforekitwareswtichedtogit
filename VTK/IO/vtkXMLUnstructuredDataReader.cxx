@@ -37,7 +37,10 @@ vtkXMLUnstructuredDataReader::vtkXMLUnstructuredDataReader()
 //----------------------------------------------------------------------------
 vtkXMLUnstructuredDataReader::~vtkXMLUnstructuredDataReader()
 {
-  if(this->NumberOfPieces) { this->DestroyPieces(); }
+  if(this->NumberOfPieces)
+    {
+    this->DestroyPieces();
+    }
 }
 
 //----------------------------------------------------------------------------
