@@ -171,7 +171,7 @@ vtkOpenGLExtensionManager::GetProcAddress(const char *fname)
     }
   else
     {
-    vtkWarningMacro("Could not load " << mangled_fname);
+    vtkDebugMacro("Could not load " << mangled_fname);
     }
   delete[] mangled_fname;
   if (symbol)
@@ -180,7 +180,7 @@ vtkOpenGLExtensionManager::GetProcAddress(const char *fname)
     }
   else
     {
-    vtkWarningMacro("Could not load " << mangled_fname);
+    vtkDebugMacro("Could not load " << mangled_fname);
     return NULL;
     }
 #endif //VTK_USE_APPLE_LOADER
