@@ -271,7 +271,7 @@ void vtkOpenGLExtensionManager::ReadOpenGLExtensions()
 #ifdef VTK_NO_EXTENSION_LOADING
 
   this->ExtensionsString = new char[1];
-  this->ExtensionsString = '\0';
+  this->ExtensionsString[0] = '\0';
   return;
 
 #else //!VTK_NO_EXTENSION_LOADING
