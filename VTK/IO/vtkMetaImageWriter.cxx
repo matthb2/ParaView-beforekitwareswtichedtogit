@@ -19,7 +19,6 @@
 #include "vtkInformationVector.h"
 #include "vtkObjectFactory.h"
 #include "vtkStreamingDemandDrivenPipeline.h"
-#include "vtkXMLImageDataWriter.h"
 #include "vtkDataSetAttributes.h"
 
 #include <vtkstd/string>
@@ -60,6 +59,7 @@ char* vtkMetaImageWriter::GetRAWFileName()
   return this->Superclass::GetFileName();
 }
 
+//----------------------------------------------------------------------------
 int vtkMetaImageWriter::RequestData(
   vtkInformation* request,
   vtkInformationVector** inputVector,
