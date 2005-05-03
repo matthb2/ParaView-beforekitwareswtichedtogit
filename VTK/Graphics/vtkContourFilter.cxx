@@ -593,6 +593,18 @@ void vtkContourFilter::CreateDefaultLocator()
     }
 }
 
+void vtkContourFilter::SetArrayComponent( int comp )
+{
+  this->SynchronizedTemplates2D->SetArrayComponent( comp );
+  this->SynchronizedTemplates3D->SetArrayComponent( comp );
+  this->RectilinearSynchronizedTemplates->SetArrayComponent( comp );
+}
+
+int vtkContourFilter::GetArrayComponent()
+{
+  return( this->SynchronizedTemplates2D->GetArrayComponent() );
+}
+
 int vtkContourFilter::FillInputPortInformation(int, vtkInformation *info)
 {
   info->Set(vtkAlgorithm::INPUT_REQUIRED_DATA_TYPE(), "vtkDataSet");
