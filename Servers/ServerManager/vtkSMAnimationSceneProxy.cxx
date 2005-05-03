@@ -321,7 +321,7 @@ int vtkSMAnimationSceneProxy::SaveGeometry(const char* filename)
   vtkSMProxyIterator* proxyIter = vtkSMProxyIterator::New();
   proxyIter->SetMode(vtkSMProxyIterator::ONE_GROUP);
   proxyIter->Begin("displays");
-  while (!proxyIter->IsAtEnd())
+  for (; !proxyIter->IsAtEnd(); proxyIter->Next())
     {
     vtkSMSimpleDisplayProxy* sDisp = vtkSMSimpleDisplayProxy::SafeDownCast(
       proxyIter->GetProxy());
@@ -335,7 +335,6 @@ int vtkSMAnimationSceneProxy::SaveGeometry(const char* filename)
       {
       sDisp->SetInputAsGeometryFilter(animWriter);
       }
-    proxyIter->Next();
     }
   proxyIter->Delete();
 
