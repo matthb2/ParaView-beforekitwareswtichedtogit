@@ -325,13 +325,9 @@ int vtkSMAnimationSceneProxy::SaveGeometry(const char* filename)
     {
     vtkSMSimpleDisplayProxy* sDisp = vtkSMSimpleDisplayProxy::SafeDownCast(
       proxyIter->GetProxy());
-    if (!sDisp)
-      {
-      // only displays which sink geometry  as saved.
-      // (i.e. the part displays).
-      continue;
-      }
-    if (sDisp->GetVisibilityCM())
+    // only displays which sink geometry  as saved.
+    // (i.e. the part displays).
+    if (sDisp && sDisp->GetVisibilityCM())
       {
       sDisp->SetInputAsGeometryFilter(animWriter);
       }
