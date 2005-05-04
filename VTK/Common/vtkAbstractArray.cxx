@@ -32,7 +32,6 @@
 
 // we need this for GetSize()
 #include <vtkstd/string>
-using vtkstd::string;
 
 vtkCxxRevisionMacro(vtkAbstractArray, "$Revision$");
 
