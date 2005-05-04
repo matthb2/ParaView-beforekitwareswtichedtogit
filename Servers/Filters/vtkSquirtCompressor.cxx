@@ -145,6 +145,6 @@ int vtkSquirtCompressor::DecompressData()
 //-----------------------------------------------------------------------------
 void vtkSquirtCompressor::PrintSelf(ostream& os, vtkIndent indent)
 {
-  this->PrintSelf(os, indent);
+  this->Superclass::PrintSelf(os, indent);
   os << indent << "SquirtLevel: " << this->SquirtLevel << endl;
 }
