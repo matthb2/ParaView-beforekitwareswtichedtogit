@@ -235,7 +235,7 @@ int vtkDataSetSurfaceFilter::StructuredExecute(vtkDataSet *input,
     }
   outPoints = vtkPoints::New();
   outPoints->Allocate(numPoints);
-  this->GetOutput()->SetPoints(outPoints);
+  output->SetPoints(outPoints);
   outPoints->Delete();
 
   // Allocate attributes for copying.
