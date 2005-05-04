@@ -274,6 +274,10 @@ int vtkPVOptions::PostProcess(int, const char* const*)
     this->ClientMode = 1;
     this->RenderServerMode = 2;
     }
+  if ( this->CaveConfigurationFileName )
+    {
+    this->SetRenderModuleName("CaveRenderModule");
+    }
 #ifdef PARAVIEW_ALWAYS_SECURE_CONNECTION
   if ( (this->ClientMode || this->ServerMode) && !this->ConnectID)
     {

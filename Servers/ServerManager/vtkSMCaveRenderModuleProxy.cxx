@@ -50,6 +50,7 @@ void vtkSMCaveRenderModuleProxy::CreateCompositeManager()
     vtkErrorMacro("Failed to create CompositeManagerProxy.");
     return;
     }
+  cm->SetServers(vtkProcessModule::CLIENT | vtkProcessModule::RENDER_SERVER);
   this->AddSubProxy("CompositeManager", cm);
   cm->Delete();
 }
