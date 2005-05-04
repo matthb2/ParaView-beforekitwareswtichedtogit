@@ -33,6 +33,7 @@ vtkRayCastImageDisplayHelper* vtkRayCastImageDisplayHelper::New()
 // Construct a new vtkRayCastImageDisplayHelper with default values
 vtkRayCastImageDisplayHelper::vtkRayCastImageDisplayHelper()
 {
+  this->PreMultipliedColors = 0;
 }
 
 // Destruct a vtkRayCastImageDisplayHelper - clean up any memory used
@@ -43,4 +44,8 @@ vtkRayCastImageDisplayHelper::~vtkRayCastImageDisplayHelper()
 void vtkRayCastImageDisplayHelper::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os,indent);
+  
+  os << indent << "PreMultiplied Colors: "
+     << (this->PreMultipliedColors ? "On\n" : "Off\n");
 }
+

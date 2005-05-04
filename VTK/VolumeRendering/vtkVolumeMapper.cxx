@@ -27,6 +27,8 @@ vtkVolumeMapper::vtkVolumeMapper()
 {
   int i;
 
+  this->BlendMode = vtkVolumeMapper::COMPOSITE_BLEND;
+  
   this->Cropping = 0;
   for ( i = 0; i < 3; i++ )
     {
@@ -124,6 +126,8 @@ void vtkVolumeMapper::PrintSelf(ostream& os, vtkIndent indent)
   os << indent << "Cropping Region Flags: " 
      << this->CroppingRegionFlags << endl;
 
+  os << indent << "BlendMode: " << this->BlendMode << endl;
+  
   // Don't print this->VoxelCroppingRegionPlanes
 }
 
