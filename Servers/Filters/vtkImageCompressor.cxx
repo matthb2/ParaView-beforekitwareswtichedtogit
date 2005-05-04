@@ -78,5 +78,7 @@ int vtkImageCompressor::Decompress()
 void vtkImageCompressor::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os, indent);
+  os << indent << "Input: " << this->Input << endl;
+  os << indent << "Output: " << this->Output << endl;
 }
 
