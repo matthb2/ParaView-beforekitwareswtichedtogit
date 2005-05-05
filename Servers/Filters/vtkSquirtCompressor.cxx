@@ -98,6 +98,7 @@ int vtkSquirtCompressor::CompressData()
     }
 
   // Back to vtk arrays :)
+  this->Output->SetNumberOfComponents(4);
   this->Output->SetNumberOfTuples(comp_index);
   return VTK_OK;
 }
