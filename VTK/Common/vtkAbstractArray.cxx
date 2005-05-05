@@ -30,9 +30,6 @@
 #include "vtkUnsignedLongArray.h"
 #include "vtkUnsignedShortArray.h"
 
-// we need this for GetSize()
-#include <vtkstd/string>
-
 vtkCxxRevisionMacro(vtkAbstractArray, "$Revision$");
 
 // Construct object with sane defaults.
