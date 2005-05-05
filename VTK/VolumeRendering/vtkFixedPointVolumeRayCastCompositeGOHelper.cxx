@@ -260,6 +260,7 @@ void vtkFixedPointCompositeGOHelperGenerateImageIndependentNN( T *data,
                                                      vtkFixedPointVolumeRayCastMapper *mapper,
                                                      vtkVolume *vol)
 {
+  VTKKWRCHelper_InitializeWeights();
   VTKKWRCHelper_InitializationAndLoopStartGONN();
   VTKKWRCHelper_InitializeCompositeMultiNN();
   VTKKWRCHelper_InitializeCompositeGONN();
@@ -677,6 +678,7 @@ void vtkFixedPointCompositeGOHelperGenerateImageIndependentTrilin( T *data,
                                                          vtkFixedPointVolumeRayCastMapper *mapper,
                                                          vtkVolume *vol)
 {
+  VTKKWRCHelper_InitializeWeights();
   VTKKWRCHelper_InitializationAndLoopStartGOTrilin();
   VTKKWRCHelper_InitializeCompositeMultiTrilin();
   VTKKWRCHelper_InitializeCompositeMultiGOTrilin();

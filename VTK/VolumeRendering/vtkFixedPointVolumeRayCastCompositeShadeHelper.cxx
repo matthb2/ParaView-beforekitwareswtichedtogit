@@ -255,6 +255,7 @@ void vtkFixedPointCompositeShadeHelperGenerateImageIndependentNN( T *data,
                                                      vtkFixedPointVolumeRayCastMapper *mapper,
                                                      vtkVolume *vol)
 {
+  VTKKWRCHelper_InitializeWeights();
   VTKKWRCHelper_InitializationAndLoopStartShadeNN();
   VTKKWRCHelper_InitializeCompositeMultiNN();
   VTKKWRCHelper_InitializeCompositeShadeNN();
@@ -625,6 +626,7 @@ void vtkFixedPointCompositeShadeHelperGenerateImageIndependentTrilin( T *data,
                                                          vtkFixedPointVolumeRayCastMapper *mapper,
                                                          vtkVolume *vol)
 {
+  VTKKWRCHelper_InitializeWeights();
   VTKKWRCHelper_InitializationAndLoopStartShadeTrilin();
   VTKKWRCHelper_InitializeCompositeMultiTrilin();
   VTKKWRCHelper_InitializeCompositeMultiShadeTrilin();
