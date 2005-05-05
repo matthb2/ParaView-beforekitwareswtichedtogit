@@ -607,7 +607,7 @@ int vtkPentagonalPrism::IntersectWithLine(double p1[3], double p2[3], double tol
     }
 
   //now intersect the quad faces
-  for (faceNum=2; faceNum<5; faceNum++)
+  for (faceNum=2; faceNum<7; faceNum++)
     {
     this->Points->GetPoint(faces[faceNum][0], pt1);
     this->Points->GetPoint(faces[faceNum][1], pt2);
