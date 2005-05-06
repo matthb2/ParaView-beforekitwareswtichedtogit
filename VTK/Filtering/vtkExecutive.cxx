@@ -223,6 +223,10 @@ vtkInformationVector* vtkExecutive::GetInputInformation(int port)
 //----------------------------------------------------------------------------
 vtkInformationVector* vtkExecutive::GetOutputInformation()
 {
+  if (!this->Algorithm)
+    {
+    return 0;
+    }
   // Set the length of the vector to match the number of ports.
   int oldNumberOfPorts =
     this->OutputInformation->GetNumberOfInformationObjects();
