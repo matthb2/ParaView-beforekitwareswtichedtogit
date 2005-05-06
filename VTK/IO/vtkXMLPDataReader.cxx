@@ -354,6 +354,16 @@ int vtkXMLPDataReader::ReadPieceData()
   vtkDataSet* input = this->GetPieceInputAsDataSet(this->Piece);
   vtkDataSet* output = this->GetOutputAsDataSet(0);
   
+  // copy any field data
+  if (input->GetFieldData())
+    {
+    int i;
+    for (i = 0; i < input->GetFieldData()->GetNumberOfArrays(); i++)
+      {
+      output->GetFieldData()->AddArray( input->GetFieldData()->GetArray(i) );
+      }
+    }
+
   // Copy point data and cell data for this piece.
   int i;
   for(i=0;i < output->GetPointData()->GetNumberOfArrays();++i)
