@@ -1389,7 +1389,7 @@ int vtkXdmfReader::RequestSingleGridInformation(int currentGrid, int generateGri
   vtkInformation *outInfo;
 
   XdmfGrid* grid = this->Internals->Grids[currentGrid];
-  cout << "*** Grid collection is: " << grid->GetCollection() << endl;
+//  cout << "*** Grid collection is: " << grid->GetCollection() << endl;
 
   if( grid->GetClass() == XDMF_UNSTRUCTURED ) 
     {
