@@ -466,6 +466,10 @@ int vtkBandedPolyDataContourFilter::RequestData(
 
     // Set up structures for processing polygons
     maxCellSize = polys->GetMaxCellSize();
+    if( maxCellSize == 0 )
+      {
+      maxCellSize = input->GetStrips()->GetMaxCellSize();
+      }
     maxCellSize *= (1 + this->NumberOfClipValues);
 
     vtkIdType *newPolygon = new vtkIdType [maxCellSize];
