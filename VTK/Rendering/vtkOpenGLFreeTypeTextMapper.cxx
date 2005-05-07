@@ -23,7 +23,6 @@
 #include "vtkToolkits.h"  // for VTK_USE_GL2PS
 
 #include "vtkFreeTypeUtilities.h"
-#include "vtkFreeTypeConfig.h"
 #include "vtkftglConfig.h"
 
 #include "vtkgluPickMatrix.h"
