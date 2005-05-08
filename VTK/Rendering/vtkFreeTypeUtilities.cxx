@@ -19,7 +19,7 @@
 #include "vtkObjectFactory.h"
 #include "vtkMath.h"
 #include "vtkImageData.h"
-#include "vtkDebugLeaks.h"
+//#include "vtkDebugLeaks.h"
 
 // FTGL
 
