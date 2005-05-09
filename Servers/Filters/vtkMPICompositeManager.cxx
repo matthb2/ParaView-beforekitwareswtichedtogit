@@ -53,6 +53,7 @@ static void vtkMPICompositeManagerGatherZBufferValueRMI(void *local, void *pArg,
 vtkMPICompositeManager::vtkMPICompositeManager()
 {
   this->WriteBackImages = 0;
+  this->UseRGBA = 0;
 }
 
 //-----------------------------------------------------------------------------
