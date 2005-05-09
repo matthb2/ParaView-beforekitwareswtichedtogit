@@ -192,6 +192,7 @@ void vtkSMSourceProxy::CreateVTKObjects(int numObjects)
       stream << vtkClientServerStream::Invoke 
              << sourceID << "AddObserver" << "EndEvent" << end
              << vtkClientServerStream::End;
+      pm->DeleteStreamObject(execId, stream);
       }
 
 
