@@ -472,6 +472,10 @@ vtkFixedPointVolumeRayCastMapper::vtkFixedPointVolumeRayCastMapper()
   this->MinMaxVolumeSize[2] = 0;
   this->MinMaxVolumeSize[3] = 0;
   this->SavedMinMaxInput = NULL;
+  
+  this->Volume = NULL;
+  
+  
 }
 
 // Destruct a vtkFixedPointVolumeRayCastMapper - clean up any memory used
