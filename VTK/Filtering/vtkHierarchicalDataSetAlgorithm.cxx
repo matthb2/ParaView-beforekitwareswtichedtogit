@@ -116,11 +116,6 @@ int vtkHierarchicalDataSetAlgorithm::ProcessRequest(
     return this->RequestUpdateExtent(request, inputVector, outputVector);
     }
 
-  if(request->Has(vtkCompositeDataPipeline::BEGIN_LOOP()))
-    {
-    return this->SetUpdateBlocks(request, inputVector, outputVector);
-    }
-
   return this->Superclass::ProcessRequest(request, inputVector, outputVector);
 }
 
