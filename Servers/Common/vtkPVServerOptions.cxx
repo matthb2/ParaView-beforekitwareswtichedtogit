@@ -109,9 +109,20 @@ int vtkPVServerOptions::ParseExtraXMLTag(const char* name, const char** atts)
 }
 
 //----------------------------------------------------------------------------
-unsigned int vtkPVServerOptions::GetNumberOfDisplays()
+unsigned int vtkPVServerOptions::GetNumberOfMachines()
 {
   return this->Internals->MachineInformationVector.size();
+}
+
+//----------------------------------------------------------------------------
+const char* vtkPVServerOptions::GetMachineName(unsigned int idx)
+{
+  if (idx >= this->Internals->MachineInformationVector.size())
+    {
+    return 0;
+    }
+
+  return this->Internals->MachineInformationVector[idx].Name.c_str();
 }
 
 //----------------------------------------------------------------------------
