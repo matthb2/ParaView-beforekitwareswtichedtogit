@@ -633,6 +633,17 @@ double vtkSMRenderModuleProxy::GetZBufferValue(int x, int y)
 }
 
 //-----------------------------------------------------------------------------
+void vtkSMRenderModuleProxy::ResetCamera()
+{
+  double bds[6];
+  this->ComputeVisiblePropBounds(bds);
+  if (bds[0] <= bds[1] && bds[2] <= bds[3] && bds[4] <= bds[5])
+    {
+    this->ResetCamera(bds);
+    }
+}
+
+//-----------------------------------------------------------------------------
 void vtkSMRenderModuleProxy::ResetCamera(double bds[6])
 {
   this->GetRenderer()->ResetCamera(bds);
