@@ -1561,6 +1561,16 @@ int vtkXdmfReader::RequestSingleGridInformation(int currentGrid, int generateGri
       idvGrid->SetExtent(0, EndExtent[2],
         0, EndExtent[1],
         0, EndExtent[0]);
+      XdmfGeometry  *Geometry = grid->GetGeometry();
+      if ( Geometry->GetGeometryType() == XDMF_GEOMETRY_ORIGIN_DXDYDZ )
+        { 
+        // Update geometry so that origin and spacing are read
+        Geometry->Update();
+        XdmfFloat64 *origin = Geometry->GetOrigin();
+        XdmfFloat64 *spacing = Geometry->GetDxDyDz();
+        outInfo->Set(vtkDataObject::ORIGIN(), origin[2], origin[1], origin[0]);
+        outInfo->Set(vtkDataObject::SPACING(), spacing[2], spacing[1], spacing[0]);
+        }
       }
     else  if ( grid->GetTopologyType() == XDMF_2DRECTMESH ||
       grid->GetTopologyType() == XDMF_3DRECTMESH )
