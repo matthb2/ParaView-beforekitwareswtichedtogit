@@ -2706,6 +2706,24 @@ int vtkMath::ExtentIsWithinOtherExtent(int extent1[6], int extent2[6])
 }
 
 //----------------------------------------------------------------------------
+
+int vtkMath::BoundsIsWinthinOtherBounds(double bounds1[6], double bounds2[6], double delta[3])
+{
+  if(!bounds1 || !bounds2)
+    {
+    return 0;
+    }
+  for(int i=0;i<6;i+=2)
+    {
+    
+    if(bounds1[i]+delta[i/2] < bounds2[i] || bounds1[i]-delta[i/2] > bounds2[i+1] ||
+       bounds1[i+1]+delta[i/2] < bounds2[i] || bounds1[i+1]-delta[i/2] > bounds2[i+1])
+      return 0;
+    }
+  return 1;
+}
+  
+//----------------------------------------------------------------------------
 void vtkMath::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os,indent);
