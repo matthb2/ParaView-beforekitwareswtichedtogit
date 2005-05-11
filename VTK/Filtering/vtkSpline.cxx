@@ -41,10 +41,7 @@ vtkSpline::vtkSpline ()
 //----------------------------------------------------------------------------
 vtkSpline::~vtkSpline ()
 {
-  if (this->PiecewiseFunction)
-    {
-    this->PiecewiseFunction->Delete();
-    }
+  this->PiecewiseFunction->Delete();
   if (this->Coefficients)
     {
     delete [] this->Coefficients;
@@ -116,6 +113,13 @@ double vtkSpline::ComputeRightDerivative()
     return (dptr[(size-1)*2]-dptr[(size-2)*2]);
     }
 }
+
+//----------------------------------------------------------------------------
+int vtkSpline::GetNumberOfPoints()
+{
+  return this->PiecewiseFunction->GetSize();
+}
+
 
 //----------------------------------------------------------------------------
 // Add a point to the Piecewise Functions containing the data
