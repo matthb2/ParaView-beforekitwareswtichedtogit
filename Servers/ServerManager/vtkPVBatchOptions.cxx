@@ -41,10 +41,6 @@ vtkPVBatchOptions::~vtkPVBatchOptions()
 void vtkPVBatchOptions::Initialize()
 {
   this->Superclass::Initialize();
-  this->AddBooleanArgument("--help", "/?", &this->HelpSelected, 
-                           "pvbatch must have a .pvb file specified on the command line.",
-                           PVBATCH);
-
 }
 
 //----------------------------------------------------------------------------
