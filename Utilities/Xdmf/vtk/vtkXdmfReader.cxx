@@ -1428,7 +1428,7 @@ int vtkXdmfReader::RequestSingleGridInformation(int currentGrid, int generateGri
       {
       vtkDebugMacro(<<"Type changed Output class name: " << this->GetOutput(generateGrid)->GetClassName() 
         << " <> " << vGrid->GetClassName());
-      if ( this->GetOutput(generateGrid)->GetClassName() != vGrid->GetClassName() )
+      if ( strcmp(this->GetOutput(generateGrid)->GetClassName(), vGrid->GetClassName()) == 0 )
         {
         type_changed = 1;
         }
