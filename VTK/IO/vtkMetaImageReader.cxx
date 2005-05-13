@@ -616,6 +616,7 @@ int vtkMetaImageReader::GetFileInformation(const char* fname, int populate)
     this->SetFileDimensionality(3);
     this->SetDataSpacing(spacing);
     this->SetDataOrigin(origin);
+    this->FileLowerLeftOn();
 
     if ( bigendian )
       {
