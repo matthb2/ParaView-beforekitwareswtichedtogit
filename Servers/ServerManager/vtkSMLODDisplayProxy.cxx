@@ -242,6 +242,11 @@ void vtkSMLODDisplayProxy::CreateVTKObjects(int numObjects)
 //-----------------------------------------------------------------------------
 void vtkSMLODDisplayProxy::CacheUpdate(int idx, int total)
 {
+  if (!this->LODMapperProxy)
+    {
+    vtkErrorMacro("Objects not created yet!");
+    return;
+    }
   this->Superclass::CacheUpdate(idx, total);
   vtkClientServerStream stream;
   stream
