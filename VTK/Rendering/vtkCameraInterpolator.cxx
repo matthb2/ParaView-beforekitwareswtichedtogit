@@ -17,7 +17,6 @@
 #include "vtkCamera.h"
 #include "vtkTransform.h"
 #include "vtkTupleInterpolator.h"
-#include "vtkQuaternionInterpolator.h"
 #include <vtkstd/list>
 
 vtkCxxRevisionMacro(vtkCameraInterpolator, "$Revision$");
@@ -30,7 +29,7 @@ struct vtkICamera
   double T;     //Parameter t
   double P[3];  //Position
   double FP[3]; //Focal point
-  double VUP[3];//ViewUp in the form of a quaternion
+  double VUP[3];//ViewUp 
   double CR[2]; //Clipping range
   double VA[1]; //View angle
   double PS[1]; //Parallel scale
