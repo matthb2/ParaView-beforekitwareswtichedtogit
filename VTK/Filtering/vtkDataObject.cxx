@@ -673,14 +673,7 @@ void vtkDataObject::ReleaseData()
 //----------------------------------------------------------------------------
 int vtkDataObject::ShouldIReleaseData()
 {
-  if ( vtkDataObjectGlobalReleaseDataFlag || this->GetReleaseDataFlag() )
-    {
-    return 1;
-    }
-  else
-    {
-    return 0;
-    }
+  return vtkDataObjectGlobalReleaseDataFlag || this->GetReleaseDataFlag();
 }
 
 //----------------------------------------------------------------------------
