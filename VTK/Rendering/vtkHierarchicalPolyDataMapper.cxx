@@ -25,6 +25,7 @@
 #include "vtkHierarchicalPolyDataMapper.h"
 #include "vtkPolyData.h"
 #include "vtkMath.h"
+#include "vtkGarbageCollector.h"
 
 #include <vtkstd/vector>
 
@@ -44,12 +45,8 @@ vtkHierarchicalPolyDataMapper::vtkHierarchicalPolyDataMapper()
 
 vtkHierarchicalPolyDataMapper::~vtkHierarchicalPolyDataMapper()
 {
-  cout << "There are " << this->Internal->Mappers.size() << " mappers " << endl;
-  
   for(unsigned int i=0;i<this->Internal->Mappers.size();i++)
     {
-    cout << "ref count is " << this->Internal->Mappers[i]->GetReferenceCount() << endl;
-    
     this->Internal->Mappers[i]->Delete();
     }
   this->Internal->Mappers.clear();
@@ -250,3 +247,12 @@ void vtkHierarchicalPolyDataMapper::PrintSelf(ostream& os, vtkIndent indent)
   this->Superclass::PrintSelf(os,indent);
 }
 
+void vtkHierarchicalPolyDataMapper::ReportReferences(vtkGarbageCollector* collector)
+{
+  this->Superclass::ReportReferences(collector);
+  
+  for(unsigned int i=0;i<this->Internal->Mappers.size();i++)
+    {
+    vtkGarbageCollectorReport( collector, this->Internal->Mappers[i], "vtkPolyDataMapper" );
+    }
+}
