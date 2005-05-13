@@ -293,6 +293,7 @@ int vtkGlyph3D::RequestData(
     pointIds->SetName(this->PointIdsName);
     pointIds->Allocate(numPts*numSourcePts);
     outputPD->AddArray(pointIds);
+    pointIds->Delete();
     }
   if ( this->ColorMode == VTK_COLOR_BY_SCALAR && inCScalars )
     {
