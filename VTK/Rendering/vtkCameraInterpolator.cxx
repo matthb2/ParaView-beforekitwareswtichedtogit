@@ -534,7 +534,7 @@ void vtkCameraInterpolator::PrintSelf(ostream& os, vtkIndent indent)
     os << "(null)\n";
     }
 
-  os << indent << "Scale Interpolator: ";
+  os << indent << "Focal Point Interpolator: ";
   if ( this->FocalPointInterpolator )
     {
     os << this->FocalPointInterpolator << "\n";
@@ -548,6 +548,36 @@ void vtkCameraInterpolator::PrintSelf(ostream& os, vtkIndent indent)
   if ( this->ViewUpInterpolator )
     {
     os << this->ViewUpInterpolator << "\n";
+    }
+  else
+    {
+    os << "(null)\n";
+    }
+
+  os << indent << "Clipping Range Interpolator: ";
+  if ( this->ClippingRangeInterpolator )
+    {
+    os << this->ClippingRangeInterpolator << "\n";
+    }
+  else
+    {
+    os << "(null)\n";
+    }
+
+  os << indent << "View Angle Interpolator: ";
+  if ( this->ViewAngleInterpolator )
+    {
+    os << this->ViewAngleInterpolator << "\n";
+    }
+  else
+    {
+    os << "(null)\n";
+    }
+
+  os << indent << "Parallel Scale Interpolator: ";
+  if ( this->ParallelScaleInterpolator )
+    {
+    os << this->ParallelScaleInterpolator << "\n";
     }
   else
     {
