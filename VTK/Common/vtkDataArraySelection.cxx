@@ -171,6 +171,21 @@ int vtkDataArraySelection::GetNumberOfArrays()
 }
 
 //----------------------------------------------------------------------------
+int vtkDataArraySelection::GetNumberOfArraysEnabled()
+{
+  int numArrays = 0;
+  for(vtkstd::vector<int>::iterator i = this->ArraySettings->begin();
+      i != this->ArraySettings->end(); ++i)
+    {
+    if(*i)
+      {
+      numArrays++;
+      }
+    }
+  return numArrays;
+}
+
+//----------------------------------------------------------------------------
 const char* vtkDataArraySelection::GetArrayName(int index)
 {
   vtkstd::vector<vtkstd::string>::iterator i = this->ArrayNames->begin()+index;
