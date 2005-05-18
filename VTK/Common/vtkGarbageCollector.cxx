@@ -77,16 +77,6 @@ void vtkGarbageCollector::PrintSelf(ostream& os, vtkIndent indent)
 }
 
 //----------------------------------------------------------------------------
-void vtkGarbageCollector::Register(vtkObjectBase*)
-{
-}
-
-//----------------------------------------------------------------------------
-void vtkGarbageCollector::UnRegister(vtkObjectBase*)
-{
-}
-
-//----------------------------------------------------------------------------
 void vtkGarbageCollector::SetGlobalDebugFlag(int flag)
 {
   vtkGarbageCollectorGlobalDebugFlag = flag;
@@ -187,6 +177,14 @@ public:
 
   vtkGarbageCollectorImpl();
   ~vtkGarbageCollectorImpl();
+
+  // Description:
+  // Prevent normal vtkObject reference counting behavior.
+  virtual void Register(vtkObjectBase*);
+
+  // Description:
+  // Prevent normal vtkObject reference counting behavior.
+  virtual void UnRegister(vtkObjectBase*);
 
   // Perform a collection check.
   void CollectInternal(vtkObjectBase* root);
@@ -386,6 +384,16 @@ vtkGarbageCollectorImpl::~vtkGarbageCollectorImpl()
 
   // Disable debugging to avoid destruction message.
   this->SetDebug(0);
+}
+
+//----------------------------------------------------------------------------
+void vtkGarbageCollectorImpl::Register(vtkObjectBase*)
+{
+}
+
+//----------------------------------------------------------------------------
+void vtkGarbageCollectorImpl::UnRegister(vtkObjectBase*)
+{
 }
 
 //----------------------------------------------------------------------------
