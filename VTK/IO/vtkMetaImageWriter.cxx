@@ -33,6 +33,7 @@ vtkStandardNewMacro(vtkMetaImageWriter);
 vtkMetaImageWriter::vtkMetaImageWriter()
 {
   this->MHDFileName = 0;
+  this->FileLowerLeft = 1;
 }
 
 //----------------------------------------------------------------------------
