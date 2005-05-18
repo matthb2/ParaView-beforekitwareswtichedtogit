@@ -238,8 +238,7 @@ int vtkDemandDrivenPipeline::ProcessRequest(vtkInformation* request)
 }
 
 //----------------------------------------------------------------------------
-void
-vtkDemandDrivenPipeline
+void vtkDemandDrivenPipeline
 ::CopyDefaultInformation(vtkInformation* request, int direction)
 {
   // Let the superclass copy first.
