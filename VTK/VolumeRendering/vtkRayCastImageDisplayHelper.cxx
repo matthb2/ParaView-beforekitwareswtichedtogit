@@ -34,6 +34,7 @@ vtkRayCastImageDisplayHelper* vtkRayCastImageDisplayHelper::New()
 vtkRayCastImageDisplayHelper::vtkRayCastImageDisplayHelper()
 {
   this->PreMultipliedColors = 0;
+  this->PixelScale = 1.0;
 }
 
 // Destruct a vtkRayCastImageDisplayHelper - clean up any memory used
