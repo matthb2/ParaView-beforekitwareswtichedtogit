@@ -378,7 +378,7 @@ vtkStringArray::GetActualMemorySize( void )
 
 // ----------------------------------------------------------------------
 
-vtkStdString
+vtkStdString &
 vtkStringArray::GetValue( vtkIdType id )
 {
   return this->Array[id];
