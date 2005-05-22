@@ -48,7 +48,7 @@ struct vtkQTransform
         {
         xform->GetPosition(this->P);
         xform->GetScale(this->S);
-        xform->GetOrientationWXYZ(this->Q);
+        xform->GetOrientationWXYZ(this->Q); //Rotation (in degrees) around unit vector
         }
       else
         {
