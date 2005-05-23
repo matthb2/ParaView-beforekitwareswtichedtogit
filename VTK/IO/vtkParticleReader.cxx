@@ -349,10 +349,8 @@ int vtkParticleReader::DetermineFileType()
     {
     return FILE_TYPE_IS_TEXT;
     }
-  else
-    {
-    return FILE_TYPE_IS_BINARY;
-    }
+
+  return FILE_TYPE_IS_BINARY;
 }
 
 //----------------------------------------------------------------------------
