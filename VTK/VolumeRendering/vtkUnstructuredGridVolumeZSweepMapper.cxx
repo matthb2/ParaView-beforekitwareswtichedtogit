@@ -3084,7 +3084,7 @@ void vtkUnstructuredGridVolumeZSweepMapper::CreateAndCleanPixelList()
 //-----------------------------------------------------------------------------
 void vtkUnstructuredGridVolumeZSweepMapper::MainLoop(vtkRenderWindow *renWin)
 {
-  double previousZTarget;
+  double previousZTarget=0.0;
   double zTarget;
   vtkIdType vertex;
   
