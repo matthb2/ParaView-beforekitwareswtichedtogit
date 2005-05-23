@@ -197,8 +197,8 @@ void vtkImageSeparableConvolutionExecute ( vtkImageSeparableConvolution* self,
 {
   T *inPtr0, *inPtr1, *inPtr2;
   float *outPtr0, *outPtr1, *outPtr2;
-  int inInc0, inInc1, inInc2;
-  int outInc0, outInc1, outInc2;
+  vtkIdType inInc0, inInc1, inInc2;
+  vtkIdType outInc0, outInc1, outInc2;
   int inMin0, inMax0, inMin1, inMax1, inMin2, inMax2;
   int outMin0, outMax0, outMin1, outMax1, outMin2, outMax2;
   int idx0, idx1, idx2;

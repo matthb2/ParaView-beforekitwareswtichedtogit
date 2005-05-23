@@ -85,9 +85,9 @@ void vtkImageMaskExecute(vtkImageMask *self, int ext[6],
 {
   int num0, num1, num2, numC, pixSize;
   int idx0, idx1, idx2, idxC;
-  int in1Inc0, in1Inc1, in1Inc2;
-  int in2Inc0, in2Inc1, in2Inc2;
-  int outInc0, outInc1, outInc2;
+  vtkIdType in1Inc0, in1Inc1, in1Inc2;
+  vtkIdType in2Inc0, in2Inc1, in2Inc2;
+  vtkIdType outInc0, outInc1, outInc2;
   T *maskedValue;
   double *v;
   int nv;

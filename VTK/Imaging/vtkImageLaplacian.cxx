@@ -97,12 +97,13 @@ void vtkImageLaplacianExecute(vtkImageLaplacian *self,
 {
   int idxC, idxX, idxY, idxZ;
   int maxC, maxX, maxY, maxZ;
-  int inIncX, inIncY, inIncZ;
-  int outIncX, outIncY, outIncZ;
+  vtkIdType inIncX, inIncY, inIncZ;
+  vtkIdType outIncX, outIncY, outIncZ;
   unsigned long count = 0;
   unsigned long target;
   int axesNum;
-  int *wholeExtent, *inIncs;
+  int *wholeExtent;
+  vtkIdType *inIncs;
   double r[3], d, sum;
   int useZMin, useZMax, useYMin, useYMax, useXMin, useXMax;
   

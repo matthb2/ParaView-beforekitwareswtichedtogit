@@ -164,8 +164,8 @@ void vtkImageMapToColorsExecute(vtkImageMapToColors *self,
 {
   int idxY, idxZ;
   int extX, extY, extZ;
-  int inIncX, inIncY, inIncZ;
-  int outIncX, outIncY, outIncZ;
+  vtkIdType inIncX, inIncY, inIncZ;
+  vtkIdType outIncX, outIncY, outIncZ;
   unsigned long count = 0;
   unsigned long target;
   int dataType = inData->GetScalarType();

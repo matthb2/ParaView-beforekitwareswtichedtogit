@@ -330,7 +330,7 @@ void vtkImageMandelbrotSource::ExecuteData(vtkDataObject *output)
   float *ptr;
   int min0, max0;
   int idx0, idx1, idx2;
-  int inc0, inc1, inc2;
+  vtkIdType inc0, inc1, inc2;
   double *origin, *sample;
   double p[4];
   unsigned long count = 0;

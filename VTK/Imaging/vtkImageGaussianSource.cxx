@@ -104,7 +104,7 @@ void vtkImageGaussianSource::ExecuteData(vtkDataObject *output)
   double *outPtr;
   int idxX, idxY, idxZ;
   int maxX, maxY, maxZ;
-  int outIncX, outIncY, outIncZ;
+  vtkIdType outIncX, outIncY, outIncZ;
   int *outExt;
   double sum;
   double yContrib, zContrib;

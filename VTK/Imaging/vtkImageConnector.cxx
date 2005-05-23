@@ -116,7 +116,8 @@ vtkImageConnectorSeed *vtkImageConnector::PopSeed()
 // The data has to be unsigned char.
 void vtkImageConnector::MarkData(vtkImageData *data, int numberOfAxes, int extent[6])
 {
-  int *incs, *pIncs, *pExtent;
+  vtkIdType *incs, *pIncs;
+  int *pExtent;
   vtkImageConnectorSeed *seed;
   unsigned char *ptr;
   int newIndex[3], *pIndex, idx;

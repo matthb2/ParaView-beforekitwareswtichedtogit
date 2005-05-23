@@ -181,7 +181,7 @@ void vtkRenderLargeImage::RequestData(
   data->SetExtent(data->GetUpdateExtent());
   data->AllocateScalars();
   int inExtent[6];
-  int inIncr[3];
+  vtkIdType inIncr[3];
   int *size;
   int inWindowExtent[4];
   double viewAngle, parallelScale, windowCenter[2];

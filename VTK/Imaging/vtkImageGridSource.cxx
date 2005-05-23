@@ -75,7 +75,7 @@ void vtkImageGridSourceExecute(vtkImageGridSource *self,
 {
   int idxX, idxY, idxZ;
   int xval, yval, zval;
-  int outIncX, outIncY, outIncZ;
+  vtkIdType outIncX, outIncY, outIncZ;
   unsigned long count = 0;
   unsigned long target;
   

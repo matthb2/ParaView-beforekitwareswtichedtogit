@@ -629,7 +629,7 @@ void vtkImageReader2::SeekFile(int i, int j, int k)
 template <class OT>
 void vtkImageReader2Update(vtkImageReader2 *self, vtkImageData *data, OT *outPtr)
 {
-  int outIncr[3];
+  vtkIdType outIncr[3];
   OT *outPtr1, *outPtr2;
   long streamRead;
   int idx1, idx2, nComponents;

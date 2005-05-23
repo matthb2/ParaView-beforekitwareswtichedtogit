@@ -102,7 +102,7 @@ void vtkContourImage(vtkSynchronizedTemplates2D *self,
   // The only problem with using the update extent is that one or two 
   // sources enlarge the update extent.  This behavior is slated to be 
   // eliminated.
-  int *incs = input->GetIncrements();
+  vtkIdType *incs = input->GetIncrements();
   int *ext = input->GetExtent();
   int axis0, axis1;
   int min0, max0, dim0;
