@@ -573,7 +573,7 @@ void vtkAMRSpyPlotReader::Execute()
       double bounds[6];
       spcth_getDataBlockDimensions(spcth, block, dims, dims+1, dims+2);
       int level = spcth_getDataBlockLevel(spcth, block);
-
+      spcth_getDataBlockBounds(spcth, block, bounds);
       for ( cc = 0; cc < 3; cc ++ )
         {
         // spacing for this block
