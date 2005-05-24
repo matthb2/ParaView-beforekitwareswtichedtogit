@@ -178,12 +178,6 @@ void vtkSortDataArraySort11(vtkDataArray *keys, vtkDataArray *values)
       vtkSortDataArraySort10(keys, (VTK_TT *)values->GetVoidPointer(0),
                              values->GetNumberOfTuples(),
                              values->GetNumberOfComponents()));
-    //Template macro does not contain Id type?
-    case VTK_ID_TYPE:
-      vtkSortDataArraySort10(keys, (vtkIdType *)values->GetVoidPointer(0),
-                  values->GetNumberOfTuples(),
-                  values->GetNumberOfComponents());
-      break;
     }
 }
 
