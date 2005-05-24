@@ -96,6 +96,7 @@ void vtkTIFFWriter::WriteFileHeader(ofstream *file, vtkImageData *data)
   switch (stype)
     {
     case VTK_CHAR:
+    case VTK_SIGNED_CHAR:
     case VTK_UNSIGNED_CHAR:
       bps = 8;
       break;
