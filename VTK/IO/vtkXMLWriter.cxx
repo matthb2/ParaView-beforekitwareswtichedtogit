@@ -1157,7 +1157,7 @@ int vtkXMLWriter::WriteScalarAttribute(const char* name, float data)
 }
 
 //----------------------------------------------------------------------------
-#ifdef VTK_ID_TYPE_IS_NOT_BASIC_TYPE
+#ifdef VTK_USE_64BIT_IDS
 int vtkXMLWriter::WriteScalarAttribute(const char* name, vtkIdType data)
 {
   return this->WriteVectorAttribute(name, 1, &data);
@@ -1210,7 +1210,7 @@ int vtkXMLWriter::WriteVectorAttribute(const char* name, int length,
 }
 
 //----------------------------------------------------------------------------
-#ifdef VTK_ID_TYPE_IS_NOT_BASIC_TYPE
+#ifdef VTK_USE_64BIT_IDS
 int vtkXMLWriter::WriteVectorAttribute(const char* name, int length,
                                        vtkIdType* data)
 {
