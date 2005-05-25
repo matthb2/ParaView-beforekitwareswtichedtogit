@@ -283,6 +283,10 @@ void vtkSMProxyProperty::AddUncheckedProxy(vtkSMProxy* proxy)
 //---------------------------------------------------------------------------
 void vtkSMProxyProperty::SetUncheckedProxy(unsigned int idx, vtkSMProxy* proxy)
 {
+  if (this->PPInternals->UncheckedProxies.size() <= idx)
+    {
+    this->PPInternals->UncheckedProxies.resize(idx+1);
+    }
   this->PPInternals->UncheckedProxies[idx] = proxy;
 }
 
