@@ -58,6 +58,7 @@ void vtkSMKeyFrameProxy::SetKeyValue(unsigned int index, double value)
     this->SetNumberOfKeyValues(index+1);
     }
   this->Internals->KeyValues[index] = value;
+  this->Modified();
 }
 
 //----------------------------------------------------------------------------
