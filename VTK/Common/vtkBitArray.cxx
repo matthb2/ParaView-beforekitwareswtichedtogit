@@ -37,6 +37,20 @@ vtkBitArray::~vtkBitArray()
   delete [] this->Tuple;
 }
 
+unsigned char *vtkBitArray::WritePointer(vtkIdType id, vtkIdType number)
+{
+  vtkIdType newSize=id+number;
+  if ( newSize > this->Size )
+    {
+    this->ResizeAndExtend(newSize);
+    }
+  if ( (--newSize) > this->MaxId )
+    {
+    this->MaxId = newSize;
+    }
+  return this->Array + id/8;
+}
+
 // This method lets the user specify data to be held by the array.  The 
 // array argument is a pointer to the data.  size is the size of 
 // the array supplied by the user.  Set save to 1 to keep the class
