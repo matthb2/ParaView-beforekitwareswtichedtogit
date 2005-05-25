@@ -1378,6 +1378,36 @@ int vtkXMLWriteAsciiData(ostream& os, unsigned char* data, int length,
 }
 
 //----------------------------------------------------------------------------
+int vtkXMLWriteAsciiData(ostream& os, signed char* data, int length,
+                         vtkIndent indent, int)
+{
+  int columns = 6;
+  int rows = length/columns;
+  int lastRowLength = length%columns;
+  int r,c;
+  int pos=0;
+  for(r=0;r < rows;++r)
+    {
+    os << indent << short(data[pos++]);
+    for(c=1;c < columns;++c)
+      {
+      os << " " << short(data[pos++]);
+      }
+    os << "\n";
+    }
+  if(lastRowLength > 0)
+    {
+    os << indent << short(data[pos++]);
+    for(c=1;c < lastRowLength;++c)
+      {
+      os << " " << short(data[pos++]);
+      }
+    os << "\n";
+    }
+  return (os? 1:0);
+}
+
+//----------------------------------------------------------------------------
 int vtkXMLWriter::WriteAsciiData(void* data, int numWords, int wordType,
                                  vtkIndent indent)
 {
