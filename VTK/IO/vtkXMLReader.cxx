@@ -456,7 +456,7 @@ int vtkXMLReader::RequestData(vtkInformation *request,
 void vtkXMLReader::ReadXMLData()
 {
   // Initialize the output's data.
-  if( !this->FileWasReadOnce )
+  //if( !this->FileWasReadOnce )
     {
     this->SetupOutputData();
     }
