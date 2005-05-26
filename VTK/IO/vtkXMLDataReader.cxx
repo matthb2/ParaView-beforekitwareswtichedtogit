@@ -335,7 +335,7 @@ void vtkXMLDataReader::SetupOutputData()
     {
     this->CellDataTimeStep = new int[this->NumberOfCellArrays];
     this->CellDataOffset = new unsigned long[this->NumberOfCellArrays];
-    for(int i=0; i<this->NumberOfPointArrays;i++)
+    for(int i=0; i<this->NumberOfCellArrays;i++)
       {
       this->CellDataTimeStep[i] = -1;
       this->CellDataOffset[i]   = (unsigned long)-1;
