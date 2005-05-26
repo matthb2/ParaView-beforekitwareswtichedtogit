@@ -306,7 +306,7 @@ int vtkInputPort::RequestDataObject(
   this->Controller->TriggerRMI(this->RemoteProcessId, this->Tag+2);
   
   // Now receive the information
-  int dataType;
+  int dataType = 0;
   this->Controller->Receive( &dataType, 1, 
                              this->RemoteProcessId,
                              vtkInputPort::DATA_TYPE_TAG);
