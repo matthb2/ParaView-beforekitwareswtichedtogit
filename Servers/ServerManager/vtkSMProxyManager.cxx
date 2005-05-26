@@ -509,7 +509,7 @@ void vtkSMProxyManager::SaveState(const char*, ostream* os, vtkIndent indent)
         {
         *os << indent.GetNextIndent()
            << "<Item "
-           << "id=\"pvTemp" << it2->second->GetSelfID() << "\" "
+           << "id=\""<< it2->second->GetName() << "\" "
            << "name=\"" << it2->first.c_str() << "\" "
            << "/>" << endl;
         }
