@@ -129,24 +129,26 @@ int vtkOpenGLExtensionManager::ExtensionSupported(const char *name)
 
   const char *p = this->ExtensionsString;
   int NameLen = strlen(name);
+  int result = 0;
 
-  while (1)
+  for(;;)
     {
     int n;
     while (*p == ' ') p++;
     if (*p == '\0')
       {
-      return 0;
+      result = 0;
+      break;
       }
     n = strcspn(p, " ");
     if ((NameLen == n) && (strncmp(name, p, n) == 0))
       {
-      return 1;
+      result = 1;
+      break;
       }
     p += n;
     }
-  // Shutup compiler.
-  return 0;
+  return result;
 }
 
 vtkOpenGLExtensionManagerFunctionPointer
