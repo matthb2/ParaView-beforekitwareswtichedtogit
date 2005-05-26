@@ -153,11 +153,15 @@ int vtkFacetWriter::WriteDataToStream(ostream* ost, vtkPolyData* data)
 
   if ( data->GetVerts()->GetNumberOfCells() )
     {
-    if ( written )
-      {
-      vtkErrorMacro("Multiple different cells in the poly data");
-      return 0;
-      }
+    // This test is needed if another cell type is written above this
+    // block.  We must remove it here because it produces an
+    // unreachable code warning.
+    //
+    //if ( written )
+    //  {
+    //  vtkErrorMacro("Multiple different cells in the poly data");
+    //  return 0;
+    //  }
     ca = data->GetVerts();
     numCells = ca->GetNumberOfCells();
     vtkIdType numPts = 0;
