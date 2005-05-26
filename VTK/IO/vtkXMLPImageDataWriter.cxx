@@ -58,9 +58,9 @@ const char* vtkXMLPImageDataWriter::GetDefaultFileExtension()
 }
 
 //----------------------------------------------------------------------------
-void vtkXMLPImageDataWriter::WritePrimaryElementAttributes()
+void vtkXMLPImageDataWriter::WritePrimaryElementAttributes(ostream &os, vtkIndent indent)
 {
-  this->Superclass::WritePrimaryElementAttributes();
+  this->Superclass::WritePrimaryElementAttributes(os, indent);
   if (this->ErrorCode == vtkErrorCode::OutOfDiskSpaceError)
     {
     return;

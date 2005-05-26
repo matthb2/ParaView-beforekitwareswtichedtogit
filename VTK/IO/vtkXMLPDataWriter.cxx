@@ -121,7 +121,7 @@ int vtkXMLPDataWriter::WriteInternal()
 }
 
 //----------------------------------------------------------------------------
-void vtkXMLPDataWriter::WritePrimaryElementAttributes()
+void vtkXMLPDataWriter::WritePrimaryElementAttributes(ostream &, vtkIndent)
 {
   this->WriteScalarAttribute("GhostLevel", this->GhostLevel);  
 }
@@ -141,7 +141,7 @@ int vtkXMLPDataWriter::WriteData()
     }
   
   os << indent << "<" << this->GetDataSetName();
-  this->WritePrimaryElementAttributes();
+  this->WritePrimaryElementAttributes(os, indent);
   if (this->ErrorCode == vtkErrorCode::OutOfDiskSpaceError)
     {
     return 0;
