@@ -503,9 +503,9 @@ int vtkXMLReader::ReadPrimaryElement(vtkXMLDataElement* ePrimary)
   //
   // Let check the "TimeValues" here
   double timevalues[512];
-  int numTimeSteps = ePrimary->GetVectorAttribute("TimeValues", timevalues);
+  int numTimeSteps = ePrimary->GetVectorAttribute("TimeValues", 512, timevalues);
+  assert( numTimeSteps <= 512 );
   this->SetNumberOfTimeSteps( numTimeSteps );
-  assert( numTimeSteps < 512 );
 
   // See if there is a FieldData element
   int numNested = ePrimary->GetNumberOfNestedElements();
