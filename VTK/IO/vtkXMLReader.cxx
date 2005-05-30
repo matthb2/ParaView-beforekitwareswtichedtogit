@@ -396,7 +396,6 @@ int vtkXMLReader::RequestData(vtkInformation *request,
       }
     }
 
-
   // Re-open the input file.  If it fails, the error was already
   // reported by OpenVTKFile.
   if(!this->OpenVTKFile())
@@ -1017,17 +1016,8 @@ int vtkXMLReader::ProcessRequest(vtkInformation* request,
                                  vtkInformationVector** inputVector,
                                  vtkInformationVector* outputVector)
 {
-  if(request->Has(vtkDemandDrivenPipeline::REQUEST_DATA_NOT_GENERATED()))
-     {
-     vtkInformation* outInfo = outputVector->GetInformationObject(0);
-     if ( this->CurrentOutput == 0)
-       {
-       outInfo->Set(vtkDemandDrivenPipeline::DATA_NOT_GENERATED(), 1);
-       }
-     return 1;
-     }
   // generate the data
-  else if(request->Has(vtkDemandDrivenPipeline::REQUEST_DATA()))
+  if(request->Has(vtkDemandDrivenPipeline::REQUEST_DATA()))
     {
     return this->RequestData(request, inputVector, outputVector);
     }
