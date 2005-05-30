@@ -21,6 +21,7 @@
 #include "vtkPolyData.h"
 #include "vtkSmartPointer.h"
 #include "vtkStreamingDemandDrivenPipeline.h"
+#include "vtkTimerLog.h"
 #include "vtkXMLPVDWriter.h"
 
 #include <vtkstd/vector>
@@ -85,6 +86,7 @@ int vtkCVGeometryCache::RequestData(
   vtkInformationVector **vtkNotUsed(inputVector),
   vtkInformationVector *outputVector)
 {
+  vtkTimerLog::MarkStartEvent("vtkCVGeometryCache::RequestData");
   unsigned int numOutputs = this->GetNumberOfOutputPorts();
   for (unsigned int i=0; i<numOutputs; i++)
     {
@@ -96,6 +98,7 @@ int vtkCVGeometryCache::RequestData(
       output->ShallowCopy(this->Internal->PolyDatas[i]);
       }
     }
+  vtkTimerLog::MarkEndEvent("vtkCVGeometryCache::RequestData");
   return 1;
 }
 
