@@ -23,7 +23,9 @@
 #include "vtkPointData.h"
 #include "vtkPolyData.h"
 #include "vtkStreamingDemandDrivenPipeline.h"
+#define vtkOffsetsManager_DoNotInclude
 #include "vtkOffsetsManagerArray.h"
+#undef  vtkOffsetsManager_DoNotInclude
 
 vtkCxxRevisionMacro(vtkXMLPolyDataWriter, "$Revision$");
 vtkStandardNewMacro(vtkXMLPolyDataWriter);
