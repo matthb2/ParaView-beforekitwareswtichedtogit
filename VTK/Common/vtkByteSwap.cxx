@@ -31,7 +31,7 @@ vtkByteSwap::~vtkByteSwap()
 
 //----------------------------------------------------------------------------
 // Define swap functions for each type size.
-template <size_t> struct vtkByteSwapper;
+template <size_t s> struct vtkByteSwapper;
 VTK_TEMPLATE_SPECIALIZE struct vtkByteSwapper<1>
 {
   static inline void Swap(void*) {}
