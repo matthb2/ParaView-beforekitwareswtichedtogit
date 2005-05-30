@@ -25,7 +25,7 @@ vtkAnimationCue::vtkAnimationCue()
 {
   this->StartTime = this->EndTime = 0.0;
   this->CueState = vtkAnimationCue::UNINITIALIZED;
-  this->TimeMode = VTK_ANIMATION_CUE_TIMEMODE_RELATIVE;
+  this->TimeMode = TIMEMODE_RELATIVE;
 }
 
 //----------------------------------------------------------------------------
