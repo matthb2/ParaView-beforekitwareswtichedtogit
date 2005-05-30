@@ -418,7 +418,12 @@ int vtkXMLUnstructuredDataReader::ReadPiece(vtkXMLDataElement* ePiece)
     vtkXMLDataElement* eNested = ePiece->GetNestedElement(i);
     if(strcmp(eNested->GetName(), "Points") == 0)
       {
-      this->PointElements[this->Piece] = eNested;
+      // make sure the XML file is somehow valid:
+      if( (this->NumberOfTimeSteps > 0 && eNested->GetNumberOfNestedElements() >= 1) ||
+          (this->NumberOfTimeSteps == 0 && eNested->GetNumberOfNestedElements() == 1))
+        {
+        this->PointElements[this->Piece] = eNested;
+        }
       }
     }
   
