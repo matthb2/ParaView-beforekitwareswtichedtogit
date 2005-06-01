@@ -772,7 +772,7 @@ int vtkSpyPlotReader::UpdateMetaData()
     {
     if(fileFields.find(this->CellDataArraySelection->GetArrayName(field))==fileFields.end())
       {
-      this->CellDataArraySelection->RemoveArrayFromIndex(field);
+      this->CellDataArraySelection->RemoveArrayByIndex(field);
       }
     else
       {
