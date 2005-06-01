@@ -145,6 +145,10 @@ void vtkSMIceTRenderModuleProxy::EndInteractiveRender()
 int vtkSMIceTRenderModuleProxy::GetLocalRenderDecision(unsigned long mem, 
   int stillRender)
 {
+  if (this->GetSuppressGeometryCollectionDecision())
+    {
+    return 0;
+    }
   if (!stillRender && this->GetUseLODDecision())
     {
     return 1; 
