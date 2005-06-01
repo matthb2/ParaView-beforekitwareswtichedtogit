@@ -291,9 +291,13 @@ void vtkSMDoubleRangeDomain::SetEntry(
 void vtkSMDoubleRangeDomain::SaveState(
   const char* name, ostream* file, vtkIndent indent)
 {
+  if (!this->XMLName)
+    {
+    return;
+    }
   *file << indent 
-        << "<Domain name=\"" << 
-        ( this->XMLName? this->XMLName : "(null)") << "\" id=\"" << name << "\">"
+        << "<Domain name=\"" << this->XMLName
+        << "\" id=\"" << name << "\">"
         << endl;
   unsigned int size = this->GetNumberOfEntries();
   unsigned int i;
