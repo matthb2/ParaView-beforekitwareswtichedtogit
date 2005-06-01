@@ -302,8 +302,13 @@ int vtkXMLWriter::ProcessRequest(vtkInformation* request,
  else if(request->Has(vtkStreamingDemandDrivenPipeline::REQUEST_UPDATE_EXTENT()))
     {
     // get the requested update extent
-    inputVector[0]->GetInformationObject(0)->Set( 
-      vtkStreamingDemandDrivenPipeline::UPDATE_TIME_INDEX(), this->CurrentTimeIndex );
+    if(this->NumberOfTimeSteps > 1)
+      {
+      inputVector[0]->GetInformationObject(0)->Set(
+        vtkStreamingDemandDrivenPipeline::UPDATE_TIME_INDEX(),
+        this->CurrentTimeIndex
+        );
+      }
 
      return 1;
     }
