@@ -188,6 +188,30 @@ void vtkInformationVector::Remove(vtkInformation* info)
 }
 
 //----------------------------------------------------------------------------
+void vtkInformationVector::Copy(vtkInformationVector* from, int deep)
+{
+  // if deep we can reuse existing info objects
+  if (deep)
+    {
+    this->SetNumberOfInformationObjects(from->GetNumberOfInformationObjects());
+    for (int i = 0; i < from->GetNumberOfInformationObjects(); ++i)
+      {
+      this->Internal->Vector[i]->Copy(from->GetInformationObject(i),deep);
+      }
+     return;
+    }
+  
+  // otherwise it is a shallow copy and we must copy pointers
+  this->SetNumberOfInformationObjects(0);
+  // copy the data
+  for (int i = 0; i < from->GetNumberOfInformationObjects(); ++i)
+    {
+    vtkInformation *fromI = from->GetInformationObject(i);
+    this->SetInformationObject(i,fromI);
+    }
+}
+
+//----------------------------------------------------------------------------
 void vtkInformationVector::Register(vtkObjectBase* o)
 {
   this->RegisterInternal(o, 1);
