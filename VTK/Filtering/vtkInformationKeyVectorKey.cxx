@@ -15,6 +15,7 @@
 #include "vtkInformationKeyVectorKey.h"
 
 #include <vtkstd/vector>
+#include <vtkstd/algorithm> // find()
 
 vtkCxxRevisionMacro(vtkInformationKeyVectorKey, "$Revision$");
 
