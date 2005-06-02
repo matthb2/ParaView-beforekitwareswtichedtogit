@@ -382,6 +382,13 @@ void vtkInformation::Append(vtkInformationKeyVectorKey* key,
 }
 
 //----------------------------------------------------------------------------
+void vtkInformation::Remove(vtkInformationKeyVectorKey* key,
+                            vtkInformationKey* value)
+{
+  key->RemoveItem(this, value);
+}
+
+//----------------------------------------------------------------------------
 void vtkInformation::Append(vtkInformationKeyVectorKey* key, 
                             vtkInformationInformationVectorKey* value)
 {

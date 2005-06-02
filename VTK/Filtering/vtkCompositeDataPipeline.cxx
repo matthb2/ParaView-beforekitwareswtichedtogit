@@ -767,6 +767,7 @@ int vtkCompositeDataPipeline::ExecuteData(vtkInformation* request)
               r->Set(REQUEST_DATA(), 1);
               this->Superclass::ExecuteData(r);
               r->Remove(REQUEST_DATA());
+
               if (output && outInfo)
                 {
                 if (!outputInitialized)
@@ -911,6 +912,11 @@ void
 vtkCompositeDataPipeline
 ::CopyDefaultInformation(vtkInformation* request, int direction)
 {
+  if(direction == vtkExecutive::RequestDownstream)
+    {
+    request->Remove(vtkExecutive::KEYS_TO_COPY(),vtkCompositeDataPipeline::UPDATE_BLOCKS());
+    }
+  
   this->Superclass::CopyDefaultInformation(request, direction);
 }
 

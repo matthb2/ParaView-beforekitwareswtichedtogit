@@ -81,6 +81,24 @@ void vtkInformationKeyVectorKey::Set(vtkInformation* info,
 }
 
 //----------------------------------------------------------------------------
+void vtkInformationKeyVectorKey::RemoveItem(vtkInformation* info,
+                                            vtkInformationKey* value)
+{
+  vtkInformationKeyVectorValue* v =
+    vtkInformationKeyVectorValue::SafeDownCast(
+      this->GetAsObjectBase(info));
+  
+  if(v)
+    {
+    vtkstd::vector<vtkInformationKey*>::iterator it=find(v->Value.begin(),v->Value.end(),value);
+    if(it!=v->Value.end())
+      {
+      v->Value.erase(it);
+      }
+    }
+}
+
+//----------------------------------------------------------------------------
 vtkInformationKey** vtkInformationKeyVectorKey::Get(vtkInformation* info)
 {
   vtkInformationKeyVectorValue* v =
