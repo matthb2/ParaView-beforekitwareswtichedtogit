@@ -220,13 +220,18 @@ void vtkSMPointLabelDisplay::CleanUpVTKObjects()
   vtkClientServerID id = this->UpdateSuppressorProxy->GetID(0);
   stream << vtkClientServerStream::Invoke << id
          << "SetExecutive" << 0 << vtkClientServerStream::End;
+  vtkProcessModule::GetProcessModule()->SendStream(
+    vtkProcessModule::CLIENT_AND_SERVERS, stream);
   id = this->DuplicateProxy->GetID(0);
   stream << vtkClientServerStream::Invoke << id
          << "SetExecutive" << 0 << vtkClientServerStream::End;
+  vtkProcessModule::GetProcessModule()->SendStream(
+    vtkProcessModule::DATA_SERVER, stream);
   id = this->PointLabelMapperProxy->GetID(0);
   stream << vtkClientServerStream::Invoke << id
          << "SetExecutive" << 0 << vtkClientServerStream::End;
-  vtkProcessModule::GetProcessModule()->SendStream(this->Servers, stream);
+  vtkProcessModule::GetProcessModule()->SendStream(
+    vtkProcessModule::CLIENT|vtkProcessModule::RENDER_SERVER, stream);
 }
 
 //----------------------------------------------------------------------------

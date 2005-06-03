@@ -62,9 +62,11 @@ vtkSMSourceProxy::~vtkSMSourceProxy()
     stream << vtkClientServerStream::Invoke << sourceID
            << "SetExecutive" << 0 <<  vtkClientServerStream::End;
     }
-  if (stream.GetNumberOfMessages() > 0)
+
+  vtkProcessModule *pm = vtkProcessModule::GetProcessModule();
+  if (stream.GetNumberOfMessages() > 0 && pm)
     {
-    vtkProcessModule::GetProcessModule()->SendStream(this->Servers, stream);
+    pm->SendStream(this->Servers, stream);
     }
 
   delete this->PInternals;
