@@ -623,7 +623,11 @@ void vtkSMPartDisplay::CreateVTKObjects(int num)
 //----------------------------------------------------------------------------
 void vtkSMPartDisplay::CleanUpVTKObjects()
 {
-  int num = this->GeometryProxy->GetNumberOfIDs();
+  int num = 0;
+  if (this->GeometryProxy)
+    {
+    this->GeometryProxy->GetNumberOfIDs();
+    }
   int i;
   vtkClientServerStream stream;
   vtkClientServerStream clientRenderServerStream;

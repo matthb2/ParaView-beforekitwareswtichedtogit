@@ -337,7 +337,11 @@ void vtkSMLODPartDisplay::CreateVTKObjects(int num)
 //----------------------------------------------------------------------------
 void vtkSMLODPartDisplay::CleanUpVTKObjects()
 {
-  int num = this->LODDeciProxy->GetNumberOfIDs();
+  int num = 0;
+  if (this->LODDeciProxy)
+    {
+    this->LODDeciProxy->GetNumberOfIDs();
+    }
   int i;
   vtkClientServerStream dataServerStream;
   vtkClientServerStream clientRenderServerStream;
