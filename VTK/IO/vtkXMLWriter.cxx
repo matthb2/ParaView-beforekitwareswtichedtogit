@@ -436,7 +436,11 @@ int vtkXMLWriter::WriteInternal()
   // Tell the subclass to write the data.
   int result = this->WriteData();
 
-  this->CloseFile();
+  // if user manipulate execution don't try closing file
+  if( this->UserContinueExecuting != 1 )
+    {
+    this->CloseFile();
+    }
 
   return result;
 }
