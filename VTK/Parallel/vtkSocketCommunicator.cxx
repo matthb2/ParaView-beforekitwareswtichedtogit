@@ -90,6 +90,8 @@ void vtkSocketCommunicator::PrintSelf(ostream& os, vtkIndent indent)
   os << indent << "IsConnected: " << this->IsConnected << endl;
   os << indent << "Perform a handshake: " 
      << ( this->PerformHandshake ? "Yes" : "No" ) << endl;
+
+  os << indent << "ReportErrors: " << this->ReportErrors << endl;
 }
 
 //----------------------------------------------------------------------------
