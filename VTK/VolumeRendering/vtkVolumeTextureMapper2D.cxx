@@ -63,7 +63,7 @@ void vtkVolumeTextureMapper2D_TraverseVolume( T *data_ptr,
   int              flag[3], tmpFlag, index;
   int              clipLow = 0, clipHigh = 0;
   vtkRenderWindow  *renWin = me->GetRenderWindow();
-  float            spacing[3], origin[3];
+  double           spacing[3], origin[3];
   unsigned char    zero[4];
   unsigned char    *texture;
   int              textureSize[2];
@@ -507,7 +507,7 @@ void vtkVolumeTextureMapper2D::RenderSavedTexture()
   unsigned char    *tptr;
   float            *v, *t;
   vtkRenderWindow  *renWin = this->GetRenderWindow();
-  float            spacing[3], origin[3];
+  double           spacing[3], origin[3];
   unsigned char    *texture;
   int              textureSize[2];
   int              xTile, yTile, xTotal, yTotal, tile, numTiles;
