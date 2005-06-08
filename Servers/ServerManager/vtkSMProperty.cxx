@@ -392,12 +392,10 @@ void vtkSMProperty::SaveState(const char* name, ostream* file, vtkIndent indent)
 {
   if (this->ControllerProxy && this->ControllerProperty)
     {
-    ostrstream str;
-    str << "pvTemp" << this->ControllerProxy->GetSelfID() << ends;
     *file << "    <ControllerProperty name=\""
-      << str.str() << "." << this->ControllerProperty->GetXMLName() 
+      << this->ControllerProxy->GetName() << "." 
+      << this->ControllerProperty->GetXMLName() 
       << "\" />" << endl;
-    str.rdbuf()->freeze(0);
     }
   this->DomainIterator->Begin();
   while(!this->DomainIterator->IsAtEnd())
