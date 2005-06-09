@@ -1806,7 +1806,7 @@ void vtkXMLWriter::WriteFieldDataAppendedData(vtkFieldData* fd, int timestep,
   fdManager->Allocate(fd->GetNumberOfArrays());
   for(i=0; i < fd->GetNumberOfArrays(); ++i)
     {
-    fdManager[i].Allocate(this->NumberOfTimeSteps);
+    fdManager->GetElement(i).Allocate(this->NumberOfTimeSteps);
     this->SetProgressRange(progressRange, i, fd->GetNumberOfArrays());
     this->WriteDataArrayAppendedData(fd->GetArray(i),
       fdManager->GetElement(i).GetPosition(timestep),
