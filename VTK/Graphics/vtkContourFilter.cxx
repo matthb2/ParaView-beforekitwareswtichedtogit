@@ -38,6 +38,7 @@
 #include "vtkSynchronizedTemplates2D.h"
 #include "vtkSynchronizedTemplates3D.h"
 #include "vtkTimerLog.h"
+#include "vtkUniformGrid.h"
 #include "vtkUnstructuredGrid.h"
 
 #include <math.h>
@@ -134,7 +135,8 @@ int vtkContourFilter::RequestUpdateExtent(vtkInformation* request,
 
   // handle 2D images
   int i;
-  if (vtkImageData::SafeDownCast(input) && sType != VTK_BIT)
+  if (vtkImageData::SafeDownCast(input) && sType != VTK_BIT && 
+      !vtkUniformGrid::SafeDownCast(input))
     {
     int dim = 3;
     int *uExt = inInfo->Get(vtkStreamingDemandDrivenPipeline::UPDATE_EXTENT());
@@ -253,7 +255,8 @@ int vtkContourFilter::RequestData(
     }
 
   // handle 2D images
-  if (vtkImageData::SafeDownCast(input) && sType != VTK_BIT)
+  if (vtkImageData::SafeDownCast(input) && sType != VTK_BIT &&
+      !vtkUniformGrid::SafeDownCast(input))
     {
     int dim = 3;
     int *uExt = input->GetUpdateExtent();
