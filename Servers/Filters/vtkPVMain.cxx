@@ -11,7 +11,7 @@
      PURPOSE.  See the above copyright notice for more information.
 
 =========================================================================*/
-#include "vtkToolkits.h" // For VTK_USE_MPI and VTK_USE_PATENTED
+#include "vtkToolkits.h" // For VTK_USE_MPI 
 #include "vtkPVConfig.h"
 #include "vtkPVFiltersConfig.h"
 

@@ -22,7 +22,6 @@
 
 #include "vtkProcessModule.h"
 
-// Needed for VTK_USE_PATENTED
 #include "vtkToolkits.h"
 #include "vtkSMGeneratedModules.h"
 
