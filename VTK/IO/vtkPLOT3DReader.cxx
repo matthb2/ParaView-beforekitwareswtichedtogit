@@ -343,7 +343,6 @@ int vtkPLOT3DReader::VerifySettings(char* buf, int vtkNotUsed(bufSize))
     {
     numGrid=1;
     }
-  cout << "Num. grids: " << numGrid << endl;
 
   int retVal=1;
 
@@ -364,13 +363,10 @@ int vtkPLOT3DReader::VerifySettings(char* buf, int vtkNotUsed(bufSize))
     {
     int ni, nj, nk;
     this->ReadIntBlockV(&buf, 1, &ni);
-    cout << "Grid " << i << " ni " << ni << endl;
     this->ReadIntBlockV(&buf, 1, &nj);
-    cout << "Grid " << i << " nj " << nj << endl;
     if (!this->TwoDimensionalGeometry)
       {
       this->ReadIntBlockV(&buf, 1, &nk);
-      cout << "Grid " << i << " nk " << nk << endl;
       }
     else
       {
