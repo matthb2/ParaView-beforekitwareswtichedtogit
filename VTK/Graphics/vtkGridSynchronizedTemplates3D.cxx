@@ -949,6 +949,11 @@ int vtkGridSynchronizedTemplates3D::RequestData(
     return 1;
     }
 
+  if (input->GetNumberOfPoints() == 0)
+    {
+    return 1;
+    }
+
   // just call the threaded execute directly.
   this->ThreadedExecute(this->GetExecuteExtent(), 0, input, inputVector, outInfo);
 
