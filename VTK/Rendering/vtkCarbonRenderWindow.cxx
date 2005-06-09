@@ -294,7 +294,7 @@ short FindGDHandleFromWindow (WindowPtr pWindow, GDHandle * phgdOnThisDevice)
   GDHandle hgdNthDevice;
 
   if (!pWindow || !phgdOnThisDevice)
-    return NULL;
+    return 0;
 
   *phgdOnThisDevice = NULL;
 
