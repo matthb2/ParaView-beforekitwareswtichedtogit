@@ -16,8 +16,8 @@
 #include "vtkObjectFactory.h"
 #include "vtkPVConfig.h" //For PARAVIEW_ALWAYS_SECURE_CONNECTION option
 
-#include <kwsys/CommandLineArguments.hxx>
-#include <kwsys/SystemTools.hxx>
+#include <vtksys/CommandLineArguments.hxx>
+#include <vtksys/SystemTools.hxx>
 
 
 //----------------------------------------------------------------------------
@@ -28,7 +28,7 @@ vtkCxxRevisionMacro(vtkPVOptions, "$Revision$");
 vtkPVOptions::vtkPVOptions()
 {
   this->SetProcessType(ALLPROCESS);
-  // Initialize kwsys::CommandLineArguments
+  // Initialize vtksys::CommandLineArguments
   this->CaveConfigurationFileName = 0;
   this->MachinesFileName = 0;
   this->RenderModuleName = NULL;
@@ -240,7 +240,7 @@ int vtkPVOptions::PostProcess(int, const char* const*)
 //----------------------------------------------------------------------------
 int vtkPVOptions::WrongArgument(const char* argument)
 {
-  if(kwsys::SystemTools::GetFilenameLastExtension(argument) == ".pvb")
+  if(vtksys::SystemTools::GetFilenameLastExtension(argument) == ".pvb")
     {
     this->SetErrorMessage("Batch file argument to ParaView executable is deprecated. Please use \"pvbatch\".");
     return 0;

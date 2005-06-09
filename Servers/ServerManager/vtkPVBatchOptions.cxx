@@ -15,8 +15,8 @@
 
 #include "vtkObjectFactory.h"
 
-#include <kwsys/CommandLineArguments.hxx>
-#include <kwsys/SystemTools.hxx>
+#include <vtksys/CommandLineArguments.hxx>
+#include <vtksys/SystemTools.hxx>
 
 
 //----------------------------------------------------------------------------
@@ -52,7 +52,7 @@ int vtkPVBatchOptions::PostProcess(int argc, const char* const* argv)
     return 0;
     }
   if ( this->BatchScriptName && 
-    kwsys::SystemTools::GetFilenameLastExtension(this->BatchScriptName) != ".pvb")
+    vtksys::SystemTools::GetFilenameLastExtension(this->BatchScriptName) != ".pvb")
     {
     ostrstream str;
     str << "Wrong batch script name: " << this->BatchScriptName << ends;
@@ -65,8 +65,8 @@ int vtkPVBatchOptions::PostProcess(int argc, const char* const* argv)
 
 int vtkPVBatchOptions::WrongArgument(const char* argument)
 {
-  if ( kwsys::SystemTools::FileExists(argument) &&
-    kwsys::SystemTools::GetFilenameLastExtension(argument) == ".pvb")
+  if ( vtksys::SystemTools::FileExists(argument) &&
+    vtksys::SystemTools::GetFilenameLastExtension(argument) == ".pvb")
     {
     this->SetBatchScriptName(argument);
     return 1;
