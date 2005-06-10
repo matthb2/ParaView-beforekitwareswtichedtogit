@@ -591,7 +591,7 @@ int vtkDemandDrivenPipeline::InputCountIsValid()
 int vtkDemandDrivenPipeline::InputCountIsValid(int port)
 {
   // Get the number of connections for this port.
-  int connections = this->Algorithm->GetNumberOfInputConnections(port);
+  int connections = this->GetNumberOfInputConnections(port);
 
   // If the input port is optional, there may be less than one connection.
   if(!this->InputIsOptional(port) && (connections < 1))
