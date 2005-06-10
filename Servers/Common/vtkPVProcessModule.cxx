@@ -40,6 +40,7 @@
 #include "vtkPVServerInformation.h"
 #include "vtkInstantiator.h"
 #include "vtkPVServerOptions.h"
+#include "vtkKWProcessStatistics.h"
 
 #include "vtkPVDemoPaths.h"
 
@@ -333,6 +334,12 @@ void vtkPVProcessModule::LogEndEvent(char* str)
     {
     *this->LogFile << str << ", " << this->Timer->GetElapsedTime()
                    << " seconds" << endl;
+    *this->LogFile << "--- Virtual memory available: "
+                   << this->MemoryInformation->GetAvailableVirtualMemory()
+                   << " KB" << endl;
+    *this->LogFile << "--- Physical memory available: "
+                   << this->MemoryInformation->GetAvailablePhysicalMemory()
+                   << " KB" << endl;
     }
 }
 
