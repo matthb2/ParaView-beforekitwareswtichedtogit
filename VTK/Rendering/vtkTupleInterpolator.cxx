@@ -140,6 +140,8 @@ void vtkTupleInterpolator::Initialize()
     delete [] this->Linear;
     this->Linear = NULL;
     }
+
+  this->NumberOfComponents = 0;
 }
 
 
