@@ -490,3 +490,28 @@ vtkLightKit::LightKitSubType vtkLightKit::GetSubType(vtkLightKit::LightKitType t
   return subtype;
 }
 
+// The following methods are deprecated:
+
+#ifndef VTK_LEGACY_REMOVE
+void vtkLightKit::SetHeadlightWarmth(double v)
+{
+  VTK_LEGACY_REPLACED_BODY(vtkLightKit::SetHeadlightWarmth, "5.0",
+                           vtkLightKit::SetHeadLightWarmth);
+  this->SetHeadLightWarmth(v);
+}
+ 
+double vtkLightKit::GetHeadlightWarmth()
+{
+  VTK_LEGACY_REPLACED_BODY(vtkLightKit::GetHeadlightWarmth, "5.0",
+                           vtkLightKit::GetHeadLightWarmth);
+  return this->GetHeadLightWarmth();
+}
+
+void vtkLightKit::GetHeadlightColor(double *color)
+{
+  VTK_LEGACY_REPLACED_BODY(vtkLightKit::SetHeadlightColor, "5.0",
+                           vtkLightKit::SetHeadLightColor);
+  this->GetHeadLightColor(color);
+}
+#endif
+
