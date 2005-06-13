@@ -94,6 +94,7 @@ vtkLightKit::vtkLightKit()
   this->KeyToHeadRatio = 3.0;
 
   this->MaintainLuminance = 0;
+  this->Update();
 }  
 
 //----------------------------------------------------------------------------
