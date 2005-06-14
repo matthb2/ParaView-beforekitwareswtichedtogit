@@ -57,7 +57,7 @@ int vtkUpdateSuppressorPipeline::ProcessRequest(vtkInformation* request,
     return 1;
     }
   return this->Superclass::ProcessRequest(request,forward,
-                                          inInfoVec,outInfoVec);
+                                          inInfo,outInfo);
 }
 
 
