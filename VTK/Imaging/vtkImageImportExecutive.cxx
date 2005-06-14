@@ -28,7 +28,10 @@ vtkCxxRevisionMacro(vtkImageImportExecutive, "$Revision$");
 vtkStandardNewMacro(vtkImageImportExecutive);
 
 //----------------------------------------------------------------------------
-int vtkImageImportExecutive::ProcessRequest(vtkInformation* request)
+int vtkImageImportExecutive::ProcessRequest(vtkInformation* request,
+                                            int forward,
+                                            vtkInformationVector** inInfoVec,
+                                            vtkInformationVector* outInfoVec)
 {
   if(this->Algorithm && request->Has(REQUEST_INFORMATION()))
     {
@@ -37,5 +40,6 @@ int vtkImageImportExecutive::ProcessRequest(vtkInformation* request)
     ii->InvokeUpdateInformationCallbacks();
     }
   
-  return this->Superclass::ProcessRequest(request);
+  return this->Superclass::ProcessRequest(request,forward,
+                                          inInfoVec, outInfoVec);
 }
