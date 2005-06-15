@@ -14,6 +14,7 @@
 =========================================================================*/
 #include "vtkHierarchicalDataSet.h"
 
+#include "vtkDataSet.h"
 #include "vtkHierarchicalDataInformation.h"
 #include "vtkHierarchicalDataIterator.h"
 #include "vtkHierarchicalDataSetInternal.h"
@@ -298,6 +299,40 @@ void vtkHierarchicalDataSet::DeepCopy(vtkDataObject *src)
     }
 
   this->Modified();
+}
+
+//----------------------------------------------------------------------------
+vtkIdType vtkHierarchicalDataSet::GetNumberOfPoints()
+{
+  vtkIdType numPts = 0;
+
+  vtkCompositeDataIterator* iterator = this->NewIterator();
+  iterator->InitTraversal();
+  while (!iterator->IsDoneWithTraversal())
+    {
+    vtkDataObject* dObj = iterator->GetCurrentDataObject();
+    if (dObj)
+      {
+      vtkDataSet* ds = vtkDataSet::SafeDownCast(dObj);
+      if (ds)
+        {
+        numPts += ds->GetNumberOfPoints();
+        }
+      else
+        {
+        vtkHierarchicalDataSet* hds = 
+          vtkHierarchicalDataSet::SafeDownCast(dObj);
+        if (hds)
+          {
+          numPts += hds->GetNumberOfPoints();
+          }
+        }
+      }
+    iterator->GoToNextItem();
+    }
+  iterator->Delete();
+
+  return numPts;
 }
 
 //----------------------------------------------------------------------------
