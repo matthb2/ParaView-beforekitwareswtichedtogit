@@ -488,7 +488,7 @@ void vtkCompositeDataPipeline::ExecuteDataStart(
         outInfo->Get(vtkCompositeDataSet::COMPOSITE_DATA_SET());
       if(data && !outInfo->Get(DATA_NOT_GENERATED()))
         {
-        data->PrepareForNewData();
+        //data->PrepareForNewData();
         data->CopyInformationFromPipeline(request);
         }
       }
