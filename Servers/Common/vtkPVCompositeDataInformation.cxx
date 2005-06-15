@@ -55,6 +55,7 @@ vtkPVCompositeDataInformation::~vtkPVCompositeDataInformation()
 void vtkPVCompositeDataInformation::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os,indent);
+  os << indent << "DataIsComposite: " << this->DataIsComposite << endl;
 }
 
 //----------------------------------------------------------------------------
