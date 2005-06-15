@@ -85,6 +85,12 @@ int vtkHierarchicalDataSetAlgorithm::ProcessRequest(
   vtkInformationVector** inputVector, 
   vtkInformationVector* outputVector)
 {
+  // create the output
+  if(request->Has(vtkDemandDrivenPipeline::REQUEST_DATA_OBJECT()))
+    {
+    return this->RequestDataObject(request, inputVector, outputVector);
+    }
+
   // generate the data
   if(request->Has(vtkCompositeDataPipeline::REQUEST_DATA()))
     {
