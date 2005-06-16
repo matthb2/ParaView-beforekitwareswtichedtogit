@@ -132,6 +132,13 @@ int vtkHierarchicalBoxDataSetIsInBoxes(vtkstd::vector<vtkAMRBox>& boxes,
 //----------------------------------------------------------------------------
 void vtkHierarchicalBoxDataSet::GenerateVisibilityArrays()
 {
+  if (!this->HierarchicalDataInformation)
+    {
+    vtkErrorMacro("No information about data layout is specified. "
+                  "Cannot generate visibility arrays");
+    return;
+    }
+
   unsigned int numLevels = this->GetNumberOfLevels();
 
   for (unsigned int levelIdx=0; levelIdx<numLevels; levelIdx++)
