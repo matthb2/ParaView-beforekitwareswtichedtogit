@@ -177,8 +177,16 @@ void vtkUnstructuredGridPreIntegration::BuildPreIntegrationTables(vtkDataArray *
                  *this->IntegrationTableLengthResolution];
     // Determine scale and shift.
     double *range = scalars->GetRange(component);
-    this->IntegrationTableScalarScale[component]
-      = (this->IntegrationTableScalarResolution-2)/(range[1]-range[0]);
+    if (range[0] == range[1])
+      {
+      // Unusual case where the scalars are all the same.
+      this->IntegrationTableScalarScale[component] = 1.0;
+      }
+    else
+      {
+      this->IntegrationTableScalarScale[component]
+        = (this->IntegrationTableScalarResolution-2)/(range[1]-range[0]);
+      }
     this->IntegrationTableScalarShift[component]
       = -range[0]*this->IntegrationTableScalarScale[component];
 
