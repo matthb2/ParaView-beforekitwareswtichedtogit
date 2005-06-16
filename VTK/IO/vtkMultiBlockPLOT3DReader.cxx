@@ -779,7 +779,6 @@ int vtkMultiBlockPLOT3DReader::RequestData(
       numberOfDims = 2;
       }
   
-    int numBlocks = this->Internal->Blocks.size();
     for(i=0; i<numBlocks; i++)
       {
 
