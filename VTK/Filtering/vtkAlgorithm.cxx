@@ -384,10 +384,18 @@ void vtkAlgorithm::SetExecutive(vtkExecutive* newExecutive)
 }
 
 //----------------------------------------------------------------------------
-int vtkAlgorithm::ProcessRequest(vtkInformation*,
+int vtkAlgorithm::ProcessRequest(vtkInformation* request,
                                  vtkInformationVector**,
                                  vtkInformationVector*)
 {
+  // default handling of pipeline MTime
+  if(request->Has(vtkDemandDrivenPipeline::REQUEST_PIPELINE_MODIFIED_TIME()))
+    {
+    request->Set(vtkDemandDrivenPipeline::PIPELINE_MODIFIED_TIME(), 
+                 this->GetMTime());
+    return 1;
+    }
+
   return 1;
 }
 
