@@ -460,6 +460,7 @@ void vtkCaptionActor2D::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os,indent);
 
+  os << indent << "Text Actor: " << this->TextActor << "\n";
   if (this->CaptionTextProperty)
     {
     os << indent << "Caption Text Property:\n";
