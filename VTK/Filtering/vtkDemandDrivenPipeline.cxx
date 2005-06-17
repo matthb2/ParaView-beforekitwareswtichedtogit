@@ -93,8 +93,8 @@ int vtkDemandDrivenPipeline::ProcessRequest(vtkInformation* request,
 
     // The pipeline's MTime starts with this algorithm's MTime.
     // Invoke the request on the algorithm.
-    int result = this->CallAlgorithm(request, vtkExecutive::RequestDownstream,
-                                     inInfoVec, outInfoVec);
+    this->CallAlgorithm(request, vtkExecutive::RequestDownstream,
+                        inInfoVec, outInfoVec);
     this->PipelineMTime = request->Get(PIPELINE_MODIFIED_TIME());
     
     // We want the maximum PipelineMTime of all inputs.
