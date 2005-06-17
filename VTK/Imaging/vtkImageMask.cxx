@@ -40,6 +40,17 @@ vtkImageMask::~vtkImageMask()
   delete [] this->MaskedOutputValue;
 }
 
+//----------------------------------------------------------------------------
+void vtkImageMask::SetImageInput(vtkImageData *in)
+{
+  this->SetInput1(in);
+}
+
+//----------------------------------------------------------------------------
+void vtkImageMask::SetMaskInput(vtkImageData *in) 
+{
+  this->SetInput2(in);
+}
 
 //----------------------------------------------------------------------------
 void vtkImageMask::SetMaskedOutputValue(int num, double *v)

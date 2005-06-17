@@ -20,6 +20,7 @@
 #include "vtkInformationVector.h"
 #include "vtkObjectFactory.h"
 #include "vtkPointData.h"
+#include "vtkImageData.h"
 #include "vtkStreamingDemandDrivenPipeline.h"
 
 #include <math.h>
