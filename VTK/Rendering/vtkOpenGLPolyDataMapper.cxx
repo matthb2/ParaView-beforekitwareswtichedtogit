@@ -32,6 +32,7 @@
 #include "vtkTriangle.h"
 #include "vtkOpenGLRenderWindow.h"
 #include "vtkOpenGLTexture.h"
+#include "vtkImageData.h"
 
 #ifndef VTK_IMPLEMENT_MESA_CXX
 # include "vtkOpenGL.h"
