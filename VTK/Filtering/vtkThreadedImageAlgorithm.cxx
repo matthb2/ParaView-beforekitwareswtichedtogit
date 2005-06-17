@@ -246,7 +246,7 @@ int vtkThreadedImageAlgorithm::RequestData(
       info->Get(vtkStreamingDemandDrivenPipeline::UPDATE_EXTENT(), 
                 updateExtent);
       
-      // for image filters as a convinience we usually allocate the output data
+      // for image filters as a convenience we usually allocate the output data
       // in the superclass
       this->AllocateOutputData(outData, updateExtent);
       }
