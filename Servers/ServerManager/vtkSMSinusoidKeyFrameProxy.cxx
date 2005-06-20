@@ -41,13 +41,14 @@ vtkSMSinusoidKeyFrameProxy::~vtkSMSinusoidKeyFrameProxy()
 void vtkSMSinusoidKeyFrameProxy::SaveInBatchScript(ofstream* file)
 {
   this->Superclass::SaveInBatchScript(file);
-  *file << "  [$pvTemp" << this->SelfID << " GetProperty Phase]"
+  const char* name = this->GetName();
+  *file << "  [$" << name << " GetProperty Phase]"
     << " SetElements1 " << this->Phase<< endl;
-  *file << "  [$pvTemp" << this->SelfID << " GetProperty Frequency]"
+  *file << "  [$" << name << " GetProperty Frequency]"
     << " SetElements1 " << this->Frequency<< endl;
-  *file << "  [$pvTemp" << this->SelfID << " GetProperty Offset]"
+  *file << "  [$" << name << " GetProperty Offset]"
     << " SetElements1 " << this->Offset<< endl;
-  *file << "  $pvTemp" << this->SelfID << " UpdateVTKObjects";
+  *file << "  $" << name << " UpdateVTKObjects";
   *file << endl;
 }
 
