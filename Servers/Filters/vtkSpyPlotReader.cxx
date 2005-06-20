@@ -2349,6 +2349,16 @@ void vtkSpyPlotReader::PrintSelf(ostream& os, vtkIndent indent)
     os << "false"<<endl;
     }
   
+  os << "GenerateBlockIdArray: ";
+  if(this->GenerateBlockIdArray)
+    {
+    os << "true"<<endl;
+    }
+  else
+    {
+    os << "false"<<endl;
+    }
+  
   os << "TimeStep: " << this->TimeStep << endl;
   os << "TimeStepRange: " << this->TimeStepRange[0] << " " << this->TimeStepRange[1] << endl;
   if ( this->CellDataArraySelection )
