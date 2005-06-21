@@ -839,6 +839,9 @@ int vtkSpyPlotReader::RequestData(
   int processNumber = info->Get(vtkStreamingDemandDrivenPipeline::UPDATE_PIECE_NUMBER());
   int numProcessors =info->Get(vtkStreamingDemandDrivenPipeline::UPDATE_NUMBER_OF_PIECES());
   
+  // Update the timestep.
+  this->UpdateMetaData();
+  
   int block;
   int field;
   vtkBlockIterator *blockIterator;
