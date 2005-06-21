@@ -519,10 +519,8 @@ int vtkCommunicator::ReadDataSet(vtkDataSet *object)
   reader->SetInputArray(mystring);
   mystring->Delete();
 
-  output = reader->GetOutput();
-  output->Update();
-
-  object->ShallowCopy(output);
+  reader->Update();
+  object->ShallowCopy(reader->GetOutput());
 
   reader->Delete();
 
