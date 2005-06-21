@@ -45,7 +45,7 @@ class vtkVisibilitySort;
 class vtkUnsignedCharArray;
 class vtkFloatArray;
 
-class VTK_EXPORT vtkProjectedTetrahedraMapper : public vtkUnstructuredGridVolumeMapper
+class VTK_VOLUMERENDERING_EXPORT vtkProjectedTetrahedraMapper : public vtkUnstructuredGridVolumeMapper
 {
 public:
   vtkTypeRevisionMacro(vtkProjectedTetrahedraMapper,

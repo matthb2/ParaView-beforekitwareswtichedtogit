@@ -50,7 +50,7 @@ class vtkDataSet;
 class vtkMatrix4x4;
 class vtkCamera;
 
-class VTK_EXPORT vtkVisibilitySort : public vtkObject
+class VTK_GRAPHICS_EXPORT vtkVisibilitySort : public vtkObject
 {
 public:
   vtkTypeRevisionMacro(vtkVisibilitySort, vtkObject);

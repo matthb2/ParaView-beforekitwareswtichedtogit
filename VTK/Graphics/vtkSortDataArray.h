@@ -32,7 +32,7 @@
 class vtkIdList;
 class vtkDataArray;
 
-class VTK_EXPORT vtkSortDataArray : public vtkObject
+class VTK_GRAPHICS_EXPORT vtkSortDataArray : public vtkObject
 {
 public:
   vtkTypeRevisionMacro(vtkSortDataArray, vtkObject);

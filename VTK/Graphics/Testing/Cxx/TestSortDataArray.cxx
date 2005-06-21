@@ -31,7 +31,7 @@
 #define ARRAY_SIZE (2*1024*1024)
 //  #define ARRAY_SIZE 128
 
-int main(int, char *[])
+int TestSortDataArray(int, char *[])
 {
   vtkIdType i;
   vtkTimerLog *timer = vtkTimerLog::New();

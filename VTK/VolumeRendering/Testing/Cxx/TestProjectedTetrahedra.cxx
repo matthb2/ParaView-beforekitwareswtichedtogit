@@ -44,7 +44,7 @@
 #include "vtkRegressionTestImage.h"
 #include "vtkStdString.h"
 
-int main(int argc, char *argv[])
+int TestProjectedTetrahedra(int argc, char *argv[])
 {
   int i;
   // Need to get the data root.
