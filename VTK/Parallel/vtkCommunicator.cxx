@@ -502,7 +502,6 @@ int vtkCommunicator::WriteDataSet(vtkDataSet *data)
 
 int vtkCommunicator::ReadDataSet(vtkDataSet *object)
 {
-  vtkDataSet *output;
   vtkDataSetReader *reader = vtkDataSetReader::New();
 
   if (this->MarshalString == NULL || this->MarshalStringLength <= 0)
