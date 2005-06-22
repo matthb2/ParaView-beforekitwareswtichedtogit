@@ -652,6 +652,7 @@ void vtkPVClientServerModule::SetupWaitForConnection()
   int needTwoSockets = 0;
   int port = 0;
   int port2 = 0;
+
   // Set needTwoSockets, port, and port2 based on process type
   switch(this->Options->GetProcessType())
     {
@@ -709,6 +710,7 @@ void vtkPVClientServerModule::SetupWaitForConnection()
   if ( this->Options->GetClientMode() )
     {
     cout << "Waiting for server..." << endl;
+    this->GUIHelper->OpenReverseConnectionDialog();
     }
   else
     {
@@ -757,6 +759,12 @@ void vtkPVClientServerModule::SetupWaitForConnection()
     }
   comm->Delete();
   comm = 0;
+
+  if ( this->Options->GetClientMode() )
+    {
+      this->GUIHelper->CloseReverseConnectionDialog();
+    }
+
 }
 
 
@@ -1528,3 +1536,4 @@ const char* vtkPVClientServerModule::DetermineLogFilePrefix()
     return "NodeLog";
     }
 }
+
