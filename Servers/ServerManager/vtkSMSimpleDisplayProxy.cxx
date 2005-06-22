@@ -1103,4 +1103,6 @@ void vtkSMSimpleDisplayProxy::PrintSelf(ostream& os, vtkIndent indent)
   os << indent << "GeometryIsValid: " << this->GeometryIsValid << endl;
   os << indent << "HasVolumePipeline: " << this->HasVolumePipeline << endl;
   os << indent << "VolumeRenderMode: " << this->VolumeRenderMode << endl;
+  os << indent << "SupportsBunykMapper: " << this->SupportsBunykMapper << endl;
+  os << indent << "SupportsZSweepMapper: " << this->SupportsZSweepMapper << endl;
 }
