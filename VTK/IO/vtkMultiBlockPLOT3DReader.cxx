@@ -1051,7 +1051,6 @@ int vtkMultiBlockPLOT3DReader::RequestData(
     {
     vtkStructuredGrid* nthOutput = this->Internal->Blocks[i];
     mb->SetDataSet(0, i, nthOutput);
-    cout << updatePiece << " loading block " << i << endl;
     }
 
   this->Internal->Blocks.clear();
