@@ -46,13 +46,13 @@ void vtkInformationInformationKey::Set(vtkInformation* info,
 //----------------------------------------------------------------------------
 vtkInformation* vtkInformationInformationKey::Get(vtkInformation* info)
 {
-  return vtkInformation::SafeDownCast(this->GetAsObjectBase(info));
+  return static_cast<vtkInformation *>(this->GetAsObjectBase(info));
 }
 
 //----------------------------------------------------------------------------
 int vtkInformationInformationKey::Has(vtkInformation* info)
 {
-  return vtkInformation::SafeDownCast(this->GetAsObjectBase(info))?1:0;
+  return this->GetAsObjectBase(info)?1:0;
 }
 
 //----------------------------------------------------------------------------

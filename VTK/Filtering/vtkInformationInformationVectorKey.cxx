@@ -48,13 +48,13 @@ void vtkInformationInformationVectorKey::Set(vtkInformation* info,
 vtkInformationVector*
 vtkInformationInformationVectorKey::Get(vtkInformation* info)
 {
-  return vtkInformationVector::SafeDownCast(this->GetAsObjectBase(info));
+  return static_cast<vtkInformationVector *>(this->GetAsObjectBase(info));
 }
 
 //----------------------------------------------------------------------------
 int vtkInformationInformationVectorKey::Has(vtkInformation* info)
 {
-  return vtkInformationVector::SafeDownCast(this->GetAsObjectBase(info))?1:0;
+  return this->GetAsObjectBase(info)?1:0;
 }
 
 //----------------------------------------------------------------------------
