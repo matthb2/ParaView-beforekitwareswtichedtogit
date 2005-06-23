@@ -103,6 +103,7 @@ void vtkBridgeDataSet::SetDataSet(vtkDataSet *ds)
       a=vtkBridgeAttribute::New();
       a->InitWithPointData(pd,i);
       this->Attributes->InsertNextAttribute(a);
+      a->Delete();
       ++i;
       }
     // same thing for cell data.
@@ -114,6 +115,7 @@ void vtkBridgeDataSet::SetDataSet(vtkDataSet *ds)
       a=vtkBridgeAttribute::New();
       a->InitWithCellData(cd,i);
       this->Attributes->InsertNextAttribute(a);
+      a->Delete();
       ++i;
       }
     this->Tessellator->Initialize(this);
