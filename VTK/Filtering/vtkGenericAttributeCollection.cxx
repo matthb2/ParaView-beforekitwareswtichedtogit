@@ -247,9 +247,13 @@ void vtkGenericAttributeCollection::InsertAttribute(int i, vtkGenericAttribute *
   assert("pre: valid_i" && (i>=0)&&(i<this->GetNumberOfAttributes()));
 
 #ifndef NDEBUG
-int oldnumber = this->GetNumberOfAttributes();
+  int oldnumber = this->GetNumberOfAttributes();
 #endif
 
+  if(this->AttributeInternalVector->Vector[i]!=0)
+    {
+    this->AttributeInternalVector->Vector[i]->Delete();
+    }
   this->AttributeInternalVector->Vector[i] = a;
   a->Register( this );
   this->Modified();
