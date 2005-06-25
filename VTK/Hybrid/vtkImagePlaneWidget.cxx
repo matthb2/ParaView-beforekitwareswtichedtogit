@@ -550,6 +550,14 @@ void vtkImagePlaneWidget::PrintSelf(ostream& os, vtkIndent indent)
      << pt2[1] << ", "
      << pt2[2] << ")\n";
 
+  os << indent << "Current Cursor Position: (" 
+     << this->CurrentCursorPosition[0] << ", "
+     << this->CurrentCursorPosition[1] << ", "
+     << this->CurrentCursorPosition[2] << ")\n";
+
+  os << indent << "Current Image Value: " 
+     << this->CurrentImageValue << "\n";
+
   os << indent << "Plane Orientation: " << this->PlaneOrientation << "\n";
   os << indent << "Reslice Interpolate: " << this->ResliceInterpolate << "\n";
   os << indent << "Texture Interpolate: "
