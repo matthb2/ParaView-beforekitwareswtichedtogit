@@ -83,6 +83,21 @@ void vtkInformationExecutivePortKey::Set(vtkInformation* info,
     }
 }
 
+void vtkInformationExecutivePortKey::Get(vtkInformation *info, vtkExecutive*& executive, int &port)
+{
+  if(vtkInformationExecutivePortValue* v =
+     static_cast<vtkInformationExecutivePortValue *>(
+       this->GetAsObjectBase(info)))
+    {
+    executive = v->Executive;
+    port = v->Port;
+    return;
+    }
+
+  executive = 0;
+  port = 0;
+}
+
 //----------------------------------------------------------------------------
 vtkExecutive*
 vtkInformationExecutivePortKey::GetExecutive(vtkInformation* info)
