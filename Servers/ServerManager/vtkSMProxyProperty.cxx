@@ -458,6 +458,7 @@ void vtkSMProxyProperty::SaveState(
       if (dom && dom->IsInDomain(proxy))
         {
         proxies.push_back(proxy->GetName());
+        break;
         }
       this->DomainIterator->Next();
       }
