@@ -480,9 +480,10 @@ int vtkInformation::GetPort(vtkInformationExecutivePortKey* key)
 }
 
 //----------------------------------------------------------------------------
-void vtkInformation::Get(vtkInformationExecutivePortKey* key, vtkExecutive*& executive, int &port)
+void vtkInformation::Get(vtkInformationExecutivePortKey* key, 
+                         vtkExecutive*& executive, int &port)
 {
-  return key->Get(this,executive,port);
+  key->Get(this,executive,port);
 }
 
 //----------------------------------------------------------------------------
