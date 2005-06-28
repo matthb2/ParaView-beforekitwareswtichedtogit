@@ -747,10 +747,10 @@ void vtkHierarchicalFractal::Traverse(int &blockId,
         else
           {
           vtkUniformGrid *grid=vtkUniformGrid::New();
-           int count=output->GetNumberOfDataSets(level);
-           output->SetDataSet(level,count,grid);
-           grid->Delete();
-           this->SetBlockInfo(grid, level, ext,onFace);
+          int count=output->GetNumberOfDataSets(level);
+          output->SetDataSet(level,count,grid);
+          grid->Delete();
+          this->SetBlockInfo(grid, level, ext,onFace);
           }
         this->Levels->InsertValue(blockId, level);
         ++blockId;
