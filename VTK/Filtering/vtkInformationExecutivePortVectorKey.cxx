@@ -276,10 +276,14 @@ void vtkInformationExecutivePortVectorKey::Print(ostream& os,
 
 //----------------------------------------------------------------------------
 void
+#ifdef VTK_USE_SINGLE_REF
+vtkInformationExecutivePortVectorKey::Report(vtkInformation*,
+                                             vtkGarbageCollector*)
+{
+#else
 vtkInformationExecutivePortVectorKey::Report(vtkInformation* info,
                                              vtkGarbageCollector* collector)
 {
-#ifndef VTK_USE_SINGLE_REF
   if(vtkInformationExecutivePortVectorValue* v =
      static_cast<vtkInformationExecutivePortVectorValue *>
      (this->GetAsObjectBase(info)))
