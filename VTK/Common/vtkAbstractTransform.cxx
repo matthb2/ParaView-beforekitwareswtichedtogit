@@ -1124,7 +1124,7 @@ void vtkTransformConcatenationStack::DeepCopy(
 }
 
 #ifndef VTK_LEGACY_REMOVE
-void vtkTransformConcatenationStack::Identity()
+void vtkAbstractTransform::Identity()
 {
   vtkWarningMacro("vtkAbstractTransform::Identity() is deprecated");
 }
