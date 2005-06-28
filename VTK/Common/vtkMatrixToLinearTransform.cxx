@@ -104,3 +104,12 @@ unsigned long vtkMatrixToLinearTransform::GetMTime()
     }
   return mtime;
 }
+
+#ifndef VTK_LEGACY_REMOVE
+void vtkMatrixToLinearTransform::SetMatrix(vtkMatrix4x4 *matrix)
+{
+  VTK_LEGACY_REPLACED_BODY(vtkAssemblyNode::SetMatrix, "5.0",
+                           vtkAssemblyNode::SetInput);
+  this->SetInput(matrix);
+}
+#endif

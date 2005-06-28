@@ -445,6 +445,11 @@ void vtkDebugLeaks::ClassFinalize()
 #endif
 }
 
+#ifndef VTK_LEGACY_REMOVE
+static void vtkDebugLeaks::PromptUserOn() {}
+static void vtkDebugLeaks::PromptUserOff() {}
+#endif
+
 //----------------------------------------------------------------------------
 
 // Purposely not initialized.  ClassInitialize will handle it.
