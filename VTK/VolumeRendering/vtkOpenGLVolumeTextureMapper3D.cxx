@@ -1740,7 +1740,7 @@ void vtkOpenGLVolumeTextureMapper3D::Initialize()
   this->glProgramStringARB           = (PFNGLPROGRAMSTRINGARB) this->GetProcAddress("glProgramStringARB");
   this->glProgramLocalParameter4fARB = (PFNGLPROGRAMLOCALPARAMETER4FARB) this->GetProcAddress("glProgramLocalParameter4fARB");
 
-  if ( supports_GL_EXT_texture3D          && 0 &&
+  if ( supports_GL_EXT_texture3D          && 
        supports_GL_ARB_multitexture       &&
        supports_GL_ARB_fragment_program   &&
        this->glTexImage3DEXT              &&
@@ -1754,7 +1754,7 @@ void vtkOpenGLVolumeTextureMapper3D::Initialize()
     {
     this->RenderMethod = vtkVolumeTextureMapper3D::FRAGMENT_PROGRAM_METHOD;  
     }
-  else if ( supports_GL_EXT_texture3D          &&
+  else if ( supports_GL_EXT_texture3D    &&
       supports_GL_ARB_multitexture       &&
       supports_GL_NV_texture_shader2     &&
       supports_GL_NV_register_combiners2 &&
