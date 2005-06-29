@@ -247,7 +247,7 @@ int vtkContourFilter::RequestData(
   // is there data to process?
   if (!this->GetInputArrayToProcess(0, inputVector))
     {
-    return 0;
+    return 1;
     }
   
   int sType = this->GetInputArrayToProcess(0, inputVector)->GetDataType();
