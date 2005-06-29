@@ -244,6 +244,12 @@ int vtkContourFilter::RequestData(
   double *values=this->ContourValues->GetValues();
   int i;
   
+  // is there data to process?
+  if (!this->GetInputArrayToProcess(0, inputVector))
+    {
+    return 0;
+    }
+  
   int sType = this->GetInputArrayToProcess(0, inputVector)->GetDataType();
 
   // handle 2D images
