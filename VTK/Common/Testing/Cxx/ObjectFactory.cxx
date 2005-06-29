@@ -106,9 +106,6 @@ void TestNewVertex(vtkVertex* v, const char* expectedClassName)
 
 int ObjectFactory(int, char *[])
 {
-#if !defined(VTK_LEGACY_REMOVE) && defined(VTK_LEGACY_SILENT)
-  vtkDebugLeaks::PromptUserOff();
-#endif
   vtkOutputWindow::GetInstance()->PromptUserOff();
   vtkGenericWarningMacro("Test Generic Warning");
   TestFactory* factory = TestFactory::New();
