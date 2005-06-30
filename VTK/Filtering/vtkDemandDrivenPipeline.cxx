@@ -304,6 +304,7 @@ int vtkDemandDrivenPipeline::UpdatePipelineMTime()
     }
 
   this->ComputePipelineMTime(1,0,this->GetInputInformation());
+  return 1;
 }
 
 //----------------------------------------------------------------------------

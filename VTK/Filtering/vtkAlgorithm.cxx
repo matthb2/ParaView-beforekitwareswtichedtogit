@@ -384,7 +384,7 @@ void vtkAlgorithm::SetExecutive(vtkExecutive* newExecutive)
 }
 
 //----------------------------------------------------------------------------
-int vtkAlgorithm::ProcessRequest(vtkInformation* request,
+int vtkAlgorithm::ProcessRequest(vtkInformation* /* request */,
                                  vtkInformationVector**,
                                  vtkInformationVector*)
 {
