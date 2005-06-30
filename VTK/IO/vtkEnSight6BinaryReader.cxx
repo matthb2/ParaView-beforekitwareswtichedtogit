@@ -277,6 +277,11 @@ int vtkEnSight6BinaryReader::ReadGeometryFile(const char* fileName, int timeStep
     free(name);
     }
   
+  if (this->UnstructuredNodeIds)
+    {
+      this->UnstructuredNodeIds->Delete();
+      this->UnstructuredNodeIds = NULL;
+    }
   // Close file from any previous image
   if (this->IFile)
     {
