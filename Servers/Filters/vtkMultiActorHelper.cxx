@@ -43,6 +43,12 @@ void vtkMultiActorHelper::AddActor(vtkActor* actor)
 }
 
 //----------------------------------------------------------------------------
+void vtkMultiActorHelper::RemoveAllActors()
+{
+  this->Actors->RemoveAllItems();
+}
+
+//----------------------------------------------------------------------------
 void vtkMultiActorHelper::Pan(double x, double y)
 {
   vtkCollectionSimpleIterator cookie;
