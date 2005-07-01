@@ -85,7 +85,7 @@ class vtkPWCallback;
 class vtkPW1Callback;
 class vtkPW2Callback;
 
-class VTK_HYBRID_EXPORT vtkLineWidget : public vtk3DWidget
+class VTK_WIDGETS_EXPORT vtkLineWidget : public vtk3DWidget
 {
 public:
   // Description:

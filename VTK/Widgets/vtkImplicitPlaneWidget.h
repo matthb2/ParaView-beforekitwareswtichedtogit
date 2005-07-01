@@ -83,7 +83,7 @@ class vtkFeatureEdges;
 class vtkPolyData;
 class vtkTransform;
 
-class VTK_HYBRID_EXPORT vtkImplicitPlaneWidget : public vtkPolyDataSourceWidget
+class VTK_WIDGETS_EXPORT vtkImplicitPlaneWidget : public vtkPolyDataSourceWidget
 {
 public:
   // Description:

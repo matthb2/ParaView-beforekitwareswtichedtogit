@@ -36,7 +36,7 @@
 #include "vtkInteractorObserver.h"
 class vtkScalarBarActor;
 
-class VTK_HYBRID_EXPORT vtkScalarBarWidget : public vtkInteractorObserver
+class VTK_WIDGETS_EXPORT vtkScalarBarWidget : public vtkInteractorObserver
 {
 public:
   static vtkScalarBarWidget *New();

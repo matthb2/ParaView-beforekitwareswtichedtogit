@@ -34,7 +34,7 @@
 #include "vtkInteractorObserver.h"
 class vtkXYPlotActor;
 
-class VTK_HYBRID_EXPORT vtkXYPlotWidget : public vtkInteractorObserver
+class VTK_WIDGETS_EXPORT vtkXYPlotWidget : public vtkInteractorObserver
 {
 public:
   static vtkXYPlotWidget *New();

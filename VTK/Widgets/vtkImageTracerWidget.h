@@ -74,7 +74,7 @@ class vtkTransformPolyDataFilter;
 #define VTK_ITW_SNAP_CELLS    0
 #define VTK_ITW_SNAP_POINTS   1
 
-class VTK_HYBRID_EXPORT vtkImageTracerWidget : public vtk3DWidget
+class VTK_WIDGETS_EXPORT vtkImageTracerWidget : public vtk3DWidget
 {
 public:
   // Description:

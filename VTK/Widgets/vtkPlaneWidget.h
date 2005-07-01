@@ -97,7 +97,7 @@ class vtkPlane;
 #define VTK_PLANE_WIREFRAME 2
 #define VTK_PLANE_SURFACE 3
 
-class VTK_HYBRID_EXPORT vtkPlaneWidget : public vtkPolyDataSourceWidget
+class VTK_WIDGETS_EXPORT vtkPlaneWidget : public vtkPolyDataSourceWidget
 {
 public:
   // Description:

@@ -73,7 +73,7 @@ class vtkCellPicker;
 class vtkPolyData;
 class vtkProperty;
 
-class VTK_HYBRID_EXPORT vtkPointWidget : public vtk3DWidget
+class VTK_WIDGETS_EXPORT vtkPointWidget : public vtk3DWidget
 {
 public:
   // Description:

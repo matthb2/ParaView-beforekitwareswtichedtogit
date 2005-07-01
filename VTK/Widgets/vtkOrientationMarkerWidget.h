@@ -74,7 +74,7 @@ class vtkProp;
 class vtkOrientationMarkerWidgetObserver;
 class vtkRenderer;
 
-class VTK_HYBRID_EXPORT vtkOrientationMarkerWidget : public vtkInteractorObserver
+class VTK_WIDGETS_EXPORT vtkOrientationMarkerWidget : public vtkInteractorObserver
 {
 public:
   static vtkOrientationMarkerWidget* New();

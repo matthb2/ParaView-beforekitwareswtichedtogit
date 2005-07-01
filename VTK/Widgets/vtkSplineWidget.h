@@ -102,7 +102,7 @@ class vtkTransform;
 #define VTK_PROJECTION_XY 2
 #define VTK_PROJECTION_OBLIQUE 3
 
-class VTK_HYBRID_EXPORT vtkSplineWidget : public vtk3DWidget
+class VTK_WIDGETS_EXPORT vtkSplineWidget : public vtk3DWidget
 {
 public:
   // Description:

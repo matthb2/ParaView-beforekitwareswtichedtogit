@@ -39,7 +39,7 @@
 class vtkPolyDataAlgorithm;
 class vtkPolyDataSource;
 
-class VTK_HYBRID_EXPORT vtkPolyDataSourceWidget : public vtk3DWidget
+class VTK_WIDGETS_EXPORT vtkPolyDataSourceWidget : public vtk3DWidget
 {
  public:
   vtkTypeRevisionMacro(vtkPolyDataSourceWidget, vtk3DWidget);

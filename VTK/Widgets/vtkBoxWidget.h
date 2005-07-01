@@ -89,7 +89,7 @@ class vtkProperty;
 class vtkSphereSource;
 class vtkTransform;
 
-class VTK_HYBRID_EXPORT vtkBoxWidget : public vtk3DWidget
+class VTK_WIDGETS_EXPORT vtkBoxWidget : public vtk3DWidget
 {
 public:
   // Description:
