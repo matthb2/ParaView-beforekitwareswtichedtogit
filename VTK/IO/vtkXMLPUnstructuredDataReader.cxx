@@ -333,6 +333,11 @@ int vtkXMLPUnstructuredDataReader::ReadPieceData()
     return 0;
     }
   
+  if (!input->GetPoints())
+    {
+    return 0;
+    }
+
   // Copy the points array.
   this->CopyArrayForPoints(input->GetPoints()->GetData(),
                            output->GetPoints()->GetData());
