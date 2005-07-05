@@ -464,6 +464,11 @@ int vtkGlyph3D::RequestData(
       {
       continue;
       }
+
+    if (!this->IsPointVisible(input, inPtId))
+      {
+      continue;
+      }
     
     // Now begin copying/transforming glyph
     trans->Identity();
