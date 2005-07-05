@@ -336,6 +336,6 @@ void vtkThreadedImageAlgorithm::ThreadedExecute(
   int vtkNotUsed(threadId))
 {
   extent = extent;
-  vtkErrorMacro("subclase should override this method!!!");
+  vtkErrorMacro("Subclass should override this method!!!");
 }
 

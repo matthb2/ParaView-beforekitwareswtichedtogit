@@ -210,7 +210,7 @@ ThreadedExecute(vtkImageData **vtkNotUsed(inData),
                 int extent[6], int vtkNotUsed(threadId))
 {
   extent = extent;
-  vtkErrorMacro("subclase should override this method!!!");
+  vtkErrorMacro("Subclass should override this method!!!");
 }
 
 //----------------------------------------------------------------------------
