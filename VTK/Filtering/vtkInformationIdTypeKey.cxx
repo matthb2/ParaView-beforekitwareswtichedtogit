@@ -108,7 +108,7 @@ void vtkInformationIdTypeKey::Print(ostream& os, vtkInformation* info)
 }
 
 //----------------------------------------------------------------------------
-int* vtkInformationIdTypeKey::GetWatchAddress(vtkInformation* info)
+vtkIdType* vtkInformationIdTypeKey::GetWatchAddress(vtkInformation* info)
 {
   if(vtkInformationIdTypeValue* v =
      static_cast<vtkInformationIdTypeValue *>
