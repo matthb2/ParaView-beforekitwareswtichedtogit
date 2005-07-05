@@ -20,6 +20,7 @@
 #include "vtkInformationDoubleVectorKey.h"
 #include "vtkInformationExecutivePortKey.h"
 #include "vtkInformationExecutivePortVectorKey.h"
+#include "vtkInformationIdTypeKey.h"
 #include "vtkInformationInformationKey.h"
 #include "vtkInformationInformationVectorKey.h"
 #include "vtkInformationIntegerKey.h"
@@ -323,6 +324,7 @@ int vtkInformation::Has(vtkInformationRequestKey* key)
     {                                                                       \
     return key->Has(this);                                                  \
     }
+VTK_INFORMATION_DEFINE_SCALAR_PROPERTY(IdType, vtkIdType);
 VTK_INFORMATION_DEFINE_SCALAR_PROPERTY(Integer, int);
 VTK_INFORMATION_DEFINE_SCALAR_PROPERTY(Double, double);
 VTK_INFORMATION_DEFINE_SCALAR_PROPERTY(UnsignedLong, unsigned long);
