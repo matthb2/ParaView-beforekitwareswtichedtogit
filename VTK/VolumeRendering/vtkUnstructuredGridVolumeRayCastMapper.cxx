@@ -249,11 +249,6 @@ const char *vtkUnstructuredGridVolumeRayCastMapper::GetScalarModeAsString(void)
     }
 }
 
-void vtkUnstructuredGridVolumeRayCastMapper::SetNumberOfThreads( int num )
-{
-  this->Threader->SetNumberOfThreads( num );
-}
-
 void vtkUnstructuredGridVolumeRayCastMapper::ReleaseGraphicsResources(vtkWindow *)
 {
 }
