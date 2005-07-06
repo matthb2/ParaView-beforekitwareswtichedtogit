@@ -429,7 +429,7 @@ void vtkExtractCTHPart::ComputeBounds(vtkHierarchicalDataSet *input,
       vtkDataObject *dataObj=input->GetDataSet(level,dataset);
       if(dataObj!=0)// can be null if on another processor
         {
-        vtkDataSet *ds=vtkDataSet::SafeDownCast(ds);
+        vtkDataSet *ds=vtkDataSet::SafeDownCast(dataObj);
         ds->GetBounds(realBounds);
         
         if(firstBlock)
