@@ -899,7 +899,16 @@ void vtkLookupTable::PrintSelf(ostream& os, vtkIndent indent)
      << (this->Ramp == VTK_RAMP_SCURVE ? "SCurve\n" : "Linear\n");
   os << indent << "InsertTime: " <<this->InsertTime.GetMTime() << "\n";
   os << indent << "BuildTime: " <<this->BuildTime.GetMTime() << "\n";
-  os << indent << "Table: " << this->Table << "\n";
+  os << indent << "Table: ";
+  if( this->Table )
+    {
+    this->Table->PrintSelf(os << "\n", indent.GetNextIndent());
+    }
+  else
+    {
+    // Should not happen
+    os << "(none)\n";
+    }
 }
 
 //----------------------------------------------------------------------------
