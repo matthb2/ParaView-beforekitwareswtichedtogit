@@ -1829,5 +1829,15 @@ void vtkExtractCTHPart::PrintSelf(ostream& os, vtkIndent indent)
     {
     os << indent << "ClipPlane: NULL\n";
     }
+  
+  if ( this->Controller!=0)
+    {
+    os << "Controller:" << endl;
+    this->Controller->PrintSelf(os, indent.GetNextIndent());
+    }
+  else
+    {
+    os << "No Controller." << endl;
+    }
 }
 
