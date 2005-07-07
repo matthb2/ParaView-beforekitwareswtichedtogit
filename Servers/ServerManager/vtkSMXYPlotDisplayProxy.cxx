@@ -623,4 +623,5 @@ void vtkSMXYPlotDisplayProxy::PrintSelf(ostream& os, vtkIndent indent)
   os << indent << "XYPlotActorProxy: " << this->XYPlotActorProxy
     << endl;
   os << indent << "Visibility: " << this->Visibility << endl;
+  os << indent << "XYPlotWidget: " << this->XYPlotWidget << endl;
 }
