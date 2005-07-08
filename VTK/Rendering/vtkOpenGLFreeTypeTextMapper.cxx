@@ -436,6 +436,8 @@ void vtkOpenGLFreeTypeTextMapper::RenderOverlay(vtkViewport* viewport,
     // Shadow text for GL2PS.
 
 #ifdef VTK_USE_GL2PS
+    glRasterPos2i(xoff + tprop->GetShadowOffset()[0], 
+                  yoff + tprop->GetShadowOffset()[1]);
     gl2psText(this->Input, ps_font, tprop->GetFontSize());
 #endif // VTK_USE_GL2PS
     }
@@ -462,6 +464,7 @@ void vtkOpenGLFreeTypeTextMapper::RenderOverlay(vtkViewport* viewport,
   // Normal text for GL2PS.
 
 #ifdef VTK_USE_GL2PS
+  glRasterPos2i(xoff, yoff);
   gl2psText(this->Input, ps_font, tprop->GetFontSize());
 #endif // VTK_USE_GL2PS
 
