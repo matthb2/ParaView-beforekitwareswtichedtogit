@@ -36,7 +36,7 @@ vtkDataSetToDataSetFilter::~vtkDataSetToDataSetFilter()
 {
 }
 
-int vtkDataSetToDataSetFilter::CreateOutput(vtkInformation*,
+int vtkDataSetToDataSetFilter::RequestDataObject(vtkInformation*,
                                             vtkInformationVector** inputVector,
                                             vtkInformationVector* outputVector)
 {
@@ -76,7 +76,7 @@ int vtkDataSetToDataSetFilter::ProcessRequest(vtkInformation* request,
   // never gets created
   if(request->Has(vtkDemandDrivenPipeline::REQUEST_DATA_OBJECT()))
     {
-    return this->CreateOutput(request, inputVector, outputVector);
+    return this->RequestDataObject(request, inputVector, outputVector);
     }
   return this->Superclass::ProcessRequest(request, inputVector, outputVector);
 }
