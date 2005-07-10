@@ -521,7 +521,7 @@ int vtkGlyph3D::RequestData(
       {
       for (i = 0; i < numSourcePts; i++)
         {
-        sourceTCoords->GetTuple(inPtId, tc);
+        sourceTCoords->GetTuple(i, tc);
         newTCoords->InsertTuple(i+ptIncr, tc);
         }
       }
