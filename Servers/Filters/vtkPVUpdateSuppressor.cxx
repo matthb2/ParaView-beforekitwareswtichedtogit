@@ -52,6 +52,8 @@ vtkPVUpdateSuppressor::~vtkPVUpdateSuppressor()
 void vtkPVUpdateSuppressor::ForceUpdate()
 {
   vtkDataSet *input = vtkDataSet::SafeDownCast(this->GetInput());
+  input->UpdateInformation();
+  input =  vtkDataSet::SafeDownCast(this->GetInput());
   vtkDataSet *output = this->GetOutput();
   if (input == 0)
     {
