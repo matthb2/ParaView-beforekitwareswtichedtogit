@@ -240,8 +240,6 @@ int vtkExtractCTHPart::RequestData(
     else
       {
       // compute the bounds
-      vtkWarningMacro(<<"compute bounds not yet implemented.");
-      
       if(this->GetNumberOfOutputPorts()>0) // 
         {
         vtkInformation *info=outputVector->GetInformationObject(0);
