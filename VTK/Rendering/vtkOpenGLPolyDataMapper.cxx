@@ -106,7 +106,6 @@ void vtkOpenGLPolyDataMapper::ReleaseGraphicsResources(vtkWindow *win)
 //
 void vtkOpenGLPolyDataMapper::RenderPiece(vtkRenderer *ren, vtkActor *act)
 {
-  vtkIdType numPts;
   vtkPolyData *input= this->GetInput();
   vtkPlaneCollection *clipPlanes;
   vtkPlane *plane;
@@ -129,24 +128,26 @@ void vtkOpenGLPolyDataMapper::RenderPiece(vtkRenderer *ren, vtkActor *act)
   else
     {
     this->InvokeEvent(vtkCommand::StartEvent,NULL);
-    input->Update();
+    if (!this->Static)
+      {
+      input->Update();
+      }
     this->InvokeEvent(vtkCommand::EndEvent,NULL);
 
-    numPts = input->GetNumberOfPoints();
+    vtkIdType numPts = input->GetNumberOfPoints();
+    if (numPts == 0)
+      {
+      vtkDebugMacro(<< "No points!");
+      return;
+      }
     } 
 
-  if (numPts == 0)
-    {
-    vtkDebugMacro(<< "No points!");
-    return;
-    }
-  
   if ( this->LookupTable == NULL )
     {
     this->CreateDefaultLookupTable();
     }
 
-// make sure our window is current
+  // make sure our window is current
   ren->GetRenderWindow()->MakeCurrent();
 
   clipPlanes = this->ClippingPlanes;
