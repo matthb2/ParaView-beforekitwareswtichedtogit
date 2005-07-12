@@ -421,7 +421,7 @@ int vtkSMProperty::GetCheckDomains()
 }
 
 //---------------------------------------------------------------------------
-void vtkSMProperty::DeepCopy(vtkSMProperty* )
+void vtkSMProperty::Copy(vtkSMProperty* )
 {
 }
 

@@ -303,9 +303,9 @@ void vtkSMIdTypeVectorProperty::SaveState(
 }
 
 //---------------------------------------------------------------------------
-void vtkSMIdTypeVectorProperty::DeepCopy(vtkSMProperty* src)
+void vtkSMIdTypeVectorProperty::Copy(vtkSMProperty* src)
 {
-  this->Superclass::DeepCopy(src);
+  this->Superclass::Copy(src);
 
   vtkSMIdTypeVectorProperty* dsrc = vtkSMIdTypeVectorProperty::SafeDownCast(
     src);

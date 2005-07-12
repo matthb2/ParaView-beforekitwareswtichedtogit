@@ -334,9 +334,9 @@ void vtkSMDoubleVectorProperty::SaveState(
 }
 
 //---------------------------------------------------------------------------
-void vtkSMDoubleVectorProperty::DeepCopy(vtkSMProperty* src)
+void vtkSMDoubleVectorProperty::Copy(vtkSMProperty* src)
 {
-  this->Superclass::DeepCopy(src);
+  this->Superclass::Copy(src);
 
   vtkSMDoubleVectorProperty* dsrc = vtkSMDoubleVectorProperty::SafeDownCast(
     src);

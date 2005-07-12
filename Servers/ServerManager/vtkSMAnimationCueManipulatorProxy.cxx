@@ -31,6 +31,14 @@ vtkSMAnimationCueManipulatorProxy::~vtkSMAnimationCueManipulatorProxy()
 }
 
 //----------------------------------------------------------------------------
+void vtkSMAnimationCueManipulatorProxy::Copy(vtkSMProxy* src, 
+  const char* exceptionClass, int proxyPropertyCopyFlag)
+{
+  this->Superclass::Copy(src, exceptionClass, proxyPropertyCopyFlag);
+  this->MarkAllPropertiesAsModified();
+}
+
+//----------------------------------------------------------------------------
 void vtkSMAnimationCueManipulatorProxy::SaveInBatchScript(ofstream* file)
 {
   vtkClientServerID id = this->SelfID;

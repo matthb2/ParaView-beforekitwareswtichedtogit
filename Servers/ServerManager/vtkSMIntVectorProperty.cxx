@@ -311,9 +311,9 @@ void vtkSMIntVectorProperty::SaveState(
 }
 
 //---------------------------------------------------------------------------
-void vtkSMIntVectorProperty::DeepCopy(vtkSMProperty* src)
+void vtkSMIntVectorProperty::Copy(vtkSMProperty* src)
 {
-  this->Superclass::DeepCopy(src);
+  this->Superclass::Copy(src);
 
   vtkSMIntVectorProperty* dsrc = vtkSMIntVectorProperty::SafeDownCast(
     src);

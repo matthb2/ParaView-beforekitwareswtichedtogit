@@ -83,9 +83,9 @@ int vtkSMVectorProperty::ReadXMLAttributes(vtkSMProxy* parent,
 }
 
 //---------------------------------------------------------------------------
-void vtkSMVectorProperty::DeepCopy(vtkSMProperty* src)
+void vtkSMVectorProperty::Copy(vtkSMProperty* src)
 {
-  this->Superclass::DeepCopy(src);
+  this->Superclass::Copy(src);
 }
 
 //---------------------------------------------------------------------------

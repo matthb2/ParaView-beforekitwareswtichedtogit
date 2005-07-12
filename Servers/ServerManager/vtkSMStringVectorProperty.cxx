@@ -304,9 +304,9 @@ void vtkSMStringVectorProperty::SaveState(
 }
 
 //---------------------------------------------------------------------------
-void vtkSMStringVectorProperty::DeepCopy(vtkSMProperty* src)
+void vtkSMStringVectorProperty::Copy(vtkSMProperty* src)
 {
-  this->Superclass::DeepCopy(src);
+  this->Superclass::Copy(src);
 
   vtkSMStringVectorProperty* dsrc = vtkSMStringVectorProperty::SafeDownCast(
     src);
