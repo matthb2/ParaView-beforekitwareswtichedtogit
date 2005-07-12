@@ -72,10 +72,6 @@ vtkDataObject* vtkPolyDataAlgorithm::GetInput()
 //----------------------------------------------------------------------------
 vtkDataObject* vtkPolyDataAlgorithm::GetInput(int port)
 {
-  if (this->GetNumberOfInputConnections(port) < 1)
-    {
-    return 0;
-    }
   return this->GetExecutive()->GetInputData(port, 0);
 }
 

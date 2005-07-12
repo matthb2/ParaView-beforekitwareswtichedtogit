@@ -65,10 +65,6 @@ void vtkUnstructuredGridAlgorithm::SetOutput(vtkDataObject* d)
 //----------------------------------------------------------------------------
 vtkDataObject* vtkUnstructuredGridAlgorithm::GetInput(int port)
 {
-  if (this->GetNumberOfInputConnections(port) < 1)
-    {
-    return 0;
-    }
   return this->GetExecutive()->GetInputData(port, 0);
 }
 
