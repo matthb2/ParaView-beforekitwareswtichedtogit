@@ -111,6 +111,7 @@ vtkProcessModule::~vtkProcessModule()
   if(this->GUIHelper)
     {
     this->GUIHelper->Delete();
+    this->GUIHelper = 0;
     }
   this->ProgressHandler->Cleanup();
   this->ProgressHandler->Delete();
