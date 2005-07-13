@@ -349,9 +349,10 @@ void vtkSMKeyFrameAnimationCueManipulatorProxy::SaveInBatchScript(ofstream* file
     {
     vtkSMKeyFrameProxy* proxy = *it; 
     proxy->SaveInBatchScript(file);
-    *file << "  [$pvTemp" << id << " GetProperty KeyFrames]"
+    *file << "[$pvTemp" << id << " GetProperty KeyFrames]"
       <<" AddProxy $pvTemp" << proxy->GetID() << endl;
-    *file << "  $pvTemp" << id << " UpdateVTKObjects" << endl;
+    *file << "$pvTemp" << id << " UpdateVTKObjects" << endl;
+    *file << "$pvTemp" << proxy->GetID() << " UnRegister {}" << endl;
     }
 }
 

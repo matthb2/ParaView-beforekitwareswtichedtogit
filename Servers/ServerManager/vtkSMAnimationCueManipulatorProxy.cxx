@@ -46,11 +46,7 @@ void vtkSMAnimationCueManipulatorProxy::SaveInBatchScript(ofstream* file)
   *file << "set pvTemp" << id
     << " [$proxyManager NewProxy " << this->GetXMLGroup()
     << " " << this->GetXMLName() << "]" << endl;
-  *file << "  $proxyManager RegisterProxy "
-    << this->GetXMLGroup() << " pvTemp" << id
-    << " $pvTemp" << id << endl;
-  *file << "  $pvTemp" << id << " UnRegister {}" << endl;
-  *file << "  $pvTemp" << id << " UpdateVTKObjects" << endl;
+  *file << "$pvTemp" << id << " UpdateVTKObjects" << endl;
 }
 
 //----------------------------------------------------------------------------
