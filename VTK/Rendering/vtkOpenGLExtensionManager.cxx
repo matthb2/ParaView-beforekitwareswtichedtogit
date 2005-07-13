@@ -33,7 +33,10 @@
 
 #include <vtkstd/string>
 
-#ifdef VTK_USE_GLX_GET_PROC_ADDRESS_ARB
+// Make a prototype for glXGetProxAddressARB if it is needed and not already
+// declared.  Presumably it will be declared if and only if
+// GLX_ARB_get_proc_address is defined.
+#if defined(VTK_USE_GLX_GET_PROC_ADDRESS_ARB) && !defined(GLX_ARB_get_proc_address)
 extern "C" vtkglX::__GLXextFuncPtr glXGetProcAddressARB(const GLubyte *);
 #endif //VTK_USE_GLX_GET_PROC_ADDRESS_ARB
 
