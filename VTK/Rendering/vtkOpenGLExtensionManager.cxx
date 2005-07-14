@@ -33,9 +33,9 @@
 
 #include <vtkstd/string>
 
-#ifdef VTK_USE_GLX_GET_PROC_ADDRESS_ARB
+#ifdef VTK_DEFINE_GLX_GET_PROC_ADDRESS_PROTOTYPE
 extern "C" vtkglX::__GLXextFuncPtr glXGetProcAddressARB(const GLubyte *);
-#endif //VTK_USE_GLX_GET_PROC_ADDRESS_ARB
+#endif //VTK_DEFINE_GLX_GET_PROC_ADDRESS_PROTOTYPE
 
 #ifdef VTK_USE_VTK_DYNAMIC_LOADER
 #include "vtkDynamicLoader.h"
