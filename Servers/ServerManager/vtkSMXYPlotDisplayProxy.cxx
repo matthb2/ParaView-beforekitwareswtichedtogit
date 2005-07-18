@@ -615,10 +615,6 @@ void vtkSMXYPlotDisplayProxy::MarkConsumersAsModified()
 //-----------------------------------------------------------------------------
 void vtkSMXYPlotDisplayProxy::SetXAxisLabel(bool IsTemporal)
 {
-  vtkPVProcessModule* pm =
-    vtkPVProcessModule::SafeDownCast(vtkProcessModule::GetProcessModule());
-  vtkClientServerStream stream;
-  
   vtkSMStringVectorProperty* svp;
   svp = vtkSMStringVectorProperty::SafeDownCast(
     this->XYPlotActorProxy->GetProperty("XTitle"));
