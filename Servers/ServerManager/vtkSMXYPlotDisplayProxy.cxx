@@ -613,6 +613,31 @@ void vtkSMXYPlotDisplayProxy::MarkConsumersAsModified()
 }
 
 //-----------------------------------------------------------------------------
+void vtkSMXYPlotDisplayProxy::SetXAxisLabel(bool IsTemporal)
+{
+  vtkPVProcessModule* pm =
+    vtkPVProcessModule::SafeDownCast(vtkProcessModule::GetProcessModule());
+  vtkClientServerStream stream;
+  
+  vtkSMStringVectorProperty* svp;
+  svp = vtkSMStringVectorProperty::SafeDownCast(
+    this->XYPlotActorProxy->GetProperty("XTitle"));
+  if (svp)
+    {
+    if (IsTemporal) 
+      svp->SetElement(0, "Time");
+    else 
+      svp->SetElement(0, "Line Divisions");
+    }
+  else
+    {
+    vtkErrorMacro("Failed to find property XTitle.");
+    }
+   
+  this->XYPlotActorProxy->UpdateVTKObjects();
+}
+
+//-----------------------------------------------------------------------------
 void vtkSMXYPlotDisplayProxy::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os, indent);
