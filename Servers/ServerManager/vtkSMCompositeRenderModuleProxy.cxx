@@ -143,6 +143,13 @@ void vtkSMCompositeRenderModuleProxy::InitializeCompositingPipeline()
 }
 
 //-----------------------------------------------------------------------------
+int vtkSMCompositeRenderModuleProxy::IsRenderLocal()
+{
+  return this->GetLocalRenderDecision(
+    this->GetTotalVisibleGeometryMemorySize(), 1);
+}
+
+//-----------------------------------------------------------------------------
 int vtkSMCompositeRenderModuleProxy::GetLocalRenderDecision(
   unsigned long totalMemory, int vtkNotUsed(stillRender))
 {

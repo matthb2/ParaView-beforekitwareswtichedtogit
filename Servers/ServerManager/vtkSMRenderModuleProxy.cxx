@@ -1069,7 +1069,14 @@ int vtkSMRenderModuleProxy::GetServerRenderWindowSize(int size[2])
     }
   vtkTypeUInt32 servers =
     this->RenderWindowProxy->GetServers();
-  this->RenderWindowProxy->SetServers(vtkProcessModule::RENDER_SERVER);
+  if (this->IsRenderLocal())
+    {
+    this->RenderWindowProxy->SetServers(vtkProcessModule::CLIENT);
+    }
+  else
+    {
+    this->RenderWindowProxy->SetServers(vtkProcessModule::RENDER_SERVER);
+    }
   this->RenderWindowProxy->UpdatePropertyInformation(winSize);
   this->RenderWindowProxy->SetServers(servers);
   size[0] = winSize->GetElement(0);
