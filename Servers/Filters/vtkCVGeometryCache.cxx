@@ -17,7 +17,7 @@
 #include "vtkObjectFactory.h"
 #include "vtkInformation.h"
 #include "vtkInformationVector.h"
-#include "vtkMapper.h"
+#include "vtkPVGeometryFilter.h"
 #include "vtkPolyData.h"
 #include "vtkSmartPointer.h"
 #include "vtkStreamingDemandDrivenPipeline.h"
@@ -110,9 +110,9 @@ void vtkCVGeometryCache::RemoveAllGeometry()
 }
 
 //----------------------------------------------------------------------------
-void vtkCVGeometryCache::AddGeometry(vtkMapper* mapper)
+void vtkCVGeometryCache::AddGeometry(vtkPVGeometryFilter* filter)
 {
-  vtkPolyData* orig = vtkPolyData::SafeDownCast(mapper->GetInput());
+  vtkPolyData* orig = vtkPolyData::SafeDownCast(filter->GetOutput());
   if (!orig)
     {
     return;
