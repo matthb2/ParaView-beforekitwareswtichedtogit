@@ -233,6 +233,11 @@ int vtkExtractCTHPart::RequestData(
   
   if(input!=0)
     {
+    if(input->GetNumberOfLevels()==0)
+      {
+      // empty input, do nothing.
+      return 1;
+      }
     if(inInfo->Has(vtkExtractCTHPart::BOUNDS()))
       {
       inInfo->Get(vtkExtractCTHPart::BOUNDS(),this->Bounds);
