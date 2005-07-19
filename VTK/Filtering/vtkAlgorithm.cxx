@@ -1097,7 +1097,7 @@ int vtkAlgorithm::UpdateExtentIsEmpty(vtkInformation *info, int extentType)
     case VTK_3D_EXTENT:
       ext = info->Get(vtkStreamingDemandDrivenPipeline::UPDATE_EXTENT());
       // Special way of asking for no input. (zero volume)
-      if (ext[0] == (ext[1] + 1) ||
+      if (!ext || ext[0] == (ext[1] + 1) ||
           ext[2] == (ext[3] + 1) ||
           ext[4] == (ext[5] + 1))
         {
