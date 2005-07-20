@@ -47,6 +47,8 @@ vtkPVOptions::vtkPVOptions()
   this->ServerMode = 0;
   this->RenderServerMode = 0;
 
+  this->TellVersion = 0;
+
   // initialize host names 
   this->ServerHostName = 0;
   this->SetServerHostName("localhost");
@@ -164,6 +166,9 @@ void vtkPVOptions::Initialize()
     "Specify the file that defines the displays for a cave. It is used only with CaveRenderModule.");
   this->AddArgument("--machines", "-m", &this->MachinesFileName, 
                     "Specify the network configurations file for the render server.");
+
+  this->AddBooleanArgument("--version", "-V", &this->TellVersion, 
+                           "Give the version number and exit.");
 }
 
 //----------------------------------------------------------------------------
