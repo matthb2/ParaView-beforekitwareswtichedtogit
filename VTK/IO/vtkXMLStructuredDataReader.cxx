@@ -16,6 +16,8 @@
 
 #include "vtkDataArray.h"
 #include "vtkDataSet.h"
+#include "vtkInformation.h"
+#include "vtkStreamingDemandDrivenPipeline.h"
 #include "vtkXMLDataElement.h"
 #include "vtkXMLDataParser.h"
 
@@ -73,6 +75,23 @@ int vtkXMLStructuredDataReader::ReadPrimaryElement(vtkXMLDataElement* ePrimary)
     }
   
   return this->Superclass::ReadPrimaryElement(ePrimary);  
+}
+
+//----------------------------------------------------------------------------
+void
+vtkXMLStructuredDataReader::CopyOutputInformation(vtkInformation* outInfo,
+                                                  int port)
+{
+  // Let the superclass copy information first.
+  this->Superclass::CopyOutputInformation(outInfo, port);
+
+  // All structured data has a whole extent.
+  vtkInformation* localInfo = this->GetExecutive()->GetOutputInformation(port);
+  if(localInfo->Has(vtkStreamingDemandDrivenPipeline::WHOLE_EXTENT()))
+    {
+    outInfo->CopyEntry(localInfo,
+                       vtkStreamingDemandDrivenPipeline::WHOLE_EXTENT());
+    }
 }
 
 //----------------------------------------------------------------------------

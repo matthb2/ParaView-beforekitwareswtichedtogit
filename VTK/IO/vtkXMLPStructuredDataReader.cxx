@@ -17,6 +17,8 @@
 #include "vtkDataArray.h"
 #include "vtkDataSet.h"
 #include "vtkExtentSplitter.h"
+#include "vtkInformation.h"
+#include "vtkStreamingDemandDrivenPipeline.h"
 #include "vtkTableExtentTranslator.h"
 #include "vtkXMLDataElement.h"
 #include "vtkXMLStructuredDataReader.h"
@@ -180,6 +182,23 @@ vtkXMLPStructuredDataReader::ReadPrimaryElement(vtkXMLDataElement* ePrimary)
   return 1;
 }
 
+
+//----------------------------------------------------------------------------
+void
+vtkXMLPStructuredDataReader::CopyOutputInformation(vtkInformation* outInfo,
+                                                   int port)
+{
+  // Let the superclass copy information first.
+  this->Superclass::CopyOutputInformation(outInfo, port);
+
+  // All structured data has a whole extent.
+  vtkInformation* localInfo = this->GetExecutive()->GetOutputInformation(port);
+  if(localInfo->Has(vtkStreamingDemandDrivenPipeline::WHOLE_EXTENT()))
+    {
+    outInfo->CopyEntry(localInfo,
+                       vtkStreamingDemandDrivenPipeline::WHOLE_EXTENT());
+    }
+}
 
 void vtkXMLPStructuredDataReader::SetupOutputData()
   {
