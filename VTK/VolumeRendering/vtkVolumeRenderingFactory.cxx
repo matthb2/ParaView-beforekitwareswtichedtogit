@@ -18,6 +18,7 @@
 #include "vtkToolkits.h"
 #include "vtkVolumeRenderingToolkit.h"
 #include "vtkDebugLeaks.h"
+#include "vtkGraphicsFactory.h"
 
 // if using some sort of opengl, then include these files
 #if defined(VTK_USE_OGLR) || defined(_WIN32) || defined(VTK_USE_COCOA) || defined(VTK_USE_CARBON)
