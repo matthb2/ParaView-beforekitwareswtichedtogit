@@ -350,4 +350,8 @@ void vtkPVOptions::PrintSelf(ostream& os, vtkIndent indent)
 
   os << indent << "Compositing: " << (this->DisableComposite?"Disabled":"Enabled") << endl;
 
+  if (this->TellVersion)
+    {
+    os << indent << "Running to display software version.\n";
+    }
 }
