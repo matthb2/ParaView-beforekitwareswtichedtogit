@@ -16,7 +16,7 @@
 
 #include "vtkCellArray.h"
 #include "vtkCellData.h"
-#include "vtkCharArray.h"
+#include "vtkSignedCharArray.h"
 #include "vtkExecutive.h"
 #include "vtkFloatArray.h"
 #include "vtkIdList.h"
@@ -129,7 +129,7 @@ void vtkRectilinearGridToTetrahedra::SetInput(const double Extent[3],
 // Determine how to Divide each voxel in the vtkRectilinearGrid
 void vtkRectilinearGridToTetrahedra::DetermineGridDivisionTypes(
                                              vtkRectilinearGrid *RectGrid,
-                                             vtkCharArray *VoxelSubdivisionType,
+                                             vtkSignedCharArray *VoxelSubdivisionType,
                                              const int &TetraPerCell)
 {
   int numRec = RectGrid->GetNumberOfCells();
@@ -196,7 +196,7 @@ void vtkRectilinearGridToTetrahedra::DetermineGridDivisionTypes(
 
 // Take the grid and make it into a tetrahedral mesh.
 void vtkRectilinearGridToTetrahedra::GridToTetMesh(vtkRectilinearGrid *RectGrid,
-                                vtkCharArray *VoxelSubdivisionType,
+                                vtkSignedCharArray *VoxelSubdivisionType,
                                 const int &TetraPerCell,
                                 const int &RememberVoxelId,
                                 vtkUnstructuredGrid *TetMesh)
@@ -532,8 +532,8 @@ int vtkRectilinearGridToTetrahedra::RequestData(
 
   // Create internal version of VoxelSubdivisionType
   // VoxelSubdivisionType indicates how to subdivide each cell
-  vtkCharArray *VoxelSubdivisionType;
-  VoxelSubdivisionType = vtkCharArray::New();
+  vtkSignedCharArray *VoxelSubdivisionType;
+  VoxelSubdivisionType = vtkSignedCharArray::New();
 
   // If we have a mixture of 5 and 12 Tet, we need to get the information from
   // the scalars of the Input. Note that we will modify the array internally
@@ -547,7 +547,7 @@ int vtkRectilinearGridToTetrahedra::RequestData(
       return 1;
       }
     VoxelSubdivisionType->SetNumberOfValues(RectGrid->GetNumberOfCells());
-    VoxelSubdivisionType->vtkCharArray::DeepCopy(TempVoxelSubdivisionType);
+    VoxelSubdivisionType->vtkSignedCharArray::DeepCopy(TempVoxelSubdivisionType);
     }
   else
     { // Otherwise, just create the GridDivisionTypes
