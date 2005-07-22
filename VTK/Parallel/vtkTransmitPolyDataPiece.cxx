@@ -132,11 +132,15 @@ int vtkTransmitPolyDataPiece::RequestData(
     outInfo->Get(vtkStreamingDemandDrivenPipeline::UPDATE_PIECE_NUMBER());
   int updateNumPieces =
     outInfo->Get(vtkStreamingDemandDrivenPipeline::UPDATE_NUMBER_OF_PIECES());
-  unsigned long outMTime =
-    outInfo->Get(vtkDemandDrivenPipeline::PIPELINE_MODIFIED_TIME());
+  vtkDemandDrivenPipeline* ddp =
+    vtkDemandDrivenPipeline::SafeDownCast(this->GetExecutive());
 
-  // Just use the buffer if possible.
-  if (outMTime < this->Buffer->GetMTime()
+  // Check the pipline mtime to see if we are executing only because
+  // the update request changed.  If so and the only change was to
+  // decrease the number of requested ghost levels then do not bother
+  // retransmitting.
+  if (ddp
+      && ddp->GetPipelineMTime() < this->Buffer->GetMTime()
       && updatePiece == this->BufferPiece
       && updateNumPieces == this->BufferNumberOfPieces
       && updateGhostLevel <= this->BufferGhostLevel)
