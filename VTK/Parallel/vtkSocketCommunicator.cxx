@@ -369,7 +369,7 @@ int vtkSocketCommunicator::SelectSocket(int socket, unsigned long msec)
   if ( msec > 0 )
     {
     tval.tv_sec = msec / 1000;
-    tval.tv_usec = msec % 1000;
+    tval.tv_usec = (msec % 1000)*1000;
     tvalptr = &tval;
     }
   FD_ZERO(&rset);
