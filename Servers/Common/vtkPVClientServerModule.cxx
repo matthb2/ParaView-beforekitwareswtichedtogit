@@ -789,8 +789,6 @@ int vtkPVClientServerModule::WaitForConnectionOnSocket(vtkSocketCommunicator* co
 {
   int res = 0;
   int not_abort_connection = 1;
-  vtkTimerLog* tl = vtkTimerLog::New();
-  tl->StartTimer();
   while ( not_abort_connection )
     {
     // Wait for 1/2 second
@@ -807,13 +805,7 @@ int vtkPVClientServerModule::WaitForConnectionOnSocket(vtkSocketCommunicator* co
       {
       not_abort_connection = this->GUIHelper->UpdatePopup();
       }
-    tl->StopTimer();
-    if ( tl->GetElapsedTime() > 120 )
-      {
-      break;
-      }
     }
-  tl->Delete();
   if ( not_abort_connection == 0 )
     {
     return -1;
