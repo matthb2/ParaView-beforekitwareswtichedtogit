@@ -669,6 +669,7 @@ void vtkGenericEnSightReader::Update()
     if ( this->GetOutput(i) )
       {
       this->GetOutput(i)->DataHasBeenGenerated();
+      this->GetOutput(i)->SetUpdateExtentToWholeExtent();
       }
     }
 }
