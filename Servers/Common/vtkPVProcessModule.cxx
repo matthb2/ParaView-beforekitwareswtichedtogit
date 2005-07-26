@@ -455,16 +455,6 @@ int vtkPVProcessModule::GetRenderNodePort()
 }
 
 //----------------------------------------------------------------------------
-char* vtkPVProcessModule::GetMachinesFileName()
-{
-  if ( !this->Options )
-    {
-    return 0;
-    }
-  return this->Options->GetMachinesFileName();
-}
-
-//----------------------------------------------------------------------------
 int vtkPVProcessModule::GetClientMode()
 {
   if ( !this->Options )

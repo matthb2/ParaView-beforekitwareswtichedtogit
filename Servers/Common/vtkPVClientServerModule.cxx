@@ -846,12 +846,6 @@ void vtkPVClientServerModule::InitializeRenderServer()
          << id << "SetPortNumber" << vtkClientServerStream::LastResult
          << vtkClientServerStream::End;
   stream << vtkClientServerStream::Invoke
-         << this->GetProcessModuleID() << "GetMachinesFileName" 
-         << vtkClientServerStream::End;
-  stream << vtkClientServerStream::Invoke 
-         << id << "SetMachinesFileName" << vtkClientServerStream::LastResult
-         << vtkClientServerStream::End;
-  stream << vtkClientServerStream::Invoke
          << this->GetProcessModuleID() << "GetNumberOfMachines"
          << vtkClientServerStream::End;
   this->SendStream(waitingServer, stream);
