@@ -116,7 +116,7 @@ void vtkSMInteractorObserverProxy::ExecuteEvent(vtkObject*, unsigned long event,
     {
     iren = vtkPVGenericRenderWindowInteractor::SafeDownCast(
       pm->GetObjectFromID( 
-        this->CurrentRenderModuleProxy->GetInteractorProxy()->GetID(0)));
+        this->GetInteractorProxy(this->CurrentRenderModuleProxy)->GetID(0)));
     }
   if ( event == vtkCommand::StartInteractionEvent && iren)
     {

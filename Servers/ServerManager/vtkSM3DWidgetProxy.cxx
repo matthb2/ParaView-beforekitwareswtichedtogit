@@ -42,8 +42,8 @@ vtkSM3DWidgetProxy::~vtkSM3DWidgetProxy()
 //----------------------------------------------------------------------------
 void vtkSM3DWidgetProxy::AddToRenderModule(vtkSMRenderModuleProxy* rm)
 {
-  this->SetInteractor(rm->GetInteractorProxy());
-  this->SetCurrentRenderer(rm->GetRendererProxy());
+  this->SetInteractor(this->GetInteractorProxy(rm));
+  this->SetCurrentRenderer(this->GetRendererProxy(rm));
   this->SetCurrentRenderModuleProxy(rm);
 }
 
