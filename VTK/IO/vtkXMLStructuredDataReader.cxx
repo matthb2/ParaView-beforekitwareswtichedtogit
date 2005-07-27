@@ -148,9 +148,21 @@ vtkIdType vtkXMLStructuredDataReader::GetNumberOfPoints()
 //----------------------------------------------------------------------------
 vtkIdType vtkXMLStructuredDataReader::GetNumberOfCells()
 {
-  return (this->CellDimensions[0]*
-          this->CellDimensions[1]*
-          this->CellDimensions[2]);
+  // Special computation of cell count to support dimensions lower
+  // than 3.
+  vtkIdType nCells = 1;
+  for(int i=0; i < 3; ++i)
+    {
+    if(this->CellDimensions[i] == -1)
+      {
+      return 0;
+      }
+    if(this->CellDimensions[i] > 0)
+      {
+      nCells *= this->CellDimensions[i];
+      }
+    }
+  return nCells;
 }
 
 //----------------------------------------------------------------------------
