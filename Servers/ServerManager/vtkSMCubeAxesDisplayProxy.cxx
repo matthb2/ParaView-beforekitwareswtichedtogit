@@ -105,7 +105,7 @@ void vtkSMCubeAxesDisplayProxy::CreateVTKObjects(int num)
 
 //----------------------------------------------------------------------------
 void vtkSMCubeAxesDisplayProxy::AddInput(vtkSMSourceProxy* input, const char*, 
-  int, int)
+                                         int)
 {
   this->SetInput(input);
 }

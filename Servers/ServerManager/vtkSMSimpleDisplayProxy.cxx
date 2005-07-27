@@ -167,7 +167,7 @@ void vtkSMSimpleDisplayProxy::CreateVTKObjects(int numObjects)
 
 //-----------------------------------------------------------------------------
 void vtkSMSimpleDisplayProxy::AddInput(vtkSMSourceProxy* input, const char*, 
-  int, int)
+                                       int)
 {
   this->SetInput(input);
 }

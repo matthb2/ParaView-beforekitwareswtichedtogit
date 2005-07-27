@@ -213,7 +213,7 @@ void vtkSMXYPlotActorProxy::SetupInputs()
 
 //-----------------------------------------------------------------------------
 void vtkSMXYPlotActorProxy::AddInput(vtkSMSourceProxy* input,
-  const char* , int , int )
+                                     const char*, int )
 {
   if (!input)
     {

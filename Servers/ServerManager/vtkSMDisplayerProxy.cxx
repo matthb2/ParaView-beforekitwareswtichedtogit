@@ -402,7 +402,6 @@ void vtkSMDisplayerProxy::AddToDisplayWindow(vtkSMDisplayWindowProxy* dw)
 //---------------------------------------------------------------------------
 void vtkSMDisplayerProxy::AddInput(vtkSMSourceProxy *input, 
                                    const char* method, 
-                                   int portIdx, 
                                    int hasMultipleInputs)
 {
   if (!input)
