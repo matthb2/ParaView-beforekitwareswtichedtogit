@@ -128,10 +128,6 @@ void vtkXMLImageDataReader::CopyOutputInformation(vtkInformation *outInfo, int p
     {
     outInfo->CopyEntry( localInfo, vtkDataObject::SPACING() );
     }
-  if ( localInfo->Has(vtkStreamingDemandDrivenPipeline::WHOLE_EXTENT()) )
-    {
-    outInfo->CopyEntry( localInfo, vtkStreamingDemandDrivenPipeline::WHOLE_EXTENT() );
-    }
 }
 
 
