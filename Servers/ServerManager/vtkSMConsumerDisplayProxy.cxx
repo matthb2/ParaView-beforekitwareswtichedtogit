@@ -12,25 +12,23 @@
      PURPOSE.  See the above copyright notice for more information.
 
 =========================================================================*/
-#include "vtkSMSimpleRenderModuleProxy.h"
+
+#include "vtkSMConsumerDisplayProxy.h"
 #include "vtkObjectFactory.h"
-#include "vtkSMProxyManager.h"
 
-vtkStandardNewMacro(vtkSMSimpleRenderModuleProxy);
-vtkCxxRevisionMacro(vtkSMSimpleRenderModuleProxy, "$Revision$");
+vtkCxxRevisionMacro(vtkSMConsumerDisplayProxy, "$Revision$");
 //-----------------------------------------------------------------------------
-vtkSMSimpleRenderModuleProxy::vtkSMSimpleRenderModuleProxy()
-{
-  this->SetDisplayXMLName("DataObjectDisplay");
-}
-
-//-----------------------------------------------------------------------------
-vtkSMSimpleRenderModuleProxy::~vtkSMSimpleRenderModuleProxy()
+vtkSMConsumerDisplayProxy::vtkSMConsumerDisplayProxy()
 {
 }
 
 //-----------------------------------------------------------------------------
-void vtkSMSimpleRenderModuleProxy::PrintSelf(ostream& os, vtkIndent indent)
+vtkSMConsumerDisplayProxy::~vtkSMConsumerDisplayProxy()
+{
+}
+
+//-----------------------------------------------------------------------------
+void vtkSMConsumerDisplayProxy::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os, indent);
 }
