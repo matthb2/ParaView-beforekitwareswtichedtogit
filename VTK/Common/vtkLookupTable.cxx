@@ -920,7 +920,7 @@ void vtkLookupTable::DeepCopy(vtkLookupTable *lut)
     }
   this->Alpha               = lut->Alpha;
   this->VectorMode          = lut->VectorMode;
-  this->VectorComponent     = lut->VectorMode;
+  this->VectorComponent     = lut->VectorComponent;
   this->Scale               = lut->Scale;
   this->TableRange[0]       = lut->TableRange[0];
   this->TableRange[1]       = lut->TableRange[1];
