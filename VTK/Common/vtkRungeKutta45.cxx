@@ -142,7 +142,11 @@ int vtkRungeKutta45::ComputeNextStep(double* xprev, double* dxprev,
     errRatio = (double)estErr / (double)maxError;
     // Empirical formulae for calculating next step size
     // 0.9 is a safety factor to prevent infinite loops (see reference)
-    if ( errRatio > 1 )
+    if ( errRatio == 0.0 ) // avoid pow errors
+      {
+      tmp = minStep;  // arbitrarily set to minStep
+      }
+    else if ( errRatio > 1 )
       {
       tmp = 0.9*delT*pow(errRatio, -0.25);
       }
