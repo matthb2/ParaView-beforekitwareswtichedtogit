@@ -1103,7 +1103,8 @@ int vtkSMProxy::CreateSubProxiesAndProperties(vtkSMProxyManager* pm,
             }
           if (!subproxy)
             {
-            vtkErrorMacro("Failed to create subproxy.");
+            vtkErrorMacro("Failed to create subproxy: " 
+                          << (pname?pname:"(none"));
             return 0;
             }
           this->SetupSharedProperties(subproxy, propElement);
