@@ -717,6 +717,8 @@ void vtkDataSetSurfaceFilter::PrintSelf(ostream& os, vtkIndent indent)
     {
     os << indent << "UseStripsOff\n";
     }
+
+  os << indent << "PieceInvariant: " << this->PieceInvariant << endl;
 }
 
 //========================================================================
