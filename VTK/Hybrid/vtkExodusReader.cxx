@@ -37,6 +37,7 @@
 #include "vtkDSPFilterDefinition.h"
 
 #include <sys/stat.h>
+#include <ctype.h>
 #include <exodusII.h>
 
 #include <vtkstd/algorithm>
