@@ -45,7 +45,6 @@ vtkCocoaRenderWindow::vtkCocoaRenderWindow()
   this->MultiSamples = 8;
   this->WindowId = 0;
   this->DeviceContext = 0;    // hsr
-  this->StereoType = 0;  
   this->SetWindowName("Visualization Toolkit - Cocoa");
   this->CursorHidden = 0;
   this->ForceMakeCurrent = 0;
