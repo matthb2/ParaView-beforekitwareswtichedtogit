@@ -935,7 +935,7 @@ int *vtkWin32OpenGLRenderWindow::GetSize(void)
 
     }
 
-  return(this->vtkOpenGLRenderWindow::GetSize());
+  return this->vtkOpenGLRenderWindow::GetSize();
 }
 
 // Get the current size of the window.
@@ -957,7 +957,7 @@ int *vtkWin32OpenGLRenderWindow::GetPosition(void)
   // if we aren't mapped then just return the ivar 
   if (!this->Mapped)
     {
-      return(this->Position);
+      return this->Position;
     }
 
   //  Find the current window position 
