@@ -80,7 +80,7 @@ void vtkMedicalImageReader2::SetDate(const char *arg)
 {
   if (this->MedicalImageProperties)
     {
-    this->MedicalImageProperties->SetDate(arg);
+    this->MedicalImageProperties->SetImageDate(arg);
     }
 }
 
@@ -89,7 +89,7 @@ const char* vtkMedicalImageReader2::GetDate()
 {
   if (this->MedicalImageProperties)
     {
-    return this->MedicalImageProperties->GetDate();
+    return this->MedicalImageProperties->GetImageDate();
     }
   return NULL;
 }
