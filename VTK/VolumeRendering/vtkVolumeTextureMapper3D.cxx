@@ -668,6 +668,7 @@ vtkVolumeTextureMapper3D::vtkVolumeTextureMapper3D()
   this->ActualSampleDistance          = 1.0;
   
   this->RenderMethod                  = vtkVolumeTextureMapper3D::NO_METHOD;
+  this->PreferredRenderMethod         = vtkVolumeTextureMapper3D::FRAGMENT_PROGRAM_METHOD;
 }
 
 vtkVolumeTextureMapper3D::~vtkVolumeTextureMapper3D()
@@ -1469,6 +1470,7 @@ void vtkVolumeTextureMapper3D::PrintSelf(ostream& os, vtkIndent indent)
 
   os << indent << "Sample Distance: " << this->SampleDistance << endl;
   os << indent << "Render Method: " << this->RenderMethod << endl;
+  os << indent << "Preferred Render Method: " << this->PreferredRenderMethod << endl;
   os << indent << "NumberOfPolygons: " << this->NumberOfPolygons << endl;
   os << indent << "ActualSampleDistance: " 
      << this->ActualSampleDistance << endl;
