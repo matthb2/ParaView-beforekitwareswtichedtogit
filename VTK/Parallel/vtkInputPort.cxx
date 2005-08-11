@@ -317,6 +317,7 @@ int vtkInputPort::RequestDataObject(
   
   if (!output || output->GetDataObjectType() != dataType) 
     {
+    output = 0;
     switch (dataType)
       {
       case VTK_POLY_DATA:
