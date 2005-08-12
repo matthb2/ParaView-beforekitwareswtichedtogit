@@ -466,7 +466,6 @@ int vtkCommunicator::ReadImageData(vtkImageData *object)
   reader->GetOutput()->Update();
 
   object->ShallowCopy(reader->GetOutput());
-  object->SetUpdateExtent(reader->GetOutput()->GetUpdateExtent());
   
   reader->Delete();
 
