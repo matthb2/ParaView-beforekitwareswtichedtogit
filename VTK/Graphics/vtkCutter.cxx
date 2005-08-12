@@ -246,8 +246,7 @@ void vtkCutter::StructuredGridCutter(vtkDataSet *dataSetInput,
 }
 
 void vtkCutter::RectilinearGridCutter(vtkDataSet *dataSetInput,
-                                      vtkPolyData *thisOutput,
-                                      vtkInformation *outInfo)
+                                      vtkPolyData *thisOutput)
 {
   vtkRectilinearGrid *input = vtkRectilinearGrid::SafeDownCast(dataSetInput);
   vtkPolyData *output;
@@ -359,7 +358,7 @@ int vtkCutter::RequestData(
     int dim = ((vtkRectilinearGrid*)input)->GetDataDimension();
     if ( dim == 3 ) 
       {
-      this->RectilinearGridCutter(input, output, outInfo);
+      this->RectilinearGridCutter(input, output);
       return 1;
       }
     }
