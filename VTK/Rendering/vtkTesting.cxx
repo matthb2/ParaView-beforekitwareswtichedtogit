@@ -178,7 +178,6 @@ const char *vtkTesting::GetValidImageFileName()
   this->SetValidImageFileName(0);
   if (!this->IsValidImageSpecified())
     {
-    cout << "Valid image not specified" << endl;
     return this->ValidImageFileName;
     }
   
