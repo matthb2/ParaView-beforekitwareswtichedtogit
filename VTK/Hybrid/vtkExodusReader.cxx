@@ -4369,7 +4369,7 @@ int vtkExodusReader::OpenCurrentFile()
   int result = 0;
 
   // is there a file open now?
-  if ( this->CurrentHandle == -1 ) 
+  if ( this->CurrentHandle == -1 && this->FileName ) 
     {
     this->CurrentHandle = ex_open( this->FileName, EX_READ, 
                                    &(this->ExodusCPUWordSize),
