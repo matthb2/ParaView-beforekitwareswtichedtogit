@@ -27,20 +27,36 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 // .SECTION See Also
 // vtkMovieReader
 
-#ifndef __vtkMPEG2Writer_h
-#define __vtkMPEG2Writer_h
+#ifndef __vtkMPEG2WriterHelper_h
+#define __vtkMPEG2WriterHelper_h
 
-#include "vtkKWGenericMovieWriter.h"
+#include "vtkProcessObject.h"
 
-class vtkMPEG2WriterHelper;
+class vtkMPEG2WriterInternal;
+class vtkImageData;
+struct vtkMPEG2Structure;
 
-class VTK_EXPORT vtkMPEG2Writer : public vtkKWGenericMovieWriter
+class VTK_EXPORT vtkMPEG2WriterHelper : public vtkProcessObject
 {
 public:
-  static vtkMPEG2Writer *New();
-  vtkTypeRevisionMacro(vtkMPEG2Writer,vtkKWGenericMovieWriter);
+  static vtkMPEG2WriterHelper *New();
+  vtkTypeRevisionMacro(vtkMPEG2WriterHelper,vtkObject);
   void PrintSelf(ostream& os, vtkIndent indent);
   
+  // Description:
+  // Specify file name of avi file.
+  vtkSetStringMacro(FileName);
+  vtkGetStringMacro(FileName);
+
+  // Description:
+  // Set/Get the input object from the image pipeline.
+  virtual void SetInput(vtkImageData *input);
+  virtual vtkImageData *GetInput();
+
+  // Description:
+  // Was there an error on the last read performed?
+  vtkGetMacro(Error,int);
+
   // Description:
   // These methods start writing an Movie file, write a frame to the file
   // and then end the writing process.
@@ -48,20 +64,26 @@ public:
   void Write();
   void End();
   
-  // Description:
-  // Set/Get the input object from the image pipeline.
-  virtual void SetInput(vtkImageData *input);
-  virtual vtkImageData *GetInput();
-
 protected:
-  vtkMPEG2Writer();
-  ~vtkMPEG2Writer();
+  vtkMPEG2WriterHelper();
+  ~vtkMPEG2WriterHelper();
 
-  vtkMPEG2WriterHelper *MPEG2WriterHelper;
+  char *FileName;
+  vtkMPEG2WriterInternal *Internals;
+  int Error;
+
+  long Time;
+  int ActualWrittenTime;
+
+  void Initialize();
+
+  int Initialized;
+
+  vtkMPEG2Structure* MPEGStructure;
 
 private:
-  vtkMPEG2Writer(const vtkMPEG2Writer&); // Not implemented
-  void operator=(const vtkMPEG2Writer&); // Not implemented
+  vtkMPEG2WriterHelper(const vtkMPEG2WriterHelper&); // Not implemented
+  void operator=(const vtkMPEG2WriterHelper&); // Not implemented
 };
 
 #endif

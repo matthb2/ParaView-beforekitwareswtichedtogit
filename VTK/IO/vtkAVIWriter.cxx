@@ -1,22 +1,15 @@
 /*=========================================================================
 
-Copyright (c) 1998-2003 Kitware Inc. 469 Clifton Corporate Parkway,
-Clifton Park, NY, 12065, USA.
+  Program:   Visualization Toolkit
+  Module:    $RCSfile$
 
-All rights reserved. No part of this software may be reproduced, distributed,
-or modified, in any form or by any means, without permission in writing from
-Kitware Inc.
+  Copyright (c) Ken Martin, Will Schroeder, Bill Lorensen
+  All rights reserved.
+  See Copyright.txt or http://www.kitware.com/Copyright.htm for details.
 
-IN NO EVENT SHALL THE AUTHORS OR DISTRIBUTORS BE LIABLE TO ANY PARTY FOR
-DIRECT, INDIRECT, SPECIAL, INCIDENTAL, OR CONSEQUENTIAL DAMAGES ARISING OUT
-OF THE USE OF THIS SOFTWARE, ITS DOCUMENTATION, OR ANY DERIVATIVES THEREOF,
-EVEN IF THE AUTHORS HAVE BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-
-THE AUTHORS AND DISTRIBUTORS SPECIFICALLY DISCLAIM ANY WARRANTIES, INCLUDING,
-BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A
-PARTICULAR PURPOSE, AND NON-INFRINGEMENT.  THIS SOFTWARE IS PROVIDED ON AN
-"AS IS" BASIS, AND THE AUTHORS AND DISTRIBUTORS HAVE NO OBLIGATION TO PROVIDE
-MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
+     This software is distributed WITHOUT ANY WARRANTY; without even
+     the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR
+     PURPOSE.  See the above copyright notice for more information.
 
 =========================================================================*/
 #include "vtkWindows.h"
@@ -41,6 +34,7 @@ public:
 vtkStandardNewMacro(vtkAVIWriter);
 vtkCxxRevisionMacro(vtkAVIWriter, "$Revision$");
 
+//---------------------------------------------------------------------------
 vtkAVIWriter::vtkAVIWriter()
 {
   this->Internals = new vtkAVIWriterInternal;
@@ -52,6 +46,7 @@ vtkAVIWriter::vtkAVIWriter()
   this->Internals->hDIB = NULL;  // handle to DIB, temp handle
 }
 
+//---------------------------------------------------------------------------
 vtkAVIWriter::~vtkAVIWriter()
 {
   if (this->Internals->AVIFile)
@@ -61,6 +56,7 @@ vtkAVIWriter::~vtkAVIWriter()
   delete this->Internals;
 }
 
+//---------------------------------------------------------------------------
 void vtkAVIWriter::Start()
 {
   // Error checking
@@ -169,6 +165,7 @@ void vtkAVIWriter::Start()
   this->Time = 0;
 }
 
+//---------------------------------------------------------------------------
 void vtkAVIWriter::Write()
 {
   if (this->Error)
@@ -215,6 +212,7 @@ void vtkAVIWriter::Write()
   this->Time++;
 }
 
+//---------------------------------------------------------------------------
 void vtkAVIWriter::End()
 {
   ::GlobalUnlock(this->Internals->hDIB);
@@ -239,6 +237,7 @@ void vtkAVIWriter::End()
   AVIFileExit();          // releases AVIFile library 
 }
 
+//---------------------------------------------------------------------------
 void vtkAVIWriter::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os, indent);  
