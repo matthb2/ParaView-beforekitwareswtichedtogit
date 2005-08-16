@@ -25,7 +25,7 @@
 #include "vtkSMProxyIterator.h"
 #include "vtkRenderWindow.h"
 #include "vtkSMProxyManager.h"
-#include "vtkKWGenericMovieWriter.h"
+#include "vtkGenericMovieWriter.h"
 #include "vtkJPEGWriter.h"
 #include "vtkPNGWriter.h"
 #include "vtkMPEG2Writer.h"
