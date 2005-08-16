@@ -19,6 +19,7 @@
 ----------------------------------------------------------------------------*/
 
 #include <stdio.h>
+#include <ctype.h>
 #include "vtkChacoReader.h"
 #include "vtkCellArray.h"
 #include "vtkCellData.h"
