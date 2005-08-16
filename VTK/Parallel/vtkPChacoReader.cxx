@@ -294,7 +294,7 @@ int vtkPChacoReader::RequestData(
   if (numPieces > 1)
     {
 #ifdef VTK_USE_MPI
-    comm->Broadcast(&retVal, 1, 0); 
+    comm->Broadcast(&retVal, 1, pieceZeroProc); 
 #endif
 
     if (retVal == 1)
