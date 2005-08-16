@@ -217,6 +217,11 @@ int vtkChacoReader::RequestData(
   vtkInformationVector **vtkNotUsed(inputVector),
   vtkInformationVector *outputVector)
 {
+  if (!this->BaseName)
+    {
+    return 1;
+    }
+
   vtkInformation* outInfo = outputVector->GetInformationObject(0);
 
   vtkUnstructuredGrid *output = vtkUnstructuredGrid::SafeDownCast(
