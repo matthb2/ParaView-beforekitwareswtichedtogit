@@ -219,7 +219,8 @@ int vtkChacoReader::RequestData(
 {
   if (!this->BaseName)
     {
-    return 1;
+    vtkErrorMacro(<< "No BaseName specified");
+    return 0;
     }
 
   vtkInformation* outInfo = outputVector->GetInformationObject(0);
