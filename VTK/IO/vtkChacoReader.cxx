@@ -158,7 +158,7 @@ char *vtkChacoReader::GetEdgeWeightArrayName(int weight)
 int vtkChacoReader::RequestInformation(
   vtkInformation *vtkNotUsed(request),
   vtkInformationVector **vtkNotUsed(inputVector),
-  vtkInformationVector *outputVector)
+  vtkInformationVector *vtkNotUsed(outputVector))
 {
   double x, y, z;
 
