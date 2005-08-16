@@ -261,7 +261,7 @@ int vtkPicker::Pick(double selectionX, double selectionY, double selectionZ,
     }
   else 
     {
-    props = renderer->GetProps();
+    props = renderer->GetViewProps();
     }
 
   vtkActor *actor;

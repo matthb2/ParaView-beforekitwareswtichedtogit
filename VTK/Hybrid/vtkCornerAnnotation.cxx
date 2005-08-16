@@ -252,7 +252,7 @@ int vtkCornerAnnotation::RenderOpaqueGeometry(vtkViewport *viewport)
     }
   else
     {
-    vtkPropCollection *pc = viewport->GetProps();
+    vtkPropCollection *pc = viewport->GetViewProps();
     int numProps = pc->GetNumberOfItems();
     for (i = 0; i < numProps; i++)
       {
