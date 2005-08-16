@@ -1046,6 +1046,10 @@ int vtkMultiBlockPLOT3DReader::RequestData(
     {
     maxBlock = numBlocks;
     }
+  if (maxBlock > numBlocks)
+    {
+    maxBlock = numBlocks;
+    }
 
   for(i=minBlock; i<maxBlock; i++)
     {
