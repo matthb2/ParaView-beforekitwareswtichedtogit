@@ -18,7 +18,15 @@
 #include "vtkImageData.h"
 #include "vtkObjectFactory.h"
 
+#ifdef _MSC_VER
+#pragma warning (push, 3)
+#endif
+
 #include <vfw.h>
+
+#ifdef _MSC_VER
+#pragma warning (pop)
+#endif
 
 class vtkAVIWriterInternal 
 {
