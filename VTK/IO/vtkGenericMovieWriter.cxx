@@ -52,8 +52,8 @@ vtkImageData *vtkGenericMovieWriter::GetInput()
 void vtkGenericMovieWriter::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os, indent);
-  
-  os << indent << "FileName: " << this->FileName << endl;
+
+  os << indent << "FileName: "
+     << (this->FileName ? this->FileName : "(none)") << endl;
   os << indent << "Error: " << this->Error << endl;
 }
-
