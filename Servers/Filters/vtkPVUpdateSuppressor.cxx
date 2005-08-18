@@ -52,14 +52,14 @@ vtkPVUpdateSuppressor::~vtkPVUpdateSuppressor()
 void vtkPVUpdateSuppressor::ForceUpdate()
 {
   vtkDataSet *input = vtkDataSet::SafeDownCast(this->GetInput());
-  input->UpdateInformation();
-  input =  vtkDataSet::SafeDownCast(this->GetInput());
   vtkDataSet *output = this->GetOutput();
   if (input == 0)
     {
-    vtkErrorMacro("Missing input.");
+    vtkErrorMacro("No valid input.");
     return;
     }
+  input->UpdateInformation();
+  input =  vtkDataSet::SafeDownCast(this->GetInput());
 
   // int fixme; // I do not like this hack.  How can we get rid of it?
   // Assume the input is the collection filter.
