@@ -424,7 +424,6 @@ int vtkCommunicator::WriteImageData(vtkImageData *data)
   // keep Update from propagating
   vtkImageData *tmp = vtkImageData::New();
   tmp->ShallowCopy(data);
-  tmp->SetUpdateExtent(data->GetUpdateExtent());
   
   clip = vtkImageClip::New();
   clip->SetInput(tmp);
