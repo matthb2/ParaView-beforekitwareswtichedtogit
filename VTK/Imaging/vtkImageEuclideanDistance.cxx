@@ -586,7 +586,8 @@ int vtkImageEuclideanDistance::IterativeRequestData(
   int outExt[6];
   outData->GetWholeExtent( outExt );
   
-  inPtr = inData->GetScalarPointerForExtent(inData->GetUpdateExtent());
+  inPtr = inData->GetScalarPointerForExtent(
+    inInfo->Get(vtkStreamingDemandDrivenPipeline::UPDATE_EXTENT()));
   outPtr = outData->GetScalarPointer();
    
   if (!inPtr)

@@ -178,7 +178,8 @@ void vtkRenderLargeImage::RequestData(
   vtkInformation *outInfo = outputVector->GetInformationObject(0);
   vtkImageData *data = 
     vtkImageData::SafeDownCast(outInfo->Get(vtkDataObject::DATA_OBJECT()));
-  data->SetExtent(data->GetUpdateExtent());
+  data->SetExtent(
+    outInfo->Get(vtkStreamingDemandDrivenPipeline::UPDATE_EXTENT()));
   data->AllocateScalars();
   int inExtent[6];
   vtkIdType inIncr[3];

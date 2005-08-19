@@ -257,7 +257,7 @@ int vtkContourFilter::RequestData(
       !vtkUniformGrid::SafeDownCast(input))
     {
     int dim = 3;
-    int *uExt = input->GetUpdateExtent();
+    int *uExt = inInfo->Get(vtkStreamingDemandDrivenPipeline::UPDATE_EXTENT());
     if (uExt[0] == uExt[1])
       {
       --dim;
