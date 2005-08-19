@@ -296,9 +296,12 @@ vtkDataArray* vtkSplitField::SplitArray(vtkDataArray* da, int component)
     {
     switch (output->GetDataType())
       {
-      vtkTemplateMacro5(vtkSplitFieldCopyTuples, (VTK_TT *)da->GetVoidPointer(0), 
-                        (VTK_TT *)output->GetVoidPointer(0), numTuples,
-                        da->GetNumberOfComponents(), component );
+      vtkTemplateMacro(
+        vtkSplitFieldCopyTuples((VTK_TT *)da->GetVoidPointer(0), 
+                                (VTK_TT *)output->GetVoidPointer(0), 
+                                numTuples,
+                                da->GetNumberOfComponents(), 
+                                component));
       // This is not supported by the template macro.
       // Switch to using the float interface.
       case VTK_BIT:

@@ -111,9 +111,10 @@ void vtkImageEuclideanToPolar::ThreadedExecute (vtkImageData *inData,
 
   switch (inData->GetScalarType())
     {
-    vtkTemplateMacro6(vtkImageEuclideanToPolarExecute, this, 
-                      inData, outData, outExt, id, 
-                      static_cast<VTK_TT *>(0));
+    vtkTemplateMacro(
+      vtkImageEuclideanToPolarExecute( this, 
+                                       inData, outData, outExt, id, 
+                                       static_cast<VTK_TT *>(0)));
     default:
       vtkErrorMacro(<< "Execute: Unknown ScalarType");
       return;

@@ -518,8 +518,10 @@ int vtkImageIslandRemoval2D::RequestData(
   
   switch (inData->GetScalarType())
     {
-    vtkTemplateMacro6(vtkImageIslandRemoval2DExecute, this, inData, 
-                      (VTK_TT *)(inPtr), outData, (VTK_TT *)(outPtr), outExt);
+    vtkTemplateMacro(
+      vtkImageIslandRemoval2DExecute( this, inData, 
+                                      (VTK_TT *)(inPtr), outData, 
+                                      (VTK_TT *)(outPtr), outExt));
     default:
       vtkErrorMacro(<< "Execute: Unknown ScalarType");
       return 1;

@@ -418,9 +418,14 @@ void vtkImageMapToWindowLevelColors::ThreadedRequestData(
   
   switch (inData[0][0]->GetScalarType())
     {
-    vtkTemplateMacro7(vtkImageMapToWindowLevelColorsExecute, this, 
-                      inData[0][0], (VTK_TT *)(inPtr), 
-                      outData[0], (unsigned char *)(outPtr), outExt, id);
+    vtkTemplateMacro(
+      vtkImageMapToWindowLevelColorsExecute( this, 
+                                             inData[0][0], 
+                                             (VTK_TT *)(inPtr), 
+                                             outData[0], 
+                                             (unsigned char *)(outPtr), 
+                                             outExt, 
+                                             id));
     default:
       vtkErrorMacro(<< "Execute: Unknown ScalarType");
       return;

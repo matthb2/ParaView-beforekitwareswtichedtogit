@@ -476,8 +476,9 @@ int vtkSynchronizedTemplates2D::RequestData(
     }
   switch (inScalars->GetDataType())
     {
-    vtkTemplateMacro7(vtkContourImage,this,(VTK_TT *)scalars, newPts,
-                      newScalars, newLines, input, ext);
+    vtkTemplateMacro(
+      vtkContourImage(this,(VTK_TT *)scalars, newPts,
+                      newScalars, newLines, input, ext));
     }//switch
 
   // Lets set the name of the scalars here.

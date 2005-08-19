@@ -240,9 +240,10 @@ void vtkImageSobel3D::ThreadedRequestData(
   
   switch (inData[0][0]->GetScalarType())
     {
-    vtkTemplateMacro8(vtkImageSobel3DExecute, this, inData[0][0],
-                      (VTK_TT *)(inPtr), outData[0], outExt,
-                      (double *)(outPtr),id, inInfo);
+    vtkTemplateMacro(
+      vtkImageSobel3DExecute( this, inData[0][0],
+                              (VTK_TT *)(inPtr), outData[0], outExt,
+                              (double *)(outPtr),id, inInfo));
     default:
       vtkErrorMacro(<< "Execute: Unknown ScalarType");
       return;

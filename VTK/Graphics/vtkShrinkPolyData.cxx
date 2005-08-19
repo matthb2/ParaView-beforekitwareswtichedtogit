@@ -298,9 +298,10 @@ int vtkShrinkPolyData::RequestData(
   // call templated function
   switch (input->GetPoints()->GetDataType())
     {
-    vtkTemplateMacro5(vtkShrinkPolyDataExecute, this, 
-                      (VTK_TT *)(inPtr), this->ShrinkFactor,
-                      inInfo, outInfo);
+    vtkTemplateMacro(
+      vtkShrinkPolyDataExecute(this, 
+                               (VTK_TT *)(inPtr), this->ShrinkFactor,
+                               inInfo, outInfo));
     default:
       break;
     }

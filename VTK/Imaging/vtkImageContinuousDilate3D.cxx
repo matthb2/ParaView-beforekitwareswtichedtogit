@@ -324,10 +324,13 @@ void vtkImageContinuousDilate3D::ThreadedRequestData(
 
   switch (inArray->GetDataType())
     {
-    vtkTemplateMacro10(vtkImageContinuousDilate3DExecute, this, 
-                       mask, inData[0][0], (VTK_TT *)(inPtr), 
-                       outData[0], outExt, (VTK_TT *)(outPtr), id,
-                       inArray, inInfo);
+    vtkTemplateMacro(
+      vtkImageContinuousDilate3DExecute(this, 
+                                        mask, inData[0][0], 
+                                        (VTK_TT *)(inPtr), 
+                                        outData[0], outExt, 
+                                        (VTK_TT *)(outPtr), id,
+                                        inArray, inInfo) );
     default:
       vtkErrorMacro(<< "Execute: Unknown ScalarType");
       return;

@@ -200,9 +200,9 @@ void vtkImageFFT::ThreadedExecute(vtkImageData *inData, vtkImageData *outData,
   // choose which templated function to call.
   switch (inData->GetScalarType())
     {
-    vtkTemplateMacro8(vtkImageFFTExecute, this, inData, inExt, 
-                      (VTK_TT *)(inPtr), outData, outExt, 
-                      (double *)(outPtr), threadId);
+    vtkTemplateMacro(vtkImageFFTExecute(this, inData, inExt, 
+                                        (VTK_TT *)(inPtr), outData, outExt, 
+                                        (double *)(outPtr), threadId));
     default:
       vtkErrorMacro(<< "Execute: Unknown ScalarType");
       return;

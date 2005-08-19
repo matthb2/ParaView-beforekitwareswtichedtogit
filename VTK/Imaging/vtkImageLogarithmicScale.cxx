@@ -94,8 +94,10 @@ void vtkImageLogarithmicScale::ThreadedExecute (vtkImageData *inData,
   
   switch (inData->GetScalarType())
     {
-    vtkTemplateMacro6(vtkImageLogarithmicScaleExecute, this, inData, 
-                      outData, outExt, id,  static_cast<VTK_TT *>(0));
+    vtkTemplateMacro(
+      vtkImageLogarithmicScaleExecute(this, inData, 
+                                      outData, outExt, id,  
+                                      static_cast<VTK_TT *>(0)));
     default:
       vtkErrorMacro(<< "Execute: Unknown input ScalarType");
       return;

@@ -134,9 +134,10 @@ void vtkImageDotProduct::ThreadedRequestData(
 
   switch (inData[0][0]->GetScalarType())
     {
-    vtkTemplateMacro7(vtkImageDotProductExecute, this, inData[0][0], 
-                      inData[1][0], outData[0], outExt, id, 
-                      static_cast<VTK_TT *>(0));
+    vtkTemplateMacro(
+      vtkImageDotProductExecute(this, inData[0][0], 
+                                inData[1][0], outData[0], outExt, id, 
+                                static_cast<VTK_TT *>(0)));
     default:
       vtkErrorMacro(<< "Execute: Unknown ScalarType");
       return;

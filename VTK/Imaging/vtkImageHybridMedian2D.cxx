@@ -275,9 +275,11 @@ void vtkImageHybridMedian2D::ThreadedRequestData(
 
   switch (inData[0][0]->GetScalarType())
     {
-    vtkTemplateMacro8(vtkImageHybridMedian2DExecute, this, inData[0][0],
-                      (VTK_TT *)(inPtr), outData[0], (VTK_TT *)(outPtr),
-                      outExt, id, inInfo);
+    vtkTemplateMacro(
+      vtkImageHybridMedian2DExecute( this, inData[0][0],
+                                     (VTK_TT *)(inPtr), outData[0], 
+                                     (VTK_TT *)(outPtr),
+                                     outExt, id, inInfo));
 
     default:
       vtkErrorMacro(<< "Execute: Unknown ScalarType");

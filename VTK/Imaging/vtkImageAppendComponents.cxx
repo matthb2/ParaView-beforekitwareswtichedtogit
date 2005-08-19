@@ -130,9 +130,11 @@ void vtkImageAppendComponents::ThreadedRequestData (
         }
       switch (inData[0][idx1]->GetScalarType())
         {
-        vtkTemplateMacro7(vtkImageAppendComponentsExecute, this, 
-                          inData[0][idx1], outData[0], 
-                          outComp, outExt, id, static_cast<VTK_TT *>(0));
+        vtkTemplateMacro(
+          vtkImageAppendComponentsExecute ( this, 
+                                            inData[0][idx1], outData[0], 
+                                            outComp, outExt, id, 
+                                            static_cast<VTK_TT *>(0)) );
        default:
          vtkErrorMacro(<< "Execute: Unknown ScalarType");
          return;

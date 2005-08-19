@@ -323,10 +323,12 @@ int vtkMergeFields::MergeArray(vtkDataArray* in, vtkDataArray* out,
       {
       switch (out->GetDataType())
         {
-        vtkTemplateMacro7(vtkMergeFieldsCopyTuples, (VTK_TT *)in->GetVoidPointer(0), 
-                          (VTK_TT *)out->GetVoidPointer(0), numTuples,
-                          in->GetNumberOfComponents(), 
-                          out->GetNumberOfComponents(), inComp, outComp );
+        vtkTemplateMacro(
+          vtkMergeFieldsCopyTuples((VTK_TT *)in->GetVoidPointer(0), 
+                                   (VTK_TT *)out->GetVoidPointer(0), numTuples,
+                                   in->GetNumberOfComponents(), 
+                                   out->GetNumberOfComponents(), 
+                                   inComp, outComp ));
         // This is not supported by the template macro.
         // Switch to using the float interface.
         case VTK_BIT:

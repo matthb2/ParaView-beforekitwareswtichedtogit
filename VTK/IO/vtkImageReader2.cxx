@@ -715,7 +715,7 @@ void vtkImageReader2::ExecuteData(vtkDataObject *output)
   ptr = data->GetScalarPointer();
   switch (this->GetDataScalarType())
     {
-    vtkTemplateMacro3(vtkImageReader2Update, this, data, (VTK_TT *)(ptr));
+    vtkTemplateMacro(vtkImageReader2Update(this, data, (VTK_TT *)(ptr)));
     default:
       vtkErrorMacro(<< "UpdateFromFile: Unknown data type");
     }   

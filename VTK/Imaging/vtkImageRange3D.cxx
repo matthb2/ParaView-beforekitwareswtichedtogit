@@ -319,9 +319,10 @@ void vtkImageRange3D::ThreadedRequestData(
 
   switch (inData[0][0]->GetScalarType())
     {
-    vtkTemplateMacro9(vtkImageRange3DExecute, this, mask, inData[0][0], 
-                      (VTK_TT *)(inPtr), outData[0], outExt, 
-                      (float *)(outPtr), id, inInfo);
+    vtkTemplateMacro(
+      vtkImageRange3DExecute( this, mask, inData[0][0], 
+                              (VTK_TT *)(inPtr), outData[0], outExt, 
+                              (float *)(outPtr), id, inInfo));
     default:
       vtkErrorMacro(<< "Execute: Unknown ScalarType");
       return;

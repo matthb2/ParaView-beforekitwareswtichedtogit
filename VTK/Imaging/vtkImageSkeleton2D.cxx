@@ -349,9 +349,10 @@ void vtkImageSkeleton2D::ThreadedExecute(vtkImageData *inData,
   inPtr = tempData->GetScalarPointerForExtent(outExt);
   switch (tempData->GetScalarType())
     {
-    vtkTemplateMacro7(vtkImageSkeleton2DExecute, this, tempData,
-                      (VTK_TT *)(inPtr), outData, outExt, 
-                      (VTK_TT *)(outPtr), id);
+    vtkTemplateMacro(
+      vtkImageSkeleton2DExecute( this, tempData,
+                                 (VTK_TT *)(inPtr), outData, outExt, 
+                                 (VTK_TT *)(outPtr), id));
     default:
       vtkErrorMacro(<< "Execute: Unknown ScalarType");
       tempData->Delete();

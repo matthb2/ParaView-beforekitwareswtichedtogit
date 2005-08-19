@@ -376,7 +376,11 @@ int vtkImageSeparableConvolution::IterativeRequestData(
   // choose which templated function to call.
   switch (inData->GetScalarType())
     {
-    vtkTemplateMacro6(vtkImageSeparableConvolutionExecute, this, inData, outData, static_cast<VTK_TT*>(0), inInfo->Get(vtkStreamingDemandDrivenPipeline::UPDATE_EXTENT()), outInfo->Get(vtkStreamingDemandDrivenPipeline::UPDATE_EXTENT()) );
+    vtkTemplateMacro(
+      vtkImageSeparableConvolutionExecute( 
+        this, inData, outData, static_cast<VTK_TT*>(0), 
+        inInfo->Get(vtkStreamingDemandDrivenPipeline::UPDATE_EXTENT()), 
+        outInfo->Get(vtkStreamingDemandDrivenPipeline::UPDATE_EXTENT())));
     default:
       vtkErrorMacro(<< "Execute: Unknown ScalarType");
       return 1;

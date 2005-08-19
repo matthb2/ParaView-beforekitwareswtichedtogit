@@ -283,7 +283,7 @@ void vtkJPEGReader::ExecuteData(vtkDataObject *output)
   outPtr = data->GetScalarPointer();
   switch (data->GetScalarType())
     {
-    vtkTemplateMacro3(vtkJPEGReaderUpdate, this, data, (VTK_TT *)(outPtr));
+    vtkTemplateMacro(vtkJPEGReaderUpdate(this, data, (VTK_TT *)(outPtr)));
     default:
       vtkErrorMacro(<< "UpdateFromFile: Unknown data type");
     }   

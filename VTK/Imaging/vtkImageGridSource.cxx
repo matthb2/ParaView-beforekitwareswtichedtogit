@@ -156,8 +156,9 @@ void vtkImageGridSource::ExecuteData(vtkDataObject *output)
   // Call the correct templated function for the output
   switch (this->GetDataScalarType())
     {
-    vtkTemplateMacro5(vtkImageGridSourceExecute, this, data,
-                      (VTK_TT *)(outPtr), outExt, 0);
+    vtkTemplateMacro(vtkImageGridSourceExecute( this, data,
+                                                (VTK_TT *)(outPtr), 
+                                                outExt, 0));
     default:
       vtkErrorMacro(<< "Execute: Unknown data type");
     }

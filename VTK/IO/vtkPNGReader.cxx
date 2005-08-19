@@ -323,7 +323,7 @@ void vtkPNGReader::ExecuteData(vtkDataObject *output)
   outPtr = data->GetScalarPointer();
   switch (data->GetScalarType())
     {
-    vtkTemplateMacro3(vtkPNGReaderUpdate, this, data, (VTK_TT *)(outPtr));
+    vtkTemplateMacro(vtkPNGReaderUpdate(this, data, (VTK_TT *)(outPtr)));
     default:
       vtkErrorMacro(<< "UpdateFromFile: Unknown data type");
     }   

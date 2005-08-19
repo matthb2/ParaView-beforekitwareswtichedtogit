@@ -262,9 +262,10 @@ void vtkImageGradient::ThreadedExecute (vtkImageData *inData,
   
   switch (inData->GetScalarType())
     {
-    vtkTemplateMacro7(vtkImageGradientExecute, this, inData, 
-                      (VTK_TT *)(inPtr), outData, outPtr, 
-                      outExt, id);
+    vtkTemplateMacro(
+      vtkImageGradientExecute(this, inData, 
+                              (VTK_TT *)(inPtr), outData, outPtr, 
+                              outExt, id));
     default:
       vtkErrorMacro(<< "Execute: Unknown ScalarType");
       return;

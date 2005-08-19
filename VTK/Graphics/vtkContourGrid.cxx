@@ -363,10 +363,11 @@ int vtkContourGrid::RequestData(
         
   switch (inScalars->GetDataType())
     {
-    vtkTemplateMacro10(vtkContourGridExecute, this, input, output, inScalars,
-                       (VTK_TT *)(scalarArrayPtr), numContours, values,
-                       computeScalars, useScalarTree, 
-                       scalarTree);
+    vtkTemplateMacro(
+      vtkContourGridExecute( this, input, output, inScalars,
+                             (VTK_TT *)(scalarArrayPtr), numContours, values,
+                             computeScalars, useScalarTree, 
+                             scalarTree));
     default:
       vtkErrorMacro(<< "Execute: Unknown ScalarType");
       return 1;

@@ -128,9 +128,11 @@ int vtkBlankStructuredGrid::RequestData(
   // call templated function
   switch (dataArray->GetDataType())
     {
-    vtkTemplateMacro8(vtkBlankStructuredGridExecute, this, (VTK_TT *)(dptr), numPts,
-                      numComp, this->Component, this->MinBlankingValue, 
-                      this->MaxBlankingValue, blanking);
+    vtkTemplateMacro(
+      vtkBlankStructuredGridExecute(this, (VTK_TT *)(dptr), numPts,
+                                    numComp, this->Component, 
+                                    this->MinBlankingValue, 
+                                    this->MaxBlankingValue, blanking));
     default:
       break;
     }

@@ -79,8 +79,9 @@ void vtkWarpVectorExecute(vtkWarpVector *self,
   // call templated function
   switch (vectors->GetDataType())
     {
-    vtkTemplateMacro5(vtkWarpVectorExecute2,self, inPts, outPts, 
-                      (VTK_TT *)(inVec), max);
+    vtkTemplateMacro(
+      vtkWarpVectorExecute2(self, inPts, outPts, 
+                            (VTK_TT *)(inVec), max));
     default:
       break;
     }  
@@ -137,8 +138,9 @@ int vtkWarpVector::RequestData(
   // call templated function
   switch (input->GetPoints()->GetDataType())
     {
-    vtkTemplateMacro5(vtkWarpVectorExecute, this, (VTK_TT *)(inPtr), 
-                      (VTK_TT *)(outPtr), numPts, vectors);
+    vtkTemplateMacro(
+      vtkWarpVectorExecute( this, (VTK_TT *)(inPtr), 
+                            (VTK_TT *)(outPtr), numPts, vectors) );
     default:
       break;
     }

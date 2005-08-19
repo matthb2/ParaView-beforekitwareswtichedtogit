@@ -173,9 +173,10 @@ void vtkImageConstantPad::ThreadedRequestData(
 
   switch (inData[0][0]->GetScalarType())
     {
-    vtkTemplateMacro8(vtkImageConstantPadExecute, this, 
-                      inData[0][0], (VTK_TT *)(inPtr), outData[0], 
-                      (VTK_TT *)(outPtr), outExt, inExt, id);
+    vtkTemplateMacro(
+      vtkImageConstantPadExecute(this, 
+                                 inData[0][0], (VTK_TT *)(inPtr), outData[0], 
+                                 (VTK_TT *)(outPtr), outExt, inExt, id));
     default:
       vtkErrorMacro(<< "Execute: Unknown input ScalarType");
       return;

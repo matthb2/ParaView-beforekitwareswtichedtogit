@@ -249,8 +249,8 @@ int vtkImageEllipsoidSource::RequestData(
   
   switch (data->GetScalarType())
     {
-    vtkTemplateMacro4(vtkImageEllipsoidSourceExecute, this, data, 
-                      extent, (VTK_TT *)ptr);
+    vtkTemplateMacro(
+      vtkImageEllipsoidSourceExecute(this, data, extent, (VTK_TT *)ptr));
     default:
       vtkErrorMacro("Execute: Unknown output ScalarType");
     }

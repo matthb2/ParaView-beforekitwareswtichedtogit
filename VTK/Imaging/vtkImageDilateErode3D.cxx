@@ -309,9 +309,10 @@ void vtkImageDilateErode3D::ThreadedRequestData(
 
   switch (inData[0][0]->GetScalarType())
     {
-    vtkTemplateMacro9(vtkImageDilateErode3DExecute, this, mask, inData[0][0],
-                      (VTK_TT *)(inPtr),outData[0], outExt, 
-                      (VTK_TT *)(outPtr),id, inInfo);
+    vtkTemplateMacro(
+      vtkImageDilateErode3DExecute(this, mask, inData[0][0],
+                                   (VTK_TT *)(inPtr),outData[0], outExt, 
+                                   (VTK_TT *)(outPtr),id, inInfo));
     default:
       vtkErrorMacro(<< "Execute: Unknown ScalarType");
       return;

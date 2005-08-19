@@ -244,9 +244,12 @@ void vtkImageCorrelation::ThreadedRequestData(
   
   switch (inData[0][0]->GetScalarType())
     {
-    vtkTemplateMacro9(vtkImageCorrelationExecute, this, inData[0][0], 
-                      (VTK_TT *)(in1Ptr), inData[1][0], (VTK_TT *)(in2Ptr), 
-                      outData[0], outPtr, outExt, id);
+    vtkTemplateMacro(
+      vtkImageCorrelationExecute(this, inData[0][0], 
+                                 (VTK_TT *)(in1Ptr), 
+                                 inData[1][0], 
+                                 (VTK_TT *)(in2Ptr), 
+                                 outData[0], outPtr, outExt, id));
     default:
       vtkErrorMacro(<< "Execute: Unknown ScalarType");
       return;

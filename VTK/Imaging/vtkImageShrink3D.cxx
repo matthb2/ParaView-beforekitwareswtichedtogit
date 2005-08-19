@@ -599,9 +599,15 @@ void vtkImageShrink3D::ThreadedRequestData(
   
   switch (inData[0][0]->GetScalarType())
     {
-    vtkTemplateMacro8(vtkImageShrink3DExecute, this, inData[0][0],
-                      (VTK_TT *)(inPtr), outData[0], (VTK_TT *)(outPtr),
-                      outExt, id, inInfo);
+    vtkTemplateMacro(
+      vtkImageShrink3DExecute( this, 
+                               inData[0][0],
+                               (VTK_TT *)(inPtr), 
+                               outData[0], 
+                               (VTK_TT *)(outPtr),
+                               outExt, 
+                               id, 
+                               inInfo) );
     default:
       vtkErrorMacro(<< "Execute: Unknown ScalarType");
       return;
