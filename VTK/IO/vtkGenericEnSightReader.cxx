@@ -354,7 +354,7 @@ int vtkGenericEnSightReader::DetermineEnSightVersion()
                 fileSet = xfileSet;
                 this->SetGeometryFileName(subLine);
                 }
-              else if (sscanf(line, " %*s %d%*[ ]%s", &xtimeSet, subLine) == 2)
+              else if (sscanf(line, " %*s %d%*[ \t]%s", &xtimeSet, subLine) == 2)
                 {
                 timeSet = xtimeSet;
                 this->SetGeometryFileName(subLine);
@@ -455,7 +455,7 @@ int vtkGenericEnSightReader::DetermineEnSightVersion()
             fileSet = xfileSet;
             this->SetGeometryFileName(subLine);
             }
-          else if (sscanf(line, " %*s %d%*[ ]%s", &xtimeSet, subLine) == 2)
+          else if (sscanf(line, " %*s %d%*[ \t]%s", &xtimeSet, subLine) == 2)
             {
             timeSet = xtimeSet;
             this->SetGeometryFileName(subLine);
