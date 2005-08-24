@@ -101,6 +101,9 @@ void vtkRenderWindowInteractor::Render()
     {
     this->RenderWindow->Render();
     }
+  // outside the above test so that third-party code can redirect
+  // the render to the appropriate class
+  this->InvokeEvent(vtkCommand::RenderEvent, NULL);
 }
 
 // treat renderWindow and interactor as one object.
