@@ -2602,11 +2602,14 @@ void vtkXMLWriter::WriteNextTime(double time)
 
   ostream& os = *(this->Stream);
 
-  // Write user specified time value in the TimeValues attribute
-  unsigned long returnPos = os.tellp();
-  os.seekp(this->NumberOfTimeValues[this->CurrentTimeIndex-1]);
-  os << time;
-  os.seekp(returnPos);
+  if (this->NumberOfTimeValues)
+    {
+    // Write user specified time value in the TimeValues attribute
+    unsigned long returnPos = os.tellp();
+    os.seekp(this->NumberOfTimeValues[this->CurrentTimeIndex-1]);
+    os << time;
+    os.seekp(returnPos);
+    }
 }
 
 
