@@ -544,7 +544,10 @@ vtkCamera *vtkRenderer::GetActiveCamera()
     vtkCamera *cam = this->MakeCamera();
     this->SetActiveCamera(cam);
     cam->Delete();
-    this->ResetCamera();
+    // The following line has been commented out as it has a lot of
+    // side effects (like computing the bounds of all props, which will
+    // eventually call UpdateInformation() on data objects, etc).
+    // this->ResetCamera();
     }
 
   return this->ActiveCamera;
