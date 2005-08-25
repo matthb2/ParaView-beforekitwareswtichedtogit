@@ -627,7 +627,7 @@ LRESULT CALLBACK vtkHandleMessage2(HWND hWnd,UINT uMsg, WPARAM wParam,
   switch (uMsg) 
     {
     case WM_PAINT:
-      me->GetRenderWindow()->Render();
+      me->Render();
       return CallWindowProc(me->OldProc,hWnd,uMsg,wParam,lParam);
       break;
       

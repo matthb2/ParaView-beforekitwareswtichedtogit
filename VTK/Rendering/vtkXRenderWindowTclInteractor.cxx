@@ -327,7 +327,7 @@ void vtkXRenderWindowTclInteractorCallback(Widget vtkNotUsed(w),
       if (me->Enabled)
         {
         me->InvokeEvent(vtkCommand::ExposeEvent,NULL);
-        me->GetRenderWindow()->Render();
+        me->Render();
         }
       }
       break;
@@ -337,7 +337,7 @@ void vtkXRenderWindowTclInteractorCallback(Widget vtkNotUsed(w),
       // only render if we are currently accepting events
       if (me->Enabled && me->GetRenderWindow()->GetNeverRendered())
         {
-        me->GetRenderWindow()->Render();
+        me->Render();
         }
       }
       break;
@@ -365,7 +365,7 @@ void vtkXRenderWindowTclInteractorCallback(Widget vtkNotUsed(w),
         if (me->Enabled)
           {
           me->InvokeEvent(vtkCommand::ConfigureEvent,NULL);
-          me->GetRenderWindow()->Render();
+          me->Render();
           }
         }
       }
