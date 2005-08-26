@@ -258,6 +258,7 @@ static vtkRenderer *NewTestViewport(RayCastFunctionCreator NewFunction,
   // Add the volume to the renderer.
   ren->AddVolume(volume);
 
+  ren->ResetCamera();
   ren->GetActiveCamera()->Azimuth(20.0);
   ren->GetActiveCamera()->Elevation(15.0);
   ren->GetActiveCamera()->Zoom(1.5);
@@ -292,6 +293,7 @@ static vtkRenderer *NewPlaceholderViewport()
   mapper->Delete();
 
   ren->AddActor(actor);
+  ren->ResetCamera();
   actor->Delete();
 
   return ren;
