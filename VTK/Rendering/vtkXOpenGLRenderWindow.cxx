@@ -973,6 +973,12 @@ int vtkXOpenGLRenderWindow::GetEventPending()
   XEvent report;
   
   vtkXOpenGLRenderWindowFoundMatch = 0;
+#if defined(VTK_OPENGL_HAS_OSMESA)
+  if (this->OffScreenRendering)
+    {
+    return vtkXOpenGLRenderWindowFoundMatch;
+    }
+#endif
   XCheckIfEvent(this->DisplayId, &report, vtkXOpenGLRenderWindowPredProc, 
                 (char *)this->WindowId);
   return vtkXOpenGLRenderWindowFoundMatch;

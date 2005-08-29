@@ -14,6 +14,8 @@
 =========================================================================*/
 #include "vtkWindow.h"
 
+#include "vtkToolkits.h"
+
 vtkCxxRevisionMacro(vtkWindow, "$Revision$");
 
 // Construct an instance of  vtkRenderWindow with its screen size 
@@ -21,7 +23,11 @@ vtkCxxRevisionMacro(vtkWindow, "$Revision$");
 // buffering turned on.
 vtkWindow::vtkWindow()
 {
+#ifdef VTK_USE_OFFSCREEN
+  this->OffScreenRendering = 1;
+#else
   this->OffScreenRendering = 0;
+#endif
   this->Size[0] = this->Size[1] = 0;
   this->Position[0] = this->Position[1] = 0;
   this->Mapped = 0;

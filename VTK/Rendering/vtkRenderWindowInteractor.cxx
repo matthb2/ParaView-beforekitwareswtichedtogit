@@ -23,6 +23,7 @@
 #include "vtkRenderWindow.h"
 #include "vtkRenderer.h"
 #include "vtkRendererCollection.h"
+#include "vtkDebugLeaks.h"
 
 vtkCxxRevisionMacro(vtkRenderWindowInteractor, "$Revision$");
 
@@ -92,7 +93,14 @@ vtkRenderWindowInteractor *vtkRenderWindowInteractor::New()
   // First try to create the object from the vtkObjectFactory
   vtkObject* ret = 
     vtkGraphicsFactory::CreateInstance("vtkRenderWindowInteractor");
-  return (vtkRenderWindowInteractor *)ret;
+  if ( ret )
+    {
+    return (vtkRenderWindowInteractor *)ret;
+    }
+#ifdef VTK_DEBUG_LEAKS
+  vtkDebugLeaks::ConstructClass("vtkRenderWindowInteractor");
+#endif
+  return new vtkRenderWindowInteractor;
 }
 
 void vtkRenderWindowInteractor::Render()
