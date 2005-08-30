@@ -133,8 +133,10 @@ void vtkImageFooExecute1(vtkImageFoo *self,
   
   switch (outData->GetScalarType())
     {
-    vtkTemplateMacro7(vtkImageFooExecute, self, inData, inPtr,
-                      outData, (VTK_TT *)(outPtr),outExt, id);
+    vtkTemplateMacro(
+      vtkImageFooExecute(self, inData, inPtr,
+                         outData, (VTK_TT *)(outPtr),outExt, id)
+      );
     default:
       vtkGenericWarningMacro("Execute: Unknown input ScalarType");
       return;
@@ -156,8 +158,10 @@ void vtkImageFoo::ThreadedExecute(vtkImageData *inData,
   
   switch (inData->GetScalarType())
     {
-    vtkTemplateMacro6(vtkImageFooExecute1, this, 
-                      inData, (VTK_TT *)(inPtr), outData, outExt, id);
+    vtkTemplateMacro(
+      vtkImageFooExecute1(this, inData, (VTK_TT *)(inPtr),
+                          outData, outExt, id)
+      );
     default:
       vtkErrorMacro(<< "Execute: Unknown ScalarType");
       return;
