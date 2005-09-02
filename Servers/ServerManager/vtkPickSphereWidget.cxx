@@ -119,10 +119,10 @@ void vtkPickSphereWidget::SetEnabled(int enabling)
 }
 
 //----------------------------------------------------------------------------
-void vtkPickSphereWidget::ProcessEvents(vtkObject* object, 
+void vtkPickSphereWidget::ProcessEvents(vtkObject* vtkNotUsed(object), 
                                        unsigned long event,
                                        void* clientdata, 
-                                       void* calldata)
+                                       void* vtkNotUsed(calldata))
 {
   vtkPickSphereWidget* self = reinterpret_cast<vtkPickSphereWidget *>( clientdata );
 
