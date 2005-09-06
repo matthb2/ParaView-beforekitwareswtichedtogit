@@ -116,16 +116,6 @@ vtkDataSet* vtkXMLCollectionReader::GetOutput(int index)
 }
 
 //----------------------------------------------------------------------------
-void vtkXMLCollectionReader::Update()
-{
-  // Update information first to make sure an output exists.
-  this->UpdateInformation();
-
-  // Now complete the standard Update.
-  this->Superclass::Update();
-}
-
-//----------------------------------------------------------------------------
 void vtkXMLCollectionReader::MarkGeneratedOutputs(vtkDataObject* output)
 {
   if(output)
