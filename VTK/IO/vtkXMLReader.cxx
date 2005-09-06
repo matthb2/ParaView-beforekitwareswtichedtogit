@@ -135,7 +135,7 @@ vtkDataSet* vtkXMLReader::GetOutputAsDataSet(int index)
 // Major version should be incremented when older readers can no longer
 // read files written for this reader. Minor versions are for added 
 // functionality that can be safely ignored by older readers.
-int vtkXMLReader::CanReadFileVersion(int major, int minor)
+int vtkXMLReader::CanReadFileVersion(int major, int vtkNotUsed(minor))
 {
   if (major > 0)
     {
