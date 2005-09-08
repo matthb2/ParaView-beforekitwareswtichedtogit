@@ -662,14 +662,14 @@ int vtkTimerLog::GetMaxEntries()
 #  undef GetCurrentTime
 double vtkTimerLog::GetTickCount()
 {
-  VTK_LEGACY_REPLACED_BODY(vtkTimerLog::GetCurrentTime, "5.0",
+  VTK_LEGACY_REPLACED_BODY(vtkTimerLog::GetCurrentTime, "VTK 5.0",
                            vtkTimerLog::GetUniversalTime);
   return vtkTimerLog::GetUniversalTime();
 }
 # endif
 double vtkTimerLog::GetCurrentTime()
 {
-  VTK_LEGACY_REPLACED_BODY(vtkTimerLog::GetCurrentTime, "5.0",
+  VTK_LEGACY_REPLACED_BODY(vtkTimerLog::GetCurrentTime, "VTK 5.0",
                            vtkTimerLog::GetUniversalTime);
   return vtkTimerLog::GetUniversalTime();
 }

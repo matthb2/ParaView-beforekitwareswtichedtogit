@@ -97,20 +97,20 @@ vtkObject* vtkCollectionIterator::GetCurrentObject()
 #  undef GetObject
 vtkObject* vtkCollectionIterator::GetObjectA()
 {
-  VTK_LEGACY_REPLACED_BODY(vtkCollectionIterator::GetObject, "5.0",
+  VTK_LEGACY_REPLACED_BODY(vtkCollectionIterator::GetObject, "VTK 5.0",
                            vtkCollectionIterator::GetCurrentObject);
   return this->GetCurrentObject();
 }
 vtkObject* vtkCollectionIterator::GetObjectW()
 {
-  VTK_LEGACY_REPLACED_BODY(vtkCollectionIterator::GetObject, "5.0",
+  VTK_LEGACY_REPLACED_BODY(vtkCollectionIterator::GetObject, "VTK 5.0",
                            vtkCollectionIterator::GetCurrentObject);
   return this->GetCurrentObject();
 }
 # endif
 vtkObject* vtkCollectionIterator::GetObject()
 {
-  VTK_LEGACY_REPLACED_BODY(vtkCollectionIterator::GetObject, "5.0",
+  VTK_LEGACY_REPLACED_BODY(vtkCollectionIterator::GetObject, "VTK 5.0",
                            vtkCollectionIterator::GetCurrentObject);
   return this->GetCurrentObject();
 }
