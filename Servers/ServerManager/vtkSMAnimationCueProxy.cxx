@@ -261,7 +261,7 @@ void vtkSMAnimationCueProxy::TickInternal(
   double ctime = 0.0;
   if (cueInfo->StartTime != cueInfo->EndTime)
     {
-    ctime = (cueInfo->CurrentTime - cueInfo->StartTime) /
+    ctime = (cueInfo->AnimationTime - cueInfo->StartTime) /
       (cueInfo->EndTime - cueInfo->StartTime);
     }
 
