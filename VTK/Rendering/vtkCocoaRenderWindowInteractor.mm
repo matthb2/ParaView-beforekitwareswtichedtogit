@@ -91,7 +91,6 @@ void (*vtkCocoaRenderWindowInteractor::ClassExitMethodArgDelete)(void *) = (void
 // Construct object so that light follows camera motion.
 vtkCocoaRenderWindowInteractor::vtkCocoaRenderWindowInteractor() 
 {
-  (void)[NSApplication sharedApplication]; //make sure the app is initialized
   this->InstallMessageProc = 1;
 }
 
@@ -116,6 +115,8 @@ void vtkCocoaRenderWindowInteractor::Start()
     {
     return;
     }
+
+  (void)[NSApplication sharedApplication]; //make sure the app is initialized
   [NSApp run];
 }
 
