@@ -243,8 +243,10 @@ bool compareHopfCrossStringDist( const double* a0, const double* a1, const doubl
   for (int i=0; i<3; i++)
     {
     double tmp;
-    SqMagA += (tmp=(a0[i]-a1[i]))*tmp;
-    SqMagB += (tmp=(b0[i]-b1[i]))*tmp;
+    tmp = a0[i] - a1[i];
+    SqMagA += tmp * tmp;
+    tmp = b0[i] - b1[i];
+    SqMagB += tmp * tmp;
     }
   return SqMagA < SqMagB;
 }
