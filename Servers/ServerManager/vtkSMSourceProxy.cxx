@@ -426,7 +426,7 @@ void vtkSMSourceProxy::GatherDataInformation()
   for (; it != this->PInternals->Parts.end(); it++)
     {
     this->DataInformation->AddInformation(
-      it->GetPointer()->GetDataInformation());
+      it->GetPointer()->GetDataInformation(), 1);
     }
   this->DataInformationValid = 1;
 }
