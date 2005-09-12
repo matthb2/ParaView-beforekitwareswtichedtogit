@@ -396,6 +396,10 @@ vtkDataObject* vtkProcessModule::GetDataObjectOfType(const char* classname)
     {
     classname = "vtkPolyData";
     }
+  else if (strcmp(classname, "vtkCompositeDataSet") == 0)
+    {
+    classname = "vtkHierarchicalDataSet";
+    }
 
   vtkProcessModuleInternals::DataTypesType::iterator it =
     this->Internals->DataTypes.find(classname);
