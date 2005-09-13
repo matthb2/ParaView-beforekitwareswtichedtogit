@@ -780,7 +780,7 @@ const unsigned char *vtkColorTransferFunction::GetTable( double xStart, double x
   double *tmpPtr = tmpTable;
   unsigned char *tPtr = this->Table;
   
-  for ( int i = 0; i < size; i++ )
+  for ( int i = 0; i < size*3; i++ )
     {
     *tPtr = static_cast<unsigned char>(*tmpPtr*255.0 + 0.5);
     tPtr   ++;
