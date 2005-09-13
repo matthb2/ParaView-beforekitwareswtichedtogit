@@ -69,7 +69,6 @@ int vtkExtractStructuredGridPiece::RequestData(
   output->SetDimensions(input->GetDimensions());
   output->SetExtent(uExtent);
 
-  int wsizek = wExtent[5]-wExtent[4]+1;
   int wsizej = wExtent[3]-wExtent[2]+1;
   int wsizei = wExtent[1]-wExtent[0]+1;
 

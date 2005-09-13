@@ -282,10 +282,6 @@ void vtkTransmitStructuredGridPiece::SatelliteExecute(
   int wsize  = wsizek*wsizej*wsizei; 
   int wcsize  = (wsizek-1)*(wsizej-1)*(wsizei-1); 
 
-  int usizek = uExtent[5]-uExtent[4]+1;
-  int usizej = uExtent[3]-uExtent[2]+1;
-  int usizei = uExtent[1]-uExtent[0]+1;
-
   vtkPoints *ip = tmp->GetPoints();  
   vtkPoints *op = vtkPoints::New();
   op->SetNumberOfPoints(wsize);
