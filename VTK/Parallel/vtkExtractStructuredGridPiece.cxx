@@ -72,13 +72,11 @@ int vtkExtractStructuredGridPiece::RequestData(
   int wsizek = wExtent[5]-wExtent[4]+1;
   int wsizej = wExtent[3]-wExtent[2]+1;
   int wsizei = wExtent[1]-wExtent[0]+1;
-  int wsize  = wsizek*wsizej*wsizei; 
 
   int usizek = uExtent[5]-uExtent[4]+1;
   int usizej = uExtent[3]-uExtent[2]+1;
   int usizei = uExtent[1]-uExtent[0]+1;
   int usize  = usizek*usizej*usizei; 
-  int ucsize  = (usizek-1)*(usizej-1)*(usizei-1); 
 
   vtkPoints *ip = input->GetPoints();  
   vtkPoints *op = vtkPoints::New();
