@@ -219,10 +219,10 @@ void vtkXMLHierarchicalDataReader::ReadXMLData()
     
     // Get the file extension.
     vtkstd::string ext;
-    vtkstd::string::size_type pos = fileName.rfind('.');
-    if(pos != fileName.npos)
+    vtkstd::string::size_type pos2 = fileName.rfind('.');
+    if(pos2 != fileName.npos)
       {
-      ext = fileName.substr(pos+1);
+      ext = fileName.substr(pos2+1);
       }
 
     // Search for the reader matching this extension.
