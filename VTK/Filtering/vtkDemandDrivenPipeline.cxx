@@ -37,6 +37,7 @@
 #include "vtkPolyData.h"
 #include "vtkRectilinearGrid.h"
 #include "vtkStructuredGrid.h"
+#include "vtkStructuredPoints.h"
 #include "vtkUnstructuredGrid.h"
 
 #include <vtkstd/vector>
@@ -965,6 +966,10 @@ vtkDataObject* vtkDemandDrivenPipeline::NewDataObject(const char* type)
   else if(strcmp(type, "vtkStructuredGrid") == 0)
     {
     return vtkStructuredGrid::New();
+    }
+  else if(strcmp(type, "vtkStructuredPoints") == 0)
+    {
+    return vtkStructuredPoints::New();
     }
   else if(strcmp(type, "vtkUnstructuredGrid") == 0)
     {
