@@ -34,6 +34,7 @@ vtkCxxSetObjectMacro(vtkTransmitImageDataPiece,Controller,
 //----------------------------------------------------------------------------
 vtkTransmitImageDataPiece::vtkTransmitImageDataPiece()
 {
+  this->Controller = NULL;
   this->CreateGhostCells = 1;
   this->SetNumberOfInputPorts(1);
   this->SetController(vtkMultiProcessController::GetGlobalController());  

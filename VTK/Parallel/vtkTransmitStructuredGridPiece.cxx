@@ -34,8 +34,8 @@ vtkCxxSetObjectMacro(vtkTransmitStructuredGridPiece,Controller,
 //----------------------------------------------------------------------------
 vtkTransmitStructuredGridPiece::vtkTransmitStructuredGridPiece()
 {
+  this->Controller = NULL;
   this->CreateGhostCells = 1;
-
   this->SetNumberOfInputPorts(1);
   this->SetController(vtkMultiProcessController::GetGlobalController());  
   if (this->Controller) 
