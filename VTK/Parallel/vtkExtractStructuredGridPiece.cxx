@@ -97,6 +97,7 @@ int vtkExtractStructuredGridPiece::RequestData(
     }
   op->Squeeze();
   output->SetPoints(op);
+  op->Delete();
 
   // Extract attributes.
   vtkPointData *ipd = input->GetPointData();  
