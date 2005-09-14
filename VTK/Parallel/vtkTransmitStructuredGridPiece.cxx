@@ -302,6 +302,7 @@ void vtkTransmitStructuredGridPiece::SatelliteExecute(
     }
   op->Squeeze();
   output->SetPoints(op);
+  op->Delete();
   
   // Retrieve attributes within requested region.
   vtkPointData *ipd = tmp->GetPointData();  
