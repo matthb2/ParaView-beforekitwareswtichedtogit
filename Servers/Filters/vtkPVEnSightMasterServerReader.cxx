@@ -311,8 +311,6 @@ int vtkPVEnSightMasterServerReader::RequestData(
   vtkInformationVector **inputVector,
   vtkInformationVector *outputVector)
 {
-  int i;
-  
   // Do not execute if ExecuteInformation failed.
   if(this->InformationError)
     {
