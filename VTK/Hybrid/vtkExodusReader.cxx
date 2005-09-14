@@ -3704,6 +3704,12 @@ void vtkExodusReader::GenerateExtraArrays(vtkUnstructuredGrid* output)
     }
   // **KEN** I think we should be done with the ReversePointMap.  Should we
   // delete it here?
+
+  // Used by the ExodusIIWriter when writing back to the original file 
+  // as a map between the used node ids and the actual ids in the file
+  this->ReversePointMap->SetName( "InternalNodeId" );
+  output->GetPointData()->AddArray(this->ReversePointMap);
+
 }
 
 
