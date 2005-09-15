@@ -711,8 +711,6 @@ int vtkSMComparativeVisProxy::Show()
 //       {
 //       yPos = cellSpacing[1]*this->Internal->Indices[1];
 //       }
-    cout << this->Internal->Indices[0] << " " << ix << endl;
-    cout << this->Internal->Indices[1] << " " << iy << endl;
     double xPos = cellSpacing[0]*ix;
     double yPos = cellSpacing[1]*iy;
     vtkSMDisplayProxy* label = vtkSMDisplayProxy::SafeDownCast(
