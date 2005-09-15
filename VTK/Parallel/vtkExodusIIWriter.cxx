@@ -3704,4 +3704,11 @@ void vtkExodusIIWriter::PrintSelf(ostream& os, vtkIndent indent)
   os << indent << "WriteOutGlobalElementIdArray " << this->WriteOutGlobalElementIdArray << endl;
 
   os << indent << "ModelMetadata " << this->ModelMetadata << endl;
+
+  // ATTRIBUTE EDITOR
+  if (this->EditedVariableName)
+    {
+    os << indent << "EditedVariableName " << this->EditedVariableName << endl;
+    }
+  os << indent << "EditorFlag " << this->EditorFlag << endl;
 }
