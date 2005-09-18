@@ -913,6 +913,9 @@ protected:
   vtkstd::vector<vtkCompactHyperOctreeNode<D> > Nodes;
   vtkstd::vector<int> LeafParent; // record the parent of each leaf
   vtkDataSetAttributes *Attributes; // cell data or point data.
+private:
+  vtkCompactHyperOctree(const vtkCompactHyperOctree<D> &);  // Not implemented.
+  void operator=(const vtkCompactHyperOctree<D> &);    // Not implemented.
 };
 
 // vtkCxxRevisionMacro(vtkCompactHyperOctree, "$Revision$");
