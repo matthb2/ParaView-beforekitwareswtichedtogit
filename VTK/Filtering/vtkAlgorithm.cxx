@@ -579,7 +579,10 @@ void vtkAlgorithm::SetDefaultExecutivePrototype(vtkExecutive* proto)
     vtkAlgorithm::DefaultExecutivePrototype->UnRegister(0);
     vtkAlgorithm::DefaultExecutivePrototype = 0;
     }
-  proto->Register(0);
+  if (proto)
+    {
+    proto->Register(0);
+    }
   vtkAlgorithm::DefaultExecutivePrototype = proto;
 }
 
