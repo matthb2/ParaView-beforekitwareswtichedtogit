@@ -31,7 +31,6 @@
 #include "vtkInformationIntegerKey.h"
 #include "vtkInformationDoubleVectorKey.h"
 
-const int VTK_HYPEROCTREE=15;
 vtkInformationKeyMacro(vtkHyperOctree, LEVELS, Integer);
 vtkInformationKeyMacro(vtkHyperOctree, DIMENSION, Integer);
 vtkInformationKeyRestrictedMacro(vtkHyperOctree, SIZES, DoubleVector, 3);
@@ -988,7 +987,7 @@ vtkHyperOctree::~vtkHyperOctree()
   // Return what type of dataset this is.
 int vtkHyperOctree::GetDataObjectType()
 {
-  return VTK_HYPEROCTREE;
+  return VTK_HYPER_OCTREE;
 }
   
 //-----------------------------------------------------------------------------
