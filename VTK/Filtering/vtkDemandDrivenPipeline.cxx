@@ -39,6 +39,7 @@
 #include "vtkStructuredGrid.h"
 #include "vtkStructuredPoints.h"
 #include "vtkUnstructuredGrid.h"
+#include "vtkHyperOctree.h"
 
 #include <vtkstd/vector>
 
@@ -982,6 +983,10 @@ vtkDataObject* vtkDemandDrivenPipeline::NewDataObject(const char* type)
   else if(strcmp(type, "vtkHierarchicalBoxDataSet") == 0)
     {
     return vtkHierarchicalBoxDataSet::New();
+    }
+  else if(strcmp(type, "vtkHyperOctree") == 0)
+    {
+    return vtkHyperOctree::New();
     }
   else if(vtkObject* obj = vtkInstantiator::CreateInstance(type))
     {
