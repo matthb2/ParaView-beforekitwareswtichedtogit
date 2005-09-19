@@ -69,6 +69,14 @@ public:
   // Set the internal attributes.
   // \pre attributes_exist: attributes!=0
   virtual void SetAttributes(vtkDataSetAttributes *attributes)=0;
+  
+protected:
+  vtkHyperOctreeInternal()
+    {
+    }
+private:
+  vtkHyperOctreeInternal(const vtkHyperOctreeInternal &);  // Not implemented.
+  void operator=(const vtkHyperOctreeInternal &);    // Not implemented.
 };
 
 //-----------------------------------------------------------------------------
@@ -485,6 +493,9 @@ protected:
   vtkstd::deque<int> ChildHistory; // a stack, but stack does not have clear()
   int Index[D]; // index in each dimension of the current node, as if the
   // tree at the current level was a uniform grid.
+private:
+  vtkCompactHyperOctreeCursor(const vtkCompactHyperOctreeCursor<D> &);  // Not implemented.
+  void operator=(const vtkCompactHyperOctreeCursor<D> &);    // Not implemented.
 };
 
 // vtkCxxRevisionMacro(vtkCompactHyperOctreeCursor, "$Revision$");
