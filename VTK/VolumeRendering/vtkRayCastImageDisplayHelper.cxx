@@ -33,7 +33,7 @@ vtkRayCastImageDisplayHelper* vtkRayCastImageDisplayHelper::New()
 // Construct a new vtkRayCastImageDisplayHelper with default values
 vtkRayCastImageDisplayHelper::vtkRayCastImageDisplayHelper()
 {
-  this->PreMultipliedColors = 0;
+  this->PreMultipliedColors = 1;
   this->PixelScale = 1.0;
 }
 
