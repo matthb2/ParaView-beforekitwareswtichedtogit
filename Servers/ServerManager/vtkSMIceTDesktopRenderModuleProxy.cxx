@@ -17,7 +17,6 @@
 #include "vtkClientServerStream.h"
 #include "vtkClientServerID.h"
 #include "vtkCollection.h"
-#include "vtkIceTRenderManager.h"
 #include "vtkObjectFactory.h"
 #include "vtkPVOptions.h"
 #include "vtkPVProcessModule.h"
@@ -352,7 +351,7 @@ void vtkSMIceTDesktopRenderModuleProxy::StillRender()
 
       vtkSMIntVectorProperty *ivp = vtkSMIntVectorProperty::SafeDownCast(
                     this->DisplayManagerProxy->GetProperty("ComposeOperation"));
-      ivp->SetElements1(vtkIceTRenderManager::ComposeOperationOver);
+      ivp->SetElements1(1);     // Over
       this->DisplayManagerProxy->UpdateVTKObjects();
       }
     }
@@ -360,7 +359,7 @@ void vtkSMIceTDesktopRenderModuleProxy::StillRender()
     {
     vtkSMIntVectorProperty *ivp = vtkSMIntVectorProperty::SafeDownCast(
                     this->DisplayManagerProxy->GetProperty("ComposeOperation"));
-    ivp->SetElements1(vtkIceTRenderManager::ComposeOperationClosest);
+    ivp->SetElements1(0);       // Closest
     this->DisplayManagerProxy->UpdateVTKObjects();
     }
 
