@@ -89,6 +89,7 @@ void vtkRedistributePolyData::Execute()
     output->CopyStructure(tmp);
     output->GetPointData()->ShallowCopy(tmp->GetPointData());
     output->GetCellData()->ShallowCopy(tmp->GetCellData());
+    input->Delete();
     return;
     }
 
