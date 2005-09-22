@@ -174,7 +174,6 @@ int vtkEnSightReader::RequestData(
   vtkInformation *outInfo = outputVector->GetInformationObject(0);
   vtkHierarchicalDataSet *output = vtkHierarchicalDataSet::SafeDownCast(
     outInfo->Get(vtkCompositeDataSet::COMPOSITE_DATA_SET()));
-  output->SetNumberOfLevels(1);
 
   int i, timeSet, fileSet, timeStep, timeStepInFile, fileNum;
   vtkDataArray *times;
