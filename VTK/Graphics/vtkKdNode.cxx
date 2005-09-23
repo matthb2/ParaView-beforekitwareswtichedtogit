@@ -200,6 +200,25 @@ void vtkKdNode::GetDataBounds(double *b) const
    b[4] = this->MinVal[2]; b[5] = this->MaxVal[2];
 }
 
+//-----------------------------------------------------------------------------
+double vtkKdNode::GetDivisionPosition()
+{
+  if (this->Dim == 3)
+    {
+    vtkErrorMacro("Called GetDivisionPosition() on a leaf node.");
+    return 0.0;
+    }
+
+  vtkKdNode *left = this->GetLeft();
+  if (!left)
+    {
+    vtkErrorMacro("Called GetDivisionPosition() on a leaf node.");
+    return 0.0;
+    }
+
+  return left->GetMaxBounds()[this->Dim];
+}
+
 //----------------------------------------------------------------------------
 // Distance (squared) from any point anywhere to the boundary of spatial region
 //   
