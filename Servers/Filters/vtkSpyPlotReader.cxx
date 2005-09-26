@@ -97,8 +97,6 @@ public:
   const char* GetCellFieldName(int field);
   vtkDataArray* GetCellFieldData(int block, int field);
 
-  vtkSetVector6Macro(Bounds, double);
-
   struct CellMaterialField
     {
     char Id[30];
@@ -200,7 +198,6 @@ private:
   double TimeRange[2];
 
   int NumberOfCellFields;
-  double Bounds[6];
 
   vtkDataArraySelection* CellArraySelection;
 
@@ -253,11 +250,6 @@ vtkSpyPlotUniReader::vtkSpyPlotUniReader()
   this->CurrentTime = 0.0;
 
   this->NumberOfCellFields = 0;
-  int cc;
-  for ( cc = 0; cc < 6; ++ cc )
-    {
-    this->Bounds[cc] = -1;
-    }
   this->HaveInformation = 0;
   if ( !this->HaveInformation ) { cout << __LINE__ << " " << this << " Read: " << this->HaveInformation << endl; }
 }
@@ -694,7 +686,7 @@ int vtkSpyPlotUniReader::ReadInformation()
             }
           }
         }
-      if ( !variable->Material < 0 )
+      if ( variable->Material < 0 )
         {
         cerr << __FILE__ << ":" << __LINE__ << ": " << "Cannot found variable or material with ID: " << var << endl;
         return 0;
@@ -2124,6 +2116,7 @@ int vtkSpyPlotReader::RequestInformation(vtkInformation *request,
     if ( oldReader )
       {
       this->Map->Files[this->FileName]=oldReader;
+      oldReader->UnRegister(this);
       }
     else
       {
@@ -2653,7 +2646,6 @@ int vtkSpyPlotReader::RequestData(
   cout<<"there is (are) "<<numFiles<<" file(s)"<<endl;
     // Read only the part of the file for this processNumber.
 //    for ( block = startBlock; block <= endBlock; ++ block )
-  uniReader->SetBounds(this->Bounds);
   
   blockIterator->Start();
   while(!blockIterator->IsOff())
@@ -2716,6 +2708,7 @@ int vtkSpyPlotReader::RequestData(
         }
       ug->SetSpacing(spacing);
       
+      hasBadGhostCells=0;
       cc=0;
       while(cc<3)
         {
@@ -2865,17 +2858,8 @@ int vtkSpyPlotReader::RequestData(
       }
     vtkDebugMacro("Executing block: " << block);
     uniReader->ReadData();
-    //cout << " %%%%%%%%%%%%% Read data" << endl;
     if(!hasBadGhostCells)
       {
-      /*
-      cout << "  No bad ghost cells, numFields: " << numFields << endl;
-      for ( field = 0; field < this->CellDataArraySelection->GetNumberOfArrays(); ++ field )
-        {
-        fname = uniReader->GetCellFieldName(field);
-        cout << " Array: " << fname << " is " << this->CellDataArraySelection->ArrayIsEnabled(fname) << endl;
-        }
-        */
       for ( field = 0; field < numFields; field ++ )
         {
         fname = uniReader->GetCellFieldName(field);
@@ -2982,14 +2966,6 @@ int vtkSpyPlotReader::RequestData(
       }
     else // some bad ghost cells
       {
-      /*
-      cout << "  No bad ghost cells, numFields: " << numFields << endl;
-      for ( field = 0; field < this->CellDataArraySelection->GetNumberOfArrays(); ++ field )
-        {
-        fname = uniReader->GetCellFieldName(field);
-        cout << " Array: " << fname << " is " << this->CellDataArraySelection->ArrayIsEnabled(fname) << endl;
-        }
-        */
       int realPtDims[3];
       int ptDims[3];
       
