@@ -325,4 +325,5 @@ int vtkXMLHyperOctreeWriter::FinishPrimElement(vtkIndent indent)
     this->SetErrorCode(vtkErrorCode::OutOfDiskSpaceError);
     return 0;
     }
+  return 1;
 }
