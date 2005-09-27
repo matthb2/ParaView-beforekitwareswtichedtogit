@@ -3869,6 +3869,29 @@ int vtkSpyPlotReader::GetLeftChildProcessor(int proc)
 }
 
 //-----------------------------------------------------------------------------
+int vtkSpyPlotReader::CanReadFile(const char* fname)
+{
+  ifstream ifs(fname, ios::binary|ios::in);
+  if ( !ifs )
+    {
+    return 0;
+    }
+  char magic[8];
+  if ( !spcthReadString(ifs, magic, 8) )
+    {
+    cerr << __FILE__ << ":" << __LINE__ << ": " << "Cannot read magic" << endl;
+    return 0;
+    }
+  if ( strncmp(magic, "spydata", 7) != 0 &&
+    strncmp(magic, "spycase", 7) != 0 )
+    {
+    return 0;
+    }
+
+  return 1;
+}
+
+//-----------------------------------------------------------------------------
 void vtkSpyPlotReader::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os,indent);
