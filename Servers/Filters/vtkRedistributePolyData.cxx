@@ -85,7 +85,7 @@ void vtkRedistributePolyData::Execute()
   // Check for bad input that would make us hang.
   if ( ! this->DoubleCheckArrays(input))
     {
-    vtkErrorMacro("Skiping redistribute to avoid hanging.");
+    vtkDebugMacro("Skiping redistribute to avoid hanging.");
     output->CopyStructure(tmp);
     output->GetPointData()->ShallowCopy(tmp->GetPointData());
     output->GetCellData()->ShallowCopy(tmp->GetCellData());
