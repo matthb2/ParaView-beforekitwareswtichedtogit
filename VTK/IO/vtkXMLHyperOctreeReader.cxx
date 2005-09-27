@@ -208,12 +208,18 @@ void vtkXMLHyperOctreeReader::ReadTopology(vtkXMLDataElement *elem)
 
   //Find the topology array and read it into a vtkIntArray
   int numNested = elem->GetNumberOfNestedElements();
-  if (numNested != 1) return;
+  if (numNested != 1) 
+    {
+    return;
+    }
 
   vtkXMLDataElement* tElem = elem->GetNestedElement(0);
 
   vtkDataArray *tda = this->CreateDataArray(tElem);
-  if (!tda) return;
+  if (!tda) 
+    {
+    return;
+    }
   
   int numTuples;
   if (!tElem->GetScalarAttribute("NumberOfTuples", numTuples)) 
@@ -232,7 +238,8 @@ void vtkXMLHyperOctreeReader::ReadTopology(vtkXMLDataElement *elem)
 
   vtkIntArray *ta = NULL;
   ta = vtkIntArray::SafeDownCast(tda);
-  if (!ta) {
+  if (!ta) 
+    {
     tda->Delete();
     return;
     }

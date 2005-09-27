@@ -41,7 +41,9 @@ vtkTransmitRectilinearGridPiece::vtkTransmitRectilinearGridPiece()
   if (this->Controller) 
     {
     if (this->Controller->GetLocalProcessId() != 0) 
+      {
       this->SetNumberOfInputPorts(0);
+      }
     }
 }
 
