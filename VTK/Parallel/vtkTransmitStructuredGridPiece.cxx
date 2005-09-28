@@ -15,7 +15,7 @@
 #include "vtkTransmitStructuredGridPiece.h"
 
 #include "vtkCellData.h"
-#include "vtkExtractStructuredGridPiece.h"
+#include "vtkExtractGrid.h"
 #include "vtkInformation.h"
 #include "vtkInformationVector.h"
 #include "vtkMultiProcessController.h"
@@ -195,8 +195,7 @@ void vtkTransmitStructuredGridPiece::RootExecute(vtkStructuredGrid *input,
                                                    vtkInformation *outInfo)
 {
   vtkStructuredGrid *tmp = vtkStructuredGrid::New();
-  vtkExtractStructuredGridPiece *extract = 
-    vtkExtractStructuredGridPiece::New();
+  vtkExtractGrid *extract = vtkExtractGrid::New();
   int ext[7];
   int numProcs, i;
 
