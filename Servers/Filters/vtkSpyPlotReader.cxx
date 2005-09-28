@@ -1144,10 +1144,7 @@ void vtkSpyPlotUniReader::PrintInformation()
           cout << "      DataBlock: " << dataBlock << endl;
           if ( currentVar->DataBlocks[dataBlock] )
             {
-            vtkIndent indent;
-            currentVar->DataBlocks[dataBlock]->PrintHeader(cout, indent.GetNextIndent().GetNextIndent());
-            currentVar->DataBlocks[dataBlock]->PrintSelf(cout, indent.GetNextIndent().GetNextIndent().GetNextIndent());
-            currentVar->DataBlocks[dataBlock]->PrintTrailer(cout, indent.GetNextIndent().GetNextIndent());
+            currentVar->DataBlocks[dataBlock]->Print(cout);
             }
           }
         }
