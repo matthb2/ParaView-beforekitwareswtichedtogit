@@ -868,8 +868,14 @@ void vtkGarbageCollector::ClassInitialize()
 //----------------------------------------------------------------------------
 void vtkGarbageCollector::ClassFinalize()
 {
-  // We are done with the singleton.
+  // We are done with the singleton.  Delete it and reset the pointer.
+  // Other singletons may still cause garbage collection of VTK
+  // objects, they just will not have the option of deferred
+  // collection.  In order to get it they need only to include
+  // vtkGarbageCollectorManager.h so that this singleton stays around
+  // longer.
   delete vtkGarbageCollectorSingletonInstance;
+  vtkGarbageCollectorSingletonInstance = 0;
 }
 
 //----------------------------------------------------------------------------
