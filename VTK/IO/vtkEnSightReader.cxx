@@ -16,7 +16,7 @@
 
 #include "vtkDataArrayCollection.h"
 #include "vtkFloatArray.h"
-#include "vtkHierarchicalDataSet.h"
+#include "vtkMultiBlockDataSet.h"
 #include "vtkIdList.h"
 #include "vtkIdListCollection.h"
 #include "vtkInformation.h"
@@ -172,7 +172,7 @@ int vtkEnSightReader::RequestData(
   vtkDebugMacro("In execute ");
 
   vtkInformation *outInfo = outputVector->GetInformationObject(0);
-  vtkHierarchicalDataSet *output = vtkHierarchicalDataSet::SafeDownCast(
+  vtkMultiBlockDataSet *output = vtkMultiBlockDataSet::SafeDownCast(
     outInfo->Get(vtkCompositeDataSet::COMPOSITE_DATA_SET()));
 
   int i, timeSet, fileSet, timeStep, timeStepInFile, fileNum;
@@ -1134,7 +1134,7 @@ int vtkEnSightReader::ReadCaseFile()
 }
 
 //----------------------------------------------------------------------------
-int vtkEnSightReader::ReadVariableFiles(vtkHierarchicalDataSet *output)
+int vtkEnSightReader::ReadVariableFiles(vtkMultiBlockDataSet *output)
 {
   int i, j;
   char description[256];
