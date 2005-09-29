@@ -53,7 +53,6 @@ vtkQuadraticTetra::~vtkQuadraticTetra()
   this->Scalars->Delete();
 }
 
-
 //----------------------------------------------------------------------------
 //clip each of the four vertices; the remaining octahedron is
 //divided into four tetrahedron.
