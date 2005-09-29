@@ -219,8 +219,11 @@ void vtkKdTree::DeleteCellLists()
 //----------------------------------------------------------------------------
 vtkKdTree::~vtkKdTree()
 {
-  this->DataSets->Delete();
-  this->DataSets = NULL;
+  if (this->DataSets)
+    {
+    this->DataSets->Delete();
+    this->DataSets = NULL;
+    }
 
   this->FreeSearchStructure();
 
