@@ -21,6 +21,8 @@
 #include "vtkDataObject.h"
 #include "vtkDataSet.h"
 #include "vtkGarbageCollector.h"
+#include "vtkMultiBlockDataSet.h"
+#include "vtkMultiGroupDataSet.h"
 #include "vtkHierarchicalBoxDataSet.h"
 #include "vtkHierarchicalDataSet.h"
 #include "vtkInformation.h"
@@ -975,6 +977,14 @@ vtkDataObject* vtkDemandDrivenPipeline::NewDataObject(const char* type)
   else if(strcmp(type, "vtkUnstructuredGrid") == 0)
     {
     return vtkUnstructuredGrid::New();
+    }
+  else if(strcmp(type, "vtkMultiGroupDataSet") == 0)
+    {
+    return vtkMultiGroupDataSet::New();
+    }
+  else if(strcmp(type, "vtkMultiBlockDataSet") == 0)
+    {
+    return vtkMultiBlockDataSet::New();
     }
   else if(strcmp(type, "vtkHierarchicalDataSet") == 0)
     {
