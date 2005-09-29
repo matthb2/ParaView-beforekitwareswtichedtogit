@@ -249,7 +249,8 @@ void vtkSMPart::InsertExtractPiecesIfNecessary()
 //                       << vtkClientServerStream::End;
       }
     }
-  else if (!strcmp(className, "vtkHierarchicalDataSet"))
+  else if (!strcmp(className, "vtkMultiGroupDataSet") ||
+           !strcmp(className, "vtkMultiBlockDataSet"))
     {
     if (pm->GetNumberOfPartitions() == 1)
       {
@@ -274,7 +275,7 @@ void vtkSMPart::InsertExtractPiecesIfNecessary()
       }
 
     tempDataPiece = pm->NewStreamObject(
-      "vtkExtractHierarchicalDataPiece", stream);
+      "vtkMultiGroupDataExtractPiece", stream);
     }
 
   // If no filter is to be inserted, just return.

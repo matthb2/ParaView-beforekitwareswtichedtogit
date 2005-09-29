@@ -664,6 +664,14 @@ const char* vtkPVDataInformation::GetDataSetTypeAsString()
     {
     return "vtkCompositeDataSet";
     }
+  if (this->DataSetType == VTK_MULTIGROUP_DATA_SET)
+    {
+    return "vtkMultiGroupDataSet";
+    }
+  if (this->DataSetType == VTK_MULTIBLOCK_DATA_SET)
+    {
+    return "vtkMultiBlockDataSet";
+    }
   if (this->DataSetType == VTK_HIERARCHICAL_DATA_SET)
     {
     return "vtkHierarchicalDataSet";

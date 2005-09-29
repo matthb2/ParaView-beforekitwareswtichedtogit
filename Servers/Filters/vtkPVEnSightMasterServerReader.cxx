@@ -17,7 +17,6 @@
 #include "vtkCellData.h"
 #include "vtkDataArray.h"
 #include "vtkDataArrayCollection.h"
-#include "vtkHierarchicalDataSet.h"
 #include "vtkImageData.h"
 #include "vtkInformation.h"
 #include "vtkInformationVector.h"
