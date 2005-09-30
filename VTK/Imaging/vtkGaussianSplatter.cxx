@@ -125,6 +125,7 @@ int vtkGaussianSplatter::RequestData(
   double loc[3], dist2, cx[3];
   vtkDoubleArray *newScalars = 
     vtkDoubleArray::SafeDownCast(output->GetPointData()->GetScalars());
+  newScalars->SetName("SplatterValues");
   
   vtkInformation *inInfo = inputVector[0]->GetInformationObject(0);
   vtkDataSet *input = vtkDataSet::SafeDownCast(
