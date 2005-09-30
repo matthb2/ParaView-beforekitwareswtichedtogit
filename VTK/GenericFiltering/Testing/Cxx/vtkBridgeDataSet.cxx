@@ -79,6 +79,14 @@ void vtkBridgeDataSet::PrintSelf(ostream& os, vtkIndent indent)
 
 //----------------------------------------------------------------------------
 // Description:
+// Return the dataset that will be manipulated through the adaptor interface.
+vtkDataSet *vtkBridgeDataSet::GetDataSet()
+{
+  return this->Implementation;
+}
+
+//----------------------------------------------------------------------------
+// Description:
 // Set the dataset that will be manipulated through the adaptor interface.
 // \pre ds_exists: ds!=0
 void vtkBridgeDataSet::SetDataSet(vtkDataSet *ds)
