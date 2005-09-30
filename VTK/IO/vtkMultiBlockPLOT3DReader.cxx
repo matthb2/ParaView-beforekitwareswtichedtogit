@@ -23,6 +23,7 @@
 #include "vtkInformation.h"
 #include "vtkInformationVector.h"
 #include "vtkIntArray.h"
+#include "vtkMultiGroupDataInformation.h"
 #include "vtkObjectFactory.h"
 #include "vtkPointData.h"
 #include "vtkStreamingDemandDrivenPipeline.h"
@@ -744,6 +745,17 @@ int vtkMultiBlockPLOT3DReader::RequestInformation(
   vtkInformation* info = outputVector->GetInformationObject(0);
   info->Set(
     vtkStreamingDemandDrivenPipeline::MAXIMUM_NUMBER_OF_PIECES(), 1);
+
+  int numBlocks = this->Internal->Blocks.size();
+  vtkMultiGroupDataInformation *compInfo =
+    vtkMultiGroupDataInformation::New();
+  info->Set(vtkCompositeDataPipeline::COMPOSITE_DATA_INFORMATION(),compInfo);
+  compInfo->SetNumberOfGroups(numBlocks);
+  for (int i=0; i<numBlocks; i++)
+    {
+    compInfo->SetNumberOfDataSets(i, 1);
+    }
+  compInfo->Delete();
 
   return 1;
 }
