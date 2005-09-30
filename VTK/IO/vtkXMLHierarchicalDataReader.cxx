@@ -38,22 +38,6 @@ void vtkXMLHierarchicalDataReader::PrintSelf(ostream& os, vtkIndent indent)
 }
 
 //----------------------------------------------------------------------------
-vtkHierarchicalDataSet* vtkXMLHierarchicalDataReader::GetOutput()
-{
-  return this->GetOutput(0);
-}
-
-//----------------------------------------------------------------------------
-vtkHierarchicalDataSet* vtkXMLHierarchicalDataReader::GetOutput(int port)
-{
-  vtkDataObject* output = 
-    vtkCompositeDataPipeline::SafeDownCast(this->GetExecutive())->
-    GetCompositeOutputData(port);
-  return vtkHierarchicalDataSet::SafeDownCast(output);
-}
-
-
-//----------------------------------------------------------------------------
 const char* vtkXMLHierarchicalDataReader::GetDataSetName()
 {
   return "vtkHierarchicalDataSet";

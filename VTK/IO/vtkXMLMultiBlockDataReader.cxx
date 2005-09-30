@@ -39,21 +39,6 @@ void vtkXMLMultiBlockDataReader::PrintSelf(ostream& os, vtkIndent indent)
 }
 
 //----------------------------------------------------------------------------
-vtkMultiBlockDataSet* vtkXMLMultiBlockDataReader::GetOutput()
-{
-  return this->GetOutput(0);
-}
-
-//----------------------------------------------------------------------------
-vtkMultiBlockDataSet* vtkXMLMultiBlockDataReader::GetOutput(int port)
-{
-  vtkDataObject* output = 
-    vtkCompositeDataPipeline::SafeDownCast(this->GetExecutive())->
-    GetCompositeOutputData(port);
-  return vtkMultiBlockDataSet::SafeDownCast(output);
-}
-
-//----------------------------------------------------------------------------
 int vtkXMLMultiBlockDataReader::FillOutputPortInformation(
   int vtkNotUsed(port), vtkInformation* info)
 {
