@@ -17,7 +17,7 @@
 #include "vtkHierarchicalDataSet.h"
 #include "vtkCompositeDataPipeline.h"
 
-#include "vtkHierarchicalDataInformation.h"
+#include "vtkMultiGroupDataInformation.h"
 #include "vtkInformationVector.h"
 #include "vtkInformation.h"
 
@@ -387,8 +387,8 @@ int vtkHierarchicalFractal::RequestInformation(
     return 0;
     }
   
-  vtkHierarchicalDataInformation *compInfo
-    =vtkHierarchicalDataInformation::New();
+  vtkMultiGroupDataInformation *compInfo
+    =vtkMultiGroupDataInformation::New();
 
   vtkInformation *info=outputVector->GetInformationObject(0);
   info->Set(vtkCompositeDataPipeline::COMPOSITE_DATA_INFORMATION(),compInfo);
@@ -427,12 +427,12 @@ int vtkHierarchicalFractal::RequestData(
     }
 
 
-  vtkHierarchicalDataInformation *compInfo=
-    vtkHierarchicalDataInformation::SafeDownCast(
+  vtkMultiGroupDataInformation *compInfo=
+    vtkMultiGroupDataInformation::SafeDownCast(
       info->Get(vtkCompositeDataPipeline::COMPOSITE_DATA_INFORMATION()));
 
   output->Initialize(); // remove all previous blocks
-  output->SetHierarchicalDataInformation(compInfo);
+  output->SetMultiGroupDataInformation(compInfo);
   
   
   // By setting SetMaximumNumberOfPieces(-1) 
