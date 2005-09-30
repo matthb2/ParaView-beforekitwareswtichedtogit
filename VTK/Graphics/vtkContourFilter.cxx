@@ -606,6 +606,60 @@ int vtkContourFilter::GetArrayComponent()
   return( this->SynchronizedTemplates2D->GetArrayComponent() );
 }
 
+//----------------------------------------------------------------------------
+int vtkContourFilter::ProcessRequest(vtkInformation* request,
+                                     vtkInformationVector** inputVector,
+                                     vtkInformationVector* outputVector)
+{
+  // generate the data
+  if(request->Has(vtkStreamingDemandDrivenPipeline::REQUEST_UPDATE_EXTENT_INFORMATION()))
+    {
+    // compute the priority for this UE
+    vtkInformation *inInfo = inputVector[0]->GetInformationObject(0);
+    if (!inInfo)
+      {
+      return 1;
+      }
+    // get the range of the input if available
+    vtkInformation *fInfo = 
+      vtkDataObject::GetActiveFieldInformation
+      (inInfo, vtkDataObject::FIELD_ASSOCIATION_POINTS, 
+       vtkDataSetAttributes::SCALARS);
+    if (!fInfo)
+      {
+      return 1;
+      }
+    double *range = fInfo->Get(vtkDataObject::FIELD_RANGE());
+    if (range)
+      {
+      // compute the priority
+      // get the incoming priority if any
+      double inPrior = 1;
+      if (inInfo->Has(vtkStreamingDemandDrivenPipeline::PRIORITY()))
+        {
+        inPrior = inInfo->Get(vtkStreamingDemandDrivenPipeline::PRIORITY());
+        }
+      // do any contours intersect the range?
+      int numContours=this->ContourValues->GetNumberOfContours();
+      double *values=this->ContourValues->GetValues();
+      double prior = 0;
+      int i;
+      for (i=0; i < numContours; i++)
+        {
+        if (values[i] >= range[0] && values[i] <= range[1])
+          {
+          prior = inPrior;
+          break;
+          }
+        }
+      outputVector->GetInformationObject(0)->
+        Set(vtkStreamingDemandDrivenPipeline::PRIORITY(),prior);
+      }
+    return 1;
+    }
+  return this->Superclass::ProcessRequest(request, inputVector, outputVector);
+}
+
 int vtkContourFilter::FillInputPortInformation(int, vtkInformation *info)
 {
   info->Set(vtkAlgorithm::INPUT_REQUIRED_DATA_TYPE(), "vtkDataSet");
