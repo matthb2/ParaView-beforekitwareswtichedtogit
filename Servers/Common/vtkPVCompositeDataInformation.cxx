@@ -158,6 +158,8 @@ void vtkPVCompositeDataInformation::AddInformation(vtkPVInformation* pvi)
     return;
     }
 
+  this->DataIsComposite = info->GetDataIsComposite();
+
   unsigned int otherNumGroups = info->Internal->DataInformation.size();
   unsigned int numGroups = this->Internal->DataInformation.size();
   if ( otherNumGroups > numGroups )

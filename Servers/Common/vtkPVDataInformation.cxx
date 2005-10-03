@@ -187,8 +187,6 @@ void vtkPVDataInformation::CopyFromCompositeDataSet(vtkCompositeDataSet* data)
 {
   this->Initialize();
 
-  this->CompositeDataInformation->CopyFromObject(data);
-
   int numDataSets = 0;
   vtkCompositeDataIterator* iter = data->NewIterator();
   iter->GoToFirstItem();
@@ -206,6 +204,7 @@ void vtkPVDataInformation::CopyFromCompositeDataSet(vtkCompositeDataSet* data)
     }
   iter->Delete();
 
+  this->CompositeDataInformation->CopyFromObject(data);
   this->SetCompositeDataClassName(data->GetClassName());
   this->CompositeDataSetType = data->GetDataObjectType();
   this->NumberOfDataSets = numDataSets;
