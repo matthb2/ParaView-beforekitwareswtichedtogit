@@ -354,6 +354,7 @@ int vtkPStreamTracer::RequestData(
     vtkDebugMacro("No appropriate inputs have been found. Can not execute.");
     func->Delete();
     // >>>>>>>>>> TODO: All should pass this test.
+    this->InputData->UnRegister(this);
     return 1;
     }
   func->SetCaching(0);

@@ -578,6 +578,7 @@ int vtkStreamTracer::RequestData(
       seeds->Delete();
       integrationDirections->Delete();
       seedIds->Delete();
+      this->InputData->UnRegister(this);
       return 1;
       }
 
