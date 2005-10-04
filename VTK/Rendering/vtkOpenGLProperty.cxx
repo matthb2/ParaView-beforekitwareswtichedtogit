@@ -34,8 +34,8 @@ vtkStandardNewMacro(vtkOpenGLProperty);
 
 
 // Implement base class method.
-void vtkOpenGLProperty::Render(vtkActor *vtkNotUsed(anActor),
-                             vtkRenderer *vtkNotUsed(ren))
+void vtkOpenGLProperty::Render(vtkActor *anActor,
+                             vtkRenderer *ren)
 {
   int i;
   GLenum method;
@@ -171,6 +171,8 @@ void vtkOpenGLProperty::Render(vtkActor *vtkNotUsed(anActor),
     gl2psDisable(GL2PS_LINE_STIPPLE);
 #endif // VTK_USE_GL2PS
     }
+
+  this->Superclass::Render(anActor, ren);
 }
 
 // Implement base class method.

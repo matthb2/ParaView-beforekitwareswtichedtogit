@@ -188,7 +188,7 @@ vtkDataArray *vtkAbstractMapper::GetScalars(vtkDataSet *input,
       {
       scalars = fd->GetArray(arrayName);
       }
-    cellFlag = 1;
+    cellFlag = 2;
     }
   
   return scalars;
