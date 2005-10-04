@@ -89,6 +89,15 @@ int vtkSMNumberOfGroupsDomain::IsInDomain(vtkSMSourceProxy* proxy)
     return 0;
     }
 
+  if (!di->GetCompositeDataClassName())
+    {
+    // This domain isn't applicable if the data is not composite, so don't
+    // even consider whether the number of groups is right.
+    // This case happens when the filter accepts input that may or may not be
+    // vtkMultiGroupDataSet.
+    return 1;
+    }
+
   if (cdi->GetNumberOfGroups() > 1 && 
       this->GroupMultiplicity == vtkSMNumberOfGroupsDomain::MULTIPLE)
     {
