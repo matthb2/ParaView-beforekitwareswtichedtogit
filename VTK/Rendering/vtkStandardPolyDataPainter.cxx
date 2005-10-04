@@ -223,7 +223,7 @@ void vtkStandardPolyDataPainter::DrawCells(int mode, vtkCellArray *connectivity,
         }
       
       // Send point centered attributes.
-      for (int attribii = 0; attribii < vtkPointData::NUM_ATTRIBUTES; attribii++)
+      for (attribii = 0; attribii < vtkPointData::NUM_ATTRIBUTES; attribii++)
         {
         vtkDataArray *a = pointData->GetAttribute(attribii);
         if (!a || attribii == vtkPointData::VECTORS || 

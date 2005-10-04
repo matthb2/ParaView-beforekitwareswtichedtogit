@@ -503,7 +503,7 @@ void vtkScalarsToColorsPainter::MapScalarsToTexture(vtkDataArray* scalars,
 
     // Now create the color texture coordinates.
     int numComps = scalars->GetNumberOfComponents();
-    void* input = scalars->GetVoidPointer(0);
+    void* void_input = scalars->GetVoidPointer(0);
     vtkIdType num = scalars->GetNumberOfTuples();
     vtkFloatArray* dtcoords = vtkFloatArray::New();
     dtcoords->SetNumberOfTuples(num);
@@ -525,7 +525,7 @@ void vtkScalarsToColorsPainter::MapScalarsToTexture(vtkDataArray* scalars,
     switch (scalars->GetDataType())
       {
       vtkTemplateMacro(
-        vtkMapperCreateColorTextureCoordinates(static_cast<VTK_TT*>(input),
+        vtkMapperCreateColorTextureCoordinates(static_cast<VTK_TT*>(void_input),
           output, num, numComps,
           scalarComponent, range)
       );
