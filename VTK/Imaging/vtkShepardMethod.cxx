@@ -183,6 +183,8 @@ int vtkShepardMethod::RequestData(
     return 1;
     }
 
+  newScalars->SetName(inScalars->GetName());
+
   // Allocate
   //
   numNewPts = this->SampleDimensions[0] * this->SampleDimensions[1] 
