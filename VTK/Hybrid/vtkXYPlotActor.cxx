@@ -2134,6 +2134,8 @@ void vtkXYPlotActor::PrintAsCSV(ostream &os)
     {
     vtkIdType numPts = ds->GetNumberOfPoints();
     scalars = ds->GetPointData()->GetScalars(this->SelectedInputScalars[dsNum]);
+    os << this->SelectedInputScalars[dsNum] << ",";
+
     component = this->SelectedInputScalarsComponent->GetValue(dsNum);
     for ( vtkIdType ptId=0; ptId < numPts; ptId++ )
       {
@@ -2148,6 +2150,25 @@ void vtkXYPlotActor::PrintAsCSV(ostream &os)
         }
       }
     os << endl;
+
+    if (dsNum == this->InputList->GetNumberOfItems()-1)
+      {
+      os << "X or T,";
+      for ( vtkIdType ptId=0; ptId < numPts; ptId++ )
+        {
+        double *x = ds->GetPoint(ptId);
+        if( ptId == 0 )
+          {
+          os << x[0];
+          }
+        else
+          {
+          os << "," << x[0];
+          }
+        }
+      os << endl;
+      }
+
     }
 }
 
