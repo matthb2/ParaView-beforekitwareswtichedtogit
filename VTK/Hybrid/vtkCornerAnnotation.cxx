@@ -223,6 +223,39 @@ void vtkCornerAnnotation::TextReplace(vtkImageActor *ia,
         rpos = strstr(text,"<slice_and_max>");
         }
 
+      rpos = strstr(text,"<slice_pos>");
+      while (rpos)
+        {
+        *rpos = '\0';
+        if (ia && this->ShowSliceAndImage)
+          {
+          double *dbounds = ia->GetDisplayBounds();
+          int *dext = ia->GetDisplayExtent();
+          double pos;
+          if (dext[0] == dext[1])
+            {
+            pos = dbounds[0];
+            }
+          else if (dext[2] == dext[3])
+            {
+            pos = dbounds[2];
+            }
+          else
+            {
+            pos = dbounds[4];
+            }
+          sprintf(text2,"%s%g%s",text,pos,rpos+11);
+          }
+        else
+          {
+          sprintf(text2,"%s%s",text,rpos+11);
+          }
+        tmp = text;
+        text = text2;
+        text2 = tmp;
+        rpos = strstr(text,"<slice_pos>");
+        }
+
       rpos = strstr(text,"<window>");
       while (rpos)
         {
