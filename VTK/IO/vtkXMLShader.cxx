@@ -73,7 +73,7 @@ void vtkXMLShader::SetRootElement(vtkXMLDataElement* root)
     case vtkXMLShader::LOCATION_FILE:
         {
         const char* filename = this->RootElement->GetAttribute("location");
-        const char* fullpath = this->LocateFile(filename);
+        char* fullpath = this->LocateFile(filename);
         if (!fullpath)
           {
           vtkErrorMacro("Failed to locate file " << filename);
