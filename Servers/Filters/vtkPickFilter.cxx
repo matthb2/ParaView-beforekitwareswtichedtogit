@@ -628,11 +628,12 @@ int vtkPickFilter::PointIdExecute(vtkDataSet* input, int inputIdx,
     if (myId == 0)
       {
       sizes[0] = mysize;
-      for (int idx = 1; idx < numProcs; ++idx)
+      int idx;
+      for (idx = 1; idx < numProcs; ++idx)
         {
         this->Controller->Receive(&sizes[idx], 1, idx, vtkProcessModule::PickMakeGIDs);
         }
-      for (int idx = 1; idx < numProcs; ++idx)
+      for (idx = 1; idx < numProcs; ++idx)
         {
         this->Controller->Send(&sizes[0], numProcs, idx, vtkProcessModule::PickMakeGIDs);
         }
@@ -761,11 +762,12 @@ int vtkPickFilter::CellIdExecute(vtkDataSet* input, int inputIdx,
     if (myId == 0)
       {
       sizes[0] = mysize;
-      for (int idx = 1; idx < numProcs; ++idx)
+      int idx;
+      for (idx = 1; idx < numProcs; ++idx)
         {
         this->Controller->Receive(&sizes[idx], 1, idx, vtkProcessModule::PickMakeGIDs);
         }
-      for (int idx = 1; idx < numProcs; ++idx)
+      for (idx = 1; idx < numProcs; ++idx)
         {
         this->Controller->Send(&sizes[0], numProcs, idx, vtkProcessModule::PickMakeGIDs);
         }
