@@ -46,9 +46,9 @@ void vtkOpenGLCoincidentTopologyResolutionPainter::RenderInternal(
   vtkRenderer* renderer, vtkActor* actor, unsigned long typeflags)
 {
   int resolve=0, zResolve=0;
-  double zRes = 0.0;
   if ( this->ResolveCoincidentTopology )
     {
+    double zRes = 0.0;
     resolve = 1;
     if ( this->ResolveCoincidentTopology == VTK_RESOLVE_SHIFT_ZBUFFER )
       {
