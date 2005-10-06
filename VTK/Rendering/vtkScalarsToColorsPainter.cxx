@@ -91,6 +91,8 @@ vtkScalarsToColorsPainter::~vtkScalarsToColorsPainter()
     this->ColorTextureMap->UnRegister(this);
     this->ColorTextureMap = NULL;
     }
+
+  this->SetArrayName(0);
 }
 
 //-----------------------------------------------------------------------------
