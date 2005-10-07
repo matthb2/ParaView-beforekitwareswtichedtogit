@@ -142,15 +142,29 @@ void vtkShaderProgram::LoadExtensions( vtkRenderWindow* renWin )
 //-----------------------------------------------------------------------------
 void vtkShaderProgram::AddShaderVariable(const char* name, int numVars, int* x)
 {
-  this->VertexShader->AddShaderVariable( name, numVars, x );
-  this->FragmentShader->AddShaderVariable( name, numVars, x );
+  if( this->VertexShader )
+    {
+    this->VertexShader->AddShaderVariable( name, numVars, x );
+    }
+
+  if( this->FragmentShader )
+    {
+    this->FragmentShader->AddShaderVariable( name, numVars, x );
+    }
 }
 
 //-----------------------------------------------------------------------------
 void vtkShaderProgram::AddShaderVariable(const char* name, int numVars, float* x)
 {
-  this->VertexShader->AddShaderVariable( name, numVars, x );
-  this->FragmentShader->AddShaderVariable( name, numVars, x );
+  if( this->VertexShader )
+    {
+    this->VertexShader->AddShaderVariable( name, numVars, x );
+    }
+
+  if( this->FragmentShader )
+    {
+    this->FragmentShader->AddShaderVariable( name, numVars, x );
+    }
 }
 
 //-----------------------------------------------------------------------------
