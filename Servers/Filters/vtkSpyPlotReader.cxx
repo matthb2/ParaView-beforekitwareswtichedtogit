@@ -1639,17 +1639,20 @@ public:
     {
     if ( !file || file != this->MasterFileName )
       {
-      this->Clean();
+      this->Clean(0);
       }
     }
-  void Clean()
+  void Clean(vtkSpyPlotUniReader* save)
     {
     MapOfStringToSPCTH::iterator it=this->Files.begin();
     MapOfStringToSPCTH::iterator end=this->Files.end();
     while(it!=end)
       {
-      it->second->Delete();
-      it->second = 0;
+      if ( it->second != save )
+        {
+        it->second->Delete();
+        it->second = 0;
+        }
       ++it;
       }
     this->Files.erase(this->Files.begin(),end);
@@ -2168,7 +2171,7 @@ vtkSpyPlotReader::~vtkSpyPlotReader()
   this->CellDataArraySelection->RemoveObserver(this->SelectionObserver);
   this->SelectionObserver->Delete();
   this->CellDataArraySelection->Delete();
-  this->Map->Clean();
+  this->Map->Clean(0);
   delete this->Map;
   this->Map = 0;
   this->SetController(0);
@@ -2231,8 +2234,9 @@ int vtkSpyPlotReader::RequestInformation(vtkInformation *request,
       {
       oldReader = mapIt->second;
       oldReader->Register(this);
+      oldReader->Print(cout);
       }
-    this->Map->Clean();
+    this->Map->Clean(oldReader);
     if ( oldReader )
       {
       this->Map->Files[this->FileName]=oldReader;
@@ -2275,7 +2279,7 @@ int vtkSpyPlotReader::UpdateCaseFile(const char *fname,
 
   // Set case file name and clean/initialize file map
   this->SetCurrentFileName(fname);
-  this->Map->Clean();
+  this->Map->Clean(0);
 
   // Setup the filemap and spcth structures
   ifstream ifs(this->FileName);
