@@ -68,7 +68,7 @@ vtkXMLMaterial* vtkXMLMaterial::CreateInstance(const char* name)
   parser->SetMaterial(material);
 
   char* xml = vtkMaterialLibrary::GetMaterial(name);
-  const char* filename = vtkXMLShader::LocateFile(name);
+  char* filename = vtkXMLShader::LocateFile(name);
 
 
   // First, look for material library files.
