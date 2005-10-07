@@ -2949,7 +2949,7 @@ int vtkSpyPlotReader::RequestData(
     int level;
     if(this->IsAMR)
       {
-      int fixed = 0;
+      fixed = 0;
       level = uniReader->GetDataBlockLevel(block);
       uniReader->GetDataBlockBounds(block, bounds, &fixed);
 
@@ -3042,7 +3042,7 @@ int vtkSpyPlotReader::RequestData(
       vtkDataArray *coordinates[3];
       vtkSpyPlotUniReader::Block* blk = uniReader->GetDataBlock(block);
       
-      int fixed =0;
+      fixed =0;
       uniReader->GetDataBlockVectors(block, coordinates, &fixed);
       vtkDebugMacro( "Vectors for block: " << block << " " << uniReader->GetFileName() );
       vtkDebugMacro( "  X: " << coordinates[0]->GetNumberOfTuples() );
@@ -3229,7 +3229,7 @@ int vtkSpyPlotReader::RequestData(
             // make sure we have a clean array
             }
           
-          int fixed = 0;
+          fixed = 0;
           array = uniReader->GetCellFieldData(block, field, &fixed);
           //vtkDebugMacro( << __LINE__ << " Read data block: " << block << " " << field << "  [" << array->GetName() << "]" );
           cd->AddArray(array);
@@ -3347,7 +3347,7 @@ int vtkSpyPlotReader::RequestData(
             // make sure we have a clean array
             }
           
-          int fixed = 0;
+          fixed = 0;
           array = uniReader->GetCellFieldData(block, field, &fixed);
           //vtkDebugMacro( << __LINE__ << " Read data block: " << block << " " << field << "  [" << array->GetName() << "]" );
           cd->AddArray(array);
