@@ -557,7 +557,7 @@ void vtkShader::SetShaderParameters(vtkActor* actor, vtkRenderer* renderer,
       }
     else if (strcmp(tagname, "ApplicationUniform") == 0)
       {
-      this->SetApplicationParameter(actor, renderer, elem);
+      this->SetApplicationParameter(elem);
       }
     else
       {
@@ -1133,8 +1133,7 @@ void vtkShader::SetSamplerParameter(vtkActor* act, vtkRenderer*,
   this->SetSamplerParameter(name, texture);
 }
 //-----------------------------------------------------------------------------
-void vtkShader::SetApplicationParameter(vtkActor* act, vtkRenderer*, 
-  vtkXMLDataElement* elem)
+void vtkShader::SetApplicationParameter(vtkXMLDataElement* elem)
 {
   // 'name' is the variable name in the hardware shader program.
   const char* name = elem->GetAttribute("name");
