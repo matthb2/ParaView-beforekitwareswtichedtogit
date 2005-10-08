@@ -465,7 +465,7 @@ void vtkXOpenGLRenderWindow::WindowInitialize (void)
       {
       if(!this->Internal->PixmapContextId)
         {
-        XVisualInfo* v = this->GetDesiredVisualInfo();
+        v = this->GetDesiredVisualInfo();
 
         this->Internal->PixmapContextId = glXCreateContext(this->DisplayId,
                                                            v, 0, GL_FALSE);
