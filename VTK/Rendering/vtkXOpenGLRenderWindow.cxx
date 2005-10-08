@@ -485,6 +485,8 @@ void vtkXOpenGLRenderWindow::WindowInitialize (void)
         }
       }
     this->Mapped = 0;
+    this->Size[0] = width;
+    this->Size[1] = height;
     }
 
   // tell our renderers about us
