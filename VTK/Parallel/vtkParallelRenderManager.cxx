@@ -196,6 +196,16 @@ void vtkParallelRenderManager::PrintSelf(ostream &os, vtkIndent indent)
   os << indent << "Last image processing time: "
      << this->ImageProcessingTime << endl;
   os << indent << "UseRGBA: " << this->UseRGBA << endl;
+
+  os << indent << "FullImage: ";
+  if (this->FullImage)
+    {
+    this->FullImage->PrintSelf(os, indent.GetNextIndent());;
+    }
+  else
+    {
+    os << "(none)" << endl;
+    }
 }
 
 //----------------------------------------------------------------------------
