@@ -66,6 +66,9 @@ void vtkCompositeRenderManager::PrintSelf(ostream &os, vtkIndent indent)
 //----------------------------------------------------------------------------
 void vtkCompositeRenderManager::PreRenderProcessing()
 {
+  // Turn swap buffers off before the render so the end render method has a
+  // chance to add to the back buffer.
+  this->RenderWindow->SwapBuffersOff();
 }
 
 //----------------------------------------------------------------------------
@@ -99,6 +102,10 @@ void vtkCompositeRenderManager::PostRenderProcessing()
     }
 
   this->WriteFullImage();
+
+  // Swap buffers here.
+  this->RenderWindow->SwapBuffersOn();
+  this->RenderWindow->Frame();
 }
 
 
