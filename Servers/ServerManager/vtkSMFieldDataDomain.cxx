@@ -112,7 +112,9 @@ void vtkSMFieldDataDomain::Update(vtkSMProperty*)
     }
 
   unsigned int numProxs = pp->GetNumberOfUncheckedProxies();
-  for (unsigned int i=0; i<numProxs; i++)
+  unsigned int i;
+
+  for (i=0; i<numProxs; i++)
     {
     vtkSMSourceProxy* sp = 
       vtkSMSourceProxy::SafeDownCast(pp->GetUncheckedProxy(i));
