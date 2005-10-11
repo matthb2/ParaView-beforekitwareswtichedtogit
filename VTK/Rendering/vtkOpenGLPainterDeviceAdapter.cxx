@@ -67,6 +67,8 @@ static const GLenum VTK2OpenGLPrimitive[] = {
   GL_POLYGON,           // 7 - VTK_POLYGON
   0xFFFF,               // 8 - VTK_PIXEL
   GL_QUADS,             // 9 - VTK_QUAD
+  GL_LINE_LOOP          // 10 - VTK_TETRA
+    // Hack: Ask Ken about this.....
 };
 
 static inline GLenum VTK2OpenGLType(int type)
