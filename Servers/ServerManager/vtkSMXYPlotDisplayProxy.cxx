@@ -617,9 +617,13 @@ void vtkSMXYPlotDisplayProxy::SetXAxisLabel(bool IsTemporal)
   if (svp)
     {
     if (IsTemporal) 
-      svp->SetElement(0, "Time Steps");
+      {
+      svp->SetElement(0, "Time");
+      }
     else 
+      {
       svp->SetElement(0, "Line Divisions");
+      }
     }
   else
     {
