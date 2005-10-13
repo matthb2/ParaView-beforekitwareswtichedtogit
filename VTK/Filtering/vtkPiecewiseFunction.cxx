@@ -818,6 +818,8 @@ void vtkPiecewiseFunction::GetTable( double xStart, double xEnd,
     tPtr   += stride;
     tmpPtr ++;
     }
+
+  delete tmpTable;
 }
 
 // Given a table of values, build the piecewise function. Legacy method
