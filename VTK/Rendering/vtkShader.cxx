@@ -574,7 +574,6 @@ void vtkShader::SetUniformParameter(vtkActor* , vtkRenderer* ,
     {
     return; // no need to update.
     }
-ame: Command not found.
   const char* value = elem->GetAttribute("value");
   
   if (!value)
