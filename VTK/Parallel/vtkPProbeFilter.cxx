@@ -45,10 +45,11 @@ vtkPProbeFilter::~vtkPProbeFilter()
 }
 
 //----------------------------------------------------------------------------
-int vtkPProbeFilter::RequestInformation(vtkInformation *,
-                                        vtkInformationVector **,
+int vtkPProbeFilter::RequestInformation(vtkInformation *request,
+                                        vtkInformationVector **inputVector,
                                         vtkInformationVector *outputVector)
 {
+  this->Superclass::RequestInformation(request, inputVector, outputVector);
   vtkInformation *outInfo = outputVector->GetInformationObject(0);
   outInfo->Set(vtkStreamingDemandDrivenPipeline::MAXIMUM_NUMBER_OF_PIECES(),
                -1);
