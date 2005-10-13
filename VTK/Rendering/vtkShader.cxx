@@ -567,7 +567,7 @@ void vtkShader::SetShaderParameters(vtkActor* actor, vtkRenderer* renderer,
 }
 
 
-void vtkShader::SetUniformParameter(vtkActor* , vtkRenderer* ren, 
+void vtkShader::SetUniformParameter(vtkActor* , vtkRenderer* ,
                                     vtkXMLDataElement* elem)
   {
     if (this->GetMTime() < this->PassShaderVariablesTime)
