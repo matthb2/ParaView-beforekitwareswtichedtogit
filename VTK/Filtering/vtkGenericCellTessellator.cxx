@@ -176,6 +176,7 @@ void vtkGenericCellTessellator::UpdateMaxError(double *leftPoint,
 // before any tessellation of any cell.
 void vtkGenericCellTessellator::InitErrorMetrics(vtkGenericDataSet *ds)
 {
+  this->Initialize(ds);
   this->ErrorMetrics->InitTraversal();
   vtkGenericSubdivisionErrorMetric *e=static_cast<vtkGenericSubdivisionErrorMetric *>(this->ErrorMetrics->GetNextItemAsObject());
   
