@@ -74,6 +74,11 @@ void vtkCompositeRenderManager::PreRenderProcessing()
 //----------------------------------------------------------------------------
 void vtkCompositeRenderManager::PostRenderProcessing()
 {
+  if (!this->UseCompositing || this->CheckForAbortComposite())
+    {
+    return;
+    }
+
   if (this->Controller->GetNumberOfProcesses() > 1)
     {
     // Read in data.
