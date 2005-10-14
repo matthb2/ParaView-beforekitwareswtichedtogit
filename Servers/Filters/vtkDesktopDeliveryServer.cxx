@@ -367,6 +367,7 @@ void vtkDesktopDeliveryServer::SetRenderWindowSize()
     }
   else
     {
+    this->RenderWindow->Start();
     int *size = this->RenderWindow->GetSize();
     this->FullImageSize[0] = size[0];
     this->FullImageSize[1] = size[1];
