@@ -692,12 +692,11 @@ void vtkParallelRenderManager::EndRender()
 //     return;
 //     }
 
-//   // EndRender only happens on root.
-//   if (this->CheckForAbortComposite())
-//     {
-//     this->Lock = 0;
-//     return;
-//     }  
+  if (this->CheckForAbortComposite())
+    {
+    this->Lock = 0;
+    return;
+    }  
 
   this->PostRenderProcessing();
 
