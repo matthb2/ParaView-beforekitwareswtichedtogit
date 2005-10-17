@@ -1198,7 +1198,8 @@ void vtkShader::SetApplicationParameter(vtkXMLDataElement* elem)
     }
   else
     {
-    cout << name << " is not an application variable." << endl;
+    vtkErrorMacro("Shader requires application variable " << name
+      << " which is missing.");
     }
 }
 
