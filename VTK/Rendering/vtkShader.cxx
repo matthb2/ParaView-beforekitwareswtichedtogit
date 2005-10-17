@@ -680,7 +680,7 @@ void vtkShader::SetCameraParameter(vtkActor* , vtkRenderer* ren,
     {
     return; // no need to update.
     }
-  const char* name = elem->GetAttribute("value");
+  const char* name = elem->GetAttribute("name");
   const char* value = elem->GetAttribute("value");
   
   if (!name)
