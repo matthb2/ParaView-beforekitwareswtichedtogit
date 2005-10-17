@@ -244,6 +244,7 @@ int vtkGenericGeometryFilter::RequestData(
 
   int attributeType;
   
+  this->internalPD->Initialize();
   i=0;
   while(i<c)
     {
