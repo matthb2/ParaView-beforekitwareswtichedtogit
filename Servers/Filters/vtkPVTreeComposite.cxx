@@ -1399,6 +1399,11 @@ void vtkPVTreeComposite::SetRenderWindow(vtkRenderWindow *renWin)
 //----------------------------------------------------------------------------
 void vtkPVTreeComposite::PostRenderProcessing()
 {
+  if (!this->UseCompositing)
+    {
+    return;
+    }
+
   int front;
   int myId;
   myId = this->Controller->GetLocalProcessId();  
