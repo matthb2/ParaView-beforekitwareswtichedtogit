@@ -23,6 +23,8 @@
 #include "vtkPolyDataReader.h"
 #include "vtkTransformPolyDataFilter.h"
 
+#include <locale.h>
+
 vtkCxxRevisionMacro(vtkVectorText, "$Revision$");
 vtkStandardNewMacro(vtkVectorText);
 
@@ -1679,7 +1681,11 @@ int vtkVectorText::RequestData(
   newPoints = vtkPoints::New();
   newPolys = vtkCellArray::New();
   ftmp[2] = 0.0;
-  
+
+  // since we are parsing decimal strings we must manage the locale
+  char *oldLocale = strdup(setlocale(LC_NUMERIC,NULL));
+  setlocale(LC_NUMERIC,"English");
+           
   // Create Text
   while (this->Text[pos])
     {
@@ -1738,6 +1744,12 @@ int vtkVectorText::RequestData(
   output->SetPolys(newPolys);
   newPolys->Delete();
 
+  // restore the local
+  if (oldLocale)
+    {
+    setlocale(LC_NUMERIC,oldLocale);
+    delete [] oldLocale;
+    }
   return 1;
 }
   
