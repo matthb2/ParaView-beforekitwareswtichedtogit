@@ -176,6 +176,12 @@ unsigned long int vtkGenericDataSet::GetMTime()
   mtime = this->Attributes->GetMTime();
   result = ( mtime > result ? mtime : result );
 
+  if(this->Tessellator!=0)
+    {
+     mtime = this->Tessellator->GetMTime();
+     result = ( mtime > result ? mtime : result );
+    }
+  
   return result;
 }
 
