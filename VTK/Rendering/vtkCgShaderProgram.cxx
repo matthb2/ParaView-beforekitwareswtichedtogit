@@ -22,13 +22,14 @@
  */
 
 #include "vtkCgShaderProgram.h"
+
+#include "vtkActor.h"
+#include "vtkCollectionIterator.h"
 #include "vtkCgShader.h"
+#include "vtkObjectFactory.h"
+#include "vtkRenderer.h"
+#include "vtkXMLMaterialReader.h"
 
-#include <vtkXMLMaterialReader.h>
-#include <vtkActor.h>
-#include <vtkRenderer.h>
-
-#include <vtkObjectFactory.h>
 
 
 vtkCxxRevisionMacro(vtkCgShaderProgram, "$Revision$");
@@ -37,19 +38,18 @@ vtkStandardNewMacro(vtkCgShaderProgram);
 //----------------------------------------------------------------------------
 vtkCgShaderProgram::vtkCgShaderProgram()
 {
-  // replace superclass's default shaders with cg-specific ones
-  vtkShader* shader = vtkCgShader::New();
-  this->SetVertexShader(shader);
-  shader->Delete();
 
-  shader = vtkCgShader::New();
-  this->SetFragmentShader(shader);
-  shader->Delete();
 }
 
 //----------------------------------------------------------------------------
 vtkCgShaderProgram::~vtkCgShaderProgram()
 {
+}
+
+//----------------------------------------------------------------------------
+vtkShader* vtkCgShaderProgram::NewShader()
+{
+  return vtkCgShader::New();
 }
 
 //----------------------------------------------------------------------------
@@ -59,20 +59,15 @@ void vtkCgShaderProgram::Render(vtkActor *actor, vtkRenderer *renderer )
   // each can be installed in hardware independently. There's really
   // nothing for vtkCgShaderProgram to do but delegate all shader mechanics
   // tasks to it's vertex and fragment shaders.
-  if (this->VertexShader)
+  vtkCollectionIterator* iter = this->ShaderCollectionIterator;
+  for (iter->InitTraversal(); !iter->IsDoneWithTraversal();
+    iter->GoToNextItem())
     {
-    if (this->VertexShader->Compile())
+    vtkShader* shader = vtkShader::SafeDownCast(iter->GetCurrentObject());
+    if (shader->Compile())
       {
-      this->VertexShader->PassShaderVariables(actor, renderer);
-      this->VertexShader->Bind();
-      }
-    }
-  if (this->FragmentShader)
-    {
-    if (this->FragmentShader->Compile())
-      {
-      this->FragmentShader->PassShaderVariables(actor, renderer);
-      this->FragmentShader->Bind();
+      shader->PassShaderVariables(actor, renderer);
+      shader->Bind();
       }
     }
 }
