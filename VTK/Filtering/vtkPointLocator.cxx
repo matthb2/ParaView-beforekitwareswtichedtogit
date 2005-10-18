@@ -168,6 +168,11 @@ vtkIdType vtkPointLocator::FindClosestPoint(const double x[3])
   int ijk[3], *nei;
   vtkNeighborPoints buckets;
 
+  if ( !this->DataSet || this->DataSet->GetNumberOfPoints() < 1 )
+    {
+    return -1;
+    }
+
   this->BuildLocator(); // will subdivide if modified; otherwise returns
 
   //
