@@ -64,7 +64,7 @@ int vtkCellCenters::RequestData(
 
   if ( (numCells = input->GetNumberOfCells()) < 1 )
     {
-    vtkWarningMacro(<<"No cells to generate center points for");
+    vtkDebugMacro(<<"No cells to generate center points for");
     return 1;
     }
 

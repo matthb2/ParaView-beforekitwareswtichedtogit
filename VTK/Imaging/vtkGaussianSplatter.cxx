@@ -138,7 +138,7 @@ int vtkGaussianSplatter::RequestData(
   //
   if ( (numPts=input->GetNumberOfPoints()) < 1 )
     {
-    vtkErrorMacro(<<"No points to splat!");
+    vtkDebugMacro(<<"No points to splat!");
     return 1;
     }
 
