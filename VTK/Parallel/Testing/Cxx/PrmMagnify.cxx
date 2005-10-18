@@ -52,6 +52,10 @@ protected:
 
   virtual void PreRenderProcessing();
   virtual void PostRenderProcessing();
+
+private:
+  vtkTestMagnifyRenderManager(const vtkTestMagnifyRenderManager &);  // Not implemented.
+  void operator=(const vtkTestMagnifyRenderManager &);  // Not implemented.
 };
 
 vtkCxxRevisionMacro(vtkTestMagnifyRenderManager, "$Revision$");
