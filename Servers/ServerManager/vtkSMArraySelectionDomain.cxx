@@ -50,6 +50,7 @@ void vtkSMArraySelectionDomain::Update(vtkSMProperty* prop)
       {
       this->AddString(svp->GetElement(i*2));
       }
+    this->InvokeModified();
     }
 }
 

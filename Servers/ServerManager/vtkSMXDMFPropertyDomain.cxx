@@ -55,6 +55,7 @@ void vtkSMXDMFPropertyDomain::Update(vtkSMProperty* prop)
       int max = min + atoi(svp->GetElement(i*5+4)) - 1;
       this->AddMaximum(i, max);
       }
+    this->InvokeModified();
     }
 }
 

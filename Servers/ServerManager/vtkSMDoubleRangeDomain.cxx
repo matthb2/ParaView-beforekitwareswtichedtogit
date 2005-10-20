@@ -404,6 +404,7 @@ void vtkSMDoubleRangeDomain::Update(vtkSMProperty* prop)
         this->AddMaximum(i/2, dvp->GetElement(i));
         }
       }
+    this->InvokeModified();
     }
 }
 

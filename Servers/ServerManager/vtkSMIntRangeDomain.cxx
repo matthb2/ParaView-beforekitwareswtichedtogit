@@ -396,6 +396,7 @@ void vtkSMIntRangeDomain::Update(vtkSMProperty* prop)
         this->AddMaximum(i/2, ivp->GetElement(i));
         }
       }
+    this->InvokeModified();
     }
 }
 

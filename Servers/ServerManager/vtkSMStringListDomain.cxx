@@ -153,6 +153,7 @@ void vtkSMStringListDomain::Update(vtkSMProperty* prop)
       {
       this->AddString(svp->GetElement(i));
       }
+    this->InvokeModified();
     }
 }
 

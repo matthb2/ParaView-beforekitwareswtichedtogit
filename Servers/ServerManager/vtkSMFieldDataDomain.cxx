@@ -77,6 +77,7 @@ void vtkSMFieldDataDomain::Update(vtkSMSourceProxy* sp,
     this->AddEntry("Cell Data",  vtkDataObject::FIELD_ASSOCIATION_CELLS);
     }
 
+  this->InvokeModified();
 }
 
 //---------------------------------------------------------------------------

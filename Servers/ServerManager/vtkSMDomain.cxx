@@ -14,6 +14,7 @@
 =========================================================================*/
 #include "vtkSMDomain.h"
 
+#include "vtkCommand.h"
 #include "vtkPVXMLElement.h"
 #include "vtkSMProperty.h"
 #include "vtkSmartPointer.h"
@@ -138,6 +139,12 @@ void vtkSMDomain::AddRequiredProperty(vtkSMProperty *prop,
   
   prop->AddDependent(this);
   this->Internals->RequiredProperties[function] = prop;
+}
+
+//---------------------------------------------------------------------------
+void vtkSMDomain::InvokeModified()
+{
+  this->InvokeEvent(vtkCommand::DomainModifiedEvent, 0);
 }
 
 //---------------------------------------------------------------------------
