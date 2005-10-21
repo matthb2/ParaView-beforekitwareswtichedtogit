@@ -40,7 +40,7 @@ vtkSMArrayRangeDomain::~vtkSMArrayRangeDomain()
 }
 
 //---------------------------------------------------------------------------
-void vtkSMArrayRangeDomain::Update(vtkSMProperty* prop)
+void vtkSMArrayRangeDomain::Update(vtkSMProperty*)
 {
   this->RemoveAllMinima();
   this->RemoveAllMaxima();

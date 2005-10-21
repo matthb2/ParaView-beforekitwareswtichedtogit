@@ -183,7 +183,7 @@ void vtkSMArrayListDomain::Update(vtkSMProxyProperty* pp)
 }
 
 //---------------------------------------------------------------------------
-void vtkSMArrayListDomain::Update(vtkSMProperty* prop)
+void vtkSMArrayListDomain::Update(vtkSMProperty*)
 {
   this->RemoveAllStrings();
 
