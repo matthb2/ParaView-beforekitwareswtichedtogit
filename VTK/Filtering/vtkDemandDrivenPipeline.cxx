@@ -143,17 +143,17 @@ vtkDemandDrivenPipeline::ComputePipelineMTime(vtkInformation* request,
         info->Get(vtkExecutive::PRODUCER(),e,producerPort);
         if(e)
           {
-          unsigned long mtime;
+          unsigned long pmtime;
           if(!e->ComputePipelineMTime(request,
                                       e->GetInputInformation(),
                                       e->GetOutputInformation(),
-                                      producerPort, &mtime))
+                                      producerPort, &pmtime))
             {
             return 0;
             }
-          if(mtime > this->PipelineMTime)
+          if(pmtime > this->PipelineMTime)
             {
-            this->PipelineMTime = mtime;
+            this->PipelineMTime = pmtime;
             }
           }
         }
