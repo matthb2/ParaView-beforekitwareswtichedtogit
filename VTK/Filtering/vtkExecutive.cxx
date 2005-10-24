@@ -553,6 +553,18 @@ int vtkExecutive::ProcessRequest(vtkInformation* request,
 }
 
 //----------------------------------------------------------------------------
+int vtkExecutive::ComputePipelineMTime(vtkInformation*, int,
+                                       vtkInformationVector**,
+                                       vtkInformationVector*,
+                                       int, unsigned long*)
+{
+  // Demand-driven executives that use this request should implement
+  // this method.
+  vtkErrorMacro("ComputePipelineMTime not implemented for this executive.");
+  return 0;
+}
+
+//----------------------------------------------------------------------------
 int vtkExecutive::ForwardDownstream(vtkInformation*)
 {
   vtkErrorMacro("ForwardDownstream not yet implemented.");
