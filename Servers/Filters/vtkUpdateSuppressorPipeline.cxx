@@ -40,7 +40,6 @@ void vtkUpdateSuppressorPipeline::PrintSelf(ostream& os, vtkIndent indent)
 
 //----------------------------------------------------------------------------
 int vtkUpdateSuppressorPipeline::ProcessRequest(vtkInformation* request,
-                                                int forward,
                                                 vtkInformationVector** inInfo,
                                                 vtkInformationVector* outInfo)
 {
@@ -57,8 +56,7 @@ int vtkUpdateSuppressorPipeline::ProcessRequest(vtkInformation* request,
       }
     return 1;
     }
-  return this->Superclass::ProcessRequest(request,forward,
-                                          inInfo,outInfo);
+  return this->Superclass::ProcessRequest(request, inInfo, outInfo);
 }
 
 
