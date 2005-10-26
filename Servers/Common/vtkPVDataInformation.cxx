@@ -111,6 +111,8 @@ void vtkPVDataInformation::PrintSelf(ostream& os, vtkIndent indent)
   this->CellDataInformation->PrintSelf(os, i2);
   os << indent << "CompositeDataInformation " << endl;
   this->CompositeDataInformation->PrintSelf(os, i2);
+  os << indent << "PointArrayInformation " << endl;
+  this->PointArrayInformation->PrintSelf(os, i2);
 
   if (this->Name)
     {
