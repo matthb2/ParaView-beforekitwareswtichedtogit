@@ -108,10 +108,6 @@ void vtkSMPropertyAdaptor::SetDomain(vtkSMDomain* domain)
     {
     this->StringListDomain = vtkSMStringListDomain::SafeDownCast(domain);
     }
-  if (!this->StringListDomain)
-    {
-    this->StringListDomain = vtkSMStringListDomain::SafeDownCast(domain);
-    }
   if (!this->StringListRangeDomain)
     {
     this->StringListRangeDomain = 
