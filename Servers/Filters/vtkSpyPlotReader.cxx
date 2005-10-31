@@ -1676,7 +1676,7 @@ public:
       {
       it->second = vtkSpyPlotUniReader::New();
       it->second->SetCellArraySelection(parent->GetCellDataArraySelection());
-      cout << parent->GetController()->GetLocalProcessId() << "Create reader: " << it->second << endl;
+      //cout << parent->GetController()->GetLocalProcessId() << "Create reader: " << it->second << endl;
       }
     return it->second;
     }
