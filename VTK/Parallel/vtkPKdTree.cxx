@@ -2995,6 +2995,7 @@ int vtkPKdTree::AssignRegionsContiguous()
   if (nRegions <= nProcesses)
     {
     this->AssignRegionsRoundRobin();
+    this->RegionAssignment = ContiguousAssignment;
     return 0;
     }
 
