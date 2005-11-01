@@ -599,7 +599,7 @@ void vtkSMRenderModuleProxy::SetUseTriangleStrips(int val)
       {
       ivp->SetElement(0, val);
       disp->UpdateVTKObjects();
-      disp->MarkConsumersAsModified();
+      disp->MarkModified(this);
       }
     }
   iter->Delete();  

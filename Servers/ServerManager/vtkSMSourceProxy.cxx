@@ -146,6 +146,8 @@ void vtkSMSourceProxy::UpdatePipeline()
     {
     this->GetPart(i)->Update();
     }
+
+  this->InvalidateDataInformation();
 }
 
 //---------------------------------------------------------------------------
@@ -358,14 +360,14 @@ void vtkSMSourceProxy::AddInput(vtkSMSourceProxy *input,
 }
 
 //----------------------------------------------------------------------------
-void vtkSMSourceProxy::MarkConsumersAsModified()
+void vtkSMSourceProxy::MarkModified(vtkSMProxy* modifiedProxy)
 {
   if (this->PartsCreated && !this->GetNumberOfParts())
     {
     this->UpdatePipeline();
     }
 
-  this->Superclass::MarkConsumersAsModified();
+  this->Superclass::MarkModified(modifiedProxy);
   this->InvalidateDataInformation();
 }
 
@@ -381,6 +383,9 @@ vtkPVDataInformation* vtkSMSourceProxy::GetDataInformation()
 {
   if (this->DataInformationValid == 0)
     {
+    // Make sure the output filter is up-to-date before
+    // getting information.
+    this->UpdatePipeline();
     this->GatherDataInformation();
     this->UpdateDataInformation();
     }

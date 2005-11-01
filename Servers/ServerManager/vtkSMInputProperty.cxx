@@ -81,8 +81,8 @@ void vtkSMInputProperty::AppendCommandToStream(
     return;
     }
 
-  this->RemoveConsumers(cons);
-  this->RemoveAllPreviousProxies();
+  this->RemoveConsumerFromPreviousProxies(cons);
+  this->RemoveAllPreviousProxies(cons);
 
   if (this->CleanCommand)
     {
@@ -96,7 +96,7 @@ void vtkSMInputProperty::AppendCommandToStream(
     vtkSMProxy* proxy = this->GetProxy(i) ;
     if (proxy)
       {
-      this->AddPreviousProxy(proxy);
+      this->AddPreviousProxy(cons, proxy);
       proxy->AddConsumer(this, cons);
 
       *str << vtkClientServerStream::Invoke 

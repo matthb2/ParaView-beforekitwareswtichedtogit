@@ -602,9 +602,9 @@ void vtkSMXYPlotDisplayProxy::InvalidateGeometry()
 }
 
 //-----------------------------------------------------------------------------
-void vtkSMXYPlotDisplayProxy::MarkConsumersAsModified()
+void vtkSMXYPlotDisplayProxy::MarkModified(vtkSMProxy* modifiedProxy)
 {
-  this->Superclass::MarkConsumersAsModified();
+  this->Superclass::MarkModified(modifiedProxy);
   this->InvalidateGeometry();
 }
 

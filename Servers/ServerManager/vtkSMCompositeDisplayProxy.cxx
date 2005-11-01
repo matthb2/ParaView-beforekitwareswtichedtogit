@@ -793,7 +793,7 @@ void vtkSMCompositeDisplayProxy::SetCollectionDecision(int v)
     return;
     }
   ivp->SetElement(0, this->CollectionDecision);
-  this->InvalidateGeometryInternal();
+  this->InvalidateGeometryInternal(0);
   this->UpdateVTKObjects();
 }
 
