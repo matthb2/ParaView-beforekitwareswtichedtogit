@@ -748,7 +748,7 @@ void vtkColorTransferFunction::GetTable( double xStart, double xEnd,
     tmpPtr ++;
     }
 
-  delete tmpTable;
+  delete[] tmpTable;
 }
 
 //----------------------------------------------------------------------------
