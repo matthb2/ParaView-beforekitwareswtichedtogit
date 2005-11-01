@@ -292,7 +292,10 @@ void vtkKdTree::SetCuts(vtkBSPCuts *cuts, int userDefined)
     return;
     }
 
-  this->Modified();
+  if (!this->Cuts || !this->Cuts->Equals(cuts))
+    {
+    this->Modified();
+    }
 
   if (this->Cuts)
     {
