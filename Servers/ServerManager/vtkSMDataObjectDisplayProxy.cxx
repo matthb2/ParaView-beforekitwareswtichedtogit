@@ -96,6 +96,18 @@ vtkSMDataObjectDisplayProxy::~vtkSMDataObjectDisplayProxy()
 }
 
 //-----------------------------------------------------------------------------
+void vtkSMDataObjectDisplayProxy::SetUseCache(int useCache)
+{
+  vtkSMDataObjectDisplayProxy::UseCache = useCache;
+}
+
+//-----------------------------------------------------------------------------
+int vtkSMDataObjectDisplayProxy::GetUseCache()
+{
+  return vtkSMDataObjectDisplayProxy::UseCache;
+}
+
+//-----------------------------------------------------------------------------
 void vtkSMDataObjectDisplayProxy::MarkModified(vtkSMProxy* modifiedProxy)
 {
   this->Superclass::MarkModified(modifiedProxy);
