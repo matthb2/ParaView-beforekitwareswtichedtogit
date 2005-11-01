@@ -1748,7 +1748,7 @@ int vtkVectorText::RequestData(
   if (oldLocale)
     {
     setlocale(LC_NUMERIC,oldLocale);
-    delete [] oldLocale;
+    free(oldLocale);
     }
   return 1;
 }
