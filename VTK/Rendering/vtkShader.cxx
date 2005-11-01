@@ -398,14 +398,9 @@ void vtkShader::AddShaderVariable(const char* name, int num_of_elements,
     {
     return;
     }
-  if (this->HasShaderVariable(name))
-    {
-    vtkWarningMacro("Variable with name '" << name 
-      <<"' already exists. Ignoring.");
-    return;
-    }
   this->Internals->UniformVariables[name] = vtkShaderUniformVariable(
     name, num_of_elements, values);
+
   this->Modified();
 }
 
@@ -415,12 +410,6 @@ void vtkShader::AddShaderVariable(const char* name, int num_of_elements,
 {
   if (!name || num_of_elements <= 0 || !values)
     {
-    return;
-    }
-  if (this->HasShaderVariable(name))
-    {
-    vtkWarningMacro("Variable with name '" << name 
-      <<"' already exists. Ignoring.");
     return;
     }
   this->Internals->UniformVariables[name] = vtkShaderUniformVariable(
@@ -435,12 +424,6 @@ void vtkShader::AddShaderVariable(const char* name, int num_of_elements,
   if (!name || num_of_elements <= 0 || !values)
     {
     vtkWarningMacro("Need more info to build a Shader Variables!");
-    return;
-    }
-  if (this->HasShaderVariable(name))
-    {
-    vtkWarningMacro("Variable with name '" << name 
-      <<"' already exists. Ignoring.");
     return;
     }
   this->Internals->UniformVariables[name] = vtkShaderUniformVariable(
