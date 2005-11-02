@@ -659,7 +659,8 @@ void vtkShader::SetCameraParameter(vtkActor* , vtkRenderer* ren,
   vtkXMLDataElement* elem)
 {
   vtkCamera* camera = ren->GetActiveCamera();
-  if (this->GetMTime() < this->PassShaderVariablesTime)
+  if (this->GetMTime() < this->PassShaderVariablesTime &&
+    camera->GetMTime() < this->PassShaderVariablesTime)
     {
     return; // no need to update.
     }
