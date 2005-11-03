@@ -1526,6 +1526,14 @@ void vtkFixedPointVolumeRayCastMapper::CreateCanonicalView( vtkVolume *vol,
   
   // Restore
   this->SampleDistance = this->OldSampleDistance;
+  
+  //Clean up
+  renWin->RemoveRenderer(ren);
+  ren->RemoveLight(light);
+  
+  renWin->Delete();
+  ren->Delete();
+  light->Delete();
 }
 
 void vtkFixedPointVolumeRayCastMapper::ComputeRayInfo( int x, int y, unsigned int pos[3],
