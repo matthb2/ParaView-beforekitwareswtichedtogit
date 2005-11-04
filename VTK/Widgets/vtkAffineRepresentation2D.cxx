@@ -57,8 +57,8 @@ vtkAffineRepresentation2D::vtkAffineRepresentation2D()
   // The width of the widget
   this->DisplayText = 1;
   this->BoxWidth = 100;
-  this->CircleWidth = 0.75 * this->BoxWidth;
-  this->AxesWidth = 0.60 * this->BoxWidth;
+  this->CircleWidth = static_cast<int>(0.75 * this->BoxWidth);
+  this->AxesWidth = static_cast<int>(0.60 * this->BoxWidth);
   this->CurrentWidth = 0.0;
   this->CurrentRadius = 0.0;
   this->CurrentAxesWidth = 0.0;

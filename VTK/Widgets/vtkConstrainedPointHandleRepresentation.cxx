@@ -463,7 +463,7 @@ int vtkConstrainedPointHandleRepresentation::GetIntersectionPosition(double even
       
       this->BoundingPlanes->InitTraversal();
       
-      while ( p = this->BoundingPlanes->GetNextItem() )
+      while ( (p = this->BoundingPlanes->GetNextItem()) )
         {
         if ( p->EvaluateFunction( position ) < tolerance )
           {

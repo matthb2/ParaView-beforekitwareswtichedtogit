@@ -49,7 +49,7 @@ public:
           break;
         }
     }
-  vtkCWCallback():CheckerboardWidget(0),SliderNumber(0) {}
+  vtkCWCallback():SliderNumber(0),CheckerboardWidget(0) {}
   int SliderNumber; //the number of the currently active slider
   vtkCheckerboardWidget *CheckerboardWidget;
 };

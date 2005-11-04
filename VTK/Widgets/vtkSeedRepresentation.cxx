@@ -68,24 +68,17 @@ vtkSeedRepresentation::~vtkSeedRepresentation()
 //----------------------------------------------------------------------
 vtkHandleRepresentation *vtkSeedRepresentation::GetHandleRepresentation(unsigned int num)
 {
-  if ( num < 0 )
+  if ( num < this->Handles->size() )
     {
-    return NULL;
+    return (*this->Handles)[num];
     }
-  else
+  else //create one
     {
-    if ( num < this->Handles->size() )
-      {
-      return (*this->Handles)[num];
-      }
-    else //create one
-      {
-      vtkHandleRepresentation *rep = this->HandleRepresentation->NewInstance();
-      rep->ShallowCopy(this->HandleRepresentation);
-      this->Handles->resize(num+1,NULL);
-      (*this->Handles)[num] = rep;
-      return rep;
-      }
+    vtkHandleRepresentation *rep = this->HandleRepresentation->NewInstance();
+    rep->ShallowCopy(this->HandleRepresentation);
+    this->Handles->resize(num+1,NULL);
+    (*this->Handles)[num] = rep;
+    return rep;
     }
 }
   
