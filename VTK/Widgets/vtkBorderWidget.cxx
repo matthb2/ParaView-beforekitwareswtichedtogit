@@ -23,6 +23,7 @@
 #include "vtkWidgetEventTranslator.h"
 #include "vtkWidgetCallbackMapper.h" 
 #include "vtkEvent.h"
+#include "vtkWidgetEvent.h"
 
 
 vtkCxxRevisionMacro(vtkBorderWidget, "$Revision$");

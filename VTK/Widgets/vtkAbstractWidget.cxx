@@ -21,6 +21,7 @@
 #include "vtkWidgetCallbackMapper.h" 
 #include "vtkRenderer.h"
 #include "vtkEvent.h"
+#include "vtkWidgetEvent.h"
 
 vtkCxxRevisionMacro(vtkAbstractWidget, "$Revision$");
 

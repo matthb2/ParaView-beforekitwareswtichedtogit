@@ -23,6 +23,7 @@
 #include "vtkSphereSource.h"
 #include "vtkProperty.h"
 #include "vtkEvent.h"
+#include "vtkWidgetEvent.h"
 
 #include <vtkstd/vector>
 #include <vtkstd/set>

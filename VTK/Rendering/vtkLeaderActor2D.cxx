@@ -694,11 +694,26 @@ void vtkLeaderActor2D::PrintSelf(ostream& os, vtkIndent indent)
   os << indent << "Auto Label: " << (this->AutoLabel ? "On\n" : "Off\n");
   os << indent << "Label Format: " << this->LabelFormat << "\n";
 
+  os << indent << "Arrow Style: ";
+  if ( this->ArrowStyle == VTK_ARROW_FILLED )
+    {
+    os << "Filled\n";
+    }
+  else if ( this->ArrowStyle == VTK_ARROW_OPEN )
+    {
+    os << "Open\n";
+    }
+  else // if ( this->ArrowStyle == VTK_ARROW_HOLLOW )
+    {
+    os << "Hollow\n";
+    }
+
   os << indent << "Arrow Length: " << this->ArrowLength << "\n";
   os << indent << "Arrow Width: " << this->ArrowWidth << "\n";
   os << indent << "Minimum Arrow Size: " << this->MinimumArrowSize << "\n";
   os << indent << "Maximum Arrow Size: " << this->MaximumArrowSize << "\n";
-  os << indent << "Arrow Style: ";
+
+  os << indent << "Arrow Placement: ";
   if ( this->ArrowPlacement == VTK_ARROW_NONE )
     {
     os << "No Arrows\n";
