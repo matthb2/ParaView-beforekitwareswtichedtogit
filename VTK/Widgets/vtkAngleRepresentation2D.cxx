@@ -57,6 +57,12 @@ vtkAngleRepresentation2D::~vtkAngleRepresentation2D()
 }
 
 //----------------------------------------------------------------------
+double vtkAngleRepresentation2D::GetAngle()
+{
+  return this->Arc->GetAngle();
+}
+
+//----------------------------------------------------------------------
 void vtkAngleRepresentation2D::GetPoint1WorldPosition(double pos[3])
 {
   this->Point1Representation->GetWorldPosition(pos);
