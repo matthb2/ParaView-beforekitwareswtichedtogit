@@ -861,7 +861,7 @@ void vtkAffineRepresentation2D::CreateDefaultProperties()
   this->SelectedProperty->SetLineWidth(1.0);
 
   this->TextProperty = vtkTextProperty::New();
-  this->TextProperty->SetFontSize(12.0);
+  this->TextProperty->SetFontSize(12);
   this->TextProperty->SetColor(1.0,0.0,0.0);
   this->TextProperty->SetBold(1);
   this->TextProperty->SetFontFamilyToArial();

@@ -100,7 +100,7 @@ int vtkBezierContourLineInterpolator::InterpolateLine( vtkRenderer *vtkNotUsed(r
     totalDist += sqrt(vtkMath::Distance2BetweenPoints(p2,p3));
     totalDist += sqrt(vtkMath::Distance2BetweenPoints(p3,p4));
     
-    double distance = sqrt(vtkMath::Distance2BetweenPoints(p1,p4));
+    distance = sqrt(vtkMath::Distance2BetweenPoints(p1,p4));
     
     if ( recursionLevel >= maxRecursion || distance == 0 ||
          (totalDist - distance)/distance < this->MaximumCurveError ) 
