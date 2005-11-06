@@ -106,6 +106,18 @@ void vtkHandleRepresentation::ShallowCopy(vtkProp *prop)
 }
 
 //----------------------------------------------------------------------
+unsigned long vtkHandleRepresentation::GetMTime()
+{
+  unsigned long mTime=this->Superclass::GetMTime();
+  unsigned long wMTime=this->WorldPosition->GetMTime();
+  mTime = ( wMTime > mTime ? wMTime : mTime );
+  unsigned long dMTime=this->DisplayPosition->GetMTime();
+  mTime = ( dMTime > mTime ? dMTime : mTime );
+  
+  return mTime;
+}
+
+//----------------------------------------------------------------------
 void vtkHandleRepresentation::PrintSelf(ostream& os, vtkIndent indent)
 {
   //Superclass typedef defined in vtkTypeMacro() found in vtkSetGet.h
