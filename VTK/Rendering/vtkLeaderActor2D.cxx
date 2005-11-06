@@ -735,5 +735,8 @@ void vtkLeaderActor2D::PrintSelf(ostream& os, vtkIndent indent)
     {
     os << "Arrow on both ends\n";
     }
+  
+  os << indent << "Angle: " << this->Angle << "\n";
+  os << indent << "Length: " << this->Length << "\n";
 }
 
