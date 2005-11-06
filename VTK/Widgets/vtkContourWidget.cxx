@@ -173,12 +173,6 @@ void vtkContourWidget::AddFinalPointAction(vtkAbstractWidget *w)
   vtkContourRepresentation *rep = 
     reinterpret_cast<vtkContourRepresentation*>(self->WidgetRep);
 
-  int X = self->Interactor->GetEventPosition()[0];
-  int Y = self->Interactor->GetEventPosition()[1];
-  double pos[2];
-  pos[0] = X;
-  pos[1] = Y;
-
   if ( self->WidgetState ==  vtkContourWidget::Define &&
        rep->GetNumberOfNodes() >= 1 )
     {
