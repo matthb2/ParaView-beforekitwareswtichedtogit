@@ -190,10 +190,18 @@ double *vtkProperty::GetColor()
 void vtkProperty::GetColor(double rgb[3])
 {
   this->GetColor();
-
   rgb[0] = this->Color[0];
   rgb[1] = this->Color[1];
   rgb[2] = this->Color[2];
+}
+
+//----------------------------------------------------------------------------
+void vtkProperty::GetColor(double &r, double &g, double &b)
+{
+  this->GetColor();
+  r = this->Color[0];
+  g = this->Color[1];
+  b = this->Color[2];
 }
 
 //----------------------------------------------------------------------------
