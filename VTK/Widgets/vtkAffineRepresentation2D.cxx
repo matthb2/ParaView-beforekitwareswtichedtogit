@@ -277,7 +277,6 @@ void vtkAffineRepresentation2D::SetOrigin(double ox, double oy, double oz)
     this->Origin[2] = oz;
     
     this->BuildRepresentation();
-    
     this->Modified();
     }
 }
