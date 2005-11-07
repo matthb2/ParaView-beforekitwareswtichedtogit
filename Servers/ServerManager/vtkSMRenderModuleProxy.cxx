@@ -575,7 +575,9 @@ void vtkSMRenderModuleProxy::UpdateAllDisplays()
       // Some displays don't need updating.
       continue;
       }
-    disp->Update();
+    // In case of ordered compositing, make sure any distributed geometry is up
+    // to date.
+    disp->UpdateDistributedGeometry();
     // We don;t use properties here since it tends to slow things down.
     }
   iter->Delete();  
