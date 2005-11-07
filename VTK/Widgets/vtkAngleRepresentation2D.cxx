@@ -29,6 +29,9 @@ vtkStandardNewMacro(vtkAngleRepresentation2D);
 //----------------------------------------------------------------------
 vtkAngleRepresentation2D::vtkAngleRepresentation2D()
 {
+  // By default, use one of these handles
+  this->HandleRepresentation  = vtkPointHandleRepresentation2D::New();
+
   this->Ray1 = vtkLeaderActor2D::New();
   this->Ray1->GetPositionCoordinate()->SetCoordinateSystemToWorld();
   this->Ray1->GetPosition2Coordinate()->SetCoordinateSystemToWorld();
