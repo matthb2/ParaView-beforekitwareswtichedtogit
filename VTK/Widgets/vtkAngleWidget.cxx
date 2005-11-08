@@ -251,6 +251,21 @@ void vtkAngleWidget::SetEnabled(int enabling)
     }
 }
 
+//----------------------------------------------------------------------
+int vtkAngleWidget::IsAngleValid()
+{
+  if ( this->WidgetState == vtkAngleWidget::Placed ||
+       this->WidgetState == vtkAngleWidget::MovingHandle ||
+       (this->WidgetState == vtkAngleWidget::PlacingPoints && this->CurrentHandle == 2) )
+    {
+    return 1;
+    }
+  else
+    {
+    return 0;
+    }
+}
+
 // The following methods are the callbacks that the angle widget responds to. 
 //-------------------------------------------------------------------------
 void vtkAngleWidget::AddPointAction(vtkAbstractWidget *w)
