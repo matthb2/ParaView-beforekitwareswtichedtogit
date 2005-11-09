@@ -19,7 +19,7 @@
 #include "vtkSMIntVectorProperty.h"
 #include "vtkClientServerStream.h"
 #include "vtkClientServerID.h"
-#include "vtkPVProcessModule.h"
+#include "vtkProcessModule.h"
 #include "vtkPVOptions.h"
 
 vtkStandardNewMacro(vtkSMMultiDisplayRenderModuleProxy);
@@ -52,8 +52,7 @@ void vtkSMMultiDisplayRenderModuleProxy::InitializeCompositingPipeline()
     }
   vtkSMIntVectorProperty* ivp;
 
-  vtkPVProcessModule* pm = vtkPVProcessModule::SafeDownCast(
-    vtkProcessModule::GetProcessModule());
+  vtkProcessModule* pm = vtkProcessModule::GetProcessModule();
 
   ivp = vtkSMIntVectorProperty::SafeDownCast(
     this->CompositeManagerProxy->GetProperty("TileDimensions"));
@@ -118,10 +117,6 @@ void vtkSMMultiDisplayRenderModuleProxy::InitializeCompositingPipeline()
   this->CompositeManagerProxy->UpdateVTKObjects();
 }
 
-//-----------------------------------------------------------------------------
-//-----------------------------------------------------------------------------
-//-----------------------------------------------------------------------------
-//-----------------------------------------------------------------------------
 //-----------------------------------------------------------------------------
 void vtkSMMultiDisplayRenderModuleProxy::PrintSelf(ostream& os, vtkIndent indent)
 {

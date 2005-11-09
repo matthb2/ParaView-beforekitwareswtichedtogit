@@ -34,7 +34,7 @@ vtkSMDisplayProxy::vtkSMDisplayProxy()
 vtkSMDisplayProxy::~vtkSMDisplayProxy()
 {
 }
-
+ 
 //-----------------------------------------------------------------------------
 vtkSMProxy* vtkSMDisplayProxy::GetInteractorProxy(vtkSMRenderModuleProxy* ren)
 {

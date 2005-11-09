@@ -15,7 +15,7 @@
 #include "vtkSMPointWidgetProxy.h"
 
 #include "vtkObjectFactory.h"
-#include "vtkPVProcessModule.h"
+#include "vtkProcessModule.h"
 #include "vtkCommand.h"
 #include "vtkClientServerStream.h"
 #include "vtkPointWidget.h"

@@ -16,7 +16,7 @@
 
 #include "vtkLineWidget.h"
 #include "vtkObjectFactory.h"
-#include "vtkPVProcessModule.h"
+#include "vtkProcessModule.h"
 #include "vtkClientServerStream.h"
 #include "vtkCommand.h"
 #include "vtkSMDoubleVectorProperty.h"

@@ -16,7 +16,7 @@
 
 #include "vtkPVProcessModulePythonHelper.h"
 
-#include "vtkPVProcessModule.h"
+#include "vtkProcessModule.h"
 #include "vtkObjectFactory.h"
 #include "vtkPVPythonOptions.h"
 #include "vtkSMApplication.h"

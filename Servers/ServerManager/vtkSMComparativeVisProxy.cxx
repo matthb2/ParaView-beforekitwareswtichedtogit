@@ -20,7 +20,7 @@
 #include "vtkCommand.h"
 #include "vtkObjectFactory.h"
 #include "vtkPVGeometryInformation.h"
-#include "vtkPVProcessModule.h"
+#include "vtkProcessModule.h"
 #include "vtkSMAnimationCueProxy.h"
 #include "vtkSMAnimationSceneProxy.h"
 #include "vtkSMDoubleVectorProperty.h"

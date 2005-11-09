@@ -14,12 +14,12 @@
 =========================================================================*/
 #include "vtkSMSphereWidgetProxy.h"
 
-#include "vtkObjectFactory.h"
-#include "vtkPVProcessModule.h"
 #include "vtkClientServerStream.h"
-#include "vtkSphereWidget.h"
-#include "vtkSMDoubleVectorProperty.h"
 #include "vtkCommand.h"
+#include "vtkObjectFactory.h"
+#include "vtkProcessModule.h"
+#include "vtkSMDoubleVectorProperty.h"
+#include "vtkSphereWidget.h"
 
 vtkStandardNewMacro(vtkSMSphereWidgetProxy);
 vtkCxxRevisionMacro(vtkSMSphereWidgetProxy, "$Revision$");

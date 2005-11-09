@@ -14,7 +14,7 @@
 =========================================================================*/
 #include "vtkPVProcessModuleBatchHelper.h"
 
-#include "vtkPVProcessModule.h"
+#include "vtkProcessModule.h"
 #include "vtkPVProcessModuleBatchHelperConfig.h"
 #include "vtkObjectFactory.h"
 #include "vtkPVBatchOptions.h"

@@ -20,7 +20,6 @@
 #include "vtkInformation.h"
 #include "vtkInformationDoubleVectorKey.h"
 #include "vtkObjectFactory.h"
-#include "vtkPVProcessModule.h"
 #include "vtkClientServerStream.h"
 
 //----------------------------------------------------------------------------

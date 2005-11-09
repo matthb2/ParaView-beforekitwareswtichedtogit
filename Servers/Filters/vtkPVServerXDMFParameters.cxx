@@ -16,7 +16,6 @@
 
 #include "vtkClientServerInterpreter.h"
 #include "vtkObjectFactory.h"
-#include "vtkPVProcessModule.h"
 #include "vtkXdmfReader.h"
 #include "vtkClientServerStream.h"
 

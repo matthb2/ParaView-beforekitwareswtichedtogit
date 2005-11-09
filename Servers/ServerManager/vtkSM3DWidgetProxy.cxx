@@ -19,7 +19,7 @@
 #include "vtkCommand.h"
 #include "vtkObjectFactory.h"
 #include "vtkPVGenericRenderWindowInteractor.h"
-#include "vtkPVProcessModule.h"
+#include "vtkProcessModule.h"
 #include "vtkRenderer.h"
 #include "vtkSMIntVectorProperty.h"
 #include "vtkSMRenderModuleProxy.h"

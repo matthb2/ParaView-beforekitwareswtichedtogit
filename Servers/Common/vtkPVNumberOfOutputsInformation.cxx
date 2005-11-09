@@ -71,8 +71,13 @@ void vtkPVNumberOfOutputsInformation::CopyFromObject(vtkObject* obj)
 }
 
 //----------------------------------------------------------------------------
-void vtkPVNumberOfOutputsInformation::AddInformation(vtkPVInformation*)
+void vtkPVNumberOfOutputsInformation::AddInformation(vtkPVInformation* info)
 {
+  if (vtkPVNumberOfOutputsInformation::SafeDownCast(info))
+    {
+    this->NumberOfOutputs = vtkPVNumberOfOutputsInformation::SafeDownCast(info)
+      ->GetNumberOfOutputs();
+    }
 }
 
 //----------------------------------------------------------------------------

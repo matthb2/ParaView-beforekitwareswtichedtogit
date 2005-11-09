@@ -52,8 +52,14 @@ void vtkPVClassNameInformation::CopyFromObject(vtkObject* obj)
 }
 
 //----------------------------------------------------------------------------
-void vtkPVClassNameInformation::AddInformation(vtkPVInformation*)
+void vtkPVClassNameInformation::AddInformation(vtkPVInformation* info)
 {
+  if (vtkPVClassNameInformation::SafeDownCast(info))
+    {
+    this->SetVTKClassName(
+      vtkPVClassNameInformation::SafeDownCast(info)->GetVTKClassName());
+    }
+  
 }
 
 //----------------------------------------------------------------------------

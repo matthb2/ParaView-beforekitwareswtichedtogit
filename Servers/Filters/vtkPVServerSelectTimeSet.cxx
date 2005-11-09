@@ -16,7 +16,6 @@
 
 #include "vtkClientServerInterpreter.h"
 #include "vtkObjectFactory.h"
-#include "vtkPVProcessModule.h"
 #include "vtkGenericEnSightReader.h"
 #include "vtkDataArrayCollection.h"
 #include "vtkDataArrayCollectionIterator.h"

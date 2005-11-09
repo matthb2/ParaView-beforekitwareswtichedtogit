@@ -15,7 +15,7 @@
 #include "vtkSMPickSphereWidgetProxy.h"
 
 #include "vtkObjectFactory.h"
-#include "vtkPVProcessModule.h"
+#include "vtkProcessModule.h"
 #include "vtkClientServerStream.h"
 #include "vtkSMDoubleVectorProperty.h"
 #include "vtkCommand.h"

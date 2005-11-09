@@ -17,7 +17,7 @@
 
 #include "vtkClientServerStream.h"
 #include "vtkObjectFactory.h"
-#include "vtkPVProcessModule.h"
+#include "vtkProcessModule.h"
 #include "vtkSMInputProperty.h"
 #include "vtkSMIntVectorProperty.h"
 #include "vtkSMProxy.h"
@@ -133,8 +133,7 @@ void vtkSMIceTMultiDisplayProxy::SetupDefaults()
     {
     vtkClientServerStream cmd;
     vtkClientServerStream stream;
-    vtkPVProcessModule* pm = vtkPVProcessModule::SafeDownCast(
-                                          vtkProcessModule::GetProcessModule());
+    vtkProcessModule* pm = vtkProcessModule::GetProcessModule();
 
     cmd << vtkClientServerStream::Invoke
       << pm->GetProcessModuleID() << "LogStartEvent" << "Execute OutlineCollect"
