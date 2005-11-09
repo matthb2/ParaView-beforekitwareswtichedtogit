@@ -48,7 +48,7 @@ void vtkClientConnectionRMI(void *localArg, void *remoteArg,
   
   // Tell process module to send it to SelfConnection.
   vtkProcessModule::GetProcessModule()->SendStream(
-    vtkProcessModuleConnectionManager::SelfConnectionID,
+    vtkProcessModuleConnectionManager::GetSelfConnectionID(),
     vtkProcessModule::DATA_SERVER, stream);
 
   self->Deactivate();
@@ -66,7 +66,7 @@ void vtkClientConnectionRootRMI(void *localArg, void *remoteArg,
   self->Activate();
   // Tell process module to send it to SelfConnection Root.
   vtkProcessModule::GetProcessModule()->SendStream(
-    vtkProcessModuleConnectionManager::SelfConnectionID,
+    vtkProcessModuleConnectionManager::GetSelfConnectionID(),
     vtkProcessModule::DATA_SERVER_ROOT, stream);
   self->Deactivate();
 }
@@ -248,7 +248,7 @@ void vtkClientConnection::SendInformation(vtkClientServerStream& stream)
   vtkPVInformation* info = vtkPVInformation::SafeDownCast(o);
   if (info)
     {
-    pm->GatherInformation(vtkProcessModuleConnectionManager::SelfConnectionID, 
+    pm->GatherInformation(vtkProcessModuleConnectionManager::GetSelfConnectionID(), 
       vtkProcessModule::DATA_SERVER, info, id);
     
     vtkClientServerStream css;
