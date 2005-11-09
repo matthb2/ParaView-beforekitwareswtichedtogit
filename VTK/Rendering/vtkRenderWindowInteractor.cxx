@@ -86,6 +86,7 @@ vtkRenderWindowInteractor::~vtkRenderWindowInteractor()
     {
     delete [] this->KeySym;
     }
+  this->SetRenderWindow(0);
 }
 
 vtkRenderWindowInteractor *vtkRenderWindowInteractor::New()
