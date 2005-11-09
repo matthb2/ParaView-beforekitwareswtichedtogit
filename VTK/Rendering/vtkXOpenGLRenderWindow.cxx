@@ -1290,8 +1290,10 @@ int *vtkXOpenGLRenderWindow::GetSize()
 {
   if(this->Mapped && this->WindowId)
     {
+    XSync(this->DisplayId,False);
     XWindowAttributes a;
     XGetWindowAttributes(this->DisplayId, this->WindowId, &a);
+
     this->Size[0] = a.width;
     this->Size[1] = a.height;
     }
