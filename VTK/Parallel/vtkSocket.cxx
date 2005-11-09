@@ -275,7 +275,9 @@ int vtkSocket::Send(void* data, int length)
 #if defined(_WIN32) && !defined(__CYGWIN__)
     flags = 0;
 #else
-    flags = MSG_NOSIGNAL; //disable signal on Unix boxes.
+    // disabling, since not present on SUN.
+    // flags = MSG_NOSIGNAL; //disable signal on Unix boxes.
+    flags = 0;
 #endif
     int n = send(this->SocketDescriptor, buffer+total, length-total, flags);
     if(n < 0)
