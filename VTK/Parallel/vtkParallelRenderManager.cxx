@@ -210,6 +210,14 @@ void vtkParallelRenderManager::PrintSelf(ostream &os, vtkIndent indent)
     {
     os << "(none)" << endl;
     }
+
+  os << indent << "ForcedRenderWindowSize: " 
+     << this->ForcedRenderWindowSize[0] << " " 
+     << this->ForcedRenderWindowSize[1] << endl;
+
+  os << indent << "ForceRenderWindowSize: "
+     << this->ForceRenderWindowSize
+     << endl;
 }
 
 //----------------------------------------------------------------------------
