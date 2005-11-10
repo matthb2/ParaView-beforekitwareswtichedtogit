@@ -337,4 +337,15 @@ void vtkPVLODVolume::PrintSelf(ostream& os, vtkIndent indent)
 
   os << indent << "LODProp: " << endl;
   this->LODProp->PrintSelf(os, indent.GetNextIndent());
+
+  os << indent << "RenderModuleHelper: ";
+  if (this->RenderModuleHelper)
+    {
+    os << endl;
+    os << this->RenderModuleHelper->PrintSelf(os, indent.GetNextIndent());
+    }
+  else
+    {
+    os << "(none)" << endl;
+    }
 }

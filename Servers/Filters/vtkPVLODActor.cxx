@@ -308,4 +308,15 @@ void vtkPVLODActor::PrintSelf(ostream& os, vtkIndent indent)
     {
     os << indent << "LODMapper: " << this->GetLODMapper() << endl;
     }
+
+  os << indent << "RenderModuleHelper: ";
+  if (this->RenderModuleHelper)
+    {
+    os << endl;
+    os << this->RenderModuleHelper->PrintSelf(os, indent.GetNextIndent());
+    }
+  else
+    {
+    os << "(none)" << endl;
+    }
 }

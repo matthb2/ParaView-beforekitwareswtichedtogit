@@ -270,4 +270,15 @@ int vtkProcessModuleConnection::LoadModule(const char* , const char* )
 void vtkProcessModuleConnection::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os, indent);
+  os << indent << "AbortConnection: " << this->AbortConnection << endl;
+  os << indent << "StreamBlock: " << this->StreamBlock << endl;
+  os << indent << "Controller: ";
+  if (this->Controller)
+    {
+    this->Controller->PrintSelf(os, indent.GetNextIndent());
+    }
+  else
+    {
+    os << "(none)" << endl;
+    }
 }

@@ -577,4 +577,16 @@ int vtkServerConnection::SetupDataServerRenderServerConnection()
 void vtkServerConnection::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os, indent);
+  os << indent << "MPIMToNSocketConnectionID: " 
+    << this->MPIMToNSocketConnectionID << endl;
+
+  os << indent << "ServerInformation: ";
+  if (this->ServerInformation)
+    {
+    this->ServerInformation->PrintSelf(os, indent.GetNextIndent());
+    }
+  else
+    {
+    os << "(none)" << endl;
+    }
 }
