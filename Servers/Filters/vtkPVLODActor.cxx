@@ -313,7 +313,7 @@ void vtkPVLODActor::PrintSelf(ostream& os, vtkIndent indent)
   if (this->RenderModuleHelper)
     {
     os << endl;
-    os << this->RenderModuleHelper->PrintSelf(os, indent.GetNextIndent());
+    this->RenderModuleHelper->PrintSelf(os, indent.GetNextIndent());
     }
   else
     {
