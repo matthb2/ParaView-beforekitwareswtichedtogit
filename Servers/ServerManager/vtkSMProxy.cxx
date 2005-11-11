@@ -830,6 +830,46 @@ void vtkSMProxy::CreateVTKObjects(int numObjects)
 }
 
 //---------------------------------------------------------------------------
+unsigned int vtkSMProxy::GetNumberOfSubProxies()
+{
+  return this->Internals->SubProxies.size();
+}
+
+//---------------------------------------------------------------------------
+const char* vtkSMProxy::GetSubProxyName(unsigned int index)
+{
+  vtkSMProxyInternals::ProxyMap::iterator it2 =
+    this->Internals->SubProxies.begin();
+  for(unsigned int idx = 0; 
+      it2 != this->Internals->SubProxies.end(); 
+      it2++, idx++)
+    {
+    if (idx == index)
+      {
+      return it2->first.c_str();
+      }
+    }
+  return 0;
+}
+
+//---------------------------------------------------------------------------
+vtkSMProxy* vtkSMProxy::GetSubProxy(unsigned int index)
+{
+  vtkSMProxyInternals::ProxyMap::iterator it2 =
+    this->Internals->SubProxies.begin();
+  for(unsigned int idx = 0; 
+      it2 != this->Internals->SubProxies.end(); 
+      it2++, idx++)
+    {
+    if (idx == index)
+      {
+      return it2->second.GetPointer();
+      }
+    }
+  return 0;
+}
+
+//---------------------------------------------------------------------------
 vtkSMProxy* vtkSMProxy::GetSubProxy(const char* name)
 {
   vtkSMProxyInternals::ProxyMap::iterator it =
