@@ -31,7 +31,10 @@ vtkSMCompoundProxy::vtkSMCompoundProxy()
 //----------------------------------------------------------------------------
 vtkSMCompoundProxy::~vtkSMCompoundProxy()
 {
-  this->MainProxy->Delete();
+  if (this->MainProxy)
+    {
+    this->MainProxy->Delete();
+    }
   this->MainProxy = 0;
 }
 
