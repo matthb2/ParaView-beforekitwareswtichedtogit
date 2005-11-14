@@ -182,7 +182,7 @@ int vtkSMAnimationSceneProxy::SaveImages(const char* fileRoot,
   this->InSaveAnimation = 1;
   this->SetAnimationTime(0);
 
-  this->RenderModuleProxy->UpdateInformation();
+  this->RenderModuleProxy->UpdatePropertyInformation();
   vtkSMIntVectorProperty* ivp = vtkSMIntVectorProperty::SafeDownCast(
     this->RenderModuleProxy->GetProperty("RenderWindowSizeInfo"));
   int *size = ivp->GetElements();

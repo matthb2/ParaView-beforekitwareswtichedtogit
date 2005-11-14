@@ -57,7 +57,7 @@ void vtkSMServerFileListingProxy::SetActiveFileName(const char* name)
 }
 
 //-----------------------------------------------------------------------------
-void vtkSMServerFileListingProxy::UpdateInformation()
+void vtkSMServerFileListingProxy::UpdatePropertyInformation()
 {
   if (this->ObjectsCreated && this->ActiveFileName && 
     this->GetNumberOfIDs() > 0)
@@ -93,7 +93,7 @@ void vtkSMServerFileListingProxy::UpdateInformation()
       this->ActiveFileIsReadable = isreadble;
       }
     }
-  this->Superclass::UpdateInformation();
+  this->Superclass::UpdatePropertyInformation();
 }
 
 //-----------------------------------------------------------------------------

@@ -52,7 +52,13 @@ void vtkSMMultiDisplayProxy::SetLODCollectionDecision(int)
 //-----------------------------------------------------------------------------
 void vtkSMMultiDisplayProxy::CreateVTKObjects(int numObjects)
 {
+  if (this->ObjectsCreated || !this->CanCreateProxy)
+    {
+    return;
+    }
+  
   this->Superclass::CreateVTKObjects(numObjects);
+
   vtkProcessModule* pm = vtkProcessModule::GetProcessModule();
   int i;
   
