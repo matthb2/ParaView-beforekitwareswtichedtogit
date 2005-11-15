@@ -110,7 +110,6 @@ public:
   double ComputePerimeter() 
     {
     double perimeter=0.0;
-    vtkPoints *points   = this->PolyData->GetPoints();
     vtkCellArray *lines = this->PolyData->GetPolys();
     const vtkIdType ncells = this->PolyData->GetNumberOfCells(); 
                         // = 1 for the one and only contour
