@@ -361,7 +361,7 @@ int vtkWin32OpenGLRenderWindow::IsDirect()
   MakeCurrent();
   if (!this->DeviceContext)
     {
-      return 0;
+    return 0;
     }
 
   int pixelFormat = GetPixelFormat(this->DeviceContext);

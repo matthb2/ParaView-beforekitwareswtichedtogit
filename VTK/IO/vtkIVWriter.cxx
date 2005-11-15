@@ -23,6 +23,7 @@
 vtkCxxRevisionMacro(vtkIVWriter, "$Revision$");
 vtkStandardNewMacro(vtkIVWriter);
 
+//----------------------------------------------------------------------------
 void vtkIVWriter::WriteData()
 {
   FILE *fp;
@@ -56,6 +57,7 @@ void vtkIVWriter::WriteData()
     }
 }
 
+//----------------------------------------------------------------------------
 void vtkIVWriter::WritePolyData(vtkPolyData *pd, FILE *fp)
 {
   vtkPoints *points;

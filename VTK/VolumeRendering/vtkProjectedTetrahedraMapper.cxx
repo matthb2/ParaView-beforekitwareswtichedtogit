@@ -419,6 +419,7 @@ static inline float GetCorrectedDepth(float x, float y, float z1, float z2,
     }
 }
 
+//-----------------------------------------------------------------------------
 void vtkProjectedTetrahedraMapper::ProjectTetrahedra(vtkRenderer *renderer,
                                                      vtkVolume *volume)
 {
@@ -955,6 +956,7 @@ void vtkProjectedTetrahedraMapper::MapScalarsToColors(vtkDataArray *colors,
     }
 }
 
+//-----------------------------------------------------------------------------
 namespace vtkProjectedTetrahedraMapperNamespace
 {
 

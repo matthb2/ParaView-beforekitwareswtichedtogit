@@ -57,6 +57,7 @@ vtkBMPReader::~vtkBMPReader()
     }
 }
 
+//----------------------------------------------------------------------------
 void vtkBMPReader::ExecuteInformation()
 {
   int xsize, ysize;
