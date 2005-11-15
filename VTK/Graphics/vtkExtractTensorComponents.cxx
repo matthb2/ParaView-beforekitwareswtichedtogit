@@ -172,11 +172,11 @@ int vtkExtractTensorComponents::RequestData(
       else //VTK_EXTRACT_EFFECTIVE_DETERMINANT
         {
         s = tensor[0]*tensor[4]*tensor[8]-
-          tensor[0]*tensor[5]*tensor[7]-
-          tensor[1]*tensor[3]*tensor[8]+
-          tensor[1]*tensor[5]*tensor[6]+
-          tensor[2]*tensor[3]*tensor[7]-
-          tensor[2]*tensor[4]*tensor[6];
+            tensor[0]*tensor[5]*tensor[7]-
+            tensor[1]*tensor[3]*tensor[8]+
+            tensor[1]*tensor[5]*tensor[6]+
+            tensor[2]*tensor[3]*tensor[7]-
+            tensor[2]*tensor[4]*tensor[6];
         }
       newScalars->SetTuple(ptId, &s);
       }//if extract scalars
