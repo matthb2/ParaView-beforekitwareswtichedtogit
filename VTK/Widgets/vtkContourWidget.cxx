@@ -221,6 +221,7 @@ void vtkContourWidget::AddNode()
       this->WidgetState = vtkContourWidget::Manipulate;
       reinterpret_cast<vtkContourRepresentation*>(this->WidgetRep)->ClosedLoopOn();    
       this->EventCallbackCommand->SetAbortFlag(1);
+      this->InvokeEvent( vtkCommand::WidgetValueChangedEvent, NULL );
       return;
       }
     }
