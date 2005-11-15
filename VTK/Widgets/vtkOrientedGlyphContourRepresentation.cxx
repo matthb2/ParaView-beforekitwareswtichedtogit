@@ -494,6 +494,14 @@ void vtkOrientedGlyphContourRepresentation::BuildLines()
 }
 
 //----------------------------------------------------------------------
+const vtkPolyData * const 
+vtkOrientedGlyphContourRepresentation::GetContourRepresentationAsPolyData() const
+{
+  // Get the points in this contour as a vtkPolyData. 
+  return this->Lines; 
+}
+
+//----------------------------------------------------------------------
 void vtkOrientedGlyphContourRepresentation::BuildRepresentation()
 {
   double p1[4], p2[4];
