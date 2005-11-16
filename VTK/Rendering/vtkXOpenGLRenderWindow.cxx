@@ -851,14 +851,21 @@ void vtkXOpenGLRenderWindow::Finalize (void)
         glXDestroyContext( this->DisplayId, this->Internal->PixmapContextId);
         this->Internal->PixmapContextId = NULL;
         }
-      
-      // then close the old window 
-      if (this->OwnWindow && this->DisplayId && this->WindowId)
-        {
-        XDestroyWindow(this->DisplayId,this->WindowId);
-        this->WindowId = (Window)NULL;
-        }
       }
+    
+    // destroy the context
+    if(this->Internal->ContextId)
+      {
+      glXDestroyContext(this->DisplayId, this->Internal->ContextId);
+      this->Internal->ContextId = NULL;
+      }
+    }
+      
+  // then close the old window if we own it
+  if (this->OwnWindow && this->DisplayId && this->WindowId)
+    {
+    XDestroyWindow(this->DisplayId,this->WindowId);
+    this->WindowId = (Window)NULL;
     }
 
   if (this->DisplayId)
