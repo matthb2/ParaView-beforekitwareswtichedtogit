@@ -73,7 +73,7 @@ vtkPolyData *vtkProgrammableGlyphFilter::GetSource()
     }
 
   return vtkPolyData::SafeDownCast(
-    this->GetExecutive()->GetInputData(0, 0));
+    this->GetExecutive()->GetInputData(1, 0));
 }
 
 int vtkProgrammableGlyphFilter::RequestData(
