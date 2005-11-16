@@ -354,7 +354,7 @@ void vtkDICOMImageReader::ExecuteData(vtkDataObject *output)
       char* filename = new char[len+1];
       strcpy(filename, (char*) (*fiter).c_str());
       this->SetProgressText(filename);
-
+      delete[] filename;
       }
     }
 }
