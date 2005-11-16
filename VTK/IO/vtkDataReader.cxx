@@ -1449,7 +1449,7 @@ int vtkDataReader::ReadCoScalarData(vtkDataSetAttributes *a, int numPts)
           for (j=0; j<numComp; j++)
             {
             idx = i*numComp + j;
-            scalars->SetValue(idx,(unsigned char)(255.0*data->GetValue(idx)));
+            scalars->SetValue(idx,(unsigned char)(255.0*data->GetValue(idx)+0.5));
             }
           }
         if ( ! skipScalar )
