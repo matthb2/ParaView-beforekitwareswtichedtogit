@@ -112,8 +112,6 @@ void vtkMultiGroupDataExtractPiece::ExtractImageData(
   vtkImageData *imageData, vtkMultiGroupDataSet *output,
   int piece, int numberOfPieces, int ghostLevel, unsigned int group)
 {
-  vtkStreamingDemandDrivenPipeline *extractExecutive;
-  vtkInformation *extractInfo;
   int ext[6];
 
   // not using vtkImageClip because it doesn't work properly if you set
