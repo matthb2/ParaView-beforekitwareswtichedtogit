@@ -14,8 +14,8 @@
 =========================================================================*/
 #include "vtkMultiGroupDataExtractPiece.h"
 
+#include "vtkCellData.h"
 #include "vtkExtentTranslator.h"
-#include "vtkImageClip.h"
 #include "vtkExtractPolyDataPiece.h"
 #include "vtkExtractRectilinearGrid.h"
 #include "vtkExtractGrid.h"
@@ -25,6 +25,7 @@
 #include "vtkInformation.h"
 #include "vtkInformationVector.h"
 #include "vtkObjectFactory.h"
+#include "vtkPointData.h"
 #include "vtkPolyData.h"
 #include "vtkRectilinearGrid.h"
 #include "vtkStreamingDemandDrivenPipeline.h"
@@ -115,9 +116,22 @@ void vtkMultiGroupDataExtractPiece::ExtractImageData(
   vtkInformation *extractInfo;
   int ext[6];
 
-  vtkImageClip *extractID = vtkImageClip::New();
-  extractID->ClipDataOn();
+  // not using vtkImageClip because it doesn't work properly if you set
+  // the update extent on the filter's information object manually
   imageData->GetExtent(ext);
+
+  vtkImageData *extractOutput = vtkImageData::New();
+  extractOutput->SetScalarType(imageData->GetScalarType());
+  extractOutput->SetNumberOfScalarComponents(
+    imageData->GetNumberOfScalarComponents());
+  extractOutput->SetExtent(ext);
+  extractOutput->SetWholeExtent(ext);
+  extractOutput->GetPointData()->CopyAllocate(imageData->GetPointData(),
+                                              imageData->GetNumberOfPoints());
+  extractOutput->GetCellData()->CopyAllocate(imageData->GetCellData(),
+                                             imageData->GetNumberOfCells());
+  extractOutput->SetOrigin(imageData->GetOrigin());
+  extractOutput->SetSpacing(imageData->GetSpacing());
 
   vtkExtentTranslator *translate = vtkExtentTranslator::New();
   translate->SetPiece(piece);
@@ -127,20 +141,12 @@ void vtkMultiGroupDataExtractPiece::ExtractImageData(
   translate->PieceToExtent();
   translate->GetExtent(ext);
 
-  extractID->SetInput(imageData);
-  extractExecutive = vtkStreamingDemandDrivenPipeline::SafeDownCast(
-    extractID->GetExecutive());
-  extractInfo = extractExecutive->GetOutputInformation(0);
-  extractExecutive->UpdateDataObject();
-  extractInfo->Set(vtkStreamingDemandDrivenPipeline::UPDATE_EXTENT(),
-                   ext, 6);
-  extractInfo->Set(
-    vtkStreamingDemandDrivenPipeline::UPDATE_EXTENT_INITIALIZED(), 1);
-  extractID->Update();
-  vtkImageData *extractOutput = vtkImageData::New();
-  extractOutput->ShallowCopy(extractID->GetOutput());
+  extractOutput->SetUpdateExtent(ext);
+  extractOutput->GetPointData()->PassData(imageData->GetPointData());
+  extractOutput->GetCellData()->PassData(imageData->GetCellData());
+  extractOutput->Crop();
+
   output->SetDataSet(group, piece, extractOutput);
-  extractID->Delete();
   translate->Delete();
   extractOutput->Delete();
 }
