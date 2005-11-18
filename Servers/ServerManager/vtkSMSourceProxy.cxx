@@ -272,7 +272,10 @@ void vtkSMSourceProxy::CreatePartsInternal(vtkSMProxy* op)
   for(; it != this->PInternals->Parts.end(); it++)
     {
     it->GetPointer()->CreateTranslatorIfNecessary();
-    it->GetPointer()->InsertExtractPiecesIfNecessary();
+    if (strcmp(this->GetVTKClassName(), "vtkPVEnSightMasterServerReader"))
+      {
+      it->GetPointer()->InsertExtractPiecesIfNecessary();
+      }
     }
 
 }
