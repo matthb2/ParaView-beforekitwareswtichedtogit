@@ -136,7 +136,7 @@ void vtkSMNumberOfGroupsDomain::Update(vtkSMProperty*)
 //---------------------------------------------------------------------------
 void vtkSMNumberOfGroupsDomain::Update(vtkSMProxyProperty *pp)
 {
-  unsigned int i, j;
+  unsigned int i;
   unsigned int numProxs = pp->GetNumberOfUncheckedProxies();
   for (i = 0; i < numProxs; i++)
     {
