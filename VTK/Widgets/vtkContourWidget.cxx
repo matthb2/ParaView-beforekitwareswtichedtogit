@@ -59,6 +59,10 @@ vtkContourWidget::vtkContourWidget()
                                           vtkEvent::NoModifier, 46, 1, NULL,
                                           vtkWidgetEvent::Delete,
                                           this, vtkContourWidget::DeleteAction);
+  this->CallbackMapper->SetCallbackMethod(vtkCommand::CharEvent,
+                                          vtkEvent::NoModifier, 46, 1, NULL,
+                                          vtkWidgetEvent::Delete,
+                                          this, vtkContourWidget::DeleteAction);
   
   this->CreateDefaultRepresentation();
   
