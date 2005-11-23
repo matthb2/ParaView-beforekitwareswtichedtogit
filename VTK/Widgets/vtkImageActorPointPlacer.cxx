@@ -42,6 +42,7 @@ vtkImageActorPointPlacer::vtkImageActorPointPlacer()
 vtkImageActorPointPlacer::~vtkImageActorPointPlacer()
 {
   this->Placer->Delete();
+  this->SetImageActor(NULL);
 }
 
 
