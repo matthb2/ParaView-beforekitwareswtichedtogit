@@ -30,9 +30,9 @@ vtkCxxRevisionMacro(vtkDistanceWidget, "$Revision$");
 vtkStandardNewMacro(vtkDistanceWidget);
 
 
-// The checkerboard simply observes the behavior of four vtkSliderWidgets.
+// The distance widget observes its two handles.
 // Here we create the command/observer classes to respond to the 
-// slider widgets.
+// handle widgets.
 class vtkDistanceWidgetCallback : public vtkCommand
 {
 public:
