@@ -31,6 +31,14 @@ vtkPointPlacer::~vtkPointPlacer()
 }
 
 //----------------------------------------------------------------------
+int vtkPointPlacer::UpdateWorldPosition( vtkRenderer *vtkNotUsed(ren),
+                                         double *vtkNotUsed(worldPos),
+                                         double *vtkNotUsed(worldOrient) )
+{
+  return 1;
+}
+
+//----------------------------------------------------------------------
 void vtkPointPlacer::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os,indent);  
