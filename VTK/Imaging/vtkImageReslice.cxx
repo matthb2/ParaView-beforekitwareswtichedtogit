@@ -1569,13 +1569,13 @@ int vtkTricubicInterpolation(T *&outPtr, const T *inPtr,
     do // loop over z
       {
       F ifz = fZ[k];
-      int factz = factZ[k];
+      vtkIdType factz = factZ[k];
       int j = j1;
       do // loop over y
         {
         F ify = fY[j];
         F fzy = ifz*ify;
-        int factzy = factz + factY[j];
+        vtkIdType factzy = factz + factY[j];
         const T *tmpPtr = inPtr + factzy;
         // loop over x is unrolled (significant performance boost)
         val += fzy*(fX[0]*tmpPtr[factX[0]] +
