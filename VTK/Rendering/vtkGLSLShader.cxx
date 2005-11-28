@@ -169,6 +169,7 @@ vtkCxxRevisionMacro(vtkGLSLShader, "$Revision$");
 vtkGLSLShader::vtkGLSLShader()
 {
   this->Shader = 0;
+  this->Program = 0;
 }
 
 //-----------------------------------------------------------------------------
