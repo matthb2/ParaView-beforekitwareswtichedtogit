@@ -94,6 +94,12 @@ void vtkGLSLShaderProgram::ReleaseGraphicsResources(vtkWindow* w)
 }
 
 //-----------------------------------------------------------------------------
+unsigned int vtkGLSLShaderProgram::GetProgram()
+{
+  return this->Program;
+}
+  
+//-----------------------------------------------------------------------------
 void vtkGLSLShaderProgram::Link()
 {
 
