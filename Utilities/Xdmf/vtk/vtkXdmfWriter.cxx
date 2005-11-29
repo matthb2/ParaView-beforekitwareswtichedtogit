@@ -253,7 +253,6 @@ int vtkXdmfWriter::WriteCellArray( ostream& ost, vtkDataSet *ds,
   ost << " Dimensions=\"" << il->GetNumberOfIds() << " " << PointsInPoly << "\"";
   this->Indent(ost);
   vtkIdList* cellPoints = vtkIdList::New();
-  vtkUnstructuredGrid* ug = vtkUnstructuredGrid::SafeDownCast(ds);
   if( this->AllLight )
     {
     ost << " Format=\"XML\">";
