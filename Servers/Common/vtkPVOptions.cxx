@@ -71,6 +71,14 @@ vtkPVOptions::vtkPVOptions()
   this->UseOffscreenRendering = 0;
   this->DisableComposite = 0;
   this->ConnectID = 0;
+
+  if (this->XMLParser)
+    {
+    this->XMLParser->Delete();
+    this->XMLParser = 0;
+    }
+  this->XMLParser = vtkPVOptionsXMLParser::New();
+  this->XMLParser->SetPVOptions(this);
 }
 
 //----------------------------------------------------------------------------
