@@ -20,7 +20,7 @@
 #include "vtkSMDomain.h"
 #include "vtkSMDomainIterator.h"
 #include "vtkSMInformationHelper.h"
-#include "vtkSMInstantiator.h"
+#include "vtkPVServerManagerInstantiator.h"
 #include "vtkSMProperty.h"
 #include "vtkSMProxy.h"
 #include "vtkSMSubPropertyIterator.h"
