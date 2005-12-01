@@ -1288,11 +1288,13 @@ vtkClientServerID vtkProcessModule::GetMPIMToNSocketConnectionID(
 // cannot be deleted until paraview exits.  The var should have the form:
 // "DISPLAY=amber1"
 void vtkProcessModule::SetProcessEnvironmentVariable(int processId,
-                                                       const char* var)
+                                                     const char* var)
 {
-  (void)processId;
-  char* envstr = vtksys::SystemTools::DuplicateString(var);
-  putenv(envstr);
+  if (this->GetPartitionId() == processId)
+    {
+    char* envstr = vtksys::SystemTools::DuplicateString(var);
+    putenv(envstr);
+    }
 }
 
 //-----------------------------------------------------------------------------
