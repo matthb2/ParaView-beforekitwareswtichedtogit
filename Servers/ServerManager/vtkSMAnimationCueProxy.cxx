@@ -332,7 +332,7 @@ void vtkSMAnimationCueProxy::SaveInBatchScript(ofstream* file,
                                                int doRegister)
 {
   *file << endl;
-  vtkClientServerID id = this->SelfID;
+  vtkClientServerID id = this->GetSelfID();
   *file << "set pvTemp" << id
     << " [$proxyManager NewProxy animation "
     << this->GetXMLName() <<"]" << endl;

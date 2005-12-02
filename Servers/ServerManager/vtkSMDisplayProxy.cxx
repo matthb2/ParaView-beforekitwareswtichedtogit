@@ -151,7 +151,7 @@ void vtkSMDisplayProxy::SaveInBatchScript(ofstream* file)
   // For such displays we use their self ids. 
   
   unsigned int count = this->GetNumberOfIDs();
-  vtkClientServerID id = (count)? this->GetID(0) : this->SelfID;
+  vtkClientServerID id = (count)? this->GetID(0) : this->GetSelfID();
   count = (count)? count : 1;
    
   for (unsigned int kk = 0; kk < count ; kk++)

@@ -64,7 +64,7 @@ void vtkSMLinearAnimationCueManipulatorProxy::UpdateValue(double currenttime,
 void vtkSMLinearAnimationCueManipulatorProxy::SaveInBatchScript(ofstream* file)
 {
   this->Superclass::SaveInBatchScript(file);
-  vtkClientServerID id = this->SelfID;  
+  vtkClientServerID id = this->GetSelfID();  
   *file << "  [$pvTemp" << id << " GetProperty StartValue]"
     << " SetElements1 " << this->StartValue << endl;
   *file << "  [$pvTemp" << id << " GetProperty EndValue]"

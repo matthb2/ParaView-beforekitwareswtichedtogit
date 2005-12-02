@@ -15,9 +15,10 @@
 #include "vtkSMProxyManager.h"
 
 #include "vtkCommand.h"
-#include "vtkObjectFactory.h"
-#include "vtkPVXMLElement.h"
 #include "vtkInstantiator.h"
+#include "vtkObjectFactory.h"
+#include "vtkProcessModuleConnectionManager.h"
+#include "vtkPVXMLElement.h"
 #include "vtkSMProperty.h"
 #include "vtkSMProxy.h"
 #include "vtkSmartPointer.h"
@@ -104,6 +105,8 @@ void vtkSMProxyManager::InstantiateGroupPrototypes(const char* groupName)
       if (!this->GetProxy(newgroupname.str(), it2->first.c_str()))
         {
         vtkSMProxy* proxy = this->NewProxy(element, groupName);
+        proxy->SetConnectionID(
+          vtkProcessModuleConnectionManager::GetSelfConnectionID());
         this->RegisterProxy(newgroupname.str(), it2->first.c_str(), proxy);
         proxy->Delete();
         }
