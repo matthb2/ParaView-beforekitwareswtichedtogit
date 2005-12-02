@@ -54,7 +54,7 @@ void vtkSMSummaryHelperProxy::CreateVTKObjects(int numObjects)
     }
   if (stream.GetNumberOfMessages() > 0)
     {
-    pm->SendStream(this->Servers, stream);
+    pm->SendStream(this->ConnectionID, this->Servers, stream);
     }
 }
 

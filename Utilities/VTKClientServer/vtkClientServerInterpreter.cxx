@@ -453,7 +453,7 @@ vtkClientServerInterpreter
 
     // If the value is an object, notify observers of deletion.
     vtkObjectBase* obj;
-    if(item->GetArgument(0, 0, &obj))
+    if(item->GetArgument(0, 0, &obj) && obj)
       {
       vtkClientServerInterpreter::NewCallbackInfo info;
       info.Type = obj->GetClassName();

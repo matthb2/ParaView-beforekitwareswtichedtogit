@@ -198,7 +198,7 @@ void vtkSMScalarBarActorProxy::SetPosition(double x, double y)
     }
   if (stream.GetNumberOfMessages() > 0)
     {
-    pm->SendStream(this->GetServers(), stream);
+    pm->SendStream(this->ConnectionID, this->GetServers(), stream);
     }
 }
 
@@ -221,7 +221,7 @@ void vtkSMScalarBarActorProxy::SetPosition2(double x, double y)
     }
   if (stream.GetNumberOfMessages() > 0)
     {
-    pm->SendStream(this->GetServers(), stream);
+    pm->SendStream(this->ConnectionID, this->GetServers(), stream);
     }
 }
 

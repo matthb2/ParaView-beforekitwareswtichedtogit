@@ -61,7 +61,7 @@ void vtkSMSphereWidgetProxy::UpdateVTKObjects()
     }
   if (str.GetNumberOfMessages() > 0)
     {
-    pm->SendStream(this->Servers,str);
+    pm->SendStream(this->ConnectionID ,this->Servers,str);
     }
 }
 

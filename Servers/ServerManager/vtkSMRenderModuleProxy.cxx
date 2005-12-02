@@ -868,6 +868,7 @@ void vtkSMRenderModuleProxy::AddPropToRenderer(vtkSMProxy* proxy)
     {
     this->RendererProps->AddItem(proxy);
     vtkProcessModule::GetProcessModule()->SendStream(
+      this->RendererProxy->GetConnectionID(),
       this->RendererProxy->GetServers(), stream);
     }
 }
@@ -891,6 +892,7 @@ void vtkSMRenderModuleProxy::AddPropToRenderer2D(vtkSMProxy* proxy)
     {
     this->Renderer2DProps->AddItem(proxy);
     vtkProcessModule::GetProcessModule()->SendStream(
+      this->RendererProxy->GetConnectionID(),
       this->RendererProxy->GetServers(), stream);
     }
 }
@@ -914,6 +916,7 @@ void vtkSMRenderModuleProxy::RemovePropFromRenderer(vtkSMProxy* proxy)
     {
     this->RendererProps->RemoveItem(proxy);
     vtkProcessModule::GetProcessModule()->SendStream(
+      this->RendererProxy->GetConnectionID(),
       this->RendererProxy->GetServers(), stream);
     }
 }
@@ -937,6 +940,7 @@ void vtkSMRenderModuleProxy::RemovePropFromRenderer2D(vtkSMProxy* proxy)
     {
     this->Renderer2DProps->RemoveItem(proxy);
     vtkProcessModule::GetProcessModule()->SendStream(
+      this->RendererProxy->GetConnectionID(),
       this->RendererProxy->GetServers(), stream);
     }
 }

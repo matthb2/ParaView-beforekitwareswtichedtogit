@@ -73,7 +73,8 @@ void vtkSMMultiDisplayProxy::CreateVTKObjects(int numObjects)
     stream << vtkClientServerStream::Invoke
            << this->LODCollectProxy->GetID(i) << "DefineCollectAsCloneOn"
            << vtkClientServerStream::End;
-    pm->SendStream(this->CollectProxy->GetServers(), stream);
+    pm->SendStream(this->ConnectionID, 
+      this->CollectProxy->GetServers(), stream);
     }
 }
 

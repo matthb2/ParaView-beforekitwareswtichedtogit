@@ -62,7 +62,7 @@ void vtkSMTransformProxy::UpdateVTKObjects()
   if (str.GetNumberOfMessages() > 0)
     {
     vtkProcessModule* pm = vtkProcessModule::GetProcessModule();
-    pm->SendStream(this->Servers, str);
+    pm->SendStream(this->ConnectionID, this->Servers, str);
     }
   mat->Delete();
 }

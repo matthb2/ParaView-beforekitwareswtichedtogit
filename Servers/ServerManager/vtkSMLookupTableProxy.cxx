@@ -137,7 +137,7 @@ void vtkSMLookupTableProxy::Build()
       }
     }
   vtkProcessModule* pm = vtkProcessModule::GetProcessModule();
-  pm->SendStream(this->Servers, stream);
+  pm->SendStream(this->ConnectionID, this->Servers, stream);
 }
 
 //---------------------------------------------------------------------------

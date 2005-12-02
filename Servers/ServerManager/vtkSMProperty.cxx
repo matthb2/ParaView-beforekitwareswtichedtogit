@@ -197,7 +197,8 @@ void vtkSMProperty::UpdateDependentDomains()
 }
 
 //---------------------------------------------------------------------------
-void vtkSMProperty::UpdateInformation(int serverIds, vtkClientServerID objectId)
+void vtkSMProperty::UpdateInformation(vtkConnectionID cid, int serverIds, 
+  vtkClientServerID objectId)
 {
   if (!this->InformationOnly)
     {
@@ -206,7 +207,7 @@ void vtkSMProperty::UpdateInformation(int serverIds, vtkClientServerID objectId)
 
   if (this->InformationHelper)
     {
-    this->InformationHelper->UpdateProperty(serverIds, objectId, this);
+    this->InformationHelper->UpdateProperty(cid, serverIds, objectId, this);
     }
 }
 

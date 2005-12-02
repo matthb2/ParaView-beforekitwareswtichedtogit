@@ -34,7 +34,8 @@ vtkSMSimpleStringInformationHelper::~vtkSMSimpleStringInformationHelper()
 
 //---------------------------------------------------------------------------
 void vtkSMSimpleStringInformationHelper::UpdateProperty(
-    int serverIds, vtkClientServerID objectId, vtkSMProperty* prop)
+  vtkConnectionID connectionId, int serverIds, vtkClientServerID objectId, 
+  vtkSMProperty* prop)
 {
   vtkSMStringVectorProperty* svp = vtkSMStringVectorProperty::SafeDownCast(prop);
   if (!svp)
@@ -56,11 +57,11 @@ void vtkSMSimpleStringInformationHelper::UpdateProperty(
       << vtkClientServerStream::End;
 
   vtkProcessModule* pm = vtkProcessModule::GetProcessModule();
-  pm->SendStream(vtkProcessModule::GetRootId(serverIds), str);
+  pm->SendStream(connectionId, vtkProcessModule::GetRootId(serverIds), str);
 
   // Get the result
   const vtkClientServerStream& res =     
-    pm->GetLastResult(vtkProcessModule::GetRootId(serverIds));
+    pm->GetLastResult(connectionId, vtkProcessModule::GetRootId(serverIds));
 
 
   int numMsgs = res.GetNumberOfMessages();
