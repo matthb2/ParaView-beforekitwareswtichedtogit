@@ -387,8 +387,8 @@ GetConnectionClientServerID(vtkConnectionID id)
   vtkProcessModuleConnection* conn = this->GetConnectionFromID(id);
   if (!conn)
     {
-    vtkClientServerID id = {0};
-    return id;
+    vtkClientServerID nullid = {0};
+    return nullid;
     }
   return conn->GetSelfID();
 }
