@@ -113,6 +113,12 @@ vtkPVServerArraySelection
           vtkErrorMacro("Error getting array name from reader.");
           break;
           }
+        if (!pname)
+          {
+          // Initializing a vtkstd::string to NULL does not have a defined
+          // behavior.
+          break;
+          }
         vtkstd::string name = pname;
 
         ostrstream saname;
