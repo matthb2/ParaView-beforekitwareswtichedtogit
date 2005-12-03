@@ -85,6 +85,7 @@ void vtkRectilinearWipeWidget::SelectAction(vtkAbstractWidget *w)
   
   // We are definitely selected
   self->WidgetState = vtkRectilinearWipeWidget::Selected;
+  self->Interactor->GrabFocus(self->EventCallbackCommand);
 
   // Get the event position
   int X = self->Interactor->GetEventPosition()[0];
@@ -153,6 +154,7 @@ void vtkRectilinearWipeWidget::EndSelectAction(vtkAbstractWidget *w)
   
   // Return state to not selected
   self->WidgetState = vtkRectilinearWipeWidget::Start;
+  self->Interactor->ReleaseFocus();
 
   self->EventCallbackCommand->SetAbortFlag(1);
   self->EndInteraction();
