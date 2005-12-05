@@ -852,9 +852,6 @@ void vtkExtractCTHPart::ExecutePartOnUniformGrid(
   
   this->Data->CopyStructure(input);
 
-  // Do not pass cell volume fraction data.
-  this->Data->GetCellData()->CopyFieldOff(arrayName);
-  
   vtkDataArray* scalars = input->GetCellData()->GetScalars();
   if (scalars && strcmp(arrayName, scalars->GetName()) == 0)
     { // I do not know why the reader sets attributes, but ....
@@ -1124,9 +1121,6 @@ void vtkExtractCTHPart::ExecutePartOnRectilinearGrid(
  
   this->RData->CopyStructure(input);
 
-  // Do not pass cell volume fraction data.
-  this->RData->GetCellData()->CopyFieldOff(arrayName);
-  
   vtkDataArray* scalars = input->GetCellData()->GetScalars();
   if (scalars && strcmp(arrayName, scalars->GetName()) == 0)
     { // I do not know why the reader sets attributes, but ....
