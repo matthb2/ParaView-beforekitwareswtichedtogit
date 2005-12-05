@@ -718,17 +718,6 @@ void vtkUnstructuredGridVolumeRayCastMapper::PrintSelf(ostream& os, vtkIndent in
 {
   this->Superclass::PrintSelf(os,indent);
 
-
-  os << indent << "ScalarMode: " << this->GetScalarModeAsString() << endl;
-  if (this->ArrayAccessMode == VTK_GET_ARRAY_BY_ID)
-    {
-    os << indent << "ArrayId: " << this->ArrayId << endl;
-    }
-  else
-    {
-    os << indent << "ArrayName: " << this->ArrayName << endl;
-    }
-
   os << indent << "Image Sample Distance: " 
      << this->ImageSampleDistance << "\n";
   os << indent << "Minimum Image Sample Distance: " 
