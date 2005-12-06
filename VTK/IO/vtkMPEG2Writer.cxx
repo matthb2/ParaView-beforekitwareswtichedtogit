@@ -14,8 +14,10 @@
 =========================================================================*/
 #include "vtkMPEG2Writer.h"
 
+#include "vtkDataSetAttributes.h"
 #include "vtkDirectory.h"
 #include "vtkImageData.h"
+#include "vtkInformation.h"
 #include "vtkObjectFactory.h"
 #include "vtkSmartPointer.h"
 
@@ -98,6 +100,18 @@ int vtkMPEG2WriterInternal::StoreImage(const char* name, vtkImageData* iid)
   id->CopyStructure(iid);
   id->SetNumberOfScalarComponents(iid->GetNumberOfScalarComponents());
 
+  vtkInformation *pipelineInfo = id->GetPipelineInformation();
+  if (pipelineInfo)
+    {
+    vtkInformation *scalarInfo = vtkDataObject::GetActiveFieldInformation(
+      pipelineInfo, vtkDataObject::FIELD_ASSOCIATION_POINTS,
+      vtkDataSetAttributes::SCALARS);
+    if (scalarInfo)
+      {
+      scalarInfo->Set(vtkDataObject::FIELD_ARRAY_TYPE(), iid->GetScalarType());
+      }
+    }
+  
   int dims[3];
   id->GetDimensions(dims);
 
