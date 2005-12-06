@@ -684,6 +684,90 @@ void vtkInformation::Append(vtkInformationKeyVectorKey* key,
 }
 
 //----------------------------------------------------------------------------
+void vtkInformation::AppendUnique(vtkInformationKeyVectorKey* key,
+                                  vtkInformationDataObjectKey* value)
+{
+  key->AppendUnique(this, value);
+}
+
+//----------------------------------------------------------------------------
+void vtkInformation::AppendUnique(vtkInformationKeyVectorKey* key,
+                                  vtkInformationKey* value)
+{
+  key->AppendUnique(this, value);
+}
+
+//----------------------------------------------------------------------------
+void vtkInformation::AppendUnique(vtkInformationKeyVectorKey* key,
+                                  vtkInformationDoubleKey* value)
+{
+  key->AppendUnique(this, value);
+}
+
+//----------------------------------------------------------------------------
+void vtkInformation::AppendUnique(vtkInformationKeyVectorKey* key,
+                                  vtkInformationDoubleVectorKey* value)
+{
+  key->AppendUnique(this, value);
+}
+
+//----------------------------------------------------------------------------
+void vtkInformation::AppendUnique(vtkInformationKeyVectorKey* key,
+                                  vtkInformationExecutivePortKey* value)
+{
+  key->AppendUnique(this, value);
+}
+
+//----------------------------------------------------------------------------
+void vtkInformation::AppendUnique(vtkInformationKeyVectorKey* key,
+                                  vtkInformationInformationKey* value)
+{
+  key->AppendUnique(this, value);
+}
+
+//----------------------------------------------------------------------------
+void vtkInformation::AppendUnique(vtkInformationKeyVectorKey* key,
+                                  vtkInformationInformationVectorKey* value)
+{
+  key->AppendUnique(this, value);
+}
+
+//----------------------------------------------------------------------------
+void vtkInformation::AppendUnique(vtkInformationKeyVectorKey* key,
+                                  vtkInformationIntegerKey* value)
+{
+  key->AppendUnique(this, value);
+}
+
+//----------------------------------------------------------------------------
+void vtkInformation::AppendUnique(vtkInformationKeyVectorKey* key,
+                                  vtkInformationIntegerVectorKey* value)
+{
+  key->AppendUnique(this, value);
+}
+
+//----------------------------------------------------------------------------
+void vtkInformation::AppendUnique(vtkInformationKeyVectorKey* key,
+                                  vtkInformationStringKey* value)
+{
+  key->AppendUnique(this, value);
+}
+
+//----------------------------------------------------------------------------
+void vtkInformation::AppendUnique(vtkInformationKeyVectorKey* key,
+                                  vtkInformationUnsignedLongKey* value)
+{
+  key->AppendUnique(this, value);
+}
+
+//----------------------------------------------------------------------------
+void vtkInformation::AppendUnique(vtkInformationKeyVectorKey* key,
+                                  vtkInformationObjectBaseKey* value)
+{
+  key->AppendUnique(this, value);
+}
+
+//----------------------------------------------------------------------------
 void vtkInformation::Set(vtkInformationExecutivePortKey* key,
                          vtkExecutive* executive, int port)
 {

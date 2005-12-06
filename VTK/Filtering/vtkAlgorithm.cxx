@@ -435,6 +435,12 @@ int vtkAlgorithm::ComputePipelineMTime(vtkInformation* /* request */,
 }
 
 //----------------------------------------------------------------------------
+int vtkAlgorithm::ModifyRequest(vtkInformation* /*request*/, int /*when*/)
+{
+  return 1;
+}
+
+//----------------------------------------------------------------------------
 int vtkAlgorithm::GetNumberOfInputPorts()
 {
   return this->InputPortInformation->GetNumberOfInformationObjects();

@@ -30,6 +30,9 @@
 #include <vtkstd/vector>
 #include <vtksys/ios/sstream>
 
+
+#include "vtkCompositeDataPipeline.h"
+
 vtkCxxRevisionMacro(vtkExecutive, "$Revision$");
 vtkInformationKeyMacro(vtkExecutive, ALGORITHM_AFTER_FORWARD, Integer);
 vtkInformationKeyMacro(vtkExecutive, ALGORITHM_BEFORE_FORWARD, Integer);
@@ -616,6 +619,11 @@ int vtkExecutive::ForwardUpstream(vtkInformation* request)
     return 1;
     }
 
+  if (!this->Algorithm->ModifyRequest(request, BeforeForward))
+    {
+    return 0;
+    }
+
   // Forward the request upstream through all input connections.
   int result = 1;
   for(int i=0; i < this->GetNumberOfInputPorts(); ++i)
@@ -644,6 +652,12 @@ int vtkExecutive::ForwardUpstream(vtkInformation* request)
         }
       }
     }
+
+  if (!this->Algorithm->ModifyRequest(request, BeforeForward))
+    {
+    return 0;
+    }
+
   return result;
 }
 
