@@ -169,7 +169,7 @@ int vtkMPEG2WriterInternal::RemoveImage(const char* fname)
     {
     return 0;
     }
-  this->ImagesMap.erase(it, it);
+  this->ImagesMap.erase(it);
   return 0;
 }
 //---------------------------------------------------------------------------
