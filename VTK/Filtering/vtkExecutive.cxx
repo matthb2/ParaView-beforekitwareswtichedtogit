@@ -653,7 +653,7 @@ int vtkExecutive::ForwardUpstream(vtkInformation* request)
       }
     }
 
-  if (!this->Algorithm->ModifyRequest(request, BeforeForward))
+  if (!this->Algorithm->ModifyRequest(request, AfterForward))
     {
     return 0;
     }
