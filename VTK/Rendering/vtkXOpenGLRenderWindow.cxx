@@ -1198,6 +1198,7 @@ void vtkXOpenGLRenderWindow::MakeCurrent()
       {
       vtkWarningMacro("failed call to OSMesaMakeCurrent");
       }
+    this->SetForceMakeCurrent();
     }
   else
 #endif
