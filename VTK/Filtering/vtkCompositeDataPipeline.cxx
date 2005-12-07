@@ -1230,7 +1230,7 @@ int vtkCompositeDataPipeline::ForwardUpstream(
     request->Set(FROM_OUTPUT_PORT(), port);
     }
 
-  if (!this->Algorithm->ModifyRequest(request, BeforeForward))
+  if (!this->Algorithm->ModifyRequest(request, AfterForward))
     {
     return 0;
     }
