@@ -1779,7 +1779,7 @@ void vtkXOpenGLRenderWindow::SetOffScreenRendering(int i)
       this->Size[1] = a.height;
       }
     // force context switch as we might be going from osmesa to onscreen
-    this->ForceMakeCurrentOn();
+    this->SetForceMakeCurrent();
     }
 }
 
