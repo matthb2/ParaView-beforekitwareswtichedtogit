@@ -293,6 +293,16 @@ double vtkMedicalImageProperties::GetSliceThicknessAsDouble()
 }
 
 //----------------------------------------------------------------------------
+double vtkMedicalImageProperties::GetGantryTiltAsDouble()
+{
+  if (this->GantryTilt)
+    {
+    return atof(this->GantryTilt);
+    }
+  return 0;
+}
+
+//----------------------------------------------------------------------------
 void vtkMedicalImageProperties::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os, indent);
