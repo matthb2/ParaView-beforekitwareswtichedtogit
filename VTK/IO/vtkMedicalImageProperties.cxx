@@ -283,6 +283,16 @@ void vtkMedicalImageProperties::SetNthWindowLevelPresetComment(
 }
 
 //----------------------------------------------------------------------------
+double vtkMedicalImageProperties::GetSliceThicknessAsDouble()
+{
+  if (this->SliceThickness)
+    {
+    return atof(this->SliceThickness);
+    }
+  return 0;
+}
+
+//----------------------------------------------------------------------------
 void vtkMedicalImageProperties::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os, indent);
