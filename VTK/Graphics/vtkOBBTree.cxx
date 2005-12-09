@@ -1795,7 +1795,7 @@ int vtkOBBTree::LineIntersectsNode( vtkOBBNode *pA,
     eps = this->Tolerance;
     if ( eps != 0 )
       { // avoid sqrt call if tolerance check isn't being done
-      eps *= sqrt(rangeAmax - rangeAmin);
+      eps *= sqrt(fabs(rangeAmax - rangeAmin));
       }
 
     if ( (rangeAmax+eps < rangeBmin) || (rangeBmax+eps < rangeAmin) )
