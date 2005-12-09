@@ -20,7 +20,7 @@
 #include "vtkMath.h"
 #include "vtkObjectFactory.h"
 #include "vtkRenderWindowInteractor.h"
-#include "vtkCommand.h"
+#include "vtkCallbackCommand.h"
 #include "vtkWindows.h"
 
 vtkCxxRevisionMacro(vtkInteractorStyleFlight, "$Revision$");
@@ -252,7 +252,9 @@ void vtkInteractorStyleFlight::OnLeftButtonDown()
     {
     return;
     }
+
   //
+  this->Interactor->GrabFocus(this->EventCallbackCommand);
   vtkCamera* cam = this->CurrentRenderer->GetActiveCamera();
   switch (this->State)
     {
@@ -277,6 +279,10 @@ void vtkInteractorStyleFlight::OnLeftButtonUp()
     default :
       break;
     }
+  if ( this->Interactor )
+    {
+    this->Interactor->ReleaseFocus();
+    }
 }
 
 //---------------------------------------------------------------------------
@@ -299,7 +305,9 @@ void vtkInteractorStyleFlight::OnRightButtonDown()
     {
     return;
     }
+
   //
+  this->Interactor->GrabFocus(this->EventCallbackCommand);
   vtkCamera* cam = this->CurrentRenderer->GetActiveCamera();
   switch (this->State)
     {
@@ -323,6 +331,10 @@ void vtkInteractorStyleFlight::OnRightButtonUp()
       break;
     default :
       break;
+    }
+  if ( this->Interactor )
+    {
+    this->Interactor->ReleaseFocus();
     }
 }
 
