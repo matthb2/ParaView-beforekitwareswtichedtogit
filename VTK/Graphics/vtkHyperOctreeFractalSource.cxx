@@ -66,6 +66,21 @@ vtkHyperOctreeFractalSource::~vtkHyperOctreeFractalSource()
 }
 
 //----------------------------------------------------------------------------
+void vtkHyperOctreeFractalSource::SetProjectionAxes(int x, int y, int z)
+{
+  if (this->ProjectionAxes[0] != x ||
+      this->ProjectionAxes[1] != y ||
+      this->ProjectionAxes[2] != z )
+    {
+    this->ProjectionAxes[0] = x;
+    this->ProjectionAxes[1] = y;
+    this->ProjectionAxes[2] = z;
+    
+    this->Modified();
+    }
+}
+
+//----------------------------------------------------------------------------
 // Description:
 // Return the maximum number of levels of the hyperoctree.
 // \post positive_result: result>=1
