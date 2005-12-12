@@ -265,6 +265,11 @@ void vtkSMLODDisplayProxy::CacheUpdate(int idx, int total)
 //-----------------------------------------------------------------------------
 int vtkSMLODDisplayProxy::GetLODFlag()
 {
+  if (!this->ActorProxy)
+    {
+    vtkErrorMacro("ActorProxy not created.");
+    return 1;
+    }
   vtkSMProxyProperty* pp = vtkSMProxyProperty::SafeDownCast(
     this->ActorProxy->GetProperty("RenderModuleHelper"));
   if (!pp)
