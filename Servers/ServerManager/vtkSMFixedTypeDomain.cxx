@@ -119,16 +119,6 @@ int vtkSMFixedTypeDomain::IsInDomain(vtkSMSourceProxy* oldProxy,
 }
 
 //---------------------------------------------------------------------------
-void vtkSMFixedTypeDomain::SaveState(
-  const char* name, ostream* file, vtkIndent indent)
-{
-  *file << indent 
-        << "<Domain name=\"" << this->XMLName << "\" id=\"" << name << "\">"
-        << endl;
-  *file << indent << "</Domain>" << endl;
-}
-
-//---------------------------------------------------------------------------
 void vtkSMFixedTypeDomain::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os, indent);

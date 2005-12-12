@@ -71,12 +71,6 @@ void vtkSMObject::SetApplication(vtkSMApplication* app)
 }
 
 //---------------------------------------------------------------------------
-void vtkSMObject::SaveState(const char*, ostream* os, vtkIndent indent)
-{
-  *os << indent << "<!-- SaveState not specified in " << this->GetClassName()
-    << " (" << reinterpret_cast<void*>(this) << ") -->" << endl;
-}
-//---------------------------------------------------------------------------
 void vtkSMObject::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os, indent);

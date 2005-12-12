@@ -993,11 +993,10 @@ void vtkSMRenderModuleProxy::SynchronizeCameraProperties()
 }
 
 //-----------------------------------------------------------------------------
-void vtkSMRenderModuleProxy::SaveState(const char* name, ostream* file, 
-  vtkIndent indent)
+void vtkSMRenderModuleProxy::SaveState(vtkPVXMLElement* root)
 {
   this->SynchronizeCameraProperties();
-  this->Superclass::SaveState(name, file, indent);
+  this->Superclass::SaveState(root);
 }
 
 //-----------------------------------------------------------------------------

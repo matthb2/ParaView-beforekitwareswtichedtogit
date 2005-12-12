@@ -148,6 +148,25 @@ void vtkSMDomain::InvokeModified()
 }
 
 //---------------------------------------------------------------------------
+void vtkSMDomain::ChildSaveState(vtkPVXMLElement* /*domainElement*/)
+{
+}
+
+//---------------------------------------------------------------------------
+void vtkSMDomain::SaveState(vtkPVXMLElement* parent, const char* uid)
+{
+  vtkPVXMLElement* domainElement = vtkPVXMLElement::New();
+  domainElement->SetName("Domain");
+  domainElement->AddAttribute("name", this->XMLName);
+  domainElement->AddAttribute("id", uid);
+
+  this->ChildSaveState(domainElement);
+
+  parent->AddNestedElement(domainElement);
+  domainElement->Delete();
+}
+
+//---------------------------------------------------------------------------
 void vtkSMDomain::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os, indent);
