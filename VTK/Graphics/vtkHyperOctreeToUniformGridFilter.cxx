@@ -22,6 +22,7 @@
 #include "vtkCellArray.h"
 #include <assert.h>
 #include "vtkCellData.h"
+#include "vtkPointData.h"
 #include "vtkImageData.h"
 #include "vtkStreamingDemandDrivenPipeline.h" // WHOLE_EXTENT() key
 
@@ -136,7 +137,7 @@ int vtkHyperOctreeToUniformGridFilter::RequestData(
   assert("check:valid_levels" && levels>=input->GetNumberOfLevels());
   
   this->Output=output;
-  this->InputCD = input->GetCellData();
+  this->InputCD = input->GetPointData();
   this->OutputCD = output->GetCellData();
   
   int dim=input->GetDimension();

@@ -23,6 +23,7 @@
 #include <assert.h>
 #include "vtkMergePoints.h"
 #include "vtkCellData.h"
+#include "vtkPointData.h"
 
 vtkCxxRevisionMacro(vtkHyperOctreeSurfaceFilter, "$Revision$");
 vtkStandardNewMacro(vtkHyperOctreeSurfaceFilter);
@@ -80,7 +81,7 @@ int vtkHyperOctreeSurfaceFilter::RequestData(
     }
   
   vtkIdType numCells=input->GetNumberOfCells();
-  this->InputCD = input->GetCellData();
+  this->InputCD = input->GetPointData();
   this->OutputCD = output->GetCellData();
   this->OutputCD->CopyAllocate(this->InputCD,numCells,numCells/2);
   
