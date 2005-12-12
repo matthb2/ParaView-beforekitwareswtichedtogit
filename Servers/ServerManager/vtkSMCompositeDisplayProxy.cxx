@@ -805,7 +805,7 @@ vtkPVLODPartDisplayInformation* vtkSMCompositeDisplayProxy::GetLODInformation()
 //-----------------------------------------------------------------------------
 void vtkSMCompositeDisplayProxy::SetCollectionDecision(int v)
 {
-  if (v == this->CollectionDecision)
+  if (v == this->CollectionDecision || !this->CollectProxy)
     {
     return;
     }
