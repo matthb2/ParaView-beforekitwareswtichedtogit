@@ -55,7 +55,6 @@ vtkHyperOctreeFractalSource::vtkHyperOctreeFractalSource()
   this->MinimumLevel=3;
 
   this->MaximumNumberOfIterations = 100;
-  this->TargetContourValue = 12.5;
   
   this->SpanThreshold = 2.0;
 }
