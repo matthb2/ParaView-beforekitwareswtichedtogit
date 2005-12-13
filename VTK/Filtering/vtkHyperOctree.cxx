@@ -2073,6 +2073,12 @@ void vtkHyperOctree::GetPointsOnParentEdge(
     }
 }
 
+//-----------------------------------------------------------------------------
+vtkIdType vtkHyperOctree::GetNumberOfLeaves()
+{
+  return this->CellTree->GetNumberOfLeaves();
+}
+
 //=============================================================================
 // DataSet API that returns dual grid.
 
