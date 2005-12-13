@@ -153,8 +153,8 @@ void vtkPVXMLElement::PrintXML(ostream& os, vtkIndent indent)
   unsigned int i;
   for(i=0;i < numAttributes; ++i)
     {
-    os << " " << this->Internal->AttributeNames[i]
-       << "=\"" << this->Internal->AttributeValues[i] << "\"";
+    os << " " << this->Internal->AttributeNames[i].c_str()
+       << "=\"" << this->Internal->AttributeValues[i].c_str() << "\"";
     }
   unsigned int numberOfNestedElements = this->Internal->NestedElements.size();
   if(numberOfNestedElements > 0)
