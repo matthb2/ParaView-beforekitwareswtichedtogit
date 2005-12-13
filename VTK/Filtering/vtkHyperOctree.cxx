@@ -2876,7 +2876,7 @@ void vtkHyperOctree::GenerateGridNeighborhoodTraversalTable()
   int xNewChild, yNewChild, zNewChild;
   int cursor, child, newCursor, newChild;
 
-  int numChildren, numCursors;
+  int numCursors;
   int xChildDim, yChildDim, zChildDim;
   int xCursorDim, yCursorDim, zCursorDim;
   int yChildInc, zChildInc;
@@ -2893,7 +2893,6 @@ void vtkHyperOctree::GenerateGridNeighborhoodTraversalTable()
   
   assert("Dimension cannot be 0." && this->GetDimension());
   
-  numChildren = 1<<this->GetDimension();
   switch (this->GetDimension())
     {
     case 1:
@@ -3134,7 +3133,7 @@ void vtkHyperOctree::GenerateDualNeighborhoodTraversalTable()
   int xNewChild, yNewChild, zNewChild;
   int cursor, child, newCursor, newChild;
   
-  int numChildren, numCursors;
+  int numCursors;
   int xChildDim, yChildDim, zChildDim;
   int xCursorDim, yCursorDim, zCursorDim;
   int yChildInc, zChildInc;
@@ -3148,7 +3147,7 @@ void vtkHyperOctree::GenerateDualNeighborhoodTraversalTable()
   
   assert("Dimension cannot be 0." && this->GetDimension());
 
-  numCursors = numChildren = 1<<this->GetDimension();
+  numCursors = 1<<this->GetDimension();
   switch (this->GetDimension())
     {
     case 1:
