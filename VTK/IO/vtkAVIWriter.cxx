@@ -249,5 +249,6 @@ void vtkAVIWriter::End()
 void vtkAVIWriter::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os, indent);  
+  os << indent << "Rate: " << this->Rate << endl;
 }
 
