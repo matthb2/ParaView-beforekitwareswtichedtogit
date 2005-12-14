@@ -67,7 +67,7 @@ void vtkPVXMLElement::AddAttribute(const char* attrName,
 }
 
 //----------------------------------------------------------------------------
-void vtkPVXMLElement::AddAttribute(const char* attrName, int attrValue)
+void vtkPVXMLElement::AddAttribute(const char* attrName, vtkIdType attrValue)
 {
   ostrstream valueStr;
   valueStr << attrValue << ends;
