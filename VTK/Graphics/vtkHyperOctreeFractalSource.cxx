@@ -372,7 +372,7 @@ void vtkHyperOctreeFractalSource::Subdivide(vtkHyperOctreeCursor *cursor,
       }
     float val = this->EvaluateWorldPoint(center);
     // Weight cell values for smoother iso surface.
-    float fVal;
+    float fVal = 0.0;
     if (this->Dimension == 3)
       {
       fVal = ((float)(val) * 4 
