@@ -2480,7 +2480,6 @@ void vtkHyperOctree::SetDualGridFlag(int flag)
     this->CellData->ShallowCopy(this->PointData);
     this->PointData->ShallowCopy(attr);
     attr->Delete();
-    attr = 0;
     }
   this->DeleteInternalArrays();
   this->DualGridFlag = flag;
@@ -2883,8 +2882,8 @@ void vtkHyperOctree::GenerateGridNeighborhoodTraversalTable()
   int yCursorInc, zCursorInc;
   xChildDim = yChildDim = zChildDim = 1;
   xCursorDim = yCursorDim = zCursorDim = 1;
-  yChildInc = zChildInc = 0;
-  yCursorInc = zCursorInc = 0;
+  zChildInc = 0;
+  zCursorInc = 0;
   yChildInc = 2;
   yCursorInc = 3;
   zChildInc = 4;
@@ -3140,10 +3139,8 @@ void vtkHyperOctree::GenerateDualNeighborhoodTraversalTable()
   int yCursorInc, zCursorInc;
   xChildDim = yChildDim = zChildDim = 1;
   xCursorDim = yCursorDim = zCursorDim = 1;
-  yChildInc = zChildInc = yCursorInc = zCursorInc = 0;
   yChildInc = yCursorInc = 2;
   zChildInc = zCursorInc = 4;
-  numCursors = 1;  
   
   assert("Dimension cannot be 0." && this->GetDimension());
 
