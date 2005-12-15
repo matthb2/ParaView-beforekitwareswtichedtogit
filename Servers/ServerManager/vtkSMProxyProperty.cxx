@@ -483,7 +483,7 @@ void vtkSMProxyProperty::ChildSaveState(vtkPVXMLElement* propertyElement)
       
       if (dom && dom->IsInDomain(proxy))
         {
-        proxies.push_back(proxy->GetName());
+        proxies.push_back(proxy->GetSelfIDAsString());
         break;
         }
       this->DomainIterator->Next();

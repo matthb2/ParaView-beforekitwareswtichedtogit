@@ -102,12 +102,6 @@ void vtkSMAxesProxy::CreateVTKObjects(int numObjects)
 }
 
 //---------------------------------------------------------------------------
-void vtkSMAxesProxy::SaveInBatchScript(ofstream* file)
-{
-  this->Superclass::SaveInBatchScript(file);
-}
-
-//---------------------------------------------------------------------------
 void vtkSMAxesProxy::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os, indent);
