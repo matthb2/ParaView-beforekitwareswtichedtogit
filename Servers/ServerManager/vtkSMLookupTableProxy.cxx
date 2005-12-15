@@ -143,8 +143,6 @@ void vtkSMLookupTableProxy::Build()
 //---------------------------------------------------------------------------
 void vtkSMLookupTableProxy::SaveInBatchScript(ofstream* file)
 {
-  unsigned int cc;
-  unsigned numObjects = this->GetNumberOfIDs();
   vtkSMIntVectorProperty* ivp;
   vtkSMDoubleVectorProperty* dvp;
 
