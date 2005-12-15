@@ -2895,6 +2895,8 @@ void vtkHyperOctree::GenerateGridNeighborhoodTraversalTable()
   switch (this->GetDimension())
     {
     case 1:
+      xChildDim = 2;
+      xCursorDim = 3;
       yChildInc = zChildInc = 0;
       yCursorInc = zCursorInc = 0;
       numCursors = 3;
@@ -3148,6 +3150,7 @@ void vtkHyperOctree::GenerateDualNeighborhoodTraversalTable()
   switch (this->GetDimension())
     {
     case 1:
+      xChildDim = xCursorDim = 2;
       yChildInc = zChildInc = yCursorInc = zCursorInc = 0;
       break;
     case 2:
