@@ -67,6 +67,16 @@ void vtkPVXMLElement::AddAttribute(const char* attrName,
 }
 
 //----------------------------------------------------------------------------
+void vtkPVXMLElement::AddAttribute(const char* attrName, int attrValue)
+{
+  ostrstream valueStr;
+  valueStr << attrValue << ends;
+  this->AddAttribute(attrName, valueStr.str());
+  delete[] valueStr.str();
+}
+
+#if defined(VTK_USE_64BIT_IDS)
+//----------------------------------------------------------------------------
 void vtkPVXMLElement::AddAttribute(const char* attrName, vtkIdType attrValue)
 {
   ostrstream valueStr;
@@ -74,6 +84,7 @@ void vtkPVXMLElement::AddAttribute(const char* attrName, vtkIdType attrValue)
   this->AddAttribute(attrName, valueStr.str());
   delete[] valueStr.str();
 }
+#endif
 
 //----------------------------------------------------------------------------
 void vtkPVXMLElement::AddAttribute(const char* attrName, double attrValue)
