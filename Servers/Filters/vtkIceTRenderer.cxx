@@ -234,8 +234,10 @@ void vtkIceTRenderer::DeviceRender()
     }
 
   //Set up ordered compositing.
-  if (   this->SortingKdTree
-      && (this->ComposeOperation == vtkIceTRenderManager::ComposeOperationOver))
+  if (   (this->ComposeOperation == vtkIceTRenderManager::ComposeOperationOver)
+      && this->SortingKdTree
+      && (   this->SortingKdTree->GetNumberOfRegions()
+          >= this->Context->GetController()->GetNumberOfProcesses()) )
     {
     // Setup ICE-T context for correct sorting.
     icetEnable(ICET_ORDERED_COMPOSITE);
