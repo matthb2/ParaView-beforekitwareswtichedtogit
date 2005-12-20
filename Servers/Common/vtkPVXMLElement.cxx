@@ -303,6 +303,14 @@ int vtkPVXMLElement::GetScalarAttribute(const char* name, double* value)
   return this->GetVectorAttribute(name, 1, value);
 }
 
+#if defined(VTK_USE_64BIT_IDS)
+//----------------------------------------------------------------------------
+int vtkPVXMLElement::GetScalarAttribute(const char* name, vtkIdType* value)
+{
+  return this->GetVectorAttribute(name, 1, value);
+}
+#endif
+
 //----------------------------------------------------------------------------
 template <class T>
 int vtkPVXMLVectorAttributeParse(const char* str, int length, T* data)
