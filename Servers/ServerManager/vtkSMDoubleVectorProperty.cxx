@@ -312,6 +312,42 @@ int vtkSMDoubleVectorProperty::ReadXMLAttributes(vtkSMProxy* proxy,
 }
 
 //---------------------------------------------------------------------------
+int vtkSMDoubleVectorProperty::LoadState(vtkPVXMLElement* element,
+                                         vtkSMStateLoader* loader)
+{
+  int prevImUpdate = this->ImmediateUpdate;
+
+  // Wait until all values are set before update (if ImmediateUpdate)
+  this->ImmediateUpdate = 0;
+  this->Superclass::LoadState(element, loader);
+
+  unsigned int numElems = element->GetNumberOfNestedElements();
+  for (unsigned int i=0; i<numElems; i++)
+    {
+    vtkPVXMLElement* currentElement = element->GetNestedElement(i);
+    if (currentElement->GetName() &&
+        strcmp(currentElement->GetName(), "Element") == 0)
+      {
+      int index;
+      if (currentElement->GetScalarAttribute("index", &index))
+        {
+        double value;
+        if (currentElement->GetScalarAttribute("value", &value))
+          {
+          this->SetElement(index, value);
+          }
+        }
+      }
+    }
+
+  // Do not immediately update. Leave it to the loader.
+  this->Modified();
+  this->ImmediateUpdate = prevImUpdate;
+
+  return 1;
+}
+
+//---------------------------------------------------------------------------
 void vtkSMDoubleVectorProperty::ChildSaveState(
   vtkPVXMLElement* propertyElement)
 {

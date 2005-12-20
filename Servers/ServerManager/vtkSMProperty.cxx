@@ -389,6 +389,13 @@ int vtkSMProperty::ReadXMLAttributes(vtkSMProxy* proxy,
 }
 
 //---------------------------------------------------------------------------
+int vtkSMProperty::LoadState(vtkPVXMLElement* /*propertyElement*/, 
+                             vtkSMStateLoader* /*loader*/)
+{
+  return 1;
+}
+
+//---------------------------------------------------------------------------
 void vtkSMProperty::ChildSaveState(vtkPVXMLElement* /*propertyElement*/)
 {
 }
