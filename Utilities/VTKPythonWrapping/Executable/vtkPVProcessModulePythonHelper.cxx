@@ -75,7 +75,6 @@ int vtkPVProcessModulePythonHelper::RunGUIStart(int argc, char **argv, int numSe
   vtkSMProperty::SetCheckDomains(0);
 
   vtkSMProxyManager* proxm = vtkSMObject::GetProxyManager();
-  proxm->InstantiateGroupPrototypes("filters");
 
   vtkPVPythonOptions* boptions = vtkPVPythonOptions::SafeDownCast(this->ProcessModule->GetOptions());
   int res = 0; 
