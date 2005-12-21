@@ -66,15 +66,13 @@ void vtkPVProcessModulePythonHelper::PrintSelf(ostream& os, vtkIndent indent)
 }
 
 //----------------------------------------------------------------------------
-int vtkPVProcessModulePythonHelper::RunGUIStart(int argc, char **argv, int numServerProcs, int myId)
+int vtkPVProcessModulePythonHelper::RunGUIStart(int /*argc*/, char **argv, int numServerProcs, int myId)
 {
   (void)myId;
   (void)numServerProcs;
 
   this->SMApplication->Initialize();
   vtkSMProperty::SetCheckDomains(0);
-
-  vtkSMProxyManager* proxm = vtkSMObject::GetProxyManager();
 
   vtkPVPythonOptions* boptions = vtkPVPythonOptions::SafeDownCast(this->ProcessModule->GetOptions());
   int res = 0; 
