@@ -293,11 +293,11 @@ int vtkPVGeometryFilter::RequestCompositeData(vtkInformation*,
   vtkAppendPolyData* append = vtkAppendPolyData::New();
   int numInputs = 0;
   this->GenerateGroupScalars = 1;
-  for (unsigned int group=0; group<numGroups; group++)
+  for (group=0; group<numGroups; group++)
     {
     unsigned int numDataSets = mgInput->GetNumberOfDataSets(group);
     this->CurrentGroup = group;
-    for (unsigned int dataset=0; dataset<numDataSets; dataset++)
+    for (dataset=0; dataset<numDataSets; dataset++)
       {
       vtkDataSet* ds = 
         vtkDataSet::SafeDownCast(mgInput->GetDataSet(group, dataset));
