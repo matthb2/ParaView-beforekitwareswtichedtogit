@@ -1122,7 +1122,7 @@ void vtkShader::SetSamplerParameter(vtkActor* act, vtkRenderer*,
     return;
     }
   
-  this->SetSamplerParameter(name, texture);
+  this->SetSamplerParameter(name, texture, texture_id);
 }
 //-----------------------------------------------------------------------------
 void vtkShader::SetApplicationParameter(vtkXMLDataElement* elem)
