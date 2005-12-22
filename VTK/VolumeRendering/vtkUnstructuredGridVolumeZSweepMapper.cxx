@@ -2137,6 +2137,9 @@ public:
                vtkIdType cellIdx,
                int orientationChanged)
     {
+      // Ignore degenerate faces.
+      if ((faceIds[0] == faceIds[1]) || (faceIds[1] == faceIds[2])) return;
+
       assert("pre: ordered ids" && faceIds[0]<faceIds[1]
              && faceIds[1]<faceIds[2]);
 
