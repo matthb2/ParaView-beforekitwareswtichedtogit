@@ -205,7 +205,7 @@ void vtkSMCubeAxesDisplayProxy::MarkModified(vtkSMProxy* modifiedProxy)
 }
 
 //----------------------------------------------------------------------------
-void vtkSMCubeAxesDisplayProxy::InvalidateGeometry()
+void vtkSMCubeAxesDisplayProxy::InvalidateGeometryInternal(int /*useCache*/)
 {
   this->GeometryIsValid = 0;
 }
