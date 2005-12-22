@@ -391,6 +391,25 @@ vtkPVDataInformation* vtkSMSourceProxy::GetDataInformation()
 }
 
 //----------------------------------------------------------------------------
+void vtkSMSourceProxy::InvalidateDataInformation(int invalidateConsumers)
+{
+  if (invalidateConsumers)
+    {
+    unsigned int numConsumers = this->GetNumberOfConsumers();
+    for (unsigned int i=0; i<numConsumers; i++)
+      {
+      vtkSMSourceProxy* cons = vtkSMSourceProxy::SafeDownCast(
+        this->GetConsumerProxy(i));
+      if (cons)
+        {
+        cons->InvalidateDataInformation(1);
+        }
+      }
+    }
+  this->InvalidateDataInformation();
+}
+
+//----------------------------------------------------------------------------
 void vtkSMSourceProxy::InvalidateDataInformation()
 {
   this->DataInformationValid = 0;
