@@ -220,6 +220,8 @@ void vtkSMProxyProperty::AppendProxyToStream(vtkSMProxy* toAppend,
     return;
     }
 
+  toAppend->CreateVTKObjects(1);
+
   unsigned int numConsIDs = cons->GetNumberOfIDs();
   unsigned int numIDs = toAppend->GetNumberOfIDs();
   // Determine now the IDs are added.
