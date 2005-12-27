@@ -125,7 +125,7 @@ void vtkInteractorStyleUnicam::SetWorldUpVector(double x, double y, double z)
 //----------------------------------------------------------------------------
 void vtkInteractorStyleUnicam::OnLeftButtonDown() 
 {
-  this->Interactor->GrabFocus(this->EventCallbackCommand);
+  this->GrabFocus(this->EventCallbackCommand);
 
   int x = this->Interactor->GetEventPosition()[0];
   int y = this->Interactor->GetEventPosition()[1];
@@ -286,7 +286,7 @@ void vtkInteractorStyleUnicam::OnLeftButtonUp()
     rwi->DestroyTimer();
     }
 
-  this->Interactor->ReleaseFocus();
+  this->ReleaseFocus();
 }
 
 //----------------------------------------------------------------------------
