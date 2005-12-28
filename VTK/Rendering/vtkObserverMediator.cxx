@@ -114,7 +114,7 @@ int vtkObserverMediator::RequestCursorShape(vtkInteractorObserver *w, int reques
   // Get the item with the highest priority off of the queue
   if ( ! this->ObserverMap->empty() )
     {
-    ObserverMapIterator iter = this->ObserverMap->end();
+    iter = this->ObserverMap->end();
     --iter;
     this->Interactor->GetRenderWindow()->SetCurrentCursor((*iter).second);
     this->CurrentObserver = w;
