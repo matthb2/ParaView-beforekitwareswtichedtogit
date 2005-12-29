@@ -88,9 +88,6 @@ void vtkScalarBarWidget::SetEnabled(int enabling)
     // Add the scalar bar
     this->CurrentRenderer->AddViewProp(this->ScalarBarActor);
     this->InvokeEvent(vtkCommand::EnableEvent,NULL);
-
-    // Get the cursor resource manager
-    this->ObserverMediator = this->Interactor->GetObserverMediator();
     }
   else //disabling------------------------------------------
     {

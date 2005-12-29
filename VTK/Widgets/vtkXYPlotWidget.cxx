@@ -82,8 +82,6 @@ void vtkXYPlotWidget::SetEnabled(int enabling)
     i->AddObserver(vtkCommand::LeftButtonReleaseEvent, 
                    this->EventCallbackCommand, this->Priority);
 
-    this->ObserverMediator = i->GetObserverMediator();
-
     // Add the xy plot
     this->CurrentRenderer->AddViewProp(this->XYPlotActor);
     this->InvokeEvent(vtkCommand::EnableEvent,NULL);

@@ -163,7 +163,6 @@ void vtkOrientationMarkerWidget::SetEnabled(int enabling)
     if (this->Interactive)
       {
       vtkRenderWindowInteractor *i = this->Interactor;
-      this->ObserverMediator = this->Interactor->GetObserverMediator();
       if ( this->EventCallbackCommand )
         {
         i->AddObserver( vtkCommand::MouseMoveEvent,

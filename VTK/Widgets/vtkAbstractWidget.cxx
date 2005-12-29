@@ -22,7 +22,6 @@
 #include "vtkRenderer.h"
 #include "vtkEvent.h"
 #include "vtkWidgetEvent.h"
-#include "vtkObserverMediator.h"
 
 vtkCxxRevisionMacro(vtkAbstractWidget, "$Revision$");
 
@@ -143,7 +142,6 @@ void vtkAbstractWidget::SetEnabled(int enabling)
 
     if ( this->ManagesCursor )
       {
-      this->ObserverMediator = this->Interactor->GetObserverMediator();
       this->WidgetRep->ComputeInteractionState(X, Y);
       this->SetCursor(this->WidgetRep->GetInteractionState());
       }

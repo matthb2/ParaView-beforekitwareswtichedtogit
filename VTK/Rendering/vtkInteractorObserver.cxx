@@ -19,6 +19,7 @@
 #include "vtkRenderer.h"
 #include "vtkRenderWindow.h"
 #include "vtkRenderWindowInteractor.h"
+#include "vtkObserverMediator.h" 
 
 vtkCxxRevisionMacro(vtkInteractorObserver, "$Revision$");
 
@@ -298,6 +299,16 @@ void vtkInteractorObserver::ReleaseFocus()
     {
     this->Interactor->ReleaseFocus();
     }
+}
+
+//----------------------------------------------------------------------------
+int vtkInteractorObserver::RequestCursorShape(int requestedShape)
+{
+  if ( ! this->ObserverMediator )
+    {
+    this->ObserverMediator = this->Interactor->GetObserverMediator();
+    }
+  return this->ObserverMediator->RequestCursorShape(this,requestedShape);
 }
 
 //----------------------------------------------------------------------------
