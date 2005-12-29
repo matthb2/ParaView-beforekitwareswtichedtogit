@@ -324,7 +324,6 @@ void vtkScalarBarWidget::OnMouseMove()
         }
       // adjust the cursor based on our position
       this->SetCursor(this->ComputeStateBasedOnPosition(X,Y,pos1,pos2));
-      "bad return\n";
       return;
       }
     }
