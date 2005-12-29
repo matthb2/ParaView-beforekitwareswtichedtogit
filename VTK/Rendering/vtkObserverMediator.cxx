@@ -119,7 +119,7 @@ int vtkObserverMediator::RequestCursorShape(vtkInteractorObserver *w, int reques
     iter = this->ObserverMap->end();
     --iter; //this is the observer with the highest priority
     this->Interactor->GetRenderWindow()->SetCurrentCursor((*iter).second);
-    this->CurrentObserver = w;
+    this->CurrentObserver = (*iter).first;
     this->CurrentCursorShape = (*iter).second;
     return 1;
     }
