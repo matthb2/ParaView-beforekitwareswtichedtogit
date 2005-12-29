@@ -1481,6 +1481,8 @@ vtkExodusReader::vtkExodusReader()
   this->NumberOfBlocks = 0;
   this->NumberOfUsedNodes = 0;
   this->NumberOfNodesInFile = 0;
+  this->NumberOfNodeSets = 0;
+  this->NumberOfSideSets = 0;
   this->NumberOfTimeSteps = 0;
   this->ExodusCPUWordSize = 0;
   this->ExodusIOWordSize = 0;
@@ -3689,7 +3691,7 @@ void vtkExodusReader::GenerateExtraArrays(vtkUnstructuredGrid* output)
       this->GlobalElementIdCache = tmp;
       }
 
-    int *idList = new int [this->NumberOfUsedElements];
+    int *idList = (int*)malloc(this->NumberOfUsedElements*sizeof(int));
 
     if (nblocksUsed < nblocks)
       {
