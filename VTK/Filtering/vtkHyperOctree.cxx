@@ -3356,7 +3356,14 @@ void vtkHyperOctree::TraverseDualRecursively(
   unsigned char divide = 0;
   unsigned char childrenToTraverse[8];
   memset(childrenToTraverse,0,8);
-
+  static int debugStackOverflow = 0;
+  
+  if (debugStackOverflow < level)
+    {
+    debugStackOverflow = level;
+    cout << "Maximum recursion depth " << level << endl;
+    }
+  
   if ( ! neighborhood[0].GetIsLeaf())
     { // Main cursor is a node.  Traverse all children.
     divide = 1;
