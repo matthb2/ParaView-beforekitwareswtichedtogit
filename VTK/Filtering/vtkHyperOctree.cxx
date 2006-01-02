@@ -2194,7 +2194,7 @@ vtkCell *vtkHyperOctree::GetCell(vtkIdType cellId)
     assert("Index out of bounds." && 
            cellId >= 0 && cellId < cornerLeafIds->GetNumberOfTuples());
     vtkPoints* leafCenters = this->GetLeafCenters();
-    int* ptr = cornerLeafIds->GetPointer(0) + cellId*numPts;
+    vtkIdType* ptr = cornerLeafIds->GetPointer(0) + cellId*numPts;
     for (ptIdx = 0; ptIdx < numPts; ++ptIdx)
       {      
       cell->PointIds->SetId(ptIdx, *ptr);
@@ -2257,7 +2257,7 @@ void vtkHyperOctree::GetCell(vtkIdType cellId,
     assert("Index out of bounds." && 
            cellId >= 0 && cellId < cornerLeafIds->GetNumberOfTuples());
     vtkPoints* leafCenters = this->GetLeafCenters();
-    int* ptr = cornerLeafIds->GetPointer(0) + cellId*numPts;
+    vtkIdType* ptr = cornerLeafIds->GetPointer(0) + cellId*numPts;
     for (ptIdx = 0; ptIdx < numPts; ++ptIdx)
       {      
       cell->PointIds->SetId(ptIdx, *ptr);
@@ -2328,7 +2328,7 @@ void vtkHyperOctree::GetCellPoints(vtkIdType cellId, vtkIdList *ptIds)
     vtkIdTypeArray* cornerLeafIds = this->GetCornerLeafIds();
     assert("Index out of bounds." && 
            cellId >= 0 && cellId < cornerLeafIds->GetNumberOfTuples());
-    int* ptr = cornerLeafIds->GetPointer(0) + cellId*numPts;  
+    vtkIdType* ptr = cornerLeafIds->GetPointer(0) + cellId*numPts;  
     for (ii = 0; ii < numPts; ++ii)
       {
       ptIds->InsertId(ii, *ptr++);
