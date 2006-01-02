@@ -80,8 +80,8 @@ int vtkHyperOctreeSurfaceFilter::RequestData(
     this->Locator->InitPointInsertion (this->OutPts, input->GetBounds());
     }
   
-  vtkIdType numCells=input->GetNumberOfCells();
-  this->InputCD = input->GetPointData();
+  vtkIdType numCells=input->GetNumberOfLeaves();
+  this->InputCD = input->GetLeafData();
   this->OutputCD = output->GetCellData();
   this->OutputCD->CopyAllocate(this->InputCD,numCells,numCells/2);
   
