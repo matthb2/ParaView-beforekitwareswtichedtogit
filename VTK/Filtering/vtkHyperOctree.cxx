@@ -2869,6 +2869,8 @@ void vtkHyperOctree::UpdateGridArrays()
   double size[3];
   this->GetOrigin(origin);
   this->GetSize(size);
+  // Normal grid API (leaves as hex cells) will be removed soon.
+  vtkErrorMacro("This should never happen because I am removing this code soon.\n");
   this->TraverseGridRecursively(neighborhood, leafMask, origin, size);
 
   delete [] leafMask;
@@ -3351,7 +3353,7 @@ void vtkHyperOctree::TraverseDualRecursively(
   vtkHyperOctreeLightWeightCursor* neighborhood,
   unsigned short *xyzIds, int level)
 {
-  int divide = 0;
+  unsigned char divide = 0;
   unsigned char childrenToTraverse[8];
   memset(childrenToTraverse,0,8);
 
@@ -3455,9 +3457,9 @@ void vtkHyperOctree::TraverseDualRecursively(
   
   if (divide)
     {    
-    int numChildren = 1 << this->Dimension;
-    int child;
-    int neighbor;
+    unsigned char numChildren = 1 << this->Dimension;
+    unsigned char child;
+    unsigned char neighbor;
     unsigned char tChild, tParent;
     unsigned char* traversalTable = this->NeighborhoodTraversalTable;
     vtkHyperOctreeLightWeightCursor newNeighborhood[8];
@@ -3519,10 +3521,10 @@ void vtkHyperOctree::TraverseDualRecursively(
 void vtkHyperOctree::EvaluateDualCorner(
   vtkHyperOctreeLightWeightCursor* neighborhood)
 {
-  int numCorners = 1 << this->GetDimension();
-  int corner;
+  unsigned char numCorners = 1 << this->GetDimension();
+  unsigned char corner;
   // We will not use all of these components if dim < 3.
-  int leaves[8];
+  vtkIdType leaves[8];
   
   for (corner = 0; corner < numCorners; ++corner)
     {
