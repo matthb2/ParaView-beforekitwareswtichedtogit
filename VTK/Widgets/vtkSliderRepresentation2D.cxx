@@ -298,7 +298,7 @@ vtkCoordinate *vtkSliderRepresentation2D::GetPoint2Coordinate()
 }
 
 //----------------------------------------------------------------------
-void vtkSliderRepresentation2D::PlaceWidget(double bds[6])
+void vtkSliderRepresentation2D::PlaceWidget(double *vtkNotUsed(bds[6]))
 {
   // Position the handles at the end of the lines
   this->BuildRepresentation();
