@@ -28,10 +28,13 @@ vtkCxxRevisionMacro(vtkSMPropertyLink, "$Revision$");
 //-----------------------------------------------------------------------------
 struct vtkSMPropertyLinkInternals
 {
+public:
   struct LinkedProperty
     {
+  public:
     LinkedProperty(vtkSMProxy* proxy, const char* pname, int updateDir) :
-      Proxy(proxy), PropertyName(pname), UpdateDirection(updateDir)
+      Proxy(proxy), PropertyName(pname), UpdateDirection(updateDir), 
+      Observer(0)
     {
     }
     ~LinkedProperty()
@@ -81,6 +84,10 @@ void vtkSMPropertyLink::AddLinkedProperty(vtkSMProxy* proxy, const char* pname,
       if (iter->UpdateDirection != updateDir)
         {
         iter->UpdateDirection = updateDir;
+        if (addObserver)
+          {
+          iter->Observer = this->Observer;
+          }
         }
       else
         {
@@ -92,8 +99,11 @@ void vtkSMPropertyLink::AddLinkedProperty(vtkSMProxy* proxy, const char* pname,
   if (addToList)
     {
     vtkSMPropertyLinkInternals::LinkedProperty link(proxy, pname, updateDir);
-    link.Observer = this->Observer;
     this->Internals->LinkedProperties.push_back(link);
+    if (addObserver)
+      {
+      this->Internals->LinkedProperties.back().Observer = this->Observer;
+      }
     }
 
   if (addObserver)

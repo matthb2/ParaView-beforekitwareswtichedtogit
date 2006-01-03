@@ -79,8 +79,8 @@ vtkSMLink::~vtkSMLink()
 //-----------------------------------------------------------------------------
 void vtkSMLink::ObserveProxyUpdates(vtkSMProxy* proxy)
 {
-  proxy->AddObserver(vtkCommand::UpdateEvent, this->Observer);
   proxy->AddObserver(vtkCommand::PropertyModifiedEvent, this->Observer);
+  proxy->AddObserver(vtkCommand::UpdateEvent, this->Observer);
 }
 
 //-----------------------------------------------------------------------------
