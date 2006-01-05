@@ -338,14 +338,15 @@ void vtkSM3DWidgetProxy::SaveInBatchScript(ofstream *file)
 }
 
 //---------------------------------------------------------------------------
-void vtkSM3DWidgetProxy::SaveState(vtkPVXMLElement* root)
+vtkPVXMLElement* vtkSM3DWidgetProxy::SaveState(vtkPVXMLElement* root)
 {
   vtkSMIntVectorProperty* ivp = vtkSMIntVectorProperty::SafeDownCast(
     this->GetProperty("IgnorePlaceWidgetChanges"));
   int old_ipc = ivp->GetElement(0);
   ivp->SetElement(0, 1);
-  this->Superclass::SaveState(root);
+  vtkPVXMLElement* result = this->Superclass::SaveState(root);
   ivp->SetElement(0, old_ipc);
+  return result;
 }
 
 //----------------------------------------------------------------------------

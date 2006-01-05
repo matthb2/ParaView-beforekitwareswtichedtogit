@@ -993,10 +993,10 @@ void vtkSMRenderModuleProxy::SynchronizeCameraProperties()
 }
 
 //-----------------------------------------------------------------------------
-void vtkSMRenderModuleProxy::SaveState(vtkPVXMLElement* root)
+vtkPVXMLElement* vtkSMRenderModuleProxy::SaveState(vtkPVXMLElement* root)
 {
   this->SynchronizeCameraProperties();
-  this->Superclass::SaveState(root);
+  return this->Superclass::SaveState(root);
 }
 
 //-----------------------------------------------------------------------------

@@ -1523,7 +1523,7 @@ int vtkSMProxy::LoadState(vtkPVXMLElement* proxyElement,
 }
 
 //---------------------------------------------------------------------------
-void vtkSMProxy::SaveState(vtkPVXMLElement* root)
+vtkPVXMLElement* vtkSMProxy::SaveState(vtkPVXMLElement* root)
 {
   vtkPVXMLElement* proxyElement = vtkPVXMLElement::New();
   proxyElement->SetName("Proxy");
@@ -1549,6 +1549,8 @@ void vtkSMProxy::SaveState(vtkPVXMLElement* root)
 
   root->AddNestedElement(proxyElement);
   proxyElement->Delete();
+
+  return proxyElement;
 }
 
 //---------------------------------------------------------------------------
