@@ -112,8 +112,6 @@ vtkSMProxy* vtkSMStateLoader::NewProxy(vtkPVXMLElement* root,
     return 0;
     }
 
-  vtkSMProxyManager* pm = this->GetProxyManager();
-
   unsigned int numElems = root->GetNumberOfNestedElements();
   unsigned int i=0;
   for (i=0; i<numElems; i++)
