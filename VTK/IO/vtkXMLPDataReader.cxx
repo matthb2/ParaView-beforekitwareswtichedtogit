@@ -109,7 +109,7 @@ void vtkXMLPDataReader::SetupOutputData()
       vtkXMLDataElement* eNested = ePointData->GetNestedElement(i);
       if(this->PointDataArrayIsEnabled(eNested))
         {
-        vtkDataArray* array = this->CreateDataArray(eNested);
+        vtkAbstractArray* array = this->CreateArray(eNested);
         if(array)
           {
           array->SetNumberOfTuples(pointTuples);
@@ -131,7 +131,7 @@ void vtkXMLPDataReader::SetupOutputData()
       vtkXMLDataElement* eNested = eCellData->GetNestedElement(i);
       if(this->CellDataArrayIsEnabled(eNested))
         {
-        vtkDataArray* array = this->CreateDataArray(eNested);
+        vtkAbstractArray* array = this->CreateArray(eNested);
         if(array)
           {
           array->SetNumberOfTuples(cellTuples);

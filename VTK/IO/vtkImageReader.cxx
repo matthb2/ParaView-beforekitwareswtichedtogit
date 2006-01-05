@@ -15,6 +15,7 @@
 #include "vtkImageReader.h"
 
 #include "vtkByteSwap.h"
+#include "vtkDataArray.h"
 #include "vtkImageData.h"
 #include "vtkInformation.h"
 #include "vtkInformationVector.h"

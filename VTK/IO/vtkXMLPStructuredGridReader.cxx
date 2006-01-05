@@ -138,7 +138,8 @@ void vtkXMLPStructuredGridReader::SetupOutputData()
   if(this->PPointsElement)
     {
     // Non-zero volume.
-    vtkDataArray* a = this->CreateDataArray(this->PPointsElement->GetNestedElement(0));
+    vtkAbstractArray* aa = this->CreateArray(this->PPointsElement->GetNestedElement(0));
+    vtkDataArray* a = vtkDataArray::SafeDownCast(aa);
     if(a)
       {
       a->SetNumberOfTuples(this->GetNumberOfPoints());
@@ -147,6 +148,7 @@ void vtkXMLPStructuredGridReader::SetupOutputData()
       }
     else
       {
+      if (aa) { aa->Delete(); }
       this->DataError = 1;
       }
     }

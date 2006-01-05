@@ -15,6 +15,7 @@
 #include "vtkImplicitDataSet.h"
 
 #include "vtkCell.h"
+#include "vtkDataArray.h"
 #include "vtkDataSet.h"
 #include "vtkGarbageCollector.h"
 #include "vtkObjectFactory.h"

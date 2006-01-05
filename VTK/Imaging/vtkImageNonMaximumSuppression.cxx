@@ -14,6 +14,7 @@
 =========================================================================*/
 #include "vtkImageNonMaximumSuppression.h"
 
+#include "vtkDataArray.h"
 #include "vtkImageData.h"
 #include "vtkInformation.h"
 #include "vtkInformationVector.h"

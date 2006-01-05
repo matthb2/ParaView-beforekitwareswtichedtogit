@@ -15,6 +15,7 @@
 #include "vtkImageToStructuredPoints.h"
 
 #include "vtkCellData.h"
+#include "vtkDataArray.h"
 #include "vtkFieldData.h"
 #include "vtkInformation.h"
 #include "vtkInformationVector.h"

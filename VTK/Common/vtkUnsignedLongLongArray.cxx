@@ -15,6 +15,9 @@
 // Instantiate superclass first to give the template a DLL interface.
 #include "vtkDataArrayTemplate.txx"
 VTK_DATA_ARRAY_TEMPLATE_INSTANTIATE(unsigned long long);
+#include "vtkArrayIteratorTemplate.txx"
+VTK_ARRAY_ITERATOR_TEMPLATE_INSTANTIATE(unsigned long long);
+
 
 #define __vtkUnsignedLongLongArray_cxx
 #include "vtkUnsignedLongLongArray.h"

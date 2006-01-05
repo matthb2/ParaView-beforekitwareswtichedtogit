@@ -777,12 +777,17 @@ int vtkXMLDataElement::GetWordTypeAttribute(const char* name, int& value)
     return 0;
 #endif
     }
+  else if (strcmp(v, "String") == 0)
+    {
+    value = VTK_STRING;
+    return 1;
+    }
   else
     {
     vtkErrorMacro("Unknown data type \"" << v << "\".  Supported types are:\n"
                   "Int8,  Int16,  Int32,  Int64,\n"
                   "UInt8, UInt16, UInt32, UInt64,\n"
-                  "Float32, Float64\n");
+                  "Float32, Float64, String\n");
     return 0;
     }
 }

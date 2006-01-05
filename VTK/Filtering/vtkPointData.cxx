@@ -13,6 +13,8 @@
 
 =========================================================================*/
 #include "vtkPointData.h"
+
+#include "vtkDataArray.h"
 #include "vtkObjectFactory.h"
 
 vtkCxxRevisionMacro(vtkPointData, "$Revision$");

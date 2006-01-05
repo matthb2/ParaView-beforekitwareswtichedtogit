@@ -20,14 +20,16 @@
 // vtkGenericAttribute, vtkBridgeDataSet
 
 #include "vtkBridgeAttribute.h"
-#include "vtkObjectFactory.h"
-#include "vtkDataSetAttributes.h"
-#include "vtkBridgeCellIterator.h"
+
 #include "vtkBridgeCell.h"
+#include "vtkBridgeCellIterator.h"
+#include "vtkCellData.h"
+#include "vtkDataArray.h"
+#include "vtkDataSetAttributes.h"
 #include "vtkGenericCell.h"
 #include "vtkGenericPointIterator.h"
+#include "vtkObjectFactory.h"
 #include "vtkPointData.h"
-#include "vtkCellData.h"
 #include "vtkSetGet.h"
 
 #include <assert.h>

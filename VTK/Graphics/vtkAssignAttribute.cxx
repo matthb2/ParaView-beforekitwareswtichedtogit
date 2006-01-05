@@ -15,6 +15,7 @@
 #include "vtkAssignAttribute.h"
 
 #include "vtkCellData.h"
+#include "vtkDataArray.h"
 #include "vtkDataSet.h"
 #include "vtkDataSetAttributes.h"
 #include "vtkInformation.h"

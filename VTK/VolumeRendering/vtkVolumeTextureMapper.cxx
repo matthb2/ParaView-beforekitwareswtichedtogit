@@ -14,6 +14,7 @@
 =========================================================================*/
 #include "vtkVolumeTextureMapper.h"
 
+#include "vtkDataArray.h"
 #include "vtkEncodedGradientShader.h"
 #include "vtkFiniteDifferenceGradientEstimator.h"
 #include "vtkGarbageCollector.h"

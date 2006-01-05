@@ -14,8 +14,10 @@
 =========================================================================*/
 #include "vtkVolume.h"
 
+#include "vtkAbstractVolumeMapper.h"
 #include "vtkCamera.h"
 #include "vtkColorTransferFunction.h"
+#include "vtkDataArray.h"
 #include "vtkImageData.h"
 #include "vtkLinearTransform.h"
 #include "vtkMatrix4x4.h"
@@ -26,7 +28,6 @@
 #include "vtkTransform.h"
 #include "vtkVolumeCollection.h"
 #include "vtkVolumeProperty.h"
-#include "vtkAbstractVolumeMapper.h"
 
 #include <math.h>
 

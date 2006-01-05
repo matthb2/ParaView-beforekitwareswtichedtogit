@@ -146,7 +146,8 @@ void vtkXMLStructuredGridReader::SetupOutputData()
   if (ePoints)
     {
     // Non-zero volume.
-    vtkDataArray* a = this->CreateDataArray(ePoints->GetNestedElement(0));
+    vtkAbstractArray* aa = this->CreateArray(ePoints->GetNestedElement(0));
+    vtkDataArray* a = vtkDataArray::SafeDownCast(aa);
     if (a)
       {
       // Allocate the points array.
@@ -156,6 +157,10 @@ void vtkXMLStructuredGridReader::SetupOutputData()
       }
     else
       {
+      if (aa)
+        {
+        aa->Delete();
+        }
       this->DataError = 1;
       }
     }

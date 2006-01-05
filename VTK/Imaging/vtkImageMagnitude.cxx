@@ -14,6 +14,7 @@
 =========================================================================*/
 #include "vtkImageMagnitude.h"
 
+#include "vtkDataArray.h"
 #include "vtkImageData.h"
 #include "vtkImageProgressIterator.h"
 #include "vtkInformation.h"

@@ -15,6 +15,7 @@
 #include "vtkMergeDataObjectFilter.h"
 
 #include "vtkCellData.h"
+#include "vtkDataArray.h"
 #include "vtkDataSet.h"
 #include "vtkExecutive.h"
 #include "vtkFieldData.h"

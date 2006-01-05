@@ -16,6 +16,9 @@
 #include "vtkDataArrayTemplate.txx"
 VTK_DATA_ARRAY_TEMPLATE_INSTANTIATE(double);
 
+#include "vtkArrayIteratorTemplate.txx"
+VTK_ARRAY_ITERATOR_TEMPLATE_INSTANTIATE(double);
+
 #define __vtkDoubleArray_cxx
 #include "vtkDoubleArray.h"
 

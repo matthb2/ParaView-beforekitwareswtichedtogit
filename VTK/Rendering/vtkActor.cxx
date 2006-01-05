@@ -15,6 +15,7 @@
 #include "vtkActor.h"
 
 #include "vtkAssemblyPaths.h"
+#include "vtkDataArray.h"
 #include "vtkGraphicsFactory.h"
 #include "vtkImageData.h"
 #include "vtkLinearTransform.h"

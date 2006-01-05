@@ -14,6 +14,7 @@
 =========================================================================*/
 #include "vtkImageAlgorithm.h"
 
+#include "vtkDataArray.h"
 #include "vtkObjectFactory.h"
 #include "vtkCellData.h"
 #include "vtkPointData.h"

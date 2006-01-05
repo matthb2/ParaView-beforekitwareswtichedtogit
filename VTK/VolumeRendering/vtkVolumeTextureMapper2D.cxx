@@ -15,6 +15,7 @@
 #include "vtkVolumeTextureMapper2D.h"
 
 #include "vtkCamera.h"
+#include "vtkDataArray.h"
 #include "vtkVolumeRenderingFactory.h"
 #include "vtkImageData.h"
 #include "vtkLargeInteger.h"

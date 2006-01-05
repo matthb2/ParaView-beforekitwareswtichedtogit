@@ -14,6 +14,7 @@
 =========================================================================*/
 #include "vtkImageToImageStencil.h"
 
+#include "vtkDataArray.h"
 #include "vtkImageData.h"
 #include "vtkImageStencilData.h"
 #include "vtkInformation.h"
