@@ -88,7 +88,7 @@ vtkIdType vtkArrayIteratorTemplate<T>::GetNumberOfValues()
 
 //-----------------------------------------------------------------------------
 template <class T>
-vtkIdType vtkArrayIteratorTemplate<T>::GetNumberOfComponents()
+int vtkArrayIteratorTemplate<T>::GetNumberOfComponents()
 {
   if (this->Array)
     {
