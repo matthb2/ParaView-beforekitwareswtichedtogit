@@ -48,7 +48,7 @@ vtkSMStateLoader::~vtkSMStateLoader()
 //---------------------------------------------------------------------------
 vtkSMProxy* vtkSMStateLoader::NewProxy(int id)
 {
-  this->NewProxy(this->RootElement, id);
+  return this->NewProxy(this->RootElement, id);
 }
 
 //---------------------------------------------------------------------------
