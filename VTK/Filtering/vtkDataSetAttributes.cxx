@@ -358,7 +358,7 @@ void vtkDataSetAttributes::PassData(vtkFieldData* fd)
 
 //----------------------------------------------------------------------------
 template <class iterT>
-static void vtkDataSetAttributesCopyValues(
+void vtkDataSetAttributesCopyValues(
   iterT* destIter, const int* outExt, int outIncs[3], int rowLength,
   iterT* srcIter, const int* vtkNotUsed(inExt), int inIncs[3])
 {
@@ -397,7 +397,7 @@ static void vtkDataSetAttributesCopyValues(
 
 //----------------------------------------------------------------------------
 VTK_TEMPLATE_SPECIALIZE
-static void vtkDataSetAttributesCopyValues(
+void vtkDataSetAttributesCopyValues(
   vtkArrayIteratorTemplate<vtkStdString>* destIter, const int* outExt, 
   int outIncs[3], int rowLength,
   vtkArrayIteratorTemplate<vtkStdString>* srcIter, 
