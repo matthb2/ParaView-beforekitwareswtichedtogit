@@ -1561,7 +1561,7 @@ static inline ostream& vtkXMLWriteAsciiValue(ostream& os, const char &c)
 VTK_TEMPLATE_SPECIALIZE
 static inline ostream& vtkXMLWriteAsciiValue(ostream& os, const unsigned char &c)
 {
-  os << unsigned short(c);
+  os << static_cast<unsigned short>(c);
   return os;
 }
 
