@@ -16,6 +16,7 @@
 
 #include "vtkClientServerStream.h"
 #include "vtkCollection.h"
+#include "vtkDataArray.h"
 #include "vtkDataSetAttributes.h"
 #include "vtkObjectFactory.h"
 #include "vtkPVArrayInformation.h"

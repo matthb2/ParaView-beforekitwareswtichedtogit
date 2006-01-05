@@ -15,6 +15,7 @@
 #include "vtkMergeArrays.h"
 
 #include "vtkObjectFactory.h"
+#include "vtkDataArray.h"
 #include "vtkDataSet.h"
 #include "vtkPointData.h"
 #include "vtkCellData.h"
