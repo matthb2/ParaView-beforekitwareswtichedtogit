@@ -245,7 +245,7 @@ void vtkDataArray::GetData(vtkIdType tupleMin, vtkIdType tupleMax, int compMin,
 
 //--------------------------------------------------------------------------
 template <class T>
-static void vtkDataArrayInterpolateTuple(T* from, T* to, int numComp,
+void vtkDataArrayInterpolateTuple(T* from, T* to, int numComp,
   vtkIdType* ids, vtkIdType numIds, double* weights)
 {
   for(int i=0; i < numComp; ++i)
@@ -315,7 +315,7 @@ void vtkDataArray::InterpolateTuple(vtkIdType i, vtkIdList *ptIndices,
 
 //----------------------------------------------------------------------------
 template <class T>
-static void vtkDataArrayInterpolateTuple(T* from1, T* from2, T* to,
+void vtkDataArrayInterpolateTuple(T* from1, T* from2, T* to,
   int numComp, double t)
 {
   for(int i=0; i < numComp; ++i)

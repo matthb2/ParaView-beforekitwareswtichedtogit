@@ -459,7 +459,7 @@ void vtkXMLStructuredDataWriter::SetupExtentTranslator()
 
 //----------------------------------------------------------------------------
 template <class iterT>
-static inline void vtkXMLStructuredDataWriterCopyTuples(
+inline void vtkXMLStructuredDataWriterCopyTuples(
   iterT* destIter, vtkIdType destTuple,
   iterT* srcIter, vtkIdType sourceTuple,
   vtkIdType numTuples)
@@ -473,7 +473,7 @@ static inline void vtkXMLStructuredDataWriterCopyTuples(
 }
 
 //----------------------------------------------------------------------------
-static inline void vtkXMLStructuredDataWriterCopyTuples(
+inline void vtkXMLStructuredDataWriterCopyTuples(
   vtkArrayIteratorTemplate<vtkStdString>* destIter, vtkIdType destTuple,
   vtkArrayIteratorTemplate<vtkStdString>* srcIter, vtkIdType sourceTuple,
   vtkIdType numTuples)
