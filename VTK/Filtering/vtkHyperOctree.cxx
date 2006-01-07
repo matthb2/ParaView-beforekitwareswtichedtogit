@@ -2714,6 +2714,8 @@ void vtkHyperOctree::UpdateDualArrays()
   xyzIds[0] = xyzIds[1] = xyzIds[2] = 0;
   this->TraverseDualRecursively(neighborhood, xyzIds, 0);
 
+  this->CornerLeafIds->Squeeze();
+
   //timer->StopTimer();
   //cout << "Internal dual update : " << timer->GetElapsedTime() << endl;
   //timer->Delete();
@@ -2962,8 +2964,8 @@ void vtkHyperOctree::TraverseGridRecursively(
   int child;
   int numChildren = 1 <<this->GetDimension();
   int neighbor;
-  unsigned char tChild, tParent;
-  unsigned char* traversalTable = this->NeighborhoodTraversalTable;
+  int tChild, tParent; // used to be uchar with uchar table. VS60 bug
+  int* traversalTable = this->NeighborhoodTraversalTable;
   for (child = 0; child < numChildren; ++child)
     {
     // Compute origin for child
@@ -3577,8 +3579,8 @@ void vtkHyperOctree::TraverseDualRecursively(
     unsigned char numChildren = 1 << this->Dimension;
     unsigned char child;
     unsigned char neighbor;
-    unsigned char tChild, tParent;
-    unsigned char* traversalTable = this->NeighborhoodTraversalTable;
+    int tChild, tParent; // used to be uchar, but VS60 had a bug.
+    int* traversalTable = this->NeighborhoodTraversalTable;
     vtkHyperOctreeLightWeightCursor newNeighborhood[8];
     // Storing 4 per neighbor for efficiency.
     // This might also be useful for 4d trees :)
