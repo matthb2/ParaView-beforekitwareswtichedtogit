@@ -157,7 +157,7 @@ vtkOpenGLExtensionManager::GetProcAddress(const char *fname)
   vtkDebugMacro(<< "Trying to load OpenGL function " << fname);
 
 #ifdef VTK_USE_WGL_GET_PROC_ADDRESS
-  return wglGetProcAddress(fname);
+  return reinterpret_cast<vtkOpenGLExtensionManagerFunctionPointer>(wglGetProcAddress(fname));
 #endif //VTK_USE_WGL_GET_PROC_ADDRESS
 
 
