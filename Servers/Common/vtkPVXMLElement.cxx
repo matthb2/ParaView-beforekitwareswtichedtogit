@@ -117,6 +117,30 @@ void vtkPVXMLElement::AddAttribute(const char* attrName,
 }
 
 //----------------------------------------------------------------------------
+void vtkPVXMLElement::SetAttribute(const char* attrName,
+  const char* attrValue)
+{
+  if (!attrName || !attrValue)
+    {
+    return;
+    }
+  
+  // iterate over the names, and find if the attribute name exists.
+  unsigned int numAttributes = this->Internal->AttributeNames.size();
+  unsigned int i;
+  for(i=0; i < numAttributes; ++i)
+    {
+    if(strcmp(this->Internal->AttributeNames[i].c_str(), attrName) == 0)
+      {
+      this->Internal->AttributeValues[i] = attrValue;
+      return;
+      }
+    }
+  // add the attribute.
+  this->AddAttribute(attrName, attrValue);
+}
+
+//----------------------------------------------------------------------------
 void vtkPVXMLElement::ReadXMLAttributes(const char** atts)
 {
   this->Internal->AttributeNames.clear();
