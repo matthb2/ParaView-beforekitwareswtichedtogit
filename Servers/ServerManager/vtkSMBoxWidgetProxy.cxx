@@ -47,11 +47,6 @@ vtkSMBoxWidgetProxy::vtkSMBoxWidgetProxy()
 //----------------------------------------------------------------------------
 vtkSMBoxWidgetProxy::~vtkSMBoxWidgetProxy()
 {
-  vtkSMProxyManager *pxm = vtkSMObject::GetProxyManager();
-  if (!pxm)
-    {
-    vtkErrorMacro("ProxyManger does not exist");
-    }
   this->BoxTransform = 0;
 }
 
