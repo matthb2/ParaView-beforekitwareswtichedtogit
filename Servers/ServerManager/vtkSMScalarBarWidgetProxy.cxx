@@ -252,20 +252,6 @@ void vtkSMScalarBarWidgetProxy::ExecuteEvent(vtkObject*,
 }
   
 //----------------------------------------------------------------------------
-void vtkSMScalarBarWidgetProxy::SaveInBatchScript(ofstream* file)
-{
-  *file << endl;
-  // Okay, the way I am saving the Text properties in batch is crooked.
-  // But this is the most convenient way without having to 
-  // reassign names to properties of the two TextProeprties.
-
-  vtkSMScalarBarActorProxy::SafeDownCast(this->ScalarBarActorProxy)
-    ->SaveTextPropertiesInBatchScript(file);
-  
-  this->Superclass::SaveInBatchScript(file);
-}
-
-//----------------------------------------------------------------------------
 void vtkSMScalarBarWidgetProxy::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os,indent);
