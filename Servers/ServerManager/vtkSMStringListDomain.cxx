@@ -207,6 +207,30 @@ void vtkSMStringListDomain::ChildSaveState(vtkPVXMLElement* domainElement)
 }
 
 //---------------------------------------------------------------------------
+int vtkSMStringListDomain::LoadState(vtkPVXMLElement* domainElement, 
+    vtkSMStateLoader* loader)
+{
+  this->Superclass::LoadState(domainElement, loader);
+  
+  this->RemoveAllStrings();
+  
+  unsigned int numElems = domainElement->GetNumberOfNestedElements();
+  for (unsigned int cc=0; cc < numElems; cc++)
+    {
+    vtkPVXMLElement* child = domainElement->GetNestedElement(cc);
+    if (child->GetName() && strcmp(child->GetName(), "String") == 0)
+      {
+      const char* text = child->GetAttribute("text");
+      if (text)
+        {
+        this->AddString(text);
+        }
+      }
+    }
+  return 0;
+}
+
+//---------------------------------------------------------------------------
 void vtkSMStringListDomain::SetAnimationValue(vtkSMProperty *prop, int idx,
                                               double value)
 {
