@@ -431,7 +431,7 @@ void vtkSMProperty::SaveState(vtkPVXMLElement* parent,
     vtkPVXMLElement* controllerProxyElem = vtkPVXMLElement::New();
     controllerProxyElem->SetName("ControllerProperty");
     controllerProxyElem->AddAttribute("id",
-      this->ControllerProxy->GetName());
+      this->ControllerProxy->GetSelfIDAsString());
     controllerProxyElem->AddAttribute("name",
       this->ControllerPropertyName);
     propertyElement->AddNestedElement(controllerProxyElem);

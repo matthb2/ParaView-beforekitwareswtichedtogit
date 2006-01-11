@@ -1610,8 +1610,11 @@ vtkPVXMLElement* vtkSMProxy::SaveState(vtkPVXMLElement* root)
 
   iter->Delete();
 
-  root->AddNestedElement(proxyElement);
-  proxyElement->Delete();
+  if (root)
+    {
+    root->AddNestedElement(proxyElement);
+    proxyElement->Delete();
+    }
 
   return proxyElement;
 }
