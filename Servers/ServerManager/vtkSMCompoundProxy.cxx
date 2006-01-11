@@ -122,6 +122,38 @@ unsigned int vtkSMCompoundProxy::GetNumberOfProxies()
   return this->MainProxy->GetNumberOfSubProxies();
 }
 
+
+//---------------------------------------------------------------------------
+vtkSMProperty* vtkSMCompoundProxy::GetProperty(const char* name)
+{
+  if (!this->MainProxy)
+    {
+    return 0;
+    }
+
+  return this->MainProxy->GetProperty(name);
+}
+
+//---------------------------------------------------------------------------
+void vtkSMCompoundProxy::UpdateVTKObjects()
+{
+  if (!this->MainProxy)
+    {
+    return;
+    }
+  this->MainProxy->UpdateVTKObjects();
+}
+
+//---------------------------------------------------------------------------
+vtkSMPropertyIterator* vtkSMCompoundProxy::NewPropertyIterator()
+{
+  if (!this->MainProxy)
+    {
+    return 0;
+    }
+  return this->MainProxy->NewPropertyIterator();
+}
+
 //---------------------------------------------------------------------------
 void vtkSMCompoundProxy::ExposeProperty(const char* proxyName, 
                                         const char* propertyName,
