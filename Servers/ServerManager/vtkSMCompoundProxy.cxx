@@ -135,6 +135,17 @@ vtkSMProperty* vtkSMCompoundProxy::GetProperty(const char* name)
 }
 
 //---------------------------------------------------------------------------
+vtkSMProperty* vtkSMCompoundProxy::GetProperty(const char* name, int selfOnly)
+{
+  if (!this->MainProxy)
+    {
+    return 0;
+    }
+
+  return this->MainProxy->GetProperty(name, selfOnly);
+}
+
+//---------------------------------------------------------------------------
 void vtkSMCompoundProxy::UpdateVTKObjects()
 {
   if (!this->MainProxy)
@@ -336,8 +347,9 @@ void vtkSMCompoundProxy::HandleExposedProperties(vtkPVXMLElement* element)
 int vtkSMCompoundProxy::LoadState(vtkPVXMLElement* proxyElement, 
                                   vtkSMStateLoader* loader)
 {
+  unsigned int i;
   unsigned int numElems = proxyElement->GetNumberOfNestedElements();
-  for (unsigned int i=0; i<numElems; i++)
+  for (i=0; i<numElems; i++)
     {
     vtkPVXMLElement* currentElement = proxyElement->GetNestedElement(i);
     if (currentElement->GetName() &&
@@ -364,7 +376,7 @@ int vtkSMCompoundProxy::LoadState(vtkPVXMLElement* proxyElement,
     }
 
 
-  for (unsigned int i=0; i<numElems; i++)
+  for (i=0; i<numElems; i++)
     {
     vtkPVXMLElement* currentElement = proxyElement->GetNestedElement(i);
     if (currentElement->GetName() &&
