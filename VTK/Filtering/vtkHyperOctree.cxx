@@ -2177,7 +2177,8 @@ vtkCell *vtkHyperOctree::GetCell(vtkIdType cellId)
     {
     case 1: 
       cell = this->Line;
-      return NULL;
+      //return NULL; ???
+      break;
 
     case 2:
       cell = this->Pixel;
