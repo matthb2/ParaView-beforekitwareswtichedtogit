@@ -622,6 +622,9 @@ void vtkSMRenderModuleProxy::InvalidateAllGeometries()
 //-----------------------------------------------------------------------------
 void vtkSMRenderModuleProxy::UpdateAllDisplays()
 {
+  vtkProcessModule* pm = vtkProcessModule::GetProcessModule();
+
+  pm->SendPrepareProgress(this->ConnectionID);
   vtkCollectionIterator* iter = this->Displays->NewIterator();
   for (iter->InitTraversal(); !iter->IsDoneWithTraversal(); iter->GoToNextItem())
     {
@@ -638,6 +641,7 @@ void vtkSMRenderModuleProxy::UpdateAllDisplays()
     // We don;t use properties here since it tends to slow things down.
     }
   iter->Delete();  
+  pm->SendCleanupPendingProgress(this->ConnectionID);
 }
 
 //-----------------------------------------------------------------------------
