@@ -74,6 +74,7 @@ int vtkPointDataToCellData::RequestData(
   // which also exist in the point data of the input will
   // be over-written during CopyAllocate
   output->GetCellData()->PassData(input->GetCellData());
+  output->GetCellData()->CopyFieldOff("vtkGhostLevels");
 
   // notice that inPD and outCD are vtkPointData and vtkCellData; respectively.
   // It's weird, but it works.
@@ -102,11 +103,13 @@ int vtkPointDataToCellData::RequestData(
       }
     }
 
-  if ( this->PassPointData )
+  if ( !this->PassPointData )
     {
-    output->GetPointData()->PassData(input->GetPointData());
+    output->GetPointData()->CopyAllOff();
+    output->GetPointData()->CopyFieldOn("vtkGhostLevels");
     }
-  
+  output->GetPointData()->PassData(input->GetPointData());
+
   cellPts->Delete();
   delete [] weights;
 
