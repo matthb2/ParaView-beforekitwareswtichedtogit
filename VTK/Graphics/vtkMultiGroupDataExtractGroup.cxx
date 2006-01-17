@@ -101,6 +101,10 @@ int vtkMultiGroupDataExtractGroup::RequestInformation(
     {
     numGroups = this->MaxGroup+1;
     }
+  if (numGroups < this->MinGroup)
+    {
+    numGroups = this->MinGroup;
+    }
   compInfo->SetNumberOfGroups(numGroups-this->MinGroup);
 
   for (unsigned int i=0; i<numGroups; i++)
