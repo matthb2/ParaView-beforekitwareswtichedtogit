@@ -67,8 +67,8 @@ int vtkPCellDataToPointData::RequestData(
 }
 
 //--------------------------------------------------------------------------
-int vtkPCellDataToPointData::ComputeInputUpdateExtent(
-  vtkInformation*,
+int vtkPCellDataToPointData::RequestUpdateExtent(
+  vtkInformation* request,
   vtkInformationVector** inputVector,
   vtkInformationVector* outputVector)
 {
