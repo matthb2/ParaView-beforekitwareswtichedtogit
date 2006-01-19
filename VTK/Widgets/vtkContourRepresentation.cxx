@@ -1009,7 +1009,7 @@ int vtkContourRepresentation::UpdateContour()
 //----------------------------------------------------------------------
 void vtkContourRepresentation
 ::GetRendererComputedDisplayPositionFromWorldPosition( double worldPos[3],
-                                double worldOrient[9], int displayPos[2] )
+                                double * vtkNotUsed(worldOrient[9]), int displayPos[2] )
 {
   double pos[4];
   pos[0] = worldPos[0];
