@@ -54,8 +54,8 @@ vtkLeaderActor2D::vtkLeaderActor2D()
 
   this->ArrowPlacement = vtkLeaderActor2D::VTK_ARROW_BOTH;
   this->ArrowStyle = vtkLeaderActor2D::VTK_ARROW_FILLED;
-  this->ArrowLength = 0.01;
-  this->ArrowWidth = 0.0075;
+  this->ArrowLength = 0.04;
+  this->ArrowWidth = 0.02;
   this->MinimumArrowSize = 2;
   this->MaximumArrowSize = 25;
 
