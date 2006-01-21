@@ -54,7 +54,6 @@ vtkOrientedGlyphFocalPlaneContourRepresentation::vtkOrientedGlyphFocalPlaneConto
 
   this->HandleSize = 0.01;
   
-  this->PointPlacer = vtkFocalPlanePointPlacer::New();
   this->LineInterpolator = vtkBezierContourLineInterpolator::New();
   
   // Represent the position of the cursor
