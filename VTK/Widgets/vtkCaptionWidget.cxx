@@ -113,6 +113,37 @@ void vtkCaptionWidget::CreateDefaultRepresentation()
     }
 }
 
+//-------------------------------------------------------------------------
+void vtkCaptionWidget::SetCaptionActor2D(vtkCaptionActor2D *capActor)
+{
+  vtkCaptionRepresentation *capRep = reinterpret_cast<vtkCaptionRepresentation*>(this->WidgetRep);
+  if ( ! capRep )
+    {
+    this->CreateDefaultRepresentation();
+    capRep = reinterpret_cast<vtkCaptionRepresentation*>(this->WidgetRep);
+    }
+
+  if ( capRep->GetCaptionActor2D() != capActor )
+    {
+    capRep->SetCaptionActor2D(capActor);
+    this->Modified();
+    }
+}
+
+//-------------------------------------------------------------------------
+vtkCaptionActor2D *vtkCaptionWidget::GetCaptionActor2D()
+{
+  vtkCaptionRepresentation *capRep = reinterpret_cast<vtkCaptionRepresentation*>(this->WidgetRep);
+  if ( ! capRep )
+    {
+    return NULL;
+    }
+  else
+    {
+    return capRep->GetCaptionActor2D();
+    }
+}
+
 //----------------------------------------------------------------------
 void vtkCaptionWidget::StartAnchorInteraction()
 {
