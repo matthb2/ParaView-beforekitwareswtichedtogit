@@ -963,6 +963,7 @@ void vtkCamera::PrintSelf(ostream& os, vtkIndent indent)
   os << indent << "Position: (" << this->Position[0] << ", " 
      << this->Position[1] << ", " << this->Position[2] << ")\n";
   os << indent << "Stereo: " << (this->Stereo ? "On\n" : "Off\n");
+  os << indent << "Left Eye: " << this->LeftEye << endl;
   os << indent << "Thickness: " << this->Thickness << "\n";
   os << indent << "ViewAngle: " << this->ViewAngle << "\n";
   os << indent << "UseHorizontalViewAngle: " << this->UseHorizontalViewAngle << "\n";

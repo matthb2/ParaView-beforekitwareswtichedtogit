@@ -129,20 +129,7 @@ void vtkOpenGLCamera::Render(vtkRenderer *ren)
     {
     ren->Clear();
     }
-
-  // if we have a stereo renderer, draw other eye next time 
-  if (this->Stereo)
-    {
-    if (this->LeftEye)
-      {
-      this->LeftEye = 0;
-      }
-    else
-      {
-      this->LeftEye = 1;
-      }
-    }
-
+  
   matrix->Delete();
 }
 
