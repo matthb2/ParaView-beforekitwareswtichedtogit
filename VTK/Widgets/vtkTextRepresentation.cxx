@@ -56,6 +56,7 @@ void vtkTextRepresentation::SetTextActor(vtkTextActor *textActor)
     this->TextActor = textActor;
     if ( this->TextActor )
       {
+      this->TextActor->Register(this);
       this->TextActor->ScaledTextOn();
       this->TextActor->SetMinimumSize(1,1);
       this->TextActor->SetMaximumLineHeight(1.0);
