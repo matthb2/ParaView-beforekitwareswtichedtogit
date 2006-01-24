@@ -2187,11 +2187,13 @@ int vtkExodusReader::RequestInformation(
       char* fpt=strrchr(tempName,'.');
       if (fpt) strncpy(fpt,".xml\0",5);
       // Does the xml file exist?
+      int XMLfound=0;
       if (vtkExodusReaderFileExist(tempName)) 
         {
         SetXMLFileName(tempName);
+        XMLfound=1;
         } 
-      else 
+      if (!XMLfound) 
         {
         //try .dart
         fpt=strrchr(tempName,'.');
@@ -2199,11 +2201,23 @@ int vtkExodusReader::RequestInformation(
         if (vtkExodusReaderFileExist(tempName)) 
           {
           SetXMLFileName(tempName);
+          XMLfound=1;
           }
-        else
+        }
+      if (!XMLfound)
+        {
+        //try artifact.dta
+        fpt=strrchr(tempName,'/');
+        if (fpt) strncpy(fpt,"/artifact.dta\0",14);
+        if (vtkExodusReaderFileExist(tempName)) 
           {
-          SetXMLFileName(NULL);
+          SetXMLFileName(tempName);
+          XMLfound=1;
           }
+        }
+      if (!XMLfound)
+        {
+        SetXMLFileName(NULL);
         }
       }
     
