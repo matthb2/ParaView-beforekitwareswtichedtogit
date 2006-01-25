@@ -126,12 +126,12 @@ void vtkArrayIteratorTemplate<T>::PrintSelf(ostream& os, vtkIndent indent)
   os << indent << "Array: " ;
   if (this->Array)
     {
-    os << endl;
+    os << "\n";
     this->Array->PrintSelf(os, indent.GetNextIndent());
     }
   else
     {
-    os << "(none)" << endl;
+    os << "(none)" << "\n";
     }
 }
 
