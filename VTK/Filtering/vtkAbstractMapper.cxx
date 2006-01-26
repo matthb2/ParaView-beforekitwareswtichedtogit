@@ -73,6 +73,7 @@ void vtkAbstractMapper::AddClippingPlane(vtkPlane *plane)
     }
 
   this->ClippingPlanes->AddItem(plane);
+  this->Modified();
 }
 
 void vtkAbstractMapper::RemoveClippingPlane(vtkPlane *plane)
@@ -82,6 +83,7 @@ void vtkAbstractMapper::RemoveClippingPlane(vtkPlane *plane)
     vtkErrorMacro(<< "Cannot remove clipping plane: mapper has none");
     }
   this->ClippingPlanes->RemoveItem(plane);
+  this->Modified();
 }
 
 void vtkAbstractMapper::RemoveAllClippingPlanes()
