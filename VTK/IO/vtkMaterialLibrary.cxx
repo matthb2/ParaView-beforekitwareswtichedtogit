@@ -51,6 +51,13 @@ char* vtkMaterialLibrary::GetMaterial(const char* name)
 }
 
 //-----------------------------------------------------------------------------
+const char** vtkMaterialLibrary::GetListOfMaterialNames()
+{
+  // defined in vtkMaterialLibraryMacro.h
+  return ::ListOfMaterialNames;
+}
+
+//-----------------------------------------------------------------------------
 void vtkMaterialLibrary::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os, indent);

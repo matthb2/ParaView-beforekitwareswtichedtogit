@@ -51,6 +51,12 @@ char* vtkShaderCodeLibrary::GetShaderCode(const char* name)
 }
 
 //-----------------------------------------------------------------------------
+const char** vtkShaderCodeLibrary::GetListOfShaderCodeNames()
+{
+  return ::ListOfShaderNames;
+}
+
+//-----------------------------------------------------------------------------
 void vtkShaderCodeLibrary::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os, indent);
