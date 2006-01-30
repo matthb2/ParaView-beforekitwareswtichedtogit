@@ -303,6 +303,32 @@ double vtkMedicalImageProperties::GetGantryTiltAsDouble()
 }
 
 //----------------------------------------------------------------------------
+bool vtkMedicalImageProperties::GetDateAsFields(const char *date, int &year, int &month, int &day)
+{
+  if( !date )
+    {
+    return false;
+    }
+
+  size_t len = strlen(date);
+  if( len != 10 )
+    {
+    return false;
+    }
+  if( date[4] != '/'
+   || date[7] != '/' )
+    {
+    return false;
+    }
+  if( sscanf(date, "%d/%d/%d", &year, &month, &day) != 3 )
+    {
+    return false;
+    }
+
+  return true;
+}
+
+//----------------------------------------------------------------------------
 void vtkMedicalImageProperties::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os, indent);
