@@ -104,6 +104,7 @@ void vtkImageMandelbrotSource::PrintSelf(ostream& os, vtkIndent indent)
   os << indent << "ProjectionAxes: (" << this->ProjectionAxes[0] << ", "
      << this->ProjectionAxes[1] << this->ProjectionAxes[2] << ")\n";
 
+  os << indent << "SubsampleRate: " << this->SubsampleRate << endl;
 }
 
 //----------------------------------------------------------------------------
