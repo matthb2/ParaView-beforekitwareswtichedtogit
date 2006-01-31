@@ -58,6 +58,17 @@ const char** vtkMaterialLibrary::GetListOfMaterialNames()
 }
 
 //-----------------------------------------------------------------------------
+unsigned int vtkMaterialLibrary::GetNumberOfMaterials()
+{
+  const char** names = vtkMaterialLibrary::GetListOfMaterialNames();
+  unsigned int cc ;
+  for (cc=0; names[cc]; cc++)
+    {
+    }
+  return cc;
+}
+
+//-----------------------------------------------------------------------------
 void vtkMaterialLibrary::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os, indent);
