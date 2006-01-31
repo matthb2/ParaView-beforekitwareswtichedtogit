@@ -311,15 +311,18 @@ int vtkMedicalImageProperties::GetDateAsFields(const char *date, int &year, int 
     }
 
   size_t len = strlen(date);
-  if( len != 10 )
+  if( len == 8 )
     {
-    return 0;
+    // DICOM V3
+    if( sscanf(date, "%04d%02d%02d", &year, &month, &day) != 3 )
+      {
+      return 0;
+      }
     }
-  // DICOM V3
-  if( sscanf(date, "%d%d%d", &year, &month, &day) != 3 )
+  if( len == 10 )
     {
     // Some *very* old ACR-NEMA
-    if( sscanf(date, "%d.%d.%d", &year, &month, &day) != 3 )
+    if( sscanf(date, "%04d.%02d.%02d", &year, &month, &day) != 3 )
       {
       return 0;
       }
