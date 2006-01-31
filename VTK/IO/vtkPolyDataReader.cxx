@@ -25,6 +25,7 @@
 vtkCxxRevisionMacro(vtkPolyDataReader, "$Revision$");
 vtkStandardNewMacro(vtkPolyDataReader);
 
+//----------------------------------------------------------------------------
 vtkPolyDataReader::vtkPolyDataReader()
 {
   vtkPolyData *output = vtkPolyData::New();
@@ -33,10 +34,9 @@ vtkPolyDataReader::vtkPolyDataReader()
   // Filters will know it is empty. 
   output->ReleaseData();
   output->Delete();
-  this->ExecutePiece = this->ExecuteNumberOfPieces = 0;
-  this->ExecuteGhostLevel = 0;
 }
 
+//----------------------------------------------------------------------------
 vtkPolyDataReader::~vtkPolyDataReader()
 {
 }
@@ -85,15 +85,10 @@ int vtkPolyDataReader::RequestUpdateExtent(
     return 1;
     }
   
-  // Save the piece so execute can use this information.
-  this->ExecutePiece = piece;
-  this->ExecuteNumberOfPieces = numPieces;
-  
-  this->ExecuteGhostLevel = ghostLevel;
-
   return 1;
 }
 
+//----------------------------------------------------------------------------
 int vtkPolyDataReader::RequestData(
   vtkInformation *,
   vtkInformationVector **,
@@ -355,13 +350,13 @@ int vtkPolyDataReader::RequestData(
 }
 
 //----------------------------------------------------------------------------
-int vtkPolyDataReader::FillOutputPortInformation(int,
-                                                 vtkInformation* info)
+int vtkPolyDataReader::FillOutputPortInformation(int, vtkInformation* info)
 {
   info->Set(vtkDataObject::DATA_TYPE_NAME(), "vtkPolyData");
   return 1;
 }
 
+//----------------------------------------------------------------------------
 void vtkPolyDataReader::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os,indent);

@@ -30,8 +30,6 @@ vtkPolyDataSource::vtkPolyDataSource()
   // Filters will know it is empty. 
   this->Outputs[0]->ReleaseData();
   this->Outputs[0]->Delete();
-  this->ExecutePiece = this->ExecuteNumberOfPieces = 0;
-  this->ExecuteGhostLevel = 0;
 }
 
 //----------------------------------------------------------------------------
@@ -86,12 +84,6 @@ void vtkPolyDataSource::ComputeInputUpdateExtents(vtkDataObject *data)
       this->Inputs[idx]->SetUpdateExtent(piece, numPieces, ghostLevel);
       }
     }
-  
-  // Save the piece so execute can use this information.
-  this->ExecutePiece = piece;
-  this->ExecuteNumberOfPieces = numPieces;
-  
-  this->ExecuteGhostLevel = ghostLevel;
 }
 
 //----------------------------------------------------------------------------
