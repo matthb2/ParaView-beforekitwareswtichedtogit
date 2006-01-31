@@ -277,8 +277,9 @@ void vtkProperty::RemoveAllTextures()
 //----------------------------------------------------------------------------
 void vtkProperty::LoadMaterial(const char* name)
 {
-  if( !name )
+  if( !name || strlen(name) == 0)
     {
+    this->LoadMaterial(static_cast<vtkXMLMaterial*>(0));
     return;
     }
   this->SetMaterialName(name);
