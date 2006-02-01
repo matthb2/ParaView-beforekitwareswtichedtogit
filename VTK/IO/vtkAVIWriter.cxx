@@ -99,7 +99,7 @@ void vtkAVIWriter::Start()
   if (hr != 0)
     {         
     vtkErrorMacro("Unable to open " << this->FileName);         
-    this->SetErrorCode(vtkErrorMacro::CannotOpenFileError);
+    this->SetErrorCode(vtkErrorCode::CannotOpenFileError);
     return; 
     }  
 
