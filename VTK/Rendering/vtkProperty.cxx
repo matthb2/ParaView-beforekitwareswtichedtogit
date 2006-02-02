@@ -32,7 +32,6 @@
 #include "vtkXMLDataElement.h"
 #include "vtkXMLMaterial.h"
 #include "vtkXMLMaterialParser.h"
-#include "vtkXMLMaterialReader.h"
 #include "vtkXMLShader.h"
 
 #include <stdlib.h>
@@ -297,6 +296,23 @@ void vtkProperty::LoadMaterial(const char* name)
     {
     vtkErrorMacro("Failed to create Material : " << name);
     }
+}
+
+//----------------------------------------------------------------------------
+void vtkProperty::LoadMaterialFromString(const char* materialxml)
+{
+  if (!materialxml)
+    {
+    this->LoadMaterial(static_cast<vtkXMLMaterial*>(0));
+    return;
+    }
+  vtkXMLMaterialParser* parser = vtkXMLMaterialParser::New();
+  vtkXMLMaterial* material = vtkXMLMaterial::New();
+  parser->SetMaterial(material);
+  parser->Parse(materialxml);
+  parser->Delete();
+  this->LoadMaterial(material);
+  material->Delete();
 }
 
 //----------------------------------------------------------------------------
