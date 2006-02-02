@@ -63,7 +63,6 @@ vtkProcessModuleConnection::vtkProcessModuleConnection()
 {
   this->SelfID.ID = 0;
   this->Controller = NULL;
-  this->StreamBlock = 0;
   this->AbortConnection = 0;
 
 
@@ -312,7 +311,6 @@ void vtkProcessModuleConnection::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os, indent);
   os << indent << "AbortConnection: " << this->AbortConnection << endl;
-  os << indent << "StreamBlock: " << this->StreamBlock << endl;
   os << indent << "SelfID: " << this->SelfID << endl;
   os << indent << "Controller: ";
   if (this->Controller)
