@@ -225,7 +225,7 @@ void vtkAngleWidget::SetEnabled(int enabling)
         this->CurrentRenderer);
       }
     }
-  else
+  else //disabling widget
     {
     if (this->WidgetRep)
       {
