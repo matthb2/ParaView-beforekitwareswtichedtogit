@@ -253,6 +253,8 @@ int vtkProcessModule::Start(int argc, char** argv)
     }
 
   this->ConnectionManager = vtkProcessModuleConnectionManager::New();
+  this->ConnectionManager->AddObserver(vtkCommand::AbortCheckEvent,
+    this->Observer);
 
   // This call blocks on the Satellite nodes (never on root node).
   if (this->ConnectionManager->Initialize(argc, argv, 
@@ -997,6 +999,10 @@ void vtkProcessModule::ExecuteEvent(
         100.0);
       this->ProgressEvent(o, progress, 0);
       }
+    break;
+
+  case vtkCommand::AbortCheckEvent:
+    this->InvokeEvent(vtkCommand::AbortCheckEvent);
     break;
     }
 }
