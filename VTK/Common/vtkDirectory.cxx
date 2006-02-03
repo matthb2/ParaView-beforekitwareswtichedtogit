@@ -127,7 +127,6 @@ int vtkDirectory::Open(const char* name)
   delete [] buf;
   
   // Loop through names
-  int i = 0;
   do 
     {
     this->Files->InsertNextValue(data.name);
