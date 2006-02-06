@@ -165,7 +165,7 @@ void vtkImageMapper::RenderStart(vtkViewport* viewport, vtkActor2D* actor)
 
     // get the position
     int *pos = 
-      actor->GetPositionCoordinate()->GetComputedViewportValue(viewport);
+      actor->GetActualPositionCoordinate()->GetComputedViewportValue(viewport);
 
     // Get the viewport coordinates
     double vCoords[4];
