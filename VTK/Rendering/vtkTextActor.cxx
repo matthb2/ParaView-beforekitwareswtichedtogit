@@ -131,6 +131,12 @@ void vtkTextActor::SetMapper(vtkMapper2D *mapper)
 // ----------------------------------------------------------------------------
 void vtkTextActor::SetInput(const char* str)
 {
+  if(!str)
+    {
+      vtkErrorMacro(
+        <<"vtkTextActor::SetInput was passed an uninitialized string");
+    return;
+    }
   if(this->Input)
     {
     if(strcmp(this->Input, str) == 0)
@@ -144,7 +150,6 @@ void vtkTextActor::SetInput(const char* str)
   this->InputRendered = false;
 }
 
-//maybe this method should be a const char *?
 // ----------------------------------------------------------------------------
 char* vtkTextActor::GetInput()
 {
