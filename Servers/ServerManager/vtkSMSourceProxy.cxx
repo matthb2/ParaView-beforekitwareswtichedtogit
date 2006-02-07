@@ -319,6 +319,10 @@ void vtkSMSourceProxy::AddInput(vtkSMSourceProxy *input,
 
   input->CreateParts();
   int numInputs = input->GetNumberOfParts();
+  if (!numInputs)
+    {
+    return;
+    }
 
   vtkProcessModule* pm = vtkProcessModule::GetProcessModule();
 
