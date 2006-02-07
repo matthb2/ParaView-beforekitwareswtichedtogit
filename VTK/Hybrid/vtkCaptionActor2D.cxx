@@ -73,7 +73,7 @@ vtkCaptionActor2D::vtkCaptionActor2D()
   this->CaptionTextProperty->SetShadow(1);
   this->CaptionTextProperty->SetFontFamily(VTK_ARIAL);
   this->CaptionTextProperty->SetJustification(VTK_TEXT_LEFT);
-  this->CaptionTextProperty->SetVerticalJustification(VTK_TEXT_CENTERED);
+  this->CaptionTextProperty->SetVerticalJustification(VTK_TEXT_BOTTOM);
 
   // What is actually drawn
   this->TextActor = vtkTextActor::New();
