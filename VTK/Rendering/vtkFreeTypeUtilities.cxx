@@ -1265,6 +1265,7 @@ int vtkFreeTypeUtilities::RenderString(vtkTextProperty *tprop,
 {
   //just to avoid the warning...
   x = y;
+  y = x;
   return this->RenderString(tprop, str, data);
 }
 
