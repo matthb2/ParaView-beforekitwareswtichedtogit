@@ -17,6 +17,7 @@
 #if defined( _WIN32 ) && !defined( VTK_USE_X ) && defined( VTK_USE_DISPLAY )
 #include "vtkWin32OutputWindow.h"
 #endif
+#include "vtkCommand.h"
 #include "vtkObjectFactory.h"
 #include "vtkDebugLeaks.h"
 
@@ -110,11 +111,13 @@ void vtkOutputWindow::DisplayText(const char* txt)
 void vtkOutputWindow::DisplayErrorText(const char* txt)
 {
   this->DisplayText(txt);
+  this->InvokeEvent(vtkCommand::ErrorEvent, (void*)txt);
 }
 
 void vtkOutputWindow::DisplayWarningText(const char* txt)
 {
   this->DisplayText(txt);
+  this->InvokeEvent(vtkCommand::WarningEvent,(void*) txt);
 }
 
 void vtkOutputWindow::DisplayGenericWarningText(const char* txt)
