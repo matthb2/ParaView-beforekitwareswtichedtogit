@@ -972,6 +972,10 @@ void vtkXYPlotActor::PrintSelf(ostream& os, vtkIndent indent)
   this->LegendActor->PrintSelf( os << endl, i2);
   os << indent << "Glyph Source:";
   this->GlyphSource->PrintSelf( os << endl, i2);
+
+  os << indent << "AdjustTitlePosition: " 
+     << this->AdjustTitlePosition << endl;
+  os << indent << "TitlePosition: " << this->TitlePosition << endl;
 }
 
 //----------------------------------------------------------------------------
@@ -2310,6 +2314,30 @@ void vtkXYPlotActor::SetYLabelFormat(const char* _arg)
   this->YAxis->SetLabelFormat(this->YLabelFormat);
 
   this->Modified();
+}
+
+//----------------------------------------------------------------------------
+void vtkXYPlotActor::SetNumberOfXMinorTicks(int num)
+{
+  this->XAxis->SetNumberOfMinorTicks(num);
+}
+
+//----------------------------------------------------------------------------
+int vtkXYPlotActor::GetNumberOfXMinorTicks()
+{
+  return this->XAxis->GetNumberOfMinorTicks();
+}
+
+//----------------------------------------------------------------------------
+void vtkXYPlotActor::SetNumberOfYMinorTicks(int num)
+{
+  this->YAxis->SetNumberOfMinorTicks(num);
+}
+
+//----------------------------------------------------------------------------
+int vtkXYPlotActor::GetNumberOfYMinorTicks()
+{
+  return this->YAxis->GetNumberOfMinorTicks();
 }
 
 //----------------------------------------------------------------------------
