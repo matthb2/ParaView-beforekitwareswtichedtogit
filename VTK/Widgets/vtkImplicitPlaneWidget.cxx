@@ -41,6 +41,7 @@
 vtkCxxRevisionMacro(vtkImplicitPlaneWidget, "$Revision$");
 vtkStandardNewMacro(vtkImplicitPlaneWidget);
 
+//----------------------------------------------------------------------------
 vtkImplicitPlaneWidget::vtkImplicitPlaneWidget() : vtkPolyDataSourceWidget()
 {
   this->State = vtkImplicitPlaneWidget::Start;
@@ -631,6 +632,7 @@ void vtkImplicitPlaneWidget::OnMiddleButtonUp()
   this->Interactor->Render();
 }
 
+//----------------------------------------------------------------------------
 void vtkImplicitPlaneWidget::OnRightButtonDown()
 {
   if ( this->ScaleEnabled )
