@@ -94,6 +94,10 @@ vtkTextActor::~vtkTextActor()
   this->AdjustedPositionCoordinate->Delete();
   this->Transform->Delete();
   this->SetTextProperty(NULL);
+  if(this->Input)
+    {
+    delete [] this->Input;
+    }
 }
 
 // ----------------------------------------------------------------------------
