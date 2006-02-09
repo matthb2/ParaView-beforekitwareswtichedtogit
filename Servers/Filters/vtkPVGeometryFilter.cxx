@@ -246,6 +246,11 @@ int vtkPVGeometryFilter::RequestData(vtkInformation* request,
     info->Get(vtkDataObject::DATA_OBJECT()));
   if (!output) {return 0;}
 
+  cerr << "Geometry execute: out num: " << info << ", " << info->Get(
+      vtkStreamingDemandDrivenPipeline::UPDATE_NUMBER_OF_PIECES()) << endl;   
+
+
+
   vtkDataObject *input = vtkDataSet::SafeDownCast(
     inInfo->Get(vtkDataObject::DATA_OBJECT()));
   if (!input)

@@ -219,6 +219,23 @@ void vtkSMLODDisplayProxy::SetupDefaults()
       << this->LODUpdateSuppressorProxy->GetID(i) << "SetUpdatePiece"
       << vtkClientServerStream::LastResult
       << vtkClientServerStream::End;
+    // This is here just for streaming (can be removed if streaming is removed).      
+    stream
+      << vtkClientServerStream::Invoke
+      << pm->GetProcessModuleID() << "GetNumberOfPartitions"
+      << vtkClientServerStream::End
+      << vtkClientServerStream::Invoke
+      << this->LODMapperProxy->GetID(i) << "SetNumberOfPieces"
+      << vtkClientServerStream::LastResult
+      << vtkClientServerStream::End;
+    stream
+      << vtkClientServerStream::Invoke
+      << pm->GetProcessModuleID() << "GetPartitionId"
+      << vtkClientServerStream::End
+      << vtkClientServerStream::Invoke
+      << this->LODMapperProxy->GetID(i) << "SetPiece"
+      << vtkClientServerStream::LastResult
+      << vtkClientServerStream::End;
     }
   pm->SendStream(this->ConnectionID,
     vtkProcessModule::CLIENT_AND_SERVERS, stream);
