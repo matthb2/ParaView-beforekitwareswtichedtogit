@@ -525,7 +525,7 @@ void vtkProperty::LoadMember(vtkXMLDataElement* elem)
   if ( member == IVarColor ||
        member == IVarAmbientColor||
        member == IVarDiffuseColor||
-       member == IVarSpecular||
+       member == IVarSpecularColor||
        member == IVarEdgeColor )
     {
     number_of_elements = 3;
