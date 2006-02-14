@@ -707,10 +707,10 @@ void vtkPhastaReader::ReadGeomFile(char* geomFileName,
 
 }
 
-void vtkPhastaReader::ReadFieldFile(char* FieldFileName, 
-                                  int, 
-                                  vtkDataSetAttributes *field, 
-                                  int &noOfNodes)
+void vtkPhastaReader::ReadFieldFile(char* fieldFileName, 
+                                    int, 
+                                    vtkDataSetAttributes *field, 
+                                    int &noOfNodes)
 {
 
   int i, j;
@@ -718,7 +718,7 @@ void vtkPhastaReader::ReadFieldFile(char* FieldFileName,
   double *data;
   int fieldfile;
 
-  openfile(FieldFileName,"read",&fieldfile);
+  openfile(fieldFileName,"read",&fieldfile);
   //fieldfile = fopen(FieldFileName,"rb");
 
   if(!fieldfile)
