@@ -837,6 +837,12 @@ vtkPVLODPartDisplayInformation* vtkSMCompositeDisplayProxy::GetLODInformation()
     this->CollectionDecision = 0;
     this->LODCollectionDecision = 0;
 
+    // Changing the collection decision can change the ordered compositing
+    // distribution.
+    int oc = this->OrderedCompositing;
+    this->OrderedCompositing = 0;
+    this->SetOrderedCompositing(oc);
+
     vtkSMIntVectorProperty* ivp = vtkSMIntVectorProperty::SafeDownCast(
       this->CollectProxy->GetProperty("MoveMode"));
     if (!ivp)
