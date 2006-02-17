@@ -35,6 +35,7 @@
 #include "vtkSMStringVectorProperty.h"
 #include "vtkSMXMLPVAnimationWriterProxy.h"
 #include "vtkTIFFWriter.h"
+#include "vtkToolkits.h"
 
 #ifdef _WIN32
   #include "vtkAVIWriter.h"
