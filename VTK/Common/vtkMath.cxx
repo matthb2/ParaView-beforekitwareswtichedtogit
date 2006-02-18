@@ -979,10 +979,7 @@ int vtkMath::LinBairstowSolve( double* c, int d, double* r, double& tolerance )
 
 static int vtkMathCompareRoots( const void* a, const void* b )
 {
-  double& x( *(double*) a );
-  double& y( *(double*) b );
-
-  return x < y ? -1 : 1;
+  return (*((const double*)a)) < (*((const double*)b)) ? -1 : 1; 
 }
 
 // Algebraically extracts REAL roots of the quartic polynomial with 
