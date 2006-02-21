@@ -727,7 +727,10 @@ int vtkSpyPlotUniReader::ReadInformation()
     this->NumberOfDataDumps   = nch.NumberOfDataDumps;
     this->DumpCycle  = nch.DumpCycle;
     this->DumpTime   = nch.DumpTime;
-    this->DumpDT     = nch.DumpDT;
+    if ( this->FileVersion >= 102 )
+      {
+      this->DumpDT     = nch.DumpDT;
+      }
     this->DumpOffset = nch.DumpOffset;
     memset(&nch, 0, sizeof(nch));
     if ( gh.NumberOfDataDumps != MAX_DUMPS )
