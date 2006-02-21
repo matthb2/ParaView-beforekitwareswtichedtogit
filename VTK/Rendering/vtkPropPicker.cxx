@@ -45,7 +45,14 @@ void vtkPropPicker::Initialize()
 int vtkPropPicker::Pick(double selectionX, double selectionY, 
                         double vtkNotUsed(z), vtkRenderer *renderer)
 {
-  return this->PickProp(selectionX, selectionY, renderer);
+  if ( this->PickFromList )
+    {
+    return this->PickProp(selectionX, selectionY, renderer, this->PickList);
+    }
+  else
+    {
+    return this->PickProp(selectionX, selectionY, renderer);
+    }
 }
 
 
