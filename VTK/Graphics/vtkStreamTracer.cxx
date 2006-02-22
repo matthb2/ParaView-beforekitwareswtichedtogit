@@ -816,6 +816,12 @@ void vtkStreamTracer::Integrate(vtkDataSet *input0,
       continue;
       }
 
+    if (propagation >= this->MaximumPropagation.Interval ||
+        numSteps > this->MaximumNumberOfSteps)
+      {
+      continue;
+      }
+
     numPts++;
     numPtsTotal++;
     vtkIdType nextPoint = outputPoints->InsertNextPoint(point1);
