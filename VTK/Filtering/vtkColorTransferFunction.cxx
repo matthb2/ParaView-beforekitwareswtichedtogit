@@ -789,7 +789,7 @@ const unsigned char *vtkColorTransferFunction::GetTable( double xStart, double x
     tmpPtr ++;
     }
 
-  delete tmpTable;
+  delete[] tmpTable;
 
   this->BuildTime.Modified();
   return this->Table;
