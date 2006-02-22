@@ -1202,6 +1202,7 @@ void vtkImplicitPlaneWidget::UpdatePlacement()
   this->Outline->Update();
   this->Cutter->Update();
   this->Edges->Update();
+  this->UpdateRepresentation();
 }
 
 //----------------------------------------------------------------------------
