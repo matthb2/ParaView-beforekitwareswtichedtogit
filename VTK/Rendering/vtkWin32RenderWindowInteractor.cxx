@@ -239,7 +239,7 @@ int vtkWin32RenderWindowInteractor::CreateTimer(int timertype)
 {
   if (timertype==VTKI_TIMER_FIRST) 
     {
-    return SetTimer(this->WindowId,this->TimerId,10,NULL);
+    return SetTimer(this->WindowId,this->TimerId,this->TimerDuration,NULL);
     }
   return 1;
 }

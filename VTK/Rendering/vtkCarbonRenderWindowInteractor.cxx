@@ -390,8 +390,8 @@ int vtkCarbonRenderWindowInteractor::CreateTimer(int timertype)
   if (timertype == VTKI_TIMER_FIRST)
     {  
       InstallEventLoopTimer (mainLoop,
-                             10*kEventDurationMillisecond,
-                             10*kEventDurationMillisecond,
+                             this->TimerDuration*kEventDurationMillisecond,
+                             this->TimerDuration*kEventDurationMillisecond,
                              timerUPP,
                              this,
                              &this->TimerId);
