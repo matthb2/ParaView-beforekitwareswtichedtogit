@@ -32,6 +32,7 @@ vtkSimpleImageToImageFilter::~vtkSimpleImageToImageFilter()
 {
 }
 
+//----------------------------------------------------------------------------
 int vtkSimpleImageToImageFilter::RequestUpdateExtent (
   vtkInformation * vtkNotUsed(request),
   vtkInformationVector **inputVector,
@@ -46,6 +47,7 @@ int vtkSimpleImageToImageFilter::RequestUpdateExtent (
   return 1;
 }
 
+//----------------------------------------------------------------------------
 int vtkSimpleImageToImageFilter::RequestData(
   vtkInformation* vtkNotUsed( request ),
   vtkInformationVector** inputVector,
