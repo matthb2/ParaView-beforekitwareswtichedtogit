@@ -3358,8 +3358,12 @@ int vtkMath::PointIsWithinBounds(double point[3], double bounds[6], double delta
     return 0;
     }
   for(int i=0;i<3;i++)
+    {
     if(point[i]+delta[i] < bounds[2*i] || point[i]-delta[i] > bounds[2*i+1])
+      {
       return 0;
+      }
+    }
   return 1;
   
 } 

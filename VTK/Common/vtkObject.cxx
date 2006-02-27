@@ -189,7 +189,7 @@ void vtkObject::PrintSelf(ostream& os, vtkIndent indent)
 
 //----------------------------------------------------------------------------
 // Turn debugging output on.
-// The Modified() method is prposely not called since we do not want to affect
+// The Modified() method is purposely not called since we do not want to affect
 // the modification time when enabling debug output.
 void vtkObject::DebugOn()
 {
