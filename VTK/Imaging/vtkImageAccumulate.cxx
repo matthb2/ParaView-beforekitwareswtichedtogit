@@ -309,7 +309,7 @@ int vtkImageAccumulate::RequestData(
   // Components turned into x, y and z
   if (inData->GetNumberOfScalarComponents() > 3)
     {
-    vtkErrorMacro("This filter can handle upto 3 components");
+    vtkErrorMacro("This filter can handle up to 3 components");
     return 1;
     }
   
