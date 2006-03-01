@@ -31,11 +31,13 @@ public:
   VectorOfElements Properties;
   VectorOfShaders VertexShaders;
   VectorOfShaders FragmentShaders;
+  VectorOfElements Textures;
   void Initialize()
     {
     this->Properties.clear();
     this->VertexShaders.clear();
     this->FragmentShaders.clear();
+    this->Textures.clear();
     }
 };
 
@@ -136,6 +138,10 @@ void vtkXMLMaterial::SetRootElement(vtkXMLDataElement* root)
 
         shader->Delete();
         }
+      else if (strcmp(name, "Texture") == 0)
+        {
+        this->Internals->Textures.push_back(elem);
+        }
       }
     }
 }
@@ -146,6 +152,12 @@ int vtkXMLMaterial::GetNumberOfProperties()
   return this->Internals->Properties.size();
 }
 
+
+//-----------------------------------------------------------------------------
+int vtkXMLMaterial::GetNumberOfTextures()
+{
+  return this->Internals->Textures.size();
+}
 
 //-----------------------------------------------------------------------------
 int vtkXMLMaterial::GetNumberOfVertexShaders()
@@ -165,6 +177,16 @@ vtkXMLDataElement* vtkXMLMaterial::GetProperty(int id)
   if (id < this->GetNumberOfProperties())
     {
     return this->Internals->Properties[id];
+    }
+  return NULL;
+}
+
+//-----------------------------------------------------------------------------
+vtkXMLDataElement* vtkXMLMaterial::GetTexture(int index)
+{
+  if (index < this->GetNumberOfTextures())
+    {
+    return this->Internals->Textures[index];
     }
   return NULL;
 }
