@@ -1215,7 +1215,7 @@ int vtkFreeTypeUtilitiesRenderString(
       unsigned char *glyph_ptr_row = bitmap->buffer;
       unsigned char *glyph_ptr;
 
-      float t_alpha;
+      float t_alpha, data_alpha, t_1_m_alpha;
 
       int i, j;
       for (j = 0; j < bitmap->rows; j++)
