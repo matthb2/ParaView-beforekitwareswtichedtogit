@@ -32,7 +32,7 @@ char vtkSplitField::FieldLocationNames[3][12]
     "POINT_DATA",
     "CELL_DATA" };
 
-char vtkSplitField::AttributeNames[vtkDataSetAttributes::NUM_ATTRIBUTES][10]  = { 0 };
+char vtkSplitField::AttributeNames[vtkDataSetAttributes::NUM_ATTRIBUTES][10]  = { {0} };
 
 
 typedef vtkSplitField::Component Component;

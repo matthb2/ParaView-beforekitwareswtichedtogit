@@ -40,7 +40,7 @@ char vtkRearrangeFields::FieldLocationNames[3][12]
 = { "DATA_OBJECT",
     "POINT_DATA",
     "CELL_DATA" };
-char vtkRearrangeFields::AttributeNames[vtkDataSetAttributes::NUM_ATTRIBUTES][10]  = { 0 };
+char vtkRearrangeFields::AttributeNames[vtkDataSetAttributes::NUM_ATTRIBUTES][10]  = { {0} };
 
 
 
