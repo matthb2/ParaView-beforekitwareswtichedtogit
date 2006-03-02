@@ -167,6 +167,17 @@ vtkSMProxy::~vtkSMProxy()
 }
 
 //---------------------------------------------------------------------------
+const char* vtkSMProxy::GetSelfIDAsString()
+{
+  if (!this->Name)
+    {
+    this->GetSelfID();
+    }
+
+  return this->Name;
+}
+
+//---------------------------------------------------------------------------
 void vtkSMProxy::UnRegisterVTKObjects()
 {
   vtkProcessModule* pm = vtkProcessModule::GetProcessModule();
