@@ -22,6 +22,7 @@
 #include "vtkInformationVector.h"
 #include "vtkObjectFactory.h"
 #include "vtkPointData.h"
+#include <ctype.h>
 
 vtkCxxRevisionMacro(vtkSplitField, "$Revision$");
 vtkStandardNewMacro(vtkSplitField);
