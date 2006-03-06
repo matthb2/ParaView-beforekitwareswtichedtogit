@@ -978,7 +978,7 @@ int vtkMath::LinBairstowSolve( double* c, int d, double* r, double& tolerance )
 }
 
 extern "C" {
-  static int vtkMathCompareRoots(const void* a, const void* b)
+  int vtkMathCompareRoots(const void* a, const void* b)
   {
     return (*((const double*)a)) < (*((const double*)b)) ? -1 : 1; 
   }
