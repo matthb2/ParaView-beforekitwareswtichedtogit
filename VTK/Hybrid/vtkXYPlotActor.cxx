@@ -975,7 +975,10 @@ void vtkXYPlotActor::PrintSelf(ostream& os, vtkIndent indent)
 
   os << indent << "AdjustTitlePosition: " 
      << this->AdjustTitlePosition << endl;
-  os << indent << "TitlePosition: " << this->TitlePosition << endl;
+  os << indent << "TitlePosition: " 
+     << this->TitlePosition[0] << " "
+     << this->TitlePosition[1] << " "
+     << endl;
 }
 
 //----------------------------------------------------------------------------
