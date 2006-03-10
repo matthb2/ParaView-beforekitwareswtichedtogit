@@ -159,7 +159,7 @@ void vtkAnimationScene::Play()
     this->StartTime : currenttime;
   double STime = currenttime;
   double clocktime = currenttime;
-  double oldclocktime = clocktime;
+  double oldclocktime;
   double time_adjustment = 0;
   this->AnimationTimer->StartTimer();
   do
