@@ -640,7 +640,7 @@ void vtkFieldData::CopyFieldOnOff(const char* field, int onOff)
 
 //----------------------------------------------------------------------------
 // Turn on copying of all data.
-void vtkFieldData::CopyAllOn()
+void vtkFieldData::CopyAllOn(int vtkNotUsed(ctype))
 {
   if ( !DoCopyAllOn || DoCopyAllOff )
     {
@@ -652,7 +652,7 @@ void vtkFieldData::CopyAllOn()
 
 //----------------------------------------------------------------------------
 // Turn off copying of all data.
-void vtkFieldData::CopyAllOff()
+void vtkFieldData::CopyAllOff(int vtkNotUsed(ctype))
 {
   if ( DoCopyAllOn || !DoCopyAllOff )
     {
