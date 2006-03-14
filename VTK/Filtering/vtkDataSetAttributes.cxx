@@ -458,7 +458,7 @@ void vtkDataSetAttributesCopyValues(
   int inIndex;
   int outIndex;
 
-  int yIdx, yIdx, xIdx;
+  int zIdx, yIdx, xIdx;
   for (zIdx = outExt[4]; zIdx <= outExt[5]; ++zIdx)
     {
     inIndex = inZIndex;
