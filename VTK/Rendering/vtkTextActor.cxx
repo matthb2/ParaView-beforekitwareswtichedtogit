@@ -222,6 +222,19 @@ int vtkTextActor::RenderOpaqueGeometry(vtkViewport *viewport)
     return 0;
     }
 
+  int *vSize = viewport->GetSize();
+  //vSize == (0,0) means that we're not ready to render yet
+  if(vSize[0] == 0 && vSize[1] == 0)
+    {
+    return 0;
+    }
+  //not sure what vSize == 1 means, but it can cause divide-by-zero errors
+  //in some of the coordinate conversion methods used below
+  if(vSize[0] == 1 || vSize[1] == 1)
+    {
+    return 0;
+    }
+
   //if PositionCoordinate has changed use its new value in
   //AdjustedPositionCoordinate.
   if(this->PositionCoordinate->GetMTime() >
