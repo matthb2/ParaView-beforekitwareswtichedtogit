@@ -17,6 +17,8 @@
 #include "vtkCell.h"
 #include "vtkGarbageCollector.h"
 #include "vtkGenericCell.h"
+#include "vtkInformation.h"
+#include "vtkInformationVector.h"
 #include "vtkPointLocator.h"
 #include "vtkSource.h"
 
@@ -375,6 +377,18 @@ void vtkPointSet::DeepCopy(vtkDataObject *dataObject)
 
   // Do superclass
   this->vtkDataSet::DeepCopy(dataObject);
+}
+
+//----------------------------------------------------------------------------
+vtkPointSet* vtkPointSet::GetData(vtkInformation* info)
+{
+  return info? vtkPointSet::SafeDownCast(info->Get(DATA_OBJECT())) : 0;
+}
+
+//----------------------------------------------------------------------------
+vtkPointSet* vtkPointSet::GetData(vtkInformationVector* v, int i)
+{
+  return vtkPointSet::GetData(v->GetInformationObject(i));
 }
 
 //----------------------------------------------------------------------------

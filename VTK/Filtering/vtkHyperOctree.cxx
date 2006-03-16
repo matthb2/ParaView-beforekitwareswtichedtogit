@@ -14,30 +14,33 @@
 =========================================================================*/
 #include "vtkHyperOctree.h"
 
-#include "vtkHyperOctreeCursor.h"
-#include <vtkstd/vector>
-#include "vtkDataSetAttributes.h"
-#include "vtkPointData.h"
 #include "vtkCellData.h"
-#include <assert.h>
-#include "vtkObjectFactory.h"
+#include "vtkCellLinks.h"
 #include "vtkCellType.h"
-#include <vtkstd/deque>
-//#include <vtkstd/set>
-#include "vtkOrderedTriangulator.h"
-#include "vtkPolygon.h"
-#include "vtkLine.h"
-#include "vtkPixel.h"
-#include "vtkVoxel.h"
+#include "vtkDataSetAttributes.h"
 #include "vtkGenericCell.h"
-#include "vtkPoints.h"
+#include "vtkHyperOctreeCursor.h"
 #include "vtkHyperOctreePointsGrabber.h"
 #include "vtkIdTypeArray.h"
-#include "vtkCellLinks.h"
-#include "vtkTimerLog.h"
-
-#include "vtkInformationIntegerKey.h"
+#include "vtkInformation.h"
 #include "vtkInformationDoubleVectorKey.h"
+#include "vtkInformationIntegerKey.h"
+#include "vtkInformationVector.h"
+#include "vtkLine.h"
+#include "vtkObjectFactory.h"
+#include "vtkOrderedTriangulator.h"
+#include "vtkPixel.h"
+#include "vtkPointData.h"
+#include "vtkPoints.h"
+#include "vtkPolygon.h"
+#include "vtkTimerLog.h"
+#include "vtkVoxel.h"
+
+#include <vtkstd/deque>
+//#include <vtkstd/set>
+#include <vtkstd/vector>
+
+#include <assert.h>
 
 vtkInformationKeyMacro(vtkHyperOctree, LEVELS, Integer);
 vtkInformationKeyMacro(vtkHyperOctree, DIMENSION, Integer);
@@ -3671,7 +3674,14 @@ void vtkHyperOctree::EvaluateDualCorner(
   this->CornerLeafIds->InsertNextTupleValue(leaves);
 }
 
+//----------------------------------------------------------------------------
+vtkHyperOctree* vtkHyperOctree::GetData(vtkInformation* info)
+{
+  return info? vtkHyperOctree::SafeDownCast(info->Get(DATA_OBJECT())) : 0;
+}
 
-
-
-
+//----------------------------------------------------------------------------
+vtkHyperOctree* vtkHyperOctree::GetData(vtkInformationVector* v, int i)
+{
+  return vtkHyperOctree::GetData(v->GetInformationObject(i));
+}

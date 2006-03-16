@@ -1365,3 +1365,15 @@ int vtkDataObject::GetRequestExactExtent()
     }
   return 0;
 }
+
+//----------------------------------------------------------------------------
+vtkDataObject* vtkDataObject::GetData(vtkInformation* info)
+{
+  return info? info->Get(DATA_OBJECT()) : 0;
+}
+
+//----------------------------------------------------------------------------
+vtkDataObject* vtkDataObject::GetData(vtkInformationVector* v, int i)
+{
+  return vtkDataObject::GetData(v->GetInformationObject(i));
+}

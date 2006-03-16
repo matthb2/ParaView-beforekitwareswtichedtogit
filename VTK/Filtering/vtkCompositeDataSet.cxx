@@ -19,6 +19,7 @@
 #include "vtkCompositeDataPipeline.h"
 #include "vtkDataSet.h"
 #include "vtkInformation.h"
+#include "vtkInformationVector.h"
 #include "vtkInformationDataObjectKey.h"
 #include "vtkInformationIntegerKey.h"
 #include "vtkTrivialProducer.h"
@@ -102,6 +103,19 @@ vtkAlgorithmOutput* vtkCompositeDataSet::GetProducerPort()
 
   // Get the port from the executive.
   return this->GetExecutive()->GetProducerPort(this);
+}
+
+//----------------------------------------------------------------------------
+vtkCompositeDataSet* vtkCompositeDataSet::GetData(vtkInformation* info)
+{
+  return info? vtkCompositeDataSet::SafeDownCast(info->Get(DATA_OBJECT())) : 0;
+}
+
+//----------------------------------------------------------------------------
+vtkCompositeDataSet* vtkCompositeDataSet::GetData(vtkInformationVector* v,
+                                                  int i)
+{
+  return vtkCompositeDataSet::GetData(v->GetInformationObject(i));
 }
 
 //----------------------------------------------------------------------------

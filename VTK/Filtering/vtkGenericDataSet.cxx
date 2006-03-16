@@ -14,14 +14,16 @@
 =========================================================================*/
 #include "vtkGenericDataSet.h"
 
-#include <assert.h>
-
-#include "vtkGenericAttributeCollection.h"
-#include "vtkMath.h"
 #include "vtkCellTypes.h"
-#include "vtkGenericCellIterator.h"
 #include "vtkGenericAdaptorCell.h"
+#include "vtkGenericAttributeCollection.h"
+#include "vtkGenericCellIterator.h"
 #include "vtkGenericCellTessellator.h"
+#include "vtkInformation.h"
+#include "vtkInformationVector.h"
+#include "vtkMath.h"
+
+#include <assert.h>
 
 vtkCxxRevisionMacro(vtkGenericDataSet, "$Revision$");
 vtkCxxSetObjectMacro(vtkGenericDataSet, Tessellator,vtkGenericCellTessellator);
@@ -203,4 +205,16 @@ unsigned long vtkGenericDataSet::GetActualMemorySize()
 int vtkGenericDataSet::GetDataObjectType() 
 {
   return VTK_GENERIC_DATA_SET;
+}
+
+//----------------------------------------------------------------------------
+vtkGenericDataSet* vtkGenericDataSet::GetData(vtkInformation* info)
+{
+  return info? vtkGenericDataSet::SafeDownCast(info->Get(DATA_OBJECT())) : 0;
+}
+
+//----------------------------------------------------------------------------
+vtkGenericDataSet* vtkGenericDataSet::GetData(vtkInformationVector* v, int i)
+{
+  return vtkGenericDataSet::GetData(v->GetInformationObject(i));
 }

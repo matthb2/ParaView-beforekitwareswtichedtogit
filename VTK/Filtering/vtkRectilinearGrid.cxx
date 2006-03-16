@@ -19,6 +19,7 @@
 #include "vtkDoubleArray.h"
 #include "vtkGenericCell.h"
 #include "vtkInformation.h"
+#include "vtkInformationVector.h"
 #include "vtkLine.h"
 #include "vtkMath.h"
 #include "vtkObjectFactory.h"
@@ -1076,6 +1077,18 @@ void vtkRectilinearGrid::Crop()
     inCD->ShallowCopy(outCD);
     newGrid->Delete();
     }
+}
+
+//----------------------------------------------------------------------------
+vtkRectilinearGrid* vtkRectilinearGrid::GetData(vtkInformation* info)
+{
+  return info? vtkRectilinearGrid::SafeDownCast(info->Get(DATA_OBJECT())) : 0;
+}
+
+//----------------------------------------------------------------------------
+vtkRectilinearGrid* vtkRectilinearGrid::GetData(vtkInformationVector* v, int i)
+{
+  return vtkRectilinearGrid::GetData(v->GetInformationObject(i));
 }
 
 //----------------------------------------------------------------------------

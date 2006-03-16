@@ -13,7 +13,11 @@
 
 =========================================================================*/
 #include "vtkPiecewiseFunction.h"
+
+#include "vtkInformation.h"
+#include "vtkInformationVector.h"
 #include "vtkObjectFactory.h"
+
 #include <vtkstd/vector>
 #include <vtkstd/set>
 #include <vtkstd/algorithm>
@@ -882,6 +886,20 @@ void vtkPiecewiseFunction::FillFromDataPointer(int nb, double *ptr)
     }
   
   this->SortAndUpdateRange();
+}
+
+//----------------------------------------------------------------------------
+vtkPiecewiseFunction* vtkPiecewiseFunction::GetData(vtkInformation* info)
+{
+  return
+    info? vtkPiecewiseFunction::SafeDownCast(info->Get(DATA_OBJECT())) : 0;
+}
+
+//----------------------------------------------------------------------------
+vtkPiecewiseFunction* vtkPiecewiseFunction::GetData(vtkInformationVector* v,
+                                                    int i)
+{
+  return vtkPiecewiseFunction::GetData(v->GetInformationObject(i));
 }
 
 // Print method for tkPiecewiseFunction
