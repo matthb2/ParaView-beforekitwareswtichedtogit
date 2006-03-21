@@ -42,6 +42,12 @@ vtkProbeFilter::~vtkProbeFilter()
 }
 
 //----------------------------------------------------------------------------
+void vtkProbeFilter::SetSourceConnection(vtkAlgorithmOutput* algOutput)
+{
+  this->SetInputConnection(1, algOutput);
+}
+ 
+//----------------------------------------------------------------------------
 void vtkProbeFilter::SetSource(vtkDataObject *input)
 {
   this->SetInput(1, input);

@@ -647,6 +647,33 @@ int vtkGlyph3D::RequestData(
 
 //----------------------------------------------------------------------------
 // Specify a source object at a specified table location.
+void vtkGlyph3D::SetSourceConnection(int id, vtkAlgorithmOutput* algOutput)
+{
+  if (id < 0)
+    {
+    vtkErrorMacro("Bad index " << id << " for source.");
+    return;
+    }
+
+  int numConnections = this->GetNumberOfInputConnections(1);
+  if (id < numConnections)
+    {
+    this->SetNthInputConnection(1, id, algOutput);
+    }
+  else if (id == numConnections && algOutput)
+    {
+    this->AddInputConnection(1, algOutput);
+    }
+  else if (algOutput)
+    {
+    vtkWarningMacro("The source id provided is larger than the maximum "
+                    "source id, using " << numConnections << " instead.");
+    this->AddInputConnection(1, algOutput);
+    }
+}
+
+//----------------------------------------------------------------------------
+// Specify a source object at a specified table location.
 void vtkGlyph3D::SetSource(int id, vtkPolyData *pd)
 {
   if (id < 0)

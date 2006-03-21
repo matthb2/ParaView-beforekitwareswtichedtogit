@@ -95,6 +95,11 @@ vtkStreamTracer::~vtkStreamTracer()
   this->SetInterpolatorPrototype(0);
 }
 
+void vtkStreamTracer::SetSourceConnection(vtkAlgorithmOutput* algOutput)
+{
+  this->SetInputConnection(1, algOutput);
+}
+
 void vtkStreamTracer::SetSource(vtkDataSet *source)
 {
   this->SetInput(1, source);
