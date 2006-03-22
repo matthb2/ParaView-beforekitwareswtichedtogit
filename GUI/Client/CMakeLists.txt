@@ -1,12 +1,7 @@
-CMAKE_MINIMUM_REQUIRED(VERSION 2.2)
-
-FIND_PACKAGE(Qt4)
-INCLUDE(${QT_USE_FILE})
+PROJECT(PQCLIENT)
 
 IF(PARAQ_EMBED_PYTHON)
-  SUBDIRS(
-    Python
-  )
+  SUBDIRS(Python)
 ENDIF(PARAQ_EMBED_PYTHON)
 
 SUBDIRS(
@@ -16,24 +11,13 @@ SUBDIRS(
   Widgets
   Client)
 
+# Everything under Client uses VTK/ParaView ServerManager.
 INCLUDE_DIRECTORIES(
-  ${ParaQ_BINARY_DIR}/ParaView
-  ${ParaQ_BINARY_DIR}/ParaView/VTK
-  ${ParaQ_BINARY_DIR}/ParaView/Servers/Common
-  ${ParaQ_BINARY_DIR}/ParaView/Servers/Filters
-  ${ParaQ_BINARY_DIR}/ParaView/Servers/ServerManager
-  ${ParaQ_BINARY_DIR}/ParaView/Utilities/VTKClientServer
-  ${ParaQ_SOURCE_DIR}/ParaView/VTK/Common
-  ${ParaQ_SOURCE_DIR}/ParaView/VTK/Filtering
-  ${ParaQ_SOURCE_DIR}/ParaView/VTK/GenericFiltering
-  ${ParaQ_SOURCE_DIR}/ParaView/VTK/IO
-  ${ParaQ_SOURCE_DIR}/ParaView/VTK/Rendering
-  ${ParaQ_SOURCE_DIR}/ParaView/VTK/GUISupport/Qt
-  ${ParaQ_SOURCE_DIR}/ParaView/GUI/Client
-  ${ParaQ_SOURCE_DIR}/ParaView/Servers/Common
-  ${ParaQ_SOURCE_DIR}/ParaView/Servers/Filters
-  ${ParaQ_SOURCE_DIR}/ParaView/Servers/ServerManager
-  ${ParaQ_SOURCE_DIR}/ParaView/Utilities/VTKClientServer
+  ${VTK_INCLUDE_DIR}
+  ${PARAVIEW_INCLUDE_DIRS}
+  ${ParaQ_SOURCE_DIR}/VTK/GUISupport/Qt
+  ${Widgets_SOURCE_DIR}
+  ${Widgets_BINARY_DIR}
 )
 
 CONFIGURE_FILE("${CMAKE_CURRENT_SOURCE_DIR}/CTestCustom.ctest.in"

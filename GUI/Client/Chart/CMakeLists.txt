@@ -1,15 +1,5 @@
 PROJECT(pqChart)
 
-CMAKE_MINIMUM_REQUIRED(VERSION 2.2)
-
-# find modules
-FIND_PACKAGE(Qt4)
-INCLUDE(${QT_USE_FILE})
-
-IF(NOT QT4_FOUND)
-   MESSAGE(SEND_ERROR "Qt4 not found.  Qt4 is required to build QtSNLChart.")
-ENDIF(NOT QT4_FOUND)
-
 INCLUDE_DIRECTORIES(
   ${QtComponents_SOURCE_DIR}
 )

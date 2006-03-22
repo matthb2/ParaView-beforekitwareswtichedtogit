@@ -1,15 +1,8 @@
-CMAKE_MINIMUM_REQUIRED(VERSION 2.2)
-
 PROJECT(QtPython)
 
-FIND_PACKAGE(Qt4)
-INCLUDE(${QT_USE_FILE})
-
-FIND_PACKAGE(PythonLibs)
-
 INCLUDE_DIRECTORIES(
-  ${ParaQ_SOURCE_DIR}/Python
-  ${ParaQ_SOURCE_DIR}/Qt/Widgets
+  ${pqPython_SOURCE_DIR}
+  ${QtWidgets_SOURCE_DIR}
   ${QtPython_BINARY_DIR}
   ${PYTHON_INCLUDE_PATH}
 )
@@ -26,7 +19,6 @@ ADD_LIBRARY(QtPython
   pqPythonStream.h
   QtPythonExport.h
   ${MOC_BUILT_SOURCES}
-  ${UI_BUILT_SOURCES}
 )
 
 TARGET_LINK_LIBRARIES(QtPython

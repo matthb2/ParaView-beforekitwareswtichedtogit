@@ -1,18 +1,10 @@
 PROJECT(QtWidgets)
 
-CMAKE_MINIMUM_REQUIRED(VERSION 2.2)
-
-FIND_PACKAGE(Qt4)
-SET(QT_USE_QTDESIGNER ON)
-INCLUDE(${QT_USE_FILE})
-
 INCLUDE_DIRECTORIES(
   ${QtWidgets_BINARY_DIR}
   ${QtWidgets_SOURCE_DIR}
   ${QtComponents_SOURCE_DIR}
-  ${ParaQ_SOURCE_DIR}/Qt/Chart
-  ${ParaQ_SOURCE_DIR}/ParaView/VTK/Graphics
-  ${ParaQ_SOURCE_DIR}/ParaView/VTK/Hybrid
+  ${pqChart_SOURCE_DIR}
 )
 
 QT4_WRAP_CPP(MOC_BUILT_SOURCES
@@ -151,51 +143,7 @@ ADD_LIBRARY(QtWidgets
 TARGET_LINK_LIBRARIES(QtWidgets
   pqChart
   vtkPVServerManager
-  vtkPVFiltersCS
-  vtkPVFilters
-  vtkPVServerCommonCS
-  vtkPVServerCommon
-  vtkParallelCS
-  vtkWidgetsCS
-  vtkHybridCS
-  vtkVolumeRenderingCS
-  vtkXdmfCS
-  vtkRenderingCS
-  vtkGenericFilteringCS
-  vtkGenericFiltering
-  vtkIOCS
-  vtkImagingCS
-  vtkGraphicsCS
-  vtkFilteringCS
-  vtkCommonCS
-  vtkClientServer
-  SPCTH
-
   QVTK
-
-  vtkParallel
-  vtkHybrid
-  vtkIO
-  vtkVolumeRendering
-  vtkWidgets
-  vtkImaging
-  vtkRendering
-  vtkGraphics
-  vtkFiltering
-  vtkCommon
-  vtkXdmf
-  Xdmf
-  vtkexoIIc
-  vtkNetCDF
-  vtkexpat
-  vtkftgl
-  vtkhdf5
-  vtktiff
-  vtkzlib
-  vtkMPEG2Encode
-  vtkDICOMParser
-
-  ${QT_LIBRARIES}
 )
 
 IF(BUILD_TESTING)

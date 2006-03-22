@@ -1,12 +1,7 @@
 PROJECT(QtComponents)
 
-CMAKE_MINIMUM_REQUIRED(VERSION 2.2)
-
-FIND_PACKAGE(Qt4)
-SET(QT_USE_QTDESIGNER ON)
-INCLUDE(${QT_USE_FILE})
-
 INCLUDE_DIRECTORIES(
+  ${QtComponents_SOURCE_DIR}
   ${QtComponents_BINARY_DIR}
 )
 
@@ -69,11 +64,10 @@ ADD_LIBRARY(QtComponents
   ${RCS_SOURCES}
   ${UI_BUILT_SOURCES}
 )
-
+  
 TARGET_LINK_LIBRARIES(QtComponents
   vtkCommon
   vtkPVServerCommon
   vtkClientServer
   ${QT_LIBRARIES}
 )
-
