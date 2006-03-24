@@ -238,8 +238,8 @@ void vtkScalarBarWidget::SetCursor(int cState)
       if (this->Repositionable)
         { 
         this->RequestCursorShape(VTK_CURSOR_SIZEALL);
-        break;        
         }
+      break;        
     }
 }
 
