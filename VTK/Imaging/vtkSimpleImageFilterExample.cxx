@@ -55,8 +55,8 @@ void vtkSimpleImageFilterExample::SimpleExecute(vtkImageData* input,
 
   switch(output->GetScalarType())
     {
-    // This is simple a #define for a big case list. It handles
-    // all data types vtk can handle.
+    // This is simply a #define for a big case list. It handles all
+    // data types VTK supports.
     vtkTemplateMacro(
       vtkSimpleImageFilterExampleExecute( input, output,
                                           (VTK_TT *)(inPtr), 
