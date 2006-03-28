@@ -50,6 +50,17 @@ vtkPVMain::vtkPVMain()
   this->ProcessModule = 0;
 }
 
+//----------------------------------------------------------------------------
+void vtkPVMain::SetInitializeMPI(int s)
+{
+  vtkPVMain::InitializeMPI = s;
+}
+
+//----------------------------------------------------------------------------
+int vtkPVMain::GetInitializeMPI()
+{
+  return vtkPVMain::InitializeMPI;
+}
 
 //----------------------------------------------------------------------------
 vtkPVMain::~vtkPVMain()
