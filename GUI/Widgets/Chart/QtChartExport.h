@@ -1,7 +1,7 @@
 /*=========================================================================
 
    Program:   ParaQ
-   Module:    $RCSfile$
+   Module:    $RCS $
 
    Copyright (c) 2005,2006 Sandia Corporation, Kitware Inc.
    All rights reserved.
@@ -30,37 +30,35 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 =========================================================================*/
 
-#ifndef _pqLocalFileDialogModel_h
-#define _pqLocalFileDialogModel_h
+/*!
+ * \file QtChartExport.h
+ * \brief
+ *   Used to switch between dll import and export on windows.
+ * \date August 19, 2005
+ */
 
-#include "QtComponentsExport.h"
-#include "pqFileDialogModel.h"
+#ifndef __QtChartExport_h
+#define __QtChartExport_h
 
-/// Implementation of pqFileDialogModel that provides browsing capabilities for the local filesystem
-class QTCOMPONENTS_EXPORT pqLocalFileDialogModel :
-  public pqFileDialogModel
-{
-  Q_OBJECT
+#if defined(WIN32) && defined(PARAQ_BUILD_SHARED_LIBS)
+# if defined(QtChart_EXPORTS)
+#   define QTCHART_EXPORT __declspec(dllexport)
+# else
+#   define QTCHART_EXPORT __declspec(dllimport) 
+# endif
+#else
+# define QTCHART_EXPORT
+#endif
 
-public:
-  pqLocalFileDialogModel(QObject* Parent = 0);
-  ~pqLocalFileDialogModel();
+// The plugin is always dynamic.
+#if defined(WIN32)
+# if defined(QtChartPlugin_EXPORTS)
+#   define QTCHARTPLUGIN_EXPORT __declspec(dllexport)
+# else
+#   define QTCHARTPLUGIN_EXPORT __declspec(dllimport)
+# endif
+#else
+# define QTCHARTPLUGIN_EXPORT
+#endif
 
-  QString getStartPath();
-  void setCurrentPath(const QString&);
-  QString getCurrentPath();
-  bool isDir(const QModelIndex&);
-  QStringList getFilePaths(const QModelIndex&);
-  QString getFilePath(const QString&);
-  QString getParentPath(const QString&);
-  QStringList splitPath(const QString&);
-  QAbstractItemModel* fileModel();
-  QAbstractItemModel* favoriteModel();
-  
-private:
-  class pqImplementation;
-  pqImplementation* const Implementation;
-};
-
-#endif // !_pqLocalFileDialogModel_h
-
+#endif

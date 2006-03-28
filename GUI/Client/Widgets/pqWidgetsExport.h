@@ -30,35 +30,17 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 =========================================================================*/
 
-/*!
- * \file pqChartExport.h
- * \brief
- *   Used to switch between dll import and export on windows.
- * \date August 19, 2005
- */
-
-#ifndef __pqChartExport_h
-#define __pqChartExport_h
+#ifndef _pqWidgetsExport_h
+#define _pqWidgetsExport_h
 
 #if defined(WIN32) && defined(PARAQ_BUILD_SHARED_LIBS)
-# if defined(pqChart_EXPORTS)
-#   define QTCHART_EXPORT __declspec(dllexport)
+# if defined(pqWidgets_EXPORTS)
+#   define PQWIDGETS_EXPORT __declspec(dllexport)
 # else
-#   define QTCHART_EXPORT __declspec(dllimport) 
+#   define PQWIDGETS_EXPORT __declspec(dllimport)
 # endif
 #else
-# define QTCHART_EXPORT
+# define PQWIDGETS_EXPORT
 #endif
 
-// The plugin is always dynamic.
-#if defined(WIN32)
-# if defined(pqChartPlugin_EXPORTS)
-#   define QTCHARTPLUGIN_EXPORT __declspec(dllexport)
-# else
-#   define QTCHARTPLUGIN_EXPORT __declspec(dllimport)
-# endif
-#else
-# define QTCHARTPLUGIN_EXPORT
-#endif
-
-#endif
+#endif // !_pqWidgetsExport_h

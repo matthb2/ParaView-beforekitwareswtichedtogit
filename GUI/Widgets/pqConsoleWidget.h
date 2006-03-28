@@ -1,7 +1,7 @@
 /*=========================================================================
 
    Program:   ParaQ
-   Module:    $RCSfile$
+   Module:    $RCS $
 
    Copyright (c) 2005,2006 Sandia Corporation, Kitware Inc.
    All rights reserved.
@@ -30,46 +30,49 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 =========================================================================*/
 
-#ifndef _pqDelimitedTextParser_h
-#define _pqDelimitedTextParser_h
+#ifndef _pqConsoleWidget_h
+#define _pqConsoleWidget_h
 
-#include "QtComponentsExport.h"
-#include <QObject>
+#include "QtWidgetsExport.h"
 
-class QIODevice;
+#include <QWidget>
+#include <QTextCharFormat>
 
-/// Parses a delimited text file (e.g. a CSV or tab-delimited file), and emits signals that represent data series from the file.
-class QTCOMPONENTS_EXPORT pqDelimitedTextParser :
-  public QObject
+/// Qt widget that provides an interactive console - send text to the console by calling printString(), and connect to the executeCommand() slot to receive user input
+class QTWIDGETS_EXPORT pqConsoleWidget :
+  public QWidget
 {
   Q_OBJECT
   
 public:
-  enum SeriesT
-  {
-    /// Data series are organized in columns
-    COLUMN_SERIES
-  };
-  
-  /// Initializes the parser with the delimiter that will be used to separate fields on the same line within parsed files.
-  pqDelimitedTextParser(SeriesT series, char delimiter);
-  
-  /// Call this to parse a filesystem file.
-  void parse(const QString& path);
-  
+  pqConsoleWidget(QWidget* Parent);
+  virtual ~pqConsoleWidget();
+
+public slots:
+  /// Returns the current formatting that will be used by printString
+  QTextCharFormat getFormat();
+  /// Sets formatting that will be used by printString
+  void setFormat(const QTextCharFormat& Format);
+  /// Writes the supplied text to the console
+  void printString(const QString& Text);
+
 signals:
-  /// Signal emitted when parsing begins.
-  void startParsing();
-  /// Signal that will be emitted once for each data series contained in the parsed file.
-  void parseSeries(const QStringList&);
-  /// Signal emitted when parsing ends.
-  void finishParsing();
+  /// Signal emitted whenever the user enters a command
+  void executeCommand(const QString& Command);
+
+private slots:
+  void onCursorPositionChanged();
+  void onSelectionChanged();
 
 private:
-  const SeriesT Series;
-  const char Delimiter;
-  
-  void parseColumns(QIODevice& stream);
+  pqConsoleWidget(const pqConsoleWidget&);
+  pqConsoleWidget& operator=(const pqConsoleWidget&);
+
+  void internalExecuteCommand(const QString& Command);
+
+  class pqImplementation;
+  pqImplementation* const Implementation;
 };
 
-#endif
+#endif // !_pqConsoleWidget_h
+

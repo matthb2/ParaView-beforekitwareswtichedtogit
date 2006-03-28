@@ -30,26 +30,26 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 =========================================================================*/
 
-#ifndef _pqSetData_h
-#define _pqSetData_h
+#ifndef _pqSetName_h
+#define _pqSetName_h
 
-#include "QtComponentsExport.h"
-#include <QVariant>
+#include "QtWidgetsExport.h"
+#include <QString>
 
-/// Helper class for setting custom Qt object data
-struct QTCOMPONENTS_EXPORT pqSetData
+/// Helper class for setting a Qt object name
+struct QTWIDGETS_EXPORT pqSetName
 {
-  pqSetData(const QVariant& Data);
-  const QVariant Data;
+  pqSetName(const QString& Name);
+  const QString Name;
 };
 
-/// Sets custom data for a Qt object
+/// Sets a Qt object's name
 template<typename T>
-T* operator<<(T* LHS, const pqSetData& RHS)
+T* operator<<(T* LHS, const pqSetName& RHS)
 {
-  LHS->setData(RHS.Data);
+  LHS->setObjectName(RHS.Name);
   return LHS;
 }
 
-#endif // !_pqSetData_h
+#endif // !_pqSetName_h
 

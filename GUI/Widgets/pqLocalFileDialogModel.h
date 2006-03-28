@@ -30,26 +30,37 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 =========================================================================*/
 
-#ifndef _pqSetName_h
-#define _pqSetName_h
+#ifndef _pqLocalFileDialogModel_h
+#define _pqLocalFileDialogModel_h
 
-#include "QtComponentsExport.h"
-#include <QString>
+#include "QtWidgetsExport.h"
+#include "pqFileDialogModel.h"
 
-/// Helper class for setting a Qt object name
-struct QTCOMPONENTS_EXPORT pqSetName
+/// Implementation of pqFileDialogModel that provides browsing capabilities for the local filesystem
+class QTWIDGETS_EXPORT pqLocalFileDialogModel :
+  public pqFileDialogModel
 {
-  pqSetName(const QString& Name);
-  const QString Name;
+  Q_OBJECT
+
+public:
+  pqLocalFileDialogModel(QObject* Parent = 0);
+  ~pqLocalFileDialogModel();
+
+  QString getStartPath();
+  void setCurrentPath(const QString&);
+  QString getCurrentPath();
+  bool isDir(const QModelIndex&);
+  QStringList getFilePaths(const QModelIndex&);
+  QString getFilePath(const QString&);
+  QString getParentPath(const QString&);
+  QStringList splitPath(const QString&);
+  QAbstractItemModel* fileModel();
+  QAbstractItemModel* favoriteModel();
+  
+private:
+  class pqImplementation;
+  pqImplementation* const Implementation;
 };
 
-/// Sets a Qt object's name
-template<typename T>
-T* operator<<(T* LHS, const pqSetName& RHS)
-{
-  LHS->setObjectName(RHS.Name);
-  return LHS;
-}
-
-#endif // !_pqSetName_h
+#endif // !_pqLocalFileDialogModel_h
 

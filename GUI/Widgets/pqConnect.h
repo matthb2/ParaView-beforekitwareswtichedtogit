@@ -30,49 +30,30 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 =========================================================================*/
 
-#ifndef _pqFileDialog_h
-#define _pqFileDialog_h
+#ifndef _pqConnect_h
+#define _pqConnect_h
 
-#include "QtComponentsExport.h"
-#include <QDialog>
+#include "QtWidgetsExport.h"
 
-class pqFileDialogModel;
-namespace Ui { class pqFileDialog; }
-class QModelIndex;
+class QObject;
 
-/// Provides a standard file dialog "front-end" for the pqFileDialogModel "back-end", i.e. it can be used for both local and remote file browsing
-class QTCOMPONENTS_EXPORT pqFileDialog :
-  public QDialog
+/// Helper class for making Qt connections
+struct QTWIDGETS_EXPORT pqConnect
 {
-  typedef QDialog base;
+  pqConnect(const char* Signal, const QObject* Receiver, const char* Method);
   
-  Q_OBJECT
-  
-public:
-  pqFileDialog(pqFileDialogModel* Model, const QString& Title, QWidget* Parent, const char* const Name);
-
-signals:
-  /// Signal emitted when the user has chosen a set of files and accepted the dialog
-  void filesSelected(const QStringList&);
-
-private:
-  ~pqFileDialog();
-  pqFileDialog(const pqFileDialog&);
-  pqFileDialog& operator=(const pqFileDialog&);
-
-  void accept();
-  
-  pqFileDialogModel* const Model;
-  Ui::pqFileDialog* const Ui;
-  const QModelIndex* Temp;
-  
-private slots:
-  void onDataChanged(const QModelIndex&, const QModelIndex&);
-  void onActivated(const QModelIndex&);
-  void onManualEntry(const QString&);
-  void onNavigate(const QString&);
-  void onNavigateUp();
-  void onNavigateDown();
+  const char* Signal;
+  const QObject* Receiver;
+  const char* Method;
 };
 
-#endif // !_pqFileDialog_h
+/// Makes a Qt connection
+template<typename T>
+T* operator<<(T* LHS, const pqConnect& RHS)
+{
+  LHS->connect(LHS, RHS.Signal, RHS.Receiver, RHS.Method);
+  return LHS;
+}
+
+#endif // !_pqConnect_h
+

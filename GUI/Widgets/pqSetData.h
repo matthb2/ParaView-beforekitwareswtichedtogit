@@ -30,17 +30,26 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 =========================================================================*/
 
-#ifndef _pqWaitCursor_h
-#define _pqWaitCursor_h
+#ifndef _pqSetData_h
+#define _pqSetData_h
 
-#include "QtComponentsExport.h"
+#include "QtWidgetsExport.h"
+#include <QVariant>
 
-/// RAII component that displays a wait cursor during a long operation
-class QTCOMPONENTS_EXPORT pqWaitCursor
+/// Helper class for setting custom Qt object data
+struct QTWIDGETS_EXPORT pqSetData
 {
-public:
-  pqWaitCursor();
-  ~pqWaitCursor();
+  pqSetData(const QVariant& Data);
+  const QVariant Data;
 };
 
-#endif
+/// Sets custom data for a Qt object
+template<typename T>
+T* operator<<(T* LHS, const pqSetData& RHS)
+{
+  LHS->setData(RHS.Data);
+  return LHS;
+}
+
+#endif // !_pqSetData_h
+

@@ -1,7 +1,7 @@
 /*=========================================================================
 
    Program:   ParaQ
-   Module:    $RCS $
+   Module:    $RCSfile$
 
    Copyright (c) 2005,2006 Sandia Corporation, Kitware Inc.
    All rights reserved.
@@ -30,39 +30,17 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 =========================================================================*/
 
-#ifndef _pqLinePlot_h
-#define _pqLinePlot_h
+#ifndef _pqWaitCursor_h
+#define _pqWaitCursor_h
 
-#include "QtChartExport.h"
-#include "pqAbstractPlot.h"
+#include "QtWidgetsExport.h"
 
-class pqMarkerPen;
-
-/// Displays a line plot
-class QTCHART_EXPORT pqLinePlot :
-  public pqAbstractPlot
+/// RAII component that displays a wait cursor during a long operation
+class QTWIDGETS_EXPORT pqWaitCursor
 {
 public:
-  /// pqLinePlot assumes ownership of the given pen
-  pqLinePlot(pqMarkerPen* pen, const pqChartCoordinateList& coords);
-  /// pqLinePlot assumes ownership of the given pen
-  pqLinePlot(pqMarkerPen* pen, const pqChartCoordinate& p1, const pqChartCoordinate& p2);
-  virtual ~pqLinePlot();
-
-  /// \name pqAbstractPlot Methods
-  //@{
-  virtual const pqChartCoordinate getMinimum() const;
-  virtual const pqChartCoordinate getMaximum() const;
-  virtual void layoutPlot(const pqChartAxis& XAxis, const pqChartAxis& YAxis);
-  virtual void drawPlot(QPainter& painter, const QRect& area, const pqChartAxis& XAxis, const pqChartAxis& YAxis);
-  virtual const double getDistance(const QPoint& coords) const;
-  virtual void showChartTip(QHelpEvent& event) const;
-  //@}
-
-private:
-  /// Private implementation details
-  class pqImplementation;
-  pqImplementation* const Implementation;
+  pqWaitCursor();
+  ~pqWaitCursor();
 };
 
 #endif

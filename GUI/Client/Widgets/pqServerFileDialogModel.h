@@ -33,13 +33,13 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #ifndef _pqServerFileDialogModel_h
 #define _pqServerFileDialogModel_h
 
-#include "QtComponentsExport.h"
+#include "pqWidgetsExport.h"
 #include "pqFileDialogModel.h"
 
 class vtkProcessModule;
 
 /// Implementation of pqFileDialogModel that allows remote browsing of a connected ParaView server's filesystem
-class QTCOMPONENTS_EXPORT pqServerFileDialogModel :
+class PQWIDGETS_EXPORT pqServerFileDialogModel :
   public pqFileDialogModel
 {
   typedef pqFileDialogModel base;
