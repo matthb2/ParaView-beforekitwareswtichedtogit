@@ -468,12 +468,12 @@ int vtkRenderWindowInteractor::CreateOneShotTimer(unsigned long duration)
 } 
 
 //new-style group #2 returns type (non-zero unless bad timerId)
-int vtkRenderWindowInteractor::IsSingleShotTimer(int timerId)
+int vtkRenderWindowInteractor::IsOneShotTimer(int timerId)
 {
   vtkTimerIdMapIterator iter = this->TimerMap->find(timerId);
   if ( iter != this->TimerMap->end() )
     {
-    return (*iter).second.Type;
+    return ((*iter).second.Type == OneShotTimer);
     }
   return 0;
 } 
