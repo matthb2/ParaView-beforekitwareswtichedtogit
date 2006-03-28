@@ -135,6 +135,8 @@ vtkProcessModule::vtkProcessModule()
   
   this->MemoryInformation = vtkKWProcessStatistics::New();
   this->ServerInformation = vtkPVServerInformation::New();
+
+  this->UseMPI = 1;
 }
 
 //-----------------------------------------------------------------------------
