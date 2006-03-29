@@ -171,14 +171,14 @@ int vtkSMPropertyAdaptor::GetPropertyType()
     return vtkSMPropertyAdaptor::ENUMERATION;
     }
 
-  if (this->StringListDomain)
-    {
-    return vtkSMPropertyAdaptor::ENUMERATION;
-    }
-
   if (this->FileListDomain)
     {
     return vtkSMPropertyAdaptor::FILE_LIST;
+    }
+
+  if (this->StringListDomain)
+    {
+    return vtkSMPropertyAdaptor::ENUMERATION;
     }
 
   if (this->StringListRangeDomain)
