@@ -391,10 +391,7 @@ void vtkSMDoubleVectorProperty::Copy(vtkSMProperty* src)
     this->ImmediateUpdate = imUpdate;
     }
 
-  if (this->ImmediateUpdate)
-    {
-    this->Modified();
-    }
+  this->Modified();
 }
 
 //---------------------------------------------------------------------------
