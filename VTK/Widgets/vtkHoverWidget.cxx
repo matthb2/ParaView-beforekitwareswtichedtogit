@@ -69,7 +69,7 @@ void vtkHoverWidget::SetEnabled(int enabling)
                                                  this->EventCallbackCommand,this->Priority);
 
     // Start off the timer
-    this->TimerId = this->Interactor->CreateTimer(VTKI_TIMER_FIRST,this->TimerDuration);
+    this->TimerId = this->Interactor->CreateRepeatingTimer(this->TimerDuration);
     this->WidgetState = vtkHoverWidget::Timing;
 
     this->InvokeEvent(vtkCommand::EnableEvent,NULL);
@@ -106,7 +106,7 @@ void vtkHoverWidget::MoveAction(vtkAbstractWidget *w)
     self->SubclassEndHoverAction();
     self->InvokeEvent(vtkCommand::EndInteractionEvent,NULL);
     }
-  self->TimerId = self->Interactor->CreateTimer(VTKI_TIMER_FIRST,self->TimerDuration);
+  self->TimerId = self->Interactor->CreateRepeatingTimer(self->TimerDuration);
 }
 
 //-------------------------------------------------------------------------
