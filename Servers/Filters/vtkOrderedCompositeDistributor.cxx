@@ -103,13 +103,13 @@ void vtkOrderedCompositeDistributor::PrintSelf(ostream &os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os, indent);
 
-  os << "PKdTree: " << this->PKdTree << endl;
-  os << "Controller: " << this->Controller << endl;
-  os << "PassThrough: " << this->PassThrough << endl;
-  os << "OutputType: " << this->OutputType << endl;
-
-  os << "D3: " << this->D3 << endl;
-  os << "ToPolyData" << this->ToPolyData << endl;
+  os << indent << "PKdTree: " << this->PKdTree << endl;
+  os << indent << "Controller: " << this->Controller << endl;
+  os << indent << "PassThrough: " << this->PassThrough << endl;
+  os << indent << "OutputType: " << 
+    (this->OutputType? this->OutputType : "(none)") << endl;
+  os << indent << "D3: " << this->D3 << endl;
+  os << indent << "ToPolyData" << this->ToPolyData << endl;
 }
 
 //-----------------------------------------------------------------------------
