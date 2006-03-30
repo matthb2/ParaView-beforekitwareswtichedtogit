@@ -43,8 +43,8 @@ vtkBalloonRepresentation::vtkBalloonRepresentation()
   // Balloon text
   this->BalloonText = NULL;
   this->Padding = 5;
-  this->Offset[0] =  15.0;
-  this->Offset[1] = -30.0;
+  this->Offset[0] =  15;
+  this->Offset[1] = -30;
 
   // The text actor
   this->TextMapper = vtkTextMapper::New();
