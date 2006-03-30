@@ -251,7 +251,7 @@ void vtkTextActor::ReleaseGraphicsResources(vtkWindow *win)
 int vtkTextActor::RenderOverlay(vtkViewport *viewport)
 {
   // render the texture 
-  if (this->Texture)
+  if (this->Texture && this->Input)
     {
     vtkRenderer* ren = vtkRenderer::SafeDownCast(viewport);
     if (ren)
