@@ -182,5 +182,7 @@ void vtkBalloonRepresentation::PrintSelf(ostream& os, vtkIndent indent)
     }
   
   os << indent << "Padding: " << this->Padding << "\n";
+  os << indent << "Offset: (" << this->Offset[0] << ","
+     << this->Offset[1] << ")\n";
 }
 
