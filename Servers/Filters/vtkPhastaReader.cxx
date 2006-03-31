@@ -252,7 +252,10 @@ void vtkPhastaReader::openfile( const char filename[],
 {
   FILE* file=NULL ;
   *fileDescriptor = 0;
-  char* fname = StringStripper( filename );
+  // Stripping a filename is not correct, since 
+  // filenames can certainly have spaces.
+  // char* fname = StringStripper( filename );
+  char* fname = filename;
   char* imode = StringStripper( mode );
 
   if ( cscompare( "read", imode ) ) 
