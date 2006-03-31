@@ -30,45 +30,33 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 =========================================================================*/
 
-#ifndef _pqObjectHistogramWidget_h
-#define _pqObjectHistogramWidget_h
+#ifndef _pqPythonDialog_h
+#define _pqPythonDialog_h
 
-#include "pqVariableType.h"
-#include "pqWidgetsExport.h"
-#include <QWidget>
+#include "QtPythonExport.h"
+#include <QDialog>
 
-class pqServer;
-class vtkCommand;
-class vtkObject;
-class vtkSMProxy;
-
-/// Displays a histogram based on data from a single proxy
-class PQWIDGETS_EXPORT pqObjectHistogramWidget :
-  public QWidget
+/// Provides an about dialog
+class QTPYTHON_EXPORT pqPythonDialog :
+  public QDialog
 {
   Q_OBJECT
-  
+
 public:
-  pqObjectHistogramWidget(QWidget* parent);
-  ~pqObjectHistogramWidget();
-
-public slots:
-  /// Call this to set the current server
-  void setServer(pqServer*);
-  /// Call this to set the proxy that will become the data source
-  void setProxy(vtkSMProxy*);
-  /// Call this to set the current variable type and variable name
-  void setVariable(pqVariableType type, const QString& name);
-  /// Call this to set the current bin count (defaults to 10)
-  void setBinCount(unsigned long Count);
-
+  pqPythonDialog(QWidget* Parent);
+  
 private slots:
-  void onInputChanged(vtkObject*,unsigned long, void*, void*, vtkCommand*);
-  void onBinCountChanged(int);
+  void accept();
+  void reject();
 
 private:
+  ~pqPythonDialog();
+  pqPythonDialog(const pqPythonDialog&);
+  pqPythonDialog& operator=(const pqPythonDialog&);
+  
   struct pqImplementation;
   pqImplementation* const Implementation;
 };
 
-#endif
+#endif // !_pqPythonDialog_h
+
