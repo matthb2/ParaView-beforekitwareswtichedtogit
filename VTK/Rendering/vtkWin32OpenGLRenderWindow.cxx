@@ -1020,7 +1020,7 @@ void vtkWin32OpenGLRenderWindow::SetFullScreen(int arg)
 //
 void vtkWin32OpenGLRenderWindow::SetStereoCapableWindow(int capable)
 {
-  if (this->WindowId == 0)
+  if (this->ContextId == 0)
     {
       vtkRenderWindow::SetStereoCapableWindow(capable);
     }

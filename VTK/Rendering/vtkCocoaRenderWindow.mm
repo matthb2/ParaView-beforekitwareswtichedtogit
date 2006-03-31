@@ -661,7 +661,7 @@ void vtkCocoaRenderWindow::SetFullScreen(int arg)
 //
 void vtkCocoaRenderWindow::SetStereoCapableWindow(int capable)
 {
-  if (this->WindowId == 0)
+  if (this->ContextId == 0)
     {
     vtkRenderWindow::SetStereoCapableWindow(capable);
     }

@@ -418,7 +418,11 @@ void vtkXOpenGLRenderWindow::Frame(void)
 //
 void vtkXOpenGLRenderWindow::SetStereoCapableWindow(int capable)
 {
-  if (!this->WindowId)
+  if (!this->Internal->ContextId && !this->Internal->PixmapContextId && !this->Internal->PbufferContextId
+#if defined( VTK_OPENGL_HAS_OSMESA )
+     && !this->Internal->OffScreenContextId
+#endif
+    )
     {
     vtkOpenGLRenderWindow::SetStereoCapableWindow(capable);
     }
