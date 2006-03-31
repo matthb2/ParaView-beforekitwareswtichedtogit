@@ -187,7 +187,7 @@ void vtkCocoaRenderWindowInteractor::TerminateApp()
 }
 
 //----------------------------------------------------------------------------
-int vtkCocoaRenderWindowInteractor::InternalCreateTimer(int timerId,
+int vtkCocoaRenderWindowInteractor::InternalCreateTimer(int vtkNotUsed(timerId),
   int timerType, unsigned long duration)
 {
   BOOL repeating = NO;
