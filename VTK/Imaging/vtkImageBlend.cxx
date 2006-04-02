@@ -82,6 +82,12 @@ vtkImageData *vtkImageBlend::GetInput()
 }
 
 //----------------------------------------------------------------------------
+int vtkImageBlend::GetNumberOfInputs()
+{
+  return this->GetNumberOfInputConnections(0);
+}
+
+//----------------------------------------------------------------------------
 void vtkImageBlend::SetStencil(vtkImageStencilData *stencil)
 {
   // if stencil is null, then set the input port to null
