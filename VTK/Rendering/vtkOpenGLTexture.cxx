@@ -82,7 +82,8 @@ void vtkOpenGLTexture::Load(vtkRenderer *ren)
       input->GetMTime() > this->LoadTime.GetMTime() ||
       (this->GetLookupTable() && this->GetLookupTable()->GetMTime () >  
        this->LoadTime.GetMTime()) || 
-       ren->GetRenderWindow() != this->RenderWindow)
+       ren->GetRenderWindow() != this->RenderWindow ||
+       ren->GetRenderWindow()->GetMTime() > this->LoadTime.GetMTime())
     {
     int bytesPerPixel;
     int *size;
