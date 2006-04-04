@@ -1914,4 +1914,8 @@ void vtkEnSightReader::PrintSelf(ostream& os, vtkIndent indent)
   os << indent << "MinimumTimeValue: " << this->MinimumTimeValue << endl;
   os << indent << "MaximumTimeValue: " << this->MaximumTimeValue << endl;
   os << indent << "TimeSets: " << this->TimeSets << endl;
+  os << indent << "MeasuredFileName: " << 
+     (this->MeasuredFileName ? this->MeasuredFileName : "(none)") << endl;
+  os << indent << "MatchFileName: " << 
+     (this->MatchFileName ? this->MatchFileName : "(none)") << endl;
 }

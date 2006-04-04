@@ -1232,6 +1232,8 @@ void vtkGenericEnSightReader::PrintSelf(ostream& os, vtkIndent indent)
      << endl;
   os << indent << "PointDataArraySelection: " << this->PointDataArraySelection 
      << endl;
+  os << indent << "GeometryFileName: " << 
+     (this->GeometryFileName ? this->GeometryFileName : "(none)") << endl;
 }
 
 //----------------------------------------------------------------------------
