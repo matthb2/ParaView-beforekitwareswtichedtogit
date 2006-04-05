@@ -1766,6 +1766,7 @@ void vtkSMProxy::PrintSelf(ostream& os, vtkIndent indent)
   os << indent << "XMLGroup: " 
     << (this->XMLGroup ? this->XMLGroup : "(null)")
     << endl;
+  os << indent << "Documentation: " << this->Documentation << endl;
 
   vtkSMPropertyIterator* iter = this->NewPropertyIterator();
   if (iter)
