@@ -59,12 +59,6 @@ void vtkImageBlend::SetInput(int idx, vtkDataObject *input)
 }
 
 //----------------------------------------------------------------------------
-void vtkImageBlend::SetInput(vtkDataObject *input)
-{
-  this->SetInput(0, input);
-}
-
-//----------------------------------------------------------------------------
 vtkDataObject *vtkImageBlend::GetInput(int idx)
 {
   if (this->GetNumberOfInputConnections(0) <= idx)
@@ -73,18 +67,6 @@ vtkDataObject *vtkImageBlend::GetInput(int idx)
     }
   return vtkImageData::SafeDownCast(
     this->GetExecutive()->GetInputData(0, idx));
-}
-
-//----------------------------------------------------------------------------
-vtkDataObject *vtkImageBlend::GetInput()
-{
-  return this->GetInput(0);
-}
-
-//----------------------------------------------------------------------------
-int vtkImageBlend::GetNumberOfInputs()
-{
-  return this->GetNumberOfInputConnections(0);
 }
 
 //----------------------------------------------------------------------------

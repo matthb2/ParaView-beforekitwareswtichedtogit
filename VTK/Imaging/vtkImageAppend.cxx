@@ -41,6 +41,27 @@ vtkImageAppend::~vtkImageAppend()
 }
 
 //----------------------------------------------------------------------------
+// The default vtkImageAlgorithm semantics are that SetInput() puts
+// each input on a different port, we want all the image inputs to
+// go on the first port.
+void vtkImageAppend::SetInput(int idx, vtkDataObject *input)
+{
+  // Ask the superclass to connect the input.
+  this->SetNthInputConnection(0, idx, (input ? input->GetProducerPort() : 0));
+}
+
+//----------------------------------------------------------------------------
+vtkDataObject *vtkImageAppend::GetInput(int idx)
+{
+  if (this->GetNumberOfInputConnections(0) <= idx)
+    {
+    return 0;
+    }
+  return vtkImageData::SafeDownCast(
+    this->GetExecutive()->GetInputData(0, idx));
+}
+
+//----------------------------------------------------------------------------
 // This method tells the ouput it will have more components
 int vtkImageAppend::RequestInformation (
   vtkInformation * vtkNotUsed(request),
