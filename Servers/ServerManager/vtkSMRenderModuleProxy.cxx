@@ -728,6 +728,7 @@ vtkSMDisplayProxy* vtkSMRenderModuleProxy::CreateDisplayProxy()
     {
     return NULL;
     }
+  p->SetConnectionID(this->ConnectionID);
   vtkSMDisplayProxy *pDisp = vtkSMDisplayProxy::SafeDownCast(p);
   if (!pDisp)
     {

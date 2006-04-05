@@ -555,6 +555,7 @@ void vtkSMProxyProperty::DeepCopy(vtkSMProperty* src,
       vtkSMProxy* psrc = dsrc->GetProxy(i);
       vtkSMProxy* pdest = pxm->NewProxy(psrc->GetXMLGroup(), 
         psrc->GetXMLName());
+      pdest->SetConnectionID(psrc->GetConnectionID());
       pdest->Copy(psrc, exceptionClass, proxyPropertyCopyFlag);
       this->AddProxy(pdest);
       pdest->Delete();
@@ -566,6 +567,7 @@ void vtkSMProxyProperty::DeepCopy(vtkSMProperty* src,
       vtkSMProxy* psrc = dsrc->GetUncheckedProxy(i);
       vtkSMProxy* pdest = pxm->NewProxy(psrc->GetXMLGroup(), 
         psrc->GetXMLName());
+      pdest->SetConnectionID(psrc->GetConnectionID());
       pdest->Copy(psrc, exceptionClass, proxyPropertyCopyFlag);
       this->AddUncheckedProxy(pdest);
       pdest->Delete();

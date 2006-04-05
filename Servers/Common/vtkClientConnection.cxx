@@ -164,6 +164,13 @@ int vtkClientConnection::Initialize(int vtkNotUsed(argc), char** vtkNotUsed(argv
 }
 
 //-----------------------------------------------------------------------------
+void vtkClientConnection::Finalize()
+{
+  this->GetSocketController()->CloseConnection();
+  this->Superclass::Finalize();
+}
+
+//-----------------------------------------------------------------------------
 int vtkClientConnection::AuthenticateWithClient()
 {
   vtkProcessModule* pm = vtkProcessModule::GetProcessModule();

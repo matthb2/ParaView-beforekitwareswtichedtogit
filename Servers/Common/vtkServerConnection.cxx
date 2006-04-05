@@ -80,8 +80,10 @@ void vtkServerConnection::Finalize()
   
   if (this->RenderServerSocketController)
     {
+    this->RenderServerSocketController->CloseConnection();
     this->RenderServerSocketController->Finalize(1);
     }
+  this->GetSocketController()->CloseConnection();
   this->Superclass::Finalize();
 }
 

@@ -17,6 +17,7 @@
 #include "vtkMultiProcessController.h"
 #include "vtkObjectFactory.h"
 #include "vtkProcessModule.h"
+#include "vtkProcessModuleConnectionManager.h"
 #include "vtkSocketController.h"
 #include "vtkTimerLog.h"
 #include "vtkClientServerInterpreter.h"
@@ -105,7 +106,8 @@ void vtkPVProgressHandler::DetermineProgressType(vtkProcessModule* app)
   int client = this->ClientMode;
   int server = this->ServerMode;
   int local_process = app->GetPartitionId();
-  int num_processes = app->GetNumberOfPartitions();
+  int num_processes = app->GetNumberOfPartitions(
+    vtkProcessModuleConnectionManager::GetSelfConnectionID());
 
   if ( client )
     {

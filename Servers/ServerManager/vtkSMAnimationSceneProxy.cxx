@@ -369,7 +369,8 @@ int vtkSMAnimationSceneProxy::SaveGeometry(const char* filename)
     vtkErrorMacro("Failed to create XMLPVAnimationWriter proxy.");
     return 1;
     }
-  
+  animWriter->SetConnectionID(this->ConnectionID);
+
   this->SaveFailed = 0;
   this->SetAnimationTime(0);
   this->GeometryWriter = animWriter;

@@ -203,7 +203,8 @@ int vtkSMCompositeRenderModuleProxy::GetLocalRenderDecision(
 {
   vtkProcessModule* pm = vtkProcessModule::GetProcessModule();
   if (static_cast<float>(totalMemory)/1000.0 < this->GetCompositeThreshold() ||
-      (!pm->GetOptions()->GetClientMode() && pm->GetNumberOfPartitions() < 2))
+      (!pm->GetOptions()->GetClientMode() && 
+       pm->GetNumberOfPartitions(this->ConnectionID) < 2))
     {
     return 1; // Local render.
     }

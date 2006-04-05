@@ -392,6 +392,18 @@ int vtkProcessModuleConnectionManager::MonitorConnections(
 }
 
 //-----------------------------------------------------------------------------
+void vtkProcessModuleConnectionManager::CloseConnection(vtkConnectionID id)
+{
+  vtkRemoteConnection* rc = vtkRemoteConnection::SafeDownCast(
+    this->GetConnectionFromID(id));
+  if (rc)
+    {
+    rc->Finalize();
+    this->DropConnection(rc);
+    }
+}
+
+//-----------------------------------------------------------------------------
 int vtkProcessModuleConnectionManager::DropAbortedConnections()
 {
   int ret = 0;
