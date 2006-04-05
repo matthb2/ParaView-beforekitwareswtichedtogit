@@ -329,7 +329,6 @@ int vtkMedicalImageProperties::GetDateAsFields(const char *date, int &year,
     }
   else
     {
-    vtkErrorMacro( << "Wrong length for VR=DA" );
     return 0;
     }
 
