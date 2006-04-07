@@ -92,6 +92,7 @@ vtkBalloonRepresentation::~vtkBalloonRepresentation()
   this->FramePolyData->Delete();
   this->FrameMapper->Delete();
   this->FrameActor->Delete();
+  this->FrameProperty->Delete();
 }
 
 //----------------------------------------------------------------------
