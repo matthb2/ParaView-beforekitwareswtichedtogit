@@ -30,34 +30,33 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 =========================================================================*/
 
-#include "pqClientProcessModuleGUIHelper.h"
+#include "ProcessModuleGUIHelper.h"
 
 #include "vtkObjectFactory.h"
 #include "MainWindow.h"
 
-vtkStandardNewMacro(pqClientProcessModuleGUIHelper);
-vtkCxxRevisionMacro(pqClientProcessModuleGUIHelper, "$Revision$");
+vtkStandardNewMacro(ProcessModuleGUIHelper);
+vtkCxxRevisionMacro(ProcessModuleGUIHelper, "$Revision$");
 //-----------------------------------------------------------------------------
-pqClientProcessModuleGUIHelper::pqClientProcessModuleGUIHelper()
+ProcessModuleGUIHelper::ProcessModuleGUIHelper()
 {
 }
 
 //-----------------------------------------------------------------------------
-pqClientProcessModuleGUIHelper::~pqClientProcessModuleGUIHelper()
+ProcessModuleGUIHelper::~ProcessModuleGUIHelper()
 {
 }
 
 //-----------------------------------------------------------------------------
-void pqClientProcessModuleGUIHelper::CreateMainWindow()
+pqMainWindow* ProcessModuleGUIHelper::CreateMainWindow()
 {
-  // Should rename class MainWindow(). It should be prefixed with pq/vtk something
-  // otherwise we get funny looking statements like this.
-  this->MainWindow = new ::MainWindow();
-  this->MainWindow->resize(800, 600);
+  pqMainWindow* const window = new MainWindow();
+  window->resize(800, 600);
+  return window;
 }
 
 //-----------------------------------------------------------------------------
-void pqClientProcessModuleGUIHelper::PrintSelf(ostream& os, vtkIndent indent)
+void ProcessModuleGUIHelper::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os, indent);
 }
