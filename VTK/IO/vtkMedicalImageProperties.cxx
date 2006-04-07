@@ -17,6 +17,7 @@
 
 #include <vtksys/stl/string>
 #include <vtksys/stl/vector>
+#include <time.h> // for strftime
 
 //----------------------------------------------------------------------------
 vtkCxxRevisionMacro(vtkMedicalImageProperties, "$Revision$");
@@ -345,6 +346,27 @@ int vtkMedicalImageProperties::GetDateAsFields(const char *date, int &year,
     }
 
   return 1;
+}
+
+//----------------------------------------------------------------------------
+// Helper function to convert a DICOM iso date format into a locale one
+// locale buffer should be typically char locale[200]
+int vtkMedicalImageProperties::GetDateAsLocale(const char *iso, char *locale)
+{
+  int year, month, day;
+  if( vtkMedicalImageProperties::GetDateAsFields(iso, year, month, day) )
+    {
+    struct tm date;
+    memset(&date,0, sizeof(date));
+    date.tm_mday = day;
+    // month are expressed in the [0-11] range:
+    date.tm_mon = month - 1;
+    // structure is date starting at 1900
+    date.tm_year = year - 1900;
+    strftime(locale, 200, "%x", &date);
+    return 1;
+    }
+  return 0;
 }
 //----------------------------------------------------------------------------
 int vtkMedicalImageProperties::GetPatientBirthDateYear()
