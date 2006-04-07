@@ -1,7 +1,7 @@
 /*=========================================================================
 
    Program:   ParaQ
-   Module:    $RCS $
+   Module:    $RCSfile$
 
    Copyright (c) 2005,2006 Sandia Corporation, Kitware Inc.
    All rights reserved.
@@ -43,6 +43,8 @@ class QComboBox;
 class pqSignalAdaptorComboBox : public QObject
 {
   Q_OBJECT
+  Q_CLASSINFO("Author", "$Author$")
+  Q_CLASSINFO("Revision", "$Revision$")
   Q_PROPERTY(QString currentText READ currentText WRITE setCurrentText)
 public:
   /// constructor requires a QComboBox
