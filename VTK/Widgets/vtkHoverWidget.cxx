@@ -90,9 +90,7 @@ void vtkHoverWidget::SetEnabled(int enabling)
       }
     
     this->Enabled = 0;
-
     this->Interactor->RemoveObserver(this->EventCallbackCommand);
-
     this->InvokeEvent(vtkCommand::DisableEvent,NULL);
     }
 }
