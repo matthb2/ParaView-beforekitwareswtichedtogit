@@ -88,7 +88,7 @@ vtkBalloonRepresentation::vtkBalloonRepresentation()
   this->TextureActor = vtkActor2D::New();
   this->TextureActor->SetMapper(this->TextureMapper);
   this->ImageProperty = vtkProperty2D::New();
-  this->ImageProperty->SetOpacity(0.5);
+  this->ImageProperty->SetOpacity(1.0);
   this->TextureActor->SetProperty(this->ImageProperty);
 
   // Controlling layout
