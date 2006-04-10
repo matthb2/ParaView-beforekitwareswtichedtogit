@@ -436,7 +436,8 @@ void vtkXRenderWindowInteractorTimer(XtPointer client_data,
 
 //-------------------------------------------------------------------------
 // X always creates one shot timers
-int vtkXRenderWindowInteractor::InternalCreateTimer(int timerId, int timertype,
+int vtkXRenderWindowInteractor::InternalCreateTimer(int vtkNotUsed(timerId), 
+                                                    vtkNotUsed(int timerType),
                                                     unsigned long duration) 
 {
   duration = (duration > 0 ? duration : this->TimerDuration);
