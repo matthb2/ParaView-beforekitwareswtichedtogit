@@ -309,7 +309,7 @@ void vtkWindowToImageFilter::RequestData(
           deltay = 2.0*deltay/(visVP[3] - visVP[1]);
           }
         cam->SetWindowCenter(deltax,deltay);
-        cam->SetViewAngle(atan(tan(viewAngles[i]*3.1415926/360.0)*mag)
+        cam->SetViewAngle(asin(sin(viewAngles[i]*3.1415926/360.0)*mag)
                           * 360.0 / 3.1415926);
         cam->SetParallelScale(parallelScale[i]*mag);
         }
