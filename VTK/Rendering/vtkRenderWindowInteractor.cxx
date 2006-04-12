@@ -399,9 +399,6 @@ vtkRenderer* vtkRenderWindowInteractor::FindPokedRenderer(int x,int y)
 // only the interactors used timers. However with the introduction of new 3D
 // widgets into VTK multiple timers often run simultaneously.
 //
-// Note that these methods are typically overridden by platform-specific
-// subclasses of this (vtkRenderWindowInteractor) base class.
-
 //old-style group #1
 int vtkRenderWindowInteractor::CreateTimer(int timerType) 
 {
