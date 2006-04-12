@@ -301,7 +301,7 @@ void vtkWindowToImageFilter::RequestData(
   this->Input->SetTileScale(this->Magnification);
   this->Input->GetSize();
 
-  this->Rescale2DActors();
+  //this->Rescale2DActors();
   int x, y;
   for (y = 0; y < this->Magnification; y++)
     {
@@ -353,7 +353,7 @@ void vtkWindowToImageFilter::RequestData(
         }
 
       // Shift 2d actors just before rendering
-      this->Shift2DActors(size[0]*x, size[1]*y);
+      //this->Shift2DActors(size[0]*x, size[1]*y);
       // now render the tile and get the data
       if (this->ShouldRerender || this->Magnification > 1)
         {
