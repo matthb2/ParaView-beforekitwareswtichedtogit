@@ -30,36 +30,33 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 =========================================================================*/
 
-#ifndef _pqAbstractItemViewEventTranslator_h
-#define _pqAbstractItemViewEventTranslator_h
+#include "pqTesting.h"
 
-#include "pqWidgetEventTranslator.h"
+#include <QCoreApplication>
+#include <QTime>
 
-class QAbstractItemView;
-class QModelIndex;
-class QPoint;
+#ifdef Q_OS_UNIX
+  #include <time.h>
+#endif
 
-/// Translates low-level Qt slider events into high-level ParaQ events that can be recorded as test cases
-class pqAbstractItemViewEventTranslator :
-  public pqWidgetEventTranslator
+#ifdef Q_OS_WIN32
+  #include <windows.h>
+#endif
+
+void pqTesting::NonBlockingSleep(int Milliseconds)
 {
-  Q_OBJECT
-  
-public:
-  pqAbstractItemViewEventTranslator();
-  
-  virtual bool translateEvent(QObject* Object, QEvent* Event, bool& Error);
-
-private:
-  pqAbstractItemViewEventTranslator(const pqAbstractItemViewEventTranslator&);
-  pqAbstractItemViewEventTranslator& operator=(const pqAbstractItemViewEventTranslator&);
-
-  QAbstractItemView* CurrentObject;
-  
-private slots:
-  void onCurrentChanged(const QModelIndex&, const QModelIndex&);
-  void onCustomContextMenuRequested(const QPoint&);
-};
-
-#endif // !_pqAbstractItemViewEventTranslator_h
-
+  QTime timer;
+  timer.start();
+  while(timer.elapsed() < Milliseconds)
+    {
+    QCoreApplication::processEvents(QEventLoop::AllEvents, Milliseconds);
+    
+#ifdef Q_OS_WIN32
+    Sleep(Milliseconds);
+#else
+    struct timespec ts = { 0, 0 };
+    ts.tv_nsec = Milliseconds * 1000 * 1000;
+    nanosleep(&ts, NULL);
+#endif
+    }
+}

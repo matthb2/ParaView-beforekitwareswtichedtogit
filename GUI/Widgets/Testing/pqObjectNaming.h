@@ -39,12 +39,20 @@ class QObject;
 class QString;
 class vtkRenderWindow;
 
-/// Provides functionality for ensuring that Qt objects are named correctly for use with regression testing
+/// Provides functionality to ensuring that Qt objects can be uniquely identified for recording and playback of regression tests
 class QTTESTING_EXPORT pqObjectNaming
 {
 public:
-  /// Recursively validates that every child of the given QObject is named correctly for regression test recording/playback
+  /// Adds a Qt object to the global list of top-level objects
+  static void AddTopLevel(QObject& Object);
+
+  /// Recursively validates that every child of the given QObject is named correctly for testing
   static bool Validate(QObject& Parent);
+
+  /// Returns a unique identifier for the given object that can be serialized for later regression test playback
+  static const QString GetName(QObject& Object);
+  /// Given a unique identifier returned by GetName(), returns the corresponding object, or NULL
+  static QObject* GetObject(const QString& Name);
   
 private:
   static bool Validate(QObject& Parent, const QString& Path);
