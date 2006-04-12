@@ -100,7 +100,7 @@ int pqProcessModuleGUIHelper::RunGUIStart(int argc, char** argv,
 
       if (options->GetTestFileName())
         {
-        pqEventPlayer player(*this->Window);
+        pqEventPlayer player;
         player.addDefaultWidgetEventPlayers();
         pqEventPlayerXML xml_player;
         status = !xml_player.playXML(player, options->GetTestFileName());
