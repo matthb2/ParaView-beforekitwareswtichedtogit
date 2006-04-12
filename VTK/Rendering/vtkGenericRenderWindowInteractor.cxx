@@ -233,7 +233,7 @@ int vtkGenericRenderWindowInteractor::InternalCreateTimer(int, int,
 }
 
 //------------------------------------------------------------------
-int vtkGenericRenderWindowInteractor::DestroyTimer(int)
+int vtkGenericRenderWindowInteractor::InternalDestroyTimer(int)
 {
   if(this->HasObserver(vtkCommand::DestroyTimerEvent))
     {
