@@ -720,6 +720,45 @@ void vtkProcessModuleConnectionManager::ExecuteEvent(vtkObject* vtkNotUsed(calle
 }
 
 //-----------------------------------------------------------------------------
+void vtkProcessModuleConnectionManager::PushUndo(vtkConnectionID id, 
+  const char* label, vtkPVXMLElement* root)
+{
+  vtkProcessModuleConnection* conn = this->GetConnectionFromID(id);
+  if (!conn)
+    {
+    vtkErrorMacro("Failed to locate connection with id " << id);
+    return;
+    }
+  conn->PushUndo(label, root);
+}
+
+//-----------------------------------------------------------------------------
+vtkPVXMLElement* vtkProcessModuleConnectionManager::NewNextUndo(
+  vtkConnectionID id)
+{
+  vtkProcessModuleConnection* conn = this->GetConnectionFromID(id);
+  if (!conn)
+    {
+    vtkErrorMacro("Failed to locate connection with id " << id);
+    return 0;
+    }
+  return conn->NewNextUndo();
+}
+
+//-----------------------------------------------------------------------------
+vtkPVXMLElement* vtkProcessModuleConnectionManager::NewNextRedo(
+  vtkConnectionID id)
+{
+  vtkProcessModuleConnection* conn = this->GetConnectionFromID(id);
+  if (!conn)
+    {
+    vtkErrorMacro("Failed to locate connection with id " << id);
+    return 0;
+    }
+  return conn->NewNextRedo();
+}
+
+//-----------------------------------------------------------------------------
 void vtkProcessModuleConnectionManager::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os, indent);
