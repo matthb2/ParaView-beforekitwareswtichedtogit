@@ -482,7 +482,6 @@ void vtkClientConnection::PushUndoXMLRMI(const char* label, const char* data)
   elem->SetConnection(this);
   this->UndoRedoStack->Push(label, elem);
   elem->Delete();
-  cout << data << endl;
 }
 
 //-----------------------------------------------------------------------------
