@@ -219,6 +219,28 @@ void vtkBalloonWidget::RemoveBalloon(vtkProp *prop)
     }
 }
 
+//-------------------------------------------------------------------------
+const char *vtkBalloonWidget::GetBalloonString(vtkProp *prop)
+{
+  vtkPropMapIterator iter = this->PropMap->find(prop);
+  if ( iter != this->PropMap->end() )
+    {
+    return (*iter).second.Text.c_str();
+    }
+  return NULL;
+}
+
+//-------------------------------------------------------------------------
+vtkImageData *vtkBalloonWidget::GetBalloonImage(vtkProp *prop)
+{
+  vtkPropMapIterator iter = this->PropMap->find(prop);
+  if ( iter != this->PropMap->end() )
+    {
+    return (*iter).second.Image;
+    }
+  return NULL;
+}
+
 
 //-------------------------------------------------------------------------
 int vtkBalloonWidget::SubclassHoverAction()
