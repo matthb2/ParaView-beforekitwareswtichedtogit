@@ -349,6 +349,16 @@ void vtkUnstructuredGridPartialPreIntegration::Initialize(
       {
       vtkErrorMacro("Only 2-tuples and 4-tuples allowed for dependent components.");
       }
+    if (numcomponents == 2)
+      {
+      this->TransferFunctions
+        = new vtkPartialPreIntegrationTransferFunction[1];
+      this->TransferFunctions[0]
+        .GetTransferFunction(property->GetRGBTransferFunction(0),
+                             property->GetScalarOpacity(0),
+                             property->GetScalarOpacityUnitDistance(0),
+                             scalars->GetRange(0));
+      }
     return;
     }
   
@@ -523,13 +533,20 @@ void vtkUnstructuredGridPartialPreIntegration::Integrate(
       }
     else  // Two components.
       {
+      double nearColor[4], farColor[4], tmpColor[4];
       for (vtkIdType i = 0; i < numintersections; i++)
         {
         double length = intersectionLengths->GetValue(i);
-        double *nearcolor = nearIntersections->GetTuple(i);
-        double *farcolor = farIntersections->GetTuple(i);
-        this->IntegrateRay(length, nearcolor[0], nearcolor[1]/unitdistance,
-                           farcolor[0], farcolor[1]/unitdistance, color);
+        double *nearScalars = nearIntersections->GetTuple(i);
+        double *farScalars = farIntersections->GetTuple(i);
+        this->TransferFunctions[0].GetColor(nearScalars[0], nearColor);
+        this->TransferFunctions[0].GetColor(nearScalars[1], tmpColor);
+        nearColor[3] = tmpColor[3];
+        this->TransferFunctions[0].GetColor(farScalars[0], farColor);
+        this->TransferFunctions[0].GetColor(farScalars[1], tmpColor);
+        farColor[3] = tmpColor[3];
+        this->IntegrateRay(length, nearColor, nearColor[3]/unitdistance,
+                           farColor, farColor[3]/unitdistance, color);
         }
       }
     }
