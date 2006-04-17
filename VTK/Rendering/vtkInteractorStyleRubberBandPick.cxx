@@ -46,6 +46,12 @@ vtkInteractorStyleRubberBandPick::~vtkInteractorStyleRubberBandPick()
 }
 
 //--------------------------------------------------------------------------
+void vtkInteractorStyleRubberBandPick::StartSelect()
+{
+  this->CurrentMode = VTKISRBP_SELECT;
+}
+
+//--------------------------------------------------------------------------
 void vtkInteractorStyleRubberBandPick::OnChar()
 {
   switch (this->Interactor->GetKeyCode())
