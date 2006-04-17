@@ -31,3 +31,9 @@ vtkProcessModule* vtkPVCreateProcessModule::CreateProcessModule(vtkPVOptions* op
   vtkProcessModule::SetProcessModule(pm);
   return pm;
 }
+
+//----------------------------------------------------------------------------
+void vtkPVCreateProcessModule::PrintSelf(ostream& os, vtkIndent indent)
+{
+  this->Superclass::PrintSelf(os, indent);
+}

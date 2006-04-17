@@ -57,3 +57,9 @@ void vtkPVOptionsXMLParser::SetProcessType(const char* ptype)
 
   this->Superclass::SetProcessType(ptype);
 }
+
+//----------------------------------------------------------------------------
+void vtkPVOptionsXMLParser::PrintSelf(ostream& os, vtkIndent indent)
+{
+  this->Superclass::PrintSelf(os, indent);
+}
