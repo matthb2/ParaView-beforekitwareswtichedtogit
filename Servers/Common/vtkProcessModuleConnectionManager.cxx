@@ -75,13 +75,6 @@ vtkStandardNewMacro(vtkProcessModuleConnectionManager);
 vtkCxxRevisionMacro(vtkProcessModuleConnectionManager, "$Revision$");
 
 //-----------------------------------------------------------------------------
-vtkIdType vtkProcessModuleConnectionManager::NullConnectionID = 0;
-vtkIdType vtkProcessModuleConnectionManager::SelfConnectionID = 1;
-vtkIdType vtkProcessModuleConnectionManager::AllConnectionsID = 2;
-vtkIdType vtkProcessModuleConnectionManager::AllServerConnectionID = 3;
-vtkIdType vtkProcessModuleConnectionManager::RootServerConnectionID = 4;
-
-//-----------------------------------------------------------------------------
 vtkProcessModuleConnectionManager::vtkProcessModuleConnectionManager()
 {
   this->Internals = new vtkProcessModuleConnectionManagerInternals;
