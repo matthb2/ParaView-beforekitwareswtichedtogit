@@ -193,7 +193,7 @@ void vtkSMProperty::UpdateDependentDomains()
 }
 
 //---------------------------------------------------------------------------
-void vtkSMProperty::UpdateInformation(vtkConnectionID cid, int serverIds, 
+void vtkSMProperty::UpdateInformation(vtkIdType cid, int serverIds, 
   vtkClientServerID objectId)
 {
   if (!this->InformationOnly)

@@ -46,7 +46,8 @@ public:
     vtkSMProxy* caller = vtkSMProxy::SafeDownCast(c);
     if (this->Link && caller)
       {
-      if (event == vtkCommand::UpdateEvent)
+      if (event == vtkCommand::UpdateEvent && 
+        this->Link->GetPropagateUpdateVTKObjects())
         {
         this->Link->UpdateVTKObjects(caller);
         }
@@ -66,6 +67,7 @@ vtkSMLink::vtkSMLink()
   vtkSMLinkObserver* obs = vtkSMLinkObserver::New();
   obs->Link = this;
   this->Observer = obs;
+  this->PropagateUpdateVTKObjects = 1;
 }
 
 //-----------------------------------------------------------------------------

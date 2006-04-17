@@ -153,7 +153,7 @@ vtkSMComparativeVisProxy::~vtkSMComparativeVisProxy()
 }
 
 //-----------------------------------------------------------------------------
-void vtkSMComparativeVisProxy::SetConnectionID(vtkConnectionID id)
+void vtkSMComparativeVisProxy::SetConnectionID(vtkIdType id)
 {
   this->Superclass::SetConnectionID(id);
   if (this->MultiActorHelper)

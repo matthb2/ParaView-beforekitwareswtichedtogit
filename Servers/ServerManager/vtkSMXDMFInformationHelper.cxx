@@ -34,7 +34,7 @@ vtkSMXDMFInformationHelper::~vtkSMXDMFInformationHelper()
 
 //---------------------------------------------------------------------------
 void vtkSMXDMFInformationHelper::UpdateProperty(
-  vtkConnectionID connectionId, int serverIds, vtkClientServerID objectId, 
+  vtkIdType connectionId, int serverIds, vtkClientServerID objectId, 
   vtkSMProperty* prop)
 {
   vtkSMStringVectorProperty* svp = vtkSMStringVectorProperty::SafeDownCast(prop);

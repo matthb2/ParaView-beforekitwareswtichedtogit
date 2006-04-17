@@ -66,7 +66,7 @@ void vtkSMCompoundProxy::SetMainProxy(vtkSMProxy* p)
 }
 
 //----------------------------------------------------------------------------
-void vtkSMCompoundProxy::SetConnectionID(vtkConnectionID id)
+void vtkSMCompoundProxy::SetConnectionID(vtkIdType id)
 {
   if (this->MainProxy)
     {

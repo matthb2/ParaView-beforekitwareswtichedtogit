@@ -34,7 +34,7 @@ vtkSMSimpleIntInformationHelper::~vtkSMSimpleIntInformationHelper()
 
 //---------------------------------------------------------------------------
 void vtkSMSimpleIntInformationHelper::UpdateProperty(
-  vtkConnectionID connectionId, int serverIds, vtkClientServerID objectId, 
+  vtkIdType connectionId, int serverIds, vtkClientServerID objectId, 
   vtkSMProperty* prop)
 {
   vtkSMIntVectorProperty* ivp = vtkSMIntVectorProperty::SafeDownCast(prop);

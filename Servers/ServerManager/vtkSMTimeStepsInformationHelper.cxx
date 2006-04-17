@@ -34,7 +34,7 @@ vtkSMTimeStepsInformationHelper::~vtkSMTimeStepsInformationHelper()
 
 //---------------------------------------------------------------------------
 void vtkSMTimeStepsInformationHelper::UpdateProperty(
-  vtkConnectionID connectionId, int serverIds, vtkClientServerID objectId, 
+  vtkIdType connectionId, int serverIds, vtkClientServerID objectId, 
   vtkSMProperty* prop)
 {
   vtkSMDoubleVectorProperty* dvp = vtkSMDoubleVectorProperty::SafeDownCast(prop);
