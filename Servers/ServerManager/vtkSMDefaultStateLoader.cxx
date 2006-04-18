@@ -39,6 +39,7 @@ vtkSMProxy* vtkSMDefaultStateLoader::NewProxy(int id)
   vtkSMProxy* proxy = vtkSMProxy::SafeDownCast(pm->GetObjectFromID(csid));
   if (proxy)
     {
+    proxy->Register(this);
     return proxy;
     }
   return this->Superclass::NewProxy(id);

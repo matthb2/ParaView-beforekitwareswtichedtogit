@@ -22,7 +22,9 @@
 #include "vtkProcessModule.h"
 #include "vtkProcessModuleConnectionManager.h"
 #include "vtkPVXMLElement.h"
+#include "vtkSMProperty.h"
 #include "vtkSMPropertyModificationUndoElement.h"
+#include "vtkSMProxy.h"
 #include "vtkSMProxyManager.h"
 #include "vtkSMProxyRegisterUndoElement.h"
 #include "vtkSMProxyUnRegisterUndoElement.h"
@@ -69,22 +71,26 @@ public:
     {
     vtkProcessModule* pm = vtkProcessModule::GetProcessModule();
     vtkPVXMLElement* state = pm->NewNextUndo(this->ConnectionID);
+    int status=0;
     if (state)
       {
-      return this->UndoRedoManager->ProcessUndo(this->ConnectionID, state);    
+      status = this->UndoRedoManager->ProcessUndo(this->ConnectionID, state);    
+      state->Delete();
       }
-    return 0;
+    return status;
     }
   
   virtual int Redo() 
     {
     vtkProcessModule* pm = vtkProcessModule::GetProcessModule();
     vtkPVXMLElement* state = pm->NewNextRedo(this->ConnectionID);
+    int status = 0;
     if (state)
       {
-      return this->UndoRedoManager->ProcessRedo(this->ConnectionID, state);    
+      status = this->UndoRedoManager->ProcessRedo(this->ConnectionID, state);    
+      state->Delete();
       }
-    return 0;
+    return status;
     }
 
   void SetConnectionID(vtkIdType id)
@@ -311,12 +317,16 @@ void vtkSMUndoStack::OnPropertyModified(void* data)
 {
   vtkSMProxyManager::ModifiedPropertyInformation &info =*(static_cast<
     vtkSMProxyManager::ModifiedPropertyInformation*>(data)); 
-  
-  vtkSMPropertyModificationUndoElement* elem = 
-    vtkSMPropertyModificationUndoElement::New();
-  elem->ModifiedProperty(info.Proxy, info.PropertyName);
-  this->ActiveUndoSet->AddElement(elem);
-  elem->Delete();
+ 
+  vtkSMProperty* prop = info.Proxy->GetProperty(info.PropertyName);
+  if (prop && !prop->GetInformationOnly() && prop->GetSaveable())
+    {
+    vtkSMPropertyModificationUndoElement* elem = 
+      vtkSMPropertyModificationUndoElement::New();
+    elem->ModifiedProperty(info.Proxy, info.PropertyName);
+    this->ActiveUndoSet->AddElement(elem);
+    elem->Delete();
+    }
 }
 
 //-----------------------------------------------------------------------------

@@ -71,6 +71,7 @@ int vtkSMProxyUnRegisterUndoElement::Undo()
     {
     vtkSMDefaultStateLoader* loader = vtkSMDefaultStateLoader::New();
     proxy = loader->NewProxyFromElement(this->XMLElement, 0);
+    loader->Delete();
     created = 1;
     }
   

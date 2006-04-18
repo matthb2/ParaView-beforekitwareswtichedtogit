@@ -218,11 +218,15 @@ void vtkSMDataObjectDisplayProxy::SetInputInternal(vtkSMSourceProxy* input)
 
   // Determine if VolumePipeline should be enabled.
   vtkSMProxy* p = this->GetSubProxy("VolumeFilter");
-  vtkSMDataTypeDomain* domain = vtkSMDataTypeDomain::SafeDownCast(
-    p->GetProperty("Input")->GetDomain("input_type"));
-  this->HasVolumePipeline =  (domain->IsInDomain(input))? 1 : 0;
-  this->SupportsBunykMapper = 0;
-  this->SupportsZSweepMapper = 0;
+  this->HasVolumePipeline = 0;
+  if (p)
+    {
+    vtkSMDataTypeDomain* domain = vtkSMDataTypeDomain::SafeDownCast(
+      p->GetProperty("Input")->GetDomain("input_type"));
+    this->HasVolumePipeline =  (domain->IsInDomain(input))? 1 : 0;
+    this->SupportsBunykMapper = 0;
+    this->SupportsZSweepMapper = 0;
+    }
   
   if ( this->HasVolumePipeline )
     {
