@@ -93,11 +93,6 @@ int pqProcessModuleGUIHelper::RunGUIStart(int argc, char** argv,
     int dont_start_event_loop = 0;
     if (options)
       {
-      if(options->GetTestUINames())
-        {
-        status = !pqObjectNaming::Validate(*this->Window);
-        }
-
       if (options->GetTestFileName())
         {
         pqEventPlayer player;
@@ -112,6 +107,12 @@ int pqProcessModuleGUIHelper::RunGUIStart(int argc, char** argv,
           options->GetImageThreshold(), cout, options->GetTestDirectory());
         dont_start_event_loop = 1;
         }
+        
+      if(options->GetTestUINames())
+        {
+        status = !pqObjectNaming::Validate(*this->Window);
+        }
+        
       if (options->GetExitBeforeEventLoop())
         {
         dont_start_event_loop = 1;
