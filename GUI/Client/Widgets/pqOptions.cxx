@@ -104,13 +104,3 @@ void pqOptions::PrintSelf(ostream& os, vtkIndent indent)
   os << indent << "TestFileName: " << (this->TestFileName?
     this->TestFileName : "(none)") << endl;
 }
-
-void pqOptions::Register(vtkObjectBase* o)
-{
-  vtkPVOptions::Register(o);
-}
-
-void pqOptions::UnRegister(vtkObjectBase* o)
-{
-  vtkPVOptions::UnRegister(o);
-}
