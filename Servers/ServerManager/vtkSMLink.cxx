@@ -89,4 +89,6 @@ void vtkSMLink::ObserveProxyUpdates(vtkSMProxy* proxy)
 void vtkSMLink::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os, indent);
+  os << indent << "PropagateUpdateVTKObjects: " <<
+    this->PropagateUpdateVTKObjects << endl;
 }
