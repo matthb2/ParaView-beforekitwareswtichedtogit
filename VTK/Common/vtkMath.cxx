@@ -2286,6 +2286,37 @@ void vtkMath::Multiply3x3(const double A[3][3],
 }
 
 //----------------------------------------------------------------------------
+void MultiplyMatrix(const double **A, const double **B,
+                    unsigned int rowA, unsigned int colA, 
+                    unsigned int rowB, unsigned int colB,
+                    double **C)
+{
+  // we need colA == rowB 
+  if (colA != rowB)
+    {
+    vtkGenericWarningMacro(
+      "Number of columns of A must match number of rows of B.");
+    }
+  
+  // output matrix is rowA*colB
+
+  // output row 
+  for (unsigned int i=0; i < rowA; i++)
+    {
+    // output col
+    for (unsigned int j=0; j < colB; j++)
+      {
+      C[i][j] = 0;
+      // sum for this point
+      for (unsigned int k=0; k < colA; k++)
+        {
+        C[i][j] += A[i][k]*B[k][j];
+        }
+      }
+    }
+}
+
+//----------------------------------------------------------------------------
 template<class T1, class T2>
 inline void vtkTranspose3x3(const T1 A[3][3], T2 AT[3][3])
 {
