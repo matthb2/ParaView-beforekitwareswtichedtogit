@@ -310,9 +310,9 @@ public:
       }
     }
 
-  char* GetName() const
+  const char* GetName() const
     {
-    return vtksys::SystemTools::DuplicateString(this->Name.c_str());
+    return this->Name.c_str();
     }
   void SetName(const char* name)
     {
