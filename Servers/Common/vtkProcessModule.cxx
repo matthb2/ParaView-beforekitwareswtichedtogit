@@ -903,6 +903,14 @@ int vtkProcessModule::GetPartitionId()
 //-----------------------------------------------------------------------------
 int vtkProcessModule::GetNumberOfPartitions()
 {
+  if (this->Options && this->Options->GetClientMode())
+    {
+    // NOTE: This is legacy. Remains around since ParaView client
+    // requests GetNumberOfPartitions without connection ID.
+    return this->ConnectionManager->GetNumberOfPartitions(
+      vtkProcessModuleConnectionManager::GetRootServerConnectionID());
+    }
+
   if (vtkMultiProcessController::GetGlobalController())
     {
     return vtkMultiProcessController::GetGlobalController()->
