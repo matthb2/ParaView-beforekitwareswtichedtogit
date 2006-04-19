@@ -44,7 +44,10 @@ void vtkSMMaterialLoaderProxy::LoadMaterial(const char* materialname)
 {
   if (!this->PropertyProxy)
     {
-    vtkErrorMacro("PropertyProxy must be set before LoadMaterial().");
+    if (materialname && materialname[0])
+      {
+      vtkErrorMacro("PropertyProxy must be set before LoadMaterial().");
+      }
     return;
     }
 
