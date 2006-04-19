@@ -89,11 +89,6 @@ unsigned long vtkClipPolyData::GetMTime()
 
 vtkPolyData *vtkClipPolyData::GetClippedOutput()
 {
-  if (this->GetNumberOfOutputPorts() < 2)
-    {
-    return NULL;
-    }
-  
   return vtkPolyData::SafeDownCast(
     this->GetExecutive()->GetOutputData(1));
 }
