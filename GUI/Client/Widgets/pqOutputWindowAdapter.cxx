@@ -37,7 +37,11 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 vtkCxxRevisionMacro(pqOutputWindowAdapter, "$Revision$");
 vtkStandardNewMacro(pqOutputWindowAdapter);
 
-pqOutputWindowAdapter::pqOutputWindowAdapter()
+pqOutputWindowAdapter::pqOutputWindowAdapter() :
+  TextCount(0),
+  ErrorCount(0),
+  WarningCount(0),
+  GenericWarningCount(0)
 {
 }
 
@@ -45,22 +49,46 @@ pqOutputWindowAdapter::~pqOutputWindowAdapter()
 {
 }
 
+const unsigned int pqOutputWindowAdapter::getTextCount()
+{
+  return this->TextCount;
+}
+
+const unsigned int pqOutputWindowAdapter::getErrorCount()
+{
+  return this->ErrorCount;
+}
+
+const unsigned int pqOutputWindowAdapter::getWarningCount()
+{
+  return this->WarningCount;
+}
+
+const unsigned int pqOutputWindowAdapter::getGenericWarningCount()
+{
+  return this->GenericWarningCount;
+}
+
 void pqOutputWindowAdapter::DisplayText(const char* text)
 {
+  ++this->TextCount;
   emit displayText(text);
 }
 
 void pqOutputWindowAdapter::DisplayErrorText(const char* text)
 {
+  ++this->ErrorCount;
   emit displayErrorText(text);
 }
 
 void pqOutputWindowAdapter::DisplayWarningText(const char* text)
 {
+  ++this->WarningCount;
   emit displayWarningText(text);
 }
 
 void pqOutputWindowAdapter::DisplayGenericWarningText(const char* text)
 {
+  ++this->GenericWarningCount;
   emit displayGenericWarningText(text);
 }
