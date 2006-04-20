@@ -905,10 +905,25 @@ int vtkProcessModule::GetNumberOfPartitions()
 {
   if (this->Options && this->Options->GetClientMode())
     {
-    // NOTE: This is legacy. Remains around since ParaView client
-    // requests GetNumberOfPartitions without connection ID.
-    return this->ConnectionManager->GetNumberOfPartitions(
+    // If the connection exists, use it.
+    // HACK: pqClient run in client mode, however may not
+    // have RootServerConnectionID(). Once each connection gets its own
+    // interpreters, RootServerConnectionID() will become obsolete,
+    // hence we add this hack to avoid error on pqClient.
+    vtkSmartPointer<vtkConnectionIterator> iter;
+    vtkConnectionIterator *temp = this->ConnectionManager->NewIterator();
+    iter = temp;
+    temp->Delete();
+    iter->SetMatchConnectionID(
       vtkProcessModuleConnectionManager::GetRootServerConnectionID());
+    iter->Begin();
+    if (!iter->IsAtEnd())
+      {
+      // NOTE: This is legacy. Remains around since ParaView client
+      // requests GetNumberOfPartitions without connection ID.
+      return this->ConnectionManager->GetNumberOfPartitions(
+        vtkProcessModuleConnectionManager::GetRootServerConnectionID());
+      }
     }
 
   if (vtkMultiProcessController::GetGlobalController())
