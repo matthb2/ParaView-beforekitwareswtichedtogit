@@ -257,6 +257,12 @@ int vtkPVGeometryFilter::RequestData(vtkInformation* request,
   
   this->ExecuteBlock(input, output, 1);
 
+  vtkDataArray* ghost = output->GetCellData()->GetArray("vtkGhostLevels");
+  if (ghost)
+    {
+    output->RemoveGhostCells(1);
+    }
+  
   return 1;
 }
 
