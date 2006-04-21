@@ -145,7 +145,7 @@ int vtkOrderedCompositeDistributor::RequestDataObject(
                                              vtkInformationVector** inputVector,
                                              vtkInformationVector* outputVector)
 {
-  if (!this->OutputType)
+  if (!this->OutputType || this->OutputType[0] == '\0')
     {
     return this->Superclass::RequestDataObject(request,
                                                inputVector, outputVector);
