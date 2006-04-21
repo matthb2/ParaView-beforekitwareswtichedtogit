@@ -133,7 +133,6 @@ void vtkSMStringVectorProperty::AppendCommandToStream(
     }
   else
     {
-    int numArgs = this->GetNumberOfElements();
     int numCommands = numArgs / this->NumberOfElementsPerCommand;
     for(i=0; i<numCommands; i++)
       {
