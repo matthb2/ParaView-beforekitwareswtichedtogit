@@ -187,9 +187,9 @@ void vtkSMDisplayProxy::SaveInBatchScript(ofstream* file)
       continue;
       }
     
-    if (!p->GetSaveable())
+    if (p->GetIsInternal())
       {
-      *file << "  # skipping not-saveable property " << iter->GetKey() << endl;
+      *file << "  # skipping internal property " << iter->GetKey() << endl;
       continue;
       }
     

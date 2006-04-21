@@ -319,7 +319,7 @@ void vtkSMUndoStack::OnPropertyModified(void* data)
     vtkSMProxyManager::ModifiedPropertyInformation*>(data)); 
  
   vtkSMProperty* prop = info.Proxy->GetProperty(info.PropertyName);
-  if (prop && !prop->GetInformationOnly() && prop->GetSaveable())
+  if (prop && !prop->GetInformationOnly() && !prop->GetIsInternal())
     {
     vtkSMPropertyModificationUndoElement* elem = 
       vtkSMPropertyModificationUndoElement::New();

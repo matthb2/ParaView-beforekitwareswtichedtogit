@@ -863,6 +863,8 @@ void vtkSMRenderModuleProxy::AddPropToRenderer(vtkSMProxy* proxy)
   vtkClientServerStream stream;
   for (unsigned int i=0; i < this->RendererProxy->GetNumberOfIDs(); i++)
     {
+    // Make sure that the display was created
+    proxy->CreateVTKObjects(1);
     for (unsigned int j=0; j < proxy->GetNumberOfIDs(); j++)
       {
       stream << vtkClientServerStream::Invoke
@@ -1036,7 +1038,7 @@ void vtkSMRenderModuleProxy::SaveInBatchScript(ofstream* file)
       continue;
       }
 
-    if (!p->GetSaveable() || p->GetInformationOnly())
+    if (p->GetIsInternal() || p->GetInformationOnly())
       {
       *file << "  # skipping proxy property " << iter->GetKey() << endl;
       continue;

@@ -159,7 +159,6 @@ void vtkSMPropertyLink::UpdateProperties(vtkSMProxy* fromProxy, const char* pnam
       if (toProp)
         {
         toProp->Copy(fromProp);
-        toProp->Modified();
         }
       }
     }
