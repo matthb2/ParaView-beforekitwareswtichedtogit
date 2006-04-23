@@ -382,6 +382,7 @@ int vtkSTLReader::GetSTLFileType(const char *filename)
     break;
   default:
     vtkErrorMacro( "Case not handled" );
+    type = VTK_BINARY; // should not happen
     }
   return type;
 }
