@@ -21,7 +21,6 @@
 #include "vtkObjectFactory.h"
 #include "vtkPointData.h"
 #include "vtkPointLocator.h"
-#include "vtkPolyData.h"
 #include "vtkQuadraticEdge.h"
 #include "vtkQuadraticQuad.h"
 #include "vtkQuadraticTriangle.h"

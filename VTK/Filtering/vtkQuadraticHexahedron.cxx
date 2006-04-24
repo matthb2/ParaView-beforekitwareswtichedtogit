@@ -14,14 +14,12 @@
 =========================================================================*/
 #include "vtkQuadraticHexahedron.h"
 
+#include "vtkObjectFactory.h"
 #include "vtkCellData.h"
 #include "vtkDoubleArray.h"
 #include "vtkHexahedron.h"
 #include "vtkMath.h"
-#include "vtkObjectFactory.h"
 #include "vtkPointData.h"
-#include "vtkPointLocator.h"
-#include "vtkPolyData.h"
 #include "vtkQuadraticEdge.h"
 #include "vtkQuadraticQuad.h"
 
