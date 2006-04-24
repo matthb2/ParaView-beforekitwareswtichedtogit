@@ -81,7 +81,19 @@ void vtkSMSphereWidgetProxy::ExecuteEvent(vtkObject *wdg, unsigned long event,vo
   if (event != vtkCommand::PlaceWidgetEvent || !this->IgnorePlaceWidgetChanges)
     {
     this->SetCenter(val);
+    vtkSMDoubleVectorProperty* cp = vtkSMDoubleVectorProperty::SafeDownCast(
+      this->GetProperty("Center"));
+    if (cp)
+      {
+      cp->SetElements(val);
+      }
     this->SetRadius(rad);
+    vtkSMDoubleVectorProperty* rp = vtkSMDoubleVectorProperty::SafeDownCast(
+      this->GetProperty("Radius"));
+    if (rp)
+      {
+      rp->SetElements1(rad);
+      }
     }
   this->Superclass::ExecuteEvent(wdg, event, p);
 }

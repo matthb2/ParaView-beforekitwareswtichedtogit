@@ -117,7 +117,19 @@ void vtkSMImplicitPlaneWidgetProxy::ExecuteEvent(vtkObject *wdg, unsigned long e
     {
     //Just set the iVars
     this->SetCenter(center);
+    vtkSMDoubleVectorProperty* cp = vtkSMDoubleVectorProperty::SafeDownCast(
+      this->GetProperty("Center"));
+    if (cp)
+      {
+      cp->SetElements(center);
+      }
     this->SetNormal(normal);
+    vtkSMDoubleVectorProperty* np = vtkSMDoubleVectorProperty::SafeDownCast(
+      this->GetProperty("Normal"));
+    if (np)
+      {
+      np->SetElements(normal);
+      }
     }
   if (!widget->GetDrawPlane() && event == vtkCommand::InteractionEvent)
     { 
