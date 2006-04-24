@@ -110,8 +110,8 @@ void vtkAbstractWidget::SetEnabled(int enabling)
       return;
       }
 
-    int X=this->Interactor->GetLastEventPosition()[0];
-    int Y=this->Interactor->GetLastEventPosition()[1];
+    int X=this->Interactor->GetEventPosition()[0];
+    int Y=this->Interactor->GetEventPosition()[1];
 
     if ( ! this->CurrentRenderer )
       {
