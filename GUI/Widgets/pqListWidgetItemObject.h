@@ -30,59 +30,34 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 =========================================================================*/
 
-#ifndef _pqObjectEditor_h
-#define _pqObjectEditor_h
+#ifndef _pqListWidgetItemObject_h
+#define _pqListWidgetItemObject_h
 
-#include <QWidget>
-#include "pqSMProxy.h"
-#include "pqPropertyManager.h"
-class QGridLayout;
+#include "QtWidgetsExport.h"
+#include <QObject>
+#include <QListWidgetItem>
 
-/// Widget which provides an editor for editing properties of a proxy
-class pqObjectEditor : public QWidget
+/// QListWidgetItem subclass with additional signals, slots, and properties
+class QTWIDGETS_EXPORT pqListWidgetItemObject : public QObject, public QListWidgetItem
 {
   Q_OBJECT
+  Q_PROPERTY(bool checked READ isChecked WRITE setChecked)
 public:
-  /// constructor
-  pqObjectEditor(QWidget* p);
-  /// destructor
-  ~pqObjectEditor();
-
-  /// set the proxy to display properties for
-  void setProxy(pqSMProxy proxy);
-  /// get the proxy for which properties are displayed
-  pqSMProxy proxy();
-  
-  /// populate widgets with properties from the server manager
-  static void linkServerManagerProperties(pqSMProxy proxy, QWidget* w);
-  /// set the properties in the server manager with properties in the widgets
-  static void unlinkServerManagerProperties(pqSMProxy proxy, QWidget* w);
-
-  /// hint for sizing this widget
-  QSize sizeHint() const;
+  /// construct list widget item to for QListWidget with a string
+  pqListWidgetItemObject(const QString& t, QListWidget* p);
+  /// overload setData() to emit changed signal
+  void setData(int role, const QVariant& v);
 
 public slots:
-  /// accept the changes made to the properties
-  /// changes will be propogated down to the server manager
-  void accept();
-  /// reset the changes made
-  /// editor will query properties from the server manager
-  void reset();
-  
-  
-protected:
+  /// get the check true/false
+  bool isChecked() const;
+  /// set the check state true/false
+  void setChecked(bool v);
 
-  /// populate this widget with widgets to represent the properties
-  void createWidgets();
-  /// delete the widgets representing properties
-  void deleteWidgets();
-
-  pqSMProxy Proxy;
-  QGridLayout* PanelLayout;
-
-  static pqPropertyManager PropertyManager;
+signals:
+  /// signal check state changed
+  void checkedStateChanged(bool);
 
 };
 
 #endif
-
