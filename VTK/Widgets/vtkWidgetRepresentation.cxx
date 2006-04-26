@@ -40,6 +40,8 @@ vtkWidgetRepresentation::vtkWidgetRepresentation()
   this->InitialBounds[1] = this->InitialBounds[3] = this->InitialBounds[5] = 1.0;
   
   this->InitialLength = 0.0;
+  
+  this->NeedToRender = 0;
 }
 
 //----------------------------------------------------------------------
