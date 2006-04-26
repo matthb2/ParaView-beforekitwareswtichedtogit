@@ -378,6 +378,15 @@ void vtkViewport::PrintSelf(ostream& os, vtkIndent indent)
   os << indent << "IsPicking boolean: " << this->IsPicking << endl;
   os << indent << "Props:\n";
   this->Props->PrintSelf(os,indent.GetNextIndent());
+  os << indent << "PickResultProps:\n";
+  if ( this->PickResultProps != NULL )
+    {
+    this->PickResultProps->PrintSelf(os,indent.GetNextIndent());
+    }
+  else
+    {
+    os << indent << "NULL\n";
+    }
 
 }
 
