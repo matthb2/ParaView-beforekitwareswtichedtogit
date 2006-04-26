@@ -15,7 +15,7 @@
 #include "vtkEvent.h"
 #include "vtkRenderWindowInteractor.h"
 #include "vtkObjectFactory.h"
-
+#include "vtkCommand.h"
 
 vtkCxxRevisionMacro(vtkEvent, "$Revision$");
 vtkStandardNewMacro(vtkEvent);
