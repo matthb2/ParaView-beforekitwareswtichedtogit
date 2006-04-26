@@ -195,21 +195,6 @@ void vtkSM3DWidgetProxy::CreateVTKObjects(int numObjects)
       pm->GetObjectFromID(this->GetID(cc)));
     this->InitializeObservers(widget);
     }
-
-  vtkClientServerStream stream;
-  for (cc=0; cc <this->GetNumberOfIDs(); cc++)
-    {
-    vtkClientServerID id = this->GetID(cc);
-    stream << vtkClientServerStream::Invoke << id
-           << "SetPlaceFactor" << 1.0
-           << vtkClientServerStream::End;
-    stream << vtkClientServerStream::Invoke << id 
-           << "PlaceWidget"
-           << 0 << 1 << 0 << 1 << 0 << 1 
-           << vtkClientServerStream::End;
-    // this->Bounds have already been initialized to 0,1,0,1,0,1
-    pm->SendStream(this->ConnectionID, this->GetServers(), stream);
-    }
 }
 
 //----------------------------------------------------------------------------
