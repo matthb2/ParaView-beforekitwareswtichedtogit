@@ -124,6 +124,7 @@ public:
   vtkCgShaderInternals()
     {
     this->LastError = CG_NO_ERROR;
+    this->Context = 0;
     }
   
   CGparameter GetUniformParameter(const char* name)
