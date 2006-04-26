@@ -35,6 +35,7 @@ vtkHandleRepresentation::vtkHandleRepresentation()
   this->InteractionState = vtkHandleRepresentation::Outside;
   this->Tolerance = 15;
   this->ActiveRepresentation = 0;
+  this->Constrained = 0;
 
   this->DisplayPositionTime.Modified();
   this->WorldPositionTime.Modified();

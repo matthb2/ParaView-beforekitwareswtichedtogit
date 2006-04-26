@@ -27,6 +27,7 @@ vtkEvent::vtkEvent()
   this->KeyCode = 0;
   this->RepeatCount = 0;
   this->KeySym = 0;
+  this->EventId = vtkCommand::NoEvent;
 }
 
 vtkEvent::~vtkEvent()

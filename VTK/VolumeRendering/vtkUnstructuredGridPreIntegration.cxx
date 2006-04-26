@@ -59,6 +59,7 @@ vtkUnstructuredGridPreIntegration::vtkUnstructuredGridPreIntegration()
   this->IntegrationTableLengthResolution = 256;
 
   this->IncrementalPreIntegration = 1;
+  this->IntegrationTableLengthScale = 0;
 }
 
 vtkUnstructuredGridPreIntegration::~vtkUnstructuredGridPreIntegration()
