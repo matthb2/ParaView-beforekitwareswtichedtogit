@@ -110,6 +110,7 @@ void vtkFrustumExtractor::CreateFrustum(double verts[32])
     {    
     this->ClipPoints->SetPoint(i, &verts[i*4]);
     }
+  this->ClipPoints->Modified();
 
   vtkPoints *points = vtkPoints::New();
   points->SetNumberOfPoints(6);
