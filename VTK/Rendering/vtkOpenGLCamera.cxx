@@ -105,7 +105,9 @@ void vtkOpenGLCamera::Render(vtkRenderer *ren)
     {
     int size[2]; size[0] = usize; size[1] = vsize;
     glLoadIdentity();
-    vtkgluPickMatrix(ren->GetPickX(), ren->GetPickY(), 1, 1, lowerLeft, size);
+    vtkgluPickMatrix(ren->GetPickX(), ren->GetPickY(), 
+                     ren->GetPickWidth(), ren->GetPickHeight(),
+                     lowerLeft, size);
     glMultMatrixd(matrix->Element[0]);
     }
   else

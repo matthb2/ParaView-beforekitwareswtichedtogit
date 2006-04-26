@@ -304,7 +304,9 @@ void vtkOpenGLFreeTypeTextMapper::RenderOverlay(vtkViewport* viewport,
   if(viewport->GetIsPicking())
     {
     vtkgluPickMatrix(viewport->GetPickX(), viewport->GetPickY(),
-                     1, 1, viewport->GetOrigin(), viewport->GetSize());
+                     viewport->GetPickWidth(),
+                     viewport->GetPickHeight(),
+                     viewport->GetOrigin(), viewport->GetSize());
     }
   
   glMatrixMode(GL_MODELVIEW);

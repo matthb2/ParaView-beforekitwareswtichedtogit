@@ -617,7 +617,9 @@ void vtkOpenGLImageMapper::RenderData(vtkViewport* viewport,
   if(viewport->GetIsPicking())
     {
     vtkgluPickMatrix(viewport->GetPickX(), viewport->GetPickY(),
-                     1, 1, viewport->GetOrigin(), vsize);
+                     viewport->GetPickWidth(),
+                     viewport->GetPickHeight(),
+                     viewport->GetOrigin(), vsize);
     }
   glMatrixMode( GL_MODELVIEW );
   glPushMatrix();
