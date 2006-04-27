@@ -452,6 +452,7 @@ void vtkImageAccumulate::PrintSelf(ostream& os, vtkIndent indent)
   os << indent << "Stencil: " << this->GetStencil() << "\n";
   os << indent << "ReverseStencil: " << (this->ReverseStencil ?
                                          "On\n" : "Off\n");
+  os << indent << "IgnoreZero: " << (this->IgnoreZero ? "On" : "Off") << "\n";
 
   os << indent << "ComponentOrigin: ( "
      << this->ComponentOrigin[0] << ", "
