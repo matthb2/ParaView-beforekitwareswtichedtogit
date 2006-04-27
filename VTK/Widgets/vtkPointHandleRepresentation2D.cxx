@@ -356,4 +356,31 @@ void vtkPointHandleRepresentation2D::PrintSelf(ostream& os, vtkIndent indent)
   //Superclass typedef defined in vtkTypeMacro() found in vtkSetGet.h
   this->Superclass::PrintSelf(os,indent);
   
+  if ( this->Property )
+    {
+    os << indent << "Property: " << this->Property << "\n";
+    }
+  else
+    {
+    os << indent << "Property: (none)\n";
+    }
+
+  if ( this->SelectedProperty )
+    {
+    os << indent << "Selected Property: " << this->SelectedProperty << "\n";
+    }
+  else
+    {
+    os << indent << "Selected Property: (none)\n";
+    }
+
+  if ( this->CursorShape )
+    {
+    os << indent << "Cursor Shape: " << this->CursorShape << "\n";
+    }
+  else
+    {
+    os << indent << "Cursor Shape: (none)\n";
+    }
+
 }
