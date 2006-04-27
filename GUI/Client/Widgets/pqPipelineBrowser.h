@@ -30,17 +30,58 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 =========================================================================*/
 
-/// \file pqPipelineWindow.cxx
-///
-/// \date 12/22/2005
+/// \file pqPipelineBrowser.h
+/// \date 4/20/2006
 
-#include "pqPipelineWindow.h"
+#ifndef _pqPipelineBrowser_h
+#define _pqPipelineBrowser_h
 
 
-pqPipelineWindow::pqPipelineWindow(QWidget *window)
+#include "pqWidgetsExport.h"
+#include <QWidget>
+
+class pqFlatTreeView;
+class pqPipelineModel;
+class pqPipelineObject;
+class pqPipelineServer;
+class pqServer;
+class QItemSelectionModel;
+class QModelIndex;
+class vtkSMProxy;
+
+
+class PQWIDGETS_EXPORT pqPipelineBrowser : public QWidget
 {
-  this->Widget = window;
-  this->Server = 0;
-}
+  Q_OBJECT
 
+public:
+  pqPipelineBrowser(QWidget *parent=0);
+  virtual ~pqPipelineBrowser();
 
+  virtual bool eventFilter(QObject *object, QEvent *e);
+
+  pqPipelineModel *getListModel() const {return this->ListModel;}
+  pqFlatTreeView *getTreeView() const {return this->TreeView;}
+
+  QItemSelectionModel *getSelectionModel() const;
+  pqPipelineServer *getCurrentServer() const;
+
+  vtkSMProxy *getSelectedProxy() const;
+  vtkSMProxy *getNextProxy() const; // TEMP
+
+signals:
+  void proxySelected(vtkSMProxy *proxy);
+
+public slots:
+  void selectProxy(vtkSMProxy *proxy);
+  void selectServer(pqServer *server);
+
+private slots:
+  void changeCurrent(const QModelIndex &current, const QModelIndex &previous);
+
+private:
+  pqPipelineModel *ListModel;
+  pqFlatTreeView *TreeView;
+};
+
+#endif

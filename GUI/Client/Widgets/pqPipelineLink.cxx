@@ -30,62 +30,23 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 =========================================================================*/
 
-#include "pqXMLUtil.h"
+/// \file pqPipelineLink.cxx
+/// \date 4/17/2006
 
-#include <QString>
-#include <QStringList>
-#include "vtkPVXMLElement.h"
+#include "pqPipelineLink.h"
+
+#include "pqPipelineFilter.h"
+#include "pqPipelineSource.h"
 
 
-vtkPVXMLElement *pqXMLUtil::FindNestedElementByName(vtkPVXMLElement *element,
-    const char *name)
+pqPipelineLink::pqPipelineLink()
+  : pqPipelineObject()
 {
-  if(element && name)
-    {
-    QString qname = name;
-    vtkPVXMLElement *child = 0;
-    unsigned int total = element->GetNumberOfNestedElements();
-    for(unsigned int i = 0; i < total; i++)
-      {
-      child = element->GetNestedElement(i);
-      if(child && qname == child->GetName())
-        {
-        return child;
-        }
-      }
-    }
+  this->Source = 0;
+  this->Link = 0;
 
-  return 0;
-}
-
-QString pqXMLUtil::GetStringFromIntList(const QList<int> &list)
-{
-  QString number;
-  QStringList values;
-  QList<int>::ConstIterator iter = list.begin();
-  for( ; iter != list.end(); ++iter)
-    {
-    number.setNum(*iter);
-    values.append(number);
-    }
-
-  return values.join(".");
-}
-
-QList<int> pqXMLUtil::GetIntListFromString(const char *value)
-{
-  QList<int> list;
-  if(value)
-    {
-    QStringList values = QString(value).split(".");
-    QStringList::Iterator iter = values.begin();
-    for( ; iter != values.end(); ++iter)
-      {
-      list.append((*iter).toInt());
-      }
-    }
-
-  return list;
+  // Set the model item type.
+  this->SetType(pqPipelineModel::Link);
 }
 
 

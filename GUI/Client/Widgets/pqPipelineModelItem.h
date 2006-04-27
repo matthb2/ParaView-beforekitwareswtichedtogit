@@ -30,62 +30,30 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 =========================================================================*/
 
-#include "pqXMLUtil.h"
+/// \file pqPipelineModelItem.h
+/// \date 4/14/2006
 
-#include <QString>
-#include <QStringList>
-#include "vtkPVXMLElement.h"
+#ifndef _pqPipelineModelItem_h
+#define _pqPipelineModelItem_h
 
 
-vtkPVXMLElement *pqXMLUtil::FindNestedElementByName(vtkPVXMLElement *element,
-    const char *name)
+#include "pqWidgetsExport.h"
+#include "pqPipelineModel.h" // Needed for ModelType member
+
+
+class PQWIDGETS_EXPORT pqPipelineModelItem
 {
-  if(element && name)
-    {
-    QString qname = name;
-    vtkPVXMLElement *child = 0;
-    unsigned int total = element->GetNumberOfNestedElements();
-    for(unsigned int i = 0; i < total; i++)
-      {
-      child = element->GetNestedElement(i);
-      if(child && qname == child->GetName())
-        {
-        return child;
-        }
-      }
-    }
+public:
+  pqPipelineModelItem();
+  virtual ~pqPipelineModelItem() {}
 
-  return 0;
-}
+  pqPipelineModel::ItemType GetType() const {return this->ModelType;}
 
-QString pqXMLUtil::GetStringFromIntList(const QList<int> &list)
-{
-  QString number;
-  QStringList values;
-  QList<int>::ConstIterator iter = list.begin();
-  for( ; iter != list.end(); ++iter)
-    {
-    number.setNum(*iter);
-    values.append(number);
-    }
+protected:
+  void SetType(pqPipelineModel::ItemType type) {this->ModelType = type;}
 
-  return values.join(".");
-}
+private:
+  pqPipelineModel::ItemType ModelType;
+};
 
-QList<int> pqXMLUtil::GetIntListFromString(const char *value)
-{
-  QList<int> list;
-  if(value)
-    {
-    QStringList values = QString(value).split(".");
-    QStringList::Iterator iter = values.begin();
-    for( ; iter != values.end(); ++iter)
-      {
-      list.append((*iter).toInt());
-      }
-    }
-
-  return list;
-}
-
-
+#endif

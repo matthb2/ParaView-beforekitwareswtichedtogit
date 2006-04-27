@@ -30,66 +30,39 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 =========================================================================*/
 
-/// \file pqPipelineListWidget.h
-/// \brief
-///   The pqPipelineListWidget class is used to display the pipeline
-///   in the form of a tree.
-///
-/// \date 11/25/2005
+/// \file pqPipelineFilter.h
+/// \date 4/17/2006
 
-#ifndef _pqPipelineListWidget_h
-#define _pqPipelineListWidget_h
+#ifndef _pqPipelineFilter_h
+#define _pqPipelineFilter_h
+
 
 #include "pqWidgetsExport.h"
-#include <QWidget>
+#include "pqPipelineSource.h"
 
-class pqPipelineListModel;
-class pqFlatTreeView;
-class QModelIndex;
-class QString;
-class QTreeView;
-class QVTKWidget;
+class pqPipelineFilterInternal;
 class vtkSMProxy;
 
 
-/// \class pqPipelineListWidget
-/// \brief
-///   The pqPipelineListWidget class is used to display the pipeline
-///   in the form of a tree.
-class PQWIDGETS_EXPORT pqPipelineListWidget : public QWidget
+class PQWIDGETS_EXPORT pqPipelineFilter : public pqPipelineSource
 {
-  Q_OBJECT
-
 public:
-  pqPipelineListWidget(QWidget *parent=0);
-  virtual ~pqPipelineListWidget();
+  pqPipelineFilter(vtkSMProxy *proxy,
+      pqPipelineModel::ItemType type=pqPipelineModel::Filter);
+  virtual ~pqPipelineFilter();
 
-  virtual bool eventFilter(QObject *object, QEvent *e);
+  virtual void ClearConnections();
 
-  pqPipelineListModel *getListModel() const {return this->ListModel;}
-  pqFlatTreeView *getTreeView() const {return this->TreeView;}
+  int GetInputCount() const;
+  pqPipelineSource *GetInput(int index) const;
+  int GetInputIndexFor(pqPipelineSource *input) const;
+  bool HasInput(pqPipelineSource *input) const;
 
-  vtkSMProxy *getSelectedProxy() const;
-  vtkSMProxy *getNextProxy() const; // TEMP
-  QVTKWidget *getCurrentWindow() const;
-
-signals:
-  void proxySelected(vtkSMProxy *proxy);
-
-public slots:
-  void selectProxy(vtkSMProxy *proxy);
-  void selectWindow(QVTKWidget *window);
-
-  void deleteSelected();
-  void deleteProxy(vtkSMProxy *proxy);
-
-private slots:
-  void changeCurrent(const QModelIndex &current, const QModelIndex &previous);
-  void doViewContextMenu(const QPoint& pos);
+  void AddInput(pqPipelineSource *input);
+  void RemoveInput(pqPipelineSource *input);
 
 private:
-  pqPipelineListModel *ListModel;
-  pqFlatTreeView *TreeView;
+  pqPipelineFilterInternal *Internal; ///< Stores the input connections.
 };
 
 #endif

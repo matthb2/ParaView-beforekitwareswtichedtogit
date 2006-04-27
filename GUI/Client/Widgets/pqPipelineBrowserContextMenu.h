@@ -30,62 +30,35 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 =========================================================================*/
 
-#include "pqXMLUtil.h"
+/// \file pqPipelineBrowserContextMenu.h
+/// \date 4/20/2006
 
-#include <QString>
-#include <QStringList>
-#include "vtkPVXMLElement.h"
+#ifndef _pqPipelineBrowserContextMenu_h
+#define _pqPipelineBrowserContextMenu_h
 
 
-vtkPVXMLElement *pqXMLUtil::FindNestedElementByName(vtkPVXMLElement *element,
-    const char *name)
+#include "pqWidgetsExport.h"
+#include <QObject>
+
+class pqPipelineBrowser;
+class QPoint;
+
+
+class PQWIDGETS_EXPORT pqPipelineBrowserContextMenu : public QObject
 {
-  if(element && name)
-    {
-    QString qname = name;
-    vtkPVXMLElement *child = 0;
-    unsigned int total = element->GetNumberOfNestedElements();
-    for(unsigned int i = 0; i < total; i++)
-      {
-      child = element->GetNestedElement(i);
-      if(child && qname == child->GetName())
-        {
-        return child;
-        }
-      }
-    }
+  Q_OBJECT
 
-  return 0;
-}
+public:
+  pqPipelineBrowserContextMenu(pqPipelineBrowser *browser);
+  virtual ~pqPipelineBrowserContextMenu();
 
-QString pqXMLUtil::GetStringFromIntList(const QList<int> &list)
-{
-  QString number;
-  QStringList values;
-  QList<int>::ConstIterator iter = list.begin();
-  for( ; iter != list.end(); ++iter)
-    {
-    number.setNum(*iter);
-    values.append(number);
-    }
+public slots:
+  void showContextMenu(const QPoint &pos);
+  void showDisplayEditor();
+  void showRenderViewEditor();
 
-  return values.join(".");
-}
+private:
+  pqPipelineBrowser *Browser;
+};
 
-QList<int> pqXMLUtil::GetIntListFromString(const char *value)
-{
-  QList<int> list;
-  if(value)
-    {
-    QStringList values = QString(value).split(".");
-    QStringList::Iterator iter = values.begin();
-    for( ; iter != values.end(); ++iter)
-      {
-      list.append((*iter).toInt());
-      }
-    }
-
-  return list;
-}
-
-
+#endif

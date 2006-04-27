@@ -30,35 +30,53 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 =========================================================================*/
 
-/// \file pqPipelineWindow.h
-///
-/// \date 12/22/2005
+/// \file pqPipelineSource.h
+/// \date 4/17/2006
 
-#ifndef _pqPipelineWindow_h
-#define _pqPipelineWindow_h
+#ifndef _pqPipelineSource_h
+#define _pqPipelineSource_h
 
 
 #include "pqWidgetsExport.h"
+#include "pqPipelineObject.h"
+#include <QString> // Needed for proxy name.
 
-class pqPipelineServer;
-class QWidget;
+class pqPipelineDisplay;
+class pqPipelineSourceInternal;
+class vtkSMProxy;
 
 
-class PQWIDGETS_EXPORT pqPipelineWindow
+class PQWIDGETS_EXPORT pqPipelineSource : public pqPipelineObject
 {
 public:
-  pqPipelineWindow(QWidget *window);
-  ~pqPipelineWindow() {}
+  pqPipelineSource(vtkSMProxy *proxy,
+      pqPipelineModel::ItemType type=pqPipelineModel::Source);
+  virtual ~pqPipelineSource();
 
-  QWidget *GetWidget() const {return this->Widget;}
-  void SetWidget(QWidget *widget) {this->Widget = widget;}
+  virtual void ClearConnections();
 
-  pqPipelineServer *GetServer() const {return this->Server;}
-  void SetServer(pqPipelineServer *server) {this->Server = server;}
+  const QString &GetProxyName() const {return this->ProxyName;}
+  void SetProxyName(const QString &name) {this->ProxyName = name;}
+
+  vtkSMProxy *GetProxy() const {return this->Proxy;}
+  void SetProxy(vtkSMProxy *proxy);
+
+  pqPipelineDisplay *GetDisplay() const {return this->Display;}
+
+  int GetOutputCount() const;
+  pqPipelineObject *GetOutput(int index) const;
+  int GetOutputIndexFor(pqPipelineObject *output) const;
+  bool HasOutput(pqPipelineObject *output) const;
+
+  void AddOutput(pqPipelineObject *output);
+  void InsertOutput(int index, pqPipelineObject *output);
+  void RemoveOutput(pqPipelineObject *output);
 
 private:
-  QWidget *Widget;          ///< Stores the widget pointer.
-  pqPipelineServer *Server; ///< Stores the parent server.
+  pqPipelineSourceInternal *Internal; ///< Stores the output connections.
+  pqPipelineDisplay *Display;         ///< Stores the display proxies;
+  QString ProxyName;                  ///< Stores the proxy name.
+  vtkSMProxy *Proxy;                  ///< Stores the proxy pointer.
 };
 
 #endif

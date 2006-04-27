@@ -30,62 +30,44 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 =========================================================================*/
 
-#include "pqXMLUtil.h"
+/// \file pqPipelineDisplay.h
+/// \date 4/24/2006
 
-#include <QString>
-#include <QStringList>
-#include "vtkPVXMLElement.h"
+#ifndef _pqPipelineDisplay_h
+#define _pqPipelineDisplay_h
 
 
-vtkPVXMLElement *pqXMLUtil::FindNestedElementByName(vtkPVXMLElement *element,
-    const char *name)
+#include "pqWidgetsExport.h"
+
+class pqMultiView;
+class pqPipelineDisplayInternal;
+class QString;
+class QWidget;
+class vtkPVXMLElement;
+class vtkSMDisplayProxy;
+
+
+class PQWIDGETS_EXPORT pqPipelineDisplay
 {
-  if(element && name)
-    {
-    QString qname = name;
-    vtkPVXMLElement *child = 0;
-    unsigned int total = element->GetNumberOfNestedElements();
-    for(unsigned int i = 0; i < total; i++)
-      {
-      child = element->GetNestedElement(i);
-      if(child && qname == child->GetName())
-        {
-        return child;
-        }
-      }
-    }
+public:
+  pqPipelineDisplay();
+  ~pqPipelineDisplay();
 
-  return 0;
-}
+  void UpdateWindows();
+  void UnregisterDisplays();
+  void SaveState(vtkPVXMLElement *root, pqMultiView *multiView);
 
-QString pqXMLUtil::GetStringFromIntList(const QList<int> &list)
-{
-  QString number;
-  QStringList values;
-  QList<int>::ConstIterator iter = list.begin();
-  for( ; iter != list.end(); ++iter)
-    {
-    number.setNum(*iter);
-    values.append(number);
-    }
+  int GetDisplayCount() const;
+  vtkSMDisplayProxy *GetDisplayProxy(int index) const;
+  void GetDisplayName(int index, QString &buffer) const;
+  QWidget *GetDisplayWindow(int index) const;
+  int GetDisplayIndexFor(vtkSMDisplayProxy *display) const;
+  void AddDisplay(vtkSMDisplayProxy *display, const QString &name,
+      QWidget *window);
+  void RemoveDisplay(vtkSMDisplayProxy *display);
 
-  return values.join(".");
-}
+private:
+  pqPipelineDisplayInternal *Internal; ///< Stores the display/window objects.
+};
 
-QList<int> pqXMLUtil::GetIntListFromString(const char *value)
-{
-  QList<int> list;
-  if(value)
-    {
-    QStringList values = QString(value).split(".");
-    QStringList::Iterator iter = values.begin();
-    for( ; iter != values.end(); ++iter)
-      {
-      list.append((*iter).toInt());
-      }
-    }
-
-  return list;
-}
-
-
+#endif
