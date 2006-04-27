@@ -83,7 +83,7 @@ void vtkImageWeightedSumExecute(vtkImageWeightedSum *self,
 
   double *weights = ((vtkDoubleArray *)self->GetWeights())->GetPointer(0);
   double totalWeight = self->CalculateTotalWeight();
-  bool normalize = self->GetNormalizeByWeight();
+  int normalize = self->GetNormalizeByWeight();
   vtkImageIterator<T> *inIts;
   T* *inSI;
   if( numInputs < fastpath )
@@ -209,6 +209,9 @@ void vtkImageWeightedSum::PrintSelf(ostream& os, vtkIndent indent)
   this->Superclass::PrintSelf(os,indent);
 
   // objects
+  os << indent << "NormalizeByWeight: " <<
+    (this->NormalizeByWeight ? "On" : "Off" ) << "\n";
   os << indent << "Weights: " << this->Weights << "\n";
   this->Weights->PrintSelf(os,indent.GetNextIndent());
 }
+
