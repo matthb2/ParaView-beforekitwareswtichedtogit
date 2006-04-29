@@ -536,5 +536,5 @@ void vtkPointHandleRepresentation3D::PrintSelf(ostream& os, vtkIndent indent)
   os << indent << "YShadows: " << (this->GetYShadows() ? "On\n" : "Off\n");
   os << indent << "ZShadows: " << (this->GetZShadows() ? "On\n" : "Off\n");
 
-  os << indent << "Translation Mode: " << this->TranslationMode ? "On\n" : "Off\n";
+  os << indent << "Translation Mode: " << (this->TranslationMode ? "On\n" : "Off\n");
 }
