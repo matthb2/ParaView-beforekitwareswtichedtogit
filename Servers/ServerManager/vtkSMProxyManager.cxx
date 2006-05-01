@@ -623,7 +623,7 @@ void vtkSMProxyManager::ExecuteEvent(vtkObject* obj, unsigned long event,
       this->MarkProxyAsModified(proxy);
       ModifiedPropertyInformation info;
       info.Proxy = proxy;
-      info.PropertyName = static_cast<const char*>(data);
+      info.PropertyName = reinterpret_cast<const char*>(data);
       if (info.PropertyName)
         {
         this->InvokeEvent(vtkCommand::PropertyModifiedEvent,
