@@ -237,5 +237,5 @@ vtkMarchingSquaresLineCases* vtkMarchingSquaresLineCases::GetCases()
 // Usually overridden. Only composite cells do not override this.
 double *vtkCell::GetParametricCoords()
 {
-  return static_cast<double*>(NULL);
+  return NULL;
 }
