@@ -722,7 +722,6 @@ void vtkGeometryFilter::UnstructuredGridExecute(vtkDataSet *dataSetInput,
       {
       //special code for nonlinear cells - rarely occurs, so right now it
       //is slow.
-      //VTKCellType t = input->GetCellType(cellId); // Debug
       switch (input->GetCellType(cellId))
         {
         case VTK_EMPTY_CELL:
