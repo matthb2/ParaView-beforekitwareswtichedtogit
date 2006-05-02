@@ -58,6 +58,35 @@ vtkSMProxy* vtkSMStateLoader::NewProxy(int id)
 }
 
 //---------------------------------------------------------------------------
+vtkSMProxy* vtkSMStateLoader::GetCreatedProxy(int id)
+{
+  vtkSMStateLoaderInternals::ProxyMapType::iterator iter =
+    this->Internal->CreatedProxies.find(id);
+  if (iter != this->Internal->CreatedProxies.end())
+    {
+    return iter->second;
+    } 
+  return NULL;
+}
+
+//---------------------------------------------------------------------------
+void vtkSMStateLoader::AddCreatedProxy(int id, vtkSMProxy* proxy)
+{
+  this->Internal->CreatedProxies[id] = proxy;
+}
+
+//---------------------------------------------------------------------------
+void vtkSMStateLoader::RemoveCreatedProxy(int id)
+{
+  vtkSMStateLoaderInternals::ProxyMapType::iterator iter =
+    this->Internal->CreatedProxies.find(id);
+  if (iter != this->Internal->CreatedProxies.end())
+    {
+    this->Internal->CreatedProxies.erase(iter);
+    }
+}
+
+//---------------------------------------------------------------------------
 vtkSMProxy* vtkSMStateLoader::NewProxyFromElement(
   vtkPVXMLElement* proxyElement, int id)
 {
@@ -261,6 +290,13 @@ int vtkSMStateLoader::HandleLinks(vtkPVXMLElement* element)
     }
   return 1;
 }
+
+//---------------------------------------------------------------------------
+int vtkSMStateLoader::LoadProxyState(vtkPVXMLElement* elem, vtkSMProxy* proxy)
+{
+  return proxy->LoadState(elem, this);
+}
+  
 
 //---------------------------------------------------------------------------
 void vtkSMStateLoader::ClearCreatedProxies()
