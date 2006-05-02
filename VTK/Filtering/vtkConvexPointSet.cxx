@@ -55,6 +55,10 @@ vtkConvexPointSet::~vtkConvexPointSet()
   this->TetraScalars->Delete();
   this->BoundaryTris->Delete();
   this->Triangle->Delete();
+  if( this->ParametricCoords )
+    {
+    this->ParametricCoords->Delete();
+    }
 }
 
 //----------------------------------------------------------------------------
