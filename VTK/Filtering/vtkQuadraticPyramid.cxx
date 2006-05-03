@@ -615,15 +615,6 @@ void vtkQuadraticPyramid::Clip(double value, vtkDataArray* cellScalars,
 }
 
 //----------------------------------------------------------------------------
-// Return the center of the quadratic pyramid in parametric coordinates.
-//
-int vtkQuadraticPyramid::GetParametricCenter(double pcoords[3])
-{
-  pcoords[0] = pcoords[1] = pcoords[2] = 0.5;
-  return 0;
-}
-
-//----------------------------------------------------------------------------
 // Compute interpolation functions for the fifteen nodes.
 //
 void vtkQuadraticPyramid::InterpolationFunctions(double pcoords[3], 
