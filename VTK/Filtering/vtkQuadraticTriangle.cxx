@@ -304,13 +304,6 @@ void vtkQuadraticTriangle::Clip(double value,
 }
 
 //----------------------------------------------------------------------------
-int vtkQuadraticTriangle::GetParametricCenter(double pcoords[3])
-{
-  pcoords[0] = pcoords[1] = 0.333; pcoords[2] = 0.0;
-  return 0;
-}
-
-//----------------------------------------------------------------------------
 // Compute maximum parametric distance to cell
 double vtkQuadraticTriangle::GetParametricDistance(double pcoords[3])
 {

@@ -518,15 +518,6 @@ void vtkBiQuadraticQuadraticWedge::Derivatives (int vtkNotUsed (subId),
 }
 
 //----------------------------------------------------------------------------
-// Return the center of the quadratic wedge in parametric coordinates.
-int vtkBiQuadraticQuadraticWedge::GetParametricCenter(double pcoords[3])
-{
-  pcoords[0] = pcoords[1] = 0.333;
-  pcoords[2] = 0.5;
-  return 0;
-}
-
-//----------------------------------------------------------------------------
 // Compute interpolation functions for the fifteen nodes.
 void vtkBiQuadraticQuadraticWedge::InterpolationFunctions (double pcoords[3], double weights[18])
 {

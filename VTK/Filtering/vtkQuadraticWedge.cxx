@@ -570,14 +570,6 @@ void vtkQuadraticWedge::Clip(double value, vtkDataArray* cellScalars,
 }
 
 //----------------------------------------------------------------------------
-// Return the center of the quadratic wedge in parametric coordinates.
-int vtkQuadraticWedge::GetParametricCenter(double pcoords[3])
-{
-  pcoords[0] = pcoords[1] = 0.333; pcoords[2] = 0.5;
-  return 0;
-}
-
-//----------------------------------------------------------------------------
 // Compute interpolation functions for the fifteen nodes.
 void vtkQuadraticWedge::InterpolationFunctions(double pcoords[3], 
                                                double weights[15])
