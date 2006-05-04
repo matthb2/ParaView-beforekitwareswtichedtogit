@@ -169,6 +169,21 @@ void vtkPVXMLElement::RemoveAllNestedElements()
 }
 
 //----------------------------------------------------------------------------
+void vtkPVXMLElement::RemoveNestedElement(vtkPVXMLElement* element)
+{
+  vtkstd::vector<vtkSmartPointer<vtkPVXMLElement> >::iterator iter
+    = this->Internal->NestedElements.begin();
+  for ( ; iter != this->Internal->NestedElements.end(); ++iter)
+    {
+    if (iter->GetPointer() == element)
+      {
+      this->Internal->NestedElements.erase(iter);
+      break;
+      }
+    }
+}
+
+//----------------------------------------------------------------------------
 void vtkPVXMLElement::AddNestedElement(vtkPVXMLElement* element)
 {
   this->AddNestedElement(element, 1);
