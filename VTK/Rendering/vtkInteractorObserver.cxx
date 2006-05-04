@@ -120,6 +120,17 @@ void vtkInteractorObserver::SetInteractor(vtkRenderWindowInteractor* i)
     return;
     }
 
+  // Since the observer mediator is bound to the interactor, reset it to
+  // 0 so that the next time it is requested, it is queried from the
+  // new interactor.
+  // Furthermore, remove ourself from the mediator queue.
+
+  if (this->ObserverMediator)
+    {
+    this->ObserverMediator->RemoveAllCursorShapeRequests(this);
+    this->ObserverMediator = 0;
+    }
+
   // if we already have an Interactor then stop observing it
   if (this->Interactor)
     {
