@@ -59,7 +59,7 @@ vtkQuadraticLinearQuad::~vtkQuadraticLinearQuad ()
 static int LinearQuads[2][4] = { {0, 4, 5, 3}, {4, 1, 2, 5} };
 
 static int LinearQuadEdges[4][3] = { {0, 1, 4}, {1, 2,-1},
-                                     {2, 3, 5}, {0, 3,-1}};
+                                     {2, 3, 5}, {3, 0,-1}};
 
 //----------------------------------------------------------------------------
 vtkCell *vtkQuadraticLinearQuad::GetEdge(int edgeId)
