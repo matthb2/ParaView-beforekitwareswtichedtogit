@@ -44,7 +44,7 @@
 
 #if 1
 #define GLSLprintOpenGLError() GLSLprintOglError(__FILE__, __LINE__)
-static int GLSLprintOglError(char *vtkNotUsed(file), int vtkNotUsed(line))
+static int GLSLprintOglError(const char *vtkNotUsed(file), int vtkNotUsed(line))
 {
   //Returns 1 if an OpenGL error occurred, 0 otherwise.
   GLenum glErr;
