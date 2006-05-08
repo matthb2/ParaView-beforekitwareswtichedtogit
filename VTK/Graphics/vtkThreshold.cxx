@@ -127,7 +127,9 @@ int vtkThreshold::RequestData(
     return 1;
     }
 
+  outPD->CopyGlobalIdsOn();
   outPD->CopyAllocate(pd);
+  outCD->CopyGlobalIdsOn();
   outCD->CopyAllocate(cd);
 
   numPts = input->GetNumberOfPoints();
