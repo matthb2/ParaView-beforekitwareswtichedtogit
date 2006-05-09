@@ -1258,6 +1258,15 @@ void vtkDataWriter::PrintSelf(ostream& os, vtkIndent indent)
     os << indent << "Texture Coordinates Name: (None)\n";
     }
 
+  if ( this->GlobalIdsName )
+    {
+    os << indent << "Global Ids Name: " << this->GlobalIdsName << "\n";
+    }
+  else
+    {
+    os << indent << "Global Ids Name: (None)\n";
+    }
+
   if ( this->LookupTableName )
     {
     os << indent << "Lookup Table Name: " << this->LookupTableName << "\n";
