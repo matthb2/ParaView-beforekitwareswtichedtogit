@@ -18,6 +18,7 @@
 #include <vtksys/stl/string>
 #include <vtksys/stl/vector>
 #include <time.h> // for strftime
+#include <ctype.h> // for isdigit
 
 //----------------------------------------------------------------------------
 vtkCxxRevisionMacro(vtkMedicalImageProperties, "$Revision$");
@@ -332,7 +333,13 @@ int vtkMedicalImageProperties::GetAgeAsFields(const char *age, int &year,
     // DICOM V3
     unsigned int val;
     char type;
-    if( sscanf(age, "%03u%c", &val, &type) != 2 )
+    if( !isdigit(age[0])
+     || !isdigit(age[1])
+     || !isdigit(age[2]))
+      {
+      return 0;
+      }
+    if( sscanf(age, "%3u%c", &val, &type) != 2 )
       {
       return 0;
       }
