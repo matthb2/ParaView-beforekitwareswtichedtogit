@@ -101,6 +101,12 @@ vtkCell *vtkQuadraticTetra::GetFace(int faceId)
 }
 
 //----------------------------------------------------------------------------
+int *vtkQuadraticTetra::GetFaceArray(int faceId)
+{
+  return TetraFaces[faceId];
+}
+
+//----------------------------------------------------------------------------
 static const double VTK_DIVERGED = 1.e6;
 static const int VTK_TETRA_MAX_ITERATION=10;
 static const double VTK_TETRA_CONVERGED=1.e-03;

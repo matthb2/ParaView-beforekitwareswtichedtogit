@@ -111,6 +111,11 @@ vtkCell * vtkTriQuadraticHexahedron::GetFace (int faceId)
   return this->Face;
 }
 
+//----------------------------------------------------------------------------
+int *vtkTriQuadraticHexahedron::GetFaceArray(int faceId)
+{
+  return HexFaces[faceId];
+}
 
 //----------------------------------------------------------------------------
 static const double VTK_DIVERGED = 1.e6;

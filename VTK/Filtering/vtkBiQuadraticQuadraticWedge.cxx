@@ -105,7 +105,7 @@ vtkCell *vtkBiQuadraticQuadraticWedge::GetEdge(int edgeId)
 }
 
 //----------------------------------------------------------------------------
-vtkCell * vtkBiQuadraticQuadraticWedge::GetFace(int faceId)
+vtkCell *vtkBiQuadraticQuadraticWedge::GetFace(int faceId)
 {
   faceId = (faceId < 0 ? 0 : (faceId > 4 ? 4 : faceId));
 
@@ -129,6 +129,12 @@ vtkCell * vtkBiQuadraticQuadraticWedge::GetFace(int faceId)
       }
     return this->Face;
     }
+}
+
+//----------------------------------------------------------------------------
+int *vtkBiQuadraticQuadraticWedge::GetFaceArray(int faceId)
+{
+  return WedgeFaces[faceId];
 }
 
 //----------------------------------------------------------------------------

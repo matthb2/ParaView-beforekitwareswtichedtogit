@@ -139,6 +139,12 @@ vtkCell *vtkQuadraticWedge::GetFace(int faceId)
 }
 
 //----------------------------------------------------------------------------
+int *vtkQuadraticWedge::GetFaceArray(int faceId)
+{
+  return WedgeFaces[faceId];
+}
+
+//----------------------------------------------------------------------------
 static const double VTK_DIVERGED = 1.e6;
 static const int VTK_WEDGE_MAX_ITERATION=10;
 static const double VTK_WEDGE_CONVERGED=1.e-03;

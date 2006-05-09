@@ -141,6 +141,12 @@ vtkCell *vtkQuadraticPyramid::GetFace(int faceId)
 }
 
 //----------------------------------------------------------------------------
+int *vtkQuadraticPyramid::GetFaceArray(int faceId)
+{
+  return PyramidFaces[faceId];
+}
+
+//----------------------------------------------------------------------------
 static const double VTK_DIVERGED = 1.e6;
 static const int VTK_PYRAMID_MAX_ITERATION=10;
 static const double VTK_PYRAMID_CONVERGED=1.e-03;

@@ -142,6 +142,12 @@ vtkCell *vtkBiQuadraticQuadraticHexahedron::GetFace(int faceId)
 }
 
 //----------------------------------------------------------------------------
+int *vtkBiQuadraticQuadraticHexahedron::GetFaceArray(int faceId)
+{
+  return HexFaces[faceId];
+}
+
+//----------------------------------------------------------------------------
 void vtkBiQuadraticQuadraticHexahedron::Subdivide(vtkPointData *inPd, vtkCellData *inCd, 
                                        vtkIdType cellId, vtkDataArray *cellScalars)
 {
