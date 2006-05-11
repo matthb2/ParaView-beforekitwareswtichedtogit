@@ -256,7 +256,10 @@ void vtkContourWidget::DeleteAction(vtkAbstractWidget *w)
   
   if ( self->WidgetState == vtkContourWidget::Define )
     {
-    rep->DeleteLastNode();
+    if (rep->DeleteLastNode())
+      {
+      self->InvokeEvent(vtkCommand::InteractionEvent,NULL);
+      }
     }
   else
     {
