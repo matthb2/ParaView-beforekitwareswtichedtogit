@@ -33,7 +33,6 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #include "pqEventPlayer.h"
 #include "pqEventPlayerXML.h"
-#include "pqMainWindow.h"
 #include "pqOptions.h"
 #include "pqOutputWindow.h"
 #include "pqOutputWindowAdapter.h"
@@ -47,7 +46,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <vtkSmartPointer.h>
 
 #include <QApplication>
-
+#include <QWidget>
 ////////////////////////////////////////////////////////////////////////////
 // pqProcessModuleGUIHelper::pqImplementation
 
@@ -101,7 +100,7 @@ public:
 
   vtkSMApplication* SMApplication;
   QApplication* Application;
-  pqMainWindow* Window;
+  QWidget* Window;
 };
 
 ////////////////////////////////////////////////////////////////////////////
@@ -161,7 +160,7 @@ int pqProcessModuleGUIHelper::RunGUIStart(int argc, char** argv,
 
       if (options->GetBaselineImage())
         {
-        status = !this->Implementation->Window->compareView(options->GetBaselineImage(),
+        status = !this->compareView(options->GetBaselineImage(),
           options->GetImageThreshold(), cout, options->GetTestDirectory());
         dont_start_event_loop = 1;
         }
@@ -257,3 +256,16 @@ void pqProcessModuleGUIHelper::PrintSelf(ostream& os, vtkIndent indent)
   this->Superclass::PrintSelf(os, indent);
   os << indent << "Application: " << this->Implementation->Application << endl;
 }
+
+//-----------------------------------------------------------------------------
+bool pqProcessModuleGUIHelper::compareView(const QString& ReferenceImage, double Threshold, ostream& Output, const QString& TempDirectory)
+{
+  return false;
+}
+//-----------------------------------------------------------------------------
+QWidget* pqProcessModuleGUIHelper::GetMainWindow()
+{
+  return this->Implementation->Window;
+}
+
+
