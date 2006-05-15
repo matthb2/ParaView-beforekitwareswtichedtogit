@@ -76,7 +76,7 @@ void vtkPVClientServerIdCollectionInformation
     
     props->InitTraversal();
     vtkProp *prop;
-    while (prop = props->GetNextProp())
+    while ( (prop = props->GetNextProp()) )
       {
       vtkClientServerID id = processModule->GetIDFromObject(prop);
       this->ClientServerIdIds->insert(id);
