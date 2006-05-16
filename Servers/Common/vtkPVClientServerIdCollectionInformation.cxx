@@ -139,9 +139,11 @@ void vtkPVClientServerIdCollectionInformation
 
 //----------------------------------------------------------------------------
 int vtkPVClientServerIdCollectionInformation
-  ::Contains(vtkClientServerID *id) 
+  ::Contains(vtkTypeUInt32 ID) 
 {
-  if (this->ClientServerIds->find(*id) != this->ClientServerIds->end())
+  vtkClientServerID id;
+  id.ID = ID;
+  if (this->ClientServerIds->find(id) != this->ClientServerIds->end())
     {
     return 1;
     }
