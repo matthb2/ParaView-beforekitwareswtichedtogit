@@ -228,6 +228,17 @@ void vtkProcessModuleConnectionManager::StopAcceptingAllConnections()
 }
 
 //-----------------------------------------------------------------------------
+vtkIdType vtkProcessModuleConnectionManager::OpenSelfConnection()
+{
+  vtkIdType cid = this->GetUniqueConnectionID();
+  vtkSelfConnection* selfConnection = vtkSelfConnection::New();
+  this->SetConnection(cid, selfConnection);
+  selfConnection->Delete();
+  this->InvokeEvent(vtkCommand::ConnectionCreatedEvent, &cid);
+  return cid;
+}
+
+//-----------------------------------------------------------------------------
 vtkIdType vtkProcessModuleConnectionManager::OpenConnection(
   const char* hostname, int port)
 {
@@ -392,13 +403,18 @@ int vtkProcessModuleConnectionManager::MonitorConnections(
 //-----------------------------------------------------------------------------
 void vtkProcessModuleConnectionManager::CloseConnection(vtkIdType id)
 {
-  vtkRemoteConnection* rc = vtkRemoteConnection::SafeDownCast(
-    this->GetConnectionFromID(id));
-  if (rc)
+  if (id == vtkProcessModuleConnectionManager::GetSelfConnectionID())
     {
-    rc->Finalize();
-    this->DropConnection(rc);
+    vtkWarningMacro("Cannot drop self connection.");
+    return;
     }
+  vtkProcessModuleConnection* conn = this->GetConnectionFromID(id);
+  if (conn)
+    {
+    conn->Finalize();
+    this->DropConnection(conn);
+    }
+
 }
 
 //-----------------------------------------------------------------------------

@@ -535,6 +535,12 @@ vtkIdType vtkProcessModule::ConnectToRemote(const char* dataserver_host,
 }
 
 //-----------------------------------------------------------------------------
+vtkIdType vtkProcessModule::ConnectToSelf()
+{
+  return this->ConnectionManager->OpenSelfConnection();
+}
+
+//-----------------------------------------------------------------------------
 void vtkProcessModule::Disconnect(vtkIdType id)
 {
   this->ConnectionManager->CloseConnection(id);
@@ -1636,6 +1642,12 @@ vtkPVXMLElement* vtkProcessModule::NewNextUndo(vtkIdType id)
 vtkPVXMLElement* vtkProcessModule::NewNextRedo(vtkIdType id)
 {
   return this->ConnectionManager->NewNextRedo(id);
+}
+
+//-----------------------------------------------------------------------------
+int vtkProcessModule::GetNumberOfConnections()
+{
+  return this->ConnectionManager->GetNumberOfConnections();
 }
 
 //-----------------------------------------------------------------------------
