@@ -38,19 +38,32 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 
 #include "pqWidgetsExport.h"
+#include <QObject>
+
 #include "pqPipelineModel.h" // Needed for ModelType member
 
 
-class PQWIDGETS_EXPORT pqPipelineModelItem
+class PQWIDGETS_EXPORT pqPipelineModelItem : public QObject
 {
-public:
-  pqPipelineModelItem();
-  virtual ~pqPipelineModelItem() {}
+  Q_OBJECT
 
-  pqPipelineModel::ItemType GetType() const {return this->ModelType;}
+public:
+  pqPipelineModelItem(QObject* parent=NULL);
+  virtual ~pqPipelineModelItem();
+
+  // Get the type for the model item. Type determines the way the 
+  // item is displayed.
+  // TODO: May be type must be only for pqPipelineSource, 
+  // everything is directly subclassed, hence we can use dynamic casts..
+  pqPipelineModel::ItemType getType() const {return this->ModelType;}
+
+signals:
+  // This signal is fired when data associated with the item,
+  // such as type/name is changed. 
+  void dataModified();
 
 protected:
-  void SetType(pqPipelineModel::ItemType type) {this->ModelType = type;}
+  void setType(pqPipelineModel::ItemType type); 
 
 private:
   pqPipelineModel::ItemType ModelType;

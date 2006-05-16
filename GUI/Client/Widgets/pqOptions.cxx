@@ -47,6 +47,7 @@ pqOptions::pqOptions()
   this->TestFileName = 0;
   this->ImageThreshold = 12;
   this->ExitBeforeEventLoop = 0;
+
 }
 
 //-----------------------------------------------------------------------------

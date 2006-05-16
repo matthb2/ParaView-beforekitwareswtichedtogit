@@ -29,30 +29,49 @@ NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 =========================================================================*/
+#ifndef __pqRenderWindowManager_h
+#define __pqRenderWindowManager_h
 
-/// \file pqPipelineObject.h
-///
-/// \date 11/16/2005
 
-#ifndef _pqPipelineObject_h
-#define _pqPipelineObject_h
-
-#include "pqPipelineModelItem.h"
+#include "pqWidgetsExport.h"
+#include <QObject>
 
 class pqServer;
+class pqMultiViewFrame;
+class pqRenderModule;
+class pqRenderWindowManagerInternal;
 
-
-class PQWIDGETS_EXPORT pqPipelineObject : public pqPipelineModelItem
+// This class manages all render windows. This class is an attempt to
+// take away some of the work form pqMainWindow. 
+class PQWIDGETS_EXPORT pqRenderWindowManager : public QObject 
 {
+  Q_OBJECT
 public:
-  pqPipelineObject(pqServer* server, QObject* parent=NULL);
-  virtual ~pqPipelineObject() {}
+  pqRenderWindowManager(QObject* parent=NULL);
+  virtual ~pqRenderWindowManager();
 
-  /// Get the server on which this pipeline object exists.
-  pqServer *getServer() const;
+  // returns the active render module.
+  pqRenderModule* getActiveRenderModule();
 
+public slots:
+  // this must be set, so that the manager knows on which server
+  // to create the view when a new view is added.
+  void setActiveServer(pqServer* server);
+
+public slots:
+  /// This will create a RenderWindow to fill the frame.
+  /// the render window is created on the active server
+  /// which must be set by the application.
+  void onFrameAdded(pqMultiViewFrame* frame);
+  void onFrameRemoved(pqMultiViewFrame* frame);
+
+  void onRenderModuleAdded(pqRenderModule* rm);
+  void onRenderModuleRemoved(pqRenderModule* rm);
+
+  void onActivate(QWidget* obj);
 private:
-  pqServer *Server;           ///< Stores the parent server.
+  pqRenderWindowManagerInternal* Internal;
 };
 
 #endif
+
