@@ -655,6 +655,11 @@ void vtkSMProxyManager::UnMarkProxyAsModified(vtkSMProxy* proxy)
     this->Internals->ModifiedProxies.erase(it);
     }
 }
+//---------------------------------------------------------------------------
+int vtkSMProxyManager::AreProxiesModified()
+{
+  return (this->Internals->ModifiedProxies.size() > 0)? 1: 0;
+}
 
 //---------------------------------------------------------------------------
 void vtkSMProxyManager::LoadState(const char* filename, vtkIdType id,
