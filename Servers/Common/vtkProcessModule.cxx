@@ -1701,5 +1701,14 @@ void vtkProcessModule::PrintSelf(ostream& os, vtkIndent indent)
     {
     os << "(none)" << endl;
     }
-    
+
+  os << indent << "GUIHelper: ";
+  if (this->GUIHelper)
+    {
+    this->GUIHelper->PrintSelf(os, indent.GetNextIndent());
+    }
+  else
+    {
+    os << "(none)" << endl;
+    }
 }
