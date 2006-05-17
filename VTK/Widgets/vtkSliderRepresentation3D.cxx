@@ -415,6 +415,22 @@ void vtkSliderRepresentation3D::Highlight(int highlight)
 
 
 //----------------------------------------------------------------------
+// Description:
+// Override GetMTime to include point coordinates
+unsigned long vtkSliderRepresentation3D::GetMTime()
+{
+  unsigned long mTime = this->Superclass::GetMTime();
+  unsigned long p1Time, p2Time;
+
+  p1Time = this->Point1Coordinate->GetMTime();
+  mTime = ( p1Time > mTime ? p1Time : mTime );
+  p2Time = this->Point1Coordinate->GetMTime();
+  mTime = ( p2Time > mTime ? p2Time : mTime );
+
+  return mTime;
+}
+
+//----------------------------------------------------------------------
 void vtkSliderRepresentation3D::BuildRepresentation()
 {
   if ( this->GetMTime() > this->BuildTime || 
