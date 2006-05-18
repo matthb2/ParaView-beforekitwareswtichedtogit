@@ -124,6 +124,7 @@ vtkSMProxy* vtkSMStateLoader::NewProxyFromElement(
   else if (strcmp(proxyElement->GetName(), "CompoundProxy") == 0)
     {
     proxy = vtkSMCompoundProxy::New();
+    proxy->SetConnectionID(this->ConnectionID);
     }
   this->Internal->CreatedProxies[id] = proxy;
   if (!proxy->LoadState(proxyElement, this))
