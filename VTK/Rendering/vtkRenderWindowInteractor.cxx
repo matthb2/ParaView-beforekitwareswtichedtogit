@@ -97,6 +97,10 @@ vtkRenderWindowInteractor::vtkRenderWindowInteractor()
   this->KeyCode = 0;
   this->RepeatCount = 0;
   this->KeySym = 0;
+  this->TimerEventId = 0;
+  this->TimerEventType = 0;
+  this->TimerEventDuration = 0;
+  this->TimerEventPlatformId = 0;
 
   this->TimerMap = new vtkTimerIdMap;
   this->TimerDuration = 10;
