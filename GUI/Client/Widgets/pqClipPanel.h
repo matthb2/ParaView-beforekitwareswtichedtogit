@@ -1,7 +1,7 @@
 /*=========================================================================
 
    Program:   ParaQ
-  Module:    $RCSfile$
+   Module:    $RCSfile$
 
    Copyright (c) 2005,2006 Sandia Corporation, Kitware Inc.
    All rights reserved.
@@ -30,10 +30,23 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 =========================================================================*/
 
-#include "ProcessModuleGUIHelper.h"
-#include <pqMain.h>
+#ifndef _pqClipPanel_h
+#define _pqClipPanel_h
 
-int main(int argc, char* argv[])
+#include "pqWidgetObjectPanel.h"
+
+class vtkSMNew3DWidgetProxy;
+
+class pqClipPanel :
+  public pqWidgetObjectPanel
 {
-  return pqMain::Run(argc, argv, ProcessModuleGUIHelper::New());
-}
+  Q_OBJECT
+public:
+  /// constructor
+  pqClipPanel(QWidget* p);
+  /// destructor
+  ~pqClipPanel();
+};
+
+#endif
+
