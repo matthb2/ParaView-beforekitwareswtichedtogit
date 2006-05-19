@@ -553,9 +553,10 @@ double vtkTimerLog::GetUniversalTime()
   currentTimeInSeconds = CurrentTime.tv_sec + scale * CurrentTime.tv_usec;
 #endif
 
-  return (currentTimeInSeconds);
+  return currentTimeInSeconds;
 }
 
+//----------------------------------------------------------------------------
 double vtkTimerLog::GetCPUTime()
 {
   double   currentCPUTime = 1.0;
