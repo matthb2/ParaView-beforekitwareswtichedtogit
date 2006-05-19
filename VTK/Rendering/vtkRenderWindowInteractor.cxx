@@ -610,6 +610,10 @@ void vtkRenderWindowInteractor::PrintSelf(ostream& os, vtkIndent indent)
      << "\n";
   os << indent << "RepeatCount: " << this->RepeatCount << "\n";
   os << indent << "Timer Duration: " << this->TimerDuration << "\n";
+  os << indent << "TimerEventId: " << this->TimerEventId << "\n";
+  os << indent << "TimerEventType: " << this->TimerEventType << "\n";
+  os << indent << "TimerEventDuration: " << this->TimerEventDuration << "\n";
+  os << indent << "TimerEventPlatformId: " << this->TimerEventPlatformId << "\n";
 }
 
 //----------------------------------------------------------------------------
