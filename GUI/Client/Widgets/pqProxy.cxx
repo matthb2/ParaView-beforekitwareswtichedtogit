@@ -30,29 +30,31 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 =========================================================================*/
 
-/// \file pqPipelineObject.h
-///
-/// \date 11/16/2005
-
-#ifndef _pqPipelineObject_h
-#define _pqPipelineObject_h
-
-#include "pqPipelineModelItem.h"
-
-class pqServer;
+#include "pqProxy.h"
 
 
-class PQWIDGETS_EXPORT pqPipelineObject : public pqPipelineModelItem
+//-----------------------------------------------------------------------------
+pqProxy::pqProxy(const QString& group, const QString& name,
+    vtkSMProxy* proxy, pqServer* server, QObject* _parent/*=NULL*/) 
+: pqPipelineModelItem(_parent),
+  Server(server),
+  ProxyName(name),
+  SMName(name),
+  SMGroup(group),
+  Proxy(proxy)
 {
-public:
-  pqPipelineObject(pqServer* server, QObject* parent=NULL);
-  virtual ~pqPipelineObject() {}
 
-  /// Get the server on which this pipeline object exists.
-  pqServer *getServer() const;
+}
 
-private:
-  pqServer *Server;           ///< Stores the parent server.
-};
+//-----------------------------------------------------------------------------
 
-#endif
+
+//-----------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
+
+
+
