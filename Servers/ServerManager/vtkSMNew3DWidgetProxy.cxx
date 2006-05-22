@@ -125,6 +125,11 @@ void vtkSMNew3DWidgetProxy::RemoveFromRenderModule(vtkSMRenderModuleProxy* rm)
   vtkProcessModule* pm = vtkProcessModule::GetProcessModule();
   if (this->WidgetProxy)
     {
+    vtkSMIntVectorProperty* enabled = vtkSMIntVectorProperty::SafeDownCast(
+      this->WidgetProxy->GetProperty("Enabled"));
+    enabled->SetElements1(0);
+    this->WidgetProxy->UpdateVTKObjects();
+
     vtkAbstractWidget* widget = vtkAbstractWidget::SafeDownCast(
       pm->GetObjectFromID(this->WidgetProxy->GetID(0)));
     if (this->Widget)
