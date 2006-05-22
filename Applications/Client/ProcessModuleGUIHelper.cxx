@@ -52,7 +52,7 @@ ProcessModuleGUIHelper::~ProcessModuleGUIHelper()
 QWidget* ProcessModuleGUIHelper::CreateMainWindow()
 {
   pqMainWindow* const window = new MainWindow();
-  window->resize(800, 600);
+  window->resize(900, 675);
   return window;
 }
 
