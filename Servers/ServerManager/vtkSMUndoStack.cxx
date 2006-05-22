@@ -446,6 +446,13 @@ int vtkSMUndoStack::Undo()
     vtkErrorMacro("Cannot undo. Nothing on undo stack.");
     return 0;
     }
+
+  if (this->ActiveUndoSet)
+    {
+    this->ActiveUndoSet->Undo();
+    this->CancelUndoSet();
+    }
+
   return this->Superclass::Undo();
 }
 
@@ -457,6 +464,14 @@ int vtkSMUndoStack::Redo()
     vtkErrorMacro("Cannot redo. Nothing on redo stack.");
     return 0;
     }
+
+  // before redoing, get rid of the half done state.
+  if (this->ActiveUndoSet)
+    {
+    this->ActiveUndoSet->Undo();
+    this->CancelUndoSet();
+    }
+
   return this->Superclass::Redo();
 }
 
