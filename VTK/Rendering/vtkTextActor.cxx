@@ -368,7 +368,6 @@ int vtkTextActor::RenderOpaqueGeometry(vtkViewport *viewport)
     {
     //justification and line offset are handled in ComputeRectangle
     this->ComputeRectangle(viewport);
-    this->BuildTime.Modified();
     }
     
   //check if we need to render the string
