@@ -108,13 +108,7 @@ void vtkSMNew3DWidgetProxy::AddToRenderModule(vtkSMRenderModuleProxy* rm)
       }
     }
 
-  if (this->WidgetProxy)
-    {
-    vtkSMIntVectorProperty* enabled = vtkSMIntVectorProperty::SafeDownCast(
-      this->WidgetProxy->GetProperty("Enabled"));
-    enabled->SetElements1(1);
-    this->WidgetProxy->UpdateVTKObjects();
-    }
+  this->SetEnabled(1);
 }
 
 //-----------------------------------------------------------------------------
@@ -125,10 +119,7 @@ void vtkSMNew3DWidgetProxy::RemoveFromRenderModule(vtkSMRenderModuleProxy* rm)
   vtkProcessModule* pm = vtkProcessModule::GetProcessModule();
   if (this->WidgetProxy)
     {
-    vtkSMIntVectorProperty* enabled = vtkSMIntVectorProperty::SafeDownCast(
-      this->WidgetProxy->GetProperty("Enabled"));
-    enabled->SetElements1(0);
-    this->WidgetProxy->UpdateVTKObjects();
+    this->SetEnabled(0);
 
     vtkAbstractWidget* widget = vtkAbstractWidget::SafeDownCast(
       pm->GetObjectFromID(this->WidgetProxy->GetID(0)));
@@ -136,6 +127,18 @@ void vtkSMNew3DWidgetProxy::RemoveFromRenderModule(vtkSMRenderModuleProxy* rm)
       {
       widget->SetInteractor(0);
       }
+    }
+}
+
+//-----------------------------------------------------------------------------
+void vtkSMNew3DWidgetProxy::SetEnabled(int enable)
+{
+  if (this->WidgetProxy)
+    {
+    vtkSMIntVectorProperty* enabled = vtkSMIntVectorProperty::SafeDownCast(
+      this->WidgetProxy->GetProperty("Enabled"));
+    enabled->SetElements1(enable);
+    this->WidgetProxy->UpdateVTKObjects();
     }
 }
 
