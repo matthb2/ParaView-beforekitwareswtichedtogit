@@ -30,63 +30,41 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 =========================================================================*/
 
-#ifndef _pqObjectPanel_h
-#define _pqObjectPanel_h
+#ifndef _pqExodusPanel_h
+#define _pqExodusPanel_h
 
-#include <QWidget>
-#include "pqSMProxy.h"
+#include "pqLoadedFormObjectPanel.h"
+class pqTreeWidgetItemObject;
 
-class pqPropertyManager;
-
-/// Base class for Widget which provides an editor for editing properties of a proxy
-class pqObjectPanel : public QWidget
+class pqExodusPanel :
+  public pqLoadedFormObjectPanel
 {
   Q_OBJECT
 public:
   /// constructor
-  pqObjectPanel(QWidget* p);
+  pqExodusPanel(QWidget* p = NULL);
   /// destructor
-  ~pqObjectPanel();
+  ~pqExodusPanel();
 
-  /// set the proxy to display properties for.
-  /// subclassess should override setProxyInternal().
-  void setProxy(pqSMProxy proxy);
+  virtual void postAccept();
 
-  /// get the proxy for which properties are displayed
-  virtual pqSMProxy proxy();
-  
-  /// size hint for this widget
-  QSize sizeHint() const;
+protected slots:
+  void applyDisplacements(int);
+  void displChanged(bool);
 
-  /// property manager
-  pqPropertyManager* getPropertyManager()
-    { return this->PropertyManager; }
-
-public slots:
-  /// accept the changes made to the properties
-  /// changes will be propogated down to the server manager
-  virtual void accept();
-
-  /// called after accept on all panels is complete
-  virtual void postAccept() { }
-
-  /// reset the changes made
-  /// editor will query properties from the server manager
-  virtual void reset();
-
-  /// Called when the panel becomes active. Default implemnetation does nothing.
-  virtual void select() { }
-
-  /// Called when the panel becomes inactive. Default implemnetation does nothing.
-  virtual void unselect() { }
+  void updateDataRanges();
 
 protected:
-  /// Internal method that actually sets the proxy. Subclasses must override
-  /// this instead of setProxy().
+  /// set the proxy to display properties for
   virtual void setProxyInternal(pqSMProxy proxy);
 
-  pqSMProxy Proxy;
-  pqPropertyManager* PropertyManager;
+  /// populate widgets with properties from the server manager
+  virtual void linkServerManagerProperties();
+  /// set the properties in the server manager with properties in the widgets
+  virtual void unlinkServerManagerProperties();
+
+  pqTreeWidgetItemObject* DisplItem;
+
 };
 
 #endif
