@@ -66,8 +66,7 @@ vtkSMProxy* vtkSMPQStateLoader::NewProxyFromElement(
       // Create a rendermodule.
       if (this->MultiViewRenderModuleProxy)
         {
-        vtkSMProxy* proxy = 
-          this->MultiViewRenderModuleProxy->NewRenderModule();
+        proxy = this->MultiViewRenderModuleProxy->NewRenderModule();
         if (proxy)
           {
           this->AddCreatedProxy(id, proxy);
