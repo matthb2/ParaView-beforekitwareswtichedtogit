@@ -160,7 +160,8 @@ int vtkClipDataSet::RequestData(
   // (unwanted arrays will be eliminated in InterpolateAllocate). The
   // last argument of InterpolateAllocate makes sure that arrays are shallow
   // copied from realInput to input.
-  vtkSmartPointer<vtkDataSet> input(realInput->NewInstance());
+  vtkSmartPointer<vtkDataSet> input;
+  input.TakeReference(realInput->NewInstance());
   input->CopyStructure(realInput);
   input->GetCellData()->PassData(realInput->GetCellData());
   input->GetPointData()->InterpolateAllocate(realInput->GetPointData(), 0, 0, 1);
