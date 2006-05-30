@@ -30,66 +30,46 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 =========================================================================*/
 
-#ifndef _pqObjectPanel_h
-#define _pqObjectPanel_h
+#ifndef _pqThresholdPanel_h
+#define _pqThresholdPanel_h
 
-#include <QWidget>
-#include "pqSMProxy.h"
+#include "pqLoadedFormObjectPanel.h"
+class QComboBox;
+class QSlider;
+class QDoubleSpinBox;
 
-class pqPropertyManager;
-
-/// Base class for Widget which provides an editor for editing properties of a proxy
-class pqObjectPanel : public QWidget
+class pqThresholdPanel :
+  public pqLoadedFormObjectPanel
 {
   Q_OBJECT
 public:
   /// constructor
-  pqObjectPanel(QWidget* p);
+  pqThresholdPanel(QWidget* p = NULL);
   /// destructor
-  ~pqObjectPanel();
+  ~pqThresholdPanel();
 
-  /// set the proxy to display properties for.
-  /// subclassess should override setProxyInternal().
-  void setProxy(pqSMProxy proxy);
-
-  /// get the proxy for which properties are displayed
-  virtual pqSMProxy proxy();
-  
-  /// size hint for this widget
-  QSize sizeHint() const;
-
-  /// property manager
-  pqPropertyManager* getPropertyManager()
-    { return this->PropertyManager; }
-
-public slots:
-  /// accept the changes made to the properties
-  /// changes will be propogated down to the server manager
   virtual void accept();
-
-  /// called after accept on all panels is complete
-  virtual void postAccept() { }
-
-  /// reset the changes made
-  /// editor will query properties from the server manager
   virtual void reset();
 
-  /// Called when the panel becomes active. Default implemnetation does nothing.
-  virtual void select() { }
-
-  /// Called when the panel becomes inactive. Default implemnetation does nothing.
-  virtual void unselect() { }
-
-signals:
-  void canAcceptOrReject(bool);
+protected slots:
+  void lowerSpinChanged();
+  void upperSpinChanged();
+  void lowerSliderChanged();
+  void upperSliderChanged();
+  void attributeModeChanged(int);
 
 protected:
-  /// Internal method that actually sets the proxy. Subclasses must override
-  /// this instead of setProxy().
-  virtual void setProxyInternal(pqSMProxy proxy);
+  /// populate widgets with properties from the server manager
+  virtual void linkServerManagerProperties();
+  /// set the properties in the server manager with properties in the widgets
+  virtual void unlinkServerManagerProperties();
 
-  pqSMProxy Proxy;
-  pqPropertyManager* PropertyManager;
+  QComboBox* AttributeMode;
+  QSlider* LowerSlider;
+  QSlider* UpperSlider;
+  QDoubleSpinBox* LowerSpin;
+  QDoubleSpinBox* UpperSpin;
+
 };
 
 #endif
