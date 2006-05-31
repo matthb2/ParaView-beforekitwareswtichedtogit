@@ -172,4 +172,8 @@ vtkClientServerID vtkPVClientServerIdCollectionInformation::GetID(int i)
       }
     j++;
     }
+
+  vtkErrorMacro("No such ID, returning first.");
+  IdIter = this->ClientServerIds->begin();
+  return *IdIter;
 }
