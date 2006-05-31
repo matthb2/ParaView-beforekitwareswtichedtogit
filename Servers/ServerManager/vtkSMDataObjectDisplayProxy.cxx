@@ -191,6 +191,20 @@ void vtkSMDataObjectDisplayProxy::SetInput(vtkSMProxy* input)
   this->SetInputInternal(vtkSMSourceProxy::SafeDownCast(input));
 }
 
+
+//-----------------------------------------------------------------------------
+vtkSMProxy * vtkSMDataObjectDisplayProxy::GetInput(int i)
+{
+  vtkSMProxy *ret = NULL;
+  vtkSMInputProperty* ip = 
+    vtkSMInputProperty::SafeDownCast(this->GetProperty("Input"));
+  if (ip)
+    {
+    ret = ip->GetProxy(i);
+    }
+  return ret;
+}
+
 //-----------------------------------------------------------------------------
 void vtkSMDataObjectDisplayProxy::SetInputInternal(vtkSMSourceProxy* input)
 {
@@ -1684,6 +1698,34 @@ int vtkSMDataObjectDisplayProxy::GetImmediateModeRenderingCM()
     return 0;
     }
   return ivp->GetElement(0);
+}
+
+//-----------------------------------------------------------------------------
+void vtkSMDataObjectDisplayProxy::SetPickableCM(int op)
+{
+  vtkSMIntVectorProperty* dvp = vtkSMIntVectorProperty::SafeDownCast(
+    this->GetProperty("Pickable"));
+  if (!dvp)
+    {
+    vtkErrorMacro("Failed to find property Pickable on DisplayProxy.");
+    return ;
+    }
+  dvp->SetElement(0, op);
+  this->UpdateVTKObjects(); 
+
+}
+
+//-----------------------------------------------------------------------------
+int vtkSMDataObjectDisplayProxy::GetPickableCM()
+{
+  vtkSMIntVectorProperty* dvp = vtkSMIntVectorProperty::SafeDownCast(
+    this->GetProperty("Pickable"));
+  if (!dvp)
+    {
+    vtkErrorMacro("Failed to find property Pickable on DisplayProxy.");
+    return 0;
+    }
+  return dvp->GetElement(0);
 }
 
 //-----------------------------------------------------------------------------

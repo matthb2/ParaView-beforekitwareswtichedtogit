@@ -14,13 +14,11 @@
 =========================================================================*/
 #include "vtkPVClientServerIdCollectionInformation.h"
 
-#include "vtkClientServerStream.h"
 #include "vtkObjectFactory.h"
-
+#include "vtkClientServerStream.h"
 #include "vtkAreaPicker.h"
 #include "vtkProp3DCollection.h"
 #include "vtkProp.h"
-
 #include "vtkProcessModule.h"
 #include "vtkClientServerID.h"
 #include <vtkstd/set>
@@ -153,3 +151,25 @@ int vtkPVClientServerIdCollectionInformation
     }
 }
 
+//----------------------------------------------------------------------------
+int vtkPVClientServerIdCollectionInformation::GetLength()
+{
+  return this->ClientServerIds->size();
+}
+
+//----------------------------------------------------------------------------
+vtkClientServerID vtkPVClientServerIdCollectionInformation::GetID(int i)
+{
+  int j = 0;
+  vtkstd::set<vtkClientServerID>::const_iterator IdIter;
+  for (IdIter = this->ClientServerIds->begin();
+       IdIter != this->ClientServerIds->end();
+       IdIter++)
+    {    
+    if (j == i)
+      {
+      return *IdIter;
+      }
+    j++;
+    }
+}
