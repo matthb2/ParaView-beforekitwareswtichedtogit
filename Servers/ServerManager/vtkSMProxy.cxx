@@ -1345,7 +1345,7 @@ vtkSMProperty* vtkSMProxy::NewProperty(const char* name,
         this->DoNotModifyProperty = 1;
         }
       }
-    this->AddProperty(name, property);
+    this->AddPropertyToSelf(name, property);
     if (!property->ReadXMLAttributes(this, propElement))
       {
       vtkErrorMacro("Could not parse property: " << propElement->GetName());
