@@ -104,7 +104,7 @@ void vtkSMInputProperty::AppendCommandToStream(
       vtkSMCompoundProxy* cp = vtkSMCompoundProxy::SafeDownCast(proxy);
       if (cp)
         {
-        actualProxy = cp->GetUnconsumedProxy();
+        actualProxy = cp->GetConsumableProxy();
         }
 
       *str << vtkClientServerStream::Invoke 
