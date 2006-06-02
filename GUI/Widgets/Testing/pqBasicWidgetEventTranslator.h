@@ -30,14 +30,10 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 =========================================================================*/
 
-#ifndef _pqAbstractItemViewEventTranslator_h
-#define _pqAbstractItemViewEventTranslator_h
+#ifndef _pqBasicWidgetEventTranslator_h
+#define _pqBasicWidgetEventTranslator_h
 
 #include "pqWidgetEventTranslator.h"
-
-class QAbstractItemView;
-class QModelIndex;
-class QPoint;
 
 /**
 Translates low-level Qt events into high-level ParaQ events that can be recorded as test cases.
@@ -45,25 +41,22 @@ Translates low-level Qt events into high-level ParaQ events that can be recorded
 \sa pqEventTranslator
 */
 
-class pqAbstractItemViewEventTranslator :
+class pqBasicWidgetEventTranslator :
   public pqWidgetEventTranslator
 {
   Q_OBJECT
   
 public:
-  pqAbstractItemViewEventTranslator();
+  pqBasicWidgetEventTranslator();
+  ~pqBasicWidgetEventTranslator();
   
   virtual bool translateEvent(QObject* Object, QEvent* Event, bool& Error);
 
 private:
-  pqAbstractItemViewEventTranslator(const pqAbstractItemViewEventTranslator&);
-  pqAbstractItemViewEventTranslator& operator=(const pqAbstractItemViewEventTranslator&);
-
-  QAbstractItemView* CurrentObject;
+  pqBasicWidgetEventTranslator(const pqBasicWidgetEventTranslator&);
+  pqBasicWidgetEventTranslator& operator=(const pqBasicWidgetEventTranslator&);
   
-private slots:
-  void onCurrentChanged(const QModelIndex&, const QModelIndex&);
 };
 
-#endif // !_pqAbstractItemViewEventTranslator_h
+#endif // !_pqBasicWidgetEventTranslator_h
 

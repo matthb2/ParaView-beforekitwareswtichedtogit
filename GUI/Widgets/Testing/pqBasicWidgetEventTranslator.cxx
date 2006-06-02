@@ -30,61 +30,38 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 =========================================================================*/
 
-#include "pqAbstractItemViewEventPlayer.h"
+#include "pqBasicWidgetEventTranslator.h"
 
-#include <QAbstractItemView>
-#include <QApplication>
-#include <QMouseEvent>
-#include <QTime>
-#include <QtDebug>
+#include <QEvent>
+#include <QWidget>
 
-/// Converts a string representation of a model index into the real thing
-static QModelIndex GetIndex(QAbstractItemView& View, const QString& Name)
-{
-    QStringList rows = Name.split('/', QString::SkipEmptyParts);
-    QString column;
-    
-    if(rows.size())
-      {
-      column = rows.back().split('|').at(1);
-      rows.back() = rows.back().split('|').at(0);
-      }
-    
-    QModelIndex index;
-    for(int i = 0; i != rows.size(); ++i)
-      {
-      index = View.model()->index(rows[i].toInt(), column.toInt(), index);
-      }
-      
-    return index;
-}
-
-///////////////////////////////////////////////////////////////////////////////
-// pqAbstractItemViewEventPlayer
-
-pqAbstractItemViewEventPlayer::pqAbstractItemViewEventPlayer()
+pqBasicWidgetEventTranslator::pqBasicWidgetEventTranslator()
 {
 }
 
-bool pqAbstractItemViewEventPlayer::playEvent(QObject* Object, const QString& Command, const QString& Arguments, bool& Error)
+pqBasicWidgetEventTranslator::~pqBasicWidgetEventTranslator()
 {
-  QAbstractItemView* const object = qobject_cast<QAbstractItemView*>(Object);
+}
+
+bool pqBasicWidgetEventTranslator::translateEvent(QObject* Object, 
+                                                  QEvent* Event, 
+                                                  bool& /*Error*/)
+{
+  QWidget* const object = qobject_cast<QWidget*>(Object);
   if(!object)
-    {
     return false;
-    }
     
-  if(Command == "currentChanged")
+  switch(Event->type())
     {
-    const QModelIndex index = GetIndex(*object, Arguments);
-    if(!index.isValid())
-      return false;
-      
-    object->setCurrentIndex(index);
-    return true;
+    case QEvent::ContextMenu:
+      {
+      emit recordEvent(Object, "contextMenu", "");
+      }
+      break;
+    default:
+      break;
     }
-    
-  qCritical() << "Unknown abstract item command: " << Command << "\n";
-  Error = true;
+      
   return true;
 }
+

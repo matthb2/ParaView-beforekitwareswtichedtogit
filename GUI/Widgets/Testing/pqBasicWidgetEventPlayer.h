@@ -30,40 +30,28 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 =========================================================================*/
 
-#ifndef _pqAbstractItemViewEventTranslator_h
-#define _pqAbstractItemViewEventTranslator_h
+#ifndef _pqBasicWidgetEventPlayer_h
+#define _pqBasicWidgetEventPlayer_h
 
-#include "pqWidgetEventTranslator.h"
-
-class QAbstractItemView;
-class QModelIndex;
-class QPoint;
+#include "pqWidgetEventPlayer.h"
 
 /**
-Translates low-level Qt events into high-level ParaQ events that can be recorded as test cases.
+Concrete implementation of pqWidgetEventPlayer that handles playback of "activate" events for buttons and menus.
 
-\sa pqEventTranslator
+\sa pqEventPlayer
 */
-
-class pqAbstractItemViewEventTranslator :
-  public pqWidgetEventTranslator
+class pqBasicWidgetEventPlayer :
+  public pqWidgetEventPlayer
 {
-  Q_OBJECT
-  
 public:
-  pqAbstractItemViewEventTranslator();
-  
-  virtual bool translateEvent(QObject* Object, QEvent* Event, bool& Error);
+  pqBasicWidgetEventPlayer();
+
+  bool playEvent(QObject* Object, const QString& Command, const QString& Arguments, bool& Error);
 
 private:
-  pqAbstractItemViewEventTranslator(const pqAbstractItemViewEventTranslator&);
-  pqAbstractItemViewEventTranslator& operator=(const pqAbstractItemViewEventTranslator&);
-
-  QAbstractItemView* CurrentObject;
-  
-private slots:
-  void onCurrentChanged(const QModelIndex&, const QModelIndex&);
+  pqBasicWidgetEventPlayer(const pqBasicWidgetEventPlayer&);
+  pqBasicWidgetEventPlayer& operator=(const pqBasicWidgetEventPlayer&);
 };
 
-#endif // !_pqAbstractItemViewEventTranslator_h
+#endif // !_pqBasicWidgetEventPlayer_h
 

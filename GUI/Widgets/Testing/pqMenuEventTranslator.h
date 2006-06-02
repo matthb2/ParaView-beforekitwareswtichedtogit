@@ -35,7 +35,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #include "pqWidgetEventTranslator.h"
 
-class pqMenuEventTranslatorAdaptor;
+class QAction;
 
 /**
 Translates low-level Qt events into high-level ParaQ events that can be recorded as test cases.
@@ -58,12 +58,6 @@ private:
   pqMenuEventTranslator(const pqMenuEventTranslator&);
   pqMenuEventTranslator& operator=(const pqMenuEventTranslator&);
   
-  void clearActions();
-  
-  QList<pqMenuEventTranslatorAdaptor*> Actions;
-  
-private slots:
-  void onRecordEvent(QObject*, const QString&, const QString&);
 };
 
 #endif // !_pqMenuEventTranslator_h
