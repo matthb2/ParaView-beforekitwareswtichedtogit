@@ -310,6 +310,44 @@ const char* vtkSMProxyManager::GetXMLGroupName(unsigned int n)
 }
 
 //---------------------------------------------------------------------------
+unsigned int vtkSMProxyManager::GetNumberOfXMLProxies(const char* groupName)
+{
+  vtkSMProxyManagerInternals::GroupMapType::iterator it =
+    this->Internals->GroupMap.find(groupName);
+  if (it != this->Internals->GroupMap.end())
+    {
+    return it->second.size();
+    }
+  return 0;
+}
+
+
+//---------------------------------------------------------------------------
+const char* vtkSMProxyManager::GetXMLProxyName(const char* groupName, 
+  unsigned int n)
+{
+  vtkSMProxyManagerInternals::GroupMapType::iterator it =
+    this->Internals->GroupMap.find(groupName);
+  if (it != this->Internals->GroupMap.end())
+    {
+    vtkSMProxyManagerElementMapType::iterator it2 =
+      it->second.begin();
+    unsigned int idx;
+    for (idx=0;
+      it2 != it->second.end() && idx < n;
+      it2++)
+      {
+      idx++;
+      }
+    if (idx == n && it2 != it->second.end())
+      {
+      return it2->first.c_str();
+      }
+    }
+  return 0;
+}
+
+//---------------------------------------------------------------------------
 unsigned int vtkSMProxyManager::GetNumberOfProxies(const char* group)
 {
   vtkSMProxyManagerInternals::ProxyGroupType::iterator it =
