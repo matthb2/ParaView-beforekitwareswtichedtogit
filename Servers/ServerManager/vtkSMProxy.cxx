@@ -330,6 +330,10 @@ vtkTypeUInt32 vtkSMProxy::GetServers()
 //---------------------------------------------------------------------------
 void vtkSMProxy::SetConnectionID(vtkIdType id)
 {
+  if (this->ConnectionID == id)
+    {
+    return;
+    }
   if (this->SelfID.ID)
     {
     // Implies that the proxy performed some processing.

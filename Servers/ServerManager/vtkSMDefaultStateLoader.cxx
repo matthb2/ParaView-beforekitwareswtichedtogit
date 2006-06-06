@@ -37,7 +37,8 @@ vtkSMProxy* vtkSMDefaultStateLoader::NewProxy(int id)
   vtkProcessModule* pm = vtkProcessModule::GetProcessModule();
   vtkClientServerID csid;
   csid.ID = static_cast<vtkTypeUInt32>(id);
-  vtkSMProxy* proxy = vtkSMProxy::SafeDownCast(pm->GetInterpreter()->GetObjectFromID(csid, 1));
+  vtkSMProxy* proxy = vtkSMProxy::SafeDownCast(
+    pm->GetInterpreter()->GetObjectFromID(csid, 1));
   if (proxy)
     {
     proxy->Register(this);

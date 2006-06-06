@@ -518,8 +518,10 @@ int vtkSMProxyProperty::LoadState(vtkPVXMLElement* element,
             }
           else
             {
-            vtkErrorMacro("Could not create proxy of id: " << id);
-            return 0;
+            // It is not an error to have missing proxies in a proxy property.
+            // We simply ignore such proxies.
+            //vtkErrorMacro("Could not create proxy of id: " << id);
+            //return 0;
             }
           }
         else
