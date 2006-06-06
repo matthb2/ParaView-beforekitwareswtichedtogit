@@ -30,31 +30,47 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 =========================================================================*/
 
-/// \file pqPipelineModelItem.cxx
+/// \file pqServerManagerModelItem.h
 /// \date 4/14/2006
 
-#include "pqPipelineModelItem.h"
+#ifndef _pqServerManagerModelItem_h
+#define _pqServerManagerModelItem_h
 
-// ParaView includes.
 
-// Qt includes.
+#include "pqWidgetsExport.h"
+#include <QObject>
 
-//-----------------------------------------------------------------------------
-pqPipelineModelItem::pqPipelineModelItem(QObject* _parent /*=null*/)
-  : QObject(_parent)
+#include "pqPipelineModel.h" // Needed for ModelType member
+
+
+class PQWIDGETS_EXPORT pqServerManagerModelItem : public QObject
 {
-  this->ModelType = pqPipelineModel::Invalid;
-}
-//-----------------------------------------------------------------------------
-pqPipelineModelItem::~pqPipelineModelItem()
-{
-}
+  Q_OBJECT
 
-//-----------------------------------------------------------------------------
-void pqPipelineModelItem::setType(pqPipelineModel::ItemType type)
-{
-  this->ModelType = type;
-  emit this->dataModified();
-}
+public:
+  pqServerManagerModelItem(QObject* parent=NULL);
+  virtual ~pqServerManagerModelItem();
 
+  // Get the type for the model item. Type determines the way the 
+  // item is displayed.
+  // TODO: May be type must be only for pqPipelineSource, 
+  // everything is directly subclassed, hence we can use dynamic casts..
+  pqPipelineModel::ItemType getType() const {return this->ModelType;}
 
+signals:
+  // This signal is fired when data associated with the item,
+  // such as type/name is changed. 
+  void dataModified();
+
+protected:
+  void setType(pqPipelineModel::ItemType type); 
+
+protected slots:
+  // called when input property on display changes. We must detect if
+  // (and when) the display is connected to a new proxy.
+  virtual void onInputChanged() { };
+private:
+  pqPipelineModel::ItemType ModelType;
+};
+
+#endif
