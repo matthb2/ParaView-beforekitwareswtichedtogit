@@ -33,6 +33,14 @@ vtkUndoStack::~vtkUndoStack()
 }
 
 //-----------------------------------------------------------------------------
+void vtkUndoStack::Clear()
+{
+  this->Internal->UndoStack.clear();
+  this->Internal->RedoStack.clear();
+  this->Modified();
+}
+
+//-----------------------------------------------------------------------------
 void vtkUndoStack::Push(const char* label, vtkUndoSet* changeSet)
 {
   this->Internal->RedoStack.clear();
