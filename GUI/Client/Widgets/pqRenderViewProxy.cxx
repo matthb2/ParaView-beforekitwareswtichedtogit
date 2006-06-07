@@ -68,7 +68,7 @@ void pqRenderViewProxy::Render()
   //RenderModule->InteractiveRender();
 
   // do not render LOD's
-  this->RenderModule->getProxy()->StillRender();
+  this->RenderModule->getRenderModuleProxy()->StillRender();
 }
 
 //-----------------------------------------------------------------------------
@@ -78,7 +78,7 @@ vtkRenderWindow* pqRenderViewProxy::GetRenderWindow()
     {
     return 0;
     }
-  return this->RenderModule->getProxy()->GetRenderWindow();
+  return this->RenderModule->getRenderModuleProxy()->GetRenderWindow();
 }
 
 //-----------------------------------------------------------------------------
