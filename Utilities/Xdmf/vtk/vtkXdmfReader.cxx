@@ -1104,6 +1104,10 @@ int vtkXdmfReaderInternal::RequestSingleGridData(
         return 1;
       }
     NodesPerElement = xdmfGrid->GetNodesPerElement();
+    if ( xdmfGrid->GetConnectivity()->GetRank() == 2 )
+      {
+      NodesPerElement = xdmfGrid->GetConnectivity()->GetDimension(1);
+      }
     
     /* Create Cell Type Array */
     Length = xdmfGrid->GetConnectivity()->GetNumberOfElements();
