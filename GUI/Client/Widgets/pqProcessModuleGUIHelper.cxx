@@ -171,11 +171,6 @@ int pqProcessModuleGUIHelper::RunGUIStart(int argc, char** argv,
         dont_start_event_loop = 1;
         }
         
-      if(options->GetTestUINames())
-        {
-        status = !pqObjectNaming::Validate(*this->Implementation->Window);
-        }
-        
       if (options->GetExitBeforeEventLoop())
         {
         dont_start_event_loop = 1;
