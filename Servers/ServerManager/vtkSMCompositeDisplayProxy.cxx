@@ -1096,6 +1096,31 @@ void vtkSMCompositeDisplayProxy::CacheUpdate(int idx, int total)
 }
 
 //-----------------------------------------------------------------------------
+int vtkSMCompositeDisplayProxy::UpdateRequired()
+{
+  if (this->VolumeRenderMode)
+    {
+    if (!this->DistributedVolumeGeometryIsValid && this->VolumeGeometryIsValid)
+      {
+      return 1;
+      }
+    }
+  else
+    {
+    if (!this->DistributedGeometryIsValid && this->GeometryIsValid)
+      {
+      return 1;
+      }
+    }
+
+  if (!this->DistributedLODGeometryIsValid && this->LODGeometryIsValid)
+    {
+    return 1;
+    }
+  return this->Superclass::UpdateRequired();
+}
+
+//-----------------------------------------------------------------------------
 void vtkSMCompositeDisplayProxy::UpdateDistributedGeometry()
 {
   this->Update();

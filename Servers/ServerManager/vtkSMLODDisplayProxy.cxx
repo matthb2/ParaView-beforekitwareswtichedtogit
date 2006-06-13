@@ -318,6 +318,17 @@ int vtkSMLODDisplayProxy::GetLODFlag()
 }
 
 //-----------------------------------------------------------------------------
+int vtkSMLODDisplayProxy::UpdateRequired()
+{
+  if (!this->LODGeometryIsValid && this->GetLODFlag() && 
+    this->LODUpdateSuppressorProxy)
+    {
+    return 1;
+    } 
+  return this->Superclass::UpdateRequired();
+}
+
+//-----------------------------------------------------------------------------
 void vtkSMLODDisplayProxy::Update()
 {
   this->Superclass::Update();

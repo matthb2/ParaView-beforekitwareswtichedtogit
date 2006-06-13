@@ -1147,6 +1147,26 @@ void vtkSMDataObjectDisplayProxy::InvalidateGeometryInternal(int useCache)
 }
 
 //-----------------------------------------------------------------------------
+int vtkSMDataObjectDisplayProxy::UpdateRequired()
+{
+  if (this->VolumeRenderMode)
+    {
+    if (this->VolumeGeometryIsValid || !this->VolumeUpdateSuppressorProxy)
+      {
+      return 0;
+      }
+    }
+  else
+    {
+    if (this->GeometryIsValid || !this->UpdateSuppressorProxy)
+      {
+      return 0;
+      }
+    }
+  return 1;
+}
+
+//-----------------------------------------------------------------------------
 void vtkSMDataObjectDisplayProxy::Update()
 {
   if (this->VolumeRenderMode)

@@ -59,6 +59,16 @@ vtkSMCompositeRenderModuleProxy::~vtkSMCompositeRenderModuleProxy()
 }
 
 //-----------------------------------------------------------------------------
+vtkTypeUInt32 vtkSMCompositeRenderModuleProxy::GetRenderingProgressServers()
+{
+  if (this->LocalRender)
+    {
+    return vtkProcessModule::CLIENT;
+    }
+  return this->Superclass::GetRenderingProgressServers();
+}
+
+//-----------------------------------------------------------------------------
 void vtkSMCompositeRenderModuleProxy::CreateVTKObjects(int numObjects)
 {
   if (this->ObjectsCreated )
