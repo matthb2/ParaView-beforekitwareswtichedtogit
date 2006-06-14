@@ -61,7 +61,8 @@ public:
     SMApplication(vtkSMApplication::New()),
     Application(0),
     ApplicationCore(0),
-    Window(0)
+    Window(0),
+    EnableProgress(false)
   {
     // Redirect Qt debug output to VTK ...
     qInstallMsgHandler(QtMessageOutput);
@@ -106,6 +107,7 @@ public:
   QApplication* Application;
   pqApplicationCore* ApplicationCore;
   QWidget* Window;
+  bool EnableProgress;
 };
 
 ////////////////////////////////////////////////////////////////////////////
@@ -231,17 +233,27 @@ void pqProcessModuleGUIHelper::FinalizeApplication()
 //-----------------------------------------------------------------------------
 void pqProcessModuleGUIHelper::SendPrepareProgress()
 {
+  this->Implementation->EnableProgress = true;
+  this->Implementation->ApplicationCore->prepareProgress();
 }
 
 //-----------------------------------------------------------------------------
 void pqProcessModuleGUIHelper::SendCleanupPendingProgress()
 {
+  this->Implementation->EnableProgress = false;
+  this->Implementation->ApplicationCore->cleanupPendingProgress();
 }
 
 //-----------------------------------------------------------------------------
-void pqProcessModuleGUIHelper::SetLocalProgress(const char* vtkNotUsed(name), 
-  int vtkNotUsed(progress))
+void pqProcessModuleGUIHelper::SetLocalProgress(const char* name, 
+  int progress)
 {
+  if (!this->Implementation->EnableProgress)
+    {
+    return;
+    }
+  this->Implementation->ApplicationCore->sendProgress(name, progress);
+  //cout << (name? name : "(null)") << " : " << progress << endl;
   // Here we would call something like
   // this->Window->SetProgress(name, progress). 
   // Then the Window can update the progress bar, or something.
