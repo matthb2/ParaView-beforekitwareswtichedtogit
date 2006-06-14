@@ -1664,6 +1664,10 @@ vtkPVXMLElement* vtkProcessModule::NewNextRedo(vtkIdType id)
 //-----------------------------------------------------------------------------
 int vtkProcessModule::GetNumberOfConnections()
 {
+  if (!this->ConnectionManager)
+    {
+    return 0;
+    }
   return this->ConnectionManager->GetNumberOfConnections();
 }
 
