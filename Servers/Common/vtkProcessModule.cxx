@@ -1123,7 +1123,6 @@ void vtkProcessModule::ExecuteEvent(
   switch (event)
     {
   case vtkCommand::ProgressEvent:
-    if (this->ProgressRequests > 0)
       {
       int progress = static_cast<int>(*reinterpret_cast<double*>(calldata) *
         100.0);
