@@ -453,6 +453,9 @@ vtkSMProperty* vtkSMSourceProxy::GetProperty(const char* name, int selfOnly)
 //----------------------------------------------------------------------------
 void vtkSMSourceProxy::GatherDataInformation()
 {
+
+  vtkProcessModule::GetProcessModule()->SendPrepareProgress(
+    this->ConnectionID);
   this->DataInformation->Initialize();
 
   vtkstd::vector<vtkSmartPointer<vtkSMPart> >::iterator it =
@@ -463,6 +466,8 @@ void vtkSMSourceProxy::GatherDataInformation()
       it->GetPointer()->GetDataInformation(), 1);
     }
   this->DataInformationValid = 1;
+  vtkProcessModule::GetProcessModule()->SendCleanupPendingProgress(
+    this->ConnectionID);
 }
 
 //----------------------------------------------------------------------------
