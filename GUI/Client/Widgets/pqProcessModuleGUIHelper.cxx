@@ -195,7 +195,8 @@ int pqProcessModuleGUIHelper::RunGUIStart(int argc, char** argv,
 }
 
 //-----------------------------------------------------------------------------
-int pqProcessModuleGUIHelper::InitializeApplication(int argc, char** argv)
+int pqProcessModuleGUIHelper::InitializeApplication(int vtkNotUsed(argc), 
+           char** vtkNotUsed(argv))
 {
   this->Implementation->ApplicationCore = new pqApplicationCore();
   
