@@ -180,7 +180,7 @@ int pqProcessModuleGUIHelper::RunGUIStart(int argc, char** argv,
       {
       // Starts the event loop.
       QCoreApplication* app = QApplication::instance();
-      app->exec();
+      status = app->exec();
       }
     }
   this->FinalizeApplication();
