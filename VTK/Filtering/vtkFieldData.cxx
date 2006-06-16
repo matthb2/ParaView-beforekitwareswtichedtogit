@@ -797,8 +797,8 @@ int vtkFieldData::GetNumberOfComponents()
 // Get the number of tuples in the field.
 vtkIdType vtkFieldData::GetNumberOfTuples()
 {
-  vtkDataArray* da;
-  if ((da=this->GetArray(0)))
+  vtkAbstractArray* da;
+  if ((da=this->GetAbstractArray(0)))
     {
     return da->GetNumberOfTuples(); 
     }
