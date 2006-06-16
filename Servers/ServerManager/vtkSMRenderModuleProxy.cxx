@@ -466,11 +466,11 @@ void vtkSMRenderModuleProxy::InteractiveRender()
   this->GetRenderer()->ResetCameraClippingRange();
 
   vtkProcessModule* pm = vtkProcessModule::GetProcessModule();
-  pm->SendPrepareProgress(this->ConnectionID, this->GetRenderingProgressServers());
+  //pm->SendPrepareProgress(this->ConnectionID, this->GetRenderingProgressServers());
   this->BeginInteractiveRender();
   renWin->Render();
   this->EndInteractiveRender();
-  pm->SendCleanupPendingProgress(this->ConnectionID);
+  //pm->SendCleanupPendingProgress(this->ConnectionID);
 }
 
 //-----------------------------------------------------------------------------
@@ -502,13 +502,13 @@ void vtkSMRenderModuleProxy::StillRender()
   renWindow->SetDesiredUpdateRate(0.002);
 
   vtkProcessModule* pm = vtkProcessModule::GetProcessModule();
-  pm->SendPrepareProgress(this->ConnectionID, this->GetRenderingProgressServers());
+  //pm->SendPrepareProgress(this->ConnectionID, this->GetRenderingProgressServers());
 
   this->BeginStillRender();
   renWindow->Render();
   this->EndStillRender();
 
-  pm->SendCleanupPendingProgress(this->ConnectionID);
+  //pm->SendCleanupPendingProgress(this->ConnectionID);
 }
 
 //-----------------------------------------------------------------------------
