@@ -65,7 +65,7 @@ void pqRenderViewProxy::Render()
     return;
     }
   // render LOD's
-  //RenderModule->InteractiveRender();
+  //this->RenderModule->getRenderModuleProxy()->InteractiveRender();
 
   // do not render LOD's
   this->RenderModule->getRenderModuleProxy()->StillRender();
