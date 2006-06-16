@@ -30,7 +30,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 =========================================================================*/
 
-#include "pqVariableSelectorWidget.h"
+#include "pqDisplayColorWidget.h"
 
 #include "vtkSMDataObjectDisplayProxy.h"
 #include "vtkPVArrayInformation.h"
@@ -56,7 +56,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "pqUndoStack.h"
 
 //-----------------------------------------------------------------------------
-pqVariableSelectorWidget::pqVariableSelectorWidget( QWidget *p ) :
+pqDisplayColorWidget::pqDisplayColorWidget( QWidget *p ) :
   QWidget( p ),
   BlockEmission(false)
 {
@@ -86,7 +86,7 @@ pqVariableSelectorWidget::pqVariableSelectorWidget( QWidget *p ) :
 }
 
 //-----------------------------------------------------------------------------
-pqVariableSelectorWidget::~pqVariableSelectorWidget()
+pqDisplayColorWidget::~pqDisplayColorWidget()
 {
   delete this->Layout;
   delete this->Variables;
@@ -97,7 +97,7 @@ pqVariableSelectorWidget::~pqVariableSelectorWidget()
 }
 
 //-----------------------------------------------------------------------------
-void pqVariableSelectorWidget::clear()
+void pqDisplayColorWidget::clear()
 {
   this->BlockEmission = true;
   this->Variables->clear();
@@ -105,7 +105,7 @@ void pqVariableSelectorWidget::clear()
 }
 
 //-----------------------------------------------------------------------------
-void pqVariableSelectorWidget::addVariable(pqVariableType type, 
+void pqDisplayColorWidget::addVariable(pqVariableType type, 
   const QString& name)
 {
   // Don't allow duplicates to creep in ...
@@ -133,7 +133,7 @@ void pqVariableSelectorWidget::addVariable(pqVariableType type,
 }
 
 //-----------------------------------------------------------------------------
-void pqVariableSelectorWidget::chooseVariable(pqVariableType type, 
+void pqDisplayColorWidget::chooseVariable(pqVariableType type, 
   const QString& name)
 {
   const int row = this->Variables->findData(variableData(type, name));
@@ -144,7 +144,7 @@ void pqVariableSelectorWidget::chooseVariable(pqVariableType type,
 }
 
 //-----------------------------------------------------------------------------
-void pqVariableSelectorWidget::onVariableActivated(int row)
+void pqDisplayColorWidget::onVariableActivated(int row)
 {
   if(this->BlockEmission)
     {
@@ -171,7 +171,7 @@ void pqVariableSelectorWidget::onVariableActivated(int row)
 }
 
 //-----------------------------------------------------------------------------
-const QString pqVariableSelectorWidget::variableData(pqVariableType type, 
+const QString pqDisplayColorWidget::variableData(pqVariableType type, 
   const QString& name)
 {
   switch(type)
@@ -188,7 +188,7 @@ const QString pqVariableSelectorWidget::variableData(pqVariableType type,
 }
 
 //-----------------------------------------------------------------------------
-void pqVariableSelectorWidget::onVariableChanged(pqVariableType vtkNotUsed(type), 
+void pqDisplayColorWidget::onVariableChanged(pqVariableType vtkNotUsed(type), 
   const QString& name)
 {
   if (!this->SelectedSource || !this->SelectedSource->getDisplayCount())
@@ -208,7 +208,7 @@ void pqVariableSelectorWidget::onVariableChanged(pqVariableType vtkNotUsed(type)
 }
 
 //-----------------------------------------------------------------------------
-void pqVariableSelectorWidget::updateVariableSelector(pqPipelineSource* source)
+void pqDisplayColorWidget::updateVariableSelector(pqPipelineSource* source)
 {
   this->VTKConnect->Disconnect();
   this->SelectedSource = source;
@@ -228,7 +228,7 @@ void pqVariableSelectorWidget::updateVariableSelector(pqPipelineSource* source)
 }
 
 //-----------------------------------------------------------------------------
-void pqVariableSelectorWidget::updateGUI()
+void pqDisplayColorWidget::updateGUI()
 {
   if (this->SelectedSource && this->SelectedSource->getDisplayCount())
     {
@@ -241,7 +241,7 @@ void pqVariableSelectorWidget::updateGUI()
 }
 
 //-----------------------------------------------------------------------------
-void pqVariableSelectorWidget::reloadGUI()
+void pqDisplayColorWidget::reloadGUI()
 {
   pqPipelineSource* source = this->SelectedSource;
   if (!source || source->getDisplayCount() == 0)
