@@ -465,7 +465,7 @@ void vtkSMRenderModuleProxy::InteractiveRender()
   renWin->SetDesiredUpdateRate(5.0);
   this->GetRenderer()->ResetCameraClippingRange();
 
-  vtkProcessModule* pm = vtkProcessModule::GetProcessModule();
+  //vtkProcessModule* pm = vtkProcessModule::GetProcessModule();
   //pm->SendPrepareProgress(this->ConnectionID, this->GetRenderingProgressServers());
   this->BeginInteractiveRender();
   renWin->Render();
@@ -501,7 +501,7 @@ void vtkSMRenderModuleProxy::StillRender()
     }
   renWindow->SetDesiredUpdateRate(0.002);
 
-  vtkProcessModule* pm = vtkProcessModule::GetProcessModule();
+  // vtkProcessModule* pm = vtkProcessModule::GetProcessModule();
   //pm->SendPrepareProgress(this->ConnectionID, this->GetRenderingProgressServers());
 
   this->BeginStillRender();
