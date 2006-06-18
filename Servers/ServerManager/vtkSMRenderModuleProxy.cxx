@@ -896,7 +896,7 @@ vtkPVClientServerIdCollectionInformation* vtkSMRenderModuleProxy
 //----------------------------------------------------------------------------
 vtkSMProxy *vtkSMRenderModuleProxy::GetProxyFromPropID(
   vtkClientServerID *id,
-  int VolumeOrSurface)
+  int proxyType)
 {
   vtkCollectionIterator* iter = NULL;
   vtkSMProxy *ret = NULL;
@@ -917,14 +917,16 @@ vtkSMProxy *vtkSMRenderModuleProxy::GetProxyFromPropID(
       if (idA == *id)
         {
         //we found it, now return the proxy for the algorithm that produced it
-        if (VolumeOrSurface==0)
+        if (proxyType == DISPLAY)
           {
-          //volume
+          ret = dodp;
+          }
+        else if (proxyType == INPUT)
+          {
           ret = dodp->GetInput(0);
           }
-        else
+        else if (proxyType == GEOMETRY)
           {
-          //surface
           ret = dodp->GetGeometryFilterProxy();
           }
         break;
