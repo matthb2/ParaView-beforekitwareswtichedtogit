@@ -302,6 +302,7 @@ void vtkImageThreshold::ThreadedRequestData(
     }
 }
 
+//----------------------------------------------------------------------------
 void vtkImageThreshold::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os,indent);

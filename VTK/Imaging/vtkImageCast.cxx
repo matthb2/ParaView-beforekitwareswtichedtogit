@@ -151,6 +151,7 @@ void vtkImageCast::ThreadedExecute (vtkImageData *inData,
     }
 }
 
+//----------------------------------------------------------------------------
 void vtkImageCast::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os,indent);
