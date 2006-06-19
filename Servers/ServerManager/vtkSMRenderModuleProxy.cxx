@@ -1167,6 +1167,7 @@ void vtkSMRenderModuleProxy::SynchronizeCameraProperties()
     if (dvp && info_dvp)
       {
       dvp->SetElements(info_dvp->GetElements());
+      dvp->UpdateLastPushedValues();
       }
     }
   iter->Delete();

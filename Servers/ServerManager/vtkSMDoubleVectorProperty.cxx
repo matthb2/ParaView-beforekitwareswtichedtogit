@@ -55,6 +55,12 @@ vtkSMDoubleVectorProperty::~vtkSMDoubleVectorProperty()
 }
 
 //---------------------------------------------------------------------------
+void vtkSMDoubleVectorProperty::UpdateLastPushedValues()
+{
+  this->Internals->UpdateLastPushedValues();
+}
+
+//---------------------------------------------------------------------------
 void vtkSMDoubleVectorProperty::AppendCommandToStream(
   vtkSMProxy*, vtkClientServerStream* str, vtkClientServerID objectId )
 {
