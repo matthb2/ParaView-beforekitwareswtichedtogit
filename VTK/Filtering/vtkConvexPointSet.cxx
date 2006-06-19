@@ -396,6 +396,20 @@ double *vtkConvexPointSet::GetParametricCoords()
 }
 
 //----------------------------------------------------------------------------
+void vtkConvexPointSet::InterpolateFunctions(double pcoords[3], double *sf)
+{
+  (void)pcoords;
+  (void)sf;
+}
+
+//----------------------------------------------------------------------------
+void vtkConvexPointSet::InterpolateDerivs(double pcoords[3], double *derivs)
+{
+  (void)pcoords;
+  (void)derivs;
+}
+
+//----------------------------------------------------------------------------
 void vtkConvexPointSet::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os,indent);

@@ -336,6 +336,20 @@ int vtkTriangleStrip::GetParametricCenter(double pcoords[3])
 }
 
 //----------------------------------------------------------------------------
+void vtkTriangleStrip::InterpolateFunctions(double pcoords[3], double *weights)
+{
+  (void)pcoords;
+  (void)weights;
+}
+
+//----------------------------------------------------------------------------
+void vtkTriangleStrip::InterpolateDerivs(double pcoords[3], double *derivs)
+{
+  (void)pcoords;
+  (void)derivs;
+}
+
+//----------------------------------------------------------------------------
 void vtkTriangleStrip::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os,indent);

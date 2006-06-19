@@ -148,7 +148,7 @@ int vtkWin32ProcessOutputWindow::Initialize()
 }
 
 //----------------------------------------------------------------------------
-void vtkWin32ProcessOutputWindow::Write(const char* data, int length)
+void vtkWin32ProcessOutputWindow::Write(const char* data, size_t length)
 {
   if(data && length)
     {

@@ -345,6 +345,18 @@ void vtkGenericCell::SetCellType(int cellType)
 }
 
 //----------------------------------------------------------------------------
+void vtkGenericCell::InterpolateFunctions(double pcoords[3], double *weights)
+{
+  this->Cell->InterpolateFunctions(pcoords,weights);
+}
+
+//----------------------------------------------------------------------------
+void vtkGenericCell::InterpolateDerivs(double pcoords[3], double *derivs)
+{
+  this->Cell->InterpolateDerivs(pcoords,derivs);
+}
+
+//----------------------------------------------------------------------------
 void vtkGenericCell::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os,indent);

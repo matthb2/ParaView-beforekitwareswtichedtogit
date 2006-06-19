@@ -232,6 +232,20 @@ int vtkPolyVertex::GetParametricCenter(double pcoords[3])
 }
 
 //----------------------------------------------------------------------------
+void vtkPolyVertex::InterpolateFunctions(double pcoords[3], double *weights)
+{
+  (void)pcoords;
+  (void)weights;
+}
+
+//----------------------------------------------------------------------------
+void vtkPolyVertex::InterpolateDerivs(double pcoords[3], double *derivs)
+{
+  (void)pcoords;
+  (void)derivs;
+}
+
+//----------------------------------------------------------------------------
 void vtkPolyVertex::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os,indent);
