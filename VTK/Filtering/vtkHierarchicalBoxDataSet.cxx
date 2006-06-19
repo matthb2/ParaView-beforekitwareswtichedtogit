@@ -88,8 +88,8 @@ vtkUniformGrid* vtkHierarchicalBoxDataSet::GetDataSet(unsigned int level,
     int* boxVec = info->Get(BOX());
     if (boxVec)
       {
-      memcpy(&box.LoCorner, boxVec  , 3*sizeof(int));
-      memcpy(&box.HiCorner, boxVec+3, 3*sizeof(int));
+      memcpy(box.LoCorner, boxVec  , 3*sizeof(int));
+      memcpy(box.HiCorner, boxVec+3, 3*sizeof(int));
       }
     }
   return static_cast<vtkUniformGrid*>(ldataSets[id].GetPointer());
