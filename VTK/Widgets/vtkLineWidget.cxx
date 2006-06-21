@@ -199,6 +199,7 @@ vtkLineWidget::vtkLineWidget()
   this->CurrentPointWidget = NULL;
 }
 
+//----------------------------------------------------------------------------
 vtkLineWidget::~vtkLineWidget()
 {
   this->LineActor->Delete();
