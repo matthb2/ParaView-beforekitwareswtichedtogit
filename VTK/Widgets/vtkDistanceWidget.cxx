@@ -244,7 +244,6 @@ void vtkDistanceWidget::MoveAction(vtkAbstractWidget *w)
 
   // Do nothing if in start mode or valid handle not selected
   if ( self->WidgetState == vtkDistanceWidget::Start )
-//       (self->WidgetState == vtkDistanceWidget::Manipulate && self->CurrentHandle < 0) )
     {
     return;
     }
