@@ -237,6 +237,8 @@ void vtkSMNew3DWidgetProxy::CreateVTKObjects(int numObjects)
 //-----------------------------------------------------------------------------
 void vtkSMNew3DWidgetProxy::ExecuteEvent(unsigned long event)
 {
+  this->InvokeEvent(event);
+
   if (event == vtkCommand::StartInteractionEvent)
     {
     vtkPVGenericRenderWindowInteractor* inter =
