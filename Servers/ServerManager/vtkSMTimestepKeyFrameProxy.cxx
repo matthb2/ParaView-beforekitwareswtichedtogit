@@ -100,7 +100,6 @@ void vtkSMTimestepKeyFrameProxy::UpdateValue(double currenttime,
       }
     index = cc;
     }
-  cout << "Time: " << timestepValues->GetElement(index) << endl;;
   domain->SetAnimationValue(property, animated_element, index);
   proxy->UpdateVTKObjects();
 }
