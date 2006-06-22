@@ -29,6 +29,7 @@ vtkWidgetRepresentation::vtkWidgetRepresentation()
   this->InteractionState = 0;
   this->StartEventPosition[0] = 0;
   this->StartEventPosition[1] = 0;
+  this->StartEventPosition[2] = 0;
 
   this->PlaceFactor = 0.5;
   this->Placed = 0;
