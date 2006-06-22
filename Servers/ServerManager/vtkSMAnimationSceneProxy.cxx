@@ -253,6 +253,7 @@ int vtkSMAnimationSceneProxy::SaveImages(const char* fileRoot,
     {
     vtkAVIWriter *aviwriter = vtkAVIWriter::New();
     aviwriter->SetQuality(quality);
+    aviwriter->SetRate(static_cast<int>(framerate));
     this->MovieWriter = aviwriter;
     }
 #else
@@ -261,6 +262,7 @@ int vtkSMAnimationSceneProxy::SaveImages(const char* fileRoot,
     {
     vtkFFMPEGWriter *aviwriter = vtkFFMPEGWriter::New();
     aviwriter->SetQuality(quality);
+    aviwriter->SetRate(static_cast<int>(framerate));
     this->MovieWriter = aviwriter;
     
     }
