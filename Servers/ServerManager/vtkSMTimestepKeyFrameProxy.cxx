@@ -87,8 +87,8 @@ void vtkSMTimestepKeyFrameProxy::UpdateValue(double currenttime,
 
   double currentTimestep = t1 + (t2-t1) * currenttime;
 
-  unsigned int vmin = vtkstd::min(curv, nextv);
-  unsigned int vmax = vtkstd::max(curv, nextv);
+  unsigned int vmin = (curv < nextv ? curv : nextv);
+  unsigned int vmax = (curv < nextv ? nextv : curv);
   unsigned int index = vmin;
 
   // Now find the maximum index  <= currentTimestep.
