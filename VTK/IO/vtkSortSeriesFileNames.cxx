@@ -78,10 +78,16 @@ vtkSortSeriesFileNames::vtkSortSeriesFileNames()
 
 vtkSortSeriesFileNames::~vtkSortSeriesFileNames() 
 {
-  this->InputFileNames->Delete();
-  this->InputFileNames = 0;
-  this->FileNames->Delete();
-  this->FileNames = 0;
+  if (this->InputFileNames)
+    {
+    this->InputFileNames->Delete();
+    this->InputFileNames = 0;
+    }
+  if (this->FileNames)
+    {
+    this->FileNames->Delete();
+    this->FileNames = 0;
+    }
 }
 
 void vtkSortSeriesFileNames::PrintSelf(ostream& os, vtkIndent indent)
