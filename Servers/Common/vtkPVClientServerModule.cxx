@@ -53,6 +53,7 @@
 #else
 # include "vtkWindows.h"
 #endif
+#include <vtkstd/new>
 #include <vtkstd/string>
 #include <vtksys/RegularExpression.hxx>
 
