@@ -1399,7 +1399,7 @@ int vtkSMRenderModuleProxy::GetServerRenderWindowSize(int size[2])
 void vtkSMRenderModuleProxy::CalculatePolygonsPerSecond(double time)
 {
   vtkIdType numPolygons = this->GetTotalNumberOfPolygons();
-  if ( numPolygons <= 0 )
+  if ( numPolygons <= 0 || time <= 0 )
     {
     return;
     }
