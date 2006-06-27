@@ -30,39 +30,43 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 =========================================================================*/
 
-#ifndef _pqNamedObjectPanel_h
-#define _pqNamedObjectPanel_h
+#ifndef _pqNamedWidgets_h
+#define _pqNamedWidgets_h
 
-#include "pqObjectPanel.h"
+#include "pqSMProxy.h"
 
-class pqNamedWidgets;
+class QWidget;
+class pqPropertyManager;
 
-/// Base class for Widget which provides an editor for editing properties
-/// of a proxy where child widgets are named after the property they
-/// represent
-class pqNamedObjectPanel : public pqObjectPanel
+class pqNamedWidgets :
+  public QObject
 {
-  typedef pqObjectPanel Superclass;
-  
   Q_OBJECT
   
 public:
-  /// constructor
-  pqNamedObjectPanel(QWidget* p);
-  /// destructor
-  ~pqNamedObjectPanel();
+  pqNamedWidgets();
+  ~pqNamedWidgets();
 
-  virtual void accept();
-  virtual void reset();
+  /// Link Qt widgets with server manager properties by name
+  void link(QWidget* parent, pqSMProxy proxy);
+  /// Remove links between Qt widgets and server manager properties
+  void unlink(QWidget* parent, pqSMProxy proxy);
 
-protected:
-  /// populate widgets with properties from the server manager
-  virtual void linkServerManagerProperties();
-  /// set the properties in the server manager with properties in the widgets
-  virtual void unlinkServerManagerProperties();
+signals:
+  /// Signal emitted when changes have been made to a property
+  void propertyChanged();
+
+public slots:
+  /// Accept pending changes
+  void accept();
+  /// Reset pending changes
+  void reset();
+
+private slots:
+  void onPropertyChanged(bool);
 
 private:
-  pqNamedWidgets* const NamedWidgets;
+  pqPropertyManager* const PropertyManager;
 };
 
 #endif
