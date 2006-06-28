@@ -63,7 +63,8 @@ vtkSelectDataSets::~vtkSelectDataSets()
 void vtkSelectDataSets::Initialize()
 {
   //the smart pointers should delete the objects contained 
-  this->Internal->Props.resize(0);
+  this->Internal->Props.clear();
+  this->Modified();
 }
 
 //----------------------------------------------------------------------------
