@@ -126,7 +126,7 @@ int vtkGlobFileNames::AddFileNames(const char* pattern)
 
 
 //----------------------------------------------------------------------------
-const char* vtkGlobFileNames::GetFileName(int index)
+const char* vtkGlobFileNames::GetNthFileName(int index)
 {
   if(index >= this->FileNames->GetNumberOfValues() || index < 0)
     {
