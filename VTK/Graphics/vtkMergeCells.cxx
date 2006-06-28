@@ -555,8 +555,6 @@ void vtkMergeCells::StartUGrid(vtkDataSet *set)
 
   vtkUnstructuredGrid *ugrid = this->UnstructuredGrid;
 
-  ugrid->Initialize();
-
   if (!this->InputIsUGrid)
     {
     ugrid->Allocate(this->TotalNumberOfCells);
