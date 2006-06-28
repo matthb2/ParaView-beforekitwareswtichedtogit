@@ -83,7 +83,10 @@ void vtkInteractorStyleRubberBandPick::OnChar()
       break;
     }
     default:
-      this->Superclass::OnChar();
+      if (this->CurrentMode == VTKISRBP_ORIENT)
+        {
+        this->Superclass::OnChar();
+        }
     }
 }
 
