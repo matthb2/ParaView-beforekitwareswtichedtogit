@@ -245,7 +245,11 @@ void vtkSMUndoStack::EndUndoSet()
     return;
     }
 
-  this->Push(this->ActiveConnectionID, this->Label, this->ActiveUndoSet);
+  // We add an undo set to the stack only if it has some elements.
+  if (this->ActiveUndoSet->GetNumberOfElements() > 0)
+    {
+    this->Push(this->ActiveConnectionID, this->Label, this->ActiveUndoSet);
+    }
   this->CancelUndoSet();
 }
 
@@ -349,6 +353,21 @@ void vtkSMUndoStack::ExecuteEvent(vtkObject* vtkNotUsed(caller),
     this->OnConnectionClosed(*reinterpret_cast<vtkIdType*>(data));
     break;
     }
+}
+
+//-----------------------------------------------------------------------------
+void vtkSMUndoStack::AddToActiveUndoSet(vtkUndoElement* element)
+{
+  if (!this->ActiveUndoSet)
+    {
+    vtkErrorMacro("No active UndoSet, cannot add the element to it.");
+    return;
+    }
+  if (!element)
+    {
+    return;
+    }
+  this->ActiveUndoSet->AddElement(element);
 }
 
 //-----------------------------------------------------------------------------
