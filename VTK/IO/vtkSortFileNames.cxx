@@ -559,7 +559,7 @@ void vtkSortFileNames::SortFileNames(vtkStringArray *input,
   vtkstd::vector<vtkstd::string>::iterator iter = fileNames.begin();
   while (iter < fileNames.end())
     {
-    this->FileNames->InsertNextValue(*iter++);
+    output->InsertNextValue(*iter++);
     }
 }
 
