@@ -265,12 +265,7 @@ int vtkParallelCoordinatesActor::RenderOpaqueGeometry(vtkViewport *viewport)
       }
 
     // We could do some caching here, but hey, that's just the title
-
-    vtkAxisActor2D::SetFontSize(viewport, 
-                                this->TitleMapper, 
-                                size, 
-                                1.0,
-                                stringSize);
+    vtkTextMapper::SetRelativeFontSize(this->TitleMapper, viewport, size, stringSize, 0.015);
 
     this->TitleActor->GetPositionCoordinate()->
       SetValue((this->Xs[0]+this->Xs[this->N-1])/2.0,this->YMax+stringSize[1]/2.0);
