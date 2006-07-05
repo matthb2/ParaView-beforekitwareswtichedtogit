@@ -39,6 +39,8 @@
 
 #include <GL/ice-t.h>
 
+#include "vtkgl.h"
+
 #include <vtkstd/algorithm>
 
 #ifndef GL_BGRA
@@ -1066,7 +1068,7 @@ void vtkIceTRenderManager::RecordIceTImage(vtkIceTRenderer *icetRen)
       dest += (this->ReducedImageSize[0] - physicalViewport[2]);
       }
     }
-  else if (color_format == GL_BGRA)
+  else if (color_format == vtkgl::BGRA)
     {
     this->ReducedImage->SetNumberOfComponents(4);
     this->ReducedImage->SetNumberOfTuples(  this->ReducedImageSize[0]
