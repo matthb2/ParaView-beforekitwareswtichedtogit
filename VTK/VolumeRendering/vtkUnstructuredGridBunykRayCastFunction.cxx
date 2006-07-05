@@ -554,8 +554,9 @@ void  vtkUnstructuredGridBunykRayCastFunction::UpdateTriangleList()
     
   int numCells = input->GetNumberOfCells();
   
-  // Provide a warning if we find anything other than tetra
-  int warningNeeded = 0;
+  // Provide a warnings for anomalous conditions.
+  int nonTetraWarningNeeded = 0;
+  int faceUsed3TimesWarning = 0;
     
   // Create a set of links from each tetra to the four triangles
   // This is redundant information, but saves time during rendering
@@ -567,7 +568,7 @@ void  vtkUnstructuredGridBunykRayCastFunction::UpdateTriangleList()
     // We only handle tetra
     if ( input->GetCellType(i) != VTK_TETRA )
       {
-      warningNeeded = 1;
+      nonTetraWarningNeeded = 1;
       continue;
       }
       
@@ -631,7 +632,7 @@ void  vtkUnstructuredGridBunykRayCastFunction::UpdateTriangleList()
         {
         if ( triPtr->ReferredByTetra[1] != -1 )
           {
-          vtkErrorMacro("Degenerate topology - cell face used more than twice");
+          faceUsed3TimesWarning = 1;
           }
         triPtr->ReferredByTetra[1] = i;
         this->TetraTriangles[i*4+jj] = triPtr;
@@ -652,9 +653,13 @@ void  vtkUnstructuredGridBunykRayCastFunction::UpdateTriangleList()
       }
     }
     
-  if ( warningNeeded )
+  if ( nonTetraWarningNeeded )
     {
     vtkWarningMacro("Input contains more than tetrahedra - only tetrahedra are supported");
+    }
+  if ( faceUsed3TimesWarning )
+    {
+    vtkWarningMacro("Degenerate topology - cell face used more than twice");
     }
   
   // Put the list together
