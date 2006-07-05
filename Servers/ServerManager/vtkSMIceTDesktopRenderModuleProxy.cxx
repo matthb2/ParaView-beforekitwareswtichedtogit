@@ -331,6 +331,8 @@ void vtkSMIceTDesktopRenderModuleProxy::InitializeCompositingPipeline()
     
   for (i = 0; i < this->PKdTreeProxy->GetNumberOfIDs(); i++)
     {
+    vtkClientServerStream cmd;
+
     stream << vtkClientServerStream::Invoke
            << pm->GetProcessModuleID() << "GetController"
            << vtkClientServerStream::End;
@@ -348,6 +350,21 @@ void vtkSMIceTDesktopRenderModuleProxy::InitializeCompositingPipeline()
            << this->PKdTreeProxy->GetID(i) << "SetNumberOfRegionsOrMore"
            << vtkClientServerStream::LastResult
            << vtkClientServerStream::End;
+
+    // Set up logging for building kd-tree.
+    cmd << vtkClientServerStream::Invoke
+        << pm->GetProcessModuleID() << "LogStartEvent"
+        << "Build kd-tree" << vtkClientServerStream::End;
+    stream << vtkClientServerStream::Invoke
+           << this->PKdTreeProxy->GetID(i) << "AddObserver"
+           << "StartEvent" << cmd << vtkClientServerStream::End;
+    cmd.Reset();
+    cmd << vtkClientServerStream::Invoke
+        << pm->GetProcessModuleID() << "LogEndEvent"
+        << "Build kd-tree" << vtkClientServerStream::End;
+    stream << vtkClientServerStream::Invoke
+           << this->PKdTreeProxy->GetID(i) << "AddObserver"
+           << "EndEvent" << cmd << vtkClientServerStream::End;
     }
   pm->SendStream(this->ConnectionID,
     vtkProcessModule::RENDER_SERVER, stream);
