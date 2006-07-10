@@ -1068,7 +1068,7 @@ void vtkIceTRenderManager::RecordIceTImage(vtkIceTRenderer *icetRen)
       dest += (this->ReducedImageSize[0] - physicalViewport[2]);
       }
     }
-  else if (color_format == vtkgl::BGRA)
+  else if ((GLenum)color_format == vtkgl::BGRA)
     {
     this->ReducedImage->SetNumberOfComponents(4);
     this->ReducedImage->SetNumberOfTuples(  this->ReducedImageSize[0]
