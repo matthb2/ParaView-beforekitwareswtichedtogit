@@ -189,10 +189,10 @@ vtkOpenGLExtensionManager::GetProcAddress(const char *fname)
 
 
 #ifdef VTK_USE_GLX_GET_PROC_ADDRESS
-  return glXGetProcAddress((const GLubyte *)fname);
+  return (vtkOpenGLExtensionManagerFunctionPointer)glXGetProcAddress((const GLubyte *)fname);
 #endif //VTK_USE_GLX_GET_PROC_ADDRESS
 #ifdef VTK_USE_GLX_GET_PROC_ADDRESS_ARB
-  return glXGetProcAddressARB((const GLubyte *)fname);
+  return (vtkOpenGLExtensionManagerFunctionPointer)glXGetProcAddressARB((const GLubyte *)fname);
 #endif //VTK_USE_GLX_GET_PROC_ADDRESS_ARB
 
 
