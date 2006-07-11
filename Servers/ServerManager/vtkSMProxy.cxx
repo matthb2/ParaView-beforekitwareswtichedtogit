@@ -1785,6 +1785,13 @@ void vtkSMProxy::ExposeSubProxyProperty(const char* subproxy_name,
 }
 
 //---------------------------------------------------------------------------
+vtkPVXMLElement* vtkSMProxy::GetHints()
+{
+  return vtkSMProxyManager::GetProxyManager()->GetHints(
+    this->XMLGroup, this->XMLName);
+}
+
+//---------------------------------------------------------------------------
 void vtkSMProxy::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os, indent);
