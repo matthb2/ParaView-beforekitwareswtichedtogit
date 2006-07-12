@@ -214,7 +214,7 @@ int pqProcessModuleGUIHelper::InitializeApplication(int vtkNotUsed(argc),
   
 /** \todo Figure-out how to export Qt's resource symbols from a DLL, so we can use them here */
 #if !(defined(WIN32) && defined(PARAVIEW_BUILD_SHARED_LIBS))
-  Q_INIT_RESOURCE(pqWidgets);
+  //Q_INIT_RESOURCE(pqWidgets);
 #endif
   this->Implementation->Window = this->CreateMainWindow();
 
