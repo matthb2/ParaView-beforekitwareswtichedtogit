@@ -643,7 +643,7 @@ double  vtkAmoebaMinimizer::TryAmoeba(double  sum[],
 @INPUT      : 
 @OUTPUT     : 
           
-ZRETURNS    : true if numerically significant improvement
+@RETURNS    : true if numerically significant improvement
 @DESCRIPTION: Performs one iteration of an amoeba, returning true if a
               numerically significant improvement has been found recently.
               Even if it returns 0, you can keep calling this function,
