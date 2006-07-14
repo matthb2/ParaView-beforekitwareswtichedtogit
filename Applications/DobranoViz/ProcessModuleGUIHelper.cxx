@@ -65,8 +65,8 @@ void ProcessModuleGUIHelper::PrintSelf(ostream& os, vtkIndent indent)
 }
 
 //-----------------------------------------------------------------------------
-bool ProcessModuleGUIHelper::compareView(const QString& ReferenceImage,
-  double Threshold, ostream& Output, const QString& TempDirectory)
+bool ProcessModuleGUIHelper::compareView(const QString& /*ReferenceImage*/,
+  double /*Threshold*/, ostream& /*Output*/, const QString& /*TempDirectory*/)
 {
   return false;
 }
