@@ -120,11 +120,13 @@ int pqPendingDisplayUndoElement::InternalUndoRedo(bool undo)
 
   if ((state && undo) || (!state && !undo))
     {
-    core->removeSourcePendingDisplay(smModel->getPQSource(proxy));
+    // CJS TODO
+    //this->removeSourcePendingDisplay(smModel->getPQSource(proxy));
     }
   else
     {
-    core->addSourcePendingDisplay(smModel->getPQSource(proxy));
+    // CJS TODO
+    //emit this->addSourcePendingDisplay(smModel->getPQSource(proxy));
     }
   proxy->Delete();
   return 1;
