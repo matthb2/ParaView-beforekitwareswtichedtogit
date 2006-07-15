@@ -72,7 +72,6 @@ vtkLogoRepresentation::vtkLogoRepresentation()
   this->TextureMapper->SetInput(this->TexturePolyData);
   this->TextureActor = vtkActor2D::New();
   this->TextureActor->SetMapper(this->TextureMapper);
-  this->ImageProperty = vtkProperty2D::New();
   this->ImageProperty->SetOpacity(0.25);
   this->TextureActor->SetProperty(this->ImageProperty);
 
