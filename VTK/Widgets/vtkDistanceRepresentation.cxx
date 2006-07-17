@@ -165,4 +165,5 @@ void vtkDistanceRepresentation::PrintSelf(ostream& os, vtkIndent indent)
   
   os << indent << "Distance: " << this->GetDistance() <<"\n";
   os << indent << "Tolerance: " << this->Tolerance <<"\n";
+  os << indent << "Handle Representation: " << this->HandleRepresentation << "\n";
 }
