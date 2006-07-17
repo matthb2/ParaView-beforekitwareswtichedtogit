@@ -110,6 +110,12 @@ void vtkPointHandleRepresentation3D::PlaceWidget(double bds[6])
 }
 
 //-------------------------------------------------------------------------
+double* vtkPointHandleRepresentation3D::GetBounds()
+{
+  return this->Cursor3D->GetModelBounds();
+}
+
+//-------------------------------------------------------------------------
 void vtkPointHandleRepresentation3D::SetWorldPosition(double p[3])
 {
   this->Cursor3D->SetFocalPoint(p); //this may clamp the point

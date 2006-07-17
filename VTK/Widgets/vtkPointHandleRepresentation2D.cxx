@@ -125,6 +125,13 @@ vtkPolyData *vtkPointHandleRepresentation2D::GetCursorShape()
 }
 
 //-------------------------------------------------------------------------
+double* vtkPointHandleRepresentation2D::GetBounds()
+{
+  this->Glypher->Update();
+  return this->Glypher->GetOutput()->GetBounds();
+}
+
+//-------------------------------------------------------------------------
 void vtkPointHandleRepresentation2D::SetDisplayPosition(double p[3])
 {
   this->Superclass::SetDisplayPosition(p);
