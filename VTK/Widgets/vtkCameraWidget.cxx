@@ -62,6 +62,8 @@ void vtkCameraWidget::SelectRegion(double eventPos[2])
     {
     reinterpret_cast<vtkCameraRepresentation*>(this->WidgetRep)->InitializePath();
     }
+  
+  this->Superclass::SelectRegion(eventPos);
 }
 
 //-------------------------------------------------------------------------
