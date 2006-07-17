@@ -75,7 +75,7 @@ int vtkEvent::operator==(vtkEvent *e)
     return 0;
     }
   if ( this->KeySym != NULL && e->KeySym != NULL && 
-       !strcmp(this->KeySym,e->KeySym) )
+       strcmp(this->KeySym,e->KeySym) )
     {
     return 0;
     }
