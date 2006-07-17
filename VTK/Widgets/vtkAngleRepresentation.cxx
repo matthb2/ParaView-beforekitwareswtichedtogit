@@ -194,4 +194,6 @@ void vtkAngleRepresentation::PrintSelf(ostream& os, vtkIndent indent)
   os << indent << "Ray1 Visibility: " << (this->Ray1Visibility ? "On\n" : "Off\n");
   os << indent << "Ray2 Visibility: " << (this->Ray2Visibility ? "On\n" : "Off\n");
   os << indent << "Arc Visibility: " << (this->ArcVisibility ? "On\n" : "Off\n");
+  os << indent << "Handle Representation: " << this->HandleRepresentation << "\n";
+
 }
