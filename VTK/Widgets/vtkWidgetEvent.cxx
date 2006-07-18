@@ -36,6 +36,11 @@ static const char *vtkWidgetEventStrings[] = {
   "AddFinalPoint",
   "Completed",
   "TimedOut",
+  "PaintbrushDrawBegin",
+  "PaintbrushEraseBegin",
+  "PaintbrushSequenceEnd",
+  "Undo",
+  "Redo",
   NULL
 };
 
