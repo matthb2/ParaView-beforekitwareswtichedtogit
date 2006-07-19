@@ -33,12 +33,12 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #define __pq3DViewPropertiesWidget_h
 
 #include<QWidget>
-#include "pqWidgetsExport.h"
+#include "pqComponentsExport.h"
 
 class pq3DViewPropertiesWidgetInternal;
 class vtkSMProxy;
 
-class PQWIDGETS_EXPORT pq3DViewPropertiesWidget : public QWidget
+class PQCOMPONENTS_EXPORT pq3DViewPropertiesWidget : public QWidget
 {
   Q_OBJECT
 public:

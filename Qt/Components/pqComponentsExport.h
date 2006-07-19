@@ -1,6 +1,6 @@
 /*=========================================================================
 
-   Program: ParaView
+   Program:   ParaView
    Module:    $RCSfile$
 
    Copyright (c) 2005,2006 Sandia Corporation, Kitware Inc.
@@ -29,41 +29,18 @@ NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 =========================================================================*/
-#ifndef __pqPipelineModelSelectionAdaptor_h
-#define __pqPipelineModelSelectionAdaptor_h
 
-#include "pqSelectionAdaptor.h"
+#ifndef _pqComponentsExport_h
+#define _pqComponentsExport_h
 
-
-// pqPipelineModelSelectionAdaptor is an adaptor that connects a
-// QItemSelectionModel for a pqPipelineModel to a 
-// pqServerManagerSelectionModel. When the selection in the QItemSelectionModel
-// changes, the pqServerManagerSelectionModel will be updated and vice versa.
-// Every model implemented on top of pqServerManagerModel that should
-// participate in synchronized selections would typically define such 
-// an adaptor.
-class PQCOMPONENTS_EXPORT pqPipelineModelSelectionAdaptor : 
-  public pqSelectionAdaptor
-{
-  Q_OBJECT
-
-public:
-  pqPipelineModelSelectionAdaptor(QItemSelectionModel* pipelineSelectionModel,
-    pqServerManagerSelectionModel* smSelectionModel, QObject* parent=0);
-  virtual ~pqPipelineModelSelectionAdaptor();
-
-protected:
-  // Maps a pqServerManagerModelItem to an index in the QAbstractItemModel.
-  // Subclass must implement this method.
-  QModelIndex mapFromSMModel( pqServerManagerModelItem* item) const;
-
-  // Maps a QModelIndex to a pqServerManagerModelItem.
-  // Subclass must implement this method.
-  virtual pqServerManagerModelItem* mapToSMModel(
-    const QModelIndex& index) const;
-
-};
-
-
+#if defined(WIN32) && defined(PARAVIEW_BUILD_SHARED_LIBS)
+# if defined(pqComponents_EXPORTS)
+#   define PQCOMPONENTS_EXPORT __declspec(dllexport)
+# else
+#   define PQCOMPONENTS_EXPORT __declspec(dllimport)
+# endif
+#else
+# define PQCOMPONENTS_EXPORT
 #endif
 
+#endif // !_pqWidgetsExport_h
