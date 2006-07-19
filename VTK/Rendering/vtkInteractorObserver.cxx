@@ -319,7 +319,12 @@ int vtkInteractorObserver::RequestCursorShape(int requestedShape)
     {
     this->ObserverMediator = this->Interactor->GetObserverMediator();
     }
-  return this->ObserverMediator->RequestCursorShape(this,requestedShape);
+  int status = this->ObserverMediator->RequestCursorShape(this,requestedShape);
+  if ( status )
+    {
+    this->InvokeEvent(vtkCommand::CursorChangedEvent,NULL);
+    }
+  return status;
 }
 
 //----------------------------------------------------------------------------
