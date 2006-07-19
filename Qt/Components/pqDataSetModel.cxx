@@ -1,0 +1,132 @@
+/*=========================================================================
+
+   Program: ParaView
+   Module:    $RCSfile$
+
+   Copyright (c) 2005,2006 Sandia Corporation, Kitware Inc.
+   All rights reserved.
+
+   ParaView is a free software; you can redistribute it and/or modify it
+   under the terms of the ParaView license version 1.1. 
+
+   See License_v1.1.txt for the full ParaView license.
+   A copy of this license can be obtained by contacting
+   Kitware Inc.
+   28 Corporate Drive
+   Clifton Park, NY 12065
+   USA
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+``AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE AUTHORS OR
+CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
+LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+=========================================================================*/
+
+#include "pqDataSetModel.h"
+
+#include <vtkDataSet.h>
+#include <vtkDataArray.h>
+#include <vtkCellData.h>
+
+pqDataSetModel::pqDataSetModel(QObject* p)
+  : QAbstractTableModel(p), DataSet(0)
+{
+}
+
+pqDataSetModel::~pqDataSetModel()
+{
+  if(this->DataSet)
+    {
+    this->DataSet->UnRegister(NULL);
+    }
+}
+
+
+int pqDataSetModel::rowCount(const QModelIndex&) const
+{
+  if(!this->DataSet)
+    {
+    return 0;
+    }
+  return this->DataSet->GetNumberOfCells();
+}
+
+int pqDataSetModel::columnCount(const QModelIndex&) const
+{
+  if(!this->DataSet)
+    {
+    return 0;
+    }
+
+  return this->DataSet->GetCellData()->GetNumberOfArrays();
+}
+
+QVariant pqDataSetModel::data(const QModelIndex& idx, int role) const
+{
+  if(!idx.isValid() || !this->DataSet)
+    {
+    return QVariant();
+    }
+
+  vtkDataArray* array = this->DataSet->GetCellData()->GetArray(idx.column());
+
+  if(role == Qt::DisplayRole)
+    {
+    return array->GetTuple1(idx.row());
+    }
+  
+  return QVariant();
+}
+
+QVariant pqDataSetModel::headerData(int section, Qt::Orientation orientation, int role) const
+{
+  if(this->DataSet && orientation == Qt::Horizontal)
+    {
+    if(role == Qt::DisplayRole)
+      {
+      vtkDataArray* array = this->DataSet->GetCellData()->GetArray(section);
+      return array->GetName();
+      }
+    }
+
+  return QVariant();
+}
+
+
+void pqDataSetModel::setDataSet(vtkDataSet* ds)
+{
+  if(ds == this->DataSet)
+    {
+    return;
+    }
+
+  if(this->DataSet)
+    {
+    this->DataSet->UnRegister(NULL);
+    }
+
+  this->DataSet = ds;
+
+  if(this->DataSet)
+    {
+    this->DataSet->Register(NULL);
+    }
+  
+  // Tell the view that we changed.
+  this->reset();
+}
+
+vtkDataSet* pqDataSetModel::dataSet() const
+{
+  return this->DataSet;
+}
+
+
