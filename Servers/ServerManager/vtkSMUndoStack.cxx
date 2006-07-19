@@ -283,7 +283,8 @@ void vtkSMUndoStack::Push(vtkIdType cid, const char* label, vtkUndoSet* set)
     }
   
   vtkPVXMLElement* state = set->SaveState(NULL);
-  // state->PrintXML();
+  //if (!this->ClientOnly)
+  //   state->PrintXML();
   if (this->ClientOnly)
     {
     vtkSMUndoStackUndoSet* elem = vtkSMUndoStackUndoSet::New();
