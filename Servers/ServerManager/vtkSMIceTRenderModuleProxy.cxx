@@ -179,8 +179,9 @@ void vtkSMIceTRenderModuleProxy::ChooseSuppressGeometryCollection()
 {
   int decision = this->GetSuppressGeometryCollectionDecision();
 
-  this->Displays->InitTraversal();
-  while (vtkObject *obj = this->Displays->GetNextItemAsObject())
+  vtkCollection* displays = this->GetDisplays();
+  displays->InitTraversal();
+  while (vtkObject *obj = displays->GetNextItemAsObject())
     {
     vtkSMIceTMultiDisplayProxy *pDisp
       = vtkSMIceTMultiDisplayProxy::SafeDownCast(obj);
