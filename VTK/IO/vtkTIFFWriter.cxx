@@ -227,7 +227,7 @@ void vtkTIFFWriter::WriteFile(ofstream *, vtkImageData *data,
   TIFF* tif = reinterpret_cast<TIFF*>(this->TIFFPtr);
   if ( !tif )
     {
-    vtkErrorMacro("Problem writting trailer.");
+    vtkErrorMacro("Problem writing trailer.");
     this->SetErrorCode(vtkErrorCode::FileFormatError);
     return;
     }
