@@ -92,8 +92,6 @@ void pqPendingDisplayUndoElement::LoadStateInternal(vtkPVXMLElement* element)
 //-----------------------------------------------------------------------------
 int pqPendingDisplayUndoElement::InternalUndoRedo(bool undo)
 {
-  pqApplicationCore* core = pqApplicationCore::instance();
-  pqServerManagerModel* smModel = core->getServerManagerModel();
 
   vtkPVXMLElement* element = this->XMLElement;
   int state = 0;
@@ -118,6 +116,8 @@ int pqPendingDisplayUndoElement::InternalUndoRedo(bool undo)
     return 0;
     }
 
+  //pqApplicationCore* core = pqApplicationCore::instance();
+  //pqServerManagerModel* smModel = core->getServerManagerModel();
   if ((state && undo) || (!state && !undo))
     {
     // CJS TODO
