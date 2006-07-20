@@ -521,7 +521,7 @@ void vtkSMIceTDesktopRenderModuleProxy::SetOrderedCompositing(int flag)
 }
 
 //-----------------------------------------------------------------------------
-void vtkSMIceTDesktopRenderModuleProxy::AddDisplay(vtkSMDisplayProxy *disp)
+void vtkSMIceTDesktopRenderModuleProxy::AddDisplay(vtkSMAbstractDisplayProxy *disp)
 {
   this->Superclass::AddDisplay(disp);
 

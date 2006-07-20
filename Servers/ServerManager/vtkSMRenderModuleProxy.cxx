@@ -523,8 +523,9 @@ void vtkSMRenderModuleProxy::PerformRender()
 }
 
 //-----------------------------------------------------------------------------
-void vtkSMRenderModuleProxy::AddDisplay(vtkSMDisplayProxy* disp)
+void vtkSMRenderModuleProxy::AddDisplay(vtkSMAbstractDisplayProxy* adisp)
 {
+  vtkSMDisplayProxy* disp = vtkSMDisplayProxy::SafeDownCast(adisp);
   if (!disp)
     {
     return;
@@ -558,8 +559,9 @@ void vtkSMRenderModuleProxy::AddDisplay(vtkSMDisplayProxy* disp)
 }
 
 //-----------------------------------------------------------------------------
-void vtkSMRenderModuleProxy::RemoveDisplay(vtkSMDisplayProxy* disp)
+void vtkSMRenderModuleProxy::RemoveDisplay(vtkSMAbstractDisplayProxy* adisp)
 {
+  vtkSMDisplayProxy* disp = vtkSMDisplayProxy::SafeDownCast(adisp);
   if (!disp)
     {
     return;

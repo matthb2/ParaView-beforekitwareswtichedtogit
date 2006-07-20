@@ -114,7 +114,7 @@ void vtkSMMultiViewRenderModuleProxy::CreateVTKObjects(int numObjects)
 }
 
 //----------------------------------------------------------------------------
-vtkSMDisplayProxy* vtkSMMultiViewRenderModuleProxy::CreateDisplayProxy()
+vtkSMAbstractDisplayProxy* vtkSMMultiViewRenderModuleProxy::CreateDisplayProxy()
 {
   if (!this->RenderModuleName)
     {
@@ -136,7 +136,7 @@ vtkSMDisplayProxy* vtkSMMultiViewRenderModuleProxy::CreateDisplayProxy()
   vtkSMProxy* renderModule = this->GetProxyManager()->NewProxy(
     "rendermodules", this->RenderModuleName); 
   
-  vtkSMDisplayProxy* display = 0;
+  vtkSMAbstractDisplayProxy* display = 0;
   if (renderModule && vtkSMRenderModuleProxy::SafeDownCast(renderModule))
     {
     display = vtkSMRenderModuleProxy::SafeDownCast(renderModule)->CreateDisplayProxy();
