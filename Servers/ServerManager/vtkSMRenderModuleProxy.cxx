@@ -1256,4 +1256,12 @@ void vtkSMRenderModuleProxy::PrintSelf(ostream& os, vtkIndent indent)
   os << indent << "RenderWindow: " << this->RenderWindow << endl;
   os << indent << "Interactor: " << this->Interactor << endl;
   os << indent << "ActiveCamera: " << this->ActiveCamera << endl;
+  os << indent << "MeasurePolygonsPerSecond: " 
+    << this->MeasurePolygonsPerSecond << endl;
+  os << indent << "AveragePolygonsPerSecond: " 
+    << this->AveragePolygonsPerSecond << endl;
+  os << indent << "MaximumPolygonsPerSecond: " 
+    << this->MaximumPolygonsPerSecond << endl;
+  os << indent << "LastPolygonsPerSecond: " 
+    << this->LastPolygonsPerSecond << endl;
 }
