@@ -222,6 +222,8 @@ void pqProcessModuleGUIHelper::FinalizeApplication()
 {
   delete this->Implementation->Window;
   this->Implementation->Window = 0;
+  delete this->Implementation->ApplicationCore;
+  this->Implementation->ApplicationCore = 0;
 }
 
 //-----------------------------------------------------------------------------
