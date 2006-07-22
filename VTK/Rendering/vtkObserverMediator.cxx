@@ -130,9 +130,14 @@ int vtkObserverMediator::RequestCursorShape(vtkInteractorObserver *w, int reques
       {
       iter = this->ObserverMap->end();
       --iter; //this is the observer with the highest priority
+      // Have to set the current cursor repeatedly or it reverts back to default
+      // (at least on windows it does).
       this->Interactor->GetRenderWindow()->SetCurrentCursor((*iter).second);
-      this->CurrentCursorShape = (*iter).second;
-      return 1;
+      if ( this->CurrentCursorShape != (*iter).second )
+        {
+        this->CurrentCursorShape = (*iter).second;
+        return 1;
+        }
       }
     }
   
