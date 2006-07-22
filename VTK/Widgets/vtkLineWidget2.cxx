@@ -262,6 +262,7 @@ void vtkLineWidget2::MoveAction(vtkAbstractWidget *w)
       else //if ( state == vtkLineRepresentation::OnLine )
         {
         self->LineHandle->SetEnabled(1);
+        changed = 1; //movement along the line always needs render
         }
       }
     self->Interactor->Enable(); //avoid extra renders
