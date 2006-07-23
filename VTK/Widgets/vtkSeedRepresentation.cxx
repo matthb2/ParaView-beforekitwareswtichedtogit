@@ -120,6 +120,11 @@ void vtkSeedRepresentation::GetSeedDisplayPosition(unsigned int seedNum, double 
   rep->GetDisplayPosition(pos);
 }
 
+//----------------------------------------------------------------------
+int vtkSeedRepresentation::GetNumberOfSeeds()
+{
+  return this->Handles->size();
+}
 
 //----------------------------------------------------------------------
 int vtkSeedRepresentation::ComputeInteractionState(int X, int Y, int vtkNotUsed(modify))
@@ -194,4 +199,5 @@ void vtkSeedRepresentation::PrintSelf(ostream& os, vtkIndent indent)
   this->Superclass::PrintSelf(os,indent);
 
   os << indent << "Tolerance: " << this->Tolerance <<"\n";
+  os << indent << "Number of Seeds: " << this->GetNumberOfSeeds() <<"\n";
 }
