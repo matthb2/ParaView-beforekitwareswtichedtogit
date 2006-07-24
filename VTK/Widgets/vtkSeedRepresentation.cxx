@@ -159,6 +159,12 @@ int vtkSeedRepresentation::ComputeInteractionState(int X, int Y, int vtkNotUsed(
 }
 
 //----------------------------------------------------------------------
+int vtkSeedRepresentation::GetActiveHandle()
+{
+  return this->ActiveHandle;
+}
+
+//----------------------------------------------------------------------
 int vtkSeedRepresentation::CreateHandle(double e[2])
 {
   double pos[3];
@@ -174,9 +180,16 @@ int vtkSeedRepresentation::CreateHandle(double e[2])
 }
 
 //----------------------------------------------------------------------
-int vtkSeedRepresentation::GetActiveHandle()
+void vtkSeedRepresentation::RemoveLastHandle()
 {
-  return this->ActiveHandle;
+  if ( this->Handles->size() < 1 )
+    {
+    return;
+    }
+  
+  // Delete last handle
+  (*this->Handles)[this->Handles->size()-1]->Delete();
+  this->Handles->pop_back();
 }
 
 //----------------------------------------------------------------------
