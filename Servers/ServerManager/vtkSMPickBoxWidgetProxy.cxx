@@ -66,7 +66,11 @@ void vtkSMPickBoxWidgetProxy::UpdateVTKObjects()
   for(cc=0;cc < numObjects; cc++)
     {
     str << vtkClientServerStream::Invoke << this->GetID(cc)
-      << "SetMouseControlToggle" << this->MouseControlToggle << vtkClientServerStream::End;
+      << "SetTranslationEnabled" << this->MouseControlToggle << vtkClientServerStream::End;
+    str << vtkClientServerStream::Invoke << this->GetID(cc)
+      << "SetRotationEnabled" << this->MouseControlToggle << vtkClientServerStream::End;
+    str << vtkClientServerStream::Invoke << this->GetID(cc)
+      << "SetScalingEnabled" << this->MouseControlToggle << vtkClientServerStream::End;
     }
   if (str.GetNumberOfMessages() > 0)
     {
