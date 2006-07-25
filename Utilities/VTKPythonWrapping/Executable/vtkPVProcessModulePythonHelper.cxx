@@ -109,6 +109,12 @@ int vtkPVProcessModulePythonHelper::RunGUIStart(int argc, char **argv, int numSe
     PyList_Insert(path, 0, newpath);
     Py_DECREF(newpath);
     }
+  if (vtksys::SystemTools::FileExists(PV_PYTHON_PACKAGE_DIR))
+    {
+    newpath = PyString_FromString(PV_PYTHON_PACKAGE_DIR);
+    PyList_Insert(path, 0, newpath);
+    Py_DECREF(newpath);
+    }
 
   // Ok, all done, now enter python main.
   vtkstd::vector<char*> vArg;
