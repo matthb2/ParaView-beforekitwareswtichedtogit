@@ -33,8 +33,8 @@ vtkSMProxyIterator::vtkSMProxyIterator()
   this->Internals = new vtkSMProxyIteratorInternals;
 
   this->Mode = vtkSMProxyIterator::ALL;
-  this->Begin();
   this->ConnectionID = 0;
+  this->Begin();
 }
 
 //---------------------------------------------------------------------------
