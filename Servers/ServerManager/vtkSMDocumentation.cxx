@@ -67,7 +67,12 @@ const char* vtkSMDocumentation::GetDescription()
 void vtkSMDocumentation::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os, indent);
-  os << indent << "DocumentationElement: " 
-    << this->DocumentationElement << endl;
-
+  os << indent << "DocumentationElement: " << this->DocumentationElement 
+    << endl;
+  const char* long_help = this->GetLongHelp();
+  const char* short_help = this->GetShortHelp();
+  const char* text = this->GetDescription();
+  os << indent << "Long Help: " << (long_help? long_help : "(none)") << endl;
+  os << indent << "Short Help: " << (short_help? short_help: "(none)") << endl;
+  os << indent << "Description: " << (text? text: "(none)") << endl;
 }
