@@ -525,7 +525,7 @@ void vtkSMProperty::PrintSelf(ostream& os, vtkIndent indent)
   os << indent << "InformationProperty: " << this->InformationProperty << endl;
   os << indent << "Animateable: " << this->Animateable << endl;
   os << indent << "Internal: " << this->IsInternal << endl;
-  os << Internal << "Documentation: " << this->Documentation << endl;
+  os << indent << "Documentation: " << this->Documentation << endl;
 
   vtkSMSubPropertyIterator* iter = vtkSMSubPropertyIterator::New();
   iter->SetProperty(this);
