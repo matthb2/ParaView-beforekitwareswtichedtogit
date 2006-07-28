@@ -14,7 +14,7 @@
 =========================================================================*/
 #include "vtkSelectionNode.h"
 
-#include "vtkDataArray.h"
+#include "vtkAbstractArray.h"
 #include "vtkInformation.h"
 #include "vtkInformationIntegerKey.h"
 #include "vtkInformationIterator.h"
@@ -28,7 +28,7 @@
 vtkCxxRevisionMacro(vtkSelectionNode, "$Revision$");
 vtkStandardNewMacro(vtkSelectionNode);
 
-vtkCxxSetObjectMacro(vtkSelectionNode, SelectionList, vtkDataArray);
+vtkCxxSetObjectMacro(vtkSelectionNode, SelectionList, vtkAbstractArray);
 
 vtkInformationKeyMacro(vtkSelectionNode,CONTENT_TYPE,Integer);
 vtkInformationKeyMacro(vtkSelectionNode,SOURCE,ObjectBase);
