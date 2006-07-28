@@ -43,6 +43,9 @@ vtkPVSelectionInformation::~vtkPVSelectionInformation()
 void vtkPVSelectionInformation::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os,indent);
+
+  os << indent << "Selection: ";
+  this->Selection->PrintSelf(os, indent.GetNextIndent());
 }
 
 //----------------------------------------------------------------------------
