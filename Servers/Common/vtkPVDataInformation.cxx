@@ -785,7 +785,7 @@ int vtkPVDataInformation::DataSetTypeIsA(const char* type)
 }
 
 //----------------------------------------------------------------------------
-void vtkPVDataInformation::CopyToStream(vtkClientServerStream* css) const
+void vtkPVDataInformation::CopyToStream(vtkClientServerStream* css)
 {
   css->Reset();
   *css << vtkClientServerStream::Reply;

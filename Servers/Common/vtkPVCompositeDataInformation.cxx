@@ -206,7 +206,7 @@ void vtkPVCompositeDataInformation::AddInformation(vtkPVInformation* pvi)
 }
 //----------------------------------------------------------------------------
 void vtkPVCompositeDataInformation::CopyToStream(
-  vtkClientServerStream* css) const
+  vtkClientServerStream* css)
 {
   unsigned int i, j;
 

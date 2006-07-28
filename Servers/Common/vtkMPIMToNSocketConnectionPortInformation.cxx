@@ -128,7 +128,7 @@ void vtkMPIMToNSocketConnectionPortInformation::AddInformation(vtkPVInformation*
 
 //----------------------------------------------------------------------------
 void
-vtkMPIMToNSocketConnectionPortInformation::CopyToStream(vtkClientServerStream* css) const
+vtkMPIMToNSocketConnectionPortInformation::CopyToStream(vtkClientServerStream* css)
 {
   css->Reset();
   *css << vtkClientServerStream::Reply 

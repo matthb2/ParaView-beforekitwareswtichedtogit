@@ -49,7 +49,7 @@ void vtkPVClientServerIdCollectionInformation::
 {
   this->Superclass::PrintSelf(os,indent);
 
-  cerr << indent << "Ids: ";
+  os << indent << "Ids: ";
   vtkstd::set<vtkClientServerID>::const_iterator IdIter;
   for (IdIter = this->ClientServerIds->begin();
        IdIter != this->ClientServerIds->end();
@@ -104,7 +104,7 @@ void vtkPVClientServerIdCollectionInformation
 
 //----------------------------------------------------------------------------
 void vtkPVClientServerIdCollectionInformation
-  ::CopyToStream(vtkClientServerStream* css) const
+  ::CopyToStream(vtkClientServerStream* css)
 {
   css->Reset();
 

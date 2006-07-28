@@ -366,7 +366,7 @@ void vtkPVArrayInformation::AddInformation(vtkPVInformation* info)
 }
 
 //----------------------------------------------------------------------------
-void vtkPVArrayInformation::CopyToStream(vtkClientServerStream* css) const
+void vtkPVArrayInformation::CopyToStream(vtkClientServerStream* css)
 {
   css->Reset();
   *css << vtkClientServerStream::Reply;

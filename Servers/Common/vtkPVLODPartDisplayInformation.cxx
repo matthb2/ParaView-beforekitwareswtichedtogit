@@ -84,7 +84,7 @@ void vtkPVLODPartDisplayInformation::AddInformation(vtkPVInformation* info)
 
 //----------------------------------------------------------------------------
 void
-vtkPVLODPartDisplayInformation::CopyToStream(vtkClientServerStream* css) const
+vtkPVLODPartDisplayInformation::CopyToStream(vtkClientServerStream* css)
 {
   css->Reset();
   *css << vtkClientServerStream::Reply;

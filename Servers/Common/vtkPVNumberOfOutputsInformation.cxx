@@ -82,7 +82,7 @@ void vtkPVNumberOfOutputsInformation::AddInformation(vtkPVInformation* info)
 
 //----------------------------------------------------------------------------
 void
-vtkPVNumberOfOutputsInformation::CopyToStream(vtkClientServerStream* css) const
+vtkPVNumberOfOutputsInformation::CopyToStream(vtkClientServerStream* css)
 {
   css->Reset();
   *css << vtkClientServerStream::Reply << this->NumberOfOutputs

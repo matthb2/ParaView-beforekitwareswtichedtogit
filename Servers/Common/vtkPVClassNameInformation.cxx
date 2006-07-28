@@ -64,7 +64,7 @@ void vtkPVClassNameInformation::AddInformation(vtkPVInformation* info)
 
 //----------------------------------------------------------------------------
 void
-vtkPVClassNameInformation::CopyToStream(vtkClientServerStream* css) const
+vtkPVClassNameInformation::CopyToStream(vtkClientServerStream* css)
 {
   css->Reset();
   *css << vtkClientServerStream::Reply << this->VTKClassName
