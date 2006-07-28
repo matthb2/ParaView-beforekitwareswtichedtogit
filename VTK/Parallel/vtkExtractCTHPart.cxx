@@ -2119,6 +2119,13 @@ void vtkExtractCTHPart::PrintSelf(ostream& os, vtkIndent indent)
     {
     os << i2 << it->c_str() << endl;
     }
+  os << indent << "OverwriteVolumeFractionSurfaceValue: "
+    << this->OverwriteVolumeFractionSurfaceValue << endl;
+  if (this->OverwriteVolumeFractionSurfaceValue)
+    {
+    os << indent << "VolumeFractionSurfaceValue: "
+      << this->VolumeFractionSurfaceValue << endl;
+    }
   if (this->ClipPlane)
     {
     os << indent << "ClipPlane:\n";
