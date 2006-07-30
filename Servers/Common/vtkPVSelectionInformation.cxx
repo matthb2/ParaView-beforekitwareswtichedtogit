@@ -88,8 +88,6 @@ void vtkPVSelectionInformation::AddInformation(vtkPVInformation* info)
 //----------------------------------------------------------------------------
 void vtkPVSelectionInformation::CopyToStream(vtkClientServerStream* css)
 {
-  int hasSelection;
-
   css->Reset();
   *css << vtkClientServerStream::Reply;
 
