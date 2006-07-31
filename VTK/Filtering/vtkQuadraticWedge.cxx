@@ -24,6 +24,7 @@
 #include "vtkQuadraticEdge.h"
 #include "vtkQuadraticQuad.h"
 #include "vtkQuadraticTriangle.h"
+#include "vtkPoints.h"
 
 vtkCxxRevisionMacro(vtkQuadraticWedge, "$Revision$");
 vtkStandardNewMacro(vtkQuadraticWedge);

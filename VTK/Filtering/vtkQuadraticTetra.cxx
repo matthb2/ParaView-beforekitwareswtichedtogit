@@ -20,6 +20,7 @@
 #include "vtkQuadraticTriangle.h"
 #include "vtkTetra.h"
 #include "vtkDoubleArray.h"
+#include "vtkPoints.h"
 
 vtkCxxRevisionMacro(vtkQuadraticTetra, "$Revision$");
 vtkStandardNewMacro(vtkQuadraticTetra);

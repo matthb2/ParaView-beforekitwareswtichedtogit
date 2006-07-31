@@ -18,6 +18,7 @@
 #include "vtkMath.h"
 #include "vtkLine.h"
 #include "vtkDoubleArray.h"
+#include "vtkPoints.h"
 
 vtkCxxRevisionMacro(vtkQuadraticEdge, "$Revision$");
 vtkStandardNewMacro(vtkQuadraticEdge);

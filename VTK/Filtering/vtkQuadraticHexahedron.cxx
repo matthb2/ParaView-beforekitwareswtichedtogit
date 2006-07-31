@@ -22,6 +22,7 @@
 #include "vtkPointData.h"
 #include "vtkQuadraticEdge.h"
 #include "vtkQuadraticQuad.h"
+#include "vtkPoints.h"
 
 vtkCxxRevisionMacro(vtkQuadraticHexahedron, "$Revision$");
 vtkStandardNewMacro(vtkQuadraticHexahedron);

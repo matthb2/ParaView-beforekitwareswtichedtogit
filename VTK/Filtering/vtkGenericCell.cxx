@@ -15,6 +15,7 @@
 #include "vtkGenericCell.h"
 
 #include "vtkObjectFactory.h"
+#include "vtkPoints.h"
 #include "vtkEmptyCell.h"
 #include "vtkVertex.h"
 #include "vtkPolyVertex.h"
