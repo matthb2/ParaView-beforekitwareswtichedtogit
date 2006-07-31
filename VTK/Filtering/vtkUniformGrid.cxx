@@ -65,7 +65,7 @@ void vtkUniformGrid::CopyStructure(vtkDataSet *ds)
 
   this->Superclass::CopyStructure(ds);
 
-  vtkUniformGrid *sPts=vtkUniformGrid::SafeDownCast(ds);
+  vtkUniformGrid *sPts = vtkUniformGrid::SafeDownCast(ds);
   if (!sPts)
     {
     return;
