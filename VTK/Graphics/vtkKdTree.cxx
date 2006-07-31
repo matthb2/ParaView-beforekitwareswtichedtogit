@@ -784,7 +784,7 @@ void vtkKdTree::BuildLocator()
     }
   else
     {
-    // cell centers - basis of spacial decomposition
+    // cell centers - basis of spatial decomposition
   
     TIMER("Create centroid list");
   
