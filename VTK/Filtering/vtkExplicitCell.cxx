@@ -21,16 +21,18 @@
 vtkCxxRevisionMacro(vtkExplicitCell, "$Revision$");
 vtkCxxSetObjectMacro(vtkExplicitCell,DataSet,vtkDataSet);
 
+//----------------------------------------------------------------------------
 vtkExplicitCell::vtkExplicitCell()
 {
   this->CellId = -1;
   this->DataSet = NULL;
 }
 
+//----------------------------------------------------------------------------
 void vtkExplicitCell::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os,indent);
-  
+
   os << indent << "Cell Id: " << this->CellId << "\n";
   os << indent << "Data Set: " << this->DataSet << "\n";
 }
