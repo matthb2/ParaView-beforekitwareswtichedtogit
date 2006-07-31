@@ -358,6 +358,12 @@ static LINE_CASES lineCases[] = {
 static int edges[3][2] = { {0,1}, {1,2}, {2,0} };
 
 //----------------------------------------------------------------------------
+int *vtkTriangle::GetEdgeArray(int edgeId)
+{
+  return edges[edgeId];
+}
+
+//----------------------------------------------------------------------------
 void vtkTriangle::Contour(double value, vtkDataArray *cellScalars, 
                           vtkPointLocator *locator,
                           vtkCellArray *verts, 

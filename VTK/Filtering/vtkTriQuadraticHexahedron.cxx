@@ -84,6 +84,17 @@ static int HexEdges[12][3] = {
 };
 
 //----------------------------------------------------------------------------
+int *vtkTriQuadraticHexahedron::GetEdgeArray(int edgeId)
+{
+  return HexEdges[edgeId];
+}
+//----------------------------------------------------------------------------
+int *vtkTriQuadraticHexahedron::GetFaceArray(int faceId)
+{
+  return HexFaces[faceId];
+}
+
+//----------------------------------------------------------------------------
 vtkCell * vtkTriQuadraticHexahedron::GetEdge (int edgeId)
 {
   edgeId = (edgeId < 0 ? 0 : (edgeId > 11 ? 11 : edgeId));
@@ -109,12 +120,6 @@ vtkCell * vtkTriQuadraticHexahedron::GetFace (int faceId)
     }
 
   return this->Face;
-}
-
-//----------------------------------------------------------------------------
-int *vtkTriQuadraticHexahedron::GetFaceArray(int faceId)
-{
-  return HexFaces[faceId];
 }
 
 //----------------------------------------------------------------------------

@@ -62,6 +62,12 @@ static int LinearQuadEdges[4][3] = { {0, 1, 4}, {1, 2,-1},
                                      {2, 3, 5}, {3, 0,-1}};
 
 //----------------------------------------------------------------------------
+int *vtkQuadraticLinearQuad::GetEdgeArray(int edgeId)
+{
+  return LinearQuadEdges[edgeId];
+}
+
+//----------------------------------------------------------------------------
 vtkCell *vtkQuadraticLinearQuad::GetEdge(int edgeId)
 {
   edgeId = (edgeId < 0 ? 0 : (edgeId > 3 ? 3 : edgeId));

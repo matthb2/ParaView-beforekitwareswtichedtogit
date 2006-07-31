@@ -401,6 +401,12 @@ static LINE_CASES lineCases[] = {
 };
 
 //----------------------------------------------------------------------------
+int *vtkQuad::GetEdgeArray(int edgeId)
+{
+  return edges[edgeId];
+}
+
+//----------------------------------------------------------------------------
 void vtkQuad::Contour(double value, vtkDataArray *cellScalars, 
                       vtkPointLocator *locator, 
                       vtkCellArray *verts, 
