@@ -39,6 +39,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "pqPipelineSource.h"
 #include "pqApplicationCore.h"
 #include "pqServerManagerModel.h"
+#include "pqPendingDisplayManager.h"
 
 vtkStandardNewMacro(pqPendingDisplayUndoElement);
 vtkCxxRevisionMacro(pqPendingDisplayUndoElement, "$Revision$");
@@ -54,7 +55,7 @@ pqPendingDisplayUndoElement::~pqPendingDisplayUndoElement()
 {
   this->SetXMLElement(0);
 }
-
+  
 //-----------------------------------------------------------------------------
 void pqPendingDisplayUndoElement::PendingDisplay(pqPipelineSource* source, 
   int state)
@@ -116,17 +117,17 @@ int pqPendingDisplayUndoElement::InternalUndoRedo(bool undo)
     return 0;
     }
 
-  //pqApplicationCore* core = pqApplicationCore::instance();
-  //pqServerManagerModel* smModel = core->getServerManagerModel();
+  pqApplicationCore* core = pqApplicationCore::instance();
+  pqServerManagerModel* smModel = core->getServerManagerModel();
   if ((state && undo) || (!state && !undo))
     {
-    // CJS TODO
-    //this->removeSourcePendingDisplay(smModel->getPQSource(proxy));
+    core->getPendingDisplayManager()->
+          removePendingDisplayForSource(smModel->getPQSource(proxy));
     }
   else
     {
-    // CJS TODO
-    //emit this->addSourcePendingDisplay(smModel->getPQSource(proxy));
+    core->getPendingDisplayManager()->
+          internalAddPendingDisplayForSource(smModel->getPQSource(proxy));
     }
   proxy->Delete();
   return 1;
