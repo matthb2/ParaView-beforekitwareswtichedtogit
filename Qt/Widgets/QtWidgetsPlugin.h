@@ -1,15 +1,15 @@
 /*=========================================================================
 
-   Program:   ParaQ
+   Program: ParaView
    Module:    $RCSfile$
 
    Copyright (c) 2005,2006 Sandia Corporation, Kitware Inc.
    All rights reserved.
 
-   ParaQ is a free software; you can redistribute it and/or modify it
-   under the terms of the ParaQ license version 1.1. 
+   ParaView is a free software; you can redistribute it and/or modify it
+   under the terms of the ParaView license version 1.1. 
 
-   See License_v1.1.txt for the full ParaQ license.
+   See License_v1.1.txt for the full ParaView license.
    A copy of this license can be obtained by contacting
    Kitware Inc.
    28 Corporate Drive
@@ -30,34 +30,45 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 =========================================================================*/
 
-#ifndef _pqPointSourceWidget_h
-#define _pqPointSourceWidget_h
+#ifndef _QtWidgetsPlugin_h
+#define _QtWidgetsPlugin_h
 
-#include "pqSMProxy.h"
+#include <QtDesigner/QDesignerCustomWidgetInterface>
+#include <QtDesigner/QDesignerCustomWidgetCollectionInterface>
+#include <QtCore/qplugin.h>
+#include <QObject>
 
-#include "pqHandleWidget.h" 
-
-class pqPropertyManager;
-
-/// Provides a complete Qt UI for working with a vtkPointSource filter
-class pqPointSourceWidget : public pqHandleWidget 
+class pqCollapsedGroupPlugin :
+  public QDesignerCustomWidgetInterface
 {
-  Q_OBJECT
-  
-public:
-  pqPointSourceWidget(QWidget* p = 0);
-  ~pqPointSourceWidget();
+  Q_INTERFACES(QDesignerCustomWidgetInterface)
 
-protected:
-  /// Subclasses can override this method to map properties to
-  /// GUI. Default implementation updates the internal datastructures
-  /// so that default implementations can be provided for 
-  /// accept/reset.
-  virtual void setControlledProperty(const char* function,
-    vtkSMProperty * controlled_property);
-private:
-  class pqImplementation;
-  pqImplementation* const Implementation;
+public:
+  QString name() const;
+  QString domXml() const;
+  QWidget* createWidget(QWidget* parent);
+  QString group() const;
+  QIcon icon() const;
+  QString includeFile() const;
+  QString toolTip() const;
+  QString whatsThis() const;
+  bool isContainer() const;
 };
 
-#endif
+class QtWidgetsPlugin :
+  public QObject,
+  public QDesignerCustomWidgetCollectionInterface
+{
+  Q_OBJECT
+  Q_INTERFACES(QDesignerCustomWidgetCollectionInterface)
+  
+public:
+  QtWidgetsPlugin(QObject* parent = 0);
+
+  QList<QDesignerCustomWidgetInterface*> customWidgets() const;
+  
+private:
+  QList<QDesignerCustomWidgetInterface*> List;
+};
+
+#endif // _QtWidgetsPlugin_h
