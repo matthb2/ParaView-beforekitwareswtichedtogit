@@ -319,6 +319,19 @@ void vtkSMAnimationCueProxy::SaveInBatchScript(ofstream* file)
 }
 
 //----------------------------------------------------------------------------
+double vtkSMAnimationCueProxy::GetAnimationTime()
+{
+  return (this->AnimationCue)? this->AnimationCue->GetAnimationTime() : 0.0;
+}
+
+//----------------------------------------------------------------------------
+double vtkSMAnimationCueProxy::GetDeltaTime()
+{
+  return (this->AnimationCue)? this->AnimationCue->GetDeltaTime() : 0.0;
+}
+
+
+//----------------------------------------------------------------------------
 void vtkSMAnimationCueProxy::SaveInBatchScript(ofstream* file,
                                                const char* proxyTclName,
                                                int doRegister)
