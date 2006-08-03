@@ -233,7 +233,7 @@ int vtkExtractCTHPart::RequestData(
 
   // get the input and output
   vtkMultiGroupDataSet *input=vtkMultiGroupDataSet::SafeDownCast(
-    inInfo->Get(vtkCompositeDataSet::COMPOSITE_DATA_SET()));
+    inInfo->Get(vtkDataObject::DATA_OBJECT()));
   
   vtkRectilinearGrid *rg=0;
   

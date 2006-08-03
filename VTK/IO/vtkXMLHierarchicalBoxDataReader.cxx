@@ -76,7 +76,7 @@ void vtkXMLHierarchicalBoxDataReader::ReadXMLData()
   vtkInformation* info = exec->GetOutputInformation(0);
 
   vtkDataObject* doOutput = 
-    info->Get(vtkCompositeDataSet::COMPOSITE_DATA_SET());
+    info->Get(vtkDataObject::DATA_OBJECT());
   vtkHierarchicalBoxDataSet* hb = 
     vtkHierarchicalBoxDataSet::SafeDownCast(doOutput);
   if (!hb)

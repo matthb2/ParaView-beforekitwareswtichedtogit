@@ -74,7 +74,7 @@ int vtkPProbeFilter::RequestData(vtkInformation *vtkNotUsed(request),
     {
     int pieceNum = outInfo->Get(vtkStreamingDemandDrivenPipeline::UPDATE_PIECE_NUMBER());
     vtkMultiGroupDataSet *tmpSource = vtkMultiGroupDataSet::SafeDownCast(
-      srcInfo->Get(vtkCompositeDataSet::COMPOSITE_DATA_SET()));
+      srcInfo->Get(vtkDataObject::DATA_OBJECT()));
     if (tmpSource)
       {
       source = vtkDataSet::SafeDownCast(tmpSource->GetDataSet(0, pieceNum));

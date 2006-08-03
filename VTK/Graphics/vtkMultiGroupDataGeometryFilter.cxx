@@ -68,7 +68,7 @@ int vtkMultiGroupDataGeometryFilter::RequestCompositeData(
 {
   vtkInformation* inInfo = inputVector[0]->GetInformationObject(0);
   vtkMultiGroupDataSet *input = vtkMultiGroupDataSet::SafeDownCast(
-    inInfo->Get(vtkCompositeDataSet::COMPOSITE_DATA_SET()));
+    inInfo->Get(vtkDataObject::DATA_OBJECT()));
   if (!input) 
     {
     vtkErrorMacro("No input composite dataset provided.");

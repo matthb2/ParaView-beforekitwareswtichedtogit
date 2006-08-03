@@ -40,7 +40,7 @@ int vtkMultiGroupDataGroupFilter::RequestData(
 {
   vtkInformation* info = outputVector->GetInformationObject(0);
   vtkMultiGroupDataSet *output = vtkMultiGroupDataSet::SafeDownCast(
-    info->Get(vtkCompositeDataSet::COMPOSITE_DATA_SET()));
+    info->Get(vtkDataObject::DATA_OBJECT()));
   if (!output) {return 0;}
 
   unsigned int updatePiece = static_cast<unsigned int>(

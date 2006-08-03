@@ -81,7 +81,7 @@ void vtkXMLMultiGroupDataReader::SetupEmptyOutput()
   vtkInformation* info = exec->GetOutputInformation(0);
 
   vtkDataObject* doOutput = 
-    info->Get(vtkCompositeDataSet::COMPOSITE_DATA_SET());
+    info->Get(vtkDataObject::DATA_OBJECT());
   vtkMultiGroupDataSet* hb = 
     vtkMultiGroupDataSet::SafeDownCast(doOutput);
   if (!hb)
@@ -198,7 +198,7 @@ void vtkXMLMultiGroupDataReader::ReadXMLData()
     info->Get(vtkStreamingDemandDrivenPipeline::UPDATE_NUMBER_OF_PIECES()));
 
   vtkDataObject* doOutput = 
-    info->Get(vtkCompositeDataSet::COMPOSITE_DATA_SET());
+    info->Get(vtkDataObject::DATA_OBJECT());
   vtkMultiGroupDataSet* hb = 
     vtkMultiGroupDataSet::SafeDownCast(doOutput);
   if (!hb)

@@ -766,7 +766,7 @@ int vtkMultiBlockPLOT3DReader::RequestData(
   vtkInformation* info = outputVector->GetInformationObject(0);
 
   vtkDataObject* doOutput = 
-    info->Get(vtkCompositeDataSet::COMPOSITE_DATA_SET());
+    info->Get(vtkDataObject::DATA_OBJECT());
   vtkMultiBlockDataSet* mb = 
     vtkMultiBlockDataSet::SafeDownCast(doOutput);
   if (!mb)

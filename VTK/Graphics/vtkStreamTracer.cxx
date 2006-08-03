@@ -523,7 +523,7 @@ void vtkStreamTracer::SetupOutput(vtkInformation* inInfo,
     outInfo->Get(vtkStreamingDemandDrivenPipeline::UPDATE_NUMBER_OF_PIECES());
 
   vtkCompositeDataSet *hdInput = vtkCompositeDataSet::SafeDownCast(
-    inInfo->Get(vtkCompositeDataSet::COMPOSITE_DATA_SET()));
+    inInfo->Get(vtkDataObject::DATA_OBJECT()));
   if (hdInput) 
     {
     this->InputData = hdInput;
