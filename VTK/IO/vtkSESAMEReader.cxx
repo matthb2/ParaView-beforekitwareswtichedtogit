@@ -63,7 +63,7 @@ public:
 static const int MaxTableArrays = 10;
 struct vtkSESAMETableDef
 {
-  const int TableId;
+  int TableId;
   const char* Arrays[MaxTableArrays];
 };
 
