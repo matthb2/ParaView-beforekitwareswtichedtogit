@@ -96,15 +96,6 @@ vtkSMProxy* vtkSMPQStateLoader::NewProxyInternal(
   return this->Superclass::NewProxyInternal(xml_group, xml_name);
 }
 
-//---------------------------------------------------------------------------
-void vtkSMPQStateLoader::RegisterProxyInternal(const char* group, 
-  const char* name, vtkSMProxy* proxy)
-{
-  //vtkSMProxyManager* pxm = vtkSMProxyManager::GetProxyManager();
-  //pxm->RegisterProxy(group, proxy->GetSelfIDAsString(), proxy);
-  this->Superclass::RegisterProxyInternal(group, name, proxy);
-}
-
 //-----------------------------------------------------------------------------
 void vtkSMPQStateLoader::PrintSelf(ostream& os, vtkIndent indent)
 {
