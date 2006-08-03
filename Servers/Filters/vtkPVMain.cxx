@@ -38,6 +38,8 @@
 #include "vtkDynamicLoader.h"
 #include <vtksys/ios/sstream>
 
+#include <unistd.h>
+
 vtkStandardNewMacro(vtkPVMain);
 vtkCxxRevisionMacro(vtkPVMain, "$Revision$");
 
@@ -100,6 +102,8 @@ void vtkPVMain::Initialize(int* argc, char** argv[])
 #ifdef PARAVIEW_BUILD_WITH_ADAPTOR
   vtkPVAdaptorInitialize();
 #endif
+  
+  //sleep(15);
 }
 
 void vtkPVMain::Finalize()

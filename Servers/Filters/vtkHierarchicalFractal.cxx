@@ -409,7 +409,7 @@ int vtkHierarchicalFractal::RequestData(
   vtkInformationVector *outputVector)
 {
   vtkInformation *info=outputVector->GetInformationObject(0);
-  vtkDataObject *doOutput=info->Get(vtkCompositeDataSet::COMPOSITE_DATA_SET());
+  vtkDataObject *doOutput=info->Get(vtkDataObject::DATA_OBJECT());
   vtkHierarchicalDataSet *output;
   output=vtkHierarchicalDataSet::SafeDownCast(doOutput);
   

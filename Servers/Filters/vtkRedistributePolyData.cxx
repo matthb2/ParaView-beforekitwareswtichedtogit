@@ -206,7 +206,9 @@ void vtkRedistributePolyData::Execute()
   // ... allocate space and copy point and cell data attributes from input to 
   //   output ...
 
+  output->GetPointData()->CopyGlobalIdsOn();
   output->GetPointData()->CopyAllocate(input->GetPointData());
+  output->GetCellData()->CopyGlobalIdsOn();
   output->GetCellData()->CopyAllocate(input->GetCellData());
   
   // ... copy remaining input cell data to output cell data ...

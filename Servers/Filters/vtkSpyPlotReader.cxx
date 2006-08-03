@@ -2791,7 +2791,7 @@ int vtkSpyPlotReader::RequestData(
   vtkstd::vector<vtkRectilinearGrid*> grids;
 
   vtkInformation *info=outputVector->GetInformationObject(0);
-  vtkDataObject *doOutput=info->Get(vtkCompositeDataSet::COMPOSITE_DATA_SET());
+  vtkDataObject *doOutput=info->Get(vtkDataObject::DATA_OBJECT());
   vtkHierarchicalDataSet *hb=vtkHierarchicalDataSet::SafeDownCast(doOutput);  
   if(!hb)
     {

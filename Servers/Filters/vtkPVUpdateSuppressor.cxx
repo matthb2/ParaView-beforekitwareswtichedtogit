@@ -25,7 +25,6 @@
 #include "vtkObjectFactory.h"
 #include "vtkPolyData.h"
 #include "vtkProcessModule.h"
-#include "vtkSource.h"
 #include "vtkUnstructuredGrid.h"
 #include "vtkUpdateSuppressorPipeline.h"
 
