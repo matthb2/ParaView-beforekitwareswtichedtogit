@@ -549,7 +549,7 @@ void vtkSESAMEReader::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os,indent);
 
-  os << indent << "FileName: " << this->Internal->FileName << "\n";
-  os << indent << "Table: " << this->Internal->TableId << "\n";
+  os << indent << "FileName: " << this->GetFileName() << "\n";
+  os << indent << "Table: " << this->GetTable() << "\n";
 }
 
