@@ -29,65 +29,30 @@ NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 =========================================================================*/
+#ifndef __pqServerStartupDialog_h
+#define __pqServerStartupDialog_h
 
-#ifndef _pqServerResources_h
-#define _pqServerResources_h
+#include "pqComponentsExport.h"
 
-#include "pqCoreExport.h"
-#include "pqServerResource.h"
+#include <QDialog>
 
-#include <QObject>
-#include <QVector>
+class pqServerResource;
 
-class pqSettings;
-class pqServer;
-
-/**
-Encapsulates a persistent collection of recently-used resources (files)
-that are located on specific servers.
-
-\sa pqServerResource, pqServer */
-class PQCORE_EXPORT pqServerResources :
-  public QObject
+class PQCOMPONENTS_EXPORT pqServerStartupDialog :
+  public QDialog
 {
+  typedef QDialog Superclass;
+  
   Q_OBJECT
-
+  
 public:
-  pqServerResources();
-  ~pqServerResources();
+  pqServerStartupDialog(const pqServerResource& server, QWidget* parent = 0);
+  ~pqServerStartupDialog();
 
-  /// Defines an ordered collection of resources
-  typedef QVector<pqServerResource> ListT;
-
-  /** Add a resource to the collection / 
-  move the resource to the beginning of the list */
-  void add(const pqServerResource& resource);
-  /** Returns the contents of the collection, ordered from
-  most-recently-used to least-recently-used */
-  const ListT list() const;
-
-  /// Load the collection (from local user preferences)
-  void load(pqSettings&);
-  /// Save the collection (to local user preferences)
-  void save(pqSettings&);
-
-  /// Open (connect to) a resource
-  void open(const pqServerResource& resource);
-
-signals:
-  /// Signal emitted whenever the collection is changed
-  void changed();
-  /// Signal emitted whenever a new server connection is made
-  void serverConnected(pqServer*);
-  
 private:
-  pqServerResources(const pqServerResources&);
-  pqServerResources& operator=(const pqServerResources&);
-  
   class pqImplementation;
   pqImplementation* const Implementation;
-  
-  class pqMatchHostPath;
 };
 
 #endif
+

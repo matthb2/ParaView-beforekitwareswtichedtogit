@@ -29,65 +29,37 @@ NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 =========================================================================*/
+#ifndef __pqCreateServerStartupDialog_h
+#define __pqCreateServerStartupDialog_h
 
-#ifndef _pqServerResources_h
-#define _pqServerResources_h
+#include "pqComponentsExport.h"
+#include <pqServerResource.h>
+#include <QDialog>
 
-#include "pqCoreExport.h"
-#include "pqServerResource.h"
-
-#include <QObject>
-#include <QVector>
-
-class pqSettings;
-class pqServer;
-
-/**
-Encapsulates a persistent collection of recently-used resources (files)
-that are located on specific servers.
-
-\sa pqServerResource, pqServer */
-class PQCORE_EXPORT pqServerResources :
-  public QObject
+class PQCOMPONENTS_EXPORT pqCreateServerStartupDialog :
+  public QDialog
 {
+  typedef QDialog Superclass;
+  
   Q_OBJECT
-
+  
 public:
-  pqServerResources();
-  ~pqServerResources();
+  pqCreateServerStartupDialog(QWidget* parent = 0);
+  ~pqCreateServerStartupDialog();
 
-  /// Defines an ordered collection of resources
-  typedef QVector<pqServerResource> ListT;
+  const pqServerResource getServer() const;
 
-  /** Add a resource to the collection / 
-  move the resource to the beginning of the list */
-  void add(const pqServerResource& resource);
-  /** Returns the contents of the collection, ordered from
-  most-recently-used to least-recently-used */
-  const ListT list() const;
+private slots:
+  void onTypeChanged(int);
+  void onHostChanged(const QString&);
 
-  /// Load the collection (from local user preferences)
-  void load(pqSettings&);
-  /// Save the collection (to local user preferences)
-  void save(pqSettings&);
-
-  /// Open (connect to) a resource
-  void open(const pqServerResource& resource);
-
-signals:
-  /// Signal emitted whenever the collection is changed
-  void changed();
-  /// Signal emitted whenever a new server connection is made
-  void serverConnected(pqServer*);
-  
 private:
-  pqServerResources(const pqServerResources&);
-  pqServerResources& operator=(const pqServerResources&);
-  
+  void updateServer();
+  void accept();
+
   class pqImplementation;
   pqImplementation* const Implementation;
-  
-  class pqMatchHostPath;
 };
 
 #endif
+

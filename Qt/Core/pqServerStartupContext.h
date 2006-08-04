@@ -30,64 +30,36 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 =========================================================================*/
 
-#ifndef _pqServerResources_h
-#define _pqServerResources_h
+#ifndef _pqServerStartupContext_h
+#define _pqServerStartupContext_h
 
 #include "pqCoreExport.h"
-#include "pqServerResource.h"
 
 #include <QObject>
-#include <QVector>
 
-class pqSettings;
-class pqServer;
+/////////////////////////////////////////////////////////////////////////////
+// pqServerStartupContext
 
-/**
-Encapsulates a persistent collection of recently-used resources (files)
-that are located on specific servers.
-
-\sa pqServerResource, pqServer */
-class PQCORE_EXPORT pqServerResources :
+class PQCORE_EXPORT pqServerStartupContext :
   public QObject
 {
   Q_OBJECT
 
 public:
-  pqServerResources();
-  ~pqServerResources();
-
-  /// Defines an ordered collection of resources
-  typedef QVector<pqServerResource> ListT;
-
-  /** Add a resource to the collection / 
-  move the resource to the beginning of the list */
-  void add(const pqServerResource& resource);
-  /** Returns the contents of the collection, ordered from
-  most-recently-used to least-recently-used */
-  const ListT list() const;
-
-  /// Load the collection (from local user preferences)
-  void load(pqSettings&);
-  /// Save the collection (to local user preferences)
-  void save(pqSettings&);
-
-  /// Open (connect to) a resource
-  void open(const pqServerResource& resource);
-
+  pqServerStartupContext();
+  virtual ~pqServerStartupContext();
+  
 signals:
-  /// Signal emitted whenever the collection is changed
-  void changed();
-  /// Signal emitted whenever a new server connection is made
-  void serverConnected(pqServer*);
-  
+  void succeeded();
+  void failed();
+
+public slots:
+  void onSucceeded();
+  void onFailed();
+
 private:
-  pqServerResources(const pqServerResources&);
-  pqServerResources& operator=(const pqServerResources&);
-  
-  class pqImplementation;
-  pqImplementation* const Implementation;
-  
-  class pqMatchHostPath;
+  pqServerStartupContext(const pqServerStartupContext&);
+  pqServerStartupContext& operator=(const pqServerStartupContext&);
 };
 
-#endif
+#endif // !_pqServerStartupContext_h
