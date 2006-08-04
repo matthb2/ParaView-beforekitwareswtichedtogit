@@ -413,7 +413,7 @@ int vtkPExodusReader::RequestData(
       this->GetDisplacementMagnitude());
 
     readerList[reader_idx]->SetExodusModelMetadata(this->ExodusModelMetadata);
-    readerList[reader_idx]->PackExodusModelOntoOutputOff();
+    //readerList[reader_idx]->PackExodusModelOntoOutputOff();
 
     readerList[reader_idx]->UpdateInformation();
 
