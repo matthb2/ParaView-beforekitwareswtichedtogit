@@ -111,6 +111,6 @@ void vtkPVSelectionInformation::CopyFromStream(const vtkClientServerStream* css)
     vtkErrorMacro("Error parsing selection xml from message.");
     return;
     }
-  this->Selection = vtkSelectionSerializer::Parse(xml);
+  vtkSelectionSerializer::Parse(xml, this->Selection);
 }
 
