@@ -29,41 +29,64 @@ NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 =========================================================================*/
-
-#ifndef _pqRecentFilesMenu_h
-#define _pqRecentFilesMenu_h
+#ifndef __pqSimpleServerStartup_h
+#define __pqSimpleServerStartup_h
 
 #include "pqComponentsExport.h"
 
-#include <QObject>
+#include <QDialog>
 
-class QAction;
-class QMenu;
+class pqServerResource;
+class pqServerStartups;
+class pqSettings;
 
-/** Displays a collection of recently-used files (server resources)
-as a menu, sorted in most-recently-used order and grouped by server */
-class PQCOMPONENTS_EXPORT pqRecentFilesMenu :
+/**
+Convenience class that handles the entire process of connecting to a server ...
+callers should create an instance of pqSimpleServerStartup, and
+call the startServer() method to begin the connection process.  Note that
+startServer() is asynchronous - the client must wait until serverCancelled(),
+serverFailed(), or serverStarted() is emitted to know whether startup
+was successful.  It is the caller's responsibility to ensure that the
+pqSimpleServerStartup object does not go out of scope until one of the three
+signals is emitted.
+
+If necessary, the user will be prompted to configure how to start the server,
+and optionally prompted for site-specific runtime parameters.
+
+A modal dialog will be displayed while the server starts.
+*/
+class PQCOMPONENTS_EXPORT pqSimpleServerStartup :
   public QObject
 {
+  typedef QObject Superclass;
+  
   Q_OBJECT
-
+  
 public:
-  /// Assigns the menu that will display the list of files
-  pqRecentFilesMenu(QMenu& menu);
+  pqSimpleServerStartup(
+    pqSettings& settings,
+    pqServerStartups& startups,
+    QObject* parent = 0);
+    
+  ~pqSimpleServerStartup();
+
+  void startServer(const pqServerResource& server);
+
+signals:
+  /// Signal emitted if the user cancels startup
+  void serverCancelled();
+  /// Signal emitted if the server fails to start
+  void serverFailed();
+  /// Signal emitted if the server successfully starts
+  void serverStarted();
 
 private slots:
-  void onResourcesChanged();
-  void onOpenResource(QAction*);
-  void onOpenResource();
+  void onServerFailed();
   void onServerStarted();
 
 private:
-  ~pqRecentFilesMenu();
-  pqRecentFilesMenu(const pqRecentFilesMenu&);
-  pqRecentFilesMenu& operator=(const pqRecentFilesMenu&);
-
   class pqImplementation;
-  pqImplementation* const Implementation;  
+  pqImplementation* const Implementation;
 };
 
-#endif // !_pqRecentFilesMenu_h
+#endif

@@ -68,8 +68,10 @@ signals:
 private slots:
   void onServerTypeActivated(int);
   void accept();
-  void onServerStarted();
+  
+  void onServerCancelled();
   void onServerFailed();
+  void onServerStarted();
 
 private:
   pqServerBrowser(const pqServerBrowser&);
