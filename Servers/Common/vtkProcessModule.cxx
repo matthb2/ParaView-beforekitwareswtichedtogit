@@ -1577,6 +1577,11 @@ void vtkProcessModule::SynchronizeServerClientOptions(vtkIdType id)
     this->Options->SetTileDimensions
       (info->GetTileDimensions());
     }
+  if (!this->Options->GetTileMullions()[0])
+    {
+    this->Options->SetTileMullions
+      (this->ServerInformation->GetTileMullions());
+    }
   if (!this->Options->GetUseOffscreenRendering())
     {
     this->Options->SetUseOffscreenRendering
