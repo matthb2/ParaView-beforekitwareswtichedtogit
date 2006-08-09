@@ -526,6 +526,29 @@ int vtkProcessModule::SetupWaitForConnection()
 }
 
 //-----------------------------------------------------------------------------
+int vtkProcessModule::AcceptConnectionsOnPort(int port)
+{
+  return this->ConnectionManager->AcceptConnectionsOnPort(
+    port, vtkProcessModuleConnectionManager::RENDER_AND_DATA_SERVER);
+}
+
+//-----------------------------------------------------------------------------
+void vtkProcessModule::AcceptConnectionsOnPort(int data_server_port, 
+  int render_server_port, int &ds_id, int &rs_id)
+{
+  ds_id = this->ConnectionManager->AcceptConnectionsOnPort(
+    data_server_port, vtkProcessModuleConnectionManager::DATA_SERVER);
+  rs_id = this->ConnectionManager->AcceptConnectionsOnPort(
+    render_server_port, vtkProcessModuleConnectionManager::RENDER_SERVER);
+}
+
+//-----------------------------------------------------------------------------
+void vtkProcessModule::StopAcceptingConnections(int id)
+{
+  this->ConnectionManager->StopAcceptingConnections(id);
+}
+
+//-----------------------------------------------------------------------------
 vtkIdType vtkProcessModule::ConnectToRemote(const char* servername, int port)
 {
   return this->ConnectionManager->OpenConnection(servername, port);
