@@ -47,8 +47,6 @@ vtkHAVSVolumeMapper *vtkHAVSVolumeMapper::New()
   return (vtkHAVSVolumeMapper *)ret;
 }
  
-#pragma warning( disable : 4146 )
-
 //----------------------------------------------------------------------------
 // A helper class for sorting faces by their centroids
 class vtkHAVSSortedFace
@@ -58,7 +56,7 @@ public:
   vtkHAVSSortedFace(unsigned int f, unsigned int d)
   {
     this->Face = f;
-    this->Distance = d ^ ((-(d >> 31)) | 0x80000000);
+    this->Distance = d ^ ((-(static_cast<int>(d) >> 31)) | 0x80000000);
   }
   
   bool operator<(const vtkHAVSSortedFace &rhs) const
@@ -78,8 +76,6 @@ public:
   unsigned int Distance;
 };
 
-#pragma warning( default : 4146 )
-  
 //----------------------------------------------------------------------------
 // A helper class to filter unique faces
 class vtkHAVSFace
@@ -753,7 +749,7 @@ vtkHAVSVolumeMapper::FRadixSort(vtkHAVSSortedFace *array, vtkHAVSSortedFace *tem
   
   vtkHAVSSortedFace * uints = array + lo;
   
-  int count[4][256] = {0};
+  int count[4][256] = {{0}};
   
   // Generate count arrays
   for (i=0; i<(unsigned int)len; i++) 
