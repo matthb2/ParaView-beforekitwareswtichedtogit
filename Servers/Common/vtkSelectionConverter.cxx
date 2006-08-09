@@ -88,7 +88,7 @@ void vtkSelectionConverter::Convert(vtkSelection* input, vtkSelection* output)
     }
 
   vtkIdTypeArray* mapArray = vtkIdTypeArray::SafeDownCast(
-    ds->GetCellData()->GetArray("MapArray"));
+    ds->GetCellData()->GetArray("vtkOriginalCellIds"));
   if (!mapArray)
     {
     return;
