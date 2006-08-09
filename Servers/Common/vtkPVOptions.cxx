@@ -354,6 +354,8 @@ void vtkPVOptions::PrintSelf(ostream& os, vtkIndent indent)
     { 
     os << indent << "With Tile Dimensions: " << this->TileDimensions[0]
        << ", " << this->TileDimensions[1] << endl;
+    os << indent << "And Tile Mullions: " << this->TileMullions[0]
+       << ", " << this->TileMullions[1] << endl;
     }
 
   os << indent << "Using RenderingGroup: " << (this->UseRenderingGroup?"Enabled":"Disabled") << endl;
