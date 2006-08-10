@@ -63,7 +63,7 @@ vtkOpenGLHAVSVolumeMapper::~vtkOpenGLHAVSVolumeMapper()
 }
 
 //----------------------------------------------------------------------------
-void vtkOpenGLHAVSVolumeMapper::CheckOpenGLError(char * str)
+void vtkOpenGLHAVSVolumeMapper::CheckOpenGLError(const char * str)
 {
   int err = glGetError();
   if ( err != GL_NO_ERROR && this->GetDebug() )
