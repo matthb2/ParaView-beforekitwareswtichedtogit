@@ -118,6 +118,7 @@ int vtkSMProxyUnRegisterUndoElement::Redo()
 
   vtkSMProxyManager* pxm = vtkSMObject::GetProxyManager();
   pxm->UnRegisterProxy(group_name, proxy_name, proxy);
+  proxy->Delete();
   
   // Unregistering may trigger deletion of the proxy.
   return 1;
