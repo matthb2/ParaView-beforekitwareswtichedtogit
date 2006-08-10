@@ -52,7 +52,16 @@ public:
     {
     if (this->Target)
       {
-      this->Target->InvokeEvent(evenid, calldata);
+      if (evenid == vtkCommand::ModifiedEvent)
+        {
+        vtkSMProxy* modifiedProxy = vtkSMProxy::SafeDownCast(
+          reinterpret_cast<vtkObjectBase*>(calldata));
+        this->Target->MarkModified(modifiedProxy);
+        }
+      else
+        {
+        this->Target->InvokeEvent(evenid, calldata);
+        }
       }
     }
 protected:
