@@ -614,3 +614,16 @@ int vtkOpenGLPainterDeviceAdapter::Compatible(vtkRenderer *renderer)
 {
   return renderer->IsA("vtkOpenGLRenderer");
 }
+
+//-----------------------------------------------------------------------------
+void vtkOpenGLPainterDeviceAdapter::SetLighting(int mode)
+{
+  if (mode)
+    {
+    glEnable(GL_LIGHTING);
+    }
+  else
+    {
+    glDisable(GL_LIGHTING);
+    }
+}
