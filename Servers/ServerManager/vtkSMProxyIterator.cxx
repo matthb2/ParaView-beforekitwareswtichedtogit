@@ -87,16 +87,28 @@ void vtkSMProxyIterator::Begin()
     return;
     }
   this->Internals->GroupIterator = pm->Internals->RegisteredProxyMap.begin();
-  if (this->Internals->GroupIterator!=pm->Internals->RegisteredProxyMap.end())
+  while (this->Internals->GroupIterator!=pm->Internals->RegisteredProxyMap.end())
     {
     this->Internals->ProxyListIterator = 
       this->Internals->GroupIterator->second.begin();
-    if (this->Internals->ProxyListIterator != 
+    while (this->Internals->ProxyListIterator != 
       this->Internals->GroupIterator->second.end())
       {
       this->Internals->ProxyIterator = 
         this->Internals->ProxyListIterator->second.begin();
+      if (this->Internals->ProxyIterator !=
+        this->Internals->ProxyListIterator->second.end())
+        {
+        break;
+        }
+      this->Internals->ProxyListIterator++;
       }
+    if (this->Internals->ProxyListIterator != 
+      this->Internals->GroupIterator->second.end())
+      {
+      break;
+      }
+    this->Internals->GroupIterator++;
     }
 
   if (this->ConnectionID != 0)
