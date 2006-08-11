@@ -117,8 +117,8 @@ int vtkExtractSelection::RequestData(
 
   vtkDataSet* inputCopy = input->NewInstance();
   inputCopy->ShallowCopy(input);
-
-  this->ExtractFilter->SetInput(input);
+  this->ExtractFilter->SetInput(inputCopy);
+  inputCopy->Delete();
 
   this->ExtractFilter->Update();
 
