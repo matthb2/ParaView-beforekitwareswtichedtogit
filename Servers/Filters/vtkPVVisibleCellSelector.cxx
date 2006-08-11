@@ -40,7 +40,7 @@ void vtkPVVisibleCellSelector::SetSelectMode(int m)
 }
 
 //----------------------------------------------------------------------------
-void vtkPVVisibleCellSelector::SetProcessorId()
+void vtkPVVisibleCellSelector::LookupProcessorId()
 {
   int id = vtkProcessModule::GetProcessModule()->GetPartitionId();
   this->Superclass::SetProcessorId(id);
@@ -53,9 +53,9 @@ vtkIdType vtkPVVisibleCellSelector::MapActorIdToActorId(vtkIdType id)
   vtkProp *prop = this->GetActorFromId(id);
   if (prop != NULL)
     {
-    vtkClientServerID id = 
+    vtkClientServerID CSId = 
       vtkProcessModule::GetProcessModule()->GetIDFromObject(prop);
-    ret = id.ID;
+    ret = CSId.ID;
     }
   return ret;
 }
