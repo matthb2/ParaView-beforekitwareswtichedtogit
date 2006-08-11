@@ -540,7 +540,6 @@ int vtkStripper::RequestData(
 
   if (this->PassThroughCellIds)
     {
-    int cidcnt = 0;
     cellId = 0;
     int max;
     for (i=0; i < inNumVerts; i++, cellId++)
