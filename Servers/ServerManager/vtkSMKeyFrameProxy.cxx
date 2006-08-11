@@ -34,7 +34,6 @@ vtkStandardNewMacro(vtkSMKeyFrameProxy);
 vtkSMKeyFrameProxy::vtkSMKeyFrameProxy()
 {
   this->KeyTime = -1.0;
-  this->ObjectsCreated = 1; //no serverside objects for this proxy.
   this->Internals = new vtkSMKeyFrameProxyInternals;
 }
 
