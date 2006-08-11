@@ -192,7 +192,7 @@ int vtkServerConnection::SendStreamToClient(vtkClientServerStream& stream)
   vtkProcessModule* pm = vtkProcessModule::GetProcessModule();
   int ret = pm->SendStream(
     vtkProcessModuleConnectionManager::GetSelfConnectionID(),
-    vtkProcessModule::DATA_SERVER_ROOT, stream, 0);
+    vtkProcessModule::CLIENT, stream, 0);
   this->Deactivate();
   return ret;
 }
