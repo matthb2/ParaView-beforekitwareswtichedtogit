@@ -1769,6 +1769,8 @@ void vtkProcessModule::PrintSelf(ostream& os, vtkIndent indent)
   os << indent << "SupportMultipleConnections: " << this->SupportMultipleConnections
     << endl;
   os << indent << "UseMPI: " << this->UseMPI << endl;
+  os << indent << "SendStreamToClientOnly: " 
+    << this->SendStreamToClientOnly << endl;
  
   os << indent << "Interpreter: " ;
   if (this->Interpreter)
