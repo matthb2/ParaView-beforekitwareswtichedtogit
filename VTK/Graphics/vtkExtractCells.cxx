@@ -54,7 +54,7 @@ vtkExtractCells::vtkExtractCells()
 }
 vtkExtractCells::~vtkExtractCells()
 {
-  this->SetCellList(NULL);
+  delete this->CellList;
 }
 
 void vtkExtractCells::SetCellList(vtkIdList *l)
