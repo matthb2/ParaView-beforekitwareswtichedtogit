@@ -939,8 +939,6 @@ int vtkCompositeDataPipeline::CheckCompositeData(
     {
     return this->Superclass::CheckDataObject(port, outInfoVec);
     }
-
-  return 0;
 }
 
 //----------------------------------------------------------------------------
