@@ -158,6 +158,7 @@ void vtkSMServerSideAnimationPlayer::PerformActions()
         }
       }
     }
+  iter->Delete();
 
   vtkProcessModule* pm = vtkProcessModule::GetProcessModule();
   pm->StopAcceptingAllConnections();
