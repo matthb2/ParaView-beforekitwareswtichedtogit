@@ -322,5 +322,6 @@ vtkDataObject* vtkSMGenericViewDisplayProxy::GetOutput()
 void vtkSMGenericViewDisplayProxy::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os, indent);
+  os << indent << "Visibility: " << this->Visibility << endl;
 }
 

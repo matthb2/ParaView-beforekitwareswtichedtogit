@@ -174,4 +174,9 @@ void vtkSMServerSideAnimationPlayer::PrintSelf(ostream &os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os, indent);
   os << indent << "ConnectionID: " << this->ConnectionID << endl;
+  os << indent << "FrameRate: " << this->FrameRate << endl;
+  os << indent << "AnimationFileName: " << 
+    (this->AnimationFileName? this->AnimationFileName : "(none)") << endl;
+  os << indent << "Size: " << this->Size[0] << ", " << this->Size[1] << endl;
+  os << indent << "Quality: " << this->Quality << endl;
 }
