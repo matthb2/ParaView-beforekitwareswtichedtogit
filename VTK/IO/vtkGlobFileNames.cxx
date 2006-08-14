@@ -60,7 +60,8 @@ vtkGlobFileNames::~vtkGlobFileNames()
 void vtkGlobFileNames::PrintSelf(ostream& os, vtkIndent indent)
 { 
   this->Superclass::PrintSelf(os, indent);
-  os << indent << "Pattern: " <<  this->GetPattern() << "\n";
+  os << indent << "Pattern: " <<  
+    (this->GetPattern() ? this->GetPattern() : " none") << "\n";
   os << indent << "Recurse: " << (this->GetRecurse() ? "On\n" : "Off\n");
   os << indent << "FileNames:  (" << this->GetFileNames() << ")\n";
   indent = indent.GetNextIndent();
