@@ -701,8 +701,11 @@ void vtkSMAnimationSceneProxy::CleanCache()
 //----------------------------------------------------------------------------
 void vtkSMAnimationSceneProxy::SetAnimationTime(double time)
 {
-  this->AnimationCue->Initialize();
-  this->AnimationCue->Tick(time,0);
+  if (this->AnimationCue)
+    {
+    this->AnimationCue->Initialize();
+    this->AnimationCue->Tick(time,0);
+    }
 }
 
 //----------------------------------------------------------------------------
