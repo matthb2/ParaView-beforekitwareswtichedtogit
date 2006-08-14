@@ -22,6 +22,7 @@
 #include "vtkVolume.h"
 #include "vtkVolumeProperty.h"
 #include "vtkFixedPointRayCastImage.h"
+#include "vtkDataArray.h"
 
 #include <math.h>
 
@@ -562,14 +563,14 @@ void vtkFixedPointVolumeRayCastMIPHelper::GenerateImage( int threadID,
                                                  vtkVolume *vol,
                                                  vtkFixedPointVolumeRayCastMapper *mapper )
 {
-  void *dataPtr  = mapper->GetInput()->GetScalarPointer();
-  int scalarType = mapper->GetInput()->GetScalarType();
+  void *dataPtr  = mapper->GetCurrentScalars()->GetVoidPointer(0);
+  int scalarType = mapper->GetCurrentScalars()->GetDataType();
   
   // Nearest Neighbor interpolate
   if ( mapper->ShouldUseNearestNeighborInterpolation( vol ) )
     {
     // One component data
-    if ( mapper->GetInput()->GetNumberOfScalarComponents() == 1 )
+    if ( mapper->GetCurrentScalars()->GetNumberOfComponents() == 1 )
       {
       switch ( scalarType )
         {
@@ -606,7 +607,7 @@ void vtkFixedPointVolumeRayCastMIPHelper::GenerateImage( int threadID,
   else
     {
     // One component
-    if ( mapper->GetInput()->GetNumberOfScalarComponents() == 1 )
+    if ( mapper->GetCurrentScalars()->GetNumberOfComponents() == 1 )
       {
       // Scale == 1.0 and shift == 0.0 - simple case (faster)
       if ( mapper->GetTableScale()[0] == 1.0 && mapper->GetTableShift()[0] == 0.0 )
