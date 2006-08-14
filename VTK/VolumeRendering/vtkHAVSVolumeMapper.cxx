@@ -775,6 +775,7 @@ void vtkHAVSVolumeMapper::PartialVisibilitySort(float *eye)
   vtkHAVSSortedFace sFace;
   unsigned int sFaceCount = 0;
   unsigned int i;
+  
   for (i = 0; i < this->NumberOfBoundaryTriangles; i++)
     {
     unsigned int f = this->BoundaryTriangles[i];
@@ -791,6 +792,7 @@ void vtkHAVSVolumeMapper::PartialVisibilitySort(float *eye)
     sFace = vtkHAVSSortedFace(f, floatToInt.i);
     this->SortedFaces[sFaceCount++] = sFace;
     }
+  
   unsigned int internalCount = 
     this->LevelOfDetailTriangleCount - this->NumberOfBoundaryTriangles;
   for (i = 0; i < internalCount; i++)
@@ -814,7 +816,7 @@ void vtkHAVSVolumeMapper::PartialVisibilitySort(float *eye)
   this->FRadixSort(this->SortedFaces, this->RadixTemp, 0, this->LevelOfDetailTriangleCount);
 
   // Reorder triangles for rendering
-  for(unsigned int i = 0; i < this->LevelOfDetailTriangleCount; i++)
+  for(i = 0; i < this->LevelOfDetailTriangleCount; i++)
     {
     for(unsigned int j = 0; j < 3; j++)
       {
