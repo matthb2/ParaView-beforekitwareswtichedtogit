@@ -419,6 +419,16 @@ static inline void UpdateViewParams(GLdouble vert[3], GLdouble transform[16],
 int vtkIceTRenderer::UpdateGeometry()
 {
   vtkDebugMacro("In vtkIceTRenderer::UpdateGeometry()");
+
+  if (this->SelectMode != vtkRenderer::NOT_SELECTING)
+    {
+    //we are doing a visible polygon selection instead of a normal render
+    int ret = this->UpdateGeometryForSelection();
+    vtkDebugMacro( << "Rendered " << 
+                   this->NumberOfPropsRendered << " actors" );    
+    return ret;
+    }
+
   int i;
 
   this->NumberOfPropsRendered = 0;
