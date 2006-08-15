@@ -154,7 +154,7 @@ vtkRenderer::~vtkRenderer()
   if (this->IdentPainter)
     {
     this->IdentPainter->Delete();
-    this->IdentPainter == NULL;
+    this->IdentPainter = NULL;
     }
 
 }
