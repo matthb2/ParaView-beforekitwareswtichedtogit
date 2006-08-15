@@ -360,6 +360,11 @@ int vtkXMLReader
       outInfo->Set(vtkStreamingDemandDrivenPipeline::TIME_STEPS(), 
                    timeSteps, 
                    numTimesteps);
+      double timeRange[2];
+      timeRange[0] = timeSteps[0];
+      timeRange[1] = timeSteps[numTimesteps-1];
+      outInfo->Set(vtkStreamingDemandDrivenPipeline::TIME_RANGE(), 
+                   timeRange, 2);
       }
     }
   else

@@ -193,6 +193,8 @@ int vtkProbeFilter::RequestInformation(
 
   outInfo->CopyEntry(sourceInfo, 
                      vtkStreamingDemandDrivenPipeline::TIME_STEPS());
+  outInfo->CopyEntry(sourceInfo, 
+                     vtkStreamingDemandDrivenPipeline::TIME_RANGE());
 
   outInfo->Set(vtkStreamingDemandDrivenPipeline::WHOLE_EXTENT(),
                inInfo->Get(vtkStreamingDemandDrivenPipeline::WHOLE_EXTENT()),
