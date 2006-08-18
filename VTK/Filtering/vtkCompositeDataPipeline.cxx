@@ -695,13 +695,27 @@ int vtkCompositeDataPipeline::NeedToExecuteData(
 
   // if we are requesting a particular update time index, check
   // if we have the desired time index
-  if ( outInfo->Has(UPDATE_TIME_INDEX()) )
+  if ( outInfo->Has(UPDATE_TIME_STEPS()) )
     {
-    if (!dataInfo->Has(vtkDataObject::DATA_TIME_INDEX()) ||
-      dataInfo->Get(vtkDataObject::DATA_TIME_INDEX()) !=
-      outInfo->Get(UPDATE_TIME_INDEX()))
+    if (!dataInfo->Has(vtkDataObject::DATA_TIME_STEPS()))
       {
       return 1;
+      }
+    int dlength = dataInfo->Length(vtkDataObject::DATA_TIME_STEPS());
+    int ulength = outInfo->Length(UPDATE_TIME_STEPS());
+    if (dlength != ulength)
+      {
+      return 1;
+      }
+    int cnt = 0;
+    double *dsteps = dataInfo->Get(vtkDataObject::DATA_TIME_STEPS());
+    double *usteps = outInfo->Get(UPDATE_TIME_STEPS());
+    for (;cnt < dlength; ++cnt)
+      {
+      if (dsteps[cnt] != usteps[cnt])
+        {
+        return 1;
+        }
       }
     }
 

@@ -46,8 +46,7 @@ vtkInformationKeyMacro(vtkDataObject, DATA_EXTENT_TYPE, Integer);
 vtkInformationKeyMacro(vtkDataObject, DATA_PIECE_NUMBER, Integer);
 vtkInformationKeyMacro(vtkDataObject, DATA_NUMBER_OF_PIECES, Integer);
 vtkInformationKeyMacro(vtkDataObject, DATA_NUMBER_OF_GHOST_LEVELS, Integer);
-vtkInformationKeyMacro(vtkDataObject, DATA_TIME_INDEX, Integer);
-vtkInformationKeyMacro(vtkDataObject, DATA_TIME, Double);
+vtkInformationKeyMacro(vtkDataObject, DATA_TIME_STEPS, DoubleVector);
 vtkInformationKeyMacro(vtkDataObject, POINT_DATA_VECTOR, InformationVector);
 vtkInformationKeyMacro(vtkDataObject, CELL_DATA_VECTOR, InformationVector);
 vtkInformationKeyMacro(vtkDataObject, FIELD_ARRAY_TYPE, Integer);
@@ -394,14 +393,9 @@ void vtkDataObject::CopyInformationToPipeline(vtkInformation *request,
         output->CopyEntry(input, CELL_DATA_VECTOR(), 1);
         }
       // copy the actual time
-      if (input->Has(DATA_TIME()))
+      if (input->Has(DATA_TIME_STEPS()))
         {
-        output->CopyEntry(input, DATA_TIME());
-        }
-      // copy the time index
-      if (input->Has(DATA_TIME_INDEX()))
-        {
-        output->CopyEntry(input, DATA_TIME_INDEX());
+        output->CopyEntry(input, DATA_TIME_STEPS());
         }
       }
     }
