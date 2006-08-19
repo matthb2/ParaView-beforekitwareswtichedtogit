@@ -1341,8 +1341,11 @@ vtkSelection* vtkSMRenderModuleProxy::SelectVisibleCells(int x0, int y0, int x1,
   pti->SetRenderer(this->GetRenderer());
 
   ////Use the back buffer
-  //this->GetRenderWindow()->SetOffScreenRendering(1);
-  //this->GetRenderWindow()->SwapBuffersOff();
+  int usefrontbuf = 0;
+  if (!usefrontbuf)
+    {
+    this->GetRenderWindow()->SwapBuffersOff();
+    }
 
   //Set background to black to indicate misses.
   //vtkRenderer::UpdateGeometryForSelection does this also, but in that case
@@ -1380,7 +1383,7 @@ vtkSelection* vtkSMRenderModuleProxy::SelectVisibleCells(int x0, int y0, int x1,
 
     //get the intermediate results
     //renderwindow allocates this buffer
-    buf = this->GetRenderWindow()->GetRGBACharPixelData(x0,y0,x1,y1,1); 
+    buf = this->GetRenderWindow()->GetRGBACharPixelData(x0,y0,x1,y1,usefrontbuf); 
     //pti will deallocate the buffer when it is deleted
     pti->SavePixelBuffer(p, buf); 
     }
@@ -1390,8 +1393,7 @@ vtkSelection* vtkSMRenderModuleProxy::SelectVisibleCells(int x0, int y0, int x1,
   setModeMethod->SetElements1(0);
   vcsProxy->UpdateVTKObjects();   
   this->SetBackgroundColorCM(origBG);
-  //this->GetRenderWindow()->SwapBuffersOn();
-  //this->GetRenderWindow()->SetOffScreenRendering(0);
+  this->GetRenderWindow()->SwapBuffersOn();
   
   //convert the intermediate results into  the selection data structure 
   pti->ComputeSelectedIds();
