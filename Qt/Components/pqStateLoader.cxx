@@ -97,6 +97,11 @@ int pqStateLoader::LoadState(vtkPVXMLElement* root, int keep_proxies/*=0*/)
         }
       }
     }
+
+  if (!keep_proxies)
+    {
+    this->ClearCreatedProxies();
+    }
   return 1;
 }
 
