@@ -110,7 +110,7 @@ vtkSMProxy* vtkSMStateLoader::NewProxyFromElement(
     }
   this->Internal->CreatedProxies[id] = proxy;
 
-  if (!proxy->LoadState(proxyElement, this))
+  if (!this->LoadProxyState(proxyElement, proxy))
     {
     vtkSMStateLoaderInternals::ProxyMapType::iterator iter2 =
       this->Internal->CreatedProxies.find(id);
