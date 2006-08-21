@@ -580,6 +580,12 @@ void vtkSMCompositeDisplayProxy::SetupVolumePipeline()
   this->VolumePTMapperProxy->UpdateVTKObjects();
 
   ip = vtkSMInputProperty::SafeDownCast(
+    this->VolumeHAVSMapperProxy->GetProperty("Input"));
+  ip->RemoveAllProxies();
+  ip->AddProxy(this->VolumeDistributorSuppressorProxy);
+  this->VolumeHAVSMapperProxy->UpdateVTKObjects();
+
+  ip = vtkSMInputProperty::SafeDownCast(
     this->VolumeBunykMapperProxy->GetProperty("Input"));
   ip->RemoveAllProxies();
   ip->AddProxy(this->VolumeDistributorSuppressorProxy);
