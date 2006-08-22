@@ -114,10 +114,10 @@ void vtkSMGenericViewDisplayProxy::SetInput(vtkSMProxy* sinput)
       {
       stream
         << vtkClientServerStream::Invoke
-        << this->CollectProxy->GetID(i) << "GetPolyDataOutput"
+        << this->CollectProxy->GetID(i) << "GetOutputPort"
         << vtkClientServerStream::End
         << vtkClientServerStream::Invoke
-        << this->UpdateSuppressorProxy->GetID(i) << "SetInput"
+        << this->UpdateSuppressorProxy->GetID(i) << "SetInputConnection"
         << vtkClientServerStream::LastResult
         << vtkClientServerStream::End;
       }
