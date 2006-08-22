@@ -68,6 +68,7 @@ int vtkExtractBlockFromSelection::RequestData(
         {
         output->ShallowCopy(ug);
         }
+      iter->Delete();
       return 1;
       }
     }
