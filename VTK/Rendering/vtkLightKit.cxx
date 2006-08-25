@@ -193,7 +193,7 @@ void vtkLightKit::RemoveLightsFromRenderer(vtkRenderer *renderer)
 void vtkLightKit::Modified()
 {
   this->Update();
-  this->MTime.Modified();
+  this->Superclass::Modified();
 }
 
 //----------------------------------------------------------------------------
