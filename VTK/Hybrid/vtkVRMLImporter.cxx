@@ -1,3 +1,8 @@
+#ifndef __VTK_SYSTEM_INCLUDES__INSIDE
+#  define __VTK_SYSTEM_INCLUDES__INSIDE
+#  include "vtkWin32Header.h"
+#  undef __VTK_SYSTEM_INCLUDES__INSIDE
+#endif
 
 #if defined (__digital__) && defined (__unix__) || defined(__IBMCPP__)
 #define HAVE_ALLOCA_H 1
