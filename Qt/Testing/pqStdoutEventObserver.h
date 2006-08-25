@@ -30,38 +30,29 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 =========================================================================*/
 
-#ifndef _pqEventObserverXML_h
-#define _pqEventObserverXML_h
+#ifndef _pqStdoutEventObserver_h
+#define _pqStdoutEventObserver_h
 
 #include <QObject>
-#include <vtkIOStream.h>
 
 /**
-Observes high-level ParaView events, and serializes them to a stream as XML for possible playback (as a test-case, demo, tutorial, etc).
-To use, connect the onRecordEvent() slot to the pqEventTranslator::recordEvent() signal.
+Observes high-level ParaView "events" and writes them to stdout,
+mainly for debugging purposes. To use, connect the onRecordEvent()
+slot to the pqEventTranslator::recordEvent() signal.
 
-\note Output is sent to the stream when this object is initialized, and when it is destroyed, so you must ensure that this object
-goes out of scope before trying to playback the stream.
-
-\sa pqEventObserverStdout, pqEventTranslator, pqEventPlayerXML
+\sa pqEventTranslator, pqEventObserverXML
 */
 
-class pqEventObserverXML :
+class pqStdoutEventObserver :
   public QObject
 {
   Q_OBJECT
-  
-public:
-  pqEventObserverXML(ostream& Stream);
-  ~pqEventObserverXML();
 
 public slots:
-  void onRecordEvent(const QString& Widget, const QString& Command, const QString& Arguments);
-
-private:
-  /// Stores a stream that will be used to store the XML output
-  ostream& Stream;
+  void onRecordEvent(
+    const QString& Widget,
+    const QString& Command,
+    const QString& Arguments);
 };
 
-#endif // !_pqEventObserverXML_h
-
+#endif // !_pqStdoutEventObserver_h

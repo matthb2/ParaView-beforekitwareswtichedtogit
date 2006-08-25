@@ -30,41 +30,45 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 =========================================================================*/
 
-#ifndef _pqWidgetEventTranslator_h
-#define _pqWidgetEventTranslator_h
+#include "pqXMLEventObserver.h"
 
-#include "QtTestingExport.h"
-#include <QObject>
-
-/**
-Abstract interface for an object that can translate
-low-level Qt events into high-level, serializable ParaView
-events, for test-cases, demos, tutorials, etc.
-
-\sa pqEventTranslator
-*/
-class QTTESTING_EXPORT pqWidgetEventTranslator :
-  public QObject
+/// Escapes strings so they can be embedded in an XML document
+static const QString textToXML(const QString& string)
 {
-  Q_OBJECT
+  QString result = string;
+  result.replace("&", "&amp;");
+  result.replace("<", "&lt;");
+  result.replace(">", "&gt;");
+  result.replace("'", "&apos;");
+  result.replace("\"", "&quot;");
   
-public:
-  virtual ~pqWidgetEventTranslator() {}
-  
-  /** Derivatives should implement this and translate events into commands,
-  returning "true" if they handled the event, and setting Error
-  to "true" if there were any problems. */
-  virtual bool translateEvent(QObject* Object, QEvent* Event, bool& Error) = 0;
+  return result;
+}
 
-signals:
-  /// Derivatives should emit this signal whenever they wish to record a high-level event
-  void recordEvent(QObject* Object, const QString& Command, const QString& Arguments);
+////////////////////////////////////////////////////////////////////////////////////
+// pqXMLEventObserver
 
-protected:
-  pqWidgetEventTranslator() {}
-  pqWidgetEventTranslator(const pqWidgetEventTranslator&);
-  pqWidgetEventTranslator& operator=(const pqWidgetEventTranslator&);
-};
+pqXMLEventObserver::pqXMLEventObserver(ostream& stream) :
+  Stream(stream)
+{
+  this->Stream << "<?xml version=\"1.0\" ?>\n";
+  this->Stream << "<pqevents>\n";
+}
 
-#endif // !_pqWidgetEventTranslator_h
+pqXMLEventObserver::~pqXMLEventObserver()
+{
+  this->Stream << "</pqevents>\n";
+}
 
+void pqXMLEventObserver::onRecordEvent(
+  const QString& Widget,
+  const QString& Command,
+  const QString& Arguments)
+{
+  this->Stream
+    << "  <pqevent "
+    << "object=\"" << textToXML(Widget).toAscii().data() << "\" "
+    << "command=\"" << textToXML(Command).toAscii().data() << "\" "
+    << "arguments=\"" << textToXML(Arguments).toAscii().data() << "\" "
+    << "/>\n";
+}

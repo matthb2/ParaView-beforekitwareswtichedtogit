@@ -30,12 +30,32 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 =========================================================================*/
 
-#include "pqEventObserverStdout.h"
-#include <stdio.h>
+#ifndef _pqXMLEventSource_h
+#define _pqXMLEventSource_h
 
-void pqEventObserverStdout::onRecordEvent(const QString& Widget, const QString& Command, const QString& Arguments)
+#include "pqEventSource.h"
+
+class QString;
+
+/** Concrete implementation of pqEventSource that retrieves events recorded
+by pqXMLEventObserver */
+class QTTESTING_EXPORT pqXMLEventSource :
+  public pqEventSource
 {
-  printf("event: %s %s %s\n", Widget.toAscii().data(), Command.toAscii().data(),
-                              Arguments.toAscii().data());
-}
+public:
+  pqXMLEventSource();
+  ~pqXMLEventSource();
 
+  void setContent(const QString& path);
+
+  virtual bool getNextEvent(
+    QString& object,
+    QString& command,
+    QString& arguments);
+
+private:
+  class pqImplementation;
+  pqImplementation* const Implementation;
+};
+
+#endif // !_pqXMLEventSource_h

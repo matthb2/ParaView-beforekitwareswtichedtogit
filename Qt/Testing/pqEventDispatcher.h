@@ -30,26 +30,45 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 =========================================================================*/
 
-#ifndef _pqEventObserverStdout_h
-#define _pqEventObserverStdout_h
+#ifndef _pqEventDispatcher_h
+#define _pqEventDispatcher_h
+
+#include "QtTestingExport.h"
 
 #include <QObject>
 
-/**
-Observes high-level ParaView "events" and writes them to stdout, mainly for debugging purposes.
-To use, connect the onRecordEvent() slot to the pqEventTranslator::recordEvent() signal.
+class pqEventPlayer;
+class pqEventSource;
 
-\sa pqEventTranslator, pqEventObserverXML
-*/
-
-class pqEventObserverStdout :
+class QTTESTING_EXPORT pqEventDispatcher :
   public QObject
 {
   Q_OBJECT
+  
+public:
+  pqEventDispatcher();
+  ~pqEventDispatcher();
 
-public slots:
-  void onRecordEvent(const QString& Widget, const QString& Command, const QString& Arguments);
+  /** Retrieves events from the given event source, dispatching them to
+  the given event player for test case playback.  Note that playback is
+  asynchronous - the call to playEvents() returns immediately.  Callers
+  must ensure that the source, dispatcher, and player objects remain
+  in-scope until either the succeeded() or failed() signal is emitted
+  to indicate that playback has finished. */
+  void playEvents(pqEventSource& source, pqEventPlayer& player);
+
+signals:
+  void succeeded();
+  void failed();
+
+private slots:
+  void playNextEvent();
+
+private:
+  void stopPlayback();
+
+  class pqImplementation;
+  pqImplementation* const Implementation;
 };
 
-#endif // !_pqEventObserverStdout_h
-
+#endif // !_pqEventDispatcher_h

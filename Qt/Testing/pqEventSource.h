@@ -30,42 +30,29 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 =========================================================================*/
 
-#include "pqEventObserverXML.h"
+#ifndef _pqEventSource_h
+#define _pqEventSource_h
 
-/// Escapes strings so they can be embedded in an XML document
-static const QString textToXML(const QString& string)
+#include "QtTestingExport.h"
+
+class QString;
+
+/// Abstract interface for objects that can supply high-level testing events
+class QTTESTING_EXPORT pqEventSource
 {
-  QString result = string;
-  result.replace("&", "&amp;");
-  result.replace("<", "&lt;");
-  result.replace(">", "&gt;");
-  result.replace("'", "&apos;");
-  result.replace("\"", "&quot;");
-  
-  return result;
-}
+public:
+  virtual ~pqEventSource() {}
 
-////////////////////////////////////////////////////////////////////////////////////
-// pqEventObserverXML
+  /// Retrieves the next available event.  Returns true if an event was returned, false if there are no more events
+  virtual bool getNextEvent(
+    QString& object,
+    QString& command,
+    QString& arguments) = 0;
 
-pqEventObserverXML::pqEventObserverXML(ostream& stream) :
-  Stream(stream)
-{
-  this->Stream << "<?xml version=\"1.0\" ?>\n";
-  this->Stream << "<pqevents>\n";
-}
+protected:
+  pqEventSource() {}
+  pqEventSource(const pqEventSource&) {}
+  pqEventSource& operator=(const pqEventSource&) { return *this; }
+};
 
-pqEventObserverXML::~pqEventObserverXML()
-{
-  this->Stream << "</pqevents>\n";
-}
-
-void pqEventObserverXML::onRecordEvent(const QString& Widget, const QString& Command, const QString& Arguments)
-{
-  this->Stream
-    << "  <pqevent "
-    << "object=\"" << textToXML(Widget).toAscii().data() << "\" "
-    << "command=\"" << textToXML(Command).toAscii().data() << "\" "
-    << "arguments=\"" << textToXML(Arguments).toAscii().data() << "\" "
-    << "/>\n";
-}
+#endif // !_pqEventSource_h
