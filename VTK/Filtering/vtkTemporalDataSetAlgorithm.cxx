@@ -129,7 +129,7 @@ int vtkTemporalDataSetAlgorithm::ProcessRequest(
 int vtkTemporalDataSetAlgorithm::FillOutputPortInformation(
   int vtkNotUsed(port), vtkInformation* info)
 {
-  info->Set(vtkDataObject::DATA_TYPE_NAME(), "vtkDataObject");
+  info->Set(vtkDataObject::DATA_TYPE_NAME(), "vtkTemporalDataSet");
   info->Set(vtkCompositeDataPipeline::COMPOSITE_DATA_TYPE_NAME(), 
             "vtkTemporalDataSet");
   return 1;
