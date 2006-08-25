@@ -102,7 +102,10 @@ int vtkTemporalShiftScale::RequestData(
     (outInfo->Get(vtkDataObject::DATA_OBJECT()));
   
   // shallow copy the data
-  inData->ShallowCopy(outData);
+  if (inData && outData)
+    {
+    inData->ShallowCopy(outData);
+    }
 
   return 1;
 }
