@@ -476,7 +476,7 @@ void vtkSESAMEReader::ReadTable()
         scalarCount++;
         if(scalarCount > datadims[0] * datadims[1])
           {
-          scalarCount = 0;
+          scalarCount = 1;
           scalarIndex++;
           }
         if(this->Internal->TableArrayStatus.size() > scalarIndex &&
@@ -489,6 +489,18 @@ void vtkSESAMEReader::ReadTable()
       }
     }
 
+  for(int i=scalarIndex+1; 
+      i<this->Internal->TableArrayStatus.size();
+      i++)
+    {
+    // fill in the empty scalars with zeros
+    int max = datadims[0] * datadims[1];
+    for(int j=0; j<max; j++)
+      {
+      scalars[i]->InsertNextTuple1(0.0);
+      }
+    }
+  
   output->SetXCoordinates( xCoords );
   output->SetYCoordinates( yCoords );
   output->SetZCoordinates( zCoords );
@@ -499,7 +511,10 @@ void vtkSESAMEReader::ReadTable()
     {
     if(scalars[j])
       {
-      output->GetPointData()->AddArray(scalars[j]);
+      if(scalars[j]->GetNumberOfTuples())
+        {
+        output->GetPointData()->AddArray(scalars[j]);
+        }
       scalars[j]->Delete();
       }
     }
