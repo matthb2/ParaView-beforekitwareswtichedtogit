@@ -1311,7 +1311,7 @@ void vtkMINCImageReader::FindMINCValidRange()
           break;
         case NC_SHORT:
           range[0] = -32768;
-          range[1] = 32768;
+          range[1] = 32767;
           break;
         case NC_INT:
           range[0] = -2147483647 - 1;
