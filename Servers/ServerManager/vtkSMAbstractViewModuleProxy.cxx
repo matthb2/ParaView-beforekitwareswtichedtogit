@@ -24,6 +24,7 @@
 #include "vtkCommand.h"
 #include "vtkErrorCode.h"
 #include "vtkFloatArray.h"
+#include "vtkGarbageCollector.h"
 #include "vtkImageWriter.h"
 #include "vtkInstantiator.h"
 #include "vtkInteractorStyleTrackballCamera.h"
