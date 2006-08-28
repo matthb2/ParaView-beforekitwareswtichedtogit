@@ -253,9 +253,16 @@ void vtkSMDataObjectDisplayProxy::SetInputInternal(vtkSMSourceProxy* input)
   
   if ( this->HasVolumePipeline )
     {
-    if (vtkHAVSVolumeMapper::SupportedByHardware())
+    // Shouldn't this check be on the render server?
+    vtkHAVSVolumeMapper* mapper = vtkHAVSVolumeMapper::New();
+    if (mapper && mapper->SupportedByHardware())
       {
       this->SupportsHAVSMapper = 1;
+      }
+    if (mapper)
+      {
+      mapper->Delete();
+      mapper = 0;
       }
     if (input->GetDataInformation()->GetNumberOfCells() < 1000000)
       {
