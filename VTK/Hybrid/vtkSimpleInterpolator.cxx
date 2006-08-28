@@ -284,3 +284,15 @@ double vtkSimpleInterpolator::ComputeRightDerivative()
     }
 }
 //----------------------------------------------------------------------------
+void vtkSimpleInterpolator::PrintSelf(ostream& os, vtkIndent indent)
+{
+  this->Superclass::PrintSelf(os, indent);
+  os << indent << "LeftConstraint: "
+     << LeftConstraint;
+  os << indent << "RightConstraint: "
+     << RightConstraint;
+  os << indent << "LeftValue: "
+     << LeftValue;
+  os << indent << "RightValue: "
+     << RightValue;
+}
