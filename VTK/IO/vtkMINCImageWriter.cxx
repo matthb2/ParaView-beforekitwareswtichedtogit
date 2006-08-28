@@ -823,7 +823,8 @@ int vtkMINCImageWriter::VerifyPatientAttribute(
 
 //-------------------------------------------------------------------------
 int vtkMINCImageWriter::VerifyStudyAttribute(
-  const char *vtkNotUsed(varname), const char *attname, vtkDataArray *array)
+  const char *vtkNotUsed(varname), const char *attname,
+  vtkDataArray *vtkNotUsed(array))
 {
   // Attributes for "study" variable (vartype = "group________")
   static const char *studyAttributes[] = {
