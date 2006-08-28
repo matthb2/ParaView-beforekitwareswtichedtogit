@@ -34,6 +34,7 @@
 #include "vtkSMRenderModuleProxy.h"
 #include "vtkSMPropertyIterator.h"
 
+#include <vtkstd/algorithm>
 #include <vtkstd/list>
 #include <vtkstd/vector>
 
