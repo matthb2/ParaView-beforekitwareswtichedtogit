@@ -844,6 +844,8 @@ void vtkTemporalDataSetInterpolationFilter::PrintSelf(ostream& os, vtkIndent ind
      << this->TimeValue << "\n";
   os << indent << "TimeStepInterval: "
      << this->TimeStepInterval << "\n";
+  os << indent << "TimeStepRange: "
+     << "(" << this->TimeStepRange[0] << "," << this->TimeStepRange[1] << ")\n";
 }
 
 //----------------------------------------------------------------------------
