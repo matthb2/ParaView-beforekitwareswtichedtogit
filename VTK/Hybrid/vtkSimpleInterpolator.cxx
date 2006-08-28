@@ -288,11 +288,11 @@ void vtkSimpleInterpolator::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os, indent);
   os << indent << "LeftConstraint: "
-     << LeftConstraint;
+     << this->LeftConstraint;
   os << indent << "RightConstraint: "
-     << RightConstraint;
+     << this->RightConstraint;
   os << indent << "LeftValue: "
-     << LeftValue;
+     << this->LeftValue;
   os << indent << "RightValue: "
-     << RightValue;
+     << this->RightValue;
 }
