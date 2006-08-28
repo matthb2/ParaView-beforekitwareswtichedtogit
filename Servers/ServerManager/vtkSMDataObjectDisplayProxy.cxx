@@ -308,6 +308,34 @@ void vtkSMDataObjectDisplayProxy::SetInputInternal(vtkSMSourceProxy* input)
     this->SetupVolumeDefaults();
     }
 }
+
+//-----------------------------------------------------------------------------
+void vtkSMDataObjectDisplayProxy::SetTexture(vtkSMProxy *texture)
+{
+  vtkSMProxyProperty *pp = vtkSMProxyProperty::SafeDownCast(
+    this->ActorProxy->GetProperty("Texture"));
+  if (!pp)
+    {
+    vtkErrorMacro("Failed to find property Texture on ActorProxy.");
+    return;
+    }
+  pp->RemoveAllProxies();
+  pp->AddProxy(texture);
+  this->ActorProxy->UpdateVTKObjects();
+}
+
+//-----------------------------------------------------------------------------
+vtkSMProxy* vtkSMDataObjectDisplayProxy::GetTexture()
+{
+  vtkSMProxyProperty *pp = vtkSMProxyProperty::SafeDownCast(
+    this->ActorProxy->GetProperty("Texture"));
+  if (!pp || !pp->GetNumberOfProxies())
+    {
+    return 0;
+    }
+  return pp->GetProxy(0);
+}
+
 //-----------------------------------------------------------------------------
 void vtkSMDataObjectDisplayProxy::SetupPipeline()
 {
