@@ -89,6 +89,7 @@ int vtkTextureMapToPlane::RequestData(
   //  Allocate texture data
   //
   newTCoords = vtkFloatArray::New();
+  newTCoords->SetName("Texture Coordinates");
   newTCoords->SetNumberOfComponents(2);
   newTCoords->SetNumberOfTuples(numPts);
   progressInterval = numPts/20 + 1;

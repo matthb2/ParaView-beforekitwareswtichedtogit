@@ -134,6 +134,7 @@ int vtkTextureMapToCylinder::RequestData(
     return 1;
     }
   newTCoords = vtkFloatArray::New();
+  newTCoords->SetName("Texture Coordinates");
   newTCoords->SetNumberOfComponents(2);
   newTCoords->Allocate(2*numPts);
 
