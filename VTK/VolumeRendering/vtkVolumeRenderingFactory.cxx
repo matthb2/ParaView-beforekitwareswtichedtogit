@@ -82,6 +82,7 @@ vtkObject* vtkVolumeRenderingFactory::CreateInstance(const char* vtkclassname )
       if (vtkGraphicsFactory::GetUseMesaClasses())
         {
         vtkGenericWarningMacro("No support for mesa in vtkHAVSVolumeMapper");
+        return 0;
         }
 #endif
       return vtkOpenGLHAVSVolumeMapper::New();
