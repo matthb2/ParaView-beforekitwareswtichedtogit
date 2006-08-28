@@ -140,9 +140,7 @@ int vtkMultiGroupDataSetAlgorithm::FillInputPortInformation(
   int vtkNotUsed(port), vtkInformation* info)
 {
   // now add our info
-  info->Set(vtkAlgorithm::INPUT_REQUIRED_DATA_TYPE(), "vtkDataObject");
-  info->Set(vtkCompositeDataPipeline::INPUT_REQUIRED_COMPOSITE_DATA_TYPE(), 
-            "vtkMultiGroupDataSet");
+  info->Set(vtkAlgorithm::INPUT_REQUIRED_DATA_TYPE(), "vtkMultiGroupDataSet");
   return 1;
 }
 

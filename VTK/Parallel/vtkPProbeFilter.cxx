@@ -72,7 +72,8 @@ int vtkPProbeFilter::RequestData(vtkInformation *vtkNotUsed(request),
     srcInfo->Get(vtkDataObject::DATA_OBJECT()));
   if (!source || !source->GetNumberOfPoints())
     {
-    int pieceNum = outInfo->Get(vtkStreamingDemandDrivenPipeline::UPDATE_PIECE_NUMBER());
+    int pieceNum = 
+      outInfo->Get(vtkStreamingDemandDrivenPipeline::UPDATE_PIECE_NUMBER());
     vtkMultiGroupDataSet *tmpSource = vtkMultiGroupDataSet::SafeDownCast(
       srcInfo->Get(vtkDataObject::DATA_OBJECT()));
     if (tmpSource)
@@ -177,9 +178,7 @@ int vtkPProbeFilter::FillInputPortInformation(int port, vtkInformation *info)
 
   if (port == 1)
     {
-    info->Set(vtkAlgorithm::INPUT_REQUIRED_DATA_TYPE(), "vtkDataSet");
-    info->Set(vtkCompositeDataPipeline::INPUT_REQUIRED_COMPOSITE_DATA_TYPE(),
-              "vtkMultiGroupDataSet");
+    info->Set(vtkAlgorithm::INPUT_REQUIRED_DATA_TYPE(), "vtkDataObject");
     }
   return 1;
 }

@@ -338,7 +338,10 @@ int vtkPStreamTracer::RequestData(
 
   vtkInformation *inInfo = inputVector[0]->GetInformationObject(0);
   vtkInformation *outInfo = outputVector->GetInformationObject(0);
-  this->SetupOutput(inInfo, outInfo);
+  if (!this->SetupOutput(inInfo, outInfo))
+    {
+    return 0;
+    }
 
   vtkInformation *sourceInfo = inputVector[1]->GetInformationObject(0);
   vtkDataSet *source = 0;

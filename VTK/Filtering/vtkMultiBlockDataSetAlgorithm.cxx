@@ -140,9 +140,7 @@ int vtkMultiBlockDataSetAlgorithm::FillInputPortInformation(
   int vtkNotUsed(port), vtkInformation* info)
 {
   // now add our info
-  info->Set(vtkAlgorithm::INPUT_REQUIRED_DATA_TYPE(), "vtkDataObject");
-  info->Set(vtkCompositeDataPipeline::INPUT_REQUIRED_COMPOSITE_DATA_TYPE(), 
-            "vtkMultiBlockDataSet");
+  info->Set(vtkAlgorithm::INPUT_REQUIRED_DATA_TYPE(), "vtkMultiBlockDataSet");
   return 1;
 }
 
