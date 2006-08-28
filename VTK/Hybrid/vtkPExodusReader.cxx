@@ -47,7 +47,7 @@
 #include "exodusII.h"
 #include <sys/stat.h>
 #include <ctype.h>
-#include <vector>
+#include <vtkstd/vector>
 
 #define DEBUG 0
 #define vtkPExodusReaderMAXPATHLEN 2048
