@@ -297,15 +297,18 @@ void vtkOpenGLExtensionManager::ReadOpenGLExtensions()
 
   vtkstd::string extensions_string;
 
-  const char *gl_extensions;
+  const char *gl_extensions = "";
   const char *glu_extensions = "";
   const char *win_extensions;
 
-  gl_extensions = (const char *)glGetString(GL_EXTENSIONS);
-
-  if (gl_extensions == NULL)
+  if (this->RenderWindow || glXGetCurrentContext() != NULL)
     {
-    gl_extensions = "";
+    gl_extensions = (const char *)glGetString(GL_EXTENSIONS);
+
+    if (gl_extensions == NULL)
+      {
+      gl_extensions = "";
+      }
     }
 
   if (!this->RenderWindow && (gl_extensions[0] == '\0'))
