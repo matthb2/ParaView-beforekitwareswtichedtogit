@@ -221,7 +221,10 @@ void vtkPVDesktopDeliveryClient::PreRenderProcessing()
 
   // Turn swap buffers off before the render so the end render method has a
   // chance to add to the back buffer.
-  this->RenderWindow->SwapBuffersOff();
+  if (this->UseBackBuffer)
+    {
+    this->RenderWindow->SwapBuffersOff();
+    }
 }
 
 //----------------------------------------------------------------------------
@@ -242,7 +245,10 @@ void vtkPVDesktopDeliveryClient::PostRenderProcessing()
     }
 
   // Swap buffers here.
-  this->RenderWindow->SwapBuffersOn();
+  if (this->UseBackBuffer)
+    {
+    this->RenderWindow->SwapBuffersOn();
+    }
   this->RenderWindow->Frame();
 }
 

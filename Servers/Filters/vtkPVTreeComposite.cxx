@@ -182,7 +182,10 @@ void vtkPVTreeComposite::PreRenderProcessing()
 
   this->ReallocDataArrays();
 
-  this->RenderWindow->SwapBuffersOff();
+  if (this->UseBackBuffer)
+    {
+    this->RenderWindow->SwapBuffersOff();
+    }
 }
 
 //----------------------------------------------------------------------------
@@ -962,7 +965,10 @@ void vtkPVTreeComposite::PostRenderProcessing()
   timer = NULL;
 
   this->WriteFullImage();
-  this->RenderWindow->SwapBuffersOn();
+  if (this->UseBackBuffer)
+    {
+    this->RenderWindow->SwapBuffersOn();
+    }
   this->RenderWindow->Frame();
 }
 

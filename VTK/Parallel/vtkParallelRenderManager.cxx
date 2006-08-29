@@ -125,6 +125,8 @@ vtkParallelRenderManager::vtkParallelRenderManager()
 
   this->AddedRMIs = 0;
   this->Timer = vtkTimerLog::New();
+  
+  this->UseBackBuffer = 1;
 }
 
 //----------------------------------------------------------------------------
@@ -218,6 +220,10 @@ void vtkParallelRenderManager::PrintSelf(ostream &os, vtkIndent indent)
   os << indent << "ForceRenderWindowSize: "
      << this->ForceRenderWindowSize
      << endl;
+
+  os << indent << "UseBackBuffer: "
+     << (this->UseBackBuffer ? "on" : "off") << endl;
+
 }
 
 //----------------------------------------------------------------------------
