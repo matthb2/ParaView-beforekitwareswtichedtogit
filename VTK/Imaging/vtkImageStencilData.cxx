@@ -601,6 +601,12 @@ void vtkImageStencilData::RemoveExtent(int r1, int r2, int yIdx, int zIdx)
         delete [] clist;
         clist = newclist;
         }
+
+      length = clistlen;
+      if (k >= length)
+        {
+        return;
+        }
       }
      
     if ((r1 >= clist[k] && r1 < clist[k+1]) || 
