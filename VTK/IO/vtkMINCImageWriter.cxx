@@ -60,7 +60,6 @@ POSSIBILITY OF SUCH DAMAGES.
 
 #ifdef _WIN32
 #include "vtkWindows.h"
-#include <process.h>
 #else
 #include <sys/types.h>
 #include <unistd.h>
@@ -980,7 +979,7 @@ vtkstd::string vtkMINCImageWriterCreateIdentString()
 
   // Get the process ID and the counter for this process.
 #ifdef _WIN32
-  int processId = _getpid();
+  int processId = GetCurrentProcessId();
 #else
   int processId = getpid();
 #endif
