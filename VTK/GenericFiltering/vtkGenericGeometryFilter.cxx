@@ -303,12 +303,12 @@ int vtkGenericGeometryFilter::RequestData(
 
   input->GetTessellator()->InitErrorMetrics(input);
   
-  vtkIdTypeArray *OriginalCellIds = NULL;
+  vtkIdTypeArray *originalCellIds = NULL;
   if (this->PassThroughCellIds)
     {
-    OriginalCellIds = vtkIdTypeArray::New();
-    OriginalCellIds->SetName("vtkOriginalCellIds");
-    OriginalCellIds->SetNumberOfComponents(1);
+    originalCellIds = vtkIdTypeArray::New();
+    originalCellIds->SetName("vtkOriginalCellIds");
+    originalCellIds->SetNumberOfComponents(1);
     }        
         
   for (cellId = 0, cellIt->Begin(); !cellIt->IsAtEnd() && !abort; 
@@ -364,7 +364,7 @@ int vtkGenericGeometryFilter::RequestData(
       {
       for (vtkIdType cId = BeginTopOutCId; cId < EndTopOutCId; cId++)
         {
-        OriginalCellIds->SetValue(cId, cellId);
+        originalCellIds->InsertNextValue(cellId);
         }
       }
 
@@ -372,9 +372,9 @@ int vtkGenericGeometryFilter::RequestData(
 
   if (this->PassThroughCellIds)
     {
-    outputCD->AddArray(OriginalCellIds);
-    OriginalCellIds->Delete();
-    OriginalCellIds = NULL;
+    outputCD->AddArray(originalCellIds);
+    originalCellIds->Delete();
+    originalCellIds = NULL;
     }
 
   cellIt->Delete();
