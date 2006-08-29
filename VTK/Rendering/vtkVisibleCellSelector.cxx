@@ -123,7 +123,7 @@ public:
     if (i == 2)
       {
       //upper 32 bits of cell id
-      ret = ((HField & 0xFFFF) << 16) | (MField *0xFFFF00 >> 8);
+      ret = ((HField & 0xFFFF) << 16) | (MField & 0xFFFF00 >> 8);
       }
     else
       {
