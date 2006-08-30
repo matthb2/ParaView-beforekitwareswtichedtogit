@@ -914,7 +914,20 @@ void vtkMPIMoveData::PrintSelf(ostream& os, vtkIndent indent)
      << this->DefineCollectAsClone << endl;
   os << indent << "Server: " << this->Server << endl;
   os << indent << "MoveMode: " << this->MoveMode << endl;
-
+  os << indent << "OutputDataType: ";
+  if (this->OutputDataType == VTK_POLY_DATA)
+    {
+    os << "VTK_POLY_DATA";
+    }
+  else if (this->OutputDataType == VTK_UNSTRUCTURED_GRID)
+    {
+    os << "VTK_UNSTRUCTURED_GRID";
+    }
+  else
+    {
+    os << "Unrecognized output type " << this->OutputDataType;
+    }
+  os << endl;
   //os << indent << "MToN
 }
 

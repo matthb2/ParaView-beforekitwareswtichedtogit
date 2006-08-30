@@ -81,6 +81,7 @@ int vtkExtractBlockFromSelection::RequestData(
 void vtkExtractBlockFromSelection::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os,indent);
+  os << indent << "SourceID: " << this->SourceID << endl;
 }
 
 //----------------------------------------------------------------------------
