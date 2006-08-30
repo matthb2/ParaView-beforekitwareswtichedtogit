@@ -188,6 +188,9 @@ void vtkSMSelectionProxy::UpdateSelection()
 
   this->SelectionUpToDate = 1;
   this->InvokeEvent(vtkCommand::EndEvent);
+
+  // Since selection changed, we mark all consumers modified.
+  this->MarkConsumersAsModified(0);
 }
 
 //-----------------------------------------------------------------------------
