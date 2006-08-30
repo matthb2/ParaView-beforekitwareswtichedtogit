@@ -135,7 +135,6 @@ int vtkMPIMoveData::RequestInformation(vtkInformation*,
                                        vtkInformationVector** inputVector,
                                        vtkInformationVector* outputVector)
 {
-  vtkInformationVector* inInfo = inputVector[0];
   vtkInformation* outInfo = outputVector->GetInformationObject(0);
   if (inputVector[0]->GetNumberOfInformationObjects() > 0)
     {
