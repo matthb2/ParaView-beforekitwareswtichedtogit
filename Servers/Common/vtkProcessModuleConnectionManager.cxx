@@ -183,7 +183,7 @@ int vtkProcessModuleConnectionManager::AcceptConnectionsOnPort(int port, int typ
     }
   ss->SetType(type);
 
-  int id = this->UniqueServerSocketID++;
+  int id = ++this->UniqueServerSocketID;
   this->Internals->IntToServerSocketMap[id] = ss;
   ss->Delete();
 
