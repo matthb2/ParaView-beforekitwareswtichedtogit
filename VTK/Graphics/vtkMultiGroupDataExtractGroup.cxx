@@ -186,11 +186,10 @@ int vtkMultiGroupDataExtractGroup::RequestData(
         {
         this->UpdateProgress(progress);
         }
-      vtkDataSet* dObj = vtkDataSet::SafeDownCast(
-        input->GetDataSet(group, dataSet));
+      vtkDataObject* dObj = input->GetDataSet(group, dataSet);
       if (dObj)
         {
-        vtkDataSet* copy = dObj->NewInstance();
+        vtkDataObject* copy = dObj->NewInstance();
         copy->ShallowCopy(dObj);
         output->SetDataSet(group-this->MinGroup, dataSet, copy);
         copy->Delete();

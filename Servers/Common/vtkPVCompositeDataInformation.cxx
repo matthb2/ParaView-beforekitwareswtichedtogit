@@ -136,7 +136,15 @@ void vtkPVCompositeDataInformation::CopyFromObject(vtkObject* object)
       if (dobj)
         {
         vtkPVDataInformation* dataInf = vtkPVDataInformation::New();
-        dataInf->CopyFromObject(dobj);
+        if (dobj->IsA("vtkCompositeDataSet"))
+          {
+          dataInf->CopyFromCompositeDataSet(
+            static_cast<vtkCompositeDataSet*>(dobj), 0);
+          }
+        else
+          {
+          dataInf->CopyFromObject(dobj);
+          }
         ldata[j] = dataInf;
         dataInf->Delete();
         }
@@ -201,9 +209,8 @@ void vtkPVCompositeDataInformation::AddInformation(vtkPVInformation* pvi)
         }
       }
     }
-         
-
 }
+
 //----------------------------------------------------------------------------
 void vtkPVCompositeDataInformation::CopyToStream(
   vtkClientServerStream* css)
