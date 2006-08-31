@@ -401,6 +401,10 @@ void vtkDICOMImageReader::SetupOutputInformation(int num_slices)
   this->SetNumberOfScalarComponents(num_comp);
 
   this->GetPixelSpacing();
+  float *pos = this->GetImagePositionPatient();
+  this->DataOrigin[0] = pos[0];
+  this->DataOrigin[1] = pos[1];
+  this->DataOrigin[2] = pos[2];
 
   this->vtkImageReader2::ExecuteInformation();
 }
@@ -480,6 +484,12 @@ int vtkDICOMImageReader::GetHeight()
 float* vtkDICOMImageReader::GetImagePositionPatient()
 {
   return this->AppHelper->GetImagePositionPatient();
+}
+
+//----------------------------------------------------------------------------
+float* vtkDICOMImageReader::GetImageOrientationPatient()
+{
+  return this->AppHelper->GetImageOrientationPatient();
 }
 
 //----------------------------------------------------------------------------
