@@ -65,9 +65,9 @@ vtkSMProxy* vtkSMPQStateLoader::NewProxyInternal(
           {
           vtkSMProxy* p = this->MultiViewRenderModuleProxy->GetProxy(
             static_cast<unsigned int>(this->UsedExistingRenderModules));
+          this->UsedExistingRenderModules++;
           if (p)
             {
-            this->UsedExistingRenderModules++;
             p->Register(this);
             return p;
             }
