@@ -40,6 +40,14 @@ vtkSMPQStateLoader::~vtkSMPQStateLoader()
 }
 
 //-----------------------------------------------------------------------------
+int vtkSMPQStateLoader::LoadState(vtkPVXMLElement* rootElement, 
+  int keep_proxies)
+{
+  this->UsedExistingRenderModules= 0;
+  return this->Superclass::LoadState(rootElement, keep_proxies);
+}
+
+//-----------------------------------------------------------------------------
 vtkSMProxy* vtkSMPQStateLoader::NewProxyInternal(
   const char* xml_group, const char* xml_name)
 {
