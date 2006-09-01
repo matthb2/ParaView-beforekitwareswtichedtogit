@@ -339,7 +339,7 @@ void vtkOpenGLExtensionManager::ReadOpenGLExtensions()
     }
   else
     {
-    vtkWarningMacro("Could not query WGL extensions.");
+    //vtkWarningMacro("Could not query WGL extensions.");
     win_extensions = "";
     }
 #elif defined(__APPLE__)
