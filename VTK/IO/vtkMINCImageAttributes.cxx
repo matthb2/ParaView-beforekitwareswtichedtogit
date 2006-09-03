@@ -350,13 +350,13 @@ const char *vtkMINCImageAttributes::ConvertDataArrayToString(
 }
 
 //-------------------------------------------------------------------------
-void vtkMINCImageAttributes::PrintHeader()
+void vtkMINCImageAttributes::PrintFileHeader()
 {
-  this->PrintHeader(cout);
+  this->PrintFileHeader(cout);
 }
 
 //-------------------------------------------------------------------------
-void vtkMINCImageAttributes::PrintHeader(ostream &os)
+void vtkMINCImageAttributes::PrintFileHeader(ostream &os)
 {
   const char *name = "unknown";
   if (this->Name)
