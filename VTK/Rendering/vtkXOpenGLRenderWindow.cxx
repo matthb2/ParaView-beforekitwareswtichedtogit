@@ -401,14 +401,17 @@ vtkXOpenGLRenderWindow::~vtkXOpenGLRenderWindow()
 }
 
 // End the rendering process and display the image.
-void vtkXOpenGLRenderWindow::Frame(void)
+void vtkXOpenGLRenderWindow::Frame()
 {
   this->MakeCurrent();
-  glFlush();
   if (!this->AbortRender && this->DoubleBuffer && this->SwapBuffers)
     {
     glXSwapBuffers(this->DisplayId, this->WindowId);
     vtkDebugMacro(<< " glXSwapBuffers\n");
+    }
+  else
+    {
+    glFlush();
     }
 }
  
