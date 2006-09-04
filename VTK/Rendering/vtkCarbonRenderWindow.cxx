@@ -685,11 +685,14 @@ void vtkCarbonRenderWindow::SetPosition(int x, int y)
 void vtkCarbonRenderWindow::Frame()
 {
   this->MakeCurrent();
-  glFlush();
   if (!this->AbortRender && this->DoubleBuffer && this->SwapBuffers)
     {
     aglSwapBuffers(this->ContextId);
     vtkDebugMacro(<< " aglSwapBuffers\n");
+    }
+  else
+    {
+    glFlush();
     }
 }
   
