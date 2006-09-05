@@ -104,7 +104,7 @@ int vtkTemporalShiftScale::RequestData(
   // shallow copy the data
   if (inData && outData)
     {
-    inData->ShallowCopy(outData);
+    outData->ShallowCopy(inData);
     }
 
   return 1;
