@@ -299,7 +299,10 @@ void vtkFieldData::AllocateArrays(int num)
     {
     for ( i=num; i < this->NumberOfArrays; i++)
       {
-      this->Data[i]->UnRegister(this);
+      if( this->Data[i] )
+        {
+        this->Data[i]->UnRegister(this);
+        }
       }
     this->NumberOfArrays = num;
     }
