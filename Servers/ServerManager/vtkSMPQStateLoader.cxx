@@ -104,6 +104,23 @@ vtkSMProxy* vtkSMPQStateLoader::NewProxyInternal(
   return this->Superclass::NewProxyInternal(xml_group, xml_name);
 }
 
+//---------------------------------------------------------------------------
+void vtkSMPQStateLoader::RegisterProxyInternal(const char* group,
+  const char* name, vtkSMProxy* proxy)
+{
+  if (proxy->GetXMLGroup() 
+    && strcmp(proxy->GetXMLGroup(), "rendermodules")==0)
+    {
+    vtkSMProxyManager* pxm = vtkSMProxyManager::GetProxyManager();
+    if (pxm->GetProxyName(group, proxy))
+      {
+      // render module is registered, don't re-register it.
+      return;
+      }
+    }
+  this->Superclass::RegisterProxyInternal(group, name, proxy);
+}
+
 //-----------------------------------------------------------------------------
 void vtkSMPQStateLoader::PrintSelf(ostream& os, vtkIndent indent)
 {
