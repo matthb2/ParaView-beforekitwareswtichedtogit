@@ -88,6 +88,14 @@ void vtkSMStringVectorProperty::AppendCommandToStream(
     return;
     }
 
+  if (this->CleanCommand)
+    {
+    *str << vtkClientServerStream::Invoke
+      << objectId << this->CleanCommand
+      << vtkClientServerStream::End;
+    }
+
+  // If none of the strings are initialized, don't send them.
   int i;
   int numArgs = this->GetNumberOfElements();
   int numInitArgs = 0;
@@ -101,13 +109,6 @@ void vtkSMStringVectorProperty::AppendCommandToStream(
   if (numInitArgs == 0)
     {
     return;
-    }
-
-  if (this->CleanCommand)
-    {
-    *str << vtkClientServerStream::Invoke
-      << objectId << this->CleanCommand
-      << vtkClientServerStream::End;
     }
 
   if (!this->RepeatCommand)
