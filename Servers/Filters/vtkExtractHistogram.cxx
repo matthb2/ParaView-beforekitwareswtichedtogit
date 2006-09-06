@@ -25,7 +25,7 @@
 #include "vtkStreamingDemandDrivenPipeline.h"
 #include "vtkUnsignedLongArray.h"
 
-#include <iostream>
+#include "vtkIOStream.h"
 
 vtkCxxRevisionMacro(vtkExtractHistogram, "$Revision$");
 vtkStandardNewMacro(vtkExtractHistogram);
