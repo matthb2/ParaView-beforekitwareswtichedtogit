@@ -244,6 +244,20 @@ void vtkOpenGLPainterDeviceAdapter::EndPrimitive()
 }
 
 //-----------------------------------------------------------------------------
+int vtkOpenGLPainterDeviceAdapter::IsAttributesSupported(int attribute)
+{
+  switch(attribute)
+    {
+  case vtkDataSetAttributes::NUM_ATTRIBUTES:
+  case vtkDataSetAttributes::NORMALS:
+  case vtkDataSetAttributes::SCALARS:
+  case vtkDataSetAttributes::TCOORDS:
+    return 1;
+    }
+  return 0;
+}
+
+//-----------------------------------------------------------------------------
 void vtkOpenGLPainterDeviceAdapter::SendAttribute(int index, int numcomp,
   int type, const void *attribute, unsigned long offset/*=0*/)
 {
