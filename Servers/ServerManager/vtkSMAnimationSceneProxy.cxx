@@ -481,7 +481,7 @@ void vtkSMAnimationSceneProxy::Play()
     if (this->RenderModuleProxy)
       {
       iren = this->RenderModuleProxy->GetInteractor();
-      old_enable = iren->GetEnabled();
+      old_enable = iren?iren->GetEnabled():0;
       if (old_enable)
         {
         iren->Disable();
