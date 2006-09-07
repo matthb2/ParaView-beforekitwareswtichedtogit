@@ -1627,6 +1627,13 @@ vtkPVServerInformation* vtkProcessModule::GetServerInformation(
 }
 
 //-----------------------------------------------------------------------------
+vtkPVOpenGLExtensionsInformation* 
+vtkProcessModule::GetOpenGLExtensionsInformation(vtkIdType id)
+{
+  return this->ConnectionManager->GetOpenGLExtensionsInformation(id);
+}
+
+//-----------------------------------------------------------------------------
 vtkClientServerID vtkProcessModule::GetMPIMToNSocketConnectionID(
   vtkIdType id)
 {
