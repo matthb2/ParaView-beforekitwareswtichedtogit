@@ -92,6 +92,7 @@ vtkCxxRevisionMacro(vtkSMProxyManager, "$Revision$");
 //---------------------------------------------------------------------------
 vtkSMProxyManager::vtkSMProxyManager()
 {
+  this->UpdateInputProxies = 0;
   this->Internals = new vtkSMProxyManagerInternals;
   this->Observer = vtkSMProxyManagerObserver::New();
   this->Observer->SetTarget(this);
@@ -846,6 +847,22 @@ void vtkSMProxyManager::UpdateRegisteredProxies(int modified_only /*=1*/)
         }
       }
     }
+}
+
+//---------------------------------------------------------------------------
+void vtkSMProxyManager::UpdateRegisteredProxiesInOrder(int modified_only/*=1*/)
+{
+  this->UpdateInputProxies = 1;
+  this->UpdateRegisteredProxies(modified_only);
+  this->UpdateInputProxies = 0;
+}
+
+//---------------------------------------------------------------------------
+void vtkSMProxyManager::UpdateProxyInOrder(vtkSMProxy* proxy)
+{
+  this->UpdateInputProxies = 1;
+  proxy->UpdateVTKObjects();
+  this->UpdateInputProxies = 0;
 }
 
 //---------------------------------------------------------------------------
