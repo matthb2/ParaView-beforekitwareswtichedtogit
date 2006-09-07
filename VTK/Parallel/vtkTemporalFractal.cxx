@@ -464,7 +464,9 @@ int vtkTemporalFractal::RequestData(
     this->RequestOneTimeStep(dset,request, inputVector, outputVector);
     dset->Delete();
     }
-  
+  output->GetInformation()->Set(vtkDataObject::DATA_TIME_STEPS(),
+                                timeSteps, numTimeSteps);
+
   return 1;
 }
 
