@@ -582,6 +582,16 @@ vtkSMProxy* vtkSMCompoundProxy::GetConsumableProxy()
 }
 
 //----------------------------------------------------------------------------
+void vtkSMCompoundProxy::UpdatePipelineInformation()
+{
+  if (!this->MainProxy)
+    {
+    return;
+    }
+  this->MainProxy->UpdatePipelineInformation();
+}
+
+//----------------------------------------------------------------------------
 void vtkSMCompoundProxy::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os,indent);
