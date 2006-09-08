@@ -109,7 +109,6 @@ void vtkPVTrackballPan::OnMouseMove(int x, int y, vtkRenderer *ren,
       }
     else
       {
-      double center[3];
       if (this->GetGUIHelper()->GetCenterOfRotation(center))
         {
         ren->SetWorldPoint(center[0], center[1], center[2], 1.0);
