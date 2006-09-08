@@ -19,6 +19,7 @@ vtkCxxRevisionMacro(vtkCompositeDataIterator, "$Revision$");
 //----------------------------------------------------------------------------
 vtkCompositeDataIterator::vtkCompositeDataIterator()
 {
+  this->VisitOnlyLeaves = 1;
 }
 
 //----------------------------------------------------------------------------
