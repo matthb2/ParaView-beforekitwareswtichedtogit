@@ -779,6 +779,10 @@ void vtkCompositeDataPipeline::CopyDefaultInformation(
           vtkInformation* inInfo = 
             inInfoVec[compositePort]->GetInformationObject(j);
             
+          if (outInfo->Has(UPDATE_TIME_STEPS()))
+            {
+            inInfo->CopyEntry(outInfo, UPDATE_TIME_STEPS());
+            }
           inInfo->CopyEntry(outInfo, UPDATE_PIECE_NUMBER());
           inInfo->CopyEntry(outInfo, UPDATE_NUMBER_OF_PIECES());
           inInfo->CopyEntry(outInfo, UPDATE_NUMBER_OF_GHOST_LEVELS());
