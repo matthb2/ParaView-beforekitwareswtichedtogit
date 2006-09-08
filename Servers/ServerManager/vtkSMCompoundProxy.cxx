@@ -260,6 +260,26 @@ vtkSMPropertyIterator* vtkSMCompoundProxy::NewPropertyIterator()
 }
 
 //---------------------------------------------------------------------------
+void vtkSMCompoundProxy::UpdatePropertyInformation()
+{
+  if (!this->MainProxy)
+    {
+    return;
+    }
+  this->MainProxy->UpdatePropertyInformation();
+}
+
+//---------------------------------------------------------------------------
+void vtkSMCompoundProxy::UpdatePropertyInformation(vtkSMProperty* prop)
+{
+  if (!this->MainProxy)
+    {
+    return;
+    }
+  this->MainProxy->UpdatePropertyInformation(prop);
+}
+
+//---------------------------------------------------------------------------
 void vtkSMCompoundProxy::ExposeProperty(const char* proxyName, 
                                         const char* propertyName,
                                         const char* exposedName)
