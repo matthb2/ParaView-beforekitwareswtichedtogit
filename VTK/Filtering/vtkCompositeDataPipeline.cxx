@@ -573,7 +573,7 @@ void vtkCompositeDataPipeline::ExecuteSimpleAlgorithm(
       inInfo->Set(vtkDataObject::DATA_OBJECT(), prevInput);
       }
     vtkDataObject* curOutput = outInfo->Get(vtkDataObject::DATA_OBJECT());
-    if (curOutput != compositeOutput)
+    if (curOutput != compositeOutput.GetPointer())
       {
       compositeOutput->SetPipelineInformation(outInfo);
       }
