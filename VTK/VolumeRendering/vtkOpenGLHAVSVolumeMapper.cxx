@@ -108,7 +108,7 @@ void vtkOpenGLHAVSVolumeMapper::ReleaseGraphicsResources(vtkWindow
 
 //----------------------------------------------------------------------------
 void vtkOpenGLHAVSVolumeMapper::Initialize(vtkRenderer *ren,
-                                                           vtkVolume *vol)
+                                           vtkVolume *vol)
 {
   if (!this->SupportedByHardware())
     {
