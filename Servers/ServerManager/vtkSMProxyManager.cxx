@@ -1379,4 +1379,5 @@ vtkPVXMLElement* vtkSMProxyManager::GetHints(const char* xmlgroup,
 void vtkSMProxyManager::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os, indent);
+  os << indent <<  "UpdateInputProxies: " <<  this->UpdateInputProxies << endl;
 }
