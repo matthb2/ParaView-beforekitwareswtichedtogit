@@ -333,9 +333,12 @@ vtkProcessModuleConnection::GetOpenGLExtensionsInformation()
       this->OpenGLExtensionsInformation = vtkPVOpenGLExtensionsInformation::New();
       }
     vtkProcessModule* pm = vtkProcessModule::GetProcessModule();
-    this->GatherInformation(vtkProcessModule::RENDER_SERVER,
-      this->OpenGLExtensionsInformation,
-      pm->GetProcessModuleID());
+    if (pm)
+      {
+      this->GatherInformation(vtkProcessModule::RENDER_SERVER,
+        this->OpenGLExtensionsInformation,
+        pm->GetProcessModuleID());
+      }
     }
   return this->OpenGLExtensionsInformation;
 }
