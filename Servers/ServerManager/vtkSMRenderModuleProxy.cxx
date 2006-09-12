@@ -1278,7 +1278,12 @@ void vtkSMRenderModuleProxy::PrintSelf(ostream& os, vtkIndent indent)
 
 //-----------------------------------------------------------------------------
 vtkSelection* vtkSMRenderModuleProxy::SelectVisibleCells(int x0, int y0, int x1, int y1)
-{  
+{ 
+  int *win_size=this->GetRenderWindow()->GetSize();
+  x0 = (x0 < 0)? 0 : ((x0 >= win_size[0])? win_size[0]-1: x0);
+  x1 = (x1 < 0)? 0 : ((x1 >= win_size[0])? win_size[0]-1: x1);
+  y0 = (y0 < 0)? 0 : ((y0 >= win_size[1])? win_size[1]-1: y0);
+  y1 = (y1 < 0)? 0 : ((y1 >= win_size[1])? win_size[1]-1: y1);
   //Find number of rendering processors.
   int numProcessors = 1;
   vtkProcessModule* pm = vtkProcessModule::GetProcessModule();
