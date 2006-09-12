@@ -30,50 +30,27 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 =========================================================================*/
 
-#ifndef _pqHandleWidget_h
-#define _pqHandleWidget_h
+#ifndef _pqLineSourceWidget_h
+#define _pqLineSourceWidget_h
 
-#include "pqProxy.h"
-#include "pq3DWidget.h"
+#include "pqLineWidget.h"
 
-/// Provides a complete Qt UI for working with a 3D handle widget
-class pqHandleWidget : public pq3DWidget
+class pqServer;
+
+/// Provides a complete Qt UI for working with a 3D line widget
+class pqLineSourceWidget :
+  public pqLineWidget
 {
+  typedef pqLineWidget Superclass;
+  
   Q_OBJECT
   
 public:
-  typedef pq3DWidget Superclass;
+  pqLineSourceWidget(QWidget* p = 0);
+  ~pqLineSourceWidget();
 
-  pqHandleWidget(QWidget* p);
-  ~pqHandleWidget();
+  void setControlledProperties(vtkSMProperty* point1, vtkSMProperty* point2, vtkSMProperty* resolution);
 
-  /// Controlled proxy is a proxy which is controlled by the 3D widget.
-  /// A controlled proxy must provide "Hints" describing how
-  /// the properties of the controlled proxy are controlled by the
-  /// 3D widget.
-  virtual void setControlledProxy(vtkSMProxy*);
-
-protected:
-  /// Resets the bounds of the 3D widget to the reference proxy bounds.
-  virtual void resetBounds();
-
-private slots:
-  /// Called to reset the 3D widget bounds to the reference proxy bounds
-  void onResetBounds();
-  /// Called when the user starts dragging the 3D widget
-  void on3DWidgetStartDrag();
-  /// Called when the user stops dragging the 3D widget
-  void on3DWidgetEndDrag();
-
-protected:
-  /// Overridden to make sure that the visibility check box is
-  /// updated.
-  virtual void set3DWidgetVisibility(bool visible);
-  /// Internal method to create the widget.
-  void createWidget(pqServer*);
-
-  /// Internal method to cleanup widget.
-  void cleanupWidget();
 private:
   class pqImplementation;
   pqImplementation* const Implementation;

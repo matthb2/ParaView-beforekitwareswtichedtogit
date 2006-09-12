@@ -33,66 +33,38 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #ifndef _pqLineWidget_h
 #define _pqLineWidget_h
 
-#include "pqProxy.h"
+#include "pq3DWidget.h"
 
-#include <QWidget>
+class pqServer;
 
-/// Provides a complete Qt UI for working with a 3D handle widget
+/// Provides a complete Qt UI for working with a 3D line widget
 class pqLineWidget :
-  public QWidget
+  public pq3DWidget
 {
+  typedef pq3DWidget Superclass;
+  
   Q_OBJECT
   
 public:
   pqLineWidget(QWidget* p = 0);
   ~pqLineWidget();
 
-  /// Sets the source proxy that will be controlled by this widget
-  void setReferenceProxy(pqProxy* proxy);
-  /// Returns the current state of the widget
-  void getWidgetState(double point1[3], double point2[3]);
-  /// Sets the current state of the widget
-  void setWidgetState(const double point1[3], const double point2[3]);
-  
-  /// get the render module this widget works with
-  pqRenderModule* getRenderModule();
+  void setControlledProxy(vtkSMProxy* proxy);
+  void setControlledProperties(vtkSMProperty* point1, vtkSMProperty* point2);
 
 public slots:
-  /// Makes the 3D widget visible (but respects the user's choice if they've turned visibility off)
-  void showWidget();
-  /// Hides the 3D widget
-  void hideWidget();
-
-  /// Set the render module to work with
-  void setRenderModule(pqRenderModule*);
-
-signals:
-  /// Notifies observers that the user is dragging the 3D widget
-  void widgetStartInteraction();
-  /// Notifies observers that the widget has been modified
-  void widgetChanged();
-  /// Notifies observers that the user is done dragging the 3D widget
-  void widgetEndInteraction();
-
-private slots:
-  /// Called to show/hide the 3D widget
-  void onShow3DWidget(bool);
-  void onUseXAxis();
-  void onUseYAxis();
-  void onUseZAxis();
-  /// Called if any of the Qt widget values is modified
-  void onQtWidgetChanged();
-  /// Called when the user starts dragging the 3D widget
-  void on3DWidgetStartDrag();
-  /// Called when the 3D widget is modified
-  void on3DWidgetChanged();
-  /// Called when the user stops dragging the 3D widget
-  void on3DWidgetEndDrag();
+  void onXAxis();
+  void onYAxis();
+  void onZAxis();
 
 private:
-  void show3DWidget(bool show);
-  void updateQtWidgets(const double point1[3], const double point2[3]);
-  void update3DWidget(const double point1[3], const double point2[3]);
+  void createWidget(pqServer* server);
+  void resetBounds();
+  void getReferenceBoundingBox(double center[3], double size[3]);
+
+  /// Overridden to make sure that the visibility check box is
+  /// updated.
+  virtual void set3DWidgetVisibility(bool visible);
 
   class pqImplementation;
   pqImplementation* const Implementation;
