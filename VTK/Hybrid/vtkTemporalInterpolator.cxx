@@ -344,6 +344,7 @@ vtkDataObject *vtkTemporalInterpolator
         if (result) 
           {
           output->SetDataSet(g, d, result); 
+          result->Delete();
           }
         else 
           {
