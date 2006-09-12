@@ -281,6 +281,10 @@ void vtkSMDataObjectDisplayProxy::SetInputInternal(vtkSMSourceProxy* input)
         !supports_GL_ARB_vertex_program ||
         !(supports_GL_ARB_texture_float || supports_GL_ATI_texture_float))
         {
+        this->SupportsHAVSMapper = 0;
+        }
+      else
+        {
         this->SupportsHAVSMapper = 1;
         }
       }
