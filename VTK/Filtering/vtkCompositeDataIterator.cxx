@@ -31,5 +31,9 @@ vtkCompositeDataIterator::~vtkCompositeDataIterator()
 void vtkCompositeDataIterator::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os,indent);
+
+  os << indent << "VisitOnlyLeaves: " 
+     << (this->VisitOnlyLeaves?"(on)":"(off)")
+     << endl;
 }
 
