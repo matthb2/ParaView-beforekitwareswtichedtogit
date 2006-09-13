@@ -34,6 +34,7 @@
 #include "vtkXMLDataElement.h"
 
 #include <vtkstd/vector>
+#include <vtkstd/string>
 // GL/glu.h is needed for the error reporting, this should be removed
 // after the initial development phase.
 //#include <GL/glu.h>
