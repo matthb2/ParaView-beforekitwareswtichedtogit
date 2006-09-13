@@ -75,7 +75,7 @@ void vtkInformationIterator::GoToNextItem()
   unsigned short tableSize = this->Information->Internal->TableSize;
 
   this->Index++;
-  while(!keys[this->Index] && this->Index < tableSize)
+  while(this->Index < tableSize && !keys[this->Index])
     {
     this->Index++;
     }
