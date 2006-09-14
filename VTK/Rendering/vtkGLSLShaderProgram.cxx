@@ -272,6 +272,10 @@ int vtkGLSLShaderProgram::IsAttached(vtkGLSLShader* glslshader)
 void vtkGLSLShaderProgram::Render(vtkActor *actor, vtkRenderer *renderer)
 {
   this->LoadExtensions( renderer->GetRenderWindow() );
+  if (!this->GetGLExtensionsLoaded())
+    {
+    return;
+    }
 
   // Get a gl identifier for the shader program if we don't already have one.
   if( vtkgl::IsProgram(static_cast<GLuint>(this->Program)) == GL_FALSE )
@@ -370,6 +374,11 @@ void vtkGLSLShaderProgram::Render(vtkActor *actor, vtkRenderer *renderer)
 //-----------------------------------------------------------------------------
 void vtkGLSLShaderProgram::PostRender(vtkActor* actor, vtkRenderer*)
 {
+  if (!this->GetGLExtensionsLoaded())
+    {
+    return;
+    }
+
   if (this->IsProgram())
     {
     // this unloads the shader program.
