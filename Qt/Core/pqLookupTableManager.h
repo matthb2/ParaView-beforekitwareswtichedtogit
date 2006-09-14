@@ -29,70 +29,44 @@ NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 =========================================================================*/
+#ifndef __pqLookupTableManager_h
+#define __pqLookupTableManager_h
 
-/// \file pqColorMapEditor.h
-/// \date 7/31/2006
+#include <QObject>
+#include "pqCoreExport.h"
 
-#ifndef _pqColorMapEditor_h
-#define _pqColorMapEditor_h
+class pqProxy;
+class pqScalarsToColors;
+class pqServer;
 
-
-#include "pqComponentsExport.h"
-#include <QDialog>
-
-class pqColorMapEditorForm;
-class pqColorTableModel;
-class pqPipelineDisplay;
-class QCloseEvent;
-class QColor;
-class QModelIndex;
-class QString;
-class QTimer;
-class vtkSMProxy;
-
-
-class PQCOMPONENTS_EXPORT pqColorMapEditor : public QDialog
+// pqLookupTableManager is the manager that manages color lookup objects.
+// This is an abstract class that defines the API for any LUT manager.
+// subclasses are free to implement their own policy which can be specific
+// to the application.
+class PQCORE_EXPORT pqLookupTableManager : public QObject
 {
   Q_OBJECT
-
 public:
-  pqColorMapEditor(QWidget *parent=0);
-  virtual ~pqColorMapEditor();
+  pqLookupTableManager(QObject* parent=NULL);
+  virtual ~pqLookupTableManager();
 
-  void setDisplay(pqPipelineDisplay *display);
-  int getTableSize() const;
+  // Get a LookupTable for the array with name \c arrayname 
+  // and component. component = -1 represents magnitude. Subclasses
+  // can implemenent their own policy for managing lookup tables.
+  virtual pqScalarsToColors* getLookupTable(pqServer* server, const QString& arrayname,
+    int component) = 0;
+public slots:
+  // Called when any proxy is added. Subclasses can override
+  // onAddLookupTable() which is called by this method when it is
+  // ascertained that the proxy is a lookup table.
+  void onAddProxy(pqProxy* proxy);
 
+  // Called when a LUT is added.
+  virtual void onAddLookupTable(pqScalarsToColors* lut) = 0;
 protected:
-  virtual void closeEvent(QCloseEvent *e);
-
-  // Updates the elements in the editor based on the type of the 
-  // lookup table.
-  void updateEditor();
-
-  void resetGUI();
-
-private slots:
-  void setUseDiscreteColors(bool on);
-  void setUsingGradient(bool on);
-  void handleTextEdit(const QString &text);
-  void setSizeFromText();
-  void setSizeFromSlider(int tableSize);
-  void setTableSize(int tableSize);
-  void changeControlColor(int index, const QColor &color);
-  void getTableColor(const QModelIndex &index);
-  void changeTableColor(int index, const QColor &color);
-  void updateTableRange(int first, int last);
-  void closeForm();
-
-private:
-  pqColorMapEditorForm *Form;
-  pqColorTableModel *Model;
-  vtkSMProxy *LookupTable;
-  QTimer *EditDelay;
-
-  void resetFromPVLookupTable();
-  void resetFromLookupTable();
+ 
 };
+
 
 #endif
 

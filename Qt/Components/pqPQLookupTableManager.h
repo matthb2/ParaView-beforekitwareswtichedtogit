@@ -29,70 +29,39 @@ NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 =========================================================================*/
+#ifndef __pqPQLookupTableManager_h
+#define __pqPQLookupTableManager_h
 
-/// \file pqColorMapEditor.h
-/// \date 7/31/2006
-
-#ifndef _pqColorMapEditor_h
-#define _pqColorMapEditor_h
-
-
+#include "pqLookupTableManager.h"
 #include "pqComponentsExport.h"
-#include <QDialog>
 
-class pqColorMapEditorForm;
-class pqColorTableModel;
-class pqPipelineDisplay;
-class QCloseEvent;
-class QColor;
-class QModelIndex;
-class QString;
-class QTimer;
-class vtkSMProxy;
+class pqPQLookupTableManagerInternal;
 
-
-class PQCOMPONENTS_EXPORT pqColorMapEditor : public QDialog
+class PQCOMPONENTS_EXPORT pqPQLookupTableManager : public pqLookupTableManager
 {
   Q_OBJECT
-
 public:
-  pqColorMapEditor(QWidget *parent=0);
-  virtual ~pqColorMapEditor();
+  pqPQLookupTableManager(QObject* parent=0);
+  virtual ~pqPQLookupTableManager();
 
-  void setDisplay(pqPipelineDisplay *display);
-  int getTableSize() const;
+  // Get a LookupTable for the array with name \c arrayname 
+  // and component. component = -1 represents magnitude. 
+  // This subclass associates a LUT with arrayname:component
+  // pair. If  none exists, a new one will be created.
+  pqScalarsToColors* getLookupTable(pqServer* server, const QString& arrayname,
+    int component);
+public slots:
+  // Called when a new LUT pq object is created. 
+  // This happens as a result of either the GUI or python
+  // registering a LUT proxy.
+  virtual void onAddLookupTable(pqScalarsToColors* lut);
 
 protected:
-  virtual void closeEvent(QCloseEvent *e);
-
-  // Updates the elements in the editor based on the type of the 
-  // lookup table.
-  void updateEditor();
-
-  void resetGUI();
-
-private slots:
-  void setUseDiscreteColors(bool on);
-  void setUsingGradient(bool on);
-  void handleTextEdit(const QString &text);
-  void setSizeFromText();
-  void setSizeFromSlider(int tableSize);
-  void setTableSize(int tableSize);
-  void changeControlColor(int index, const QColor &color);
-  void getTableColor(const QModelIndex &index);
-  void changeTableColor(int index, const QColor &color);
-  void updateTableRange(int first, int last);
-  void closeForm();
-
+  // creates a new LUT.
+  pqScalarsToColors* createLookupTable(pqServer* server,
+  const QString& arrayname, int component);
 private:
-  pqColorMapEditorForm *Form;
-  pqColorTableModel *Model;
-  vtkSMProxy *LookupTable;
-  QTimer *EditDelay;
-
-  void resetFromPVLookupTable();
-  void resetFromLookupTable();
+  pqPQLookupTableManagerInternal* Internal;
 };
 
 #endif
-

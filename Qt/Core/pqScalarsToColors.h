@@ -29,69 +29,33 @@ NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 =========================================================================*/
+#ifndef __pqScalarsToColors_h
+#define __pqScalarsToColors_h
 
-/// \file pqColorMapEditor.h
-/// \date 7/31/2006
+#include "pqProxy.h"
 
-#ifndef _pqColorMapEditor_h
-#define _pqColorMapEditor_h
+class pqScalarsToColorsInternal;
 
-
-#include "pqComponentsExport.h"
-#include <QDialog>
-
-class pqColorMapEditorForm;
-class pqColorTableModel;
-class pqPipelineDisplay;
-class QCloseEvent;
-class QColor;
-class QModelIndex;
-class QString;
-class QTimer;
-class vtkSMProxy;
-
-
-class PQCOMPONENTS_EXPORT pqColorMapEditor : public QDialog
+/// pqScalarsToColors is a represents a vtkScalarsToColors proxy.
+class PQCORE_EXPORT pqScalarsToColors : public pqProxy
 {
   Q_OBJECT
-
 public:
-  pqColorMapEditor(QWidget *parent=0);
-  virtual ~pqColorMapEditor();
+  pqScalarsToColors(const QString& group, const QString& name,
+    vtkSMProxy* proxy, pqServer* server, QObject* parent=NULL);
+  virtual ~pqScalarsToColors();
 
-  void setDisplay(pqPipelineDisplay *display);
-  int getTableSize() const;
-
+  
+  // Get/Set the scalar bar proxy to be associated with this lookup 
+  // table. This class does not create/destroy the scalar bar
+  // proxy. It's the responsiblility of the lookup table
+  // manager to set the scalar bar.
+  void setScalarBarProxy(vtkSMProxy* scalarbar);
+  vtkSMProxy* getScalarBarProxy() const;
 protected:
-  virtual void closeEvent(QCloseEvent *e);
-
-  // Updates the elements in the editor based on the type of the 
-  // lookup table.
-  void updateEditor();
-
-  void resetGUI();
-
-private slots:
-  void setUseDiscreteColors(bool on);
-  void setUsingGradient(bool on);
-  void handleTextEdit(const QString &text);
-  void setSizeFromText();
-  void setSizeFromSlider(int tableSize);
-  void setTableSize(int tableSize);
-  void changeControlColor(int index, const QColor &color);
-  void getTableColor(const QModelIndex &index);
-  void changeTableColor(int index, const QColor &color);
-  void updateTableRange(int first, int last);
-  void closeForm();
-
+  
 private:
-  pqColorMapEditorForm *Form;
-  pqColorTableModel *Model;
-  vtkSMProxy *LookupTable;
-  QTimer *EditDelay;
-
-  void resetFromPVLookupTable();
-  void resetFromLookupTable();
+  pqScalarsToColorsInternal* Internal;
 };
 
 #endif
