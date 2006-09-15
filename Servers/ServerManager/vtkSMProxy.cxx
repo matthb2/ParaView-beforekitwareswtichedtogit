@@ -920,7 +920,7 @@ void vtkSMProxy::UpdateVTKObjects()
       ++it)
       {
       vtkSMProperty* prop = it->second.Property.GetPointer();
-      if (prop->IsA("vtkSMInputProperty"))
+      if (prop->IsA("vtkSMProxyProperty"))
         {
         if (vtkSMProxyManager::GetProxyManager()->GetUpdateInputProxies())
           {
@@ -947,6 +947,9 @@ void vtkSMProxy::UpdateVTKObjects()
               }
             }
           }
+        }
+      if (prop->IsA("vtkSMInputProperty"))
+        {
         this->UpdateProperty(it->first.c_str());
         }
       }
