@@ -29,116 +29,102 @@ NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 =========================================================================*/
+#include "pqScalarBarDisplay.h"
 
-/// \file pqDisplay.cxx
-/// \date 4/24/2006
-
-#include "pqDisplay.h"
-
-
-// ParaView Server Manager includes.
 #include "vtkCommand.h"
 #include "vtkEventQtSlotConnect.h"
-#include "vtkSmartPointer.h" 
+#include "vtkSMProperty.h"
+#include "vtkSMProxy.h"
 
-// Qt includes.
-#include <QPointer>
-#include <QList>
 #include <QtDebug>
+#include <QPointer>
 
-// ParaView includes.
-#include "pqRenderModule.h"
+#include "pqApplicationCore.h"
+#include "pqProxy.h"
+#include "pqScalarsToColors.h"
 #include "pqServerManagerModel.h"
 #include "pqSMAdaptor.h"
 
-
 //-----------------------------------------------------------------------------
-class pqDisplayInternal
+class pqScalarBarDisplayInternal
 {
 public:
-  // Set of render modules showing this display. Typically,
-  // it will be 1, but theoretically there can be more.
-  QList<QPointer<pqRenderModule> > RenderModules;
+  QPointer<pqScalarsToColors> LookupTable;
+  vtkEventQtSlotConnect* VTKConnect;
 };
 
 //-----------------------------------------------------------------------------
-pqDisplay::pqDisplay(const QString& group, const QString& name,
-  vtkSMProxy* display,
-  pqServer* server, QObject* p/*=null*/):
-  pqProxy(group, name, display, server, p)
+pqScalarBarDisplay::pqScalarBarDisplay(const QString& group, const QString& name,
+    vtkSMProxy* scalarbar, pqServer* server,
+    QObject* _parent)
+: pqDisplay(group, name, scalarbar, server, _parent)
 {
-  this->Internal = new pqDisplayInternal();
+  this->Internal = new pqScalarBarDisplayInternal;
+
+  this->Internal->VTKConnect = vtkEventQtSlotConnect::New();
+  this->Internal->VTKConnect->Connect(scalarbar->GetProperty("LookupTable"),
+    vtkCommand::ModifiedEvent, this, SLOT(onLookupTableModified()));
+
+  // load default values.
+  this->onLookupTableModified();
 }
 
 //-----------------------------------------------------------------------------
-pqDisplay::~pqDisplay()
+pqScalarBarDisplay::~pqScalarBarDisplay()
 {
+  this->Internal->VTKConnect->Disconnect();
+  this->Internal->VTKConnect->Delete();
+
   delete this->Internal;
 }
 
 //-----------------------------------------------------------------------------
-bool pqDisplay::shownIn(pqRenderModule* rm) const
+pqScalarsToColors* pqScalarBarDisplay::getLookupTable() const
 {
-  return this->Internal->RenderModules.contains(rm);
+  return this->Internal->LookupTable;
 }
 
 //-----------------------------------------------------------------------------
-void pqDisplay::addRenderModule(pqRenderModule* rm)
+void pqScalarBarDisplay::onLookupTableModified()
 {
-  if (!this->Internal->RenderModules.contains(rm))
+  pqServerManagerModel* smmodel = 
+    pqApplicationCore::instance()->getServerManagerModel();
+  vtkSMProxy* curLUTProxy = 
+    pqSMAdaptor::getProxyProperty(this->getProxy()->GetProperty("LookupTable"));
+  pqScalarsToColors* curLUT = qobject_cast<pqScalarsToColors*>(
+    smmodel->getPQProxy(curLUTProxy));
+
+  if (curLUT == this->Internal->LookupTable)
     {
-    this->Internal->RenderModules.push_back(rm);
+    return;
+    }
+
+  if (this->Internal->LookupTable)
+    {
+    this->Internal->LookupTable->removeScalarBar(this);
+    }
+
+  this->Internal->LookupTable = curLUT;
+  if (this->Internal->LookupTable)
+    {
+    this->Internal->LookupTable->addScalarBar(this);
     }
 }
 
 //-----------------------------------------------------------------------------
-void pqDisplay::removeRenderModule(pqRenderModule* rm)
+bool pqScalarBarDisplay::isVisible() const
 {
-  if (this->Internal->RenderModules.contains(rm))
-    {
-    this->Internal->RenderModules.removeAll(rm);
-    }
+  int visible = pqSMAdaptor::getElementProperty(
+    this->getProxy()->GetProperty("Visibility")).toInt();
+  return (visible != 0);
 }
 
 //-----------------------------------------------------------------------------
-unsigned int pqDisplay::getNumberOfRenderModules() const
+void pqScalarBarDisplay::setVisible(bool visible)
 {
-  return this->Internal->RenderModules.size();
+  pqSMAdaptor::setElementProperty(this->getProxy()->GetProperty("Visibility"),
+    (visible? 1 : 0));
+  this->getProxy()->UpdateVTKObjects();
 }
 
 //-----------------------------------------------------------------------------
-pqRenderModule* pqDisplay::getRenderModule(unsigned int index) const
-{
-  if (index >= this->getNumberOfRenderModules())
-    {
-    qDebug() << "Invalid index : " << index;
-    return NULL;
-    }
-  return this->Internal->RenderModules[index];
-}
-
-//-----------------------------------------------------------------------------
-void pqDisplay::renderAllViews(bool force /*=false*/)
-{
-  foreach(pqRenderModule* rm, this->Internal->RenderModules)
-    {
-    if (rm)
-      {
-      if (force)
-        {
-        rm->forceRender();
-        }
-      else
-        {
-        rm->render();
-        }
-      }
-    }
-}
-
-//-----------------------------------------------------------------------------
-void pqDisplay::onVisibilityChanged()
-{
-  emit this->visibilityChanged(this->isVisible());
-}
-
