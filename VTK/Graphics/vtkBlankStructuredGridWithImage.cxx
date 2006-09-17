@@ -59,6 +59,7 @@ vtkImageData *vtkBlankStructuredGridWithImage::GetBlankingInput()
     this->GetExecutive()->GetInputData(1, 0));
 }
 
+//----------------------------------------------------------------------------
 int vtkBlankStructuredGridWithImage::RequestData(
   vtkInformation *vtkNotUsed(request),
   vtkInformationVector **inputVector,

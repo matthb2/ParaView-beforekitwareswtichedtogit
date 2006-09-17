@@ -33,6 +33,7 @@ vtkStandardNewMacro(vtkMergeDataObjectFilter);
 vtkMergeDataObjectFilter::vtkMergeDataObjectFilter()
 {
   this->OutputField = VTK_DATA_OBJECT_FIELD;
+  this->SetNumberOfInputPorts(2);
 }
 
 //----------------------------------------------------------------------------
