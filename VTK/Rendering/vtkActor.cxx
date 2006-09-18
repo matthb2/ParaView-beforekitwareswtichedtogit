@@ -436,6 +436,16 @@ void vtkActor::PrintSelf(ostream& os, vtkIndent indent)
     os << indent << "Property: (none)\n";
     }
 
+  if ( this->BackfaceProperty )
+    {
+    os << indent << "BackfaceProperty:\n";
+    this->BackfaceProperty->PrintSelf(os,indent.GetNextIndent());
+    }
+  else
+    {
+    os << indent << "BackfaceProperty: (none)\n";
+    }
+
   if ( this->Texture )
     {
     os << indent << "Texture: " << this->Texture << "\n";
