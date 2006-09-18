@@ -1393,6 +1393,12 @@ void vtkMINCImageAttributes::FindValidRange(double range[2])
     {
     range[0] = rangearray->GetValue(0);
     range[1] = rangearray->GetValue(1);
+    if (range[0] > range[1])
+      {
+      double tmpval = range[0];
+      range[0] = range[1];
+      range[1] = tmpval;
+      }
 
     if (this->DataType == VTK_FLOAT)
       {
