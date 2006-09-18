@@ -163,9 +163,9 @@ int vtkAttributeEditor::RequestData(
 
   vtkDataSet *readerInput;
   vtkUnstructuredGrid *readerOutput;
-  vtkDataSetAttributes *field;
-  vtkDataSetAttributes *readerfield;
-  vtkDataSetAttributes *filterfield;
+  vtkDataSetAttributes *field = NULL;
+  vtkDataSetAttributes *readerfield = NULL;
+  vtkDataSetAttributes *filterfield = NULL;
   vtkInformation *info;
   vtkDataSet *filterInput;
   vtkUnstructuredGrid *filterOutput;

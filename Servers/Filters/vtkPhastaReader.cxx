@@ -522,7 +522,7 @@ void vtkPhastaReader::ReadGeomFile(char* geomFileName,
   //int *nlworkdata;
   /* element information */ 
   int num_elems,num_vertices,num_per_line;
-  int *connectivity;
+  int *connectivity = NULL;
 
 
   /* misc variables*/
