@@ -979,7 +979,7 @@ void vtkXOpenGLRenderWindow::Initialize (void)
     // initialize offscreen window
     int width = ((this->Size[0] > 0) ? this->Size[0] : 300);
     int height = ((this->Size[1] > 0) ? this->Size[1] : 300);
-    CreateOffScreenWindow(width, height);
+    this->CreateOffScreenWindow(width, height);
     }
 }
 
