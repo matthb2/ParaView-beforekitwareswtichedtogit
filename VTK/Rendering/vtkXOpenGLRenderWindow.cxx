@@ -869,7 +869,6 @@ void vtkXOpenGLRenderWindow::CreateOffScreenWindow(int width, int height)
     }
 
   this->OpenGLInit();
-  glAlphaFunc(GL_GREATER,0);
 }
 
 void vtkXOpenGLRenderWindow::DestroyOffScreenWindow()
@@ -959,7 +958,6 @@ void vtkXOpenGLRenderWindow::WindowInitialize (void)
     }
 
   this->OpenGLInit();
-  glAlphaFunc(GL_GREATER,0);
 }
 
 // Initialize the rendering window.

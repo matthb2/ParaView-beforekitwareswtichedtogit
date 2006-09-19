@@ -150,6 +150,7 @@ void vtkOpenGLRenderWindow::OpenGLInit()
 
   glEnable(GL_NORMALIZE);
   glLightModeli(GL_LIGHT_MODEL_TWO_SIDE, GL_TRUE);
+  glAlphaFunc(GL_GREATER,0);
 }
 
 
