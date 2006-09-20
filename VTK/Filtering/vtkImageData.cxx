@@ -1510,7 +1510,7 @@ void vtkImageData::AllocateScalars()
   int newType = VTK_DOUBLE;
   int newNumComp = 1;
 
-  // basically allocate the scalars based om the
+  // basically allocate the scalars based on the
   this->GetProducerPort();
   if(vtkInformation* info = this->GetPipelineInformation())
     {
