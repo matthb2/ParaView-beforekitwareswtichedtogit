@@ -25,6 +25,8 @@
 vtkCxxRevisionMacro(vtkAxes, "$Revision$");
 vtkStandardNewMacro(vtkAxes);
 
+
+//----------------------------------------------------------------------------
 // Construct with origin=(0,0,0) and scale factor=1.
 vtkAxes::vtkAxes()
 {
@@ -175,6 +177,8 @@ int vtkAxes::ComputeDivisionExtents(vtkDataObject *vtkNotUsed(output),
     }
 }
 
+
+//----------------------------------------------------------------------------
 void vtkAxes::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os,indent);
