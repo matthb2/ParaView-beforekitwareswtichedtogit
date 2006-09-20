@@ -195,6 +195,7 @@ int vtkPExodusReader::RequestInformation(
       new char[strlen(this->FilePattern) + strlen(this->FilePrefix) + 20];  
     sprintf(nm, this->FilePattern, this->FilePrefix, this->FileRange[0]);
     this->Superclass::SetFileName(nm);
+    delete [] nm;
     }
   else if (newName)
     {
