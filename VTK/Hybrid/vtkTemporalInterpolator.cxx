@@ -511,7 +511,6 @@ void vtkTemporalInterpolatorExecute(vtkTemporalInterpolator *,
                                     int numTuple,
                                     T *)
 {
-  output->Allocate(numTuple);
   T *outData = static_cast<T*>(output->GetVoidPointer(0));
   T *inData1 = static_cast<T*>(arrays[0]->GetVoidPointer(0));
   T *inData2 = static_cast<T*>(arrays[1]->GetVoidPointer(0));
