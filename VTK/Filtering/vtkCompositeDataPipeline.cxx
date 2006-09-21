@@ -668,7 +668,8 @@ void vtkCompositeDataPipeline::ExecuteSimpleAlgorithm(
   // if we have no composite inputs then we are looping over time on a source
   if (!this->Algorithm->GetNumberOfInputPorts())
     {
-    return this->ExecuteSimpleAlgorithmTime(request, inInfoVec, outInfoVec);
+    this->ExecuteSimpleAlgorithmTime(request, inInfoVec, outInfoVec);
+    return;
     }
 
   // Loop using the first input on the first port.
