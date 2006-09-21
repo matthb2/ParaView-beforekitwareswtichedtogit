@@ -200,13 +200,13 @@ void vtkStringArray::InterpolateTuple(vtkIdType i, vtkIdList *ptIndices,
       << source->GetDataTypeAsString());
     return;
     }
-  
+
   if (ptIndices->GetNumberOfIds() == 0)
     {
     // nothing to do.
     return;
     }
-  
+
   // We use nearest neighbour for interpolating strings.
   // First determine which is the nearest neighbour using the weights-
   // it's the index with maximum weight.

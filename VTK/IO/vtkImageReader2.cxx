@@ -824,7 +824,7 @@ void vtkImageReader2::ExecuteData(vtkDataObject *output)
 
 
 //----------------------------------------------------------------------------
-// Set the data type of pixles in the file.  
+// Set the data type of pixels in the file.  
 // If you want the output scalar type to have a different value, set it
 // after this method is called.
 void vtkImageReader2::SetDataScalarType(int type)

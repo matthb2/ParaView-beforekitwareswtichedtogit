@@ -548,6 +548,7 @@ void vtkBMPReader::ExecuteData(vtkDataObject *output)
     }  
 }
 
+//----------------------------------------------------------------------------
 void vtkBMPReader::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os,indent);
@@ -565,6 +566,7 @@ void vtkBMPReader::PrintSelf(ostream& os, vtkIndent indent)
     }
 }
 
+//----------------------------------------------------------------------------
 int vtkBMPReader::CanReadFile(const char* fname)
 {
   // get the magic number by reading in a file
