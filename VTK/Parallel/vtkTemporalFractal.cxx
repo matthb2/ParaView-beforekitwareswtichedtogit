@@ -1093,7 +1093,7 @@ void vtkTemporalFractal::AddFractalArray(vtkHierarchicalDataSet *output)
           }
         
         array->SetName("Fractal Volume Fraction");
-        grid->GetCellData()->AddArray(array);
+        grid->GetCellData()->SetScalars(array);
         array->Delete();
         }
       else // rectilinear grid
@@ -1110,7 +1110,7 @@ void vtkTemporalFractal::AddFractalArray(vtkHierarchicalDataSet *output)
         
         this->ExecuteRectilinearMandelbrot(grid,arrayPtr);
         array->SetName("Fractal Volume Fraction");
-        grid->GetCellData()->AddArray(array);
+        grid->GetCellData()->SetScalars(array);
         array->Delete();
         }
       ++block;
