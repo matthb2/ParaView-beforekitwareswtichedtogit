@@ -30,70 +30,45 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 =========================================================================*/
 
-#ifndef _pqSampleScalarWidget_h
-#define _pqSampleScalarWidget_h
+#ifndef _pqSampleScalarAddRangeDialog_h
+#define _pqSampleScalarAddRangeDialog_h
 
-#include "pqSMProxy.h"
 #include "pqComponentsExport.h"
 
-#include <QWidget>
+#include <QDialog>
 
-class QItemSelection;
-
-class vtkSMDoubleVectorProperty;
-
-/** Provides a standard user interface component for manipulating a list of
-scalar samples.  Current uses include: specifying the set of "slices" for
-the Cut filter, and specifying the set of contour values for the Contour filter.
-*/
-
-class PQCOMPONENTS_EXPORT pqSampleScalarWidget :
-  public QWidget
+/// Provides a dialog for specifying a range of scalar samples, used
+/// by pqSampleScalarWidget
+class PQCOMPONENTS_EXPORT pqSampleScalarAddRangeDialog :
+  public QDialog
 {
-  typedef QWidget Superclass;
+  typedef QDialog Superclass;
 
   Q_OBJECT
 
 public:
-  pqSampleScalarWidget(QWidget* Parent = 0);
-  ~pqSampleScalarWidget();
+  pqSampleScalarAddRangeDialog(
+    double from,
+    double to,
+    unsigned long steps,
+    bool logarithmic,
+    QWidget* parent = 0);
+  ~pqSampleScalarAddRangeDialog();
 
-  /// Sets the server manager objects that will be controlled by the widget
-  void setDataSources(
-    pqSMProxy controlled_proxy,
-    vtkSMDoubleVectorProperty* sample_property,
-    vtkSMProperty* range_property = 0);
-
-  /// Accept pending changes
-  void accept();
-  /// Reset pending changes
-  void reset();
-
-signals:
-  /// Signal emitted whenever the set of samples changes.
-  void samplesChanged();
+  const double from() const;
+  const double to() const;
+  const unsigned long steps()  const;
+  const bool logarithmic() const;
 
 private slots:
-  void onSamplesChanged();
-  void onSelectionChanged(const QItemSelection&, const QItemSelection&);
-  
-  void onDelete();
-  void onNewValue();
-  void onNewRange();
-  void onSelectAll();
-  void onScientificNotation(bool);
-  
-  void onControlledPropertyChanged();
-  void onControlledPropertyDomainChanged();
-  
+  void onRangeChanged();
+
 private:
-  pqSampleScalarWidget(const pqSampleScalarWidget&);
-  pqSampleScalarWidget& operator=(const pqSampleScalarWidget&);
-  
-  bool getRange(double& range_min, double& range_max);
+  pqSampleScalarAddRangeDialog(const pqSampleScalarAddRangeDialog&);
+  pqSampleScalarAddRangeDialog& operator=(const pqSampleScalarAddRangeDialog&);
   
   class pqImplementation;
   pqImplementation* const Implementation;
 };
 
-#endif // !_pqSampleScalarWidget_h
+#endif // !_pqSampleScalarAddRangeDialog_h
