@@ -89,9 +89,23 @@ void vtkPVUpdateSuppressor::ForceUpdate()
     source->Modified();
     }
 
-  input->SetUpdatePiece(this->UpdatePiece);
-  input->SetUpdateNumberOfPieces(this->UpdateNumberOfPieces);
-  input->SetUpdateGhostLevel(0);
+  vtkInformation* info = input->GetPipelineInformation();
+  vtkStreamingDemandDrivenPipeline* sddp = 
+    vtkStreamingDemandDrivenPipeline::SafeDownCast(
+      info->GetExecutive(vtkExecutive::PRODUCER()));
+  if (sddp)
+    {
+    sddp->SetUpdateExtent(info,
+                          this->UpdatePiece, 
+                          this->UpdateNumberOfPieces, 
+                          0);
+    }
+  else
+    {
+    input->SetUpdatePiece(this->UpdatePiece);
+    input->SetUpdateNumberOfPieces(this->UpdateNumberOfPieces);
+    input->SetUpdateGhostLevel(0);
+    }
 
   input->Update();
 
