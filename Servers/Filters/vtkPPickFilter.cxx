@@ -15,8 +15,10 @@
 #include "vtkPPickFilter.h"
 
 #include "vtkCellData.h"
-#include "vtkObjectFactory.h"
+#include "vtkInformation.h"
+#include "vtkInformationVector.h"
 #include "vtkMultiProcessController.h"
+#include "vtkObjectFactory.h"
 #include "vtkPointData.h"
 #include "vtkUnstructuredGrid.h"
 
@@ -33,9 +35,10 @@ vtkPPickFilter::~vtkPPickFilter()
 }
 
 //-----------------------------------------------------------------------------
-void vtkPPickFilter::IdExecute()
+void vtkPPickFilter::IdExecute(vtkInformationVector **inputVector,
+                               vtkInformationVector *outputVector)
 {
-  this->Superclass::IdExecute();
+  this->Superclass::IdExecute(inputVector, outputVector);
   
   // Collect the data on root node.
   if (!this->Controller)
@@ -49,7 +52,8 @@ void vtkPPickFilter::IdExecute()
     return;
     }
   
-  int numPoints = this->GetOutput()->GetNumberOfPoints();
+  vtkUnstructuredGrid* output = vtkUnstructuredGrid::GetData(outputVector);
+  int numPoints = output->GetNumberOfPoints();
   int dataReceived = numPoints;
   if (procid > 0)
     {
@@ -87,8 +91,6 @@ void vtkPPickFilter::IdExecute()
     }
 }
 
-//-----------------------------------------------------------------------------
-//-----------------------------------------------------------------------------
 //-----------------------------------------------------------------------------
 void vtkPPickFilter::PrintSelf(ostream& os, vtkIndent indent)
 {
