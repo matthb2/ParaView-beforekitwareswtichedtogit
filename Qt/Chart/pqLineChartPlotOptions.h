@@ -30,48 +30,43 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 =========================================================================*/
 
-/// \file pqHistogramModel.h
-/// \date 8/15/2006
+/// \file pqLineChartPlotOptions.h
+/// \date 9/18/2006
 
-#ifndef _pqHistogramModel_h
-#define _pqHistogramModel_h
+#ifndef _pqLineChartPlotOptions_h
+#define _pqLineChartPlotOptions_h
 
 
 #include "QtChartExport.h"
 #include <QObject>
 
-class pqChartValue;
+class pqLineChartPlotOptionsInternal;
+class pqPointMarker;
+class QBrush;
+class QPainter;
+class QPen;
 
 
-class QTCHART_EXPORT pqHistogramModel : public QObject
+class QTCHART_EXPORT pqLineChartPlotOptions : public QObject
 {
   Q_OBJECT
 
 public:
-  pqHistogramModel(QObject *parent=0);
-  virtual ~pqHistogramModel() {}
+  pqLineChartPlotOptions(QObject *parent=0);
+  ~pqLineChartPlotOptions();
 
-  virtual int getNumberOfBins() const=0;
-  virtual void getBinValue(int index, pqChartValue &bin) const=0;
+  void setPen(int series, const QPen &pen);
+  void setBrush(int series, const QBrush &brush);
+  void setMarker(int series, pqPointMarker *marker);
 
-  virtual void getRangeX(pqChartValue &min, pqChartValue &max) const=0;
-
-  virtual void getRangeY(pqChartValue &min, pqChartValue &max) const=0;
+  void setupPainter(QPainter &painter, int series) const;
+  pqPointMarker *getMarker(int series) const;
 
 signals:
-  void binValuesReset();
-  void aboutToInsertBinValues(int first, int last);
-  void binValuesInserted();
-  void aboutToRemoveBinValues(int first, int last);
-  void binValuesRemoved();
-  void rangeChanged(const pqChartValue &min, const pqChartValue &max);
+  void optionsChanged();
 
-protected:
-  void resetBinValues();
-  void beginInsertBinValues(int first, int last);
-  void endInsertBinValues();
-  void beginRemoveBinValues(int first, int last);
-  void endRemoveBinValues();
+private:
+  pqLineChartPlotOptionsInternal *Internal;
 };
 
 #endif
