@@ -1290,11 +1290,8 @@ vtkSelection* vtkSMRenderModuleProxy::SelectVisibleCells(unsigned int x0, unsign
   //Find number of rendering processors.
   int numProcessors = 1;
   vtkProcessModule* pm = vtkProcessModule::GetProcessModule();
-  if (!pm->GetOptions()->GetClientMode())
-    {
-    numProcessors = pm->GetNumberOfPartitions(this->ConnectionID);
-    }
-  
+  numProcessors = pm->GetNumberOfPartitions(this->ConnectionID);
+
   //Find largest polygon count in any actor
   vtkTypeInt64 maxNumCells = 0;
   vtkCollection *displays = this->GetDisplays();
