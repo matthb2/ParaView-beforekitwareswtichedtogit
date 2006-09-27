@@ -21,6 +21,7 @@
 #include "vtkInformationIdTypeKey.h"
 #include "vtkInformationIntegerVectorKey.h"
 #include "vtkInformationKey.h"
+#include "vtkInformationVector.h"
 #include "vtkObjectFactory.h"
 #include "vtkUniformGrid.h"
 #include "vtkUnsignedCharArray.h"
@@ -370,3 +371,17 @@ void vtkHierarchicalBoxDataSet::PrintSelf(ostream& os, vtkIndent indent)
     }
 }
 
+//----------------------------------------------------------------------------
+vtkHierarchicalBoxDataSet* vtkHierarchicalBoxDataSet::GetData(
+  vtkInformation* info)
+{
+  return
+    info?vtkHierarchicalBoxDataSet::SafeDownCast(info->Get(DATA_OBJECT())) : 0;
+}
+
+//----------------------------------------------------------------------------
+vtkHierarchicalBoxDataSet* vtkHierarchicalBoxDataSet::GetData(
+  vtkInformationVector* v, int i)
+{
+  return vtkHierarchicalBoxDataSet::GetData(v->GetInformationObject(i));
+}
