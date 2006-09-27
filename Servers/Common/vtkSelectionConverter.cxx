@@ -112,6 +112,12 @@ void vtkSelectionConverter::Convert(vtkSelection* input, vtkSelection* output)
     vtkSelection::SOURCE_ID(),
     inputProperties->Get(vtkSelectionSerializer::ORIGINAL_SOURCE_ID()));
   
+  if (inputProperties->Has(vtkSelection::PROCESS_ID()))
+    {
+    outputProperties->Set(vtkSelection::PROCESS_ID(),
+                          inputProperties->Get(vtkSelection::PROCESS_ID()));
+    }
+  
   output->SetSelectionList(outputArray);
   outputArray->Delete();
 }
