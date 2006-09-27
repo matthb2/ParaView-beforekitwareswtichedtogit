@@ -91,6 +91,15 @@ int vtkBitArrayIterator::GetValue(vtkIdType id)
 }
   
 //-----------------------------------------------------------------------------
+void vtkBitArrayIterator::SetValue(vtkIdType id, int value)
+{
+  if (this->Array)
+    {
+    this->Array->SetValue(id, value);
+    }
+}
+
+//-----------------------------------------------------------------------------
 vtkIdType vtkBitArrayIterator::GetNumberOfTuples()
 {
   if (this->Array)
