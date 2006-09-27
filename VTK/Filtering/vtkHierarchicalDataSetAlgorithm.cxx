@@ -129,9 +129,7 @@ int vtkHierarchicalDataSetAlgorithm::ProcessRequest(
 int vtkHierarchicalDataSetAlgorithm::FillOutputPortInformation(
   int vtkNotUsed(port), vtkInformation* info)
 {
-  info->Set(vtkDataObject::DATA_TYPE_NAME(), "vtkDataObject");
-  info->Set(vtkCompositeDataPipeline::COMPOSITE_DATA_TYPE_NAME(), 
-            "vtkHierarchicalDataSet");
+  info->Set(vtkDataObject::DATA_TYPE_NAME(), "vtkHierarchicalDataSet");
   return 1;
 }
 

@@ -95,9 +95,7 @@ void vtkXMLMultiGroupDataReader::SetupEmptyOutput()
 int vtkXMLMultiGroupDataReader::FillOutputPortInformation(
   int vtkNotUsed(port), vtkInformation* info)
 {
-  info->Set(vtkDataObject::DATA_TYPE_NAME(), "vtkDataObject");
-  info->Set(vtkCompositeDataPipeline::COMPOSITE_DATA_TYPE_NAME(), 
-            "vtkMultiGroupDataSet");
+  info->Set(vtkDataObject::DATA_TYPE_NAME(), "vtkMultiGroupDataSet");
   return 1;
 }
 

@@ -1458,8 +1458,6 @@ int vtkGenericEnSightReader::InsertNewPartId(int partId)
 int vtkGenericEnSightReader::FillOutputPortInformation(int vtkNotUsed(port),
                                                        vtkInformation* info)
 {
-  info->Set(vtkDataObject::DATA_TYPE_NAME(), "vtkDataSet");
-  info->Set(vtkCompositeDataPipeline::COMPOSITE_DATA_TYPE_NAME(), 
-            "vtkMultiBlockDataSet");
+  info->Set(vtkDataObject::DATA_TYPE_NAME(), "vtkMultiBlockDataSet");
   return 1;
 }

@@ -2782,17 +2782,9 @@ void vtkXdmfReader::UpdateGrids()
 int vtkXdmfReader::FillOutputPortInformation(int port,
                                              vtkInformation *info)
 { 
-  vtkInformation* outInfo =this->GetExecutive()->GetOutputInformation()->GetInformationObject(port);
-  if(outInfo->Has(vtkDataObject::DATA_OBJECT()))
-    {
-    info->Set(vtkCompositeDataPipeline::COMPOSITE_DATA_TYPE_NAME(), 
-              "vtkDataObject");
-    info->Set(vtkDataObject::DATA_TYPE_NAME(), "vtkDataObject");
-    }
-  else
-    {
-    info->Set(vtkDataObject::DATA_TYPE_NAME(), "vtkDataObject");
-    }
+  vtkInformation* outInfo =
+    this->GetExecutive()->GetOutputInformation()->GetInformationObject(port);
+  info->Set(vtkDataObject::DATA_TYPE_NAME(), "vtkDataObject");
   return 1;
 }
 
