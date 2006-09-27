@@ -1415,3 +1415,9 @@ void vtkStreamTracer::PrintSelf(ostream& os, vtkIndent indent)
      << (this->ComputeVorticity ? " On" : " Off") << endl;
   os << indent << "Rotation scale: " << this->RotationScale << endl;
 }
+
+vtkExecutive* vtkStreamTracer::CreateDefaultExecutive()
+{
+  return vtkCompositeDataPipeline::New();
+}
+
