@@ -92,29 +92,17 @@ int vtkMultiGroupDataExtractDataSets::RequestDataObject(
   vtkInformationVector** inputVector , 
   vtkInformationVector* outputVector)
 {
-  vtkInformation* inInfo = inputVector[0]->GetInformationObject(0);
-  if (!inInfo)
-    {
-    return 0;
-    }
-  vtkCompositeDataSet *input = vtkCompositeDataSet::SafeDownCast(
-    inInfo->Get(vtkDataObject::DATA_OBJECT()));
+  vtkCompositeDataSet* input = vtkCompositeDataSet::GetData(inputVector[0], 0);
+  vtkCompositeDataSet *output = vtkCompositeDataSet::GetData(outputVector, 0);
   
-  if (input)
+  if (!output || !output->IsA(input->GetClassName())) 
     {
-    vtkInformation* info = outputVector->GetInformationObject(0);
-    vtkCompositeDataSet *output = vtkCompositeDataSet::SafeDownCast(
-      info->Get(vtkDataObject::DATA_OBJECT()));
-    
-    if (!output || !output->IsA(input->GetClassName())) 
-      {
-      output = input->NewInstance();
-      output->SetPipelineInformation(info);
-      output->Delete();
-      }
-    return 1;
+    output = input->NewInstance();
+    output->SetPipelineInformation(outputVector->GetInformationObject(0));
+    output->Delete();
     }
-  return 0;
+
+  return 1;
 }
 
 //----------------------------------------------------------------------------
