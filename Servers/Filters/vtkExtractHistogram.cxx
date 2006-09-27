@@ -98,7 +98,7 @@ int vtkExtractHistogram::FillInputPortInformation (int port,
 //----------------------------------------------------------------------------
 int vtkExtractHistogram::RequestInformation(
   vtkInformation* vtkNotUsed(request),
-  vtkInformationVector** inputVector,
+  vtkInformationVector** vtkNotUsed(inputVector),
   vtkInformationVector* outputVector)
 {
   // get the info objects
@@ -125,7 +125,8 @@ int vtkExtractHistogram::RequestInformation(
   return 1;
 }
 //-----------------------------------------------------------------------------
-int vtkExtractHistogram::RequestUpdateExtent(vtkInformation* request,
+int vtkExtractHistogram::RequestUpdateExtent(
+  vtkInformation* vtkNotUsed(request),
   vtkInformationVector** inputVector, vtkInformationVector* outputVector)
 {
   // This filter changes the ExtentTranslator on the output
