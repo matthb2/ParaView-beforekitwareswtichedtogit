@@ -255,4 +255,6 @@ int vtkAttributeDataReductionFilter::RequestData(
 void vtkAttributeDataReductionFilter::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os, indent);
+  os << indent << "ReductionType: " << this->GetReductionTypeAsString() 
+    << endl;
 }
