@@ -177,7 +177,11 @@ int vtkTemporalInterpolator::RequestData(
         }
       }
     }
-  
+
+  // set the resulting times
+  outData->GetInformation()->Set(vtkDataObject::DATA_TIME_STEPS(), 
+                                 upTimes, numUpTimes);
+
   return 1;
 }
 
