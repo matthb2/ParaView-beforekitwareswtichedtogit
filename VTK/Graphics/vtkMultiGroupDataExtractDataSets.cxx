@@ -95,6 +95,11 @@ int vtkMultiGroupDataExtractDataSets::RequestDataObject(
   vtkCompositeDataSet* input = vtkCompositeDataSet::GetData(inputVector[0], 0);
   vtkCompositeDataSet *output = vtkCompositeDataSet::GetData(outputVector, 0);
   
+  if (!input)
+    {
+    return 0;
+    }
+
   if (!output || !output->IsA(input->GetClassName())) 
     {
     output = input->NewInstance();
