@@ -139,7 +139,7 @@ int vtkClientServerMoveData::SendData(vtkSocketController* controller,
 
   vtkDataSetWriter* writer = vtkDataSetWriter::New();
   writer->SetInput(data);
-  writer->SetFileTypeToASCII();
+  writer->SetFileTypeToBinary();
   writer->WriteToOutputStringOn();
   writer->Write();
 
