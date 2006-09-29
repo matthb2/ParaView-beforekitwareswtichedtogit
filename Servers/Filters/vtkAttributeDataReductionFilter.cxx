@@ -36,6 +36,13 @@ vtkAttributeDataReductionFilter::~vtkAttributeDataReductionFilter()
 {
 }
 
+//----------------------------------------------------------------------------
+int vtkAttributeDataReductionFilter::FillInputPortInformation(
+  int port, vtkInformation *info)
+{
+  info->Set(vtkAlgorithm::INPUT_IS_REPEATABLE(), 1);
+  return this->Superclass::FillInputPortInformation(port, info);
+}
 
 //-----------------------------------------------------------------------------
 template<class iterT>

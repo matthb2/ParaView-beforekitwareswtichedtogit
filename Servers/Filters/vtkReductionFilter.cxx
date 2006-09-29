@@ -81,7 +81,6 @@ int vtkReductionFilter::RequestData(vtkInformation*,
   return 1;
 }
 
-
 //-----------------------------------------------------------------------------
 void vtkReductionFilter::Reduce(vtkDataSet* input, vtkDataSet* output)
 {
@@ -170,6 +169,7 @@ void vtkReductionFilter::Reduce(vtkDataSet* input, vtkDataSet* output)
     com->Gather(&this->DataLength, 0, 1, 0);
     // Send the data to be gathered on the root.
     com->GatherV(this->RawData, 0, this->DataLength, 0, 0, 0);
+    output->ShallowCopy(input);
     }
   delete []this->RawData;
   this->RawData = 0;
@@ -184,7 +184,7 @@ void vtkReductionFilter::MarshallData(vtkDataSet* input)
   data->ShallowCopy(input);
 
   vtkDataSetWriter* writer = vtkDataSetWriter::New();
-  writer->SetFileTypeToBinary();
+  writer->SetFileTypeToASCII();
   writer->WriteToOutputStringOn();
   writer->SetInput(data);
   writer->Write();
