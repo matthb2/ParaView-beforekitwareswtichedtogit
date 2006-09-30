@@ -147,8 +147,8 @@ int vtkPVExtentTranslator::PieceToExtentThreadSafe(int piece, int numPieces,
 void vtkPVExtentTranslator::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os,indent);
-
-  os << indent << "Original Source: (" << this->OriginalSource << ")\n";
+  os << indent << "Original Source: " << this->OriginalSource << endl;
+  os << indent << "PortIndex: " << this->PortIndex << endl;
 }
 
 
