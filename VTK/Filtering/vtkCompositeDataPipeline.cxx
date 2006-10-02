@@ -1174,17 +1174,19 @@ int vtkCompositeDataPipeline
   // If this is a simple filter but has composite input, create a composite
   // output.
   int compositePort;
+  int temporaldownstream;
   if (this->ShouldIterateOverInput(compositePort) || 
-      (request && this->ShouldIterateTemporalData(request)))
+      (request && (temporaldownstream=this->ShouldIterateTemporalData(request))))
     {
     // This assumes that the first output of the filter is the one
     // that will have the composite data.
     vtkDataObject* doOutput = 
       outInfo->Get(vtkDataObject::DATA_OBJECT());
     vtkCompositeDataSet* output = vtkCompositeDataSet::SafeDownCast(doOutput);
-    if (!output)
+    vtkTemporalDataSet* temporal = vtkTemporalDataSet::SafeDownCast(doOutput);
+    if (!output || (!temporal && temporaldownstream))
       {
-      if (this->ShouldIterateTemporalData(request))
+      if (temporaldownstream)
         {
         output = vtkTemporalDataSet::New();
         }
