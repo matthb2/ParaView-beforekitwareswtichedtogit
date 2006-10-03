@@ -27,7 +27,7 @@
 #include "vtkDataSetAttributes.h"
 #include "vtkObjectFactory.h"
 #include "vtkRenderer.h"
-#include "vtkgl.h"
+//#include "vtkgl.h"
 
 #include <vtkstd/algorithm>
 
@@ -648,10 +648,10 @@ void vtkOpenGLPainterDeviceAdapter::SetMultisampling(int mode)
 {
   if (mode)
     {
-    glEnable(vtkgl::MULTISAMPLE);
+    //glEnable(vtkgl::MULTISAMPLE);
     }
   else
     {
-    glDisable(vtkgl::MULTISAMPLE);
+    //glDisable(vtkgl::MULTISAMPLE);
     }
 }
