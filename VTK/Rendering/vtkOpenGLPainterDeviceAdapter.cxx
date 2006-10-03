@@ -27,6 +27,7 @@
 #include "vtkDataSetAttributes.h"
 #include "vtkObjectFactory.h"
 #include "vtkRenderer.h"
+#include "vtkgl.h"
 
 #include <vtkstd/algorithm>
 
