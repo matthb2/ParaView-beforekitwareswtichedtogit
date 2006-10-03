@@ -641,3 +641,16 @@ void vtkOpenGLPainterDeviceAdapter::SetLighting(int mode)
     glDisable(GL_LIGHTING);
     }
 }
+
+//-----------------------------------------------------------------------------
+void vtkOpenGLPainterDeviceAdapter::SetMultisampling(int mode)
+{
+  if (mode)
+    {
+    glEnable(GL_MULTISAMPLE);
+    }
+  else
+    {
+    glDisable(GL_MULTISAMPLE);
+    }
+}
