@@ -220,7 +220,8 @@ int vtkAttributeDataReductionFilter::RequestData(
           {
           vtkArrayIteratorTemplateMacro(
             vtkAttributeDataReductionFilterReduce(this,
-              VTK_TT::SafeDownCast(toIter), VTK_TT::SafeDownCast(fromIter), 
+              static_cast<VTK_TT*>(toIter.GetPointer()), 
+              static_cast<VTK_TT*>(fromIter.GetPointer()), 
               progress_offset, progress_factor));
         default:
           vtkWarningMacro("Cannot reduce arrays of type: " <<
@@ -253,7 +254,8 @@ int vtkAttributeDataReductionFilter::RequestData(
           {
           vtkArrayIteratorTemplateMacro(
             vtkAttributeDataReductionFilterReduce(this,
-              VTK_TT::SafeDownCast(toIter), VTK_TT::SafeDownCast(fromIter),
+              static_cast<VTK_TT*>(toIter.GetPointer()), 
+              static_cast<VTK_TT*>(fromIter.GetPointer()),
               progress_offset, progress_factor));
         default:
           vtkWarningMacro("Cannot reduce arrays of type: " <<

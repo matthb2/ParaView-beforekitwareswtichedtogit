@@ -1021,7 +1021,8 @@ int vtkXMLWriter::WriteBinaryDataInternal(vtkAbstractArray* a,
   switch (wordType)
     {
     vtkArrayIteratorTemplateMacro(
-      ret = vtkXMLWriterWriteBinaryDataBlocks(this, VTK_TT::SafeDownCast(iter),
+      ret = vtkXMLWriterWriteBinaryDataBlocks(this, 
+        static_cast<VTK_TT*>(iter),
         wordType, memWordSize, outWordSize));
   default:
     vtkWarningMacro("Cannot write binary data of type : " << wordType);
@@ -1640,7 +1641,8 @@ int vtkXMLWriter::WriteAsciiData(vtkAbstractArray* a, vtkIndent indent)
   switch(a->GetDataType())
     {
     vtkArrayIteratorTemplateMacro(
-      ret = vtkXMLWriteAsciiData(os, VTK_TT::SafeDownCast(iter),
+      ret = vtkXMLWriteAsciiData(os, 
+        static_cast<VTK_TT*>(iter),
         indent));
     // Why isn;t vtkBitArray handled?
   default:

@@ -89,7 +89,7 @@ vtkPVServerArrayHelper::GetArray(vtkObject* object,
     {
     vtkArrayIteratorTemplateMacro(
       vtkPVServerArrayHelperSerializer(
-        VTK_TT::SafeDownCast(iter), *this->Result));
+        static_cast<VTK_TT*>(iter), *this->Result));
     }
   iter->Delete();
 
