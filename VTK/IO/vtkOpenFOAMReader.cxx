@@ -1584,7 +1584,7 @@ vtkDoubleArray * vtkOpenFOAMReader::GetInternalVariableAtTimestep
   while(tokenizer >> foamClass)
     {
     };
-  temp.clear();
+  temp = "";
   tokenizer.str("");
   tokenizer.clear();
   //create scalar arrays
@@ -1816,7 +1816,7 @@ vtkDoubleArray * vtkOpenFOAMReader::GetBoundaryVariableAtTimestep
   temp.erase(temp.begin()+temp.find(";"));
   tokenizer.str(temp);
   while(tokenizer >> foamClass);
-  temp.clear();
+  temp = "";
   tokenizer.str("");
   tokenizer.clear();
   //create scalar arrays
