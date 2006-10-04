@@ -250,9 +250,16 @@ void vtkSMSelectionProxy::ConvertSelection(vtkSelection* sel,
   vtkSMProxy* geomProxy = 
     rmp->GetProxyFromPropID(&propId, vtkSMRenderModuleProxy::GEOMETRY);
 
-  properties->Set(vtkSelection::SOURCE_ID(), geomProxy->GetID(0).ID);
-  properties->Set(vtkSelectionSerializer::ORIGINAL_SOURCE_ID(), 
-                  objProxy->GetID(0).ID);
+  if (geomProxy)
+    {
+    properties->Set(vtkSelection::SOURCE_ID(), geomProxy->GetID(0).ID);
+    }
+
+  if (objProxy)
+    {
+    properties->Set(vtkSelectionSerializer::ORIGINAL_SOURCE_ID(), 
+                    objProxy->GetID(0).ID);
+    }
 }
 
 //-----------------------------------------------------------------------------
