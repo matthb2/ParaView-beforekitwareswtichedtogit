@@ -193,10 +193,12 @@ vtkAbstractArray* vtkAbstractArray::CreateArray(int dataType)
       return vtkStringArray::New();
 
     default:
-      vtkGenericWarningMacro("Unsupported data type " << dataType
-                             << "! Setting to VTK_DOUBLE");
-      return vtkDoubleArray::New();
+      break;
     }
+
+  vtkGenericWarningMacro("Unsupported data type: " << dataType
+                         << "! Setting to VTK_DOUBLE");
+  return vtkDoubleArray::New();
 }
 
 //----------------------------------------------------------------------------
