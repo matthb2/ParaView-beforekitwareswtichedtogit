@@ -41,8 +41,8 @@
 #include "vtkstd/vector"
 #include "vtkstd/string"
 #include "vtkstd/map"
-#include <fstream>
-#include <sstream>
+#include "vtksys/ios/fstream"
+#include "vtksys/ios/sstream"
 using vtkstd::istringstream;
 
 #include "vtkInformation.h"
