@@ -917,8 +917,6 @@ void vtkBiDimensionalRepresentation2D::BuildRepresentation()
     
     this->BuildTime.Modified();
     timer->StopTimer();
-    cout << "vtkBiDimensionalRepresentation2D::BuildRepresentation: "
-         << timer->GetElapsedTime() << endl;
     timer->Delete();
     }
 }
