@@ -13,6 +13,12 @@
 
 =========================================================================*/
 
+// We do not provide a definition for the copy constructor or
+// operator=.  Block the warning.
+#ifdef _MSC_VER
+# pragma warning (disable: 4661)
+#endif
+
 #include "vtkVariantArray.h"
 
 #include "vtkDataArray.h"
