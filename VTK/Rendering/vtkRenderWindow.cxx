@@ -789,6 +789,8 @@ void vtkRenderWindow::PrintSelf(ostream& os, vtkIndent indent)
     {
     os << "(none)" << endl;
     }
+
+  os << indent << "MultiSamples: " << this->MultiSamples << "\n";
 }
 
 

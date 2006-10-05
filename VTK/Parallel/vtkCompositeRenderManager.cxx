@@ -72,11 +72,16 @@ void vtkCompositeRenderManager::PreRenderProcessing()
     {
     this->RenderWindow->SwapBuffersOff();
     }
+
+  this->SavedMultiSamplesSetting = this->RenderWindow->GetMultiSamples();
+  this->RenderWindow->SetMultiSamples(0);
 }
 
 //----------------------------------------------------------------------------
 void vtkCompositeRenderManager::PostRenderProcessing()
 {
+  this->RenderWindow->SetMultiSamples(this->SavedMultiSamplesSetting);
+
   if (!this->UseCompositing || this->CheckForAbortComposite())
     {
     return;

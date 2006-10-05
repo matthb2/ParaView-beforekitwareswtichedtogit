@@ -157,8 +157,6 @@ void vtkOpenGLRenderWindow::OpenGLInit()
 void vtkOpenGLRenderWindow::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os,indent);
-
-  os << indent << "MultiSamples: " << this->MultiSamples << "\n";
 }
 
 int vtkOpenGLRenderWindow::GetDepthBufferSize()
