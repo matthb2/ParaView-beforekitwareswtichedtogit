@@ -631,7 +631,7 @@ int vtkOpenGLPainterDeviceAdapter::Compatible(vtkRenderer *renderer)
 }
 
 //-----------------------------------------------------------------------------
-void vtkOpenGLPainterDeviceAdapter::SetLighting(int mode)
+void vtkOpenGLPainterDeviceAdapter::MakeLighting(int mode)
 {
   if (mode)
     {
@@ -644,7 +644,7 @@ void vtkOpenGLPainterDeviceAdapter::SetLighting(int mode)
 }
 
 //-----------------------------------------------------------------------------
-int vtkOpenGLPainterDeviceAdapter::GetLighting()
+int vtkOpenGLPainterDeviceAdapter::QueryLighting()
 {
   if (glIsEnabled(GL_LIGHTING))
     {
@@ -657,7 +657,7 @@ int vtkOpenGLPainterDeviceAdapter::GetLighting()
 }
 
 //-----------------------------------------------------------------------------
-void vtkOpenGLPainterDeviceAdapter::SetMultisampling(int mode)
+void vtkOpenGLPainterDeviceAdapter::MakeMultisampling(int mode)
 {
   if (mode)
     {
@@ -670,7 +670,7 @@ void vtkOpenGLPainterDeviceAdapter::SetMultisampling(int mode)
 }
 
 //-----------------------------------------------------------------------------
-int vtkOpenGLPainterDeviceAdapter::GetMultisampling()
+int vtkOpenGLPainterDeviceAdapter::QueryMultisampling()
 {
   if (glIsEnabled(vtkgl::MULTISAMPLE))
     {
