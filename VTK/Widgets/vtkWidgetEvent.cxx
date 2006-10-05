@@ -36,6 +36,7 @@ static const char *vtkWidgetEventStrings[] = {
   "AddFinalPoint",
   "Completed",
   "TimedOut",
+  "ModifyEvent",
   NULL
 };
 
