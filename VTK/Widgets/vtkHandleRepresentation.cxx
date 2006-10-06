@@ -72,6 +72,7 @@ void vtkHandleRepresentation::GetDisplayPosition(double pos[3])
   this->DisplayPosition->GetValue(pos);
 }
 
+//----------------------------------------------------------------------
 double* vtkHandleRepresentation::GetDisplayPosition()
 {
   return this->DisplayPosition->GetValue();
