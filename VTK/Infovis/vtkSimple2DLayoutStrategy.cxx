@@ -232,4 +232,6 @@ void vtkSimple2DLayoutStrategy::PrintSelf(ostream& os, vtkIndent indent)
   this->Superclass::PrintSelf(os,indent);
   os << indent << "InitialTemperature: " << this->InitialTemperature << endl;
   os << indent << "MaxNumberOfIterations: " << this->MaxNumberOfIterations << endl;
+  os << indent << "IterationsPerLayout: " << this->IterationsPerLayout << endl;
+  os << indent << "CoolDownRate: " << this->CoolDownRate << endl;
 }

@@ -48,6 +48,7 @@ void vtkRandomGraphSource::PrintSelf(ostream& os, vtkIndent indent)
   os << indent << "NumberOfArcs: " << this->NumberOfArcs << endl;
   os << indent << "ArcProbability: " << this->ArcProbability << endl;
   os << indent << "Directed: " << this->Directed << endl;
+  os << indent << "StartWithTree: " << this->StartWithTree << endl;
 }
 
 int vtkRandomGraphSource::RequestData(
