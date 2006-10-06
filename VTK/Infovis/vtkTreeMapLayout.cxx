@@ -46,6 +46,8 @@ vtkTreeMapLayout::~vtkTreeMapLayout()
     }
 }
 
+vtkCxxSetObjectMacro(vtkTreeMapLayout, LayoutStrategy, vtkTreeMapLayoutStrategy);
+
 int vtkTreeMapLayout::RequestData(
   vtkInformation *vtkNotUsed(request),
   vtkInformationVector **inputVector,
