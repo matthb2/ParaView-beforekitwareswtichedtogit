@@ -51,6 +51,12 @@ public:
   /// updated when the domain changes
   pqComboBoxDomain(QComboBox* p, vtkSMProperty* prop, int idx = -1);
   ~pqComboBoxDomain();
+
+  // explicitly trigger a domain change.
+  // simply calls internalDomainChanged();
+  void forceDomainChanged() 
+    { this->internalDomainChanged(); }
+
 protected slots:
   void internalDomainChanged();
 signals:

@@ -29,41 +29,37 @@ NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 =========================================================================*/
-#ifndef __pqConsumerDisplay_h
-#define __pqConsumerDisplay_h
+#ifndef __pqVTKLineChartModel_h
+#define __pqVTKLineChartModel_h
 
-#include "pqDisplay.h"
+#include "pqLineChartModel.h"
+#include "pqCoreExport.h"
 
-class pqConsumerDisplayInternal;
-class pqPipelineSource;
+class pqDisplay;
 
-// pqConsumerDisplay is the superclass for a display for a pqPiplineSource 
-// i.e. the input for this display proxy is a pqPiplineSource.
-// This class manages the linking between the pqPiplineSource 
-// and pqConsumerDisplay.
-class PQCORE_EXPORT pqConsumerDisplay : public pqDisplay
+class pqVTKLineChartModelInternal;
+
+class PQCORE_EXPORT pqVTKLineChartModel : public pqLineChartModel
 {
-  Q_OBJECT
 public:
-  pqConsumerDisplay(const QString& group, const QString& name,
-    vtkSMProxy* display, pqServer* server,
-    QObject* parent=0);
-  virtual ~pqConsumerDisplay();
+  typedef pqLineChartModel Superclass;
 
-  // Get the source/filter of which this is a display.
-  pqPipelineSource* getInput() const;
+  pqVTKLineChartModel(QObject* parent=0);
+  virtual ~pqVTKLineChartModel();
 
-  virtual void setDefaults();
-private slots:
-  // called when input property on display changes. We must detect if
-  // (and when) the display is connected to a new proxy.
-  virtual void onInputChanged();
+  void update(QList<pqDisplay*>& visibleDisplays);
 
+  void update();
+
+  /// Removes all the plots from the model.
+  virtual void clearPlots();
 private:
-  pqConsumerDisplay(const pqConsumerDisplay&); // Not implemented.
-  void operator=(const pqConsumerDisplay&); // Not implemented.
+  pqVTKLineChartModel(const pqVTKLineChartModel&); // Not implemented.
+  void operator=(const pqVTKLineChartModel&); // Not implemented.
 
-  pqConsumerDisplayInternal* Internal;
+  pqVTKLineChartModelInternal* Internal;
+
+  void createPlotsForDisplay(pqDisplay*);
 };
 
 #endif

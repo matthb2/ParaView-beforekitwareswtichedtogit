@@ -29,41 +29,39 @@ NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 =========================================================================*/
-#ifndef __pqConsumerDisplay_h
-#define __pqConsumerDisplay_h
+#ifndef __pqXYPlotDisplayProxyEditor_h
+#define __pqXYPlotDisplayProxyEditor_h
 
-#include "pqDisplay.h"
+#include <QWidget>
+#include "pqComponentsExport.h"
 
-class pqConsumerDisplayInternal;
-class pqPipelineSource;
+class pqDisplay;
 
-// pqConsumerDisplay is the superclass for a display for a pqPiplineSource 
-// i.e. the input for this display proxy is a pqPiplineSource.
-// This class manages the linking between the pqPiplineSource 
-// and pqConsumerDisplay.
-class PQCORE_EXPORT pqConsumerDisplay : public pqDisplay
+class PQCOMPONENTS_EXPORT pqXYPlotDisplayProxyEditor : public QWidget
 {
   Q_OBJECT
 public:
-  pqConsumerDisplay(const QString& group, const QString& name,
-    vtkSMProxy* display, pqServer* server,
-    QObject* parent=0);
-  virtual ~pqConsumerDisplay();
+  pqXYPlotDisplayProxyEditor(QWidget* parent=0);
+  virtual ~pqXYPlotDisplayProxyEditor();
 
-  // Get the source/filter of which this is a display.
-  pqPipelineSource* getInput() const;
+  // Get/Set the display whose properties this editor is editing.
+  // This call will raise an error is the display is not
+  // an XYPlotDisplay2 proxy.
+  void setDisplay(pqDisplay* display);
+  pqDisplay* getDisplay();
 
-  virtual void setDefaults();
-private slots:
-  // called when input property on display changes. We must detect if
-  // (and when) the display is connected to a new proxy.
-  virtual void onInputChanged();
+protected slots:
+  // Called to render all views in which this display is visible.
+  void updateAllViews();
+
+  void yArraySelectionChanged();
 
 private:
-  pqConsumerDisplay(const pqConsumerDisplay&); // Not implemented.
-  void operator=(const pqConsumerDisplay&); // Not implemented.
+  pqXYPlotDisplayProxyEditor(const pqXYPlotDisplayProxyEditor&); // Not implemented.
+  void operator=(const pqXYPlotDisplayProxyEditor&); // Not implemented.
 
-  pqConsumerDisplayInternal* Internal;
+  class pqInternal;
+  pqInternal* Internal;
 };
 
 #endif

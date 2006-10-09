@@ -29,42 +29,56 @@ NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 =========================================================================*/
-#ifndef __pqConsumerDisplay_h
-#define __pqConsumerDisplay_h
+#ifndef __pqScalarBarVisibilityAdaptor_h
+#define __pqScalarBarVisibilityAdaptor_h
 
-#include "pqDisplay.h"
+#include <QObject>
+#include "pqCoreExport.h"
 
-class pqConsumerDisplayInternal;
 class pqPipelineSource;
+class pqRenderModule;
+class QAction;
 
-// pqConsumerDisplay is the superclass for a display for a pqPiplineSource 
-// i.e. the input for this display proxy is a pqPiplineSource.
-// This class manages the linking between the pqPiplineSource 
-// and pqConsumerDisplay.
-class PQCORE_EXPORT pqConsumerDisplay : public pqDisplay
+// pqScalarBarVisibilityAdaptor is an adptor that can be hooked on to
+// any action to make it control the scalar bar 
+// visibility of the scalar bar for the selected source 
+// in the selected render window.
+class PQCORE_EXPORT pqScalarBarVisibilityAdaptor : public QObject
 {
   Q_OBJECT
 public:
-  pqConsumerDisplay(const QString& group, const QString& name,
-    vtkSMProxy* display, pqServer* server,
-    QObject* parent=0);
-  virtual ~pqConsumerDisplay();
+  pqScalarBarVisibilityAdaptor(QAction* parent=0);
+  virtual ~pqScalarBarVisibilityAdaptor();
 
-  // Get the source/filter of which this is a display.
-  pqPipelineSource* getInput() const;
+signals:
+  // Fired when to indicate if the visibility of the scalar bar can
+  // be changed in the current setup.
+  void canChangeVisibility(bool);
 
-  virtual void setDefaults();
-private slots:
-  // called when input property on display changes. We must detect if
-  // (and when) the display is connected to a new proxy.
-  virtual void onInputChanged();
+  // Fired to update the scalarbar visibility state.
+  void scalarBarVisible(bool);
+
+public slots:
+   
+  // set the active source.
+  void setActiveSource(pqPipelineSource* source);
+
+  // set the active view.
+  void setActiveRenderModule(pqRenderModule* rm);
+
+protected slots:
+  void updateEnableState();
+  void setScalarBarVisibility(bool visible);
 
 private:
-  pqConsumerDisplay(const pqConsumerDisplay&); // Not implemented.
-  void operator=(const pqConsumerDisplay&); // Not implemented.
+  pqScalarBarVisibilityAdaptor(const pqScalarBarVisibilityAdaptor&); // Not implemented.
+  void operator=(const pqScalarBarVisibilityAdaptor&); // Not implemented.
 
-  pqConsumerDisplayInternal* Internal;
+  class pqInternal;
+  pqInternal* Internal;
+  void updateDisplay();
 };
+
 
 #endif
 
