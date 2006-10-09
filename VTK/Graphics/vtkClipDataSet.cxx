@@ -193,7 +193,10 @@ int vtkClipDataSet::RequestData(
   vtkIdTypeArray *locs[2];
   locs[0] = locs[1] = 0;
   int numOutputs = 1;
-  
+
+  outCD[0] = 0;
+  outCD[1] = 0;
+
   vtkDebugMacro(<< "Clipping dataset");
   
   int inputObjectType = input->GetDataObjectType();

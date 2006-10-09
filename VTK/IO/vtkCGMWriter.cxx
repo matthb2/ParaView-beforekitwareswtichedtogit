@@ -714,6 +714,12 @@ void vtkCGMWriter::WriteData()
           rgbColor[1] = ptr[1];
           rgbColor[2] = ptr[2];
           break;
+        default:
+          vtkErrorMacro( << "Unsupported bpp in vtkCGMWriter::WriteData" );
+          rgbColor[0] = 0;
+          rgbColor[1] = 0;
+          rgbColor[2] = 0;
+          break;
         }
 
       color = colorHash->GetColorIndex(im, rgbColor[0], rgbColor[1], rgbColor[2]);
@@ -726,7 +732,7 @@ void vtkCGMWriter::WriteData()
       }
     else //if ( colorMode == VTK_COLOR_MODE_RANDOM_COLORS )
       {
-      color = GetColor((int)vtkMath::Random(0,255), 
+      color = GetColor((int)vtkMath::Random(0,255),
                        (int)vtkMath::Random(0,255), 
                        (int)vtkMath::Random(0,255), CGMColors);
       }
