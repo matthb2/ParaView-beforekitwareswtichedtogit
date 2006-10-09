@@ -392,7 +392,8 @@ void vtkSMCompositeRenderModuleProxy::ComputeReductionFactor(int inReductionFact
 
   if (this->CompositeManagerProxy)
     {
-    this->SetImageReductionFactor(this->CompositeManagerProxy, newReductionFactor);
+    this->SetImageReductionFactor(this->CompositeManagerProxy, 
+      static_cast<int>(newReductionFactor));
     }
 
 }
