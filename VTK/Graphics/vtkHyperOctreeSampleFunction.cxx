@@ -327,6 +327,8 @@ void vtkHyperOctreeSampleFunction::Subdivide(vtkHyperOctreeCursor *cursor,
   int target[3];
   
   indices[0]=cursor->GetIndex(0);
+  indices[1]=0;
+  indices[2]=0;
   p[0]=(indices[0]+0.5)*ratio*this->Size[0]+this->Origin[0];
   if(this->Dimension>1)
     {

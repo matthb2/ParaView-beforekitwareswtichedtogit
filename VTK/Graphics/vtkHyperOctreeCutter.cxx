@@ -909,6 +909,11 @@ void vtkHyperOctreeCutter::CutNode(vtkHyperOctreeCursor *cursor,
           edges[0]=(child&1)==1; // false: -x, true: +x
           edges[1]=(child&2)==2; // false: -y, true: +y
           }
+        else
+          {
+          edges[0]=0;
+          edges[1]=0;
+          }
         
         // Insert vertex (xmin,ymin)
         pt[0]=bounds[0];

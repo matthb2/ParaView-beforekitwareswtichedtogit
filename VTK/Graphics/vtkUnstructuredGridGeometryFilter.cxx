@@ -834,8 +834,8 @@ int vtkUnstructuredGridGeometryFilter::RequestData(
     }
 
   vtkIdType cellId;
-  vtkIdType npts;
-  vtkIdType *pts;
+  vtkIdType npts=0;
+  vtkIdType *pts=0;
   int i;
   double x[3];
   

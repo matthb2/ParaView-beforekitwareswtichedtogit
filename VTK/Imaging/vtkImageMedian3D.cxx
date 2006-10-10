@@ -206,7 +206,10 @@ void vtkImageMedian3DExecute(vtkImageMedian3D *self,
   int middleMin0, middleMax0, middleMin1, middleMax1, middleMin2, middleMax2;
   int numComp;
   // variables for the median calc
-  int UpNum, DownNum, UpMax, DownMax;
+  int UpNum = 0;
+  int DownNum = 0;
+  int UpMax = 0;
+  int DownMax = 0;
   double *Median;
   double *Sort = new double[(self->GetNumberOfElements() + 8)];
   int *inExt;
