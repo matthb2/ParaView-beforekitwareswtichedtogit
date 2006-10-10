@@ -956,8 +956,9 @@ int vtkPDataSetReader::RequestData(vtkInformation* request,
       break;
     default:
       vtkErrorMacro("We do not handle vtkRectilinear yet.");
-      return 0;
     }
+
+  return 0;
 }
 
 
