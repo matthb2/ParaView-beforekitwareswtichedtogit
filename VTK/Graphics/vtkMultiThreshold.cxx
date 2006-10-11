@@ -160,7 +160,6 @@ int vtkMultiThreshold::Interval::Match( double cellNorm[2] )
     {
     return VTK_MULTITHRESH_IS_IN_INTERVAL( cellNorm[0] );
     }
-  return 0;
 }
 
 void vtkMultiThreshold::Interval::PrintNode( ostream& os )
@@ -352,7 +351,9 @@ int vtkMultiThreshold::AddIntervalSet( NormKey& nk, double xmin, double xmax, in
     return -1;
     }
 
-  if ( isnan( xmin ) || isnan( xmax ) )
+  // The following condition will only hold if xmin or xmax is a NAN (or maybe
+  // if they are both infinite, which is an empty range anyway).
+  if (!(xmin <= xmax) && !(xmin >= xmax))
     {
     vtkWarningMacro( "One of the interval endpoints is not a number." );
     return -1;
