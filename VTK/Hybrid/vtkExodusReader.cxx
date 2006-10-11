@@ -1239,7 +1239,7 @@ protected:
         vtkStdString instance=vtkStdString("");
         //get part spec and instance from part
         int pos=part.find(" Instance: ");
-        if (pos!=vtkStdString::npos)
+        if (pos!=(int)vtkStdString::npos)
           {
           partSpec.assign(part,0,pos);
           instance.assign(part,pos+11,part.size()-(pos+11));
