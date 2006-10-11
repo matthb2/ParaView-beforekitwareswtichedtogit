@@ -328,6 +328,16 @@ void vtkDistanceWidget::EndDistanceInteraction(int)
 }
 
 //----------------------------------------------------------------------
+void vtkDistanceWidget::SetProcessEvents(int pe)
+{
+  this->Superclass::SetProcessEvents(pe);
+
+  this->Point1Widget->SetProcessEvents(pe);
+  this->Point2Widget->SetProcessEvents(pe);
+
+}
+
+//----------------------------------------------------------------------
 void vtkDistanceWidget::PrintSelf(ostream& os, vtkIndent indent)
 {
   //Superclass typedef defined in vtkTypeMacro() found in vtkSetGet.h

@@ -315,6 +315,16 @@ void vtkLineWidget2::CreateDefaultRepresentation()
 }
 
 //----------------------------------------------------------------------------
+void vtkLineWidget2::SetProcessEvents(int pe)
+{
+  this->Superclass::SetProcessEvents(pe);
+
+  this->Point1Widget->SetProcessEvents(pe);
+  this->Point2Widget->SetProcessEvents(pe);
+  this->LineHandle->SetProcessEvents(pe);
+}
+
+//----------------------------------------------------------------------------
 void vtkLineWidget2::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os,indent);

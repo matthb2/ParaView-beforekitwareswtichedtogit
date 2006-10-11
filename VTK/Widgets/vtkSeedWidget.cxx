@@ -267,6 +267,18 @@ void vtkSeedWidget::DeleteAction(vtkAbstractWidget *w)
 }
 
 //----------------------------------------------------------------------
+void vtkSeedWidget::SetProcessEvents(int pe)
+{
+  this->Superclass::SetProcessEvents(pe);
+
+  vtkSeedListIterator iter = this->Seeds->begin();
+  for (; iter != this->Seeds->end(); ++iter)
+    {
+    (*iter)->SetProcessEvents(pe);
+    }
+}
+
+//----------------------------------------------------------------------
 void vtkSeedWidget::PrintSelf(ostream& os, vtkIndent indent)
 {
   //Superclass typedef defined in vtkTypeMacro() found in vtkSetGet.h

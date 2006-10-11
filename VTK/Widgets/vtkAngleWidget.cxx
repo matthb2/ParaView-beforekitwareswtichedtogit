@@ -455,6 +455,17 @@ void vtkAngleWidget::EndAngleInteraction(int)
 }
 
 //----------------------------------------------------------------------
+void vtkAngleWidget::SetProcessEvents(int pe)
+{
+  this->Superclass::SetProcessEvents(pe);
+
+  //Pass pe flag to component widgets.
+  this->Point1Widget->SetProcessEvents(pe);
+  this->CenterWidget->SetProcessEvents(pe);
+  this->Point2Widget->SetProcessEvents(pe);
+}
+
+//----------------------------------------------------------------------
 void vtkAngleWidget::PrintSelf(ostream& os, vtkIndent indent)
 {
   //Superclass typedef defined in vtkTypeMacro() found in vtkSetGet.h
