@@ -50,12 +50,12 @@ union vtkIEEE754Bits {
 static union vtkIEEE754Bits vtkMathNanBits    = { 0x7FF8000000000000i64 };
 static union vtkIEEE754Bits vtkMathInfBits    = { 0x7FF0000000000000i64 };
 static union vtkIEEE754Bits vtkMathNegInfBits = { 0xFFF0000000000000i64 };
-#elif defined(WIN32) && defined(_BORLANDC__)
+#elif defined(WIN32) && defined(__BORLANDC__)
 // Borland C++ union initializers are broken.
 // Use an otherwise-discouraged aliasing trick:
-static vtkTypeInt64 vtkMathNanBits            = 0x7FF8000000000000LL;
-static vtkTypeInt64 vtkMathInfBits            = 0x7FF0000000000000LL;
-static vtkTypeInt64 vtkMathNegInfBits         = 0xFFF0000000000000LL;
+static vtkTypeInt64 vtkMathNanBits            = 0x7FF8000000000000i64;
+static vtkTypeInt64 vtkMathInfBits            = 0x7FF0000000000000i64;
+static vtkTypeInt64 vtkMathNegInfBits         = 0xFFF0000000000000i64;
 #else
 static union vtkIEEE754Bits vtkMathNanBits    = { 0x7FF8000000000000LL };
 static union vtkIEEE754Bits vtkMathInfBits    = { 0x7FF0000000000000LL };
