@@ -681,3 +681,29 @@ int vtkOpenGLPainterDeviceAdapter::QueryMultisampling()
     return 0;
     }
 }
+
+//-----------------------------------------------------------------------------
+void vtkOpenGLPainterDeviceAdapter::MakeBlending(int mode)
+{
+  if (mode)
+    {
+    glEnable(GL_BLEND);
+    }
+  else
+    {
+    glDisable(GL_BLEND);
+    }
+}
+
+//-----------------------------------------------------------------------------
+int vtkOpenGLPainterDeviceAdapter::QueryBlending()
+{
+  if (glIsEnabled(GL_BLEND))
+    {
+    return 1;
+    }
+  else
+    {
+    return 0;
+    }
+}
