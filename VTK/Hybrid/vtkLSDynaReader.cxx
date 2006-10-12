@@ -4314,7 +4314,7 @@ int vtkLSDynaReader::ReadInputDeck()
     }
 
   ifstream deck( this->InputDeck, ios::in );
-  if ( ! deck.is_open() )
+  if ( ! deck.good() )
     {
     return 0;
     }
@@ -4532,7 +4532,7 @@ int vtkLSDynaReader::ReadInputDeckKeywords( ifstream& deck )
 int vtkLSDynaReader::WriteInputDeckSummary( const char* fname )
 {
   ofstream xmlSummary( fname, ios::out | ios::trunc );
-  if ( ! xmlSummary.is_open() )
+  if ( ! xmlSummary.good() )
     {
     return 1;
     }
