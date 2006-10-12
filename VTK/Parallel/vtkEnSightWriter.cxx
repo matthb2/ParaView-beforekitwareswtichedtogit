@@ -142,7 +142,7 @@ void vtkEnSightWriter::PrintSelf(ostream& os, vtkIndent indent)
     }
   else
     {
-    cout << indent << "ModelMetadata: (none)" << "\n";
+    os << indent << "ModelMetadata: (none)" << "\n";
     }
 
   os << indent << "TimeStep: " << this->TimeStep << "\n";
