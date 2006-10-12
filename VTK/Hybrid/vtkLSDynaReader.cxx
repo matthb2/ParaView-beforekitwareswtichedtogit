@@ -3332,7 +3332,7 @@ int vtkLSDynaReader::ReadConnectivityAndMaterial()
     }
 
   vtkIdType nc;
-  vtkIntArray* matl;
+  vtkIntArray* matl = 0;
   vtkIdType conn[8];
   vtkIdType matlId;
   vtkIdType c, t, i;
