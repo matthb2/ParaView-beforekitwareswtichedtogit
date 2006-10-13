@@ -1463,6 +1463,9 @@ protected:
     if ( i < length )
       this->PartName.append( data + i, length - i );
     }
+private:
+  vtkXMLDynaSummaryParser( const vtkXMLDynaSummaryParser& ); // Not implemented.
+  void operator = ( const vtkXMLDynaSummaryParser& ); // Not implemented.
 };
 
 vtkStandardNewMacro(vtkXMLDynaSummaryParser);
