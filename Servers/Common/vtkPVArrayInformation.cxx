@@ -419,6 +419,11 @@ void vtkPVArrayInformation::CopyFromStream(const vtkClientServerStream* css)
     }
   this->SetNumberOfComponents(num);
 
+  if (num > 1)
+    {
+    num++;
+    }
+
   // Range of each component.
   for(int i=0; i < num; ++i)
     {
