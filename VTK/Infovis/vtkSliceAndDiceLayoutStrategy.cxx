@@ -45,7 +45,7 @@ vtkSliceAndDiceLayoutStrategy::~vtkSliceAndDiceLayoutStrategy()
 void vtkSliceAndDiceLayoutStrategy::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os,indent);
-  os << indent << "SizeFieldName: " << this->SizeFieldName << endl;
+  os << indent << "SizeFieldName: " << (this->SizeFieldName ? this->SizeFieldName : "(none)") << endl;
 }
 
 // Alternating tree layout method

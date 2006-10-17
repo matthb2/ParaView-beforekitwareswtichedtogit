@@ -170,8 +170,14 @@ int vtkGraphLayout::RequestData(
 void vtkGraphLayout::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os, indent);
-  os << indent << "LayoutStrategy:" << endl;
-  this->LayoutStrategy->PrintSelf(os, indent.GetNextIndent());
-  os << indent << "InternalGraph:" << endl;
-  this->InternalGraph->PrintSelf(os, indent.GetNextIndent());
+  os << indent << "LayoutStrategy: " << (this->LayoutStrategy ? "" : "(none)") << endl;
+  if (this->LayoutStrategy)
+    {
+    this->LayoutStrategy->PrintSelf(os, indent.GetNextIndent());
+    }
+  os << indent << "InternalGraph: " << (this->InternalGraph ? "" : "(none)") << endl;
+  if (this->InternalGraph)
+    {
+    this->InternalGraph->PrintSelf(os, indent.GetNextIndent());
+    }
 }

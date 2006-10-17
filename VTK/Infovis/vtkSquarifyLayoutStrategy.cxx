@@ -43,7 +43,7 @@ vtkSquarifyLayoutStrategy::~vtkSquarifyLayoutStrategy()
 void vtkSquarifyLayoutStrategy::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os,indent);
-  os << indent << "SizeFieldName: " << this->SizeFieldName << endl;
+  os << indent << "SizeFieldName: " << (this->SizeFieldName ? this->SizeFieldName : "(none)") << endl;
 }
 
 void vtkSquarifyLayoutStrategy::Layout(vtkTree *inputTree, 

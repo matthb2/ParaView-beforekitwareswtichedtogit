@@ -94,9 +94,12 @@ int vtkTreeMapLayout::RequestData(
 void vtkTreeMapLayout::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os, indent);
-  os << indent << "RectanglesFieldName: " << this->RectanglesFieldName << endl;
-  os << indent << "LayoutStrategy:" << endl;
-  this->LayoutStrategy->PrintSelf(os, indent.GetNextIndent());
+  os << indent << "RectanglesFieldName: " << (this->RectanglesFieldName ? this->RectanglesFieldName : "(none)") << endl;
+  os << indent << "LayoutStrategy: " << (this->LayoutStrategy ? "" : "(none)") << endl;
+  if (this->LayoutStrategy)
+    {
+    this->LayoutStrategy->PrintSelf(os, indent.GetNextIndent());
+    }
 }
 
 vtkIdType vtkTreeMapLayout::FindNode(float pnt[2], float *binfo)
