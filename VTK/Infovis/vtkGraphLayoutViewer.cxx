@@ -76,7 +76,7 @@ vtkGraphLayoutViewer::vtkGraphLayoutViewer()
   this->SetLayoutStrategy("Simple2D");
   
   // Okay setup the internal pipeline
-  this->SetupPipeline();
+//  this->SetupPipeline();
   
 }
 
