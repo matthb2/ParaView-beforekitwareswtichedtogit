@@ -14,7 +14,7 @@
 =========================================================================*/
 #include "vtkAffineWidget.h"
 #include "vtkAffineRepresentation2D.h"
-#include "vtkCommand.h"
+#include "vtkCommand.h"d
 #include "vtkCallbackCommand.h"
 #include "vtkRenderWindowInteractor.h"
 #include "vtkObjectFactory.h"
