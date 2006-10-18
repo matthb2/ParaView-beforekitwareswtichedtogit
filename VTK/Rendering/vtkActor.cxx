@@ -253,6 +253,16 @@ void vtkActor::ReleaseGraphicsResources(vtkWindow *win)
     {
     this->Texture->ReleaseGraphicsResources(renWin);
     }
+
+  // pass this information to the properties
+  if (this->Property)
+    {
+    this->Property->ReleaseGraphicsResources(renWin);
+    }
+  if (this->BackfaceProperty)
+    {
+    this->Property->ReleaseGraphicsResources(renWin);
+    }
 }
 
 //----------------------------------------------------------------------------
