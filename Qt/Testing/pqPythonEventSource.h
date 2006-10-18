@@ -30,27 +30,32 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 =========================================================================*/
 
-#ifndef _pqEventSource_h
-#define _pqEventSource_h
+#ifndef _pqPythonEventSource_h
+#define _pqPythonEventSource_h
 
-#include "QtTestingExport.h"
-#include <QObject>
+#include "pqThreadedEventSource.h"
+
 class QString;
 
-/// Abstract interface for objects that can supply high-level testing events
-class QTTESTING_EXPORT pqEventSource : public QObject
+/** Concrete implementation of pqEventSource that retrieves events recorded
+by pqPythonEventObserver */
+class QTTESTING_EXPORT pqPythonEventSource :
+  public pqThreadedEventSource
 {
-  Q_OBJECT
 public:
-  virtual ~pqEventSource() {}
+  pqPythonEventSource();
+  ~pqPythonEventSource();
 
-  /** Retrieves the next available event.  Returns true if an event was
-  returned, false if there are no more events. */
-  virtual bool getNextEvent(
-    QString& object,
-    QString& command,
-    QString& arguments) = 0;
+  void setContent(const QString& path);
+
+protected:
+  virtual void run();
+  virtual bool event(QEvent*);
+
+  class pqInternal;
+  pqInternal* Internal;
 
 };
 
-#endif // !_pqEventSource_h
+#endif // !_pqPythonEventSource_h
+

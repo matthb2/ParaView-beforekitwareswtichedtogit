@@ -60,6 +60,7 @@ public:
 signals:
   void succeeded();
   void failed();
+  void readyPlayNextEvent();
 
 private slots:
   void playNextEvent();

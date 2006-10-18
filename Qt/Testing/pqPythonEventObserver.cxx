@@ -30,27 +30,47 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 =========================================================================*/
 
-#ifndef _pqEventSource_h
-#define _pqEventSource_h
+#include "pqPythonEventObserver.h"
 
-#include "QtTestingExport.h"
-#include <QObject>
-class QString;
+#include <QTextStream>
 
-/// Abstract interface for objects that can supply high-level testing events
-class QTTESTING_EXPORT pqEventSource : public QObject
+////////////////////////////////////////////////////////////////////////////////////
+// pqPythonEventObserver
+
+pqPythonEventObserver::pqPythonEventObserver(QTextStream& stream) :
+  Stream(stream)
 {
-  Q_OBJECT
-public:
-  virtual ~pqEventSource() {}
+  this->Stream << "#/usr/bin/env python\n\n";
+  this->Stream << "import QtTesting\n\n";
+}
 
-  /** Retrieves the next available event.  Returns true if an event was
-  returned, false if there are no more events. */
-  virtual bool getNextEvent(
-    QString& object,
-    QString& command,
-    QString& arguments) = 0;
+pqPythonEventObserver::~pqPythonEventObserver()
+{
+  this->Stream.flush();
+}
 
-};
+void pqPythonEventObserver::onRecordEvent(
+  const QString& Widget,
+  const QString& Command,
+  const QString& Arguments)
+{
 
-#endif // !_pqEventSource_h
+  QString varname = this->Names[Widget];
+  if(varname == QString::null)
+    {
+    varname = QString("object%1").arg(this->Names.count());
+    this->Names.insert(Widget, varname);
+    QString objname("%1 = '%2'");
+    objname = objname.arg(varname);
+    objname = objname.arg(Widget);
+    this->Stream << objname << "\n";
+    }
+
+  QString pycommand("QtTesting.playCommand(%1, '%2', '%3')");
+  pycommand = pycommand.arg(varname);
+  pycommand = pycommand.arg(Command);
+  pycommand = pycommand.arg(Arguments);
+  this->Stream << pycommand << "\n";
+}
+
+
