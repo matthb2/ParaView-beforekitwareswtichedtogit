@@ -391,8 +391,12 @@ int vtkImageReslice::RequestUpdateExtent(
   double point[4],f;
   double *inSpacing,*inOrigin,*outSpacing,*outOrigin,inInvSpacing[3];
 
+  inInvSpacing[0] = 0.0;
+  inInvSpacing[1] = 0.0;
+  inInvSpacing[2] = 0.0;
+
   int wrap = this->Wrap || this->Mirror;
-  
+
   inOrigin = inInfo->Get(vtkDataObject::ORIGIN());
   inSpacing = inInfo->Get(vtkDataObject::SPACING());
   outOrigin = outInfo->Get(vtkDataObject::ORIGIN());
