@@ -122,7 +122,7 @@ const vtkClientServerStream& vtkPVServerFileListing::GetSpecial()
   TCHAR szPath[MAX_PATH];
 
   if(SUCCEEDED(SHGetSpecialFolderPath(NULL, szPath, CSIDL_PERSONAL, false)))
-    this->Internal->Result << vtkClientServerStream::Reply << "My Projects" << szPath << 0 << vtkClientServerStream::End;
+    this->Internal->Result << vtkClientServerStream::Reply << "My Documents" << szPath << 0 << vtkClientServerStream::End;
     
   if(SUCCEEDED(SHGetSpecialFolderPath(NULL, szPath, CSIDL_DESKTOPDIRECTORY, false)))
     this->Internal->Result << vtkClientServerStream::Reply << "Desktop" << szPath << 0 << vtkClientServerStream::End;
