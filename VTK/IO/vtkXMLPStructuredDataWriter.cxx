@@ -31,7 +31,11 @@ vtkXMLPStructuredDataWriter::vtkXMLPStructuredDataWriter()
 //----------------------------------------------------------------------------
 vtkXMLPStructuredDataWriter::~vtkXMLPStructuredDataWriter()
 {
-  this->ExtentTranslator->Delete();
+  if (this->ExtentTranslator)
+    {
+    this->ExtentTranslator->Delete();
+    this->ExtentTranslator = 0;
+    }
 }
 
 //----------------------------------------------------------------------------

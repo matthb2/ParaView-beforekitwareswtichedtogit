@@ -354,7 +354,11 @@ unsigned long int vtkDataObject::GetMTime()
 //----------------------------------------------------------------------------
 void vtkDataObject::Initialize()
 {
-  this->FieldData->Initialize();
+  if (this->FieldData)
+    {
+    this->FieldData->Initialize();
+    }
+
   this->Modified();
 }
 

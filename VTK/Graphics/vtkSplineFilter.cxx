@@ -45,8 +45,17 @@ vtkSplineFilter::vtkSplineFilter()
 
 vtkSplineFilter::~vtkSplineFilter()
 {
-  this->Spline->Delete();
-  this->TCoordMap->Delete();
+  if (this->Spline)
+    {
+    this->Spline->Delete();
+    this->Spline = 0;
+    }
+
+  if (this->TCoordMap)
+    {
+    this->TCoordMap->Delete();
+    this->TCoordMap = 0;
+    }
 }
 
 int vtkSplineFilter::RequestData(

@@ -92,7 +92,7 @@ int vtkSTLReader::RequestData(
     return 0;
     }
 
-  if (!this->FileName)
+  if (!this->FileName || (this->FileName && (0==strlen(this->FileName))))
     {
     vtkErrorMacro(<<"A FileName must be specified.");
     return 0;
