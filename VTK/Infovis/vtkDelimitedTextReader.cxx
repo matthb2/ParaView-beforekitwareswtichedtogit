@@ -346,7 +346,7 @@ static int
 my_getline(istream& in, vtkStdString &out, char delimiter)
 {
   out = vtkStdString();
-  int numCharactersRead = 0;
+  unsigned int numCharactersRead = 0;
   int nextValue = 0;
   
   while ((nextValue = in.get()) != EOF &&
