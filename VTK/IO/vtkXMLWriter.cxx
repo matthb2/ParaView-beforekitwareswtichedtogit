@@ -548,6 +548,17 @@ int vtkXMLWriter::OpenFile()
     }
   else
     {
+    // Strip trailing whitespace from the filename.
+    int len = strlen(this->FileName);
+    for (int i = len-1; i >= 0; i--)
+      {      
+      if (isalnum(this->FileName[i])) 
+        {
+        break;
+        }
+      this->FileName[i] = 0;
+      }
+
     // Try to open the output file for writing.
 #ifdef _WIN32
     this->OutFile = new ofstream(this->FileName, ios::out | ios::binary);
