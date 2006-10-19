@@ -180,6 +180,11 @@ vtkIdType vtkTreeDFSIterator::NextInternal()
           //cout << "DFS finished " << pos.Node << endl;
           return pos.Node;
           }
+        // Done with the start node, so we are totally done!
+        if (pos.Node == this->StartNode)
+          {
+          return -1;
+          }
         }
       else
         {
