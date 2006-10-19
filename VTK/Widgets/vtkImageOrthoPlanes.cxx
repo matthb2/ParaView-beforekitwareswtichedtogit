@@ -485,6 +485,10 @@ void vtkImageOrthoPlanes::HandlePlaneScale(
   double scale[3];
   double relativeScale[3];
 
+  relativeScale[0] = 1.0;
+  relativeScale[1] = 1.0;
+  relativeScale[2] = 1.0;
+
   switch (indexOfModifiedPlane)
     {
     case 0:
