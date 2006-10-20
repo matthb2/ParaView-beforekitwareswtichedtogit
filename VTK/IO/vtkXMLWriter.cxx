@@ -46,6 +46,10 @@
 # include <io.h> /* unlink */
 #endif
 
+#if defined(__BORLANDC__)
+#include <ctype.h> // isalnum is defined here for some versions of Borland
+#endif
+
 //*****************************************************************************
 // Friend class to enable access for  template functions to the protected
 // writer methods.
