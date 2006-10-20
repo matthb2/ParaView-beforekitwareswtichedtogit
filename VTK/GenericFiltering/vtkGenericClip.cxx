@@ -170,6 +170,9 @@ int vtkGenericClip::RequestData(
   int numOutputs = 1;
   vtkGenericAdaptorCell *cell;
 
+  outCD[0] = 0;
+  outCD[1] = 0;
+
   vtkDebugMacro(<< "Clipping dataset");
 
   // Initialize self; create output objects
