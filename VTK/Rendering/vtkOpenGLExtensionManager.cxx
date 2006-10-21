@@ -294,6 +294,28 @@ void vtkOpenGLExtensionManager::LoadExtension(const char *name)
     }
 }
 
+int vtkOpenGLExtensionManager::LoadSupportedExtension(const char *name)
+{
+  int supported = 0;
+  int loaded = 0;
+
+  supported = this->ExtensionSupported(name);
+
+  if (supported)
+    {
+    loaded = vtkgl::LoadExtension(name, this);
+    }
+
+  vtkDebugMacro(
+    << "vtkOpenGLExtensionManager::LoadSupportedExtension" << endl
+    << "  name: " << name << endl
+    << "  supported: " << supported << endl
+    << "  loaded: " << loaded << endl
+    );
+
+  return supported && loaded;
+}
+
 void vtkOpenGLExtensionManager::ReadOpenGLExtensions()
 {
   vtkDebugMacro("ReadOpenGLExtensions");
