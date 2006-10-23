@@ -472,7 +472,7 @@ int vtkPKdTree::MultiProcessBuildLocator(double *volBounds)
   this->PtArray = NULL;
 
   this->PtArray = this->ComputeCellCenters();
-  int totalPts = this->GetNumberOfCells();    // total on local node
+  vtkIdType totalPts = this->GetNumberOfCells();    // total on local node
   this->CurrentPtArray = this->PtArray;
 
 //   int fail = (this->PtArray == NULL);
