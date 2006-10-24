@@ -64,7 +64,7 @@ vtkDelimitedTextReader::vtkDelimitedTextReader()
   this->SetNumberOfInputPorts(0);
   this->SetNumberOfOutputPorts(1);
   this->ReadBuffer = new char[2048];
-
+  this->HaveHeaders = false;
   this->FieldDelimiter = ',';
   this->StringDelimiter = '"';
   this->UseStringDelimiter = true;
