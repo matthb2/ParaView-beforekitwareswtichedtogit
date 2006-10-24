@@ -358,6 +358,9 @@ BROADCAST(char)
 BROADCAST(int)
 BROADCAST(float)
 BROADCAST(double)
+#ifdef VTK_USE_64BIT_IDS
+BROADCAST(vtkIdType)
+#endif
 
 #define GATHER(Type)\
 int vtkSubGroup::Gather(Type *data, Type *to, int length, int root)\
@@ -401,6 +404,9 @@ int vtkSubGroup::Gather(Type *data, Type *to, int length, int root)\
 GATHER(int)
 GATHER(char)
 GATHER(float)
+#ifdef VTK_USE_64BIT_IDS
+GATHER(vtkIdType)
+#endif
 
 int vtkSubGroup::AllReduceUniqueList(int *list, int len, int **newList)
 {
