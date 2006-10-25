@@ -613,7 +613,6 @@ vtkDataObject* vtkCompositeDataPipeline::ExecuteSimpleAlgorithmForBlock(
     request->Set(REQUEST_UPDATE_EXTENT());
     this->CallAlgorithm(request, vtkExecutive::RequestUpstream,
                         inInfoVec, outInfoVec);
-    this->ForwardUpstream(request);
     request->Remove(REQUEST_UPDATE_EXTENT());
     
     request->Set(REQUEST_DATA());
