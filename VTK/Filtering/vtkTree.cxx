@@ -194,6 +194,11 @@ vtkIdType vtkTree::GetNumberOfChildren(vtkIdType node)
   return this->NodeLinks->GetOutDegree(node);
 }
 
+vtkIdType vtkTree::GetChild(vtkIdType parent, vtkIdType index)
+{
+  return this->NodeLinks->GetOutAdjacent(parent, index);
+}
+
 //----------------------------------------------------------------------------
 vtkIdType vtkTree::GetSourceNode(vtkIdType arc)
 {
