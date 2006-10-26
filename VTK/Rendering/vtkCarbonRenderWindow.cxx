@@ -491,8 +491,8 @@ void vtkCarbonRenderWindow::InitializeApplication()
   if (!this->ApplicationInitialized)
     {
     if (this->OwnWindow)
-      { // Initialize the Toolbox managers if we are running the show
-      InitCursor();
+      {
+      // Initialize the Toolbox managers if we are running the show
       DrawMenuBar();
       this->ApplicationInitialized=1;
       }
