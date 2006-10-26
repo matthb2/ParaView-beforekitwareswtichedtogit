@@ -33,7 +33,7 @@ PURPOSE.  See the above copyright notice for more information.
 #include "vtkFloatArray.h"
 #include "vtkUnsignedCharArray.h"
 #include "vtkByteSwap.h"
-#include "vtkSimpleBoundingBox.h"
+#include "vtkBoundingBox.h"
 #include "vtkExtractCTHPart.h" // for the BOUNDS key
 #include "vtkSpyPlotReaderMap.h"
 #include "vtkSpyPlotUniReader.h"
@@ -1310,7 +1310,7 @@ void vtkSpyPlotReader::PrintSelf(ostream& os, vtkIndent indent)
 
 // This functions return 1 if the bounds have been set
 void vtkSpyPlotReader::GetLocalBounds(vtkSpyPlotBlockIterator *biter,
-                                      vtkSimpleBoundingBox *bbox,
+                                      vtkBoundingBox *bbox,
                                       int nBlocks, int progressInterval)
 {
   int i;
@@ -1343,7 +1343,7 @@ int vtkSpyPlotReader::SetGlobalBounds(vtkSpyPlotBlockIterator *biter,
                                       int *leftHasBounds)
 {
   // Get the local bounds of this reader
-  vtkSimpleBoundingBox bbox;
+  vtkBoundingBox bbox;
   this->GetLocalBounds(biter, &bbox,
                        total_num_of_blocks,
                        progressInterval);
