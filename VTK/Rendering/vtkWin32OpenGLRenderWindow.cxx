@@ -910,9 +910,9 @@ void vtkWin32OpenGLRenderWindow::Finalize (void)
 
 void vtkWin32OpenGLRenderWindow::DestroyWindow()
 {
+  this->Clean();
   if (this->WindowId)
     {
-    this->Clean();
     ReleaseDC(this->WindowId, this->DeviceContext);
     // can't set WindowId=NULL, needed for DestroyWindow
     this->DeviceContext = NULL;
