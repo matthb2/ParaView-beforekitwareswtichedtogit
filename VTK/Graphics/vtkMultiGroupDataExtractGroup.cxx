@@ -239,14 +239,17 @@ int vtkMultiGroupDataExtractGroup::RequestData(
     {
     vtkHierarchicalBoxDataSet* ihbds = 
       vtkHierarchicalBoxDataSet::SafeDownCast(input);
-    for (unsigned int group=0; group<numInputGroups-1; group++)
+    if (numInputGroups > 0)
       {
-      if (group < this->MinGroup)
+      for (unsigned int group=0; group<numInputGroups-1; group++)
         {
-        continue;
+        if (group < this->MinGroup)
+          {
+          continue;
+          }
+        hbds->SetRefinementRatio(group-this->MinGroup,
+                                 ihbds->GetRefinementRatio(group));
         }
-      hbds->SetRefinementRatio(group-this->MinGroup,
-                               ihbds->GetRefinementRatio(group));
       }
     }
 
