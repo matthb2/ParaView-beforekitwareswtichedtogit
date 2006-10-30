@@ -139,6 +139,8 @@ void vtkOpenGLProjectedTetrahedraMapper::Render(vtkRenderer *renderer,
     vtkIdType npts, *pts, i;
     if (!input->IsHomogeneous())
       {
+      vtkWarningMacro("Input contains more than tetrahedra - only tetrahedra will be rendered.");
+
       //we have different types of cells in the input
       //take only the tets to render, quietly ignore all other types of cells
       if (this->JustTets == NULL)
