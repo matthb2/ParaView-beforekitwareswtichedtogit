@@ -14,7 +14,6 @@ PURPOSE.  See the above copyright notice for more information.
 =========================================================================*/
 
 #import "vtkCocoaRenderWindow.h"
-#import "vtkCocoaRenderWindowInteractor.h"
 #import "vtkIdList.h"
 #import "vtkObjectFactory.h"
 #import "vtkRendererCollection.h"
@@ -27,13 +26,10 @@ PURPOSE.  See the above copyright notice for more information.
 vtkCxxRevisionMacro(vtkCocoaRenderWindow, "$Revision$");
 vtkStandardNewMacro(vtkCocoaRenderWindow);
 
+
 //----------------------------------------------------------------------------
 vtkCocoaRenderWindow::vtkCocoaRenderWindow()
 {
-  // Create an autorelease pool that lives for as long as this object,
-  // which should be more or less the life of the application.
-  this->AutoreleasePool = [[NSAutoreleasePool alloc] init];
-
   this->WindowCreated = 0;
   this->ViewCreated = 0;
   this->ContextId = 0;
@@ -79,9 +75,6 @@ vtkCocoaRenderWindow::~vtkCocoaRenderWindow()
     [(NSWindow *)this->WindowId close];
     }
   this->WindowId = NULL;
-
-  [(NSAutoreleasePool*)this->AutoreleasePool release];
-  this->AutoreleasePool = 0;
 }
 
 //----------------------------------------------------------------------------
