@@ -380,6 +380,7 @@ int vtkTextActor::RenderOpaqueGeometry(vtkViewport *viewport)
       vtkErrorMacro(<<"Failed rendering text to buffer");
       return 0;
       }
+    this->ImageData->Modified();
     this->Texture->SetInput(this->ImageData);
     this->InputRendered = true;
     this->BuildTime.Modified();
