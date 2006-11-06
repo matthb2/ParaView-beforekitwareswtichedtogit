@@ -223,6 +223,39 @@ int vtkOpenGLRenderWindow::GetDepthBufferSize()
     }
 }
 
+int vtkOpenGLRenderWindow::GetColorBufferSizes(int *rgba)
+{
+  GLint size;
+
+  if (rgba==NULL)
+    {
+    return 0;
+    }
+  rgba[0] = 0;
+  rgba[1] = 0;
+  rgba[2] = 0;
+  rgba[3] = 0;
+
+  if ( this->Mapped)
+    {
+    this->MakeCurrent();
+    glGetIntegerv( GL_RED_BITS, &size );
+    rgba[0] = (int)size;
+    glGetIntegerv( GL_GREEN_BITS, &size  );
+    rgba[1] = (int)size;
+    glGetIntegerv( GL_BLUE_BITS, &size );
+    rgba[2] = (int)size;
+    glGetIntegerv( GL_ALPHA_BITS, &size );
+    rgba[3] = (int)size;
+    return rgba[0]+rgba[1]+rgba[2]+rgba[3];
+    }
+  else
+    {
+    vtkDebugMacro(<< "Window is not mapped yet!" );
+    return 0;
+    }
+}
+
 unsigned char* vtkOpenGLRenderWindow::GetPixelData(int x1, int y1, 
                                                    int x2, int y2,
                                                    int front)
