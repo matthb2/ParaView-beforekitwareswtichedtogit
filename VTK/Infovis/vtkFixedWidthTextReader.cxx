@@ -49,24 +49,6 @@ static int splitString(const vtkStdString& input,
 // myself.
 static int my_getline(istream& stream, vtkStdString &output, char delim='\n');
 
-
-// On MS-DOS, a newline is 0x0d 0x0a.  On Unix machines, it's just
-// 0x0a.  This makes me sad.  
-
-static vtkStdString simplify_newlines(const vtkStdString &input)
-{
-  vtkStdString output;
-  for (int i = 0; i < input.size(); ++i)
-    {
-    if (input.at(i) != 0x0d)
-      {
-      output += input.at(i);
-      }
-    }
-  return output;
-}
-
-
 // ----------------------------------------------------------------------
 
 vtkFixedWidthTextReader::vtkFixedWidthTextReader()
@@ -260,7 +242,7 @@ splitString(const vtkStdString& input,
     
     if (stripWhitespace)
       {
-      int startIndex = 0, endIndex = thisFieldText.size() - 1;
+      unsigned int startIndex = 0, endIndex = thisFieldText.size() - 1;
       while (startIndex < thisFieldText.size() && 
              isspace(static_cast<int>(thisFieldText.at(startIndex))))
         {
