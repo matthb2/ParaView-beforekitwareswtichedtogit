@@ -96,6 +96,8 @@ void vtkDelimitedTextReader::PrintSelf(ostream& os, vtkIndent indent)
      << (this->UseStringDelimiter ? "true" : "false") << endl;
   os << indent << "HaveHeaders: " 
      << (this->HaveHeaders ? "true" : "false") << endl;
+  os << indent << "MergeConsecutiveDelimiters: " 
+     << (this->MergeConsecutiveDelimiters ? "true" : "false") << endl;
 }
 
 // ----------------------------------------------------------------------
