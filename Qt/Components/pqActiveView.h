@@ -29,56 +29,46 @@ NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 =========================================================================*/
-#ifndef __pqScalarBarVisibilityAdaptor_h
-#define __pqScalarBarVisibilityAdaptor_h
+#ifndef __pqActiveView_h
+#define __pqActiveView_h
 
 #include <QObject>
-#include "pqCoreExport.h"
+#include "pqComponentsExport.h"
 
-class pqPipelineSource;
 class pqGenericViewModule;
-class QAction;
 
-// pqScalarBarVisibilityAdaptor is an adptor that can be hooked on to
-// any action to make it control the scalar bar 
-// visibility of the scalar bar for the selected source 
-// in the selected render window.
-class PQCORE_EXPORT pqScalarBarVisibilityAdaptor : public QObject
+/// Provides a central location for managing an "active" view
+/// (note that a "view" could be a 3D render view, a plot, or
+/// any other type of view).
+///
+/// A slot is provided to set the currently-active view, and
+/// a signal notifies observers when the active view changes
+class PQCOMPONENTS_EXPORT pqActiveView :
+  public QObject
 {
   Q_OBJECT
+  
 public:
-  pqScalarBarVisibilityAdaptor(QAction* parent=0);
-  virtual ~pqScalarBarVisibilityAdaptor();
-
+  static pqActiveView& instance();
+  
+  /// Returns the currently-active view (could return NULL)
+  pqGenericViewModule* current();
+  
 signals:
-  // Fired when to indicate if the visibility of the scalar bar can
-  // be changed in the current setup.
-  void canChangeVisibility(bool);
-
-  // Fired to update the scalarbar visibility state.
-  void scalarBarVisible(bool);
+  /// Signal emitted whenever the currently-active view changes
+  void changed(pqGenericViewModule* view);
 
 public slots:
-   
-  // set the active source.
-  void setActiveSource(pqPipelineSource* source);
-
-  // set the active view.
-  void setActiveView(pqGenericViewModule* rm);
-
-protected slots:
-  void updateEnableState();
-  void setScalarBarVisibility(bool visible);
+  /// Called to set the currently-active view
+  void setCurrent(pqGenericViewModule* view);
 
 private:
-  pqScalarBarVisibilityAdaptor(const pqScalarBarVisibilityAdaptor&); // Not implemented.
-  void operator=(const pqScalarBarVisibilityAdaptor&); // Not implemented.
-
-  class pqInternal;
-  pqInternal* Internal;
-  void updateDisplay();
+  pqActiveView();
+  pqActiveView(const pqActiveView&); // Not implemented.
+  void operator=(const pqActiveView&); // Not implemented.
+  ~pqActiveView();
+  
+  pqGenericViewModule* ActiveView;
 };
 
-
 #endif
-

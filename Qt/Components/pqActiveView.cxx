@@ -29,56 +29,33 @@ NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 =========================================================================*/
-#ifndef __pqScalarBarVisibilityAdaptor_h
-#define __pqScalarBarVisibilityAdaptor_h
+#include "pqActiveView.h"
 
-#include <QObject>
-#include "pqCoreExport.h"
-
-class pqPipelineSource;
-class pqGenericViewModule;
-class QAction;
-
-// pqScalarBarVisibilityAdaptor is an adptor that can be hooked on to
-// any action to make it control the scalar bar 
-// visibility of the scalar bar for the selected source 
-// in the selected render window.
-class PQCORE_EXPORT pqScalarBarVisibilityAdaptor : public QObject
+pqActiveView& pqActiveView::instance()
 {
-  Q_OBJECT
-public:
-  pqScalarBarVisibilityAdaptor(QAction* parent=0);
-  virtual ~pqScalarBarVisibilityAdaptor();
+  static pqActiveView the_instance;
+  return the_instance;
+}
 
-signals:
-  // Fired when to indicate if the visibility of the scalar bar can
-  // be changed in the current setup.
-  void canChangeVisibility(bool);
+pqActiveView::pqActiveView() :
+  ActiveView(0)
+{
+}
 
-  // Fired to update the scalarbar visibility state.
-  void scalarBarVisible(bool);
+pqActiveView::~pqActiveView()
+{
+}
 
-public slots:
-   
-  // set the active source.
-  void setActiveSource(pqPipelineSource* source);
+pqGenericViewModule* pqActiveView::current()
+{
+  return this->ActiveView;
+}
 
-  // set the active view.
-  void setActiveView(pqGenericViewModule* rm);
-
-protected slots:
-  void updateEnableState();
-  void setScalarBarVisibility(bool visible);
-
-private:
-  pqScalarBarVisibilityAdaptor(const pqScalarBarVisibilityAdaptor&); // Not implemented.
-  void operator=(const pqScalarBarVisibilityAdaptor&); // Not implemented.
-
-  class pqInternal;
-  pqInternal* Internal;
-  void updateDisplay();
-};
-
-
-#endif
-
+void pqActiveView::setCurrent(pqGenericViewModule* view)
+{
+  if(this->ActiveView != view)
+    {
+    this->ActiveView = view;
+    emit this->changed(view);
+    }
+}

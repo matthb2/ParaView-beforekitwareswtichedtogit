@@ -37,7 +37,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 class pqDisplayRepresentationWidgetInternal;
 class pqPipelineSource;
-class pqRenderModule;
+class pqGenericViewModule;
 class pqPipelineDisplay;
 /// A widget for representation of a display proxy.
 class PQCOMPONENTS_EXPORT pqDisplayRepresentationWidget : public QWidget
@@ -57,9 +57,8 @@ public slots:
   /// set render module, if any.
   void update(pqPipelineSource* source);
 
-  // Set the rendermodule. Typically called when the active render module
-  // changes.
-  void setRenderModule(pqRenderModule* renModule);
+  /// Set the view. Typically called when the active view changes.
+  void setView(pqGenericViewModule* view);
 
   void setDisplay(pqPipelineDisplay* display);
   
