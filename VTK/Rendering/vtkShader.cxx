@@ -368,11 +368,8 @@ void vtkShader::PassShaderVariables(vtkActor* actor, vtkRenderer* renderer)
     return;
     }
 
-  if( this->XMLShader->GetRootElement() )
-    {
-    this->SetShaderParameters(actor, renderer, this->XMLShader->GetRootElement());
-    this->PassShaderVariablesTime.Modified();
-    }
+  this->SetShaderParameters(actor, renderer, this->XMLShader->GetRootElement());
+  this->PassShaderVariablesTime.Modified();
 }
 
 //-----------------------------------------------------------------------------
