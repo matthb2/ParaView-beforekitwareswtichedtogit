@@ -380,7 +380,7 @@ void vtkCarbonRenderWindowInteractor::Disable()
 //--------------------------------------------------------------------------
 void vtkCarbonRenderWindowInteractor::TerminateApp(void)
 {
-  cout << "vtkCarbonRenderWindowInteractor::TerminateApp\n";
+  QuitApplicationEventLoop();
 }
 
 //--------------------------------------------------------------------------
