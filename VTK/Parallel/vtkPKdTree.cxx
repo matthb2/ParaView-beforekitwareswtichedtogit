@@ -90,7 +90,6 @@ const int vtkPKdTree::RoundRobinAssignment  = 3;
 #define FreeItem(item)   if (item) {delete item; item = NULL;}
 #define FreeObject(item)   if (item) {item->Delete(); item = NULL;}
 
-static char errstr[256];
 
 #define VTKERROR(s) \
 {                   \
