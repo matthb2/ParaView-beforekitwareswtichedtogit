@@ -70,6 +70,8 @@ vtkTreeDFSIterator::~vtkTreeDFSIterator()
 void vtkTreeDFSIterator::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os, indent);
+  os << indent << "Mode: " << this->Mode << endl;
+  os << indent << "StartNode: " << this->StartNode << endl;
 }
 
 void vtkTreeDFSIterator::Initialize()
