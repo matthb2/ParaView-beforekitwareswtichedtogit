@@ -12,11 +12,12 @@
      PURPOSE.  See the above copyright notice for more information.
 
 =========================================================================*/
+
+#include "vtkPython.h"
 #include "vtkPVPythonInterpretor.h"
 
 #include "vtkObjectFactory.h"
 #include "vtkPythonAppInitConfigure.h"
-#include "vtkPython.h"
 #include "vtkWindows.h"
 
 #include <vtksys/SystemTools.hxx>
