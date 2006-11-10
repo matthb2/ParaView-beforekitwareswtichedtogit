@@ -291,11 +291,20 @@ void vtkInteractorStyleTreeMapHover::SetHighLightWidth(double lw)
   this->HighlightActor->GetProperty()->SetLineWidth(lw);
 }
 
+double vtkInteractorStyleTreeMapHover::GetHighLightWidth()
+{
+  return this->HighlightActor->GetProperty()->GetLineWidth();
+}
+
 void vtkInteractorStyleTreeMapHover::SetSelectionWidth(double lw)
 {
   this->SelectionActor->GetProperty()->SetLineWidth(lw);
 }
 
+double vtkInteractorStyleTreeMapHover::GetSelectionWidth()
+{
+  return this->SelectionActor->GetProperty()->GetLineWidth();
+}
 
 //---------------------------------------------------------------------------
 void vtkInteractorStyleTreeMapHover::OnLeftButtonUp()
