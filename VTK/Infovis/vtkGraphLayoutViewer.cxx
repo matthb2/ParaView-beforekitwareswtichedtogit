@@ -349,7 +349,7 @@ void vtkGraphLayoutViewer::SetLayoutStrategy(const char* strategyName)
     }
 }
 
-char* vtkGraphLayoutViewer::GetLayoutStrategy()
+const char* vtkGraphLayoutViewer::GetLayoutStrategy()
 {
   vtkGraphLayoutStrategy* strategy = this->GraphLayout->GetLayoutStrategy();
   if (strategy->IsA("vtkRandomLayoutStrategy"))
