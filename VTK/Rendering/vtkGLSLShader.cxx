@@ -216,6 +216,7 @@ vtkGLSLShader::vtkGLSLShader()
 {
   this->Shader = 0;
   this->Program = 0;
+  this->UseOpenGL2 = 0;
 }
 
 //-----------------------------------------------------------------------------
