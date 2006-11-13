@@ -29,78 +29,62 @@ NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 =========================================================================*/
-#ifndef __pqRenderModule_h
-#define __pqRenderModule_h
-
+#ifndef __pqTableViewModule_h
+#define __pqTableViewModule_h
 
 #include "pqGenericViewModule.h"
 
-class pqRenderModuleInternal;
-class pqUndoStack;
-class QVTKWidget;
-class vtkSMRenderModuleProxy;
-
-
-// This is a PQ abstraction of a render module.
-class PQCORE_EXPORT pqRenderModule : public pqGenericViewModule
+class PQCORE_EXPORT pqTableViewModule :
+  public pqGenericViewModule
 {
-  Q_OBJECT
-public:
   typedef pqGenericViewModule Superclass;
 
-  pqRenderModule(const QString& name, vtkSMRenderModuleProxy* renModule, 
+  Q_OBJECT
+public:
+  pqTableViewModule(const QString& group, const QString& name, 
+    vtkSMAbstractViewModuleProxy* renModule, 
     pqServer* server, QObject* parent=NULL);
-  virtual ~pqRenderModule();
+  ~pqTableViewModule();
 
-  /// Returns the internal render Module proxy associated with this object.
-  vtkSMRenderModuleProxy* getRenderModuleProxy() const;
-
-  /// Returns the QVTKWidget for this render Window.
   QWidget* getWidget();
 
-  /// Call this method to assign a Window in which this render module will
-  /// render.  This will set the QVTKWidget's parent.
+  /// Call this method to assign a Window in which this view module will
+  /// be displayed.
   virtual void setWindowParent(QWidget* parent);
   virtual QWidget* getWindowParent() const;
 
-  /// Request a StillRender. 
-  virtual void render();
-
-  /// Resets the camera to include all visible data.
-  void resetCamera();
-
   /// Save a screenshot for the render module. If width or height ==0,
   /// the current window size is used.
-  virtual bool saveImage(int width, int height, const QString& filename);
+  virtual bool saveImage(int /*width*/, int /*height*/, 
+    const QString& /*filename*/) 
+    {
+    // Not supported yet.
+    return false;
+    };
 
-  /// Each render module keeps a undo stack for interaction.
-  /// This method returns that undo stack. External world
-  /// typically uses it to Undo/Redo; pushing of elements on this stack
-  /// on interaction is managed by this class.
-  pqUndoStack* getInteractionUndoStack() const;
+  /// This method returns is any pqPipelineSource can be dislayed in this
+  /// view. Overridden to make sure that the source can be displayed
+  /// in this type of plot.
+  virtual bool canDisplaySource(pqPipelineSource* source) const;
 
-  /// Sets default values for the underlying proxy. This is typically called
-  /// only on proxies created by the GUI itself.
-  virtual void setDefaults();
+  /// Forces an immediate render. Overridden since for plots
+  /// rendering actually happens on the GUI side, not merely
+  /// in the ServerManager.
+  virtual void forceRender();
+
 private slots:
-  // Called on start/end interaction.
-  void startInteraction();
-  void endInteraction();
-
-  // Called on start/end rendering.
-  void onStartEvent();
-  void onEndEvent();
-
+  void visibilityChanged(pqDisplay* disp);
 
 protected:
-  /// setups up RM and QVTKWidget binding.
-  virtual void viewModuleInit();
 
-  bool eventFilter(QObject* caller, QEvent* e);
+private:
+  pqTableViewModule(const pqTableViewModule&); // Not implemented.
+  void operator=(const pqTableViewModule&); // Not implemented.
 
-private: 
-  pqRenderModuleInternal* Internal;
+  class pqImplementation;
+  pqImplementation* const Implementation;
 };
+
 
 #endif
 

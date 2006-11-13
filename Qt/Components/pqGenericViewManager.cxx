@@ -29,7 +29,7 @@ NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 =========================================================================*/
-#include "pqPlotManager.h"
+#include "pqGenericViewManager.h"
 
 #include <QDockWidget>
 #include <QEvent>
@@ -39,22 +39,24 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #include "pqActiveView.h"
 #include "pqApplicationCore.h"
+#include "pqGenericViewModule.h"
+#include "pqRenderModule.h"
 #include "pqServerManagerModel.h"
 #include "pqPlotViewModule.h"
 
 //-----------------------------------------------------------------------------
-class pqPlotManagerInternal
+class pqGenericViewManager::pqImplementation
 {
 public:
-  QMap<QObject*, pqPlotViewModule*> DockViewMap;
+  typedef vtkstd::map<pqGenericViewModule*, QDockWidget*> DockViewMapT;
+  DockViewMapT DockViewMap;
 };
 
 //-----------------------------------------------------------------------------
-pqPlotManager::pqPlotManager(QObject* _parent/*=0*/)
-  : QObject(_parent)
+pqGenericViewManager::pqGenericViewManager(QObject* _parent) :
+  QObject(_parent),
+  Implementation(new pqImplementation())
 {
-  this->Internal = new pqPlotManagerInternal;
-
   pqServerManagerModel* smModel = 
     pqApplicationCore::instance()->getServerManagerModel();
   QObject::connect(smModel, SIGNAL(proxyAdded(pqProxy*)),
@@ -64,96 +66,102 @@ pqPlotManager::pqPlotManager(QObject* _parent/*=0*/)
 }
 
 //-----------------------------------------------------------------------------
-pqPlotManager::~pqPlotManager()
+pqGenericViewManager::~pqGenericViewManager()
 {
-  delete this->Internal;
+  delete this->Implementation;
 }
 
 //-----------------------------------------------------------------------------
-void pqPlotManager::onProxyAdded(pqProxy* p)
+void pqGenericViewManager::onProxyAdded(pqProxy* proxy)
 {
-  pqPlotViewModule* plot = qobject_cast<pqPlotViewModule*>(p);
-  if (plot)
-    {
-    this->onPlotAdded(plot);
-    }
-}
+  // If this isn't a view, we're done ...
+  pqGenericViewModule* const view = qobject_cast<pqGenericViewModule*>(proxy);
+  if(!view)
+    return;
 
-//-----------------------------------------------------------------------------
-void pqPlotManager::onProxyRemoved(pqProxy* p)
-{
-  pqPlotViewModule* plot = qobject_cast<pqPlotViewModule*>(p);
-  if (plot)
-    {
-    this->onPlotRemoved(plot);
-    }
-}
-
-//-----------------------------------------------------------------------------
-void pqPlotManager::onPlotAdded(pqPlotViewModule* p)
-{
-  QDockWidget* widget = new QDockWidget(p->getSMName(),
+  // For the short-term, ignore render views ...
+  /** \todo Handle render modules here, too */
+  if(qobject_cast<pqRenderModule*>(view))
+    return;
+    
+  QDockWidget* const dock_widget = new QDockWidget(
+    view->getSMName(),
     qobject_cast<QWidget*>(this->parent()));
-  widget->setObjectName(p->getSMName());
-  p->setWindowParent(widget);
-  widget->setWidget(p->getWidget());
-  widget->show();
+  dock_widget->setObjectName(view->getSMName());
+  dock_widget->setWidget(view->getWidget());
+  dock_widget->show();
+
+//  view->setWindowParent(widget);
 
   QMainWindow* win = qobject_cast<QMainWindow*>(this->parent());
   if (win)
     {
-    win->addDockWidget(Qt::BottomDockWidgetArea, widget);
+    win->addDockWidget(Qt::BottomDockWidgetArea, dock_widget);
     }
   else
     {
-    widget->setFloating(true);
+    dock_widget->setFloating(true);
     }
-  p->getWidget()->installEventFilter(this);
-  this->Internal->DockViewMap[widget] = p;
-  emit this->plotAdded(p);
+  view->getWidget()->installEventFilter(this);
+  this->Implementation->DockViewMap[view] = dock_widget;
+  
+  if(pqPlotViewModule* const plot = qobject_cast<pqPlotViewModule*>(view))
+    {
+    emit this->plotAdded(plot);
+    }
 }
 
 //-----------------------------------------------------------------------------
-void pqPlotManager::onPlotRemoved(pqPlotViewModule* p)
+void pqGenericViewManager::onProxyRemoved(pqProxy* proxy)
 {
-  emit this->plotRemoved(p);
-  this->Internal->DockViewMap.remove(p->getWindowParent());
-  delete p->getWindowParent();
+  // If this isn't a view, we're done ...
+  pqGenericViewModule* const view = qobject_cast<pqGenericViewModule*>(proxy);
+  if(!view)
+    return;
+
+  // For the short-term, ignore render views ...
+  /** \todo Handle render modules here, too */
+  if(qobject_cast<pqRenderModule*>(view))
+    return;
+
+  if(pqPlotViewModule* const plot = qobject_cast<pqPlotViewModule*>(view))
+    {
+    emit this->plotRemoved(plot);
+    }
+  
+  view->getWidget()->setParent(0);
+  delete this->Implementation->DockViewMap[view];
+  this->Implementation->DockViewMap.erase(view);
 }
 
 //-----------------------------------------------------------------------------
-bool pqPlotManager::eventFilter(QObject* obj, QEvent* evt)
+bool pqGenericViewManager::eventFilter(QObject* obj, QEvent* evt)
 {
   QWidget* wdg = qobject_cast<QWidget*>(obj);
   if (wdg && evt ->type() == QEvent::FocusIn)
     {
-    pqActiveView::instance().setCurrent(this->getViewModule(wdg));
+    for(pqImplementation::DockViewMapT::iterator view =
+      this->Implementation->DockViewMap.begin();
+      view != this->Implementation->DockViewMap.end();
+      ++view)
+      {
+      if(view->second->widget() == wdg)
+        pqActiveView::instance().setCurrent(view->first);
+      }
+
     }
 
   return QObject::eventFilter(obj, evt);
 }
 
 //-----------------------------------------------------------------------------
-pqPlotViewModule* pqPlotManager::getViewModule(QWidget* widget)
+void pqGenericViewManager::renderAllViews()
 {
-  foreach (pqPlotViewModule* view, this->Internal->DockViewMap)
+  for(pqImplementation::DockViewMapT::iterator view =
+    this->Implementation->DockViewMap.begin();
+    view != this->Implementation->DockViewMap.end();
+    ++view)
     {
-    if (view->getWidget() == widget)
-      {
-      return view;
-      }
-    }
-  return 0;
-}
-
-//-----------------------------------------------------------------------------
-void pqPlotManager::renderAllViews()
-{
-  foreach (pqPlotViewModule* view, this->Internal->DockViewMap)
-    {
-    if (view)
-      {
-      view->render();
-      }
+    view->first->render();
     }
 }

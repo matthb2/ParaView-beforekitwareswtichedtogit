@@ -53,7 +53,7 @@ public:
     XY_PLOT =1
     };
 
-  QWidget* getWidget() const;
+  QWidget* getWidget();
 
   /// Call this method to assign a Window in which this view module will
   /// be displayed.
