@@ -44,6 +44,7 @@ extern "C" vtkglX::__GLXextFuncPtr glXGetProcAddressARB(const GLubyte *);
 #endif
 
 #ifdef VTK_USE_APPLE_LOADER
+#include <AvailabilityMacros.h>
 #if MAC_OS_X_VERSION_MIN_REQUIRED >= MAC_OS_X_VERSION_10_3
 #include <dlfcn.h>
 #else
@@ -168,7 +169,7 @@ vtkOpenGLExtensionManager::GetProcAddress(const char *fname)
 #ifdef VTK_USE_APPLE_LOADER
 
 #if MAC_OS_X_VERSION_MIN_REQUIRED >= MAC_OS_X_VERSION_10_3
-  
+
   void* globalsymbolobject = dlopen(NULL, RTLD_GLOBAL);
   if(globalsymbolobject)
     {
