@@ -38,9 +38,8 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 class pqProxy;
 class pqGenericViewModule;
-class pqRenderModule;
 class pqObjectInspectorWidget;
-class pqDisplayProxyEditor;
+class pqDisplayProxyEditorWidget;
 class pqProxyInformationWidget;
 
 /// Tabbed widget with 3 tabs (object inspector, display editor, information)
@@ -71,11 +70,11 @@ protected slots:
 
 private:
   pqObjectInspectorWidget* Inspector;
-  pqDisplayProxyEditor* Display;
+  pqDisplayProxyEditorWidget* Display;
   pqProxyInformationWidget* Information;
   
   QPointer<pqProxy> Proxy;
-  QPointer<pqRenderModule> RenderModule;
+  QPointer<pqGenericViewModule> ViewModule;
 
 };
 

@@ -29,50 +29,41 @@ NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 =========================================================================*/
-#ifndef _pqDisplayProxyEditor_h
-#define _pqDisplayProxyEditor_h
+#ifndef __pqDisplayProxyEditorWidget_h
+#define __pqDisplayProxyEditorWidget_h
 
 #include <QWidget>
 #include "pqComponentsExport.h"
 
-class pqDisplayProxyEditorInternal;
+class pqDisplayProxyEditorWidgetInternal;
+class pqDisplay;
 class pqPipelineDisplay;
 
-/// Widget which provides an editor for the properties of a display.
-class PQCOMPONENTS_EXPORT pqDisplayProxyEditor : public QWidget
+// This is a widget that can create different kinds of display
+// editors based on the type of the display.
+class PQCOMPONENTS_EXPORT pqDisplayProxyEditorWidget : public QWidget
 {
   Q_OBJECT
 public:
-  /// constructor
-  pqDisplayProxyEditor(QWidget* p = NULL);
-  /// destructor
-  ~pqDisplayProxyEditor();
+  pqDisplayProxyEditorWidget(QWidget* parent=NULL);
+  virtual ~pqDisplayProxyEditorWidget();
 
-
-  /// get the proxy for which properties are displayed
-  pqPipelineDisplay* getDisplay();
+  void setDisplay(pqDisplay*);
+  pqDisplay* getDisplay() const;
 
 public slots:
-  /// Set the display whose properties we want to edit. 
-  void setDisplay(pqPipelineDisplay* display);
-
-  /// TODO: get rid of this function once the server manager can
-  /// inform us of display property changes
   void reloadGUI();
 
-protected slots:
-  /// internally used to update the graphics window when a property changes
-  void updateView();
-  void openColorMapEditor();
-  void zoomToData();
-  void updateEnableState();
-  
-protected:
-  pqDisplayProxyEditorInternal* Internal;
-  void setupGUIConnections();
+signals:
+  void requestReload();
+  void requestSetDisplay(pqDisplay*);
+  void requestSetDisplay(pqPipelineDisplay*);
 
 private:
-  bool DisableSlots;
+  pqDisplayProxyEditorWidget(const pqDisplayProxyEditorWidget&); // Not implemented.
+  void operator=(const pqDisplayProxyEditorWidget&); // Not implemented.
+
+  pqDisplayProxyEditorWidgetInternal *Internal;
 };
 
 #endif
