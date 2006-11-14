@@ -244,7 +244,6 @@ void vtkSeedWidget::EndSelectAction(vtkAbstractWidget *w)
 //-------------------------------------------------------------------------
 void vtkSeedWidget::DeleteAction(vtkAbstractWidget *w)
 {
-  cout << "Delete action\n";
   vtkSeedWidget *self = reinterpret_cast<vtkSeedWidget*>(w);
 
   // Do nothing if outside
