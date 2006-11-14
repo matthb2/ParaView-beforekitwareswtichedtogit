@@ -178,6 +178,9 @@ void vtkSMCompositeDisplayProxy::CreateVTKObjects(int numObjects)
     }
 
   this->Superclass::CreateVTKObjects(numObjects);
+  
+  this->CacherProxy = this->DistributorSuppressorProxy;
+  this->VolumeCacherProxy = this->VolumeDistributorSuppressorProxy;
 }
 
 //-----------------------------------------------------------------------------
@@ -1160,15 +1163,6 @@ void vtkSMCompositeDisplayProxy::SetVisibility(int visible)
 void vtkSMCompositeDisplayProxy::CacheUpdate(int idx, int total)
 {
   this->Superclass::CacheUpdate(idx, total);
-
-  if (this->VolumeRenderMode)
-    {
-    this->DistributedVolumeGeometryIsValid = 0;
-    }
-  else
-    {
-    this->DistributedGeometryIsValid = 0;
-    }
 
   this->DistributedLODGeometryIsValid = 0;
 }

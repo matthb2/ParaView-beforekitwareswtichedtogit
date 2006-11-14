@@ -274,6 +274,9 @@ void vtkSMLODDisplayProxy::CacheUpdate(int idx, int total)
     return;
     }
   this->Superclass::CacheUpdate(idx, total);
+
+  // Is this even necessary? LOD mode will not be active when
+  // using Cache.
   vtkClientServerStream stream;
   stream
     << vtkClientServerStream::Invoke
@@ -282,6 +285,9 @@ void vtkSMLODDisplayProxy::CacheUpdate(int idx, int total)
   vtkProcessModule::GetProcessModule()->SendStream(
     this->ConnectionID,
     vtkProcessModule::CLIENT|vtkProcessModule::RENDER_SERVER, stream); 
+
+  // Since displayed geometry changed, the LOD geometry is no longer valid.
+  this->LODGeometryIsValid = 0;
 }
 
 //-----------------------------------------------------------------------------
