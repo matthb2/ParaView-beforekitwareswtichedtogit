@@ -180,7 +180,7 @@ void vtkXRenderWindowInteractor::BreakXtLoop(vtkObject*, unsigned long,
   //client.data; //leave zeroed
 
   XSendEvent(client.display, client.window, True, NoEventMask,
-    (XEvent *) &client);
+    reinterpret_cast<XEvent *>(&client));
   XFlush(client.display);
 }
 
