@@ -2712,6 +2712,19 @@ int vtkFixedPointVolumeRayCastMapper::ClipRayAgainstClippingPlanes( float raySta
           }
         }
       }
+    else
+      {
+      // rayDir is perpendicular to planePtr; i.e., the ray does not
+      // intersect the plane. Determine which side of the plane the ray
+      // is on.
+      float side = planePtr[0]*rayStart[0] + planePtr[1]*rayStart[1] +
+        planePtr[2]*rayStart[2] + planePtr[3];
+      if (side < 0)
+        {
+        // clip
+        return 0;
+        }
+      }
     }
 
   return 1;
