@@ -862,6 +862,7 @@ void vtkSMRenderModuleProxy::ResetCamera()
 void vtkSMRenderModuleProxy::ResetCamera(double bds[6])
 {
   this->GetRenderer()->ResetCamera(bds);
+  this->Modified();
 }
 
 //-----------------------------------------------------------------------------
@@ -893,6 +894,7 @@ void vtkSMRenderModuleProxy::ResetCameraClippingRange()
     }
   // Includes all process partitions and 3D Widgets.
   ren->GetActiveCamera()->SetClippingRange(range2);
+  this->Modified();
 }
 
 //-----------------------------------------------------------------------------
