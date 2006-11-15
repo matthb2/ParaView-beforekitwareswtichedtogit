@@ -46,6 +46,12 @@ void vtkTable::PrintSelf(ostream &os, vtkIndent indent)
   os << indent << "Number Of Rows: " << this->Rows << endl;
 }
 
+void vtkTable::Initialize()
+{
+  this->Superclass::Initialize();
+  this->Rows = 0;
+}
+
 //
 // Row functions
 //
