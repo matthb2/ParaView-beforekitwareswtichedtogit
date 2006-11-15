@@ -26,7 +26,7 @@
 #include <vtkIOStream.h>
 
 int
-DelimitedTextReader(int argc, char *argv[])
+TestDelimitedTextReader(int argc, char *argv[])
 {
   vtkIdType i, j;
   char *filename = vtkTestUtilities::ExpandDataFileName(argc, argv,

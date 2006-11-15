@@ -26,7 +26,7 @@
 #include <vtkIOStream.h>
 
 int
-FixedWidthTextReader(int argc, char *argv[])
+TestFixedWidthTextReader(int argc, char *argv[])
 {
   cout << "### Pass 1: No headers, field width 10, do not strip whitespace" << endl;
 
