@@ -922,8 +922,8 @@ void vtkWin32OpenGLRenderWindow::DestroyWindow()
     if(this->OwnWindow)
       {
       ::DestroyWindow(this->WindowId);
+      this->WindowId=0;
       }
-    this->WindowId=0;
     }
 }
 
