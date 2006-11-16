@@ -1271,12 +1271,17 @@ void vtkSMCompositeDisplayProxy::MarkModified(vtkSMProxy *modifiedProxy)
 {
   if (modifiedProxy == this->OrderedCompositingTree)
     {
+    // If modified proxy is the PkdTree proxy, then we only invalidate
+    // the geometry after the distributor, which uses the 
+    // PkdTree, no need to invalidate geometry before the distributor.
+    // That's why we don't call Superclass::MarkModified.
     this->InvalidateDistributedGeometry();
-    this->vtkSMConsumerDisplayProxy::MarkModified(modifiedProxy);
-    return;
+    this->vtkSMDisplayProxy::MarkModified(modifiedProxy);
     }
-
-  this->Superclass::MarkModified(modifiedProxy);
+  else
+    {
+    this->Superclass::MarkModified(modifiedProxy);
+    }
 }
 
 //-----------------------------------------------------------------------------
