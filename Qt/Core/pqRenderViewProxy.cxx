@@ -35,7 +35,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "vtkObjectFactory.h"
 #include "vtkSMRenderModuleProxy.h"
 
-#include "pqRenderModule.h"
+#include "pqRenderViewModule.h"
 
 vtkCxxRevisionMacro(pqRenderViewProxy, "$Revision$");
 vtkStandardNewMacro(pqRenderViewProxy);
@@ -86,7 +86,7 @@ vtkRenderWindow* pqRenderViewProxy::GetRenderWindow()
 }
 
 //-----------------------------------------------------------------------------
-void pqRenderViewProxy::setRenderModule(pqRenderModule* rm)
+void pqRenderViewProxy::setRenderModule(pqRenderViewModule* rm)
 {
   this->RenderModule = rm;
 }
