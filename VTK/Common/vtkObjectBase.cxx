@@ -206,6 +206,10 @@ void vtkObjectBase::PrintRevisions(ostream& os)
         endRevision = c;
         }
       }
+    if (beginRevision && !endRevision)
+      {
+      endRevision = c - 1;
+      }
     if(beginClass && endClass && beginRevision && endRevision)
       {
       os.write(beginClass, endClass-beginClass);
