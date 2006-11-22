@@ -54,7 +54,14 @@ void vtkOpenGLActor::Render(vtkRenderer *ren, vtkMapper *mapper)
       }
     else
       {
-      glDepthMask (GL_FALSE);
+      if(ren->GetLastRenderingUsedDepthPeeling())
+        {
+        glDepthMask(GL_TRUE); // transparency with depth peeling
+        }
+      else
+        {
+        glDepthMask (GL_FALSE); // transparency with alpha blending
+        }
       }
     }
 
