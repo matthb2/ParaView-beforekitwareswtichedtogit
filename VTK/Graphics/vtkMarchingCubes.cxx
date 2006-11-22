@@ -418,7 +418,7 @@ int vtkMarchingCubes::RequestData(
     }
   input->GetDimensions(dims);
   input->GetOrigin(origin);
-  input->Getspacing(spacing);
+  input->GetSpacing(spacing);
 
   inInfo->Get(vtkStreamingDemandDrivenPipeline::WHOLE_EXTENT(), extent);
 
