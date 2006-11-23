@@ -232,9 +232,9 @@ vtkExecutive* vtkPVUpdateSuppressor::CreateDefaultExecutive()
 
 
 //----------------------------------------------------------------------------
-int vtkPVUpdateSuppressor::RequestUpdateExtent(vtkInformation* request,
+int vtkPVUpdateSuppressor::RequestUpdateExtent(vtkInformation* vtkNotUsed(request),
                                   vtkInformationVector** inputVector,
-                                  vtkInformationVector* outputVector)
+                                  vtkInformationVector* vtkNotUsed(outputVector))
 {
   if (!this->Enabled)
     {
