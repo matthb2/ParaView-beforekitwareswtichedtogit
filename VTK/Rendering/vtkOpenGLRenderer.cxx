@@ -33,7 +33,6 @@ PURPOSE.  See the above copyright notice for more information.
 #include <math.h>
 #include <assert.h>
 #include <vtkstd/list>
-#include <sstream>
 
 class vtkGLPickInfo
 {
