@@ -16,6 +16,7 @@
 
 #include "vtkCellArray.h"
 #include "vtkCellData.h"
+#include "vtkCriticalSection.h"
 #include "vtkEmptyCell.h"
 #include "vtkGenericCell.h"
 #include "vtkInformation.h"
