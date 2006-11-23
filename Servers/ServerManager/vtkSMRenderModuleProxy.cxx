@@ -598,7 +598,7 @@ void vtkSMRenderModuleProxy::CacheUpdate(int idx, int total)
       // Call CacheUpdate on those which support.
       ivp->SetElement(0, idx);
       ivp->SetElement(1, total);
-      disp->UpdateVTKObjects();
+      disp->UpdateProperty("CacheUpdate");
       }
     }
   iter->Delete();

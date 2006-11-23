@@ -234,7 +234,7 @@ void vtkSMCompositeRenderModuleProxy::StillRender()
   vtkProcessModule* pm = vtkProcessModule::GetProcessModule();
   pm->SendPrepareProgress(this->ConnectionID);
 
-  this->UpdateAllDisplays();
+  //this->UpdateAllDisplays();
 
   // Find out whether we are going to render localy.
   // Save this so we know where to get the z buffer (for picking?).
