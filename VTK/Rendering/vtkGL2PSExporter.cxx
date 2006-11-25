@@ -323,6 +323,11 @@ void vtkGL2PSExporter::WriteData()
     sprintf(fName, "%s.tex", this->FilePrefix);
     format = GL2PS_TEX;
     }
+  else if (this->FileFormat == SVG_FILE)
+    {
+    sprintf(fName, "%s.svg", this->FilePrefix);
+    format = GL2PS_SVG;
+    }
   
   fpObj = fopen(fName, "wb");
   if (!fpObj)
