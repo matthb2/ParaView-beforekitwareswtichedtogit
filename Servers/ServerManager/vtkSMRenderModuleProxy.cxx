@@ -620,8 +620,7 @@ void vtkSMRenderModuleProxy::InvalidateAllGeometries()
     vtkSMProperty *p = disp->GetProperty("InvalidateGeometry");
     if (p)
       {
-      p->Modified();
-      disp->UpdateVTKObjects();
+      disp->InvokeCommand("InvalidateGeometry");
       }
     }
   iter->Delete(); 
