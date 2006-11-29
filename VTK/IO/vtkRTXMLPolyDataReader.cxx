@@ -220,6 +220,8 @@ void vtkRTXMLPolyDataReader::ResetReader()
 void vtkRTXMLPolyDataReader::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os, indent);
+  os << indent << "DataLocation: "
+     << (this->DataLocation? this->DataLocation:"(none)") << "\n";
 }
 
 
