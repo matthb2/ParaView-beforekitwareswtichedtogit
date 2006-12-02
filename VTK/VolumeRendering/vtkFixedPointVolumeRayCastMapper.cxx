@@ -3549,6 +3549,8 @@ void vtkFixedPointVolumeRayCastMapper::PrintSelf(ostream& os, vtkIndent indent)
      << this->MaximumImageSampleDistance << endl;
   os << indent << "Auto Adjust Sample Distances: " 
      << this->AutoAdjustSampleDistances << endl;
+  os << indent << "LockSampleDistanceToInputSpacing: "
+    << (this->LockSampleDistanceToInputSpacing ? "On\n" : "Off\n");
   os << indent << "Intermix Intersecting Geometry: "
     << (this->IntermixIntersectingGeometry ? "On\n" : "Off\n");
   
