@@ -89,8 +89,8 @@ vtkGraphLayout::SetLayoutStrategy(vtkGraphLayoutStrategy *strategy)
       }
     if (tmp != NULL)
       {
-      tmp->UnRegister(this);
       tmp->RemoveObserver(this->ObserverTag);
+      tmp->UnRegister(this);
       }
     this->Modified();
     }
