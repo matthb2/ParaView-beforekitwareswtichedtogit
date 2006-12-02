@@ -77,7 +77,7 @@ vtkDelimitedTextReader::vtkDelimitedTextReader()
 vtkDelimitedTextReader::~vtkDelimitedTextReader()
 {
   this->SetFileName(0);
-  delete this->ReadBuffer;
+  delete [] this->ReadBuffer;
   delete this->Internals;
 }
 
