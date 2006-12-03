@@ -65,6 +65,7 @@ vtkDemandDrivenPipeline::vtkDemandDrivenPipeline()
   this->InfoRequest = 0;
   this->DataObjectRequest = 0;
   this->DataRequest = 0;
+  this->PipelineMTime = 0;
 }
 
 //----------------------------------------------------------------------------
