@@ -63,6 +63,7 @@ vtkRandomGraphSource::PrintSelf(ostream& os, vtkIndent indent)
   os << indent << "Directed: " << this->Directed << endl;
   os << indent << "StartWithTree: " << this->StartWithTree << endl;
   os << indent << "IncludeArcWeights: " << this->IncludeArcWeights << endl;
+  os << indent << "AllowSelfLoops: " << this->AllowSelfLoops << endl;
 }
 
 // ----------------------------------------------------------------------
