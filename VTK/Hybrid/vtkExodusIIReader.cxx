@@ -31,6 +31,7 @@
 #include <stdio.h>
 #include <stdlib.h> /* for free() */
 #include <string.h> /* for memset() */
+#include <ctype.h> /* for toupper(), isgraph() */
 
 #ifdef EXODUSII_HAVE_MALLOC_H
 #  include <malloc.h>
