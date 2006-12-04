@@ -3858,6 +3858,7 @@ vtkExodusIIReader::vtkExodusIIReader()
   this->ExodusModelMetadata = 0;
   this->PackExodusModelOntoOutput = 1;
   this->ExodusModel = 0;
+  this->DisplayType = 0;
 
   //begin USE_EXO_DSP_FILTERS
   this->DSPFilteringIsEnabled = 0;
