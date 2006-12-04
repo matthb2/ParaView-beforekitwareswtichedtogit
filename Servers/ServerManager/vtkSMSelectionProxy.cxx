@@ -33,6 +33,7 @@
 #include "vtkSMProxyProperty.h"
 #include "vtkSMRenderModuleProxy.h"
 #include "vtkSMPropertyIterator.h"
+#include "vtkSMCompoundProxy.h"
 
 #include <vtkstd/algorithm>
 #include <vtkstd/list>
@@ -257,8 +258,17 @@ void vtkSMSelectionProxy::ConvertSelection(vtkSelection* sel,
 
   if (objProxy)
     {
-    properties->Set(vtkSelectionSerializer::ORIGINAL_SOURCE_ID(), 
-                    objProxy->GetID(0).ID);
+    if (vtkSMCompoundProxy* cp = vtkSMCompoundProxy::SafeDownCast(objProxy))
+      {
+      // For compound proxies, the selected proxy is the consumed proxy.
+      properties->Set(vtkSelectionSerializer::ORIGINAL_SOURCE_ID(), 
+        cp->GetConsumableProxy()->GetID(0).ID);
+      }
+    else
+      {
+      properties->Set(vtkSelectionSerializer::ORIGINAL_SOURCE_ID(), 
+        objProxy->GetID(0).ID);
+      }
     }
 }
 
