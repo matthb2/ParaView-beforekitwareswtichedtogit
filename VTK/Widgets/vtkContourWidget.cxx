@@ -174,7 +174,7 @@ void vtkContourWidget::AddFinalPointAction(vtkAbstractWidget *w)
   vtkContourRepresentation *rep = 
     reinterpret_cast<vtkContourRepresentation*>(self->WidgetRep);
 
-  if ( self->WidgetState ==  vtkContourWidget::Define &&
+  if ( self->WidgetState !=  vtkContourWidget::Manipulate &&
        rep->GetNumberOfNodes() >= 1 )
     {
     self->AddNode();
