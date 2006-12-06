@@ -40,7 +40,7 @@ vtkCxxSetObjectMacro(vtkSMProperty, InformationHelper, vtkSMInformationHelper);
 vtkCxxSetObjectMacro(vtkSMProperty, InformationProperty, vtkSMProperty);
 vtkCxxSetObjectMacro(vtkSMProperty, ControllerProxy, vtkSMProxy);
 vtkCxxSetObjectMacro(vtkSMProperty, Documentation, vtkSMDocumentation);
-int vtkSMProperty::CheckDomains = 1;
+int vtkSMProperty::CheckDomains = 0;
 
 //---------------------------------------------------------------------------
 vtkSMProperty::vtkSMProperty()
