@@ -272,6 +272,7 @@ int vtkPolyDataNormals::RequestData(
       } // Still some points in the queue
     this->Wave->Delete();
     this->Wave2->Delete();
+    leftmostPoints->Delete();
     vtkDebugMacro(<<"Reversed ordering of " << this->NumFlips << " polygons");
     } // automatically orient normals
   else
