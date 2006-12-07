@@ -320,13 +320,7 @@ void vtkLabeledDataMapper::RenderOpaqueGeometry(vtkViewport *viewport,
           }
         else // rendering string data
           {
-          if (strcmp(this->LabelFormat,"%s") != 0) 
-            {
-            vtkErrorMacro(<<"Label format must be %s to use with strings");
-            return;
-            }
-          sprintf(string, this->LabelFormat, 
-                  stringData->GetValue(i).c_str());
+          strncpy(string,stringData->GetValue(i).c_str(),1023);
           }
         } // not point labels
       this->TextMappers[i]->SetInput(string);
