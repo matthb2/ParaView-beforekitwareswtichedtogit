@@ -246,6 +246,38 @@ void vtkSMBoundsDomain::Update(vtkSMProxyProperty *pp)
 }
 
 //---------------------------------------------------------------------------
+int vtkSMBoundsDomain::SetDefaultValues(vtkSMProperty* prop)
+{
+  vtkSMDoubleVectorProperty* dvp = vtkSMDoubleVectorProperty::SafeDownCast(prop);
+  if (!dvp)
+    {
+    vtkErrorMacro("vtkSMBoundsDomain only works on vtkSMDoubleVectorProperty.");
+    return 0;
+    }
+
+  int status = 0;
+  switch (this->Mode)
+    {
+  case vtkSMBoundsDomain::SCALED_EXTENT:
+      {
+      for (unsigned int cc=0; cc < dvp->GetNumberOfElements(); cc++)
+        {
+        if (this->GetMaximumExists(cc))
+          {
+          dvp->SetElement(cc, this->GetMaximum(cc));
+          status = 1;
+          }
+        }
+      }
+    break;
+
+  default:
+    break;
+    }
+  return status;
+}
+
+//---------------------------------------------------------------------------
 int vtkSMBoundsDomain::ReadXMLAttributes(
   vtkSMProperty* prop, vtkPVXMLElement* element)
 {

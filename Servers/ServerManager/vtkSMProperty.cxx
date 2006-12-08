@@ -511,6 +511,20 @@ void vtkSMProperty::Copy(vtkSMProperty* )
 }
 
 //---------------------------------------------------------------------------
+void vtkSMProperty::ResetToDefault()
+{
+  this->DomainIterator->Begin();
+  while(!this->DomainIterator->IsAtEnd())
+    {
+    if (this->DomainIterator->GetDomain()->SetDefaultValues(this))
+      {
+      break;
+      }
+    this->DomainIterator->Next();
+    }
+}
+
+//---------------------------------------------------------------------------
 void vtkSMProperty::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os, indent);

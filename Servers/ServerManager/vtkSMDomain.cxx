@@ -142,6 +142,12 @@ void vtkSMDomain::AddRequiredProperty(vtkSMProperty *prop,
 }
 
 //---------------------------------------------------------------------------
+unsigned int vtkSMDomain::GetNumberOfRequiredProperties()
+{
+  return this->Internals->RequiredProperties.size();
+}
+
+//---------------------------------------------------------------------------
 void vtkSMDomain::InvokeModified()
 {
   this->InvokeEvent(vtkCommand::DomainModifiedEvent, 0);

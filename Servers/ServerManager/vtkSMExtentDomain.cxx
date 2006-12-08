@@ -143,6 +143,29 @@ void vtkSMExtentDomain::SetAnimationValue(vtkSMProperty *property, int idx,
 }
 
 //---------------------------------------------------------------------------
+int vtkSMExtentDomain::SetDefaultValues(vtkSMProperty* prop)
+{
+  vtkSMIntVectorProperty* ivp = vtkSMIntVectorProperty::SafeDownCast(prop);
+  unsigned int numElems = ivp? ivp->GetNumberOfElements() : 0;
+  if (ivp && (numElems%2 == 0))
+    {
+    for (unsigned int cc=0; cc < numElems/2; cc++)
+      {
+      if (this->GetMinimumExists(cc))
+        {
+        ivp->SetElement(2*cc, this->GetMinimum(cc));
+        }
+      if (this->GetMaximumExists(cc))
+        {
+        ivp->SetElement(2*cc+1, this->GetMaximum(cc));
+        }
+      }
+    return 1;
+    }
+  return this->Superclass::SetDefaultValues(prop);
+}
+
+//---------------------------------------------------------------------------
 void vtkSMExtentDomain::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os, indent);

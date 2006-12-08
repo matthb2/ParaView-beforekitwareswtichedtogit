@@ -104,6 +104,20 @@ const char* vtkSMProxyListDomain::GetProxyName(unsigned int cc)
 }
 
 //-----------------------------------------------------------------------------
+int vtkSMProxyListDomain::SetDefaultValues(vtkSMProperty* prop)
+{
+  vtkSMProxyProperty* pp = vtkSMProxyProperty::SafeDownCast(prop);
+  if (pp && this->GetNumberOfProxies() > 0)
+    {
+    pp->RemoveAllProxies();
+    pp->AddProxy(this->GetProxy(0));
+    return 1;
+    }
+
+  return this->Superclass::SetDefaultValues(prop);
+}
+
+//-----------------------------------------------------------------------------
 int vtkSMProxyListDomain::ReadXMLAttributes(vtkSMProperty* prop, 
   vtkPVXMLElement* element)
 {
