@@ -41,7 +41,7 @@
 vtkCxxRevisionMacro(vtkMeshQuality,"$Revision$");
 vtkStandardNewMacro(vtkMeshQuality);
 
-typedef double (*CellQualityType)( vtkCell* );
+typedef double (*CellQualityType)( vtkCell*  );
 
 double TetVolume( vtkCell* cell );
 
