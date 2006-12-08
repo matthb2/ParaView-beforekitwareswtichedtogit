@@ -799,7 +799,10 @@ void vtkWin32OpenGLRenderWindow::CreateAWindow()
     // extract the create info
     
     /* display window */
-    ShowWindow(this->WindowId, SW_SHOW);
+    if(!this->OffScreenRendering)
+      {
+      ShowWindow(this->WindowId, SW_SHOW);
+      }
     //UpdateWindow(this->WindowId);
     this->OwnWindow = 1;
     vtkSetWindowLong(this->WindowId,4,(LONG)this);
