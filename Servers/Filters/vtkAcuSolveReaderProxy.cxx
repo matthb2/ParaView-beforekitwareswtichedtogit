@@ -154,6 +154,16 @@ void vtkAcuSolveReaderProxy::PrintSelf( ostream&  os,
      << "TimeStep: " 
      << this->TimeStep 
      << endl;
+
+  os << indent
+     << "FileName: "
+     << (this->FileName?this->FileName:"(null)")
+     << endl;
+
+  os << indent
+     << "TimeStepRange: "
+     << this->TimeStepRange[0] << " " << this->TimeStepRange[1]
+     << endl;
 }
 
 
