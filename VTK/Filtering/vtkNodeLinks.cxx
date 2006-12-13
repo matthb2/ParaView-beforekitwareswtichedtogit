@@ -262,6 +262,26 @@ void vtkNodeLinks::RemoveOutAdjacent(vtkIdType node, vtkIdType adj)
     }
 }
 
+void vtkNodeLinks::RemoveOutAdjacentShift(vtkIdType node, vtkIdType adj)
+{
+  vtkIdType adjacent = this->Internals->Nodes[node].Adjacent;
+  for (vtkIdType e = this->GetInDegree(node); e < this->GetDegree(node); e++)
+    {
+    if (this->Internals->FreeRange[adjacent + e] == adj)
+      {
+      if (e < this->GetDegree(node) - 1)
+        {
+        vtkIdType* fromPtr = this->Internals->FreeRange.pointer(adjacent + e + 1);
+        vtkIdType* toPtr = this->Internals->FreeRange.pointer(adjacent + e);
+        int size = this->GetDegree(node) - e - 1;
+        memmove(toPtr, fromPtr, size*sizeof(vtkIdType));
+        }
+      this->Internals->Nodes[node].Degree--;
+      break;
+      }
+    }
+}
+
 vtkIdType vtkNodeLinks::GetOutAdjacent(vtkIdType node, vtkIdType index)
 {
   return this->Internals->FreeRange[this->Internals->Nodes[node].Adjacent + this->Internals->Nodes[node].InDegree + index];
