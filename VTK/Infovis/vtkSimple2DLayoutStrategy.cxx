@@ -247,8 +247,8 @@ void vtkSimple2DLayoutStrategy::Layout()
     this->Temp = CoolDown(this->Temp, this->CoolDownRate);
 
     // Announce progress
-    double progress = static_cast<double>(this->TotalIterations) / static_cast<double>(this->MaxNumberOfIterations);
-
+    double progress = (i+this->TotalIterations) / 
+                      static_cast<double>(this->MaxNumberOfIterations);
     this->InvokeEvent(vtkCommand::ProgressEvent, static_cast<void *>(&progress));
 
    } // End loop this->IterationsPerLayout
