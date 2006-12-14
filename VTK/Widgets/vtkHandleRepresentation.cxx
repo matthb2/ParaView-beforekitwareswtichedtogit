@@ -97,6 +97,13 @@ double* vtkHandleRepresentation::GetWorldPosition()
 }
 
 //----------------------------------------------------------------------
+int vtkHandleRepresentation::CheckConstraint(vtkRenderer *vtkNotUsed(renderer),
+                                             double vtkNotUsed(pos)[2])
+{
+  return 1;
+}
+
+//----------------------------------------------------------------------
 void vtkHandleRepresentation::SetRenderer(vtkRenderer *ren)
 {
   this->DisplayPosition->SetViewport(ren);
