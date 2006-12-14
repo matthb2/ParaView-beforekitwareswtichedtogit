@@ -367,7 +367,6 @@ void vtkPVFileInformation::GetDirectoryListing()
         }
       }
     }
-  this->Print(cout);
 #endif
 }
 
