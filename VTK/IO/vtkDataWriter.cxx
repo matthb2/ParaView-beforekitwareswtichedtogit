@@ -628,7 +628,7 @@ int vtkDataWriter::WriteArray(ostream *fp, int dataType, vtkAbstractArray *data,
       }
     break;
 
-    case VTK_STRING_TYPE:
+    case VTK_STRING:
       {
       }
     break;
