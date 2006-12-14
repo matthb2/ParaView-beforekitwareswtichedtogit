@@ -1104,7 +1104,7 @@ vtkDataArray *vtkDataReader::ReadArray(const char *dataType, int numTuples, int 
       vtkReadASCIIData(this, ptr, numTuples, numComp);
       }
     }
-  
+
   else 
     {
     vtkErrorMacro(<< "Unsupported data type: " << type);
@@ -1865,7 +1865,11 @@ vtkFieldData *vtkDataReader::ReadFieldData()
   for (i=0; i<numArrays; i++)
     {
     char buffer[1024];
-    this->ReadString(buffer);    
+    this->ReadString(buffer);
+    if ( strcmp(buffer, "NULL_ARRAY") == 0 )
+      {
+      continue;
+      }
     this->DecodeArrayName(name, buffer);
     this->Read(&numComp);
     this->Read(&numTuples);
