@@ -30,44 +30,33 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 =========================================================================*/
 
-#ifndef _pqLocalFileDialogModel_h
-#define _pqLocalFileDialogModel_h
 
-#include "QtWidgetsExport.h"
-#include "pqFileDialogModel.h"
+#ifndef _pqFileDialogFilter_h
+#define _pqFileDialogFilter_h
 
-/**
-  Implementation of pqFileDialogModel that provides browsing capabilities for the local filesystem.
-  
-  \sa pqFileDialogModel, pqFileDialog, pqServerFileDialogModel
-*/
+#include "pqCoreExport.h"
+#include <QSortFilterProxyModel>
+#include <QList>
+#include <QRegExp>
+class pqFileDialogModel;
 
-class QTWIDGETS_EXPORT pqLocalFileDialogModel :
-  public pqFileDialogModel
+class PQCORE_EXPORT pqFileDialogFilter :
+  public QSortFilterProxyModel
 {
   Q_OBJECT
-
-public:
-  pqLocalFileDialogModel(QObject* Parent = 0);
-  ~pqLocalFileDialogModel();
-
-  QString getStartPath();
-  void setCurrentPath(const QString&);
-  void setParentPath();
-  QString getCurrentPath();
-  bool isDir(const QModelIndex&);
-  QStringList getFilePaths(const QModelIndex&);
-  QString getFilePath(const QString&);
-  QStringList getParentPaths(const QString&);
-  bool fileExists(const QString&);
-  bool dirExists(const QString&);
-  QAbstractItemModel* fileModel();
-  QAbstractItemModel* favoriteModel();
   
-private:
-  class pqImplementation;
-  pqImplementation* const Implementation;
+public:
+  pqFileDialogFilter(pqFileDialogModel* sourceModel, QObject* Parent = NULL);
+  ~pqFileDialogFilter();
+
+public slots:
+  void setFilter(const QStringList& wildcards);
+
+protected:
+  bool filterAcceptsRow(int row_source, const QModelIndex& source_parent) const;
+
+  pqFileDialogModel* Model;
+  QList<QRegExp> Wildcards;
 };
 
-#endif // !_pqLocalFileDialogModel_h
-
+#endif // !_pqFileDialogFilter_h
