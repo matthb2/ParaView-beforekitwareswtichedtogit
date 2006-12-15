@@ -128,8 +128,7 @@ pqProcessModuleGUIHelper::~pqProcessModuleGUIHelper()
 
 void pqProcessModuleGUIHelper::disableOutputWindow()
 {
-  this->Implementation->OutputWindowAdapter = vtkSmartPointer<pqOutputWindowAdapter>::New();
-  vtkOutputWindow::SetInstance(this->Implementation->OutputWindowAdapter);
+  this->Implementation->OutputWindowAdapter->setActive(false);
 }
 
 //-----------------------------------------------------------------------------
