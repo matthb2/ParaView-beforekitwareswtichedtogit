@@ -590,7 +590,7 @@ public:
   }
   inline void SetUnsortedBlockStatus(int idx, int flag) 
   { 
-    if (blockStatus.size() > idx)
+    if (static_cast<int>(blockStatus.size()) > idx)
       {
       blockStatus[idx] = flag; 
       }
@@ -598,7 +598,7 @@ public:
   
   inline int GetUnsortedBlockStatus(int idx) 
   { 
-    if (blockStatus.size() > idx)
+    if (static_cast<int>(blockStatus.size()) > idx)
       {
       return blockStatus[idx]; 
       }
