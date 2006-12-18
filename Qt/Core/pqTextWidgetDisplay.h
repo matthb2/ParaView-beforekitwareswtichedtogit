@@ -29,42 +29,39 @@ NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 =========================================================================*/
-#ifndef __pqConsumerDisplay_h
-#define __pqConsumerDisplay_h
+#ifndef __pqTextWidgetDisplay_h
+#define __pqTextWidgetDisplay_h
 
-#include "pqDisplay.h"
+#include "pqConsumerDisplay.h"
 
-class pqConsumerDisplayInternal;
-class pqPipelineSource;
+class pqTextWidgetDisplayInternal;
 
-// pqConsumerDisplay is the superclass for a display for a pqPiplineSource 
-// i.e. the input for this display proxy is a pqPiplineSource.
-// This class manages the linking between the pqPiplineSource 
-// and pqConsumerDisplay.
-class PQCORE_EXPORT pqConsumerDisplay : public pqDisplay
+// This is a display representation for TextWidgetDisplay proxy.
+// TextWidgetDisplay is not really a consumer display i.e. it doesn't
+// have an input. However, we fake one my linking the Text property
+// from the dummy input with the property on the display. 
+// All this is managed by this display.
+class PQCORE_EXPORT pqTextWidgetDisplay : public pqConsumerDisplay
 {
   Q_OBJECT
+
+  typedef pqConsumerDisplay Superclass;
 public:
-  pqConsumerDisplay(const QString& group, const QString& name,
+  pqTextWidgetDisplay(const QString& group, const QString& name,
     vtkSMProxy* display, pqServer* server,
     QObject* parent=0);
-  virtual ~pqConsumerDisplay();
+  virtual ~pqTextWidgetDisplay();
 
-  // Get the source/filter of which this is a display.
-  pqPipelineSource* getInput() const;
-
-  // Called after to creation to set default values.
-  virtual void setDefaults();
 protected slots:
   // called when input property on display changes. We must detect if
   // (and when) the display is connected to a new proxy.
   virtual void onInputChanged();
 
 private:
-  pqConsumerDisplay(const pqConsumerDisplay&); // Not implemented.
-  void operator=(const pqConsumerDisplay&); // Not implemented.
+  pqTextWidgetDisplay(const pqTextWidgetDisplay&); // Not implemented.
+  void operator=(const pqTextWidgetDisplay&); // Not implemented.
 
-  pqConsumerDisplayInternal* Internal;
+  pqTextWidgetDisplayInternal *Internal;
 };
 
 #endif

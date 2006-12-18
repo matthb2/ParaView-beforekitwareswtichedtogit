@@ -29,35 +29,45 @@ NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 =========================================================================*/
-#ifndef _pqDisplayManager_h
-#define _pqDisplayManager_h
+#ifndef __pqDisplayPolicy_h
+#define __pqDisplayPolicy_h
 
 #include <QObject>
-#include "pqWidgetsExport.h"
-class pqPipelineSource;
-class pqRenderViewModule;
+#include "pqCoreExport.h" // Needed for PQCORE_EXPORT macro
 
-/// Object which provides help for managing display proxies
-class PQWIDGETS_EXPORT pqDisplayManager : public QObject
+class pqPipelineSource;
+class pqGenericViewModule;
+class vtkSMProxy;
+
+// Display policy defines the application specific policy
+// for creating display proxies. Given a pair of a proxy to be displayed 
+// and a view proxy in which to display, this class must tell the type 
+// of display to create, if any. Custom applications can subclass 
+// this to define their own policy. The pqApplicationCore maintains
+// an instance of the policy used by the application. Custom applications
+// should set their own policy instance on the global application core 
+// instance.
+class PQCORE_EXPORT pqDisplayPolicy : public QObject
 {
   Q_OBJECT
 public:
-  /// constructor
-  pqDisplayManager(QObject* p);
-  /// destructor
-  ~pqDisplayManager();
+  pqDisplayPolicy(QObject* p);
+  virtual ~pqDisplayPolicy();
 
-public slots:
+  // Returns if the given source can be displayed
+  // in the given view.
+  virtual bool canDisplay(
+    const pqPipelineSource* source, const pqGenericViewModule* view) const;
 
-  void addDisplayForSource(pqPipelineSource*, pqRenderViewModule*);
+  // Returns a new instance of a display proxy for
+  // the given (source,view) pair. The display proxy is not initialized at all.
+  // This method will return NULL if canDisplay(source,view) returns false.
+  virtual vtkSMProxy* newDisplay(
+    const pqPipelineSource* source, const pqGenericViewModule* view) const;
 
-  void addDeferredDisplayForSource(pqPipelineSource*, pqRenderViewModule*);
-  void removeDeferredDisplayForSource(pqPipelineSource*, pqRenderViewModule*);
-  void createDeferredDisplays();
-
-private:
-  class pqInternal;
-  pqInternal* Internal;
+protected:
+  pqDisplayPolicy(const pqDisplayPolicy&); // Not implemented.
+  void operator=(const pqDisplayPolicy&); // Not implemented.
 };
 
 #endif

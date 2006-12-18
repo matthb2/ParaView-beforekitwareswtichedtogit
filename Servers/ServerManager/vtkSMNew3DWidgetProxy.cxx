@@ -132,6 +132,7 @@ void vtkSMNew3DWidgetProxy::RemoveFromRenderModule(vtkSMRenderModuleProxy* rm)
       pm->GetObjectFromID(this->WidgetProxy->GetID(0)));
     if (this->Widget)
       {
+      widget->SetEnabled(0);
       widget->SetCurrentRenderer(0);
       widget->SetInteractor(0);
       }
@@ -174,7 +175,12 @@ void vtkSMNew3DWidgetProxy::CreateVTKObjects(int numObjects)
   this->RepresentationProxy = this->GetSubProxy("Prop");
   if (!this->RepresentationProxy)
     {
-    vtkErrorMacro("A representation proxy must be defined as a Prop sub-proxy");
+    this->RepresentationProxy = this->GetSubProxy("Prop2D");
+    }
+  if (!this->RepresentationProxy)
+    {
+    vtkErrorMacro(
+      "A representation proxy must be defined as a Prop (or Prop2D) sub-proxy");
     return;
     }
   this->RepresentationProxy->SetServers(
