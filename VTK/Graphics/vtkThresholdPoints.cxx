@@ -35,6 +35,11 @@ vtkThresholdPoints::vtkThresholdPoints()
   this->UpperThreshold = 1.0;
 
   this->ThresholdFunction = &vtkThresholdPoints::Upper;
+
+  // by default process active point scalars
+  this->SetInputArrayToProcess(
+    0,0,0, vtkDataObject::FIELD_ASSOCIATION_POINTS,
+    vtkDataSetAttributes::SCALARS);
 }
 
 // Criterion is cells whose scalars are less than lower threshold.
@@ -136,7 +141,7 @@ int vtkThresholdPoints::RequestData(
 
   vtkDebugMacro(<< "Executing threshold points filter");
 
-  if ( ! (inScalars = input->GetPointData()->GetScalars()) )
+  if ( ! (inScalars = this->GetInputArrayToProcess(0,inputVector) ) )
     {
     vtkErrorMacro(<<"No scalar data to threshold");
     return 1;
