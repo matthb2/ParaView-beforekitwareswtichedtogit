@@ -275,7 +275,7 @@ void vtkWin32VideoSource::Initialize()
     }
 
   // set the user data to 'this'
-  vtkSetWindowLong(this->Internal->ParentWnd,vtkGWL_USERDATA,(LONG)this);
+  vtkSetWindowLong(this->Internal->ParentWnd,vtkGWL_USERDATA,(vtkLONG)this);
 
   // Create the capture window
   this->Internal->CapWnd = capCreateCaptureWindow("Capture",
