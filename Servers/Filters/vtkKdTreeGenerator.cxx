@@ -111,7 +111,7 @@ int vtkKdTreeGenerator::BuildTree(vtkDataObject* data)
    {
    return 0;
    }
- vtkSmartPointer<vtkBSPCuts> cuts = vtkBSPCuts::New();
+ vtkSmartPointer<vtkBSPCuts> cuts = vtkSmartPointer<vtkBSPCuts>::New();
  cuts->CreateCuts(root);
  if (!this->KdTree)
    {
