@@ -526,10 +526,12 @@ void vtkSMProperty::ResetToDefault()
     {
     if (this->DomainIterator->GetDomain()->SetDefaultValues(this))
       {
-      break;
+      return;
       }
     this->DomainIterator->Next();
     }
+
+  this->ResetToDefaultInternal();
 }
 
 //---------------------------------------------------------------------------
