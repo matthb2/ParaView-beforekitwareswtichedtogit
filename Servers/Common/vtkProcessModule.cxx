@@ -1079,13 +1079,13 @@ vtkProcessModule* vtkProcessModule::GetProcessModule()
 //----------------------------------------------------------------------------
 void vtkProcessModule::RegisterProgressEvent(vtkObject* po, int id)
 {
-  vtkAlgorithm* alg = vtkAlgorithm::SafeDownCast(po);
-  if ( !alg )
+  // We do this check to avoid registering progress events for
+  // objects that don't report any progress at all.
+  if (po->IsA("vtkAlgorithm") || po->IsA("vtkKdTree"))
     {
-    return;
+    po->AddObserver(vtkCommand::ProgressEvent, this->Observer);
+    this->ProgressHandler->RegisterProgressEvent(po, id);
     }
-  alg->AddObserver(vtkCommand::ProgressEvent, this->Observer);
-  this->ProgressHandler->RegisterProgressEvent(alg, id);
 }
 
 //----------------------------------------------------------------------------
