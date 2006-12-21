@@ -620,6 +620,19 @@ vtkClientServerID vtkProcessModuleConnectionManager::GetMPIMToNSocketConnectionI
 }
 
 //-----------------------------------------------------------------------------
+int vtkProcessModuleConnectionManager::GetRenderClientMode(vtkIdType id)
+{
+  vtkServerConnection* conn = vtkServerConnection::SafeDownCast(
+    this->GetConnectionFromID(id));
+  if (conn)
+    {
+    return (conn->GetRenderServerSocketController()? 1 : 0);
+    }
+
+  return 0;
+}
+
+//-----------------------------------------------------------------------------
 void vtkProcessModuleConnectionManager::AddManagedSocket(vtkSocket* soc,
   vtkProcessModuleConnection* conn )
 {

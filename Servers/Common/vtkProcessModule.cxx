@@ -1596,6 +1596,12 @@ int vtkProcessModule::GetClientMode()
 }
 
 //----------------------------------------------------------------------------
+int vtkProcessModule::GetRenderClientMode(vtkIdType cid)
+{
+  return this->ConnectionManager->GetRenderClientMode(cid);
+}
+
+//----------------------------------------------------------------------------
 unsigned int vtkProcessModule::GetNumberOfMachines()
 {
   vtkPVServerOptions *opt = vtkPVServerOptions::SafeDownCast(this->Options);
