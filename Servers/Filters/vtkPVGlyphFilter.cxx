@@ -386,6 +386,7 @@ int vtkPVGlyphFilter::RequestCompositeData(vtkInformation* request,
       }
     iter->GoToNextItem();
     }
+  iter->Delete();
   inputVs[0]->Delete();
 
   if (retVal)
