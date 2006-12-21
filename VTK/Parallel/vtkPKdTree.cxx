@@ -2892,7 +2892,7 @@ int vtkPKdTree::CreateGlobalDataArrayBounds()
 }
 int *vtkPKdTree::CollectLocalRegionProcessData()
 {
-  int *cellCounts;
+  int *cellCounts = NULL;
 
   int numRegions = this->GetNumberOfRegions();
 
