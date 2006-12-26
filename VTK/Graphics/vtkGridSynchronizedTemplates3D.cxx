@@ -802,6 +802,10 @@ void vtkGridSynchronizedTemplates3D::ThreadedExecute(int *exExt, int ,
     image->Delete();
     }
 
+  // Some useful debugging information
+  vtkDebugMacro(<<"Produced: " << output->GetNumberOfPoints() << " points, "
+                << output->GetNumberOfCells() << " cells");
+
   // Lets set the name of the scalars here.
   if (this->ComputeScalars)
     {
