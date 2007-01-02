@@ -142,6 +142,17 @@ void vtkGraphLayoutViewer::SetLabelsOff()
 }
 
 
+// Description:
+// Get the graph output of the layout filter
+vtkAbstractGraph* vtkGraphLayoutViewer::GetGraphAfterLayout()
+{
+  if (this->GraphLayout)
+    {
+    return this->GraphLayout->GetOutput();
+    }
+  return NULL;
+}
+
 int vtkGraphLayoutViewer::IsLayoutComplete()
 {
   if (this->GraphLayout)
