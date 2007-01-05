@@ -68,7 +68,7 @@ vtkStandardNewMacro(vtkExodusIICache);
 vtkExodusIICache::vtkExodusIICache()
 {
   this->Size = 0.;
-  this->Capacity = 2.;
+  this->Capacity = 128.;
 }
 
 vtkExodusIICache::~vtkExodusIICache()
