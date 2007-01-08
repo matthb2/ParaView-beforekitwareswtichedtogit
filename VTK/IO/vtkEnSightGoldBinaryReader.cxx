@@ -1012,10 +1012,21 @@ int vtkEnSightGoldBinaryReader::ReadMeasuredGeometryFile(const char* fileName,
   this->ReadFloatArray(yCoords, this->NumberOfMeasuredPoints);
   this->ReadFloatArray(zCoords, this->NumberOfMeasuredPoints);
   
-  for (i = 0; i < this->NumberOfMeasuredPoints; i++)
+  if (this->ParticleCoordinatesByIndex) 
     {
-    points->InsertNextPoint(xCoords[i], yCoords[i], zCoords[i]);
-    pd->InsertNextCell(VTK_VERTEX, 1, (vtkIdType*)&pointIds[i]);
+    for (i = 0; i < this->NumberOfMeasuredPoints; i++)
+      {
+      points->InsertNextPoint(xCoords[i], yCoords[i], zCoords[i]);
+      pd->InsertNextCell(VTK_VERTEX, 1, &i);
+      }
+   }
+  else
+    {
+    for (i = 0; i < this->NumberOfMeasuredPoints; i++)
+      {
+      points->InsertNextPoint(xCoords[i], yCoords[i], zCoords[i]);
+      pd->InsertNextCell(VTK_VERTEX, 1, (vtkIdType*)&pointIds[i]);
+      }
     }
 
   pd->SetPoints(points);

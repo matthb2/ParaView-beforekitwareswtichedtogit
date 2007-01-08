@@ -308,7 +308,7 @@ int vtkEnSightGoldReader::ReadMeasuredGeometryFile(
     this->ReadLine(line);
     sscanf(line, " %8d %12e %12e %12e", &tempId, &coords[0], &coords[1],
            &coords[2]);
-    id = tempId;
+    id = this->ParticleCoordinatesByIndex ? i : tempId;
     newPoints->InsertNextPoint(coords);
     geom->InsertNextCell(VTK_VERTEX, 1, &id);
     }
