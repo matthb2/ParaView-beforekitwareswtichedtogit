@@ -727,7 +727,7 @@ int vtkEnSight6BinaryReader::ReadMeasuredGeometryFile(
   const char* fileName, int timeStep, vtkMultiBlockDataSet *output)
 {
   char line[80], subLine[80];
-  int i;
+  vtkIdType i;
   int *pointIds;
   float *coords;
   vtkPoints *points = vtkPoints::New();

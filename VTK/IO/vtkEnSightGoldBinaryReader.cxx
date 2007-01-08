@@ -913,7 +913,7 @@ int vtkEnSightGoldBinaryReader::ReadMeasuredGeometryFile(const char* fileName,
                                                          vtkMultiBlockDataSet *output)
 {
   char line[80], subLine[80];
-  int i;
+  vtkIdType i;
   int *pointIds;
   float *xCoords, *yCoords, *zCoords;
   vtkPoints *points = vtkPoints::New();
