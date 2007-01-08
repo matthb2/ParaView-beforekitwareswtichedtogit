@@ -74,6 +74,16 @@ void vtkAnimationScene::RemoveCue(vtkAnimationCue* cue)
 }
 
 //----------------------------------------------------------------------------
+void vtkAnimationScene::RemoveAllCues()
+{  
+  this->AnimationCues->RemoveAllItems();
+}
+//----------------------------------------------------------------------------
+int vtkAnimationScene::GetNumberOfCues()
+{
+  return this->AnimationCues->GetNumberOfItems();
+}
+//----------------------------------------------------------------------------
 void vtkAnimationScene::SetTimeMode(int mode)
 {
   if (mode == vtkAnimationCue::TIMEMODE_NORMALIZED)
