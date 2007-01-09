@@ -23,6 +23,7 @@
 #include "vtkOpenGLRenderWindow.h"
 
 #include "vtkOpenGL.h"
+#include "vtkgl.h" // vtkgl namespace
 
 #include <math.h>
 
@@ -325,6 +326,20 @@ void vtkOpenGLTexture::Load(vtkRenderer *ren)
 
   // now bind it 
   glEnable(GL_TEXTURE_2D);
+  
+  GLint uUseTexture=-1;
+  GLint uTexture=-1;
+  
+  vtkOpenGLRenderer *oRenderer=static_cast<vtkOpenGLRenderer *>(ren);
+  int translucentStage=oRenderer->GetTranslucentStage();
+  
+  if(translucentStage && ren->GetLastRenderingUsedDepthPeeling())
+    {
+    uUseTexture=oRenderer->GetUseTextureUniformVariable();
+    uTexture=oRenderer->GetTextureUniformVariable();
+    vtkgl::Uniform1iARB(uUseTexture,1);
+    vtkgl::Uniform1iARB(uTexture,0); // active texture 0
+    }
 }
 
 
