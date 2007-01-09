@@ -43,7 +43,7 @@ vtkEnSightReader::vtkEnSightReader()
   this->MeasuredFileName = NULL;
   this->MatchFileName = NULL;
 
-  this->ParticleCoordinatesByIndex;
+  this->ParticleCoordinatesByIndex = 0;
   this->IS = NULL;
   
   this->VariableMode = -1;
