@@ -221,7 +221,7 @@ void vtkSMKeyFrameAnimationCueManipulatorProxy::UpdateValue(double currenttime,
 
   if (this->GetNumberOfKeyFrames() < 2)
     {
-    vtkErrorMacro("Too few keyframe to animate.");
+    //vtkErrorMacro("Too few keyframe to animate.");
     return;
     }
   
