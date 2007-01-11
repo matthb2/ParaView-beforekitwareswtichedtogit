@@ -136,6 +136,37 @@ unsigned int vtkSMProxyLink::GetNumberOfLinkedProxies()
 }
 
 //---------------------------------------------------------------------------
+vtkSMProxy* vtkSMProxyLink::GetLinkedProxy(int index)
+{
+  vtkSMProxyLinkInternals::LinkedProxiesType::iterator iter =
+    this->Internals->LinkedProxies.begin();
+  for(int i=1;
+      i<index && iter != this->Internals->LinkedProxies.end();
+      i++)
+    { /* empty */ }
+  if(iter == this->Internals->LinkedProxies.end())
+    {
+    return NULL;
+    }
+  return iter->Proxy;
+}
+
+//---------------------------------------------------------------------------
+int vtkSMProxyLink::GetLinkedProxyDirection(vtkSMProxy* proxy)
+{
+  vtkSMProxyLinkInternals::LinkedProxiesType::iterator iter =
+    this->Internals->LinkedProxies.begin();
+  for(; iter != this->Internals->LinkedProxies.end(); ++iter)
+    {
+    if(iter->Proxy == proxy)
+      {
+      return iter->UpdateDirection;
+      }
+    }
+  return NONE;
+}
+
+//---------------------------------------------------------------------------
 void vtkSMProxyLink::AddException(const char* propertyname)
 {
   this->Internals->ExceptionProperties.insert(propertyname);
@@ -279,3 +310,5 @@ void vtkSMProxyLink::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os, indent);
 }
+
+
