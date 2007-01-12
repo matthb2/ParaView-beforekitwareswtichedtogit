@@ -74,8 +74,8 @@ int vtkMinMax::FillInputPortInformation(int port, vtkInformation *info)
   return 1;
 }
 
-//-----------------------------------------------------------------------------
-int vtkMinMax::RequestData(vtkInformation* reqInfo,
+//----------------------------------------------------------------------------
+int vtkMinMax::RequestData(vtkInformation* vtkNotUsed(reqInfo),
                              vtkInformationVector** inputVector,
                              vtkInformationVector* outputVector)
 {
