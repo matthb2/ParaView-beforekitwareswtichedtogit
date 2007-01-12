@@ -38,18 +38,13 @@
 #include "vtkTIFFWriter.h"
 #include "vtkToolkits.h"
 
+#include <vtksys/SystemTools.hxx>
 #ifdef _WIN32
   #include "vtkAVIWriter.h"
 #else
 #ifdef VTK_USE_FFMPEG_ENCODER
   #include "vtkFFMPEGWriter.h"
 #endif
-#endif
-
-#if !defined(_WIN32) || defined(__CYGWIN__)
-# include <unistd.h> /* unlink */
-#else
-# include <io.h> /* unlink */
 #endif
 
 vtkCxxRevisionMacro(vtkSMAnimationSceneProxy, "$Revision$");
@@ -331,7 +326,7 @@ int vtkSMAnimationSceneProxy::SaveImages(const char* fileRoot,
       for (int i=0; i < this->FileCount; i++)
         {
         sprintf(fileName, "%s%04d.%s", this->FileRoot, i, this->FileExtension);
-        unlink(fileName);
+        vtksys::SystemTools::RemoveFile(fileName);
         }
       delete [] fileName;
       }
@@ -346,7 +341,7 @@ int vtkSMAnimationSceneProxy::SaveImages(const char* fileRoot,
     if (this->SaveFailed)
       {
       char *fileName = this->MovieWriter->GetFileName();
-      unlink(fileName);
+      vtksys::SystemTools::RemoveFile(fileName);
       }
 
     this->MovieWriter->SetInput(0);
