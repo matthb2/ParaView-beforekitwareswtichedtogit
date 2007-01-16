@@ -46,6 +46,7 @@ void vtkGraphLayoutStrategy::SetGraph(vtkAbstractGraph *graph)
 vtkGraphLayoutStrategy::vtkGraphLayoutStrategy()
 {
   this->Graph = NULL;
+  this->ArcWeightField = NULL;
 }
 
 vtkGraphLayoutStrategy::~vtkGraphLayoutStrategy()
