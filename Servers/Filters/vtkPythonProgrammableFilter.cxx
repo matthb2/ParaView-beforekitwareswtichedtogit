@@ -176,7 +176,7 @@ void vtkPythonProgrammableFilter::Exec()
     this->Interpretor->InitializeSubInterpretor(1, (char**)&argv0);
 
     char addrofthis[1024];
-    sprintf(addrofthis, "'%X'", this);
+    sprintf(addrofthis, "'%X'", (unsigned int)this);
     
     vtkstd::string initscript;
     initscript  = "";
