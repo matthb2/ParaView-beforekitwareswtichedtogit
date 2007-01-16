@@ -316,6 +316,7 @@ void vtkMinMaxExecute(vtkMinMax *self,
       {
       FirstPasses[compIdx+jdx] = 0;
       *ovalue = *ivalue;
+      continue;
       }
     
     switch (self->GetOperation()) 
