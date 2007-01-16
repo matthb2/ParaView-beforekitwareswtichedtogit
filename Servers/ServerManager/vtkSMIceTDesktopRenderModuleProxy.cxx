@@ -91,6 +91,7 @@ void vtkSMIceTDesktopRenderModuleProxy::SetGUISize(int x, int y)
            << vtkClientServerStream::End;
     pm->SendStream(this->ConnectionID, vtkProcessModule::CLIENT, stream);
     }
+  this->Superclass::SetGUISize(x, y);
 }
 
 //-----------------------------------------------------------------------------
@@ -106,6 +107,7 @@ void vtkSMIceTDesktopRenderModuleProxy::SetWindowPosition(int x, int y)
            << vtkClientServerStream::End;
     pm->SendStream(this->ConnectionID, vtkProcessModule::CLIENT, stream);
     }
+  this->Superclass::SetWindowPosition(x, y);
 }
 
 //-----------------------------------------------------------------------------

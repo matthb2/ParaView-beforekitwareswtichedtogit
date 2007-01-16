@@ -1138,6 +1138,15 @@ vtkImageData* vtkSMRenderModuleProxy::CaptureWindow(int magnification)
   this->GetRenderWindow()->Frame();
   this->GetRenderWindow()->SetOffScreenRendering(0);
 
+  // Update image extents based on WindowPosition.
+  int extents[6];
+  capture->GetExtent(extents);
+  for (int cc=0; cc < 4; cc++)
+    {
+    extents[cc] += this->WindowPosition[cc/2]*magnification;
+    }
+  capture->SetExtent(extents);
+
   return capture;
 }
 
