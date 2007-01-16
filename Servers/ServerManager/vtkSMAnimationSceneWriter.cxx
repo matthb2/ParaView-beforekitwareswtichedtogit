@@ -163,6 +163,9 @@ bool vtkSMAnimationSceneWriter::Save()
     this->AnimationScene->SetFrameRate(this->FrameRate);
     }
 
+  int caching = this->AnimationScene->GetCaching();
+  this->AnimationScene->SetCaching(0);
+
   if (status)
     {
     this->Saving = true;
@@ -170,7 +173,6 @@ bool vtkSMAnimationSceneWriter::Save()
     this->AnimationScene->Play();
     this->Saving = false;
     }
-
 
   status = this->SaveFinalize() && status;
 
@@ -181,8 +183,9 @@ bool vtkSMAnimationSceneWriter::Save()
     }
   this->AnimationScene->SetLoop(loop);
   this->AnimationScene->SetFrameRate(frame_rate);
+  this->AnimationScene->SetCaching(caching);
 
-  return status && this->SaveFailed;
+  return status && (!this->SaveFailed);
 }
 
 //-----------------------------------------------------------------------------
