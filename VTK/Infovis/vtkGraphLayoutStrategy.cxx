@@ -62,4 +62,5 @@ void vtkGraphLayoutStrategy::PrintSelf(ostream& os, vtkIndent indent)
     {
     this->Graph->PrintSelf(os, indent.GetNextIndent());
     }
+  os << indent << "ArcWeightField: " << (this->ArcWeightField ? this->ArcWeightField : "(none)") << endl;
 }
