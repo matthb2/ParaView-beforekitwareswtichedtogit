@@ -482,6 +482,7 @@ void vtkSMDoubleVectorProperty::Copy(vtkSMProperty* src)
            &dsrc->Internals->UncheckedValues[0], 
            this->GetNumberOfUncheckedElements()*sizeof(double));
     this->ImmediateUpdate = imUpdate;
+    this->Modified();
     }
 }
 

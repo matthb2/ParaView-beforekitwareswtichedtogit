@@ -455,6 +455,7 @@ void vtkSMIntVectorProperty::Copy(vtkSMProperty* src)
            &dsrc->Internals->UncheckedValues[0], 
            this->GetNumberOfUncheckedElements()*sizeof(int));
     this->ImmediateUpdate = imUpdate;
+    this->Modified();
     }
 }
 
