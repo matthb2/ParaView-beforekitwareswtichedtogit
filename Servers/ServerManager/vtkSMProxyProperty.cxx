@@ -577,7 +577,6 @@ void vtkSMProxyProperty::ChildSaveState(vtkPVXMLElement* propertyElement,
         }
       }
     propertyElement->AddNestedElement(element);
-    propertyElement->AddAttribute("clear",  "0");
     element->Delete();
     }
 }
