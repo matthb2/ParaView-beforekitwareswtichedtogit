@@ -893,10 +893,11 @@ public:
   // Parse the XML input.
   virtual int Parse()
     {
-      this->Superclass::Parse();
+      int retVal = this->Superclass::Parse();
       this->PartNumber="";
       this->InstanceNumber="";
       this->ParseMaterials=0;
+      return retVal;
     }
   
   virtual vtkStdString GetPartNumber(int block)
