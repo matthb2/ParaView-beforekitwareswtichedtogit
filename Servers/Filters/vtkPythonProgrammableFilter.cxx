@@ -177,12 +177,14 @@ void vtkPythonProgrammableFilter::Exec()
 
     char addrofthis[1024];
     char *aplus = addrofthis+2; //skip over "0x"
+    sprintf(addrofthis, "%p", this);    
     vtkstd::string initscript;
     initscript  = "";
     initscript += "import paraview;\n";
     initscript += "self = paraview.vtkProgrammableFilter('";
     initscript += aplus;
     initscript +=  "');\n";
+    cerr << initscript << endl;
     this->Interpretor->MakeCurrent();
     this->Interpretor->RunSimpleString(initscript.c_str());
     }
