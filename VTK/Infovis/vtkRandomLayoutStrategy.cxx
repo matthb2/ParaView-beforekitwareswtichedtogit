@@ -51,6 +51,11 @@ vtkRandomLayoutStrategy::~vtkRandomLayoutStrategy()
 void vtkRandomLayoutStrategy::Layout() {}; 
 void vtkRandomLayoutStrategy::SetGraph(vtkAbstractGraph *graph)
 {
+  if (graph == NULL)
+    {
+    return;
+    }
+
   // Generate bounds automatically if necessary. It's the same
   // as the graph bounds.
   if ( this->AutomaticBoundsComputation )
