@@ -140,10 +140,12 @@ vtkSMProxy* vtkSMProxyLink::GetLinkedProxy(int index)
 {
   vtkSMProxyLinkInternals::LinkedProxiesType::iterator iter =
     this->Internals->LinkedProxies.begin();
-  for(int i=1;
+  for(int i=0;
       i<index && iter != this->Internals->LinkedProxies.end();
       i++)
-    { /* empty */ }
+    {
+    iter++;
+    }
   if(iter == this->Internals->LinkedProxies.end())
     {
     return NULL;
