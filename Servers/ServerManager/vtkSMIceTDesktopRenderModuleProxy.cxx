@@ -699,7 +699,7 @@ void vtkSMIceTDesktopRenderModuleProxy::StillRender()
             vtkSMCompositeDisplayProxy::SafeDownCast(obj);
           if (disp && disp->GetVisibilityCM())
             {
-            disp->Update();
+            disp->Update(this);
             disp->InvalidateDistributedGeometry();
 
             if (!self_generate_kdtree &&

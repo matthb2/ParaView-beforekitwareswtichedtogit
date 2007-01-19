@@ -318,10 +318,10 @@ void vtkSMGenericViewDisplayProxy::SetupCollectionFilter(
 }
 
 //-----------------------------------------------------------------------------
-void vtkSMGenericViewDisplayProxy::Update()
+void vtkSMGenericViewDisplayProxy::Update(vtkSMAbstractViewModuleProxy* view)
 {
   this->UpdateSuppressorProxy->InvokeCommand("ForceUpdate");
-  this->Superclass::Update();
+  this->Superclass::Update(view);
   this->UpdateRequiredFlag = 0;
 
   if (this->PostProcessorProxy)

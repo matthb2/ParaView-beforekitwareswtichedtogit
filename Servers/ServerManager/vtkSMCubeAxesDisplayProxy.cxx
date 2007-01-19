@@ -211,7 +211,7 @@ void vtkSMCubeAxesDisplayProxy::InvalidateGeometryInternal(int /*useCache*/)
 }
 
 //----------------------------------------------------------------------------
-void vtkSMCubeAxesDisplayProxy::Update()
+void vtkSMCubeAxesDisplayProxy::Update(vtkSMAbstractViewModuleProxy*)
 {
   if (this->GeometryIsValid || !this->RenderModuleProxy)
     {

@@ -216,7 +216,7 @@ void vtkSMAbstractViewModuleProxy::UpdateAllDisplays()
       }
     // In case of ordered compositing, make sure any distributed geometry is up
     // to date.
-    disp->UpdateDistributedGeometry();
+    disp->UpdateDistributedGeometry(this);
     // We don;t use properties here since it tends to slow things down.
     }
   iter->Delete();

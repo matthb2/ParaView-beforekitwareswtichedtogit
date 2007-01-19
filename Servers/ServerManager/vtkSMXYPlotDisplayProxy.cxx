@@ -465,7 +465,7 @@ void vtkSMXYPlotDisplayProxy::RemoveFromRenderModule(vtkSMRenderModuleProxy* rm)
 }
 
 //-----------------------------------------------------------------------------
-void vtkSMXYPlotDisplayProxy::Update()
+void vtkSMXYPlotDisplayProxy::Update(vtkSMAbstractViewModuleProxy*)
 {
   if (this->GeometryIsValid || !this->UpdateSuppressorProxy || 
     !this->RenderModuleProxy)

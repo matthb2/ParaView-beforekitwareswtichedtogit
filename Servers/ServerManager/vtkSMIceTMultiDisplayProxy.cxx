@@ -355,10 +355,9 @@ int vtkSMIceTMultiDisplayProxy::UpdateRequired()
 }
 
 //-----------------------------------------------------------------------------
-
-void vtkSMIceTMultiDisplayProxy::Update()
+void vtkSMIceTMultiDisplayProxy::Update(vtkSMAbstractViewModuleProxy* view)
 {
-  this->Superclass::Update();
+  this->Superclass::Update(view);
 
   if (this->SuppressGeometryCollection && !this->OutlineGeometryIsValid)
     {
