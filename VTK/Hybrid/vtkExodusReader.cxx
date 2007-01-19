@@ -891,6 +891,14 @@ public:
 
   // Description:
   // Parse the XML input.
+  virtual int Parse(const char* inputString)
+    {
+      this->Superclass::Parse(inputString);
+    }
+  virtual int Parse(const char* inputString, unsigned int length)
+    {
+      this->Superclass::Parse(inputString, length);
+    }
   virtual int Parse()
     {
       int retVal = this->Superclass::Parse();
