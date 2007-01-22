@@ -334,6 +334,21 @@ void vtkSMProxyProperty::RemoveAllUncheckedProxies()
 }
 
 //---------------------------------------------------------------------------
+bool vtkSMProxyProperty::IsProxyAdded(vtkSMProxy* proxy)
+{
+  vtkstd::vector<vtkSmartPointer<vtkSMProxy> >::iterator iter =   
+    this->PPInternals->Proxies.begin();
+  for ( ; iter != this->PPInternals->Proxies.end() ; ++iter)
+    {
+    if (*iter == proxy)
+      {
+      return true;
+      }
+    }
+  return false;
+}
+
+//---------------------------------------------------------------------------
 int vtkSMProxyProperty::AddProxy(vtkSMProxy* proxy, int modify)
 {
   if ( vtkSMProperty::GetCheckDomains() )
