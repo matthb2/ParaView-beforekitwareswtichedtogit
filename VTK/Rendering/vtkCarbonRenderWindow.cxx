@@ -474,7 +474,8 @@ void vtkCarbonRenderWindow::Frame()
     glFlush();
     }
 }
-  
+
+//--------------------------------------------------------------------------
 AGLContext vtkCarbonRenderWindow::GetContextId()
 {
   if(this->OffScreenRendering)
