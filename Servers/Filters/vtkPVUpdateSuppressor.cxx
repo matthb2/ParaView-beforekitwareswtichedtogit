@@ -18,9 +18,11 @@
 #include "vtkAlgorithmOutput.h"
 #include "vtkCollection.h"
 #include "vtkCommand.h"
+#include "vtkCompositeDataPipeline.h"
 #include "vtkDataSet.h"
 #include "vtkDemandDrivenPipeline.h"
 #include "vtkInformation.h"
+#include "vtkInformationDoubleVectorKey.h"
 #include "vtkInformationVector.h"
 #include "vtkObjectFactory.h"
 #include "vtkPolyData.h"
@@ -37,6 +39,9 @@ vtkPVUpdateSuppressor::vtkPVUpdateSuppressor()
   this->UpdatePiece = 0;
   this->UpdateNumberOfPieces = 1;
 
+  this->UpdateTime = 0.0;
+  this->UpdateTimeInitialized = false;
+
   this->CachedGeometry = NULL;
   this->CachedGeometryLength = 0;
 
@@ -47,6 +52,17 @@ vtkPVUpdateSuppressor::vtkPVUpdateSuppressor()
 vtkPVUpdateSuppressor::~vtkPVUpdateSuppressor()
 {
   this->RemoveAllCaches();
+}
+
+//----------------------------------------------------------------------------
+void vtkPVUpdateSuppressor::SetUpdateTime(double utime)
+{
+  if (this->UpdateTime != utime)
+    {
+    this->Modified();
+    this->UpdateTime = utime;
+    }
+  this->UpdateTimeInitialized = true;
 }
 
 //----------------------------------------------------------------------------
@@ -121,6 +137,10 @@ void vtkPVUpdateSuppressor::ForceUpdate()
     input->SetUpdateNumberOfPieces(this->UpdateNumberOfPieces);
     input->SetUpdateGhostLevel(0);
     }
+  if (this->UpdateTimeInitialized)
+    {
+    info->Set(vtkCompositeDataPipeline::UPDATE_TIME_STEPS(), &this->UpdateTime, 1);
+    }
 
   input->Update();
   // Input may have changed, we obtain the pointer again.
@@ -143,10 +163,10 @@ void vtkPVUpdateSuppressor::ForceUpdate()
     ddp->UpdateInformation();
     t2 = ddp->GetPipelineMTime();
     }
-  if (t2 > this->UpdateTime || output->GetDataReleased())
+  if (t2 > this->PipelineUpdateTime || output->GetDataReleased())
     {
     output->ShallowCopy(input);
-    this->UpdateTime.Modified();
+    this->PipelineUpdateTime.Modified();
     }
 }
 
