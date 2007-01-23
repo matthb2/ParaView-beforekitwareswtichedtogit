@@ -127,9 +127,17 @@ pqProcessModuleGUIHelper::~pqProcessModuleGUIHelper()
   delete this->Implementation;
 }
 
+//-----------------------------------------------------------------------------
 void pqProcessModuleGUIHelper::disableOutputWindow()
 {
   this->Implementation->OutputWindowAdapter->setActive(false);
+}
+
+void pqProcessModuleGUIHelper::showOutputWindow()
+{
+  this->Implementation->OutputWindow->show();
+  this->Implementation->OutputWindow->raise();
+  this->Implementation->OutputWindow->activateWindow();
 }
 
 //-----------------------------------------------------------------------------
