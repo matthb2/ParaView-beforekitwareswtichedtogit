@@ -135,20 +135,10 @@ void vtkSMPropertyLink::AddLinkedProperty(vtkSMProxy* proxy, const char* pname,
   for (; iter != this->Internals->LinkedProperties.end(); ++iter)
     {
     if (iter->Proxy.GetPointer() == proxy && 
-      iter->PropertyName == pname)
+      iter->PropertyName == pname && 
+      iter->UpdateDirection == updateDir)
       {
-      if (iter->UpdateDirection != updateDir)
-        {
-        iter->UpdateDirection = updateDir;
-        if (addObserver)
-          {
-          iter->Observer = this->Observer;
-          }
-        }
-      else
-        {
-        addObserver = 0;
-        }
+      addObserver = 0;
       addToList = 0;
       }
     }
@@ -183,20 +173,9 @@ void vtkSMPropertyLink::AddLinkedProperty(vtkSMProperty* property, int updateDir
     this->Internals->LinkedProperties.begin();
   for (; iter != this->Internals->LinkedProperties.end(); ++iter)
     {
-    if (iter->Property == property)
+    if (iter->Property == property && iter->UpdateDirection == updateDir)
       {
-      if (iter->UpdateDirection != updateDir)
-        {
-        iter->UpdateDirection = updateDir;
-        if (addObserver)
-          {
-          iter->Observer = this->Observer;
-          }
-        }
-      else
-        {
-        addObserver = 0;
-        }
+      addObserver = 0;
       addToList = 0;
       }
     }
