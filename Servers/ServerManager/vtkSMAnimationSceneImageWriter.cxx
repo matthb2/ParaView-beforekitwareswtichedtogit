@@ -220,7 +220,6 @@ bool vtkSMAnimationSceneImageWriter::SaveFrame(double vtkNotUsed(time))
     }
   else if (this->MovieWriter)
     {
-    abort();
     this->MovieWriter->SetInput(combinedImage);
     this->MovieWriter->Write();
 
