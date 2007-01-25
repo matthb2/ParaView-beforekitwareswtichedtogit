@@ -72,3 +72,43 @@ vtkPVServerXDMFParameters::GetParameters(vtkXdmfReader* reader)
   this->Internal->Result << vtkClientServerStream::End;
   return this->Internal->Result;
 }
+
+//----------------------------------------------------------------------------
+const vtkClientServerStream&
+vtkPVServerXDMFParameters::GetDomains(vtkXdmfReader* reader)
+{
+  // Reset the result stream for a new set of parameters.
+  this->Internal->Result.Reset();
+  this->Internal->Result << vtkClientServerStream::Reply;
+
+  // Store each parameter name, index, and range in the stream.
+  for(int i=0; i < reader->GetNumberOfDomains(); ++i)
+    {
+    const char *domainname = reader->GetDomainName(i);
+    this->Internal->Result << domainname;
+    }
+
+  // Finish the message and return the result stream.
+  this->Internal->Result << vtkClientServerStream::End;
+  return this->Internal->Result;
+}
+
+//----------------------------------------------------------------------------
+const vtkClientServerStream&
+vtkPVServerXDMFParameters::GetGrids(vtkXdmfReader* reader)
+{
+  // Reset the result stream for a new set of parameters.
+  this->Internal->Result.Reset();
+  this->Internal->Result << vtkClientServerStream::Reply;
+
+  // Store each parameter name, index, and range in the stream.
+  for(int i=0; i < reader->GetNumberOfGrids(); ++i)
+    {
+    const char *gridname = reader->GetGridName(i);
+    this->Internal->Result << gridname;
+    }
+
+  // Finish the message and return the result stream.
+  this->Internal->Result << vtkClientServerStream::End;
+  return this->Internal->Result;
+}
