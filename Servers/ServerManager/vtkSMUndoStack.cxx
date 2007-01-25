@@ -405,7 +405,7 @@ void vtkSMUndoStack::OnUnRegisterProxy(void* data)
 
   vtkSMProxyManager::RegisteredProxyInformation &info =*(reinterpret_cast<
     vtkSMProxyManager::RegisteredProxyInformation*>(data));
-  if (prototypesRe.find(info.GroupName) != 0)
+  if (!info.Proxy || (info.GroupName && prototypesRe.find(info.GroupName) != 0))
     {
     return;
     }
