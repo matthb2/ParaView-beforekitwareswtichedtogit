@@ -163,6 +163,12 @@ int vtkCommunicator::Send(vtkDataArray* data, int remoteHandle, int tag)
     this->Send( const_cast<char*>(name), len, remoteHandle, tag);
     }
 
+  // do nothing if size is zero.
+  if (size == 0)
+    {
+    return 1;
+    }
+
   // now send the raw array
   switch (type)
     {
@@ -309,8 +315,9 @@ int vtkCommunicator::Receive(vtkDataArray* data, int remoteHandle,
     return 0;
     }
   
+  // Do nothing if size is zero.
   if (size == 0)
-    { // This indicates a NULL object was sent. Do nothing.
+    {
     return 1;   
     }
   
