@@ -27,7 +27,6 @@
 #include "vtkIdTypeArray.h"
 #include "vtkImageWriter.h"
 #include "vtkInstantiator.h"
-#include "vtkInteractorStyleTrackballCamera.h"
 #include "vtkObjectFactory.h"
 #include "vtkProcessModuleConnectionManager.h"
 #include "vtkProcessModule.h"
@@ -314,11 +313,6 @@ void vtkSMRenderModuleProxy::CreateVTKObjects(int numObjects)
     pvm->GetObjectFromID(this->ActiveCameraProxy->GetID(0)));
   this->Helper = vtkPVRenderModuleHelper::SafeDownCast(
     pvm->GetObjectFromID(this->HelperProxy->GetID(0)));
-
-  //Set the defaul style for the interactor.
-  vtkInteractorStyleTrackballCamera* style = vtkInteractorStyleTrackballCamera::New();
-  this->Interactor->SetInteractorStyle(style);
-  style->Delete();
 
   // Set the active camera for the renderers.  We can't use the Proxy
   // Property since Camera is only create on the CLIENT.  Proxy properties
