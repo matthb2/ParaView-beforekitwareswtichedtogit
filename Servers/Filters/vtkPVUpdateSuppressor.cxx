@@ -50,8 +50,13 @@ vtkPVUpdateSuppressor::vtkPVUpdateSuppressor()
 
   this->SaveCacheOnCacheUpdate = 1;
   this->CacheSizeKeeper = 0;
-  this->SetCacheSizeKeeper(
-    vtkProcessModule::GetProcessModule()->GetCacheSizeKeeper());
+  vtkProcessModule* pm = vtkProcessModule::GetProcessModule();
+
+  if (pm)
+    {
+    this->SetCacheSizeKeeper(
+      vtkProcessModule::GetProcessModule()->GetCacheSizeKeeper());
+    }
 }
 
 //----------------------------------------------------------------------------
