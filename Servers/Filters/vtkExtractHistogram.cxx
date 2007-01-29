@@ -16,7 +16,7 @@
 
 #include "vtkCellData.h"
 #include "vtkDoubleArray.h"
-#include "vtkExtractHistogramExtentTranslator.h"
+#include "vtkOnePieceExtentTranslator.h"
 #include "vtkInformation.h"
 #include "vtkInformationVector.h"
 #include "vtkIOStream.h"
@@ -85,9 +85,9 @@ int vtkExtractHistogram::RequestInformation(
     vtkStreamingDemandDrivenPipeline::SafeDownCast(this->GetExecutive());
   if (strcmp(
       sddp->GetExtentTranslator(outInfo)->GetClassName(), 
-      "vtkExtractHistogramExtentTranslator") != 0)
+      "vtkOnePieceExtentTranslator") != 0)
     {
-    vtkExtentTranslator* et = vtkExtractHistogramExtentTranslator::New();
+    vtkExtentTranslator* et = vtkOnePieceExtentTranslator::New();
     sddp->SetExtentTranslator(outInfo, et);
     et->Delete();
     }

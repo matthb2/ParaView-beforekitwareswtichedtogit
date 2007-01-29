@@ -12,24 +12,37 @@
      PURPOSE.  See the above copyright notice for more information.
 
 =========================================================================*/
-#include "vtkExtractHistogramExtentTranslator.h"
+#include "vtkOnePieceExtentTranslator.h"
 
 #include "vtkObjectFactory.h"
 
-vtkStandardNewMacro(vtkExtractHistogramExtentTranslator);
-vtkCxxRevisionMacro(vtkExtractHistogramExtentTranslator, "$Revision$");
+vtkStandardNewMacro(vtkOnePieceExtentTranslator);
+vtkCxxRevisionMacro(vtkOnePieceExtentTranslator, "$Revision$");
 //-----------------------------------------------------------------------------
-vtkExtractHistogramExtentTranslator::vtkExtractHistogramExtentTranslator()
+vtkOnePieceExtentTranslator::vtkOnePieceExtentTranslator()
 {
 }
 
 //-----------------------------------------------------------------------------
-vtkExtractHistogramExtentTranslator::~vtkExtractHistogramExtentTranslator()
+vtkOnePieceExtentTranslator::~vtkOnePieceExtentTranslator()
 {
 }
 
 //-----------------------------------------------------------------------------
-void vtkExtractHistogramExtentTranslator::PrintSelf(ostream& os, vtkIndent indent)
+int vtkOnePieceExtentTranslator::PieceToExtentThreadSafe(
+  int vtkNotUsed(piece), 
+  int vtkNotUsed(numPieces), 
+  int vtkNotUsed(ghostLevel), 
+  int *wholeExtent, int *resultExtent, 
+  int vtkNotUsed(splitMode), 
+  int vtkNotUsed(byPoints))
+{
+  memcpy(resultExtent, wholeExtent, sizeof(int)*6);
+  return 1;
+}
+
+//-----------------------------------------------------------------------------
+void vtkOnePieceExtentTranslator::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os, indent);
 }

@@ -12,38 +12,34 @@
      PURPOSE.  See the above copyright notice for more information.
 
 =========================================================================*/
-// .NAME vtkExtractHistogramExtentTranslator - extent translator for
-// vtkExtractHistogram filter.
+// .NAME vtkOnePieceExtentTranslator - Returns the whole extent for any piece..
+// vtkOnePieceExtentTranslator returns the whole extent for any piece.
 
-#ifndef __vtkExtractHistogramExtentTranslator_h
-#define __vtkExtractHistogramExtentTranslator_h
+#ifndef __vtkOnePieceExtentTranslator_h
+#define __vtkOnePieceExtentTranslator_h
 
 #include "vtkExtentTranslator.h"
 
-class VTK_EXPORT vtkExtractHistogramExtentTranslator : public vtkExtentTranslator
+class VTK_COMMON_EXPORT vtkOnePieceExtentTranslator : public vtkExtentTranslator
 {
 public:
-  static vtkExtractHistogramExtentTranslator* New();
-  vtkTypeRevisionMacro(vtkExtractHistogramExtentTranslator, vtkExtentTranslator);
+  static vtkOnePieceExtentTranslator* New();
+  vtkTypeRevisionMacro(vtkOnePieceExtentTranslator, vtkExtentTranslator);
   void PrintSelf(ostream& os, vtkIndent indent);
 
 protected:
-  vtkExtractHistogramExtentTranslator();
-  ~vtkExtractHistogramExtentTranslator();
+  vtkOnePieceExtentTranslator();
+  ~vtkOnePieceExtentTranslator();
 
   virtual int PieceToExtentThreadSafe(int vtkNotUsed(piece), 
                                       int vtkNotUsed(numPieces), 
                                       int vtkNotUsed(ghostLevel), 
                                       int *wholeExtent, int *resultExtent, 
                                       int vtkNotUsed(splitMode), 
-                                      int vtkNotUsed(byPoints))
-    {
-    memcpy(resultExtent, wholeExtent, sizeof(int)*6);
-    return 1;
-    }
+                                      int vtkNotUsed(byPoints));
 private:
-  vtkExtractHistogramExtentTranslator(const vtkExtractHistogramExtentTranslator&); // Not implemented.
-  void operator=(const vtkExtractHistogramExtentTranslator&); // Not implemented.
+  vtkOnePieceExtentTranslator(const vtkOnePieceExtentTranslator&); // Not implemented.
+  void operator=(const vtkOnePieceExtentTranslator&); // Not implemented.
   
 };
 
