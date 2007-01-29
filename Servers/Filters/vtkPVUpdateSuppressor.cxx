@@ -155,28 +155,8 @@ void vtkPVUpdateSuppressor::ForceUpdate()
   // Input may have changed, we obtain the pointer again.
   input = vtkDataSet::SafeDownCast(this->GetInput());
 
-  unsigned long t2 = 0;
-  vtkDemandDrivenPipeline *ddp = 0;
-  if (source)
-    {
-    ddp = vtkDemandDrivenPipeline::SafeDownCast(source->GetExecutive());
-    }
-  else
-    {
-    vtkInformation* pipInf = input->GetPipelineInformation();
-    ddp = vtkDemandDrivenPipeline::SafeDownCast(
-      pipInf->GetExecutive(vtkExecutive::PRODUCER()));
-    }
-  if (ddp)
-    {
-    ddp->UpdateInformation();
-    t2 = ddp->GetPipelineMTime();
-    }
-  if (t2 > this->PipelineUpdateTime || output->GetDataReleased())
-    {
-    output->ShallowCopy(input);
-    this->PipelineUpdateTime.Modified();
-    }
+  output->ShallowCopy(input);
+  this->PipelineUpdateTime.Modified();
 }
 
 //----------------------------------------------------------------------------

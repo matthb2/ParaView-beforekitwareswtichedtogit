@@ -38,10 +38,13 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "pqOptions.h"
 
 #include <vtkObjectFactory.h>
+#include <vtkProcessModuleConnectionManager.h>
 #include <vtkProcessModule.h>
 #include <vtkSMApplication.h>
-#include <vtkSMProperty.h>
 #include <vtkSmartPointer.h>
+#include <vtkSMProperty.h>
+#include <vtkSMProxy.h>
+#include <vtkSMProxyManager.h>
 #include <vtkTimerLog.h>
 
 #include <QApplication>
@@ -202,7 +205,7 @@ int pqProcessModuleGUIHelper::InitializeApplication(int vtkNotUsed(argc),
   this->Implementation->OutputWindow->connect(this->Implementation->OutputWindowAdapter, 
     SIGNAL(displayGenericWarningText(const QString&)), SLOT(onDisplayGenericWarningText(const QString&)));
   vtkOutputWindow::SetInstance(Implementation->OutputWindowAdapter);
-  
+
   this->Implementation->Window = this->CreateMainWindow();
 
   return 1;
