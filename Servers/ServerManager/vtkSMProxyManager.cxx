@@ -936,9 +936,8 @@ void vtkSMProxyManager::UnRegisterLink(const char* name)
     info.ProxyName = name;
     info.IsCompoundProxyDefinition = 0;
     info.IsLink = 1;
-    this->InvokeEvent(vtkCommand::UnRegisterEvent, &info);
-
     this->Internals->RegisteredLinkMap.erase(it);
+    this->InvokeEvent(vtkCommand::UnRegisterEvent, &info);
     }
 }
 
