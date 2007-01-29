@@ -294,7 +294,7 @@ void vtkSMRenderModuleProxy::CreateVTKObjects(int numObjects)
   this->RenderWindowProxy->SetServers(
     vtkProcessModule::CLIENT | vtkProcessModule::RENDER_SERVER);
   this->InteractorProxy->SetServers(
-    vtkProcessModule::CLIENT | vtkProcessModule::RENDER_SERVER);
+    vtkProcessModule::CLIENT); // | vtkProcessModule::RENDER_SERVER);
   this->LightKitProxy->SetServers(
     vtkProcessModule::CLIENT | vtkProcessModule::RENDER_SERVER);
   this->LightProxy->SetServers(
