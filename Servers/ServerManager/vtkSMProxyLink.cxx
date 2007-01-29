@@ -105,6 +105,13 @@ void vtkSMProxyLink::AddLinkedProxy(vtkSMProxy* proxy, int updateDir)
   this->Modified();
 }
 
+//-----------------------------------------------------------------------------
+void vtkSMProxyLink::RemoveAllLinks()
+{
+  this->Internals->LinkedProxies.clear();
+  this->Modified();
+}
+
 //---------------------------------------------------------------------------
 void vtkSMProxyLink::RemoveLinkedProxy(vtkSMProxy* proxy)
 {
