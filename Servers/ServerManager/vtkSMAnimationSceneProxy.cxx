@@ -292,6 +292,11 @@ void vtkSMAnimationSceneProxy::AddCue(vtkSMProxy* proxy)
     vtkErrorMacro("Animation cue already present in the scene");
     return;
     }
+  // ensure that Cue objects have been created.
+  if (!cue->GetObjectsCreated())
+    {
+    cue->UpdateVTKObjects();
+    }
   scene->AddCue(cue->GetAnimationCue());
   this->AnimationCueProxies->AddItem(cue);
   cue->SetCaching(this->GetCaching());
