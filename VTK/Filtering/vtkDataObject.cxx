@@ -699,19 +699,6 @@ void vtkDataObject::DataHasBeenGenerated()
     this->Information->Set(DATA_NUMBER_OF_GHOST_LEVELS(), 
                            this->GetUpdateGhostLevel());
     }
-  if (!this->Information->Has(DATA_TIME_STEPS()))
-    {
-    if(SDDP* sddp = this->TrySDDP("CopyDataTimeSteps"))
-      {
-      vtkInformation* info = 
-        sddp->GetOutputInformation()->GetInformationObject(
-          this->GetPortNumber());
-      this->Information->Set(
-        DATA_TIME_STEPS(),
-        info->Get(vtkStreamingDemandDrivenPipeline::UPDATE_TIME_STEPS()),
-        info->Length(vtkStreamingDemandDrivenPipeline::UPDATE_TIME_STEPS()));
-      }
-    }
 }
 
 //----------------------------------------------------------------------------
