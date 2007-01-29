@@ -15,6 +15,7 @@
 #include "vtkSMDataObjectDisplayProxy.h"
 
 #include "vtkClientServerStream.h"
+#include "vtkCommand.h"
 #include "vtkHAVSVolumeMapper.h"
 #include "vtkMath.h"
 #include "vtkObjectFactory.h"
@@ -1363,6 +1364,7 @@ void vtkSMDataObjectDisplayProxy::Update(vtkSMAbstractViewModuleProxy* view)
 
     this->SetupVolumeDefaults();
     }
+  this->InvokeEvent(vtkCommand::UserEvent);
 }
 
 //-----------------------------------------------------------------------------
