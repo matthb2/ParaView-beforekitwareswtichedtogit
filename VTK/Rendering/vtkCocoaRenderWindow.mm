@@ -553,8 +553,10 @@ void vtkCocoaRenderWindow::CreateGLContext()
   NSOpenGLPixelFormatAttribute attribs[] =
     {
       NSOpenGLPFAAccelerated,
-      NSOpenGLPFADepthSize, (NSOpenGLPixelFormatAttribute)32,
-      this->DoubleBuffer? NSOpenGLPFADoubleBuffer : (NSOpenGLPixelFormatAttribute)nil,
+      NSOpenGLPFADepthSize,
+      (NSOpenGLPixelFormatAttribute)32,
+      (this->DoubleBuffer != 0) ?
+        NSOpenGLPFADoubleBuffer : (NSOpenGLPixelFormatAttribute)nil,
       (NSOpenGLPixelFormatAttribute)nil
     };
 
