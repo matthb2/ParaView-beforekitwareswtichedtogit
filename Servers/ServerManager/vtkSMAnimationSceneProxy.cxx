@@ -209,7 +209,7 @@ int vtkSMAnimationSceneProxy::IsInPlay()
     this->AnimationCue);
   if (scene)
     {
-    scene->IsInPlay();
+    return scene->IsInPlay();
     }
   return 0;
 }
