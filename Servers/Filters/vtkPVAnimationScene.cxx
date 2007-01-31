@@ -14,6 +14,7 @@
 =========================================================================*/
 #include "vtkPVAnimationScene.h"
 
+#include "vtkCommand.h"
 #include "vtkObjectFactory.h"
 
 #include <vtkstd/set>
@@ -89,6 +90,8 @@ void vtkPVAnimationScene::Play()
     return;
     }
 
+  this->InvokeEvent(vtkCommand::StartEvent);
+
   this->InPlay = 1;
   this->StopPlay = 0;
 
@@ -138,6 +141,8 @@ void vtkPVAnimationScene::Play()
 
   this->StopPlay = 0;
   this->InPlay = 0;
+
+  this->InvokeEvent(vtkCommand::EndEvent);
 }
 
 

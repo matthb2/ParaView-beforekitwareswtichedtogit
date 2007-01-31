@@ -63,8 +63,9 @@ public:
 //----------------------------------------------------------------------------
 vtkSMAnimationCueProxy::vtkSMAnimationCueProxy()
 {
-  this->Observer = vtkSMAnimationCueProxyObserver::New();
-  this->Observer->SetAnimationCueProxy(this);
+  vtkSMAnimationCueProxyObserver* obs = vtkSMAnimationCueProxyObserver::New();
+  obs->SetAnimationCueProxy(this);
+  this->Observer = obs; 
 
   this->AnimatedProxy = 0;
   this->AnimatedElement= 0;
