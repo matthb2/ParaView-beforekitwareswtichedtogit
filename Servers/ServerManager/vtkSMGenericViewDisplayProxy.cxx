@@ -146,7 +146,7 @@ void vtkSMGenericViewDisplayProxy::SetReductionType(int type)
     {
     stream
       << vtkClientServerStream::Invoke
-      << this->ReduceProxy->GetID(i) << "SetReductionHelper"
+      << this->ReduceProxy->GetID(i) << "SetPostGatherHelper"
       << rfid
       << vtkClientServerStream::End;
     }
