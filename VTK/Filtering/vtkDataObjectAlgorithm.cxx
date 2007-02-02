@@ -95,6 +95,12 @@ int vtkDataObjectAlgorithm::ProcessRequest(vtkInformation* request,
     return this->RequestUpdateExtent(request, inputVector, outputVector);
     }
 
+  // Create data object output
+  if(request->Has(vtkDemandDrivenPipeline::REQUEST_DATA_OBJECT()))
+    {
+    return this->RequestDataObject(request, inputVector, outputVector);
+    }
+
   // execute information
   if(request->Has(vtkDemandDrivenPipeline::REQUEST_INFORMATION()))
     {
