@@ -416,6 +416,19 @@ void vtkOpenGLRenderer::DeviceRenderTranslucentGeometry()
       }
     }
   
+  if(this->UseDepthPeeling && this->DepthPeelingIsSupported)
+    {
+    // This card with this driver version does not work (iMac).
+    // Do alpha blending always.
+    const GLubyte *openglString=glGetString(GL_RENDERER);
+    const char *substring=strstr(reinterpret_cast<const char *>(openglString),"ATI Radeon X1600 OpenGL Engine");
+    int badCard=substring!=0;
+    openglString=glGetString(GL_VERSION);
+    substring=strstr(reinterpret_cast<const char *>(openglString),"2.0 ATI-1.4.40");
+    badCard=badCard && substring!=0;
+    this->DepthPeelingIsSupported=!badCard;
+    }
+  
   if(!this->UseDepthPeeling || !this->DepthPeelingIsSupported)
     {
     // just alpha blending
