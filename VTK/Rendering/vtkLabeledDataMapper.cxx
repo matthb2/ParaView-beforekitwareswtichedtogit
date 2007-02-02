@@ -519,7 +519,7 @@ void vtkLabeledDataMapper::PrintSelf(ostream& os, vtkIndent indent)
     os << "Label Field Data\n";
     }
 
-  os << indent << "Label Format: " << this->LabelFormat << "\n";
+  os << indent << "Label Format: " << (this->LabelFormat ? this->LabelFormat : "Null") << "\n";
 
   os << indent << "Labeled Component: ";
   if ( this->LabeledComponent < 0 )
