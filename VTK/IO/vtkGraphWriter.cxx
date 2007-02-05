@@ -80,7 +80,7 @@ void vtkGraphWriter::WriteData()
   if(!error_occurred)
     {
     const vtkIdType edge_count = input->GetNumberOfEdges();
-    *fp << "ARCS " << edge_count << "\n";
+    *fp << "EDGES " << edge_count << "\n";
     for(int edge = 0; edge != edge_count; ++edge)
       {
       *fp << input->GetSourceVertex(edge) << " " << input->GetTargetVertex(edge) << "\n";

@@ -84,7 +84,7 @@ void vtkTreeWriter::WriteData()
   if(!error_occurred)
     {
     const vtkIdType vertex_count = input->GetNumberOfVertices();
-    *fp << "ARCS " << vertex_count << "\n";
+    *fp << "EDGES " << vertex_count << "\n";
     this->WriteEdges(*fp, input, input->GetRoot());
     }
   if (!error_occurred && !this->WriteCellData(fp, input))
