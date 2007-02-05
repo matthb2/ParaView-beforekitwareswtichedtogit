@@ -356,4 +356,5 @@ void vtkReductionFilter::PrintSelf(ostream& os, vtkIndent indent)
   os << indent << "PreGatherHelper: " << this->PreGatherHelper << endl;
   os << indent << "PostGatherHelper: " << this->PostGatherHelper << endl;
   os << indent << "Controller: " << this->Controller << endl;
+  os << indent << "PassThrough: " << this->PassThrough << endl;
 }

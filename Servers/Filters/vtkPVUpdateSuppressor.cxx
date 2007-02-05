@@ -314,4 +314,5 @@ void vtkPVUpdateSuppressor::PrintSelf(ostream& os, vtkIndent indent)
   os << indent << "Enabled: " << this->Enabled << endl;
   os << indent << "CacheSizeKeeper: " << this->CacheSizeKeeper << endl;
   os << indent << "SaveCacheOnCacheUpdate: " << this->SaveCacheOnCacheUpdate << endl;
+  os << indent << "UpdateTime: " << this->UpdateTime << endl;
 }

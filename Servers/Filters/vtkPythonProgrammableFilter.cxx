@@ -198,4 +198,5 @@ void vtkPythonProgrammableFilter::Exec()
 void vtkPythonProgrammableFilter::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os,indent);
+  os << indent << "OutputDataSetType: " << this->OutputDataSetType << endl;
 }

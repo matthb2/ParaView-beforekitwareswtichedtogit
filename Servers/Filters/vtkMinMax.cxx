@@ -351,5 +351,7 @@ void vtkMinMax::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os, indent);
   os << indent << "Operation: " << this->Operation << endl;
+  os << indent << "FirstPasses: " << this->FirstPasses << endl;
+  os << indent << "MismatchOccurred: " << this->MismatchOccurred << endl;
 
 }
