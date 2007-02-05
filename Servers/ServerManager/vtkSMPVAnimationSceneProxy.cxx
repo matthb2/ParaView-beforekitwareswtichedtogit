@@ -299,4 +299,6 @@ void vtkSMPVAnimationSceneProxy::PrintSelf(ostream& os, vtkIndent indent)
   this->Superclass::PrintSelf(os, indent);
   os << indent << "NumberOfFrames: " << this->NumberOfFrames << endl;
   os << indent << "Duration: " << this->Duration << endl;
+  os << indent << "ClockTimeRange: " << this->ClockTimeRange[0]
+    << ", " << this->ClockTimeRange[1] << endl;
 }

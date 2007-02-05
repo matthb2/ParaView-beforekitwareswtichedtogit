@@ -572,10 +572,7 @@ void vtkSMRenderModuleProxy::PerformRender()
     }
 
   vtkRenderWindow *renWindow = this->GetRenderWindow(); 
-
-  this->InvokeEvent(vtkCommand::StartEvent);
   renWindow->Render();
-  this->InvokeEvent(vtkCommand::EndEvent);
 
   if ( this->MeasurePolygonsPerSecond )
     {

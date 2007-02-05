@@ -202,4 +202,5 @@ void vtkSMAnimationSceneWriter::PrintSelf(ostream& os, vtkIndent indent)
   os << indent << "AnimationScene: " << this->AnimationScene << endl;
   os << indent << "FileName: " << 
     (this->FileName? this->FileName : "(null)") << endl;
+  os << indent << "FrameRate: " << this->FrameRate << endl;
 }

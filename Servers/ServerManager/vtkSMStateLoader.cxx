@@ -177,7 +177,7 @@ vtkSMProxy* vtkSMStateLoader::NewProxy(vtkPVXMLElement* root,
 
   if (!root)
     {
-    vtkErrorMacro("No root is defined. Cannot create proxy");
+    vtkErrorMacro("No root is defined. Cannot create proxy with id " << id);
     return 0;
     }
 
