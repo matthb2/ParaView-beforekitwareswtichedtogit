@@ -74,7 +74,7 @@ void vtkRandomLayoutStrategy::SetGraph(vtkAbstractGraph *graph)
           
   // Generate the points, either x,y,0 or x,y,z
   vtkPoints* newPoints = vtkPoints::New();
-  for (int i=0; i< graph->GetNumberOfNodes(); i++)
+  for (int i=0; i< graph->GetNumberOfVertices(); i++)
     {
     double x, y, z, r;
     r = static_cast<double>(rand()) / static_cast<double>(RAND_MAX);

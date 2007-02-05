@@ -199,7 +199,7 @@ void vtkTreeMapViewer::SetRenderWindow(vtkRenderWindow *arg)
 void vtkTreeMapViewer::SetupPipeline()
 {
   // Set various properties
-  this->TreeFieldAggregator->SetLeafNodeUnitSize(false);
+  this->TreeFieldAggregator->SetLeafVertexUnitSize(false);
   this->TreeFieldAggregator->SetMinValue(1.0); // Treat a size of 0 to be a size of 1
   this->TreeFieldAggregator->SetLogScale(true);
    this->SetLayoutStrategy("Box Layout");
