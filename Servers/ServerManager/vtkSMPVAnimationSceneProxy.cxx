@@ -294,6 +294,20 @@ void vtkSMPVAnimationSceneProxy::SetClockTime(double time)
 }
 
 //-----------------------------------------------------------------------------
+void vtkSMPVAnimationSceneProxy::SetFramesPerTimestep(int fpt)
+{
+  vtkPVAnimationScene::SafeDownCast(
+    this->AnimationCue)->SetFramesPerTimestep(fpt);
+}
+
+//-----------------------------------------------------------------------------
+int vtkSMPVAnimationSceneProxy::GetFramesPerTimestep()
+{
+  return vtkPVAnimationScene::SafeDownCast(
+      this->AnimationCue)->GetFramesPerTimestep();
+}
+
+//-----------------------------------------------------------------------------
 void vtkSMPVAnimationSceneProxy::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os, indent);
