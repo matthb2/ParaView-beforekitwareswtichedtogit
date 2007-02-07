@@ -84,7 +84,8 @@ void vtkTransferFunctionEditorWidget1D::ComputeHistogram()
       }
     else
       {
-      accum->SetComponentExtent(0, range[1]-range[0], 0, 0, 0, 0);
+      accum->SetComponentExtent(
+        0, static_cast<int>(range[1]-range[0]), 0, 0, 0, 0);
       accum->SetComponentSpacing(1, 0, 0);
       }
     accum->SetComponentOrigin(range[0], 0, 0);
@@ -105,7 +106,7 @@ void vtkTransferFunctionEditorWidget1D::ComputeHistogram()
       }
     else
       {
-      hist->SetOutputExtent(0, range[1]-range[0]);
+      hist->SetOutputExtent(0, static_cast<int>(range[1]-range[0]));
       hist->SetOutputSpacing(1);
       }
     hist->SetOutputOrigin(range[0]);

@@ -320,7 +320,7 @@ void vtkTransferFunctionEditorRepresentationSimple1D::SetHandleDisplayPosition(
 void vtkTransferFunctionEditorRepresentationSimple1D::RemoveHandle(
   unsigned int id)
 {
-  if (id < 0 || id > this->Handles->size()-1)
+  if (id > this->Handles->size()-1)
     {
     return;
     }
