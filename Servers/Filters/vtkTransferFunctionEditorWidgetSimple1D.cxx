@@ -265,7 +265,7 @@ vtkHandleWidget* vtkTransferFunctionEditorWidgetSimple1D::CreateHandleWidget(
 
   // Now place the widget into the list of handle widgets.
   vtkNodeListIterator niter;
-  int i = 0;
+  unsigned int i = 0;
   for (niter = self->Nodes->begin(); niter != self->Nodes->end();
        niter++, i++)
     {

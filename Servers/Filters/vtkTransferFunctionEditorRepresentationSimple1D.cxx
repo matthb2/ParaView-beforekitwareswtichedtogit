@@ -326,7 +326,7 @@ void vtkTransferFunctionEditorRepresentationSimple1D::RemoveHandle(
     }
 
   vtkHandleListIterator iter;
-  int i = 0;
+  unsigned int i = 0;
   for (iter = this->Handles->begin(); iter != this->Handles->end();
        iter++, i++)
     {
