@@ -1159,6 +1159,10 @@ void vtkSMRenderModuleProxy::SynchronizeRenderers()
 //-----------------------------------------------------------------------------
 void vtkSMRenderModuleProxy::SynchronizeCameraProperties()
 {
+  if (!this->ObjectsCreated)
+    {
+    return;
+    }
   this->ActiveCameraProxy->UpdatePropertyInformation();
   vtkSMPropertyIterator* iter = this->ActiveCameraProxy->NewPropertyIterator();
   for (iter->Begin(); !iter->IsAtEnd(); iter->Next())
