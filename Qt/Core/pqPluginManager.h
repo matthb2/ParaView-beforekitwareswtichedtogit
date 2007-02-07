@@ -30,59 +30,45 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 =========================================================================*/
 
-// this include
-#include "pqObjectPanelLoader.h"
+#ifndef _pqPluginManager_h
+#define _pqPluginManager_h
 
-// Qt includes
-#include <QPluginLoader>
+#include <QObject>
+#include "pqCoreExport.h"
 
-// ParaView includes
-#include "pqObjectPanelInterface.h"
+class pqServer;
 
-//-----------------------------------------------------------------------------
-/// constructor
-pqObjectPanelLoader::pqObjectPanelLoader(QObject* p)
-  : QObject(p)
+/// plugin loader takes care of loading plugins
+/// containing GUI extensions and server manager extensions
+class PQCORE_EXPORT pqPluginManager : public QObject
 {
-  // for now, we only support static plugins 
-  // (plugins built into the application)
-  QObjectList plugins = QPluginLoader::staticInstances();
-  foreach(QObject* o, plugins)
-    {
-    pqObjectPanelInterface* i = qobject_cast<pqObjectPanelInterface*>(o);
-    if(i)
-      {
-      this->PanelPlugins.append(i);
-      }
-    }
-}
+  Q_OBJECT
+public:
+  pqPluginManager(QObject* p = 0);
+  ~pqPluginManager();
 
-//-----------------------------------------------------------------------------
-/// destructor
-pqObjectPanelLoader::~pqObjectPanelLoader()
-{
-}
+  /// attempt to load a plugin
+  /// return true on success
+  bool loadPlugin(pqServer* server, const QString& lib);
+
+  /// return all interfaces that have been loaded
+  QObjectList interfaces();
   
-pqObjectPanel* pqObjectPanelLoader::createPanel(pqProxy* proxy, QWidget* p)
-{
-  foreach(pqObjectPanelInterface* i, this->PanelPlugins)
-    {
-    if (i->canCreatePanel(proxy))
-      {
-      return i->createPanel(proxy, p);
-      }
-    }
-  return NULL;
-}
+signals:
+  /// signal for when an interface is loaded
+  void guiInterfaceLoaded(QObject* iface);
+  
+  /// signal for when some GUI XML is loaded
+  /// which can be used to add new readers/writers to the file dialog, etc..
+  void guiXMLLoaded(const QString& xml);
 
-QStringList pqObjectPanelLoader::availableWidgets() const
-{
-  QStringList names;
-  foreach(pqObjectPanelInterface* i, this->PanelPlugins)
-    {
-    names.append(i->name());
-    }
-  return names;
-}
+  /// notification that new extensions were added to the server manager
+  void serverManagerExtensionLoaded();
 
+private:
+
+  QObjectList Interfaces;
+};
+
+#endif
 

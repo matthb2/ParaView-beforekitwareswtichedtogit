@@ -30,38 +30,23 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 =========================================================================*/
 
-#ifndef _pqObjectPanelLoader_h
-#define _pqObjectPanelLoader_h
+#ifndef _pqPlugin_h
+#define _pqPlugin_h
 
-#include <QObject>
-#include <QStringList>
-#include "pqComponentsExport.h"
-class pqObjectPanelInterface;
-class pqObjectPanel;
-class pqProxy;
+#include <QObjectList>
 
-/// loader class that creates panels from plugins
-/// for now, it only supports static plugins
-class PQCOMPONENTS_EXPORT pqObjectPanelLoader : public QObject
+/// the main plugin interface for GUI extensions
+/// one instance of this resides in the plugin
+class pqPlugin
 {
-  Q_OBJECT
 public:
-  /// constructor
-  pqObjectPanelLoader(QObject* p=0);
   /// destructor
-  ~pqObjectPanelLoader();
+  virtual ~pqPlugin() {}
 
-  /// create a widget from a plugin
-  pqObjectPanel* createPanel(pqProxy* proxy,
-                              QWidget* parent = 0);
-
-  QStringList availableWidgets() const;
-
-private:
-  QList<pqObjectPanelInterface*> PanelPlugins;
-
+  virtual QObjectList interfaces() = 0;
 };
 
-#endif
+Q_DECLARE_INTERFACE(pqPlugin, "com.kitware/paraview/plugin")
 
+#endif
 
