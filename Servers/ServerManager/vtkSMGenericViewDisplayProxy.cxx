@@ -305,45 +305,6 @@ void vtkSMGenericViewDisplayProxy::SetInput(vtkSMProxy* sinput)
 }
 
 //-----------------------------------------------------------------------------
-void vtkSMGenericViewDisplayProxy::SetupCollectionFilter(
-  vtkSMProxy* collectProxy)
-{ 
-  vtkProcessModule* pm = vtkProcessModule::GetProcessModule();
-
-  int i, num;
-
-  vtkClientServerStream stream;
-
-  num = collectProxy->GetNumberOfIDs();
-  for (i = 0; i < num; ++i)
-    {
-    stream
-      << vtkClientServerStream::Invoke
-      << collectProxy->GetID(i) << "SetMoveModeToCollect"
-      << vtkClientServerStream::End;
-    stream
-      << vtkClientServerStream::Invoke
-      << collectProxy->GetID(i) << "SetServerToDataServer"
-      << vtkClientServerStream::End;
-    int mask = ~vtkProcessModule::CLIENT;
-    pm->SendStream(this->ConnectionID,
-                   collectProxy->GetServers() & mask,
-                   stream);
-    stream
-      << vtkClientServerStream::Invoke
-      << collectProxy->GetID(i) << "SetMoveModeToCollect"
-      << vtkClientServerStream::End;
-    stream
-      << vtkClientServerStream::Invoke
-      << collectProxy->GetID(i) << "SetServerToClient"
-      << vtkClientServerStream::End;
-    pm->SendStream(this->ConnectionID,
-                   vtkProcessModule::CLIENT,
-                   stream);
-    }
-}
-
-//-----------------------------------------------------------------------------
 void vtkSMGenericViewDisplayProxy::Update(vtkSMAbstractViewModuleProxy* view)
 {
   this->UpdateSuppressorProxy->InvokeCommand("ForceUpdate");
