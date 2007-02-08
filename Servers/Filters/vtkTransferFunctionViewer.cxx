@@ -292,7 +292,7 @@ void vtkTransferFunctionViewer::SetTransferFunctionEditorType(int type)
       int *size = this->RenderWindow->GetSize();
       if (size[0] == 0 && size[1] == 0)
         {
-        size[0] = size[0] = 300;
+        size[0] = size[1] = 300;
         }
       rep->SetDisplaySize(size);
       }
