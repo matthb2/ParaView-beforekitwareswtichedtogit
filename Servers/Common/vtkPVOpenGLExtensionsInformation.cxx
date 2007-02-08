@@ -72,8 +72,8 @@ void vtkPVOpenGLExtensionsInformation::CopyFromObject(vtkObject* obj)
   // If we are using Mesa and offscreen rendering, pretend no
   // extensions are supported. Although this is not necessarily true,
   // it is acceptable to disable extensions when using software rendering.
-  vtkPVOptions* options = pm->GetOptions();
 #ifdef VTK_OPENGL_HAS_OSMESA
+  vtkPVOptions* options = pm->GetOptions();
   if (options->GetUseOffscreenRendering())
     {
     return;
