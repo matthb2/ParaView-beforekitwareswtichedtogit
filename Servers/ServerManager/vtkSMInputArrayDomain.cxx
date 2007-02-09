@@ -257,6 +257,11 @@ int vtkSMInputArrayDomain::ReadXMLAttributes(
       this->SetAttributeType(
         static_cast<unsigned char>(vtkSMInputArrayDomain::POINT));
       }
+    else if (strcmp(attribute_type, "any") == 0)
+      {
+      this->SetAttributeType(
+        static_cast<unsigned char>(vtkSMInputArrayDomain::ANY));
+      }
     else
       {
       vtkErrorMacro("Unrecognize attribute type.");
