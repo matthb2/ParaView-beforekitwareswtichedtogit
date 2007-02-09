@@ -531,4 +531,5 @@ int vtkSMSourceProxy::LoadRevivalState(vtkPVXMLElement* revivalElem,
 void vtkSMSourceProxy::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os, indent);
+  os << indent << "DataInformationValid: " << this->DataInformationValid << endl;
 }
