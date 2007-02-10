@@ -688,7 +688,7 @@ void vtkImageViewer2::Render()
 }
 
 //----------------------------------------------------------------------------
-char* vtkImageViewer2::GetWindowName() 
+const char* vtkImageViewer2::GetWindowName() 
 {
   return this->RenderWindow->GetWindowName();
 }
