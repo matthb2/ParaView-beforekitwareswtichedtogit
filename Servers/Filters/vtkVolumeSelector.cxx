@@ -19,7 +19,7 @@
 #include "vtkCompositeDataPipeline.h"
 #include "vtkDataSet.h"
 #include "vtkExecutive.h"
-#include "vtkFrustumExtractor.h"
+#include "vtkExtractSelectedFrustum.h"
 #include "vtkIdTypeArray.h"
 #include "vtkInformation.h"
 #include "vtkInformationVector.h"
@@ -48,7 +48,7 @@ struct vtkVolumeSelectorInternals
 //----------------------------------------------------------------------------
 vtkVolumeSelector::vtkVolumeSelector()
 {
-  this->AtomExtractor = vtkFrustumExtractor::New();
+  this->AtomExtractor = vtkExtractSelectedFrustum::New();
   this->AtomExtractor->SetPassThrough(1);
   // Make sure that the extractor filter has the right executive and
   // that it requests the right piece and number of pieces.

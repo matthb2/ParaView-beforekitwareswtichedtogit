@@ -34,7 +34,6 @@
 #include "vtkPlanes.h"
 #include "vtkPlane.h"
 #include "vtkPoints.h"
-#include "vtkFrustumExtractor.h"
 
 vtkCxxRevisionMacro(vtkRenderedAreaPicker, "$Revision$");
 vtkStandardNewMacro(vtkRenderedAreaPicker);
