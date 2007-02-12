@@ -25,7 +25,7 @@
 #include "vtkExtractSelectedIds.h"
 #include "vtkExtractSelectedFrustum.h"
 #include "vtkExtractSelectedPoints.h"
-#include "vtkExtractSelectedThreshold.h"
+#include "vtkExtractSelectedThresholds.h"
 
 vtkCxxRevisionMacro(vtkExtractSelection, "$Revision$");
 vtkStandardNewMacro(vtkExtractSelection);
@@ -37,7 +37,7 @@ vtkExtractSelection::vtkExtractSelection()
   this->IdsFilter = vtkExtractSelectedIds::New();
   this->FrustumFilter = vtkExtractSelectedFrustum::New();
   this->PointsFilter = vtkExtractSelectedPoints::New();
-  this->ThresholdsFilter = vtkExtractSelectedThreshold::New();
+  this->ThresholdsFilter = vtkExtractSelectedThresholds::New();
 }
 
 //----------------------------------------------------------------------------

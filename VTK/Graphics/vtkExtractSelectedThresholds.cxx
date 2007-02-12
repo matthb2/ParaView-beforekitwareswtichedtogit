@@ -12,7 +12,7 @@
      PURPOSE.  See the above copyright notice for more information.
 
 =========================================================================*/
-#include "vtkExtractSelectedThreshold.h"
+#include "vtkExtractSelectedThresholds.h"
 
 #include "vtkDataSet.h"
 #include "vtkThreshold.h"
@@ -27,24 +27,24 @@
 #include "vtkCellData.h"
 #include "vtkDoubleArray.h"
 
-vtkCxxRevisionMacro(vtkExtractSelectedThreshold, "$Revision$");
-vtkStandardNewMacro(vtkExtractSelectedThreshold);
+vtkCxxRevisionMacro(vtkExtractSelectedThresholds, "$Revision$");
+vtkStandardNewMacro(vtkExtractSelectedThresholds);
 
 //----------------------------------------------------------------------------
-vtkExtractSelectedThreshold::vtkExtractSelectedThreshold()
+vtkExtractSelectedThresholds::vtkExtractSelectedThresholds()
 {
   this->SetNumberOfInputPorts(2);
   this->ThresholdFilter = vtkThreshold::New();
 }
 
 //----------------------------------------------------------------------------
-vtkExtractSelectedThreshold::~vtkExtractSelectedThreshold()
+vtkExtractSelectedThresholds::~vtkExtractSelectedThresholds()
 {
   this->ThresholdFilter->Delete();
 }
 
 //----------------------------------------------------------------------------
-int vtkExtractSelectedThreshold::RequestData(
+int vtkExtractSelectedThresholds::RequestData(
   vtkInformation *vtkNotUsed(request),
   vtkInformationVector **inputVector,
   vtkInformationVector *outputVector)
@@ -132,14 +132,14 @@ int vtkExtractSelectedThreshold::RequestData(
 }
 
 //----------------------------------------------------------------------------
-void vtkExtractSelectedThreshold::PrintSelf(ostream& os, vtkIndent indent)
+void vtkExtractSelectedThresholds::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os,indent);
 
 }
 
 //----------------------------------------------------------------------------
-int vtkExtractSelectedThreshold::FillInputPortInformation(
+int vtkExtractSelectedThresholds::FillInputPortInformation(
   int port, vtkInformation* info)
 {
   if (port==0)
