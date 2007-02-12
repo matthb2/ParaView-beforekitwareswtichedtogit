@@ -2687,7 +2687,8 @@ int vtkExodusReader::RequestData(
     double *requestedTimeSteps = 
       outInfo->Get(vtkStreamingDemandDrivenPipeline::UPDATE_TIME_STEPS());
     
-    // find the closest time step
+    // find the first time value larger than requested time value
+    // this logic could be improved
     int cnt = 0;
     while (cnt < tsLength-1 && steps[cnt] < requestedTimeSteps[0])
       {
