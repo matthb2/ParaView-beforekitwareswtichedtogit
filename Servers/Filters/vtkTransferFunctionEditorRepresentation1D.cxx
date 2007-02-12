@@ -14,9 +14,9 @@
 =========================================================================*/
 #include "vtkTransferFunctionEditorRepresentation1D.h"
 
-#include "vtkDoubleArray.h"
 #include "vtkImageData.h"
 #include "vtkImageMapper.h"
+#include "vtkIntArray.h"
 #include "vtkMath.h"
 #include "vtkPointData.h"
 #include "vtkUnsignedCharArray.h"
@@ -24,7 +24,7 @@
 vtkCxxRevisionMacro(vtkTransferFunctionEditorRepresentation1D, "$Revision$");
 
 vtkCxxSetObjectMacro(vtkTransferFunctionEditorRepresentation1D, Histogram,
-                     vtkDoubleArray);
+                     vtkIntArray);
 
 //----------------------------------------------------------------------------
 vtkTransferFunctionEditorRepresentation1D::vtkTransferFunctionEditorRepresentation1D()
@@ -99,8 +99,9 @@ void vtkTransferFunctionEditorRepresentation1D::UpdateHistogramImage()
       }
     else
       {
-      height = vtkMath::Floor(log(this->Histogram->GetValue(histogramIdx)) *
-                              this->DisplaySize[1] / logRange);
+      height = vtkMath::Floor(
+        log((double)(this->Histogram->GetValue(histogramIdx))) *
+        this->DisplaySize[1] / logRange);
       }
 
     for (j = 0; j < height; j++)
