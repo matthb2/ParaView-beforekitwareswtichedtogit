@@ -71,7 +71,7 @@ int vtkExtractSelectedThresholds::RequestData(
   vtkDebugMacro(<< "Extracting from dataset");
 
   if (!sel->GetProperties()->Has(vtkSelection::CONTENT_TYPE()) ||
-      sel->GetProperties()->Get(vtkSelection::CONTENT_TYPE()) != vtkSelection::THRESHOLD)
+      sel->GetProperties()->Get(vtkSelection::CONTENT_TYPE()) != vtkSelection::THRESHOLDS)
     {
     return 1;
     }

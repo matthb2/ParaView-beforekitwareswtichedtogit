@@ -96,7 +96,7 @@ int vtkExtractSelection::RequestData(
     {
     return this->ExtractPoints(sel, input, output);
     }
-    case vtkSelection::THRESHOLD:
+    case vtkSelection::THRESHOLDS:
     {
     return this->ExtractThresholds(sel, input, output);
     }
