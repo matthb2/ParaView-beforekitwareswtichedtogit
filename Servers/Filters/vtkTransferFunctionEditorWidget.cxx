@@ -249,6 +249,17 @@ void vtkTransferFunctionEditorWidget::InputModified()
 }
 
 //----------------------------------------------------------------------------
+void vtkTransferFunctionEditorWidget::SetEnabled(int enable)
+{
+  this->Superclass::SetEnabled(enable);
+
+  if (enable)
+    {
+    this->ComputeHistogram();
+    }
+}
+
+//----------------------------------------------------------------------------
 void vtkTransferFunctionEditorWidget::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os, indent);
