@@ -29,8 +29,8 @@ vtkCxxRevisionMacro(vtkSMPluginLoader, "$Revision$");
 #define C_DECL
 #endif
 
-typedef const char* C_DECL (*PluginXML)();
-typedef void C_DECL (*PluginInit)(vtkClientServerInterpreter*);
+typedef const char* (C_DECL *PluginXML)();
+typedef void (C_DECL *PluginInit)(vtkClientServerInterpreter*);
 
 
 //-----------------------------------------------------------------------------
