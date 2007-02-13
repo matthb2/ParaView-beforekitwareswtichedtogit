@@ -22,6 +22,17 @@
 vtkStandardNewMacro(vtkSMPluginLoader);
 vtkCxxRevisionMacro(vtkSMPluginLoader, "$Revision$");
 
+#ifdef _WIN32
+// __cdecl gives an unmangled name
+#define C_DECL __cdecl
+#else
+#define C_DECL
+#endif
+
+typedef const char* C_DECL (*PluginXML)();
+typedef void C_DECL (*PluginInit)(vtkClientServerInterpreter*);
+
+
 //-----------------------------------------------------------------------------
 vtkSMPluginLoader::vtkSMPluginLoader()
 {
@@ -47,9 +58,6 @@ void vtkSMPluginLoader::SetFileName(const char* file)
     return;
     }
   
-  typedef const char* (*PluginXML)();
-  typedef void (*PluginInit)(vtkClientServerInterpreter*);
-
   if(this->FileName)
     {
     delete [] this->FileName;
