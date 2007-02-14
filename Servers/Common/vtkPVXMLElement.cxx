@@ -309,7 +309,7 @@ char* vtkPVXMLElement::GetSanitizedAttribute(const char* name)
             ptr++;
             }    
           }       
-        char *retval = new char[strlen(sanitized.c_str())];
+        char *retval = new char[strlen(sanitized.c_str())+1];
         strcpy(retval, sanitized.c_str());
         return retval;
         }
