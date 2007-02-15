@@ -184,7 +184,7 @@ void vtkSMNumberOfGroupsDomain::Update(vtkSMProxyProperty *pp)
       this->AddMinimum(0, 0);
       if (cInfo)
         {
-        this->AddMaximum(0, cInfo->GetNumberOfGroups());
+        this->AddMaximum(0, cInfo->GetNumberOfGroups()-1);
         }
       else
         {
