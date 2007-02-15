@@ -88,7 +88,7 @@ void vtkTransferFunctionEditorRepresentation1D::UpdateHistogramImage()
     }
   else
     {
-    numBins = this->ScalarBinRange[1] - this->ScalarBinRange[0] + 1;
+    numBins = this->ScalarBinRange[1] - this->ScalarBinRange[0];
     minBinIdx = this->ScalarBinRange[0];
     }
 
