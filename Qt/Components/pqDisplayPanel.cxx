@@ -29,60 +29,32 @@ NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 =========================================================================*/
-#ifndef _pqDisplayProxyEditor_h
-#define _pqDisplayProxyEditor_h
 
-#include <QWidget>
-#include <QList>
-#include <QVariant>
 #include "pqDisplayPanel.h"
 
-class pqDisplayProxyEditorInternal;
-class pqPipelineDisplay;
-
-/// Widget which provides an editor for the properties of a display.
-class PQCOMPONENTS_EXPORT pqDisplayProxyEditor : public pqDisplayPanel
+pqDisplayPanel::pqDisplayPanel(pqDisplay* display, QWidget* p)
+  : QWidget(p), Display(display)
 {
-  Q_OBJECT
+}
+
+pqDisplayPanel::~pqDisplayPanel()
+{
+}
   
-  // property adaptor for specular lighting
-  Q_PROPERTY(QVariant specularColor READ specularColor 
-                                    WRITE setSpecularColor)
-public:
-  /// constructor
-  pqDisplayProxyEditor(pqPipelineDisplay* display, QWidget* p = NULL);
-  /// destructor
-  ~pqDisplayProxyEditor();
+pqDisplay* pqDisplayPanel::getDisplay()
+{
+  return this->Display;
+}
 
-  /// TODO: get rid of this function once the server manager can
-  /// inform us of display property changes
-  void reloadGUI();
+void pqDisplayPanel::reloadGUI()
+{
+}
 
-signals:
-  void specularColorChanged();
-
-protected slots:
-  /// internally used to update the graphics window when a property changes
-  void updateView();
-  void openColorMapEditor();
-  void zoomToData();
-  void updateEnableState();
-  void updateMaterial(int idx);
-  
-protected:
-
-  /// Set the display whose properties we want to edit.
-  void setDisplay(pqPipelineDisplay* display);
-
-  pqDisplayProxyEditorInternal* Internal;
-  void setupGUIConnections();
-  
-  QVariant specularColor() const;
-  void setSpecularColor(QVariant);
-
-private:
-  bool DisableSlots;
-};
-
-#endif
+void pqDisplayPanel::updateAllViews()
+{
+  if (this->Display)
+    {
+    this->Display->renderAllViews();
+    }
+}
 

@@ -29,59 +29,39 @@ NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 =========================================================================*/
-#ifndef _pqDisplayProxyEditor_h
-#define _pqDisplayProxyEditor_h
+#ifndef _pqDisplayPanel_h
+#define _pqDisplayPanel_h
 
 #include <QWidget>
-#include <QList>
-#include <QVariant>
-#include "pqDisplayPanel.h"
+#include <QPointer>
+#include "pqComponentsExport.h"
+#include "pqDisplay.h"
 
-class pqDisplayProxyEditorInternal;
-class pqPipelineDisplay;
 
 /// Widget which provides an editor for the properties of a display.
-class PQCOMPONENTS_EXPORT pqDisplayProxyEditor : public pqDisplayPanel
+class PQCOMPONENTS_EXPORT pqDisplayPanel : public QWidget
 {
   Q_OBJECT
-  
-  // property adaptor for specular lighting
-  Q_PROPERTY(QVariant specularColor READ specularColor 
-                                    WRITE setSpecularColor)
 public:
   /// constructor
-  pqDisplayProxyEditor(pqPipelineDisplay* display, QWidget* p = NULL);
+  pqDisplayPanel(pqDisplay* display, QWidget* p = NULL);
   /// destructor
-  ~pqDisplayProxyEditor();
+  ~pqDisplayPanel();
 
+  /// get the proxy for which properties are displayed
+  pqDisplay* getDisplay();
+
+public slots:
   /// TODO: get rid of this function once the server manager can
   /// inform us of display property changes
-  void reloadGUI();
-
-signals:
-  void specularColorChanged();
-
-protected slots:
-  /// internally used to update the graphics window when a property changes
-  void updateView();
-  void openColorMapEditor();
-  void zoomToData();
-  void updateEnableState();
-  void updateMaterial(int idx);
+  virtual void reloadGUI();
   
+  /// Requests update on all views the
+  /// display is visible in.
+  virtual void updateAllViews();
+
 protected:
-
-  /// Set the display whose properties we want to edit.
-  void setDisplay(pqPipelineDisplay* display);
-
-  pqDisplayProxyEditorInternal* Internal;
-  void setupGUIConnections();
-  
-  QVariant specularColor() const;
-  void setSpecularColor(QVariant);
-
-private:
-  bool DisableSlots;
+  QPointer<pqDisplay> Display;
 };
 
 #endif

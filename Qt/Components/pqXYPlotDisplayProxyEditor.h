@@ -32,38 +32,26 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #ifndef __pqXYPlotDisplayProxyEditor_h
 #define __pqXYPlotDisplayProxyEditor_h
 
-#include <QWidget>
-#include "pqComponentsExport.h"
+#include "pqDisplayPanel.h"
 
 class pqDisplay;
 class QTreeWidgetItem;
 
 /// Editor widget for XY plot displays.
-class PQCOMPONENTS_EXPORT pqXYPlotDisplayProxyEditor : public QWidget
+class PQCOMPONENTS_EXPORT pqXYPlotDisplayProxyEditor : public pqDisplayPanel
 {
   Q_OBJECT
 public:
-  pqXYPlotDisplayProxyEditor(QWidget* parent=0);
+  pqXYPlotDisplayProxyEditor(pqDisplay* display, QWidget* parent=0);
   virtual ~pqXYPlotDisplayProxyEditor();
 
-  /// Get the display whose properties this editor is editing.
-  pqDisplay* getDisplay();
-
 public slots:
-
-  /// Set the display whose properties this editor is editing.
-  /// This call will raise an error is the display is not
-  /// a XYPlotDisplay2 proxy.
-  void setDisplay(pqDisplay* display);
 
   /// Forces a reload of the GUI elements that depend on
   /// the display proxy.
   void reloadGUI();
 
 protected slots:
-  /// Called to render all views in which this display is visible.
-  void updateAllViews();
-
   void updateXArrayNameEnableState();
 
   void yArraySelectionChanged();
@@ -71,6 +59,13 @@ protected slots:
   /// Slot to listen to clicks for changing color.
   void onItemClicked(QTreeWidgetItem* item, int column);
 private:
+  
+  /// Set the display whose properties this editor is editing.
+  /// This call will raise an error is the display is not
+  /// a XYPlotDisplay2 proxy.
+  void setDisplay(pqDisplay* display);
+
+
   pqXYPlotDisplayProxyEditor(const pqXYPlotDisplayProxyEditor&); // Not implemented.
   void operator=(const pqXYPlotDisplayProxyEditor&); // Not implemented.
 
