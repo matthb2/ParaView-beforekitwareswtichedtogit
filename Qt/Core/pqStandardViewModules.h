@@ -29,42 +29,50 @@ NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 =========================================================================*/
-#include "pqAnimationSceneImageWriter.h"
 
-#include "vtkObjectFactory.h"
-#include "vtkSMAbstractViewModuleProxy.h"
+#ifndef _pqStandardViewModules_h
+#define _pqStandardViewModules_h
 
-#include "pqApplicationCore.h"
-#include "pqServerManagerModel.h"
-#include "pqGenericViewModule.h"
+#include "pqCoreExport.h"
+#include "pqViewModuleInterface.h"
+#include <QObject>
 
-vtkStandardNewMacro(pqAnimationSceneImageWriter);
-vtkCxxRevisionMacro(pqAnimationSceneImageWriter, "$Revision$");
-//-----------------------------------------------------------------------------
-pqAnimationSceneImageWriter::pqAnimationSceneImageWriter()
+/// interface class for plugins that create view modules
+class PQCORE_EXPORT pqStandardViewModules : public QObject, 
+                                                 public pqViewModuleInterface
 {
-}
+  Q_OBJECT
+  Q_INTERFACES(pqViewModuleInterface)
+public:
+  
+  pqStandardViewModules(QObject* o);
+  ~pqStandardViewModules();
 
-//-----------------------------------------------------------------------------
-pqAnimationSceneImageWriter::~pqAnimationSceneImageWriter()
-{
-}
+  QStringList viewTypes() const;
+  QStringList viewModuleTypes() const;
+  QStringList displayTypes() const;
+  QString viewTypeName(const QString&) const;
 
-//-----------------------------------------------------------------------------
-vtkImageData* pqAnimationSceneImageWriter::CaptureViewImage(
-    vtkSMAbstractViewModuleProxy* view, int magnification)
-{
-  pqApplicationCore* core = pqApplicationCore::instance();
-  pqServerManagerModel* smmodel = core->getServerManagerModel();
+  bool canCreateView(const QString& viewtype) const;
+  
+  vtkSMProxy* createViewProxy(const QString& viewtype);
 
-  pqGenericViewModule* pq_view = qobject_cast<pqGenericViewModule*>(
-    smmodel->getPQProxy(view));
+  pqGenericViewModule* createView(const QString& viewtype,
+    const QString& group,
+    const QString& name,
+    vtkSMAbstractViewModuleProxy* viewmodule,
+    pqServer* server,
+    QObject* parent);
+  
+  pqConsumerDisplay* createDisplay(const QString& display_type, 
+    const QString& group,
+    const QString& name,
+    vtkSMProxy* proxy,
+    pqServer* server,
+    QObject* parent);
 
-  return pq_view->captureImage(magnification);
-}
+  QString name() const;
+};
 
-//-----------------------------------------------------------------------------
-void pqAnimationSceneImageWriter::PrintSelf(ostream& os, vtkIndent indent)
-{
-  this->Superclass::PrintSelf(os, indent);
-}
+#endif
+

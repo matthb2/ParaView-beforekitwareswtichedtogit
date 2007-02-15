@@ -59,6 +59,13 @@ public:
   /// return all the plugins loaded on a server
   QStringList loadedPlugins(pqServer*);
 
+  /// add an extra interface.
+  /// these interfaces are appended to the ones loaded from plugins
+  void addInterface(QObject* iface);
+  
+  /// remove an extra interface
+  void removeInterface(QObject* iface);
+
 signals:
   /// signal for when an interface is loaded
   void guiInterfaceLoaded(QObject* iface);
@@ -74,6 +81,7 @@ private:
 
   QObjectList Interfaces;
   QMultiMap<pqServer*, QString> Plugins;
+  QObjectList ExtraInterfaces;
 };
 
 #endif
