@@ -79,16 +79,22 @@ void vtkSMPluginLoader::SetFileName(const char* file)
         (PluginXML)vtkDynamicLoader::GetSymbolAddress(lib, "ParaViewPluginXML");
       PluginInit init = 
         (PluginInit)vtkDynamicLoader::GetSymbolAddress(lib, "ParaViewPluginInit");
-      if(xml && init)
+      if(xml || init)
         {
         this->Loaded = 1;
-        (*init)(vtkProcessModule::GetProcessModule()->GetInterpreter());
-        const char* xmlString = (*xml)();
-        if(xmlString)
+        if(init)
           {
-          size_t len = strlen(xmlString);
-          this->ServerManagerXML = new char[len+1];
-          strcpy(this->ServerManagerXML, xmlString);
+          (*init)(vtkProcessModule::GetProcessModule()->GetInterpreter());
+          }
+        if(xml)
+          {
+          const char* xmlString = (*xml)();
+          if(xmlString)
+            {
+            size_t len = strlen(xmlString);
+            this->ServerManagerXML = new char[len+1];
+            strcpy(this->ServerManagerXML, xmlString);
+            }
           }
         this->Modified();
         }
