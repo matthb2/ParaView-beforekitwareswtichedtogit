@@ -134,6 +134,10 @@ void vtkSMGenericViewDisplayProxy::SetReductionType(int type)
     classname = 0;
     break;
 
+  case RECTILINEAR_GRID_APPEND:
+    classname = "vtkAppendRectilinearGrid";
+    break;
+
   default:
     vtkErrorMacro("Unknown reduction type: " << type);
     return;
