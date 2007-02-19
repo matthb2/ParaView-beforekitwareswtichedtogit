@@ -167,6 +167,7 @@ void vtkInteractorStyleTransferFunctionEditor::OnChar()
         {
         rep->BuildRepresentation();
         }
+      this->InvokeEvent(vtkCommand::InteractionEvent, NULL);
       }
       break;
       
