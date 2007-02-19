@@ -19,6 +19,8 @@
 #include "vtkGraphIdList.h"
 #include "vtkIdList.h"
 #include "vtkIdTypeArray.h"
+#include "vtkInformation.h"
+#include "vtkInformationVector.h"
 #include "vtkLine.h"
 #include "vtkVertexLinks.h"
 #include "vtkPointData.h"
@@ -178,4 +180,15 @@ void vtkAbstractGraph::GetPointCells(vtkIdType ptId, vtkIdList* cellIds)
     }
 }
 
+//----------------------------------------------------------------------------
+vtkAbstractGraph* vtkAbstractGraph::GetData(vtkInformation* info)
+{
+  return info? vtkAbstractGraph::SafeDownCast(info->Get(DATA_OBJECT())) : 0;
+}
+
+//----------------------------------------------------------------------------
+vtkAbstractGraph* vtkAbstractGraph::GetData(vtkInformationVector* v, int i)
+{
+  return vtkAbstractGraph::GetData(v->GetInformationObject(i));
+}
 

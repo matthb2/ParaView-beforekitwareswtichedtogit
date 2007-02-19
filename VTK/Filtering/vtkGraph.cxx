@@ -328,6 +328,22 @@ void vtkGraph::DeepCopy(vtkDataObject *dataObject)
 }
 
 //----------------------------------------------------------------------------
+void vtkGraph::CopyStructure(vtkDataSet* ds)
+{
+  vtkGraph* graph = vtkGraph::SafeDownCast(ds);
+
+  if (graph != NULL)
+    {
+    this->Edges->DeepCopy(graph->Edges);
+    this->VertexLinks->DeepCopy(graph->VertexLinks);
+    this->Directed = graph->Directed;
+    }
+
+  // Do superclass
+  this->Superclass::CopyStructure(ds);
+}
+
+//----------------------------------------------------------------------------
 vtkIdType vtkGraph::AddVertex()
 {
   return this->VertexLinks->AddVertex();
