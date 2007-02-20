@@ -50,6 +50,13 @@ void vtkSMKeyFrameProxy::UpdateValue(double vtkNotUsed(currenttime),
 }
 
 //----------------------------------------------------------------------------
+void vtkSMKeyFrameProxy::RemoveAllKeyValues()
+{
+  this->Internals->KeyValues.clear();
+  this->Modified();
+}
+
+//----------------------------------------------------------------------------
 void vtkSMKeyFrameProxy::SetKeyValue(unsigned int index, double value)
 {
   if (index >= this->GetNumberOfKeyValues())
