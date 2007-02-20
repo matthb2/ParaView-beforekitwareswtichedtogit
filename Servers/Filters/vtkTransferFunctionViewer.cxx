@@ -455,6 +455,16 @@ void vtkTransferFunctionViewer::SetElementHSVColor(
 }
 
 //----------------------------------------------------------------------------
+void vtkTransferFunctionViewer::SetElementScalar(
+  unsigned int idx, double scalar)
+{
+  if (this->EditorWidget)
+    {
+    this->EditorWidget->SetElementScalar(idx, scalar);
+    }
+}
+
+//----------------------------------------------------------------------------
 void vtkTransferFunctionViewer::SetColorSpace(int space)
 {
   if (this->EditorWidget)
