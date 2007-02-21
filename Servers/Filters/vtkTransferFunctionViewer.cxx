@@ -261,8 +261,8 @@ void vtkTransferFunctionViewer::Render()
   if (this->EditorWidget && this->EditorWidget->GetRepresentation())
     {
     if (this->Histogram &&
-        this->Histogram->GetMTime() > this->HistogramMTime ||
-        !this->EditorWidget->GetHistogram())
+        (this->Histogram->GetMTime() > this->HistogramMTime ||
+        !this->EditorWidget->GetHistogram()))
       {
       this->EditorWidget->SetHistogram(this->Histogram);
       vtkDataArray *hist = this->Histogram->GetXCoordinates();
