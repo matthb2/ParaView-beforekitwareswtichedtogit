@@ -186,6 +186,8 @@ void vtkTransferFunctionViewer::SetTransferFunctionEditorType(int type)
     this->EditorWidget->SetInteractor(this->Interactor);
     this->EditorWidget->SetDefaultRenderer(this->Renderer);
     this->EditorWidget->SetEnabled(1);
+    this->EditorWidget->AddObserver(vtkCommand::PickEvent,
+                                    this->EventForwarder);
     vtkTransferFunctionEditorRepresentation *rep =
       vtkTransferFunctionEditorRepresentation::SafeDownCast(
         this->EditorWidget->GetRepresentation());
