@@ -110,7 +110,7 @@ public:
   vtkXdmfReaderGrid() : XMGrid(0), DataDescription(0) {}
   ~vtkXdmfReaderGrid()
     {
-    ///// delete this->XMGrid;
+    delete this->XMGrid;
     }
 
   XdmfGrid       *XMGrid;
