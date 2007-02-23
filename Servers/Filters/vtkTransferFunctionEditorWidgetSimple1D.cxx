@@ -21,6 +21,7 @@
 #include "vtkMath.h"
 #include "vtkObjectFactory.h"
 #include "vtkPiecewiseFunction.h"
+#include "vtkRenderer.h"
 #include "vtkRenderWindowInteractor.h"
 #include "vtkTransferFunctionEditorRepresentationSimple1D.h"
 #include "vtkWidgetCallbackMapper.h"
@@ -398,8 +399,9 @@ void vtkTransferFunctionEditorWidgetSimple1D::InitializeTransferFunctions()
 
   vtkTransferFunctionEditorRepresentation *rep =
     vtkTransferFunctionEditorRepresentation::SafeDownCast(this->WidgetRep);
-  if (rep)
+  if (rep && this->CurrentRenderer)
     {
+    this->CurrentRenderer->GetActiveCamera();
     int dispSize[2];
     rep->GetDisplaySize(dispSize);
     this->AddNewNode(0, 0);
