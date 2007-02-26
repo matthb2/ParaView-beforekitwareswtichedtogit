@@ -43,6 +43,8 @@ vtkVRMLSource::vtkVRMLSource()
   this->Importer = NULL;
   this->Color = 1;
   this->Append = 1;
+
+  this->SetNumberOfInputPorts(0);
 }
 
 //------------------------------------------------------------------------------
