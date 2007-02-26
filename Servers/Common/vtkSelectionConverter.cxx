@@ -58,6 +58,12 @@ void vtkSelectionConverter::Convert(vtkSelection* input, vtkSelection* output)
     newOutput->Delete();
     }
 
+  if (inputProperties->Get(vtkSelection::CONTENT_TYPE()) !=
+      vtkSelection::CELL_IDS)
+    {
+    return;
+    }
+      
   if (!inputProperties->Has(vtkSelection::SOURCE_ID()) ||
       !inputProperties->Has(vtkSelectionSerializer::ORIGINAL_SOURCE_ID()))
     {

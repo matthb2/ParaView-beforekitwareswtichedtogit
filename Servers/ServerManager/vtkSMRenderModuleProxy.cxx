@@ -943,6 +943,39 @@ vtkSMProxy *vtkSMRenderModuleProxy::GetProxyFromPropID(
   return ret;
 }
 
+
+//----------------------------------------------------------------------------
+vtkSMProxy *vtkSMRenderModuleProxy::GetProxyForDisplay(
+  int number,
+  int proxyType)
+{
+  vtkSMProxy *ret = NULL;
+
+  vtkSMDataObjectDisplayProxy* dodp = 
+    vtkSMDataObjectDisplayProxy::SafeDownCast(
+      this->GetDisplays()->GetItemAsObject(number)
+      );
+    
+  if (dodp)
+    {
+    vtkSMProxy *actorProxy = dodp->GetActorProxy();
+    if (proxyType == DISPLAY)
+      {
+      ret = dodp;
+      }
+    else if (proxyType == INPUT)
+      {
+      ret = dodp->GetInput(0);
+      }
+    else if (proxyType == GEOMETRY)
+      {
+      ret = dodp->GetGeometryFilterProxy();
+      }
+    }    
+
+  return ret;
+}
+
 //-----------------------------------------------------------------------------
 void vtkSMRenderModuleProxy::ResetCamera()
 {
