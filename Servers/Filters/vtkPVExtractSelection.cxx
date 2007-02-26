@@ -156,10 +156,10 @@ void vtkPVExtractSelection::Select()
       
       if (this->Internal->Props.size() > i)
         {
-        vtkClientServerID pid = processModule->GetIDFromObject(
+        vtkClientServerID ppid = processModule->GetIDFromObject(
           this->Internal->Props[i]);
         selection->GetProperties()->Set(
-          vtkSelection::PROP_ID(), pid.ID);
+          vtkSelection::PROP_ID(), ppid.ID);
         }
       
       //Record the process id of the node that is running this code too

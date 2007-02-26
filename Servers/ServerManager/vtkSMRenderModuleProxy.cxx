@@ -958,7 +958,6 @@ vtkSMProxy *vtkSMRenderModuleProxy::GetProxyForDisplay(
     
   if (dodp)
     {
-    vtkSMProxy *actorProxy = dodp->GetActorProxy();
     if (proxyType == DISPLAY)
       {
       ret = dodp;
