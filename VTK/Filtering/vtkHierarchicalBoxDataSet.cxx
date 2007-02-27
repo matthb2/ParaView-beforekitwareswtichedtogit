@@ -38,7 +38,7 @@ vtkHierarchicalBoxDataSet::vtkHierarchicalBoxDataSet()
 {
   this->BoxInternal = new vtkHierarchicalBoxDataSetInternal;
   this->ScalarRange[0]=VTK_DOUBLE_MAX;
-  this->ScalarRange[0]=VTK_DOUBLE_MIN;
+  this->ScalarRange[1]=VTK_DOUBLE_MIN;
 }
 
 //----------------------------------------------------------------------------
