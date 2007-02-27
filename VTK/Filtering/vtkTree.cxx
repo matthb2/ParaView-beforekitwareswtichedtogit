@@ -121,6 +121,24 @@ void vtkTree::GetOutVertices(vtkIdType vertex, vtkGraphIdList* vertexIds)
 }
 
 //----------------------------------------------------------------------------
+void vtkTree::GetAdjacentVertices(vtkIdType vertex, vtkIdType& nverts, const vtkIdType* verts)
+{
+  this->VertexLinks->GetAdjacent(vertex, nverts, verts);
+}
+
+//----------------------------------------------------------------------------
+void vtkTree::GetInVertices(vtkIdType vertex, vtkIdType& nverts, const vtkIdType* verts)
+{
+  this->VertexLinks->GetInAdjacent(vertex, nverts, verts);
+}
+
+//----------------------------------------------------------------------------
+void vtkTree::GetOutVertices(vtkIdType vertex, vtkIdType& nverts, const vtkIdType* verts)
+{
+  this->VertexLinks->GetOutAdjacent(vertex, nverts, verts);
+}
+
+//----------------------------------------------------------------------------
 void vtkTree::GetIncidentEdges(vtkIdType vertex, vtkGraphIdList* edgeIds)
 {
   edgeIds->Reset();
