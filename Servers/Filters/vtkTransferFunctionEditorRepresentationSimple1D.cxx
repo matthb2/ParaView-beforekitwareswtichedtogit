@@ -85,11 +85,7 @@ vtkTransferFunctionEditorRepresentationSimple1D::vtkTransferFunctionEditorRepres
 //----------------------------------------------------------------------------
 vtkTransferFunctionEditorRepresentationSimple1D::~vtkTransferFunctionEditorRepresentationSimple1D()
 {
-  vtkHandleListIterator hiter;
-  for (hiter = this->Handles->begin(); hiter != this->Handles->end(); hiter++)
-    {
-    (*hiter)->Delete();
-    }
+  this->RemoveAllHandles();
   delete this->Handles;
 
   this->HandleRepresentation->Delete();
@@ -434,6 +430,17 @@ void vtkTransferFunctionEditorRepresentationSimple1D::RemoveHandle(
       this->BuildRepresentation();
       return;
       }
+    }
+}
+
+//----------------------------------------------------------------------------
+void vtkTransferFunctionEditorRepresentationSimple1D::RemoveAllHandles()
+{
+  vtkHandleListIterator hiter;
+  for (hiter = this->Handles->begin(); hiter != this->Handles->end();)
+    {
+    (*hiter)->Delete();
+    this->Handles->erase(hiter++);
     }
 }
 
