@@ -1591,6 +1591,11 @@ void vtkKdTree::BuildRegionList()
 //----------------------------------------------------------------------------
 // K-d tree from points, for finding duplicate and near-by points
 //
+void vtkKdTree::BuildLocatorFromPoints(vtkPointSet *pointset)
+{
+  this->BuildLocatorFromPoints(pointset->GetPoints());
+}
+
 void vtkKdTree::BuildLocatorFromPoints(vtkPoints *ptArray)
 {
   this->BuildLocatorFromPoints(&ptArray, 1);
