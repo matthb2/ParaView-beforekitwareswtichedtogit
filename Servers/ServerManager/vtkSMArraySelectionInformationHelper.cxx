@@ -82,6 +82,9 @@ void vtkSMArraySelectionInformationHelper::UpdateProperty(
 
   int numArrays = arrays.GetNumberOfArguments(0)/2;
 
+  svp->SetNumberOfElementsPerCommand(2);
+  svp->SetElementType(0, vtkSMStringVectorProperty::STRING);
+  svp->SetElementType(1, vtkSMStringVectorProperty::INT);
   svp->SetNumberOfElements(numArrays*2);
   for(int i=0; i < numArrays; ++i)
     {
@@ -112,6 +115,7 @@ void vtkSMArraySelectionInformationHelper::UpdateProperty(
       svp->SetElement(2*i+1, "0");
       }
     }
+
 }
 
 //---------------------------------------------------------------------------
