@@ -104,6 +104,20 @@ double* vtkInformationDoubleVectorKey::Get(vtkInformation* info)
 }
 
 //----------------------------------------------------------------------------
+double vtkInformationDoubleVectorKey::Get(vtkInformation* info, int idx)
+{
+  if (idx >= this->Length(info))
+    {
+    vtkErrorWithObjectMacro(info,
+                            "Information does not contain " << idx
+                            << " elements. Cannot return information value.");
+    return 0;
+    }
+  double* values = this->Get(info);
+  return values[idx];
+}
+
+//----------------------------------------------------------------------------
 void vtkInformationDoubleVectorKey::Get(vtkInformation* info,
                                      double* value)
 {

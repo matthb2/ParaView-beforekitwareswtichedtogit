@@ -418,6 +418,10 @@ VTK_INFORMATION_DEFINE_SCALAR_PROPERTY(ObjectBase, vtkObjectBase*);
     {                                                                       \
     return key->Get(this);                                                  \
     }                                                                       \
+  type vtkInformation::Get(vtkInformation##name##VectorKey* key, int idx)   \
+    {                                                                       \
+    return key->Get(this, idx);                                             \
+    }                                                                       \
   void vtkInformation::Get(vtkInformation##name##VectorKey* key,            \
                            type* value)                                     \
     {                                                                       \
