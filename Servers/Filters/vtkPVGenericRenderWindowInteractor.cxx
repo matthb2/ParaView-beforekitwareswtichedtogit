@@ -100,6 +100,7 @@ void vtkPVGenericRenderWindowInteractor::Render()
   // This should fix the problem of the plane widget render 
   if (this->InteractiveRenderEnabled)
     {
+    this->InvokeEvent(vtkCommand::InteractionEvent);
     this->PVRenderView->Render();
     }
   else
