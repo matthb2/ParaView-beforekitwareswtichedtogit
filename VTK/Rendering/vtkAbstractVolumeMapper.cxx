@@ -58,6 +58,15 @@ double *vtkAbstractVolumeMapper::GetBounds()
     }
 }
 
+vtkDataObject *vtkAbstractVolumeMapper::GetDataObjectInput()
+{
+  if (this->GetNumberOfInputConnections(0) < 1)
+    {
+    return 0;
+    }
+  return this->GetExecutive()->GetInputData(0, 0);
+}
+
 vtkDataSet *vtkAbstractVolumeMapper::GetDataSetInput()
 {
   if (this->GetNumberOfInputConnections(0) < 1)

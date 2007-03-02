@@ -365,7 +365,7 @@ int vtkVolume::RenderTranslucentGeometry( vtkViewport *vp )
     }
 
   // If we don't have any input return silently
-  if ( !this->Mapper->GetDataSetInput() )
+  if ( !this->Mapper->GetDataObjectInput() )
     {
     return 0;
     }
