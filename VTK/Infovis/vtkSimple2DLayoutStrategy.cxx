@@ -289,4 +289,5 @@ void vtkSimple2DLayoutStrategy::PrintSelf(ostream& os, vtkIndent indent)
   os << indent << "CoolDownRate: " << this->CoolDownRate << endl;
   os << indent << "EdgeWeightField: " << (this->EdgeWeightField ? this->EdgeWeightField : "(none)") << endl;
   os << indent << "Jitter: " << (this->Jitter ? "True" : "False") << endl;
+  os << indent << "RestDistance: " << this->RestDistance << endl;
 }
