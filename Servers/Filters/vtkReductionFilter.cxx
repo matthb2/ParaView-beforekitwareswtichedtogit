@@ -106,10 +106,8 @@ int vtkReductionFilter::RequestDataObject(
         vtkDataObject::DATA_EXTENT_TYPE(), newOutput->GetExtentType());
       }
     }
-  else
-    {
-    return this->Superclass::RequestDataObject(reqInfo, inputVector, outputVector);
-    }
+
+  return this->Superclass::RequestDataObject(reqInfo, inputVector, outputVector);
 }
 
 //-----------------------------------------------------------------------------
