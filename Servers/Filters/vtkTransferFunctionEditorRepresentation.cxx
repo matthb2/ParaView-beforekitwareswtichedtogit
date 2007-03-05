@@ -48,12 +48,23 @@ int vtkTransferFunctionEditorRepresentation::RenderOpaqueGeometry(
 }
 
 //----------------------------------------------------------------------------
-int vtkTransferFunctionEditorRepresentation::RenderTranslucentGeometry(
+int vtkTransferFunctionEditorRepresentation::RenderTranslucentPolygonalGeometry(
   vtkViewport *viewport)
 {
   if (this->HistogramVisibility)
     {
-    return this->HistogramActor->RenderTranslucentGeometry(viewport);
+    return this->HistogramActor->RenderTranslucentPolygonalGeometry(viewport);
+    }
+
+  return 0;
+}
+
+//----------------------------------------------------------------------------
+int vtkTransferFunctionEditorRepresentation::HasTranslucentPolygonalGeometry()
+{
+  if (this->HistogramVisibility)
+    {
+    return this->HistogramActor->HasTranslucentPolygonalGeometry();
     }
 
   return 0;
