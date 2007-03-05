@@ -412,20 +412,27 @@ int vtkRectilinearWipeRepresentation::RenderOverlay(vtkViewport *viewport)
   return this->WipeActor->RenderOverlay(viewport);
 }
 
-//----------------------------------------------------------------------
-int vtkRectilinearWipeRepresentation::RenderOpaqueGeometry(vtkViewport *viewport)
+//-----------------------------------------------------------------------------
+int vtkRectilinearWipeRepresentation::RenderOpaqueGeometry(
+  vtkViewport *viewport)
 {
   return this->WipeActor->RenderOpaqueGeometry(viewport);
 }
 
-//----------------------------------------------------------------------
-int vtkRectilinearWipeRepresentation::RenderTranslucentGeometry(vtkViewport *viewport)
+//-----------------------------------------------------------------------------
+int vtkRectilinearWipeRepresentation::RenderTranslucentPolygonalGeometry(
+  vtkViewport *viewport)
 {
-  return this->WipeActor->RenderTranslucentGeometry(viewport);
+  return this->WipeActor->RenderTranslucentPolygonalGeometry(viewport);
 }
 
+//-----------------------------------------------------------------------------
+int vtkRectilinearWipeRepresentation::HasTranslucentPolygonalGeometry()
+{
+  return this->WipeActor->HasTranslucentPolygonalGeometry();
+}
 
-//----------------------------------------------------------------------
+//-----------------------------------------------------------------------------
 void vtkRectilinearWipeRepresentation::PrintSelf(ostream& os, vtkIndent indent)
 {
   //Superclass typedef defined in vtkTypeMacro() found in vtkSetGet.h

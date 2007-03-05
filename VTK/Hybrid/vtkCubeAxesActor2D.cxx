@@ -462,6 +462,14 @@ int vtkCubeAxesActor2D::RenderOpaqueGeometry(vtkViewport *viewport)
   return renderedSomething;
 }
 
+//-----------------------------------------------------------------------------
+// Description:
+// Does this prop have some translucent polygonal geometry?
+int vtkCubeAxesActor2D::HasTranslucentPolygonalGeometry()
+{
+  return 0;
+}
+
 //----------------------------------------------------------------------------
 // Do final adjustment of axes to control offset, etc.
 void vtkCubeAxesActor2D::AdjustAxes(double pts[8][3], double bounds[6],

@@ -203,6 +203,14 @@ int vtkAxisActor2D::RenderOverlay(vtkViewport *viewport)
   return renderedSomething;
 }
 
+//-----------------------------------------------------------------------------
+// Description:
+// Does this prop have some translucent polygonal geometry?
+int vtkAxisActor2D::HasTranslucentPolygonalGeometry()
+{
+  return 0;
+}
+
 //----------------------------------------------------------------------------
 // Release any graphics resources that are being consumed by this actor.
 // The parameter window could be used to determine which graphic

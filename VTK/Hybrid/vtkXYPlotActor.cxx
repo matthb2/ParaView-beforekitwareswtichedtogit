@@ -775,6 +775,14 @@ int vtkXYPlotActor::RenderOpaqueGeometry(vtkViewport *viewport)
   return renderedSomething;
 }
 
+//-----------------------------------------------------------------------------
+// Description:
+// Does this prop have some translucent polygonal geometry?
+int vtkXYPlotActor::HasTranslucentPolygonalGeometry()
+{
+  return 0;
+}
+
 //----------------------------------------------------------------------------
 const char *vtkXYPlotActor::GetXValuesAsString()
 {

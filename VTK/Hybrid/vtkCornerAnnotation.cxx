@@ -597,6 +597,14 @@ int vtkCornerAnnotation::RenderOpaqueGeometry(vtkViewport *viewport)
   return 1;
 }
 
+//-----------------------------------------------------------------------------
+// Description:
+// Does this prop have some translucent polygonal geometry?
+int vtkCornerAnnotation::HasTranslucentPolygonalGeometry()
+{
+  return 0;
+}
+
 //----------------------------------------------------------------------------
 void vtkCornerAnnotation::SetTextActorsPosition(int vsize[2])
 {

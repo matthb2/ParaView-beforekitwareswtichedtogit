@@ -675,12 +675,17 @@ int vtkConstrainedPointHandleRepresentation::RenderOpaqueGeometry(vtkViewport *v
   return this->Actor->RenderOpaqueGeometry(viewport);
 }
 
-//----------------------------------------------------------------------
-int vtkConstrainedPointHandleRepresentation::RenderTranslucentGeometry(vtkViewport *viewport)
+//-----------------------------------------------------------------------------
+int vtkConstrainedPointHandleRepresentation::RenderTranslucentPolygonalGeometry(vtkViewport *viewport)
 {
-  return this->Actor->RenderTranslucentGeometry(viewport);
+  return this->Actor->RenderTranslucentPolygonalGeometry(viewport);
 }
 
+//-----------------------------------------------------------------------------
+int vtkConstrainedPointHandleRepresentation::HasTranslucentPolygonalGeometry()
+{
+  return this->Actor->HasTranslucentPolygonalGeometry();
+}
 
 //----------------------------------------------------------------------
 void vtkConstrainedPointHandleRepresentation::PrintSelf(ostream& os, vtkIndent indent)

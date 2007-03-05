@@ -142,11 +142,19 @@ int vtkTextRepresentation::RenderOpaqueGeometry(vtkViewport *w)
 }
 
 //-------------------------------------------------------------------------
-int vtkTextRepresentation::RenderTranslucentGeometry(vtkViewport *w)
+int vtkTextRepresentation::RenderTranslucentPolygonalGeometry(vtkViewport *w)
 {
-  int count = this->Superclass::RenderTranslucentGeometry(w);
-  count += this->TextActor->RenderTranslucentGeometry(w);
+  int count = this->Superclass::RenderTranslucentPolygonalGeometry(w);
+  count += this->TextActor->RenderTranslucentPolygonalGeometry(w);
   return count;
+}
+
+//-------------------------------------------------------------------------
+int vtkTextRepresentation::HasTranslucentPolygonalGeometry()
+{
+  int result = this->Superclass::HasTranslucentPolygonalGeometry();
+  result |= this->TextActor->HasTranslucentPolygonalGeometry();
+  return result;
 }
 
 

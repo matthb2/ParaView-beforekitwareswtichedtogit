@@ -193,8 +193,8 @@ int vtkActor::RenderOpaqueGeometry(vtkViewport *vp)
   return renderedSomething;
 }
 
-//----------------------------------------------------------------------------
-int vtkActor::RenderTranslucentGeometry(vtkViewport *vp)
+//-----------------------------------------------------------------------------
+int vtkActor::RenderTranslucentPolygonalGeometry(vtkViewport *vp)
 {
   int          renderedSomething = 0; 
   vtkRenderer* ren = static_cast<vtkRenderer*>(vp);
@@ -235,6 +235,26 @@ int vtkActor::RenderTranslucentGeometry(vtkViewport *vp)
     }
 
   return renderedSomething;
+}
+
+//-----------------------------------------------------------------------------
+// Description:
+// Does this prop have some translucent polygonal geometry?
+int vtkActor::HasTranslucentPolygonalGeometry()
+{
+  if ( ! this->Mapper )
+    {
+    return 0;
+    }
+  // make sure we have a property
+  if (!this->Property)
+    {
+    // force creation of a property
+    this->GetProperty();
+    }
+
+  // is this actor opaque ?
+  return !this->GetIsOpaque();
 }
 
 //----------------------------------------------------------------------------

@@ -443,6 +443,14 @@ int vtkScalarBarActor::RenderOpaqueGeometry(vtkViewport *viewport)
   return renderedSomething;
 }
 
+//-----------------------------------------------------------------------------
+// Description:
+// Does this prop have some translucent polygonal geometry?
+int vtkScalarBarActor::HasTranslucentPolygonalGeometry()
+{
+  return 0;
+}
+
 //----------------------------------------------------------------------------
 void vtkScalarBarActor::PrintSelf(ostream& os, vtkIndent indent)
 {

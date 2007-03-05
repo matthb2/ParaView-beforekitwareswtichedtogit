@@ -483,11 +483,18 @@ int vtkPointHandleRepresentation3D::RenderOpaqueGeometry(vtkViewport *viewport)
   return this->Actor->RenderOpaqueGeometry(viewport);
 }
 
-//----------------------------------------------------------------------
-int vtkPointHandleRepresentation3D::RenderTranslucentGeometry(vtkViewport *viewport)
+//-----------------------------------------------------------------------------
+int vtkPointHandleRepresentation3D::RenderTranslucentPolygonalGeometry(
+  vtkViewport *viewport)
 {
   this->BuildRepresentation();
-  return this->Actor->RenderTranslucentGeometry(viewport);
+  return this->Actor->RenderTranslucentPolygonalGeometry(viewport);
+}
+//-----------------------------------------------------------------------------
+int vtkPointHandleRepresentation3D::HasTranslucentPolygonalGeometry()
+{
+  this->BuildRepresentation();
+  return this->Actor->HasTranslucentPolygonalGeometry();
 }
 
 

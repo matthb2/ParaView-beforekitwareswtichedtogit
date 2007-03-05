@@ -115,18 +115,33 @@ int vtkTextActor3D::RenderOverlay(vtkViewport *viewport)
   return rendered_something;
 }
 
-// --------------------------------------------------------------------------
-int vtkTextActor3D::RenderTranslucentGeometry(vtkViewport *viewport)
+// ----------------------------------------------------------------------------
+int vtkTextActor3D::RenderTranslucentPolygonalGeometry(vtkViewport *viewport)
 {
   int rendered_something = 0;
 
   if (this->UpdateImageActor() && this->ImageActor)
     {
     rendered_something += 
-      this->ImageActor->RenderTranslucentGeometry(viewport);
+      this->ImageActor->RenderTranslucentPolygonalGeometry(viewport);
     }
 
   return rendered_something;
+}
+
+//-----------------------------------------------------------------------------
+// Description:
+// Does this prop have some translucent polygonal geometry?
+int vtkTextActor3D::HasTranslucentPolygonalGeometry()
+{
+  int result = 0;
+
+  if (this->UpdateImageActor() && this->ImageActor)
+    {
+    result=this->ImageActor->HasTranslucentPolygonalGeometry();
+    }
+
+  return result;
 }
 
 // --------------------------------------------------------------------------

@@ -458,6 +458,14 @@ int vtkCaptionActor2D::RenderOpaqueGeometry(vtkViewport *viewport)
   return renderedSomething;
 }
 
+//-----------------------------------------------------------------------------
+// Description:
+// Does this prop have some translucent polygonal geometry?
+int vtkCaptionActor2D::HasTranslucentPolygonalGeometry()
+{
+  return 0;
+}
+
 //----------------------------------------------------------------------------
 void vtkCaptionActor2D::PrintSelf(ostream& os, vtkIndent indent)
 {

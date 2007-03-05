@@ -632,11 +632,19 @@ int vtkSliderRepresentation3D::RenderOpaqueGeometry(vtkViewport *viewport)
   return this->WidgetAssembly->RenderOpaqueGeometry(viewport);
 }
 
-//----------------------------------------------------------------------
-int vtkSliderRepresentation3D::RenderTranslucentGeometry(vtkViewport *viewport)
+//-----------------------------------------------------------------------------
+int vtkSliderRepresentation3D::RenderTranslucentPolygonalGeometry(
+  vtkViewport *viewport)
 {
   this->BuildRepresentation();
-  return this->WidgetAssembly->RenderTranslucentGeometry(viewport);
+  return this->WidgetAssembly->RenderTranslucentPolygonalGeometry(viewport);
+}
+
+//-----------------------------------------------------------------------------
+int vtkSliderRepresentation3D::HasTranslucentPolygonalGeometry()
+{
+  this->BuildRepresentation();
+  return this->WidgetAssembly->HasTranslucentPolygonalGeometry();
 }
 
 //----------------------------------------------------------------------

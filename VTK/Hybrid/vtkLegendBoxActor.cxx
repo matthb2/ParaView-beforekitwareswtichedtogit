@@ -665,6 +665,14 @@ int vtkLegendBoxActor::RenderOpaqueGeometry(vtkViewport *viewport)
   return renderedSomething;
 }
 
+//-----------------------------------------------------------------------------
+// Description:
+// Does this prop have some translucent polygonal geometry?
+int vtkLegendBoxActor::HasTranslucentPolygonalGeometry()
+{
+  return 0;
+}
+
 //----------------------------------------------------------------------------
 void vtkLegendBoxActor::PrintSelf(ostream& os, vtkIndent indent)
 {

@@ -427,15 +427,28 @@ int vtkBorderRepresentation::RenderOpaqueGeometry(vtkViewport *w)
   return this->BWActor->RenderOpaqueGeometry(w);
 }
 
-//-------------------------------------------------------------------------
-int vtkBorderRepresentation::RenderTranslucentGeometry(vtkViewport *w)
+//-----------------------------------------------------------------------------
+int vtkBorderRepresentation::RenderTranslucentPolygonalGeometry(vtkViewport *w)
 {
   this->BuildRepresentation();
   if ( ! this->BWActor->GetVisibility() )
     {
     return 0;
     }
-  return this->BWActor->RenderTranslucentGeometry(w);
+  return this->BWActor->RenderTranslucentPolygonalGeometry(w);
+}
+
+//-----------------------------------------------------------------------------
+// Description:
+// Does this prop have some translucent polygonal geometry?
+int vtkBorderRepresentation::HasTranslucentPolygonalGeometry()
+{
+  this->BuildRepresentation();
+  if ( ! this->BWActor->GetVisibility() )
+    {
+    return 0;
+    }
+  return this->BWActor->HasTranslucentPolygonalGeometry();
 }
 
 //-------------------------------------------------------------------------

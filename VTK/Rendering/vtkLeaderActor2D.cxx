@@ -661,6 +661,14 @@ int vtkLeaderActor2D::RenderOverlay(vtkViewport *viewport)
   return renderedSomething;
 }
 
+//-----------------------------------------------------------------------------
+// Description:
+// Does this prop have some translucent polygonal geometry?
+int vtkLeaderActor2D::HasTranslucentPolygonalGeometry()
+{
+  return 0;
+}
+
 //----------------------------------------------------------------------------
 void vtkLeaderActor2D::ShallowCopy(vtkProp *prop)
 {
