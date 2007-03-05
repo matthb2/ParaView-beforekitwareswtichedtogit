@@ -501,9 +501,23 @@ int vtkIceTRenderer::UpdateGeometry()
         this->PropArray[i]->RenderOpaqueGeometry(this);
       }
     }
-  this->PropVisibility = visible;
-  this->DeviceRenderTranslucentPolygonalGeometry();
-  this->PropVisibility = 0;
+
+  int hasTranslucentPolygonalGeometry=0;
+  for ( i = 0; !hasTranslucentPolygonalGeometry && i < this->PropArrayCount;
+    i++ )
+    {
+    if (visible[i])
+      {
+      hasTranslucentPolygonalGeometry=
+        this->PropArray[i]->HasTranslucentPolygonalGeometry();
+      }
+    }
+  if(hasTranslucentPolygonalGeometry)
+    {
+    this->PropVisibility = visible;
+    this->DeviceRenderTranslucentPolygonalGeometry();
+    this->PropVisibility = 0;
+    }
 
   for (i = 0; i < this->PropArrayCount; i++)
     {
