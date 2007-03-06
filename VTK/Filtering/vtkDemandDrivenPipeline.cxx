@@ -18,6 +18,7 @@
 #include "vtkAlgorithmOutput.h"
 #include "vtkCellData.h"
 #include "vtkCommand.h"
+#include "vtkDataArray.h"
 #include "vtkDataObject.h"
 #include "vtkDataObjectTypes.h"
 #include "vtkDataSet.h"
