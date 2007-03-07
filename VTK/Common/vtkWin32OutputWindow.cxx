@@ -74,6 +74,7 @@ void vtkWin32OutputWindow::DisplayText(const char* someText)
     if(NewLinePos == 0)
       {
       vtkWin32OutputWindow::AddText(someText);
+      OutputDebugString(someText);
       }
     // if a new line is found copy it to the buffer
     // and add the buffer with a control new line
@@ -85,6 +86,8 @@ void vtkWin32OutputWindow::DisplayText(const char* someText)
       someText = NewLinePos+1;
       vtkWin32OutputWindow::AddText(buffer);
       vtkWin32OutputWindow::AddText("\r\n");
+      OutputDebugString(buffer);
+      OutputDebugString("\r\n");
       }
     }
   delete [] buffer;
