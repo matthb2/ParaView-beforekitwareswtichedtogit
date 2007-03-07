@@ -39,6 +39,7 @@ PURPOSE.  See the above copyright notice for more information.
 #include  "vtkTable.h"
 #include  "vtkGraph.h"
 #include  "vtkTree.h"
+#include  "vtkSelection.h"
 
 vtkCxxRevisionMacro(vtkDataObjectTypes, "$Revision$");
 vtkStandardNewMacro(vtkDataObjectTypes);
@@ -69,6 +70,7 @@ static const char* vtkDataObjectTypesStrings[] = {
   "vtkTable", 
   "vtkGraph", 
   "vtkTree", 
+  "vtkSelection",
   NULL
 };
 
@@ -200,6 +202,10 @@ vtkDataObject* vtkDataObjectTypes::NewDataObject(const char* type)
   else if(strcmp(type, "vtkTree") == 0)
     {
     return vtkTree::New();
+    }
+  else if(strcmp(type, "vtkSelection") == 0)
+    {
+    return vtkSelection::New();
     }
   else if(vtkObject* obj = vtkInstantiator::CreateInstance(type))
     {
