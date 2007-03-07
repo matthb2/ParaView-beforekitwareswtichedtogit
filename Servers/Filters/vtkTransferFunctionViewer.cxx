@@ -270,6 +270,21 @@ void vtkTransferFunctionViewer::SetBackgroundColor(double r, double g,
 }
 
 //----------------------------------------------------------------------------
+void vtkTransferFunctionViewer::SetHistogramColor(double r, double g, double b)
+{
+  if (this->EditorWidget)
+    {
+    vtkTransferFunctionEditorRepresentation *rep =
+      vtkTransferFunctionEditorRepresentation::SafeDownCast(
+        this->EditorWidget->GetRepresentation());
+    if (rep)
+      {
+      rep->SetHistogramColor(r, g, b);
+      }
+    }
+}
+
+//----------------------------------------------------------------------------
 void vtkTransferFunctionViewer::SetSize(int x, int y)
 {
   if (this->EditorWidget)

@@ -58,6 +58,14 @@ void vtkTransferFunctionEditorWidget1D::SetHistogram(
 }
 
 //----------------------------------------------------------------------------
+double vtkTransferFunctionEditorWidget1D::ComputeScalar(double pos, int width)
+{
+  double pct = pos / (double)width;
+  return this->VisibleScalarRange[0] + pct *
+    (this->VisibleScalarRange[1] - this->VisibleScalarRange[0]);
+}
+
+//----------------------------------------------------------------------------
 void vtkTransferFunctionEditorWidget1D::PrintSelf(ostream& os,
                                                   vtkIndent indent)
 {

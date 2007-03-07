@@ -180,6 +180,12 @@ void vtkTransferFunctionEditorWidget::SetColorFunction(
       }
     this->Modified();
     }
+  vtkTransferFunctionEditorRepresentation *rep =
+    vtkTransferFunctionEditorRepresentation::SafeDownCast(this->WidgetRep);
+  if (rep)
+    {
+    rep->SetColorFunction(this->ColorFunction);
+    }
 }
 
 //----------------------------------------------------------------------------
