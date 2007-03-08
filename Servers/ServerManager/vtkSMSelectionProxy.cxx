@@ -1073,13 +1073,13 @@ void vtkSMSelectionProxy::SetNumIds(int num)
 }
 
 //-----------------------------------------------------------------------------
-void vtkSMSelectionProxy::SetIds(int i, int *vals)
+void vtkSMSelectionProxy::SetIds(int i, vtkIdType *vals)
 {
   if (this->Ids == NULL)
     {
     return;
     }
-  memcpy(&this->Ids[i], vals, sizeof(int));
+  memcpy(&this->Ids[i], vals, sizeof(vtkIdType));
 }
 
 //-----------------------------------------------------------------------------
