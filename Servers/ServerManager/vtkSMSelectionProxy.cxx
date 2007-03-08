@@ -916,7 +916,10 @@ void vtkSMSelectionProxy::FillSources(vtkSelection* sel,
     id.ID = *iter;
     vtkSMProxy* objProxy = 
       rmp->GetProxyFromPropID(&id, vtkSMRenderModuleProxy::INPUT);
-    coll->AddItem(objProxy); 
+    if (objProxy)
+      {
+      coll->AddItem(objProxy); 
+      }
     }
 }
 
