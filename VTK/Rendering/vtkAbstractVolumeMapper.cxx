@@ -64,7 +64,7 @@ vtkDataObject *vtkAbstractVolumeMapper::GetDataObjectInput()
     {
     return 0;
     }
-  return this->GetExecutive()->GetInputData(0, 0);
+  return this->GetInputDataObject(0, 0);
 }
 
 vtkDataSet *vtkAbstractVolumeMapper::GetDataSetInput()
@@ -73,7 +73,7 @@ vtkDataSet *vtkAbstractVolumeMapper::GetDataSetInput()
     {
     return 0;
     }
-  return vtkDataSet::SafeDownCast(this->GetExecutive()->GetInputData(0, 0));
+  return vtkDataSet::SafeDownCast(this->GetInputDataObject(0, 0));
 }
 
 void vtkAbstractVolumeMapper::SetInput( vtkDataSet *vtkNotUsed(input) )
