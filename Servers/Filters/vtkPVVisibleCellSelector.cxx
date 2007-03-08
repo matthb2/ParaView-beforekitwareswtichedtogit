@@ -79,7 +79,7 @@ void vtkPVVisibleCellSelector::SetRenderer(vtkRenderer *r)
     }
 
   vtkIdentColoredPainter *ip = vtkIdentColoredPainter::New();
-  ip->SetActorLookupTable(SaveProps, arr);
+  ip->MakeActorLookupTable(SaveProps, arr);
   this->Superclass::SetIdentPainter(ip);
 
   //now that we have given these away, we can delete our reference to them
