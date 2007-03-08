@@ -216,12 +216,16 @@ void vtkTransferFunctionViewer::SetTransferFunctionEditorType(int type)
     this->EditorWidget->SetEnabled(1);
     this->EditorWidget->AddObserver(vtkCommand::PickEvent,
                                     this->EventForwarder);
+    this->EditorWidget->AddObserver(vtkCommand::PlacePointEvent,
+                                    this->EventForwarder);
     vtkTransferFunctionEditorRepresentation *rep =
       vtkTransferFunctionEditorRepresentation::SafeDownCast(
         this->EditorWidget->GetRepresentation());
     if (rep)
       {
       rep->AddObserver(vtkCommand::WidgetValueChangedEvent,
+                       this->EventForwarder);
+      rep->AddObserver(vtkCommand::WidgetModifiedEvent,
                        this->EventForwarder);
       int *size = this->RenderWindow->GetSize();
       if (size[0] == 0 && size[1] == 0)

@@ -497,7 +497,7 @@ void vtkTransferFunctionEditorRepresentationSimple1D::SetActiveHandle(
 {
   this->ActiveHandle = handle;
   this->HighlightActiveHandle();
-  this->InvokeEvent(vtkCommand::WidgetValueChangedEvent, NULL);
+  this->InvokeEvent(vtkCommand::WidgetModifiedEvent, NULL);
 }
 
 //----------------------------------------------------------------------------
