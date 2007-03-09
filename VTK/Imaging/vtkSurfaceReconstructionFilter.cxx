@@ -319,7 +319,7 @@ int vtkSurfaceReconstructionFilter::RequestData(
       {
       // for each nearby point:
       vtkIdType iNearby,iNeighbor;
-      lowestCost = VTK_FLOAT_MAX;
+      lowestCost = VTK_DOUBLE_MAX;
       for(i=0;i<nearby->GetNumberOfIds();i++)
         {
         iNearby = nearby->GetId(i);

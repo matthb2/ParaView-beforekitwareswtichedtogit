@@ -278,7 +278,7 @@ int vtkShepardMethod::RequestData(
 
           if ( distance2 == 0.0 )
             {
-            sum[idx] = VTK_FLOAT_MAX;
+            sum[idx] = VTK_DOUBLE_MAX;
             newScalars->SetComponent(idx,0,VTK_FLOAT_MAX);
             }
           else

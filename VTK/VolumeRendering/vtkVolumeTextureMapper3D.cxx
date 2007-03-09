@@ -753,8 +753,8 @@ void vtkVolumeTextureMapper3D::ComputePolygons( vtkRenderer *ren,
                plane[2] * (double)position[2]);
  
   // Find the min and max distances of the boundary points of the volume
-  double minDistance =  VTK_FLOAT_MAX;
-  double maxDistance = -VTK_FLOAT_MAX;
+  double minDistance = VTK_DOUBLE_MAX;
+  double maxDistance = VTK_DOUBLE_MIN;
  
   // The inBounds parameter is the bounds we are using for clipping the
   // texture planes against. First we need to clip these against the bounds

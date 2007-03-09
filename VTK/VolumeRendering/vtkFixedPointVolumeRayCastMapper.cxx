@@ -1768,7 +1768,7 @@ void vtkFixedPointVolumeRayCastMapper::CreateCanonicalView( vtkVolume *vol,
 {
   // Make sure we have as long as we'd like so that the
   // image sample distance will be 1.0
-  vol->SetAllocatedRenderTime(VTK_FLOAT_MAX, NULL);
+  vol->SetAllocatedRenderTime(VTK_DOUBLE_MAX, NULL);
 
   // Create a renderer / camera with the right parameters
   // These will never be mapped to the screen - just used

@@ -30,7 +30,7 @@ vtkCxxSetObjectMacro(vtkImplicitVolume,Volume,vtkImageData);
 vtkImplicitVolume::vtkImplicitVolume()
 {
   this->Volume = NULL;
-  this->OutValue = -VTK_FLOAT_MAX;
+  this->OutValue = VTK_DOUBLE_MIN;
 
   this->OutGradient[0] = 0.0;
   this->OutGradient[1] = 0.0;

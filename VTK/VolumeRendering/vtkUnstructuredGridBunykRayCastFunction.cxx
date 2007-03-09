@@ -928,7 +928,7 @@ vtkIdType TemplateCastRay(
 
   vtkIdType numIntersections = 0;
 
-  double nearZ = VTK_FLOAT_MIN;
+  double nearZ = VTK_DOUBLE_MIN;
   double nearPoint[4];
   double viewCoords[4];
   viewCoords[0] = ((float)x / (float)(imageViewportSize[0]-1)) * 2.0 - 1.0;
@@ -996,7 +996,7 @@ vtkIdType TemplateCastRay(
         }
       }
 
-    double farZ = VTK_FLOAT_MAX;
+    double farZ = VTK_DOUBLE_MAX;
     int minIdx = -1;
 
     // Determine which face the ray exits the cell from.
