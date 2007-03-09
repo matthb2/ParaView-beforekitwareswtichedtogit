@@ -345,7 +345,7 @@ void vtkTransferFunctionEditorWidgetSimple1D::MoveNodeAction(
     if (self->ModificationType != COLOR)
       {
       self->RemoveOpacityPoint(nodeId);
-      self->AddOpacityPoint(pos[0], pos[1]);
+      self->AddOpacityPoint(x, y);
       }
     if (self->ModificationType != OPACITY)
       {
