@@ -66,6 +66,15 @@ double vtkTransferFunctionEditorWidget1D::ComputeScalar(double pos, int width)
 }
 
 //----------------------------------------------------------------------------
+double vtkTransferFunctionEditorWidget1D::ComputePositionFromScalar(
+  double scalar, int width)
+{
+  double pct = (scalar - this->VisibleScalarRange[0]) /
+    (this->VisibleScalarRange[1] - this->VisibleScalarRange[0]);
+  return width * pct;
+}
+
+//----------------------------------------------------------------------------
 void vtkTransferFunctionEditorWidget1D::PrintSelf(ostream& os,
                                                   vtkIndent indent)
 {

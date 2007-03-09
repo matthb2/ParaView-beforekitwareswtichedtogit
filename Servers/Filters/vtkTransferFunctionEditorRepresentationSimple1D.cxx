@@ -287,10 +287,12 @@ unsigned int vtkTransferFunctionEditorRepresentationSimple1D::CreateHandle(
   property->Delete();
 
   rep->SetDisplayPosition(displayPos);
+ 
   vtkHandleListIterator hiter;
+  unsigned int i;
   double tmpPos[3];
-  unsigned int i = 0, inserted = 0;
-  for (hiter = this->Handles->begin(); hiter != this->Handles->end();
+  int inserted = 0;
+  for (hiter = this->Handles->begin(), i=0; hiter != this->Handles->end();
        hiter++, i++)
     {
     (*hiter)->GetDisplayPosition(tmpPos);
@@ -308,6 +310,13 @@ unsigned int vtkTransferFunctionEditorRepresentationSimple1D::CreateHandle(
     }
 
   return i;
+}
+
+//----------------------------------------------------------------------
+unsigned int
+vtkTransferFunctionEditorRepresentationSimple1D::GetNumberOfHandles()
+{
+  return this->Handles->size();
 }
 
 //----------------------------------------------------------------------

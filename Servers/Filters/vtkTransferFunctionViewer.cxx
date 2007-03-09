@@ -541,6 +541,15 @@ vtkColorTransferFunction* vtkTransferFunctionViewer::GetColorFunction()
 }
 
 //----------------------------------------------------------------------------
+void vtkTransferFunctionViewer::SetAllowInteriorElements(int allow)
+{
+  if (this->EditorWidget)
+    {
+    this->EditorWidget->SetAllowInteriorElements(allow);
+    }
+}
+
+//----------------------------------------------------------------------------
 void vtkTransferFunctionViewer::SetElementOpacity(unsigned int idx,
                                                   double opacity)
 {
