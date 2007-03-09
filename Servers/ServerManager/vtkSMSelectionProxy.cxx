@@ -1071,7 +1071,7 @@ void vtkSMSelectionProxy::SetNumIds(int num)
     {
     delete[] this->Ids;
     }
-  this->Ids = new int[num];
+  this->Ids = new vtkIdType[num];
   this->NumIds = num;
 }
 
