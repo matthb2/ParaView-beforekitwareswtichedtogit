@@ -107,7 +107,7 @@ void vtkAbstractVolumeMapper::SelectScalarArray(const char *arrayName)
 {
   if (   !arrayName
       || (   (strcmp(this->ArrayName, arrayName) == 0)
-          && (this->ArrayAccessMode == VTK_GET_ARRAY_BY_ID) ) )
+          && (this->ArrayAccessMode == VTK_GET_ARRAY_BY_NAME) ) )
     {
     return;
     }
