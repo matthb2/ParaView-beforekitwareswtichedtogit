@@ -1520,6 +1520,7 @@ int vtkExodusMetadata::VectorizeArrays(
 void vtkExodusMetadata::Finalize()
 {
   int i;
+  vtkstd::map<vtkStdString,int>::iterator iter;
 
   ////////////////////////////////
   // Point Arrays
@@ -1538,9 +1539,9 @@ void vtkExodusMetadata::Finalize()
     }
 
   // Check to see if any initial values have been set for this array
-  for (vtkstd::map<vtkStdString,int>::iterator i=pointArrayInitStatus.begin();i!=pointArrayInitStatus.end();i++)
+  for (iter=pointArrayInitStatus.begin();iter!=pointArrayInitStatus.end();iter++)
     {
-    this->SetPointArrayStatus((*i).first,(*i).second);
+    this->SetPointArrayStatus((*iter).first,(*iter).second);
     }
   // Delete the values when we're done
   pointArrayInitStatus.erase(pointArrayInitStatus.begin(),pointArrayInitStatus.end());
@@ -1562,9 +1563,9 @@ void vtkExodusMetadata::Finalize()
     }
 
   // Check to see if any initial values have been set for this array
-  for (vtkstd::map<vtkStdString,int>::iterator i=cellArrayInitStatus.begin();i!=cellArrayInitStatus.end();i++)
+  for (iter=cellArrayInitStatus.begin();iter!=cellArrayInitStatus.end();iter++)
     {
-    this->SetCellArrayStatus((*i).first,(*i).second);
+    this->SetCellArrayStatus((*iter).first,(*iter).second);
     }
   // Delete the values when we're done:
   cellArrayInitStatus.erase(cellArrayInitStatus.begin(),cellArrayInitStatus.end());
