@@ -15,7 +15,7 @@
 
 /*================================================
   Created by Ken Martin, 
-  leveraging code written by John Biddiscomb
+  leveraging code written by John Biddiscombe
   ================================================*/
 
 #include "vtkTemporalInterpolator.h"

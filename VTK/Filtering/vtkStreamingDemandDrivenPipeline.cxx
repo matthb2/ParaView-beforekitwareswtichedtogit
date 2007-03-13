@@ -1100,7 +1100,7 @@ int vtkStreamingDemandDrivenPipeline
         {
         double *tsteps = info->Get(TIME_STEPS());
         int length = info->Length(TIME_STEPS());
-        modified |= this->SetUpdateTimeSteps(info, tsteps, length);
+        modified |= this->SetUpdateTimeSteps(info, tsteps, 1);
         }
       else if (info->Has(TIME_RANGE()))
         {
