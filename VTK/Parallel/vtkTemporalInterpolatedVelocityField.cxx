@@ -182,5 +182,7 @@ void vtkTemporalInterpolatedVelocityField::SetVectorsSelection(const char *v)
 void vtkTemporalInterpolatedVelocityField::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os, indent);
+
+  os << indent << "LastGoodVelocity: " << this->LastGoodVelocity << endl;
 }
 //---------------------------------------------------------------------------

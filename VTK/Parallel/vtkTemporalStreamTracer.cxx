@@ -1188,6 +1188,12 @@ bool vtkTemporalStreamTracer::DoParticleSendTasks(ParticleLifetime &info, double
 void vtkTemporalStreamTracer::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os,indent);
+
+  os << indent << "TimeStepResolution: " << this->TimeStepResolution << endl;
+  os << indent << "Controller: " << this->Controller << endl;
+  os << indent << "EnableSource1: " << this->EnableSource1 << endl;
+  os << indent << "EnableSource2: " << this->EnableSource2 << endl;
+  os << indent << "TimeStep: " << this->TimeStep << endl;
 }
 //---------------------------------------------------------------------------
 bool vtkTemporalStreamTracer::ComputeDomainExitLocation(
