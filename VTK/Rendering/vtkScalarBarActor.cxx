@@ -606,6 +606,8 @@ void vtkScalarBarActor::PrintSelf(ostream& os, vtkIndent indent)
   if (this->UseOpacity)
     {
     os << indent << "TextureGridWidth: " << this->TextureGridWidth << "\n";
+    os << indent << "TextureActor:\n";
+    this->TextureActor->PrintSelf(os, indent.GetNextIndent());
     }
 }
 
