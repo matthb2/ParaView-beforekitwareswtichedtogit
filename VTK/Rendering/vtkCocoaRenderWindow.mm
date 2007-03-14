@@ -551,7 +551,8 @@ void vtkCocoaRenderWindow::CreateGLContext()
       NSOpenGLPFADepthSize,
       (NSOpenGLPixelFormatAttribute)32,
       (this->DoubleBuffer != 0) ?
-        NSOpenGLPFADoubleBuffer : (NSOpenGLPixelFormatAttribute)nil,
+        (NSOpenGLPixelFormatAttribute)NSOpenGLPFADoubleBuffer :
+        (NSOpenGLPixelFormatAttribute)nil,
       (NSOpenGLPixelFormatAttribute)nil
     };
 
