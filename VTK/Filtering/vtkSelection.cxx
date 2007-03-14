@@ -21,6 +21,7 @@
 #include "vtkInformationIterator.h"
 #include "vtkInformationObjectBaseKey.h"
 #include "vtkInformationStringKey.h"
+#include "vtkInformationDoubleKey.h"
 #include "vtkInformationVector.h"
 #include "vtkObjectFactory.h"
 #include "vtkSmartPointer.h"
@@ -42,7 +43,8 @@ vtkInformationKeyMacro(vtkSelection,PROCESS_ID,Integer);
 vtkInformationKeyMacro(vtkSelection,GROUP,Integer);
 vtkInformationKeyMacro(vtkSelection,BLOCK,Integer);
 vtkInformationKeyMacro(vtkSelection,FIELD_TYPE,Integer);
-vtkInformationKeyMacro(vtkSelection,NAME,String);
+vtkInformationKeyMacro(vtkSelection,ARRAY_NAME,String);
+vtkInformationKeyMacro(vtkSelection,EPSILON,Double);
 
 struct vtkSelectionInternals
 {
