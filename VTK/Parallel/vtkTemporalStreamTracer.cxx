@@ -1194,6 +1194,8 @@ void vtkTemporalStreamTracer::PrintSelf(ostream& os, vtkIndent indent)
   os << indent << "EnableSource1: " << this->EnableSource1 << endl;
   os << indent << "EnableSource2: " << this->EnableSource2 << endl;
   os << indent << "TimeStep: " << this->TimeStep << endl;
+  os << indent << "ForceReinjectionEveryNSteps: "
+     << this->ForceReinjectionEveryNSteps << endl;
 }
 //---------------------------------------------------------------------------
 bool vtkTemporalStreamTracer::ComputeDomainExitLocation(
