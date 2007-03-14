@@ -78,6 +78,7 @@ void vtkTransferFunctionEditorWidget::SetVisibleScalarRange(double min,
 
   vtkTransferFunctionEditorRepresentation *rep =
     vtkTransferFunctionEditorRepresentation::SafeDownCast(this->WidgetRep);
+  rep->SetVisibleScalarRange(min, max);
   if (this->Histogram)
     {
     double histogramRange[2];

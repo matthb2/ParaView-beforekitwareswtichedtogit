@@ -168,6 +168,64 @@ void vtkTransferFunctionViewer::SetHistogramVisibility(int visibility)
 }
 
 //----------------------------------------------------------------------------
+void vtkTransferFunctionViewer::SetShowColorFunctionInBackground(int visibility)
+{
+  if (!this->EditorWidget)
+    {
+    vtkErrorMacro("Set transfer function editor type before setting color function visibility.");
+    return;
+    }
+
+  this->EditorWidget->GetColorFunction()->Modified();
+  static_cast<vtkTransferFunctionEditorRepresentation*>(
+    this->EditorWidget->GetRepresentation())->
+    SetShowColorFunctionInBackground(visibility);
+}
+
+//----------------------------------------------------------------------------
+void vtkTransferFunctionViewer::SetShowColorFunctionOnLines(int visibility)
+{
+  if (!this->EditorWidget)
+    {
+    vtkErrorMacro("Set transfer function editor type before setting color function visibility.");
+    return;
+    }
+
+  static_cast<vtkTransferFunctionEditorRepresentation*>(
+    this->EditorWidget->GetRepresentation())->
+    SetColorLinesByScalar(visibility);
+}
+
+//----------------------------------------------------------------------------
+void vtkTransferFunctionViewer::SetLinesColor(double r, double g, double b)
+{
+  if (!this->EditorWidget)
+    {
+    vtkErrorMacro("Set the transfer function editor type before setting the lines color.");
+    return;
+    }
+
+  static_cast<vtkTransferFunctionEditorRepresentation*>(
+    this->EditorWidget->GetRepresentation())->
+    SetLinesColor(r, g, b);
+}
+
+//----------------------------------------------------------------------------
+void vtkTransferFunctionViewer::SetElementLighting(
+  double ambient, double diffuse, double specular, double specularPower)
+{
+  if (!this->EditorWidget)
+    {
+    vtkErrorMacro("Set the transfer function editor type before setting the element lighting parameters.");
+    return;
+    }
+
+  static_cast<vtkTransferFunctionEditorRepresentation*>(
+    this->EditorWidget->GetRepresentation())->SetElementLighting(
+      ambient, diffuse, specular, specularPower);
+}
+
+//----------------------------------------------------------------------------
 void vtkTransferFunctionViewer::SetTransferFunctionEditorType(int type)
 {
   switch (type)
@@ -498,6 +556,17 @@ double* vtkTransferFunctionViewer::GetWholeScalarRange()
     return NULL;
     }
   return this->EditorWidget->GetWholeScalarRange();
+}
+
+//----------------------------------------------------------------------------
+void vtkTransferFunctionViewer::SetLockEndPoints(int lock)
+{
+  vtkTransferFunctionEditorWidgetSimple1D *tfe =
+    vtkTransferFunctionEditorWidgetSimple1D::SafeDownCast(this->EditorWidget);
+  if (tfe)
+    {
+    tfe->SetLockEndPoints(lock);
+    }
 }
 
 //----------------------------------------------------------------------------
