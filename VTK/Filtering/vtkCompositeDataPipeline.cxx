@@ -485,6 +485,11 @@ int vtkCompositeDataPipeline::ShouldIterateTemporalData(
     for(int i=0; i < numInputPorts; ++i)
       {
       vtkInformation* info = inInfoVec[i]->GetInformationObject(0);
+      if (!info) 
+        {
+        // This input must not have been set yet.  Skip it.
+        continue;
+        }
       vtkDataObject *dobj = info->Get(vtkDataObject::DATA_OBJECT());
       if (dobj && dobj->IsA("vtkTemporalDataSet"))
         {
