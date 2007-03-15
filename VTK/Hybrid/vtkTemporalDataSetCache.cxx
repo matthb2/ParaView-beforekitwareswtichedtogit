@@ -48,7 +48,7 @@ int vtkTemporalDataSetCache::FillInputPortInformation(
 {
   // port 0 must be temporal data, but port 1 can be any dataset
   if (port==0) {
-    info->Set(vtkAlgorithm::INPUT_REQUIRED_DATA_TYPE(), "vtkDataObject");
+    info->Set(vtkAlgorithm::INPUT_REQUIRED_DATA_TYPE(), "vtkTemporalDataSet");
   }
   return 1;
 }
