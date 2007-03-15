@@ -45,6 +45,8 @@ vtkInformationKeyMacro(vtkSelection,BLOCK,Integer);
 vtkInformationKeyMacro(vtkSelection,FIELD_TYPE,Integer);
 vtkInformationKeyMacro(vtkSelection,ARRAY_NAME,String);
 vtkInformationKeyMacro(vtkSelection,EPSILON,Double);
+vtkInformationKeyMacro(vtkSelection,PRESERVE_TOPOLOGY,Integer);
+vtkInformationKeyMacro(vtkSelection,CONTAINING_CELLS,Integer);
 
 struct vtkSelectionInternals
 {
