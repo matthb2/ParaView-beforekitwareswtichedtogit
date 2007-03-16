@@ -954,7 +954,7 @@ void vtkTemporalStreamTracer::GenerateOutputLines(vtkPolyData *output)
   ParticleIds->SetName("ParticleId");
   SourceIds->SetName("SourceId");
   InjectedPointIds->SetName("InjectedPointId");
-  vtkIdType tempId; // only need 1 now we have removed trails
+  //vtkIdType tempId; // only need 1 now we have removed trails
   vtkIdType Np = this->ParticleHistories.size();
   vtkIdType *cells = this->ParticleCells->WritePointer(Np, Np*2);
   //
@@ -967,7 +967,7 @@ void vtkTemporalStreamTracer::GenerateOutputLines(vtkPolyData *output)
     ParticleInformation &info = P.Information;
     // create Point Id's 
     double *coord = &info.CurrentPosition.x[0];
-    tempId = this->OutputCoordinates->InsertNextPoint(coord);
+    //tempId = this->OutputCoordinates->InsertNextPoint(coord);
     ParticleIds->InsertNextTuple1(info.UniqueParticleId);
     SourceIds->InsertNextTuple1(info.SourceID);
     InjectedPointIds->InsertNextTuple1(info.InjectedPointId);
