@@ -966,7 +966,7 @@ void vtkTemporalStreamTracer::GenerateOutputLines(vtkPolyData *output)
     ParticleLifetime       &P = (*it);
     ParticleInformation &info = P.Information;
     // create Point Id's 
-    double *coord = &info.CurrentPosition.x[0];
+    //double *coord = &info.CurrentPosition.x[0];
     //tempId = this->OutputCoordinates->InsertNextPoint(coord);
     ParticleIds->InsertNextTuple1(info.UniqueParticleId);
     SourceIds->InsertNextTuple1(info.SourceID);
