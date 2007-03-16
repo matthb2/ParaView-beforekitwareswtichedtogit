@@ -176,10 +176,23 @@ void vtkTransferFunctionViewer::SetShowColorFunctionInBackground(int visibility)
     return;
     }
 
-  this->EditorWidget->GetColorFunction()->Modified();
   static_cast<vtkTransferFunctionEditorRepresentation*>(
     this->EditorWidget->GetRepresentation())->
     SetShowColorFunctionInBackground(visibility);
+}
+
+//----------------------------------------------------------------------------
+void vtkTransferFunctionViewer::SetShowColorFunctionInHistogram(int visibility)
+{
+  if (!this->EditorWidget)
+    {
+    vtkErrorMacro("Set transfer function editor type before setting color function visibility.");
+    return;
+    }
+
+  static_cast<vtkTransferFunctionEditorRepresentation*>(
+    this->EditorWidget->GetRepresentation())->
+    SetShowColorFunctionInHistogram(visibility);
 }
 
 //----------------------------------------------------------------------------
@@ -208,6 +221,27 @@ void vtkTransferFunctionViewer::SetLinesColor(double r, double g, double b)
   static_cast<vtkTransferFunctionEditorRepresentation*>(
     this->EditorWidget->GetRepresentation())->
     SetLinesColor(r, g, b);
+}
+
+//----------------------------------------------------------------------------
+void vtkTransferFunctionViewer::SetColorElementsByColorFunction(int color)
+{
+  if (this->EditorWidget)
+    {
+    static_cast<vtkTransferFunctionEditorRepresentation*>(
+      this->EditorWidget->GetRepresentation())->
+      SetColorElementsByColorFunction(color);
+    }
+}
+
+//----------------------------------------------------------------------------
+void vtkTransferFunctionViewer::SetElementsColor(double r, double g, double b)
+{
+  if (this->EditorWidget)
+    {
+    static_cast<vtkTransferFunctionEditorRepresentation*>(
+      this->EditorWidget->GetRepresentation())->SetElementsColor(r, g, b);
+    }
 }
 
 //----------------------------------------------------------------------------
