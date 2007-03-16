@@ -39,6 +39,7 @@ vtkSMPluginLoader::vtkSMPluginLoader()
   this->Loaded = 0;
   this->FileName = 0;
   this->ServerManagerXML = NULL;
+  this->Error = NULL;
 }
 
 //-----------------------------------------------------------------------------
@@ -102,7 +103,12 @@ void vtkSMPluginLoader::SetFileName(const char* file)
         {
         // toss it out if it isn't a server manager plugin
         vtkDynamicLoader::CloseLibrary(lib);
+        this->SetError("This is not a ParaView plugin.");
         }
+      }
+    else
+      {
+      this->SetError(vtkDynamicLoader::LastError());
       }
     }
 }
