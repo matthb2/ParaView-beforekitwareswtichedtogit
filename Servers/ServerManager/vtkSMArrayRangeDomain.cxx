@@ -211,10 +211,15 @@ int vtkSMArrayRangeDomain::SetDefaultValues(vtkSMProperty* prop)
     }
   if (this->GetMinimumExists(0) && this->GetMaximumExists(0))
     {
-    dvp->SetNumberOfElements(1);
-    double value = (this->GetMinimum(0)+this->GetMaximum(0))/2.0;
-    dvp->SetElement(0, value);
-    return 1;
+    if (dvp->GetRepeatCommand())
+      {
+      // This is the case when this domain is added to properties
+      // like "ContourValues".
+      dvp->SetNumberOfElements(1);
+      double value = (this->GetMinimum(0)+this->GetMaximum(0))/2.0;
+      dvp->SetElement(0, value);
+      return 1;
+      }
     }
 
   return this->Superclass::SetDefaultValues(prop);
