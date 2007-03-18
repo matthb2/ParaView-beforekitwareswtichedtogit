@@ -75,10 +75,13 @@ void vtkSMTimeStepsInformationHelper::UpdateProperty(
     if (timeSteps.GetArgumentLength(0, 0, &length))
       {
       dvp->SetNumberOfElements(length);
+      double *values = new double[length];
       if (length>0)
         {
-        timeSteps.GetArgument(0, 0, dvp->GetElements(), length);
+        timeSteps.GetArgument(0, 0, values, length);
         }
+      dvp->SetElements(values);
+      delete[] values;
       }
     }
 

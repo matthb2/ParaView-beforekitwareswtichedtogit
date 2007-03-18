@@ -300,6 +300,17 @@ int vtkSMBoundsDomain::SetDefaultValues(vtkSMProperty* prop)
       }
     break;
 
+  case vtkSMBoundsDomain::MAGNITUDE:
+      {
+      if (this->GetMinimumExists(0) && this->GetMaximumExists(0))
+        {
+        double val = (this->GetMinimum(0)+this->GetMaximum(0))/2.0;
+        dvp->SetElement(0, val);
+        status = 1;
+        }
+      }
+    break;
+
   default:
     break;
     }

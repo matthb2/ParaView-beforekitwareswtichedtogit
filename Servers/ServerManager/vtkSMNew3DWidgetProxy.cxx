@@ -217,6 +217,11 @@ void vtkSMNew3DWidgetProxy::CreateVTKObjects(int numObjects)
       vtkCommand::InteractionEvent, this->Observer);
     }
 
+  // Since links copy values from input to output,
+  // we need to make sure that input properties i.e. the info
+  // properties are not empty.
+  this->UpdatePropertyInformation();
+
   vtkSMPropertyIterator* piter = this->NewPropertyIterator();
   for(piter->Begin(); !piter->IsAtEnd(); piter->Next())
     {

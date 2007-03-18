@@ -166,6 +166,22 @@ unsigned int vtkSMProxyListDomain::GetNumberOfProxies()
 }
 
 //-----------------------------------------------------------------------------
+bool vtkSMProxyListDomain::HasProxy(vtkSMProxy* proxy)
+{
+  vtkSMProxyListDomainInternals::VectorOfProxies::iterator iter;
+  for (iter = this->Internals->ProxyList.begin();
+    iter != this->Internals->ProxyList.end(); iter++)
+    {
+    if (iter->GetPointer() == proxy)
+      {
+      return true;
+      }
+    }
+  return false;
+}
+
+
+//-----------------------------------------------------------------------------
 vtkSMProxy* vtkSMProxyListDomain::GetProxy(unsigned int index)
 {
   if (index > this->Internals->ProxyList.size())

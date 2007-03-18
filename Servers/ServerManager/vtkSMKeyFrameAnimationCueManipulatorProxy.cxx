@@ -344,7 +344,6 @@ void vtkSMKeyFrameAnimationCueManipulatorProxy::ExecuteEvent(
     if ( (next && keytime > next->GetKeyTime()) || 
       (prev && keytime < prev->GetKeyTime()))
       {
-      cout << "Position Changed" << endl;
       // Position of keyframe has changed.
       this->RemoveKeyFrameInternal(keyframe);
       this->AddKeyFrameInternal(keyframe);

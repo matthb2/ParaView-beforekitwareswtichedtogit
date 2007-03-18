@@ -198,6 +198,27 @@ void vtkSMArrayRangeDomain::SetArrayRange(
     this->AddMinimum(numArrComp, ai->GetComponentRange(-1)[1]);
     }
 }
+//---------------------------------------------------------------------------
+int vtkSMArrayRangeDomain::SetDefaultValues(vtkSMProperty* prop)
+{
+  vtkSMDoubleVectorProperty* dvp = 
+    vtkSMDoubleVectorProperty::SafeDownCast(prop);
+  if (!dvp)
+    {
+    vtkErrorMacro(
+      "vtkSMArrayRangeDomain only works with vtkSMDoubleVectorProperty.");
+    return 0;
+    }
+  if (this->GetMinimumExists(0) && this->GetMaximumExists(0))
+    {
+    dvp->SetNumberOfElements(1);
+    double value = (this->GetMinimum(0)+this->GetMaximum(0))/2.0;
+    dvp->SetElement(0, value);
+    return 1;
+    }
+
+  return this->Superclass::SetDefaultValues(prop);
+}
 
 //---------------------------------------------------------------------------
 void vtkSMArrayRangeDomain::PrintSelf(ostream& os, vtkIndent indent)

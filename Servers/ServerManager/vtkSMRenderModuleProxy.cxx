@@ -608,7 +608,6 @@ void vtkSMRenderModuleProxy::AddDisplay(vtkSMAbstractDisplayProxy* adisp)
   if (prop)
     {
     this->ViewTimeLinks->AddLinkedProperty(prop, vtkSMLink::OUTPUT);
-    prop->Copy(this->GetProperty("ViewTime"));
     disp->UpdateProperty("UpdateTime");
     }
 
@@ -982,6 +981,9 @@ void vtkSMRenderModuleProxy::ResetCamera()
 void vtkSMRenderModuleProxy::ResetCamera(double bds[6])
 {
   this->GetRenderer()->ResetCamera(bds);
+  this->ActiveCameraProxy->UpdatePropertyInformation();
+  this->SynchronizeCameraProperties();
+
   this->Modified();
   this->InvokeEvent(vtkCommand::ResetCameraEvent);
 }
