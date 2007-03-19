@@ -67,6 +67,8 @@ PURPOSE.  See the above copyright notice for more information.
 #include <functional>
 #include <algorithm>
 
+using namespace vtkTemporalStreamTracerNamespace;
+
 //----------------------------------------------------------------------------
 #if 0
   #undef vtkDebugMacro
