@@ -106,6 +106,7 @@ vtkRenderWindowInteractor::vtkRenderWindowInteractor()
   this->TimerMap = new vtkTimerIdMap;
   this->TimerDuration = 10;
   this->ObserverMediator = 0;
+  this->HandleEventLoop = false;
 }
 
 //----------------------------------------------------------------------

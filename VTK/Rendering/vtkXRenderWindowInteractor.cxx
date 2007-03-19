@@ -191,7 +191,7 @@ void vtkXRenderWindowInteractor::BreakXtLoop(vtkObject*, unsigned long,
 void vtkXRenderWindowInteractor::Start()
 {
   // Let the compositing handle the event loop if it wants to.
-  if (this->HasObserver(vtkCommand::StartEvent))
+  if (this->HasObserver(vtkCommand::StartEvent) && !this->HandleEventLoop)
     {
     this->InvokeEvent(vtkCommand::StartEvent,NULL);
     return;

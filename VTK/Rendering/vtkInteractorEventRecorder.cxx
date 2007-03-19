@@ -97,6 +97,11 @@ void vtkInteractorEventRecorder::SetEnabled(int enabling)
     i->AddObserver(vtkCommand::AnyEvent, this->EventCallbackCommand, 
                    this->Priority);
 
+    // Make sure that the interactor does not exit in response
+    // to a StartEvent. The Interactor has code to allow others to handle
+    // the event look of they want to
+    i->HandleEventLoop = 1;
+
     this->InvokeEvent(vtkCommand::EnableEvent,NULL);
     }
 
@@ -113,6 +118,7 @@ void vtkInteractorEventRecorder::SetEnabled(int enabling)
 
     // don't listen for events any more
     this->Interactor->RemoveObserver(this->EventCallbackCommand);
+    this->Interactor->HandleEventLoop = 0;
 
     this->InvokeEvent(vtkCommand::DisableEvent,NULL);
     }
