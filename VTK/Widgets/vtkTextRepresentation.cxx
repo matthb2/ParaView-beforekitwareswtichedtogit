@@ -36,6 +36,8 @@ vtkTextRepresentation::vtkTextRepresentation()
   this->TextActor->GetTextProperty()->SetVerticalJustificationToCentered();
  
   this->ShowBorder = vtkBorderRepresentation::BORDER_ACTIVE;
+  
+  this->BWActor->VisibilityOff();
 }
 
 //-------------------------------------------------------------------------
