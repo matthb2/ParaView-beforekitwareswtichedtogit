@@ -394,6 +394,17 @@ int vtkCompositeDataPipeline::InputTypeIsValid(
       }
     }
 
+  // If the algorithm is requesting a vtkTemporalDataSet, then assume that the
+  // upstream pipeline will be run multiple times and a vtkTemporalDataSet will
+  // be created from the multiple results.
+  vtkInformation *info = this->Algorithm->GetInputPortInformation(port);
+  const char *requiredType
+    = info->Get(vtkAlgorithm::INPUT_REQUIRED_DATA_TYPE());
+  if (requiredType && (strcmp(requiredType, "vtkTemporalDataSet") == 0))
+    {
+    return 1;
+    }
+
   // Otherwise, let superclass handle it.
   return this->Superclass::InputTypeIsValid(port, index, inInfoVec);
 }
