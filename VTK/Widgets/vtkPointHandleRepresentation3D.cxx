@@ -177,7 +177,7 @@ int vtkPointHandleRepresentation3D::DetermineConstraintAxis(int constraint, doub
     {
     double p[3], d2, tol;
     this->CursorPicker->GetPickPosition(p);
-    d2 = vtkMath::Distance2BetweenPoints(p,this->StartEventPosition);
+    d2 = vtkMath::Distance2BetweenPoints(p,this->LastPickPosition);
     tol = this->HotSpotSize*this->InitialLength;
     if ( d2 > (tol*tol) )
       {
