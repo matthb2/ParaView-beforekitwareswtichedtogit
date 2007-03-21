@@ -92,7 +92,7 @@ int vtkPolyLineToRectilinearGridFilter::RequestData(
   int num_lines = lines->GetNumberOfCells();
   if (num_lines == 0)
     {
-    vtkWarningMacro("No lines in the input.");
+    // vtkWarningMacro("No lines in the input.");
     return 1;
     }
 
