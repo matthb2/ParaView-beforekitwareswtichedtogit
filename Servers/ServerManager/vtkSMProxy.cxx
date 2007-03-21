@@ -2152,6 +2152,23 @@ void vtkSMProxy::ExposeSubProxyProperty(const char* subproxy_name,
 }
 
 //---------------------------------------------------------------------------
+void vtkSMProxy::CopyIDs(vtkSMProxy* copyTo)
+{
+  // Ensure we are created.
+  this->CreateVTKObjects(1);
+
+  if (copyTo->GetObjectsCreated())
+    {
+    vtkErrorMacro("Proxy has already been created, argument must be an "
+      "initialized proxy.");
+    return;
+    }
+
+  copyTo->Internals->IDs = this->Internals->IDs;
+  copyTo->ObjectsCreated = 1;
+}
+
+//---------------------------------------------------------------------------
 void vtkSMProxy::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os, indent);
