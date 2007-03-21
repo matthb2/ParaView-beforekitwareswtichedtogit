@@ -2164,7 +2164,19 @@ void vtkSMProxy::CopyIDs(vtkSMProxy* copyTo)
     return;
     }
 
-  copyTo->Internals->IDs = this->Internals->IDs;
+  vtkClientServerStream stream;
+  vtkProcessModule* pm = vtkProcessModule::GetProcessModule();
+  for (unsigned int cc=0; cc < this->Internals->IDs.size(); cc++)
+    {
+    vtkClientServerID newid = pm->GetUniqueID();
+    stream  << vtkClientServerStream::Assign
+      << newid
+      << this->Internals->IDs[cc]
+      << vtkClientServerStream::End;
+    copyTo->Internals->IDs.push_back(newid);
+    }
+  pm->SendStream(copyTo->GetConnectionID(), copyTo->GetServers(), stream);
+
   copyTo->ObjectsCreated = 1;
 }
 
