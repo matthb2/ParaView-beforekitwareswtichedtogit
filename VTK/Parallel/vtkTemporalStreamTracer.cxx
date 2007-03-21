@@ -228,7 +228,7 @@ int vtkTemporalStreamTracer::RequestInformation(
   else 
     {
     vtkErrorMacro(<<"Input information has no TIME_STEPS set");
-    return 1;
+    return 0;
     }
   
   outInfo->Set(
