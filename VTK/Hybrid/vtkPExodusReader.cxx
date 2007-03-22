@@ -419,6 +419,7 @@ int vtkPExodusReader::RequestData(
       this->GetApplyDisplacements());
     readerList[reader_idx]->SetDisplacementMagnitude(
       this->GetDisplacementMagnitude());
+    readerList[reader_idx]->SetHasModeShapes(this->GetHasModeShapes());
 
     readerList[reader_idx]->SetExodusModelMetadata(this->ExodusModelMetadata);
     //readerList[reader_idx]->PackExodusModelOntoOutputOff();
