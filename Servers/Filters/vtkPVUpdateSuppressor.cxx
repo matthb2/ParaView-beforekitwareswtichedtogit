@@ -71,12 +71,12 @@ vtkPVUpdateSuppressor::~vtkPVUpdateSuppressor()
 //----------------------------------------------------------------------------
 void vtkPVUpdateSuppressor::SetUpdateTime(double utime)
 {
+  this->UpdateTimeInitialized = true;
   if (this->UpdateTime != utime)
     {
     this->Modified();
     this->UpdateTime = utime;
     }
-  this->UpdateTimeInitialized = true;
 }
 
 //----------------------------------------------------------------------------
