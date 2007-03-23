@@ -73,7 +73,7 @@ int vtkExtractSelectedPolyDataIds::RequestData(
   vtkDebugMacro(<< "Extracting poly data geometry");
 
   if (!sel->GetProperties()->Has(vtkSelection::CONTENT_TYPE()) ||
-      sel->GetProperties()->Get(vtkSelection::CONTENT_TYPE()) != vtkSelection::IDS ||
+      sel->GetProperties()->Get(vtkSelection::CONTENT_TYPE()) != vtkSelection::OFFSETS ||
       !sel->GetProperties()->Has(vtkSelection::FIELD_TYPE()) ||
       sel->GetProperties()->Get(vtkSelection::FIELD_TYPE()) != vtkSelection::CELL)
     {

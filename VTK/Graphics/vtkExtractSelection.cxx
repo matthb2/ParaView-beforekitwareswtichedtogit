@@ -84,7 +84,9 @@ int vtkExtractSelection::RequestData(
   int seltype = sel->GetProperties()->Get(vtkSelection::CONTENT_TYPE());
   switch (seltype)
     {
-    case vtkSelection::IDS:
+    case vtkSelection::GLOBALIDS:
+    case vtkSelection::VALUES:
+    case vtkSelection::OFFSETS:
     {
     return this->ExtractIds(sel, input, output);
     }
