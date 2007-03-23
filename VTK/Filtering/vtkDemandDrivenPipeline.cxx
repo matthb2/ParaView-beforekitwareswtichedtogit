@@ -629,15 +629,22 @@ int vtkDemandDrivenPipeline::CheckDataObject(int port,
   vtkInformation* portInfo = this->Algorithm->GetOutputPortInformation(port);
   if(const char* dt = portInfo->Get(vtkDataObject::DATA_TYPE_NAME()))
     {
+    int incorrectdata = data && (!data->IsA(dt) ||
+      (!strcmp(data->GetClassName(),"vtkTemporalDataSet") && strcmp(dt,"vtkTemporalDataSet")) );
     // The output port specifies a data type.  Make sure the data
     // object exists and is of the right type.
-    if(!data || !data->IsA(dt))
+    if(!data || incorrectdata)
       {
+      if (data) 
+        {
+        vtkDebugMacro(<< "CHECKDATAOBJECT Replacing " << data->GetClassName());
+        }
       // Try to create an instance of the correct type.
       data = vtkDataObjectTypes::NewDataObject(dt);
       this->SetOutputData(port, data, outInfo);
       if(data)
         {
+        vtkDebugMacro(<< "CHECKDATAOBJECT Created " << dt);
         data->FastDelete();
         }
       }
