@@ -521,8 +521,8 @@ int vtkCompositeDataPipeline::ShouldIterateOverInput(int& compositePort)
 
 //----------------------------------------------------------------------------
 int vtkCompositeDataPipeline::ShouldIterateTemporalData(
-                                               vtkInformation *request,
-                                               vtkInformationVector** inInfoVec,
+                                               vtkInformation *vtkNotUsed(request),
+                                               vtkInformationVector** vtkNotUsed(inInfoVec),
                                                vtkInformationVector* outInfoVec)
 {
   // Exit fast if no outputs exist
