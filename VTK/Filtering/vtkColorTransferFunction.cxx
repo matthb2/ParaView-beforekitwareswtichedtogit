@@ -342,6 +342,12 @@ int vtkColorTransferFunction::RemovePoint( double x )
 //----------------------------------------------------------------------------
 void vtkColorTransferFunction::MovePoint(double oldX, double newX)
 {
+  if (oldX == newX)
+    {
+    // Nothing to do.
+    return;
+    }
+
   this->RemovePoint(newX);
   for (unsigned int i = 0; i < this->Internal->Nodes.size(); i++ )
     {
