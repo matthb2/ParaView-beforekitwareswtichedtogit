@@ -37,7 +37,6 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "pqOutputWindow.h"
 #include "pqCoreTestUtility.h"
 #include "pqOptions.h"
-#include "pqServerResource.h"
 
 #include <vtkObjectFactory.h>
 #include <vtkProcessModuleConnectionManager.h>
@@ -181,9 +180,9 @@ int pqProcessModuleGUIHelper::RunGUIStart(int argc, char** argv,
       pqApplicationCore::instance()->getPluginManager();
     pluginManager->loadPlugins(NULL);
 
-    // Create the default connection.
-    pqServerResource resource = pqServerResource("builtin:");
-    this->Implementation->ApplicationCore->createServer(resource);
+    // // Create the default connection.
+    // pqServerResource resource = pqServerResource("builtin:");
+    // this->Implementation->ApplicationCore->createServer(resource);
 
     // Starts the event loop.
     QCoreApplication* app = QApplication::instance();

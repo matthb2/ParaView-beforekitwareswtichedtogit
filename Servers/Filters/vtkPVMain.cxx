@@ -26,7 +26,6 @@
 
 #include "vtkPVMain.h"
 #include "vtkObjectFactory.h"
-#include "vtkPVConfig.h"
 #include "vtkPVOptions.h"
 #include "vtkProcessModuleGUIHelper.h"
 
