@@ -563,7 +563,7 @@ void vtkVisibleCellSelector::GetSelectedIds(vtkSelection *dest)
 
   vtkSelection* selection = NULL;
 
-  int pixelCount;
+  int pixelCount = 0;
   for (vtkIdType i = 0; i < numTup; i++)
     {
     this->SelectedIds->GetTupleValue(i, &aTuple[0]);
