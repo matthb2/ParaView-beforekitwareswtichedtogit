@@ -575,7 +575,7 @@ void vtkSMComparativeVisProxy::StoreGeometry()
         }
 
       // Collect bounds of all geometry
-      vtkPVGeometryInformation* geomInfo = pDisp->GetGeometryInformation();
+      vtkPVGeometryInformation* geomInfo = pDisp->GetDisplayedDataInformation();
       if (geomInfo)
         {
         double bounds[6];
