@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   Visualization Toolkit
+  Program:   ParaView
   Module:    $RCSfile$
 
   Copyright (c) Kitware, Inc.

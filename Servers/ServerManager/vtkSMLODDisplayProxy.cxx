@@ -111,11 +111,6 @@ void vtkSMLODDisplayProxy::SetupVolumePipeline()
   pp->RemoveAllProxies();
   pp->AddProxy(this->LODMapperProxy);
   // I am reusing the regular LOD mapper.
-  // The drawback to this is that now, when the non-LOD Volume properties
-  // change, care must be taken to appropriately update LODMapperProxy.
-  // The only property we need to be explicitly worried about is 
-  // "SelectScalarArray" ("SelectColorArray");
-
 }
 
 //-----------------------------------------------------------------------------
