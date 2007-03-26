@@ -651,6 +651,7 @@ void vtkSMDataObjectDisplayProxy::SetRepresentation(int representation)
     return;
     }
   
+  this->Representation = representation;
   vtkSMIntVectorProperty* ivp;
   if (representation == vtkSMDataObjectDisplayProxy::VOLUME)
     {
@@ -713,7 +714,8 @@ void vtkSMDataObjectDisplayProxy::SetRepresentation(int representation)
   dvp = vtkSMDoubleVectorProperty::SafeDownCast(
     this->PropertyProxy->GetProperty("Specular"));
   dvp->SetElement(0, specularity);
-  
+ 
+
   // We need to invalidate geometry so the representation changes are passed thru 
   // the update suppressor.
   this->InvalidateGeometry();
