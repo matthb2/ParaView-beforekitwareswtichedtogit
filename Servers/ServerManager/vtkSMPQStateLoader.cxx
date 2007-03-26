@@ -180,6 +180,4 @@ void vtkSMPQStateLoader::PrintSelf(ostream& os, vtkIndent indent)
   this->Superclass::PrintSelf(os, indent);
   os << indent << "MultiViewRenderModuleProxy: " 
      << this->MultiViewRenderModuleProxy << endl;
-//  os << indent << "UseExistingRenderModules: " << 
-//    this->UseExistingRenderModules << endl;
 }
