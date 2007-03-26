@@ -846,6 +846,24 @@ vtkMPICommunicator::Request::Request()
 }
 
 //----------------------------------------------------------------------------
+vtkMPICommunicator::Request::Request( const vtkMPICommunicator::Request& src )
+{
+  this->Req = new vtkMPICommunicatorOpaqueRequest;
+  this->Req->Handle = src.Req->Handle;
+}
+
+//----------------------------------------------------------------------------
+vtkMPICommunicator::Request& vtkMPICommunicator::Request::operator = ( const vtkMPICommunicator::Request& src )
+{
+  if ( this == &src )
+    {
+    return *this;
+    }
+  this->Req->Handle = src.Req->Handle;
+  return *this;
+}
+
+//----------------------------------------------------------------------------
 vtkMPICommunicator::Request::~Request()
 {
   delete this->Req;
