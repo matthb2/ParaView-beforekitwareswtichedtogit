@@ -284,6 +284,14 @@ void vtkSelectionSerializer::ParseNode(vtkPVXMLElement* nodeXML,
             node->GetProperties()->Set(vtkSelection::CONTAINING_CELLS(), val);
             }
           }
+        else if (strcmp("INVERSE", key) == 0)
+          {
+          int val;
+          if (elem->GetScalarAttribute("value", &val))
+            {
+            node->GetProperties()->Set(vtkSelection::INVERSE(), val);
+            }
+          }
         else if (strcmp("PIXEL_COUNT", key) == 0)
           {
           int val;

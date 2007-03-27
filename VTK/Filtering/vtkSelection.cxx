@@ -48,6 +48,7 @@ vtkInformationKeyMacro(vtkSelection,EPSILON,Double);
 vtkInformationKeyMacro(vtkSelection,PRESERVE_TOPOLOGY,Integer);
 vtkInformationKeyMacro(vtkSelection,CONTAINING_CELLS,Integer);
 vtkInformationKeyMacro(vtkSelection,PIXEL_COUNT,Integer);
+vtkInformationKeyMacro(vtkSelection,INVERSE,Integer);
 
 struct vtkSelectionInternals
 {
