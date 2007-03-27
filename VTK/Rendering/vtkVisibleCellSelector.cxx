@@ -613,7 +613,7 @@ void vtkVisibleCellSelector::GetSelectedIds(vtkSelection *dest)
       selection = vtkSelection::New();
       //record that we are storing cell ids in the node
       selection->GetProperties()->Set(
-        vtkSelection::CONTENT_TYPE(), vtkSelection::OFFSETS);
+        vtkSelection::CONTENT_TYPE(), vtkSelection::INDICES);
       selection->GetProperties()->Set(
         vtkSelection::FIELD_TYPE(), vtkSelection::CELL);
       //record the processor we are recording hits on

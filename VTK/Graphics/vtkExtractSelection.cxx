@@ -86,7 +86,7 @@ int vtkExtractSelection::RequestData(
     {
     case vtkSelection::GLOBALIDS:
     case vtkSelection::VALUES:
-    case vtkSelection::OFFSETS:
+    case vtkSelection::INDICES:
     {
     return this->ExtractIds(sel, input, output);
     }

@@ -59,7 +59,7 @@ void vtkSelectionConverter::Convert(vtkSelection* input, vtkSelection* output)
     }
 
   if (inputProperties->Get(vtkSelection::CONTENT_TYPE()) !=
-      vtkSelection::OFFSETS
+      vtkSelection::INDICES
       ||
       !inputProperties->Has(vtkSelection::FIELD_TYPE())
       ||
