@@ -532,7 +532,7 @@ void vtkSMDataObjectDisplayProxy::SetupVolumePipeline()
       return;
       }
     pp->RemoveAllProxies();
-    if (this->SupportsHAVSMapper && false)
+    if (this->SupportsHAVSMapper)
       {
       pp->AddProxy(this->VolumeHAVSMapperProxy);
       }
