@@ -354,7 +354,6 @@ int vtkExtractSelectedLocations::ExtractCells(
           cellCounter[ptId]++;
           }
         }
-      locArrayIndex++;
       }
     }
   
