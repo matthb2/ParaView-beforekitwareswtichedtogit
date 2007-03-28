@@ -29,47 +29,43 @@ NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 =========================================================================*/
+#ifndef __pqExtractSelectionPanel_h
+#define __pqExtractSelectionPanel_h
 
-#include "pqTreeWidgetItemObject.h"
 
+#include "pqObjectPanel.h"
 
-pqTreeWidgetItemObject::pqTreeWidgetItemObject(QTreeWidget* p, const QStringList& t)
-  : QTreeWidgetItem(p, t) 
+/// pqExtractSelectionPanel is a custom panel used for 
+/// "ExtractCellSelection" and "ExtractPointSelection" filters.
+class PQCOMPONENTS_EXPORT pqExtractSelectionPanel : public pqObjectPanel
 {
-}
+  Q_OBJECT
+  typedef pqObjectPanel Superclass;
+public:
+  pqExtractSelectionPanel(pqProxy* proxy, QWidget* parent=0);
+  ~pqExtractSelectionPanel();
 
-void pqTreeWidgetItemObject::setData(int column, int role, const QVariant& v)
-{
-  if(Qt::CheckStateRole == role)
-    {
-    if(v != this->data(column, Qt::CheckStateRole))
-      {
-      QTreeWidgetItem::setData(column, role, v);
-      emit this->checkedStateChanged(Qt::Checked == v ? true : false);
-      }
-    }
-  else
-    {
-    QTreeWidgetItem::setData(column, role, v);
-    }
-  emit this->modified();
-}
+protected slots:
+  /// Deletes selected elements.
+  void deleteSelected();
 
-bool pqTreeWidgetItemObject::isChecked() const
-{
-  return Qt::Checked == this->checkState(0) ? true : false;
-}
+  /// Deletes all elements.
+  void deleteAll();
 
-void pqTreeWidgetItemObject::setChecked(bool v)
-{
-  if(v)
-    {
-    this->setCheckState(0, Qt::Checked);
-    }
-  else
-    {
-    this->setCheckState(0, Qt::Unchecked);
-    }
-}
+  // Adds a new value.
+  void newValue();
 
+protected:
+  /// Creates links between the Qt widgets and the server manager properties.
+  void linkServerManagerProperties();
+
+private:
+  pqExtractSelectionPanel(const pqExtractSelectionPanel&); // Not implemented.
+  void operator=(const pqExtractSelectionPanel&); // Not implemented.
+
+  class pqInternal;
+  pqInternal *Internal;
+};
+
+#endif
 
