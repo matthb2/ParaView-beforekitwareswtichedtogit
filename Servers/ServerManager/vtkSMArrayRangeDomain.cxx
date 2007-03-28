@@ -220,6 +220,12 @@ int vtkSMArrayRangeDomain::SetDefaultValues(vtkSMProperty* prop)
       dvp->SetElement(0, value);
       return 1;
       }
+    else if(dvp->GetNumberOfElements() == 2)
+      {
+      // min,max case
+      dvp->SetElements2(this->GetMinimum(0), this->GetMaximum(0));
+      return 1;
+      }
     }
 
   return this->Superclass::SetDefaultValues(prop);
