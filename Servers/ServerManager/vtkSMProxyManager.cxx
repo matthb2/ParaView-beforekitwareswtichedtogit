@@ -161,10 +161,13 @@ void vtkSMProxyManager::InstantiateGroupPrototypes(const char* groupName)
       if (!this->GetProxy(newgroupname.str(), it2->first.c_str()))
         {
         vtkSMProxy* proxy = this->NewProxy(element, groupName);
-        proxy->SetConnectionID(
-          vtkProcessModuleConnectionManager::GetNullConnectionID());
-        this->RegisterProxy(newgroupname.str(), it2->first.c_str(), proxy);
-        proxy->Delete();
+        if (proxy)
+          {
+          proxy->SetConnectionID(
+            vtkProcessModuleConnectionManager::GetNullConnectionID());
+          this->RegisterProxy(newgroupname.str(), it2->first.c_str(), proxy);
+          proxy->Delete();
+          }
         }
       }
 
