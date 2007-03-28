@@ -20,6 +20,8 @@
 #include "vtkMath.h"
 #include "vtkPoints.h"
 
+vtkCxxRevisionMacro(vtkCellIntegrator, "$Revision$");
+
 //-----------------------------------------------------------------------------
 double vtkCellIntegrator::IntegratePolyLine(vtkDataSet* input, 
                                             vtkIdType vtkNotUsed(cellId), 
