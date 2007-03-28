@@ -327,9 +327,11 @@ void vtkPVLODVolume::UpdateLODProperty()
     this->LODProp->GetLODMapper(this->LowLODId, &mapper);
     if (mapper)
       {
+      // Why change the LODMapper's LUT? 
+      // It has already been intialized correctly.
       // This is a surface mapper.  Map the colors of the transfer function
       // to the surface.
-      mapper->SetLookupTable(this->Property->GetRGBTransferFunction());
+      // mapper->SetLookupTable(this->Property->GetRGBTransferFunction());
       }
     else
       {
