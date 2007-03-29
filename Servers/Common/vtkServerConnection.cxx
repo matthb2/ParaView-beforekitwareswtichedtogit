@@ -348,6 +348,7 @@ void vtkServerConnection::GatherInformationFromController(vtkSocketController* c
     }
   stream.SetData(data2, length2);
   info->CopyFromStream(&stream);
+  delete [] data2;
 }
 
 //-----------------------------------------------------------------------------

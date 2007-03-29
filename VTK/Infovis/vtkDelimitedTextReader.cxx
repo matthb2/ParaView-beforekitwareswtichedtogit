@@ -77,6 +77,12 @@ vtkDelimitedTextReader::vtkDelimitedTextReader()
 
 vtkDelimitedTextReader::~vtkDelimitedTextReader()
 {
+  if (this->Internals->File)
+    {
+    delete this->Internals->File;
+    this->Internals->File = 0;
+    }
+
   this->SetFileName(0);
   this->SetFieldDelimiterCharacters(NULL);
 

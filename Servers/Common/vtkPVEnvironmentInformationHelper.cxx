@@ -28,6 +28,7 @@ vtkPVEnvironmentInformationHelper::vtkPVEnvironmentInformationHelper()
 //-----------------------------------------------------------------------------
 vtkPVEnvironmentInformationHelper::~vtkPVEnvironmentInformationHelper()
 {
+  this->SetVariable(0);
 }
 
 //-----------------------------------------------------------------------------

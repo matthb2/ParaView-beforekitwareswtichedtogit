@@ -47,6 +47,7 @@ vtkSMPQStateLoader::vtkSMPQStateLoader()
 vtkSMPQStateLoader::~vtkSMPQStateLoader()
 {
   this->SetMultiViewRenderModuleProxy(0);
+  delete this->PQInternal;
 }
 
 //-----------------------------------------------------------------------------

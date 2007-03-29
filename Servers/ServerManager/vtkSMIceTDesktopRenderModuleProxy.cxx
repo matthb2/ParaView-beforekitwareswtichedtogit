@@ -65,6 +65,7 @@ vtkSMIceTDesktopRenderModuleProxy::vtkSMIceTDesktopRenderModuleProxy()
 vtkSMIceTDesktopRenderModuleProxy::~vtkSMIceTDesktopRenderModuleProxy()
 {
   this->SetServerDisplayManagerProxy(0);
+  delete this->PartitionedData;
 }
 
 //-----------------------------------------------------------------------------
