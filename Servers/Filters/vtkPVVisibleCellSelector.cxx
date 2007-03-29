@@ -85,6 +85,7 @@ void vtkPVVisibleCellSelector::SetRenderer(vtkRenderer *r)
   //now that we have given these away, we can delete our reference to them
   ip->Delete();
   arr->Delete();
+  delete [] SaveProps;
 }
 
 //----------------------------------------------------------------------------
