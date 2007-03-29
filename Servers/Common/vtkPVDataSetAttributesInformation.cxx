@@ -132,7 +132,9 @@ vtkPVDataSetAttributesInformation
   for (idx = 0; idx < num; ++idx)
     {
     vtkAbstractArray* const array = da->GetAbstractArray(idx);
-    if (array->GetName() && strcmp(array->GetName(),"vtkGhostLevels") != 0)
+    if (array->GetName() && 
+        strcmp(array->GetName(),"vtkGhostLevels") != 0 &&
+        strcmp(array->GetName(), "vtkOriginalCellIds") != 0)
       {
       vtkPVArrayInformation *info = vtkPVArrayInformation::New();
       info->CopyFromObject(array);
