@@ -20,6 +20,7 @@
 #include "vtkInformation.h"
 #include "vtkInformationVector.h"
 #include "vtkObjectFactory.h"
+#include "vtkOnePieceExtentTranslator.h"
 #include "vtkPointData.h"
 #include "vtkRectilinearGrid.h"
 #include "vtkSmartPointer.h"
@@ -97,6 +98,20 @@ int vtkCSVReader::RequestInformation(
   this->Cache->GetExtent(extent);
   outInfo->Set(vtkStreamingDemandDrivenPipeline::WHOLE_EXTENT(),
     extent, 6);
+
+  // Setup ExtentTranslator so that all downstream piece requests are
+  // converted to whole extent update requests, as need by the histogram filter.
+  vtkStreamingDemandDrivenPipeline* sddp = 
+    vtkStreamingDemandDrivenPipeline::SafeDownCast(this->GetExecutive());
+  if (strcmp(
+      sddp->GetExtentTranslator(outInfo)->GetClassName(), 
+      "vtkOnePieceExtentTranslator") != 0)
+    {
+    vtkExtentTranslator* et = vtkOnePieceExtentTranslator::New();
+    sddp->SetExtentTranslator(outInfo, et);
+    et->Delete();
+    }
+
   return 1;
 }
 
