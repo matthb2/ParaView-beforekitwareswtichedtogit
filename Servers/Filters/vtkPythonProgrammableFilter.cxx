@@ -36,7 +36,18 @@ vtkPythonProgrammableFilter::vtkPythonProgrammableFilter()
   this->Script = NULL;
   this->Interpretor = NULL;
   this->OutputDataSetType = VTK_DATA_SET;
-  }
+}
+
+//----------------------------------------------------------------------------
+void vtkPythonProgrammableFilter::UnRegister(vtkObjectBase *o)
+{
+  if (this->GetReferenceCount() == 4 && this->Interpretor != NULL)
+    {
+    this->Interpretor->MakeCurrent();
+    this->Interpretor->RunSimpleString("self = 0");
+    }
+  this->Superclass::UnRegister(o);
+}
 
 //----------------------------------------------------------------------------
 vtkPythonProgrammableFilter::~vtkPythonProgrammableFilter()
