@@ -35,5 +35,8 @@ vtkGraphGeodesicPath::~vtkGraphGeodesicPath()
 void vtkGraphGeodesicPath::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os,indent);
+
+  os << indent << "StartVertex: " << this->StartVertex << endl;
+  os << indent << "EndVertex: "   << this->EndVertex   << endl;
 }
 
