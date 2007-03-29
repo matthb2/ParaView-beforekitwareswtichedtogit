@@ -1287,6 +1287,12 @@ int vtkStreamingDemandDrivenPipeline
 }
 
 //----------------------------------------------------------------------------
+int vtkStreamingDemandDrivenPipeline::SetUpdateTimeStep(int port, double time)
+{
+  return this->SetUpdateTimeSteps(port, &time, 1);
+}
+
+//----------------------------------------------------------------------------
 int vtkStreamingDemandDrivenPipeline
 ::SetUpdateTimeSteps(int port, double *times, int length)
 {
