@@ -155,6 +155,46 @@ void vtkSMSourceProxy::UpdatePipeline()
 }
 
 //---------------------------------------------------------------------------
+// Call Update() on all sources with given time
+// TODO this should update information properties.
+void vtkSMSourceProxy::UpdatePipeline(double time)
+{
+  int i;
+  int numIDs = this->GetNumberOfIDs();
+  if (numIDs <= 0)
+    {
+    return;
+    }
+
+  if (strcmp(this->GetVTKClassName(), "vtkPVEnSightMasterServerReader") == 0)
+    { 
+    // Cannot set the update extent until we get the output.  Need to call
+    // update before we can get the output.  Cannot not update whole extent
+    // of every source.  Multiblock should fix this.
+    vtkProcessModule* pm = vtkProcessModule::GetProcessModule();
+    vtkClientServerStream command;
+    for(i=0; i<numIDs; i++)
+      {
+      command << vtkClientServerStream::Invoke 
+              << this->GetID(i)
+              << "Update" 
+              << vtkClientServerStream::End;
+      }
+    pm->SendStream(this->ConnectionID, this->Servers, command);
+    return;
+    }
+    
+  this->CreateParts();
+  int num = this->GetNumberOfParts();
+  for (i=0; i < num; ++i)
+    {
+    this->GetPart(i)->UpdatePipeline(time);
+    }
+
+  this->InvalidateDataInformation();
+}
+
+//---------------------------------------------------------------------------
 void vtkSMSourceProxy::CreateVTKObjects(int numObjects)
 {
   if (this->ObjectsCreated)

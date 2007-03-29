@@ -143,6 +143,26 @@ void vtkSMPWriterProxy::UpdatePipeline()
   this->Superclass::UpdatePipeline();
 }
 
+//-----------------------------------------------------------------------------
+void vtkSMPWriterProxy::UpdatePipeline(double time)
+{
+  vtkSMProxy* sumHelper = this->GetSubProxy("SummaryHelper");
+  if (sumHelper)
+    {
+    vtkProcessModule* pm = vtkProcessModule::GetProcessModule();
+    vtkClientServerStream stream;
+
+    for (unsigned int cc=0; cc < sumHelper->GetNumberOfIDs(); cc++)
+      {
+      stream << vtkClientServerStream::Invoke
+             << sumHelper->GetID(cc) 
+             << "SynchronizeSummaryFiles"
+             << vtkClientServerStream::End;
+      }
+    pm->SendStream(this->ConnectionID, this->Servers, stream);
+    }
+  this->Superclass::UpdatePipeline(time);
+}
 
 
 //-----------------------------------------------------------------------------

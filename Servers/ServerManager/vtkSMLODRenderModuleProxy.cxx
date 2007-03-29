@@ -84,6 +84,9 @@ vtkSMLODRenderModuleProxy::~vtkSMLODRenderModuleProxy()
 //-----------------------------------------------------------------------------
 void vtkSMLODRenderModuleProxy::AddDisplay(vtkSMAbstractDisplayProxy* disp)
 {
+  this->SetTotalVisibleGeometryMemorySizeValid(0);
+  this->SetTotalVisibleLODGeometryMemorySizeValid(0);
+
   this->Superclass::AddDisplay(disp);
   
   vtkSMLODDisplayProxy* pDisp = vtkSMLODDisplayProxy::SafeDownCast(disp);
@@ -96,6 +99,9 @@ void vtkSMLODRenderModuleProxy::AddDisplay(vtkSMAbstractDisplayProxy* disp)
 //-----------------------------------------------------------------------------
 void vtkSMLODRenderModuleProxy::RemoveDisplay(vtkSMAbstractDisplayProxy* disp)
 {
+  this->SetTotalVisibleGeometryMemorySizeValid(0);
+  this->SetTotalVisibleLODGeometryMemorySizeValid(0);
+
   vtkSMLODDisplayProxy* pDisp = vtkSMLODDisplayProxy::SafeDownCast(disp);
   if (pDisp)
     {
