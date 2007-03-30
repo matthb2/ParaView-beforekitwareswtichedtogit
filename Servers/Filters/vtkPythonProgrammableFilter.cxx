@@ -26,6 +26,7 @@
 #include "vtkPVOptions.h"
 #include "vtkPVPythonInterpretor.h"
 #include "vtkProcessModule.h"
+#include "vtkStreamingDemandDrivenPipeline.h"
 
 #include <vtkstd/string>
 
@@ -71,8 +72,10 @@ vtkPythonProgrammableFilter::~vtkPythonProgrammableFilter()
 int vtkPythonProgrammableFilter::RequestInformation(
   vtkInformation*, 
   vtkInformationVector** , 
-  vtkInformationVector*)
+  vtkInformationVector* outputVector)
 {
+  vtkInformation* outInfo = outputVector->GetInformationObject(0);
+
   // Setup ExtentTranslator so that all downstream piece requests are
   // converted to whole extent update requests, as need by the histogram filter.
   vtkStreamingDemandDrivenPipeline* sddp = 
