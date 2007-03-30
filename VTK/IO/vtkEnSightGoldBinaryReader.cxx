@@ -185,7 +185,7 @@ int vtkEnSightGoldBinaryReader::ReadGeometryFile(const char* fileName, int timeS
 
     while (strncmp(line, "BEGIN TIME STEP", 15) != 0)
       {
-      int result=this->ReadLine(line);
+      this->ReadLine(line);
       }
     }
   
