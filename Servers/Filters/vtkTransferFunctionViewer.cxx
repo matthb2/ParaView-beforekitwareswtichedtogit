@@ -744,6 +744,24 @@ void vtkTransferFunctionViewer::SetColorSpace(int space)
 }
 
 //----------------------------------------------------------------------------
+void vtkTransferFunctionViewer::SetCurrentElementId(unsigned int idx)
+{
+  if (this->EditorWidget)
+    {
+    vtkTransferFunctionEditorRepresentation *rep =
+      vtkTransferFunctionEditorRepresentation::SafeDownCast(
+        this->EditorWidget->GetRepresentation());
+    if (rep)
+      {
+      if (idx < rep->GetNumberOfHandles())
+        {
+        rep->SetActiveHandle(idx);
+        }
+      }
+    }
+}
+
+//----------------------------------------------------------------------------
 unsigned int vtkTransferFunctionViewer::GetCurrentElementId()
 {
   if (this->EditorWidget)
