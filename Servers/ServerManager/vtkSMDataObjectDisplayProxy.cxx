@@ -1355,7 +1355,8 @@ void vtkSMDataObjectDisplayProxy::Update(vtkSMAbstractViewModuleProxy* view)
 
     this->SetupVolumeDefaults();
     }
-  this->InvokeEvent(vtkCommand::UserEvent);
+
+  this->InvokeEvent(vtkSMAbstractDisplayProxy::ForceUpdateEvent);
 }
 
 //-----------------------------------------------------------------------------

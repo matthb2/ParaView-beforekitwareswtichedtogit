@@ -417,6 +417,8 @@ void vtkSMGenericViewDisplayProxy::Update(vtkSMAbstractViewModuleProxy* view)
       dp->Update();
       }
     }
+
+  this->InvokeEvent(vtkSMAbstractDisplayProxy::ForceUpdateEvent);
 }
 
 //-----------------------------------------------------------------------------

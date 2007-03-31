@@ -284,6 +284,8 @@ void vtkSMCubeAxesDisplayProxy::Update(vtkSMAbstractViewModuleProxy*)
     }
   pm->SendStream(this->ConnectionID, this->CubeAxesProxy->GetServers(), stream);
   this->GeometryIsValid = 1;
+
+  this->InvokeEvent(vtkSMAbstractDisplayProxy::ForceUpdateEvent);
 }
 
 //----------------------------------------------------------------------------
