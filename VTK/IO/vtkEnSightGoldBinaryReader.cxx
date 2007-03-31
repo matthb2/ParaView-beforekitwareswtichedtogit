@@ -154,7 +154,6 @@ int vtkEnSightGoldBinaryReader::ReadGeometryFile(const char* fileName, int timeS
   char line[80], subLine[80];
   int partId, realId;
   int lineRead, i;
-  int result;
   
   if (!this->InitializeFile(fileName))
     {
