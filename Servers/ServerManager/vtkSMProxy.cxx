@@ -816,7 +816,10 @@ void vtkSMProxy::UpdatePropertyInformation(vtkSMProperty* prop)
         }
       prop->UpdateDependentDomains();
       }
-    this->MarkModified(this);
+    // I cannot understand why updating a property information
+    // should mark a proxy modified. I am removing this line for now.
+    // If we run into problems, we'll have to investigate.
+    // this->MarkModified(this);
     }
 }
 
