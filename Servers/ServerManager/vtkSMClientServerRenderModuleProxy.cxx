@@ -430,7 +430,7 @@ void vtkSMClientServerRenderModuleProxy::InteractiveRender()
   this->LocalRender = this->GetLocalRenderDecision(totalMemory, 0);
 
   // Change the collection flags and update.
-  this->PassCollectionDecisionToDisplays(this->LocalRender, useLOD);
+  this->PassCollectionDecisionToDisplays(this->LocalRender, (useLOD>0));
   if (this->RenderSyncManagerProxy)
     {
     // Set Squirt Level (if supported).
