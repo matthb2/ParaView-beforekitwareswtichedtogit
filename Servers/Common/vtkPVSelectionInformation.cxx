@@ -92,7 +92,7 @@ void vtkPVSelectionInformation::CopyToStream(vtkClientServerStream* css)
   *css << vtkClientServerStream::Reply;
 
   ostrstream res;
-  vtkSelectionSerializer::PrintXML(res, vtkIndent(), 0, this->Selection);
+  vtkSelectionSerializer::PrintXML(res, vtkIndent(), 1, this->Selection);
   res << ends;
   *css << res.str();
   delete[] res.str();

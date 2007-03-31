@@ -63,10 +63,17 @@ void vtkSelectionConverter::Convert(vtkSelection* input, vtkSelection* output,
   unsigned int numChildren = input->GetNumberOfChildren();
   for (unsigned int i=0; i<numChildren; i++)
     {
-    vtkSelection* newOutput = vtkSelection::New();
-    this->Convert(input->GetChild(i), newOutput, global_ids);
-    output->AddChild(newOutput);
-    newOutput->Delete();
+    vtkInformation *childProps = input->GetChild(i)->GetProperties();
+    if (!childProps->Has(vtkSelection::PROCESS_ID()) ||
+        ( childProps->Get(vtkSelection::PROCESS_ID()) ==
+          vtkProcessModule::GetProcessModule()->GetPartitionId() )
+      )
+      {
+      vtkSelection* newOutput = vtkSelection::New();
+      this->Convert(input->GetChild(i), newOutput, global_ids);
+      output->AddChild(newOutput);
+      newOutput->Delete();
+      }
     }
 
   if (inputProperties->Get(vtkSelection::CONTENT_TYPE()) !=
