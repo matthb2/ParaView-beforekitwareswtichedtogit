@@ -1321,6 +1321,8 @@ void vtkTemporalStreamTracer::PrintSelf(ostream& os, vtkIndent indent)
   os << indent << "TimeStep: " << this->TimeStep << endl;
   os << indent << "ForceReinjectionEveryNSteps: "
      << this->ForceReinjectionEveryNSteps << endl;
+  os << indent << "EnableParticleWriting: " << this->EnableParticleWriting << endl;
+  os << indent << "IgnorePipelineTime: " << this->IgnorePipelineTime << endl;
 }
 //---------------------------------------------------------------------------
 bool vtkTemporalStreamTracer::ComputeDomainExitLocation(
