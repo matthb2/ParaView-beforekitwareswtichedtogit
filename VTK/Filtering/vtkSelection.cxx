@@ -191,6 +191,22 @@ void vtkSelection::PrintSelf(ostream& os, vtkIndent indent)
   if (this->SelectionList)
     {
     this->SelectionList->PrintSelf(os, indent.GetNextIndent());
+    /*
+    vtkDataArray *da = vtkDataArray::SafeDownCast(this->SelectionList);
+    if (da)
+      {
+      vtkIdType c = da->GetNumberOfComponents();
+      vtkIdType t = da->GetNumberOfTuples();
+      for (int i = 0; i < t; i++)
+        {
+        for (int j = 0; j < c; j++)
+          {
+          os << indent <<  da->GetComponent(i,j) << " ";
+          }
+        cerr << endl;
+        }
+      }
+    */
     }
   else
     {
