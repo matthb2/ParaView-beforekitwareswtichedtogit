@@ -90,7 +90,7 @@ public:
         vtkOutputWindow::GetInstance()->DisplayText(msg);
         break;
       case QtWarningMsg:
-        vtkOutputWindow::GetInstance()->DisplayWarningText(msg);
+        vtkOutputWindow::GetInstance()->DisplayErrorText(msg);
         break;
       case QtCriticalMsg:
         vtkOutputWindow::GetInstance()->DisplayErrorText(msg);
