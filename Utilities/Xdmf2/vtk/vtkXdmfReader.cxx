@@ -2892,9 +2892,11 @@ void vtkXdmfReader::UpdateGrids()
     }else{
         // It's a Uniform Grid
         // All grids are treated the same so make it a collection
-        if(collName) delete [] collName;
-        collName=new char[strlen(gridName)+1]; 
-        strcpy(collName,  gridName);
+        // if(collName) delete [] collName;
+        if(!collName){
+            collName=new char[strlen(gridName)+1]; 
+            strcpy(collName,  gridName);
+            }
         this->UpdateUniformGrid(gridNode, collName);
     }
 
