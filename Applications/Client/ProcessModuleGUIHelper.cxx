@@ -32,6 +32,8 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #include "ProcessModuleGUIHelper.h"
 
+#include <QSplashScreen>
+#include <QTimer>
 #include "MainWindow.h"
 
 #include <pqApplicationCore.h>
@@ -43,6 +45,8 @@ vtkCxxRevisionMacro(ProcessModuleGUIHelper, "$Revision$");
 //-----------------------------------------------------------------------------
 ProcessModuleGUIHelper::ProcessModuleGUIHelper()
 {
+  this->Splash = new QSplashScreen(QPixmap(":/pqClient/PVSplashScreen.png"));
+  this->Splash->show();
 }
 
 //-----------------------------------------------------------------------------
@@ -55,7 +59,9 @@ QWidget* ProcessModuleGUIHelper::CreateMainWindow()
 {
   pqApplicationCore::instance()->setApplicationName("ParaView3.0");
   pqApplicationCore::instance()->setOrganizationName("Kitware");
-  return new MainWindow();
+  QWidget* w = new MainWindow();
+  QTimer::singleShot(10, this->Splash, SLOT(close()));
+  return w;
 }
 
 //-----------------------------------------------------------------------------
