@@ -12,9 +12,10 @@
      PURPOSE.  See the above copyright notice for more information.
 
 =========================================================================*/
-
 #include "vtkSMConsumerDisplayProxy.h"
+
 #include "vtkObjectFactory.h"
+#include "vtkSMProxyProperty.h"
 
 int vtkSMConsumerDisplayProxy::UseCache = 0;
 
@@ -63,6 +64,24 @@ void vtkSMConsumerDisplayProxy::InvalidateGeometry()
   this->InvalidateGeometryInternal(0);
 }
 
+
+//-----------------------------------------------------------------------------
+void vtkSMConsumerDisplayProxy::MarkUpstreamModified()
+{
+  vtkSMProxy* current = this;
+  vtkSMProxyProperty* pp = vtkSMProxyProperty::SafeDownCast(
+    current->GetProperty("Input"));
+  while (current && pp && pp->GetNumberOfProxies() > 0)
+    {
+    current = pp->GetProxy(0);
+    pp = vtkSMProxyProperty::SafeDownCast(current->GetProperty("Input"));
+    }
+
+  if (current)
+    {
+    current->MarkModified(current);
+    }
+}
 
 //-----------------------------------------------------------------------------
 void vtkSMConsumerDisplayProxy::PrintSelf(ostream& os, vtkIndent indent)
