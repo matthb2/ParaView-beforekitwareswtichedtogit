@@ -170,4 +170,5 @@ void vtkSMExtractSelectionProxy::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os, indent);
   os << indent << "UseGlobalIDs: " << this->UseGlobalIDs << endl;
+  os << indent << "SelectionFieldType: " << this->SelectionFieldType << endl;
 }
