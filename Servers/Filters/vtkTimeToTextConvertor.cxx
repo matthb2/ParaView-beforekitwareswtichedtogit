@@ -57,7 +57,6 @@ int vtkTimeToTextConvertor::RequestData(
   strcpy(buffer, "?");
 
   vtkInformation* inputInfo= input->GetInformation();
-  vtkInformation* outputInfo = outputVector->GetInformationObject(0);
   if (inputInfo && inputInfo->Has(vtkDataObject::DATA_TIME_STEPS()) 
     && this->Format)
     {
