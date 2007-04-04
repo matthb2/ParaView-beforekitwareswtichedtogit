@@ -47,6 +47,27 @@ struct vtkPVLookupTableNode
 };
 
 //-----------------------------------------------------------------------------
+void vtkPVLookupTable::SetUseLogScale(int useLogScale)
+{
+  if(this->UseLogScale != useLogScale)
+    {
+    this->UseLogScale = useLogScale;
+    if(this->UseLogScale)
+      {
+      this->LookupTable->SetScaleToLog10();
+      this->SetScaleToLog10();
+      }
+    else
+      {
+      this->LookupTable->SetScaleToLinear();
+      this->SetScaleToLinear();
+      }
+
+    this->Modified();
+    }
+}
+
+//-----------------------------------------------------------------------------
 void vtkPVLookupTable::SetNumberOfValues(vtkIdType number)
 {
   this->NumberOfValues = number;
