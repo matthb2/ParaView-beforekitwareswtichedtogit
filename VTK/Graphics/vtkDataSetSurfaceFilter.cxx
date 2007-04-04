@@ -887,7 +887,6 @@ int vtkDataSetSurfaceFilter::UnstructuredGridExecute(vtkDataSet *dataSetInput,
     this->OriginalCellIds = vtkIdTypeArray::New();
     this->OriginalCellIds->SetName("vtkOriginalCellIds");
     this->OriginalCellIds->SetNumberOfComponents(1);
-    outputCD->AddArray(this->OriginalCellIds);
     }
 
   // First insert all points.  Points have to come first in poly data.
@@ -1243,6 +1242,11 @@ int vtkDataSetSurfaceFilter::UnstructuredGridExecute(vtkDataSet *dataSetInput,
         outputCD->CopyData(inputCD, q->SourceId, this->NumberOfNewCells++);
         }
       }
+    }
+
+  if (this->PassThroughCellIds)
+    {
+    outputCD->AddArray(this->OriginalCellIds);
     }
 
   // Update ourselves and release memory
