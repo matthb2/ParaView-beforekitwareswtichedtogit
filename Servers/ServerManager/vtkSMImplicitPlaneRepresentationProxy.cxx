@@ -42,7 +42,7 @@ void vtkSMImplicitPlaneRepresentationProxy::CreateVTKObjects(int numObjects)
   this->Superclass::CreateVTKObjects(numObjects);
   
   vtkProcessModule* pm = vtkProcessModule::GetProcessModule();
-  float opacity = 0.1;
+  float opacity = 1.0;
   if (pm->GetNumberOfPartitions(this->ConnectionID) == 1)
     { 
     opacity = .25;
