@@ -212,7 +212,7 @@ void vtkTransferFunctionEditorWidget::SetOpacityFunction(
 }
 
 //----------------------------------------------------------------------------
-void vtkTransferFunctionEditorWidget::UpdateFromTransferFunctions()
+void vtkTransferFunctionEditorWidget::UpdateTransferFunctionMTime()
 {
   if (this->OpacityFunction)
     {
