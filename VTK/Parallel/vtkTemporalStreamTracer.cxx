@@ -52,7 +52,7 @@ PURPOSE.  See the above copyright notice for more information.
   #include "vtkMPIController.h"
 #endif
 
-//#include <functional>
+#include <functional>
 #include <algorithm>
 
 using namespace vtkTemporalStreamTracerNamespace;
