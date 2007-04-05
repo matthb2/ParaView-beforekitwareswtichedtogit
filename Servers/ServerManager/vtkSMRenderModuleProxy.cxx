@@ -1207,18 +1207,6 @@ vtkPVXMLElement* vtkSMRenderModuleProxy::SaveState(vtkPVXMLElement* root)
 }
 
 //-----------------------------------------------------------------------------
-void vtkSMRenderModuleProxy::SaveInBatchScript(ofstream* file)
-{
-  if (!this->ObjectsCreated)
-    {
-    vtkErrorMacro("Render module not created yet!");
-    return;
-    }
-  this->SynchronizeCameraProperties();
-  this->Superclass::SaveInBatchScript(file);
-}
-
-//-----------------------------------------------------------------------------
 vtkImageData* vtkSMRenderModuleProxy::CaptureWindow(int magnification)
 {
   // Offscreen rendering is not functioning properly on the mac.

@@ -145,42 +145,6 @@ vtkPVXMLElement* vtkSMLineWidgetProxy::SaveState(vtkPVXMLElement* root)
 }
 
 //----------------------------------------------------------------------------
-void vtkSMLineWidgetProxy::SaveInBatchScript(ofstream *file)
-{
-  this->Superclass::SaveInBatchScript(file);
-  vtkSMIntVectorProperty* propResolution = vtkSMIntVectorProperty::SafeDownCast(
-    this->GetProperty("Resolution"));
-  
-  *file << endl;
-  
-  *file << "  [$pvTemp" << this->GetSelfIDAsString() 
-        << " GetProperty Point1] "
-        << "SetElements3 "
-        << this->Point1[0] << " "
-        << this->Point1[1] << " "
-        << this->Point1[2] 
-        << endl;
-  
-  *file << "  [$pvTemp" << this->GetSelfIDAsString() 
-        << " GetProperty Point2] "
-        << "SetElements3 "
-        << this->Point2[0] << " "
-        << this->Point2[1] << " "
-        << this->Point2[2] 
-        << endl;
-  
-  *file << "  [$pvTemp" << this->GetSelfIDAsString() 
-        << " GetProperty Resolution] "
-        << "SetElements1 "
-        << propResolution->GetElement(0)
-        << endl;
-  
-  *file << "  $pvTemp" << this->GetSelfIDAsString() 
-        << " UpdateVTKObjects" << endl;
-  *file << endl;
-}
-
-//----------------------------------------------------------------------------
 void vtkSMLineWidgetProxy::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os,indent);

@@ -46,17 +46,6 @@ void vtkSMAnimationCueManipulatorProxy::Copy(vtkSMProxy* src,
 }
 
 //----------------------------------------------------------------------------
-void vtkSMAnimationCueManipulatorProxy::SaveInBatchScript(ofstream* file)
-{
-  *file << endl;
-  *file << "set pvTemp" << this->GetSelfIDAsString()
-    << " [$proxyManager NewProxy " << this->GetXMLGroup()
-    << " " << this->GetXMLName() << "]" << endl;
-  *file << "$pvTemp" << this->GetSelfIDAsString() 
-        << " UpdateVTKObjects" << endl;
-}
-
-//----------------------------------------------------------------------------
 void vtkSMAnimationCueManipulatorProxy::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os, indent);

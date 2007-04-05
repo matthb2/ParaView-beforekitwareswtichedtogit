@@ -128,28 +128,6 @@ void vtkSMSphereWidgetProxy::CreateVTKObjects(int numObjects)
 }
 
 //----------------------------------------------------------------------------
-void vtkSMSphereWidgetProxy::SaveInBatchScript(ofstream *file)
-{
-  this->Superclass::SaveInBatchScript(file);
-
-  *file << "  [$pvTemp" << this->GetSelfIDAsString() << " GetProperty Center] "
-        << "SetElements3 "
-        << this->Center[0] << " "
-        << this->Center[1] << " "
-        << this->Center[2] 
-        << endl;
-  
-  *file << "  [$pvTemp" << this->GetSelfIDAsString() << " GetProperty Radius] "
-        << "SetElements1 "
-        << this->Radius
-        << endl;
-  
-  *file << "  $pvTemp" << this->GetSelfIDAsString() << " UpdateVTKObjects" 
-        << endl;
-  *file << endl;
-}
-
-//----------------------------------------------------------------------------
 void vtkSMSphereWidgetProxy::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os,indent);

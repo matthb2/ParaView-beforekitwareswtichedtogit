@@ -97,30 +97,6 @@ unsigned int vtkSMKeyFrameProxy::GetNumberOfKeyValues()
 }
 
 //----------------------------------------------------------------------------
-void vtkSMKeyFrameProxy::SaveInBatchScript(ofstream* file)
-{
-  *file << endl;
-  *file << "set pvTemp" << this->GetSelfIDAsString()
-    << " [$proxyManager NewProxy " 
-    << this->GetXMLGroup() <<" "
-    << this->GetXMLName() << "]" << endl;
-
-  vtkSMKeyFrameProxyInternals::VectorOfDoubles::iterator iter = 
-    this->Internals->KeyValues.begin();
-  int i = 0;
-  for (; iter != this->Internals->KeyValues.end(); ++iter)
-    {
-    *file << "[$pvTemp" << this->GetSelfIDAsString() << " GetProperty KeyValues]"
-      << " SetElement " << i << " " << (*iter) << endl;
-    i++;
-    }
-
-  *file << "[$pvTemp" << this->GetSelfIDAsString() << " GetProperty KeyTime]"
-    << " SetElements1 " << this->KeyTime << endl;
-  *file << "$pvTemp" << this->GetSelfIDAsString() << " UpdateVTKObjects" << endl;
-}
-
-//----------------------------------------------------------------------------
 void vtkSMKeyFrameProxy::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os, indent);

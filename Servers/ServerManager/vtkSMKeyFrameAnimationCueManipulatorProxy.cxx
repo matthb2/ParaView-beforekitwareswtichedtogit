@@ -311,25 +311,6 @@ vtkSMKeyFrameProxy* vtkSMKeyFrameAnimationCueManipulatorProxy::GetKeyFrameAtInde
 }
 
 //----------------------------------------------------------------------------
-void vtkSMKeyFrameAnimationCueManipulatorProxy::SaveInBatchScript(ofstream* file)
-{
-  this->Superclass::SaveInBatchScript(file);
-
-  vtkSMKeyFrameAnimationCueManipulatorProxyInternals::KeyFrameVector::
-    iterator it = this->Internals->KeyFrames.begin();
-  for (; it != this->Internals->KeyFrames.end(); it++)
-    {
-    vtkSMKeyFrameProxy* proxy = *it; 
-    proxy->SaveInBatchScript(file);
-    *file << "[$pvTemp" << this->GetSelfIDAsString() << " GetProperty KeyFrames]"
-          << " AddProxy $pvTemp" << proxy->GetSelfIDAsString() << endl;
-    *file << "$pvTemp" << this->GetSelfIDAsString() 
-          << " UpdateVTKObjects" << endl;
-    *file << "$pvTemp" << proxy->GetSelfIDAsString() << " UnRegister {}" << endl;
-    }
-}
-
-//----------------------------------------------------------------------------
 void vtkSMKeyFrameAnimationCueManipulatorProxy::ExecuteEvent(
   vtkObject* obj, unsigned long event, void* )
 {

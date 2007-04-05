@@ -120,25 +120,6 @@ vtkPVXMLElement* vtkSMPointWidgetProxy::SaveState(vtkPVXMLElement* root)
 }
 
 //----------------------------------------------------------------------------
-void vtkSMPointWidgetProxy::SaveInBatchScript(ofstream *file)
-{
-  this->Superclass::SaveInBatchScript(file);
-
-  *file << endl;
-  *file << "  [$pvTemp" << this->GetSelfIDAsString() 
-        << " GetProperty Position] "
-        << "SetElements3 "
-        << this->Position[0] << " "
-        << this->Position[1] << " "
-        << this->Position[2] 
-        << endl;
-  
-  *file << "  $pvTemp" << this->GetSelfIDAsString() 
-        << " UpdateVTKObjects" << endl;
-  *file << endl;
-}
-
-//----------------------------------------------------------------------------
 void vtkSMPointWidgetProxy::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os,indent);

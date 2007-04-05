@@ -38,23 +38,6 @@ vtkSMSinusoidKeyFrameProxy::~vtkSMSinusoidKeyFrameProxy()
 }
 
 //----------------------------------------------------------------------------
-void vtkSMSinusoidKeyFrameProxy::SaveInBatchScript(ofstream* file)
-{
-  this->Superclass::SaveInBatchScript(file);
-  
-  const char* batchName = this->GetSelfIDAsString();
-
-  *file << "  [$pvTemp" << batchName << " GetProperty Phase]"
-    << " SetElements1 " << this->Phase<< endl;
-  *file << "  [$pvTemp" << batchName << " GetProperty Frequency]"
-    << " SetElements1 " << this->Frequency<< endl;
-  *file << "  [$pvTemp" << batchName << " GetProperty Offset]"
-    << " SetElements1 " << this->Offset<< endl;
-  *file << "  $pvTemp" << batchName << " UpdateVTKObjects";
-  *file << endl;
-}
-
-//----------------------------------------------------------------------------
 // remeber that currenttime is 0 at the KeyTime of this key frame
 // and 1 and the KeyTime of the next key frame. Hence,
 // currenttime belongs to the interval [0,1).

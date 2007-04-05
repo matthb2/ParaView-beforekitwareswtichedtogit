@@ -61,22 +61,6 @@ void vtkSMLinearAnimationCueManipulatorProxy::UpdateValue(double currenttime,
 }
 
 //----------------------------------------------------------------------------
-void vtkSMLinearAnimationCueManipulatorProxy::SaveInBatchScript(ofstream* file)
-{
-  this->Superclass::SaveInBatchScript(file);
-
-  *file << "  [$pvTemp" << this->GetSelfIDAsString() 
-        << " GetProperty StartValue]"
-        << " SetElements1 " << this->StartValue << endl;
-  *file << "  [$pvTemp" << this->GetSelfIDAsString() 
-        << " GetProperty EndValue]"
-        << " SetElements1 " << this->EndValue << endl;
-  *file << "  $pvTemp" << this->GetSelfIDAsString() 
-        << " UpdateVTKObjects" << endl;
-  *file << endl; 
-}
-
-//----------------------------------------------------------------------------
 void vtkSMLinearAnimationCueManipulatorProxy::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os, indent);

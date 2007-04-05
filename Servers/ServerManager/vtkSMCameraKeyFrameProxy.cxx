@@ -129,31 +129,6 @@ void vtkSMCameraKeyFrameProxy::SetViewAngle(double angle)
 }
 
 //----------------------------------------------------------------------------
-void vtkSMCameraKeyFrameProxy::SaveInBatchScript(ofstream* file)
-{
-  this->Superclass::SaveInBatchScript(file);
-
-  double *val = this->Camera->GetPosition();
-  const char* batchName = this->GetSelfIDAsString();
-  *file << "  [$pvTemp" << batchName << " GetProperty Position]"
-        << " SetElements3 " << val[0] << " " << val[1] << " " << val[2] << endl;
-
-  val = this->Camera->GetFocalPoint();
-  *file << "  [$pvTemp" << batchName << " GetProperty FocalPoint]"
-        << " SetElements3 " << val[0] << " " << val[1] << " " << val[2] << endl;
- 
-  val = this->Camera->GetViewUp();
-  *file << "  [$pvTemp" << batchName << " GetProperty ViewUp]"
-        << " SetElements3 " << val[0] << " " << val[1] << " " << val[2] << endl;
-
-  double angle = this->Camera->GetViewAngle();
-  *file << "  [$pvTemp" << batchName << " GetProperty ViewAngle]"
-        << " SetElements1 " << angle << endl;
-
-  *file << "  $pvTemp" << batchName << " UpdateVTKObjects" << endl;
-}
-
-//----------------------------------------------------------------------------
 void vtkSMCameraKeyFrameProxy::PrintSelf(ostream &os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os, indent);

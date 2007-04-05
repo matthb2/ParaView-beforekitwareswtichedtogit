@@ -210,44 +210,6 @@ void vtkSMBoxWidgetProxy::ExecuteEvent(vtkObject *wdg, unsigned long event,void 
 }
 
 //----------------------------------------------------------------------------
-void vtkSMBoxWidgetProxy::SaveInBatchScript(ofstream *file)
-{
-  this->Superclass::SaveInBatchScript(file);
-  *file << endl;
-
-  int i;
-  for (i=0; i<3; i++)
-    {
-    *file << "  [$pvTemp" << this->GetSelfIDAsString()
-          << " GetProperty Rotation] SetElement " << i << " "
-          << this->Rotation[i] << endl;
-    *file << "  [$pvTemp" << this->GetSelfIDAsString()
-          << " GetProperty RotationInfo] SetElement " << i << " "
-          << this->Rotation[i] << endl;
-    }
-  for (i=0; i<3; i++)
-    {
-    *file << "  [$pvTemp" << this->GetSelfIDAsString()
-          << " GetProperty Scale] SetElement " << i << " "
-          << this->Scale[i] << endl;
-    *file << "  [$pvTemp" << this->GetSelfIDAsString()
-          << " GetProperty ScaleInfo] SetElement " << i << " "
-          << this->Scale[i] << endl;
-    }
-  for (i=0; i<3; i++)
-    {
-    *file << "  [$pvTemp" << this->GetSelfIDAsString()
-          << " GetProperty Position] SetElement " << i << " "
-          << this->Position[i] << endl;
-    *file << "  [$pvTemp" << this->GetSelfIDAsString()
-          << " GetProperty PositionInfo] SetElement " << i << " "
-          << this->Position[i] << endl;
-    }
-  *file << "  $pvTemp" << this->GetSelfIDAsString() 
-        << " UpdateVTKObjects"<<endl;
-}
-
-//----------------------------------------------------------------------------
 void vtkSMBoxWidgetProxy::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os,indent);

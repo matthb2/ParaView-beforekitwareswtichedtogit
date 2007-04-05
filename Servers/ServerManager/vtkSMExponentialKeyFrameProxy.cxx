@@ -38,21 +38,6 @@ vtkSMExponentialKeyFrameProxy::~vtkSMExponentialKeyFrameProxy()
 }
 
 //----------------------------------------------------------------------------
-void vtkSMExponentialKeyFrameProxy::SaveInBatchScript(ofstream* file)
-{
-  this->Superclass::SaveInBatchScript(file);
-  const char* batchName = this->GetSelfIDAsString();
-  *file << "  [$pvTemp" << batchName << " GetProperty Base]"
-    << " SetElements1 " << this->Base << endl;
-  *file << "  [$pvTemp" << batchName << " GetProperty StartPower]"
-    << " SetElements1 " << this->StartPower << endl;
-  *file << "  [$pvTemp" << batchName << " GetProperty EndPower]"
-    << " SetElements1 " << this->EndPower << endl;
-  *file << "  $pvTemp" << batchName << " UpdateVTKObjects";
-  *file << endl;
-}
-
-//----------------------------------------------------------------------------
 // remeber that currenttime is 0 at the KeyTime of this key frame
 // and 1 and the KeyTime of the next key frame. Hence,
 // currenttime belongs to the interval [0,1).

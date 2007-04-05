@@ -285,43 +285,6 @@ void vtkSM3DWidgetProxy::SetCurrentRenderModuleProxy(
   this->SetEnabled(this->Enabled);
 }
 
-//----------------------------------------------------------------------------
-void vtkSM3DWidgetProxy::SaveInBatchScript(ofstream *file)
-{
-  *file << endl;
-  *file << "set pvTemp" << this->GetSelfIDAsString()
-        << " [$proxyManager NewProxy 3d_widgets " 
-        << this->GetXMLName()
-        << "]"
-        <<endl;
-  *file << "  $proxyManager RegisterProxy 3d_widgets pvTemp"
-        << this->GetSelfIDAsString() << " $pvTemp" << this->GetSelfIDAsString()
-        << endl;
-  *file << "  $pvTemp" << this->GetSelfIDAsString() 
-        << " UnRegister {}" << endl;
-
-  *file << "  [$pvTemp" << this->GetSelfIDAsString() 
-        << " GetProperty IgnorePlaceWidgetChanges]"
-        << " SetElements1 0" << endl;
-  for(int i=0;i < 6; i++)
-    {
-    *file << "  [$pvTemp" << this->GetSelfIDAsString() 
-          << " GetProperty PlaceWidget] "
-          << "SetElement " << i << " "
-          << this->Bounds[i] 
-          << endl;
-    }
-
-  *file << "  [$pvTemp" << this->GetSelfIDAsString() 
-        << " GetProperty Visibility] "
-        << "SetElements1 " << this->Enabled << endl;
-
-  *file << "  $pvTemp" << this->GetSelfIDAsString() 
-        << " UpdateVTKObjects" << endl;
-  *file << endl;
-
-}
-
 //---------------------------------------------------------------------------
 vtkPVXMLElement* vtkSM3DWidgetProxy::SaveState(vtkPVXMLElement* root)
 {
