@@ -535,6 +535,7 @@ void vtkLabeledTreeMapDataMapper::LabelTree(vtkTree *tree,
       if (!this->TextMappers[this->NumberOfLabels])
         {
         this->TextMappers[this->NumberOfLabels] = vtkTextMapper::New();
+        ++(this->NumberOfLabelsAllocated);
         }
       this->TextMappers[this->NumberOfLabels]->SetInput(string);
       this->TextMappers[this->NumberOfLabels]->
