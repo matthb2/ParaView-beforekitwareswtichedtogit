@@ -402,8 +402,8 @@ void vtkTransferFunctionEditorWidgetSimple1D::AddNewNode(double scalar)
     newHandleWidget->SetEnabled(1);
     }
   rep->SetActiveHandle(currentHandleNumber);
-  this->LeftClickEventPosition[0] = displayPos[0];
-  this->LeftClickEventPosition[1] = displayPos[1];
+  this->LeftClickEventPosition[0] = vtkMath::Round(displayPos[0]);
+  this->LeftClickEventPosition[1] = vtkMath::Round(displayPos[1]);
   this->InvokeEvent(vtkCommand::PlacePointEvent,(void*)&(currentHandleNumber));
   this->InvokeEvent(vtkCommand::InteractionEvent,NULL);
 }
