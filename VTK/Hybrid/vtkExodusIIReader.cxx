@@ -4419,6 +4419,16 @@ float vtkExodusIIReader::GetDisplacementMagnitude()
   return this->Metadata->GetDisplacementMagnitude();
 }
 
+void vtkExodusIIReader::SetHasModeShapes( int ms )
+{
+  this->Metadata->SetHasModeShapes(ms);
+}
+
+int vtkExodusIIReader::GetHasModeShapes()
+{
+  return this->Metadata->GetHasModeShapes();
+}
+
 const char* vtkExodusIIReader::GetTitle() { return this->Metadata->ModelParameters.title; }
 int vtkExodusIIReader::GetDimensionality() { return this->Metadata->ModelParameters.num_dim; }
 int vtkExodusIIReader::GetNumberOfTimeSteps() { return (int) this->Metadata->Times.size(); }
