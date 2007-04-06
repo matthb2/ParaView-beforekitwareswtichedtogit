@@ -99,11 +99,6 @@ public:
         vtkOutputWindow::GetInstance()->DisplayErrorText(msg);
         break;
       }
-    int a;
-    if(a == 0)
-      {
-      int breakhere = 1;
-      }
   }
 
   /// Converts VTK debug output into Qt signals
