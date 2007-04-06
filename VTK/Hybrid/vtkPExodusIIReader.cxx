@@ -647,8 +647,8 @@ void vtkPExodusIIReader::SetUpEmptyGrid()
   for ( typ = 0; typ < numObjAttribTypes; ++typ )
     {
     int otyp = objAttribTypes[typ];
-    int nObjArr = this->GetNumberOfObjectArrays( objTypes[typ] );
-    for ( idx = 0; idx < nObjArr; ++idx )
+    int nObj = this->GetNumberOfObjects( otyp );
+    for ( idx = 0; idx < nObj; ++idx )
       {
       // Attributes are defined per block, not per block type.
       int nObjAtt = this->GetNumberOfObjectAttributes( otyp, idx );
