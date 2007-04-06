@@ -246,7 +246,10 @@ void vtkMultiGroupDataSet::ShallowCopy(vtkDataObject *src)
   vtkMultiGroupDataSet* from = vtkMultiGroupDataSet::SafeDownCast(src);
   if (from)
     {
-    this->SetMultiGroupDataInformation(from->MultiGroupDataInformation);
+    if (from->MultiGroupDataInformation)
+      {
+      this->SetMultiGroupDataInformation(from->MultiGroupDataInformation);
+      }
     unsigned int numGroups = from->GetNumberOfGroups();
     this->SetNumberOfGroups(numGroups);
     for (unsigned int i=0; i<numGroups; i++)
