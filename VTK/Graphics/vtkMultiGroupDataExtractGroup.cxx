@@ -231,7 +231,10 @@ int vtkMultiGroupDataExtractGroup::RequestData(
     vtkMultiGroupDataInformation::SafeDownCast(
       info->Get(vtkCompositeDataPipeline::COMPOSITE_DATA_INFORMATION()));
 
-  output->SetMultiGroupDataInformation(compInfo);
+  if (compInfo)
+    {
+    output->SetMultiGroupDataInformation(compInfo);
+    }
 
   vtkHierarchicalBoxDataSet* hbds = 
     vtkHierarchicalBoxDataSet::SafeDownCast(output);
