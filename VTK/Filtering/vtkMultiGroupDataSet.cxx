@@ -41,7 +41,14 @@ vtkMultiGroupDataSet::~vtkMultiGroupDataSet()
 {
   this->InitializeDataSets();
   delete this->Internal;
-  this->SetMultiGroupDataInformation(0);
+
+  // Cannot be released with SetMultiGroupDataInformation(0) because
+  // that method always allocates a new one.
+  if (this->MultiGroupDataInformation)
+    {
+    this->MultiGroupDataInformation->Delete();
+    this->MultiGroupDataInformation = 0;
+    }
 }
 
 //----------------------------------------------------------------------------
