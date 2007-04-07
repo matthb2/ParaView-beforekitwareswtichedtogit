@@ -336,7 +336,7 @@ double *vtkPKdTree::VolumeBounds()
      return NULL;
     }
 
-  this->SetFudgeFactor(aLittle * 10e-4);
+  this->FudgeFactor = aLittle * 10e-4;
 
   for (i=0; i<3; i++)
     {
