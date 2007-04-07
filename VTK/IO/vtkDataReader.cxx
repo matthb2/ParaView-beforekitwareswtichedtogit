@@ -2498,3 +2498,28 @@ my_getline(istream& in, vtkStdString &out, char delimiter)
   return numCharactersRead;
 }
 
+//----------------------------------------------------------------------------
+void vtkDataReader::SetScalarLut(const char* sl)
+{
+  if (!this->ScalarLut  && !sl)
+    {
+    return;
+    }
+  if (this->ScalarLut && sl && (strcmp(this->ScalarLut,sl)) == 0) 
+    {
+    return;
+    }
+  if (this->ScalarLut) 
+    {
+    delete[] this->ScalarLut;
+    this->ScalarLut = 0;
+    }
+  if (sl)
+    {
+    size_t n = strlen(sl) + 1;
+    char *cp1 =  new char[n];
+    const char *cp2 = sl;
+    this->ScalarLut = cp1;
+    do { *cp1++ = *cp2++; } while ( --n );
+    }
+}
