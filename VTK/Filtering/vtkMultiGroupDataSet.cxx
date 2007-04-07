@@ -27,8 +27,6 @@
 vtkCxxRevisionMacro(vtkMultiGroupDataSet, "$Revision$");
 vtkStandardNewMacro(vtkMultiGroupDataSet);
 
-vtkCxxSetObjectMacro(vtkMultiGroupDataSet,MultiGroupDataInformation,vtkMultiGroupDataInformation);
-
 vtkInformationKeyMacro(vtkMultiGroupDataSet,GROUP,Integer);
 
 //----------------------------------------------------------------------------
@@ -44,6 +42,31 @@ vtkMultiGroupDataSet::~vtkMultiGroupDataSet()
   this->InitializeDataSets();
   delete this->Internal;
   this->SetMultiGroupDataInformation(0);
+}
+
+//----------------------------------------------------------------------------
+void vtkMultiGroupDataSet::SetMultiGroupDataInformation(
+  vtkMultiGroupDataInformation* info)
+{
+  if (info == this->MultiGroupDataInformation)
+    {
+    return;
+    }
+  if (this->MultiGroupDataInformation)
+    {
+    this->MultiGroupDataInformation->Delete();
+    this->MultiGroupDataInformation = 0;
+    }
+  if (info)
+    {
+    this->MultiGroupDataInformation = info;
+    info->Register(this);
+    }
+  else
+    {
+    this->MultiGroupDataInformation = vtkMultiGroupDataInformation::New();
+    }
+  this->Modified();
 }
 
 //----------------------------------------------------------------------------
