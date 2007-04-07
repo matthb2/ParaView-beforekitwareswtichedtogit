@@ -271,7 +271,7 @@ int vtkOrderedCompositeDistributor::RequestData(
 
   this->D3->SetBoundaryModeToSplitBoundaryCells();
   this->D3->SetInput(input);
-  this->D3->GetKdtree()->SetCuts(cuts);
+  this->D3->SetCuts(cuts);
   this->D3->SetController(this->Controller);
   this->D3->Modified();
   this->D3->Update();
