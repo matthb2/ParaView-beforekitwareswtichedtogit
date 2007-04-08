@@ -513,5 +513,7 @@ void vtkExtractArraysOverTime::ExecuteTimeStep(vtkInformationVector** inputV,
         point);
       }
     }
+  this->UpdateProgress(
+    (double)this->CurrentTimeIndex/this->NumberOfTimeSteps);
 }
 
