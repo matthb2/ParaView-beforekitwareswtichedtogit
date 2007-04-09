@@ -472,7 +472,7 @@ int vtkExtractSelectedLocations::ExtractPoints(
 
   if (input->IsA("vtkPointSet"))
     {
-    vtkPointLocator::New();
+    locator = vtkPointLocator::New();
     locator->SetDataSet(input);
     }
 
