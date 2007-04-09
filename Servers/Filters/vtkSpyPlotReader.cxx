@@ -586,11 +586,6 @@ int vtkSpyPlotReader::RequestData(
   // Update the timestep.
   if(info->Has(vtkStreamingDemandDrivenPipeline::UPDATE_TIME_STEPS()))
     {
-    int tsLength =
-      info->Length(vtkStreamingDemandDrivenPipeline::TIME_STEPS());
-    double* steps =
-      info->Get(vtkStreamingDemandDrivenPipeline::TIME_STEPS());
-
     // Get the requested time step. We only supprt requests of a single time
     // step in this reader right now
     double *requestedTimeSteps = 
