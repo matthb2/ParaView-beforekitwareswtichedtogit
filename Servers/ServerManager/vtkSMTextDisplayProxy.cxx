@@ -101,7 +101,7 @@ void vtkSMTextDisplayProxy::CreateVTKObjects(int numObjects)
     {
     stream
       << vtkClientServerStream::Invoke
-      << pm->GetProcessModuleID() << "GetNumberOfPartitions"
+      << pm->GetProcessModuleID() << "GetNumberOfLocalPartitions"
       << vtkClientServerStream::End
       << vtkClientServerStream::Invoke
       << this->UpdateSuppressorProxy->GetID(i) << "SetUpdateNumberOfPieces"

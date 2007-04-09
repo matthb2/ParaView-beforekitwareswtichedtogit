@@ -794,7 +794,8 @@ void vtkSMCompositeDisplayProxy::SetInputInternal(vtkSMSourceProxy *input)
     vtkProcessModule* pm = vtkProcessModule::GetProcessModule();
     vtkClientServerStream stream;
     stream << vtkClientServerStream::Invoke
-           << pm->GetProcessModuleID() << "GetNumberOfPartitions"
+           << pm->GetProcessModuleID() 
+           << "GetNumberOfLocalPartitions"
            << vtkClientServerStream::End;
     pm->SendStream(this->ConnectionID, vtkProcessModule::RENDER_SERVER, stream);
     int numRenderServerProcs;

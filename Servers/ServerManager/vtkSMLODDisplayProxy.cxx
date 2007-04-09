@@ -172,7 +172,7 @@ void vtkSMLODDisplayProxy::SetupDefaults()
     {
     stream
       << vtkClientServerStream::Invoke
-      << pm->GetProcessModuleID() << "GetNumberOfPartitions"
+      << pm->GetProcessModuleID() << "GetNumberOfLocalPartitions"
       << vtkClientServerStream::End
       << vtkClientServerStream::Invoke
       << this->LODUpdateSuppressorProxy->GetID(i) << "SetUpdateNumberOfPieces"
@@ -196,7 +196,7 @@ void vtkSMLODDisplayProxy::SetupDefaults()
     {
     stream2
       << vtkClientServerStream::Invoke
-      << pm->GetProcessModuleID() << "GetNumberOfPartitions"
+      << pm->GetProcessModuleID() << "GetNumberOfLocalPartitions"
       << vtkClientServerStream::End
       << vtkClientServerStream::Invoke
       << this->LODMapperProxy->GetID(i) << "SetNumberOfPieces"

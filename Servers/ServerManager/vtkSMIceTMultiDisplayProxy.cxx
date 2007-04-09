@@ -197,7 +197,7 @@ void vtkSMIceTMultiDisplayProxy::SetupDefaults()
     vtkProcessModule *pm = vtkProcessModule::GetProcessModule();
     stream
       << vtkClientServerStream::Invoke
-      << pm->GetProcessModuleID() << "GetNumberOfPartitions"
+      << pm->GetProcessModuleID() << "GetNumberOfLocalPartitions"
       << vtkClientServerStream::End
       << vtkClientServerStream::Invoke
       << this->OutlineUpdateSuppressorProxy->GetID(i)
