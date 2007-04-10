@@ -68,8 +68,14 @@ vtkSMIdTypeVectorProperty::~vtkSMIdTypeVectorProperty()
 void vtkSMIdTypeVectorProperty::AppendCommandToStream(
   vtkSMProxy*, vtkClientServerStream* str, vtkClientServerID objectId )
 {
-  if (!this->Command || this->InformationOnly)
+  if (this->InformationOnly)
     {
+    return;
+    }
+
+  if (!this->Command)
+    {
+    this->Internals->UpdateLastPushedValues();
     return;
     }
 

@@ -70,8 +70,14 @@ vtkSMIntVectorProperty::~vtkSMIntVectorProperty()
 void vtkSMIntVectorProperty::AppendCommandToStream(
   vtkSMProxy*, vtkClientServerStream* str, vtkClientServerID objectId )
 {
-  if (!this->Command || this->InformationOnly)
+  if (this->InformationOnly)
     {
+    return;
+    }
+
+  if (!this->Command)
+    {
+    this->Internals->UpdateLastPushedValues();
     return;
     }
 
