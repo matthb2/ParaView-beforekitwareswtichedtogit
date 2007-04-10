@@ -310,6 +310,8 @@ void vtkTransferFunctionViewer::SetTransferFunctionEditorType(int type)
                                     this->EventForwarder);
     this->EditorWidget->AddObserver(vtkCommand::PlacePointEvent,
                                     this->EventForwarder);
+    this->EditorWidget->AddObserver(vtkCommand::EndInteractionEvent,
+                                    this->EventForwarder);
     vtkTransferFunctionEditorRepresentation *rep =
       vtkTransferFunctionEditorRepresentation::SafeDownCast(
         this->EditorWidget->GetRepresentation());
