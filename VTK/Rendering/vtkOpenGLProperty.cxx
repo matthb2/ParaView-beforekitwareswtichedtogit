@@ -46,9 +46,7 @@ void vtkOpenGLProperty::Render(vtkActor *anActor,
 
   // unbind any textures for starters
   vtkOpenGLRenderer *oRenderer=static_cast<vtkOpenGLRenderer *>(ren);
-  int translucentStage=oRenderer->GetTranslucentStage();
-  
-  if(translucentStage && ren->GetLastRenderingUsedDepthPeeling())
+  if(oRenderer->GetDepthPeelingHigherLayer())
     {
     GLint uUseTexture=-1;
     uUseTexture=oRenderer->GetUseTextureUniformVariable();

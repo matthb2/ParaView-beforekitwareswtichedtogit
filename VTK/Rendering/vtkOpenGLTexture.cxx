@@ -331,9 +331,8 @@ void vtkOpenGLTexture::Load(vtkRenderer *ren)
   GLint uTexture=-1;
   
   vtkOpenGLRenderer *oRenderer=static_cast<vtkOpenGLRenderer *>(ren);
-  int translucentStage=oRenderer->GetTranslucentStage();
-  
-  if(translucentStage && ren->GetLastRenderingUsedDepthPeeling())
+ 
+  if(oRenderer->GetDepthPeelingHigherLayer())
     {
     uUseTexture=oRenderer->GetUseTextureUniformVariable();
     uTexture=oRenderer->GetTextureUniformVariable();
