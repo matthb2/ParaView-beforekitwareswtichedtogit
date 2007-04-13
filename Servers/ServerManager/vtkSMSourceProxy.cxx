@@ -538,7 +538,7 @@ vtkPVXMLElement* vtkSMSourceProxy::SaveRevivalState(vtkPVXMLElement* root)
 
 //---------------------------------------------------------------------------
 int vtkSMSourceProxy::LoadRevivalState(vtkPVXMLElement* revivalElem,
-  vtkSMStateLoader* loader)
+  vtkSMStateLoaderBase* loader)
 {
   if (!this->Superclass::LoadRevivalState(revivalElem, loader))
     {

@@ -28,7 +28,7 @@
 #include "vtkSMInputProperty.h"
 #include "vtkSMPropertyIterator.h"
 #include "vtkSMProxyManager.h"
-#include "vtkSMStateLoader.h"
+#include "vtkSMStateLoaderBase.h"
 
 #include "vtkSMProxyInternals.h"
 
@@ -1805,7 +1805,7 @@ void vtkSMProxy::SetupSharedProperties(vtkSMProxy* subproxy,
 
 //---------------------------------------------------------------------------
 int vtkSMProxy::LoadState(vtkPVXMLElement* proxyElement, 
-                          vtkSMStateLoader* loader)
+                          vtkSMStateLoaderBase* loader)
 {
   unsigned int numElems = proxyElement->GetNumberOfNestedElements();
   int servers =0;
@@ -1858,7 +1858,7 @@ int vtkSMProxy::LoadState(vtkPVXMLElement* proxyElement,
 
 //---------------------------------------------------------------------------
 int vtkSMProxy::LoadRevivalState(vtkPVXMLElement* revivalElem,
-  vtkSMStateLoader* loader)
+  vtkSMStateLoaderBase* loader)
 {
   if (this->ObjectsCreated)
     {
@@ -2031,7 +2031,7 @@ void vtkSMProxy::SaveSubProxyState(vtkPVXMLElement* root)
 
 //---------------------------------------------------------------------------
 void vtkSMProxy::LoadSubProxyState(vtkPVXMLElement* subproxyElement, 
-  vtkSMStateLoader* loader)
+  vtkSMStateLoaderBase* loader)
 {
   const char* name = subproxyElement->GetAttribute("name");
   if (name)

@@ -61,7 +61,6 @@ vtkSMCompoundProxy* vtkSMCompoundProxyDefinitionLoader::LoadDefinition(
     return result;
     }
 
-  this->RootElement = rootElement;
   this->ClearCreatedProxies();
 
   if (rootElement->GetName() &&
@@ -71,7 +70,6 @@ vtkSMCompoundProxy* vtkSMCompoundProxyDefinitionLoader::LoadDefinition(
     }
 
   this->ClearCreatedProxies();
-  this->RootElement = 0;
 
   return result;
 }

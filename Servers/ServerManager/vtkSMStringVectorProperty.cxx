@@ -333,7 +333,7 @@ int vtkSMStringVectorProperty::ReadXMLAttributes(vtkSMProxy* proxy,
 
 //---------------------------------------------------------------------------
 int vtkSMStringVectorProperty::LoadState(vtkPVXMLElement* element,
-  vtkSMStateLoader* loader, int loadLastPushedValues/*=0*/)
+  vtkSMStateLoaderBase* loader, int loadLastPushedValues/*=0*/)
 {
   int prevImUpdate = this->ImmediateUpdate;
 

@@ -34,7 +34,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "vtkObjectFactory.h"
 #include "vtkPVXMLElement.h"
 #include "vtkSMProxy.h"
-#include "vtkSMDefaultStateLoader.h"
+#include "vtkSMStateLoaderBase.h"
 
 #include "pqPipelineSource.h"
 #include "pqApplicationCore.h"
@@ -88,10 +88,9 @@ int pqPendingDisplayUndoElement::InternalUndoRedo(bool undo)
     return 0;
     }
 
-  vtkSMStateLoader* loader = vtkSMDefaultStateLoader::New();
+  vtkSMStateLoaderBase* loader = this->GetStateLoader();
   loader->SetConnectionID(this->GetConnectionID());
   vtkSMProxy* proxy = loader->NewProxy(id);
-  loader->Delete();
 
   if (!proxy)
     {

@@ -208,7 +208,7 @@ void vtkSMStringListDomain::ChildSaveState(vtkPVXMLElement* domainElement)
 
 //---------------------------------------------------------------------------
 int vtkSMStringListDomain::LoadState(vtkPVXMLElement* domainElement, 
-    vtkSMStateLoader* loader)
+    vtkSMStateLoaderBase* loader)
 {
   this->Superclass::LoadState(domainElement, loader);
   

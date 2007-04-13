@@ -16,9 +16,9 @@
 
 #include "vtkObjectFactory.h"
 #include "vtkPVXMLElement.h"
-#include "vtkSMDefaultStateLoader.h"
 #include "vtkSMProperty.h"
 #include "vtkSMProxy.h"
+#include "vtkSMStateLoaderBase.h"
 
 vtkStandardNewMacro(vtkSMPropertyModificationUndoElement);
 vtkCxxRevisionMacro(vtkSMPropertyModificationUndoElement, "$Revision$");
@@ -46,7 +46,7 @@ int vtkSMPropertyModificationUndoElement::Undo()
   this->XMLElement->GetScalarAttribute("id", &proxy_id);
   const char* property_name = this->XMLElement->GetAttribute("name");
 
-  vtkSMStateLoader* loader = this->GetStateLoader();
+  vtkSMStateLoaderBase* loader = this->GetStateLoader();
   if (!loader)
     {
     vtkErrorMacro("No loader set. Cannot Undo.");
@@ -76,7 +76,7 @@ int vtkSMPropertyModificationUndoElement::Redo()
   this->XMLElement->GetScalarAttribute("id", &proxy_id);
   const char* property_name = this->XMLElement->GetAttribute("name");
 
-  vtkSMStateLoader* loader = this->GetStateLoader();
+  vtkSMStateLoaderBase* loader = this->GetStateLoader();
   if (!loader)
     {
     vtkErrorMacro("No loader set. Cannot Redo.");
