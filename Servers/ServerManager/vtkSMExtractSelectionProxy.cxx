@@ -65,7 +65,7 @@ void vtkSMExtractSelectionProxy::RemoveAllIndices()
 void vtkSMExtractSelectionProxy::AddGlobalID(vtkIdType id)
 {
   // piece number is not used for global ids.
-  this->Internal->GlobalsIDs.push_back(0);
+  this->Internal->GlobalsIDs.push_back(-1);
   this->Internal->GlobalsIDs.push_back(id);
 }
 
