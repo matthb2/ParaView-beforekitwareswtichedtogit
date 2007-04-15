@@ -1062,10 +1062,12 @@ void vtkSMProxy::CreateVTKObjects(int numObjects)
         pm->NewStreamObject(this->VTKClassName, stream);
       this->Internals->IDs.push_back(objectId);
 
-      stream << vtkClientServerStream::Invoke << pm->GetProcessModuleID()
-        << "RegisterProgressEvent"
-        << objectId << static_cast<int>(objectId.ID)
-        << vtkClientServerStream::End;
+      stream << vtkClientServerStream::Invoke 
+             << pm->GetProcessModuleID()
+             << "RegisterProgressEvent" 
+             << objectId 
+             << static_cast<int>(objectId.ID)
+             << vtkClientServerStream::End;
       }
     if (stream.GetNumberOfMessages() > 0)
       {
