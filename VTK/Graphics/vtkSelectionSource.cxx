@@ -170,10 +170,14 @@ int vtkSelectionSource::RequestData(
 
   // idx == 0 is the list for all pieces
   // idx == piece+1 is the list for the current piece
-  int pids[2] = {0, piece+1};
+  size_t pids[2] = {0, piece+1};
   for(int i=0; i<2; i++)
     {
-    int idx = pids[i];
+    size_t idx = pids[i];
+    if (idx >= this->Internal->IDs.size())
+      {
+      continue;
+      }
     vtkSelectionSourceInternals::IDSetType& selSet =
       this->Internal->IDs[idx];
     
