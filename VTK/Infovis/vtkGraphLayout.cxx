@@ -183,10 +183,13 @@ vtkGraphLayout::RequestData(vtkInformation *vtkNotUsed(request),
     // we'll replace that with a deep copy.  For everything else a
     // shallow copy is sufficient.
     this->InternalGraph->ShallowCopy(input);
-    vtkPoints* newPoints = vtkPoints::New();
+    
+    // The copy of the points will be to a float type
+    vtkPoints* newPoints = vtkPoints::New(VTK_FLOAT);
     newPoints->DeepCopy(input->GetPoints());
     this->InternalGraph->SetPoints(newPoints);
     newPoints->Delete();
+    
 
     // Save information about the input so that we can detect when
     // it's changed on future runs.  According to the VTK pipeline
