@@ -769,7 +769,7 @@ int vtkDataWriter::WritePoints(ostream *fp, vtkPoints *points)
 int vtkDataWriter::WriteCoordinates(ostream *fp, vtkDataArray *coords, 
                                     int axes)
 {
-  int ncoords=coords->GetNumberOfTuples();
+  int ncoords=(coords?coords->GetNumberOfTuples():0);
   
   if ( axes == 0 )
     {
@@ -784,7 +784,13 @@ int vtkDataWriter::WriteCoordinates(ostream *fp, vtkDataArray *coords,
     *fp << "Z_COORDINATES " << ncoords << " ";
     }
 
-  return this->WriteArray(fp, coords->GetDataType(), coords, "%s\n", ncoords, 1);
+  if (coords)
+    {
+    return 
+      this->WriteArray(fp, coords->GetDataType(), coords, "%s\n", ncoords, 1);
+    }
+  *fp << "float\n";
+  return 1;
 }
 
 // Write out scalar data.
