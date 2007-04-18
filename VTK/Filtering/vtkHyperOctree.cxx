@@ -919,7 +919,7 @@ public:
     unsigned int size;
     size = sizeof(int) * this->GetNumberOfLeaves();
     size += sizeof(vtkCompactHyperOctreeNode<D>) * this->Nodes.size();
-    return size / 1000;
+    return size / 1024;
   }
 
 protected:
