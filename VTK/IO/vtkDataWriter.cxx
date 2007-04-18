@@ -162,7 +162,7 @@ ostream *vtkDataWriter::OpenVTKFile()
       }
     input->Update();
     this->OutputStringAllocatedLength = (int) (500 
-      + 1000 * input->GetActualMemorySize());
+      + 1024 * input->GetActualMemorySize());
     this->OutputString = new char[this->OutputStringAllocatedLength];
 
     fptr = new ostrstream(this->OutputString, 
