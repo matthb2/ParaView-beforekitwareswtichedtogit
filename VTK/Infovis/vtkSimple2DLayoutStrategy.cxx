@@ -66,6 +66,7 @@ vtkSimple2DLayoutStrategy::vtkSimple2DLayoutStrategy()
   this->EdgeWeightField = 0;
   this->RestDistance = 0;
   this->Jitter = true;
+  this->MaxNumberOfIterations = 100;
 }
 
 // ----------------------------------------------------------------------
