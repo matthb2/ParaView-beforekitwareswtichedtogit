@@ -202,6 +202,12 @@ int vtkGraphHierarchicalBundle::RequestData(
     unsigned int graphSourceIndex = graph->GetSourceVertex(i);
     unsigned int graphTargetIndex = graph->GetTargetVertex(i);
 
+    // Do not render loops
+    if (graphSourceIndex == graphTargetIndex)
+      {
+      continue;
+      }
+
     vtkIdType source = 0;
     vtkIdType target = 0;
     if (graphSourceIndex < graphIndexToTreeIndex.size()&& 
