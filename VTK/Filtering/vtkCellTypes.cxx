@@ -159,7 +159,7 @@ unsigned long vtkCellTypes::GetActualMemorySize()
     size += this->LocationArray->GetActualMemorySize();
     }
 
-  return (unsigned long) ceil((float)size/1000.0); //kilobytes
+  return (unsigned long) ceil((float)size/1024.0); //kilobytes
 }
 
 

@@ -451,7 +451,7 @@ vtkStringArray::GetActualMemorySize( void )
     totalSize += this->Array[i].size() * sizeof( vtkStdString::value_type );
     }
 
-  return (unsigned long) ceil( totalSize / 1000.0 ); // kilobytes
+  return (unsigned long) ceil( totalSize / 1024.0 ); // kilobytes
 }
 
 // ----------------------------------------------------------------------
