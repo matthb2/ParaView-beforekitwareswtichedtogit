@@ -373,8 +373,8 @@ int vtkDataReader::OpenVTKFile()
       {
       vtkDebugMacro(<< "Reading from InputArray");
       this->IS = new istrstream(this->InputArray->GetPointer(0), 
-                                this->InputArray->GetNumberOfTuples()*
-        this->InputArray->GetNumberOfComponents());
+        static_cast<size_t>( this->InputArray->GetNumberOfTuples()  *
+                             this->InputArray->GetNumberOfComponents()) );
       return 1;
       }
     else if (this->InputString)
