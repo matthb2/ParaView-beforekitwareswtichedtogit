@@ -53,11 +53,11 @@ void vtkPythonProgrammableFilter::UnRegister(vtkObjectBase *o)
     )
     {
     vtkPVPythonInterpretor *cpy = this->Interpretor;
-    vtkstd::string initscript;
-    initscript  = "";
-    initscript += "self = 0\n";
+    vtkstd::string script;
+    script  = "";
+    script += "self = 0\n";
     cpy->MakeCurrent();
-    cpy->RunSimpleString(initscript.c_str());
+    cpy->RunSimpleString(script.c_str());
     cpy->ReleaseControl();
     this->Interpretor = NULL;
     cpy->UnRegister(this);
