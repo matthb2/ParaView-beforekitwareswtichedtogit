@@ -189,6 +189,7 @@ void vtkLogoRepresentation::GetActors2D(vtkPropCollection *pc)
 //-------------------------------------------------------------------------
 void vtkLogoRepresentation::ReleaseGraphicsResources(vtkWindow *w)
 {
+  this->Texture->ReleaseGraphicsResources(w);
   this->TextureActor->ReleaseGraphicsResources(w);
   this->Superclass::ReleaseGraphicsResources(w);
 }
