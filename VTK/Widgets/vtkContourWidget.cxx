@@ -180,6 +180,7 @@ void vtkContourWidget::AddFinalPointAction(vtkAbstractWidget *w)
     self->AddNode();
     self->WidgetState = vtkContourWidget::Manipulate;
     self->EventCallbackCommand->SetAbortFlag(1);
+    self->InvokeEvent(vtkCommand::EndInteractionEvent,NULL);
     }
   
   if ( rep->GetNeedToRender() )
