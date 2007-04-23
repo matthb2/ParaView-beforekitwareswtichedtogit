@@ -351,7 +351,7 @@ int vtkFeatureEdges::RequestData(
 
   output->SetLines(newLines);
   newLines->Delete();
-
+  this->Locator->Initialize();//release any extra memory
   if ( this->Coloring )
     {
     int idx = outCD->AddArray(newScalars);
