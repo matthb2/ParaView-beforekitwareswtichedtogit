@@ -167,6 +167,10 @@ vtkDataObject* vtkDataObjectTypes::NewDataObject(const char* type)
     {
     return vtkUnstructuredGrid::New();
     }
+  else if(strcmp(type, "vtkUniformGrid") == 0)
+    {
+    return vtkUniformGrid::New();
+    }
   else if(strcmp(type, "vtkMultiGroupDataSet") == 0)
     {
     return vtkMultiGroupDataSet::New();
