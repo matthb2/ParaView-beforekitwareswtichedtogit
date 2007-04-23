@@ -3959,8 +3959,8 @@ vtkDataArray* vtkExodusIIReaderPrivate::FindDisplacementVectors( int timeStep )
     int N = (int) it->second.size();
     for ( int i = 0; i < N; ++i )
       {
-      vtkstd::string upperName = vtksys::SystemTools::UpperCase( it->second[i].Name.substr( 0, 4 ) );
-      if ( upperName == "DISP" && it->second[i].Components == 3 )
+      vtkstd::string upperName = vtksys::SystemTools::UpperCase( it->second[i].Name.substr( 0, 3 ) );
+      if ( upperName == "DIS" && it->second[i].Components == 3 )
         {
         return this->GetCacheOrRead( vtkExodusIICacheKey( timeStep, vtkExodusIIReader::NODAL, 0, i ) );
         }
