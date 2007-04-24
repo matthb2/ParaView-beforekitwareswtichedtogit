@@ -3349,7 +3349,12 @@ int vtkLSDynaReader::RequestInformation( vtkInformation* vtkNotUsed(request),
     }
 
   // Every output object has all the time steps.
-  oinfo->GetInformationObject(0)->Set( vtkStreamingDemandDrivenPipeline::TIME_STEPS(), &p->TimeValues[0], p->TimeValues.size() );
+  vtkInformation* outInfo = oinfo->GetInformationObject(0);
+  outInfo->Set( vtkStreamingDemandDrivenPipeline::TIME_STEPS(), &p->TimeValues[0], p->TimeValues.size() );
+  double timeRange[2];
+  timeRange[0] = p->TimeValues[0];
+  timeRange[1] = p->TimeValues[p->TimeValues.size() - 1];
+  outInfo->Set( vtkStreamingDemandDrivenPipeline::TIME_RANGE(), timeRange, 2 );
 
   return 1;
 }
