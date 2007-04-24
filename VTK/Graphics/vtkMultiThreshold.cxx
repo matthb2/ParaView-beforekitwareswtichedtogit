@@ -468,7 +468,7 @@ int vtkMultiThreshold::RequestData(
 
     idx->Set( vtkCompositeDataSet::INDEX(), i );
     omesh->AddDataSet( idx, ds );
-    ds->Delete();
+    ds->FastDelete();
 
     outv.push_back( ds );
     }
