@@ -273,7 +273,7 @@ int vtkMultiThreshold::AddBooleanSet( int operation, int numInputs, int* inputs 
     return -1;
     }
 
-  int sId = this->Sets.size();
+  int sId = (int)this->Sets.size();
   int i;
   for ( i = 0; i < numInputs; ++i )
     {
@@ -412,7 +412,7 @@ int vtkMultiThreshold::AddIntervalSet( NormKey& nk, double xmin, double xmax, in
     nk.NormFunction = interval->Norm.NormFunction = vtkMultiThresholdLinfComponentNorm;
     }
 
-  int entry = this->Sets.size();
+  int entry = (int)this->Sets.size();
   interval->Id = entry;
 
   this->Sets.push_back( interval );
@@ -496,7 +496,7 @@ int vtkMultiThreshold::RequestData(
       }
     else
       {
-      setStatesInit.push_back( bset->Inputs.size() );
+      setStatesInit.push_back( (int)bset->Inputs.size() );
       }
     }
 
