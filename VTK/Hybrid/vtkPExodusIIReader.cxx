@@ -511,7 +511,10 @@ int vtkPExodusIIReader::RequestData(
       if ( this->ExodusModelMetadata )
         {
         vtkExodusModel* em = this->ReaderList[reader_idx]->GetExodusModel();
-        this->ExodusModel->MergeExodusModel( em );
+        if ( em )
+          {
+          this->ExodusModel->MergeExodusModel( em );
+          }
         }
 
 #ifdef APPEND
