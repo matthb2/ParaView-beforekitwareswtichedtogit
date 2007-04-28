@@ -960,8 +960,8 @@ int vtkgl::LoadCorePromotedExtension(const char *name,
      
     // There is no translation for GetHandle in OpenGL2.0.
    
-    vtkgl::IsProgram = IsProgramFromARBToPromoted;
-    vtkgl::IsShader = IsShaderFromARBToPromoted;
+    vtkgl::IsProgram = (vtkgl::PFNGLISPROGRAMPROC)IsProgramFromARBToPromoted;
+    vtkgl::IsShader = (vtkgl::PFNGLISSHADERPROC)IsShaderFromARBToPromoted;
      
     vtkgl::DetachShader = (vtkgl::PFNGLDETACHSHADERPROC)manager->GetProcAddress("glDetachObjectARB");
     vtkgl::CreateShader = (vtkgl::PFNGLCREATESHADERPROC)manager->GetProcAddress("glCreateShaderObjectARB");
