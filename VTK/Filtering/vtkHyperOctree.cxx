@@ -2360,7 +2360,9 @@ void vtkHyperOctree::GetCellPoints(vtkIdType cellId, vtkIdType& npts,
   vtkIdTypeArray* cornerLeafIds = this->GetCornerLeafIds();
   assert("Index out of bounds." && 
          cellId >= 0 && cellId < cornerLeafIds->GetNumberOfTuples());
-  npts = 1 << this->GetDimension();
+  // Casting of 1 is necessary to remove 64bit Compiler warning C4334 on
+  // Visual Studio 2005.
+  npts = static_cast<vtkIdType>(1) << this->GetDimension();
   pts = cornerLeafIds->GetPointer(0) + cellId*npts; 
 }
 
