@@ -209,7 +209,7 @@ void pqUndoStackBuilder::OnPropertyModified(vtkSMProxy* proxy,
     // Ignore interaction changes.
     const char* names[] = {
       "CameraPosition", "CameraFocalPoint", 
-      "CameraViewUp", "CameraClippingRange", 0};
+      "CameraViewUp", "CameraClippingRange", "CenterOfRotation", 0};
     for (int cc=0; names[cc]; cc++)
       {
       if (strcmp(pname, names[cc]) == 0)
