@@ -799,7 +799,7 @@ void vtkOpenGLRenderer::DeviceRenderTranslucentPolygonalGeometry()
       ++layer;
       ++it2;
       }
-    glDeleteTextures(c,ids);
+    glDeleteTextures(static_cast<GLsizei>(c),ids);
     delete[] ids;
     delete this->LayerList;
     this->LayerList=0;

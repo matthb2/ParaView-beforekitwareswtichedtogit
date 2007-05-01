@@ -144,12 +144,12 @@ int vtkOpenGLExtensionManager::ExtensionSupported(const char *name)
   this->Update();
 
   const char *p = this->ExtensionsString;
-  int NameLen = strlen(name);
+  size_t NameLen = strlen(name);
   int result = 0;
 
   for(;;)
     {
-    int n;
+    size_t n;
     while (*p == ' ') p++;
     if (*p == '\0')
       {
