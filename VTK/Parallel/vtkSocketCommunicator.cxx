@@ -164,6 +164,11 @@ int vtkSocketCommunicator::SendVoidArray(const void *data, vtkIdType length,
     {
     vtkTemplateMacro(typeSize = sizeof(VTK_TT);
                      typeName = vtkTypeTraits<VTK_TT>().SizedName());
+    default:
+      vtkWarningMacro(<< "Invalid data type " << type);
+      typeSize = 1;
+      typeName = "???";
+      break;
     }
   // Special case for logging.
   if (type == VTK_CHAR) typeName = "char";
@@ -197,6 +202,11 @@ int vtkSocketCommunicator::ReceiveVoidArray(void *data, vtkIdType length,
     {
     vtkTemplateMacro(typeSize = sizeof(VTK_TT);
                      typeName = vtkTypeTraits<VTK_TT>().SizedName());
+    default:
+      vtkWarningMacro(<< "Invalid data type " << type);
+      typeSize = 1;
+      typeName = "???";
+      break;
     }
   // Special case for logging.
   if (type == VTK_CHAR) typeName = "char";
