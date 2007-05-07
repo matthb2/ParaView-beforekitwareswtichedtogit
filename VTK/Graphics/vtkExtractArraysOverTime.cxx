@@ -752,7 +752,7 @@ void vtkExtractArraysOverTime::ExecuteLocationAtTimeStep(
     double pcoords[3];
     double* weights = new double[input->GetMaxCellSize()];
     
-    vtkIdType cellId, locArrayIndex;
+    vtkIdType cellId;
     cellId = input->FindCell(L, NULL, cell,
                              0, 0.0, subId, pcoords, weights);
     if (cellId >= 0)
