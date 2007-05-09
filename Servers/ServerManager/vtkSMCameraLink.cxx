@@ -35,6 +35,11 @@ struct vtkSMCameraLinkInternals
                                  void* clientData, void* callData)
     {
     vtkSMCameraLink* camLink = reinterpret_cast<vtkSMCameraLink*>(clientData);
+    if (!camLink || !camLink->GetEnabled())
+      {
+      return;
+      }
+
     if(eid == vtkCommand::EndEvent && clientData && caller && callData)
       {
       int *interactive = reinterpret_cast<int*>(callData);

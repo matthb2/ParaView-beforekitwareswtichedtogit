@@ -43,7 +43,7 @@ public:
   virtual void Execute(vtkObject *c, unsigned long , void* )
     {
     vtkSMProperty* caller = vtkSMProperty::SafeDownCast(c);
-    if (this->Target && caller)
+    if (this->Target && caller && this->Target->GetEnabled())
       {
       this->Target->UpdateProperties(caller);
       }
