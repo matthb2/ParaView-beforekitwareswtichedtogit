@@ -1586,8 +1586,6 @@ int vtkOpenGLRenderWindow::CreateHardwareOffScreenWindow(int width, int height)
       }
     }
   extensions->Delete();
-
-  cout<<"FBO OS="<<this->OffScreenUseFrameBuffer<<endl;
   
   // A=>B = !A || B
   assert("post: valid_result" && (result==0 || result==1)
