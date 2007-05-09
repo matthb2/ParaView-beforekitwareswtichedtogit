@@ -91,7 +91,7 @@ void vtkSMSimpleStrategy::UpdatePipeline()
 {
   if (this->UseCache())
     {
-    this->UpdateSuppressorLOD->InvokeCommand("CacheUpdateNew");
+    this->UpdateSuppressorLOD->InvokeCommand("CacheUpdate");
     }
   else
     {
