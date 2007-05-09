@@ -73,7 +73,6 @@ void vtkSMSimpleStrategy::CreateLODPipeline(vtkSMSourceProxy* input)
 //----------------------------------------------------------------------------
 void vtkSMSimpleStrategy::GatherInformation(vtkPVDataInformation* info)
 {
-  // TODO: reset info before adding more information to it.
   info->AddInformation(
     this->UpdateSuppressor->GetDataInformation());
 }
@@ -81,7 +80,6 @@ void vtkSMSimpleStrategy::GatherInformation(vtkPVDataInformation* info)
 //----------------------------------------------------------------------------
 void vtkSMSimpleStrategy::GatherLODInformation(vtkPVDataInformation* info)
 {
-  // TODO: reset info before adding more information to it.
   info->AddInformation(
     this->UpdateSuppressorLOD->GetDataInformation());
 }
