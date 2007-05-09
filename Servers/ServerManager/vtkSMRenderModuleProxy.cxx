@@ -639,7 +639,7 @@ bool vtkSMRenderModuleProxy::CheckCacheSizeWithinLimit()
 //-----------------------------------------------------------------------------
 void vtkSMRenderModuleProxy::CacheUpdate(int idx, int total)
 {
-  int save_cache = (!this->CheckCacheSizeWithinLimit())? 1: 0;
+  int save_cache = (this->CheckCacheSizeWithinLimit())? 1: 0;
 
   vtkCollectionIterator* iter = this->GetDisplays()->NewIterator();
   for (iter->InitTraversal(); !iter->IsDoneWithTraversal(); iter->GoToNextItem())
