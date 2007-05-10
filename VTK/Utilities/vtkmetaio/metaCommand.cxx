@@ -1123,12 +1123,12 @@ bool MetaCommand::ExportGAD(bool dynamic)
       
       if((*itFields).rangeMin != "")
         {
-        file << " rangeMin=\"" << (*itFields).rangeMin << "\"";
+        file << " rangeMin=\"" << (*itFields).rangeMin.c_str() << "\"";
         }
 
       if((*itFields).rangeMax != "")
         {
-        file << " rangeMax=\"" << (*itFields).rangeMax << "\"";
+        file << " rangeMax=\"" << (*itFields).rangeMax.c_str() << "\"";
         } 
       file << "/>" << METAIO_STREAM::endl;
       itFields++;
@@ -1524,8 +1524,8 @@ bool MetaCommand::Parse(int argc, char* argv[])
           METAIO_STREAM::cout << (*itParsed).name.c_str() 
                     << "." << (*itFields).name.c_str()
                     << " : Value (" << (*itFields).value.c_str() << ") "
-                    << "is not in the range [" << (*itFields).rangeMin
-                    << "," << (*itFields).rangeMax 
+                    << "is not in the range [" << (*itFields).rangeMin.c_str()
+                    << "," << (*itFields).rangeMax.c_str() 
                     << "]" << METAIO_STREAM::endl;
           valueInRange = false;
           }
