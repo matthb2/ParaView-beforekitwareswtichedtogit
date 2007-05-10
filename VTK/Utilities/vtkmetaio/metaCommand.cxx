@@ -165,6 +165,21 @@ bool MetaCommand::AddField(METAIO_STL::string name,
   return true;
 }
 
+/** For backward compatibility */
+bool MetaCommand:: AddField(METAIO_STL::string name,
+                            METAIO_STL::string description,
+                            TypeEnumType type,
+                            bool externalData)
+{
+  if(externalData)
+    {
+    return this->AddField(name,description,type,DATA_IN);
+    }
+  else
+    {
+    return this->AddField(name,description,type,DATA_NONE);
+    }
+}
 
 /** Collect all the information until the next tag 
   * \warning this function works only if the field is of type String */ 
