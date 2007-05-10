@@ -1445,7 +1445,7 @@ bool MetaCommand::Parse(int argc, char* argv[])
   if(valuesRemaining>0)
     {
     METAIO_STREAM::cout << "Not enough parameters for " 
-         << m_OptionVector[currentOption].name << METAIO_STREAM::endl;
+         << m_OptionVector[currentOption].name.c_str() << METAIO_STREAM::endl;
     METAIO_STREAM::cout << "Command: " << argv[0] << METAIO_STREAM::endl;
     METAIO_STREAM::cout << "Options: " << METAIO_STREAM::endl
          << "  -v or -h for help listed in short format" << METAIO_STREAM::endl
