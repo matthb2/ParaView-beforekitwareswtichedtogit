@@ -281,7 +281,8 @@ void vtkDataArrayInterpolateTuple(T* from, T* to, int numComp,
       c += weights[j]*from[ids[j]*numComp+i];
       }
     // Round integer types. Don't round floating point types.
-    vtkDataArrayRoundIfNecessary(c, *to++, 1);
+    vtkDataArrayRoundIfNecessary(c, *to, 1);
+    to++;
     }
 }
 
