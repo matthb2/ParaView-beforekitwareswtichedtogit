@@ -20,7 +20,7 @@
 #include "vtkProcessModule.h"
 #include "vtkSMDoubleVectorProperty.h"
 #include "vtkSMIntVectorProperty.h"
-#include "vtkSMNew3DWidgetProxy.h"
+#include "vtkSMTextWidgetDisplayProxy.h"
 #include "vtkSMProxyProperty.h"
 #include "vtkSMSourceProxy.h"
 #include "vtkSMStringVectorProperty.h"
@@ -46,6 +46,9 @@ vtkSMTextDisplayProxy::vtkSMTextDisplayProxy()
 vtkSMTextDisplayProxy::~vtkSMTextDisplayProxy()
 {
   this->SetInput(0);
+  this->UpdateSuppressorProxy = 0;
+  this->TextWidgetProxy = 0;
+  this->CollectProxy = 0;
 }
 
 //----------------------------------------------------------------------------
@@ -77,8 +80,13 @@ void vtkSMTextDisplayProxy::CreateVTKObjects(int numObjects)
   this->UpdateSuppressorProxy->SetServers(vtkProcessModule::DATA_SERVER
     | vtkProcessModule::CLIENT);
 
-  this->TextWidgetProxy = vtkSMNew3DWidgetProxy::SafeDownCast(
+  this->TextWidgetProxy = vtkSMTextWidgetDisplayProxy::SafeDownCast(
     this->GetSubProxy("TextWidget"));
+
+  if(!this->TextWidgetProxy)
+    {
+    return;
+    }
 
   this->CollectProxy = vtkSMSourceProxy::SafeDownCast(
     this->GetSubProxy("Collect"));
