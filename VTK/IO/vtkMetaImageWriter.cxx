@@ -24,7 +24,7 @@
 #include "vtkDataSetAttributes.h"
 
 #include <vtkstd/string>
-#include "vtkmetaio/metatypes.h"
+#include "vtkmetaio/metaTypes.h"
 #include "vtkmetaio/metaUtils.h"
 #include "vtkmetaio/metaEvent.h"
 #include "vtkmetaio/metaObject.h"
