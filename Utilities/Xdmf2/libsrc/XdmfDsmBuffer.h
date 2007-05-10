@@ -22,32 +22,28 @@
 /*     for more information.                                       */
 /*                                                                 */
 /*******************************************************************/
-#include "XdmfArray.h"
-#include "XdmfAttribute.h"
-#include "XdmfDataDesc.h"
-#include "XdmfDataItem.h"
-#include "XdmfDataStructure.h"
-#include "XdmfDataTransform.h"
-#include "XdmfDomain.h"
-#include "XdmfDOM.h"
-#ifndef XDMF_NO_MPI
+#ifndef __XdmfDsmBuffer_h
+#define __XdmfDsmBuffer_h
+
 #include "XdmfDsm.h"
-#include "XdmfDsmBuffer.h"
-#include "XdmfDsmComm.h"
-#include "XdmfDsmMsg.h"
-#include "XdmfDsmCommMpi.h"
-#endif /* XDMF_NO_MPI */
-#include "XdmfElement.h"
-#include "XdmfExpression.h"
-#include "XdmfGeometry.h"
-#include "XdmfGrid.h"
-#include "XdmfHDF.h"
-#include "XdmfHeavyData.h"
-#include "XdmfInformation.h"
-#include "XdmfLightData.h"
-#include "XdmfObject.h"
-#include "XdmfRoot.h"
-#include "XdmfTopology.h"
-#include "XdmfValues.h"
-#include "XdmfValuesHDF.h"
-#include "XdmfValuesXML.h"
+
+
+//! Base comm object for Distributed Shared Memory implementation
+/*!
+*/
+
+
+class XDMF_EXPORT XdmfDsmBuffer : public XdmfDsm {
+
+public:
+  XdmfDsmBuffer();
+  ~XdmfDsmBuffer();
+
+  XdmfConstString GetClassName() { return ( "XdmfDsmBuffer" ) ; };
+
+    XdmfInt32   Put(XdmfInt64 Address, XdmfInt64 Length, void *Data);
+
+protected:
+};
+
+#endif // __XdmfDsmBuffer_h

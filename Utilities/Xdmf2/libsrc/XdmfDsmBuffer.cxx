@@ -22,32 +22,44 @@
 /*     for more information.                                       */
 /*                                                                 */
 /*******************************************************************/
-#include "XdmfArray.h"
-#include "XdmfAttribute.h"
-#include "XdmfDataDesc.h"
-#include "XdmfDataItem.h"
-#include "XdmfDataStructure.h"
-#include "XdmfDataTransform.h"
-#include "XdmfDomain.h"
-#include "XdmfDOM.h"
-#ifndef XDMF_NO_MPI
-#include "XdmfDsm.h"
 #include "XdmfDsmBuffer.h"
 #include "XdmfDsmComm.h"
 #include "XdmfDsmMsg.h"
-#include "XdmfDsmCommMpi.h"
-#endif /* XDMF_NO_MPI */
-#include "XdmfElement.h"
-#include "XdmfExpression.h"
-#include "XdmfGeometry.h"
-#include "XdmfGrid.h"
-#include "XdmfHDF.h"
-#include "XdmfHeavyData.h"
-#include "XdmfInformation.h"
-#include "XdmfLightData.h"
-#include "XdmfObject.h"
-#include "XdmfRoot.h"
-#include "XdmfTopology.h"
-#include "XdmfValues.h"
-#include "XdmfValuesHDF.h"
-#include "XdmfValuesXML.h"
+#include "XdmfArray.h"
+
+#define XDMF_DSM_OPCODE_PUT     0x01
+#define XDMF_DSM_OPCODE_GET     0x02
+
+
+
+
+XdmfDsmBuffer::XdmfDsmBuffer() {
+}
+
+XdmfDsmBuffer::~XdmfDsmBuffer() {
+}
+
+
+XdmfInt32
+XdmfDsmBuffer::Put(XdmfInt64 Address, XdmfInt64 Length, void *Data){
+    XdmfInt32   who, MyId = this->Comm->GetId();
+    XdmfInt64   astart, aend, len;
+
+    while(Length){
+        who = this->AddressToId(Address);
+        cout << " who = " << who << endl;
+        if(who == XDMF_FAIL){
+            XdmfErrorMessage("Address Error");
+            return(XDMF_FAIL);
+        }
+        this->GetAddressRangeForId(who, &astart, &aend);
+        // cout << "astart = " << astart << " aend = " << aend << endl;
+        len = MIN(Length, aend - Address + 1);
+        cout << "Put " << len << " Bytes to Address " << Address << " Id = " << who << endl;
+        if(who == MyId) cout << "That's me!!" << endl;
+        Length -= len;
+        Address += len;
+        // cout << "Length = " << Length << " Address = " << Address << endl;
+    }
+    return(XDMF_SUCCESS);
+}
