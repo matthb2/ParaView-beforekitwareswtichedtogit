@@ -299,7 +299,6 @@ void vtkDataArray::InterpolateTuple(vtkIdType i, vtkIdList *ptIndices,
     return;
     }
   
-  cout << (this->GetName()?this->GetName():"(null)") << endl;
   vtkDataArray* fromData = vtkDataArray::SafeDownCast(source);
   if (fromData)
     {
