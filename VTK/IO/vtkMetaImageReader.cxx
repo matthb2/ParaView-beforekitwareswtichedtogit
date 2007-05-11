@@ -14,6 +14,7 @@
 =========================================================================*/
 #include "vtkMetaImageReader.h"
 
+#include "vtkDataArray.h"
 #include "vtkObjectFactory.h"
 #include "vtkPointData.h"
 #include "vtkImageData.h"
