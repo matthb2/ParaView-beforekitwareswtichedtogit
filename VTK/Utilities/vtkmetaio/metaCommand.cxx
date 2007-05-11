@@ -984,8 +984,13 @@ bool MetaCommand::ExportGAD(bool dynamic)
   filename += ".gad.xml";
 
   METAIO_STREAM::ofstream file;
-  file.open(filename.c_str(),
-            METAIO_STREAM::ios::binary | METAIO_STREAM::ios::out);
+#ifdef __sgi
+  file.open(filename.c_str(), METAIO_STREAM::ios::out);
+#else
+  file.open(filename.c_str(), METAIO_STREAM::ios::binary 
+                              | METAIO_STREAM::ios::out);
+#endif
+
   if(!file.is_open())
     {
     METAIO_STREAM::cout << "Cannot open file for writing: " 
