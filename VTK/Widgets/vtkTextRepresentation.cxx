@@ -69,12 +69,10 @@ vtkTextRepresentation::vtkTextRepresentation()
 //-------------------------------------------------------------------------
 vtkTextRepresentation::~vtkTextRepresentation()
 {
-  this->TextActor->GetTextProperty()->RemoveObserver(this->Observer);
-  this->TextActor->RemoveObserver(this->Observer);
+  this->SetTextActor(0);
   this->Observer->SetTarget(0);
   this->Observer->Delete();
 
-  this->SetTextActor(0);
 }
 
 //-------------------------------------------------------------------------
