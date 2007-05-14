@@ -167,6 +167,7 @@ bool vtkSMSurfaceRepresentationProxy::InitializeStrategy(vtkSMViewProxy* view)
     {
     this->SetStrategyForSelection(strategy);
     strategy->SetEnableLOD(true);
+    strategy->SetEnableCaching(false); // no cache needed for selection.
     strategy->UpdateVTKObjects();
 
     this->Connect(this->SelectionGeometryFilter, strategy);
