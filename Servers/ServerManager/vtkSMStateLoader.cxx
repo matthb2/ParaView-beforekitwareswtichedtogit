@@ -92,12 +92,6 @@ void vtkSMStateLoader::RegisterProxyInternal(const char* group,
 {
   vtkSMProxyManager* pxm = vtkSMProxyManager::GetProxyManager();
 
-  // Do not re-register
-  if(group && name && strcmp(group, "lookup_tables")==0 && pxm->GetProxy(group,name))
-    {
-    return;
-    }
-
   pxm->RegisterProxy(group, name, proxy);
 }
 
