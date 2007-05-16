@@ -171,7 +171,14 @@ void vtkPExtractArraysOverTime::AddRemoteData(vtkRectilinearGrid* routput,
               outPointData->AddArray(aa);
               aa->UnRegister(0);
               }
-            aa->InsertTuple(i, i, raa);
+            if (raa->GetNumberOfTuples() > i)
+              {
+              aa->InsertTuple(i, i, raa);
+              }
+            else
+              {
+              ;//cerr << "TODO: fix this bug properly." << endl;
+              }
             }
           }
         }
