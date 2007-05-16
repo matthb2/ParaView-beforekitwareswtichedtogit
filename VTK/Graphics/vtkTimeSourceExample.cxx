@@ -235,8 +235,8 @@ int vtkTimeSourceExample::RequestInformation(
 
 //----------------------------------------------------------------------------
 int vtkTimeSourceExample::RequestData(
-  vtkInformation* reqInfo,
-  vtkInformationVector** inVector,
+  vtkInformation* vtkNotUsed(reqInfo),
+  vtkInformationVector** vtkNotUsed(inVector),
   vtkInformationVector* outVector
   )
 {  
