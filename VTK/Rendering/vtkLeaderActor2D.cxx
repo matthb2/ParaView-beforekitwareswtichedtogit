@@ -634,12 +634,13 @@ int vtkLeaderActor2D::RenderOpaqueGeometry(vtkViewport *viewport)
   this->BuildLeader(viewport);
   
   // Everything is built, just have to render
-  if ( this->Label != NULL && this->Label[0] )
+  if ( (this->Label != NULL && this->Label[0]) || \
+       (this->AutoLabel && this->LabelMapper->GetInput() != NULL ) )
     {
     renderedSomething += this->LabelActor->RenderOpaqueGeometry(viewport);
     }
   renderedSomething += this->LeaderActor->RenderOpaqueGeometry(viewport);
-  
+
   return renderedSomething;
 }
 
@@ -650,9 +651,10 @@ int vtkLeaderActor2D::RenderOverlay(vtkViewport *viewport)
 {
   int renderedSomething=0;
   this->BuildLeader(viewport);
-  
+
   // Everything is built, just have to render
-  if ( this->Label != NULL && this->Label[0] )
+  if ( (this->Label != NULL && this->Label[0]) || \
+       (this->AutoLabel && this->LabelMapper->GetInput() != NULL ) )
     {
     renderedSomething += this->LabelActor->RenderOverlay(viewport);
     }
