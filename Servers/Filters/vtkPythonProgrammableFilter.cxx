@@ -12,8 +12,6 @@
      PURPOSE.  See the above copyright notice for more information.
 
 =========================================================================*/
-#include <vtkPython.h> // python first
-
 #include "vtkPythonProgrammableFilter.h"
 
 #include "vtkDataObject.h"
@@ -47,6 +45,16 @@ public:
   {
   }
 
+  void DestroyInterpretor()
+    {
+    vtkstd::string script;
+    script  = "";
+    script += "self = 0\n";
+    this->Interpretor->RunSimpleString(script.c_str());
+    this->Interpretor->Delete();
+    this->Interpretor = 0;
+    }
+
   //state used to get by a reference counting cyclic loop
   int Running;
   vtkPVPythonInterpretor* Interpretor;
@@ -77,9 +85,7 @@ void vtkPythonProgrammableFilter::UnRegister(vtkObjectBase *o)
     vtkstd::string script;
     script  = "";
     script += "self = 0\n";
-    cpy->MakeCurrent();
     cpy->RunSimpleString(script.c_str());
-    cpy->ReleaseControl();
     this->Implementation->Interpretor = NULL;
     cpy->UnRegister(this);
     }
@@ -264,13 +270,11 @@ void vtkPythonProgrammableFilter::Exec(const char* script)
       initscript += parameter->first + " = " + parameter->second + "\n";
       } 
     
-    this->Implementation->Interpretor->MakeCurrent();
     this->Implementation->Interpretor->RunSimpleString(initscript.c_str());
     }
-  
-  this->Implementation->Interpretor->MakeCurrent();
   this->Implementation->Interpretor->RunSimpleString(script);
-  this->Implementation->Interpretor->ReleaseControl();
+
+  this->Implementation->DestroyInterpretor();
   this->Implementation->Running = 0;
 }
 
