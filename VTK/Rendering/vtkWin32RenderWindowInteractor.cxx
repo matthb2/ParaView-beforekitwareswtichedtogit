@@ -409,6 +409,7 @@ void vtkWin32RenderWindowInteractor::OnLButtonDown(HWND wnd,UINT nFlags,
     {
     return;
     }
+  SetFocus(wnd);
   SetCapture(wnd);
   this->SetEventInformationFlipY(X, 
                                  Y, 
@@ -444,6 +445,7 @@ void vtkWin32RenderWindowInteractor::OnMButtonDown(HWND wnd,UINT nFlags,
     {
     return;
     }
+  SetFocus(wnd);
   SetCapture(wnd);
   this->SetEventInformationFlipY(X, 
                                  Y, 
@@ -479,7 +481,8 @@ void vtkWin32RenderWindowInteractor::OnRButtonDown(HWND wnd,UINT nFlags,
     {
     return;
     }
-  SetCapture(wnd );
+  SetFocus(wnd);
+  SetCapture(wnd);
   this->SetEventInformationFlipY(X, 
                                  Y, 
                                  nFlags & MK_CONTROL, 
