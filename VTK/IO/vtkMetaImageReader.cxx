@@ -209,6 +209,7 @@ void vtkMetaImageReader::ExecuteData(vtkDataObject * output)
   if(!this->FileName)
     {
     vtkErrorMacro( << "A filename was not specified." );
+    return;
     }
 
   data->GetPointData()->GetScalars()->SetName("MetaImage");
