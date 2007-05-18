@@ -167,7 +167,10 @@ void vtkQuadraticHexahedron::Subdivide(vtkPointData *inPd, vtkCellData *inCd,
     this->PointData->CopyData(inPd,this->PointIds->GetId(i),i);
     this->CellScalars->SetValue( i, cellScalars->GetTuple1(i));
     }
-  this->CellData->CopyData(inCd,cellId,0);
+  for (i=0; i<8; i++)
+    {
+    this->CellData->CopyData(inCd,cellId,i);
+    }
   
   //Interpolate new values
   double p[3];
