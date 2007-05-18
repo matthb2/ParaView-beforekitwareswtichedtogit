@@ -180,7 +180,9 @@ int vtkCompositeDataPipeline::ForwardUpstream(vtkInformation* request)
         request->Set(FROM_OUTPUT_PORT(), producerPort);
         
         // if the input requires time them mark that
-        if (!strcmp("vtkTemporalDataSet",
+        if (this->Algorithm->GetInputPortInformation(i)
+            ->Get(vtkAlgorithm::INPUT_REQUIRED_DATA_TYPE()) &&
+            !strcmp("vtkTemporalDataSet",
                     this->Algorithm->GetInputPortInformation(i)
                     ->Get(vtkAlgorithm::INPUT_REQUIRED_DATA_TYPE())))
           {
