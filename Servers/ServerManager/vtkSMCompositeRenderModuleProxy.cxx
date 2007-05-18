@@ -22,7 +22,6 @@
 #include "vtkImageWriter.h"
 #include "vtkInstantiator.h"
 #include "vtkObjectFactory.h"
-#include "vtkPVDisplayInformation.h"
 #include "vtkPVLODPartDisplayInformation.h"
 #include "vtkPVOptions.h"
 #include "vtkProcessModule.h"
