@@ -53,6 +53,9 @@ vtkTemporalInterpolator::~vtkTemporalInterpolator()
 void vtkTemporalInterpolator::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os,indent);
+
+  os << indent << "DiscreteTimeStepInterval: "
+     << this->DiscreteTimeStepInterval << "\n";
 }
 /*
 //----------------------------------------------------------------------------
