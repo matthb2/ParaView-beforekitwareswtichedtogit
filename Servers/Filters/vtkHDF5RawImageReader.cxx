@@ -140,6 +140,8 @@ vtkHDF5RawImageReader::vtkHDF5RawImageReader()
                                              this->SelectionObserver);
   this->CellDataArraySelection->AddObserver(vtkCommand::ModifiedEvent,
                                             this->SelectionObserver);
+
+  this->SetNumberOfInputPorts(0);
 }
 
 //----------------------------------------------------------------------------
