@@ -137,7 +137,7 @@ vtkSMRepresentationStrategy* vtkSMRenderViewProxy::NewStrategyInternal(
   else if (dataType == VTK_UNSTRUCTURED_GRID)
     {
     strategy = vtkSMRepresentationStrategy::SafeDownCast(
-      pxm->NewProxy("strategies", "UnStructuredGridVolumeStrategy"));
+      pxm->NewProxy("strategies", "UnstructuredGridStrategy"));
     }
   else
     {
