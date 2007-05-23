@@ -111,6 +111,11 @@ vtkBoostBreadthFirstSearch::~vtkBoostBreadthFirstSearch()
   this->SetOutputArrayName(0);
 }
 
+void vtkBoostBreadthFirstSearch::SetOriginSelection(vtkSelection* s)
+{
+  this->SetOriginSelectionConnection(s->GetProducerPort());
+}
+
 // Description:
 // Set the index (into the vertex array) of the 
 // breadth first search 'origin' vertex.
