@@ -299,6 +299,9 @@ int vtkMeshQuality::RequestData(
     case VTK_QUALITY_COLLAPSE_RATIO:
       TetQuality = TetCollapseRatio;
       break;
+    case VTK_QUALITY_ASPECT_BETA:
+      TetQuality = TetAspectBeta;
+      break;
     case VTK_QUALITY_ASPECT_GAMMA:
       TetQuality = TetAspectGamma;
       break;
