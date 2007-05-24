@@ -146,11 +146,8 @@ void vtkPVUpdateSuppressor::ForceUpdate()
   if (source &&
       (source->IsA("vtkMPIMoveData") ||
        source->IsA("vtkCollectPolyData") ||
-       source->IsA("vtkMPIDuplicatePolyData") ||
        source->IsA("vtkM2NDuplicate") ||
        source->IsA("vtkM2NCollect") ||
-       source->IsA("vtkMPIDuplicateUnstructuredGrid") ||
-       source->IsA("vtkPVDuplicatePolyData") ||
        source->IsA("vtkOrderedCompositeDistributor") || 
        source->IsA("vtkClientServerMoveData")))
     {
