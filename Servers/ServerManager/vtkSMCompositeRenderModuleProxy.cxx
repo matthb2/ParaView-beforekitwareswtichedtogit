@@ -26,7 +26,6 @@
 #include "vtkPVOptions.h"
 #include "vtkProcessModule.h"
 #include "vtkPVServerInformation.h"
-#include "vtkPVTreeComposite.h"
 #include "vtkPointData.h"
 #include "vtkRenderWindow.h"
 #include "vtkSMCompositeDisplayProxy.h"
