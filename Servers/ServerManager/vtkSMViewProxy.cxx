@@ -346,11 +346,8 @@ vtkSMRepresentationStrategy* vtkSMViewProxy::NewStrategy(int dataType)
     this->NewStrategyInternal(dataType);
   if (strategy && this->ViewHelper)
     {
-    // Deliberately not going the proxy property route here since otherwise the
-    // strategy becomes a consumer of the ViewHelper and whenever the ViewHelper
-    // properties are modified, the startegy will mark it's data invalid etc
-    // etc.
-    strategy->SetViewHelperProxy(this->ViewHelper);
+    // Pass the view helper to the strategy.
+    this->Connect(this->ViewHelper, strategy, "ViewHelper");
     }
   return strategy;
 }
