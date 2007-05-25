@@ -369,6 +369,11 @@ void vtkKdTree::RemoveDataSet(int index)
   this->DataSets->RemoveItem(index);
 }
 
+void vtkKdTree::RemoveAllDataSets()
+{
+  this->DataSets->RemoveAllItems();
+}
+
 //-----------------------------------------------------------------------------
 
 int vtkKdTree::GetNumberOfDataSets()
