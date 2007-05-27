@@ -1118,7 +1118,7 @@ ExportGAD(bool dynamic)
   file.open(filename.c_str(), METAIO_STREAM::ios::binary 
                               | METAIO_STREAM::ios::out);
 #endif
-  if(!file.is_open())
+  if(!file.rdbuf()->is_open())
     {
     METAIO_STREAM::cout << "Cannot open file for writing: " 
                         << filename.c_str() <<  METAIO_STREAM::endl;
