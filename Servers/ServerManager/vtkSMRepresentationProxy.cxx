@@ -31,21 +31,21 @@ vtkSMRepresentationProxy::~vtkSMRepresentationProxy()
 }
 
 //----------------------------------------------------------------------------
-void vtkSMRepresentationProxy::CreateVTKObjects(int numObjects)
+void vtkSMRepresentationProxy::CreateVTKObjects()
 {
   if (this->ObjectsCreated)
     {
     return;
     }
 
-  if (!this->BeginCreateVTKObjects(numObjects))
+  if (!this->BeginCreateVTKObjects())
     {
     // BeginCreateVTKObjects() requested an abortion of VTK object creation.
     return;
     }
 
-  this->Superclass::CreateVTKObjects(numObjects);
-  this->EndCreateVTKObjects(numObjects);
+  this->Superclass::CreateVTKObjects();
+  this->EndCreateVTKObjects();
 }
 
 //----------------------------------------------------------------------------

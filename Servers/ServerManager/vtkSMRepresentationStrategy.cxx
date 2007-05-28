@@ -241,7 +241,7 @@ void vtkSMRepresentationStrategy::SetInput(vtkSMSourceProxy* input)
 
   // Not using the input number of parts here since that logic
   // is going to disappear in near future.
-  this->CreateVTKObjects(1);
+  this->CreateVTKObjects();
 
   this->CreatePipeline(this->Input);
 

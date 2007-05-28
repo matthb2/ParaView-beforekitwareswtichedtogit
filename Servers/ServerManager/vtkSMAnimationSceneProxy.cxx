@@ -123,7 +123,7 @@ vtkSMAnimationSceneProxy::~vtkSMAnimationSceneProxy()
 }
 
 //----------------------------------------------------------------------------
-void vtkSMAnimationSceneProxy::CreateVTKObjects(int numObjects)
+void vtkSMAnimationSceneProxy::CreateVTKObjects()
 {
   if (this->ObjectsCreated)
     {
@@ -133,7 +133,7 @@ void vtkSMAnimationSceneProxy::CreateVTKObjects(int numObjects)
   this->InitializeObservers(this->AnimationCue);
   this->ObjectsCreated = 1;
 
-  this->Superclass::CreateVTKObjects(numObjects);
+  this->Superclass::CreateVTKObjects();
 }
 
 //----------------------------------------------------------------------------

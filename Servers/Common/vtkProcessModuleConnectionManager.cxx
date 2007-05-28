@@ -478,7 +478,7 @@ GetConnectionClientServerID(vtkIdType id)
   vtkProcessModuleConnection* conn = this->GetConnectionFromID(id);
   if (!conn)
     {
-    vtkClientServerID nullid = {0};
+    vtkClientServerID nullid;
     return nullid;
     }
   return conn->GetSelfID();
@@ -603,7 +603,7 @@ vtkClientServerID vtkProcessModuleConnectionManager::GetMPIMToNSocketConnectionI
     {
     return conn->GetMPIMToNSocketConnectionID();
     }
-  vtkClientServerID nullid = {0 };
+  vtkClientServerID nullid;
   return nullid;
 }
 

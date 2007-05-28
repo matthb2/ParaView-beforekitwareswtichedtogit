@@ -1042,7 +1042,7 @@ void vtkProcessModule::ReserveID(vtkClientServerID id)
 //-----------------------------------------------------------------------------
 vtkClientServerID vtkProcessModule::GetProcessModuleID()
 {
-  vtkClientServerID id = { 2 };
+  vtkClientServerID id(2);
   return id;
 }
 

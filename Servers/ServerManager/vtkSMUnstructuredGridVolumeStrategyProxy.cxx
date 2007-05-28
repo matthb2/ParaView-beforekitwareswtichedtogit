@@ -39,7 +39,7 @@ vtkSMUnstructuredGridVolumeStrategyProxy::~vtkSMUnstructuredGridVolumeStrategyPr
 }
 
 //----------------------------------------------------------------------------
-void vtkSMUnstructuredGridVolumeStrategyProxy::CreateVTKObjects(int numObjects)
+void vtkSMUnstructuredGridVolumeStrategyProxy::CreateVTKObjects()
 {
   if (this->ObjectsCreated)
     {
@@ -57,7 +57,7 @@ void vtkSMUnstructuredGridVolumeStrategyProxy::CreateVTKObjects(int numObjects)
   this->UpdateSuppressor->SetServers(vtkProcessModule::CLIENT_AND_SERVERS);
   this->UpdateSuppressorLOD->SetServers(vtkProcessModule::CLIENT_AND_SERVERS);
 
-  this->Superclass::CreateVTKObjects(numObjects);
+  this->Superclass::CreateVTKObjects();
 }
 
 //----------------------------------------------------------------------------

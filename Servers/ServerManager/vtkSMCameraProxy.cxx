@@ -40,7 +40,7 @@ void vtkSMCameraProxy::UpdatePropertyInformation()
     }
 
   vtkCamera* camera = vtkCamera::SafeDownCast(
-    vtkProcessModule::GetProcessModule()->GetObjectFromID(this->GetID(0)));
+    vtkProcessModule::GetProcessModule()->GetObjectFromID(this->GetID()));
   if (!camera)
     {
     this->Superclass::UpdatePropertyInformation();

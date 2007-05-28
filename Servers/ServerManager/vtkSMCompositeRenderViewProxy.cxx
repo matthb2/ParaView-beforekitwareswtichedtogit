@@ -31,7 +31,7 @@ vtkSMCompositeRenderViewProxy::~vtkSMCompositeRenderViewProxy()
 }
 
 //-----------------------------------------------------------------------------
-void vtkSMCompositeRenderViewProxy::CreateVTKObjects(int numObjects)
+void vtkSMCompositeRenderViewProxy::CreateVTKObjects()
 {
   if (this->ObjectsCreated )
     {
@@ -47,7 +47,7 @@ void vtkSMCompositeRenderViewProxy::CreateVTKObjects(int numObjects)
 
   vtkProcessModule* pm = vtkProcessModule::GetProcessModule();
 
-  this->Superclass::CreateVTKObjects(numObjects);
+  this->Superclass::CreateVTKObjects();
 
   // Anti-aliasing generally screws up compositing.  Turn it off.
   if (this->GetRenderWindow()->IsA("vtkOpenGLRenderWindow") &&

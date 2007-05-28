@@ -144,7 +144,7 @@ void vtkSMCameraLink::AddLinkedProxy(vtkSMProxy* proxy, int updateDir)
     this->Superclass::AddLinkedProxy(proxy, updateDir);
     if(updateDir == vtkSMLink::INPUT)
       {
-      proxy->CreateVTKObjects(1); 
+      proxy->CreateVTKObjects(); 
         // ensure that the proxy is created.
         // This is necessary since when loading state the proxy may not yet be
         // created, however we want to observer events on the

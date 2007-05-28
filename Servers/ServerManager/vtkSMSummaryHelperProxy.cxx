@@ -34,28 +34,25 @@ vtkSMSummaryHelperProxy::~vtkSMSummaryHelperProxy()
 }
 
 //-----------------------------------------------------------------------------
-void vtkSMSummaryHelperProxy::CreateVTKObjects(int numObjects)
+void vtkSMSummaryHelperProxy::CreateVTKObjects()
 {
   if (this->ObjectsCreated)
     {
     return;
     }
-  this->Superclass::CreateVTKObjects(numObjects);
+  this->Superclass::CreateVTKObjects();
 
   vtkProcessModule* pm =vtkProcessModule::GetProcessModule();
   vtkClientServerStream stream;
-  for (int cc=0; cc < numObjects; cc++)
-    {
-    stream << vtkClientServerStream::Invoke
-      << pm->GetProcessModuleID() << "GetController" << vtkClientServerStream::End;
-    stream << vtkClientServerStream::Invoke
-      << this->GetID(cc) << "SetController" << vtkClientServerStream::LastResult
-      << vtkClientServerStream::End;
-    }
-  if (stream.GetNumberOfMessages() > 0)
-    {
-    pm->SendStream(this->ConnectionID, this->Servers, stream);
-    }
+  stream << vtkClientServerStream::Invoke
+         << pm->GetProcessModuleID() << "GetController" 
+         << vtkClientServerStream::End;
+  stream << vtkClientServerStream::Invoke
+         << this->GetID() 
+         << "SetController" 
+         << vtkClientServerStream::LastResult
+         << vtkClientServerStream::End;
+  pm->SendStream(this->ConnectionID, this->Servers, stream);
 }
 
 //-----------------------------------------------------------------------------

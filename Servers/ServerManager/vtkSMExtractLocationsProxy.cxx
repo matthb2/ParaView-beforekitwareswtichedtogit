@@ -61,14 +61,14 @@ void vtkSMExtractLocationsProxy::RemoveAllLocations()
 }
 
 //-----------------------------------------------------------------------------
-void vtkSMExtractLocationsProxy::CreateVTKObjects(int num)
+void vtkSMExtractLocationsProxy::CreateVTKObjects()
 {
   if (this->ObjectsCreated)
     {
     return;
     }
 
-  this->Superclass::CreateVTKObjects(num);
+  this->Superclass::CreateVTKObjects();
 
   if (!this->ObjectsCreated)
     {

@@ -57,20 +57,11 @@ void vtkSMImplicitPlaneProxy::UpdateVTKObjects()
     }
 
   vtkClientServerStream str;
-  unsigned int numObjects = this->GetNumberOfIDs();
-  for (i=0; i<numObjects; i++)
-    {
-    str << vtkClientServerStream::Invoke
-        << this->GetID(i) << "SetOrigin" << origin[0] << origin[1] << origin[2]
-        << vtkClientServerStream::End;
-    }
-
-  if (str.GetNumberOfMessages() > 0)
-    {
-    vtkProcessModule* pm = vtkProcessModule::GetProcessModule();
-    pm->SendStream(this->ConnectionID, this->Servers, str);
-    }
-
+  str << vtkClientServerStream::Invoke
+      << this->GetID() << "SetOrigin" << origin[0] << origin[1] << origin[2]
+      << vtkClientServerStream::End;
+  vtkProcessModule* pm = vtkProcessModule::GetProcessModule();
+  pm->SendStream(this->ConnectionID, this->Servers, str);
 }
  
 //----------------------------------------------------------------------------
