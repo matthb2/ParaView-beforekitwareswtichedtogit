@@ -289,7 +289,7 @@ int vtkEnSightReader::RequestData(
               IsId(this->GeometryFileSet);
             if (collectionNum > -1)
               {
-              filenameNumbers = this->TimeSetFileNameNumbers->
+              filenameNumbers = this->FileSetFileNameNumbers->
                 GetItem(collectionNum);
               filenameNum = filenameNumbers->GetId(fileNum-1);
               this->ReplaceWildcards(fileName, filenameNum);
@@ -373,7 +373,7 @@ int vtkEnSightReader::RequestData(
               IsId(this->MeasuredFileSet);
             if (collectionNum > -1)
               {
-              filenameNumbers = this->TimeSetFileNameNumbers->
+              filenameNumbers = this->FileSetFileNameNumbers->
                 GetItem(fileSet);
               filenameNum = filenameNumbers->GetId(fileNum-1);
               this->ReplaceWildcards(fileName, filenameNum);
@@ -1318,7 +1318,7 @@ int vtkEnSightReader::ReadVariableFiles(vtkMultiBlockDataSet *output)
           int collectionNum = this->FileSetsWithFilenameNumbers->IsId(fileSet);
           if (collectionNum > -1)
             {
-            filenameNumbers = this->TimeSetFileNameNumbers->
+            filenameNumbers = this->FileSetFileNameNumbers->
               GetItem(collectionNum);
             filenameNum = filenameNumbers->GetId(timeStep-1);
             this->ReplaceWildcards(fileName, filenameNum);
