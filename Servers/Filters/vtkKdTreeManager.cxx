@@ -131,7 +131,9 @@ void vtkKdTreeManager::Update()
       this->StructuredProducer->Update();
       }
       */
-    update_required |= (this->StructuredProducer->GetOutputDataObject(0)->GetMTime());
+    update_required |= (
+      this->StructuredProducer->GetOutputDataObject(0)->GetMTime() > 
+      this->UpdateTime);
     }
 
   if (!update_required)
