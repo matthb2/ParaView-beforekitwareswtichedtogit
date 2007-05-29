@@ -89,6 +89,7 @@ vtkSMDataRepresentationProxy::~vtkSMDataRepresentationProxy()
   delete this->RepresentationStrategiesForSelection;
   this->RepresentationStrategiesForSelection = 0;
 
+
   this->Observer->SetTarget(0);
   this->Observer->Delete();
 }
@@ -374,7 +375,6 @@ void vtkSMDataRepresentationProxy::MarkModified(vtkSMProxy* modifiedProxy)
       iter->GetPointer()->MarkModified(modifiedProxy);
       }
     }
-
 
   this->Superclass::MarkModified(modifiedProxy);
 }

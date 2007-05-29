@@ -577,17 +577,10 @@ void vtkSMIceTCompositeViewProxy::UpdateOrderedCompositingPipeline()
 void vtkSMIceTCompositeViewProxy::SetOrderedCompositingDecision(bool decision)
 {
   // Iterate over all active strategies and pass the decision to them.
-  vtkSMRepresentationStrategyVector::iterator iter =
-    this->ActiveStrategyVector->begin();
-  for ( ; iter != this->ActiveStrategyVector->end(); ++iter)
-    {
-    vtkSMSimpleParallelStrategy* pstrategy = 
-      vtkSMSimpleParallelStrategy::SafeDownCast(iter->GetPointer());
-    if (pstrategy)
-      {
-      pstrategy->SetUseOrderedCompositing(decision);
-      }
-    }
+  vtkSMIntVectorProperty* ivp = vtkSMIntVectorProperty::SafeDownCast(
+    this->ViewHelper->GetProperty("UseOrderedCompositing"));
+  ivp->SetElement(0, decision? 1 : 0);
+  this->ViewHelper->UpdateVTKObjects();
 }
 
 //----------------------------------------------------------------------------
