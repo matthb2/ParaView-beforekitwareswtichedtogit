@@ -798,6 +798,7 @@ void vtkCocoaRenderWindow::PrintSelf(ostream& os, vtkIndent indent)
 
   os << indent << "ContextId: " << this->GetContextId() << "\n";
   os << indent << "MultiSamples: " << this->MultiSamples << "\n";
+  os << indent << "ScaleFactor: " << this->GetScaleFactor() << "\n";
 }
 
 //----------------------------------------------------------------------------
