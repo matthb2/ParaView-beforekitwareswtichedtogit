@@ -2997,6 +2997,10 @@ void TessellatorEdgeProcessorFunction( const double*, const double*, vtkEdgeSubd
 
 void TessellatorTriangleProcessorFunction( const double* a, const double* b, const double* c, vtkEdgeSubdivisionCriterion*, void* out, const void* )
 {
+  (void) a;
+  (void) b;
+  (void) c;
+  (void) out;
 #if 0
   vtkUnstructuredGrid* mesh = static_cast<vtkUnstructuredGrid*>(out);
   if ( ! mesh )
