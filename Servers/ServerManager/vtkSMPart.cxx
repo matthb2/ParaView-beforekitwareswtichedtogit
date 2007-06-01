@@ -51,6 +51,19 @@ vtkSMPart::~vtkSMPart()
     {
     this->DataObjectProxy->Delete();
     }
+  vtkProcessModule* pm = vtkProcessModule::GetProcessModule();
+  if (!this->ProducerID.IsNull() && pm)
+    {
+    vtkClientServerStream stream;
+    pm->DeleteStreamObject(this->ProducerID, stream);
+    pm->SendStream(this->ConnectionID, this->Servers, stream);
+    }
+  if (!this->ExecutiveID.IsNull() && pm)
+    {
+    vtkClientServerStream stream;
+    pm->DeleteStreamObject(this->ExecutiveID, stream);
+    pm->SendStream(this->ConnectionID, this->Servers, stream);
+    }
 }
 
 //----------------------------------------------------------------------------
