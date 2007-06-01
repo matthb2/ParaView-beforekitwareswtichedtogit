@@ -22,7 +22,7 @@
 #include "vtkDataSet.h"
 #include "vtkDataSet.h"
 #include "vtkDataSetAttributes.h"
-#include "vtkDataSetSubdivisionAlgorithm.h"
+#include "vtkDataSetEdgeSubdivisionCriterion.h"
 #include "vtkFieldData.h"
 #include "vtkFloatArray.h"
 #include "vtkInformation.h"
@@ -30,7 +30,7 @@
 #include "vtkPointData.h"
 #include "vtkPoints.h"
 #include "vtkStreamingTessellator.h"
-#include "vtkSubdivisionAlgorithm.h"
+#include "vtkEdgeSubdivisionCriterion.h"
 #include "vtkTessellatorFilter.h"
 #include "vtkUnstructuredGrid.h"
 
@@ -79,17 +79,16 @@ void vtkTessellatorFilter::SetMergePoints( int DoTheMerge )
 
 // ========================================
 // callbacks for simplex output
-void vtkTessellatorFilter::AddATetrahedron( const double* a, const double* b, const double* c, const double* d,
-                                              vtkSubdivisionAlgorithm*, void* pd, const void* )
+void vtkTessellatorFilter::AddATetrahedron(
+  const double* a, const double* b, const double* c, const double* d,
+  vtkEdgeSubdivisionCriterion*, void* pd, const void* )
 {
   vtkTessellatorFilter* self = (vtkTessellatorFilter*) pd;
   self->OutputTetrahedron( a, b, c, d );
 }
 
-void vtkTessellatorFilter::OutputTetrahedron( const double* a,
-                                                  const double* b, 
-                                                  const double* c, 
-                                                  const double* d )
+void vtkTessellatorFilter::OutputTetrahedron(
+  const double* a, const double* b, const double* c, const double* d )
 {
   vtkIdType cellIds[4];
 
@@ -119,18 +118,16 @@ void vtkTessellatorFilter::OutputTetrahedron( const double* a,
     }
 }
 
-void vtkTessellatorFilter::AddATriangle( const double* a, const double* b, 
-                                             const double* c,
-                                             vtkSubdivisionAlgorithm*, 
-                                             void* pd, const void* )
+void vtkTessellatorFilter::AddATriangle(
+  const double* a, const double* b, const double* c,
+  vtkEdgeSubdivisionCriterion*, void* pd, const void* )
 {
   vtkTessellatorFilter* self = (vtkTessellatorFilter*) pd;
   self->OutputTriangle( a, b, c );
 }
 
-void vtkTessellatorFilter::OutputTriangle( const double* a, 
-                                               const double* b, 
-                                               const double* c )
+void vtkTessellatorFilter::OutputTriangle(
+  const double* a, const double* b, const double* c )
 {
   vtkIdType cellIds[3];
 
@@ -157,9 +154,9 @@ void vtkTessellatorFilter::OutputTriangle( const double* a,
     }
 }
 
-void vtkTessellatorFilter::AddALine( const double* a, const double* b,
-                                         vtkSubdivisionAlgorithm*, void* pd, 
-                                         const void* )
+void vtkTessellatorFilter::AddALine(
+  const double* a, const double* b,
+  vtkEdgeSubdivisionCriterion*, void* pd, const void* )
 {
   vtkTessellatorFilter* self = (vtkTessellatorFilter*) pd;
   self->OutputLine( a, b );
@@ -198,7 +195,7 @@ vtkTessellatorFilter::vtkTessellatorFilter()
   this->OutputDimension = 3; // Tesselate elements directly, not boundaries
   this->SetTessellator( vtkStreamingTessellator::New() );
   this->Tessellator->Delete();
-  this->SetSubdivider( vtkDataSetSubdivisionAlgorithm::New() );
+  this->SetSubdivider( vtkDataSetEdgeSubdivisionCriterion::New() );
   this->Subdivider->Delete();
 
   this->Tessellator->SetEmbeddingDimension( 1, 3 );
@@ -266,7 +263,7 @@ void vtkTessellatorFilter::SetTessellator( vtkStreamingTessellator* t )
   this->Modified();
 }
 
-void vtkTessellatorFilter::SetSubdivider( vtkDataSetSubdivisionAlgorithm* s )
+void vtkTessellatorFilter::SetSubdivider( vtkDataSetEdgeSubdivisionCriterion* s )
 {
   if ( this->Subdivider == s )
     {
@@ -311,8 +308,8 @@ void vtkTessellatorFilter::ResetFieldCriteria()
 
 // ========================================
 // pipeline procedures
-void vtkTessellatorFilter::SetupOutput(vtkDataSet* input,
-                                       vtkUnstructuredGrid* output)
+void vtkTessellatorFilter::SetupOutput(
+  vtkDataSet* input, vtkUnstructuredGrid* output )
 {
   this->OutputMesh = output; 
 
@@ -933,9 +930,10 @@ static int vtkNotSupportedErrorPrinted = 0;
 
 // ========================================
 // the meat of the class: execution!
-int vtkTessellatorFilter::RequestData(vtkInformation*,
-                                      vtkInformationVector** inputVector,
-                                      vtkInformationVector* outputVector)
+int vtkTessellatorFilter::RequestData(
+  vtkInformation*,
+  vtkInformationVector** inputVector,
+  vtkInformationVector* outputVector)
 {
   static double weights[27];
   int dummySubId=-1;
@@ -1131,6 +1129,7 @@ int vtkTessellatorFilter::RequestData(vtkInformation*,
         nprim = sizeof(quadTriEdges)/sizeof(quadTriEdges[0]);
         }
       break;
+    case VTK_BIQUADRATIC_QUAD:
     case VTK_QUADRATIC_QUAD:
       for ( c = 0; c < 3; ++c )
         {
@@ -1304,7 +1303,7 @@ int vtkTessellatorFilter::RequestData(vtkInformation*,
 
 //----------------------------------------------------------------------------
 int vtkTessellatorFilter::FillInputPortInformation(
-  int vtkNotUsed(port), vtkInformation* info)
+  int vtkNotUsed(port), vtkInformation* info )
 {
   info->Set(vtkAlgorithm::INPUT_REQUIRED_DATA_TYPE(), "vtkDataSet");
   return 1;

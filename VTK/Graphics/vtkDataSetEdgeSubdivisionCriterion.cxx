@@ -6,7 +6,7 @@
  * or without modification, are permitted provided that this Notice and any
  * statement of authorship are reproduced on all copies.
  */
-#include "vtkDataSetSubdivisionAlgorithm.h"
+#include "vtkDataSetEdgeSubdivisionCriterion.h"
 #include "vtkStreamingTessellator.h"
 
 #include <vtkstd/algorithm>
@@ -19,10 +19,14 @@
 #include "vtkCell.h"
 #include "vtkDataSet.h"
 
-vtkCxxRevisionMacro(vtkDataSetSubdivisionAlgorithm,"$Revision$");
-vtkStandardNewMacro(vtkDataSetSubdivisionAlgorithm);
+#if defined(_MSC_VER)
+# pragma warning (disable: 4996) /* 'vtkstd::_Copy_opt' was declared deprecated */
+#endif
 
-vtkDataSetSubdivisionAlgorithm::vtkDataSetSubdivisionAlgorithm()
+vtkCxxRevisionMacro(vtkDataSetEdgeSubdivisionCriterion,"$Revision$");
+vtkStandardNewMacro(vtkDataSetEdgeSubdivisionCriterion);
+
+vtkDataSetEdgeSubdivisionCriterion::vtkDataSetEdgeSubdivisionCriterion()
 {
   this->CurrentMesh = 0;
   this->CurrentCellId = -1;
@@ -36,14 +40,14 @@ vtkDataSetSubdivisionAlgorithm::vtkDataSetSubdivisionAlgorithm()
   this->ActiveFieldCriteria = 0;
 }
 
-vtkDataSetSubdivisionAlgorithm::~vtkDataSetSubdivisionAlgorithm()
+vtkDataSetEdgeSubdivisionCriterion::~vtkDataSetEdgeSubdivisionCriterion()
 {
   if ( this->CurrentMesh )
     this->CurrentMesh->UnRegister( this );
   delete [] this->FieldError2;
 }
 
-void vtkDataSetSubdivisionAlgorithm::PrintSelf( ostream& os, vtkIndent indent )
+void vtkDataSetEdgeSubdivisionCriterion::PrintSelf( ostream& os, vtkIndent indent )
 {
   this->Superclass::PrintSelf( os, indent );
   os << indent << "CurrentCellId: " << this->CurrentCellId << endl;
@@ -52,7 +56,7 @@ void vtkDataSetSubdivisionAlgorithm::PrintSelf( ostream& os, vtkIndent indent )
   os << indent << "ActiveFieldCriteria: " << this->ActiveFieldCriteria << endl;
 }
 
-void vtkDataSetSubdivisionAlgorithm::SetMesh( vtkDataSet* mesh )
+void vtkDataSetEdgeSubdivisionCriterion::SetMesh( vtkDataSet* mesh )
 {
   if ( mesh == this->CurrentMesh )
     return;
@@ -67,7 +71,7 @@ void vtkDataSetSubdivisionAlgorithm::SetMesh( vtkDataSet* mesh )
     this->CurrentMesh->Register( this );
 }
 
-void vtkDataSetSubdivisionAlgorithm::SetCellId( vtkIdType cell )
+void vtkDataSetEdgeSubdivisionCriterion::SetCellId( vtkIdType cell )
 {
   if ( cell == this->CurrentCellId )
     return;
@@ -80,7 +84,7 @@ void vtkDataSetSubdivisionAlgorithm::SetCellId( vtkIdType cell )
   this->Modified();
 }
 
-double* vtkDataSetSubdivisionAlgorithm::EvaluateFields( double* vertex, double* weights, int field_start )
+double* vtkDataSetEdgeSubdivisionCriterion::EvaluateFields( double* vertex, double* weights, int field_start )
 {
   const int* fields = this->GetFieldIds();
   const int* offsets = this->GetFieldOffsets();
@@ -99,7 +103,7 @@ double* vtkDataSetSubdivisionAlgorithm::EvaluateFields( double* vertex, double* 
   return vertex;
 }
 
-void vtkDataSetSubdivisionAlgorithm::EvaluatePointDataField( double* result, double* weights, int field )
+void vtkDataSetEdgeSubdivisionCriterion::EvaluatePointDataField( double* result, double* weights, int field )
 {
   vtkDataArray* array = this->CurrentMesh->GetPointData()->GetArray( field );
   vtkIdList* ptIds = this->CurrentCellData->GetPointIds();
@@ -116,7 +120,7 @@ void vtkDataSetSubdivisionAlgorithm::EvaluatePointDataField( double* result, dou
     }
 }
 
-void vtkDataSetSubdivisionAlgorithm::EvaluateCellDataField( double* result, double* vtkNotUsed(weights), int field )
+void vtkDataSetEdgeSubdivisionCriterion::EvaluateCellDataField( double* result, double* vtkNotUsed(weights), int field )
 {
   // FIXME
   // VTK's CellData really assumes that there will only be one value per cell (i.e., we
@@ -132,7 +136,7 @@ void vtkDataSetSubdivisionAlgorithm::EvaluateCellDataField( double* result, doub
     result[j] = tuple[j];
 }
 
-bool vtkDataSetSubdivisionAlgorithm::EvaluateEdge( const double* p0, double* midpt, const double* p1, int field_start )
+bool vtkDataSetEdgeSubdivisionCriterion::EvaluateEdge( const double* p0, double* midpt, const double* p1, int field_start )
 {
   static double weights[27];
   static int dummySubId=-1;
@@ -182,7 +186,7 @@ bool vtkDataSetSubdivisionAlgorithm::EvaluateEdge( const double* p0, double* mid
   return rval;
 }
 
-void vtkDataSetSubdivisionAlgorithm::SetFieldError2( int s, double err )
+void vtkDataSetEdgeSubdivisionCriterion::SetFieldError2( int s, double err )
 {
   if ( s < this->FieldError2Length )
     {
@@ -223,14 +227,14 @@ void vtkDataSetSubdivisionAlgorithm::SetFieldError2( int s, double err )
   this->Modified();
 }
 
-double vtkDataSetSubdivisionAlgorithm::GetFieldError2( int s ) const
+double vtkDataSetEdgeSubdivisionCriterion::GetFieldError2( int s ) const
 {
   if ( s >= this->FieldError2Length || s < 0 )
     return -1;
   return this->FieldError2[s];
 }
 
-void vtkDataSetSubdivisionAlgorithm::ResetFieldError2()
+void vtkDataSetEdgeSubdivisionCriterion::ResetFieldError2()
 {
   this->FieldError2Length = 0;
   this->ActiveFieldCriteria = 0;

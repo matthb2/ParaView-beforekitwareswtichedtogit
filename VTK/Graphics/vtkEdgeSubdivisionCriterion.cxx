@@ -7,19 +7,19 @@
  * statement of authorship are reproduced on all copies.
  */
 
-#include "vtkSubdivisionAlgorithm.h"
+#include "vtkEdgeSubdivisionCriterion.h"
 #include "vtkStreamingTessellator.h"
 #include "vtkDataSetAttributes.h"
 #include "vtkMatrix4x4.h"
 
-vtkCxxRevisionMacro(vtkSubdivisionAlgorithm,"$Revision$");
+vtkCxxRevisionMacro(vtkEdgeSubdivisionCriterion,"$Revision$");
 
-void vtkSubdivisionAlgorithm::PrintSelf( ostream& os, vtkIndent indent )
+void vtkEdgeSubdivisionCriterion::PrintSelf( ostream& os, vtkIndent indent )
 {
   this->Superclass::PrintSelf( os, indent );
 }
 
-vtkSubdivisionAlgorithm::vtkSubdivisionAlgorithm()
+vtkEdgeSubdivisionCriterion::vtkEdgeSubdivisionCriterion()
 {
   this->FieldIds     = new int [ vtkStreamingTessellator::MaxFieldSize ];
   this->FieldOffsets = new int [ vtkStreamingTessellator::MaxFieldSize + 1 ];
@@ -27,18 +27,18 @@ vtkSubdivisionAlgorithm::vtkSubdivisionAlgorithm()
   this->NumberOfFields = 0;
 }
 
-vtkSubdivisionAlgorithm::~vtkSubdivisionAlgorithm()
+vtkEdgeSubdivisionCriterion::~vtkEdgeSubdivisionCriterion()
 {
   delete[] this->FieldIds;
   delete[] this->FieldOffsets;
 };
 
-void vtkSubdivisionAlgorithm::ResetFieldList()
+void vtkEdgeSubdivisionCriterion::ResetFieldList()
 {
   this->NumberOfFields = 0;
 }
 
-int vtkSubdivisionAlgorithm::PassField( int sourceId, int sourceSize, vtkStreamingTessellator* t )
+int vtkEdgeSubdivisionCriterion::PassField( int sourceId, int sourceSize, vtkStreamingTessellator* t )
 {
   if ( sourceSize + this->FieldOffsets[ this->NumberOfFields ] > vtkStreamingTessellator::MaxFieldSize )
     {
@@ -62,7 +62,7 @@ int vtkSubdivisionAlgorithm::PassField( int sourceId, int sourceSize, vtkStreami
   return off;
 }
 
-bool vtkSubdivisionAlgorithm::DontPassField( int sourceId, vtkStreamingTessellator* t )
+bool vtkEdgeSubdivisionCriterion::DontPassField( int sourceId, vtkStreamingTessellator* t )
 {
   int id = this->GetOutputField( sourceId );
   if ( id == -1 )
@@ -80,7 +80,7 @@ bool vtkSubdivisionAlgorithm::DontPassField( int sourceId, vtkStreamingTessellat
   return true;
 }
 
-int vtkSubdivisionAlgorithm::GetOutputField( int sourceId ) const
+int vtkEdgeSubdivisionCriterion::GetOutputField( int sourceId ) const
 {
   for ( int i=0; i<this->NumberOfFields; ++i )
     if ( this->FieldIds[i] == sourceId )
@@ -89,7 +89,7 @@ int vtkSubdivisionAlgorithm::GetOutputField( int sourceId ) const
   return -1;
 }
 
-bool vtkSubdivisionAlgorithm::ViewDependentEval( 
+bool vtkEdgeSubdivisionCriterion::ViewDependentEval( 
   const double* p0, double* p1, double* real_p1, 
   const double* p2, int , 
   vtkMatrix4x4* Transform, const double* PixelSize, 
@@ -145,7 +145,7 @@ bool vtkSubdivisionAlgorithm::ViewDependentEval(
   return false ; // no need to subdivide
 }
 
-bool vtkSubdivisionAlgorithm::FixedFieldErrorEval( const double*, double* p1, double* real_pf, const double*, int field_start, int criteria, double* AllowableL2Error2 ) const
+bool vtkEdgeSubdivisionCriterion::FixedFieldErrorEval( const double*, double* p1, double* real_pf, const double*, int field_start, int criteria, double* AllowableL2Error2 ) const
 {
   int id = 0;
   double mag;

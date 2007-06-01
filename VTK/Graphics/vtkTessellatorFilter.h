@@ -26,9 +26,9 @@ statement of authorship are reproduced on all copies.
 //
 // This filter rifles through all the cells in an input vtkDataSet. It
 // tesselates each cell and uses the vtkStreamingTessellator and
-// vtkDataSetSubdivisionAlgorithm classes to generate simplices that
+// vtkDataSetEdgeSubdivisionCriterion classes to generate simplices that
 // approximate the nonlinear mesh using some approximation metric (encoded
-// in the particular vtkDataSetSubdivisionAlgorithm::EvaluateEdge
+// in the particular vtkDataSetEdgeSubdivisionCriterion::EvaluateEdge
 // implementation). The simplices are placed into the filter's output
 // vtkDataSet object by the callback routines AddATetrahedron,
 // AddATriangle, and AddALine, which are registered with the triangulator.
@@ -50,19 +50,19 @@ statement of authorship are reproduced on all copies.
 //
 // .SECTION See Also
 // vtkDataSetToUnstructuredGridFilter vtkDataSet vtkStreamingTessellator
-// vtkDataSetSubdivisionAlgorithm
+// vtkDataSetEdgeSubdivisionCriterion
 
 #include "vtkUnstructuredGridAlgorithm.h"
 
 class vtkDataArray;
 class vtkDataSet;
-class vtkDataSetSubdivisionAlgorithm;
+class vtkDataSetEdgeSubdivisionCriterion;
 class vtkPoints;
 class vtkStreamingTessellator;
-class vtkSubdivisionAlgorithm;
+class vtkEdgeSubdivisionCriterion;
 class vtkUnstructuredGrid;
 
-class VTK_EXPORT vtkTessellatorFilter : public vtkUnstructuredGridAlgorithm
+class VTK_GRAPHICS_EXPORT vtkTessellatorFilter : public vtkUnstructuredGridAlgorithm
 {
 public:
   vtkTypeRevisionMacro(vtkTessellatorFilter,vtkUnstructuredGridAlgorithm);
@@ -73,8 +73,8 @@ public:
   virtual void SetTessellator( vtkStreamingTessellator* );
   vtkGetObjectMacro(Tessellator, vtkStreamingTessellator);
 
-  virtual void SetSubdivider( vtkDataSetSubdivisionAlgorithm* );
-  vtkGetObjectMacro(Subdivider, vtkDataSetSubdivisionAlgorithm);
+  virtual void SetSubdivider( vtkDataSetEdgeSubdivisionCriterion* );
+  vtkGetObjectMacro(Subdivider, vtkDataSetEdgeSubdivisionCriterion);
 
   virtual unsigned long GetMTime();
 
@@ -130,7 +130,7 @@ protected:
 
   //BTX
   vtkStreamingTessellator* Tessellator;
-  vtkDataSetSubdivisionAlgorithm* Subdivider;
+  vtkDataSetEdgeSubdivisionCriterion* Subdivider;
   int OutputDimension;
   int MergePoints;
 
@@ -144,20 +144,20 @@ protected:
 
   static void AddALine( const double*, 
                         const double*, 
-                        vtkSubdivisionAlgorithm*, 
+                        vtkEdgeSubdivisionCriterion*, 
                         void*, 
                         const void* );
   static void AddATriangle( const double*, 
                             const double*, 
                             const double*, 
-                            vtkSubdivisionAlgorithm*, 
+                            vtkEdgeSubdivisionCriterion*, 
                             void*, 
                             const void* );
   static void AddATetrahedron( const double*, 
                                const double*, 
                                const double*, 
                                const double*, 
-                               vtkSubdivisionAlgorithm*, 
+                               vtkEdgeSubdivisionCriterion*, 
                                void*, 
                                const void* );
   void OutputLine( const double*, const double* );

@@ -14,7 +14,7 @@
 #include "vtkObjectFactory.h"
 
 #include "vtkStreamingTessellator.h"
-#include "vtkSubdivisionAlgorithm.h"
+#include "vtkEdgeSubdivisionCriterion.h"
 
 
 #undef UGLY_ASPECT_RATIO_HACK
@@ -207,7 +207,7 @@ const void* vtkStreamingTessellator::GetConstPrivateData() const
   return this->ConstPrivateData;
 }
 
-void vtkStreamingTessellator::SetSubdivisionAlgorithm( vtkSubdivisionAlgorithm* a )
+void vtkStreamingTessellator::SetSubdivisionAlgorithm( vtkEdgeSubdivisionCriterion* a )
 {
   if ( a != this->Algorithm )
     {
@@ -222,12 +222,12 @@ void vtkStreamingTessellator::SetSubdivisionAlgorithm( vtkSubdivisionAlgorithm* 
     }
 }
 
-vtkSubdivisionAlgorithm* vtkStreamingTessellator::GetSubdivisionAlgorithm()
+vtkEdgeSubdivisionCriterion* vtkStreamingTessellator::GetSubdivisionAlgorithm()
 {
   return this->Algorithm;
 }
 
-const vtkSubdivisionAlgorithm* vtkStreamingTessellator::GetSubdivisionAlgorithm() const
+const vtkEdgeSubdivisionCriterion* vtkStreamingTessellator::GetSubdivisionAlgorithm() const
 {
   return this->Algorithm;
 }

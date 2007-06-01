@@ -14,9 +14,9 @@
   statement of authorship are reproduced on all copies.
 
 =========================================================================*/
-#ifndef __vtkSubdivisionAlgorithm_h
-#define __vtkSubdivisionAlgorithm_h
-// .NAME vtkSubdivisionAlgorithm - how to decide whether a linear approximation to nonlinear geometry or field should be subdivided
+#ifndef __vtkEdgeSubdivisionCriterion_h
+#define __vtkEdgeSubdivisionCriterion_h
+// .NAME vtkEdgeSubdivisionCriterion - how to decide whether a linear approximation to nonlinear geometry or field should be subdivided
 //
 // .SECTION Description
 // Descendants of this abstract class are used to decide whether a
@@ -37,10 +37,10 @@ class vtkDataSetAttributes;
 class vtkMatrix4x4;
 class vtkStreamingTessellator;
 
-class VTK_EXPORT vtkSubdivisionAlgorithm : public vtkObject
+class VTK_GRAPHICS_EXPORT vtkEdgeSubdivisionCriterion : public vtkObject
 {
   public:
-    vtkTypeRevisionMacro(vtkSubdivisionAlgorithm,vtkObject);
+    vtkTypeRevisionMacro(vtkEdgeSubdivisionCriterion,vtkObject);
     virtual void PrintSelf( ostream& os, vtkIndent indent );
 
     // Description:
@@ -94,8 +94,8 @@ class VTK_EXPORT vtkSubdivisionAlgorithm : public vtkObject
     int GetNumberOfFields() const;
 
   protected:
-    vtkSubdivisionAlgorithm();
-    virtual ~vtkSubdivisionAlgorithm();
+    vtkEdgeSubdivisionCriterion();
+    virtual ~vtkEdgeSubdivisionCriterion();
 
     int* FieldIds;
     int* FieldOffsets;
@@ -162,16 +162,16 @@ class VTK_EXPORT vtkSubdivisionAlgorithm : public vtkObject
     bool FixedFieldErrorEval( const double* p0, double* p1, double* p1_actual, const double* p2, int field_start, int field_criteria, double* allowableFieldErr ) const;
 
   private:
-    vtkSubdivisionAlgorithm( const vtkSubdivisionAlgorithm& ); // Not implemented.
-    void operator = ( const vtkSubdivisionAlgorithm& ); // Not implemented.
+    vtkEdgeSubdivisionCriterion( const vtkEdgeSubdivisionCriterion& ); // Not implemented.
+    void operator = ( const vtkEdgeSubdivisionCriterion& ); // Not implemented.
 };
 
 //BTX
 
-inline const int* vtkSubdivisionAlgorithm::GetFieldIds() const { return this->FieldIds; }
-inline const int* vtkSubdivisionAlgorithm::GetFieldOffsets() const { return this->FieldOffsets; }
-inline int vtkSubdivisionAlgorithm::GetNumberOfFields() const { return this->NumberOfFields; }
+inline const int* vtkEdgeSubdivisionCriterion::GetFieldIds() const { return this->FieldIds; }
+inline const int* vtkEdgeSubdivisionCriterion::GetFieldOffsets() const { return this->FieldOffsets; }
+inline int vtkEdgeSubdivisionCriterion::GetNumberOfFields() const { return this->NumberOfFields; }
 
 //ETX
 
-#endif // __vtkSubdivisionAlgorithm_h
+#endif // __vtkEdgeSubdivisionCriterion_h

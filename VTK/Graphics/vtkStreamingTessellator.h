@@ -39,7 +39,7 @@
 //   AdaptivelySample3Facet, with an edge, triangle, or
 //   tetrahedron you want tessellated.
 // - The adaptive tessellator classifies each edge by passing
-//   the midpoint values to the vtkSubdivisionAlgorithm.
+//   the midpoint values to the vtkEdgeSubdivisionCriterion.
 // - After each edge is classified, the tessellator subdivides
 //   edges as required until the subdivision criterion is
 //   satisfied or the maximum subdivision depth has been
@@ -69,7 +69,7 @@
 // truncate an interpolated value to an integer.
 //
 // .SECTION See Also
-// vtkSubdivisionAlgorithm
+// vtkEdgeSubdivisionCriterion
 
 #ifndef vtkStreamingTessellator_h
 #define vtkStreamingTessellator_h
@@ -78,9 +78,9 @@
 
 #undef PARAVIEW_DEBUG_TESSELLATOR
 
-class vtkSubdivisionAlgorithm;
+class vtkEdgeSubdivisionCriterion;
 
-class VTK_EXPORT vtkStreamingTessellator : public vtkObject
+class VTK_GRAPHICS_EXPORT vtkStreamingTessellator : public vtkObject
 {
   public:
     vtkTypeRevisionMacro(vtkStreamingTessellator,vtkObject);
@@ -88,9 +88,9 @@ class VTK_EXPORT vtkStreamingTessellator : public vtkObject
     virtual void PrintSelf( ostream& os, vtkIndent indent );
 
     //BTX
-    typedef void (*EdgeProcessorFunction)( const double*, const double*, vtkSubdivisionAlgorithm*, void*, const void* );
-    typedef void (*TriangleProcessorFunction)( const double*, const double*, const double*, vtkSubdivisionAlgorithm*, void*, const void* );
-    typedef void (*TetrahedronProcessorFunction)( const double*, const double*, const double*, const double*, vtkSubdivisionAlgorithm*, void*, const void* );
+    typedef void (*EdgeProcessorFunction)( const double*, const double*, vtkEdgeSubdivisionCriterion*, void*, const void* );
+    typedef void (*TriangleProcessorFunction)( const double*, const double*, const double*, vtkEdgeSubdivisionCriterion*, void*, const void* );
+    typedef void (*TetrahedronProcessorFunction)( const double*, const double*, const double*, const double*, vtkEdgeSubdivisionCriterion*, void*, const void* );
 
     enum {MaxFieldSize = 18};
 
@@ -129,9 +129,9 @@ class VTK_EXPORT vtkStreamingTessellator : public vtkObject
     // AdaptivelySample1Facet (which is recursive and will call itself
     // resulting in additional edges to be checked) or three times for
     // each call to AdaptivelySample2Facet (also recursive).
-    virtual void SetSubdivisionAlgorithm( vtkSubdivisionAlgorithm* );
-    virtual vtkSubdivisionAlgorithm* GetSubdivisionAlgorithm() ;
-    virtual const vtkSubdivisionAlgorithm* GetSubdivisionAlgorithm() const;
+    virtual void SetSubdivisionAlgorithm( vtkEdgeSubdivisionCriterion* );
+    virtual vtkEdgeSubdivisionCriterion* GetSubdivisionAlgorithm() ;
+    virtual const vtkEdgeSubdivisionCriterion* GetSubdivisionAlgorithm() const;
 
     // Description:
     // Get/Set the number of parameter-space coordinates associated with each input and output point.
@@ -160,7 +160,7 @@ class VTK_EXPORT vtkStreamingTessellator : public vtkObject
     // a scalar, vector, tensor, normal, and texture coordinate to be included at each point.
     //
     // Normally, you will not call \a SetFieldSize() directly; instead, subclasses of
-    // vtkSubdivisionAlgorithm, such as vtkShoeMeshSubdivisionAlgorithm, will call it
+    // vtkEdgeSubdivisionCriterion, such as vtkShoeMeshSubdivisionAlgorithm, will call it
     // for you.
     //
     // In any event, setting \a FieldSize to a non-zero value means you must pass field
@@ -251,7 +251,7 @@ class VTK_EXPORT vtkStreamingTessellator : public vtkObject
 
     void* PrivateData;
     const void* ConstPrivateData;
-    vtkSubdivisionAlgorithm* Algorithm;
+    vtkEdgeSubdivisionCriterion* Algorithm;
     //BTX
     EdgeProcessorFunction Callback1;
     TriangleProcessorFunction Callback2;

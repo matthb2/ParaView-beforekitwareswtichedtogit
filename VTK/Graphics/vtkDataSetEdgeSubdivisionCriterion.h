@@ -14,12 +14,12 @@
   statement of authorship are reproduced on all copies.
 
 =========================================================================*/
-#ifndef __vtkDataSetSubdivisionAlgorithm_h
-#define __vtkDataSetSubdivisionAlgorithm_h
-// .NAME vtkDataSetSubdivisionAlgorithm - a subclass of vtkSubdivisionAlgorithm for vtkDataSet objects.
+#ifndef __vtkDataSetEdgeSubdivisionCriterion_h
+#define __vtkDataSetEdgeSubdivisionCriterion_h
+// .NAME vtkDataSetEdgeSubdivisionCriterion - a subclass of vtkEdgeSubdivisionCriterion for vtkDataSet objects.
 //
 // .SECTION Description
-// This is a subclass of vtkSubdivisionAlgorithm that is used for
+// This is a subclass of vtkEdgeSubdivisionCriterion that is used for
 // tessellating cells of a vtkDataSet, particularly nonlinear
 // cells.
 //
@@ -33,18 +33,18 @@
 // we need the linearly interpolated ones at the midpoint for continuity.)
 //
 // .SECTION See Also
-// vtkSubdivisionAlgorithm
+// vtkEdgeSubdivisionCriterion
 
-#include "vtkSubdivisionAlgorithm.h"
+#include "vtkEdgeSubdivisionCriterion.h"
 
 class vtkCell;
 class vtkDataSet;
 
-class VTK_EXPORT vtkDataSetSubdivisionAlgorithm : public vtkSubdivisionAlgorithm
+class VTK_GRAPHICS_EXPORT vtkDataSetEdgeSubdivisionCriterion : public vtkEdgeSubdivisionCriterion
 {
   public:
-    vtkTypeRevisionMacro(vtkDataSetSubdivisionAlgorithm,vtkSubdivisionAlgorithm);
-    static vtkDataSetSubdivisionAlgorithm* New();
+    vtkTypeRevisionMacro(vtkDataSetEdgeSubdivisionCriterion,vtkEdgeSubdivisionCriterion);
+    static vtkDataSetEdgeSubdivisionCriterion* New();
     virtual void PrintSelf( ostream& os, vtkIndent indent );
 
     virtual void SetMesh( vtkDataSet* );
@@ -65,7 +65,7 @@ class VTK_EXPORT vtkDataSetSubdivisionAlgorithm : public vtkSubdivisionAlgorithm
     // Evaluate all of the fields that should be output with the
     // given \a vertex and store them just past the parametric coordinates
     // of \a vertex, at the offsets given by
-    // \p vtkSubdivisionAlgorithm::GetFieldOffsets() plus \a field_start.
+    // \p vtkEdgeSubdivisionCriterion::GetFieldOffsets() plus \a field_start.
     // \a field_start contains the number of world-space coordinates (always 3)
     // plus the embedding dimension (the size of the parameter-space in which
     // the cell is embedded). It will range between 3 and 6, inclusive.
@@ -73,8 +73,8 @@ class VTK_EXPORT vtkDataSetSubdivisionAlgorithm : public vtkSubdivisionAlgorithm
     // You must have called SetCellId() before calling this routine or there
     // will not be a mesh over which to evaluate the fields.
     //
-    // You must have called \p vtkSubdivisionAlgorithm::PassDefaultFields()
-    // or \p vtkSubdivisionAlgorithm::PassField() or there will be no fields
+    // You must have called \p vtkEdgeSubdivisionCriterion::PassDefaultFields()
+    // or \p vtkEdgeSubdivisionCriterion::PassField() or there will be no fields
     // defined for the output vertex.
     //
     // This routine is public and returns its input argument so that it
@@ -82,7 +82,7 @@ class VTK_EXPORT vtkDataSetSubdivisionAlgorithm : public vtkSubdivisionAlgorithm
     // \p vtkStreamingTessellator::AdaptivelySamplekFacet():
     // @verbatim
     //   vtkStreamingTessellator* t = vtkStreamingTessellator::New();
-    //   vtkSubdivisionAlgorithm* s;
+    //   vtkEdgeSubdivisionCriterion* s;
     //   ...
     //   t->AdaptivelySample1Facet( s->EvaluateFields( p0 ), s->EvaluateFields( p1 ) );
     //   ...
@@ -134,8 +134,8 @@ class VTK_EXPORT vtkDataSetSubdivisionAlgorithm : public vtkSubdivisionAlgorithm
     int GetActiveFieldCriteria() const { return this->ActiveFieldCriteria; }
 
   protected:
-    vtkDataSetSubdivisionAlgorithm();
-    virtual ~vtkDataSetSubdivisionAlgorithm();
+    vtkDataSetEdgeSubdivisionCriterion();
+    virtual ~vtkDataSetEdgeSubdivisionCriterion();
 
     vtkDataSet* CurrentMesh;
     vtkIdType CurrentCellId;
@@ -148,22 +148,22 @@ class VTK_EXPORT vtkDataSetSubdivisionAlgorithm : public vtkSubdivisionAlgorithm
     int ActiveFieldCriteria;
 
   private:
-    vtkDataSetSubdivisionAlgorithm( const vtkDataSetSubdivisionAlgorithm& ); // Not implemented.
-    void operator = ( const vtkDataSetSubdivisionAlgorithm& ); // Not implemented.
+    vtkDataSetEdgeSubdivisionCriterion( const vtkDataSetEdgeSubdivisionCriterion& ); // Not implemented.
+    void operator = ( const vtkDataSetEdgeSubdivisionCriterion& ); // Not implemented.
 
 };
 
 //BTX
 
-inline vtkIdType& vtkDataSetSubdivisionAlgorithm::GetCellId()       { return this->CurrentCellId; }
-inline vtkIdType  vtkDataSetSubdivisionAlgorithm::GetCellId() const { return this->CurrentCellId; }
+inline vtkIdType& vtkDataSetEdgeSubdivisionCriterion::GetCellId()       { return this->CurrentCellId; }
+inline vtkIdType  vtkDataSetEdgeSubdivisionCriterion::GetCellId() const { return this->CurrentCellId; }
 
-inline       vtkDataSet* vtkDataSetSubdivisionAlgorithm::GetMesh()       { return this->CurrentMesh; }
-inline const vtkDataSet* vtkDataSetSubdivisionAlgorithm::GetMesh() const { return this->CurrentMesh; }
+inline       vtkDataSet* vtkDataSetEdgeSubdivisionCriterion::GetMesh()       { return this->CurrentMesh; }
+inline const vtkDataSet* vtkDataSetEdgeSubdivisionCriterion::GetMesh() const { return this->CurrentMesh; }
 
-inline       vtkCell* vtkDataSetSubdivisionAlgorithm::GetCell()       { return this->CurrentCellData; }
-inline const vtkCell* vtkDataSetSubdivisionAlgorithm::GetCell() const { return this->CurrentCellData; }
+inline       vtkCell* vtkDataSetEdgeSubdivisionCriterion::GetCell()       { return this->CurrentCellData; }
+inline const vtkCell* vtkDataSetEdgeSubdivisionCriterion::GetCell() const { return this->CurrentCellData; }
 
 //ETX
 
-#endif // __vtkDataSetSubdivisionAlgorithm_h
+#endif // __vtkDataSetEdgeSubdivisionCriterion_h
