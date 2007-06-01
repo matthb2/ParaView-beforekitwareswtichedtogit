@@ -72,8 +72,8 @@ inline bool SetIntVectorProperty(vtkSMProxy* proxy, const char* pname,
       {
       vtkGenericWarningMacro("Failed to locate property "
         << pname << " on proxy  " << proxy->GetXMLName());
-      return false;
       }
+    return false;
     }
   ivp->SetElement(0, val);
   return true;
