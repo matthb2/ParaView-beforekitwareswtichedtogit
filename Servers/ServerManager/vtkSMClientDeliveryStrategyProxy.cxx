@@ -102,8 +102,6 @@ void vtkSMClientDeliveryStrategyProxy::CreatePipelineInternal(
 
   // Now we need to set up some default parameters on these filters.
 
-  vtkSMInputProperty* ip = 0;
-
   stream
     << vtkClientServerStream::Invoke
     << collect->GetID() << "SetProcessModuleConnection"
