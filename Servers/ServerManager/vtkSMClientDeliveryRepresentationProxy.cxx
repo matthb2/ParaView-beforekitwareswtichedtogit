@@ -194,7 +194,6 @@ void vtkSMClientDeliveryRepresentationProxy::SetInputInternal()
 
   vtkClientServerStream stream;
   vtkProcessModule* pm = vtkProcessModule::GetProcessModule();
-  vtkSMInputProperty* ip = 0;
 
   if (this->ReduceProxy)
     {
