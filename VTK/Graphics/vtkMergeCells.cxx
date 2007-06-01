@@ -882,8 +882,7 @@ int vtkMergeCells::GlobalCellIdAccessStart(vtkDataSet *set)
 {
   if(this->UseGlobalCellIds)
     {
-    // Is this a bug? It is using the point global ids 
-    vtkDataArray* da = set->GetPointData()->GetGlobalIds();
+    vtkDataArray* da = set->GetCellData()->GetGlobalIds();
     if (da)
       {
       this->GlobalCellIdArray = da->GetVoidPointer(0);
