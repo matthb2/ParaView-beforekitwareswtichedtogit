@@ -331,6 +331,62 @@ void vtkSelection::CopyChildren(vtkSelection* input)
 }
 
 //----------------------------------------------------------------------------
+void vtkSelection::Union(vtkSelection* s)
+{
+  if (this->Properties->Has(CONTENT_TYPE()) != s->Properties->Has(CONTENT_TYPE()))
+    {
+    vtkErrorMacro(<< "Cannot union selections where one has content type "
+                  << "and the other does not.");
+    return;
+    }
+  if (this->Properties->Has(CONTENT_TYPE()) && 
+      this->Properties->Get(CONTENT_TYPE()) != s->Properties->Get(CONTENT_TYPE()))
+    {
+    vtkErrorMacro(<< "Cannot union selections with different content types.");
+    return;
+    }
+  int type = this->Properties->Get(CONTENT_TYPE());
+  switch (type)
+    {
+    case GLOBALIDS:
+    case VALUES:
+    case INDICES:
+    case LOCATIONS:
+    case THRESHOLDS:
+      {
+      vtkAbstractArray* aa1 = this->GetSelectionList();
+      vtkAbstractArray* aa2 = s->GetSelectionList();
+      if (aa1->GetDataType() != aa2->GetDataType())
+        {
+        vtkErrorMacro(<< "Cannot take the union where selection list types "
+                      << "do not match.");
+        return;
+        }
+      if (aa1->GetNumberOfComponents() != aa2->GetNumberOfComponents())
+        {
+        vtkErrorMacro(<< "Cannot take the union where selection list number "
+                      << "of components do not match.");
+        return;
+        }
+      for (vtkIdType i = 0; i < aa2->GetNumberOfTuples(); i++)
+        {
+        aa1->InsertNextTuple(i, aa2);
+        }
+      break;
+      }
+    case SELECTIONS:
+    case COMPOSITE_SELECTIONS:
+    case FRUSTUM:
+    default:
+      {
+      vtkErrorMacro(<< "Do not know how to take the union of content type "
+                    << type << ".");
+      return;
+      }
+    }
+}
+
+//----------------------------------------------------------------------------
 // Overload standard modified time function. If properties is modified,
 // then this object is modified as well.
 unsigned long vtkSelection::GetMTime()
