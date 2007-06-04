@@ -210,7 +210,7 @@ int vtkBoostBreadthFirstSearch::RequestData(
       vtkErrorMacro("OriginFromSelection set but selection input undefined.");
       return 0;
       }
-    if (selection->GetProperties()->Get(vtkSelection::CONTENT_TYPE()) != vtkSelection::GLOBALIDS ||
+    if (selection->GetProperties()->Get(vtkSelection::CONTENT_TYPE()) != vtkSelection::INDICES ||
         selection->GetProperties()->Get(vtkSelection::FIELD_TYPE()) != vtkSelection::POINT)
       {
       vtkErrorMacro("Selection must be point ids.");
@@ -309,7 +309,7 @@ int vtkBoostBreadthFirstSearch::RequestData(
       }
     
     sel->SetSelectionList(ids);
-    sel->GetProperties()->Set(vtkSelection::CONTENT_TYPE(), vtkSelection::GLOBALIDS);
+    sel->GetProperties()->Set(vtkSelection::CONTENT_TYPE(), vtkSelection::INDICES);
     sel->GetProperties()->Set(vtkSelection::FIELD_TYPE(), vtkSelection::POINT);
     ids->Delete();
     }

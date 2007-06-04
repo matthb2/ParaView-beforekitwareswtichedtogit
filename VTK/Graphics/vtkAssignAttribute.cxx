@@ -272,10 +272,10 @@ int vtkAssignAttribute::RequestData(
       //int attributeIndices[vtkDataSetAttributes::NUM_ATTRIBUTES];
       //ods->GetAttributeIndices(attributeIndices);
       // if (attributeIndices[this->InputAttributeType] != -1)
-      vtkDataArray *oda = ods->GetAttribute(this->InputAttributeType);
-      if (oda)
+      vtkAbstractArray *oaa = ods->GetAbstractAttribute(this->InputAttributeType);
+      if (oaa)
         {
-        ods->SetActiveAttribute(oda->GetName(),this->AttributeType);
+        ods->SetActiveAttribute(oaa->GetName(),this->AttributeType);
         }
       }
     }
