@@ -1444,6 +1444,7 @@ int vtkTessellatorFilter::RequestData(
   if ( this->MergePoints )
     {
     this->MergeOutputPoints( tmpOut, output );
+    tmpOut->Delete();
     }
 
   this->Teardown();
