@@ -390,6 +390,10 @@ void vtkTransferFunctionViewer::SetSize(int x, int y)
     int size[2];
     size[0] = x;
     size[1] = y;
+    if (this->RenderWindow)
+      {
+      this->RenderWindow->SetSize(size);
+      }
     this->EditorWidget->Configure(size);
     this->Render();
     }
