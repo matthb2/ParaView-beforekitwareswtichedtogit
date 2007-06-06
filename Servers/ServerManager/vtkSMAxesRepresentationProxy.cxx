@@ -87,6 +87,54 @@ void vtkSMAxesRepresentationProxy::CreateVTKObjects()
 }
 
 //----------------------------------------------------------------------------
+bool vtkSMAxesRepresentationProxy::AddToView(vtkSMViewProxy* view)
+{
+  vtkSMRenderViewProxy* renderView = vtkSMRenderViewProxy::SafeDownCast(view);
+  if (!renderView)
+    {
+    vtkErrorMacro("View must be a vtkSMRenderViewProxy.");
+    return false;
+    }
+
+  vtkSMProxy* p = this->GetSubProxy("Prop");
+  if (p)
+    {
+    renderView->AddPropToRenderer(p);
+    }
+  p = this->GetSubProxy("Prop2D");
+  if (p)
+    {
+    renderView->AddPropToRenderer2D(p);
+    }
+
+  return true;
+}
+
+//----------------------------------------------------------------------------
+bool vtkSMAxesRepresentationProxy::RemoveFromView(vtkSMViewProxy* view)
+{
+  vtkSMRenderViewProxy* renderView = vtkSMRenderViewProxy::SafeDownCast(view);
+  if (!renderView)
+    {
+    vtkErrorMacro("View must be a vtkSMRenderViewProxy.");
+    return false;
+    }
+
+  vtkSMProxy* p = this->GetSubProxy("Prop");
+  if (p)
+    {
+    renderView->RemovePropFromRenderer(p);
+    }
+  p = this->GetSubProxy("Prop2D");
+  if (p)
+    {
+    renderView->RemovePropFromRenderer2D(p);
+    }
+
+  return true;
+}
+
+//----------------------------------------------------------------------------
 void vtkSMAxesRepresentationProxy::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os, indent);
