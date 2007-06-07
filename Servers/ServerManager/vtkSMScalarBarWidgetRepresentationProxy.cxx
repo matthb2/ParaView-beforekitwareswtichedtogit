@@ -66,11 +66,12 @@ vtkSMScalarBarWidgetRepresentationProxy::vtkSMScalarBarWidgetRepresentationProxy
 //----------------------------------------------------------------------------
 vtkSMScalarBarWidgetRepresentationProxy::~vtkSMScalarBarWidgetRepresentationProxy()
 {
+  this->Observer->Proxy = 0;
+  this->Observer->Delete();
+  this->Observer = 0;
   this->ActorProxy = 0;
   this->Widget->Delete();
   this->Widget = 0;
-  this->Observer->Delete();
-  this->Observer = 0;
   this->ViewProxy = 0;
 }
 
