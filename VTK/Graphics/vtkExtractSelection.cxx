@@ -149,6 +149,7 @@ int vtkExtractSelection::RequestData(
   switch (seltype)
     {
     case vtkSelection::GLOBALIDS:
+    case vtkSelection::PEDIGREEIDS:
     case vtkSelection::VALUES:
     case vtkSelection::INDICES:
     {

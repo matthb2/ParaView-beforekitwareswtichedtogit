@@ -349,6 +349,7 @@ void vtkSelection::Union(vtkSelection* s)
   switch (type)
     {
     case GLOBALIDS:
+    case PEDIGREEIDS:
     case VALUES:
     case INDICES:
     case LOCATIONS:
