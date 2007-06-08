@@ -56,14 +56,6 @@ vtkTransferFunctionEditorWidget::~vtkTransferFunctionEditorWidget()
 }
 
 //----------------------------------------------------------------------------
-int vtkTransferFunctionEditorWidget::TransferFunctionsInitialized()
-{
-  int cSize = this->ColorFunction->GetSize();
-  int oSize = this->OpacityFunction->GetSize();
-  return (cSize || oSize);
-}
-
-//----------------------------------------------------------------------------
 void vtkTransferFunctionEditorWidget::SetVisibleScalarRange(double min,
                                                             double max)
 {
@@ -279,4 +271,38 @@ void vtkTransferFunctionEditorWidget::PrintSelf(ostream& os, vtkIndent indent)
      << this->VisibleScalarRange[1] << endl;
   os << indent << "WholeScalarRange: " << this->WholeScalarRange[0] << " "
      << this->WholeScalarRange[1] << endl;
+  os << indent << "ColorMTime: " << this->ColorMTime << endl;
+  os << indent << "OpacityMTime: " << this->OpacityMTime << endl;
+  os << indent << "Histogram:";
+  if (this->Histogram)
+    {
+    os << "\n";
+    this->Histogram->PrintSelf(os, indent.GetNextIndent());
+    }
+  else
+    {
+    os << " none\n";
+    }
+  os << indent << "AllowInteriorElements: " << this->AllowInteriorElements
+     << endl;
+  os << indent << "ColorFunction:";
+  if (this->ColorFunction)
+    {
+    os << "\n";
+    this->ColorFunction->PrintSelf(os, indent.GetNextIndent());
+    }
+  else
+    {
+    os << " none\n";
+    }
+  os << indent << "OpacityFunction:";
+  if (this->OpacityFunction)
+    {
+    os << "\n";
+    this->OpacityFunction->PrintSelf(os, indent.GetNextIndent());
+    }
+  else
+    {
+    os << " none\n";
+    }
 }

@@ -647,4 +647,7 @@ void vtkTransferFunctionEditorRepresentationSimple1D::PrintSelf(
   ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os, indent);
+
+  os << indent << "ActiveHandle: " << this->ActiveHandle << endl;
+  os << indent << "Tolerance: " << this->Tolerance << endl;
 }
