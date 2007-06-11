@@ -391,4 +391,5 @@ void vtkPointHandleRepresentationSphere::PrintSelf(ostream& os, vtkIndent indent
     os << indent << "Cursor Shape: (none)\n";
     }
 
+  os << indent << "Scalar: " << this->Scalar << endl;
 }

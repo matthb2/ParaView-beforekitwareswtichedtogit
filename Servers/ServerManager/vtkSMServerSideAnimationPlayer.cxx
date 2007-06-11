@@ -69,7 +69,10 @@ vtkSMServerSideAnimationPlayer::vtkSMServerSideAnimationPlayer()
   this->Observer = vtkSMServerSideAnimationPlayerObserver::New();
   this->Observer->SetTarget(this);
   vtkProcessModule* pm = vtkProcessModule::GetProcessModule();
-  pm->AddObserver(vtkCommand::ConnectionClosedEvent, this->Observer);
+  if (pm)
+    {
+    pm->AddObserver(vtkCommand::ConnectionClosedEvent, this->Observer);
+    }
 
   this->Writer = 0; 
 }
