@@ -225,7 +225,7 @@ void vtkSMClientDeliveryStrategyProxy::UpdatePipelineInternal(
     }
       
   updatesuppressor->InvokeCommand("ForceUpdate");
-  this->Superclass::Update();
+  //this->Superclass::Update();
 
   if (postprocessor)
     {
