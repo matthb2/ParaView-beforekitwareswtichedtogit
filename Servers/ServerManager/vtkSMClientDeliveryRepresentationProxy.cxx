@@ -266,7 +266,6 @@ vtkDataObject* vtkSMClientDeliveryRepresentationProxy::GetOutput()
     }
   else
     {
-    vtkProcessModule *pm = vtkProcessModule::GetProcessModule();
     if (pm && this->StrategyProxy && this->StrategyProxy->GetOutput())
       {
       dp = vtkAlgorithm::SafeDownCast(
