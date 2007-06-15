@@ -2179,8 +2179,6 @@ int vtkExodusIIWriter::WriteNextTimeStep()
   int i, idIdx;
   int rc = 0;
 
-  vtkModelMetadata *mmd = this->GetModelMetadata();
-
   int ts = this->CurrentTimeIndex;
   float tsv = this->TimeValues->GetValue(this->CurrentTimeIndex);
 
