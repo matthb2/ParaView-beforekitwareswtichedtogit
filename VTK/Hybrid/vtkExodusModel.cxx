@@ -23,7 +23,6 @@
 #include "vtkObjectFactory.h"
 #include "vtkDataArray.h"
 #include "vtkIntArray.h"
-#include "vtkIdTypeArray.h"
 #include "vtkFloatArray.h"
 #include "vtkCellData.h"
 #include "vtkPointData.h"
@@ -581,7 +580,7 @@ int vtkExodusModel::SetLocalInformation(vtkUnstructuredGrid *ugrid,
   da = ugrid->GetCellData()->GetArray("GlobalElementId");
   if (da)
     {
-    vtkIdTypeArray *ia = vtkIdTypeArray::SafeDownCast(da);
+    vtkIntArray *ia = vtkIntArray::SafeDownCast(da);
     if (ia)
       {
       cellIds = ia->GetPointer(0);
@@ -591,7 +590,7 @@ int vtkExodusModel::SetLocalInformation(vtkUnstructuredGrid *ugrid,
   da = ugrid->GetPointData()->GetArray("GlobalNodeId");
   if (da)
     {
-    vtkIdTypeArray *ia = vtkIdTypeArray::SafeDownCast(da);
+    vtkIntArray *ia = vtkIntArray::SafeDownCast(da);
     if (ia)
       {
       pointIds = ia->GetPointer(0);
