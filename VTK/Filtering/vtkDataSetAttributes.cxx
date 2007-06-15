@@ -1448,7 +1448,7 @@ int vtkDataSetAttributes::GetCopyPedigreeIds(int ctype)
 void vtkDataSetAttributes::RemoveArray(const char *name)
 {
   int i;
-  this->GetArray(name, i);
+  this->GetAbstractArray(name, i);
   this->RemoveArray(i);
 }
 

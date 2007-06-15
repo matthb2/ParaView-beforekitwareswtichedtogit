@@ -552,7 +552,10 @@ void vtkDemandDrivenPipeline::ExecuteDataStart(vtkInformation* request,
         {
         vtkInformation* outInfo = outputs->GetInformationObject(i);
         vtkDataObject* output = outInfo->Get(vtkDataObject::DATA_OBJECT());
-        if(output)
+        // We want to pass the field data unless it is a table.
+        // Since a table's data is stored in the field data, we want
+        // table algorithms to start with an empty field data.
+        if(output && !output->IsA("vtkTable"))
           {
           output->GetFieldData()->PassData(input->GetFieldData());
           }
