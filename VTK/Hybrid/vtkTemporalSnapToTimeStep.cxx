@@ -193,3 +193,11 @@ int vtkTemporalSnapToTimeStep::RequestUpdateExtent (
 
   return 1;
 }
+//----------------------------------------------------------------------------
+void vtkTemporalSnapToTimeStep::PrintSelf(ostream& os, vtkIndent indent)
+{
+  this->Superclass::PrintSelf(os,indent);
+
+  os << indent << "SnapMode: " << this->SnapMode << endl;
+}
+//----------------------------------------------------------------------------
