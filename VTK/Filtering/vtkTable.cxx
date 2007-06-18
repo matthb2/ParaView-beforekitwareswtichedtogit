@@ -100,6 +100,16 @@ vtkVariantArray* vtkTable::GetRow(vtkIdType row)
 
 //----------------------------------------------------------------------------
 
+void vtkTable::SetRow(vtkIdType row, vtkVariantArray* values)
+{
+  for (int i = 0; i < this->GetNumberOfColumns(); i++)
+    {
+    this->SetValue(row, i, values->GetValue(i));
+    }
+}
+
+//----------------------------------------------------------------------------
+
 vtkIdType vtkTable::InsertNextBlankRow()
 {
   int n = this->FieldData->GetNumberOfArrays();
