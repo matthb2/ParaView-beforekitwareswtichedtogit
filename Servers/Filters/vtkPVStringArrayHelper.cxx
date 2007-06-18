@@ -15,10 +15,8 @@
 #include "vtkPVStringArrayHelper.h"
 
 #include "vtkAlgorithm.h"
-#include "vtkClientServerInterpreter.h"
 #include "vtkClientServerStream.h"
 #include "vtkObjectFactory.h"
-#include "vtkProcessModule.h"
 #include "vtkStringArray.h"
 
 #include <vtkstd/string>
@@ -61,14 +59,9 @@ vtkPVStringArrayHelper::GetStringList(vtkStringArray* strings)
   this->Internal->Result << vtkClientServerStream::Reply;
 
   // Make sure we have a process module.
-  if(this->ProcessModule && strings)
+  if(strings)
     {
     // Pack the contents of the string into a stream.
-
-    // Get the local process interpreter.
-    vtkClientServerInterpreter* interp =
-      this->ProcessModule->GetInterpreter();
-
     vtkIdType numStrings = strings->GetNumberOfValues();
     for (vtkIdType i=0; i<numStrings; i++)
       {
