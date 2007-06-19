@@ -340,7 +340,15 @@ void vtkCocoaRenderWindow::SetPosition(int x, int y)
 void vtkCocoaRenderWindow::Frame()
 {
   this->MakeCurrent();
-  [(NSOpenGLContext*)this->GetContextId() flushBuffer];
+
+  if (!this->AbortRender && this->DoubleBuffer && this->SwapBuffers)
+    {
+    [(NSOpenGLContext*)this->GetContextId() flushBuffer];
+    }
+   else
+    {
+    glFlush();
+    }
 }
 
 //----------------------------------------------------------------------------
