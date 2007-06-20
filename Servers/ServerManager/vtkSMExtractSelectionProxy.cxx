@@ -98,7 +98,7 @@ void vtkSMExtractSelectionProxy::CreateVTKObjects()
     return;
     }
   
-  this->AddInput(selectionSource, "SetSelectionConnection", false);
+  this->AddInput(selectionSource, "SetSelectionConnection");
 }
 
 //-----------------------------------------------------------------------------
