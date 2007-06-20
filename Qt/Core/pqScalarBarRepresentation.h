@@ -29,32 +29,50 @@ NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 =========================================================================*/
-#ifndef __pqTextDisplay_h
-#define __pqTextDisplay_h
+#ifndef __pqScalarBarRepresentation_h
+#define __pqScalarBarRepresentation_h
 
-#include "pqConsumerDisplay.h"
+#include "pqRepresentation.h"
 
-/// This is a display representation for "TextDisplay" proxy.
-/// This class may soon be removed since there's no particular
-/// need for it. It was created when text source wasn't a
-/// true source.
-class PQCORE_EXPORT pqTextDisplay : public pqConsumerDisplay
+class pqPipelineRepresentation;
+class pqScalarsToColors;
+
+// PQ object for a scalar bar. Keeps itself connected with the pqScalarsToColors
+// object, if any.
+class PQCORE_EXPORT pqScalarBarRepresentation : public pqRepresentation
 {
   Q_OBJECT
-
-  typedef pqConsumerDisplay Superclass;
 public:
-  pqTextDisplay(const QString& group, const QString& name,
-    vtkSMProxy* display, pqServer* server,
+  pqScalarBarRepresentation(const QString& group, const QString& name,
+    vtkSMProxy* scalarbar, pqServer* server,
     QObject* parent=0);
-  virtual ~pqTextDisplay();
+  virtual ~pqScalarBarRepresentation();
 
-  virtual void setDefaultPropertyValues();
+  // Get the lookup table this scalar bar shows, if any.
+  pqScalarsToColors* getLookupTable() const;
+
+  // Calls this method to set up a title for the scalar bar
+  // using the color by array name from the display.
+  // The component used to color with is obtained from the 
+  // LookupTable already stored by this object.
+  void makeTitle(pqPipelineRepresentation* display);
+
+  // A scalar bar title is divided into two parts (any of which can be empty).
+  // Typically the first is the array name and the second is the component.
+  // This method returns the pair.
+  QPair<QString, QString> getTitle() const;
+  
+  // Set the title formed by combining two parts.
+  void setTitle(const QString& name, const QString& component);
+protected slots:
+  void onLookupTableModified();
 
 private:
-  pqTextDisplay(const pqTextDisplay&); // Not implemented.
-  void operator=(const pqTextDisplay&); // Not implemented.
+  class pqInternal;
+  pqInternal* Internal;
 };
+
+
 
 #endif
 

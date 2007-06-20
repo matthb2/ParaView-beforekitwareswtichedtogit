@@ -111,14 +111,14 @@ int pqPendingDisplayUndoElement::InternalUndoRedo(bool undo)
   if ((state && undo) || (!state && !undo))
     {
     // TODO:  is this the right place?
-    pqPipelineSource* pxy = smModel->getPQSource(proxy);
+    pqPipelineSource* pxy = smModel->findItem<pqPipelineSource*>(proxy);
     pxy->setModifiedState(pqProxy::UNMODIFIED);
-    pdmanager->removePendingDisplayForSource(smModel->getPQSource(proxy));
+    pdmanager->removePendingDisplayForSource(smModel->findItem<pqPipelineSource*>(proxy));
     }
   else
     {
     // TODO:  is this the right place?
-    pqPipelineSource* pxy = smModel->getPQSource(proxy);
+    pqPipelineSource* pxy = smModel->findItem<pqPipelineSource*>(proxy);
     pxy->setModifiedState(pqProxy::UNINITIALIZED);
     pdmanager->internalAddPendingDisplayForSource(pxy);
     }

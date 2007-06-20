@@ -14,11 +14,13 @@
 =========================================================================*/
 #include "vtkSMPVRepresentationProxy.h"
 
+#include "vtkCommand.h"
 #include "vtkObjectFactory.h"
 #include "vtkProperty.h"
 #include "vtkSMIntVectorProperty.h"
 #include "vtkSMProxyProperty.h"
 #include "vtkSMSourceProxy.h"
+#include "vtkSMSurfaceRepresentationProxy.h"
 
 inline void vtkSMPVRepresentationProxySetInt(
   vtkSMProxy* proxy, const char* pname, int val)
@@ -54,6 +56,26 @@ vtkSMPVRepresentationProxy::~vtkSMPVRepresentationProxy()
 }
 
 //----------------------------------------------------------------------------
+void vtkSMPVRepresentationProxy::SetViewInformation(vtkInformation* info)
+{
+  this->Superclass::SetViewInformation(info);
+  if (this->SurfaceRepresentation)
+    {
+    this->SurfaceRepresentation->SetViewInformation(info);
+    }
+
+  if (this->OutlineRepresentation)
+    {
+    this->OutlineRepresentation->SetViewInformation(info);
+    }
+
+  if (this->VolumeRepresentation)
+    {
+    this->VolumeRepresentation->SetViewInformation(info);
+    }
+}
+
+//----------------------------------------------------------------------------
 bool vtkSMPVRepresentationProxy::EndCreateVTKObjects()
 {
   this->SurfaceRepresentation = vtkSMDataRepresentationProxy::SafeDownCast(
@@ -79,14 +101,33 @@ bool vtkSMPVRepresentationProxy::EndCreateVTKObjects()
     this->VolumeRepresentation->SetSelectionSupported(false);
     }
 
-  // TODO: Add observer to fire StartEvent/EndEvent.
+  // Fire start/end events fired by the representations so that the world knows
+  // that the representation has been updated,
+  vtkCommand* observer = this->GetObserver();
+  this->SurfaceRepresentation->AddObserver(vtkCommand::StartEvent, observer);
+  this->SurfaceRepresentation->AddObserver(vtkCommand::EndEvent, observer);
+
+  this->OutlineRepresentation->AddObserver(vtkCommand::StartEvent, observer);
+  this->OutlineRepresentation->AddObserver(vtkCommand::EndEvent, observer);
+
+  if (this->VolumeRepresentation)
+    {
+    this->VolumeRepresentation->AddObserver(vtkCommand::StartEvent, observer);
+    this->VolumeRepresentation->AddObserver(vtkCommand::EndEvent, observer);
+    }
+
 
   // Setup the ActiveRepresentation pointer.
   int repr = this->Representation;
   this->Representation = -1;
   this->SetRepresentation(repr);
 
-  this->LinkSelectionProp(this->SurfaceRepresentation);
+  this->LinkSelectionProp(vtkSMSurfaceRepresentationProxy::SafeDownCast(
+      this->SurfaceRepresentation)->GetProp3D());
+
+  // This will pass the ViewInformation to all the representations.
+  this->SetViewInformation(this->ViewInformation);
+
   return this->Superclass::EndCreateVTKObjects();
 }
 
@@ -164,6 +205,7 @@ void vtkSMPVRepresentationProxy::SetRepresentation(int repr)
       this->GetVisibility());
     this->Modified();
     // TODO: Do we need to call MarkModified();
+    this->MarkModified(0);
     }
 }
 

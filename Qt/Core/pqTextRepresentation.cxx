@@ -28,45 +28,52 @@ LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
 NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-========================================================================*/
-#include "pqElementInspectorViewModule.h"
+=========================================================================*/
+#include "pqTextRepresentation.h"
 
-// Server Manager Includes.
 #include "vtkSMProxy.h"
-
-// Qt Includes.
-
-// ParaView Includes.
-#include "pqPipelineSource.h"
+#include "pqSMAdaptor.h"
 
 //-----------------------------------------------------------------------------
-pqElementInspectorViewModule::pqElementInspectorViewModule(
- const QString& group, const QString& name, 
-    vtkSMAbstractViewModuleProxy* viewModule, pqServer* server, 
-    QObject* _parent/*=NULL*/):
-   pqGenericViewModule(
-     eiViewType(), group, name, viewModule, server, _parent)
+pqTextRepresentation::pqTextRepresentation(const QString& group, 
+  const QString& name, vtkSMProxy* display, pqServer* server,
+    QObject* _parent): 
+  Superclass(group, name, display, server, _parent)
 {
+};
 
+//-----------------------------------------------------------------------------
+pqTextRepresentation::~pqTextRepresentation()
+{
 }
 
 //-----------------------------------------------------------------------------
-pqElementInspectorViewModule::~pqElementInspectorViewModule()
+void pqTextRepresentation::setDefaultPropertyValues()
 {
-
-}
-
-//-----------------------------------------------------------------------------
-bool pqElementInspectorViewModule::canDisplaySource(pqPipelineSource* source) const
-{
-  if (source)
+  this->Superclass::setDefaultPropertyValues();
+  if (!this->isVisible())
     {
-    QString xmlname = source->getProxy()->GetXMLName();
-    if (xmlname == "ExtractCellSelection" || xmlname == "ExtractPointSelection")
-      {
-      return true;
-      }
+    // For any non-visible display, we don't set its defaults.
+    return;
     }
 
-  return false;
+  // Set default arrays and lookup table.
+  vtkSMProxy* proxy = this->getProxy();
+  
+  pqSMAdaptor::setElementProperty(
+    proxy->GetProperty("Selectable"), 0);
+  pqSMAdaptor::setElementProperty(
+    proxy->GetProperty("Enabled"),1);
+  pqSMAdaptor::setElementProperty(
+    proxy->GetProperty("ScaledText"),0);
+  pqSMAdaptor::setElementProperty(
+    proxy->GetProperty("Resizable"),0);
+  pqSMAdaptor::setElementProperty(
+    proxy->GetProperty("FontSize"),24);
+
+  proxy->UpdateVTKObjects();
 }
+
+
+//-----------------------------------------------------------------------------
+//-----------------------------------------------------------------------------

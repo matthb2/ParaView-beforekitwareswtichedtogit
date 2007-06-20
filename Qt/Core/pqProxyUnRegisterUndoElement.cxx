@@ -67,7 +67,7 @@ void pqProxyUnRegisterUndoElement::ProxyToUnRegister(
   pqApplicationCore* core = pqApplicationCore::instance();
   pqServerManagerModel* smmodel = core->getServerManagerModel();
 
-  pqProxy* pq_proxy = smmodel->getPQProxy(proxy);
+  pqProxy* pq_proxy = smmodel->findItem<pqProxy*>(proxy);
   if (!pq_proxy || !this->XMLElement)
     {
     // nothing extra to add.

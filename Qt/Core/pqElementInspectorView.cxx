@@ -28,52 +28,44 @@ LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
 NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-=========================================================================*/
-#include "pqTextDisplay.h"
+========================================================================*/
+#include "pqElementInspectorView.h"
 
+// Server Manager Includes.
 #include "vtkSMProxy.h"
-#include "pqSMAdaptor.h"
+
+// Qt Includes.
+
+// ParaView Includes.
+#include "pqPipelineSource.h"
 
 //-----------------------------------------------------------------------------
-pqTextDisplay::pqTextDisplay(const QString& group, 
-  const QString& name, vtkSMProxy* display, pqServer* server,
-    QObject* _parent): 
-  pqConsumerDisplay(group, name, display, server, _parent)
+pqElementInspectorView::pqElementInspectorView(
+ const QString& group, const QString& name, 
+    vtkSMViewProxy* viewModule, pqServer* server, 
+    QObject* _parent/*=NULL*/):
+   pqView(eiViewType(), group, name, viewModule, server, _parent)
 {
-};
 
-//-----------------------------------------------------------------------------
-pqTextDisplay::~pqTextDisplay()
-{
 }
 
 //-----------------------------------------------------------------------------
-void pqTextDisplay::setDefaultPropertyValues()
+pqElementInspectorView::~pqElementInspectorView()
 {
-  this->Superclass::setDefaultPropertyValues();
-  if (!this->isVisible())
+
+}
+
+//-----------------------------------------------------------------------------
+bool pqElementInspectorView::canDisplaySource(pqPipelineSource* source) const
+{
+  if (source)
     {
-    // For any non-visible display, we don't set its defaults.
-    return;
+    QString xmlname = source->getProxy()->GetXMLName();
+    if (xmlname == "ExtractCellSelection" || xmlname == "ExtractPointSelection")
+      {
+      return true;
+      }
     }
 
-  // Set default arrays and lookup table.
-  vtkSMProxy* proxy = this->getProxy();
-  
-  pqSMAdaptor::setElementProperty(
-    proxy->GetProperty("Selectable"), 0);
-  pqSMAdaptor::setElementProperty(
-    proxy->GetProperty("Enabled"),1);
-  pqSMAdaptor::setElementProperty(
-    proxy->GetProperty("ScaledText"),0);
-  pqSMAdaptor::setElementProperty(
-    proxy->GetProperty("Resizable"),0);
-  pqSMAdaptor::setElementProperty(
-    proxy->GetProperty("FontSize"),24);
-
-  proxy->UpdateVTKObjects();
+  return false;
 }
-
-
-//-----------------------------------------------------------------------------
-//-----------------------------------------------------------------------------

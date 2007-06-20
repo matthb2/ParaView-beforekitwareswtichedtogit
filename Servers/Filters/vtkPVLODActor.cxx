@@ -47,6 +47,8 @@ vtkPVLODActor::vtkPVLODActor()
   
   this->LODMapper = NULL;
   this->RenderModuleHelper = NULL;
+
+  this->EnableLOD = 0;
 }
 
 //----------------------------------------------------------------------------
@@ -77,13 +79,13 @@ vtkMapper *vtkPVLODActor::SelectMapper()
     return this->LODMapper;
     }
 
+  if (this->EnableLOD)
+    {
+    return this->LODMapper;
+    }
+
   return this->Mapper;
 }
-
-
-
-
-
 
 //----------------------------------------------------------------------------
 void vtkPVLODActor::Render(vtkRenderer *ren, vtkMapper *vtkNotUsed(m))
@@ -321,4 +323,5 @@ void vtkPVLODActor::PrintSelf(ostream& os, vtkIndent indent)
     {
     os << "(none)" << endl;
     }
+  os << indent << "EnableLOD: " << this->EnableLOD << endl;
 }

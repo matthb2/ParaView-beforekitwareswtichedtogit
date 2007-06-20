@@ -17,17 +17,21 @@
 #include "vtkObjectFactory.h"
 #include "vtkSMIntVectorProperty.h"
 #include "vtkSMProxyProperty.h"
+#include "vtkInformation.h"
 
 vtkCxxRevisionMacro(vtkSMRepresentationProxy, "$Revision$");
+vtkCxxSetObjectMacro(vtkSMRepresentationProxy, ViewInformation, vtkInformation);
 //----------------------------------------------------------------------------
 vtkSMRepresentationProxy::vtkSMRepresentationProxy()
 {
   this->SelectionSupported = false;
+  this->ViewInformation = 0;
 }
 
 //----------------------------------------------------------------------------
 vtkSMRepresentationProxy::~vtkSMRepresentationProxy()
 {
+  this->SetViewInformation(0);
 }
 
 //----------------------------------------------------------------------------

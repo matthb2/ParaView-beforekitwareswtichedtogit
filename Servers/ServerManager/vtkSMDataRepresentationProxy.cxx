@@ -91,6 +91,12 @@ vtkSMDataRepresentationProxy::~vtkSMDataRepresentationProxy()
 }
 
 //----------------------------------------------------------------------------
+vtkCommand* vtkSMDataRepresentationProxy::GetObserver()
+{
+  return this->Observer;
+}
+
+//----------------------------------------------------------------------------
 void vtkSMDataRepresentationProxy::GetActiveStrategies(
   vtkSMRepresentationStrategyVector& activeStrategies)
 {

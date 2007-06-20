@@ -29,49 +29,58 @@ NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 =========================================================================*/
-#ifndef __pqScalarBarDisplay_h
-#define __pqScalarBarDisplay_h
+#ifndef __pqTableView_h
+#define __pqTableView_h
 
-#include "pqDisplay.h"
+#include "pqView.h"
 
-class pqPipelineDisplay;
-class pqScalarBarDisplayInternal;
-class pqScalarsToColors;
-
-// PQ object for a scalar bar. Keeps itself connected with the pqScalarsToColors
-// object, if any.
-class PQCORE_EXPORT pqScalarBarDisplay : public pqDisplay
+class PQCORE_EXPORT pqTableView :
+  public pqView
 {
+  typedef pqView Superclass;
+
   Q_OBJECT
 public:
-  pqScalarBarDisplay(const QString& group, const QString& name,
-    vtkSMProxy* scalarbar, pqServer* server,
-    QObject* parent=0);
-  virtual ~pqScalarBarDisplay();
+  pqTableView(const QString& group, const QString& name, 
+    vtkSMViewProxy* renModule, 
+    pqServer* server, QObject* parent=NULL);
+  ~pqTableView();
 
-  // Get the lookup table this scalar bar shows, if any.
-  pqScalarsToColors* getLookupTable() const;
+  static QString tableType() { return "TableView"; }
+  static QString tableTypeName() { return "Table"; }
 
-  // Calls this method to set up a title for the scalar bar
-  // using the color by array name from the display.
-  // The component used to color with is obtained from the 
-  // LookupTable already stored by this object.
-  void makeTitle(pqPipelineDisplay* display);
+  QWidget* getWidget();
 
-  // A scalar bar title is divided into two parts (any of which can be empty).
-  // Typically the first is the array name and the second is the component.
-  // This method returns the pair.
-  QPair<QString, QString> getTitle() const;
-  
-  // Set the title formed by combining two parts.
-  void setTitle(const QString& name, const QString& component);
-protected slots:
-  void onLookupTableModified();
+  /// Save a screenshot for the render module. If width or height ==0,
+  /// the current window size is used.
+  virtual bool saveImage(int /*width*/, int /*height*/, 
+    const QString& /*filename*/) 
+    {
+    // Not supported yet.
+    return false;
+    };
+
+  /// Save image to vtkImageData. Not supported.
+  vtkImageData* captureImage(int /*magnification*/)
+    { return NULL; }
+
+  /// Forces an immediate render. Overridden since for plots
+  /// rendering actually happens on the GUI side, not merely
+  /// in the ServerManager.
+  virtual void forceRender();
+
+  virtual bool canDisplaySource(pqPipelineSource* source) const;
+
+private slots:
+  void visibilityChanged(pqRepresentation* disp);
 
 private:
-  pqScalarBarDisplayInternal* Internal;
-};
+  pqTableView(const pqTableView&); // Not implemented.
+  void operator=(const pqTableView&); // Not implemented.
 
+  class pqImplementation;
+  pqImplementation* const Implementation;
+};
 
 
 #endif

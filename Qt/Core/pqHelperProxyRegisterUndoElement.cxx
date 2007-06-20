@@ -118,7 +118,7 @@ int pqHelperProxyRegisterUndoElement::Redo()
   pqApplicationCore* core = pqApplicationCore::instance();
   pqServerManagerModel* smModel = core->getServerManagerModel();
 
-  pqProxy* pq_proxy = smModel->getPQProxy(proxy);
+  pqProxy* pq_proxy = smModel->findItem<pqProxy*>(proxy);
   if (!pq_proxy)
     {
     vtkErrorMacro("Failed to located pqProxy for the proxy.");

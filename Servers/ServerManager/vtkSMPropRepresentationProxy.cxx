@@ -18,11 +18,12 @@
 #include "vtkProcessModule.h"
 #include "vtkSmartPointer.h"
 #include "vtkSMIntVectorProperty.h"
+#include "vtkSMProxyLink.h"
 #include "vtkSMProxyProperty.h"
 #include "vtkSMRenderViewProxy.h"
 #include "vtkSMRepresentationStrategy.h"
+#include "vtkSMSelectionRepresentationProxy.h"
 #include "vtkSMSourceProxy.h"
-#include "vtkSMProxyLink.h"
 
 vtkStandardNewMacro(vtkSMPropRepresentationProxy);
 vtkCxxRevisionMacro(vtkSMPropRepresentationProxy, "$Revision$");
@@ -30,6 +31,10 @@ vtkCxxRevisionMacro(vtkSMPropRepresentationProxy, "$Revision$");
 vtkSMPropRepresentationProxy::vtkSMPropRepresentationProxy()
 {
   this->SelectionRepresentation = 0;
+
+  // This link is used to link the properties of the representation prop to the 
+  // properties of the selection prop so that they appear to be tranformed
+  // similarly.
   this->SelectionPropLink = vtkSMProxyLink::New();
   this->SelectionPropLink->AddException("LODMapper");
   this->SelectionPropLink->AddException("Mapper");
@@ -153,7 +158,9 @@ bool vtkSMPropRepresentationProxy::EndCreateVTKObjects()
 
     // Link actor properties with the seleciton actor so that actor
     // transformations work.
-    this->SelectionPropLink->AddLinkedProxy(this->SelectionRepresentation,
+    this->SelectionPropLink->AddLinkedProxy(
+      vtkSMSelectionRepresentationProxy::SafeDownCast(
+        this->SelectionRepresentation)->GetProp3D(),
       vtkSMLink::OUTPUT);
     }
   return this->Superclass::EndCreateVTKObjects();

@@ -29,24 +29,25 @@ NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 ========================================================================*/
-#ifndef __pqElementInspectorViewModule_h 
-#define __pqElementInspectorViewModule_h
+#ifndef __pqElementInspectorView_h 
+#define __pqElementInspectorView_h
 
-#include "pqGenericViewModule.h"
+#include "pqView.h"
 
-class PQCORE_EXPORT pqElementInspectorViewModule : public pqGenericViewModule 
+/// pqElementInspectorView is the view use by Element inspector widget.
+class PQCORE_EXPORT pqElementInspectorView : public pqView 
 {
   Q_OBJECT
-  typedef pqGenericViewModule Superclass;
+  typedef pqView Superclass;
 public:
   static QString eiViewType() { return "ElementInspectorView";}
   static QString eiViewTypeName() { return "Element Inspector"; }
 
 public:
- pqElementInspectorViewModule(const QString& group, const QString& name, 
-    vtkSMAbstractViewModuleProxy* viewModule, pqServer* server, 
+ pqElementInspectorView(const QString& group, const QString& name, 
+    vtkSMViewProxy* viewModule, pqServer* server, 
     QObject* parent=NULL);
-  virtual ~pqElementInspectorViewModule();
+  virtual ~pqElementInspectorView();
 
   /// Return a widget associated with this view.
   /// This view has no widget.
@@ -66,8 +67,8 @@ public:
   virtual bool canDisplaySource(pqPipelineSource* source) const;
 
 private:
-  pqElementInspectorViewModule(const pqElementInspectorViewModule&); // Not implemented.
-  void operator=(const pqElementInspectorViewModule&); // Not implemented.
+  pqElementInspectorView(const pqElementInspectorView&); // Not implemented.
+  void operator=(const pqElementInspectorView&); // Not implemented.
 };
 
 #endif

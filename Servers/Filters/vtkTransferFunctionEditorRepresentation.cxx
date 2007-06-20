@@ -179,4 +179,10 @@ void vtkTransferFunctionEditorRepresentation::PrintSelf(ostream& os, vtkIndent i
      << this->ColorElementsByColorFunction << endl;
   os << indent << "VisibleScalarRange: " << this->VisibleScalarRange[0] << " "
      << this->VisibleScalarRange[1] << endl;
+  os << indent << "ShowColorFunctionInHistogram: "
+     << this->ShowColorFunctionInHistogram << endl;
+  os << indent << "HistogramColor: " 
+    << this->HistogramColor[0] << ", "
+    << this->HistogramColor[1] << ", "
+    << this->HistogramColor[2] << endl;
 }
