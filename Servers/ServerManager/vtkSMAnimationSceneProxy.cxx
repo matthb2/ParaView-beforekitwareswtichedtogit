@@ -45,6 +45,8 @@ public:
 
   void CacheUpdateAllViews(int index, int max)
     {
+    (void) index;
+    (void) max;
     /* FIXME:UDA
     VectorOfViewModules::iterator iter = this->ViewModules.begin();
     for (; iter != this->ViewModules.end(); ++iter)
