@@ -434,7 +434,7 @@ int vtkPPhastaReader::RequestInformation(vtkInformation*,
       }
     }
 
-  int numberOfFields, numberOfFields2;
+  int numberOfFields=0, numberOfFields2=0;
   for (unsigned int i=0; i<numElements; i++)
     {
     vtkPVXMLElement* nested = rootElement->GetNestedElement(i);
