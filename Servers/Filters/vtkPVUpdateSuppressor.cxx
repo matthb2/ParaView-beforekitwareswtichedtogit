@@ -171,6 +171,7 @@ void vtkPVUpdateSuppressor::ForceUpdate()
     input->SetUpdateNumberOfPieces(this->UpdateNumberOfPieces);
     input->SetUpdateGhostLevel(0);
     }
+  /*
   cout << "ForceUpdate " ;
   if (this->UpdateTimeInitialized)
     {
@@ -178,6 +179,7 @@ void vtkPVUpdateSuppressor::ForceUpdate()
     cout << this->UpdateTime;
     }
   cout << endl;
+  */
 
   input->Update();
   // Input may have changed, we obtain the pointer again.
