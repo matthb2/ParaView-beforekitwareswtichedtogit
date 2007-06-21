@@ -56,7 +56,6 @@ vtkSMIceTCompositeViewProxy::vtkSMIceTCompositeViewProxy()
   this->KdTreeManager = 0;
 
   this->ImageReductionFactor = 1;
-  this->CompositeThreshold = 20.0;
 
   this->DisableOrderedCompositing  = 0;
 
