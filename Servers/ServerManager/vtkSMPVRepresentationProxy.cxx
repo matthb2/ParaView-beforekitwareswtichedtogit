@@ -353,6 +353,33 @@ bool vtkSMPVRepresentationProxy::GetOrderedCompositingNeeded()
 void vtkSMPVRepresentationProxy::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os, indent);
+  os << indent << "Representation: " ;
+  switch (this->Representation)
+    {
+  case SURFACE:
+    os << "Surface";
+    break;
+
+  case WIREFRAME:
+    os << "Wireframe";
+    break;
+
+  case POINTS:
+    os << "Points";
+    break;
+
+  case OUTLINE:
+    os << "Outline";
+    break;
+
+  case VOLUME:
+    os << "Volume";
+    break;
+
+  default:
+    os << "(unknown)";
+    }
+  os << endl;
 }
 
 

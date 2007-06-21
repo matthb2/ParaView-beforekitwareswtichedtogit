@@ -263,6 +263,6 @@ int vtkSMArrayListDomain::SetDefaultValues(vtkSMProperty* prop)
 void vtkSMArrayListDomain::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os, indent);
-
   os << indent << "DefaultElement: " << this->DefaultElement << endl;
+  os << indent << "AttributeType: " << this->AttributeType << endl;
 }

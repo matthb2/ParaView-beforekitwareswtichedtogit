@@ -178,4 +178,5 @@ void vtkSMDomain::PrintSelf(ostream& os, vtkIndent indent)
   this->Superclass::PrintSelf(os, indent);
   os << indent << "XMLName: " << (this->XMLName ? this->XMLName : "(null)") 
      << endl;
+  os << indent << "IsOptional: " << this->IsOptional << endl;
 }

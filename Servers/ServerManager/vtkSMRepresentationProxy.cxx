@@ -118,6 +118,8 @@ void vtkSMRepresentationProxy::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os, indent);
   os << indent << "SelectionSupported : " << this->SelectionSupported << endl;
+  os << indent << "ViewUpdateTime: " << this->ViewUpdateTime << endl;
+  os << indent << "ViewInformation: " << this->ViewInformation << endl;
 }
 
 

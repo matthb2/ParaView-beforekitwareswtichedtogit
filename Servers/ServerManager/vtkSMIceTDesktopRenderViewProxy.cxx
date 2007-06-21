@@ -266,6 +266,7 @@ void vtkSMIceTDesktopRenderViewProxy::SetViewPosition(int x, int y)
 void vtkSMIceTDesktopRenderViewProxy::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os, indent);
+  os << indent << "SquirtLevel: " << this->SquirtLevel << endl;
 }
 
 

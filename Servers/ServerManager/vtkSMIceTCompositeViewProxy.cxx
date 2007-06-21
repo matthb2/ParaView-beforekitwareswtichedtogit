@@ -596,6 +596,8 @@ void vtkSMIceTCompositeViewProxy::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os, indent);
   os << indent << "ImageReductionFactor: " << this->ImageReductionFactor << endl;
+  os << indent << "DisableOrderedCompositing: " 
+    << this->DisableOrderedCompositing << endl;
 }
 
 

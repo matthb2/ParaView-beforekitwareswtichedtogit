@@ -117,5 +117,12 @@ void vtkSMPluginLoader::SetFileName(const char* file)
 void vtkSMPluginLoader::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os, indent);
+  os << indent << "FileName: " 
+    << (this->FileName? this->FileName : "(none)") << endl;
+  os << indent << "ServerManagerXML: " 
+    << (this->ServerManagerXML? this->ServerManagerXML : "(none)") << endl;
+  os << indent << "Error: " 
+    << (this->Error? this->Error : "(none)") << endl;
+  os << indent << "Loaded: " << this->Loaded << endl;
 }
 

@@ -225,6 +225,7 @@ void vtkSMClientServerRenderViewProxy::SetViewPosition(int x, int y)
 void vtkSMClientServerRenderViewProxy::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os, indent);
+  os << indent << "SquirtLevel: " << this->SquirtLevel << endl;
 }
 
 
