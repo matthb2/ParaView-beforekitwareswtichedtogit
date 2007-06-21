@@ -294,8 +294,9 @@ void vtkSMViewProxy::RemoveRepresentationInternal(vtkSMRepresentationProxy* repr
 
   repr->SetViewInformation(0);
 
-  this->Representations->RemoveItem(repr);
   repr->RemoveObserver(this->Observer);
+  this->Representations->RemoveItem(repr);
+  // Don't access repr after removing, it may be already deleted.
 }
 
 //----------------------------------------------------------------------------
