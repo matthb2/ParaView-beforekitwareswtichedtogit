@@ -57,6 +57,13 @@ void vtkSMPropRepresentationProxy::Update(vtkSMViewProxy* view)
   if (this->SelectionRepresentation)
     {
     int visible = this->GetSelectionVisibility();
+    vtkSMProxyProperty* pp = vtkSMProxyProperty::SafeDownCast(
+      this->GetProperty("Selection"));
+    if (pp && pp->GetNumberOfProxies() == 0)
+      {
+      visible = false;
+      }
+
     vtkSMIntVectorProperty* ivp = vtkSMIntVectorProperty::SafeDownCast(
       this->SelectionRepresentation->GetProperty("Visibility"));
     ivp->SetElement(0, visible);
