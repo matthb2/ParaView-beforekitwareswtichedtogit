@@ -42,6 +42,7 @@ vtkSMPQStateLoader::vtkSMPQStateLoader()
 //-----------------------------------------------------------------------------
 vtkSMPQStateLoader::~vtkSMPQStateLoader()
 {
+  this->SetRenderViewXMLName(0);
   delete this->PQInternal;
 }
 
