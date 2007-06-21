@@ -26,6 +26,8 @@ vtkSMRepresentationProxy::vtkSMRepresentationProxy()
 {
   this->SelectionSupported = false;
   this->ViewInformation = 0;
+  this->ViewUpdateTime = 0;
+  this->ViewUpdateTimeInitialized = false;
 }
 
 //----------------------------------------------------------------------------

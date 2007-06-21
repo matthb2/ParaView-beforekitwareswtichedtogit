@@ -410,7 +410,8 @@ void vtkSMSimpleParallelStrategy::ProcessViewInformation()
     }
   else
     {
-    vtkErrorMacro("Missing Key: KD_TREE()");
+    // Don't warn if missing KD_TREE, since it's defined only by IceT views.
+    //vtkErrorMacro("Missing Key: KD_TREE()");
     }
 
   this->Superclass::ProcessViewInformation();
