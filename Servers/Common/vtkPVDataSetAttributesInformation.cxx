@@ -114,7 +114,14 @@ void
 vtkPVDataSetAttributesInformation
 ::CopyFromFieldData(vtkFieldData *da)
 {
-  // Copy Point Data
+  // Clear array information.
+  this->ArrayInformation->RemoveAllItems();
+  for (int idx = 0; idx < vtkDataSetAttributes::NUM_ATTRIBUTES; ++idx)
+    {
+    this->AttributeIndices[idx] = -1;
+    }
+
+  // Copy Field Data
   int num = da->GetNumberOfArrays();
   for (int idx = 0; idx < num; ++idx)
     {
