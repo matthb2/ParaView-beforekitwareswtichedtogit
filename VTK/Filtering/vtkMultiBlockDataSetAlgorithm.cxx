@@ -123,8 +123,8 @@ int vtkMultiBlockDataSetAlgorithm::ProcessRequest(
             vtkStreamingDemandDrivenPipeline::MAXIMUM_NUMBER_OF_PIECES(), -1);
           }
         }
-      return this->RequestInformation(request, inputVector, outputVector);
       }
+    return this->RequestInformation(request, inputVector, outputVector);
     }
 
   // set update extent
