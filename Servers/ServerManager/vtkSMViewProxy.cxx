@@ -151,7 +151,6 @@ vtkSMViewProxy::vtkSMViewProxy()
   this->ViewUpdateTime = 0;
   this->ViewUpdateTimeInitialized = false;
 
-  this->CacheLimit = 100*1024; // 100 MBs.
   this->UseCache = false;
   this->CacheTime = 0.0;
 
@@ -596,7 +595,6 @@ void vtkSMViewProxy::PrintSelf(ostream& os, vtkIndent indent)
   os << indent << "ViewUpdateTime: " << this->ViewUpdateTime << endl;
   os << indent << "UseCache: " << this->UseCache << endl;
   os << indent << "CacheTime: " << this->CacheTime << endl;
-  os << indent << "CacheLimit: " << this->CacheLimit << endl;
 }
 
 
