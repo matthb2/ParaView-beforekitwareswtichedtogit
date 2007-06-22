@@ -598,15 +598,21 @@ vtkDataObject* vtkCompositeDataPipeline::ExecuteSimpleAlgorithmForBlock(
       for (unsigned int blockId=0; blockId<numBlocks; blockId++)
         {
         vtkDataObject* block = mbInput->GetDataSet(groupId, blockId);
-        vtkDataObject* outBlock = 
-          this->ExecuteSimpleAlgorithmForBlock(inInfoVec,
-                                               outInfoVec,
-                                               inInfo,
-                                               outInfo,
-                                               request,
-                                               block);
+        vtkDataObject* outBlock = 0;
+        if (block)
+          {
+          outBlock = this->ExecuteSimpleAlgorithmForBlock(inInfoVec,
+                                                          outInfoVec,
+                                                          inInfo,
+                                                          outInfo,
+                                                          request,
+                                                          block);
+          }
         output->SetDataSet(groupId, blockId, outBlock);
-        outBlock->Delete();
+        if (outBlock)
+          {
+          outBlock->Delete();
+          }
         }
       }
     return output;
@@ -842,21 +848,24 @@ void vtkCompositeDataPipeline::ExecuteSimpleAlgorithm(
           r->Set(vtkCompositeDataSet::INDEX(),    l);
           vtkDataObject* dobj = input->GetDataSet(r);
 
-          vtkDataObject* outCopy = 
-            this->ExecuteSimpleAlgorithmForBlock(inInfoVec,
-                                                 outInfoVec,
-                                                 inInfo,
-                                                 outInfo,
-                                                 r,
-                                                 dobj);
+          vtkDataObject* outCopy = 0;
+          if (dobj)
+            {
+            outCopy = this->ExecuteSimpleAlgorithmForBlock(inInfoVec,
+                                                           outInfoVec,
+                                                           inInfo,
+                                                           outInfo,
+                                                           r,
+                                                           dobj);
+            }
+          if (!outputInitialized)
+            {
+            compositeOutput->PrepareForNewData();
+            outputInitialized = 1;
+            }
+          compositeOutput->AddDataSet(r, outCopy);
           if (outCopy)
             {
-            if (!outputInitialized)
-              {
-              compositeOutput->PrepareForNewData();
-              outputInitialized = 1;
-              }
-            compositeOutput->AddDataSet(r, outCopy);
             outCopy->Delete();
             }
           }
