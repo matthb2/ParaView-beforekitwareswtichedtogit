@@ -475,6 +475,8 @@ vtkSMRepresentationStrategy* vtkSMViewProxy::NewStrategy(int dataType)
 
   if (strategy)
     {
+    strategy->SetConnectionID(this->ConnectionID);
+
     // Pass the view information to the strategy.
     strategy->SetViewInformation(this->Information);
     }
