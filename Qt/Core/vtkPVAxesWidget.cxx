@@ -803,7 +803,7 @@ void vtkPVAxesWidget::SetInteractive(int state)
     if (this->Interactor)
       {
       this->SetMouseCursor(this->MouseCursorState);
-      this->Interactor->Render();
+      // this->Interactor->Render();
       }
     }
 }
@@ -814,7 +814,7 @@ void vtkPVAxesWidget::SetOutlineColor(double r, double g, double b)
   this->OutlineActor->GetProperty()->SetColor(r, g, b);
   if (this->Interactor)
     {
-    this->Interactor->Render();
+//    this->Interactor->Render();
     }
 }
 
