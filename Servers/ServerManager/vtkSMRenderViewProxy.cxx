@@ -459,7 +459,7 @@ void vtkSMRenderViewProxy::SetUseLOD(bool use_lod)
 //-----------------------------------------------------------------------------
 bool vtkSMRenderViewProxy::GetUseLOD()
 {
-  return this->Information->Get(USE_LOD());
+  return (this->Information->Get(USE_LOD())>0);
 }
 
 //-----------------------------------------------------------------------------
@@ -1536,7 +1536,7 @@ vtkSMRepresentationProxy* vtkSMRenderViewProxy::CreateDefaultRepresentation(
     prototype->GetProperty("Input"));
   pp->RemoveAllUncheckedProxies();
   pp->AddUncheckedProxy(source);
-  bool usg = pp->IsInDomains();
+  bool usg = (pp->IsInDomains()>0);
   pp->RemoveAllUncheckedProxies();
   if (usg)
     {
