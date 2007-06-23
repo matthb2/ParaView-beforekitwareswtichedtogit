@@ -181,8 +181,6 @@ void vtkSMAnimationCueProxy::ExecuteEvent(vtkObject* obj, unsigned long event,
   void* calldata)
 {
   vtkAnimationCue* cue = vtkAnimationCue::SafeDownCast(obj);
-  vtkSMAnimationCueManipulatorProxy* manip = 
-    vtkSMAnimationCueManipulatorProxy::SafeDownCast(obj);
   if (cue)
     {
     switch (event)
