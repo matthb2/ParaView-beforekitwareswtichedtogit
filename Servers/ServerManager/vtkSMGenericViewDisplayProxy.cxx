@@ -138,6 +138,10 @@ void vtkSMGenericViewDisplayProxy::SetReductionType(int type)
     classname = "vtkAppendRectilinearGrid";
     break;
 
+  case COMPOSITE_DATASET_APPEND:
+    classname = "vtkMultiGroupDataGroupFilter"; 
+    break;
+
   default:
     vtkErrorMacro("Unknown reduction type: " << type);
     return;
