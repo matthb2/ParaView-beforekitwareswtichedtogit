@@ -217,6 +217,7 @@ void vtkSMPVRepresentationProxy::SetVisibility(int visible)
     vtkSMPVRepresentationProxySetInt(this->ActiveRepresentation, "Visibility", 
       visible);
     }
+  this->Superclass::SetVisibility(visible);
 }
 
 //----------------------------------------------------------------------------

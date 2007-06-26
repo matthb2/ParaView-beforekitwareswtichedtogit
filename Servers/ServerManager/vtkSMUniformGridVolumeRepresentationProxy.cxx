@@ -52,39 +52,6 @@ vtkSMUniformGridVolumeRepresentationProxy::~vtkSMUniformGridVolumeRepresentation
 }
 
 //----------------------------------------------------------------------------
-bool vtkSMUniformGridVolumeRepresentationProxy::AddToView(vtkSMViewProxy* view)
-{
-  vtkSMRenderViewProxy* renderView = vtkSMRenderViewProxy::SafeDownCast(view);
-  if (!renderView)
-    {
-    vtkErrorMacro("View must be a vtkSMRenderViewProxy.");
-    return false;
-    }
-
-  if (!this->Superclass::AddToView(view))
-    {
-    return false;
-    }
-
-  renderView->AddPropToRenderer(this->VolumeActor);
-  return true;
-}
-
-//----------------------------------------------------------------------------
-bool vtkSMUniformGridVolumeRepresentationProxy::RemoveFromView(vtkSMViewProxy* view)
-{
-  vtkSMRenderViewProxy* renderView = vtkSMRenderViewProxy::SafeDownCast(view);
-  if (!renderView)
-    {
-    vtkErrorMacro("View must be a vtkSMRenderViewProxy.");
-    return false;
-    }
-
-  renderView->RemovePropFromRenderer(this->VolumeActor);
-  return this->Superclass::RemoveFromView(view);
-}
-
-//----------------------------------------------------------------------------
 bool vtkSMUniformGridVolumeRepresentationProxy::InitializeStrategy(vtkSMViewProxy* view)
 {
   vtkSmartPointer<vtkSMRepresentationStrategy> strategy;
@@ -126,7 +93,7 @@ bool vtkSMUniformGridVolumeRepresentationProxy::BeginCreateVTKObjects()
   // Set server flags correctly on all subproxies.
   this->VolumeFixedPointRayCastMapper = this->GetSubProxy(
     "VolumeFixedPointRayCastMapper");
-  this->VolumeActor = this->GetSubProxy("VolumeActor");
+  this->VolumeActor = this->GetSubProxy("Prop3D");
   this->VolumeProperty = this->GetSubProxy("VolumeProperty");
 
   this->VolumeFixedPointRayCastMapper->SetServers(

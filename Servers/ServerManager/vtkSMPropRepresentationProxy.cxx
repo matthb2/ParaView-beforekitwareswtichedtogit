@@ -53,6 +53,37 @@ vtkSMPropRepresentationProxy::~vtkSMPropRepresentationProxy()
 }
 
 //----------------------------------------------------------------------------
+void vtkSMPropRepresentationProxy::SetVisibility(int visible)
+{
+  if (this->SelectionRepresentation && !visible)
+    {
+    vtkSMIntVectorProperty* ivp = vtkSMIntVectorProperty::SafeDownCast(
+      this->SelectionRepresentation->GetProperty("Visibility"));
+    ivp->SetElement(0, visible);
+    this->SelectionRepresentation->UpdateProperty("Visibility");
+    }
+
+  vtkSMProxy* prop3D = this->GetSubProxy("Prop3D");
+  vtkSMProxy* prop2D = this->GetSubProxy("Prop2D");
+
+  if (prop3D)
+    {
+    vtkSMIntVectorProperty* ivp = vtkSMIntVectorProperty::SafeDownCast(
+      prop3D->GetProperty("Visibility"));
+    ivp->SetElement(0, visible);
+    prop3D->UpdateProperty("Visibility");
+    }
+
+  if (prop2D)
+    {
+    vtkSMIntVectorProperty* ivp = vtkSMIntVectorProperty::SafeDownCast(
+      prop2D->GetProperty("Visibility"));
+    ivp->SetElement(0, visible);
+    prop2D->UpdateProperty("Visibility");
+    }
+}
+
+//----------------------------------------------------------------------------
 void vtkSMPropRepresentationProxy::Update(vtkSMViewProxy* view)
 {
   if (this->SelectionRepresentation)
