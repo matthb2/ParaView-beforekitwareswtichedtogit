@@ -401,7 +401,7 @@ int vtkMeshQuality::RequestData(
     default:
       vtkWarningMacro( "Bad HexQualityMeasure ("
         << this->GetTetQualityMeasure() << "), using MaxAspectFrobenius instead");
-      HexQuality = HexEdgeRatio;
+      HexQuality = HexMaxAspectFrobenius;
       break;
     }
 
