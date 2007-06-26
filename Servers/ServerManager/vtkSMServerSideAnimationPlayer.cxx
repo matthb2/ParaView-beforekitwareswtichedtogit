@@ -118,7 +118,7 @@ void vtkSMServerSideAnimationPlayer::PerformActions()
     }
 
   pxm->UpdateRegisteredProxies(0);
-  pxm->SaveState("/tmp/serverstate.xml");
+  // pxm->SaveState("/tmp/serverstate.xml");
 
   vtkSMProxyIterator* iter = vtkSMProxyIterator::New();
 
