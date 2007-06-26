@@ -1945,7 +1945,9 @@ int vtkSMProxy::LoadRevivalState(vtkPVXMLElement* revivalElem,
             }
           else
             {
-            vtkErrorMacro("Element with id attribute found.");
+            // Some proxies may not have any vtk object they represent (such as
+            // all the animation proxies). It's not an error.
+            // vtkErrorMacro("Element with id attribute not found.");
             }
           }
         else
