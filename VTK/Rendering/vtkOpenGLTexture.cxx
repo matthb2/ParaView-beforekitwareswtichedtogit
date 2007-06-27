@@ -41,6 +41,10 @@ vtkOpenGLTexture::vtkOpenGLTexture()
 
 vtkOpenGLTexture::~vtkOpenGLTexture()
 {
+  if (this->RenderWindow)
+    {
+    this->ReleaseGraphicsResources(this->RenderWindow);
+    }
   this->RenderWindow = NULL;
 }
 

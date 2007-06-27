@@ -242,6 +242,7 @@ void vtkTextActor::ShallowCopy(vtkProp *prop)
 void vtkTextActor::ReleaseGraphicsResources(vtkWindow *win)
 {
   this->vtkActor2D::ReleaseGraphicsResources(win);
+  this->Texture->ReleaseGraphicsResources(win);
 }
 
 // ----------------------------------------------------------------------------
