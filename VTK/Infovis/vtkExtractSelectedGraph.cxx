@@ -108,9 +108,7 @@ int vtkExtractSelectedGraph::RequestData(
     
     // Copy all vertices
     output->SetNumberOfVertices(input->GetNumberOfVertices());
-    output->GetVertexData()->PassData(input->GetVertexData());
-    output->GetPoints()->ShallowCopy(input->GetPoints());
-    
+        
     // Copy selected edges
     vtkCellData* inputEdgeData = input->GetEdgeData();
     vtkCellData* outputEdgeData = output->GetEdgeData();
@@ -130,6 +128,8 @@ int vtkExtractSelectedGraph::RequestData(
     // Remove isolated vertices
     if (this->RemoveIsolatedVertices)
       {
+      output->GetVertexData()->DeepCopy(input->GetVertexData());
+      output->GetPoints()->DeepCopy(input->GetPoints());
       vtkIdTypeArray* isolated = vtkIdTypeArray::New();
       for (vtkIdType i = 0; i < output->GetNumberOfVertices(); i++)
         {
@@ -140,6 +140,11 @@ int vtkExtractSelectedGraph::RequestData(
         }
       output->RemoveVertices(isolated->GetPointer(0), isolated->GetNumberOfTuples());
       isolated->Delete();
+      }
+    else
+      {
+      output->GetVertexData()->PassData(input->GetVertexData());
+      output->GetPoints()->ShallowCopy(input->GetPoints());
       }
     }
   else
