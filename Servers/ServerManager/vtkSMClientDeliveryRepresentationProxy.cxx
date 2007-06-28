@@ -100,6 +100,12 @@ bool vtkSMClientDeliveryRepresentationProxy::BeginCreateVTKObjects()
     return false;
     }
 
+  this->ReduceProxy =  this->GetSubProxy("Reduce");
+  if (this->ReduceProxy)
+    {
+    this->ReduceProxy->SetServers(this->Servers);
+    }
+
   this->PostProcessorProxy = vtkSMSourceProxy::SafeDownCast(
     this->GetSubProxy("PostProcessor"));
   if (this->PostProcessorProxy)
@@ -169,6 +175,10 @@ void vtkSMClientDeliveryRepresentationProxy::SetReductionType(int type)
 
   case RECTILINEAR_GRID_APPEND:
     classname = "vtkAppendRectilinearGrid";
+    break;
+
+  case COMPOSITE_DATASET_APPEND:
+    classname = "vtkMultiGroupDataGroupFilter"; 
     break;
 
   default:
