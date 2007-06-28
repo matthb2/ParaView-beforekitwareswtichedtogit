@@ -204,7 +204,7 @@ void vtkTestMagnifyRenderManager::ReadReducedImage()
 
 //-----------------------------------------------------------------------------
 
-int main(int argc, char *argv[])
+int PrmMagnify(int argc, char *argv[])
 {
   VTK_CREATE(vtkDummyController, controller);
   controller->Initialize(&argc, &argv);

@@ -595,11 +595,11 @@ void vtkTemporalStreamTracer::TransmitReceiveParticles(
   // 
   // We must allocate buffers for all processor particles
   // 
-  int OurParticles = outofdomain.size();
+  vtkIdType OurParticles = outofdomain.size();
   int TotalParticles = 0;
   // setup arrays used by the AllGatherV call.
-  vtkstd::vector<int> recvLengths(this->UpdateNumPieces, 0);
-  vtkstd::vector<int> recvOffsets(this->UpdateNumPieces, 0);
+  vtkstd::vector<vtkIdType> recvLengths(this->UpdateNumPieces, 0);
+  vtkstd::vector<vtkIdType> recvOffsets(this->UpdateNumPieces, 0);
   // Broadcast and receive size to/from all other processes.
   com->AllGather(&OurParticles, &recvLengths[0], 1);
   // Compute the displacements.

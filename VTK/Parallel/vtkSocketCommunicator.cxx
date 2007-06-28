@@ -110,6 +110,13 @@ int vtkSocketCommunicator::GetIsConnected()
 }
 
 //----------------------------------------------------------------------------
+void vtkSocketCommunicator::SetNumberOfProcesses(int vtkNotUsed(num))
+{
+  vtkErrorMacro("Can not change the number of processes.");
+  return;
+}
+
+//----------------------------------------------------------------------------
 ostream* vtkSocketCommunicator::GetLogStream()
 {
   return this->LogStream;

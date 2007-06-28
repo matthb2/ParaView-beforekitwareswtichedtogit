@@ -76,10 +76,6 @@ vtkMultiProcessController::vtkMultiProcessController()
 {
   int i;
 
-  this->LocalProcessId = 0;
-  this->NumberOfProcesses = 1;
-  this->MaximumNumberOfProcesses = MAX_PROCESSES;
-
   this->RMICount = 1;
   
   this->RMIs = vtkCollection::New();
@@ -133,10 +129,6 @@ void vtkMultiProcessController::PrintSelf(ostream& os, vtkIndent indent)
   vtkMultiProcessControllerRMI *rmi;
   vtkIndent nextIndent = indent.GetNextIndent();
   
-  os << indent << "MaximumNumberOfProcesses: " 
-     << this->MaximumNumberOfProcesses << endl;
-  os << indent << "NumberOfProcesses: " << this->NumberOfProcesses << endl;
-  os << indent << "LocalProcessId: " << this->LocalProcessId << endl;
   os << indent << "Break flag: " << (this->BreakFlag ? "(yes)" : "(no)") 
      << endl;
   os << indent << "Force deep copy: " << (this->ForceDeepCopy ? "(yes)" : "(no)") 
@@ -181,26 +173,6 @@ void vtkMultiProcessController::PrintSelf(ostream& os, vtkIndent indent)
   
 }
 
-//----------------------------------------------------------------------------
-void vtkMultiProcessController::SetNumberOfProcesses(int num)
-{
-  if (num == this->NumberOfProcesses)
-    {
-    return;
-    }
-  
-  if (num < 1 || num > this->MaximumNumberOfProcesses)
-    {
-    vtkErrorMacro( << num 
-          << " is an invalid number of processes try a number from 1 to " 
-          << this->NumberOfProcesses );
-    return;
-    }
-  
-  this->NumberOfProcesses = num;
-  this->Modified();
-}
-
 
 //----------------------------------------------------------------------------
 void vtkMultiProcessController::SetSingleMethod( vtkProcessFunctionType f, 
@@ -219,10 +191,10 @@ void vtkMultiProcessController::SetMultipleMethod( int index,
                                  vtkProcessFunctionType f, void *data )
 { 
   // You can only set the method for 0 through NumberOfProcesses-1
-  if ( index >= this->NumberOfProcesses )
+  if ( index >= this->GetNumberOfProcesses() )
     {
     vtkErrorMacro( << "Can't set method " << index << 
-      " with a processes count of " << this->NumberOfProcesses );
+      " with a processes count of " << this->GetNumberOfProcesses() );
     }
   else
     {

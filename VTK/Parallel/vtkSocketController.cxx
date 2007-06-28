@@ -44,7 +44,6 @@ vtkStandardNewMacro(vtkSocketController);
 //----------------------------------------------------------------------------
 vtkSocketController::vtkSocketController()
 {
-  this->NumberOfProcesses = 2;
   this->Communicator = vtkSocketCommunicator::New();
   this->RMICommunicator = this->Communicator;
 }
@@ -74,13 +73,6 @@ void vtkSocketController::Initialize(int* , char***)
 #endif
   vtkSocketController::Initialized = 1;
 
-}
-
-//----------------------------------------------------------------------------
-void vtkSocketController::SetNumberOfProcesses(int vtkNotUsed(num))
-{
-  vtkErrorMacro("Can not change the number of processes.");
-  return;
 }
 
 //----------------------------------------------------------------------------
