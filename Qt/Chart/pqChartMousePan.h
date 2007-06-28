@@ -30,41 +30,48 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 =========================================================================*/
 
-/// \file pqHistogramWidget.cxx
-/// \date 5/10/2005
+/// \file pqChartMousePan.h
+/// \date 6/25/2007
 
-#include "pqHistogramWidget.h"
-
-#include "pqChartArea.h"
-#include "pqChartAxis.h"
-#include "pqChartWidget.h"
-#include "pqHistogramChart.h"
-#include <QWidget>
+#ifndef _pqChartMousePan_h
+#define _pqChartMousePan_h
 
 
-pqChartWidget *pqHistogramWidget::createHistogram(QWidget *parent,
-    pqHistogramChart **layer)
+#include "QtChartExport.h"
+#include "pqChartMouseFunction.h"
+
+class pqChartContentsSpace;
+class pqChartMousePanInternal;
+class QMouseEvent;
+
+
+/// \class pqChartMousePan
+/// \brief
+///   The pqChartMousePan class pans the contents in response to
+///   mouse events.
+class QTCHART_EXPORT pqChartMousePan : public pqChartMouseFunction
 {
-  pqChartWidget *chart = new pqChartWidget(parent);
+public:
+  /// \brief
+  ///   Creates a mouse pan instance.
+  /// \param parent Te parent object.
+  pqChartMousePan(QObject *parent=0);
+  virtual ~pqChartMousePan();
 
-  // Get the chart area and set up the axes.
-  pqChartArea *chartArea = chart->getChartArea();
-  chartArea->createAxis(pqChartAxis::Left);
-  chartArea->createAxis(pqChartAxis::Bottom);
+  /// \name pqChartMouseFunction Methods
+  //@{
+  virtual void setMouseOwner(bool owns);
 
-  // Set up the histogram layer.
-  pqHistogramChart *histogram = new pqHistogramChart(chartArea);
-  histogram->setAxes(chartArea->getAxis(pqChartAxis::Bottom),
-      chartArea->getAxis(pqChartAxis::Left));
-  chartArea->insertLayer(chartArea->getAxisLayerIndex(), histogram);
+  virtual bool mousePressEvent(QMouseEvent *e, pqChartContentsSpace *contents);
+  virtual bool mouseMoveEvent(QMouseEvent *e, pqChartContentsSpace *contents);
+  virtual bool mouseReleaseEvent(QMouseEvent *e,
+      pqChartContentsSpace *contents);
+  virtual bool mouseDoubleClickEvent(QMouseEvent *e,
+      pqChartContentsSpace *contents);
+  //@}
 
-  // Pass back a pointer to the histogram layer.
-  if(layer)
-    {
-    *layer = histogram;
-    }
+private:
+  pqChartMousePanInternal *Internal; ///< Stores the last mouse position.
+};
 
-  return chart;
-}
-
-
+#endif
