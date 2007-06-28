@@ -87,9 +87,10 @@ vtkSelfConnection::~vtkSelfConnection()
 }
 
 //-----------------------------------------------------------------------------
-int vtkSelfConnection::Initialize(int argc, char** argv)
+int vtkSelfConnection::Initialize(int argc, char** argv, int *partitionId)
 {
   this->Controller->Initialize(&argc, &argv, 1);
+  *partitionId = this->GetPartitionId();
   // Nothing to do here, really.
   // Just return success.
   return 0;

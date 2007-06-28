@@ -353,7 +353,7 @@ void vtkServerConnection::GatherInformationFromController(vtkSocketController* c
 
 //-----------------------------------------------------------------------------
 int vtkServerConnection::Initialize(int vtkNotUsed(argc), 
-  char** vtkNotUsed(argv))
+  char** vtkNotUsed(argv), int *vtkNotUsed(partitionId))
 {
   // returns 0 on success, 1 on error.
 

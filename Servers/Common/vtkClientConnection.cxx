@@ -238,7 +238,7 @@ vtkClientConnection::~vtkClientConnection()
 }
 
 //-----------------------------------------------------------------------------
-int vtkClientConnection::Initialize(int vtkNotUsed(argc), char** vtkNotUsed(argv))
+int vtkClientConnection::Initialize(int vtkNotUsed(argc), char** vtkNotUsed(argv), int *vtkNotUsed(partitionId))
 {
   // Ensure that we are indeed the root node.
   if (vtkMultiProcessController::GetGlobalController()->
