@@ -207,6 +207,17 @@ int vtkTransferFunctionEditorRepresentationSimple1D::RenderOverlay(
 }
 
 //----------------------------------------------------------------------------
+void vtkTransferFunctionEditorRepresentationSimple1D::ReleaseGraphicsResources(
+  vtkWindow *window)
+{
+  if (this->LinesActor)
+    {
+    this->LinesActor->ReleaseGraphicsResources(window);
+    }
+  this->Superclass::ReleaseGraphicsResources(window);
+}
+
+//----------------------------------------------------------------------------
 void vtkTransferFunctionEditorRepresentationSimple1D::SetColorLinesByScalar(
   int color)
 {

@@ -120,6 +120,20 @@ int vtkTransferFunctionEditorRepresentation::RenderOverlay(
 }
 
 //----------------------------------------------------------------------------
+void vtkTransferFunctionEditorRepresentation::ReleaseGraphicsResources(
+  vtkWindow *window)
+{
+  if (this->BackgroundActor)
+    {
+    this->BackgroundActor->ReleaseGraphicsResources(window);
+    }
+  if (this->HistogramActor)
+    {
+    this->HistogramActor->ReleaseGraphicsResources(window);
+    }
+}
+
+//----------------------------------------------------------------------------
 void vtkTransferFunctionEditorRepresentation::SetDisplaySize(int x, int y)
 {
   if (this->DisplaySize[0] != x || this->DisplaySize[1] != y)

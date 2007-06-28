@@ -181,6 +181,20 @@ void vtkDefaultPainter::Render(vtkRenderer* renderer, vtkActor* actor,
 }
 
 //-----------------------------------------------------------------------------
+void vtkDefaultPainter::ReleaseGraphicsResources(vtkWindow *window)
+{
+  if (this->DefaultPainterDelegate)
+    {
+    this->DefaultPainterDelegate->ReleaseGraphicsResources(window);
+    }
+  if (this->ScalarsToColorsPainter)
+    {
+    this->ScalarsToColorsPainter->ReleaseGraphicsResources(window);
+    }
+  this->Superclass::ReleaseGraphicsResources(window);
+}
+
+//-----------------------------------------------------------------------------
 void vtkDefaultPainter::SetDelegatePainter(vtkPainter* painter)
 {
   this->SetDefaultPainterDelegate(painter);
