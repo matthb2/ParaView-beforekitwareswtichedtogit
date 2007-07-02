@@ -220,6 +220,29 @@ void vtkPainterPolyDataMapper::RenderPiece(vtkRenderer* ren, vtkActor* act)
   this->UpdateProgress(1.0);
 }
 
+//-------------------------------------------------------------------------
+double* vtkPainterPolyDataMapper::GetBounds()
+{
+  vtkPolyData *input = this->GetInput();
+
+  if( !input )
+    {
+    vtkErrorMacro("No input polydata!!!");
+    return;
+    }
+
+  // first compute the bounds for the input polydata
+  input->GetBounds(this->Bounds);
+
+  if( this->Painter )
+    {
+    // let the painter chain update the bounds
+    this->Painter->UpdateBounds(this->Bounds);
+    }
+
+  return this->Bounds;
+}
+
 //-----------------------------------------------------------------------------
 void vtkPainterPolyDataMapper::PrintSelf(ostream& os, vtkIndent indent)
 {
