@@ -147,15 +147,15 @@ double *vtkPolyDataMapper::GetBounds()
       this->Update();
 
       // get the default painter in the chain of painters if any
-      vtkPainterPolyDataMapper *painterMapper =
-        vtkPainterPolyDataMapper::SafeDownCast(this);
+      //vtkPainterPolyDataMapper *painterMapper =
+        //vtkPainterPolyDataMapper::SafeDownCast(this);
 
       // if the mapper has a painter, update the bounds in the painter
-      if( painterMapper )
-        {
-        painterMapper->GetBounds();
-        }
-      else
+      //if( painterMapper )
+        //{
+        //painterMapper->GetBounds();
+       // }
+      //else
         {
         // the mapper has no painter, get the bounds from the input
         this->GetInput()->GetBounds(this->Bounds);

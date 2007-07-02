@@ -219,7 +219,7 @@ void vtkPainterPolyDataMapper::RenderPiece(vtkRenderer* ren, vtkActor* act)
 
   this->UpdateProgress(1.0);
 }
-
+#if 0
 //-------------------------------------------------------------------------
 double* vtkPainterPolyDataMapper::GetBounds()
 {
@@ -242,7 +242,7 @@ double* vtkPainterPolyDataMapper::GetBounds()
 
   return this->Bounds;
 }
-
+#endif
 //-----------------------------------------------------------------------------
 void vtkPainterPolyDataMapper::PrintSelf(ostream& os, vtkIndent indent)
 {
