@@ -245,6 +245,19 @@ void vtkPainter::PassInformation(vtkPainter* toPainter)
     }
 }
 
+//-------------------------------------------------------------------------
+void vtkPainter::UpdateBounds(double bounds[6])
+{
+  // only apply UpdateBounds on the delegate painter
+  vtkPainter *painter = this->GetDelegatePainter();
+
+  if(painter)
+    {
+    // delegate the task of updating the bounds
+    painter->UpdateBounds(bounds);
+    }
+}
+
 //-----------------------------------------------------------------------------
 void vtkPainter::PrintSelf(ostream &os, vtkIndent indent)
 {
