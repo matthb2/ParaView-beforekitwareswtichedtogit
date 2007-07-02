@@ -173,6 +173,40 @@ void vtkMultiProcessController::PrintSelf(ostream& os, vtkIndent indent)
   
 }
 
+//----------------------------------------------------------------------------
+void vtkMultiProcessController::SetNumberOfProcesses(int num)
+{
+  if(this->Communicator)
+    {
+    this->Communicator->SetNumberOfProcesses(num);
+    }
+}
+
+//----------------------------------------------------------------------------
+int vtkMultiProcessController::GetNumberOfProcesses()
+{
+  if(this->Communicator)
+    {
+    return this->Communicator->GetNumberOfProcesses();
+    }
+  else
+    {
+    return 0;
+    }
+}
+
+//----------------------------------------------------------------------------
+int vtkMultiProcessController::GetLocalProcessId()
+{
+  if(this->Communicator)
+    {
+    return this->Communicator->GetLocalProcessId();
+    }
+  else
+    {
+    return 0;
+    }
+}
 
 //----------------------------------------------------------------------------
 void vtkMultiProcessController::SetSingleMethod( vtkProcessFunctionType f, 
