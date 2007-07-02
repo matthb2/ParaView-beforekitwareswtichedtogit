@@ -228,7 +228,7 @@ double* vtkPainterPolyDataMapper::GetBounds()
   if( !input )
     {
     vtkErrorMacro("No input polydata!!!");
-    return;
+    return NULL;
     }
 
   // first compute the bounds for the input polydata
