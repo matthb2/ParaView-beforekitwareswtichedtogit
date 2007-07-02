@@ -153,7 +153,7 @@ double *vtkPolyDataMapper::GetBounds()
       // if the mapper has a painter, update the bounds in the painter
       if( painterMapper )
         {
-        painterMapper->GetBounds(this->Bounds);
+        painterMapper->GetBounds();
         }
       else
         {
