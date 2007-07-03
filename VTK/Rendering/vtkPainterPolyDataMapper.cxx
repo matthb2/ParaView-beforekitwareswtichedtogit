@@ -222,6 +222,13 @@ void vtkPainterPolyDataMapper::RenderPiece(vtkRenderer* ren, vtkActor* act)
 }
 
 //-------------------------------------------------------------------------
+void vtkPainterPolyDataMapper::GetBounds(double bounds[6])
+{
+  this->GetBounds();
+  memcpy(bounds,this->Bounds,6*sizeof(double));
+}
+
+//-------------------------------------------------------------------------
 double* vtkPainterPolyDataMapper::GetBounds()
 {
   static double bounds[] = {-1.0,1.0, -1.0,1.0, -1.0,1.0};
