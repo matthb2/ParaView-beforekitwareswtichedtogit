@@ -76,7 +76,7 @@ void vtkOpenGLClipPlanesPainter::RenderInternal(vtkRenderer* renderer,
     // OpenGL matrices are transposed compared to VTK matrices
     actorMatrix->Transpose();
 
-    double origin[4], normal[3], point[4];
+    double origin[4], normal[3];
 
     for (i = 0; i < numClipPlanes; i++)
       {    
