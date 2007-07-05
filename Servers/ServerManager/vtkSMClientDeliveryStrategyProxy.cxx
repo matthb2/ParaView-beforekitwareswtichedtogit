@@ -177,9 +177,10 @@ void vtkSMClientDeliveryStrategyProxy::UpdatePipelineInternal(
     input->UpdatePipeline();
     vtkPVDataInformation* inputInfo = input->GetDataInformation();
     int dataType = inputInfo->GetDataSetType();
-    if (inputInfo->GetCompositeDataSetType())
+    int cDataType = inputInfo->GetCompositeDataSetType();
+    if (cDataType > 0)
       {
-      dataType = inputInfo->GetCompositeDataSetType();
+      dataType = cDataType;
       }
     
     vtkClientServerStream stream;
