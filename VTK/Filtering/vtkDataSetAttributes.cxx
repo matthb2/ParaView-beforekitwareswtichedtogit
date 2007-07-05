@@ -831,7 +831,7 @@ int vtkDataSetAttributes::SetActiveAttribute(const char* name,
                                              int attributeType)
 {
   int index; 
-  this->GetArray(name, index);
+  this->GetAbstractArray(name, index);
   return this->SetActiveAttribute(index, attributeType);
 }
 
@@ -945,7 +945,7 @@ int vtkDataSetAttributes::SetActivePedigreeIds(const char* name)
 //--------------------------------------------------------------------------
 vtkAbstractArray* vtkDataSetAttributes::GetPedigreeIds() 
 { 
-  return this->GetAttribute(PEDIGREEIDS); 
+  return this->GetAbstractAttribute(PEDIGREEIDS); 
 }
 
 //--------------------------------------------------------------------------

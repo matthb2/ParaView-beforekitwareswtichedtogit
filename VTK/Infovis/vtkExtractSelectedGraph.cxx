@@ -123,6 +123,7 @@ int vtkExtractSelectedGraph::ConvertToIndexSelection(
     }
   outputSelection->SetSelectionList(indexArray);
   indexArray->Delete();
+  extract->Delete();
   return 1;
 }
 
