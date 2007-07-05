@@ -177,13 +177,16 @@ void vtkSMClientDeliveryStrategyProxy::UpdatePipelineInternal(
     input->UpdatePipeline();
     vtkPVDataInformation* inputInfo = input->GetDataInformation();
     int dataType = inputInfo->GetDataSetType();
-
+    if (inputInfo->GetCompositeDataSetType())
+      {
+      dataType = inputInfo->GetCompositeDataSetType();
+      }
+    
     vtkClientServerStream stream;
 
     stream << vtkClientServerStream::Invoke
            << collect->GetID() << "SetOutputDataType" << dataType
            << vtkClientServerStream::End;
-
     if (dataType == VTK_STRUCTURED_POINTS ||
         dataType == VTK_STRUCTURED_GRID   ||
         dataType == VTK_RECTILINEAR_GRID  ||
