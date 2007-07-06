@@ -85,8 +85,10 @@ bool vtkSMPVRepresentationProxy::EndCreateVTKObjects()
   this->OutlineRepresentation = vtkSMDataRepresentationProxy::SafeDownCast(
     this->GetSubProxy("OutlineRepresentation"));
 
-  this->Connect(this->GetInputProxy(), this->SurfaceRepresentation);
-  this->Connect(this->GetInputProxy(), this->OutlineRepresentation);
+  this->Connect(this->GetInputProxy(), this->SurfaceRepresentation,
+    "Input", this->OutputPort);
+  this->Connect(this->GetInputProxy(), this->OutlineRepresentation, 
+    "Input", this->OutputPort);
 
   vtkSMPVRepresentationProxySetInt(this->SurfaceRepresentation, "Visibility", 0);
   vtkSMPVRepresentationProxySetInt(this->OutlineRepresentation, "Visibility", 0);
@@ -96,7 +98,8 @@ bool vtkSMPVRepresentationProxy::EndCreateVTKObjects()
   this->OutlineRepresentation->SetSelectionSupported(false);
   if (this->VolumeRepresentation)
     {
-    this->Connect(this->GetInputProxy(), this->VolumeRepresentation);
+    this->Connect(this->GetInputProxy(), this->VolumeRepresentation,
+      "Input", this->OutputPort);
     vtkSMPVRepresentationProxySetInt(this->VolumeRepresentation, "Visibility", 0);
     this->VolumeRepresentation->SetSelectionSupported(false);
     }

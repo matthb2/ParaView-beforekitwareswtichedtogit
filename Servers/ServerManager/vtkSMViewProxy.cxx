@@ -229,7 +229,8 @@ vtkCommand* vtkSMViewProxy::GetObserver()
 }
 
 //----------------------------------------------------------------------------
-vtkSMRepresentationProxy* vtkSMViewProxy::CreateDefaultRepresentation(vtkSMProxy*)
+vtkSMRepresentationProxy* vtkSMViewProxy::CreateDefaultRepresentation(
+  vtkSMProxy* vtkNotUsed(proxy), int vtkNotUsed(opport))
 {
   if (this->DefaultRepresentationName)
     {

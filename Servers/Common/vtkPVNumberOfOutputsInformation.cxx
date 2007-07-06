@@ -57,7 +57,7 @@ void vtkPVNumberOfOutputsInformation::CopyFromObject(vtkObject* obj)
     vtkDemandDrivenPipeline::SafeDownCast(algorithm->GetExecutive());
   if (pipeline)
     {
-    pipeline->UpdateDataObject();
+    //pipeline->UpdateDataObject();
     }
   vtkSource* source = vtkSource::SafeDownCast(obj);
   if (source)

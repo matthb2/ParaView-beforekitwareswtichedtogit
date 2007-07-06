@@ -110,10 +110,11 @@ void vtkSMUniformGridParallelStrategy::EndCreateVTKObjects()
 }
 
 //----------------------------------------------------------------------------
-void vtkSMUniformGridParallelStrategy::CreatePipeline(vtkSMSourceProxy* input)
+void vtkSMUniformGridParallelStrategy::CreatePipeline(vtkSMSourceProxy* input,
+  int outputport)
 {
-  this->Connect(input, this->Collect);
-  this->Superclass::CreatePipeline(this->Collect);
+  this->Connect(input, this->Collect, "Input", outputport);
+  this->Superclass::CreatePipeline(this->Collect, 0);
 }
 
 //----------------------------------------------------------------------------

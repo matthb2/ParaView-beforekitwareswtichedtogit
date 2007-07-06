@@ -31,9 +31,10 @@ vtkSMUnstructuredGridParallelStrategy::~vtkSMUnstructuredGridParallelStrategy()
 }
 
 //----------------------------------------------------------------------------
-void vtkSMUnstructuredGridParallelStrategy::CreatePipeline(vtkSMSourceProxy* input)
+void vtkSMUnstructuredGridParallelStrategy::CreatePipeline(
+  vtkSMSourceProxy* input, int outputport)
 {
-  this->Superclass::CreatePipeline(input);
+  this->Superclass::CreatePipeline(input, outputport);
 
   // Collect filter must be told the output data type since the data may not be
   // available on all processess.
@@ -44,9 +45,10 @@ void vtkSMUnstructuredGridParallelStrategy::CreatePipeline(vtkSMSourceProxy* inp
 }
 
 //----------------------------------------------------------------------------
-void vtkSMUnstructuredGridParallelStrategy::CreateLODPipeline(vtkSMSourceProxy* input)
+void vtkSMUnstructuredGridParallelStrategy::CreateLODPipeline(
+  vtkSMSourceProxy* input, int outputport)
 {
-  this->Superclass::CreateLODPipeline(input);
+  this->Superclass::CreateLODPipeline(input, outputport);
 
   // Collect filter must be told the output data type since the data may not be
   // available on all processess.

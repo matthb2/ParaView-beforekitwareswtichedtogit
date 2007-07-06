@@ -168,6 +168,19 @@ void vtkSMInputProperty::PrintSelf(ostream& os, vtkIndent indent)
 }
 
 //---------------------------------------------------------------------------
+void vtkSMInputProperty::SetProxies(unsigned int numProxies,
+  vtkSMProxy* proxies[], unsigned int outputports[])
+{
+  this->IPInternals->OutputPorts.clear();
+  for (unsigned int cc=0; cc < numProxies; cc++)
+    {
+    this->IPInternals->OutputPorts.push_back(outputports[cc]);
+    }
+
+  this->Superclass::SetProxies(numProxies, proxies);
+}
+
+//---------------------------------------------------------------------------
 int vtkSMInputProperty::AddInputConnection(vtkSMProxy* proxy, 
                                            unsigned int outputPort,
                                            int modify)

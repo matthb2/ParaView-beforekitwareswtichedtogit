@@ -409,6 +409,35 @@ int vtkSMProxyProperty::SetProxy(unsigned int idx, vtkSMProxy* proxy)
 }
 
 //---------------------------------------------------------------------------
+void vtkSMProxyProperty::SetProxies(unsigned int numProxies,
+  vtkSMProxy* proxies[])
+{
+  if ( vtkSMProperty::GetCheckDomains() )
+    {
+    this->RemoveAllUncheckedProxies();
+    for (unsigned int cc=0; cc < numProxies; cc++)
+      {
+      this->PPInternals->UncheckedProxies.push_back(proxies[cc]);
+      }
+    
+    if (!this->IsInDomains())
+      {
+      this->RemoveAllUncheckedProxies();
+      return;
+      }
+    }
+  this->RemoveAllUncheckedProxies();
+
+  this->PPInternals->Proxies.clear();
+  for (unsigned int cc=0; cc < numProxies; cc++)
+    {
+    this->PPInternals->Proxies.push_back(proxies[cc]);
+    }
+
+  this->Modified();
+}
+
+//---------------------------------------------------------------------------
 int vtkSMProxyProperty::AddProxy(vtkSMProxy* proxy)
 {
   return this->AddProxy(proxy, 1);

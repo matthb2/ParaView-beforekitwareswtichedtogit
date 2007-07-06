@@ -64,7 +64,7 @@ bool vtkSMOutlineRepresentationProxy::InitializeStrategy(vtkSMViewProxy* view)
   // can assume that the objects for this proxy have been created.
   // (Look at vtkSMDataRepresentationProxy::AddToView()).
 
-  strategy->SetInput(this->OutlineFilter);
+  this->Connect(this->OutlineFilter, strategy);
   this->Connect(strategy->GetOutput(), this->Mapper);
   this->AddStrategy(strategy);
 
@@ -103,7 +103,8 @@ bool vtkSMOutlineRepresentationProxy::BeginCreateVTKObjects()
 //----------------------------------------------------------------------------
 bool vtkSMOutlineRepresentationProxy::EndCreateVTKObjects()
 {
-  this->Connect(this->GetInputProxy(), this->OutlineFilter, "Input");
+  this->Connect(this->GetInputProxy(), this->OutlineFilter, 
+    "Input", this->OutputPort);
   this->Connect(this->Mapper, this->Prop3D, "Mapper");
   this->Connect(this->Property, this->Prop3D, "Property");
 
