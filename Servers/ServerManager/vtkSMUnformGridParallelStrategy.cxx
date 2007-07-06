@@ -55,6 +55,33 @@ void vtkSMUnformGridParallelStrategy::CreatePipeline(vtkSMSourceProxy* input)
 }
 
 //----------------------------------------------------------------------------
+void vtkSMUnformGridParallelStrategy::GatherInformation(vtkPVDataInformation* info)
+{
+  // When compositing is enabled, data is available at the update suppressors on
+  // the render server (not the client), hence we change the server flag so that
+  // the data is gathered from the correct server.
+  this->UpdateSuppressor->SetServers(vtkProcessModule::RENDER_SERVER);
+  
+  this->Superclass::GatherInformation(info);
+
+  this->UpdateSuppressor->SetServers(vtkProcessModule::CLIENT_AND_SERVERS);
+}
+
+//----------------------------------------------------------------------------
+void vtkSMUnformGridParallelStrategy::GatherLODInformation(vtkPVDataInformation* info)
+{
+  // When compositing is enabled, data is available at the update suppressors on
+  // the render server (not the client), hence we change the server flag so that
+  // the data is gathered from the correct server.
+  this->UpdateSuppressorLOD->SetServers(vtkProcessModule::RENDER_SERVER);
+
+  this->Superclass::GatherLODInformation(info);
+
+  this->UpdateSuppressorLOD->SetServers(vtkProcessModule::CLIENT_AND_SERVERS);
+}
+
+
+//----------------------------------------------------------------------------
 void vtkSMUnformGridParallelStrategy::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os, indent);
