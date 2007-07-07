@@ -187,6 +187,7 @@ int vtkTableToGraphFilter::RequestData(
     output->GetEdgeData()->PassData(edgeTable->GetFieldData());
     }
 
+  // If the optional vertex table has been passed in
   if (vertexTable != NULL)
     {
     // Extract vertex id input array
