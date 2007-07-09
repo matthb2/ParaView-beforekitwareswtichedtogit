@@ -53,6 +53,16 @@ vtkSMPropRepresentationProxy::~vtkSMPropRepresentationProxy()
 }
 
 //----------------------------------------------------------------------------
+void vtkSMPropRepresentationProxy::SetViewInformation(vtkInformation* info)
+{
+  this->Superclass::SetViewInformation(info);
+  if (this->SelectionRepresentation)
+    {
+    this->SelectionRepresentation->SetViewInformation(info);
+    }
+}
+
+//----------------------------------------------------------------------------
 void vtkSMPropRepresentationProxy::SetVisibility(int visible)
 {
   if (this->SelectionRepresentation && !visible)
@@ -100,7 +110,8 @@ void vtkSMPropRepresentationProxy::Update(vtkSMViewProxy* view)
       this->SelectionRepresentation->GetProperty("Visibility"));
     ivp->SetElement(0, visible);
     this->SelectionRepresentation->UpdateProperty("Visibility");
-    }
+    this->SelectionRepresentation->Update(view);  
+  }
 
   this->Superclass::Update(view);
 }
