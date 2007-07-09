@@ -446,8 +446,6 @@ void vtkIdentColoredPainter::DrawCells(int mode, vtkCellArray *connectivity,
         {
         if (this->ColorMode == COLORBYVERTEX)
           {
-          vtkPainterDeviceAdapter* device = renderer->GetRenderWindow()->
-            GetPainterDeviceAdapter();
           device->MakeVertexEmphasis(0);
           }
         return;
@@ -458,8 +456,6 @@ void vtkIdentColoredPainter::DrawCells(int mode, vtkCellArray *connectivity,
 
   if (this->ColorMode == COLORBYVERTEX)
     {
-    vtkPainterDeviceAdapter* device = renderer->GetRenderWindow()->
-      GetPainterDeviceAdapter();
     device->MakeVertexEmphasis(0);
     }
 
