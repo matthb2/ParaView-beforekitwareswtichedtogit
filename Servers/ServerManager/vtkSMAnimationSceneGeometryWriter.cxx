@@ -15,7 +15,6 @@
 #include "vtkSMAnimationSceneGeometryWriter.h"
 
 #include "vtkObjectFactory.h"
-#include "vtkSMDataObjectDisplayProxy.h"
 #include "vtkSMDoubleVectorProperty.h"
 #include "vtkSMProxyManager.h"
 #include "vtkSMProxyProperty.h"
@@ -65,7 +64,7 @@ bool vtkSMAnimationSceneGeometryWriter::SaveInitialize()
 
   vtkSMProxyProperty* pp = vtkSMProxyProperty::SafeDownCast(
     this->ViewModule->GetProperty("Displays"));
-  for (unsigned int cc=0; cc < pp->GetNumberOfProxies(); ++cc)
+/*  for (unsigned int cc=0; cc < pp->GetNumberOfProxies(); ++cc)
     {
     vtkSMDataObjectDisplayProxy* display = 
       vtkSMDataObjectDisplayProxy::SafeDownCast(
@@ -74,7 +73,7 @@ bool vtkSMAnimationSceneGeometryWriter::SaveInitialize()
       {
       display->SetInputAsGeometryFilter(this->GeometryWriter);
       }
-    }
+      } */
   this->GeometryWriter->UpdateVTKObjects();
   this->GeometryWriter->InvokeCommand("Start");
   return true;

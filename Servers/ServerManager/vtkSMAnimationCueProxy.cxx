@@ -17,7 +17,6 @@
 #include "vtkAnimationCue.h"
 #include "vtkObjectFactory.h"
 #include "vtkCommand.h"
-#include "vtkSMDataObjectDisplayProxy.h"
 #include "vtkSMDomain.h"
 #include "vtkSMProperty.h"
 #include "vtkSMProxyProperty.h"
