@@ -354,6 +354,17 @@ bool vtkSMPVRepresentationProxy::GetOrderedCompositingNeeded()
 }
 
 //----------------------------------------------------------------------------
+vtkSMProxy* vtkSMPVRepresentationProxy::GetProcessedConsumer()
+{
+  if (this->ActiveRepresentation)
+    {
+    return this->ActiveRepresentation->GetProcessedConsumer();
+    }
+
+  return this->Superclass::GetProcessedConsumer();
+}
+
+//----------------------------------------------------------------------------
 void vtkSMPVRepresentationProxy::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os, indent);
