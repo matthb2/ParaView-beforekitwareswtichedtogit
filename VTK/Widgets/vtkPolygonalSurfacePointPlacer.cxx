@@ -172,6 +172,20 @@ void vtkPolygonalSurfacePointPlacer::AddProp(vtkProp *prop)
 }
 
 //----------------------------------------------------------------------
+void vtkPolygonalSurfacePointPlacer::RemoveProp(vtkProp *prop)
+{
+  this->Superclass::RemoveProp( prop );
+  this->CellPicker->DeletePickList( prop );
+}
+
+//----------------------------------------------------------------------
+void vtkPolygonalSurfacePointPlacer::RemoveAllProps()
+{
+  this->Superclass::RemoveAllProps();
+  this->CellPicker->InitializePickList();
+}
+
+//----------------------------------------------------------------------
 int vtkPolygonalSurfacePointPlacer::ComputeWorldPosition( vtkRenderer *ren,
                                         double  displayPos[2],
                                         double *vtkNotUsed(refWorldPos),
