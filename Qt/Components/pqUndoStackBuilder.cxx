@@ -195,12 +195,6 @@ void pqUndoStackBuilder::OnPropertyModified(vtkSMProxy* proxy,
     return;
     }
 
-  if (proxy->IsA("vtkSMAxesProxy"))
-    {
-    // All center axes property changes are ignored.
-    return;
-    }
-
   bool auto_element = this->GetEnableMonitoring()==0 && 
     !this->IgnoreIsolatedChanges && !this->UndoRedoing;
 
