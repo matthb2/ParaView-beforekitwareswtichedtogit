@@ -172,9 +172,9 @@ void vtkPolygonalSurfacePointPlacer::AddProp(vtkProp *prop)
 }
 
 //----------------------------------------------------------------------
-void vtkPolygonalSurfacePointPlacer::RemoveProp(vtkProp *prop)
+void vtkPolygonalSurfacePointPlacer::RemoveViewProp(vtkProp *prop)
 {
-  this->Superclass::RemoveProp( prop );
+  this->Superclass::RemoveViewProp( prop );
   this->CellPicker->DeletePickList( prop );
 }
 

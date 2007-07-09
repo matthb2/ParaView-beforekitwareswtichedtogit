@@ -49,7 +49,7 @@ void vtkPolyDataPointPlacer::AddProp(vtkProp *prop)
 }
 
 //----------------------------------------------------------------------
-void vtkPolyDataPointPlacer::RemoveProp(vtkProp *prop)
+void vtkPolyDataPointPlacer::RemoveViewProp(vtkProp *prop)
 {
   this->SurfaceProps->RemoveItem( prop );
   this->PropPicker->DeletePickList( prop );
