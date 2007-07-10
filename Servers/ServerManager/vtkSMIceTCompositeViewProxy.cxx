@@ -647,10 +647,11 @@ vtkImageData* vtkSMIceTCompositeViewProxy::CaptureWindow(int magnification)
   vtkImageClip* clip = vtkImageClip::New();
   clip->SetInput(capture);
   capture->Delete();
-  clip->SetOutputWholeExtent(this->ViewPosition[0], 
-    this->ViewPosition[0] + this->ViewSize[0] -1,
-    this->ViewPosition[1],
-    this->ViewPosition[1] + this->ViewSize[1] -1, 0, 0);
+  clip->SetOutputWholeExtent(this->ViewPosition[0]*magnification, 
+    (this->ViewPosition[0] + this->ViewSize[0])*magnification -1,
+    this->ViewPosition[1]*magnification,
+    (this->ViewPosition[1] + this->ViewSize[1])*magnification -1, 
+    0, 0);
   clip->SetClipData(1);
   clip->Update();
 
