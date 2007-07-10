@@ -386,8 +386,8 @@ vtkXdmfReaderActualGrid* vtkXdmfReaderInternal::GetGrid(int idx)
 //----------------------------------------------------------------------------
 vtkXdmfReader::vtkXdmfReader()
 {
-  this->SetNumberOfInputPorts(0);
-  this->SetNumberOfOutputPorts(0);
+//this->SetNumberOfInputPorts(0);
+//this->SetNumberOfOutputPorts(0);
   
   this->Internals = new vtkXdmfReaderInternal;
   this->Internals->Reader = this;
@@ -633,7 +633,8 @@ int vtkXdmfReader::RequestDataObject(vtkInformationVector *outputVector)
   
   
   this->UpdateGrids();
-  
+
+/*  
   if(1 !=this->GetNumberOfOutputPorts())
     {
     this->SetNumberOfOutputPorts(1);
@@ -643,6 +644,7 @@ int vtkXdmfReader::RequestDataObject(vtkInformationVector *outputVector)
     // The only way to do that, is to ask the output vector from the executive.
     newOutputVector=this->GetExecutive()->GetOutputInformation();
     }
+*/
   
   // for each output
   vtkXdmfReaderInternal::MapOfActualGrids::iterator currentGridIterator;
