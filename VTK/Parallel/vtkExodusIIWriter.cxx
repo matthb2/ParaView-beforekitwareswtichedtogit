@@ -57,6 +57,7 @@
 #include <netcdf.h>
 #include <exodusII.h>
 #include <time.h>
+#include <ctype.h> // for toupper()
 
 // TODO - check for errors when there are no element or node variables
 
