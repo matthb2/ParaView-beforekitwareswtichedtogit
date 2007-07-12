@@ -555,7 +555,7 @@ unsigned long vtkSMViewProxy::GetVisibileFullResDataSize()
       vtkPVDataInformation* info = repr->GetFullResDataInformation();
       if (info)
         {
-        this->DisplayedDataSize += info->GetMemorySize();
+        this->FullResDataSize += info->GetMemorySize();
         }
       }
     }
