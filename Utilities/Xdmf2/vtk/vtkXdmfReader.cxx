@@ -1576,7 +1576,7 @@ int vtkXdmfReaderInternal::RequestSingleGridData(
     XdmfInt32 AttributeType;
     int       Components;
     XdmfAttribute       *Attribute;
-    XdmfConstString NodeType;
+
     Attribute = xdmfGrid->GetAttribute( cc );
     const char *name = Attribute->GetName();
     int status = 1;
