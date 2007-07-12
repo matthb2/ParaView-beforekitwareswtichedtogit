@@ -42,6 +42,14 @@ enum
 #endif
 
 //----------------------------------------------------------------------------
+// At runtime, AGL_MULTISAMPLE is available on Mac OS X 10.3 and later,
+// however the #define was not added until the 10.3.9 SDK, so we define it
+// here if it isn't already defined
+#ifndef AGL_MULTISAMPLE
+  #define AGL_MULTISAMPLE 59
+#endif
+
+//----------------------------------------------------------------------------
 // Dump agl errors to string, return error code
 OSStatus aglReportError ()
 {
