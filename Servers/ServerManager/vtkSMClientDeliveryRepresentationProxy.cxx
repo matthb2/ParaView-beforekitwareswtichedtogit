@@ -222,7 +222,7 @@ void vtkSMClientDeliveryRepresentationProxy::SetReductionType(int type)
     break;
 
   case COMPOSITE_DATASET_APPEND:
-    classname = "vtkMultiGroupDataGroupFilter"; 
+    classname = "vtkMultiBlockMergeFilter"; 
     break;
 
   default:
