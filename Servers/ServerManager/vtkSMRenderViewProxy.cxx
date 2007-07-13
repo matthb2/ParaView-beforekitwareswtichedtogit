@@ -407,6 +407,8 @@ void vtkSMRenderViewProxy::EndCreateVTKObjects()
       }
     di->Delete();
     }
+
+  this->Interactor->Enable();
 }
 
 //-----------------------------------------------------------------------------
