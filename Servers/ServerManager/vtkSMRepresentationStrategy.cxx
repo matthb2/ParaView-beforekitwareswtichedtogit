@@ -313,6 +313,20 @@ void vtkSMRepresentationStrategy::Connect(vtkSMProxy* producer,
 }
 
 //----------------------------------------------------------------------------
+void vtkSMRepresentationStrategy::SetUseCache(bool use_cache)
+{
+  if (this->UseCache != use_cache)
+    {
+    this->UseCache = use_cache;
+    if (this->UseCache)
+      {
+      // This ensures that the cache will be save at the first opportunity.
+      this->InvalidatePipeline();
+      }
+    }
+}
+
+//----------------------------------------------------------------------------
 void vtkSMRepresentationStrategy::ProcessViewInformation()
 {
   if (this->ViewInformation->Has(vtkSMRenderViewProxy::USE_LOD()))
