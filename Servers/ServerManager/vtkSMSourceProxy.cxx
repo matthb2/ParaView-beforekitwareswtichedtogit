@@ -95,7 +95,7 @@ void vtkSMSourceProxy::UpdatePipelineInformation()
   this->Superclass::UpdatePipelineInformation();
 
   this->InvokeEvent(vtkCommand::UpdateInformationEvent);
-  this->MarkModified(this);  
+  // this->MarkModified(this);  
 }
 //---------------------------------------------------------------------------
 int vtkSMSourceProxy::ReadXMLAttributes(vtkSMProxyManager* pm, 
