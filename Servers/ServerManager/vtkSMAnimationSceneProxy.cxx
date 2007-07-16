@@ -308,6 +308,9 @@ void vtkSMAnimationSceneProxy::AddCue(vtkSMProxy* proxy)
     }
   scene->AddCue(cue->GetAnimationCue());
   this->AnimationCueProxies->AddItem(cue);
+
+  // since scene is a consumer of the cue, when cue gets modified, the scene's
+  // MarkModified() will be called.
 }
 
 //----------------------------------------------------------------------------
