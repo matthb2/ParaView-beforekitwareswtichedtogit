@@ -33,7 +33,9 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #ifndef _QtWidgetsExport_h
 #define _QtWidgetsExport_h
 
-#if defined(WIN32) && defined(PARAVIEW_BUILD_SHARED_LIBS)
+#cmakedefine QTWIDGETS_BUILD_SHARED_LIBS
+
+#if defined(WIN32) && defined(QTWIDGETS_BUILD_SHARED_LIBS)
 # if defined(pqWidgets_EXPORTS)
 #   define QTWIDGETS_EXPORT __declspec(dllexport)
 # else
@@ -44,3 +46,4 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #endif
 
 #endif // !_QtWidgetsExport_h
+

@@ -1,6 +1,6 @@
 /*=========================================================================
 
-   Program:   ParaView
+   Program: ParaView
    Module:    $RCSfile$
 
    Copyright (c) 2005,2006 Sandia Corporation, Kitware Inc.
@@ -30,17 +30,27 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 =========================================================================*/
 
-#ifndef _pqCoreExport_h
-#define _pqCoreExport_h
+/*!
+ * \file QtChartExport.h
+ * \brief
+ *   Used to switch between dll import and export on windows.
+ * \date August 19, 2005
+ */
 
-#if defined(WIN32) && defined(PARAVIEW_BUILD_SHARED_LIBS)
-# if defined(pqCore_EXPORTS)
-#   define PQCORE_EXPORT __declspec(dllexport)
+#ifndef __QtChartExport_h
+#define __QtChartExport_h
+
+#cmakedefine QTCHART_BUILD_SHARED_LIBS
+
+#if defined(WIN32) && defined(QTCHART_BUILD_SHARED_LIBS)
+# if defined(QtChart_EXPORTS)
+#   define QTCHART_EXPORT __declspec(dllexport)
 # else
-#   define PQCORE_EXPORT __declspec(dllimport)
+#   define QTCHART_EXPORT __declspec(dllimport) 
 # endif
 #else
-# define PQCORE_EXPORT
+# define QTCHART_EXPORT
 #endif
 
-#endif // !_pqCoreExport_h
+#endif
+

@@ -30,17 +30,22 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 =========================================================================*/
 
-#ifndef _pqComponentsExport_h
-#define _pqComponentsExport_h
+#ifndef _pqCoreExport_h
+#define _pqCoreExport_h
 
-#if defined(WIN32) && defined(PARAVIEW_BUILD_SHARED_LIBS)
-# if defined(pqComponents_EXPORTS)
-#   define PQCOMPONENTS_EXPORT __declspec(dllexport)
-# else
-#   define PQCOMPONENTS_EXPORT __declspec(dllimport)
-# endif
-#else
-# define PQCOMPONENTS_EXPORT
+#ifndef PARAVIEW_BUILD_SHARED_LIBS
+#cmakedefine PARAVIEW_BUILD_SHARED_LIBS
 #endif
 
-#endif // !_pqWidgetsExport_h
+#if defined(WIN32) && defined(PARAVIEW_BUILD_SHARED_LIBS)
+# if defined(pqCore_EXPORTS)
+#   define PQCORE_EXPORT __declspec(dllexport)
+# else
+#   define PQCORE_EXPORT __declspec(dllimport)
+# endif
+#else
+# define PQCORE_EXPORT
+#endif
+
+#endif // !_pqCoreExport_h
+
