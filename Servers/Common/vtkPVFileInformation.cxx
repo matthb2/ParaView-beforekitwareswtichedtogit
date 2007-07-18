@@ -296,10 +296,10 @@ void vtkPVFileInformation::GetSpecialDirectories()
 #if defined (__APPLE__ )
     //-------- Get the List of Mounted Volumes from the System
     int idx = 1;
-    HFSUniStr255 name;
+    HFSUniStr255 hfsname;
     FSRef ref;
     while(noErr == FSGetVolumeInfo(kFSInvalidVolumeRefNum, idx++, NULL,
-                                   kFSVolInfoNone, NULL, &name, &ref))
+                                   kFSVolInfoNone, NULL, &hfsname, &ref))
     {
       CFURLRef resolvedUrl = CFURLCreateFromFSRef(NULL, &ref);
       if(resolvedUrl)
@@ -307,7 +307,7 @@ void vtkPVFileInformation::GetSpecialDirectories()
         CFStringRef url;
         url = CFURLCopyFileSystemPath(resolvedUrl, kCFURLPOSIXPathStyle);
         CFStringRef cfname = CFStringCreateWithCharacters(kCFAllocatorDefault,
-                                                          name.unicode, name.length);
+                                                          hfsname.unicode, hfsname.length);
 
         CFIndex pathSize = CFStringGetLength(url)+1;
         vtkstd::vector<char> pathChars(pathSize, 0);
