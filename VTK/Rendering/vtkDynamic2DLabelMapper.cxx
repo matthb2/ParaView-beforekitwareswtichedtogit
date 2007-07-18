@@ -638,5 +638,5 @@ void vtkDynamic2DLabelMapper::PrintSelf(ostream& os, vtkIndent indent)
   this->Superclass::PrintSelf(os,indent);
   os << indent << "ReversePriority: " << (this->ReversePriority ? "on" : "off") << endl;
   os << indent << "LabelHeightPadding: " << (this->LabelHeightPadding ? "on" : "off") << endl;
-  os << indent << "LabelWidthPadding: " << (this->LabelHeightPadding ? "on" : "off") << endl;
+  os << indent << "LabelWidthPadding: " << (this->LabelWidthPadding ? "on" : "off") << endl;
 }

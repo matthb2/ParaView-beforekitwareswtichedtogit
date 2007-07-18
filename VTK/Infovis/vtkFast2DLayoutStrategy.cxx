@@ -415,4 +415,5 @@ void vtkFast2DLayoutStrategy::PrintSelf(ostream& os, vtkIndent indent)
   os << indent << "CoolDownRate: " << this->CoolDownRate << endl;
   os << indent << "EdgeWeightField: " << (this->EdgeWeightField ? this->EdgeWeightField : "(none)") << endl;
   os << indent << "RestDistance: " << this->RestDistance << endl;
+  os << indent << "RandomSeed: " << this->RandomSeed << endl;
 }
