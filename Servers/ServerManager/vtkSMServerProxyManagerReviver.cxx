@@ -26,6 +26,9 @@
 #include "vtkSMSourceProxy.h"
 #include "vtkSMPQStateLoader.h"
 
+#include "vtkPVConfig.h" // for PARAVIEW_USE_ICE_T
+#include "vtkToolkits.h" // for VTK_USE_MPI
+
 #include <vtksys/ios/sstream>
 vtkStandardNewMacro(vtkSMServerProxyManagerReviver);
 vtkCxxRevisionMacro(vtkSMServerProxyManagerReviver, "$Revision$");
@@ -138,7 +141,14 @@ int vtkSMServerProxyManagerReviver::ReviveServerServerManager(
   loader->SetConnectionID(
     vtkProcessModuleConnectionManager::GetSelfConnectionID());
   loader->SetReviveProxies(1);
+
+  loader->SetRenderViewXMLName("RenderView");
+
+#ifdef VTK_USE_MPI
+# ifdef PARAVIEW_USE_ICE_T
   loader->SetRenderViewXMLName("IceTCompositeView");
+# endif
+#endif
 
   // The process module on the client side keeps track of the unique IDs.
   // We need to synchornize the IDs on the client side, so that when new IDs
