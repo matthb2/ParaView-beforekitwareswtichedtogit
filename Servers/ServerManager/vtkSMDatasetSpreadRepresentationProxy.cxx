@@ -31,6 +31,8 @@ vtkSMDatasetSpreadRepresentationProxy::~vtkSMDatasetSpreadRepresentationProxy()
 //----------------------------------------------------------------------------
 bool vtkSMDatasetSpreadRepresentationProxy::EndCreateVTKObjects()
 {
+  // Create a strategy to provide data to the client. Ofcourse we need t
+  return this->Superclass::EndCreateVTKObjects();
 }
 
 //----------------------------------------------------------------------------
