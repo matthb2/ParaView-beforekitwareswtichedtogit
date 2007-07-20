@@ -401,6 +401,24 @@ void vtkPVPythonInterpretor::RunSimpleString(const char* const script)
 }
 
 //-----------------------------------------------------------------------------
+void vtkPVPythonInterpretor::RunSimpleFile(const char* const filename)
+{
+  this->MakeCurrent();
+
+  FILE* fp = fopen(filename, "r");
+  if (!fp)
+    {
+    vtkErrorMacro("Failed to open file " << filename);
+    return;
+    }
+ 
+  PyRun_SimpleFile(fp, filename);
+
+  fclose(fp);
+  this->ReleaseControl();
+}
+
+//-----------------------------------------------------------------------------
 void vtkPVPythonInterpretor::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os, indent);
