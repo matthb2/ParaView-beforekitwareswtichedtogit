@@ -24,8 +24,6 @@
 #include "vtkInteractorStyle.h"
 #include "vtkObjectFactory.h"
 
-#import <Carbon/Carbon.h>
-
 vtkCxxRevisionMacro(vtkCarbonRenderWindowInteractor, "$Revision$");
 vtkStandardNewMacro(vtkCarbonRenderWindowInteractor);
 
