@@ -94,6 +94,7 @@ vtkLabeledDataMapper::~vtkLabeledDataMapper()
     }
   
   this->SetLabelTextProperty(NULL);
+  this->SetFieldDataName(NULL);
 }
 
 //----------------------------------------------------------------------------
