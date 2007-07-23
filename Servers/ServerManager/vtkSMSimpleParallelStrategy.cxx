@@ -402,7 +402,7 @@ void vtkSMSimpleParallelStrategy::SetKdTree(vtkSMProxy* proxy)
 
   if (this->DistributorLOD)
     {
-    this->Connect(proxy, this->Distributor, "PKdTree");
+    this->Connect(proxy, this->DistributorLOD, "PKdTree");
     }
 }
 
