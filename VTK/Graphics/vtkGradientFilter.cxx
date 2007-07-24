@@ -379,6 +379,8 @@ int vtkGradientFilterAddCellContribution(vtkIdType pointId,
   g[1] += static_cast<data_type>(derivative[1]);
   g[2] += static_cast<data_type>(derivative[2]);
 
+  delete [] values;
+
   return 1;
 }
 
