@@ -80,7 +80,7 @@ int vtkSocket::BindSocket(int socketdescriptor, int port)
   int opt=1;
 #ifdef _WIN32
   setsockopt(socketdescriptor, SOL_SOCKET, SO_REUSEADDR, (char*) &opt, sizeof(int));
-#else
+#elif defined(VTK_HAVE_SO_REUSEADDR)
   setsockopt(socketdescriptor, SOL_SOCKET, SO_REUSEADDR, (void *) &opt, sizeof(int));
 #endif
 
