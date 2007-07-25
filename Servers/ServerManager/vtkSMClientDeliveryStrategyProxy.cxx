@@ -174,11 +174,12 @@ void vtkSMClientDeliveryStrategyProxy::UpdatePipeline()
 {
   this->UpdatePipelineInternal(this->CollectProxy, 
                                this->UpdateSuppressor);
+  this->Superclass::UpdatePipeline();
 }
 
 //----------------------------------------------------------------------------
 void vtkSMClientDeliveryStrategyProxy::UpdatePipelineInternal(
-  vtkSMSourceProxy* collect, vtkSMSourceProxy* updatesuppressor)
+  vtkSMSourceProxy* collect, vtkSMSourceProxy* )
 {
   vtkSMSourceProxy* input = this->Input;
   if (input)
@@ -215,9 +216,6 @@ void vtkSMClientDeliveryStrategyProxy::UpdatePipelineInternal(
       collect->GetServers(), 
       stream);
     }
-
-  // TODO: Handle using of Cache.
-  updatesuppressor->InvokeCommand("ForceUpdate");
 }
 
 //----------------------------------------------------------------------------
