@@ -86,7 +86,15 @@ vtkSMBlockDeliveryRepresentationProxy::vtkSMBlockDeliveryRepresentationProxy()
 //----------------------------------------------------------------------------
 vtkSMBlockDeliveryRepresentationProxy::~vtkSMBlockDeliveryRepresentationProxy()
 {
+  this->SetPostGatherHelper(0);
   delete this->Internal;
+}
+
+//----------------------------------------------------------------------------
+bool vtkSMBlockDeliveryRepresentationProxy::IsCached(vtkIdType blockid)
+{
+  return this->Internal->CachedBlocks.find(blockid) != 
+    this->Internal->CachedBlocks.end();
 }
 
 //----------------------------------------------------------------------------
