@@ -1330,7 +1330,8 @@ void vtkFixedPointVolumeRayCastMapper::UpdateMinMaxVolume( vtkVolume *vol )
     }
   
   this->SavedMinMaxFlagTime.Modified();
-  
+
+  delete [] minNonZeroGradientMagnitudeIndex;
 }
 
 void vtkFixedPointVolumeRayCastMapper::UpdateCroppingRegions()
