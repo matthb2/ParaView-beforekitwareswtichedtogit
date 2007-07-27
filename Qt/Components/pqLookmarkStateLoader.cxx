@@ -105,6 +105,7 @@ pqLookmarkStateLoader::pqLookmarkStateLoader()
 //-----------------------------------------------------------------------------
 pqLookmarkStateLoader::~pqLookmarkStateLoader()
 {
+  delete this->Internal->PipelineModel;
   delete this->Internal;
 }
 
