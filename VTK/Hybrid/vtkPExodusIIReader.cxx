@@ -522,6 +522,25 @@ int vtkPExodusIIReader::RequestData(
         }
       }
 
+    // Look for fast-path keys and propagate to sub-reader.
+    // All keys must be present for the fast-path to work.
+    if ( outInfo->Has( vtkStreamingDemandDrivenPipeline::FAST_PATH_OBJECT_TYPE()) && 
+         outInfo->Has( vtkStreamingDemandDrivenPipeline::FAST_PATH_OBJECT_ID()) && 
+         outInfo->Has( vtkStreamingDemandDrivenPipeline::FAST_PATH_ID_TYPE()))
+      {
+      const char *objectType = outInfo->Get(
+            vtkStreamingDemandDrivenPipeline::FAST_PATH_OBJECT_TYPE());
+      this->ReaderList[reader_idx]->SetFastPathObjectType(objectType);
+
+      vtkIdType objectId = outInfo->Get(
+            vtkStreamingDemandDrivenPipeline::FAST_PATH_OBJECT_ID());
+      this->ReaderList[reader_idx]->SetFastPathObjectId(objectId);
+
+      const char *idType = outInfo->Get(
+            vtkStreamingDemandDrivenPipeline::FAST_PATH_ID_TYPE());
+      this->ReaderList[reader_idx]->SetFastPathIdType(idType);
+      }
+
     this->ReaderList[reader_idx]->Update();
 
     vtkUnstructuredGrid* subgrid = vtkUnstructuredGrid::New();
