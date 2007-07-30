@@ -26,7 +26,9 @@
 
 #include "vtkPVMain.h"
 
+#ifdef _WIN32
 #include "vtkDynamicLoader.h"
+#endif
 #include "vtkMultiProcessController.h"
 #include "vtkObjectFactory.h"
 #include "vtkOutputWindow.h"
