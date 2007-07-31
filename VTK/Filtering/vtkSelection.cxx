@@ -49,6 +49,8 @@ vtkInformationKeyMacro(vtkSelection,PRESERVE_TOPOLOGY,Integer);
 vtkInformationKeyMacro(vtkSelection,CONTAINING_CELLS,Integer);
 vtkInformationKeyMacro(vtkSelection,PIXEL_COUNT,Integer);
 vtkInformationKeyMacro(vtkSelection,INVERSE,Integer);
+vtkInformationKeyMacro(vtkSelection,EXACT_TEST,Integer);
+vtkInformationKeyMacro(vtkSelection,SHOW_BOUNDS,Integer);
 
 struct vtkSelectionInternals
 {
@@ -463,4 +465,3 @@ vtkSelection* vtkSelection::GetData(vtkInformationVector* v, int i)
 {
   return vtkSelection::GetData(v->GetInformationObject(i));
 }
-
