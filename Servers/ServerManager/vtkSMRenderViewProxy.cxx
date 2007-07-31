@@ -902,29 +902,35 @@ void vtkSMRenderViewProxy::AddPropToRenderer2D(vtkSMProxy* proxy)
 //-----------------------------------------------------------------------------
 void vtkSMRenderViewProxy::RemovePropFromRenderer(vtkSMProxy* proxy)
 {
-  vtkClientServerStream stream;
-  stream << vtkClientServerStream::Invoke
-         << this->RendererProxy->GetID()
-         << "RemoveViewProp"
-         << proxy->GetID()
-         << vtkClientServerStream::End;
-  vtkProcessModule::GetProcessModule()->SendStream(
-    this->RendererProxy->GetConnectionID(),
-    this->RendererProxy->GetServers(), stream);
+  if (vtkProcessModule::GetProcessModule())
+    {
+    vtkClientServerStream stream;
+    stream << vtkClientServerStream::Invoke
+           << this->RendererProxy->GetID()
+           << "RemoveViewProp"
+           << proxy->GetID()
+           << vtkClientServerStream::End;
+    vtkProcessModule::GetProcessModule()->SendStream(
+      this->RendererProxy->GetConnectionID(),
+      this->RendererProxy->GetServers(), stream);
+    }
 }
 
 //-----------------------------------------------------------------------------
 void vtkSMRenderViewProxy::RemovePropFromRenderer2D(vtkSMProxy* proxy)
 {
-  vtkClientServerStream stream;
-  stream << vtkClientServerStream::Invoke
-         << this->Renderer2DProxy->GetID()
-         << "RemoveViewProp"
-         << proxy->GetID()
-         << vtkClientServerStream::End;
-  vtkProcessModule::GetProcessModule()->SendStream(
-    this->RendererProxy->GetConnectionID(),
-    this->RendererProxy->GetServers(), stream);
+  if (vtkProcessModule::GetProcessModule())
+    {
+    vtkClientServerStream stream;
+    stream << vtkClientServerStream::Invoke
+           << this->Renderer2DProxy->GetID()
+           << "RemoveViewProp"
+           << proxy->GetID()
+           << vtkClientServerStream::End;
+    vtkProcessModule::GetProcessModule()->SendStream(
+      this->RendererProxy->GetConnectionID(),
+      this->RendererProxy->GetServers(), stream);
+    }
 }
 
 //-----------------------------------------------------------------------------
