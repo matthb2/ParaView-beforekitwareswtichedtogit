@@ -135,6 +135,9 @@ int vtkTableToGraphFilter::RequestData(
   vtkGraph* output = vtkGraph::SafeDownCast(
     outputInfo->Get(vtkDataObject::DATA_OBJECT()));
   output->SetDirected(this->Directed);
+  
+  // Get rid of the field data in the output
+  output->GetFieldData()->Initialize();
 
   // Extract edge source/target input arrays
   vtkAbstractArray* sourceArray = 
