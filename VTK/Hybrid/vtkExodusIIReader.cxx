@@ -247,6 +247,7 @@ protected:
     {
     this->Metadata = 0;
     this->InMaterialAssignment = 0;
+    this->ParseMaterials = 0;
     }
   virtual ~vtkExodusIIXMLParser()
     {
@@ -1418,6 +1419,9 @@ vtkExodusIIReaderPrivate::vtkExodusIIReaderPrivate()
   this->NextSqueezePoint = 0;
 
   this->CachedConnectivity = 0;
+
+  this->EdgeFieldDecorations = 0;
+  this->FaceFieldDecorations = 0;
   
   this->Parser = 0;
 
