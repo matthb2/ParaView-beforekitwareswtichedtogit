@@ -65,7 +65,11 @@ public:
         }
       else if (event == vtkCommand::PropertyModifiedEvent)
         {
-        this->Link->UpdateProperties(caller, (const char*)pname);
+        this->Link->PropertyModified(caller, (const char*)pname);
+        }
+      else if (event == vtkCommand::UpdatePropertyEvent)
+        {
+        this->Link->UpdateProperty(caller, reinterpret_cast<char*>(pname));
         }
       }
     this->InProgress = false;
@@ -98,6 +102,7 @@ void vtkSMLink::ObserveProxyUpdates(vtkSMProxy* proxy)
 {
   proxy->AddObserver(vtkCommand::PropertyModifiedEvent, this->Observer);
   proxy->AddObserver(vtkCommand::UpdateEvent, this->Observer);
+  proxy->AddObserver(vtkCommand::UpdatePropertyEvent, this->Observer);
 }
 
 //-----------------------------------------------------------------------------

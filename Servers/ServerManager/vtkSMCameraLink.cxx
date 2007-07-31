@@ -175,7 +175,7 @@ void vtkSMCameraLink::RemoveLinkedProxy(vtkSMProxy* proxy)
 }
 
 //---------------------------------------------------------------------------
-void vtkSMCameraLink::UpdateProperties(vtkSMProxy* fromProxy, 
+void vtkSMCameraLink::PropertyModified(vtkSMProxy* fromProxy, 
                                        const char* pname)
 {
   if (pname && strcmp(pname, "CenterOfRotation") == 0)
