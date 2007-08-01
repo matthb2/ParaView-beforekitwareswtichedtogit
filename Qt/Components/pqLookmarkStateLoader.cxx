@@ -62,7 +62,7 @@ class pqLookmarkStateLoaderInternal
 {
 public:
 
-  pqLookmarkStateLoaderInternal::pqLookmarkStateLoaderInternal()
+  pqLookmarkStateLoaderInternal()
     {
     this->NumberOfLookmarkSources = 0;
     this->PreferredSources = 0;
@@ -78,7 +78,7 @@ public:
     this->PipelineModel = new pqPipelineModel(*model);
     }
 
-  pqLookmarkStateLoaderInternal::~pqLookmarkStateLoaderInternal()
+  ~pqLookmarkStateLoaderInternal()
     {
     delete this->PipelineModel;
     }
