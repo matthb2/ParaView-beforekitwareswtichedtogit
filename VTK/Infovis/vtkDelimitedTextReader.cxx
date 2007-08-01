@@ -376,7 +376,7 @@ splitString(const vtkStdString& input,
     }
 
   results.push_back(currentField);
-  return results.size();
+  return static_cast<int>(results.size());
 }
 
 // ----------------------------------------------------------------------

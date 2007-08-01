@@ -111,7 +111,7 @@ int vtkMergeTables::RequestData(
       {
       // We have a naming conflict.
       // Rename both columns using the prefixes.
-      int len = strlen(name);
+      int len = static_cast<int>(strlen(name));
       vtkAbstractArray* col1 = output->GetColumnByName(name);
       char* newName1 = new char[len + strlen(this->FirstTablePrefix) + 1];
       strcpy(newName1, this->FirstTablePrefix);
