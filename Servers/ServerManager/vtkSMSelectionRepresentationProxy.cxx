@@ -276,7 +276,10 @@ void vtkSMSelectionRepresentationProxy::SetSelection(vtkSMSourceProxy* selection
 //----------------------------------------------------------------------------
 void vtkSMSelectionRepresentationProxy::CleanSelectionInput()
 {
-  this->Connect(this->EmptySelectionSource, this->ExtractSelection, "Selection");
+  if (this->EmptySelectionSource && this->ExtractSelection)
+    {
+    this->Connect(this->EmptySelectionSource, this->ExtractSelection, "Selection");
+    }
 }
 
 //----------------------------------------------------------------------------
