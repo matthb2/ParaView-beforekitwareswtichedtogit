@@ -49,8 +49,6 @@ vtkSMSurfaceRepresentationProxy::vtkSMSurfaceRepresentationProxy()
   this->Diffuse = 1.0;
   this->Specular = 0.1;
   this->Representation = VTK_SURFACE;
-
-  this->SetSelectionSupported(true);
 }
 
 //----------------------------------------------------------------------------

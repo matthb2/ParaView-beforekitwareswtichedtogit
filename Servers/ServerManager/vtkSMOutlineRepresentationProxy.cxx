@@ -33,7 +33,6 @@ vtkSMOutlineRepresentationProxy::vtkSMOutlineRepresentationProxy()
   this->Mapper = 0;
   this->Prop3D = 0;
   this->Property = 0;
-  this->SetSelectionSupported(true);
 }
 
 //----------------------------------------------------------------------------

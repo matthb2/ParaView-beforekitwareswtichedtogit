@@ -52,9 +52,6 @@ vtkSMUnstructuredGridVolumeRepresentationProxy::vtkSMUnstructuredGridVolumeRepre
   this->SupportsZSweepMapper = 0;
   this->SupportsHAVSMapper   = 0;
   this->RenderViewExtensionsTested = 0;
-
-  // This representation supports selection.
-  this->SetSelectionSupported(true);
 }
 
 //----------------------------------------------------------------------------

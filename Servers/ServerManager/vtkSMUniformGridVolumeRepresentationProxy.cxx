@@ -40,9 +40,6 @@ vtkSMUniformGridVolumeRepresentationProxy::vtkSMUniformGridVolumeRepresentationP
   this->VolumeActor = 0;
   this->VolumeProperty = 0;
   this->ClientMapper = 0;
-
-  // This representation supports selection.
-  this->SetSelectionSupported(true);
 }
 
 //----------------------------------------------------------------------------
