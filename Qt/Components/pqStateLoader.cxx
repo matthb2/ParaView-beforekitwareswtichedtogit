@@ -172,23 +172,6 @@ void pqStateLoader::RegisterProxyInternal(const char* group,
       }
     }
 
-  if (proxy->GetXMLGroup()
-    && strcmp(proxy->GetXMLGroup(), "newviews") == 0 
-    && strcmp(proxy->GetXMLName(), "ElementInspectorView") == 0)
-    {
-    // Don't register any element inspector views.
-    return;
-    }
-
-  if (proxy->GetXMLGroup()
-    && strcmp(proxy->GetXMLGroup(), "representations") == 0 
-    && strcmp(proxy->GetXMLName(), "ElementInspectorDisplay") == 0)
-    {
-    // Don't register any element inspector displays.
-    return;
-    }
-
-
   this->Superclass::RegisterProxyInternal(group, name, proxy);
 }
 
