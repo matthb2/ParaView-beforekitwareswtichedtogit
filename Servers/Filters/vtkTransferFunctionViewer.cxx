@@ -416,6 +416,15 @@ int* vtkTransferFunctionViewer::GetSize()
 }
 
 //----------------------------------------------------------------------------
+void vtkTransferFunctionViewer::SetBorderWidth(int width)
+{
+  if (this->EditorWidget)
+    {
+    this->EditorWidget->SetBorderWidth(width);
+    }
+}
+
+//----------------------------------------------------------------------------
 void vtkTransferFunctionViewer::Render()
 {
   if (this->EditorWidget && this->EditorWidget->GetRepresentation())

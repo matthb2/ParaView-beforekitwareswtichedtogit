@@ -60,7 +60,8 @@ void vtkTransferFunctionEditorWidget1D::SetHistogram(
 //----------------------------------------------------------------------------
 double vtkTransferFunctionEditorWidget1D::ComputeScalar(double pos, int width)
 {
-  double pct = pos / (double)width;
+  double pct =
+    (pos - this->BorderWidth) / (double)(width - 2*this->BorderWidth);
   return this->VisibleScalarRange[0] + pct *
     (this->VisibleScalarRange[1] - this->VisibleScalarRange[0]);
 }
@@ -71,7 +72,7 @@ double vtkTransferFunctionEditorWidget1D::ComputePositionFromScalar(
 {
   double pct = (scalar - this->VisibleScalarRange[0]) /
     (this->VisibleScalarRange[1] - this->VisibleScalarRange[0]);
-  return width * pct;
+  return (width - 2*this->BorderWidth) * pct + this->BorderWidth;
 }
 
 //----------------------------------------------------------------------------

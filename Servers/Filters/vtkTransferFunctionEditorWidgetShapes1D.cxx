@@ -26,6 +26,7 @@ void vtkTransferFunctionEditorWidgetShapes1D::CreateDefaultRepresentation()
   if (!this->WidgetRep)
     {
     this->WidgetRep = vtkTransferFunctionEditorRepresentationShapes1D::New();
+    this->Superclass::CreateDefaultRepresentation();
     }
 }
 
