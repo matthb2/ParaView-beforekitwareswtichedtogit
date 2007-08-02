@@ -250,4 +250,6 @@ void vtkScenePicker::Update( int displayPos[2] )
 void vtkScenePicker::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os,indent);
+  os << indent << "Renderer: " << this->Renderer << endl;
+  os << indent << "EnableVertexPicking: " << this->EnableVertexPicking << endl;
 }
