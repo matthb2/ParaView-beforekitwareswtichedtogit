@@ -107,8 +107,6 @@ int vtkPVProcessModulePythonHelper::RunGUIStart(int argc, char **argv, int numSe
     delete [] *it;
     }
 
-  this->ProcessModule->Exit();
-
   // Exiting:  CLean up.
   return res;
 }
