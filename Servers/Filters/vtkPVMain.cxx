@@ -34,7 +34,6 @@
 #include "vtkOutputWindow.h"
 #include "vtkProcessModuleGUIHelper.h"
 #include "vtkProcessModule.h"
-#include "vtkPVCreateProcessModule.h"
 #include "vtkPVOptions.h"
 #include "vtkTimerLog.h"
 
