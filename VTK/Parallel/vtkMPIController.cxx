@@ -31,7 +31,7 @@ public:
 
   void DisplayText(const char* t)
     {
-      if (this->Controller)
+      if (this->Controller && vtkMPIController::Initialized)
         {
         cout << "Process id: " << this->Controller->GetLocalProcessId()
              << " >> ";
