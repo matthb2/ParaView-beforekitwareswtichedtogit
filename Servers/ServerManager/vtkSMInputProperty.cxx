@@ -147,6 +147,7 @@ int vtkSMInputProperty::ReadXMLAttributes(vtkSMProxy* parent,
   if(retVal) 
     { 
     this->SetMultipleInput(multiple_input); 
+    this->Repeatable = multiple_input;
     }
 
   int port_index;
