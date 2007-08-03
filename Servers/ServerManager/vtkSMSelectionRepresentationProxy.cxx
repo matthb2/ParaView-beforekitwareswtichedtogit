@@ -275,7 +275,7 @@ void vtkSMSelectionRepresentationProxy::SetVisibility(int visible)
 {
   // Selection visibility if a function of the user requested visibility and
   // whether any selection input is available.
-  this->UserRequestedVisibility = visible;
+  this->UserRequestedVisibility = (visible!=0);
   this->UpdateVisibility();
 }
 
