@@ -1719,6 +1719,7 @@ vtkExodusReader::~vtkExodusReader()
 {
   this->SetFileName(NULL);
   this->SetXMLFileName(NULL);
+  this->SetCurrentXMLFileName(NULL);
 
   this->SetTitle(NULL);
   this->SetCurrentFileName(NULL);
