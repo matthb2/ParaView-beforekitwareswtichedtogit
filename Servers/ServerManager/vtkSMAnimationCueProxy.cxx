@@ -104,11 +104,23 @@ void vtkSMAnimationCueProxy::CreateVTKObjects()
     {
     return;
     }
+
   this->AnimationCue = vtkAnimationCue::New();
   this->InitializeObservers(this->AnimationCue);
   this->ObjectsCreated = 1; //since we don't have any serverside-vtkobjects
   //we set the objects created flag so that vtkSMProxy does not
   //attempt to create objects.
+
+  // If Manipulator subproxy is defined, the manipulator is set the xml
+  // configuration.
+  vtkSMAnimationCueManipulatorProxy* manip = 
+    vtkSMAnimationCueManipulatorProxy::SafeDownCast(
+      this->GetSubProxy("Manipulator"));
+  if (manip)
+    {
+    this->SetManipulator(manip);
+    }
+
   this->Superclass::CreateVTKObjects();
 }
 

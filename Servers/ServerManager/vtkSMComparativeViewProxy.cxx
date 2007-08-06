@@ -261,12 +261,6 @@ void vtkSMComparativeViewProxy::AddNewView()
   this->Internal->ViewLink->AddLinkedProxy(newView, vtkSMLink::OUTPUT);
   newView->Delete();
 
-  // Ensure that views always use cache.
-  //newView->SetUseCache(true);
-  newView->SetCacheTime(0); // cache time value is merely is place holder. 
-                            // All views cache only 1 time, hence this number is
-                            // immaterial.
-
   // Create clones for all currently added representation for the new view.
   vtkInternal::MapOfReprClones::iterator reprIter;
   for (reprIter = this->Internal->RepresentationClones.begin();
@@ -494,6 +488,8 @@ void vtkSMComparativeViewProxy::UpdateVisualization()
   for (iter = this->Internal->Views.begin(); 
        iter != this->Internal->Views.end(); ++iter)
     {
+    iter->GetPointer()->SetUseCache(false);
+    iter->GetPointer()->UpdateAllRepresentations();
     iter->GetPointer()->SetUseCache(true);
     }
 
@@ -553,6 +549,10 @@ void vtkSMComparativeViewProxy::FilmStripTick()
     }
 
   vtkSMViewProxy* view = this->Internal->Views[this->Internal->ActiveIndexX];
+
+  // HACK: This ensure that obsolete cache is never used when the CV is being
+  // generated.
+  view->SetCacheTime(view->GetCacheTime()+1.0);
 
   // Make the view cache the current setup. 
   view->StillRender();
