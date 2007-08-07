@@ -147,7 +147,7 @@ void vtkDataSetAttributes::DeepCopy(vtkFieldData *fd)
         {
         // If this array is an attribute in the source, make it so
         // in the target as well.
-        this->SetAttribute(vtkDataArray::SafeDownCast(newData), attributeType);
+        this->SetAttribute(newData, attributeType);
         }
       else
         {
