@@ -3043,7 +3043,7 @@ void vtkXdmfReader::UpdateGrids()
       }
     
     if(collName) delete [] collName;
-
+    str.rdbuf()->freeze(0);
     }
   
   this->GridsModified = 0;
