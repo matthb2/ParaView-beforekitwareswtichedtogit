@@ -50,6 +50,14 @@ vtkSMClientDeliveryRepresentationProxy::~vtkSMClientDeliveryRepresentationProxy(
     }
   this->StrategyProxy = 0;
   this->PostProcessorProxy = 0;
+  if (this->PreGatherHelper)
+    {
+    this->PreGatherHelper->Delete();
+    }
+  if (this->PostGatherHelper)
+    {    
+    this->PostGatherHelper->Delete();
+    }
 
 }
 
