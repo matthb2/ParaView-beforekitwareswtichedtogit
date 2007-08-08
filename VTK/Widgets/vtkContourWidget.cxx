@@ -25,6 +25,7 @@
 #include "vtkProperty2D.h"
 #include "vtkEvent.h"
 #include "vtkWidgetEvent.h"
+#include "vtkPolyData.h"
 
 vtkCxxRevisionMacro(vtkContourWidget, "$Revision$");
 vtkStandardNewMacro(vtkContourWidget);
@@ -350,6 +351,20 @@ void vtkContourWidget::EndSelectAction(vtkAbstractWidget *w)
     {
     self->Render();
     self->WidgetRep->NeedToRenderOff();
+    }
+}
+
+//----------------------------------------------------------------------
+void vtkContourWidget::Initialize( vtkPolyData * pd, int state )
+{
+  if (this->WidgetRep)
+    {
+    vtkContourRepresentation *rep = 
+      reinterpret_cast<vtkContourRepresentation*>(this->WidgetRep);
+
+    rep->Initialize( pd );
+    this->WidgetState = (rep->GetClosedLoop() || state == 1 ) ?
+          vtkContourWidget::Manipulate : vtkContourWidget::Define;
     }
 }
 
