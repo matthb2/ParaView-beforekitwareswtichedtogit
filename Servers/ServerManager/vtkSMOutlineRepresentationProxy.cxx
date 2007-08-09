@@ -17,6 +17,7 @@
 #include "vtkAbstractMapper.h"
 #include "vtkObjectFactory.h"
 #include "vtkProcessModule.h"
+#include "vtkProp3D.h"
 #include "vtkSmartPointer.h"
 #include "vtkSMIntVectorProperty.h"
 #include "vtkSMRepresentationStrategy.h"
@@ -166,6 +167,29 @@ void vtkSMOutlineRepresentationProxy::SetColorAttributeType(int type)
     ivp->SetElement(0,  VTK_SCALAR_MODE_DEFAULT);
     }
   this->Mapper->UpdateVTKObjects();
+}
+
+//----------------------------------------------------------------------------
+bool vtkSMOutlineRepresentationProxy::HasVisibleProp3D(vtkProp3D* prop)
+{
+  if(!prop)
+  {
+    return false;
+  }
+
+  if(this->Superclass::HasVisibleProp3D(prop))
+  {
+    return true;
+  }
+  vtkProcessModule* pm = vtkProcessModule::GetProcessModule();
+
+  if (this->GetVisibility() && 
+    pm->GetIDFromObject(prop) == this->Prop3D->GetID())
+  {
+    return true;
+  }
+
+  return false;
 }
 
 //----------------------------------------------------------------------------

@@ -21,6 +21,7 @@
 #include "vtkInformation.h"
 #include "vtkObjectFactory.h"
 #include "vtkProcessModule.h"
+#include "vtkProp3D.h"
 #include "vtkPVDataInformation.h"
 #include "vtkPVOpenGLExtensionsInformation.h"
 #include "vtkSmartPointer.h"
@@ -470,6 +471,29 @@ void vtkSMUnstructuredGridVolumeRepresentationProxy::SetColorAttributeType(
   this->UpdateVTKObjects();
 }
 
+//----------------------------------------------------------------------------
+bool vtkSMUnstructuredGridVolumeRepresentationProxy::HasVisibleProp3D(
+  vtkProp3D* prop)
+{
+  if(!prop)
+  {
+    return false;
+  }
+
+  if(this->Superclass::HasVisibleProp3D(prop))
+  {
+    return true;
+  }
+  vtkProcessModule* pm = vtkProcessModule::GetProcessModule();
+
+  if (this->GetVisibility() && 
+    pm->GetIDFromObject(prop) == this->VolumeActor->GetID())
+  {
+    return true;
+  }
+
+  return false;
+}
 
 //----------------------------------------------------------------------------
 void vtkSMUnstructuredGridVolumeRepresentationProxy::PrintSelf(ostream& os, vtkIndent indent)
