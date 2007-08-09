@@ -172,13 +172,17 @@ void vtkSMClientDeliveryRepresentationProxy::SetReductionType(int type)
     break;
 
   case COMPOSITE_DATASET_APPEND:
-    classname = "vtkMultiBlockMergeFilter"; 
+    classname = "vtkMultiGroupDataGroupFilter"; 
     break;
 
   case CUSTOM:
     this->StrategyProxy->SetPreGatherHelper(this->PreGatherHelper);
     this->StrategyProxy->SetPostGatherHelper(this->PostGatherHelper);
     return;
+
+  case MULTIBLOCK_MERGE:
+    classname = "vtkMultiBlockMergeFilter"; 
+    break;
 
   default:
     vtkErrorMacro("Unknown reduction type: " << type);
