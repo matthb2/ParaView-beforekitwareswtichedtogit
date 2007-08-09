@@ -51,6 +51,7 @@
 #include "vtkSMInputProperty.h"
 #include "vtkSMIntVectorProperty.h"
 #include "vtkSMPropertyIterator.h"
+#include "vtkSMPropRepresentationProxy.h"
 #include "vtkSMProxyManager.h"
 #include "vtkSMRepresentationStrategy.h"
 #include "vtkSMSelectionHelper.h"
@@ -1436,8 +1437,8 @@ bool vtkSMRenderViewProxy::SelectFrustum(unsigned int x0,
       for (reprIter->InitTraversal(); 
         !reprIter->IsDoneWithTraversal(); reprIter->GoToNextItem())
         {
-        vtkSMDataRepresentationProxy* repr = 
-          vtkSMDataRepresentationProxy::SafeDownCast(reprIter->GetCurrentObject());
+        vtkSMPropRepresentationProxy* repr = 
+          vtkSMPropRepresentationProxy::SafeDownCast(reprIter->GetCurrentObject());
         if (!repr)
           {
           continue;

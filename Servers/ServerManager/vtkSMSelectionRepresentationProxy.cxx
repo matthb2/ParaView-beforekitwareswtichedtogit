@@ -311,29 +311,6 @@ void vtkSMSelectionRepresentationProxy::UpdateVisibility()
 }
 
 //----------------------------------------------------------------------------
-bool vtkSMSelectionRepresentationProxy::HasVisibleProp3D(vtkProp3D* prop)
-{
-  if(!prop)
-  {
-    return false;
-  }
-
-  if(this->Superclass::HasVisibleProp3D(prop))
-  {
-    return true;
-  }
-  vtkProcessModule* pm = vtkProcessModule::GetProcessModule();
-
-  if (this->GetVisibility() && 
-    pm->GetIDFromObject(prop) == this->Prop3D->GetID())
-  {
-    return true;
-  }
-
-  return false;
-}
-
-//----------------------------------------------------------------------------
 void vtkSMSelectionRepresentationProxy::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os, indent);
