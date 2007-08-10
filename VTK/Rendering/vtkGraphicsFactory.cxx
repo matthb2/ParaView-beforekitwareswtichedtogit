@@ -139,7 +139,7 @@ const char *vtkGraphicsFactory::GetRenderLibrary()
   // if nothing is set then work down the list of possible renderers
   if ( !temp )
     {
-#ifdef VTK_DISPLAY_X11_OGL
+#if defined(VTK_DISPLAY_X11_OGL) || defined(VTK_USE_OSMESA)
     temp = "OpenGL";
 #endif
 #ifdef VTK_DISPLAY_WIN32_OGL
