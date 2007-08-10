@@ -184,7 +184,7 @@ vtkVolumeProVP1000Mapper *vtkVolumeProVP1000Mapper::New()
   // If the factory was unable to create the object, then create it here.
   const char *temp = vtkGraphicsFactory::GetRenderLibrary();
   
-#ifdef VTK_USE_OGLR
+#if defined(VTK_USE_OGLR) || defined(VTK_USE_OSMESA)
   if (!strcmp("OpenGL",temp))
     {
 #ifdef VTK_DEBUG_LEAKS
