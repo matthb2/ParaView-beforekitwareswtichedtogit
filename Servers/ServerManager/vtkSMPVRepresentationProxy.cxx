@@ -370,7 +370,6 @@ bool vtkSMPVRepresentationProxy::HasVisibleProp3D(vtkProp3D* prop)
   {
     return true;
   }
-  vtkProcessModule* pm = vtkProcessModule::GetProcessModule();
 
   if (this->GetVisibility() && this->ActiveRepresentation)
     {
