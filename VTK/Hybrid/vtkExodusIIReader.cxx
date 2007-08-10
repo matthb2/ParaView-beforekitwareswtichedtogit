@@ -2057,7 +2057,7 @@ int vtkExodusIIReaderPrivate::AssembleOutputGlobalArrays( vtkIdType timeStep, vt
     status = 0;
     continue;
     }
-/*
+
   // Select which global variables to send to the output?
   for (
     ai = this->ArrayInfo[ vtkExodusIIReader::GLOBAL ].begin();
