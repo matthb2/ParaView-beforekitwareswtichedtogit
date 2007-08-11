@@ -1394,6 +1394,7 @@ private:
   void operator=(const vtkExodusXMLParser&); // Not implemented
 };
 
+
 vtkCxxRevisionMacro(vtkExodusXMLParser, "$Revision$");
 vtkStandardNewMacro(vtkExodusXMLParser);
 
@@ -2471,8 +2472,13 @@ int vtkExodusReader::RequestInformation(
       if (!XMLfound)
         {
         //try artifact.dta
+#ifdef _WIN32
+        fpt=strrchr(tempName,'\\');
+        if (fpt) strncpy(fpt,"\\artifact.dta\0",14);
+#else
         fpt=strrchr(tempName,'/');
         if (fpt) strncpy(fpt,"/artifact.dta\0",14);
+#endif
         if (vtkExodusReaderFileExist(tempName)) 
           {
           SetXMLFileName(tempName);
