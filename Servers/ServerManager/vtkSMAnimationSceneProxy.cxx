@@ -23,6 +23,7 @@
 #include "vtkPVGenericRenderWindowInteractor.h"
 #include "vtkSmartPointer.h"
 #include "vtkSMRenderViewProxy.h"
+#include "vtkCollection.h"
 
 #include <vtksys/SystemTools.hxx>
 #include <vtkstd/vector>
@@ -34,6 +35,19 @@ public:
   typedef vtkstd::vector<vtkSmartPointer<vtkSMViewProxy> > 
     VectorOfViews;
   VectorOfViews ViewModules;
+  vtkCollection* AnimationCues;
+
+  vtkInternals()
+    {
+    this->AnimationCues = vtkCollection::New();
+    }
+
+  ~vtkInternals()
+    {
+    this->AnimationCues->Delete();
+    this->AnimationCues = 0;
+    }
+
 
   void StillRenderAllViews()
     {
@@ -153,6 +167,30 @@ vtkSMAnimationSceneProxy::~vtkSMAnimationSceneProxy()
   this->PlayerObserver->SetTarget(0);
   this->PlayerObserver->Delete();
   delete this->Internals;
+}
+
+//----------------------------------------------------------------------------
+void vtkSMAnimationSceneProxy::AddCueProxy(vtkSMAnimationCueProxy* cueProxy)
+{
+  if (cueProxy && !this->Internals->AnimationCues->IsItemPresent(cueProxy))
+    {
+    this->CreateVTKObjects();
+    cueProxy->CreateVTKObjects();
+    vtkPVAnimationScene::SafeDownCast(this->AnimationCue)->AddCue(
+      cueProxy->AnimationCue);
+    this->Internals->AnimationCues->AddItem(cueProxy);
+    }
+}
+
+//----------------------------------------------------------------------------
+void vtkSMAnimationSceneProxy::RemoveCueProxy(vtkSMAnimationCueProxy* cueProxy)
+{
+  if (cueProxy && this->Internals->AnimationCues->IsItemPresent(cueProxy))
+    {
+    vtkPVAnimationScene::SafeDownCast(this->AnimationCue)->RemoveCue(
+      cueProxy->AnimationCue);
+    this->Internals->AnimationCues->RemoveItem(cueProxy);
+    }
 }
 
 //----------------------------------------------------------------------------
