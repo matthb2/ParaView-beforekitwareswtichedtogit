@@ -144,7 +144,7 @@ void vtkSMServerSideAnimationPlayer::PerformActions()
       {
       if (!this->Writer)
         {
-        scene->Play();
+        scene->InvokeCommand("Play");
         }
       else
         {
