@@ -65,6 +65,7 @@ vtkAbstractGraph::~vtkAbstractGraph()
 //----------------------------------------------------------------------------
 void vtkAbstractGraph::Initialize()
 {
+  this->Superclass::Initialize();
   this->Line->Delete();
   this->Line = vtkLine::New();
 }
