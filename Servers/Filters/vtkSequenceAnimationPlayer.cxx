@@ -41,9 +41,9 @@ void vtkSequenceAnimationPlayer::StartLoop(double starttime, double endtime)
 //----------------------------------------------------------------------------
 double vtkSequenceAnimationPlayer::GetNextTime(double vtkNotUsed(curtime))
 {
+  this->FrameNo++;
   double time = this->StartTime + 
     ((this->EndTime - this->StartTime)*this->FrameNo)/(this->NumberOfFrames-1);
-  this->FrameNo++;
   return time;
 }
 
