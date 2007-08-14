@@ -502,6 +502,13 @@ int vtkSMProxyProperty::ReadXMLAttributes(vtkSMProxy* parent,
     {
     this->SetAddConsumer(add_consumer);
     }
+
+  if (this->RemoveCommand && !this->GetUpdateSelf())
+    {
+    vtkErrorMacro("Due to reference counting issue, remove command can "
+      "only be used for update self properties. " << endl <<
+      "Offending property: " << this->XMLName);
+    }
   return ret;
 }
 
