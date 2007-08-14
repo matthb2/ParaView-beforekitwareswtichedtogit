@@ -24,7 +24,7 @@
 
 #include "vtksys/ios/sstream"
 
-#if defined (__BORLANDC__) && (__BORLANDC__ >= 0x0580)
+#if defined (__BORLANDC__) && (__BORLANDC__ >= 0x0560)
 #include <ctype.h> // for isdigit
 #endif
 
