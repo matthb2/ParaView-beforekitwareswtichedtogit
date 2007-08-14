@@ -765,6 +765,12 @@ void vtkRenderer::RemoveLight(vtkLight *light)
   this->Lights->RemoveItem(light);
 }
 
+// Remove all lights from the list of lights.
+void vtkRenderer::RemoveAllLights()
+{
+  this->Lights->RemoveAllItems();
+}
+
 // Add an culler to the list of cullers.
 void vtkRenderer::AddCuller(vtkCuller *culler)
 {
