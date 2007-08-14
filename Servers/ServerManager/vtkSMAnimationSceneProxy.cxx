@@ -403,6 +403,18 @@ void vtkSMAnimationSceneProxy::SetAnimationTime(double time)
 }
 
 //----------------------------------------------------------------------------
+double vtkSMAnimationSceneProxy::GetAnimationTime()
+{
+  vtkPVAnimationScene* scene = 
+    vtkPVAnimationScene::SafeDownCast(this->AnimationCue);
+  if (scene)
+    {
+    return scene->GetCurrentTime();
+    }
+  return 0.0;
+}
+
+//----------------------------------------------------------------------------
 void vtkSMAnimationSceneProxy::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os, indent);
