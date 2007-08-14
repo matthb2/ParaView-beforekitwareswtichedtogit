@@ -155,6 +155,7 @@ vtkSMAnimationSceneProxy::vtkSMAnimationSceneProxy()
   this->AnimationPlayer = 0;
   this->PlayerObserver = vtkPlayerObserver::New();
   this->PlayerObserver->SetTarget(this);
+  this->InTick = false;
 }
 
 //----------------------------------------------------------------------------
@@ -300,6 +301,7 @@ void vtkSMAnimationSceneProxy::StartCueInternal(void* info)
 //----------------------------------------------------------------------------
 void vtkSMAnimationSceneProxy::TickInternal(void* info)
 {
+  this->InTick = true;
   this->CacheUpdate(info);
 
   if (!this->OverrideStillRender)
@@ -309,6 +311,7 @@ void vtkSMAnimationSceneProxy::TickInternal(void* info)
     }
 
   this->Superclass::TickInternal(info);
+  this->InTick = false;
 }
 
 //----------------------------------------------------------------------------
@@ -392,6 +395,11 @@ void vtkSMAnimationSceneProxy::CacheUpdate(void* info)
 //----------------------------------------------------------------------------
 void vtkSMAnimationSceneProxy::SetAnimationTime(double time)
 {
+  if (this->InTick)
+    {
+    return;
+    }
+
   vtkPVAnimationScene* scene = 
     vtkPVAnimationScene::SafeDownCast(this->AnimationCue);
   if (scene)
