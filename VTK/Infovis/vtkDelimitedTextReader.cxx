@@ -71,6 +71,7 @@ vtkDelimitedTextReader::vtkDelimitedTextReader()
   this->StringDelimiter = '"';
   this->UseStringDelimiter = true;
   this->MaxRecords = 0;
+  this->MergeConsecutiveDelimiters = false;
 }
 
 // ----------------------------------------------------------------------
