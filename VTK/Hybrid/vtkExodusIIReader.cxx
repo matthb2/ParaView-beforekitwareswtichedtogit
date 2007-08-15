@@ -1053,13 +1053,13 @@ protected:
     */
   int AssembleOutputProceduralArrays( vtkIdType timeStep, vtkUnstructuredGrid* output );
 
+  int AssembleOutputGlobalArrays( vtkIdType timeStep, vtkUnstructuredGrid* output );
+
   // Generate the decorations for edge fields.
   void AssembleOutputEdgeDecorations();
 
   // Generate the decorations for face fields.
   void AssembleOutputFaceDecorations();
-
-  //int AssembleOutputGlobalArrays( vtkIdType timeStep, vtkUnstructuredGrid* output );
 
   /// Insert cells from a specified block into a mesh
   void InsertBlockCells( int otyp, int obj, int conn_type, int timeStep, vtkUnstructuredGrid* output );
@@ -2057,9 +2057,9 @@ int vtkExodusIIReaderPrivate::AssembleArraysOverTime(vtkUnstructuredGrid* output
   return status;
 }
 
-/*
-int vtkExodusIIReaderPrivate::AssembleOutputGlobalArrays( vtkIdType timeStep, vtkUnstructuredGrid* output )
+int vtkExodusIIReaderPrivate::AssembleOutputGlobalArrays( vtkIdType vtkNotUsed(timeStep), vtkUnstructuredGrid* output )
 {
+/*
   int status = 1;
   vtkstd::vector<ArrayInfoType>::iterator ai;
   int aidx = 0;
@@ -2083,9 +2083,9 @@ int vtkExodusIIReaderPrivate::AssembleOutputGlobalArrays( vtkIdType timeStep, vt
       continue; // Skip arrays we don't want.
 
     }
-*/
-/*
+
   output->GetFieldData()->AddArray( src );
+*/
 
   // Add block id information for the exodus writer
   BlockInfoType* binfop;
@@ -2106,9 +2106,8 @@ int vtkExodusIIReaderPrivate::AssembleOutputGlobalArrays( vtkIdType timeStep, vt
   
   elemBlockIdArray->Delete();
 
-  return status;
+  return 1;
 }
-*/
 
 
 int vtkExodusIIReaderPrivate::AssembleOutputPointArrays( vtkIdType timeStep, vtkUnstructuredGrid* output )
@@ -4918,7 +4917,7 @@ int vtkExodusIIReaderPrivate::RequestData( vtkIdType timeStep, vtkUnstructuredGr
 
   this->AssembleOutputProceduralArrays( timeStep, output );
 
-  //this->AssembleOutputGlobalArrays( timeStep, output );
+  this->AssembleOutputGlobalArrays( timeStep, output );
 
   this->AssembleOutputPointMaps( timeStep, output );
   this->AssembleOutputCellMaps( timeStep, output );
