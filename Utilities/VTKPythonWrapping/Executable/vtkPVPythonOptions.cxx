@@ -17,6 +17,7 @@
 
 #include <vtksys/CommandLineArguments.hxx>
 #include <vtksys/SystemTools.hxx>
+#include <vtksys/ios/sstream>
 
 
 //----------------------------------------------------------------------------
@@ -48,10 +49,9 @@ int vtkPVPythonOptions::PostProcess(int argc, const char* const* argv)
   if ( this->PythonScriptName && 
     vtksys::SystemTools::GetFilenameLastExtension(this->PythonScriptName) != ".py")
     {
-    ostrstream str;
-    str << "Wrong batch script name: " << this->PythonScriptName << ends;
-    this->SetErrorMessage(str.str());
-    str.rdbuf()->freeze(0);
+    vtksys_ios::ostringstream str;
+    str << "Wrong batch script name: " << this->PythonScriptName;
+    this->SetErrorMessage(str.str().c_str());
     return 0;
     }
   return this->Superclass::PostProcess(argc, argv);
