@@ -17,6 +17,7 @@
 
 #include <vtksys/CommandLineArguments.hxx>
 #include <vtksys/SystemTools.hxx>
+#include <vtksys/ios/sstream>
 
 
 //----------------------------------------------------------------------------
@@ -54,10 +55,9 @@ int vtkPVBatchOptions::PostProcess(int argc, const char* const* argv)
   if ( this->BatchScriptName && 
     vtksys::SystemTools::GetFilenameLastExtension(this->BatchScriptName) != ".pvb")
     {
-    ostrstream str;
+    vtksys_ios::ostringstream str;
     str << "Wrong batch script name: " << this->BatchScriptName << ends;
-    this->SetErrorMessage(str.str());
-    str.rdbuf()->freeze(0);
+    this->SetErrorMessage(str.str().c_str());
     return 0;
     }
   return this->Superclass::PostProcess(argc, argv);
