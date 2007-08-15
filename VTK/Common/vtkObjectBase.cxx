@@ -17,6 +17,8 @@
 #include "vtkDebugLeaks.h"
 #include "vtkGarbageCollector.h"
 
+#include <vtksys/ios/sstream>
+
 #define vtkBaseDebugMacro(x)
 
 class vtkObjectBaseToGarbageCollectorFriendship
@@ -177,10 +179,10 @@ void vtkObjectBase::CollectRevisions(ostream& os)
 
 void vtkObjectBase::PrintRevisions(ostream& os)
 {
-  ostrstream revisions;
+  vtksys_ios::ostringstream revisions;
   this->CollectRevisions(revisions);
-  revisions << ends;
-  const char* c = revisions.str();
+  vtksys_stl::string s = revisions.str();
+  const char* c = s.c_str();
   while(*c)
     {
     const char* beginClass = 0;
@@ -222,7 +224,6 @@ void vtkObjectBase::PrintRevisions(ostream& os)
       ++c;
       }
     }
-  revisions.rdbuf()->freeze(0);
 }
 
 //----------------------------------------------------------------------------

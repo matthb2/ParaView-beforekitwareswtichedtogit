@@ -23,6 +23,8 @@
 #include "vtkXMLDataElement.h"
 #include "vtkXMLStructuredDataReader.h"
 
+#include <vtksys/ios/sstream>
+
 vtkCxxRevisionMacro(vtkXMLPStructuredDataReader, "$Revision$");
 
 //----------------------------------------------------------------------------
@@ -430,7 +432,7 @@ int vtkXMLPStructuredDataReader::ComputePieceSubExtents()
   if(!this->ExtentSplitter->ComputeSubExtents())
     {
     // A portion of the extent is not available.
-    ostrstream e_with_warning_C4701;
+    vtksys_ios::ostringstream e_with_warning_C4701;
     e_with_warning_C4701
       << "No available piece provides data for the following extents:\n";    
     for(i=0; i < this->ExtentSplitter->GetNumberOfSubExtents(); ++i)
@@ -446,9 +448,8 @@ int vtkXMLPStructuredDataReader::ComputePieceSubExtents()
           << extent[4] << " " << extent[5] << "\n";
         }
       }
-    e_with_warning_C4701 << "The UpdateExtent cannot be filled." << ends;
-    vtkErrorMacro(<< e_with_warning_C4701.str());
-    e_with_warning_C4701.rdbuf()->freeze(0);
+    e_with_warning_C4701 << "The UpdateExtent cannot be filled.";
+    vtkErrorMacro(<< e_with_warning_C4701.str().c_str());
     return 0;
     }
   

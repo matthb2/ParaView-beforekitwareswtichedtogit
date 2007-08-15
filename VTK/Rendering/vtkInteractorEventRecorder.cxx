@@ -17,6 +17,8 @@
 #include "vtkObjectFactory.h"
 #include "vtkRenderWindowInteractor.h"
 
+#include <vtksys/ios/sstream>
+
 vtkCxxRevisionMacro(vtkInteractorEventRecorder, "$Revision$");
 vtkStandardNewMacro(vtkInteractorEventRecorder);
 
@@ -155,13 +157,18 @@ void vtkInteractorEventRecorder::Play()
     if ( this->ReadFromInputString )
       {
       vtkDebugMacro(<< "Reading from InputString");
-      int len;
-      if ( this->InputString == NULL || (len = strlen(this->InputString) <= 0) )
+      size_t len = 0;
+      if ( this->InputString != NULL )
+        {
+        len = strlen(this->InputString);
+        }
+      if ( len == 0 )
         {
         vtkErrorMacro(<< "No input string specified");
         return;
         }
-      this->InputStream = new istrstream(this->InputString, len);
+      vtkstd::string inputStr(this->InputString, len);
+      this->InputStream = new vtksys_ios::istringstream(inputStr);
       if (this->InputStream->fail())
         {
         vtkErrorMacro(<< "Unable to read from string");

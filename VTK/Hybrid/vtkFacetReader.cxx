@@ -30,6 +30,7 @@
 #include "vtkDoubleArray.h"
 #include "vtkSmartPointer.h"
 
+#include <vtksys/ios/sstream>
 #include <sys/stat.h>
 #include <vtkstd/string>
 #include <vtkstd/vector>
@@ -289,7 +290,8 @@ int vtkFacetReader::RequestData(
         }
       char* strPtr = &(*stringBuffer.begin());
       strcpy(strPtr, line.c_str());
-      istrstream lineStream(strPtr);
+      vtkstd::string str(strPtr, stringBuffer.size());
+      vtksys_ios::istringstream lineStream(str);
       vtkIdType kk;
       int material = -1, relativePartNumber = -1;
       for ( kk = 0; kk < num_points_per_cell; kk ++ )
