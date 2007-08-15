@@ -1293,6 +1293,7 @@ vtkAbstractArray *vtkDataReader::ReadArray(const char *dataType, int numTuples, 
           IS->read(str, stringLength);
           vtkStdString s(str, stringLength);
           ((vtkStringArray*)array)->InsertNextValue(s);
+          delete [] str;
           }
         }
       }

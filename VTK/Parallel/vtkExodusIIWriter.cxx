@@ -905,6 +905,8 @@ int vtkExodusIIWriter::CreateExodusModel()
 
   em->SetTitle(title);
 
+  delete [] title;
+
   char **dimNames = new char * [3];
   dimNames[0] = vtkExodusIIWriter::StrDupWithNew("X");
   dimNames[1] = vtkExodusIIWriter::StrDupWithNew("Y");
