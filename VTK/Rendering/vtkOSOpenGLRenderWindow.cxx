@@ -360,10 +360,7 @@ void vtkOSOpenGLRenderWindow::SetForceMakeCurrent()
 
 void *vtkOSOpenGLRenderWindow::GetGenericContext()
 {
-  if (this->Internal->OffScreenContextId)
-    {
-    return (void *)this->Internal->OffScreenContextId;
-    }
+  return (void *)this->Internal->OffScreenContextId;
 }
 
 int vtkOSOpenGLRenderWindow::GetEventPending()
