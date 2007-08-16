@@ -1432,7 +1432,6 @@ bool vtkSMRenderViewProxy::SelectFrustum(unsigned int x0,
   // until we have other mechanisms to select one.
   vtkSmartPointer<vtkCollectionIterator> reprIter;
   reprIter.TakeReference(this->Representations->NewIterator());
-  bool foundRepr = false;
 
   for (reprIter->InitTraversal(); 
     !reprIter->IsDoneWithTraversal(); reprIter->GoToNextItem())
@@ -1452,7 +1451,6 @@ bool vtkSMRenderViewProxy::SelectFrustum(unsigned int x0,
 
     if(FrustumExtractor->OverallBoundsTest(bounds))
       {
-      vtkInformation* properties = frustumSel->GetProperties();
       frustumParent->AddChild(frustumSel);
 
       vtkSMProxy* selectionSource = repr->ConvertSelection(frustumParent);
