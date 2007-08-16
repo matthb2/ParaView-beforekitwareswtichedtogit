@@ -204,10 +204,14 @@ int vtkFileSeriesReader::RequestInformation(vtkInformation* request,
     timeRange[1] = numTimeSteps - 1;
     outInfo->Set(vtkStreamingDemandDrivenPipeline::TIME_RANGE(), 
                  timeRange, 2);
-    return 1;
+    }
+  else if (numTimeSteps == 0)
+    {
+    vtkErrorMacro("Expecting at least 1 file. Cannot proceed.");
+    return 0;
     }
 
-  return 0;
+  return 1;
 }
 
 //----------------------------------------------------------------------------
