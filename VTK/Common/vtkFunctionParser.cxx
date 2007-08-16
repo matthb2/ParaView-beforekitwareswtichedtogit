@@ -1822,7 +1822,9 @@ int vtkFunctionParser::FindEndOfMathFunction(int beginIndex)
     {
     i++;
     }
-  
+
+  i++;
+
   for (parenthesisCount = 1; parenthesisCount > 0; ++i)
     {
     parenthesisCount += (this->Function[i] == '(' ? 1 :
