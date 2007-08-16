@@ -82,6 +82,15 @@ bool ConvertViewModulesToViews(
 }
 
 //----------------------------------------------------------------------------
+bool ConvertLegacyReader(
+  vtkPVXMLElement* root, void* callData)
+{
+  vtkSMStateVersionController* self = reinterpret_cast<
+    vtkSMStateVersionController*>(callData);
+  return self->ConvertLegacyReader(root);
+}
+
+//----------------------------------------------------------------------------
 // Called for every data-object display. We will update scalar color 
 // properties since those changed.
 bool ConvertDataDisplaysToRepresentations(vtkPVXMLElement* root,
@@ -445,6 +454,26 @@ bool vtkSMStateVersionController::Process_3_0_To_3_1(vtkPVXMLElement* root)
     this->SelectAndRemove(root, "Proxy", attrsPLD);
     }
 
+
+    {
+    // Select all LegacyVTKFileReader elements 
+    const char* attrs[] = {
+      "type", "legacyreader", 0};
+    this->Select( root, "Proxy", attrs,
+      &::ConvertLegacyReader, this);
+    }
+
+    {
+    // Convert all legacyreader proxies to LegacyVTKFileReader 
+    const char* attrs[] = {
+      "type", "legacyreader", 0};
+    const char* newAttrs[] = {
+      "type", "LegacyVTKFileReader", 0};
+    this->SelectAndSetAttributes(
+      root, "Proxy", attrs, newAttrs);
+    }
+
+
   return true;
 }
 
@@ -472,6 +501,23 @@ bool vtkSMStateVersionController::ConvertViewModulesToViews(
 
   return true;
 }
+
+//----------------------------------------------------------------------------
+bool vtkSMStateVersionController::ConvertLegacyReader(
+  vtkPVXMLElement* parent)
+{
+  const char* attrs[] = {
+    "name", "FileName", 0 };
+  const char* newAttrs[] = {
+    "name", "FileNames", 0};
+  // Replace the "Displays" property with "Representations".
+  this->SelectAndSetAttributes(
+    parent,
+   "Property", attrs, newAttrs);
+
+  return true;
+}
+
 
 //----------------------------------------------------------------------------
 void vtkSMStateVersionController::PrintSelf(ostream& os, vtkIndent indent)
