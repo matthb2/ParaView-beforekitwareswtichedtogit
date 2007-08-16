@@ -79,7 +79,8 @@ static const int objResultTypes[] = {
   vtkExodusIIReader::EDGE_SET,
   vtkExodusIIReader::FACE_SET,
   vtkExodusIIReader::SIDE_SET,
-  vtkExodusIIReader::ELEM_SET
+  vtkExodusIIReader::ELEM_SET,
+  vtkExodusIIReader::GLOBAL
 };
 static const int numObjResultTypes = sizeof(objResultTypes)/sizeof(objResultTypes[0]);
 
