@@ -50,7 +50,6 @@ void vtkSMSelectionHelper::SendSelection(vtkSelection* sel, vtkSMProxy* proxy)
 
   vtksys_ios::ostringstream res;
   vtkSelectionSerializer::PrintXML(res, vtkIndent(), 1, sel);
-  res << ends;
   vtkClientServerStream stream;
   vtkClientServerID parserID =
     processModule->NewStreamObject("vtkSelectionSerializer", stream);
