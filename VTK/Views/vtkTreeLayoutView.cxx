@@ -558,6 +558,10 @@ void vtkTreeLayoutView::ProcessEvents(
     
     selection->Delete();
     }
+  else if(eventId == vtkCommand::SelectionChangedEvent)
+    {
+    this->Update();
+    }
   else
     {
     Superclass::ProcessEvents(caller, eventId, callData);
