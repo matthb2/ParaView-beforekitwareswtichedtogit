@@ -731,11 +731,11 @@ int vtkExodusIIWriter::CheckParameters()
 
   if (!HaveBlockIdArray)
     {
-    da = cd->GetArray("BlockId");
+    da = cd->GetArray("ObjectId");
 
     if (da)
       {
-      this->SetBlockIdArrayName("BlockId");
+      this->SetBlockIdArrayName("ObjectId");
       HaveBlockIdArray = 1;
       }
     }
