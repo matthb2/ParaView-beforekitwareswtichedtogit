@@ -394,6 +394,7 @@ void vtkSelectionSource::SetContentType(int value)
     if (this->Internal->Values)
       {
       this->Internal->Values->Delete();
+      this->Internal->Values=0;
       }
     switch (value)
       {
