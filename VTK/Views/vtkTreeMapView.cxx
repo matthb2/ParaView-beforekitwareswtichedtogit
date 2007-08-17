@@ -244,9 +244,15 @@ void vtkTreeMapView::SetLayoutStrategy(const char* name)
 }
 
 //----------------------------------------------------------------------------
-void vtkTreeMapView::SetFontSizeRange(const int maxSize, const int minSize)
+void vtkTreeMapView::SetFontSizeRange(const int maxSize, const int minSize, const int delta)
 {
-  this->LabelMapper->SetFontSizeRange(maxSize, minSize);
+  this->LabelMapper->SetFontSizeRange(maxSize, minSize, delta);
+}
+
+//----------------------------------------------------------------------------
+void vtkTreeMapView::GetFontSizeRange(int range[3])
+{
+  this->LabelMapper->GetFontSizeRange(range);
 }
 
 //----------------------------------------------------------------------------
