@@ -106,7 +106,8 @@ vtkScalarsToColorsPainter* vtkScalarsToColorsPainter::New()
 //-----------------------------------------------------------------------------
 int vtkScalarsToColorsPainter::GetPremultiplyColorsWithAlpha(vtkActor* actor)
 {
-  if (actor && actor->GetTexture())
+  if (actor && (actor->GetTexture() || 
+      actor->GetProperty()->GetNumberOfTextures() > 0))
     {
     return 0;
     }
