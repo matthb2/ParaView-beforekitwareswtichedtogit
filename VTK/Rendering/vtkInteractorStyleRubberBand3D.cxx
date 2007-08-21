@@ -263,4 +263,5 @@ void vtkInteractorStyleRubberBand3D::RedrawRubberBand()
 void vtkInteractorStyleRubberBand3D::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os, indent);
+  os << indent << "Interaction: " << this->Interaction << endl;
 }
