@@ -142,6 +142,7 @@ void vtkXMLTreeReaderProcessElement(vtkTree* tree,
         bitArr->InsertNextValue(true);
         }
       //cerr << "attname=" << name << ",value=" << value << endl;
+      delete [] validName;
       }
 
     // Process this node's children
