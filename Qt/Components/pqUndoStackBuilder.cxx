@@ -195,6 +195,13 @@ void pqUndoStackBuilder::OnPropertyModified(vtkSMProxy* proxy,
     return;
     }
 
+  if (proxy->IsA("vtkSMTimeKeeperProxy") &&
+    strcmp(pname, "Views") == 0)
+    {
+    // Views are updated by the GUI automatically.
+    return;
+    }
+
   bool auto_element = this->GetEnableMonitoring()==0 && 
     !this->IgnoreIsolatedChanges && !this->UndoRedoing;
 
