@@ -127,6 +127,7 @@ const char* vtkSMCameraLinkInternals::LinkedPropertyNames[] =
 vtkSMCameraLink::vtkSMCameraLink()
 {
   this->Internals = new vtkSMCameraLinkInternals;
+  this->SynchronizeInteractiveRenders = 1;
 }
 
 //---------------------------------------------------------------------------
@@ -236,7 +237,10 @@ void vtkSMCameraLink::UpdateViews(vtkSMProxy* caller, bool interactive)
         {
         if (interactive)
           {
-          rmp->InteractiveRender();
+          if (this->SynchronizeInteractiveRenders)
+            {
+            rmp->InteractiveRender();
+            }
           }
         else
           {
