@@ -181,7 +181,7 @@ vtkOrientedGlyphContourRepresentation::vtkOrientedGlyphContourRepresentation()
   this->InteractionOffset[0] = 0.0;
   this->InteractionOffset[1] = 0.0;
 
-  this->AlwaysOnTop = 1;
+  this->AlwaysOnTop = 0;
 }
 
 //----------------------------------------------------------------------
