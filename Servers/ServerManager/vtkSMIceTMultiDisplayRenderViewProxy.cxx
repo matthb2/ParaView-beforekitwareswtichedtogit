@@ -56,24 +56,22 @@ void vtkSMIceTMultiDisplayRenderViewProxy::EndCreateVTKObjects()
   this->TileMullions[0] = tileMulls[0];
   this->TileMullions[1] = tileMulls[1];
 
+  this->Superclass::EndCreateVTKObjects();
+
   // Make the server-side windows fullscreen 
   // (unless PV_ICET_WINDOW_BORDERS is set)
   vtkSMIntVectorProperty* ivp;
   if (!getenv("PV_ICET_WINDOW_BORDERS"))
     {
-    ivp = vtkSMIntVectorProperty::SafeDownCast(
-      this->RenderWindowProxy->GetProperty("FullScreen"));
-    if (ivp)
-      {
-      ivp->SetElement(0, 1);
-      }
-    else
-      {
-      vtkErrorMacro("Failed to find property FullScreen on RenderWindowProxy.");
-      }
+    vtkClientServerStream stream;
+    stream  << vtkClientServerStream::Invoke
+            << this->RenderWindowProxy->GetID()
+            << "SetFullScreen" << 1
+            << vtkClientServerStream::End;
+    vtkProcessModule::GetProcessModule()->SendStream(
+      this->ConnectionID, vtkProcessModule::RENDER_SERVER,
+      stream);
     }
-
-  this->Superclass::EndCreateVTKObjects();
 
   // We always render on the server-side when using tile displays.
   ivp = vtkSMIntVectorProperty::SafeDownCast(
