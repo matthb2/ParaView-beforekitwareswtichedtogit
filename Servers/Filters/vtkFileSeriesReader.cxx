@@ -62,6 +62,7 @@ vtkFileSeriesReader::~vtkFileSeriesReader()
     this->Reader->Delete();
     }
   delete this->Internal;
+  this->SetFileNameMethod(0);
 }
 
 //----------------------------------------------------------------------------
