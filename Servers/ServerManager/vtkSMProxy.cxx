@@ -424,6 +424,7 @@ const char* vtkSMProxy::GetPropertyName(vtkSMProperty* prop)
     if (prop == piter->GetProperty())
       {
       result = piter->GetKey();
+      break;
       }
     }
   piter->Delete();
