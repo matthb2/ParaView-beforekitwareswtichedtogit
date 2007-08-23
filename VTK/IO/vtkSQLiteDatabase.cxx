@@ -241,6 +241,7 @@ void vtkSQLiteDatabase::PrintSelf(ostream &os, vtkIndent indent)
     {
     cout << "(null)" << "\n";
     }
+  os << indent << "FileName: " << (this->FileName ? this->FileName : "(null)") << endl;
 }
 
 
