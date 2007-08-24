@@ -42,7 +42,6 @@ vtkSMPropRepresentationProxy::vtkSMPropRepresentationProxy()
   this->SelectionPropLink->AddException("Mapper");
   this->SelectionPropLink->AddException("Pickable");
   this->SelectionPropLink->AddException("Property");
-  this->SelectionPropLink->AddException("RenderModuleHelper");
   this->SelectionPropLink->AddException("Texture");
   this->SelectionPropLink->AddException("Visibility");
 }

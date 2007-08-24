@@ -24,7 +24,6 @@
 #include "vtkMatrix4x4.h"
 #include "vtkObjectFactory.h"
 #include "vtkProperty.h"
-#include "vtkPVRenderModuleHelper.h"
 #include "vtkRenderWindow.h"
 #include "vtkRenderer.h"
 #include "vtkTexture.h"
@@ -36,7 +35,6 @@
 //-----------------------------------------------------------------------------
 vtkStandardNewMacro(vtkPVLODVolume);
 vtkCxxRevisionMacro(vtkPVLODVolume, "$Revision$");
-vtkCxxSetObjectMacro(vtkPVLODVolume, RenderModuleHelper, vtkPVRenderModuleHelper);
 
 //----------------------------------------------------------------------------
 vtkPVLODVolume::vtkPVLODVolume()
@@ -51,7 +49,6 @@ vtkPVLODVolume::vtkPVLODVolume()
   this->MapperBounds[0] = this->MapperBounds[1] = this->MapperBounds[2] = 0;
   this->MapperBounds[3] = this->MapperBounds[4] = this->MapperBounds[5] = 0;
 
-  this->RenderModuleHelper = 0;
   this->EnableLOD = 0;
 }
 
@@ -59,7 +56,6 @@ vtkPVLODVolume::vtkPVLODVolume()
 vtkPVLODVolume::~vtkPVLODVolume()
 {
   this->LODProp->Delete();
-  this->SetRenderModuleHelper(0);
 }
 
 //----------------------------------------------------------------------------
@@ -70,11 +66,6 @@ int vtkPVLODVolume::SelectLOD()
     return this->HighLODId;
     }
   if (this->HighLODId < 0)
-    {
-    return this->LowLODId;
-    }
-
-  if (this->RenderModuleHelper && this->RenderModuleHelper->GetLODFlag())
     {
     return this->LowLODId;
     }
@@ -353,18 +344,7 @@ void vtkPVLODVolume::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os,indent);
 
+  os << indent << "EnableLOD: " << this->EnableLOD << endl;
   os << indent << "LODProp: " << endl;
   this->LODProp->PrintSelf(os, indent.GetNextIndent());
-
-  os << indent << "RenderModuleHelper: ";
-  if (this->RenderModuleHelper)
-    {
-    os << endl;
-    this->RenderModuleHelper->PrintSelf(os, indent.GetNextIndent());
-    }
-  else
-    {
-    os << "(none)" << endl;
-    }
-  os << indent << "EnableLOD: " << this->EnableLOD << endl;
 }
