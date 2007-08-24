@@ -777,7 +777,7 @@ void vtkOpenGLPainterDeviceAdapter::Stencil(int on)
     glEnable(GL_STENCIL_TEST);    
     GLint stencilbits;
     glGetIntegerv(GL_STENCIL_BITS, &stencilbits);
-    this->MaxStencil = 1<<stencilbits-1;
+    this->MaxStencil = (1<<stencilbits)-1;
     }
   else
     {
