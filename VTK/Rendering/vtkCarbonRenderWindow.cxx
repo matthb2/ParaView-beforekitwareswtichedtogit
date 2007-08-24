@@ -210,7 +210,7 @@ AGLContext vtkCarbonRenderWindowInternal::CreateContext(int offscreen, int& doub
             {
             for(int accel = 1; !fmt && accel >= noSoftwareRendering; accel--)
               {
-              fmt = this->ChoosePixelFormat(accel, offscreen, _db, _s, _m, _a);
+              fmt = this->ChoosePixelFormat(accel, offscreen, _db, _s, _m, _a, _stencil);
               if(fmt)
                 {
                 doublebuff = _db;
