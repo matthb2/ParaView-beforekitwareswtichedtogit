@@ -28,61 +28,51 @@ LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
 NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-=========================================================================*/
+========================================================================*/
+#ifndef __pqAnimatableProxyComboBox_h 
+#define __pqAnimatableProxyComboBox_h
 
-#ifndef pqAnimationWidget_h
-#define pqAnimationWidget_h
+#include <QComboBox>
+#include "pqComponentsExport.h"
+#include "pqSMProxy.h"
 
-#include "QtWidgetsExport.h"
+class vtkSMProxy;
+class pqPipelineSource;
+class pqServerManagerModelItem;
 
-#include <QAbstractScrollArea>
-#include <QStandardItemModel>
-
-class QGraphicsView;
-class QHeaderView;
-class pqAnimationModel;
-class pqAnimationTrack;
-
-class QTWIDGETS_EXPORT pqAnimationWidget : public QAbstractScrollArea
+/// pqAnimatableProxyComboBox is a combo box that can list the animatable 
+/// proxies.  All pqPipelineSources are automatically in this list
+/// Any other proxies must be manually added.
+class PQCOMPONENTS_EXPORT pqAnimatableProxyComboBox : public QComboBox
 {
   Q_OBJECT
+  typedef QComboBox Superclass;
+
 public:
-  pqAnimationWidget(QWidget* p = 0);
-  ~pqAnimationWidget();
+  pqAnimatableProxyComboBox(QWidget* parent=0);
+  ~pqAnimatableProxyComboBox();
 
-  pqAnimationModel* animationModel() const;
+  /// Returns the current source
+  vtkSMProxy* getCurrentProxy() const;
 
-  QHeaderView* createDeleteHeader() const;
-  QWidget* createDeleteWidget() const;
-
-signals:
-  // emitted when a track is double clicked on
-  void trackSelected(pqAnimationTrack*);
-  void deleteTrackClicked(pqAnimationTrack*);
-  void createTrackClicked();
+  void addProxy(int index, const QString& label, vtkSMProxy*);
+  void removeProxy(const QString& label);
+  int findProxy(vtkSMProxy*);
 
 protected slots:
-  void updateSizes();
-  void headerDblClicked(int);
-  void headerDeleteClicked(int);
+  void onSourceAdded(pqPipelineSource* src);
+  void onSourceRemoved(pqPipelineSource* src);
+  void onNameChanged(pqServerManagerModelItem* src);
+  void onCurrentSourceChanged(int idx);
 
-protected:
-  void updateGeometries();
-  void updateScrollBars();
-  void updateWidgetPosition();
-  void scrollContentsBy(int dx, int dy);
-  bool event(QEvent* e);
-  void resizeEvent(QResizeEvent* e);
+signals:
+  void currentProxyChanged(vtkSMProxy*);
 
 private:
-  QGraphicsView* View;
-  QHeaderView* CreateDeleteHeader;
-  QStandardItemModel CreateDeleteModel;
-  QHeaderView* Header;
-  QWidget* CreateDeleteWidget;
-  pqAnimationModel* Model;
-
+  pqAnimatableProxyComboBox(const pqAnimatableProxyComboBox&); // Not implemented.
+  void operator=(const pqAnimatableProxyComboBox&); // Not implemented.
 };
 
-#endif //pqAnimationWidget_h
+#endif
+
 
