@@ -50,6 +50,7 @@ vtkRenderWindow::vtkRenderWindow()
   this->StereoStatus = 0;
   this->StereoCapableWindow = 0;
   this->AlphaBitPlanes = 0;
+  this->StencilCapable = 0;
   this->Interactor = NULL;
   this->AAFrames = 0;
   this->FDFrames = 0;
@@ -806,6 +807,8 @@ void vtkRenderWindow::PrintSelf(ostream& os, vtkIndent indent)
     }
 
   os << indent << "MultiSamples: " << this->MultiSamples << "\n";
+  os << indent << "StencilCapable: " << (this->StencilCapable ? "True" : "False")
+     << endl;
 }
 
 
