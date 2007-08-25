@@ -606,4 +606,5 @@ void vtkStripper::PrintSelf(ostream& os, vtkIndent indent)
   os << indent << "Maximum Length: " << this->MaximumLength << "\n";
   os << indent << "PassCellDataAsFieldData: " << this->PassCellDataAsFieldData << endl;
   os << indent << "PassThroughCellIds: " << this->PassThroughCellIds << endl;
+  os << indent << "PassThroughPointIds: " << this->PassThroughPointIds << endl;
 }
