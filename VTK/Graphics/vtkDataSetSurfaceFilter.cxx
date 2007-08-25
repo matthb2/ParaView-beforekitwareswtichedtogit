@@ -75,6 +75,7 @@ vtkDataSetSurfaceFilter::vtkDataSetSurfaceFilter()
   this->PassThroughCellIds = 0;
   this->PassThroughPointIds = 0;
   this->OriginalCellIds = NULL;
+  this->OriginalPointIds = NULL;
 }
 
 //----------------------------------------------------------------------------
