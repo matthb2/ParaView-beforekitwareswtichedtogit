@@ -33,6 +33,7 @@ vtkStripper::vtkStripper()
   this->MaximumLength = 1000;
   this->PassCellDataAsFieldData = 0;
   this->PassThroughCellIds = 0;
+  this->PassThroughPointIds = 0;
 }
 
 int vtkStripper::RequestData(
@@ -458,6 +459,22 @@ int vtkStripper::RequestData(
 
   output->SetPoints(input->GetPoints());
   output->GetPointData()->PassData(pd);
+  if (this->PassThroughPointIds)
+    {
+    //make a 1:1 mapping
+    vtkIdTypeArray *originalPointIds = vtkIdTypeArray::New();
+    originalPointIds->SetName("vtkOriginalPointIds");
+    originalPointIds->SetNumberOfComponents(1);
+    vtkPointData *outputPD = output->GetPointData();
+    outputPD->AddArray(originalPointIds);        
+    vtkIdType numTup = output->GetNumberOfPoints();
+    originalPointIds->SetNumberOfValues(numTup);
+    for (vtkIdType cId = 0; cId < numTup; cId++)
+      {
+      originalPointIds->SetValue(cId, cId);
+      }
+    originalPointIds->Delete();
+    }
   
   // output strips
   if ( newStrips )
