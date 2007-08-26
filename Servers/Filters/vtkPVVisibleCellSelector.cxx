@@ -42,6 +42,13 @@ void vtkPVVisibleCellSelector::SetSelectMode(int m)
 }
 
 //----------------------------------------------------------------------------
+void vtkPVVisibleCellSelector::SetDoVertices(int m)
+{
+  this->DoVertices = m;
+}
+
+
+//----------------------------------------------------------------------------
 void vtkPVVisibleCellSelector::LookupProcessorId()
 {
   int id = vtkProcessModule::GetProcessModule()->GetPartitionId();
