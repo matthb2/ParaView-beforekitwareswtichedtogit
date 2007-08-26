@@ -25,9 +25,9 @@
 #include "vtkMath.h"
 #include "vtkObjectFactory.h"
 #include "vtkDataArray.h"
-#include <vtkstd/vector>
 
 #ifdef WIN32
+#include <float.h>
 #define isnan(x) _isnan(x)
 #endif
 
