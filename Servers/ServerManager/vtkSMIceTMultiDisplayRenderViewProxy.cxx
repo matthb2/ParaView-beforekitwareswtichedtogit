@@ -58,6 +58,13 @@ void vtkSMIceTMultiDisplayRenderViewProxy::EndCreateVTKObjects()
 
   this->Superclass::EndCreateVTKObjects();
 
+  if (!this->RemoteRenderAvailable)
+    {
+    vtkErrorMacro("Display not accessible on server. "
+      "Cannot render on tiles with inaccesible display.");
+    return;
+    }
+
   // Make the server-side windows fullscreen 
   // (unless PV_ICET_WINDOW_BORDERS is set)
   vtkSMIntVectorProperty* ivp;
