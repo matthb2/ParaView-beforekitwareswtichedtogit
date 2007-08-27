@@ -31,10 +31,13 @@ vtkInformationKeyMacro(vtkCoincidentTopologyResolutionPainter,
 vtkInformationKeyMacro(vtkCoincidentTopologyResolutionPainter, Z_SHIFT, Double);
 vtkInformationKeyMacro(vtkCoincidentTopologyResolutionPainter,
   POLYGON_OFFSET_PARAMETERS, DoubleVector);
+vtkInformationKeyMacro(vtkCoincidentTopologyResolutionPainter,
+  POLYGON_OFFSET_FACES, Integer);
 //-----------------------------------------------------------------------------
 vtkCoincidentTopologyResolutionPainter::vtkCoincidentTopologyResolutionPainter()
 {
   this->ResolveCoincidentTopology = VTK_RESOLVE_OFF;
+  this->OffsetFaces = 1;
   this->PolygonOffsetFactor = 1.0;
   this->PolygonOffsetUnits = 1.0;
   this->ZShift = 0.01;
@@ -73,6 +76,11 @@ void vtkCoincidentTopologyResolutionPainter::ProcessInformation(
     {
     double* p = info->Get(POLYGON_OFFSET_PARAMETERS());
     this->SetPolygonOffsetParameters(p[0], p[1]);
+    }
+
+  if (info->Has(POLYGON_OFFSET_FACES()))
+    {
+    this->SetOffsetFaces(info->Get(POLYGON_OFFSET_FACES()));
     }
 
   this->Superclass::ProcessInformation(info);

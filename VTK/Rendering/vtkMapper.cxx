@@ -32,6 +32,7 @@ static int vtkMapperGlobalResolveCoincidentTopology = VTK_RESOLVE_OFF;
 static double vtkMapperGlobalResolveCoincidentTopologyZShift = 0.01;
 static double vtkMapperGlobalResolveCoincidentTopologyPolygonOffsetFactor = 1.0;
 static double vtkMapperGlobalResolveCoincidentTopologyPolygonOffsetUnits = 1.0;
+static int vtkMapperGlobalResolveCoincidentTopologyPolygonOffsetFaces = 1;
 
 // Construct with initial range (0,1).            
 vtkMapper::vtkMapper()
@@ -181,6 +182,16 @@ void vtkMapper::GetResolveCoincidentTopologyPolygonOffsetParameters(
 {
   factor = vtkMapperGlobalResolveCoincidentTopologyPolygonOffsetFactor;
   units = vtkMapperGlobalResolveCoincidentTopologyPolygonOffsetUnits;
+}
+
+void vtkMapper::SetResolveCoincidentTopologyPolygonOffsetFaces(int faces)
+{
+  vtkMapperGlobalResolveCoincidentTopologyPolygonOffsetFaces = faces;
+}
+
+int vtkMapper::GetResolveCoincidentTopologyPolygonOffsetFaces()
+{
+  return vtkMapperGlobalResolveCoincidentTopologyPolygonOffsetFaces;
 }
 
 // Overload standard modified time function. If lookup table is modified,
