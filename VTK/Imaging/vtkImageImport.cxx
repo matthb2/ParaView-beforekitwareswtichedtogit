@@ -406,6 +406,10 @@ void vtkImageImport::InvokeExecuteInformationCallbacks()
       {
       this->SetDataScalarType(VTK_UNSIGNED_CHAR);
       }    
+    else if (strcmp(scalarType, "signed char")==0)
+      {
+      this->SetDataScalarType(VTK_SIGNED_CHAR);
+      }    
     }
 }
 
