@@ -190,7 +190,7 @@ void pqStateLoader::RegisterProxyInternal(const char* group,
 int pqStateLoader::LoadProxyState(vtkPVXMLElement* proxyElement, 
   vtkSMProxy* proxy)
 {
-  if (strcmp(proxy->GetXMLGroup(), "newviews")==0)
+  if (strcmp(proxy->GetXMLGroup(), "views")==0)
     {
     unsigned int max = proxyElement->GetNumberOfNestedElements();
     vtkPVXMLElement* toRemove = 0;
