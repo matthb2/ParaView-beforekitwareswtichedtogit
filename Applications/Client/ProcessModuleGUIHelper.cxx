@@ -63,7 +63,7 @@ ProcessModuleGUIHelper::~ProcessModuleGUIHelper()
 QWidget* ProcessModuleGUIHelper::CreateMainWindow()
 {
   pqApplicationCore::instance()->setApplicationName("ParaView" PARAVIEW_VERSION);
-  pqApplicationCore::instance()->setOrganizationName("Kitware");
+  pqApplicationCore::instance()->setOrganizationName("ParaView");
   QWidget* w = new MainWindow();
   QTimer::singleShot(10, this->Splash, SLOT(close()));
   return w;
