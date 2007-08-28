@@ -182,6 +182,7 @@ void vtkIdentColoredPainter::ColorByActorId(vtkProp *actorAddr)
   arr->SetValue(numIds, maxId+1);
   SaveProps[numIds] = actorAddr;
   this->MakeActorLookupTable(SaveProps, arr);
+  delete[] SaveProps;
   arr->Delete();
 
   this->CurrentIdPlane0 = maxId+2;
