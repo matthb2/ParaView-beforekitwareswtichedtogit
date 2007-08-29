@@ -378,6 +378,15 @@ int vtkPVProgressHandler::ReceiveProgressFromSatellite(int *id, int* progress)
     }
   *progress = minprog;
   *id = filter;
+
+  // Remove the filter from the progress map once 100% is reported.
+  // Otherwise, it may be reported accidentally when another filter
+  // hits 100%
+  if (*progress == 100)
+    {
+    this->Internals->ProgressMap.erase(
+      this->Internals->ProgressMap.find(*id));
+    }
   return rec;
 }
 
