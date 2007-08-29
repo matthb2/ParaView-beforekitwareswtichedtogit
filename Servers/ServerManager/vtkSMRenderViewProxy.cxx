@@ -391,9 +391,10 @@ void vtkSMRenderViewProxy::EndCreateVTKObjects()
   // Initialize offscreen rendering.
   // We don't go through the parallel render managers to initialize offscreen,
   // this is because there are some complex interactions happening between the
-  // parallel render managers with respect to enabling offscreen rendering. It
+  // parallel render managers with respect to enabling offscreen rendering. It's
   // way simpler this way.
-  if (pm->GetOptions()->GetUseOffscreenRendering())
+  vtkPVServerInformation* serverInfo = pm->GetServerInformation(this->ConnectionID);
+  if (serverInfo && serverInfo->GetUseOffscreenRendering() )
     {
     vtkClientServerStream stream;
     stream  << vtkClientServerStream::Invoke

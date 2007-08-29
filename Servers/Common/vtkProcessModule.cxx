@@ -1670,29 +1670,6 @@ void vtkProcessModule::SetProcessEnvironmentVariable(int processId,
 }
 
 //-----------------------------------------------------------------------------
-void vtkProcessModule::SynchronizeServerClientOptions(vtkIdType id)
-{
-  vtkPVServerInformation* info = this->GetServerInformation(id);
-  if (!info)
-    {
-    return;
-    }
-  if (!this->Options->GetTileDimensions()[0])
-    {
-    this->Options->SetTileDimensions(info->GetTileDimensions());
-    }
-  if (   !this->Options->GetTileMullions()[0]
-      && !this->Options->GetTileMullions()[1])
-    {
-    this->Options->SetTileMullions(info->GetTileMullions());
-    }
-  if (!this->Options->GetUseOffscreenRendering())
-    {
-    this->Options->SetUseOffscreenRendering(info->GetUseOffscreenRendering());
-    }
-}
-
-//-----------------------------------------------------------------------------
 vtkSocketController* vtkProcessModule::GetSocketController(
   vtkProcessModuleConnection* conn)
 {
