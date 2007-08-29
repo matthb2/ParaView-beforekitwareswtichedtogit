@@ -147,6 +147,12 @@ void vtkPVServerInformation::AddInformation(vtkPVInformation* info)
       {
       this->UseOffscreenRendering = 1;
       }
+
+    if (!serverInfo->GetAVISupport())
+      {
+      this->AVISupport = 0;
+      }
+
     // ICE-T either is there or is not.
     this->UseIceT = serverInfo->GetUseIceT();
     this->SetRenderModuleName(serverInfo->GetRenderModuleName());
