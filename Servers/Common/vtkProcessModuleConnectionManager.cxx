@@ -669,7 +669,8 @@ vtkIdType vtkProcessModuleConnectionManager::CreateConnection(
     if (rc->SetSocket(cs, connecting_side_handshake) == 0)
       {
       rc->Delete();
-      vtkErrorMacro("Handshake failed.");
+      vtkErrorMacro("Handshake failed. You are probably using mismatching "
+                    "versions of client and server.");
       return id;
       }
 
