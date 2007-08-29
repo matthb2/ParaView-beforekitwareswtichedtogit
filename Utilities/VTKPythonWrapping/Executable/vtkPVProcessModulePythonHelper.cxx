@@ -123,7 +123,7 @@ void vtkPVProcessModulePythonHelper::SendCleanupPendingProgress()
 }
 
 //----------------------------------------------------------------------------
-void vtkPVProcessModulePythonHelper::SetLocalProgress(const char* filter, int val)
+void vtkPVProcessModulePythonHelper::SetLocalProgress(const char*, int)
 {
 }
 
