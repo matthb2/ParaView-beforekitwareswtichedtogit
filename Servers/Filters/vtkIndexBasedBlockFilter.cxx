@@ -130,7 +130,7 @@ int vtkIndexBasedBlockFilter::RequestData(vtkInformation*,
         if (!points)
           {
           points = vtkDoubleArray::New();
-          points->SetName("Points");
+          points->SetName("Point Coordinates");
           points->SetNumberOfComponents(3);
           points->SetNumberOfTuples(outFD->GetNumberOfTuples());
           }
