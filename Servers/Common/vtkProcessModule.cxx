@@ -192,6 +192,7 @@ vtkProcessModule::~vtkProcessModule()
   this->ServerInformation->Delete();
 
   this->CacheSizeKeeper->Delete();
+  this->SetLastProgressName(0);
 }
 
 //-----------------------------------------------------------------------------
