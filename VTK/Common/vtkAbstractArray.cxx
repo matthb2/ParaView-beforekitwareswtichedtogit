@@ -215,7 +215,7 @@ void vtkAbstractArray::PrintSelf(ostream& os, vtkIndent indent)
     {
     os << indent << "Name: (none)\n";
     }
-  os << indent << "Data type: " << this->GetDataTypeAsString();
+  os << indent << "Data type: " << this->GetDataTypeAsString() << "\n";
   os << indent << "Size: " << this->Size << "\n";
   os << indent << "MaxId: " << this->MaxId << "\n";
   os << indent << "NumberOfComponents: " << this->NumberOfComponents << endl;
