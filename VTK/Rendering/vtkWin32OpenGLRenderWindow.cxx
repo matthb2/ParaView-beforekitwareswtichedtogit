@@ -447,7 +447,7 @@ const char* vtkWin32OpenGLRenderWindow::ReportCapabilities()
   
   size_t len = strm.str().length() + 1;
   this->Capabilities = new char[len];
-  lstrcpyn(this->Capabilities, strm.str().c_str(), len);
+  strncpy(this->Capabilities, strm.str().c_str(), len);
   
   return this->Capabilities;
 }
