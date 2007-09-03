@@ -643,7 +643,10 @@ int vtkCommunicator::MarshalDataObject(vtkDataObject *object,
     }
   else
     {
-    buffer->SetArray(writer->RegisterAndGetOutputString(), size, 0);
+    buffer->SetArray(writer->RegisterAndGetOutputString(), 
+                     size, 
+                     0,
+                     vtkDataArrayTemplate::VTK_DATA_ARRAY_DELETE);
     buffer->SetNumberOfTuples(size);
     }
   return 1;
