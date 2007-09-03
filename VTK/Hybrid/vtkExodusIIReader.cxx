@@ -4894,7 +4894,7 @@ int vtkExodusIIReaderPrivate::RequestInformation()
         // Check to see if there is metadata that defines what part, material, 
         //  and assembly(ies) this block belongs to. 
 
-        if(this->Parser && this->Parser->GetPartDescription(ids[i])!="")
+        if(this->Parser && this->Parser->GetPartDescription(binfo.Id)!="")
           {
           // First construct the names for the block, part, assembly, and 
           //  material using the parsed XML metadata.
