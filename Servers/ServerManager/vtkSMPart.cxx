@@ -392,6 +392,14 @@ void vtkSMPart::InsertExtractPiecesIfNecessary()
     return;
     }
 
+  // Set the right executive
+  vtkClientServerID execId = pm->NewStreamObject(
+    "vtkCompositeDataPipeline", stream);
+  stream << vtkClientServerStream::Invoke 
+         << tempDataPiece << "SetExecutive" << execId 
+         << vtkClientServerStream::End;
+  pm->DeleteStreamObject(execId, stream);
+  
   // Connect filter
   stream << vtkClientServerStream::Invoke << tempDataPiece 
          << "SetInputConnection"
