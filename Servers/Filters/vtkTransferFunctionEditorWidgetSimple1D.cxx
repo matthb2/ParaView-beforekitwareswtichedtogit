@@ -173,7 +173,7 @@ void vtkTransferFunctionEditorWidgetSimple1D::AddNodeAction(
   vtkTransferFunctionEditorRepresentationSimple1D *rep =
     vtkTransferFunctionEditorRepresentationSimple1D::SafeDownCast(
       self->WidgetRep);
-  int oldActiveHandle = rep->GetActiveHandle();
+  unsigned int oldActiveHandle = rep->GetActiveHandle();
   int state = self->WidgetRep->ComputeInteractionState(x, y);
   if (state == vtkTransferFunctionEditorRepresentationSimple1D::NearNode)
     {
