@@ -133,7 +133,6 @@ void vtkKdTreeManager::Update()
       }
     }
 
-  cout << "Building Locator: " ;
   if (this->StructuredProducer)
     {
     // Ask the vtkKdTreeGenerator to generate the cuts for the kd tree.
@@ -142,13 +141,11 @@ void vtkKdTreeManager::Update()
     generator->SetNumberOfPieces(this->NumberOfPieces);
     generator->BuildTree(this->StructuredProducer->GetOutputDataObject(0));
     generator->Delete();
-    cout << "Using vtkKdTreeGenerator" << endl;
     }
   else
     {
     // Ensure that the kdtree is not using predefined cuts.
     this->KdTree->SetCuts(0);
-    cout << endl;
     }
 
   this->KdTree->BuildLocator();
