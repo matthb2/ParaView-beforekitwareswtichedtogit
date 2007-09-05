@@ -104,7 +104,12 @@ void vtkSMIceTCompositeViewProxy::InitializeForMultiView(vtkSMViewProxy* view)
     return;
     }
 
-  otherView->UpdateVTKObjects();
+  if (!otherView->GetObjectsCreated())
+    {
+    vtkErrorMacro(
+      "InitializeForMultiView was called before the other view was intialized.");
+    return;
+    }
 
   this->SharedParallelRenderManagerID = 
     otherView->SharedParallelRenderManagerID.IsNull()?
