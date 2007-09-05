@@ -351,8 +351,10 @@ int vtkSelectionSource::RequestData(
   output->GetProperties()->Set(vtkSelection::INVERSE(),
                                this->Inverse);
 
-  output->GetProperties()->Set(vtkSelection::ARRAY_NAME(),
-                               this->ArrayName);
+  if (output->GetSelectionList())
+    {
+    output->GetSelectionList()->SetName(this->ArrayName);
+    }
 
   output->GetProperties()->Set(vtkSelection::SHOW_BOUNDS(),
                                this->ShowBounds);
