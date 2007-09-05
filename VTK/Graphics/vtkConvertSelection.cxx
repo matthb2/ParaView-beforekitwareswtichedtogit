@@ -219,7 +219,7 @@ int vtkConvertSelection::Convert(
 {
   // If it is an internal node, recurse
   if (input->GetContentType() == vtkSelection::SELECTIONS)
-  {
+    {
     output->SetContentType(vtkSelection::SELECTIONS);
     for (unsigned int i = 0; i < input->GetNumberOfChildren(); ++i)
       {
@@ -232,7 +232,7 @@ int vtkConvertSelection::Convert(
       output->AddChild(outputChild);
       }
     return 1;
-  }
+    }
   
   // Start by shallow copying the selection and
   // setting the output content type.
