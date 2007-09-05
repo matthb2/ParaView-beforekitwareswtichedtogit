@@ -115,7 +115,7 @@ int vtkConvertSelection::SelectTableFromTable(
           vtksys_stl::set_intersection(
             matching.begin(), matching.end(), 
             curMatch.begin(), curMatch.end(), 
-            intersection.begin());
+            vtksys_stl::inserter(intersection, intersection.begin()));
           matching = intersection;
           }
         }
