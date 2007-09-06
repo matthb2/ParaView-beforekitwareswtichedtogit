@@ -61,7 +61,7 @@ void vtkThresholdTable::PrintSelf(ostream& os, vtkIndent indent)
   os << endl;
 }
 
-bool vtkVariantLessThan(vtkVariant a, vtkVariant b)
+bool vtkThresholdTableCompare(vtkVariant a, vtkVariant b)
 {
   return a.ToDouble() < b.ToDouble();
 }
@@ -76,19 +76,19 @@ void vtkThresholdTableThresholdRows(iterT* it, vtkTable* input, vtkTable* output
     vtkVariant v(it->GetValue(i));
     if (mode == vtkThresholdTable::ACCEPT_LESS_THAN)
       {
-      accept = vtkVariantLessThan(v, max);
+      accept = vtkThresholdTableCompare(v, max);
       }
     else if (mode == vtkThresholdTable::ACCEPT_GREATER_THAN)
       {
-      accept = vtkVariantLessThan(min, v);
+      accept = vtkThresholdTableCompare(min, v);
       }
     else if (mode == vtkThresholdTable::ACCEPT_BETWEEN)
       {
-      accept = (vtkVariantLessThan(min, v) && vtkVariantLessThan(v, max));
+      accept = (vtkThresholdTableCompare(min, v) && vtkThresholdTableCompare(v, max));
       }
     else if (mode == vtkThresholdTable::ACCEPT_OUTSIDE)
       {
-      accept = (vtkVariantLessThan(v, min) || vtkVariantLessThan(max, v));
+      accept = (vtkThresholdTableCompare(v, min) || vtkThresholdTableCompare(max, v));
       }
     if (accept)
       {

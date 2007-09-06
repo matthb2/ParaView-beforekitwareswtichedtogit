@@ -93,7 +93,7 @@ bool vtkSQLiteQuery::Execute()
     }
 
   vtkSQLiteDatabase *dbContainer = 
-    dynamic_cast<vtkSQLiteDatabase *>(this->Database);
+    vtkSQLiteDatabase::SafeDownCast(this->Database);
   assert(dbContainer != NULL);
 
   vtk_sqlite3 *db = dbContainer->SQLiteInstance;

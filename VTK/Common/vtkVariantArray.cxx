@@ -689,13 +689,12 @@ vtkIdType vtkVariantArray::LookupValue(vtkVariant value)
   int numComps = this->GetNumberOfComponents();
   vtkIdType numTuples = this->GetNumberOfTuples();
   vtkVariant* ptr = this->Lookup->SortedArray->GetPointer(0);
-  vtkVariantLessThan comp;
   vtkVariant* found = vtkstd::lower_bound(
-    ptr, ptr + numComps*numTuples, value, comp);
+    ptr, ptr + numComps*numTuples, value, vtkVariantLessThan());
   
   // Check for equality before returning the value 
   // (i.e. neither is less than the other).
-  if (!comp(*found,value) && !comp(value,*found))
+  if (!vtkVariantLessThan()(*found,value) && !vtkVariantLessThan()(value,*found))
     {
     return this->Lookup->IndexArray->GetId(static_cast<vtkIdType>(found - ptr));
     }
