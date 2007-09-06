@@ -67,7 +67,7 @@ vtkFast2DLayoutStrategy::vtkFast2DLayoutStrategy()
     
   this->RandomSeed = 123;
   this->MaxNumberOfIterations = 200;
-  this->IterationsPerLayout = 100;
+  this->IterationsPerLayout = 200;
   this->InitialTemperature = 5;
   this->CoolDownRate = 50.0;
   this->LayoutComplete = 0;
