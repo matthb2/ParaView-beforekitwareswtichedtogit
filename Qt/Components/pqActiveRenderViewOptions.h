@@ -63,6 +63,13 @@ public:
   virtual void changeView(pqView *view);
   virtual void closeOptions();
   //@}
+
+protected slots:
+  void finishDialog(int);
+
+private:
+  class pqInternal;
+  pqInternal* Internal;
 };
 
 #endif

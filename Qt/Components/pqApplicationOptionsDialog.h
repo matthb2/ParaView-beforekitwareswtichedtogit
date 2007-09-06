@@ -30,46 +30,23 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 =========================================================================*/
 
-/// \file pqOptionsContainer.h
-/// \date 7/20/2007
-
-#ifndef _pqOptionsContainer_h
-#define _pqOptionsContainer_h
+#ifndef _pqApplicationOptionsDialog_h
+#define _pqApplicationOptionsDialog_h
 
 
 #include "pqComponentsExport.h"
-#include "pqOptionsPage.h"
+#include "pqOptionsDialog.h"
 
 
-/// \class pqOptionsContainer
-/// \brief
-///   The pqOptionsContainer class is used to add multiple pages of
-///   options to the pqOptionsDialog.
-///
-/// Grouping the options pages into container objects can make is
-/// easier to maintain a set of options. The container makes it
-/// possible to reuse a UI form. If several objects have the same
-/// properties, the same page can be used for each of the objects.
-class PQCOMPONENTS_EXPORT pqOptionsContainer : public pqOptionsPage
+/// dialog class that allows editing of application wide settings
+class PQCOMPONENTS_EXPORT pqApplicationOptionsDialog : public pqOptionsDialog
 {
   Q_OBJECT
 
 public:
-  /// \brief
-  ///   Constructs an options container.
-  /// \param parent The parent widget.
-  pqOptionsContainer(QWidget *parent=0);
-  virtual ~pqOptionsContainer() {}
+  pqApplicationOptionsDialog(QWidget *parent=0);
+  ~pqApplicationOptionsDialog();
 
-  /// \brief
-  ///   Sets the currently displayed page.
-  /// \param page The page hierarchy name.
-  virtual void setPage(const QString &page) = 0;
-  
-  /// \brief
-  ///   Gets the list of available pages in the container.
-  /// \param pages Used to return the list of available pages.
-  virtual QStringList getPageList() = 0;
 };
 
 #endif

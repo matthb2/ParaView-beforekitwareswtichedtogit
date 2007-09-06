@@ -30,46 +30,51 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 =========================================================================*/
 
-/// \file pqOptionsContainer.h
-/// \date 7/20/2007
-
-#ifndef _pqOptionsContainer_h
-#define _pqOptionsContainer_h
-
+#ifndef _pqGlobalRenderViewOptions_h
+#define _pqGlobalRenderViewOptions_h
 
 #include "pqComponentsExport.h"
-#include "pqOptionsPage.h"
+#include "pqOptionsContainer.h"
 
-
-/// \class pqOptionsContainer
-/// \brief
-///   The pqOptionsContainer class is used to add multiple pages of
-///   options to the pqOptionsDialog.
-///
-/// Grouping the options pages into container objects can make is
-/// easier to maintain a set of options. The container makes it
-/// possible to reuse a UI form. If several objects have the same
-/// properties, the same page can be used for each of the objects.
-class PQCOMPONENTS_EXPORT pqOptionsContainer : public pqOptionsPage
+/// options container for pages of render view options
+class PQCOMPONENTS_EXPORT pqGlobalRenderViewOptions : public pqOptionsContainer
 {
   Q_OBJECT
 
 public:
-  /// \brief
-  ///   Constructs an options container.
-  /// \param parent The parent widget.
-  pqOptionsContainer(QWidget *parent=0);
-  virtual ~pqOptionsContainer() {}
+  pqGlobalRenderViewOptions(QWidget *parent=0);
+  virtual ~pqGlobalRenderViewOptions();
 
-  /// \brief
-  ///   Sets the currently displayed page.
-  /// \param page The page hierarchy name.
-  virtual void setPage(const QString &page) = 0;
-  
-  /// \brief
-  ///   Gets the list of available pages in the container.
-  /// \param pages Used to return the list of available pages.
-  virtual QStringList getPageList() = 0;
+  // set the current page
+  virtual void setPage(const QString &page);
+  // return a list of strings for pages we have
+  virtual QStringList getPageList();
+
+  // apply the changes
+  virtual void applyChanges();
+  // reset the changes
+  virtual void resetChanges();
+
+  // tell pqOptionsDialog that we want an apply button
+  virtual bool isApplyUsed() const { return true; }
+
+protected:
+  void init();
+
+private slots:
+  void lodThresholdSliderChanged(int);
+  void lodResolutionSliderChanged(int);
+  void outlineThresholdSliderChanged(int);
+  void compositeThresholdSliderChanged(int);
+  void subsamplingRateSliderChanged(int);
+  void squirtLevelRateSliderChanged(int);
+  void stillRenderSubsampleRateSliderChanged(int);
+  void clientCollectSliderChanged(int);
+  void resetDefaultCameraManipulators();
+
+private:
+  class pqInternal;
+  pqInternal* Internal;
 };
 
 #endif

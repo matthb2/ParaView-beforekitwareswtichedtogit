@@ -29,36 +29,50 @@ NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 =========================================================================*/
-#ifndef __pqSettingsDialog_h
-#define __pqSettingsDialog_h
 
-#include "pqDialog.h"
+#ifndef _pqRenderViewOptions_h
+#define _pqRenderViewOptions_h
 
-class pqSettingsDialogInternal;
-class pqRenderView;
+#include "pqComponentsExport.h"
+#include "pqOptionsContainer.h"
 
-class PQCOMPONENTS_EXPORT pqSettingsDialog : public pqDialog 
+class pqView;
+
+/// options container for pages of render view options
+class PQCOMPONENTS_EXPORT pqRenderViewOptions : public pqOptionsContainer
 {
   Q_OBJECT
+
 public:
-  pqSettingsDialog(QWidget* parent=NULL, Qt::WFlags f=0);
-  virtual ~pqSettingsDialog();
+  pqRenderViewOptions(QWidget *parent=0);
+  virtual ~pqRenderViewOptions();
 
-public slots:
-  /// Set the render view whose properties are to be shown in the dialog.
-  /// We may want to make this general and work for all types of views.
-  void setRenderView(pqRenderView*);
+  // set the view to show options for
+  void setView(pqView* view);
 
-signals:
-  /// Fired when user hits Apply or Ok.
-  void apply();
+  // set the current page
+  virtual void setPage(const QString &page);
+  // return a list of strings for pages we have
+  virtual QStringList getPageList();
 
-protected:
-  void setupGUI();
+  // apply the changes
+  virtual void applyChanges();
+  // reset the changes
+  virtual void resetChanges();
+
+  // tell pqOptionsDialog that we want an apply button
+  virtual bool isApplyUsed() const { return true; }
+
+protected slots:
+  void connectGUI();
+  void disconnectGUI();
+  void restoreDefaultBackground();
+  void resetLights();
+  void resetAnnotation();
 
 private:
-  pqSettingsDialogInternal* Internal;
+  class pqInternal;
+  pqInternal* Internal;
 };
 
 #endif
-

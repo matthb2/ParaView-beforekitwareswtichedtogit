@@ -28,36 +28,32 @@ LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
 NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-========================================================================*/
-#ifndef __pqApplicationSettingsWidget_h 
-#define __pqApplicationSettingsWidget_h
+=========================================================================*/
 
-#include <QWidget>
-#include "pqComponentsExport.h"
-
-/// pqApplicationSettingsWidget is the widget used in the pqSettingsDialog to
-/// show application settings.
-class PQCOMPONENTS_EXPORT pqApplicationSettingsWidget : public QWidget
+#include "pqApplicationOptionsDialog.h"
+#include "pqApplicationOptions.h"
+#include "pqGlobalRenderViewOptions.h"
+  
+pqApplicationOptionsDialog::pqApplicationOptionsDialog(QWidget* p)
+  : pqOptionsDialog(p)
 {
-  Q_OBJECT
-  typedef QWidget Superclass;
-public:
-  pqApplicationSettingsWidget(QWidget* parent=0);
-  virtual ~pqApplicationSettingsWidget();
+  this->setApplyNeeded(true);
 
-public slots:
-  /// Called to accept all user changes.
-  void accept();
+  pqApplicationOptions* appOptions = new pqApplicationOptions;
+  this->addOptions(appOptions);
+  
+  pqGlobalRenderViewOptions* renOptions = new pqGlobalRenderViewOptions;
+  this->addOptions(renOptions);
+  
+  QStringList pages = appOptions->getPageList();
+  if(pages.size())
+    {
+    this->setCurrentPage(pages[0]);
+    }
+}
 
-private:
-  pqApplicationSettingsWidget(const pqApplicationSettingsWidget&); // Not implemented.
-  void operator=(const pqApplicationSettingsWidget&); // Not implemented.
-
-  class pqInternal;
-  pqInternal* Internal;
-
-};
-
-#endif
+pqApplicationOptionsDialog::~pqApplicationOptionsDialog()
+{
+}
 
 
