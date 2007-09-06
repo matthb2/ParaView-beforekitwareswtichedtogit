@@ -320,7 +320,7 @@ vtkSMProxy* vtkSMProxyIterator::GetProxy()
       if (this->Internals->ProxyIterator !=
         this->Internals->ProxyListIterator->second.end())
         {
-        return this->Internals->ProxyIterator->Proxy.GetPointer();
+        return this->Internals->ProxyIterator->GetPointer()->Proxy.GetPointer();
         }
       }
     }
