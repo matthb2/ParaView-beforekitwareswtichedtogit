@@ -368,6 +368,7 @@ vtkParallelopipedRepresentation::vtkParallelopipedRepresentation()
 
   // Handle looks like a sphere.
   this->HandleRepresentation  = NULL;
+  this->HandleRepresentations = NULL;
   vtkSphereHandleRepresentation * hRep = vtkSphereHandleRepresentation::New();
   this->SetHandleRepresentation(hRep);
   hRep->Delete();
