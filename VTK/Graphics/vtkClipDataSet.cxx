@@ -656,4 +656,7 @@ void vtkClipDataSet::PrintSelf(ostream& os, vtkIndent indent)
 
   os << indent << "Generate Clipped Output: " 
      << (this->GenerateClippedOutput ? "On\n" : "Off\n");
+
+  os << indent << "UseValueAsOffset: " 
+     << (this->UseValueAsOffset ? "On\n" : "Off\n");
 }
