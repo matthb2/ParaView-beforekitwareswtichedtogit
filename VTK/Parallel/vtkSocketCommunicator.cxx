@@ -69,6 +69,8 @@ void vtkSocketCommunicator::PrintSelf(ostream& os, vtkIndent indent)
     {
     os << "NotSet\n";
     }
+  os << indent << "IsServer: "
+     << (this->IsServer ? "yes" : "no") << endl;
   os << indent << "RemoteHas64BitIds: "
      << (this->RemoteHas64BitIds ? "yes" : "no") << endl;
   os << indent << "Socket: ";

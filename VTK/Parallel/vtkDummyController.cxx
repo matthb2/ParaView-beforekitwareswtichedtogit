@@ -38,6 +38,9 @@ vtkDummyController::~vtkDummyController()
 void vtkDummyController::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os,indent);
+
+  os << indent << "Communicator: " << this->Communicator << endl;
+  os << indent << "RMICommunicator: " << this->RMICommunicator << endl;
 }
 
 //-----------------------------------------------------------------------------
