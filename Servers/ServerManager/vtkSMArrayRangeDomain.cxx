@@ -200,7 +200,7 @@ void vtkSMArrayRangeDomain::SetArrayRange(
   if (numArrComp > 1) // vector magnitude range
     {
     this->AddMinimum(numArrComp, ai->GetComponentRange(-1)[0]);
-    this->AddMinimum(numArrComp, ai->GetComponentRange(-1)[1]);
+    this->AddMaximum(numArrComp, ai->GetComponentRange(-1)[1]);
     }
 }
 //---------------------------------------------------------------------------
