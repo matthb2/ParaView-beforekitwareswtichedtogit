@@ -65,6 +65,7 @@ vtkSimple2DLayoutStrategy::vtkSimple2DLayoutStrategy()
   this->CoolDownRate = 50.0;
   this->LayoutComplete = 0;
   this->EdgeWeightField = 0;
+  this->SetEdgeWeightField("weight");
   this->RestDistance = 0;
   this->Jitter = true;
   this->MaxNumberOfIterations = 100;
