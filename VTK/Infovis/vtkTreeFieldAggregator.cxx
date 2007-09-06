@@ -42,8 +42,8 @@ vtkTreeFieldAggregator::vtkTreeFieldAggregator():MinValue(0.0)
 {
   this->MinValue = 0;
   this->Field = 0;
-  this->SetLeafVertexUnitSize(true);
-  this->SetLogScale(false);
+  this->LeafVertexUnitSize = true;
+  this->LogScale = false;
 }
 
 vtkTreeFieldAggregator::~vtkTreeFieldAggregator()
