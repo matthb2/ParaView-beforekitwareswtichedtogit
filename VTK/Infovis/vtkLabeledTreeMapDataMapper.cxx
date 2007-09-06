@@ -115,7 +115,7 @@ vtkLabeledTreeMapDataMapper::~vtkLabeledTreeMapDataMapper()
     delete [] this->TextMappers;
     this->TextMappers = NULL;
     }
-  
+  this->SetRectanglesFieldName(NULL);
 }
 
 //----------------------------------------------------------------------------
