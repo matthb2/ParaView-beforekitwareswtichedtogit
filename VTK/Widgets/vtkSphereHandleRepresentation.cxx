@@ -351,7 +351,6 @@ void vtkSphereHandleRepresentation::Translate(double *p1, double *p2)
   v[1] = p2[1] - p1[1];
   v[2] = p2[2] - p1[2];
   
-  double *bounds = this->GetBounds();
   double *pos = this->Sphere->GetCenter();
   double newFocus[3];
 
