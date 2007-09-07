@@ -148,7 +148,6 @@ void vtkPVInteractorStyle::OnButtonUp(int button)
                               this->Interactor);
     this->Current->EndInteraction();
     this->InvokeEvent(vtkCommand::EndInteractionEvent);
-    this->Interactor->Render();
     this->Current->UnRegister(this);
     this->Current = NULL;
     }
