@@ -102,7 +102,14 @@ void vtkProcessGroup::SetCommunicator(vtkCommunicator *communicator)
 //-----------------------------------------------------------------------------
 int vtkProcessGroup::GetLocalProcessId()
 {
-  return this->FindProcessId(this->Communicator->GetLocalProcessId());
+  if (this->Communicator)
+    {
+    return this->FindProcessId(this->Communicator->GetLocalProcessId());
+    }
+  else
+    {
+    return -1;
+    }
 }
 
 //-----------------------------------------------------------------------------
