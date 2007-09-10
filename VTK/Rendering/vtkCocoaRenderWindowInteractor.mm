@@ -222,24 +222,24 @@ void (*vtkCocoaRenderWindowInteractor::ClassExitMethodArgDelete)(void *) = (void
 class vtkEarlyCocoaSetup
   {
     public:
-    vtkEarlyCocoaSetup::vtkEarlyCocoaSetup()
+    vtkEarlyCocoaSetup()
     {
       this->CreatePoolOfLastResort();
     }
     
-    vtkEarlyCocoaSetup::~vtkEarlyCocoaSetup()
+    virtual ~vtkEarlyCocoaSetup()
     {
       this->DestroyPoolOfLastResort();
     }
     
-    void vtkEarlyCocoaSetup::DestroyPoolOfLastResort()
+    void DestroyPoolOfLastResort()
     {
       [Pool release];
       Pool = nil;
     }
     
     protected:
-    void vtkEarlyCocoaSetup::CreatePoolOfLastResort()
+    void CreatePoolOfLastResort()
     {
       Pool = [[NSAutoreleasePool alloc] init];
     }
