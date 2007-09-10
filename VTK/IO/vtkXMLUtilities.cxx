@@ -605,12 +605,14 @@ int vtkXMLUtilities::FactorElementsInternal(vtkXMLDataElement *tree,
     {
     similar_trees[i]->RemoveAllAttributes();
     similar_trees[i]->RemoveAllNestedElements();
+    similar_trees[i]->SetCharacterData(NULL, 0);
     similar_trees[i]->SetName(VTK_XML_UTILITIES_FACTORED_REF_NAME);
     similar_trees[i]->SetAttribute("Id", id.str().c_str());
     }
 
   tree->RemoveAllAttributes();
   tree->RemoveAllNestedElements();
+  tree->SetCharacterData(NULL, 0);
   tree->SetName(VTK_XML_UTILITIES_FACTORED_REF_NAME);
   tree->SetAttribute("Id", id.str().c_str());
 
