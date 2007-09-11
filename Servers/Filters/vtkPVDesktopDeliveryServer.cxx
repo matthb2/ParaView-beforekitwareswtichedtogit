@@ -568,7 +568,7 @@ void vtkPVDesktopDeliveryServer::SetRenderWindowSize()
     }
   else
     {
-    int *size = this->RenderWindow->GetSize();
+    int *size = this->RenderWindow->GetActualSize();
     this->FullImageSize[0] = size[0];
     this->FullImageSize[1] = size[1];
     this->ReducedImageSize[0] = (int)(size[0]/this->ImageReductionFactor);

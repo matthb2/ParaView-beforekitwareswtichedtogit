@@ -31,6 +31,7 @@ vtkCxxRevisionMacro(vtkSMIceTMultiDisplayRenderViewProxy, "$Revision$");
 //-----------------------------------------------------------------------------
 vtkSMIceTMultiDisplayRenderViewProxy::vtkSMIceTMultiDisplayRenderViewProxy()
 {
+  this->EnableTiles = true;
   this->CollectGeometryThreshold = 10.0;
   this->StillRenderImageReductionFactor = 1;
 

@@ -103,7 +103,7 @@ void vtkMultiViewManager::StartMagnificationFix()
     return;
     }
 
-  int *size = this->RenderWindow->GetSize();
+  int *size = this->RenderWindow->GetActualSize();
   this->OriginalRenderWindowSize[0] = size[0];
   this->OriginalRenderWindowSize[1] = size[1];
 
