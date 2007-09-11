@@ -65,6 +65,14 @@ int *vtkWindow::GetSize()
 }
 
 //-----------------------------------------------------------------------------
+int* vtkWindow::GetActualSize()
+{
+  // Some subclasses override GetSize() to do some additional magic.
+  this->GetSize();
+  return this->Size;
+}
+
+//-----------------------------------------------------------------------------
 void vtkWindow::SetSize(int a[2])
 {
   this->SetSize(a[0],a[1]);
