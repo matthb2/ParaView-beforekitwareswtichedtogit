@@ -409,6 +409,21 @@ int vtkPVDataSetAttributesInformation::GetNumberOfArrays() const
 }
 
 //----------------------------------------------------------------------------
+int vtkPVDataSetAttributesInformation::GetMaximumNumberOfTuples() const
+{
+  vtkPVArrayInformation* info;
+  int maxNumVals = 0;
+
+  this->ArrayInformation->InitTraversal();
+  while ( (info = static_cast<vtkPVArrayInformation*>(this->ArrayInformation->GetNextItemAsObject())) )
+    {
+    maxNumVals = info->GetNumberOfTuples() > maxNumVals ? info->GetNumberOfTuples() : maxNumVals;
+    }
+
+  return maxNumVals;
+}
+
+//----------------------------------------------------------------------------
 vtkPVArrayInformation*
 vtkPVDataSetAttributesInformation::GetArrayInformation(int idx) const
 {
