@@ -787,7 +787,8 @@ void vtkTransformConcatenation::DeepCopy(vtkTransformConcatenation *concat)
       tuple->InverseTransform->Delete();
       tuple->InverseTransform = NULL;
       }
-    oldPreMatrixTransform = (vtkSimpleTransform *)this->PreMatrixTransform;
+    oldPreMatrixTransform =
+      static_cast<vtkSimpleTransform *>(this->PreMatrixTransform);
     this->PreMatrixTransform = NULL;
     this->PreMatrix = NULL;
     }    
@@ -810,7 +811,8 @@ void vtkTransformConcatenation::DeepCopy(vtkTransformConcatenation *concat)
       tuple->InverseTransform->Delete();
       tuple->InverseTransform = NULL;
       }
-    oldPostMatrixTransform = (vtkSimpleTransform *)this->PostMatrixTransform;
+    oldPostMatrixTransform =
+      static_cast<vtkSimpleTransform *>(this->PostMatrixTransform);
     this->PostMatrixTransform = NULL;
     this->PostMatrix = NULL;
     }    
