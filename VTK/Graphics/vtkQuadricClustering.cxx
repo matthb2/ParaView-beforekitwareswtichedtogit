@@ -765,7 +765,7 @@ void vtkQuadricClustering::AddVertex(vtkIdType binId, double *pt,
       if (this->CopyCellData && input)
         {
         output->GetCellData()->
-          CopyData(output->GetCellData(), this->InCellCount,
+          CopyData(input->GetCellData(), this->InCellCount,
                    this->OutCellCount++);
         }
       }
