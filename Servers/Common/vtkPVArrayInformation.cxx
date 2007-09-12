@@ -296,8 +296,7 @@ int vtkPVArrayInformation::Compare(vtkPVArrayInformation *info)
     return 0;
     }
   if (strcmp(info->GetName(), this->Name) == 0 &&
-      info->GetNumberOfComponents() == this->NumberOfComponents && 
-      info->GetNumberOfTuples() == this->NumberOfTuples)
+      info->GetNumberOfComponents() == this->NumberOfComponents)
     {
     return 1;
     }
