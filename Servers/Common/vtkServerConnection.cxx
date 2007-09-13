@@ -298,6 +298,19 @@ void vtkServerConnection::GatherInformation(vtkTypeUInt32 serverFlags,
     }
   serverFlags = this->CreateSendFlag(serverFlags);
 
+  if (serverFlags & vtkProcessModule::CLIENT)
+    {
+    vtkProcessModule* pm = vtkProcessModule::GetProcessModule();
+    vtkObject* object = vtkObject::SafeDownCast(pm->GetObjectFromID(id));
+    if (!object)
+      {
+      vtkErrorMacro("Failed to locate object with ID: " << id);
+      return;
+      }
+
+    info->CopyFromObject(object);
+    }
+
   if (serverFlags & vtkProcessModule::DATA_SERVER ||
     serverFlags & vtkProcessModule::DATA_SERVER_ROOT)
     {
