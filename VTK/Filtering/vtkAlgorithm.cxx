@@ -110,7 +110,7 @@ vtkAlgorithm::~vtkAlgorithm()
 void vtkAlgorithm::UpdateProgress(double amount)
 {
   this->Progress = amount;
-  this->InvokeEvent(vtkCommand::ProgressEvent,(void *)&amount);
+  this->InvokeEvent(vtkCommand::ProgressEvent,static_cast<void *>(&amount));
 }
 
 

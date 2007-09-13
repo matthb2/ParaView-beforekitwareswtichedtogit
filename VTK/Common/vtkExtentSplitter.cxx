@@ -91,7 +91,7 @@ void vtkExtentSplitter::PrintSelf(ostream& os, vtkIndent indent)
       }
     }
   os << indent << "Number of Extents in Queue: " << 
-    (int)this->Internal->Queue.size() << "\n";
+    static_cast<int>(this->Internal->Queue.size()) << "\n";
   if(this->Internal->SubExtents.empty())
     {
     os << indent << "SubExtents: (none)\n";

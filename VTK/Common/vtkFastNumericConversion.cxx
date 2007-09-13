@@ -81,9 +81,9 @@ void vtkFastNumericConversion::InternalRebuild()
     this->fixRound *= .5;
     }
   this->fracMask = (1<<this->internalReservedFracBits)-1;
-  this->fpDenormalizer = (((unsigned long)1) << (52-30-this->internalReservedFracBits)) * 
+  this->fpDenormalizer = (static_cast<unsigned long>(1) << (52-30-this->internalReservedFracBits)) * 
     this->two30() * this->BorrowBit();
-  this->epTempDenormalizer = this->fpDenormalizer * (((unsigned long)1) << (63-52));
+  this->epTempDenormalizer = this->fpDenormalizer * (static_cast<unsigned long>(1) << (63-52));
   }
 
 
@@ -133,7 +133,7 @@ void vtkFastNumericConversion::PerformanceTests(void)
     for (i=0; i<inner_count; i++)
       {
       // Pure bit copy
-      ival[i] = *((int *)(&dval[i]));
+      ival[i] = *reinterpret_cast<int *>(&dval[i]);
       }
     }
   timer->StopTimer();
@@ -146,7 +146,7 @@ void vtkFastNumericConversion::PerformanceTests(void)
     {
     for (i=0; i<inner_count; i++)
       {
-      ival[i] = (int) dval[i];
+      ival[i] = static_cast<int>(dval[i]);
       }
     }
   timer->StopTimer();

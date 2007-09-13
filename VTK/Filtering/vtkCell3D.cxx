@@ -221,7 +221,7 @@ void vtkCell3D::Clip(double value, vtkDataArray *cellScalars,
                      vtkCellData *inCD, vtkIdType cellId,
                      vtkCellData *outCD, int insideOut)
 {
-  vtkCell3D *cell3D = (vtkCell3D *)this; //has to be to be in this method
+  vtkCell3D *cell3D = static_cast<vtkCell3D *>(this); //has to be in this method
   int numPts=this->GetNumberOfPoints();
   int numEdges=this->GetNumberOfEdges();
   int *verts, v1, v2;

@@ -217,7 +217,8 @@ void vtkHomogeneousTransform::GetMatrix(vtkMatrix4x4 *m)
 //----------------------------------------------------------------------------
 void vtkHomogeneousTransform::InternalDeepCopy(vtkAbstractTransform *transform)
 {
-  vtkHomogeneousTransform *t = (vtkHomogeneousTransform *)transform;
+  vtkHomogeneousTransform *t =
+    static_cast<vtkHomogeneousTransform *>(transform);
 
   this->Matrix->DeepCopy(t->Matrix);
 }
