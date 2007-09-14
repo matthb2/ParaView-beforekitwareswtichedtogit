@@ -249,7 +249,7 @@ void vtkSimple2DLayoutStrategy::Layout()
         
       for(vtkIdType k=0; k<numVertices; ++k)
         {
-        // Don't repluse against yourself :)
+        // Don't repulse against yourself :)
         if (k == j) continue;
           
         pointIndex2 = k * 3;
