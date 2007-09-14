@@ -145,6 +145,20 @@ void vtkExtractCTHPart::RemoveAllVolumeArrayNames()
 }
 
 //-----------------------------------------------------------------------------
+void vtkExtractCTHPart::AddVolumeArrayName(char* arrayName)
+{
+  if(arrayName==0)
+    {
+    return;
+    }
+  
+  this->Internals->DataType = 0;
+
+  this->Internals->VolumeArrayNames.push_back(arrayName);
+  this->Modified();
+}
+
+//-----------------------------------------------------------------------------
 void vtkExtractCTHPart::AddDoubleVolumeArrayName(char* arrayName)
 {
   if(arrayName==0)
@@ -161,6 +175,7 @@ void vtkExtractCTHPart::AddDoubleVolumeArrayName(char* arrayName)
   this->Internals->VolumeArrayNames.push_back(arrayName);
   this->Modified();
 }
+
 //-----------------------------------------------------------------------------
 void vtkExtractCTHPart::AddFloatVolumeArrayName(char* arrayName)
 {
