@@ -595,7 +595,7 @@ void vtkWin32RenderWindowInteractor::OnKeyUp(HWND, UINT vCode, UINT nRepCnt, UIN
       }
 #endif
   }
-  char *keysym = AsciiToKeySymTable[(unsigned char)nChar];
+  const char *keysym = AsciiToKeySymTable[(unsigned char)nChar];
   if (keysym == 0)
     {
     keysym = VKeyCodeToKeySymTable[(unsigned char)vCode];
