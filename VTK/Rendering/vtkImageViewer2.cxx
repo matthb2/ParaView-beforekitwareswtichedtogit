@@ -569,7 +569,7 @@ public:
   vtkImageViewer2 *IV;
   double InitialWindow;
   double InitialLevel;
-}
+};
 
 //----------------------------------------------------------------------------
 void vtkImageViewer2::InstallPipeline()
