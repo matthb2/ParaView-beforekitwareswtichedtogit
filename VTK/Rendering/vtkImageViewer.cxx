@@ -200,7 +200,7 @@ public:
   vtkImageViewer *IV;
   double InitialWindow;
   double InitialLevel;
-};
+}
 
 //----------------------------------------------------------------------------
 void vtkImageViewer::SetupInteractor(vtkRenderWindowInteractor *rwi)
