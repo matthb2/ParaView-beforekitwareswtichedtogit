@@ -78,7 +78,7 @@ void vtkPExtractArraysOverTime::PostExecute(
       // Zero out invalid time steps and report error if necessary.
       bool error = false;
       vtkUnsignedCharArray* validPts = vtkUnsignedCharArray::SafeDownCast(
-        output->GetPointData()->GetArray("vtkEAOTValidity"));
+        output->GetPointData()->GetArray("vtkValidPointMask"));
       if (validPts)
         {
         int* dims = output->GetDimensions();
@@ -141,7 +141,7 @@ void vtkPExtractArraysOverTime::AddRemoteData(vtkRectilinearGrid* routput,
     }
   
   vtkUnsignedCharArray* rValidPts = vtkUnsignedCharArray::SafeDownCast(
-    routput->GetPointData()->GetArray("vtkEAOTValidity"));
+    routput->GetPointData()->GetArray("vtkValidPointMask"));
 
   // Copy the valid values
   if (rValidPts)

@@ -288,7 +288,7 @@ void vtkExtractTemporalFieldData::CopyDataToOutput(vtkDataSet *input,
   // by a cell or at a cell or point id that is destroyed.
   // It is used in the parallel subclass as well.
   vtkUnsignedCharArray* validPts = vtkUnsignedCharArray::New();
-  validPts->SetName("vtkEAOTValidity");
+  validPts->SetName("vtkValidPointMask");
   validPts->SetNumberOfTuples(this->NumberOfTimeSteps);
   opd->AddArray(validPts);
   // if no valid field arrays were found, which would happen if the reader
