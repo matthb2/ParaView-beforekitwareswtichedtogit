@@ -115,7 +115,7 @@ int vtkIndexBasedBlockFilter::RequestData(vtkInformation*,
       inArray = inFD->GetArray(j);
       outArray = outFD->GetArray(j);
       inNumTuples = inArray->GetNumberOfTuples();
-      if(this->StartIndex < inNumTuples-1)
+      if(this->StartIndex < inNumTuples)
         {
         outNumTuples = this->EndIndex < inNumTuples ? 
                        this->EndIndex-this->StartIndex+1 : 
