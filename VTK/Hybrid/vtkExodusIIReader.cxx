@@ -1987,15 +1987,19 @@ void vtkExodusIIReaderPrivate::GlomArrayNames( int objtyp,
       {
       if ( i+1 < num_vars )
         {
+        int sli = (int)strlen(var_names[i]) - 1;
         int ii = i;
         while ( ii < num_vars )
           {
-          int sl = (int)strlen(var_names[ii]) - 1;
+          int slii = ii == i ? sli : (int)strlen(var_names[ii]) - 1;
           // Require the strings to be identical except for the 
           // final XYZ at the end.
-          if ( ! toupper(var_names[ii][sl]) == ('X' + (ii-i)) || 
-               strncmp( var_names[ii], var_names[i], sl ) )
+          if ( slii != sli ||
+               toupper(var_names[ii][slii]) != ('X' + (ii-i)) || 
+               strncmp( var_names[ii], var_names[i], slii ) )
+            {
             break;
+            }
           ainfo.OriginalNames.push_back( var_names[ii] );
           ainfo.OriginalIndices.push_back( ii + 1 );
           ++ii;
