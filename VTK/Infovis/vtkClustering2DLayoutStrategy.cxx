@@ -624,7 +624,7 @@ void vtkClustering2DLayoutStrategy::ResolveCoincidentVertices()
   giantGrid->Delete();
   
   // Report number of collision operations just for sanity check  
-  vtkWarningMacro("Collision Ops: " << totalCollisionOps);
+  // vtkWarningMacro("Collision Ops: " << totalCollisionOps);
 }
 
 void vtkClustering2DLayoutStrategy::PrintSelf(ostream& os, vtkIndent indent)
