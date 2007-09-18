@@ -261,7 +261,7 @@ void vtkFast2DLayoutStrategy::Initialize()
   this->Temp = this->InitialTemperature;
   
   // Set up the image splatter
-  GenerateGaussianSplat(this->SplatImage, 41, 41);
+  this->GenerateGaussianSplat(this->SplatImage, 41, 41);
   this->DensityGrid->SetInput(1, this->SplatImage);
   this->DensityGrid->SetOutputDimensions(100, 100, 1);
 
@@ -538,6 +538,7 @@ void vtkFast2DLayoutStrategy::ResolveCoincidentVertices()
     }
   
   // Delete giantGrid
+  giantGrid->Initialize();
   giantGrid->Delete();
   
   // Report number of collision operations just for sanity check  
