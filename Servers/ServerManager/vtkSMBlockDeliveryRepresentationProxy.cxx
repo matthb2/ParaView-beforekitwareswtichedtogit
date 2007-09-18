@@ -113,6 +113,23 @@ void vtkSMBlockDeliveryRepresentationProxy::SetFieldType(int ft)
     }
 }
 
+
+//----------------------------------------------------------------------------
+void vtkSMBlockDeliveryRepresentationProxy::SetProcessID(int id)
+{
+  if (this->BlockFilter)
+    {
+    vtkSMIntVectorProperty* ivp = vtkSMIntVectorProperty::SafeDownCast(
+      this->BlockFilter->GetProperty("ProcessID"));
+    if (ivp)
+      {
+      ivp->SetElement(0, id);
+      this->BlockFilter->UpdateProperty("ProcessID");
+      this->CacheDirty = true;
+      }
+    }
+}
+
 //----------------------------------------------------------------------------
 bool vtkSMBlockDeliveryRepresentationProxy::IsAvailable(vtkIdType blockid)
 {
