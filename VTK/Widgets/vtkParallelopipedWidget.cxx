@@ -87,6 +87,7 @@ vtkParallelopipedWidget::~vtkParallelopipedWidget()
     {
     this->HandleWidgets[i]->Delete();
     }
+  delete [] this->HandleWidgets;
 }
 
 //----------------------------------------------------------------------
