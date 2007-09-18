@@ -2347,7 +2347,7 @@ void vtkDataReader::CheckFor(const char* name, char *line, int &num,
     // enter the name
     char nameOfAttribute[256];
     sscanf(line, "%*s %s", nameOfAttribute);
-    if ( nameOfAttribute )
+    if ( *nameOfAttribute )
       {
       array[num-1] = new char [strlen(nameOfAttribute)+1];
       strcpy(array[num-1],nameOfAttribute);
