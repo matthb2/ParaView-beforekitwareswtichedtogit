@@ -1160,6 +1160,8 @@ bool vtkOpenGLHAVSVolumeMapper::SupportedByHardware()
   int supports_GL_ATI_texture_float = 
     extensions->ExtensionSupported( "GL_ATI_texture_float" );
 
+  extensions->Delete();
+  
   return supports_GL_1_3 && supports_draw_buffers &&
     supports_GL_ARB_fragment_program && supports_GL_ARB_vertex_program &&
     supports_GL_EXT_framebuffer_object &&
