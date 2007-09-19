@@ -43,7 +43,6 @@ bool vtkSMXYPlotRepresentationProxy::EndCreateVTKObjects()
     subProxy->GetProperty("Input"));
   pp->RemoveAllProxies();
   pp->AddProxy(this->PostProcessorProxy);
-  pp->UpdateDependentDomains();
   return true;
 }
 
