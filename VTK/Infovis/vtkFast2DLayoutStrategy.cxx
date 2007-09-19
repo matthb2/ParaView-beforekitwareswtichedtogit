@@ -73,6 +73,7 @@ vtkFast2DLayoutStrategy::vtkFast2DLayoutStrategy()
   this->CoolDownRate = 50.0;
   this->LayoutComplete = 0;
   this->EdgeWeightField = 0;
+  this->SetEdgeWeightField("weight");
   this->RestDistance = 0;
   this->EdgeArray = NULL;
 }

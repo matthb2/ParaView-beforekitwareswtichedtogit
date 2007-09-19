@@ -74,6 +74,7 @@ vtkCommunity2DLayoutStrategy::vtkCommunity2DLayoutStrategy()
   this->CoolDownRate = 50.0;
   this->LayoutComplete = 0;
   this->EdgeWeightField = 0;
+  this->SetEdgeWeightField("weight");
   this->RestDistance = 0;
   this->EdgeArray = NULL;
 }
