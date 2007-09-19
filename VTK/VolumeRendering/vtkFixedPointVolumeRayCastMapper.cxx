@@ -3259,7 +3259,7 @@ int vtkFixedPointVolumeRayCastMapper::UpdateColorTable( vtkVolume *vol )
       }
     else
       {
-      this->FlipMIPComparison = 1;
+      this->FlipMIPComparison = 0;
       }
     }
   
