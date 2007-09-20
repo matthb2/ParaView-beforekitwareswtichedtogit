@@ -212,6 +212,7 @@ vtkGraphLayoutView::~vtkGraphLayoutView()
   this->Simple2DStrategy->Delete();
   this->ForceDirectedStrategy->Delete();
   this->Clustering2DStrategy->Delete();
+  this->Community2DStrategy->Delete();
   this->PassThroughStrategy->Delete();
   this->CircularStrategy->Delete();
   this->VertexDegree->Delete();
