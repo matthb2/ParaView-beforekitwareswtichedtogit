@@ -22,8 +22,8 @@ Module:    $RCSfile$
 #include "vtkSESAMEReader.h"  
 #include "vtkRectilinearGridGeometryFilter.h"
 #include "vtkUnstructuredGrid.h"
-#include "vtkGlyph3D.h"
 #include "vtkSmartPointer.h"
+#include "vtkPoints.h"
 
 #include <math.h>
 
@@ -36,7 +36,6 @@ class vtkPrismFilter::MyInternal
     vtkSESAMEReader *Reader;
     vtkRectilinearGridGeometryFilter *RectGridGeometry;
 
-    vtkGlyph3D *Glyph;
     vtkstd::string AxisVarName[3];
     double Scale[3];
     MyInternal()
