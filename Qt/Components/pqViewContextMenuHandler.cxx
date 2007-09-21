@@ -30,47 +30,15 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 =========================================================================*/
 
-/// \file pqActiveRenderViewOptions.h
-/// \date 7/31/2007
+/// \file pqViewContextMenuHandler.cxx
+/// \date 9/19/2007
 
-#ifndef _pqActiveRenderViewOptions_h
-#define _pqActiveRenderViewOptions_h
-
-
-#include "pqComponentsExport.h"
-#include "pqActiveViewOptions.h"
+#include "pqViewContextMenuHandler.h"
 
 
-/// \class pqActiveRenderViewOptions
-/// \brief
-///   The pqActiveRenderViewOptions class is used to dislpay an
-///   options dialog for the render view.
-class PQCOMPONENTS_EXPORT pqActiveRenderViewOptions :
-    public pqActiveViewOptions
+pqViewContextMenuHandler::pqViewContextMenuHandler(QObject *parentObject)
+  : QObject(parentObject)
 {
-  Q_OBJECT
+}
 
-public:
-  /// \brief
-  ///   Creates a render view options instance.
-  /// \param parent The parent object.
-  pqActiveRenderViewOptions(QObject *parent=0);
-  virtual ~pqActiveRenderViewOptions();
 
-  /// \name pqActiveViewOptions Methods
-  //@{
-  virtual void showOptions(pqView *view, const QString &page,
-      QWidget *parent=0);
-  virtual void changeView(pqView *view);
-  virtual void closeOptions();
-  //@}
-
-protected slots:
-  void finishDialog();
-
-private:
-  class pqInternal;
-  pqInternal* Internal;
-};
-
-#endif

@@ -30,31 +30,47 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 =========================================================================*/
 
-#ifndef _pqChartContextMenu_h
-#define _pqChartContextMenu_h
+/// \file pqViewContextMenuHandler.h
+/// \date 9/19/2007
+
+#ifndef _pqViewContextMenuHandler_h
+#define _pqViewContextMenuHandler_h
 
 
-#include "QtWidgetsExport.h"
+#include "pqComponentsExport.h"
 #include <QObject>
 
-class QMenu;
-class QWidget;
+class pqView;
 
 
-class QTWIDGETS_EXPORT pqChartContextMenu : public QObject
+/// \class pqViewContextMenuHandler
+/// \brief
+///   The pqViewContextMenuHandler class is used to setup and cleanup
+///   the context menu for a view of a given type.
+class PQCOMPONENTS_EXPORT pqViewContextMenuHandler : public QObject
 {
   Q_OBJECT
 
 public:
-  pqChartContextMenu(QObject *parent=0);
-  virtual ~pqChartContextMenu() {}
+  /// \brief
+  ///   Constructs a view context menu handler.
+  /// \param parent The parent object.
+  pqViewContextMenuHandler(QObject *parent=0);
+  virtual ~pqViewContextMenuHandler() {}
 
-  void addMenuActions(QMenu &menu, QWidget *chart) const;
+  /// \brief
+  ///   Sets up the context menu for the given view.
+  ///
+  /// The pqViewContextMenuManager maps the view type to the correct
+  /// handler and calls this method to set up the context menu.
+  ///
+  /// \param view The view to set up.
+  virtual void setupContextMenu(pqView *view)=0;
 
-protected slots:
-  void printChart();
-  void savePDF();
-  void savePNG();
+  /// \brief
+  ///   Cleans up the context menu for the given view.
+  /// \param view The view to clean up.
+  virtual void cleanupContextMenu(pqView *view)=0;
 };
 
 #endif
