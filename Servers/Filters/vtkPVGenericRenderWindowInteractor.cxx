@@ -46,7 +46,12 @@ public:
         }
       else if (event == vtkCommand::EndInteractionEvent)
         {
-        this->Target->SetInteractiveRenderEnabled(0);
+        int cur_enabled = this->Target->GetInteractiveRenderEnabled();
+        if (cur_enabled)
+          {
+          this->Target->SetInteractiveRenderEnabled(0);
+          this->Target->Render();
+          }
         }
       }
     }
@@ -215,10 +220,6 @@ void vtkPVGenericRenderWindowInteractor::SetInteractiveRenderEnabled(int val)
     }
   this->Modified();
   this->InteractiveRenderEnabled = val;
-  if (val == 0 && this->PVRenderView)
-    {
-    this->PVRenderView->EventuallyRender();
-    }
 }
 
 //----------------------------------------------------------------------------

@@ -225,6 +225,7 @@ void vtkSMScalarBarWidgetRepresentationProxy::ExecuteEvent(unsigned long event)
   case vtkCommand::EndInteractionEvent:
     // disable interactive rendering.
     iren->InteractiveRenderEnabledOff();
+    iren->Render();
     break;
 
   case vtkCommand::InteractionEvent:
