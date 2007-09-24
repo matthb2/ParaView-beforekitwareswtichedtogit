@@ -228,9 +228,9 @@ void vtkFixedPointCompositeHelperGenerateImageFourDependentNN( T *data,
     val[1] = *(dptr+1);
     val[2] = *(dptr+2);
     
-    tmp[0] = (val[0]*tmp[3]+0x7fff)>>(8);
-    tmp[1] = (val[1]*tmp[3]+0x7fff)>>(8);
-    tmp[2] = (val[2]*tmp[3]+0x7fff)>>(8);
+    tmp[0] = (val[0]*tmp[3]+0x7f)>>(8);
+    tmp[1] = (val[1]*tmp[3]+0x7f)>>(8);
+    tmp[2] = (val[2]*tmp[3]+0x7f)>>(8);
     
     VTKKWRCHelper_CompositeColorAndCheckEarlyTermination( color, tmp, remainingOpacity );
     }
@@ -542,9 +542,9 @@ void vtkFixedPointCompositeHelperGenerateImageFourDependentTrilin( T *data,
       continue;
       }
     
-    tmp[0] = (val[0]*tmp[3]+0x7fff)>>8;
-    tmp[1] = (val[1]*tmp[3]+0x7fff)>>8;
-    tmp[2] = (val[2]*tmp[3]+0x7fff)>>8;
+    tmp[0] = (val[0]*tmp[3]+0x7f)>>8;
+    tmp[1] = (val[1]*tmp[3]+0x7f)>>8;
+    tmp[2] = (val[2]*tmp[3]+0x7f)>>8;
     
     VTKKWRCHelper_CompositeColorAndCheckEarlyTermination( color, tmp, remainingOpacity );
     }

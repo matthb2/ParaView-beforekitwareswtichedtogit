@@ -248,9 +248,9 @@ void vtkFixedPointCompositeGOShadeHelperGenerateImageFourDependentNN( T *data,
     val[2] = *(dptr+2);
     unsigned short normal = *dirPtr;
     
-    tmp[0] = (val[0]*tmp[3]+0x7fff)>>(8);
-    tmp[1] = (val[1]*tmp[3]+0x7fff)>>(8);
-    tmp[2] = (val[2]*tmp[3]+0x7fff)>>(8);
+    tmp[0] = (val[0]*tmp[3]+0x7f)>>(8);
+    tmp[1] = (val[1]*tmp[3]+0x7f)>>(8);
+    tmp[2] = (val[2]*tmp[3]+0x7f)>>(8);
     
     VTKKWRCHelper_LookupShading( diffuseShadingTable[0], specularShadingTable[0], normal, tmp );
     
@@ -718,9 +718,9 @@ void vtkFixedPointCompositeGOShadeHelperGenerateImageFourDependentTrilin( T *dat
       needToSampleDirection = 0;
       }
     
-    tmp[0] = (val[0]*tmp[3]+0x7fff)>>8;
-    tmp[1] = (val[1]*tmp[3]+0x7fff)>>8;
-    tmp[2] = (val[2]*tmp[3]+0x7fff)>>8;
+    tmp[0] = (val[0]*tmp[3]+0x7f)>>8;
+    tmp[1] = (val[1]*tmp[3]+0x7f)>>8;
+    tmp[2] = (val[2]*tmp[3]+0x7f)>>8;
     
     VTKKWRCHelper_InterpolateShading( diffuseShadingTable[0], specularShadingTable[0], tmp ); 
     VTKKWRCHelper_CompositeColorAndCheckEarlyTermination( color, tmp, remainingOpacity );
