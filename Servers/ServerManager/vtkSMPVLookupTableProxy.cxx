@@ -15,12 +15,14 @@
 #include "vtkSMPVLookupTableProxy.h"
 
 #include "vtkObjectFactory.h"
+#include "vtkProcessModule.h"
 
 vtkStandardNewMacro(vtkSMPVLookupTableProxy);
 vtkCxxRevisionMacro(vtkSMPVLookupTableProxy, "$Revision$");
 //-----------------------------------------------------------------------------
 vtkSMPVLookupTableProxy::vtkSMPVLookupTableProxy()
 {
+  this->SetServers(vtkProcessModule::RENDER_SERVER|vtkProcessModule::CLIENT);
 }
 
 //-----------------------------------------------------------------------------
