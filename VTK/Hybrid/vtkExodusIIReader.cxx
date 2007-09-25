@@ -5901,7 +5901,7 @@ int vtkExodusIIReader::CanReadFile( const char* fname )
   int appWordSize = 8;
   int diskWordSize = 8;
   float version;
-  if ( (exoid = ex_open( fname, EX_READ, &appWordSize, &diskWordSize, &version )) == 0 )
+  if ( (exoid = ex_open( fname, EX_READ, &appWordSize, &diskWordSize, &version )) < 0 )
     {
     return 0;
     }
