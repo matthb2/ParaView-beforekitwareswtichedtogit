@@ -16,19 +16,18 @@
  Copyright (c) Sandia Corporation
  See Copyright.txt or http://www.paraview.org/HTML/Copyright.html for details.
 ----------------------------------------------------------------------------*/
-
 #include "vtkTreeMapToPolyData.h"
 
-#include <vtkCellArray.h>
-#include <vtkCellData.h>
-#include <vtkMath.h>
-#include <vtkInformation.h>
-#include <vtkInformationVector.h>
-#include <vtkObjectFactory.h>
-#include <vtkPointData.h>
-#include <vtkIdTypeArray.h>
-#include <vtkFloatArray.h>
 #include "vtkAbstractGraph.h"
+#include "vtkCellArray.h"
+#include "vtkCellData.h"
+#include "vtkFloatArray.h"
+#include "vtkMath.h"
+#include "vtkIdTypeArray.h"
+#include "vtkInformation.h"
+#include "vtkInformationVector.h"
+#include "vtkObjectFactory.h"
+#include "vtkPointData.h"
 #include "vtkTree.h"
 
 vtkCxxRevisionMacro(vtkTreeMapToPolyData, "$Revision$");

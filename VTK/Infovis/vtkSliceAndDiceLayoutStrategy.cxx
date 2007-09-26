@@ -18,19 +18,18 @@
 ----------------------------------------------------------------------------*/
 
 #include "vtkSliceAndDiceLayoutStrategy.h"
-#include "vtkTreeDFSIterator.h"
 
-#include <vtkCellArray.h>
-#include <vtkCellData.h>
-#include <vtkMath.h>
-#include <vtkInformation.h>
-#include <vtkInformationVector.h>
-#include <vtkObjectFactory.h>
-#include <vtkPointData.h>
-#include <vtkFloatArray.h>
-#include <vtkDataArray.h>
-
+#include "vtkCellArray.h"
+#include "vtkCellData.h"
+#include "vtkDataArray.h"
+#include "vtkFloatArray.h"
+#include "vtkInformation.h"
+#include "vtkInformationVector.h"
+#include "vtkMath.h"
+#include "vtkObjectFactory.h"
+#include "vtkPointData.h"
 #include "vtkTree.h"
+#include "vtkTreeDFSIterator.h"
 
 vtkCxxRevisionMacro(vtkSliceAndDiceLayoutStrategy, "$Revision$");
 vtkStandardNewMacro(vtkSliceAndDiceLayoutStrategy);
