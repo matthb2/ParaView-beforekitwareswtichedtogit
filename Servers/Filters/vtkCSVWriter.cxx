@@ -155,7 +155,7 @@ void vtkCSVWriter::WriteData()
     vtkDataSet* ds = vtkDataSet::SafeDownCast(this->GetInput());
     if (ds)
       {
-      static char* pdInfoStr =
+      const char* const pdInfoStr =
         "vtkCSVWriter: input data type needs to be of type vtkPolyData";
       vtkPointSet* ps = vtkPointSet::SafeDownCast(ds);
       if (ps)
@@ -166,7 +166,7 @@ void vtkCSVWriter::WriteData()
           vtkPolyData* clone = vtkPolyData::New();
           clone->ShallowCopy(pd);
 
-          static char* infoStr =
+          const char* const infoStr =
             "input data type is a vtkPolyData."
             " Converting via vtkPolyLineToRectilinearGridFilter";
           vtkDebugMacro(<< infoStr);
