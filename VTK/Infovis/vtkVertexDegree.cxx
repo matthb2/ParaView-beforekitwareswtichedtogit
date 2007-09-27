@@ -37,6 +37,8 @@ vtkVertexDegree::vtkVertexDegree()
 
 vtkVertexDegree::~vtkVertexDegree()
 {
+  // release mem
+  this->SetOutputArrayName(0);
 }
 
 
