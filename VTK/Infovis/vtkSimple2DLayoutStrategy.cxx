@@ -149,8 +149,8 @@ void vtkSimple2DLayoutStrategy::Initialize()
     // Jitter x and y, skip z
     for (vtkIdType i=0; i<numVertices*3; i+=3)
       {
-      rawPointData[i] += this->RestDistance*(static_cast<float>(rand())/RAND_MAX - .5);
-      rawPointData[i+1] += this->RestDistance*(static_cast<float>(rand())/RAND_MAX - .5);
+      rawPointData[i] += this->RestDistance*(vtkMath::Random() - .5);
+      rawPointData[i+1] += this->RestDistance*(vtkMath::Random() - .5);
       }
     }
 

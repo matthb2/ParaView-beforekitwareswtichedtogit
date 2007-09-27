@@ -80,13 +80,13 @@ void vtkRandomLayoutStrategy::SetGraph(vtkAbstractGraph *graph)
   for (int i=0; i< graph->GetNumberOfVertices(); i++)
     {
     double x, y, z, r;
-    r = static_cast<double>(rand()) / static_cast<double>(RAND_MAX);
+    r = vtkMath::Random();
     x = (this->GraphBounds[1] - this->GraphBounds[0])*r + this->GraphBounds[0];
-    r = static_cast<double>(rand()) / static_cast<double>(RAND_MAX);
+    r = vtkMath::Random();
     y = (this->GraphBounds[3] - this->GraphBounds[2])*r + this->GraphBounds[2];
     if (this->ThreeDimensionalLayout)
       {
-      r = static_cast<double>(rand()) / static_cast<double>(RAND_MAX);
+      r = vtkMath::Random();
       z = (this->GraphBounds[5] - this->GraphBounds[4])*r + this->GraphBounds[4];
       }
     else
