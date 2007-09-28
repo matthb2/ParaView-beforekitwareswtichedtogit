@@ -947,5 +947,7 @@ void vtkPiecewiseFunction::PrintSelf(ostream& os, vtkIndent indent)
        << this->Internal->Nodes[i]->Sharpness << " Midpoint: " 
        << this->Internal->Nodes[i]->Midpoint << endl;
     }
+  os << indent << "AllowDuplicateScalars: " << this->AllowDuplicateScalars
+     << endl;
 }
 
