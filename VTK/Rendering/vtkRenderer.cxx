@@ -1321,6 +1321,9 @@ void vtkRenderer::PrintSelf(ostream& os, vtkIndent indent)
   os << indent << "LastRenderingUsedDepthPeeling: "
      << (this->LastRenderingUsedDepthPeeling ? "On" : "Off")<< "\n";
   
+  os << indent << "ReportGraphicErrors: "
+     << (this->ReportGraphicErrors ? "On" : "Off")<< "\n";
+  
   // I don't want to print this since it is used just internally
   // os << indent << this->NumberOfPropsRendered;
 }
