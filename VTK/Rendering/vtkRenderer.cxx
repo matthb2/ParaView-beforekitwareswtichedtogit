@@ -118,6 +118,8 @@ vtkRenderer::vtkRenderer()
   this->OcclusionRatio=0.0;
   this->MaximumNumberOfPeels=4;
   this->LastRenderingUsedDepthPeeling=0;
+  
+  this->ReportGraphicErrors=0; // false
 }
 
 vtkRenderer::~vtkRenderer()
