@@ -59,7 +59,11 @@ inline void vtkPVFileInformationAddTerminatingSlash(vtkstd::string& name)
     char last = *(name.end()-1);
     if (last != '/' && last != '\\')
       {
+#if defined(_WIN32)
+      name += "\\";
+#else
       name += "/";
+#endif
       }
     }
 }
