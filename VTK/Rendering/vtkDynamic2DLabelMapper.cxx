@@ -227,7 +227,19 @@ void vtkDynamic2DLabelMapper::RenderOpaqueGeometry(vtkViewport *viewport,
       }
     else if ( !stringData )
       {
-      vtkWarningMacro(<<"Could not find label array");
+      if (this->FieldDataName)
+        {
+        vtkWarningMacro(<< "Could not find label array ("
+                        << this->FieldDataName << ") "
+                        << "in input.");
+        }
+      else 
+        {
+        vtkWarningMacro(<< "Could not find label array ("
+                        << "index " << this->FieldDataArray << ") "
+                        << "in input.");
+        }
+
       return;
       }
 

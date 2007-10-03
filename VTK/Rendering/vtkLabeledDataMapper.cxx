@@ -286,7 +286,19 @@ void vtkLabeledDataMapper::RenderOpaqueGeometry(vtkViewport *viewport,
         }
       else
         {
-        vtkErrorMacro(<<"Need input data to render labels (3)");
+        if (this->FieldDataName)
+          {
+          vtkWarningMacro(<< "Could not find label array ("
+                          << this->FieldDataName << ") "
+                          << "in input.");
+          }
+        else 
+          {
+          vtkWarningMacro(<< "Could not find label array ("
+                          << "index " << this->FieldDataArray << ") "
+                          << "in input.");
+          }
+
         return;
         }
       }
