@@ -256,7 +256,8 @@ void vtkStringArray::InterpolateTuple(vtkIdType i, vtkIdList *ptIndices,
     {
     if (weights[k] > max_weight)
       {
-      nearest = k;
+      nearest = ptIndices->GetId(k);
+      max_weight = weights[k];
       }
     }
 
