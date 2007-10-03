@@ -227,7 +227,7 @@ void vtkDynamic2DLabelMapper::RenderOpaqueGeometry(vtkViewport *viewport,
       }
     else if ( !stringData )
       {
-      vtkErrorMacro(<<"Need input data to render labels (3)");
+      vtkWarningMacro(<<"Could not find label array");
       return;
       }
 
