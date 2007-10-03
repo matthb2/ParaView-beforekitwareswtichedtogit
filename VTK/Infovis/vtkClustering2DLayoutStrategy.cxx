@@ -159,7 +159,7 @@ void vtkClustering2DLayoutStrategy::GenerateGaussianSplat(vtkImageData *splat, i
 // Set the graph that will be laid out
 void vtkClustering2DLayoutStrategy::Initialize()
 {
-  srand(this->RandomSeed);
+  vtkMath::RandomSeed(this->RandomSeed);
 
   // Set up some quick access variables
   vtkPoints* pts = this->Graph->GetPoints();

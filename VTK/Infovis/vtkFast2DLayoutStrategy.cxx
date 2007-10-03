@@ -158,7 +158,7 @@ void vtkFast2DLayoutStrategy::GenerateGaussianSplat(vtkImageData *splat, int x, 
 // Set the graph that will be laid out
 void vtkFast2DLayoutStrategy::Initialize()
 {
-  srand(this->RandomSeed);
+  vtkMath::RandomSeed(this->RandomSeed);
 
   // Set up some quick access variables
   vtkPoints* pts = this->Graph->GetPoints();
