@@ -35,6 +35,7 @@ vtkImageMask::vtkImageMask()
   this->SetNumberOfInputPorts(2);
 }
 
+//----------------------------------------------------------------------------
 vtkImageMask::~vtkImageMask()
 {
   delete [] this->MaskedOutputValue;
