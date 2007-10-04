@@ -26,6 +26,7 @@
 
 #include "vtkActor.h"
 #include "vtkCollectionIterator.h"
+#include "vtkGLSLShaderDeviceAdapter.h"
 #include "vtkGLSLShader.h"
 #include "vtkObjectFactory.h"
 #include "vtkOpenGLExtensionManager.h"
@@ -72,11 +73,15 @@ vtkGLSLShaderProgram::vtkGLSLShaderProgram()
     Info(NULL)
 {
   this->UseOpenGL2 = 1;
+  vtkGLSLShaderDeviceAdapter* adapter = vtkGLSLShaderDeviceAdapter::New();
+  this->SetShaderDeviceAdapter(adapter);
+  adapter->Delete();
 }
 
 //-----------------------------------------------------------------------------
 vtkGLSLShaderProgram::~vtkGLSLShaderProgram()
 {
+  this->SetShaderDeviceAdapter(0);
 }
 
 
@@ -104,12 +109,6 @@ void vtkGLSLShaderProgram::ReleaseGraphicsResources(vtkWindow* w)
   this->Superclass::ReleaseGraphicsResources(w);
 }
 
-//-----------------------------------------------------------------------------
-unsigned int vtkGLSLShaderProgram::GetProgram()
-{
-  return this->Program;
-}
-  
 //-----------------------------------------------------------------------------
 void vtkGLSLShaderProgram::Link()
 {

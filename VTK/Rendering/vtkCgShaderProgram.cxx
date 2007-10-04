@@ -24,12 +24,12 @@
 #include "vtkCgShaderProgram.h"
 
 #include "vtkActor.h"
-#include "vtkCollectionIterator.h"
+#include "vtkCgShaderDeviceAdapter.h"
 #include "vtkCgShader.h"
+#include "vtkCollectionIterator.h"
 #include "vtkObjectFactory.h"
 #include "vtkRenderer.h"
 #include "vtkXMLMaterialReader.h"
-
 
 
 vtkCxxRevisionMacro(vtkCgShaderProgram, "$Revision$");
@@ -38,12 +38,15 @@ vtkStandardNewMacro(vtkCgShaderProgram);
 //----------------------------------------------------------------------------
 vtkCgShaderProgram::vtkCgShaderProgram()
 {
-
+  vtkCgShaderDeviceAdapter* da = vtkCgShaderDeviceAdapter::New();
+  this->SetShaderDeviceAdapter(da);
+  da->Delete();
 }
 
 //----------------------------------------------------------------------------
 vtkCgShaderProgram::~vtkCgShaderProgram()
 {
+  this->SetShaderDeviceAdapter(0);
 }
 
 //----------------------------------------------------------------------------
