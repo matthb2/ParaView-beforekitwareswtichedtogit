@@ -260,4 +260,5 @@ void vtkShaderProgram::PrintSelf(ostream &os, vtkIndent indent)
     os << indent << "Shader: " << endl;
     shader->PrintSelf(os, indent.GetNextIndent());
     }
+  os << indent << "ShaderDeviceAdapter: " << this->ShaderDeviceAdapter << endl;
 }
