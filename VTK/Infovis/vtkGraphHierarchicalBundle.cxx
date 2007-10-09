@@ -160,7 +160,7 @@ int vtkGraphHierarchicalBundle::RequestData(
       vtkExtendedTemplateMacro(mappingMadness(static_cast<VTK_TT*>(graphVoid),
                                       static_cast<VTK_TT*>(treeVoid),
                                       &graphIndexToTreeIndex,
-                                      graph->GetNumberOfVertices()));
+                                      tree->GetNumberOfVertices()));
       }
     }
   
