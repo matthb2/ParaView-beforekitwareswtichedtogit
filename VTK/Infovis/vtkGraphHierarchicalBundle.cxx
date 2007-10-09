@@ -60,19 +60,19 @@ int vtkGraphHierarchicalBundle::FillInputPortInformation(int port, vtkInformatio
 }
 
 template <typename T>
-void mappingMadness(T *graphIds, T *treeIds,
-                    map<vtkIdType,vtkIdType> *idMap, int numVertices)
+void mappingMadness(T *graphIds, T *treeIds, map<vtkIdType,vtkIdType> *idMap,
+                    int numGraphVertices, int numTreeVertices)
 {
   map<T,vtkIdType> graphIdMap;
   
   // Now create the two maps
-  for (int i=0; i<numVertices; ++i)
+  for (int i=0; i<numGraphVertices; ++i)
     {
     graphIdMap[graphIds[i]] = i;
     }
     
   // Now create the output map
-  for (int i=0; i<numVertices; ++i)
+  for (int i=0; i<numTreeVertices; ++i)
     {
     (*idMap)[graphIdMap[treeIds[i]]] = i;
     }
@@ -160,6 +160,7 @@ int vtkGraphHierarchicalBundle::RequestData(
       vtkExtendedTemplateMacro(mappingMadness(static_cast<VTK_TT*>(graphVoid),
                                       static_cast<VTK_TT*>(treeVoid),
                                       &graphIndexToTreeIndex,
+                                      graph->GetNumberOfVertices(),
                                       tree->GetNumberOfVertices()));
       }
     }
