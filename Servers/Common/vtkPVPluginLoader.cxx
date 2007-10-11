@@ -49,6 +49,8 @@ vtkPVPluginLoader::~vtkPVPluginLoader()
     {
     delete [] this->ServerManagerXML;
     }
+
+  this->SetFileName(0);
 }
 
 //-----------------------------------------------------------------------------
