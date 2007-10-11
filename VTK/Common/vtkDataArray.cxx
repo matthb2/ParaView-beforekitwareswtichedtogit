@@ -1003,6 +1003,7 @@ void vtkDataArray::ComputeRange(int comp)
       {
       infoVec = vtkInformationVector::New();
       info->Set( PER_COMPONENT(), infoVec );
+      infoVec->Delete();
       }
     else
       {
