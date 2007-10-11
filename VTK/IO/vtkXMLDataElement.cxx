@@ -63,6 +63,37 @@ vtkXMLDataElement::~vtkXMLDataElement()
 }
 
 //----------------------------------------------------------------------------
+void vtkXMLDataElement::RemoveAttribute(const char *name)
+{
+  if (!name || !name[0])
+    {
+    return;
+    }
+
+  // Find the attribute
+  
+  int i, j;
+  for (i = 0; i < this->NumberOfAttributes; ++i)
+    {
+    if(!strcmp(this->AttributeNames[i], name))
+      {
+      // Shift the other attributes
+      for (j = i; j < this->NumberOfAttributes - 1; ++j)
+        {
+        this->AttributeNames[j] = this->AttributeNames[j + 1];
+        this->AttributeValues[j] = this->AttributeValues[j + 1];
+        }
+      // Delete the last one
+      delete [] this->AttributeNames[this->NumberOfAttributes - 1];
+      delete [] this->AttributeValues[this->NumberOfAttributes - 1];
+      --this->NumberOfAttributes;
+      // this->AttributesSize is unchanged
+      return;
+      }
+    }
+}
+
+//----------------------------------------------------------------------------
 void vtkXMLDataElement::RemoveAllAttributes()
 {
   for(int i = 0; i < this->NumberOfAttributes; ++i)
