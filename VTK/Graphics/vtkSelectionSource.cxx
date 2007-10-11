@@ -55,6 +55,10 @@ vtkSelectionSource::vtkSelectionSource()
   this->Inverse = 0;
   this->ShowBounds = 0;
   this->ArrayName = NULL;
+  for (int cc=0; cc < 32; cc++)
+    {
+    this->Internal->Frustum[cc] = 0;
+    }
 }
 
 //----------------------------------------------------------------------------
