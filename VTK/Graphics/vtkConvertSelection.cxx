@@ -328,7 +328,7 @@ int vtkConvertSelection::Convert(
       {
       dsa = vtkDataSet::SafeDownCast(data)->GetPointData();
       }
-    else // vtkSelection::NONE
+    else // vtkSelection::FIELD
       {
       fd = data->GetFieldData();
       }
@@ -336,7 +336,7 @@ int vtkConvertSelection::Convert(
   else
     {
     if (!input->GetProperties()->Has(vtkSelection::FIELD_TYPE()) ||
-        input->GetFieldType() == vtkSelection::NONE)
+        input->GetFieldType() == vtkSelection::FIELD)
       {
       fd = data->GetFieldData();
       }
