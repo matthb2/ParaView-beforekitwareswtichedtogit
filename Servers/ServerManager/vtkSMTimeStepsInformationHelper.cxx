@@ -84,6 +84,14 @@ void vtkSMTimeStepsInformationHelper::UpdateProperty(
       delete[] values;
       }
     }
+  else if (numArgs == 1)
+    {
+    double *range = new double[2];
+    timeSteps.GetArgument(0, 0, range, 2);
+    dvp->SetElements(range);
+    delete[] range;
+    dvp->SetNumberOfElements(2);
+    }
   else
     {
     // Clear out the time steps.
