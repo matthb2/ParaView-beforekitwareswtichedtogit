@@ -197,10 +197,10 @@ int vtkTimeSourceExample::RequestInformation(
   double reqTime = 0.0;
   //int reqNTS = 0; since we are only answering the first request omit this
   double *reqTS = NULL;
-  if (info->Has(vtkStreamingDemandDrivenPipeline::UPDATE_TIME_STEPS()))
+  if (reqInfo->Has(vtkStreamingDemandDrivenPipeline::UPDATE_TIME_STEPS()))
     {
     //reqNTS = info->Length(vtkStreamingDemandDrivenPipeline::UPDATE_TIME_STEPS());    
-    reqTS = info->Get(vtkStreamingDemandDrivenPipeline::UPDATE_TIME_STEPS());
+    reqTS = reqInfo->Get(vtkStreamingDemandDrivenPipeline::UPDATE_TIME_STEPS());
     }
   if (reqTS != NULL)
     {
