@@ -209,7 +209,7 @@ int vtkKdTreeSelector::RequestData(
   if (field)
     {
     vtkAbstractArray* arr = vtkAbstractArray::CreateArray(field->GetDataType());
-    arr->SetName(this->SelectionFieldName);
+    arr->SetName(field->GetName());
     for (vtkIdType i = 0; i < ids->GetNumberOfTuples(); i++)
       {
       arr->InsertNextTuple(ids->GetValue(i), field);

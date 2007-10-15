@@ -136,6 +136,12 @@ void vtkBoostBreadthFirstSearch::SetOriginVertex(
   this->Modified();
 }
 
+void vtkBoostBreadthFirstSearch::SetOriginVertexString(
+  char* arrayName, char* value)
+{
+  this->SetOriginVertex(arrayName, value);
+}
+
 vtkIdType vtkBoostBreadthFirstSearch::GetVertexIndex(
   vtkAbstractArray *abstract,vtkVariant value)
 {
