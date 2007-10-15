@@ -460,9 +460,9 @@ void vtkSelection::UnionSelectionList(vtkSelection* other)
           return;
           }
         // TODO: avoid duplicates.
-        for (vtkIdType i = 0; i < aa2->GetNumberOfTuples(); i++)
+        for (vtkIdType j = 0; j < aa2->GetNumberOfTuples(); j++)
           {
-          aa1->InsertNextTuple(i, aa2);
+          aa1->InsertNextTuple(j, aa2);
           }
         }
       break;

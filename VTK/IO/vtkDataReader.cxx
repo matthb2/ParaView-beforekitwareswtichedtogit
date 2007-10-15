@@ -1326,15 +1326,15 @@ vtkAbstractArray *vtkDataReader::ReadArray(const char *dataType, int numTuples, 
       {
       for (int j=0; j<numComp; j++)
         {
-        int type;
+        int t;
         vtkStdString str;
-        *(this->IS) >> type >> str;
+        *(this->IS) >> t >> str;
         char* decoded = new char[str.length() + 1];
         int decodedLength = this->DecodeString(decoded, str.c_str());
         vtkStdString decodedStr(decoded, decodedLength);
         vtkVariant sv(decodedStr);
         vtkVariant v;
-        switch (type)
+        switch (t)
           {
           case VTK_CHAR:
             v = sv.ToChar();
@@ -1389,7 +1389,7 @@ vtkAbstractArray *vtkDataReader::ReadArray(const char *dataType, int numTuples, 
             v = sv.ToString();
             break;
           default:
-            vtkErrorMacro("Unknown variant type " << type);
+            vtkErrorMacro("Unknown variant type " << t);
           }
         ((vtkVariantArray*)array)->InsertNextValue(v);
         }
