@@ -24,19 +24,14 @@
 
 vtkCxxRevisionMacro(vtkTransferFunctionEditorRepresentation1D, "$Revision$");
 
-vtkCxxSetObjectMacro(vtkTransferFunctionEditorRepresentation1D, Histogram,
-                     vtkIntArray);
-
 //----------------------------------------------------------------------------
 vtkTransferFunctionEditorRepresentation1D::vtkTransferFunctionEditorRepresentation1D()
 {
-  this->Histogram = NULL;
 }
 
 //----------------------------------------------------------------------------
 vtkTransferFunctionEditorRepresentation1D::~vtkTransferFunctionEditorRepresentation1D()
 {
-  this->SetHistogram(NULL);
 }
 
 //----------------------------------------------------------------------------
@@ -136,6 +131,7 @@ void vtkTransferFunctionEditorRepresentation1D::UpdateHistogramImage()
     }
 
   this->HistogramImage->Modified();
+  this->UpdateHistogramMTime();
 }
 
 //----------------------------------------------------------------------------
