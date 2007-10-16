@@ -236,6 +236,57 @@ void vtkSMClientServerRenderViewProxy::SetViewPosition(int x, int y)
 }
 
 //----------------------------------------------------------------------------
+double vtkSMClientServerRenderViewProxy::GetZBufferValue(int x, int y)
+{
+  if (!this->LastCompositingDecision)
+    {
+    // When rendering on client, the client Z buffer value is indeed correct.
+    return this->Superclass::GetZBufferValue(x, y);
+    }
+
+  // Get the z value from the server process. Since this view doesn't support
+  // multiple server processes/compositing, we simply get the z value from the
+  // server root.
+  vtkProcessModule* pm = vtkProcessModule::GetProcessModule();
+  vtkClientServerStream stream;
+  stream << vtkClientServerStream::Invoke
+    << this->RenderSyncManager->GetID()
+    << "SetCaptureZBuffer" << 1
+    <<  vtkClientServerStream::End;
+  pm->SendStream(this->ConnectionID, vtkProcessModule::RENDER_SERVER_ROOT, stream);
+
+  this->StillRender();
+
+  stream << vtkClientServerStream::Invoke
+    << this->RenderSyncManager->GetID()
+    << "SetCaptureZBuffer" << 0
+    <<  vtkClientServerStream::End;
+  stream << vtkClientServerStream::Invoke
+    << this->RenderSyncManager->GetID()
+    << "GetZBufferValue"
+    << x << y 
+    << vtkClientServerStream::End;
+  pm->SendStream(this->ConnectionID, vtkProcessModule::RENDER_SERVER_ROOT, stream);
+  const vtkClientServerStream& res = 
+    pm->GetLastResult(this->ConnectionID, vtkProcessModule::RENDER_SERVER_ROOT);
+
+  int numMsgs = res.GetNumberOfMessages();
+  if (numMsgs < 1)
+    {
+    return 0;
+    }
+
+  int numArgs = res.GetNumberOfArguments(0);
+  if (numArgs < 1)
+    {
+    return 0;
+    }
+
+  float result = 0.0;
+  return res.GetArgument(0, 0, &result)? result : 0;
+}
+
+//----------------------------------------------------------------------------
 void vtkSMClientServerRenderViewProxy::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os, indent);
