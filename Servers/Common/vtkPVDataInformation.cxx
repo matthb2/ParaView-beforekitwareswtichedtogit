@@ -370,15 +370,13 @@ void vtkPVDataInformation::CopyFromDataSet(vtkDataSet* data)
     }
 
   //Copy time span from the dataset's producing algorithm
-/*
   vtkInformation *pinfo = data->GetPipelineInformation();
-  if (pinfo->Has(vtkStreamingDemandDrivenPipeline::TIME_RANGE()))
+  if (pinfo && pinfo->Has(vtkStreamingDemandDrivenPipeline::TIME_RANGE()))
     {    
     double *times = pinfo->Get(vtkStreamingDemandDrivenPipeline::TIME_RANGE());
     this->TimeSpan[0] = times[0];
     this->TimeSpan[1] = times[1];
     }
-*/
 }
 
 //----------------------------------------------------------------------------
