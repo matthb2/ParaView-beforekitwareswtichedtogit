@@ -300,6 +300,60 @@ vtkImageData* vtkSMIceTDesktopRenderViewProxy::CaptureWindow(int magnification)
 }
 
 //----------------------------------------------------------------------------
+double vtkSMIceTDesktopRenderViewProxy::GetZBufferValue(int x, int y)
+{
+  if (!this->LastCompositingDecision)
+    {
+    // When rendering on client, the client Z buffer value is indeed correct.
+    return this->Superclass::GetZBufferValue(x, y);
+    }
+
+  vtkProcessModule* pm = vtkProcessModule::GetProcessModule();
+  vtkClientServerStream stream;
+
+  stream << vtkClientServerStream::Invoke
+    << this->RendererProxy->GetID()
+    << "SetCollectDepthBuffer"
+    << 1
+    << vtkClientServerStream::End;
+  pm->SendStream(this->ConnectionID, vtkProcessModule::RENDER_SERVER, stream);
+
+  // Trigger a fresh render which will collect the Z buffer values.
+  this->StillRender();
+
+  stream << vtkClientServerStream::Invoke
+    << this->ParallelRenderManager->GetID()
+    << "GetZBufferValue"
+    << x << y << vtkClientServerStream::End;
+  pm->SendStream(this->ConnectionID, vtkProcessModule::RENDER_SERVER_ROOT, stream);
+  const vtkClientServerStream& res = 
+    pm->GetLastResult(this->ConnectionID, vtkProcessModule::RENDER_SERVER_ROOT);
+
+  stream << vtkClientServerStream::Invoke
+    << this->RendererProxy->GetID()
+    << "SetCollectDepthBuffer"
+    << 0
+    << vtkClientServerStream::End;
+  pm->SendStream(this->ConnectionID, vtkProcessModule::RENDER_SERVER, stream);
+  
+
+  int numMsgs = res.GetNumberOfMessages();
+  if (numMsgs < 1)
+    {
+    return 0;
+    }
+
+  int numArgs = res.GetNumberOfArguments(0);
+  if (numArgs < 1)
+    {
+    return 0;
+    }
+
+  float result = 0.0;
+  return res.GetArgument(0, 0, &result)? result : 0;
+}
+
+//----------------------------------------------------------------------------
 void vtkSMIceTDesktopRenderViewProxy::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os, indent);
