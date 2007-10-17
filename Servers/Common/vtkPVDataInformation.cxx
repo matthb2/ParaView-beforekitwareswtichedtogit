@@ -142,7 +142,6 @@ void vtkPVDataInformation::PrintSelf(ostream& os, vtkIndent indent)
   os << indent << "CompositeDataClassName: " 
      << (this->CompositeDataClassName?this->CompositeDataClassName:"(none)") << endl;
 
-  //DDM
   os << indent << "TimeSpan: " 
      << this->TimeSpan[0] << ", " << this->TimeSpan[1]
      << endl;
@@ -371,6 +370,7 @@ void vtkPVDataInformation::CopyFromDataSet(vtkDataSet* data)
     }
 
   //Copy time span from the dataset's producing algorithm
+/*
   vtkInformation *pinfo = data->GetPipelineInformation();
   if (pinfo->Has(vtkStreamingDemandDrivenPipeline::TIME_RANGE()))
     {    
@@ -378,6 +378,7 @@ void vtkPVDataInformation::CopyFromDataSet(vtkDataSet* data)
     this->TimeSpan[0] = times[0];
     this->TimeSpan[1] = times[1];
     }
+*/
 }
 
 //----------------------------------------------------------------------------
