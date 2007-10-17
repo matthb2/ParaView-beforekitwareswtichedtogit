@@ -662,8 +662,10 @@ vtkDataObject* vtkCompositeDataPipeline::ExecuteSimpleAlgorithmForBlock(
       }
 
     request->Set(REQUEST_DATA_OBJECT());
+    this->SuppressResetPipelineInformation = 1;
     this->Superclass::ExecuteDataObject(
       request, this->GetInputInformation(),this->GetOutputInformation());
+    this->SuppressResetPipelineInformation = 0;
     request->Remove(REQUEST_DATA_OBJECT());
     
     request->Set(REQUEST_INFORMATION());
