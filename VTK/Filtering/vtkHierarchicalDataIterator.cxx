@@ -16,6 +16,7 @@
 
 #include "vtkHierarchicalDataSet.h"
 #include "vtkObjectFactory.h"
+#include "vtkMultiGroupDataInformation.h"
 
 vtkCxxRevisionMacro(vtkHierarchicalDataIterator, "$Revision$");
 vtkStandardNewMacro(vtkHierarchicalDataIterator);
