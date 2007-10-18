@@ -119,8 +119,6 @@ vtkIceTRenderManager::vtkIceTRenderManager()
   this->LastViewports->SetNumberOfComponents(4);
   this->LastViewports->SetNumberOfTuples(0);
 
-  this->InflateImageBuffer = vtkUnsignedCharArray::New();
-
   vtkCallbackCommand *cbc = vtkCallbackCommand::New();
   cbc->SetClientData(this);
   cbc->SetCallback(vtkIceTRenderManagerRecordIceTImage);
@@ -153,7 +151,6 @@ vtkIceTRenderManager::~vtkIceTRenderManager()
   this->RecordIceTImageCallback->Delete();
   this->FixRenderWindowCallback->Delete();
   this->LastViewports->Delete();
-  this->InflateImageBuffer->Delete();
 }
 
 //-------------------------------------------------------------------------
