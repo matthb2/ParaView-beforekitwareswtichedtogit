@@ -355,7 +355,12 @@ void vtkQuadraticHexahedron::EvaluateLocation(int& vtkNotUsed(subId),
 int vtkQuadraticHexahedron::CellBoundary(int subId, double pcoords[3], 
                                          vtkIdList *pts)
 {
-  return this->Hex->CellBoundary(subId, pcoords, pts);
+  for ( int i = 0; i < 8; ++ i ) // For each of the eight vertices of the hexhedron
+    {
+    this->Hex->PointIds->SetId( i, this->PointIds->GetId( i ) );
+    }
+
+   return this->Hex->CellBoundary( subId, pcoords, pts );
 }
 
 //----------------------------------------------------------------------------
