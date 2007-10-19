@@ -24,7 +24,7 @@ vtkCxxRevisionMacro(vtkInformationExecutivePortKey, "$Revision$");
 vtkInformationExecutivePortKey::vtkInformationExecutivePortKey(const char* name, const char* location):
   vtkInformationKey(name, location)
 {
-  vtkCommonInformationKeyManager::Register(this);
+  vtkFilteringInformationKeyManager::Register(this);
 }
 
 //----------------------------------------------------------------------------
