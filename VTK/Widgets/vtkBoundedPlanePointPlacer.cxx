@@ -149,6 +149,17 @@ void vtkBoundedPlanePointPlacer::SetBoundingPlanes(vtkPlanes *planes)
 //----------------------------------------------------------------------
 int vtkBoundedPlanePointPlacer::ComputeWorldPosition( vtkRenderer *ren,
                                                       double displayPos[2],
+                                                      double vtkNotUsed(refWorldPos)[3],
+                                                      double worldPos[3],
+                                                      double worldOrient[9] )
+{
+  return this->ComputeWorldPosition( ren, displayPos, worldPos, worldOrient );
+}
+
+
+//----------------------------------------------------------------------
+int vtkBoundedPlanePointPlacer::ComputeWorldPosition( vtkRenderer *ren,
+                                                      double displayPos[2],
                                                       double worldPos[3],
                                                       double worldOrient[9] )
 {
