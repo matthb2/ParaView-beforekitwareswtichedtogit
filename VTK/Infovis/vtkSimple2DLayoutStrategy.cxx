@@ -115,7 +115,7 @@ void vtkSimple2DLayoutStrategy::Initialize()
   // The optimal distance between vertices.
   if (this->RestDistance == 0)
     {
-    this->RestDistance = sqrt(1.0 / div);
+    this->RestDistance = 1.0/div;
     }
     
   // Set up array to store repulsion values
