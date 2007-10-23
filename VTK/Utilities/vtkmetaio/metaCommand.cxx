@@ -2137,11 +2137,11 @@ bool MetaCommand::SetParameterGroup(METAIO_STL::string optionName,
    
   if(!group)
     {
-    ParameterGroup group;
-    group.name = groupName;
-    group.description = groupDescription;
-    group.options.push_back(optionName);
-    m_ParameterGroup.push_back(group);
+    ParameterGroup pgroup;
+    pgroup.name = groupName;
+    pgroup.description = groupDescription;
+    pgroup.options.push_back(optionName);
+    m_ParameterGroup.push_back(pgroup);
     }
   else
     {
