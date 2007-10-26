@@ -39,7 +39,7 @@ vtkCxxRevisionMacro(vtkFacetReader, "$Revision$");
 vtkStandardNewMacro(vtkFacetReader);
 
 //------------------------------------------------------------------------------
-// Due to a buggy stream library on the HP and another on Mac OSX, we
+// Due to a buggy stream library on the HP and another on Mac OS X, we
 // need this very carefully written version of getline.  Returns true
 // if any data were read before the end-of-file was reached.
 // 
