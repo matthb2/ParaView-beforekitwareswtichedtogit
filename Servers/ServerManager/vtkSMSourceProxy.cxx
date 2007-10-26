@@ -642,6 +642,7 @@ void vtkSMSourceProxy::CleanSelectionInputs(unsigned int portIndex)
       esProxy->GetProperty("Selection"));
     pp->RemoveAllProxies();
     esProxy->UpdateVTKObjects();
+    this->InvokeEvent(vtkCommand::SelectionChangedEvent,&portIndex);
     }
 }
 
