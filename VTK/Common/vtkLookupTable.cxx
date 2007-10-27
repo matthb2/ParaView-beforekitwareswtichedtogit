@@ -50,6 +50,8 @@ vtkLookupTable::vtkLookupTable(int sze, int ext)
 
   this->Ramp = VTK_RAMP_SCURVE;
   this->Scale = VTK_SCALE_LINEAR;
+  
+  this->OpaqueFlag=1;
 }
 
 //----------------------------------------------------------------------------
@@ -57,6 +59,30 @@ vtkLookupTable::~vtkLookupTable()
 {
   this->Table->UnRegister(this);
   this->Table = NULL;
+}
+
+//----------------------------------------------------------------------------
+// Description:
+// Return true if all of the values defining the mapping have an opacity
+// equal to 1. Default implementation return true.
+int vtkLookupTable::IsOpaque()
+{
+  if(this->OpaqueFlagBuildTime<this->GetMTime())
+    {
+    int opaque=1;
+    int size=this->Table->GetNumberOfTuples();
+    int i=0;
+    unsigned char *ptr=this->Table->GetPointer(0);
+    while(opaque && i<size)
+      {
+      opaque=ptr[3]==255;
+      ptr+=4;
+      ++i;
+      }
+    this->OpaqueFlag=opaque;
+    this->OpaqueFlagBuildTime.Modified();
+    }
+  return this->OpaqueFlag;
 }
 
 //----------------------------------------------------------------------------

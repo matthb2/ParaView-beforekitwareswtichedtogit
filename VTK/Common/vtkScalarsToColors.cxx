@@ -30,6 +30,15 @@ vtkScalarsToColors::vtkScalarsToColors()
 }
 
 //----------------------------------------------------------------------------
+// Description:
+// Return true if all of the values defining the mapping have an opacity
+// equal to 1. Default implementation return true.
+int vtkScalarsToColors::IsOpaque()
+{
+  return 1;
+}
+
+//----------------------------------------------------------------------------
 void vtkScalarsToColors::SetVectorModeToComponent()
 {
   this->SetVectorMode(vtkScalarsToColors::COMPONENT);
