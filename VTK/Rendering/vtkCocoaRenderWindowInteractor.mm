@@ -564,7 +564,7 @@ void vtkCocoaRenderWindowInteractor::SetCocoaManager(void *manager)
     NSMutableDictionary* cocoaManager = 
       reinterpret_cast<NSMutableDictionary *>(manager);
     #ifdef __OBJC_GC__
-      #error VTK does not yet support garbage collection
+      [[NSGarbageCollector defaultCollector] enableCollectorForPointer:cocoaManager];
     #else
       [cocoaManager release];
     #endif
@@ -574,7 +574,7 @@ void vtkCocoaRenderWindowInteractor::SetCocoaManager(void *manager)
     NSMutableDictionary* cocoaManager = 
       reinterpret_cast<NSMutableDictionary *>(manager);
     #ifdef __OBJC_GC__
-      #error VTK does not yet support garbage collection
+      [[NSGarbageCollector defaultCollector] disableCollectorForPointer:cocoaManager];
     #else
       [cocoaManager retain];
     #endif
