@@ -105,16 +105,12 @@ void vtkSMIceTMultiDisplayRenderViewProxy::EndCreateVTKObjects()
 void vtkSMIceTMultiDisplayRenderViewProxy::BeginStillRender()
 {
   // Determine if we are going to collect on the client side, or the data is too
-  // large and we should simply shown outlines on the client.
+  // large and we should simply show outlines on the client.
   this->LastClientCollectionDecision = 
     this->GetClientCollectionDecision(this->GetVisibileFullResDataSize());
 
   // Update information object with client collection decision.
   this->SetClientCollect(this->LastClientCollectionDecision);
-
-  // Ensure that the representations are updated again since the client
-  // collection decision may have changed.
-  this->SetForceRepresentationUpdate(true);
 
   this->Superclass::BeginStillRender();
 
@@ -132,10 +128,6 @@ void vtkSMIceTMultiDisplayRenderViewProxy::BeginInteractiveRender()
 
   // Update information object with client collection decision.
   this->SetClientCollect(this->LastClientCollectionDecision);
-
-  // Ensure that the representations are updated again since the client
-  // collection decision may have changed.
-  this->SetForceRepresentationUpdate(true);
 
   this->Superclass::BeginInteractiveRender();
 }

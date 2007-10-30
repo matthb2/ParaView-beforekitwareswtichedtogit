@@ -456,9 +456,6 @@ void vtkSMIceTCompositeViewProxy::BeginInteractiveRender()
       stream);
     }
 
-  // When BeginInteractiveRender() is called we are assured that
-  // UpdateAllRepresentations() has been called.
-
   // Give the superclass a chance to decide if it wants to use LOD or not.
   // Let the superclass decide if we are using compositing at all.
   this->Superclass::BeginInteractiveRender();
@@ -569,6 +566,8 @@ void vtkSMIceTCompositeViewProxy::UpdateOrderedCompositingPipeline()
       // Essential to update the representation, so that the
       // KdTree generator gets the updated data to use when generating the
       // KdTree.
+      // It is safe to call Update() on representations or strategies after the
+      // compositing/remote render decision has been made.
       strategyIter->GetPointer()->Update();
       }
     else
