@@ -164,6 +164,18 @@ int vtkOpenGLExtensionManager::ExtensionSupported(const char *name)
       }
     p += n;
     }
+  
+  // Workaround for bug on Mac PowerPC G5 with nVidia GeForce FX 5200
+  // Mac OS 10.3.9 and driver 1.5 NVIDIA-1.3.42. It reports it supports
+  // OpenGL>=1.4 but querying for glPointParameteri and glPointParameteriv
+  // return null pointers. So it does not actually supports fully OpenGL 1.4.
+  // It will make this method to return false with "GL_VERSION_1_4" and true
+  // with "GL_VERSION_1_5".
+  if (result && strcmp(name, "GL_VERSION_1_4") == 0)
+    {
+    result=this->GetProcAddress("glPointParameteri")!=0 &&
+      this->GetProcAddress("glPointParameteriv")!=0;
+    }
   return result;
 }
 
