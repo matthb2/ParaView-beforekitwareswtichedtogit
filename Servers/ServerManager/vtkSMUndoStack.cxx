@@ -203,7 +203,12 @@ void vtkSMUndoStack::Push(vtkIdType cid, const char* label, vtkUndoSet* set)
   vtkPVXMLElement* state = set->SaveState(NULL);
 //    if (!this->ClientOnly)
 //      state->PrintXML();
-  if (this->ClientOnly)
+
+  /*
+   * FIXME: Until we start supporting multiple client, it really unnecessary to push
+   * the elements on the server side. 
+   */
+  if (true || this->ClientOnly)
     {
     vtkSMUndoStackUndoSet* elem = vtkSMUndoStackUndoSet::New();
     elem->SetConnectionID(cid);
@@ -221,6 +226,7 @@ void vtkSMUndoStack::Push(vtkIdType cid, const char* label, vtkUndoSet* set)
     // when the undo stack on any connection is updated.
     this->PushUndoConnection(label, cid); 
     }
+
   state->Delete();
 }
 
