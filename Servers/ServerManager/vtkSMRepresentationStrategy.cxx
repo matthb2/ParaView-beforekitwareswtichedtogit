@@ -55,6 +55,9 @@ vtkSMRepresentationStrategy::vtkSMRepresentationStrategy()
 
   this->KeepLODPipelineUpdated = false;
   this->RepresentedDataInformation = 0;
+  vtkPVGeometryInformation* info = vtkPVGeometryInformation::New();
+  this->SetRepresentedDataInformation(info);
+  info->Delete();
 }
 
 //----------------------------------------------------------------------------
