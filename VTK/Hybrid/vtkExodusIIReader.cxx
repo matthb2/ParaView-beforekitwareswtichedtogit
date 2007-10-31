@@ -293,10 +293,12 @@ protected:
     this->Metadata = 0;
     this->InMaterialAssignment = 0;
     this->ParseMaterials = 0;
+    this->CurrentHierarchyEntry=0;
     }
   virtual ~vtkExodusIIXMLParser()
     {
     //this->Metadata->UnRegister( this );
+    this->SetCurrentHierarchyEntry(0);
     }
   virtual void StartElement( const char* tagName, const char** attrs )
     {
