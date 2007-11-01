@@ -4592,22 +4592,6 @@ const char*vtkExodusReader::GetArrayName ( vtkExodusReader::ArrayType type,
   return NULL;
 }
 
-void vtkExodusReader::SetXMLFileName(const char *filename) 
-{
-  // NULL or "" then just return
-  if (!filename || !strcmp(filename,"")) 
-    {
-    return;
-    }
-  else 
-    {
-    XMLFileName = StrDupWithNew(filename); // Memory leak :)
-    }
-
-  this->Modified();
-  //cout << "Exodus XML file set to " << XMLFileName << endl;
-}
-
 // Had to add this because displacement vector names had spaces
 // following them (dispx{space}, dispy{space}, dispz{space}).  They
 // didn't get made into a vector, so displacement was garbage.
