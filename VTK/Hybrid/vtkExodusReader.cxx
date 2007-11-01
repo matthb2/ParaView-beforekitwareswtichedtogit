@@ -1643,7 +1643,9 @@ int vtkExodusReader::CanReadFile(const char* fname)
     {
     return 0;
     }
-  
+
+  // close the file opened for testing.
+  ex_close(returnVal);
   // Success
   return 1;
 }
