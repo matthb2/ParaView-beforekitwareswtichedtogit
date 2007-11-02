@@ -211,6 +211,8 @@ vtkFLUENTReader::~vtkFLUENTReader()
   delete this->FluentDataFile;
 
   this->CellDataArraySelection->Delete();
+
+  delete[] this->FileName;
 }
 
 //----------------------------------------------------------------------------
