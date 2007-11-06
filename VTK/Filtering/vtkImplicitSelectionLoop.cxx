@@ -141,7 +141,7 @@ double vtkImplicitSelectionLoop::EvaluateFunction(double x[3])
       }
     }
 
-  minDist2 = (double)sqrt(minDist2);
+  minDist2 = static_cast<double>(sqrt(minDist2));
   return (inside ? -minDist2 : minDist2);
 }
 

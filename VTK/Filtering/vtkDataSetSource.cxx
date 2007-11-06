@@ -35,7 +35,7 @@ vtkDataSet *vtkDataSetSource::GetOutput()
     return NULL;
     }
   
-  return (vtkDataSet *)(this->Outputs[0]);
+  return static_cast<vtkDataSet *>(this->Outputs[0]);
 }
 
 //----------------------------------------------------------------------------

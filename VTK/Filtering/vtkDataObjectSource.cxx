@@ -41,7 +41,7 @@ vtkDataObject *vtkDataObjectSource::GetOutput()
     return NULL;
     }
   
-  return (vtkDataObject *)(this->Outputs[0]);
+  return this->Outputs[0];
 }
 
 //----------------------------------------------------------------------------

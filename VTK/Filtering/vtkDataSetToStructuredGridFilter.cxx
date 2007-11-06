@@ -47,7 +47,7 @@ vtkDataSet *vtkDataSetToStructuredGridFilter::GetInput()
     return NULL;
     }
   
-  return (vtkDataSet *)(this->Inputs[0]);
+  return static_cast<vtkDataSet *>(this->Inputs[0]);
 }
 
 //----------------------------------------------------------------------------

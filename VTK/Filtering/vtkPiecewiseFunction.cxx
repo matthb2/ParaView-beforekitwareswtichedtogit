@@ -866,7 +866,7 @@ void vtkPiecewiseFunction::BuildFunctionFromTable( double xStart, double xEnd,
   
   if( size > 1 )
     {
-    inc = (xEnd-xStart)/(double)(size-1);
+    inc = (xEnd-xStart)/static_cast<double>(size-1);
     }
   
   int i;

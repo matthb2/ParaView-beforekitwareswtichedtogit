@@ -49,7 +49,7 @@ vtkImageData *vtkImageTwoInputFilter::GetInput1()
     {
     return NULL;
     }
-  return (vtkImageData *)this->Inputs[0];
+  return static_cast<vtkImageData *>(this->Inputs[0]);
 }
 
 //----------------------------------------------------------------------------
@@ -59,7 +59,7 @@ vtkImageData *vtkImageTwoInputFilter::GetInput2()
     {
     return NULL;
     }
-  return (vtkImageData *)this->Inputs[1];
+  return static_cast<vtkImageData *>(this->Inputs[1]);
 }
 
 //----------------------------------------------------------------------------

@@ -2795,7 +2795,8 @@ vtkIdType vtkHyperOctree::EvaluateGridCorner(
           }
         }
       // Center point is opposite to the leaf position in neighborhood.
-      this->LeafCornerIds->InsertComponent(leafId, numLeaves-leaf-1, (double)(cornerId));
+      this->LeafCornerIds->InsertComponent(leafId, numLeaves-leaf-1,
+                                           static_cast<double>(cornerId));
       }
     }
 
@@ -3228,7 +3229,7 @@ void vtkHyperOctreeLightWeightCursor::ToChild(int child)
   if (this->Tree->Dimension == 3)
     {
     vtkCompactHyperOctree<3>* tree3;
-    tree3 = (vtkCompactHyperOctree<3>*)(this->Tree->CellTree);
+    tree3 = static_cast<vtkCompactHyperOctree<3>*>(this->Tree->CellTree);
     vtkCompactHyperOctreeNode<3> *node=tree3->GetNode(this->Index);
     this->Index=node->GetChild(child);
     this->IsLeaf=node->IsChildLeaf(child);
@@ -3246,7 +3247,7 @@ void vtkHyperOctreeLightWeightCursor::ToChild(int child)
   else if (this->Tree->Dimension == 2)
     {
     vtkCompactHyperOctree<2>* tree2;
-    tree2 = (vtkCompactHyperOctree<2>*)(this->Tree->CellTree);
+    tree2 = static_cast<vtkCompactHyperOctree<2>*>(this->Tree->CellTree);
     vtkCompactHyperOctreeNode<2> *node=tree2->GetNode(this->Index);
     this->Index=node->GetChild(child);
     this->IsLeaf=node->IsChildLeaf(child);
@@ -3255,7 +3256,7 @@ void vtkHyperOctreeLightWeightCursor::ToChild(int child)
   else if (this->Tree->Dimension == 1)
     {
     vtkCompactHyperOctree<1>* tree1;
-    tree1 = (vtkCompactHyperOctree<1>*)(this->Tree->CellTree);
+    tree1 = static_cast<vtkCompactHyperOctree<1>*>(this->Tree->CellTree);
     vtkCompactHyperOctreeNode<1> *node=tree1->GetNode(this->Index);
     this->Index=node->GetChild(child);
     this->IsLeaf=node->IsChildLeaf(child);
@@ -3411,7 +3412,7 @@ void vtkHyperOctree::TraverseDualRecursively(
     if (neighborhood[0].GetLevel() == level)
       {
       // Add the leaf center point.
-      double levelDim = (double)(1<<neighborhood[0].GetLevel());
+      double levelDim = static_cast<double>(1<<neighborhood[0].GetLevel());
       double pt[3];
       // Compute point.  Expand if point is on boundary.
       // This will make the dual have the same bounds as tree.
@@ -3426,7 +3427,8 @@ void vtkHyperOctree::TraverseDualRecursively(
         }
       else
         {
-        pt[0]= this->Origin[0] + ((double)(xyzIds[0])+0.5)*(this->Size[0])/levelDim;
+        pt[0]= this->Origin[0] +
+          (static_cast<double>(xyzIds[0])+0.5)*(this->Size[0])/levelDim;
         }
       // Y
       if (this->Dimension < 2 || xyzIds[1] == 0)
@@ -3439,7 +3441,8 @@ void vtkHyperOctree::TraverseDualRecursively(
         }
       else
         {
-        pt[1]= this->Origin[1] + ((double)(xyzIds[1])+0.5)*(this->Size[1])/levelDim;
+        pt[1]= this->Origin[1] +
+          (static_cast<double>(xyzIds[1])+0.5)*(this->Size[1])/levelDim;
         }
       // Z
       if (this->Dimension < 3 || xyzIds[2] == 0)
@@ -3452,7 +3455,8 @@ void vtkHyperOctree::TraverseDualRecursively(
         }
       else
         {
-        pt[2]= this->Origin[2] + ((double)(xyzIds[2])+0.5)*(this->Size[2])/levelDim;
+        pt[2]= this->Origin[2] +
+          (static_cast<double>(xyzIds[2])+0.5)*(this->Size[2])/levelDim;
         }
       this->LeafCenters->InsertPoint(neighborhood[0].GetLeafIndex(), pt);
       }
