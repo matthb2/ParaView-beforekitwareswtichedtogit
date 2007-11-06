@@ -885,6 +885,13 @@ public:
     */
   void SetObjectArrayStatus( int otype, int i, int stat );
 
+  /** Currently the fast-path option does not support all types
+    * of exodus variables. This is a helper function that checks
+    * whether ANY variable from the list of unsupported types is
+    * enabled and, if so, returns false, otherwise true.
+    */
+  bool CanOutputFastPath();
+
   /** Unlike object arrays, attributes are only defined over blocks (not sets)
     * and are defined on a per-block (not a per-block-type) basis.
     * In other words, there is no truth table for attributes.
@@ -5903,6 +5910,34 @@ vtkDataArray* vtkExodusIIReaderPrivate::FindDisplacementVectors( int timeStep )
   return 0;
 }
 
+bool vtkExodusIIReaderPrivate::CanOutputFastPath()
+{
+  int otypes[] = {vtkExodusIIReader::EDGE_BLOCK,
+                  vtkExodusIIReader::FACE_BLOCK,
+                  vtkExodusIIReader::NODE_SET,
+                  vtkExodusIIReader::EDGE_SET,
+                  vtkExodusIIReader::FACE_SET,
+                  vtkExodusIIReader::SIDE_SET,
+                  vtkExodusIIReader::ELEM_SET};
+  
+  for(int i=0; i<7; i++)
+    {
+    vtkstd::map<int,vtkstd::vector<ArrayInfoType> >::iterator it = this->ArrayInfo.find( otypes[i] );
+    if ( it != this->ArrayInfo.end() )
+      {
+      int N = (int) it->second.size();
+      for(int j=0; j<N; j++)
+        {
+        if ( it->second[j].Status )
+          {
+          return false;
+          }
+        }
+      }
+    }
+
+  return true;
+}
 
 // -------------------------------------------------------- PUBLIC CLASS MEMBERS
 
@@ -6106,7 +6141,14 @@ int vtkExodusIIReader::RequestInformation(
 
   // Advertise to downstream filters that this reader supports a fast-path
   // for reading data over time.
-  outInfo->Set( vtkStreamingDemandDrivenPipeline::FAST_PATH_FOR_TEMPORAL_DATA(), 1 );
+  if(this->Metadata->CanOutputFastPath())
+    {
+    outInfo->Set( vtkStreamingDemandDrivenPipeline::FAST_PATH_FOR_TEMPORAL_DATA(), 1 );
+    }
+  else
+    {
+    outInfo->Remove( vtkStreamingDemandDrivenPipeline::FAST_PATH_FOR_TEMPORAL_DATA() );
+    }
 
   if ( newMetadata )
     {
@@ -7085,3 +7127,5 @@ void vtkExodusIIReader::UpdateTimeInformation()
     this->Metadata->CloseFile();
     }
 }
+
+
