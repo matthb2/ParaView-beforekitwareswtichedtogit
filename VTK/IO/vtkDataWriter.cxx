@@ -908,7 +908,7 @@ int vtkDataWriter::WriteCoordinates(ostream *fp, vtkDataArray *coords,
 int vtkDataWriter::WriteScalarData(ostream *fp, vtkDataArray *scalars, int num)
 {
   int i, j, size=0;
-  char *name;
+  const char *name;
   vtkLookupTable *lut;
   int dataType = scalars->GetDataType();
   int numComp = scalars->GetNumberOfComponents();
@@ -916,7 +916,7 @@ int vtkDataWriter::WriteScalarData(ostream *fp, vtkDataArray *scalars, int num)
   if ( (lut=scalars->GetLookupTable()) == NULL || 
        (size = lut->GetNumberOfColors()) <= 0 )
     {
-    name = static_cast<char *>("default");
+    name = "default";
     }
   else 
     {
