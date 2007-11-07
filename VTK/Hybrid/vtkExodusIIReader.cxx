@@ -1941,6 +1941,9 @@ void vtkExodusIIReaderPrivate::GlomArrayNames( int objtyp,
   vtksys::RegularExpression reVector( "(.*)[XxYyZz]$" );
   vtksys::RegularExpression reGaussP( "(.*)_([^_]*)_GP([0-9]+)$" );
 
+  // Clear out existing array names since we are re-reading them in.
+  this->ArrayInfo[objtyp].clear();
+
   ArrayInfoType ainfo;
   for ( int i = 0; i < num_vars; ++i )
     {
