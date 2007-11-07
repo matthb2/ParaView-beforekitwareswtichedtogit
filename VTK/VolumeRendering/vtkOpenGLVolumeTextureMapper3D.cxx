@@ -158,7 +158,7 @@ void vtkOpenGLVolumeTextureMapper3D::Render(vtkRenderer *ren, vtkVolume *vol)
   // Turn lighting off - the polygon textures already have illumination
   glDisable( GL_LIGHTING );
 
-  vtkGraphicErrorMacro(ren,"Before actual render method");
+  vtkGraphicErrorMacro(ren->GetRenderWindow(),"Before actual render method");
   switch ( this->RenderMethod )
     {
     case vtkVolumeTextureMapper3D::NVIDIA_METHOD:
