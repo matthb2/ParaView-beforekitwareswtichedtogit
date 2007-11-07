@@ -763,3 +763,15 @@ void vtkInformation::ReportAsObjectBase(vtkInformationKey* key,
       }
     }
 }
+
+//----------------------------------------------------------------------------
+void vtkInformation::SetRequest(vtkInformationRequestKey* request)
+{
+  this->Request = request;
+}
+
+//----------------------------------------------------------------------------
+vtkInformationRequestKey* vtkInformation::GetRequest()
+{
+  return this->Request;
+}
