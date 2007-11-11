@@ -35,14 +35,13 @@ vtkPointSet *vtkPointSetSource::GetOutput()
     return NULL;
     }
   
-  return (vtkPointSet *)(this->Outputs[0]);
+  return static_cast<vtkPointSet *>(this->Outputs[0]);
 }
-
 
 //----------------------------------------------------------------------------
 vtkPointSet *vtkPointSetSource::GetOutput(int idx)
 {
-  return (vtkPointSet *) this->vtkSource::GetOutput(idx); 
+  return static_cast<vtkPointSet *>(this->vtkSource::GetOutput(idx));
 }
 
 //----------------------------------------------------------------------------

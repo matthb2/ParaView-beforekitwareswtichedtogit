@@ -19,26 +19,27 @@
 
 vtkCxxRevisionMacro(vtkUnstructuredGridToUnstructuredGridFilter, "$Revision$");
 
-//----------------------------------------------------------------------------
+// ----------------------------------------------------------------------------
 vtkUnstructuredGridToUnstructuredGridFilter::vtkUnstructuredGridToUnstructuredGridFilter()
 {
   this->NumberOfRequiredInputs = 1;
   this->SetNumberOfInputPorts(1);
 }
 
-//----------------------------------------------------------------------------
+// ----------------------------------------------------------------------------
 vtkUnstructuredGridToUnstructuredGridFilter::~vtkUnstructuredGridToUnstructuredGridFilter()
 {
 }
 
-//----------------------------------------------------------------------------
+// ----------------------------------------------------------------------------
 // Specify the input data or filter.
-void vtkUnstructuredGridToUnstructuredGridFilter::SetInput(vtkUnstructuredGrid *input)
+void vtkUnstructuredGridToUnstructuredGridFilter::SetInput(
+  vtkUnstructuredGrid *input)
 {
   this->vtkProcessObject::SetNthInput(0, input);
 }
 
-//----------------------------------------------------------------------------
+// ----------------------------------------------------------------------------
 // Specify the input data or filter.
 vtkUnstructuredGrid *vtkUnstructuredGridToUnstructuredGridFilter::GetInput()
 {
@@ -47,13 +48,12 @@ vtkUnstructuredGrid *vtkUnstructuredGridToUnstructuredGridFilter::GetInput()
     return NULL;
     }
   
-  return (vtkUnstructuredGrid *)(this->Inputs[0]);
+  return static_cast<vtkUnstructuredGrid *>(this->Inputs[0]);
 }
 
-//----------------------------------------------------------------------------
-int
-vtkUnstructuredGridToUnstructuredGridFilter
-::FillInputPortInformation(int port, vtkInformation* info)
+// ----------------------------------------------------------------------------
+int vtkUnstructuredGridToUnstructuredGridFilter::FillInputPortInformation(
+  int port, vtkInformation* info)
 {
   if(!this->Superclass::FillInputPortInformation(port, info))
     {
@@ -63,7 +63,7 @@ vtkUnstructuredGridToUnstructuredGridFilter
   return 1;
 }
 
-//----------------------------------------------------------------------------
+// ----------------------------------------------------------------------------
 void vtkUnstructuredGridToUnstructuredGridFilter::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os,indent);

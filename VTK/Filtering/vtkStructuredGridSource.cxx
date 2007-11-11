@@ -41,7 +41,7 @@ vtkStructuredGrid *vtkStructuredGridSource::GetOutput()
     return NULL;
     }
   
-  return (vtkStructuredGrid *)(this->Outputs[0]);
+  return static_cast<vtkStructuredGrid *>(this->Outputs[0]);
 }
 
 //----------------------------------------------------------------------------

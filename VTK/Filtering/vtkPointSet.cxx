@@ -47,7 +47,7 @@ vtkPointSet::~vtkPointSet ()
 // Copy the geometric structure of an input point set object.
 void vtkPointSet::CopyStructure(vtkDataSet *ds)
 {
-  vtkPointSet *ps=(vtkPointSet *)ds;
+  vtkPointSet *ps=static_cast<vtkPointSet *>(ds);
 
   if ( this->Points != ps->Points )
     {

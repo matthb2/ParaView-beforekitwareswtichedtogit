@@ -42,7 +42,7 @@ vtkPolyData *vtkPolyDataToPolyDataFilter::GetInput()
     return NULL;
     }
   
-  return (vtkPolyData *)(this->Inputs[0]);
+  return static_cast<vtkPolyData *>(this->Inputs[0]);
 }
 
 //----------------------------------------------------------------------------

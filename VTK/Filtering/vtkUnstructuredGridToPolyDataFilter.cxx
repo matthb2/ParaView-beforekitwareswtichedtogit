@@ -47,13 +47,14 @@ vtkUnstructuredGrid *vtkUnstructuredGridToPolyDataFilter::GetInput()
     return NULL;
     }
   
-  return (vtkUnstructuredGrid *)(this->Inputs[0]);
+  return static_cast<vtkUnstructuredGrid *>(this->Inputs[0]);
 }
 
 
 //----------------------------------------------------------------------------
 // Copy the update information across
-void vtkUnstructuredGridToPolyDataFilter::ComputeInputUpdateExtents(vtkDataObject *output)
+void vtkUnstructuredGridToPolyDataFilter::ComputeInputUpdateExtents(
+  vtkDataObject *output)
 {
   vtkDataObject *input = this->GetInput();
 

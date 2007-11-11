@@ -47,7 +47,7 @@ vtkRectilinearGrid *vtkRectilinearGridToPolyDataFilter::GetInput()
     return NULL;
     }
   
-  return (vtkRectilinearGrid *)(this->Inputs[0]);
+  return static_cast<vtkRectilinearGrid *>(this->Inputs[0]);
 }
 
 //----------------------------------------------------------------------------

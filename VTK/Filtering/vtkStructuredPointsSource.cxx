@@ -49,13 +49,13 @@ vtkStructuredPoints *vtkStructuredPointsSource::GetOutput()
     return NULL;
     }
   
-  return (vtkStructuredPoints *)(this->Outputs[0]);
+  return static_cast<vtkStructuredPoints *>(this->Outputs[0]);
 }
 
 //----------------------------------------------------------------------------
 vtkStructuredPoints *vtkStructuredPointsSource::GetOutput(int idx)
 {
-  return (vtkStructuredPoints *) this->vtkSource::GetOutput(idx); 
+  return static_cast<vtkStructuredPoints *>(this->vtkSource::GetOutput(idx));
 }
 
 //----------------------------------------------------------------------------

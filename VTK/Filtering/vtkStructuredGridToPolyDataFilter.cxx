@@ -47,7 +47,7 @@ vtkStructuredGrid *vtkStructuredGridToPolyDataFilter::GetInput()
     return NULL;
     }
   
-  return (vtkStructuredGrid *)(this->Inputs[0]);
+  return static_cast<vtkStructuredGrid *>(this->Inputs[0]);
 }
 
 //----------------------------------------------------------------------------
