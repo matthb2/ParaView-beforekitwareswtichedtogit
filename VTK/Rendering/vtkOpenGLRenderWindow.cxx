@@ -167,6 +167,12 @@ void vtkOpenGLRenderWindow::OpenGLInit()
 
   // initialize blending for transparency
   
+  // We have to set the function pointer to null, otherwise the following
+  // scenario would fail on Windows (and maybe other kind of configurations):
+  // 1. Render onscreen on GPU that supports OpenGL 1.4
+  // 2. Switch to offscreen with GDI Windows implementation (1.1)
+  vtkgl::BlendFuncSeparate=0;
+  
   // Try to initialize vtkgl::BlendFuncSeparate() if available.
   vtkOpenGLExtensionManager *extensions=vtkOpenGLExtensionManager::New();
   extensions->SetRenderWindow(this);
