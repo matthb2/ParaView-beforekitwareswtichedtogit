@@ -287,7 +287,14 @@ void vtkPVFileInformation::CopyFromObject(vtkObject* object)
   
   this->SetName(helper->GetPath());
 #if defined(_WIN32)
-  path = vtksys::SystemTools::ConvertToWindowsOutputPath(path.c_str());
+  vtkstd::string::size_type idx;
+  for(idx = path.find('/', 0);
+        idx != vtkstd::string::npos;
+        idx = path.find('/', idx))
+    {
+    path.replace(idx, 1, 1, '\\');
+    }
+
   int len = path.size();
   if(len > 4 && path.compare(len-4, 4, ".lnk") == 0)
     {
