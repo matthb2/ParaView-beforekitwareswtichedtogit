@@ -517,9 +517,7 @@ VrmlNodeType::has(const vtkVRMLVectorType<NameTypeRec*> &recs, const char *nodeN
 
 #define YYDEBUG 1
 
-#ifndef __APPLE__
-#include <malloc.h>
-#endif
+#include <stdlib.h>
 
 #ifdef USE_STD_NAMESPACE
 using namespace std;
