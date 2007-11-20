@@ -291,7 +291,7 @@ void vtkSMSimpleParallelStrategy::UpdatePipeline()
   // decide where the data should be delivered for rendering.
 
   bool usecompositing = this->GetUseCompositing();
-  cout << "usecompositing: " << usecompositing << endl;
+  // cout << "usecompositing: " << usecompositing << endl;
 
   vtkSMIntVectorProperty* ivp = vtkSMIntVectorProperty::SafeDownCast(
     this->Collect->GetProperty("MoveMode"));
