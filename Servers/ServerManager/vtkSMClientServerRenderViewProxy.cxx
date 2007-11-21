@@ -143,6 +143,11 @@ void vtkSMClientServerRenderViewProxy::InitializeRenderSyncManager()
           << this->RenderersID
           << this->RendererProxy->GetID() 
           << vtkClientServerStream::End;
+  stream  << vtkClientServerStream::Invoke
+          << this->RenderSyncManager->GetID()
+          << "SetAnnotationLayerVisible"
+          << 0
+          << vtkClientServerStream::End;
   pm->SendStream(this->ConnectionID,
     vtkProcessModule::RENDER_SERVER_ROOT, stream);
 
