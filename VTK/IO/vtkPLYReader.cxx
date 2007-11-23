@@ -30,13 +30,6 @@
 vtkCxxRevisionMacro(vtkPLYReader, "$Revision$");
 vtkStandardNewMacro(vtkPLYReader);
 
-#ifndef true
-#define true 1
-#endif
-#ifndef false
-#define false 0
-#endif
-
 
 // Construct object with merging set to true.
 vtkPLYReader::vtkPLYReader()
