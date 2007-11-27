@@ -718,6 +718,7 @@ void vtkGraphLayoutView::ProcessEvents(
   else if(eventId == vtkCommand::SelectionChangedEvent)
     {
     this->Update();
+    Superclass::ProcessEvents(caller, eventId, callData);
     }
   else
     {
