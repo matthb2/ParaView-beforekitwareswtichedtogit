@@ -31,13 +31,11 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 =========================================================================*/
 
 // self include
-#include "pqDoubleRangeWidgetDomain.h"
+#include "pqWidgetRangeDomain.h"
 
 // Qt includes
 #include <QTimer>
-
-// Widgets includes
-#include "pqDoubleRangeWidget.h"
+#include <QWidget>
 
 // VTK includes
 #include <vtkSmartPointer.h>
@@ -47,14 +45,15 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <vtkSMProperty.h>
 #include <vtkSMDomain.h>
 #include <vtkSMDomainIterator.h>
+#include <vtkSMEnumerationDomain.h>
 #include <vtkSMDoubleRangeDomain.h>
-
+#include <vtkSMIntRangeDomain.h>
 
 // ParaView includes
 #include <pqSMAdaptor.h>
 
   
-class pqDoubleRangeWidgetDomain::pqInternal
+class pqWidgetRangeDomain::pqInternal
 {
 public:
   pqInternal()
@@ -66,6 +65,8 @@ public:
     {
     this->Connection->Delete();
     }
+  QString MinProp;
+  QString MaxProp;
   vtkSmartPointer<vtkSMProperty> Property;
   int Index;
   vtkSmartPointer<vtkSMDomain> Domain;
@@ -74,10 +75,13 @@ public:
 };
   
 
-pqDoubleRangeWidgetDomain::pqDoubleRangeWidgetDomain(pqDoubleRangeWidget* p, vtkSMProperty* prop, int index)
+pqWidgetRangeDomain::pqWidgetRangeDomain(QWidget* p, const QString& minProp,
+  const QString& maxProp, vtkSMProperty* prop, int index)
   : QObject(p)
 {
   this->Internal = new pqInternal();
+  this->Internal->MinProp = minProp;
+  this->Internal->MaxProp = maxProp;
   this->Internal->Property = prop;
   this->Internal->Index = index;
 
@@ -86,11 +90,25 @@ pqDoubleRangeWidgetDomain::pqDoubleRangeWidgetDomain(pqDoubleRangeWidget* p, vtk
   iter->Begin();
   while(!iter->IsAtEnd() && !this->Internal->Domain)
     {
+    vtkSMEnumerationDomain* enumeration;
+    enumeration = vtkSMEnumerationDomain::SafeDownCast(iter->GetDomain());
+    if(enumeration)
+      {
+      this->Internal->Domain = enumeration;
+      }
+
     vtkSMDoubleRangeDomain* drange;
     drange = vtkSMDoubleRangeDomain::SafeDownCast(iter->GetDomain());
     if(drange)
       {
       this->Internal->Domain = drange;
+      }
+    
+    vtkSMIntRangeDomain* irange;
+    irange = vtkSMIntRangeDomain::SafeDownCast(iter->GetDomain());
+    if(irange)
+      {
+      this->Internal->Domain = irange;
       }
     iter->Next();
     }
@@ -98,6 +116,15 @@ pqDoubleRangeWidgetDomain::pqDoubleRangeWidgetDomain(pqDoubleRangeWidget* p, vtk
 
   if(this->Internal->Domain)
     {
+    if(this->Internal->Domain->GetClassName() ==
+       QString("vtkSMDoubleRangeDomain") ||
+       this->Internal->Domain->GetClassName() ==
+       QString("vtkSMIntRangeDomain"))
+      {
+      // some widgets use domain as hint, this tells the widget to be strict
+      this->getWidget()->setProperty("strictRange", true);
+      }
+
     this->Internal->Connection->Connect(this->Internal->Domain, 
                                         vtkCommand::DomainModifiedEvent,
                                         this,
@@ -108,12 +135,12 @@ pqDoubleRangeWidgetDomain::pqDoubleRangeWidgetDomain(pqDoubleRangeWidget* p, vtk
 }
 
 
-pqDoubleRangeWidgetDomain::~pqDoubleRangeWidgetDomain()
+pqWidgetRangeDomain::~pqWidgetRangeDomain()
 {
   delete this->Internal;
 }
 
-void pqDoubleRangeWidgetDomain::domainChanged()
+void pqWidgetRangeDomain::domainChanged()
 {
   if(this->Internal->MarkedForUpdate)
     {
@@ -125,56 +152,45 @@ void pqDoubleRangeWidgetDomain::domainChanged()
 }
 
 //-----------------------------------------------------------------------------
-void pqDoubleRangeWidgetDomain::setRange(double min, double max)
+void pqWidgetRangeDomain::setRange(QVariant min, QVariant max)
 {
-  pqDoubleRangeWidget* range = this->getRangeWidget();
+  QWidget* range = this->getWidget();
   if(range)
     {
-    range->setMinimum(min);
-    range->setMaximum(max);
-    if(this->Internal->Domain->GetClassName() ==
-      QString("vtkSMDoubleRangeDomain"))
+    if(!this->Internal->MinProp.isEmpty())
       {
-      range->setStrictRange(min, max);
+      range->setProperty(this->Internal->MinProp.toAscii().data(), min);
+      }
+    if(!this->Internal->MaxProp.isEmpty())
+      {
+      range->setProperty(this->Internal->MaxProp.toAscii().data(), max);
       }
     }
 }
 
 //-----------------------------------------------------------------------------
-pqDoubleRangeWidget* pqDoubleRangeWidgetDomain::getRangeWidget() const
+QWidget* pqWidgetRangeDomain::getWidget() const
 {
-  pqDoubleRangeWidget* range = qobject_cast<pqDoubleRangeWidget*>(this->parent());
+  QWidget* range = qobject_cast<QWidget*>(this->parent());
   Q_ASSERT(range != NULL);
   return range;
 }
 
 //-----------------------------------------------------------------------------
-void pqDoubleRangeWidgetDomain::internalDomainChanged()
+void pqWidgetRangeDomain::internalDomainChanged()
 {
   pqSMAdaptor::PropertyType type;
   type = pqSMAdaptor::getPropertyType(this->Internal->Property);
-  QList<QVariant> range;
-  if(type == pqSMAdaptor::SINGLE_ELEMENT)
+  int index = type == pqSMAdaptor::SINGLE_ELEMENT ? 0 : this->Internal->Index;
+
+  QList<QVariant> range = pqSMAdaptor::getMultipleElementPropertyDomain(
+    this->Internal->Property, index);
+
+  if(range.size() == 2)
     {
-    range = pqSMAdaptor::getElementPropertyDomain(this->Internal->Property);
-    if(range.size() == 2)
-      {
-      double min = range[0].toDouble();
-      double max = range[1].toDouble();
-      this->setRange(min, max);
-      }
+    this->setRange(range[0], range[1]);
     }
-  else if(type == pqSMAdaptor::MULTIPLE_ELEMENTS)
-    {
-    range = pqSMAdaptor::getMultipleElementPropertyDomain(this->Internal->Property,
-                                                          this->Internal->Index);
-    if(range.size() == 2)
-      {
-      double min = range[0].toDouble();
-      double max = range[1].toDouble();
-      this->setRange(min, max);
-      }
-    }
+
   this->Internal->MarkedForUpdate = false;
 }
 
