@@ -488,6 +488,7 @@ void vtkOpenGLRayCastImageDisplayHelper::RenderTextureInternal( vtkVolume *vol,
       }
     
     glFlush();
+    glFinish();
     glDeleteTextures(1, &tempIndex);  
 
     // Restore state
@@ -542,6 +543,7 @@ void vtkOpenGLRayCastImageDisplayHelper::RenderTextureInternal( vtkVolume *vol,
   
 #ifdef GL_VERSION_1_1
   glFlush();
+  glFinish();
   glDeleteTextures(1, &tempIndex);
 #endif
   
