@@ -501,6 +501,26 @@ void vtkOpenGLProjectedTetrahedraMapper::ProjectTetrahedra(vtkRenderer *renderer
         tet_texcoords[j*2 + 1] = 0;
         }
 
+      // Do not render this cell if it is outside of the cutting planes.  For
+      // most planes, cut if all points are outside.  For the near plane, cut if
+      // any points are outside because things can go very wrong if one of the
+      // points is behind the view.
+      if (   (   (tet_points[0*3+0] >  1.0f) && (tet_points[1*3+0] >  1.0f)
+              && (tet_points[2*3+0] >  1.0f) && (tet_points[3*3+0] >  1.0f) )
+          || (   (tet_points[0*3+0] < -1.0f) && (tet_points[1*3+0] < -1.0f)
+              && (tet_points[2*3+0] < -1.0f) && (tet_points[3*3+0] < -1.0f) )
+          || (   (tet_points[0*3+1] >  1.0f) && (tet_points[1*3+1] >  1.0f)
+              && (tet_points[2*3+1] >  1.0f) && (tet_points[3*3+1] >  1.0f) )
+          || (   (tet_points[0*3+1] < -1.0f) && (tet_points[1*3+1] < -1.0f)
+              && (tet_points[2*3+1] < -1.0f) && (tet_points[3*3+1] < -1.0f) )
+          || (   (tet_points[0*3+2] >  1.0f) && (tet_points[1*3+2] >  1.0f)
+              && (tet_points[2*3+2] >  1.0f) && (tet_points[3*3+2] >  1.0f) )
+          || (   (tet_points[0*3+2] < -1.0f) || (tet_points[1*3+2] < -1.0f)
+              || (tet_points[2*3+2] < -1.0f) || (tet_points[3*3+2] < -1.0f) ) )
+        {
+        continue;
+        }
+
       // The classic PT algorithm uses face normals to determine the
       // projection class and then do calculations individually.  However,
       // Wylie 2002 shows how to use the intersection of two segments to
