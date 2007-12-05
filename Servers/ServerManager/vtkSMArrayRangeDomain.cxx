@@ -154,7 +154,7 @@ void vtkSMArrayRangeDomain::Update(const char* arrayName,
                                    int outputport)
 {
   // Make sure the outputs are created.
-  sp->CreateParts();
+  sp->CreateOutputPorts();
   vtkPVDataInformation* info = sp->GetDataInformation(outputport);
 
   if (!info)

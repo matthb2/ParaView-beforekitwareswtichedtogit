@@ -92,7 +92,7 @@ int vtkSMInputArrayDomain::IsInDomain(vtkSMSourceProxy* proxy,
     }
 
   // Make sure the outputs are created.
-  proxy->CreateParts();
+  proxy->CreateOutputPorts();
   vtkPVDataInformation* info = proxy->GetDataInformation(outputport);
   if (!info)
     {

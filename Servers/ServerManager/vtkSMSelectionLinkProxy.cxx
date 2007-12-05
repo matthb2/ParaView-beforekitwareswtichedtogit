@@ -22,7 +22,6 @@
 #include "vtkSelection.h"
 #include "vtkSelectionLink.h"
 #include "vtkSMClientDeliveryStrategyProxy.h"
-#include "vtkSMPart.h"
 #include "vtkSMProxyManager.h"
 #include "vtkSMSelectionHelper.h"
 

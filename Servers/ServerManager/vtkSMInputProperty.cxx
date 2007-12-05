@@ -17,7 +17,6 @@
 #include "vtkClientServerStream.h"
 #include "vtkObjectFactory.h"
 #include "vtkPVXMLElement.h"
-#include "vtkSMCompoundProxy.h"
 #include "vtkSMPropertyIterator.h"
 #include "vtkSMProxyIterator.h"
 #include "vtkSMProxyManager.h"
@@ -117,18 +116,11 @@ void vtkSMInputProperty::AppendCommandToStream(
         this->GetOutputPortForConnection(i));
       proxy->AddConsumer(this, cons);
 
-      vtkSMProxy* actualProxy = proxy;
-      vtkSMCompoundProxy* cp = vtkSMCompoundProxy::SafeDownCast(proxy);
-      if (cp)
-        {
-        actualProxy = cp->GetConsumableProxy();
-        }
-
       *str << vtkClientServerStream::Invoke 
            << objectId 
            << "AddInput" 
            << this->PortIndex
-           << actualProxy
+           << proxy
            << this->GetOutputPortForConnection(i)
            << this->Command;
       *str << vtkClientServerStream::End;

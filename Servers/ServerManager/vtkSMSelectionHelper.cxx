@@ -24,7 +24,6 @@
 #include "vtkPVSelectionInformation.h"
 #include "vtkSelection.h"
 #include "vtkSelectionSerializer.h"
-#include "vtkSMCompoundProxy.h"
 #include "vtkSMDoubleVectorProperty.h"
 #include "vtkSMIdTypeVectorProperty.h"
 #include "vtkSMIntVectorProperty.h"

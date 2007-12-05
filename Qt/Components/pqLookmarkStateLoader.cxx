@@ -36,7 +36,6 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "vtkSMProxy.h"
 #include "vtkSMProxyManager.h"
 #include "vtkSmartPointer.h"
-#include "vtkSMCompoundProxy.h"
 
 #include <QPointer>
 #include <QList>
