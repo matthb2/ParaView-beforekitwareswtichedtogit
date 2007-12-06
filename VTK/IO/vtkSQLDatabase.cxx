@@ -19,8 +19,14 @@
 
 #include "vtkSQLDatabase.h"
 #include "vtkSQLiteDatabase.h"
+
+#ifdef VTK_USE_PSQL
 #include "vtkPostgreSQLDatabase.h"
+#endif // VTK_USE_PSQL
+
+#ifdef VTK_USE_MYSQL
 #include "vtkMySQLDatabase.h"
+#endif // VTK_USE_MYSQL
 
 #include "vtkObjectFactory.h"
 
