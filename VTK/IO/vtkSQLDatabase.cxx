@@ -74,14 +74,18 @@ vtkSQLDatabase* vtkSQLDatabase::CreateFromURL( const char* URL )
 
     db = sdb;
     }
+#ifdef VTK_USE_PSQL
   else if ( protocol == "psql" )
     {
     db = vtkPostgreSQLDatabase::New();
     }
+#endif // VTK_USE_PSQL
+#ifdef VTK_USE_MYSQL
   else if ( protocol == "mysql" )
     {
     db = vtkMySQLDatabase::New();
     }
+#endif // VTK_USE_MYSQL
   else
     {
     vtkGenericWarningMacro( "Unsupported protocol: " << protocol.c_str() );
