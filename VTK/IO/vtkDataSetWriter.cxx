@@ -48,7 +48,7 @@ void vtkDataSetWriter::WriteData()
     writer = pwriter;
     }
 
-  else if ( type == VTK_STRUCTURED_POINTS || type == VTK_IMAGE_DATA)
+  else if ( type == VTK_STRUCTURED_POINTS || type == VTK_IMAGE_DATA || type == VTK_UNIFORM_GRID)
     {
     vtkStructuredPointsWriter *spwriter = vtkStructuredPointsWriter::New();
     spwriter->SetInput(static_cast<vtkImageData*>(input));
