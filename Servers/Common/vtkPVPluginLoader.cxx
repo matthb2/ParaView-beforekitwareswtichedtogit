@@ -52,14 +52,17 @@ vtkPVPluginLoader::vtkPVPluginLoader()
     }
 
   vtkProcessModule* pm = vtkProcessModule::GetProcessModule();
-  vtkPVOptions* opt = pm->GetOptions();
-  const char* path = opt->GetApplicationPath();
-  vtksys::String appDir = vtksys::SystemTools::GetProgramPath(path);
-  if(appDir.size())
+  vtkPVOptions* opt = pm ? pm->GetOptions() : NULL;
+  if(opt)
     {
-    appDir += "/plugins";
-    paths = paths.size() ? paths + ";" : paths;
-    paths += appDir;
+    const char* path = opt->GetApplicationPath();
+    vtksys::String appDir = vtksys::SystemTools::GetProgramPath(path);
+    if(appDir.size())
+      {
+      appDir += "/plugins";
+      paths = paths.size() ? paths + ";" : paths;
+      paths += appDir;
+      }
     }
 
   this->SearchPaths = new char[paths.size() + 1];
