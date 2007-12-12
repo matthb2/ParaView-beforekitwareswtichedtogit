@@ -49,6 +49,8 @@ vtkSQLDatabase::~vtkSQLDatabase()
 void vtkSQLDatabase::PrintSelf(ostream &os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os, indent);
+
+  os << indent << "URL: " << this->URL  << endl;
 }
 
 // ----------------------------------------------------------------------
