@@ -459,6 +459,11 @@ void vtkSelection::UnionSelectionList(vtkSelection* other)
             << "of components do not match.");
           return;
           }
+        // If it is the same array, we are done.
+        if (aa1 == aa2)
+          {
+          return;
+          }
         // TODO: avoid duplicates.
         for (vtkIdType j = 0; j < aa2->GetNumberOfTuples(); j++)
           {
