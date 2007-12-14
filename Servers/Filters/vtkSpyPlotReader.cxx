@@ -33,7 +33,7 @@ PURPOSE.  See the above copyright notice for more information.
 #include "vtkMultiProcessController.h"
 #include "vtkObjectFactory.h"
 #include "vtkRectilinearGrid.h"
-#include "vtkUniformGrid.h"
+#include "vtkImageData.h"
 #include "vtkUnsignedCharArray.h"
 #include "vtkUnsignedCharArray.h"
 
@@ -1403,7 +1403,7 @@ int vtkSpyPlotReader::PrepareAMRData(vtkHierarchicalDataSet *hb,
                                          origin, extents, 
                                          realExtents,
                                          realDims);
-  vtkUniformGrid* ug = vtkUniformGrid::New();
+  vtkImageData* ug = vtkImageData::New();
   hb->SetDataSet(*level, hb->GetNumberOfDataSets(*level), ug);
   ug->SetSpacing(spacing);
   ug->SetExtent(extents);
