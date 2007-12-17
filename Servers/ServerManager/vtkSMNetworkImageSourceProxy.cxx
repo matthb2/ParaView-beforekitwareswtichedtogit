@@ -82,7 +82,6 @@ void vtkSMNetworkImageSourceProxy::ReviveVTKObjects()
 //----------------------------------------------------------------------------
 void vtkSMNetworkImageSourceProxy::UpdateImage()
 {
-  cout << "UpdateImage" << endl;
   if (!this->FileName)
     {
     vtkErrorMacro("FileName must be set.");
