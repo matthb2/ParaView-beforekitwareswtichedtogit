@@ -994,7 +994,7 @@ vtkImageData* vtkSMRenderViewProxy::CaptureWindow(int magnification)
   int useOffscreenRenderingForScreenshots = this->UseOffscreenRenderingForScreenshots;
   if (0 != useOffscreenRenderingForScreenshots)
     {
-    this->GetRenderWindow()->SetOffScreenRendering(1);
+    //this->GetRenderWindow()->SetOffScreenRendering(1);
     }
 #endif
   this->GetRenderWindow()->SwapBuffersOff();
@@ -1016,7 +1016,7 @@ vtkImageData* vtkSMRenderViewProxy::CaptureWindow(int magnification)
 #if !defined(__APPLE__)
   if (0 != useOffscreenRenderingForScreenshots)
     {
-    this->GetRenderWindow()->SetOffScreenRendering(0);
+    //this->GetRenderWindow()->SetOffScreenRendering(0);
     }
 #endif
 

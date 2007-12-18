@@ -24,6 +24,7 @@
 #include "vtkSMProxyManager.h"
 
 #include <vtkstd/map>
+#include <vtksys/ios/sstream>
 
 
 //----------------------------------------------------------------------------
@@ -153,6 +154,9 @@ vtkSMProxy* vtkSMStateLoaderBase::NewProxyFromElement(vtkPVXMLElement* proxyElem
     proxy->SetSelfID(csid);
     }
 
+  vtksys_ios::ostringstream stream;
+  stream << "Created New Proxy: " << proxy->GetXMLGroup() << " , " << proxy->GetXMLName();
+  vtkProcessModule::DebugLog(stream.str().c_str());
   // Give subclasses a chance to process the newly created proxy.
   this->CreatedNewProxy(id, proxy);
   return proxy;
