@@ -143,7 +143,7 @@ void vtkOpenGLDisplayListPainter::RenderInternal(vtkRenderer* renderer, vtkActor
     // if nothing has changed we use an old display list else
     // we use the newly generated list.
     glCallList(this->ListIds[i]);
-    glFinish(); // To compute time correctly, we need to wait 
+    // glFinish(); // To compute time correctly, we need to wait 
                 // till OpenGL finishes.
     
     this->Timer->StopTimer();
