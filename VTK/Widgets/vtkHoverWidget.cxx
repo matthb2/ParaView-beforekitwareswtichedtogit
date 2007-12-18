@@ -55,7 +55,7 @@ vtkHoverWidget::vtkHoverWidget()
                                           vtkWidgetEvent::TimedOut,
                                           this, vtkHoverWidget::HoverAction);
   this->CallbackMapper->SetCallbackMethod(vtkCommand::KeyPressEvent,
-                                          vtkEvent::AnyModifier, 13, 1, NULL,
+                                          vtkEvent::AnyModifier, 13, 1, "Return",
                                           vtkWidgetEvent::Select,
                                           this, vtkHoverWidget::SelectAction);
 }
