@@ -607,6 +607,7 @@ void vtkClipDataSet::ClipVolume(vtkDataSet *input, vtkUnstructuredGrid *output)
   clipVolume->SetGenerateClippedOutput(this->GenerateClippedOutput);
   clipVolume->SetMergeTolerance(this->MergeTolerance);
   clipVolume->SetDebug(this->Debug);
+  clipVolume->SetInputArrayToProcess(0, this->GetInputArrayInformation(0));
   clipVolume->Update();
 
   clipVolume->RemoveObserver(this->InternalProgressObserver);
