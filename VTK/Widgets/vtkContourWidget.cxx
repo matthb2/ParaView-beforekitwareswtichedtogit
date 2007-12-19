@@ -52,11 +52,11 @@ vtkContourWidget::vtkContourWidget()
                                           vtkWidgetEvent::EndSelect,
                                           this, vtkContourWidget::EndSelectAction);
   this->CallbackMapper->SetCallbackMethod(vtkCommand::KeyPressEvent,
-                                          vtkEvent::NoModifier, 47, 1, "Delete",
+                                          vtkEvent::NoModifier, 127, 1, "Delete",
                                           vtkWidgetEvent::Delete,
                                           this, vtkContourWidget::DeleteAction);
   this->CallbackMapper->SetCallbackMethod(vtkCommand::CharEvent,
-                                          vtkEvent::NoModifier, 47, 1, "Delete",
+                                          vtkEvent::NoModifier, 127, 1, "Delete",
                                           vtkWidgetEvent::Delete,
                                           this, vtkContourWidget::DeleteAction);
   

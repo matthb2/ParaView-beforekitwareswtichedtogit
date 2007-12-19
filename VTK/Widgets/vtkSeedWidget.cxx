@@ -61,7 +61,7 @@ vtkSeedWidget::vtkSeedWidget()
                                           vtkWidgetEvent::EndSelect,
                                           this, vtkSeedWidget::EndSelectAction);
   this->CallbackMapper->SetCallbackMethod(vtkCommand::KeyPressEvent,
-                                          vtkEvent::NoModifier, 47, 1, "Delete",
+                                          vtkEvent::NoModifier, 127, 1, "Delete",
                                           vtkWidgetEvent::Delete,
                                           this, vtkSeedWidget::DeleteAction);
 }
