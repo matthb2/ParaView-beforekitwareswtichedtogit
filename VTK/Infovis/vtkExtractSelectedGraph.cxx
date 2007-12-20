@@ -87,7 +87,7 @@ int vtkExtractSelectedGraph::RequestData(
     return 1;
     }
 
-  bool inverse = false;
+  int inverse = 0;
   if(selection->GetProperties()->Has(vtkSelection::INVERSE()))
     {
     inverse = selection->GetProperties()->Get(vtkSelection::INVERSE());
