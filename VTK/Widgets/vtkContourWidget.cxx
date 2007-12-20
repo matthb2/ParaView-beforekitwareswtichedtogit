@@ -55,10 +55,6 @@ vtkContourWidget::vtkContourWidget()
                                           vtkEvent::NoModifier, 127, 1, "Delete",
                                           vtkWidgetEvent::Delete,
                                           this, vtkContourWidget::DeleteAction);
-  this->CallbackMapper->SetCallbackMethod(vtkCommand::CharEvent,
-                                          vtkEvent::NoModifier, 127, 1, "Delete",
-                                          vtkWidgetEvent::Delete,
-                                          this, vtkContourWidget::DeleteAction);
   
   this->CreateDefaultRepresentation();
   
