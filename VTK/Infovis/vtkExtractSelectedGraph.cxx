@@ -38,7 +38,6 @@
 #include "vtkStringArray.h"
 
 #include <vtksys/stl/map>
-using vtksys_stl::map;
 
 vtkCxxRevisionMacro(vtkExtractSelectedGraph, "$Revision$");
 vtkStandardNewMacro(vtkExtractSelectedGraph);
@@ -223,7 +222,7 @@ int vtkExtractSelectedGraph::RequestData(
     vtkPointData* inputVertexData = input->GetVertexData();
     vtkPointData* outputVertexData = output->GetVertexData();
     outputVertexData->CopyAllocate(inputVertexData);
-    map<vtkIdType, vtkIdType> idMap;
+    vtksys_stl::map<vtkIdType, vtkIdType> idMap;
 
     // Copy unselected vertices
     if(inverse)
@@ -279,7 +278,7 @@ int vtkExtractSelectedGraph::RequestData(
     // Copy any edges that connect UNSELECTED vertices
     if(inverse)
       {
-      map<vtkIdType, vtkIdType>::iterator mapIter = idMap.begin();
+      vtksys_stl::map<vtkIdType, vtkIdType>::iterator mapIter = idMap.begin();
       while(mapIter != idMap.end())
         {
         vtkIdType inputVertex = mapIter->first;
