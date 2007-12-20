@@ -206,6 +206,7 @@ int vtkFileSeriesReader::RequestInformation(
     timeRange[1] = numTimeSteps - 1;
     outInfo->Set(vtkStreamingDemandDrivenPipeline::TIME_RANGE(), 
                  timeRange, 2);
+    delete[] timesteps;
     }
   else if (numTimeSteps == 0)
     {
