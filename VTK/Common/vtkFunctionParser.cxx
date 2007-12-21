@@ -1730,7 +1730,7 @@ void vtkFunctionParser::BuildInternalSubstringStructure(int beginIndex,
           {
           // if(bool, valtrue, valfalse)
           int numCommas = 0;
-          int secondCommaIndex;
+          int secondCommaIndex = endIndex;
           parenthesisCount = 0;
           for (i = endIndex-1; i > beginIndex2; i--)
             {
