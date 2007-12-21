@@ -265,6 +265,15 @@ vtkCarbonRenderWindow::vtkCarbonRenderWindow()
 vtkCarbonRenderWindow::~vtkCarbonRenderWindow()
 {
   this->Finalize();
+  
+  vtkRenderer *ren;
+  vtkCollectionSimpleIterator rit;
+  this->Renderers->InitTraversal(rit);
+  while ( (ren = this->Renderers->GetNextRenderer(rit)) )
+    {
+    ren->SetRenderWindow(NULL);
+    }
+
   delete this->Internal;
 }
 
@@ -284,6 +293,7 @@ void vtkCarbonRenderWindow::DestroyWindow()
         (ren = this->Renderers->GetNextRenderer(rsit));)
     {
     ren->SetRenderWindow(NULL);
+    ren->SetRenderWindow(this);
     }
 
   /* finish OpenGL rendering */

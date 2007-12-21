@@ -52,6 +52,15 @@ vtkCocoaRenderWindow::~vtkCocoaRenderWindow()
     this->ShowCursor();
     }
   this->Finalize();
+  
+  vtkRenderer *renderer;
+  vtkCollectionSimpleIterator rsit;
+
+  for ( this->Renderers->InitTraversal(rsit);
+        (renderer = this->Renderers->GetNextRenderer(rsit));)
+    {
+    renderer->SetRenderWindow(0);
+    }
 
   if (this->Capabilities)
     {
@@ -115,6 +124,7 @@ void vtkCocoaRenderWindow::DestroyWindow()
           (ren = this->Renderers->GetNextRenderer(rsit));)
       {
       ren->SetRenderWindow(NULL);
+      ren->SetRenderWindow(this);
       }
     
     this->SetContextId(NULL);
