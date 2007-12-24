@@ -88,7 +88,7 @@ void vtkSMNetworkImageSourceProxy::UpdateImage()
     return;
     }
 
-  if (this->SourceProcess & this->Servers == 0)
+  if ((this->SourceProcess & this->Servers) == 0)
     {
     vtkErrorMacro("The proxy VTK objects have not been created on the processes "
       "where the image file is present.");
