@@ -153,6 +153,11 @@ vtkImageData* vtkSMAnimationSceneImageWriter::CaptureViewImage(
 //-----------------------------------------------------------------------------
 void vtkSMAnimationSceneImageWriter::Merge(vtkImageData* dest, vtkImageData* src)
 {
+  if (!src || !dest)
+    {
+    return;
+    }
+
   vtkImageIterator<unsigned char> inIt(src, src->GetExtent());
   int outextent[6];
   src->GetExtent(outextent);
