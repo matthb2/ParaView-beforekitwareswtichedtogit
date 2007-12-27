@@ -58,6 +58,7 @@
 #include "vtkSMSelectionHelper.h"
 #include "vtkSMSourceProxy.h"
 #include "vtkSMStringVectorProperty.h"
+#include "vtkSMUtilities.h"
 #include "vtkTimerLog.h"
 #include "vtkWindowToImageFilter.h"
 
@@ -1030,6 +1031,14 @@ vtkImageData* vtkSMRenderViewProxy::CaptureWindow(int magnification)
   capture->SetExtent(extents);
 
   return capture;
+}
+
+//-----------------------------------------------------------------------------
+int vtkSMRenderViewProxy::WriteImage(const char* filename, int magnification)
+{
+  vtkSmartPointer<vtkImageData> shot;
+  shot.TakeReference(this->CaptureWindow(magnification));
+  return vtkSMUtilities::SaveImage(shot, filename);
 }
 
 //-----------------------------------------------------------------------------
