@@ -1434,12 +1434,23 @@ void vtkSMProxyManager::RegisterCustomProxyDefinition(
     return;
     }
 
+
   vtkSMProxyManagerElementMapType& elementMap = 
     this->Internals->GroupMap[group];
-  if (elementMap.find(name) != elementMap.end())
+  vtkSMProxyManagerElementMapType::iterator iter = elementMap.find(name);
+  if (iter != elementMap.end())
     {
-    vtkErrorMacro("Proxy definition has already been registered with name \""
-      << name << "\" under group \"" << group <<"\".");
+    // There's a possibility that the custom proxy definition is the
+    // state has already been loaded (or another proxy definition with
+    // the same name exists). If that existing definition matches what
+    // the state is requesting, we don't need to raise any errors,
+    // simply skip it.
+
+    if (!iter->second.DefinitionsMatch(top))
+      {
+      vtkErrorMacro("Proxy definition has already been registered with name \""
+        << name << "\" under group \"" << group <<"\".");
+      }
     return;
     }
 
