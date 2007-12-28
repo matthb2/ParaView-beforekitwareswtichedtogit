@@ -52,11 +52,25 @@ void vtkOpenGLCamera::Render(vtkRenderer *ren)
       case VTK_STEREO_CRYSTAL_EYES:
         if (this->LeftEye)
           {
-          glDrawBuffer(static_cast<GLenum>(win->GetBackLeftBuffer()));
+          if(ren->GetRenderWindow()->GetDoubleBuffer())
+            {
+            glDrawBuffer(static_cast<GLenum>(win->GetBackLeftBuffer()));
+            }
+          else
+            {
+            glDrawBuffer(static_cast<GLenum>(win->GetFrontLeftBuffer()));
+            }
           }
         else
           {
-          glDrawBuffer(static_cast<GLenum>(win->GetBackRightBuffer()));
+           if(ren->GetRenderWindow()->GetDoubleBuffer())
+            {
+            glDrawBuffer(static_cast<GLenum>(win->GetBackRightBuffer()));
+            }
+          else
+            {
+            glDrawBuffer(static_cast<GLenum>(win->GetFrontRightBuffer()));
+            }
           }
         break;
       case VTK_STEREO_LEFT:
@@ -73,11 +87,11 @@ void vtkOpenGLCamera::Render(vtkRenderer *ren)
     {
     if (ren->GetRenderWindow()->GetDoubleBuffer())
       {
-      glDrawBuffer(static_cast<GLenum>(win->GetBackLeftBuffer()));
+      glDrawBuffer(static_cast<GLenum>(win->GetBackBuffer()));
       }
     else
       {
-      glDrawBuffer(static_cast<GLenum>(win->GetFrontLeftBuffer()));
+      glDrawBuffer(static_cast<GLenum>(win->GetFrontBuffer()));
       }
     }
   
