@@ -30,41 +30,34 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 =========================================================================*/
 
-#ifndef _pqXMLEventObserver_h
-#define _pqXMLEventObserver_h
+#ifndef _pqXMLEventSource_h
+#define _pqXMLEventSource_h
 
-#include "pqEventObserver.h"
+#include "pqEventSource.h"
+#include "pqCoreExport.h"
 
-/**
-Observes high-level ParaView events, and serializes them to a stream as XML
-for possible playback (as a test-case, demo, tutorial, etc).  To use,
-connect the onRecordEvent() slot to the pqEventTranslator::recordEvent()
-signal.
+class QString;
 
-\note Output is sent to the stream from this object's destructor, so you
-must ensure that it goes out of scope before trying to playback the stream.
-
-\sa pqEventTranslator, pqStdoutEventObserver, pqXMLEventSource.
-*/
-
-class pqXMLEventObserver : public pqEventObserver
+/** Concrete implementation of pqEventSource that retrieves events recorded
+by pqXMLEventObserver */
+class PQCORE_EXPORT pqXMLEventSource :
+  public pqEventSource
 {
   Q_OBJECT
-  
 public:
-  pqXMLEventObserver(QObject* p);
-  ~pqXMLEventObserver();
+  pqXMLEventSource(QObject* p = 0);
+  ~pqXMLEventSource();
 
-  virtual void setStream(QTextStream* stream);
+  virtual void setContent(const QString& path);
 
-public slots:
-  void onRecordEvent(
-    const QString& Widget,
-    const QString& Command,
-    const QString& Arguments);
+  virtual int getNextEvent(
+    QString& object,
+    QString& command,
+    QString& arguments);
 
 private:
+  class pqImplementation;
+  pqImplementation* const Implementation;
 };
 
-#endif // !_pqXMLEventObserver_h
-
+#endif // !_pqXMLEventSource_h
