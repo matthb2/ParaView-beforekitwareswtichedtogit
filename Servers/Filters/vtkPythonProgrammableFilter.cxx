@@ -138,7 +138,7 @@ int vtkPythonProgrammableFilter::RequestInformation(
 
 //----------------------------------------------------------------------------
 int vtkPythonProgrammableFilter::RequestDataObject(
-  vtkInformation* inInfo, 
+  vtkInformation* vtkNotUsed(request), 
   vtkInformationVector** inputVector , 
   vtkInformationVector* outputVector)
 {
