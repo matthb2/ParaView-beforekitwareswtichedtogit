@@ -588,7 +588,7 @@ int vtkSpyPlotReader::RequestData(
     // step in this reader right now
     double *requestedTimeSteps = 
       info->Get(vtkStreamingDemandDrivenPipeline::UPDATE_TIME_STEPS());
-    double timeValue = requestedTimeSteps[0];
+    //double timeValue = requestedTimeSteps[0];
     
     // find the first time value larger than requested time value
     // this logic could be improved
