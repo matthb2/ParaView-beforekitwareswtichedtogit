@@ -592,13 +592,29 @@ int vtkSpyPlotReader::RequestData(
     
     // find the first time value larger than requested time value
     // this logic could be improved
-    int cnt = 0;
-    while (cnt < tsLength-1 && steps[cnt] < timeValue)
-      {
-      cnt++;
-      }
-    this->CurrentTimeStep = cnt;
+    //int cnt = 0;
+    //while (cnt < tsLength-1 && steps[cnt] < timeValue)
+    //  {
+    //  cnt++;
+    //  }
+    //this->CurrentTimeStep = cnt;
     
+    int cnt=0;
+    int closestStep=0;
+    double minDist=-1;
+    for (cnt=0;cnt<tsLength;cnt++)
+      {
+      double tdist=(steps[cnt]-requestedTimeSteps[0]>requestedTimeSteps[0]-steps[cnt])?
+        steps[cnt]-requestedTimeSteps[0]:
+        requestedTimeSteps[0]-steps[cnt];
+      if (minDist<0 || tdist<minDist)
+        {
+        minDist=tdist;
+        closestStep=cnt;
+        }
+      }
+    this->CurrentTimeStep=closestStep;
+
     this->TimeRequestedFromPipeline = true;
     this->UpdateMetaData(request, outputVector);
     this->TimeRequestedFromPipeline = false;
