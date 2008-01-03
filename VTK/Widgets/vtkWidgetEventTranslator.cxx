@@ -136,7 +136,7 @@ void vtkWidgetEventTranslator::SetTranslation(const char *VTKEvent,
 //----------------------------------------------------------------------------
 void vtkWidgetEventTranslator::SetTranslation(unsigned long VTKEvent,
                                               int modifier, char keyCode,
-                                              int repeatCount, char* keySym,
+                                              int repeatCount, const char* keySym,
                                               unsigned long widgetEvent)
 {
   vtkSmartPointer< vtkEvent > e = vtkSmartPointer< vtkEvent >::New();
