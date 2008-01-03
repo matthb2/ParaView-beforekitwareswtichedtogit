@@ -251,6 +251,7 @@ int vtkSpyPlotReader::UpdateSpyDataFile(vtkInformation* request,
     return 1;
     }
   this->SetCurrentFileName(this->FileName);
+  this->Map->Clean(0);
   vtkstd::string fileNoExt = 
     vtksys::SystemTools::GetFilenameWithoutLastExtension(this->FileName);
   vtkstd::string filePath = 
