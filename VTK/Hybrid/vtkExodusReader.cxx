@@ -2816,7 +2816,6 @@ int vtkExodusReader::RequestData(
     vtkWarningMacro(<< "Can't open file");
     return 0;
     }
-
   this->ActualTimeStep = this->TimeStep;
 
   vtkInformation* outInfo = outputVector->GetInformationObject(0);
@@ -2840,14 +2839,29 @@ int vtkExodusReader::RequestData(
 
     if (!this->HasModeShapes)
       {
-      // find the first time value larger than requested time value
-      // this logic could be improved
+      //find the timestep with the closest value to the requested time
+      //value
       int cnt = 0;
-      while (cnt < tsLength-1 && steps[cnt] < this->TimeValue)
+      int closestStep=0;
+      double minDist=-1;
+      for (cnt=0;cnt<tsLength-1;cnt++)
         {
-        cnt++;
+        double tdist=(steps[cnt]-this->TimeValue>this->TimeValue-steps[cnt])?steps[cnt]-this->TimeValue:this->TimeValue-steps[cnt];
+        if (minDist<0 || tdist<minDist)
+          {
+          minDist=tdist;
+          closestStep=cnt;
+          }
         }
-      this->ActualTimeStep = cnt;
+      this->ActualTimeStep=closestStep;
+       // find the first time value larger than requested time value
+      // this logic could be improved
+      //while (cnt < tsLength-1 && steps[cnt] < this->TimeValue)
+      //  {
+      //  
+      //  cnt++;
+      //  }
+      //this->ActualTimeStep = cnt;
       }
     }
 

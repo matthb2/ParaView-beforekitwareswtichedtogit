@@ -6167,13 +6167,31 @@ int vtkExodusIIReader::RequestData(
     if ( ! this->GetHasModeShapes() )
       {
       // find the highest time step with a time value that is smaller than the requested time.
-      timeStep = 0;
-      while (timeStep < length - 1 && steps[timeStep] < requestedTimeSteps[0])
+      //timeStep = 0;
+      //while (timeStep < length - 1 && steps[timeStep] < requestedTimeSteps[0])
+      //  {
+      //  timeStep++;
+      //  }
+      //this->TimeStep = timeStep;
+
+      //find the timestep with the closest value
+      int cnt=0;
+      int closestStep=0;
+      double minDist=-1;
+      for (cnt=0;cnt<length;cnt++)
         {
-        timeStep++;
+        double tdist=(steps[cnt]-requestedTimeSteps[0]>requestedTimeSteps[0]-steps[cnt])?
+          steps[cnt]-requestedTimeSteps[0]:
+          requestedTimeSteps[0]-steps[cnt];
+        if (minDist<0 || tdist<minDist)
+          {
+          minDist=tdist;
+          closestStep=cnt;
+          }
         }
-      this->TimeStep = timeStep;
-      output->GetInformation()->Set( vtkDataObject::DATA_TIME_STEPS(), steps + timeStep, 1 );
+      this->TimeStep=closestStep;
+      cout << "Requested value: " << requestedTimeSteps[0] << " Step: " << this->TimeStep << endl;
+      output->GetInformation()->Set( vtkDataObject::DATA_TIME_STEPS(), steps + this->TimeStep, 1 );
       }
     else
       {
