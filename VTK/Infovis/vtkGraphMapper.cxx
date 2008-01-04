@@ -395,6 +395,8 @@ void vtkGraphMapper::PrintSelf(ostream& os, vtkIndent indent)
     {
     os << indent << "GraphToPoly: (none)\n";
     }
+  os << indent << "VertexPointSize: " << this->VertexPointSize << "\n";
+  os << indent << "EdgeLineWidth: " << this->EdgeLineWidth << "\n";
 }
 
 //----------------------------------------------------------------------------
