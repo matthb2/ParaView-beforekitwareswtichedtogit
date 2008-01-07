@@ -1328,8 +1328,9 @@ double vtkTransferFunctionEditorWidgetSimple1D::GetElementScalar(
 //----------------------------------------------------------------------------
 void vtkTransferFunctionEditorWidgetSimple1D::SetColorSpace(int space)
 {
-  if (space < 0 || space > 3)
+  if (space < 0 || space > 4)
     {
+    vtkWarningMacro("Invalid color space.");
     return;
     }
 
@@ -1348,6 +1349,9 @@ void vtkTransferFunctionEditorWidgetSimple1D::SetColorSpace(int space)
       break;
     case 3:
       this->ColorFunction->SetColorSpaceToLab();
+      break;
+    case 4:
+      this->ColorFunction->SetColorSpaceToDiverging();
       break;
     }
 }
