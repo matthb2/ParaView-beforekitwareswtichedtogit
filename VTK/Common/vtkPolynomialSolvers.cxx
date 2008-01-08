@@ -144,7 +144,7 @@ int polynomialEucliDivOppositeR( double* A, int m, double* B, int n, double* mR 
   delete [] Q;
   
   cout << "[mR[0]= " << mR[0] << ", ";
-  if ( ! r && ! fabs ( mR[0] * A[m] ) < three_epsilon ) 
+  if ( ! r && ( ! mR[0] || fabs ( mR[0] * A[m] ) < three_epsilon ) )
     {
     mR[0] = 0.;
     return -1;
