@@ -19,6 +19,7 @@
 #include "vtkClientServerInterpreter.h"
 #include "vtkDynamicLoader.h"
 #include "vtkPVOptions.h"
+#include "vtkStringArray.h"
 #include <vtksys/SystemTools.hxx>
 
 vtkStandardNewMacro(vtkPVPluginLoader);
