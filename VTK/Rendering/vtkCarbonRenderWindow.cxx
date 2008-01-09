@@ -1142,7 +1142,7 @@ WindowPtr vtkCarbonRenderWindow::GetRootWindow()
   // Instead of storing the RootWindow, we ask for it in case of a dynamic 
   // GUI where the root window can change
 #if MAC_OS_X_VERSION_MAX_ALLOWED >= 1030
-  if(HIViewGetWindow && !this->RootWindow)
+  if(HIViewGetWindow != NULL && !this->RootWindow)
     {
     return HIViewGetWindow(this->WindowId);
     }
