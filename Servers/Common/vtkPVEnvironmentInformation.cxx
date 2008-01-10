@@ -32,6 +32,7 @@ vtkPVEnvironmentInformation::vtkPVEnvironmentInformation()
 //-----------------------------------------------------------------------------
 vtkPVEnvironmentInformation::~vtkPVEnvironmentInformation()
 {
+  this->SetVariable(NULL);
 }
 
 //-----------------------------------------------------------------------------
