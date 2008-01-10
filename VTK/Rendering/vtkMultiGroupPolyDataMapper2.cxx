@@ -269,5 +269,6 @@ void vtkMultiGroupPolyDataMapper2::UpdatePainterInformation()
 void vtkMultiGroupPolyDataMapper2::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os, indent);
+  os << indent << "ColorBlocks: " << this->ColorBlocks << endl;
 }
 
