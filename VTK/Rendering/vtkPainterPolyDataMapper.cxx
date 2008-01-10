@@ -147,13 +147,13 @@ void vtkPainterPolyDataMapper::RemoveVertexAttributeMapping(
 
 
 //-----------------------------------------------------------------------------
-void vtkPainterPolyDataMapper::SetPainter(vtkPolyDataPainter* p)
+void vtkPainterPolyDataMapper::SetPainter(vtkPainter* p)
 {
   if (this->Painter)
     {
     this->Painter->RemoveObservers(vtkCommand::ProgressEvent, this->Observer);
     }
-  vtkSetObjectBodyMacro(Painter, vtkPolyDataPainter, p);
+  vtkSetObjectBodyMacro(Painter, vtkPainter, p);
 
    if (this->Painter)
     {
@@ -266,9 +266,9 @@ void vtkPainterPolyDataMapper::RenderPiece(vtkRenderer* ren, vtkActor* act)
       this->PainterUpdateTime.Modified();
       }
     // Pass polydata if changed.
-    if (this->Painter->GetPolyData() != input)
+    if (this->Painter->GetInput() != input)
       {
-      this->Painter->SetPolyData(input);
+      this->Painter->SetInput(input);
       }
     this->Painter->Render(ren, act, 0xff);
     this->TimeToDraw = this->Painter->GetTimeToDraw();

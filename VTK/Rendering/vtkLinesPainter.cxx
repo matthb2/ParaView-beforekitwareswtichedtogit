@@ -89,10 +89,10 @@ void vtkLinesPainter::RenderInternal(vtkRenderer* renderer, vtkActor* actor,
 int vtkLinesPainter::RenderPrimitive(unsigned long idx, vtkDataArray* n,
     vtkUnsignedCharArray* c, vtkDataArray* t, vtkRenderer* ren)
 {
-  vtkPoints* p = this->PolyData->GetPoints();
-  vtkCellArray* ca = (this->RenderPolys)? this->PolyData->GetPolys() :
-    this->PolyData->GetLines();
-  vtkIdType cellNum = this->PolyData->GetVerts()->GetNumberOfCells();
+  vtkPolyData* pd = this->GetInputAsPolyData();
+  vtkPoints* p = pd->GetPoints();
+  vtkCellArray* ca = (this->RenderPolys)? pd->GetPolys() : pd->GetLines();
+  vtkIdType cellNum = pd->GetVerts()->GetNumberOfCells();
   vtkIdType cellNumStart = cellNum;
   vtkIdType totalCells = ca->GetNumberOfCells();
 

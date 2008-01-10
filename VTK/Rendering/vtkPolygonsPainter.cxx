@@ -174,10 +174,11 @@ static inline void vtkOpenGLBeginPolyTriangleOrQuad(int aPrimitive,
 int vtkPolygonsPainter::RenderPrimitive(unsigned long idx, vtkDataArray* n,
     vtkUnsignedCharArray* c, vtkDataArray* t, vtkRenderer* ren)
 {
-  vtkPoints* p = this->PolyData->GetPoints();
-  vtkCellArray* ca = this->PolyData->GetPolys();
-  vtkIdType cellNum = this->PolyData->GetVerts()->GetNumberOfCells() + 
-    this->PolyData->GetLines()->GetNumberOfCells();
+  vtkPolyData* pd = this->GetInputAsPolyData();
+  vtkPoints* p = pd->GetPoints();
+  vtkCellArray* ca = pd->GetPolys();
+  vtkIdType cellNum = pd->GetVerts()->GetNumberOfCells() + 
+    pd->GetLines()->GetNumberOfCells();
   vtkIdType cellNumStart = cellNum;
   vtkIdType totalCells = ca->GetNumberOfCells();
   

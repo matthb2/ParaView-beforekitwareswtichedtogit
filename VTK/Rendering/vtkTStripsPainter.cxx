@@ -146,11 +146,11 @@ vcount++;
 int vtkTStripsPainter::RenderPrimitive(unsigned long idx, vtkDataArray* n,
     vtkUnsignedCharArray* c, vtkDataArray* t, vtkRenderer* ren)
 {
-  vtkPoints* p = this->PolyData->GetPoints();
-  vtkCellArray* ca = this->PolyData->GetStrips();
-  vtkIdType cellNum = this->PolyData->GetNumberOfVerts() + 
-    this->PolyData->GetNumberOfLines() +
-    this->PolyData->GetNumberOfPolys();
+  vtkPolyData* pd = this->GetInputAsPolyData();
+  vtkPoints* p = pd->GetPoints();
+  vtkCellArray* ca = pd->GetStrips();
+  vtkIdType cellNum = pd->GetNumberOfVerts() + 
+    pd->GetNumberOfLines() + pd->GetNumberOfPolys();
   vtkIdType cellNumStart = cellNum;
   vtkIdType totalCells = ca->GetNumberOfCells();
 
