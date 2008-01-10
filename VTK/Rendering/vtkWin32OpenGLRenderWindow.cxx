@@ -1496,6 +1496,9 @@ void vtkWin32OpenGLRenderWindow::SetCurrentCursor(int shape)
       cursorName = IDC_ARROW;
 #endif
       break;
+    case VTK_CURSOR_CROSSHAIR:
+      cursorName = IDC_CROSS;
+      break;
     }
   
   if (cursorName)

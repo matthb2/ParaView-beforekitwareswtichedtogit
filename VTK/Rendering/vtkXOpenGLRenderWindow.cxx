@@ -1925,6 +1925,7 @@ void vtkXOpenGLRenderWindow::SetCurrentCursor(int shape)
       
   switch (shape)
     {
+    case VTK_CURSOR_CROSSHAIR: // XC_crosshair sucks on linux, default to arrow
     case VTK_CURSOR_ARROW:
       if (!this->XCArrow)
         {
