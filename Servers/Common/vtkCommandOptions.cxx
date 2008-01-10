@@ -331,7 +331,7 @@ void vtkCommandOptions::ComputeApplicationPath()
       // no path separator found, search PATH for it
       argv0 = vtksys::SystemTools::FindProgram(argv0.c_str()).c_str();
       }
-    this->SetApplicationPath(argv0);
+    this->SetApplicationPath(argv0.c_str());
     }
 }
 
