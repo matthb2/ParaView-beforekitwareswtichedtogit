@@ -63,7 +63,10 @@ vtkPVPluginLoader::vtkPVPluginLoader()
     if(appDir.size())
       {
       appDir += "/plugins";
-      paths = paths.size() ? paths + ";" : paths;
+      if(paths.size())
+        {
+        paths += ";";
+        }
       paths += appDir;
       }
     }
