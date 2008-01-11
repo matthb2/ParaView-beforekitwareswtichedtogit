@@ -38,7 +38,6 @@
 vtkCxxRevisionMacro(vtkPolynomialSolvers, "$Revision$");
 vtkStandardNewMacro(vtkPolynomialSolvers);
 
-static const double three_epsilon = 3. * VTK_DBL_EPSILON;
 static const double sqrt3 = sqrt( static_cast<double>(3.) );
 static const double inv3 = 1 / 3.;
 
