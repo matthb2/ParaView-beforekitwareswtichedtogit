@@ -117,7 +117,7 @@ double vtkSuperquadric::EvaluateFunction(double xyz[3])
     val = -MAX_FVAL;
   }
   
-  return (double)(val);
+  return val;
 }
 
 // Description

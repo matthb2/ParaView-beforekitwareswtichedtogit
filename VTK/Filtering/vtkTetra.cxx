@@ -113,8 +113,9 @@ int vtkTetra::EvaluatePosition(double x[3], double* closestPoint,
       {
       for (minDist2=VTK_DOUBLE_MAX,i=0; i<4; i++)
         {
-        triangle = (vtkTriangle *) this->GetFace (i);
-        triangle->EvaluatePosition(x,closest,sub,pc,dist2,(double *)w);
+        triangle = static_cast<vtkTriangle *>(this->GetFace(i));
+        triangle->EvaluatePosition(x,closest,sub,pc,dist2,
+                                   static_cast<double *>(w));
 
         if ( dist2 < minDist2 )
           {

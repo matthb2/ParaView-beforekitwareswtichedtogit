@@ -334,14 +334,16 @@ vtkIdType vtkUniformGrid::FindCell(double x[3], vtkCell *vtkNotUsed(cell),
                                    double *weights)
 {
   return
-    this->FindCell( x, (vtkCell *)NULL, 0, 0.0, subId, pcoords, weights );
+    this->FindCell( x, static_cast<vtkCell *>(NULL), 0, 0.0, subId, pcoords,
+                    weights );
 }
 
 //----------------------------------------------------------------------------
 vtkIdType vtkUniformGrid::FindCell(double x[3], vtkCell *vtkNotUsed(cell),
                                  vtkIdType vtkNotUsed(cellId),
                                  double vtkNotUsed(tol2),
-                                 int& subId, double pcoords[3], double *weights)
+                                 int& subId, double pcoords[3],
+                                   double *weights)
 {
   int loc[3];
   int *dims = this->GetDimensions();
