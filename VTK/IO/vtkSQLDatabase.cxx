@@ -50,8 +50,23 @@ void vtkSQLDatabase::PrintSelf(ostream &os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os, indent);
 
-  os << indent << "URL: " << this->URL << endl;
-  os << indent << "LastErrorText: " << this->LastErrorText << endl;
+  if ( this->URL )
+    {
+    os << indent << "URL: " << this->URL << endl;
+    }
+  else
+    {
+    os << indent << "URL: (none)" << endl;
+    }
+
+  if ( this->LastErrorText )
+    {
+    os << indent << "LastErrorText: " << this->LastErrorText << endl;
+    }
+  else
+    {
+    os << indent << "LastErrorText: (none)" << endl;
+    }
 }
 
 // ----------------------------------------------------------------------
