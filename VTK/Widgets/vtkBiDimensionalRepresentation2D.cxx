@@ -957,6 +957,22 @@ void vtkBiDimensionalRepresentation2D::GetLabelPosition(double pos[3])
 }
 
 //----------------------------------------------------------------------
+void vtkBiDimensionalRepresentation2D::GetWorldLabelPosition(double pos[3])
+{
+  double viewportPos[3], worldPos[4];
+  this->TextActor->GetPositionCoordinate()->GetValue(viewportPos);
+  this->Renderer->ViewportToNormalizedViewport(viewportPos[0], viewportPos[1]);
+  this->Renderer->NormalizedViewportToView(viewportPos[0], viewportPos[1], viewportPos[2]);
+  this->Renderer->SetViewPoint(viewportPos);
+  this->Renderer->ViewToWorld();
+  this->Renderer->GetWorldPoint(worldPos);
+
+  pos[0] = worldPos[0]/worldPos[3];
+  pos[1] = worldPos[1]/worldPos[3];
+  pos[2] = worldPos[2]/worldPos[3];
+}
+
+//----------------------------------------------------------------------
 double vtkBiDimensionalRepresentation2D::GetLength1()
 {
   double x1[3], x2[3];
