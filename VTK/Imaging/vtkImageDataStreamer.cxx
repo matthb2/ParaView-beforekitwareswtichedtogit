@@ -125,7 +125,8 @@ int vtkImageDataStreamer::ProcessRequest(vtkInformation* request,
 
     // update the progress
     this->UpdateProgress(
-      (float)(this->CurrentDivision+1.0)/(float)this->NumberOfStreamDivisions);
+      static_cast<float>(this->CurrentDivision+1.0)
+      /static_cast<float>(this->NumberOfStreamDivisions));
     
     this->CurrentDivision++;
     if (this->CurrentDivision == this->NumberOfStreamDivisions)
