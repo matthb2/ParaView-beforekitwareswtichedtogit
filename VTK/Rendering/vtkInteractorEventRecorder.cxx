@@ -30,10 +30,11 @@ vtkInteractorEventRecorder::vtkInteractorEventRecorder()
   //take over the processing of delete and keypress events from the superclass
   this->KeyPressCallbackCommand->SetCallback(
     vtkInteractorEventRecorder::ProcessCharEvent);
+  this->EventCallbackCommand->SetPassiveObserver(1); // get events first
 
-  this->Priority = VTK_LARGE_FLOAT; //get events first
   this->EventCallbackCommand->SetCallback(
     vtkInteractorEventRecorder::ProcessEvents);
+  this->EventCallbackCommand->SetPassiveObserver(1); // get events first
 
   this->FileName = NULL;
 
