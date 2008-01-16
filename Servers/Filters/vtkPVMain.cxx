@@ -151,6 +151,7 @@ void vtkPVMain::Finalize()
 #ifdef VTK_USE_MPI
   if (vtkPVMain::InitializeMPI)
     {
+    MPI_Barrier(MPI_COMM_WORLD);
     MPI_Finalize();
     }
 #endif
