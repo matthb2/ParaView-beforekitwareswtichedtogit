@@ -91,7 +91,7 @@ vtkImageImport::~vtkImageImport()
 { 
   if ((this->ImportVoidPointer) && (!this->SaveUserArray))
     {
-    delete [] (char *)this->ImportVoidPointer;
+    delete [] static_cast<char *>(this->ImportVoidPointer);
     }
 }
 
@@ -268,7 +268,7 @@ void vtkImageImport::SetImportVoidPointer(void *ptr, int save)
     if ((this->ImportVoidPointer) && (!this->SaveUserArray))
       {
       vtkDebugMacro (<< "Deleting the array...");
-      delete [] (char *)this->ImportVoidPointer;
+      delete [] static_cast<char *>(this->ImportVoidPointer);
       }
     else 
       {
