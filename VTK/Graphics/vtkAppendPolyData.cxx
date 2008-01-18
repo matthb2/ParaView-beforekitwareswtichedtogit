@@ -280,6 +280,12 @@ int vtkAppendPolyData::RequestData(vtkInformation *vtkNotUsed(request),
   newPolys = vtkCellArray::New();
   pPolys = newPolys->WritePointer(numPolys, sizePolys);
 
+  if (!pPolys) 
+    {
+    vtkErrorMacro(<<"Memory allocation failed in append filter");
+    return 0;
+    }
+
   // These are created manually for faster execution
   // Uses the properties of the last input
   if ( ptList.IsAttributePresent(vtkDataSetAttributes::SCALARS) > -1 )
