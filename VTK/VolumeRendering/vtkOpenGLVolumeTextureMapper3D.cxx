@@ -52,6 +52,7 @@ vtkOpenGLVolumeTextureMapper3D::vtkOpenGLVolumeTextureMapper3D()
   this->Volume2Index                 =  0;
   this->Volume3Index                 =  0;
   this->ColorLookupIndex             =  0;
+  this->AlphaLookupIndex             =  0;
   this->RenderWindow                 = NULL;
 }
 

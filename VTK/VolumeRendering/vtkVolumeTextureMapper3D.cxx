@@ -659,10 +659,11 @@ vtkVolumeTextureMapper3D::vtkVolumeTextureMapper3D()
   this->SavedRGBFunction              = NULL;
   this->SavedGrayFunction             = NULL;
   this->SavedScalarOpacityFunction    = NULL;
+  this->SavedGradientOpacityFunction  = NULL;
   this->SavedColorChannels            = 0;
   this->SavedSampleDistance           = 0;
   this->SavedScalarOpacityDistance    = 0;
-  
+
   this->Volume1                       = NULL;
   this->Volume2                       = NULL;
   this->Volume3                       = NULL;
