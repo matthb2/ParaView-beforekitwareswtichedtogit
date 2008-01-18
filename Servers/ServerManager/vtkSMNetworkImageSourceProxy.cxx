@@ -84,7 +84,6 @@ void vtkSMNetworkImageSourceProxy::UpdateImage()
 {
   if (!this->FileName)
     {
-    vtkErrorMacro("FileName must be set.");
     return;
     }
 
