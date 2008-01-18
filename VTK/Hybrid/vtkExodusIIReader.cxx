@@ -2974,8 +2974,6 @@ void vtkExodusIIReaderPrivate::InsertBlockCells( int otyp, int obj, int conn_typ
     return;
     }
 
-  vtkIdType cellId;
-
   if ( this->SqueezePoints )
     {
     vtkstd::vector<vtkIdType> cellIds;
@@ -2991,7 +2989,7 @@ void vtkExodusIIReaderPrivate::InsertBlockCells( int otyp, int obj, int conn_typ
         }
       //cout << "\n";
       //cout << " " <<
-      cellId = output->InsertNextCell( binfo->CellType, binfo->PointsPerCell, &cellIds[0] );
+      output->InsertNextCell( binfo->CellType, binfo->PointsPerCell, &cellIds[0] );
       srcIds += binfo->PointsPerCell;
       }
       //cout << "\n";
@@ -3011,7 +3009,7 @@ void vtkExodusIIReaderPrivate::InsertBlockCells( int otyp, int obj, int conn_typ
         //cout << " " << srcIds[p];
         }
       //cout << "\n";
-      cellId = output->InsertNextCell( binfo->CellType, binfo->PointsPerCell, &cellIds[0] );
+      output->InsertNextCell( binfo->CellType, binfo->PointsPerCell, &cellIds[0] );
       srcIds += binfo->PointsPerCell;
       }
 #else // VTK_USE_64BIT_IDS
@@ -3019,7 +3017,7 @@ void vtkExodusIIReaderPrivate::InsertBlockCells( int otyp, int obj, int conn_typ
 
     for ( int i = 0; i < binfo->Size; ++i )
       {
-      cellId = output->InsertNextCell( binfo->CellType, binfo->PointsPerCell, srcIds );
+      output->InsertNextCell( binfo->CellType, binfo->PointsPerCell, srcIds );
       srcIds += binfo->PointsPerCell;
       //for ( int k = 0; k < binfo->PointsPerCell; ++k )
         //cout << " " << srcIds[k];
@@ -3027,7 +3025,6 @@ void vtkExodusIIReaderPrivate::InsertBlockCells( int otyp, int obj, int conn_typ
       }
 #endif // VTK_USE_64BIT_IDS
     }
-  (void)cellId; // Eliminate IRIX CC warning.
 }
 
 void vtkExodusIIReaderPrivate::InsertSetCells( int otyp, int obj, int conn_type, int timeStep, vtkUnstructuredGrid* output )
@@ -7188,11 +7185,8 @@ void vtkExodusIIReader::UpdateTimeInformation()
     if ( ! this->GetHasModeShapes() )
       {
       int nTimes = (int) this->Metadata->Times.size();
-      double timeRange[2];
       if ( nTimes )
         {
-        timeRange[0] = this->Metadata->Times[0];
-        timeRange[1] = this->Metadata->Times[nTimes - 1];
         this->TimeStepRange[0] = 0; 
         this->TimeStepRange[1] = nTimes - 1;
         }
