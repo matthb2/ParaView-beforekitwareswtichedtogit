@@ -186,9 +186,9 @@ vtkStringArray * vtkSQLiteDatabase::GetTables()
 
   if (!status)
     {
+    this->SetLastErrorText(vtk_sqlite3_errmsg(this->SQLiteInstance) );
     vtkErrorMacro(<< "GetTables(): Database returned error: "
                   << query->GetLastErrorText() );
-    this->SetLastErrorText(query->GetLastErrorText() );
     query->Delete();
     return NULL;
     }
@@ -218,9 +218,9 @@ vtkStringArray * vtkSQLiteDatabase::GetRecord(const char *table)
   bool status = query->Execute();
   if (!status)
     {
+    this->SetLastErrorText(vtk_sqlite3_errmsg(this->SQLiteInstance) );
     vtkErrorMacro(<< "GetRecord(" << table << "): Database returned error: "
                   << query->GetLastErrorText() );
-    this->SetLastErrorText(query->GetLastErrorText() );
     query->Delete();
     return NULL;
     }
