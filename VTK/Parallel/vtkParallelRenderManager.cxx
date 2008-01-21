@@ -2084,20 +2084,20 @@ void vtkParallelRenderManager::TileWindows(int xsize, int ysize, int ncolumn)
 #ifndef VTK_LEGACY_REMOVE
 # ifdef VTK_WORKAROUND_WINDOWS_MANGLE
 #  undef StartService
-void const vtkParallelRenderManager::StartServiceA()
+void vtkParallelRenderManager::StartServiceA()
 {
   VTK_LEGACY_REPLACED_BODY(vtkParallelRenderManager::StartService, "VTK 5.0",
                            vtkParallelRenderManager::StartServices);
   this->StartServices();
 }
-void const vtkParallelRenderManager::StartServiceW()
+void vtkParallelRenderManager::StartServiceW()
 {
   VTK_LEGACY_REPLACED_BODY(vtkParallelRenderManager::StartService, "VTK 5.0",
                            vtkParallelRenderManager::StartServices);
   this->StartServices();
 }
 # endif
-void const vtkParallelRenderManager::StartService()
+void vtkParallelRenderManager::StartService()
 {
   VTK_LEGACY_REPLACED_BODY(vtkParallelRenderManager::StartService, "VTK 5.0",
                            vtkParallelRenderManager::StartServices);
