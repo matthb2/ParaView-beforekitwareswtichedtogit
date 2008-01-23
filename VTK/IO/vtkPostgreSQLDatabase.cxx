@@ -33,10 +33,17 @@ vtkCxxRevisionMacro(vtkPostgreSQLDatabase, "$Revision$");
 // ----------------------------------------------------------------------
 vtkPostgreSQLDatabase::vtkPostgreSQLDatabase()
 {
-  this->URL = NULL;
   this->Connection = 0;
-  this->URLMTime = this->MTime;
   this->ConnectionMTime = this->MTime;
+  
+  this->DatabaseType = 0;
+  this->SetDatabaseType("psql");
+  this->HostName = 0;
+  this->UserName = 0;
+  this->Password = 0;
+  this->DatabaseName = 0;
+  this->Port = -1;
+  this->ConnectOptions = 0;
 }
 
 // ----------------------------------------------------------------------
