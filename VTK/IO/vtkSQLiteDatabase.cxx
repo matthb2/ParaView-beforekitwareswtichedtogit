@@ -226,9 +226,13 @@ vtkStringArray * vtkSQLiteDatabase::GetRecord(const char *table)
 vtkStdString vtkSQLiteDatabase::GetURL()
 {
   vtkStdString url;
+  const char* fname = this->GetDatabaseFileName();
   url = this->GetDatabaseType();
   url += "://";
-  url += this->GetDatabaseFileName();
+  if ( fname )
+    {
+    url += fname;
+    }
   return url;
 }
 
