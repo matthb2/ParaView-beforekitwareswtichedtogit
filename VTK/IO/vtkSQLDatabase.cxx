@@ -93,7 +93,7 @@ vtkSQLDatabase* vtkSQLDatabase::CreateFromURL( const char* URL )
     post_db->SetUserName(username.c_str());
     post_db->SetPassword(password.c_str());
     post_db->SetHostName(hostname.c_str());
-    post_db->SetPort(atoi(dataport.c_str()));
+    post_db->SetServerPort(atoi(dataport.c_str()));
     post_db->SetDatabaseName(database.c_str());
     }
 #endif // VTK_USE_POSTGRES
@@ -105,7 +105,7 @@ vtkSQLDatabase* vtkSQLDatabase::CreateFromURL( const char* URL )
     mysql_db->SetUserName(username.c_str());
     mysql_db->SetPassword(password.c_str());
     mysql_db->SetHostName(hostname.c_str());
-    mysql_db->SetPort(atoi(dataport.c_str()));
+    mysql_db->SetServerPort(atoi(dataport.c_str()));
     mysql_db->SetDatabaseName(database.c_str());
     }
 #endif // VTK_USE_MYSQL
