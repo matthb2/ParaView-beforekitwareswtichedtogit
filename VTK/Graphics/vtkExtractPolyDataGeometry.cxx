@@ -120,6 +120,7 @@ int vtkExtractPolyDataGeometry::RequestData(
 
   output->SetPoints(inPts);
   outputPD->PassData(pd);
+  outputCD->CopyAllocate(cd);
 
   // Now loop over all cells to see whether they are inside the implicit
   // function. Copy if they are. Note: there is an awful hack here, that
