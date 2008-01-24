@@ -25,8 +25,6 @@
 #include "vtkVariantArray.h"
 #include "vtkPostgreSQLDatabasePrivate.h"
 
-#include <vtksqlite/vtk_sqlite3.h>
-
 #include <assert.h>
 
 #include <vtksys/ios/sstream>
@@ -58,8 +56,16 @@ public:
     {
     if ( ! this->Database || ! this->Database->IsOpen() )
       {
-      vtkErrorMacro( "Need a valid database connection to execute query \"" << query << "\"" );
-      return false;
+      bool err = true;
+      if ( this->Database )
+        { // Perhaps the connection parameters were modified since the last open?
+        err = this->Database->Open() ? false : true;
+        }
+      if ( err )
+        {
+        vtkErrorMacro( "Need a valid database connection to execute query \"" << query << "\"" );
+        return false;
+        }
       }
 
     pqxx::transaction<>* work = this->Database->Connection->Work;
