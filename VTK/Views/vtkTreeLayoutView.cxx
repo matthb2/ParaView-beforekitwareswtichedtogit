@@ -561,8 +561,8 @@ void vtkTreeLayoutView::ProcessEvents(
 
       vtkSmartPointer<vtkIdTypeArray> selectedVertices = 
         vtkSmartPointer<vtkIdTypeArray>::New();
-      set<vtkIdType>::iterator it = selectedVertexSet.begin();
-      set<vtkIdType>::iterator itEnd = selectedVertexSet.end();
+      vtksys_stl::set<vtkIdType>::iterator it = selectedVertexSet.begin();
+      vtksys_stl::set<vtkIdType>::iterator itEnd = selectedVertexSet.end();
       for (; it != itEnd; ++it)
         {
         selectedVertices->InsertNextValue(*it);
