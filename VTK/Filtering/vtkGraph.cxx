@@ -545,6 +545,16 @@ void vtkGraph::ForceOwnership()
 void vtkGraph::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os,indent);
+  os << indent << "VertexData: " << (this->VertexData ? "" : "(none)") << endl;
+  if (this->VertexData)
+    {
+    this->VertexData->PrintSelf(os, indent.GetNextIndent());
+    }
+  os << indent << "EdgeData: " << (this->EdgeData ? "" : "(none)") << endl;
+  if (this->EdgeData)
+    {
+    this->EdgeData->PrintSelf(os, indent.GetNextIndent());
+    }
 }
 
 //----------------------------------------------------------------------------
