@@ -19,9 +19,10 @@
 
 #include "vtkCircularLayoutStrategy.h"
 
-#include "vtkAbstractGraph.h"
-#include "vtkObjectFactory.h"
+#include "vtkGraph.h"
 #include "vtkMath.h"
+#include "vtkObjectFactory.h"
+#include "vtkPoints.h"
 
 vtkCxxRevisionMacro(vtkCircularLayoutStrategy, "$Revision$");
 vtkStandardNewMacro(vtkCircularLayoutStrategy);

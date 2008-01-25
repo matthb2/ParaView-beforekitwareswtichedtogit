@@ -23,6 +23,7 @@
 #include "vtkDataSet.h"
 #include "vtkDemandDrivenPipeline.h"
 #include "vtkFieldData.h"
+#include "vtkGraph.h"
 #include "vtkInformation.h"
 #include "vtkInformationVector.h"
 #include "vtkUnsignedLongArray.h"
@@ -185,6 +186,26 @@ int vtkTimePointToString::RequestData(
       if (inputArray == outputDataSet->GetCellData()->GetAbstractArray(i))
         {
         outputDataSet->GetCellData()->AddArray(stringArray);
+        addedArray = true;
+        }
+      }
+    }
+  vtkGraph* outputGraph;
+  if (!addedArray && (outputGraph = vtkGraph::SafeDownCast(output)))
+    {
+    for (vtkIdType i = 0; i < outputGraph->GetVertexData()->GetNumberOfArrays(); i++)
+      {
+      if (inputArray == outputGraph->GetVertexData()->GetAbstractArray(i))
+        {
+        outputGraph->GetVertexData()->AddArray(stringArray);
+        addedArray = true;
+        }
+      }
+    for (vtkIdType i = 0; i < outputGraph->GetEdgeData()->GetNumberOfArrays(); i++)
+      {
+      if (inputArray == outputGraph->GetEdgeData()->GetAbstractArray(i))
+        {
+        outputGraph->GetEdgeData()->AddArray(stringArray);
         addedArray = true;
         }
       }

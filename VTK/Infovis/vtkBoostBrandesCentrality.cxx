@@ -18,19 +18,21 @@
 ----------------------------------------------------------------------------*/
 #include "vtkBoostBrandesCentrality.h"
 
-#include <vtkCellArray.h>
-#include <vtkCellData.h>
-#include <vtkMath.h>
-#include <vtkInformation.h>
-#include <vtkInformationVector.h>
-#include <vtkObjectFactory.h>
-#include <vtkPointData.h>
-#include <vtkFloatArray.h>
-#include <vtkDataArray.h>
-#include <vtkStringArray.h>
+#include "vtkCellArray.h"
+#include "vtkCellData.h"
+#include "vtkMath.h"
+#include "vtkInformation.h"
+#include "vtkInformationVector.h"
+#include "vtkObjectFactory.h"
+#include "vtkPointData.h"
+#include "vtkFloatArray.h"
+#include "vtkDataArray.h"
+#include "vtkStringArray.h"
 
 #include "vtkGraphToBoostAdapter.h"
-#include "vtkGraph.h"
+#include "vtkDirectedGraph.h"
+#include "vtkUndirectedGraph.h"
+
 #include <boost/graph/adjacency_list.hpp>
 #include <boost/graph/betweenness_centrality.hpp>
 #include <boost/vector_property_map.hpp>
@@ -39,9 +41,6 @@ using namespace boost;
 
 vtkCxxRevisionMacro(vtkBoostBrandesCentrality, "$Revision$");
 vtkStandardNewMacro(vtkBoostBrandesCentrality);
-
-
-
 
 // Constructor/Destructor
 vtkBoostBrandesCentrality::vtkBoostBrandesCentrality()
@@ -79,14 +78,14 @@ int vtkBoostBrandesCentrality::RequestData(
   identity_property_map imap;
   
   // Is the graph directed or undirected
-  if (output->GetDirected())
+  if (vtkDirectedGraph::SafeDownCast(output))
     {
-    vtkBoostDirectedGraph g(output);
+    vtkDirectedGraph *g = vtkDirectedGraph::SafeDownCast(output);
     brandes_betweenness_centrality(g, centrality_map(cMap).vertex_index_map(imap));
     }
   else
     {
-    vtkBoostUndirectedGraph g(output);
+    vtkUndirectedGraph *g = vtkUndirectedGraph::SafeDownCast(output);
     brandes_betweenness_centrality(g, centrality_map(cMap).vertex_index_map(imap));
     }
     

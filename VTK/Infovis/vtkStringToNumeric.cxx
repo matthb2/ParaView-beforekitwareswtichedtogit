@@ -24,6 +24,7 @@
 #include "vtkDoubleArray.h"
 #include "vtkDemandDrivenPipeline.h"
 #include "vtkFieldData.h"
+#include "vtkGraph.h"
 #include "vtkInformation.h"
 #include "vtkInformationVector.h"
 #include "vtkIntArray.h"
@@ -72,6 +73,15 @@ int vtkStringToNumeric::RequestData(
   if (outputDataSet && this->ConvertCellData)
     {
     this->ConvertArrays(outputDataSet->GetCellData());
+    }
+  vtkGraph *outputGraph = vtkGraph::SafeDownCast(output);
+  if (outputGraph && this->ConvertPointData)
+    {
+    this->ConvertArrays(outputGraph->GetVertexData());
+    }
+  if (outputGraph && this->ConvertCellData)
+    {
+    this->ConvertArrays(outputGraph->GetEdgeData());
     }
   
   return 1;

@@ -16,17 +16,17 @@
  Copyright (c) Sandia Corporation
  See Copyright.txt or http://www.paraview.org/HTML/Copyright.html for details.
 ----------------------------------------------------------------------------*/
-// .NAME vtkAbstractGraphAlgorithm - Superclass for algorithms that produce only AbstractGraph as output
+// .NAME vtkDirectedGraphAlgorithm - Superclass for algorithms that produce only directed graph as output
 //
 // .SECTION Description
-// vtkAbstractGraphAlgorithm is a convenience class to make writing algorithms
+// vtkDirectedGraphAlgorithm is a convenience class to make writing algorithms
 // easier. It is also designed to help transition old algorithms to the new
 // pipeline edgehitecture. There are some assumptions and defaults made by this
 // class you should be aware of. This class defaults such that your filter
 // will have one input port and one output port. If that is not the case
 // simply change it with SetNumberOfInputPorts etc. See this class
 // constructor for the default. This class also provides a FillInputPortInfo
-// method that by default says that all inputs will be AbstractGraph. If that
+// method that by default says that all inputs will be Graph. If that
 // isn't the case then please override this method in your subclass. This
 // class breaks out the downstream requests into separate functions such as
 // ExecuteData and ExecuteInformation.  For new algorithms you should
@@ -34,20 +34,24 @@
 // there is a default implementation that calls the old ExecuteData(output)
 // signature. For even older filters that don't implement ExecuteData the
 // default implementation calls the even older Execute() signature.
+//
+// .SECTION Thanks
+// Thanks to Patricia Crossno, Ken Moreland, Andrew Wilson and Brian Wylie from
+// Sandia National Laboratories for their help in developing this class.
 
-#ifndef __vtkAbstractGraphAlgorithm_h
-#define __vtkAbstractGraphAlgorithm_h
+#ifndef __vtkDirectedGraphAlgorithm_h
+#define __vtkDirectedGraphAlgorithm_h
 
 #include "vtkAlgorithm.h"
-#include "vtkAbstractGraph.h" // makes things a bit easier
+#include "vtkDirectedGraph.h" // makes things a bit easier
 
 class vtkDataSet;
 
-class VTK_FILTERING_EXPORT vtkAbstractGraphAlgorithm : public vtkAlgorithm
+class VTK_FILTERING_EXPORT vtkDirectedGraphAlgorithm : public vtkAlgorithm
 {
 public:
-  static vtkAbstractGraphAlgorithm *New();
-  vtkTypeRevisionMacro(vtkAbstractGraphAlgorithm,vtkAlgorithm);
+  static vtkDirectedGraphAlgorithm *New();
+  vtkTypeRevisionMacro(vtkDirectedGraphAlgorithm,vtkAlgorithm);
   void PrintSelf(ostream& os, vtkIndent indent);
 
   // Description:
@@ -58,8 +62,8 @@ public:
 
   // Description:
   // Get the output data object for a port on this algorithm.
-  vtkAbstractGraph* GetOutput() { return this->GetOutput(0); }
-  vtkAbstractGraph* GetOutput(int index);
+  vtkDirectedGraph* GetOutput() { return this->GetOutput(0); }
+  vtkDirectedGraph* GetOutput(int index);
 
   // Description:
   // Set an input of this algorithm. You should not override these
@@ -73,8 +77,8 @@ public:
   void SetInput(int index, vtkDataObject* obj);
 
 protected:
-  vtkAbstractGraphAlgorithm();
-  ~vtkAbstractGraphAlgorithm();
+  vtkDirectedGraphAlgorithm();
+  ~vtkDirectedGraphAlgorithm();
 
   // convenience method
   virtual int RequestInformation(vtkInformation* request,
@@ -95,20 +99,13 @@ protected:
                                   vtkInformationVector**,
                                   vtkInformationVector*);
 
-  // Description:
-  // By default, creates the same output type as the input type.
-  virtual int RequestDataObject(vtkInformation*, 
-                                vtkInformationVector** inputVector, 
-                                vtkInformationVector* outputVector);
-
-
   // see algorithm for more info
   virtual int FillOutputPortInformation(int port, vtkInformation* info);
   virtual int FillInputPortInformation(int port, vtkInformation* info);
 
 private:
-  vtkAbstractGraphAlgorithm(const vtkAbstractGraphAlgorithm&);  // Not implemented.
-  void operator=(const vtkAbstractGraphAlgorithm&);  // Not implemented.
+  vtkDirectedGraphAlgorithm(const vtkDirectedGraphAlgorithm&);  // Not implemented.
+  void operator=(const vtkDirectedGraphAlgorithm&);  // Not implemented.
 };
 
 #endif
