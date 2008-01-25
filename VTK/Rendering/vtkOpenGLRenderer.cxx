@@ -498,7 +498,6 @@ void vtkOpenGLRenderer::DeviceRenderTranslucentPolygonalGeometry()
         //  - ATI on iMac, Mac Pro, Power Mac G5, etc.  Bug <rdar://4975997>.
         //  - ATI on some PCs
         //  - Mesa 6.5.2 and lower
-        //  - Nvidia GeForce 7300 GT on Mac Pro
         // Do alpha blending always.
         const char* gl_renderer =
           reinterpret_cast<const char *>(glGetString(GL_RENDERER));
