@@ -58,6 +58,8 @@ vtkSMSurfaceRepresentationProxy::vtkSMSurfaceRepresentationProxy()
   command->SetCallback(*this,
     &vtkSMSurfaceRepresentationProxy::ProcessViewInformation);
   this->ViewInformationObserver = command;
+
+  this->SuppressLOD = 0;
 }
 
 //----------------------------------------------------------------------------
@@ -193,7 +195,8 @@ void vtkSMSurfaceRepresentationProxy::ProcessViewInformation()
 
   bool use_lod = false;
   if (this->ViewInformation && 
-    this->ViewInformation->Has(vtkSMRenderViewProxy::USE_LOD()))
+      this->ViewInformation->Has(vtkSMRenderViewProxy::USE_LOD()) &&
+      !this->SuppressLOD)
     {
     use_lod = this->ViewInformation->Get(vtkSMRenderViewProxy::USE_LOD()) > 0;
     }
