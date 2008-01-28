@@ -71,7 +71,7 @@ void vtkImageMaskBitsExecute(vtkImageMaskBits *self,
           for (idxC = 0; idxC < maxC; idxC++)
             {
             // Pixel operation
-            *outSI++ = *inSI++ & (T) masks[idxC];
+            *outSI++ = *inSI++ & static_cast<T>(masks[idxC]);
             }
           }
         break;
@@ -81,7 +81,7 @@ void vtkImageMaskBitsExecute(vtkImageMaskBits *self,
           for (idxC = 0; idxC < maxC; idxC++)
             {
             // Pixel operation
-            *outSI++ = *inSI++ | (T) masks[idxC];
+            *outSI++ = *inSI++ | static_cast<T>(masks[idxC]);
             }
           }
         break;
@@ -91,7 +91,7 @@ void vtkImageMaskBitsExecute(vtkImageMaskBits *self,
           for (idxC = 0; idxC < maxC; idxC++)
             {
             // Pixel operation
-            *outSI++ = *inSI++ ^ (T) masks[idxC];
+            *outSI++ = *inSI++ ^ static_cast<T>(masks[idxC]);
             }
           }
         break;
@@ -101,7 +101,7 @@ void vtkImageMaskBitsExecute(vtkImageMaskBits *self,
           for (idxC = 0; idxC < maxC; idxC++)
             {
             // Pixel operation
-            *outSI++ = ~(*inSI++ & (T) masks[idxC]);
+            *outSI++ = ~(*inSI++ & static_cast<T>(masks[idxC]));
             }
           }
         break;
@@ -111,7 +111,7 @@ void vtkImageMaskBitsExecute(vtkImageMaskBits *self,
           for (idxC = 0; idxC < maxC; idxC++)
             {
             // Pixel operation
-            *outSI++ = ~(*inSI++ | (T) masks[idxC]);
+            *outSI++ = ~(*inSI++ | static_cast<T>(masks[idxC]));
             }
           }
         break;

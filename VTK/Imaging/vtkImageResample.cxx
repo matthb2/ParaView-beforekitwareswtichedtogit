@@ -143,8 +143,8 @@ int vtkImageResample::RequestInformation(
       factor = this->GetAxisMagnificationFactor(axis, inInfo);
       }
 
-    wholeMin = (int)(ceil((double)(wholeMin) * factor));
-    wholeMax = (int)(floor((double)(wholeMax) * factor));
+    wholeMin = static_cast<int>(ceil(static_cast<double>(wholeMin) * factor));
+    wholeMax = static_cast<int>(floor(static_cast<double>(wholeMax) * factor));
     
     // Change the data spacing
     spacing[axis] /= factor;
