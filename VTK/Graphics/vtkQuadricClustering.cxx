@@ -536,6 +536,8 @@ void vtkQuadricClustering::AddTriangle(vtkIdType *binIds, double *pt0, double *p
         {
         minIdx = ( binIds[0]<binIds[1] ? (binIds[0]<binIds[2] ? 0 : 2) :
                    (binIds[1]<binIds[2] ? 1 : 2) );
+        midIdx = 0;
+        maxIdx = 0;
         switch ( minIdx )
           {
           case 0:
