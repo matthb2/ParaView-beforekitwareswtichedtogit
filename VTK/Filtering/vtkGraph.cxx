@@ -33,10 +33,7 @@
 #include "vtkVertexListIterator.h"
 
 #include <vtksys/stl/vector>
-#include <vtksys/stl/utility>
 
-using vtksys_stl::pair;
-using vtksys_stl::make_pair;
 using vtksys_stl::vector;
 
 double vtkGraph::DefaultPoint[3] = {0, 0, 0};
