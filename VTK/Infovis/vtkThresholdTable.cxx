@@ -31,7 +31,7 @@
 vtkCxxRevisionMacro(vtkThresholdTable, "$Revision$");
 vtkStandardNewMacro(vtkThresholdTable);
 
-vtkThresholdTable::vtkThresholdTable() : MinValue(0), MaxValue(VTK_INT_MAX)
+vtkThresholdTable::vtkThresholdTable() : MinValue(0), MaxValue(VTK_INT_MAX), Mode(0)
 {
 }
 

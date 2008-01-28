@@ -79,6 +79,7 @@ vtkGraphLayoutViewer::vtkGraphLayoutViewer()
   this->GlyphColorLUT         = vtkSmartPointer<vtkLookupTable>::New();
   this->LabeledDataMapper     = vtkSmartPointer<vtkLabeledDataMapper>::New();
   this->EdgeWeightField       = 0;
+  this->Iterative             = false;
   
   // Set up eventforwarder
   this->EventForwarder = vtkEventForwarderCommand::New();
