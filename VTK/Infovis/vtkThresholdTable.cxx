@@ -94,7 +94,6 @@ void vtkThresholdTableThresholdRows(iterT* it, vtkTable* input, vtkTable* output
       {
       vtkVariantArray* row = input->GetRow(i);
       output->InsertNextRow(row);
-      row->Delete();
       }
     }
 }
