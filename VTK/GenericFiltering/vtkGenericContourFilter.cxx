@@ -235,7 +235,7 @@ int vtkGenericContourFilter::RequestData(
     {
     if ( !(count % updateCount) )
       {
-      this->UpdateProgress((double)count / numCells);
+      this->UpdateProgress(static_cast<double>(count) / numCells);
       abortExecute = this->GetAbortExecute();
       }
     

@@ -319,7 +319,7 @@ int vtkGenericGeometryFilter::RequestData(
     if ( !(cellId % progressInterval) )
       {
       vtkDebugMacro(<<"Process cell #" << cellId);
-      this->UpdateProgress ((double)cellId/numCells);
+      this->UpdateProgress(static_cast<double>(cellId)/numCells);
       abort = this->GetAbortExecute();
       }
 
