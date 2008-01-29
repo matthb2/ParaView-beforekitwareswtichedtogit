@@ -193,4 +193,5 @@ int vtkStringToCategory::RequestDataObject(
 void vtkStringToCategory::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os, indent);
+  os << indent << "CategoryArrayName: " << (this->CategoryArrayName ? this->CategoryArrayName : "(null)") << endl;
 }
