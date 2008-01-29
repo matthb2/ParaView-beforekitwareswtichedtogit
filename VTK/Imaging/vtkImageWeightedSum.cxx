@@ -79,7 +79,8 @@ void vtkImageWeightedSumExecute(vtkImageWeightedSum *self,
   T* inSIFast[256];
   vtkImageProgressIterator<T> outIt(outData, outExt, self, id);
 
-  double *weights = ((vtkDoubleArray *)self->GetWeights())->GetPointer(0);
+  double *weights =
+    static_cast<vtkDoubleArray *>(self->GetWeights())->GetPointer(0);
   double totalWeight = self->CalculateTotalWeight();
   int normalize = self->GetNormalizeByWeight();
   vtkImageIterator<T> *inIts;

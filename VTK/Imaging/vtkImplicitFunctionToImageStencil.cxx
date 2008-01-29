@@ -82,8 +82,8 @@ int vtkImplicitFunctionToImageStencil::RequestData(
   unsigned long count = 0;
   int extent[6];
   data->GetExtent(extent);
-  unsigned long target = (unsigned long)
-    ((extent[5] - extent[4] + 1)*(extent[3] - extent[2] + 1)/50.0);
+  unsigned long target = static_cast<unsigned long>(
+    (extent[5] - extent[4] + 1)*(extent[3] - extent[2] + 1)/50.0);
   target++;
 
   // loop through all voxels

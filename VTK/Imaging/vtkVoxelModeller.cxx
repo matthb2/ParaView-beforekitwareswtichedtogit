@@ -184,8 +184,10 @@ int vtkVoxelModeller::RequestData(
     // compute dimensional bounds in data set
     for (i=0; i<3; i++)
       {
-      min[i] = (int) ((double)(adjBounds[2*i] - origin[i]) / spacing[i]);
-      max[i] = (int) ((double)(adjBounds[2*i+1] - origin[i]) / spacing[i]);
+      min[i] = static_cast<int>(
+        static_cast<double>(adjBounds[2*i] - origin[i]) / spacing[i]);
+      max[i] = static_cast<int>(
+        static_cast<double>(adjBounds[2*i+1] - origin[i]) / spacing[i]);
       if (min[i] < 0)
         {
         min[i] = 0;
