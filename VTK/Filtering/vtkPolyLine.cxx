@@ -215,7 +215,8 @@ int vtkPolyLine::GenerateSlidingNormals(vtkPoints *pts, vtkCellArray *lines,
 
           //compute rotation of line segment
           vtkMath::Cross (sNext, sPrev, q);
-          if ( (theta=asin((double)vtkMath::Normalize(q))) == 0.0 ) 
+          theta=asin(static_cast<double>(vtkMath::Normalize(q)));
+          if (theta==0.0) 
             { //no rotation, use previous normal
             normals->InsertTuple(linePts[j],normal);
             continue;
