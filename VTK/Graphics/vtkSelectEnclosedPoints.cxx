@@ -388,5 +388,7 @@ void vtkSelectEnclosedPoints::PrintSelf(ostream& os, vtkIndent indent)
 
   os << indent << "Inside Out: "
      << (this->InsideOut ? "On\n" : "Off\n");
+  
+  os << indent << "Tolerance: " << this->Tolerance << "\n";
 }
 
