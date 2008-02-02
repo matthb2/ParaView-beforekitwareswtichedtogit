@@ -336,7 +336,7 @@ if (ComputeScalars) \
 } 
 
 //----------------------------------------------------------------------------
-// Contouring filter specialized for images
+// Contouring filter specialized for structured grids
 template <class T, class PointsType>
 void ContourGrid(vtkGridSynchronizedTemplates3D *self,
                  int *exExt, T *scalars,
