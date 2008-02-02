@@ -264,8 +264,7 @@ void vtkImageAlgorithm::CopyAttributeData(vtkImageData *input,
         {
         outArray->SetName(inArray->GetName());
         }
-      output->GetPointData()->PassData(input->GetPointData());
-      output->GetCellData()->PassData(input->GetCellData());
+      output->CopyAttributes(input);
       }
     else
       {// Copy

@@ -314,8 +314,7 @@ vtkImageData *vtkImageToImageFilter::AllocateOutputData(vtkDataObject *out)
         inExt[2] == outExt[2] && inExt[3] == outExt[3] &&
         inExt[4] == outExt[4] && inExt[5] == outExt[5])
       {// Pass
-      output->GetPointData()->PassData(input->GetPointData());
-      output->GetCellData()->PassData(input->GetCellData());
+      output->CopyAttributes(input);
       }
     else
       {// Copy
