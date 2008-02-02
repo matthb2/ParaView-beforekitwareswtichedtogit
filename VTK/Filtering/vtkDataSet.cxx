@@ -61,6 +61,13 @@ void vtkDataSet::Initialize()
 }
 
 //----------------------------------------------------------------------------
+void vtkDataSet::CopyAttributes(vtkDataSet *ds)
+{
+  this->GetPointData()->PassData(ds->GetPointData());
+  this->GetCellData()->PassData(ds->GetCellData());
+}
+
+//----------------------------------------------------------------------------
 // Compute the data bounding box from data points.
 void vtkDataSet::ComputeBounds()
 {
