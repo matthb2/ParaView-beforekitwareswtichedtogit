@@ -284,6 +284,9 @@ void vtkAxisActor2D::PrintSelf(ostream& os, vtkIndent indent)
   os << indent << "NumberOfMinorTicks: " << this->NumberOfMinorTicks
      << endl;
   os << indent << "TitlePosition: " << this->TitlePosition << endl;
+
+  os << indent << "Size Font Relative To Axis: " 
+     << (this->SizeFontRelativeToAxis ? "On\n" : "Off\n");
 }
 
 //----------------------------------------------------------------------------
