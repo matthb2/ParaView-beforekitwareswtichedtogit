@@ -30,7 +30,7 @@
 #include "vtkSelection.h"
 #include "vtkStringArray.h"
 
-#include "vtkGraphToBoostAdapter.h"
+#include "vtkBoostGraphAdapter.h"
 #include "vtkDirectedGraph.h"
 #include "vtkUndirectedGraph.h"
 

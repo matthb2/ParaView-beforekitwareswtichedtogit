@@ -28,7 +28,7 @@
 #include "vtkVertexListIterator.h"
 
 #include "vtkGraph.h"
-#include "vtkGraphToBoostAdapter.h"
+#include "vtkBoostGraphAdapter.h"
 #include <boost/graph/biconnected_components.hpp>
 #include <boost/vector_property_map.hpp>
 #include <boost/version.hpp>
