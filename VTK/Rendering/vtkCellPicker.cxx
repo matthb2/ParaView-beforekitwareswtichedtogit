@@ -101,6 +101,7 @@ double vtkCellPicker::IntersectWithLine(double p1[3], double p2[3], double tol,
           }
         tMin = t;
         pDistMin = pDist;
+        cout << "cell id: " << minCellId << "\n";
         }//if minimum, maximum
       }//if a close cell
     }//for all cells
