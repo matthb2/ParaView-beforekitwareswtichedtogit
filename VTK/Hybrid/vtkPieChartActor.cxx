@@ -487,7 +487,7 @@ int vtkPieChartActor::PlaceAxes(vtkViewport *viewport, int* vtkNotUsed(size))
         }
       else
         {
-        sprintf(label,"%d",i);
+        sprintf(label,"%d",static_cast<int>(i));
         this->PieceMappers[i]->SetInput(label);
         }
       this->PieceMappers[i]->GetTextProperty()->
@@ -567,7 +567,7 @@ int vtkPieChartActor::PlaceAxes(vtkViewport *viewport, int* vtkNotUsed(size))
       }
     else
       {
-      sprintf(label,"%d",i);
+      sprintf(label,"%d",static_cast<int>(i));
       this->LegendActor->SetEntryString(i,label);
       }
 
