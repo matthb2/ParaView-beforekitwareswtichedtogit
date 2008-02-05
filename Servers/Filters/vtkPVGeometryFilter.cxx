@@ -671,10 +671,7 @@ void vtkPVGeometryFilter::GenericDataSetExecute(
 void vtkPVGeometryFilter::DataSetSurfaceExecute(vtkDataSet* input, 
                                                 vtkPolyData* output)
 {
-  vtkDataSet* ds = input->NewInstance();
-  ds->ShallowCopy(input);
-  this->DataSetSurfaceFilter->SetInput(ds);
-  ds->Delete();
+  this->DataSetSurfaceFilter->SetInput(input);
 
   // Observe the progress of the internal filter.
   this->DataSetSurfaceFilter->AddObserver(vtkCommand::ProgressEvent, 
