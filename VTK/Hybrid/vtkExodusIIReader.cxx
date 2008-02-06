@@ -3521,7 +3521,7 @@ vtkDataArray* vtkExodusIIReaderPrivate::GetCacheOrRead( vtkExodusIICacheKey key 
     arr->SetNumberOfTuples( this->GetNumberOfTimeSteps() );
     if ( ainfop->Components == 1 )
       {
-      if ( ex_get_var_time( exoid, vtkExodusIIReader::ELEM_BLOCK, ainfop->OriginalIndices[0], key.ObjectId+1, 
+      if ( ex_get_var_time( exoid, vtkExodusIIReader::ELEM_BLOCK, ainfop->OriginalIndices[0], key.ObjectId, 
           1, this->GetNumberOfTimeSteps(), arr->GetVoidPointer( 0 ) ) < 0 )
         {
         vtkErrorMacro( "Could not read element result variable " << ainfop->Name.c_str() << "." );
@@ -3539,7 +3539,7 @@ vtkDataArray* vtkExodusIIReaderPrivate::GetCacheOrRead( vtkExodusIICacheKey key 
         {
         vtkIdType N = this->GetNumberOfTimeSteps();
         tmpVal[c].resize( N );
-        if ( ex_get_var_time( exoid, vtkExodusIIReader::ELEM_BLOCK, ainfop->OriginalIndices[c], key.ObjectId+1, 
+        if ( ex_get_var_time( exoid, vtkExodusIIReader::ELEM_BLOCK, ainfop->OriginalIndices[c], key.ObjectId, 
             1, this->GetNumberOfTimeSteps(), &tmpVal[c][0] ) < 0 )
           {
           vtkErrorMacro( "Could not read temporal element result variable " << ainfop->OriginalNames[c].c_str() << "." );
