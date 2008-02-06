@@ -532,9 +532,9 @@ bool vtkCompositeDataPipeline::ShouldIterateOverInput(int& compositePort)
         if(input)
           {
           int size = inPortInfo->Length(vtkAlgorithm::INPUT_REQUIRED_DATA_TYPE());
-          for(int i = 0; i < size; ++i)
+          for(int j = 0; j < size; ++j)
             {
-            if(input->IsA(inPortInfo->Get(vtkAlgorithm::INPUT_REQUIRED_DATA_TYPE(), i)))
+            if(input->IsA(inPortInfo->Get(vtkAlgorithm::INPUT_REQUIRED_DATA_TYPE(), j)))
               {
               foundMatch = true;
               }
