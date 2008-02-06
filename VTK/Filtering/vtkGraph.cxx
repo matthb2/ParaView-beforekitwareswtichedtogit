@@ -394,6 +394,26 @@ void vtkGraph::DeepCopy(vtkDataObject *obj)
 }
 
 //----------------------------------------------------------------------------
+void vtkGraph::CopyStructure(vtkGraph *g)
+{
+  // Copy on write.
+  this->SetInternals(g->Internals);
+  if (g->Points)
+    {
+    if (!this->Points)
+      {
+      this->Points = vtkPoints::New();
+      }
+    this->Points->ShallowCopy(g->Points);
+    }
+  else if (this->Points)
+    {
+    this->Points->Delete();
+    this->Points = 0;
+    }
+}
+
+//----------------------------------------------------------------------------
 void vtkGraph::CopyInternal(vtkGraph *g, bool deep)
 {
   if (deep)

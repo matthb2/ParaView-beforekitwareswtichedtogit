@@ -650,7 +650,11 @@ int vtkConvertSelection::FillInputPortInformation(
     }
   else if (port == 1)
     {
-    info->Set(vtkConvertSelection::INPUT_REQUIRED_DATA_TYPE(), "vtkDataObject");
+    // Can convert from a vtkDataSet, vtkGraph, or vtkTable
+    info->Remove(vtkConvertSelection::INPUT_REQUIRED_DATA_TYPE());
+    info->Append(vtkConvertSelection::INPUT_REQUIRED_DATA_TYPE(), "vtkDataSet");
+    info->Append(vtkConvertSelection::INPUT_REQUIRED_DATA_TYPE(), "vtkGraph");
+    info->Append(vtkConvertSelection::INPUT_REQUIRED_DATA_TYPE(), "vtkTable");
     }
   return 1;
 }
