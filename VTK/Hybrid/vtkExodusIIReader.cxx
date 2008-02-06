@@ -2917,8 +2917,8 @@ int vtkExodusIIReaderPrivate::AssembleOutputProceduralArrays( vtkIdType timeStep
       ped->DeepCopy( arr );
       ped->SetName( vtkExodusIIReader::GetPedigreeElementIdArrayName() );
 
-      cd->AddArray( ped );
       cd->SetGlobalIds( arr );
+      cd->SetPedigreeIds( ped );
       ped->FastDelete();
 
       status -= 2;
@@ -2939,8 +2939,8 @@ int vtkExodusIIReaderPrivate::AssembleOutputProceduralArrays( vtkIdType timeStep
       ped->DeepCopy( arr );
       ped->SetName( vtkExodusIIReader::GetPedigreeNodeIdArrayName() );
 
-      pd->AddArray( ped );
       pd->SetGlobalIds( arr );
+      pd->SetPedigreeIds( ped );
       ped->FastDelete();
 
       status -= 4;
