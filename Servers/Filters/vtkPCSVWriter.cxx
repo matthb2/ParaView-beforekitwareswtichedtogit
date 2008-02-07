@@ -88,7 +88,6 @@ void vtkPCSVWriter::AppendCSVDataSet(vtkRectilinearGrid *remoteCSVOutput,
   rectilinearGrid->SetXCoordinates(XCoords);
 
   int numNode0PointArrays = node0PointData->GetNumberOfArrays();
-  int numNode0CellArrays = node0CellData->GetNumberOfArrays();
 
   // point data
   for (k = 0; k < numNode0PointArrays; k++)
