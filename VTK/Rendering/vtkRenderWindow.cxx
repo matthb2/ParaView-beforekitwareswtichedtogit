@@ -68,7 +68,7 @@ vtkRenderWindow::vtkRenderWindow()
   this->Renderers = vtkRendererCollection::New();
   this->NumberOfLayers = 1;
   this->CurrentCursor = VTK_CURSOR_DEFAULT;
-  this->AnaglyphColorSaturation = 0.65;
+  this->AnaglyphColorSaturation = 0.65f;
   this->AnaglyphColorMask[0] = 4;  // red
   this->AnaglyphColorMask[1] = 3;  // cyan
   this->PainterDeviceAdapter = vtkPainterDeviceAdapter::New();

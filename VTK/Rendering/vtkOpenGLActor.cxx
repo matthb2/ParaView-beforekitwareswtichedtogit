@@ -31,7 +31,7 @@ vtkStandardNewMacro(vtkOpenGLActor);
 // Actual actor render method.
 void vtkOpenGLActor::Render(vtkRenderer *ren, vtkMapper *mapper)
 {
-  float opacity;
+  double opacity;
 
   // get opacity
   opacity = this->GetProperty()->GetOpacity();

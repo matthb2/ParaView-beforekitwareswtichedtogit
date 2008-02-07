@@ -22,7 +22,7 @@
 vtkCxxRevisionMacro(vtkInteractorEventRecorder, "$Revision$");
 vtkStandardNewMacro(vtkInteractorEventRecorder);
 
-float vtkInteractorEventRecorder::StreamVersion = 1.0;
+float vtkInteractorEventRecorder::StreamVersion = 1.0f;
 
 //----------------------------------------------------------------------------
 vtkInteractorEventRecorder::vtkInteractorEventRecorder()
@@ -197,7 +197,7 @@ void vtkInteractorEventRecorder::Play()
     // Read events and invoke them on the object in question
     char event[128], keySym[64], buffer[512];
     int pos[2], ctrlKey, shiftKey, keyCode, repeatCount;
-    float stream_version = 0.0, tempf;
+    float stream_version = 0.0f, tempf;
 
     while ( ! this->InputStream->eof() )
       {
