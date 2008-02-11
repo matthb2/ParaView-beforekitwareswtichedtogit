@@ -115,6 +115,14 @@ void vtkMath::RandomSeed(long s)
 }
 
 //----------------------------------------------------------------------------
+// Description:
+// Return the current seed used by the random number generator.
+long vtkMath::GetSeed()
+{
+  return vtkMath::Seed;
+}
+
+//----------------------------------------------------------------------------
 // The number of combinations of n objects from a pool of m objects (m>n).
 //
 vtkTypeInt64 vtkMath::Binomial( int m, int n )
