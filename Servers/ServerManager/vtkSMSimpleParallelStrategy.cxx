@@ -401,11 +401,6 @@ void vtkSMSimpleParallelStrategy::SetUseCompositing(bool compositing)
 //----------------------------------------------------------------------------
 void vtkSMSimpleParallelStrategy::SetKdTree(vtkSMProxy* proxy)
 {
-  if (this->KdTree == proxy)
-    {
-    return;
-    }
-
   vtkSetObjectBodyMacro(KdTree, vtkSMProxy, proxy);
 
   if (this->Distributor)
