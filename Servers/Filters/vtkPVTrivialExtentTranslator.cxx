@@ -47,10 +47,11 @@ int vtkPVTrivialExtentTranslatorPieceToExtentThreadSafe(
 }
 
 //-----------------------------------------------------------------------------
-int vtkPVTrivialExtentTranslator::PieceToExtentThreadSafe(int piece, int numPieces, 
-                                      int ghostLevel, int *wholeExtent, 
-                                      int *resultExtent, int splitMode, 
-                                      int byPoints)
+int vtkPVTrivialExtentTranslator::PieceToExtentThreadSafe(
+      int vtkNotUsed(piece), int vtkNotUsed(numPieces),
+      int vtkNotUsed(ghostLevel), int *wholeExtent,
+      int *resultExtent, int vtkNotUsed(splitMode),
+      int vtkNotUsed(byPoints))
 {
   if (vtkImageData* id = vtkImageData::SafeDownCast(this->DataSet))
     {
