@@ -128,9 +128,9 @@ void vtkObjectBase::Print(ostream& os)
 {
   vtkIndent indent;
 
-  this->PrintHeader(os,0); 
+  this->PrintHeader(os,vtkIndent(0)); 
   this->PrintSelf(os, indent.GetNextIndent());
-  this->PrintTrailer(os,0);
+  this->PrintTrailer(os,vtkIndent(0));
 }
 
 void vtkObjectBase::PrintHeader(ostream& os, vtkIndent indent)

@@ -118,7 +118,7 @@ void vtkSMIceTCompositeViewProxy::InitializeForMultiView(vtkSMViewProxy* view)
     otherView->SharedParallelRenderManagerID; 
 
   this->SharedMultiViewManagerID = otherView->SharedMultiViewManagerID.IsNull()?
-    (otherView->MultiViewManager? otherView->MultiViewManager->GetID() : 0) : 
+    (otherView->MultiViewManager? otherView->MultiViewManager->GetID() : vtkClientServerID(0)) : 
     otherView->SharedMultiViewManagerID; 
 
   this->SharedRenderWindowID = otherView->SharedRenderWindowID.IsNull()?
