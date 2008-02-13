@@ -1001,7 +1001,8 @@ void vtkXOpenGLRenderWindow::ResizeOffScreenWindow(int width, int height)
     }
 
   if(this->Internal->PixmapContextId ||
-     this->Internal->PbufferContextId 
+     this->Internal->PbufferContextId || 
+     this->OffScreenUseFrameBuffer 
 #ifdef VTK_OPENGL_HAS_OSMESA
      || this->Internal->OffScreenContextId
 #endif
