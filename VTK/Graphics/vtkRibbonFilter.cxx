@@ -176,7 +176,7 @@ int vtkRibbonFilter::RequestData(
   //
   numNewCells = inLines->GetNumberOfCells();
   outCD->CopyNormalsOff();
-  outPD->CopyAllocate(pd,numNewCells);
+  outCD->CopyAllocate(cd,numNewCells);
 
   //  Create points along each polyline that are connected into NumberOfSides
   //  triangle strips. Texture coordinates are optionally generated.
