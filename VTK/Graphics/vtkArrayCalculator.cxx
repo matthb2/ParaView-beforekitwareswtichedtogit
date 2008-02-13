@@ -594,7 +594,7 @@ void vtkArrayCalculator::AddScalarArrayName(const char* arrayName,
     strcpy(arrayNames[i], this->ScalarArrayNames[i]);
     delete [] this->ScalarArrayNames[i];
     this->ScalarArrayNames[i] = NULL;
-    varNames[i] = new char[strlen(this->ScalarArrayNames[i]) + 1];
+    varNames[i] = new char[strlen(this->ScalarVariableNames[i]) + 1];
     strcpy(varNames[i], this->ScalarVariableNames[i]);
     delete [] this->ScalarVariableNames[i];
     this->ScalarVariableNames[i] = NULL;
