@@ -80,8 +80,6 @@ vtkImageStencilSource::AllocateOutputData(vtkDataObject *out, int* uExt)
     return NULL;
     }
   res->SetExtent(uExt);
-  res->SetOldSpacing(res->GetSpacing());
-  res->SetOldOrigin(res->GetOrigin());
   res->AllocateExtents();
 
   return res;
