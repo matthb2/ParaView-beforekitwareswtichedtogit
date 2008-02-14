@@ -74,7 +74,6 @@ void vtkSMExtentDomain::Update(vtkSMProxyProperty *pp)
         this->AddMinimum(j, extent[2*j]);
         this->AddMaximum(j, extent[2*j+1]);
         }
-      this->InvokeModified();
       return;
       }
     }
@@ -101,7 +100,6 @@ void vtkSMExtentDomain::Update(vtkSMProxyProperty *pp)
         this->AddMinimum(j, extent[2*j]);
         this->AddMaximum(j, extent[2*j+1]);
         }
-      this->InvokeModified();
       return;
       }
     }

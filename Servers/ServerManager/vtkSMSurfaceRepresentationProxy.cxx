@@ -163,12 +163,6 @@ bool vtkSMSurfaceRepresentationProxy::EndCreateVTKObjects()
 }
 
 //----------------------------------------------------------------------------
-void vtkSMSurfaceRepresentationProxy::Update(vtkSMViewProxy* view)
-{
-  this->Superclass::Update(view);
-}
-
-//----------------------------------------------------------------------------
 void vtkSMSurfaceRepresentationProxy::SetViewInformation(vtkInformation* info)
 {
   if (this->ViewInformation)

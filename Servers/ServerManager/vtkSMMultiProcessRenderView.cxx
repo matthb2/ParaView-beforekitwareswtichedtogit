@@ -48,7 +48,7 @@ vtkSMRepresentationStrategy* vtkSMMultiProcessRenderView::NewStrategyInternal(
     strategy = vtkSMRepresentationStrategy::SafeDownCast(
       pxm->NewProxy("strategies", "PolyDataParallelStrategy"));
     }
-  else if (dataType == VTK_UNIFORM_GRID)
+  else if (dataType == VTK_UNIFORM_GRID || dataType == VTK_IMAGE_DATA)
     {
     strategy = vtkSMRepresentationStrategy::SafeDownCast(
       pxm->NewProxy("strategies", "UniformGridParallelStrategy"));
