@@ -390,7 +390,11 @@ double vtkKdNode::_GetDistance2ToBoundary(
         }
       }
 
-    minDistance *= minDistance;
+    // if there are no inner boundaries we dont want to square.
+    if(minDistance != VTK_LARGE_FLOAT)
+      {
+      minDistance *= minDistance;
+      }
 
     if (p)
       {
