@@ -523,7 +523,9 @@ void vtkCarbonRenderWindow::SetSize(int x, int y)
     this->Size[0] = x;
     this->Size[1] = y;
 
-    if(this->OffScreenRendering && this->Internal->OffScreenWindow)
+    if(this->OffScreenRendering && 
+       (this->Internal->OffScreenWindow 
+        || this->OffScreenUseFrameBuffer))
       {
       this->ResizeOffScreenWindow(x,y);
       }
