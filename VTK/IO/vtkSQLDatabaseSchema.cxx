@@ -286,7 +286,11 @@ int vtkSQLDatabaseSchema::AddTableMultipleArguments( const char* tblName, ... )
   const char* name;
   const char* attr;
 
+#if !defined(__sgi) || defined(__GNUC__)
   va_list args;
+#else // SGI CC
+  vtkstd::va_list args;
+#endif // SGI CC
   va_start( args, tblName );
   while ( ( token = va_arg( args, int ) ) != END_TABLE_TOKEN )
     {
