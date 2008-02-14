@@ -55,9 +55,9 @@ public:
   struct Table
   {
     vtkstd::string Name;
-    vtkstd::vector<vtkSQLDatabaseSchemaInternals::Column> Columns;
-    vtkstd::vector<vtkSQLDatabaseSchemaInternals::Index> Indices;
-    vtkstd::vector<vtkSQLDatabaseSchemaInternals::Trigger> Triggers;
+    vtkstd::vector<Column> Columns;
+    vtkstd::vector<Index> Indices;
+    vtkstd::vector<Trigger> Triggers;
   };
 
   vtkstd::vector<Table> Tables;
