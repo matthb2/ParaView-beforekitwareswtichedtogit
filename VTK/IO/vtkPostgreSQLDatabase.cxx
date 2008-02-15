@@ -458,3 +458,4 @@ bool vtkPostgreSQLDatabase::DropDatabase( const char* dbName )
   this->Connection->SetLastErrorText( 0 );
   return true;
 }
+
