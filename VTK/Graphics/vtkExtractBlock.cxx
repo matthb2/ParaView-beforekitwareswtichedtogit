@@ -87,9 +87,9 @@ void vtkExtractBlock::CopySubTree(vtkCompositeDataIterator* loc,
     vtkCompositeDataIterator* iter = cinput->NewIterator();
     for (iter->InitTraversal(); !iter->IsDoneWithTraversal(); iter->GoToNextItem())
       {
-      vtkDataObject* inputNode = iter->GetCurrentDataObject();
-      vtkDataObject* clone = inputNode->NewInstance();
-      clone->ShallowCopy(inputNode);
+      vtkDataObject* curNode = iter->GetCurrentDataObject();
+      vtkDataObject* clone = curNode->NewInstance();
+      clone->ShallowCopy(curNode);
       coutput->SetDataSet(iter, clone);
       clone->Delete();
       }
