@@ -186,7 +186,7 @@ int vtkISIReader::RequestData(
 
 static istream& my_getline(istream& input, vtkstd::string& output, char delimiter)
 {
-  output.clear();
+  output = "";
   
   unsigned int numCharactersRead = 0;
   int nextValue = 0;
