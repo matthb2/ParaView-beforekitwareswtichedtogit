@@ -114,10 +114,7 @@ void vtkOpenGLScalarsToColorsPainter::RenderInternal(vtkRenderer* renderer,
   // the current materials ambient and diffuse values using   
   // vertex color commands otherwise tell it not to.          
   glDisable( GL_COLOR_MATERIAL );
-  vtkDataArray* c = this->OutputData->GetPointData()->GetScalars();
-  c = (c)? c : this->OutputData->GetCellData()->GetScalars();
-  c = (c)? c : this->OutputData->GetFieldData()->GetArray("Color");
-  if (c)
+  if (this->UsingScalarColoring)
     {
     GLenum lmcolorMode;
     if (this->ScalarMaterialMode == VTK_MATERIALMODE_DEFAULT)

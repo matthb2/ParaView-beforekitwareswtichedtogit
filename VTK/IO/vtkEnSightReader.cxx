@@ -1973,6 +1973,45 @@ vtkIdList* vtkEnSightReader::GetCellIds(int index, int cellType)
 }
 
 //----------------------------------------------------------------------------
+void vtkEnSightReader::AddToBlock(vtkMultiBlockDataSet* output, 
+  unsigned int blockNo, unsigned int datasetNo, 
+  vtkDataSet* dataset)
+{
+  vtkDataObject* blockDO = output->GetBlock(blockNo);
+  vtkMultiBlockDataSet* block = vtkMultiBlockDataSet::SafeDownCast(blockDO);
+  if (blockDO && !block)
+    {
+    vtkErrorMacro("Block already has a vtkDataSet assigned to it.");
+    return;
+    }
+
+  if (!block)
+    {
+    block = vtkMultiBlockDataSet::New();
+    output->SetBlock(blockNo, block);
+    block->Delete();
+    }
+
+  block->SetBlock(datasetNo, dataset);
+}
+
+
+//----------------------------------------------------------------------------
+vtkDataSet* vtkEnSightReader::GetDataSetFromBlock(
+  vtkMultiBlockDataSet* output,
+  unsigned int blockno, unsigned int datasetNo)
+{
+  vtkDataObject* blockDO = output->GetBlock(blockno);
+  vtkMultiBlockDataSet* block = vtkMultiBlockDataSet::SafeDownCast(blockDO);
+  if (block)
+    {
+    return vtkDataSet::SafeDownCast(block->GetBlock(datasetNo));
+    }
+
+  return 0;
+}
+
+//----------------------------------------------------------------------------
 void vtkEnSightReader::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os,indent);

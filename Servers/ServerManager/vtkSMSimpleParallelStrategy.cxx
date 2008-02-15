@@ -401,16 +401,19 @@ void vtkSMSimpleParallelStrategy::SetUseCompositing(bool compositing)
 //----------------------------------------------------------------------------
 void vtkSMSimpleParallelStrategy::SetKdTree(vtkSMProxy* proxy)
 {
-  vtkSetObjectBodyMacro(KdTree, vtkSMProxy, proxy);
-
-  if (this->Distributor)
+  if (this->KdTree != proxy)
     {
-    this->Connect(proxy, this->Distributor, "PKdTree");
-    }
+    vtkSetObjectBodyMacro(KdTree, vtkSMProxy, proxy);
 
-  if (this->DistributorLOD)
-    {
-    this->Connect(proxy, this->DistributorLOD, "PKdTree");
+    if (this->Distributor)
+      {
+      this->Connect(proxy, this->Distributor, "PKdTree");
+      }
+
+    if (this->DistributorLOD)
+      {
+      this->Connect(proxy, this->DistributorLOD, "PKdTree");
+      }
     }
 }
 

@@ -53,6 +53,7 @@ vtkGraphLayoutStrategy::~vtkGraphLayoutStrategy()
 {
   // Unregister vtk objects that were passed in
   this->SetGraph(NULL);
+  this->SetEdgeWeightField(NULL);
 }
 
 void vtkGraphLayoutStrategy::PrintSelf(ostream& os, vtkIndent indent)

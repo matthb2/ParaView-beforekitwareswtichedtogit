@@ -471,21 +471,24 @@ int vtkMultiThreshold::RequestData(
     {
     return 0;
     }
-  omesh->SetNumberOfGroups(this->NumberOfOutputs);
+  omesh->SetNumberOfBlocks(this->NumberOfOutputs);
 
   vtkstd::vector<vtkUnstructuredGrid*> outv; // vector of output datasets
   vtkUnstructuredGrid* ds;
-  omesh->SetNumberOfBlocks( 1 );
   for ( i = 0; i < this->NumberOfOutputs; ++i )
     {
-    omesh->SetNumberOfDataSets(i, updateNumPieces);
+    vtkMultiBlockDataSet* block = vtkMultiBlockDataSet::New();
+    omesh->SetBlock(i, block);
+    block->Delete();
+
+    block->SetNumberOfBlocks(updateNumPieces);
     ds = vtkUnstructuredGrid::New();
     ds->SetPoints( in->GetPoints() );
     ds->GetPointData()->PassData( in->GetPointData() );
     ds->GetCellData()->CopyGlobalIdsOn();
     ds->GetCellData()->CopyAllocate( in->GetCellData() );
 
-    omesh->SetDataSet( i, updatePiece, ds );
+    block->SetBlock(updatePiece, ds );
     ds->FastDelete();
 
     outv.push_back( ds );

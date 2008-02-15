@@ -1009,7 +1009,7 @@ int vtkSocketCommunicator::AllReduceVoidArray(const void *, void *,
 int vtkSocketCommunicator::GetVersion()
 {
   const char revision[] = "$Revision$";
-  int version;
+  int version=0;
   sscanf(revision, "$Revision: 1.%d", &version);
   return version;
 }

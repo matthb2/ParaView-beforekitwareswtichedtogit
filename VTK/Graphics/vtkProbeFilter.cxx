@@ -245,7 +245,7 @@ void vtkProbeFilter::ProbeEmptyPoints(vtkDataSet *input, vtkDataSet *source,
     if (maskArray[ptId] == static_cast<char>(1))
       {
       // skip points which have already been probed with success.
-      // This is helpful for multigroup dataset probing.
+      // This is helpful for multiblock dataset probing.
       continue;
       }
 

@@ -18,15 +18,17 @@
 
 vtkCxxRevisionMacro(vtkHierarchicalDataSetGeometryFilter, "$Revision$");
 vtkStandardNewMacro(vtkHierarchicalDataSetGeometryFilter);
-
+//-----------------------------------------------------------------------------
 vtkHierarchicalDataSetGeometryFilter::vtkHierarchicalDataSetGeometryFilter()
 {
 }
 
+//-----------------------------------------------------------------------------
 vtkHierarchicalDataSetGeometryFilter::~vtkHierarchicalDataSetGeometryFilter()
 {
 }
 
+//-----------------------------------------------------------------------------
 void vtkHierarchicalDataSetGeometryFilter::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os,indent);

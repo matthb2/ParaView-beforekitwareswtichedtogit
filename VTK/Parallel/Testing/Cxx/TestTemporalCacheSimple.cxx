@@ -18,7 +18,7 @@
 #include "vtkCompositeDataPipeline.h"
 #include "vtkContourFilter.h"
 #include "vtkInformation.h"
-#include "vtkMultiGroupPolyDataMapper.h"
+#include "vtkCompositePolyDataMapper.h"
 #include "vtkPolyDataMapper.h"
 #include "vtkRegressionTestImage.h"
 #include "vtkRenderWindow.h"
@@ -232,8 +232,8 @@ int TestTemporalCacheSimple(int , char *[])
   interp->SetInputConnection(cache->GetOutputPort());
   
   // map them
-  vtkSmartPointer<vtkMultiGroupPolyDataMapper> mapper = 
-    vtkSmartPointer<vtkMultiGroupPolyDataMapper>::New();
+  vtkSmartPointer<vtkCompositePolyDataMapper> mapper = 
+    vtkSmartPointer<vtkCompositePolyDataMapper>::New();
   mapper->SetInputConnection(interp->GetOutputPort());
   
   vtkSmartPointer<vtkActor> actor = vtkSmartPointer<vtkActor>::New();

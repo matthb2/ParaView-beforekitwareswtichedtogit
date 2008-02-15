@@ -51,6 +51,17 @@ vtkTemporalDataSet::GetData(vtkInformationVector* v, int i)
 }
 
 //----------------------------------------------------------------------------
+void vtkTemporalDataSet::SetTimeStep(unsigned int timestep, vtkDataObject* dobj)
+{
+  if (dobj && dobj->IsA("vtkTemporalDataSet"))
+    {
+    vtkErrorMacro("vtkTemporalDataSet cannot be added as a timestep.");
+    return;
+    }
+  this->Superclass::SetChild(timestep, dobj);
+}
+
+//----------------------------------------------------------------------------
 void vtkTemporalDataSet::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os,indent);
