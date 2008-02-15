@@ -323,6 +323,28 @@ vtkStdString vtkMySQLDatabase::GetURL()
 }
 
 // ----------------------------------------------------------------------
+vtkStdString vtkMySQLDatabase::GetColumnTypeString( int colType )
+{
+  switch ( colType )
+    {
+    case  0: return 0;
+    case  1: return "SMALLINT";
+    case  2: return "INTEGER";
+    case  3: return "BIGINT";
+    case  4: return "VARCHAR";
+    case  5: return "TEXT";
+    case  6: return "DOUBLE";
+    case  7: return "DOUBLE PRECISION";
+    case  8: return "BLOB";
+    case  9: return "TIME";
+    case 10: return "DATE";
+    case 11: return "TIMESTAMP";
+    }
+
+    return 0;
+}
+
+// ----------------------------------------------------------------------
 void vtkMySQLDatabase::PrintSelf(ostream &os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os, indent);
