@@ -484,13 +484,13 @@ bool vtkPostgreSQLQuery::BeginTransaction()
   assert( db );
 
   this->Transactor = new vtkPostgreSQLQueryPrivate( db );
-  if ( this->Transactor )
+  if ( ! this->Transactor )
     {
     vtkErrorMacro(<<"Cannot create a new transaction.");
     return false;
     }
 
-  return true;
+  return this->Transactor->BeginTransaction();
 }
  
 // ----------------------------------------------------------------------

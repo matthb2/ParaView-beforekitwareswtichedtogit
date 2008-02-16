@@ -227,7 +227,7 @@ vtkStdString vtkPostgreSQLDatabase::GetColumnTypeString( int colType )
     case vtkSQLDatabaseSchema::VARCHAR: return "VARCHAR";
     case vtkSQLDatabaseSchema::TEXT: return "TEXT";
     case vtkSQLDatabaseSchema::REAL: return "REAL";
-    case vtkSQLDatabaseSchema::DOUBLE: return "DOUBLE";
+    case vtkSQLDatabaseSchema::DOUBLE: return "DOUBLE PRECISION";
     case vtkSQLDatabaseSchema::BLOB: return "BYTEA";
     case vtkSQLDatabaseSchema::TIME: return "TIME";
     case vtkSQLDatabaseSchema::DATE: return "DATE";
