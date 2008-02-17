@@ -3367,28 +3367,29 @@ void vtkHyperOctree::TraverseDualRecursively(
   memset(childrenToTraverse,0,8);
   static int debugStackOverflow = 0;
   int debugFlag = 0;
-  
-  
+
+
   //if (level > 15)
   //  { // something went wrong
   //  // After debugging, move this value up to 20 or 30.
   //  cerr << "Maximum recursion level reached\n";
   //  return;
   //  }
-    
-  if (level == 0)
-    {
-    cout << "Tree has " << neighborhood[0].GetTree()->GetNumberOfLeaves() << " leaves\n";
-    }
-  
+
   if (debugStackOverflow < level)
     {
     debugStackOverflow = level;
+    debugFlag = 1;
+
     cout << "Max depth " << level << ", ids: "
          << xyzIds[0] << " " << xyzIds[1] << " " << xyzIds[2] << endl;
-    debugFlag = 1;
     }
-  
+
+  if (debugFlag && level == 0)
+    {
+    cout << "Tree has " << neighborhood[0].GetTree()->GetNumberOfLeaves() << " leaves\n";
+    }
+
   if ( ! neighborhood[0].GetIsLeaf())
     { // Main cursor is a node.  Traverse all children.
     divide = 1;
