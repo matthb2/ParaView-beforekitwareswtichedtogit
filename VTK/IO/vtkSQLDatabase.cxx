@@ -144,16 +144,14 @@ vtkSQLDatabase* vtkSQLDatabase::CreateFromURL( const char* URL )
 }
 
 // ----------------------------------------------------------------------
-bool vtkSQLDatabase::EffectSchema( vtkSQLDatabaseSchema* schema, bool dropIfExists )
+bool vtkSQLDatabase::EffectSchema( vtkSQLDatabaseSchema* schema, bool vtkNotUsed(dropIfExists) )
 {
-  dropIfExists = false; // Unused for now
-
   if ( ! this->IsOpen() )
     {
     vtkGenericWarningMacro( "Unable to effect the schema: no database is open" );
     return false;
     }
-  
+
   // Instantiate an empty query and begin the transaction.
   vtkSQLQuery* query = this->GetQueryInstance();
   if ( ! query->BeginTransaction() )
