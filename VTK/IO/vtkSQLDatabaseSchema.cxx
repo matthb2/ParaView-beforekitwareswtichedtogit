@@ -23,11 +23,15 @@ PURPOSE.  See the above copyright notice for more information.
 #include "vtkObjectFactory.h"
 #include "vtkStdString.h"
 
+#include <stdarg.h> // va_list
+
 #include <vtkstd/vector>
 
+// ----------------------------------------------------------------------
 vtkCxxRevisionMacro(vtkSQLDatabaseSchema, "$Revision$");
 vtkStandardNewMacro(vtkSQLDatabaseSchema);
 
+// ----------------------------------------------------------------------
 class vtkSQLDatabaseSchemaInternals
 {
 public:
