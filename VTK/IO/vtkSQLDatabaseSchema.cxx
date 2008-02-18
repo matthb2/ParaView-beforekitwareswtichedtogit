@@ -455,6 +455,26 @@ const char* vtkSQLDatabaseSchema::GetTriggerNameFromHandle( int tblHandle,
   return this->Internals->Tables[tblHandle].Triggers[trgHandle].Name;
 }
 
+// ----------------------------------------------------------------------
+int vtkSQLDatabaseSchema::GetTriggerTypeFromHandle( int tblHandle, 
+                                                    int trgHandle )
+{
+  if ( tblHandle < 0 || tblHandle >= this->GetNumberOfTables() )
+    {
+    vtkErrorMacro( "Cannot get type of a trigger in non-existent table " << tblHandle );
+    return 0;
+    }
+  
+  if ( trgHandle < 0 || trgHandle >= static_cast<int>( this->Internals->Tables[tblHandle].Triggers.size() ) )
+    {
+    vtkErrorMacro( "Cannot get type of non-existent trigger " << trgHandle << " in table " << tblHandle );
+    return 0;
+    }
+  
+  return this->Internals->Tables[tblHandle].Triggers[trgHandle].Type;
+}
+
+
 
 // ----------------------------------------------------------------------
 int vtkSQLDatabaseSchema::AddTableMultipleArguments( const char* tblName, ... )
