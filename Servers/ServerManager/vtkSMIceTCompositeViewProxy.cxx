@@ -29,7 +29,7 @@
 #include "vtkSMProxyManager.h"
 #include "vtkSMProxyProperty.h"
 #include "vtkSMRepresentationStrategyVector.h"
-#include "vtkSMSimpleParallelStrategy.h"
+#include "vtkSMUnstructuredDataParallelStrategy.h"
 #include "vtkSMSourceProxy.h"
 #include "vtkPVGenericRenderWindowInteractor.h"
 
@@ -572,8 +572,9 @@ void vtkSMIceTCompositeViewProxy::UpdateOrderedCompositingPipeline()
       }
     else
       {
-      vtkSMSimpleParallelStrategy* pstrategy = 
-        vtkSMSimpleParallelStrategy::SafeDownCast(strategyIter->GetPointer());
+      vtkSMUnstructuredDataParallelStrategy* pstrategy = 
+        vtkSMUnstructuredDataParallelStrategy::SafeDownCast(
+          strategyIter->GetPointer());
       if (pstrategy && pstrategy->GetDistributedSource())
         {
         ppProducers->AddProxy(pstrategy->GetDistributedSource());
