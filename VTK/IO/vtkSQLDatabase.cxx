@@ -63,8 +63,6 @@ vtkStdString vtkSQLDatabase::GetColumnSpecification( vtkSQLDatabaseSchema* schem
 {
   vtkStdString queryStr = schema->GetColumnNameFromHandle( tblHandle, colHandle );
 
-  queryStr += " ";
-
   int colType = schema->GetColumnTypeFromHandle( tblHandle, colHandle ); 
 
   vtkStdString colTypeStr = this->GetColumnTypeString( colType );
