@@ -52,7 +52,7 @@ void vtkSMDataSourceProxy::CopyData(vtkSMSourceProxy *sourceProxy)
           << vtkClientServerStream::End;
   pm->SendStream(this->ConnectionID, vtkProcessModule::DATA_SERVER_ROOT, stream);
 
-  this->Modified();
+  this->MarkModified(this);
 }
 
 //----------------------------------------------------------------------------
