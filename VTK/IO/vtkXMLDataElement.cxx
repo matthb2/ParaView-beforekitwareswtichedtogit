@@ -559,6 +559,32 @@ vtkXMLDataElement* vtkXMLDataElement::LookupElementUpScope(const char* id)
 }
 
 //----------------------------------------------------------------------------
+vtkXMLDataElement* vtkXMLDataElement::LookupElementWithName(const char* name)
+{
+  if (!name)
+    {
+    return NULL;
+    }
+
+  int i;
+  for (i = 0; i < this->NumberOfNestedElements; ++i)
+    {
+    const char *nname = this->NestedElements[i]->GetName();
+    if (nname && !strcmp(nname, name))
+      {
+      return this->NestedElements[i];
+      }
+    vtkXMLDataElement *found = 
+      this->NestedElements[i]->LookupElementWithName(name);
+    if (found)
+      {
+      return found;
+      }
+    }
+  return NULL;
+}
+
+//----------------------------------------------------------------------------
 int vtkXMLDataElement::GetScalarAttribute(const char* name, int& value)
 {
   return this->GetVectorAttribute(name, 1, &value);
