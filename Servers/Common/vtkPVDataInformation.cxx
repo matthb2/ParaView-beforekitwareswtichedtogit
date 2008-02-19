@@ -274,7 +274,11 @@ void vtkPVDataInformation::CopyFromCompositeDataSet(vtkCompositeDataSet* data)
     }
   this->SetCompositeDataClassName(data->GetClassName());
   this->CompositeDataSetType = data->GetDataObjectType();
-  this->NumberOfDataSets = numDataSets;
+
+
+  // AddInformation should have updated NumberOfDataSets correctly to count
+  // number of non-zero datasets. We don't need to fix it here.
+  // this->NumberOfDataSets = numDataSets;
 }
 
 //----------------------------------------------------------------------------
