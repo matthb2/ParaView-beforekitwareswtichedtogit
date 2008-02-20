@@ -469,8 +469,6 @@ int vtkTableToGraph::RequestData(
   // auxiliary arrays and vetex maps.
   // If we are not provided one, create one using values found in
   // the edge table.
-  vtkIdType numVertices = 0;
-  vtkIdType numHiddenVertices = 0;
   if (!vertexTable)
     {
     // If we don't have a vertex table, 
@@ -541,8 +539,6 @@ int vtkTableToGraph::RequestData(
       double progress = createVertexTime * ((c + 1.0)/linkColumn->GetNumberOfTuples());
       this->InvokeEvent(vtkCommand::ProgressEvent, &progress);
       }
-    numVertices = curVertex + 1;
-    numHiddenVertices = curHiddenVertex + 1;
     }
   else
     {
