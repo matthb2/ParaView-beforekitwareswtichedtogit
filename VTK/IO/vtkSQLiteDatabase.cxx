@@ -195,7 +195,7 @@ vtkStdString vtkSQLiteDatabase::GetColumnSpecification( vtkSQLDatabaseSchema* sc
     
     // At this point, we have either a valid size if required, or a possibly null valid size
     // if not required. Thus, skip sizing in the latter case.
-    if ( colSize < 0 )
+    if ( colSize > 0 )
       {
       queryStr += "(";
       queryStr += colSize;
