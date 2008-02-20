@@ -412,8 +412,10 @@ vtkStdString vtkMySQLDatabase::GetColumnSpecification( vtkSQLDatabaseSchema* sch
 // ----------------------------------------------------------------------
 vtkStdString vtkMySQLDatabase::GetIndexSpecification( vtkSQLDatabaseSchema* schema,
                                                       int tblHandle,
-                                                      int idxHandle )
+                                                      int idxHandle,
+                                                      bool& skipped )
 {
+  skipped = false;
   vtkStdString queryStr = ", ";
 
   int idxType = schema->GetIndexTypeFromHandle( tblHandle, idxHandle );
