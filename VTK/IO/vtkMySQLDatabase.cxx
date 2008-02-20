@@ -339,6 +339,61 @@ vtkStdString vtkMySQLDatabase::GetColumnSpecification( vtkSQLDatabaseSchema* sch
 }
 
 // ----------------------------------------------------------------------
+vtkStdString vtkMySQLDatabase::GetIndexSpecification( vtkSQLDatabaseSchema* schema,
+                                                      int tblHandle,
+                                                      int idxHandle )
+{
+  vtkStdString queryStr = ", ";
+
+  int idxType = schema->GetIndexTypeFromHandle( tblHandle, idxHandle );
+  switch ( idxType )
+    {
+    case vtkSQLDatabaseSchema::PRIMARY_KEY:
+      queryStr += "PRIMARY KEY ";
+      break;
+    case vtkSQLDatabaseSchema::UNIQUE:
+      queryStr += "UNIQUE ";
+      break;
+    case vtkSQLDatabaseSchema::INDEX:
+      queryStr += "INDEX ";
+      break;
+    default:
+      return 0;
+    }
+  
+  queryStr += schema->GetIndexNameFromHandle( tblHandle, idxHandle );
+  queryStr += " (";
+        
+  // Loop over all column names of the index
+  int numCnm = schema->GetNumberOfColumnNamesInIndex( tblHandle, idxHandle );
+  if ( numCnm < 0 )
+    {
+    vtkGenericWarningMacro( "Unable to get index specification: index has incorrect number of columns " << numCnm );
+    return 0;
+    }
+
+  bool firstCnm = true;
+  for ( int cnmHandle = 0; cnmHandle < numCnm; ++ cnmHandle )
+    {
+    if ( firstCnm )
+      {
+      firstCnm = false;
+      }
+    else
+      {
+      queryStr += ",";
+      }
+    // With MySQL, the column name must be enclosed between backquotes
+    queryStr += "`";
+    queryStr += schema->GetIndexColumnNameFromHandle( tblHandle, idxHandle, cnmHandle );
+    queryStr += "` ";
+    }
+  queryStr += ")";
+
+  return queryStr;
+}
+
+// ----------------------------------------------------------------------
 vtkStdString vtkMySQLDatabase::GetColumnTypeString( int colType )
 {
   switch ( static_cast<vtkSQLDatabaseSchema::DatabaseColumnType>( colType ) )
