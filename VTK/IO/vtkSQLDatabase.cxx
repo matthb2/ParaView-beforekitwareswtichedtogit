@@ -141,13 +141,13 @@ vtkStdString vtkSQLDatabase::GetColumnSpecification( vtkSQLDatabaseSchema* schem
       colSizeType = -1;
       break;
     case vtkSQLDatabaseSchema::REAL:      
-      colSizeType =  1;
+      colSizeType =  0;
       break;
     case vtkSQLDatabaseSchema::DOUBLE:    
-      colSizeType =  1;
+      colSizeType =  0;
       break;
     case vtkSQLDatabaseSchema::BLOB:      
-      colSizeType =  1;
+      colSizeType =  0;
       break;
     case vtkSQLDatabaseSchema::TIME:      
       colSizeType =  0;
