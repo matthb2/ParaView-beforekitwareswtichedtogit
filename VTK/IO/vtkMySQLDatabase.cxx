@@ -349,7 +349,7 @@ vtkStdString vtkMySQLDatabase::GetColumnSpecification( vtkSQLDatabaseSchema* sch
       colTypeStr = "VARCHAR";
       break;
     case vtkSQLDatabaseSchema::TEXT:      
-      colTypeStr = "VARCHAR";
+      colTypeStr = "TEXT";
       break;
     case vtkSQLDatabaseSchema::REAL:      
       colTypeStr = "FLOAT";
@@ -403,7 +403,7 @@ vtkStdString vtkMySQLDatabase::GetColumnSpecification( vtkSQLDatabaseSchema* sch
       colSizeType = -1;
       break;
     case vtkSQLDatabaseSchema::TEXT:      
-      colSizeType = -1;
+      colSizeType =  1;
       break;
     case vtkSQLDatabaseSchema::REAL:      
       colSizeType =  1;
