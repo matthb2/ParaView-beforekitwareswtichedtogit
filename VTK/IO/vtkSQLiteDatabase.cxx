@@ -143,7 +143,6 @@ vtkStdString vtkSQLiteDatabase::GetColumnSpecification( vtkSQLDatabaseSchema* sc
   int colSizeType = 0;
   switch ( static_cast<vtkSQLDatabaseSchema::DatabaseColumnType>( colType ) )
     {
-    break;
     case vtkSQLDatabaseSchema::SERIAL:    
       colSizeType =  0;
       break;
