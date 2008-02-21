@@ -59,7 +59,7 @@ enum { DFS_WHITE, DFS_GRAY, DFS_BLACK };
 bool vtkDirectedAcyclicGraphDFSVisit(
   vtkGraph *g,
   vtkIdType u, 
-  vtksys_stl::vector<vtkIdType> color, 
+  vtksys_stl::vector<int> color, 
   vtkOutEdgeIterator *adj)
 {
   color[u] = DFS_GRAY;
