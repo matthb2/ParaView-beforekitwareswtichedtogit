@@ -54,8 +54,7 @@ vtkStandardNewMacro(vtkOrderedTriangulator);
 
 // Old HP compiler does not support operator delete that is called
 // when a constructor called by operator new throws.
-// Might be supported in newer versions && (__HP_aCC <= 012100)
-#if defined(__HP_aCC)
+#if defined(__HP_aCC) && (__HP_aCC < 061200)
 # define VTK_NO_PLACEMENT_DELETE
 #endif
 // SGI compiler does not support placement delete that is called when
