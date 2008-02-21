@@ -103,8 +103,7 @@ bool vtkDirectedAcyclicGraph::IsStructureValid(vtkGraph *g)
   // Cormen, Leiserson, Rivest, p. 486).
   vtkIdType numVerts = g->GetNumberOfVertices();
   vector<int> color(numVerts, DFS_BLACK);
-  vtkIdType s, u, v;
-  bool cycle = false;
+  vtkIdType s, u;
   vtkSmartPointer<vtkOutEdgeIterator> adj = 
     vtkSmartPointer<vtkOutEdgeIterator>::New();
   for (u = 0; u < numVerts; ++u)
