@@ -660,7 +660,7 @@ int vtkMeshQuality::RequestData(
           }
         Eqtri += q;
         Eqtri2 += q * q;
-        ntri++;
+        ++ ntri;
         break;
       case VTK_QUAD:
         q = QuadQuality( cell );
@@ -678,7 +678,7 @@ int vtkMeshQuality::RequestData(
           }
         Eqqua += q;
         Eqqua2 += q * q;
-        nqua++;
+        ++ nqua;
         break;
       case VTK_TETRA:
         q = TetQuality( cell );
@@ -696,7 +696,7 @@ int vtkMeshQuality::RequestData(
           }
         Eqtet += q;
         Eqtet2 += q * q;
-        ntet++;
+        ++ ntet;
         if ( this->Volume )
           {
           V = TetVolume( cell );
@@ -722,7 +722,7 @@ int vtkMeshQuality::RequestData(
           }
         Eqhex += q;
         Eqhex2 += q * q;
-        nhex++;
+        ++ nhex;
         break;
       default:
         q = 0.;
