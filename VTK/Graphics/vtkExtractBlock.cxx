@@ -151,6 +151,10 @@ int vtkExtractBlock::RequestData(
       {
       iter->GetCurrentMetaData()->Set(DONT_PRUNE(), 1);
       }
+    else if (iter->HasCurrentMetaData() && iter->GetCurrentMetaData()->Has(DONT_PRUNE()))
+      {
+      iter->GetCurrentMetaData()->Remove(DONT_PRUNE());
+      }
     }
   iter->Delete();
 
