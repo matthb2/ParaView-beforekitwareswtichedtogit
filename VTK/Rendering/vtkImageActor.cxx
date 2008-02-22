@@ -106,6 +106,30 @@ int vtkImageActor::GetSliceNumberMax()
 }
 
 //----------------------------------------------------------------------------
+int vtkImageActor::GetSliceNumberMin()
+{
+  if (!this->GetInput())
+    {
+    return 0;
+    }
+
+  this->GetInput()->UpdateInformation();
+  int *wextent = this->GetInput()->GetWholeExtent();
+
+  // find the first axis with a one pixel extent and return
+  // its value
+  if (this->ComputedDisplayExtent[0] == this->ComputedDisplayExtent[1])
+    {
+    return wextent[0];
+    }
+  if (this->ComputedDisplayExtent[2] == this->ComputedDisplayExtent[3])
+    {
+    return wextent[2];
+    }
+  return wextent[4];
+}
+
+//----------------------------------------------------------------------------
 void vtkImageActor::SetDisplayExtent(int extent[6])
 {
   int idx, modified = 0;
