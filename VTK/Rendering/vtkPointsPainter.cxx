@@ -60,7 +60,7 @@ vtkPointsPainter::~vtkPointsPainter()
       { \
       cellNum += 10000; \
       count = 0; \
-      this->UpdateProgress((double)cellNum/totalCells); \
+      this->UpdateProgress(static_cast<double>(cellNum)/totalCells);    \
       if (ren->GetRenderWindow()->CheckAbortStatus()) \
         { \
         break; \

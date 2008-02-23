@@ -54,7 +54,7 @@ vtkCoincidentTopologyResolutionPainter::New()
 {
   vtkObject* o = vtkGraphicsFactory::CreateInstance(
     "vtkCoincidentTopologyResolutionPainter");
-  return (vtkCoincidentTopologyResolutionPainter*)o;
+  return static_cast<vtkCoincidentTopologyResolutionPainter *>(o);
 }
 
 

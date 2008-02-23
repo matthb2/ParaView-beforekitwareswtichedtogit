@@ -35,7 +35,7 @@ vtkLightingPainter::~vtkLightingPainter()
 vtkLightingPainter* vtkLightingPainter::New()
 {
   vtkObject* o = vtkGraphicsFactory::CreateInstance("vtkLightingPainter");
-  return (vtkLightingPainter*)o;
+  return static_cast<vtkLightingPainter *>(o);
 }
 
 //-----------------------------------------------------------------------------

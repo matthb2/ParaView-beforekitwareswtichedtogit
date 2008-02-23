@@ -44,7 +44,7 @@ vtkPainterDeviceAdapter::~vtkPainterDeviceAdapter()
 vtkPainterDeviceAdapter* vtkPainterDeviceAdapter::New()
 {
   vtkObject* ret = vtkGraphicsFactory::CreateInstance("vtkPainterDeviceAdapter");
-  return (vtkPainterDeviceAdapter*)ret;
+  return static_cast<vtkPainterDeviceAdapter *>(ret);
 }
 
 //-----------------------------------------------------------------------------

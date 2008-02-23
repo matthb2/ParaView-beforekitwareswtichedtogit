@@ -117,7 +117,7 @@ vtkPolyDataMapper2D *vtkPolyDataMapper2D::New()
 {
   // First try to create the object from the vtkObjectFactory
   vtkObject* ret = vtkImagingFactory::CreateInstance("vtkPolyDataMapper2D");
-  return (vtkPolyDataMapper2D*)ret;
+  return static_cast<vtkPolyDataMapper2D *>(ret);
 }
 
 

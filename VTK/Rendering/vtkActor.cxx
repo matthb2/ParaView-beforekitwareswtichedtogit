@@ -104,7 +104,7 @@ vtkActor *vtkActor::New()
 {
   // First try to create the object from the vtkGraphicsFactory
   vtkObject* ret = vtkGraphicsFactory::CreateInstance("vtkActor");
-  return (vtkActor*)ret;
+  return static_cast<vtkActor *>(ret);
 }
 
 //----------------------------------------------------------------------------
@@ -259,7 +259,7 @@ int vtkActor::HasTranslucentPolygonalGeometry()
 //----------------------------------------------------------------------------
 void vtkActor::ReleaseGraphicsResources(vtkWindow *win)
 {
-  vtkRenderWindow *renWin = (vtkRenderWindow *)win;
+  vtkRenderWindow *renWin = static_cast<vtkRenderWindow *>(win);
 
   // pass this information onto the mapper
   if (this->Mapper)
@@ -512,7 +512,7 @@ vtkActor *vtkActor::GetNextPart()
     vtkAssemblyNode *node = path->GetLastNode();
     if ( node && node->GetViewProp()->IsA("vtkActor") )
       {
-      return (vtkActor *)node->GetViewProp();
+      return static_cast<vtkActor *>(node->GetViewProp());
       }
     }
   return NULL;

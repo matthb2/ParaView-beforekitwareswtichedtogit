@@ -42,7 +42,7 @@ vtkClipPlanesPainter::~vtkClipPlanesPainter()
 vtkClipPlanesPainter* vtkClipPlanesPainter::New()
 {
   vtkObject* o = vtkGraphicsFactory::CreateInstance("vtkClipPlanesPainter");
-  return (vtkClipPlanesPainter*)o;
+  return static_cast<vtkClipPlanesPainter *>(o);
 }
 
 //-----------------------------------------------------------------------------

@@ -39,7 +39,7 @@ vtkDisplayListPainter::~vtkDisplayListPainter()
 vtkDisplayListPainter* vtkDisplayListPainter::New()
 {
   vtkObject* o = vtkGraphicsFactory::CreateInstance("vtkDisplayListPainter");
-  return (vtkDisplayListPainter*)o;
+  return static_cast<vtkDisplayListPainter *>(o);
 }
 
 //----------------------------------------------------------------------------

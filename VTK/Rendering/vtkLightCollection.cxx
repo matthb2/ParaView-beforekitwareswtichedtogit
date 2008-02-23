@@ -25,7 +25,7 @@ vtkStandardNewMacro(vtkLightCollection);
 // Add a light to the list.
 void vtkLightCollection::AddItem(vtkLight *a) 
 {
-  this->vtkCollection::AddItem((vtkObject *)a);
+  this->vtkCollection::AddItem(a);
 }
 
 // Get the next light in the list. NULL is returned when the collection is 

@@ -34,7 +34,7 @@ vtkInteractorStyleUser::vtkInteractorStyleUser()
   this->ShiftKey = 0;
   this->CtrlKey = 0;
   this->Char = '\0';
-  this->KeySym = (char *) "";
+  this->KeySym = static_cast<char *>("");
   this->Button = 0;
 }
 
@@ -65,7 +65,7 @@ void vtkInteractorStyleUser::OnTimer()
 {
   if (this->HasObserver(vtkCommand::TimerEvent)) 
     {
-    this->InvokeEvent(vtkCommand::TimerEvent,(void*)&(this->TimerId));
+    this->InvokeEvent(vtkCommand::TimerEvent,&(this->TimerId));
     }
 
   if (this->State == VTKIS_USERINTERACTION)

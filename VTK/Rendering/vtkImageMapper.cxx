@@ -109,7 +109,7 @@ vtkImageMapper* vtkImageMapper::New()
 {
   // First try to create the object from the vtkObjectFactory
   vtkObject* ret = vtkImagingFactory::CreateInstance("vtkImageMapper");
-  return (vtkImageMapper*)ret;
+  return static_cast<vtkImageMapper *>(ret);
 }
 
 double vtkImageMapper::GetColorShift()

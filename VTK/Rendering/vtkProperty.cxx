@@ -270,7 +270,7 @@ vtkProperty *vtkProperty::New()
 { 
   // First try to create the object from the vtkObjectFactory
   vtkObject* ret = vtkGraphicsFactory::CreateInstance("vtkProperty");
-  return (vtkProperty*)ret;
+  return static_cast<vtkProperty *>(ret);
 }
 
 //----------------------------------------------------------------------------

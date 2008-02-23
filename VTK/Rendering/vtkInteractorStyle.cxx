@@ -721,7 +721,7 @@ void vtkInteractorStyle::OnChar()
         {
         for (anActor->InitPathTraversal(); (path=anActor->GetNextPath()); ) 
           {
-          aPart=(vtkActor *)path->GetLastNode()->GetViewProp();
+          aPart=static_cast<vtkActor *>(path->GetLastNode()->GetViewProp());
           aPart->GetProperty()->SetRepresentationToWireframe();
           }
         }
@@ -743,7 +743,7 @@ void vtkInteractorStyle::OnChar()
         {
         for (anActor->InitPathTraversal(); (path=anActor->GetNextPath()); ) 
           {
-          aPart=(vtkActor *)path->GetLastNode()->GetViewProp();
+          aPart=static_cast<vtkActor *>(path->GetLastNode()->GetViewProp());
           aPart->GetProperty()->SetRepresentationToSurface();
           }
         }
@@ -904,7 +904,7 @@ void vtkInteractorStyle::ProcessEvents(vtkObject* vtkNotUsed(object),
       if (self->HandleObservers && 
           self->HasObserver(vtkCommand::TimerEvent)) 
         {
-        self->InvokeEvent(vtkCommand::TimerEvent,(void*)&timerId);
+        self->InvokeEvent(vtkCommand::TimerEvent,&timerId);
         }
       else 
         {

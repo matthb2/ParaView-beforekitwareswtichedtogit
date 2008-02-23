@@ -70,7 +70,7 @@ vtkTexture *vtkTexture::New()
 {  
   // First try to create the object from the vtkObjectFactory
   vtkObject* ret = vtkGraphicsFactory::CreateInstance("vtkTexture");
-  return (vtkTexture*)ret;
+  return static_cast<vtkTexture *>(ret);
 }
 
 //----------------------------------------------------------------------------
@@ -108,7 +108,7 @@ void vtkTexture::PrintSelf(ostream& os, vtkIndent indent)
 
   if ( this->GetInput() )
     {
-    os << indent << "Input: (" << (void *)this->GetInput() << ")\n";
+    os << indent << "Input: (" << static_cast<void *>(this->GetInput()) << ")\n";
     }
   else
     {

@@ -178,7 +178,7 @@ void vtkInteractorStyleRubberBand2D::OnMouseMove()
       {
       double motion = 10.0;
       double dyf = motion*(curPt[1] - lastPt[1])/this->CurrentRenderer->GetCenter()[1];
-      double factor = pow((double)1.1, dyf);
+      double factor = pow(1.1, dyf);
       camera->SetParallelScale(camera->GetParallelScale() / factor);
       this->InvokeEvent(vtkCommand::InteractionEvent);
       rwi->Render();
@@ -207,7 +207,7 @@ void vtkInteractorStyleRubberBand2D::OnMouseWheelForward()
   this->Interaction = ZOOMING;
   double motion = 10.0;
   double dyf = motion * 0.2;
-  double factor = pow((double)1.1, dyf);
+  double factor = pow(1.1, dyf);
   camera->SetParallelScale(camera->GetParallelScale() / factor);
   this->InvokeEvent(vtkCommand::InteractionEvent);
   this->GetInteractor()->Render();
@@ -228,7 +228,7 @@ void vtkInteractorStyleRubberBand2D::OnMouseWheelBackward()
   this->Interaction = ZOOMING;
   double motion = 10.0;
   double dyf = motion * -0.2;
-  double factor = pow((double)1.1, dyf);
+  double factor = pow(1.1, dyf);
   camera->SetParallelScale(camera->GetParallelScale() / factor);
   this->InvokeEvent(vtkCommand::InteractionEvent);
   this->GetInteractor()->Render();

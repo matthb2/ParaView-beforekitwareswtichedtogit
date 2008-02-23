@@ -245,8 +245,8 @@ int vtkTextActor3D::UpdateImageActor()
     if (img_dims[0] < text_size[0] || img_dims[1] < text_size[1] ||
         text_size[0] * 2 < img_dims[0] || text_size[1] * 2 < img_dims[0])
       {
-      new_img_dims[0] = 1 << (int)ceil(log((double)text_size[0]) / log(2.0));
-      new_img_dims[1] = 1 << (int)ceil(log((double)text_size[1]) / log(2.0));
+      new_img_dims[0] = 1 << static_cast<int>(ceil(log(static_cast<double>(text_size[0])) / log(2.0)));
+      new_img_dims[1] = 1 << static_cast<int>(ceil(log(static_cast<double>(text_size[1])) / log(2.0)));
       new_img_dims[2] = 1;
       if (new_img_dims[0] != img_dims[0] || 
           new_img_dims[1] != img_dims[1] ||

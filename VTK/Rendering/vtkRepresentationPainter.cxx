@@ -33,7 +33,7 @@ vtkRepresentationPainter::~vtkRepresentationPainter()
 vtkRepresentationPainter* vtkRepresentationPainter::New()
 {
   vtkObject* o = vtkGraphicsFactory::CreateInstance("vtkRepresentationPainter");
-  return (vtkRepresentationPainter*)o;
+  return static_cast<vtkRepresentationPainter *>(o);
 }
 
 //-----------------------------------------------------------------------------

@@ -390,12 +390,12 @@ void vtkImageViewer2::UpdateDisplayExtent()
         {
         double bounds[6];
         this->ImageActor->GetBounds(bounds);
-        double spos = (double)bounds[this->SliceOrientation * 2];
-        double cpos = (double)cam->GetPosition()[this->SliceOrientation];
+        double spos = bounds[this->SliceOrientation * 2];
+        double cpos = cam->GetPosition()[this->SliceOrientation];
         double range = fabs(spos - cpos);
         double *spacing = input->GetSpacing();
         double avg_spacing = 
-          ((double)spacing[0] + (double)spacing[1] + (double)spacing[2]) / 3.0;
+          (spacing[0] + spacing[1] + spacing[2]) / 3.0;
         cam->SetClippingRange(
           range - avg_spacing * 3.0, range + avg_spacing * 3.0);
         }

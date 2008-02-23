@@ -34,9 +34,8 @@ vtkPolyDataMapper *vtkPolyDataMapper::New()
 {
   // First try to create the object from the vtkObjectFactory
   vtkObject* ret = vtkGraphicsFactory::CreateInstance("vtkPolyDataMapper");
-  return (vtkPolyDataMapper*)ret;
+  return static_cast<vtkPolyDataMapper *>(ret);
 }
-
 
 //----------------------------------------------------------------------------
 vtkPolyDataMapper::vtkPolyDataMapper()

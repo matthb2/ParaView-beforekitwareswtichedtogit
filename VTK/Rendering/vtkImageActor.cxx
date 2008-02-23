@@ -31,7 +31,7 @@ vtkImageActor* vtkImageActor::New()
 {
   // First try to create the object from the vtkObjectFactory
   vtkObject* ret = vtkGraphicsFactory::CreateInstance("vtkImageActor");
-  return (vtkImageActor*)ret;
+  return static_cast<vtkImageActor *>(ret);
 }
 
 vtkImageActor::vtkImageActor()
