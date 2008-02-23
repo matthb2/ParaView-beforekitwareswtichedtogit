@@ -218,7 +218,11 @@ vtkStdString vtkSQLDatabase::GetIndexSpecification( vtkSQLDatabaseSchema* schema
       return vtkStdString();
     }
   
-  queryStr += schema->GetIndexNameFromHandle( tblHandle, idxHandle );
+  // No index_name for PRIMARY KEYs nor UNIQUEs
+  if ( skipped )
+    {
+    queryStr += schema->GetIndexNameFromHandle( tblHandle, idxHandle );
+    }
 
   // CREATE INDEX <index name> ON <table name> syntax
   if ( skipped )
