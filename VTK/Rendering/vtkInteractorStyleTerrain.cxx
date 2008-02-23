@@ -202,7 +202,7 @@ void vtkInteractorStyleTerrain::Rotate()
   
   if (rwi->GetShiftKey()) 
     {
-    if (fabs(dx) >= fabs(dy))
+    if(abs(dx) >= abs(dy))
       {
       e = 0.0;
       }
