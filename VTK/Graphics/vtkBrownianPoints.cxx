@@ -83,7 +83,7 @@ int vtkBrownianPoints::RequestData(
     {
     if ( ! (i % tenth) ) 
       {
-      this->UpdateProgress ((double)i/numPts);
+      this->UpdateProgress (static_cast<double>(i)/numPts);
       if (this->GetAbortExecute())
         {
         break;

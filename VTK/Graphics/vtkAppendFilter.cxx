@@ -84,7 +84,7 @@ vtkDataSetCollection *vtkAppendFilter::GetInputList()
     {
     if (this->GetInput(idx))
       {
-      this->InputList->AddItem((vtkDataSet*)(this->GetInput(idx)));
+      this->InputList->AddItem(this->GetInput(idx));
       }
     }  
   

@@ -76,8 +76,10 @@ int vtkCursor2D::RequestData(
     for (i=0; i<2; i++)
       {
       this->FocalPoint[i] = this->ModelBounds[2*i] + 
-             fmod((double)(this->FocalPoint[i]-this->ModelBounds[2*i]), 
-                  (double)(this->ModelBounds[2*i+1]-this->ModelBounds[2*i]));
+             fmod(static_cast<double>(
+                    this->FocalPoint[i]-this->ModelBounds[2*i]), 
+                  static_cast<double>(
+                    this->ModelBounds[2*i+1]-this->ModelBounds[2*i]));
       }
     } 
   else 
@@ -287,8 +289,10 @@ void vtkCursor2D::SetFocalPoint(double x[3])
     else if ( this->Wrap ) //wrap
       {
       this->FocalPoint[i] = this->ModelBounds[2*i] + 
-             fmod((double)(this->FocalPoint[i]-this->ModelBounds[2*i]), 
-                  (double)(this->ModelBounds[2*i+1]-this->ModelBounds[2*i]));
+             fmod(static_cast<double>(
+                    this->FocalPoint[i]-this->ModelBounds[2*i]), 
+                  static_cast<double>(
+                    this->ModelBounds[2*i+1]-this->ModelBounds[2*i]));
       }
     else //clamp
       {

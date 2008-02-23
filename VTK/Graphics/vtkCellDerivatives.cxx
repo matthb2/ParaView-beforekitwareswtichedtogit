@@ -153,7 +153,7 @@ int vtkCellDerivatives::RequestData(
       if ( ! (cellId % progressInterval) ) 
         {
         vtkDebugMacro(<<"Computing cell #" << cellId);
-        this->UpdateProgress ((double)cellId/numCells);
+        this->UpdateProgress (static_cast<double>(cellId)/numCells);
         }
 
       input->GetCell(cellId, cell);

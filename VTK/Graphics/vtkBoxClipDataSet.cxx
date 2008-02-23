@@ -249,7 +249,7 @@ int vtkBoxClipDataSet::RequestData(vtkInformation *vtkNotUsed(request),
     {
     if ( !(cellId % updateTime) )
       {
-      this->UpdateProgress((float)cellId / numCells);
+      this->UpdateProgress(static_cast<float>(cellId) / numCells);
       abort = this->GetAbortExecute();
       }
 

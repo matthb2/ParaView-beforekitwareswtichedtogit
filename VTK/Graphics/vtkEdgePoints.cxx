@@ -95,7 +95,7 @@ int vtkEdgePoints::RequestData(
     }
 
   numCells = input->GetNumberOfCells();
-  estimatedSize = (vtkIdType) (numCells * .75);
+  estimatedSize = static_cast<vtkIdType>(numCells * .75);
   estimatedSize = estimatedSize / 1024 * 1024; //multiple of 1024
   if (estimatedSize < 1024)
     {
@@ -129,7 +129,7 @@ int vtkEdgePoints::RequestData(
     if ( ! (cellId % progressInterval) ) 
       {
       vtkDebugMacro(<<"Processing #" << cellId);
-      this->UpdateProgress ((double)cellId/numCells);
+      this->UpdateProgress (static_cast<double>(cellId)/numCells);
       abort = this->GetAbortExecute();
       }
 

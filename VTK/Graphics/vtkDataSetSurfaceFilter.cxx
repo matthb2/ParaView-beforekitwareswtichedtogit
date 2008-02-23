@@ -724,7 +724,7 @@ int vtkDataSetSurfaceFilter::DataSetExecute(vtkDataSet *input,
     if ( !(cellId % progressInterval) )
       {
       vtkDebugMacro(<<"Process cell #" << cellId);
-      this->UpdateProgress ((double)cellId/numCells);
+      this->UpdateProgress (static_cast<double>(cellId)/numCells);
       abort = this->GetAbortExecute();
       }
     
@@ -979,7 +979,7 @@ int vtkDataSetSurfaceFilter::UnstructuredGridExecute(vtkDataSet *dataSetInput,
     if ( progressCount >= progressInterval )
       {
       vtkDebugMacro(<<"Process cell #" << cellId);
-      this->UpdateProgress ((double)cellId/numCells);
+      this->UpdateProgress (static_cast<double>(cellId)/numCells);
       abort = this->GetAbortExecute();
       progressCount = 0;
       }

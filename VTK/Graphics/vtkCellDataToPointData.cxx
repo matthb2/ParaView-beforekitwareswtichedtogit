@@ -89,7 +89,7 @@ int vtkCellDataToPointData::RequestData(
     {
     if ( !(ptId % progressInterval) )
       {
-      this->UpdateProgress((double)ptId/numPts);
+      this->UpdateProgress(static_cast<double>(ptId)/numPts);
       abort = GetAbortExecute();
       }
 

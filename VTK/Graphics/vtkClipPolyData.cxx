@@ -278,7 +278,7 @@ int vtkClipPolyData::RequestData(
 
     if ( !(cellId % updateTime) )
       {
-      this->UpdateProgress((double)cellId / numCells);
+      this->UpdateProgress(static_cast<double>(cellId) / numCells);
       abort = this->GetAbortExecute();
       }
     } //for each cell
