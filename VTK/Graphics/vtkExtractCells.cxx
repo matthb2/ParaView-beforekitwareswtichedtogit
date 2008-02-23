@@ -177,7 +177,7 @@ int vtkExtractCells::RequestData(
 
     if (extractMetadata)
       {
-      vtkModelMetadata::RemoveMetadata((vtkDataSet *)output);
+      vtkModelMetadata::RemoveMetadata(output);
       extractMetadata->Pack(output);
       extractMetadata->Delete();
       }
@@ -227,7 +227,7 @@ int vtkExtractCells::RequestData(
 
   if (extractMetadata)
     {
-    vtkModelMetadata::RemoveMetadata((vtkDataSet *)output);
+    vtkModelMetadata::RemoveMetadata(output);
     extractMetadata->Pack(output);
     extractMetadata->Delete();
     }
@@ -599,7 +599,7 @@ void vtkExtractCells::CopyCellsUnstructuredGrid(vtkIdList *ptMap,
     int oldCellId = *cellPtr;
 
     int loc = locs[oldCellId];
-    int size = (int)cells[loc];
+    int size = static_cast<int>(cells[loc]);
     vtkIdType *pts = cells + loc + 1;
     unsigned char type = types->GetValue(oldCellId);
 

@@ -283,7 +283,7 @@ void vtkExtractGeometry::PrintSelf(ostream& os, vtkIndent indent)
   this->Superclass::PrintSelf(os,indent);
 
   os << indent << "Implicit Function: " 
-     << (void *)this->ImplicitFunction << "\n";
+     << static_cast<void *>(this->ImplicitFunction) << "\n";
   os << indent << "Extract Inside: " 
      << (this->ExtractInside ? "On\n" : "Off\n");
   os << indent << "Extract Boundary Cells: " 

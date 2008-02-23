@@ -911,7 +911,7 @@ void vtkExtractArraysOverTime::ExecuteIdAtTimeStep(
     }
   
   this->UpdateProgress(
-    (double)this->CurrentTimeIndex/this->NumberOfTimeSteps);
+    static_cast<double>(this->CurrentTimeIndex)/this->NumberOfTimeSteps);
 }
 
 //----------------------------------------------------------------------------
@@ -1069,7 +1069,7 @@ void vtkExtractArraysOverTime::ExecuteLocationAtTimeStep(
   idList->Delete();
   
   this->UpdateProgress(
-    (double)this->CurrentTimeIndex/this->NumberOfTimeSteps);
+    static_cast<double>(this->CurrentTimeIndex)/this->NumberOfTimeSteps);
 }
 
 //----------------------------------------------------------------------------

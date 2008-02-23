@@ -120,7 +120,7 @@ int vtkExtractEdges::RequestData(
     {
     if ( ! (cellNum % tenth) ) //manage progress reports / early abort
       {
-      this->UpdateProgress ((double)cellNum / numCells);
+      this->UpdateProgress (static_cast<double>(cellNum) / numCells);
       abort = this->GetAbortExecute();
       }
 

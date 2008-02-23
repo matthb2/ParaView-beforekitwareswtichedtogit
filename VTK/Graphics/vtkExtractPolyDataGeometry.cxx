@@ -278,7 +278,7 @@ void vtkExtractPolyDataGeometry::PrintSelf(ostream& os, vtkIndent indent)
   if (this->ImplicitFunction)
     {
     os << indent << "Implicit Function: " 
-       << (void *)this->ImplicitFunction << "\n";
+       << static_cast<void *>(this->ImplicitFunction) << "\n";
     }
   else
     {

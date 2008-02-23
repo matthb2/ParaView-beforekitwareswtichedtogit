@@ -195,7 +195,7 @@ int vtkExtractRectilinearGrid::RequestInformation(
       outDims[i] = 1;
       }
     // We might as well make this work for negative extents.
-    mins[i] = (int)(floor((float)voi[2*i] / (float)rate[i]));
+    mins[i] = static_cast<int>(floor(voi[2*i]/static_cast<double>(rate[i])));
     }
 
   // Adjust the output dimensions if the boundaries are to be
