@@ -91,7 +91,8 @@ public:
         localWork = true;
         }
       this->Result = work->exec( query );
-      this->Iterator = this->Result.begin();
+      this->NextIterator = this->Result.begin();
+      this->Iterator = NextIterator;
       if ( localWork )
         {
         work->commit();
@@ -157,7 +158,8 @@ public:
 
   bool NextRow()
     {
-    ++this->Iterator;
+    this->Iterator = this->NextIterator;
+    ++ this->NextIterator;
     return this->Iterator != this->Result.end();
     }
 
@@ -317,6 +319,7 @@ public:
   vtkPostgreSQLDatabase* Database;
   pqxx::result Result;
   pqxx::result::const_iterator Iterator;
+  pqxx::result::const_iterator NextIterator;
   char* LastErrorText;
 };
 
