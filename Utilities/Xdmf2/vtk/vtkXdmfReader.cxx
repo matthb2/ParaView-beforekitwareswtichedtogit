@@ -84,9 +84,11 @@
 
 #define USE_IMAGE_DATA // otherwise uniformgrid
 
+//----------------------------------------------------------------------------
 vtkStandardNewMacro(vtkXdmfReader);
 vtkCxxRevisionMacro(vtkXdmfReader, "$Revision$");
 
+//----------------------------------------------------------------------------
 vtkCxxSetObjectMacro(vtkXdmfReader,Controller,vtkMultiProcessController);
 
 #if defined(_WIN32) && (defined(_MSC_VER) || defined(__BORLANDC__))
