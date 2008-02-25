@@ -197,13 +197,17 @@ static istream& my_getline(istream& input, vtkstd::string& output, char delimite
     ++numCharactersRead;
 
     char downcast = static_cast<char>(nextValue);
-    if (downcast != delimiter)
+    if (downcast == delimiter || (delimiter == '\n' && downcast == '\r'))
       {
-      output += downcast;
+      if (delimiter == '\n' && downcast == '\r' && input.peek() == '\n')
+        {
+        input.get();
+        }
+      return input;
       }
     else
       {
-      return input;
+      output += downcast;
       }
     }
     
