@@ -84,7 +84,7 @@ int vtkISIReader::RequestData(
     }
 
   // Open the file
-  ifstream file(this->FileName);
+  ifstream file(this->FileName, ios::in | ios::binary);
   if(!file)
     {
     vtkErrorMacro(<< "vtkISIReader could not open file " << this->FileName);
