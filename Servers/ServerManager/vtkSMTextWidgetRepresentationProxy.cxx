@@ -30,7 +30,6 @@ vtkSMTextWidgetRepresentationProxy::vtkSMTextWidgetRepresentationProxy()
   this->TextActorProxy = 0;
   this->TextPropertyProxy = 0;
   this->ViewProxy = 0;
-  this->Visibility = 0;
 }
 
 //----------------------------------------------------------------------------
@@ -128,6 +127,5 @@ void vtkSMTextWidgetRepresentationProxy::CreateVTKObjects()
 void vtkSMTextWidgetRepresentationProxy::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os,indent);
-  os << indent << "Visibility: " << this->Visibility << endl;
 
 }
