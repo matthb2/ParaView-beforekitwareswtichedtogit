@@ -145,6 +145,8 @@ int vtkISIReader::RequestData(
       const vtkstd::string tag_type = line_buffer.size() >= 2 ? line_buffer.substr(0, 2) : vtkstd::string();
       if(tag_type == "ER")
         break;
+      if(tag_type == "EF")
+        break;
 
       vtkstd::string tag_value = line_buffer.size() > 3 ? line_buffer.substr(3) : vtkstd::string();
 
