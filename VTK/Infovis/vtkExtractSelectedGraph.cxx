@@ -203,7 +203,7 @@ int vtkExtractSelectedGraph::RequestData(
     vtkSmartPointer<vtkMutableUndirectedGraph>::New();
 
   if (selection->GetProperties()->Has(vtkSelection::FIELD_TYPE()) && 
-      selection->GetProperties()->Get(vtkSelection::FIELD_TYPE()) == vtkSelection::CELL)
+      selection->GetProperties()->Get(vtkSelection::FIELD_TYPE()) == vtkSelection::EDGE)
     {
     //
     // Edge selection
@@ -242,6 +242,7 @@ int vtkExtractSelectedGraph::RequestData(
     while (edges->HasNext())
       {
       vtkEdgeType e = edges->Next();
+
       if ((inverse && selectArr->LookupValue(e.Id) < 0) ||
           (!inverse && selectArr->LookupValue(e.Id) >= 0))
         {
