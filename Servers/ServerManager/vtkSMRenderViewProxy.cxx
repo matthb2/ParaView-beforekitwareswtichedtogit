@@ -435,7 +435,7 @@ void vtkSMRenderViewProxy::ProcessEvents(vtkObject* caller, unsigned long eventI
     // renderer.
     this->ResetCameraClippingRange();
     }
-  else if (eventId == vtkCommand::StartEvent && caller == this->Renderer)
+  else if (eventId == vtkCommand::StartEvent && caller == this->RenderWindow)
     {
     // At the start of every render ensure that the 2D renderer and 3D renderer
     // have the same camera.
