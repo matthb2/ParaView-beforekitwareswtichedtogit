@@ -153,7 +153,7 @@ int vtkPVImageSlicer::RequestData(
 }
 
 //----------------------------------------------------------------------------
-int vtkImageAlgorithm::FillInputPortInformation(
+int vtkPVImageSlicer::FillInputPortInformation(
   int vtkNotUsed(port), vtkInformation* info)
 {
   info->Set(vtkAlgorithm::INPUT_REQUIRED_DATA_TYPE(), "vtkImageData");
