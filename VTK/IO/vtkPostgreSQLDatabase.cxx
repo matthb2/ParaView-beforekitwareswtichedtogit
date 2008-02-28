@@ -247,7 +247,9 @@ bool vtkPostgreSQLDatabase::Open()
   if ( this->ServerPort )
     {
     options += " port=";
-    options += this->ServerPort;
+    vtksys_ios::ostringstream stream;
+    stream << this->ServerPort;
+    options += stream.str();
     }
   if ( this->User && strlen( this->User ) > 0 )
     {
