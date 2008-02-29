@@ -659,7 +659,7 @@ void vtkPolyDataToImageStencil::ThreadedExecute(
           // extents are not allowed to overlap
           if (r1 <= lastr2)
             {
-            r1++;
+            r1 = lastr2 + 1;
             // eliminate empty extents
             if (r1 > r2)
               {
