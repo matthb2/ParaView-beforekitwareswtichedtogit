@@ -189,7 +189,17 @@ void pqUndoStackBuilder::OnPropertyModified(vtkSMProxy* proxy,
     return;
     }
 
-  if (proxy->IsA("vtkSMNewWidgetRepresentationProxy"))
+  if (proxy->IsA("vtkSMScalarBarWidgetRepresentationProxy"))
+    {
+    // For scalar bar, we don't want the position changes to get recorded in the
+    // undo-stack automatically.
+    vtkSMProperty* prop = proxy->GetProperty(pname);
+    if (prop && prop->GetInformationProperty())
+      {
+      return;
+      }
+    }
+  else if (proxy->IsA("vtkSMNewWidgetRepresentationProxy"))
     {
     // We don't record 3D widget changes.
     return;
