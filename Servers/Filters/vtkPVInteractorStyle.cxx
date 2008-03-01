@@ -46,6 +46,12 @@ vtkPVInteractorStyle::~vtkPVInteractorStyle()
 }
 
 //-------------------------------------------------------------------------
+void vtkPVInteractorStyle::RemoveAllManipulators()
+{
+  this->CameraManipulators->RemoveAllItems();
+}
+
+//-------------------------------------------------------------------------
 void vtkPVInteractorStyle::AddManipulator(vtkCameraManipulator *m)
 {
   this->CameraManipulators->AddItem(m);
