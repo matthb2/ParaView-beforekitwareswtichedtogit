@@ -93,6 +93,10 @@ void vtkSelection::Clear()
   delete this->Internal;
   this->Internal = new vtkSelectionInternals;
   this->Properties->Clear();
+  if (this->FieldData)
+    {
+    this->FieldData->Initialize();
+    }
 
   this->Modified();
 }
