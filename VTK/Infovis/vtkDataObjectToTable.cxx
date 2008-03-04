@@ -23,6 +23,7 @@
 #include "vtkDataObject.h"
 #include "vtkDataSet.h"
 #include "vtkFieldData.h"
+#include "vtkGraph.h"
 #include "vtkInformation.h"
 #include "vtkInformationVector.h"
 #include "vtkObjectFactory.h"
@@ -90,6 +91,24 @@ int vtkDataObjectToTable::RequestData(
         if(dataset->GetCellData())
           {
           data->ShallowCopy(dataset->GetCellData());
+          }
+        }
+      break;
+    case VERTEX_DATA:
+      if(vtkGraph* const graph = vtkGraph::SafeDownCast(input))
+        {
+        if(graph->GetVertexData())
+          {
+          data->ShallowCopy(graph->GetVertexData());
+          }
+        }
+      break;
+    case EDGE_DATA:
+      if(vtkGraph* const graph = vtkGraph::SafeDownCast(input))
+        {
+        if(graph->GetEdgeData())
+          {
+          data->ShallowCopy(graph->GetEdgeData());
           }
         }
       break;
