@@ -57,8 +57,7 @@ bool vtkSMImageSliceRepresentationProxy::BeginCreateVTKObjects()
   this->Prop3D = this->GetSubProxy("Prop3D");
   this->Property = this->GetSubProxy("Property");
 
-  this->Slicer->SetServers(
-    vtkProcessModule::CLIENT|vtkProcessModule::DATA_SERVER);
+  this->Slicer->SetServers(vtkProcessModule::DATA_SERVER);
   this->Mapper->SetServers(
     vtkProcessModule::CLIENT | vtkProcessModule::RENDER_SERVER);
   this->LODMapper->SetServers(
