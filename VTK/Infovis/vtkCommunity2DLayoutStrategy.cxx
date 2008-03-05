@@ -416,8 +416,8 @@ void vtkCommunity2DLayoutStrategy::Layout()
       float communityRestDistance = this->RestDistance;
       if (community)
         {
-        int sourceComm = community->GetTuple1(sourceIndex);
-        int targetComm = community->GetTuple1(targetIndex);
+        int sourceComm = static_cast<int> (community->GetTuple1(sourceIndex));
+        int targetComm = static_cast<int> (community->GetTuple1(targetIndex));
         
         // Often -1 is used for no/unspecified community
         // if either node is marked as such then just skip
