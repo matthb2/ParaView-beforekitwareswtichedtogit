@@ -14,6 +14,8 @@
 =========================================================================*/
 #include "vtkSMApplication.h"
 
+#include "vtkPVConfig.h" // To get PARAVIEW_USE_*
+
 #include "vtkClientServerStream.h"
 #include "vtkDirectory.h"
 #include "vtkObjectFactory.h"
