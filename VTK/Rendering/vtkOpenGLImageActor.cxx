@@ -327,7 +327,9 @@ void vtkOpenGLImageActor::Load(vtkRenderer *ren)
   // need to reload the texture
   if (this->GetMTime() > this->LoadTime.GetMTime() ||
       this->Input->GetMTime() > this->LoadTime.GetMTime() ||
-      ren->GetRenderWindow() != this->RenderWindow)
+      ren->GetRenderWindow() != this->RenderWindow ||
+      static_cast<vtkOpenGLRenderWindow*>(ren->GetRenderWindow())->GetContextCreationTime() >
+      this->LoadTime)
     {
     int xsize, ysize;
     int release, reuseTexture;

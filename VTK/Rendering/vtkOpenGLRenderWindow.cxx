@@ -199,6 +199,7 @@ void vtkOpenGLRenderWindow::StereoUpdate(void)
 
 void vtkOpenGLRenderWindow::OpenGLInit()
 {
+  this->ContextCreationTime.Modified();
   glMatrixMode( GL_MODELVIEW );
   glDepthFunc( GL_LEQUAL );
   glEnable( GL_DEPTH_TEST );
