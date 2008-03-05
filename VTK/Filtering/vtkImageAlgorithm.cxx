@@ -302,6 +302,14 @@ void vtkImageAlgorithm::CopyAttributeData(vtkImageData *input,
                                                      inExt, outExt);
           }
         }
+      else
+        {
+        if (inArray)
+          {
+          vtkDataArray* tmp = output->GetPointData()->GetScalars();
+          tmp->SetName(inArray->GetName());
+          }
+        }
 
       if (input->GetCellData()->GetNumberOfArrays() > 0)
         {
