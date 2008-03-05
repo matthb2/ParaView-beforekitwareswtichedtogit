@@ -1055,7 +1055,8 @@ void vtkXMLDataParser::FreeAsciiBuffer()
 void vtkXMLDataParser::UpdateProgress(float progress)
 {
   this->Progress = progress;
-  this->InvokeEvent(vtkCommand::ProgressEvent, &progress);
+  double dProgress=progress;
+  this->InvokeEvent(vtkCommand::ProgressEvent, &dProgress);
 }
 
 //----------------------------------------------------------------------------
