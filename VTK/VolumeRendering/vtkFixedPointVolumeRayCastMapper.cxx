@@ -360,6 +360,10 @@ void vtkFixedPointVolumeRayCastMapperComputeCS1CGradients( T *dataPtr,
       }
     }
   
+  delete[] dxBuffer;
+  delete[] dyBuffer;
+  delete[] dzBuffer;
+  
   me->InvokeEvent( vtkCommand::VolumeMapperComputeGradientsEndEvent, NULL );
 }
 
