@@ -481,6 +481,18 @@ void vtkGraphLayoutView::SetIconSize(int *size)
 }
 
 //----------------------------------------------------------------------------
+void vtkGraphLayoutView::SetIconVisibility(bool b)
+{
+  this->GraphMapper->SetIconVisibility(b);
+}
+
+//----------------------------------------------------------------------------
+bool vtkGraphLayoutView::GetIconVisibility()
+{
+  return this->GraphMapper->GetIconVisibility();
+}
+
+//----------------------------------------------------------------------------
 void vtkGraphLayoutView::SetupRenderWindow(vtkRenderWindow* win)
 {
   this->Superclass::SetupRenderWindow(win);
