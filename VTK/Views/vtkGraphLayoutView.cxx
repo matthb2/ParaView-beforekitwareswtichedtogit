@@ -469,6 +469,18 @@ void vtkGraphLayoutView::SetIterationsPerLayout(int iterations)
 }
 
 //----------------------------------------------------------------------------
+void vtkGraphLayoutView::SetIconTexture(vtkTexture *texture)
+{
+  this->GraphMapper->SetIconTexture(texture);
+}
+
+//----------------------------------------------------------------------------
+void vtkGraphLayoutView::SetIconSize(int *size)
+{
+  this->GraphMapper->SetIconSize(size);
+}
+
+//----------------------------------------------------------------------------
 void vtkGraphLayoutView::SetupRenderWindow(vtkRenderWindow* win)
 {
   this->Superclass::SetupRenderWindow(win);
