@@ -733,6 +733,26 @@ void vtkGraphLayoutView::ApplyViewTheme(vtkViewTheme* theme)
   selectTheme->Delete();
 }
 
+void vtkGraphLayoutView::SetVertexLabelFontSize(const int size)
+{
+  this->VertexLabelMapper->GetLabelTextProperty()->SetFontSize(size);
+}
+
+int vtkGraphLayoutView::GetVertexLabelFontSize()
+{
+  return this->VertexLabelMapper->GetLabelTextProperty()->GetFontSize();
+}
+
+void vtkGraphLayoutView::SetEdgeLabelFontSize(const int size)
+{
+  this->EdgeLabelMapper->GetLabelTextProperty()->SetFontSize(size);
+}
+
+int vtkGraphLayoutView::GetEdgeLabelFontSize()
+{
+  return this->EdgeLabelMapper->GetLabelTextProperty()->GetFontSize();
+}
+
 //----------------------------------------------------------------------------
 void vtkGraphLayoutView::PrintSelf(ostream& os, vtkIndent indent)
 {
