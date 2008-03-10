@@ -58,6 +58,9 @@ vtkXMLDataParser::vtkXMLDataParser()
 #endif
 
   this->AttributesEncoding = VTK_ENCODING_NONE;
+
+  //change default because vtk file formats store this information elsewhere
+  this->IgnoreCharacterData = 1;
 }
 
 //----------------------------------------------------------------------------
@@ -1062,7 +1065,7 @@ void vtkXMLDataParser::UpdateProgress(float progress)
 //----------------------------------------------------------------------------
 void vtkXMLDataParser::CharacterDataHandler( 
   const char* data, int length )
-{
+{  
   unsigned int numOpen = this->NumberOfOpenElements;
   if(numOpen > 0)
     {
