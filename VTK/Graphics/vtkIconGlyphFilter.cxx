@@ -54,8 +54,8 @@ void vtkIconGlyphFilter::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os,indent);
 
-  os << indent << "IconSize: " << IconSize[0] << " " << IconSize[1] << endl;
-  os << indent << "IconSheetSize: " << IconSheetSize[0] << " " << IconSheetSize[1] << endl;
+  os << indent << "IconSize: " << this->IconSize[0] << " " << this->IconSize[1] << endl;
+  os << indent << "IconSheetSize: " << this->IconSheetSize[0] << " " << this->IconSheetSize[1] << endl;
 }
 
 //-----------------------------------------------------------------------------
