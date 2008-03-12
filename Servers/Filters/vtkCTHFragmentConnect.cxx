@@ -3450,7 +3450,6 @@ void vtkCTHFragmentConnect::ShareGhostEquivalences(
 
 
   int sendMsg[8];
-  int bufSize = 0;
   unsigned char* buf = 0;
 
   // Loop through the other processes.
