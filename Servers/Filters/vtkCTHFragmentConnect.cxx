@@ -3447,10 +3447,7 @@ void vtkCTHFragmentConnect::ShareGhostEquivalences(
 {
   int numProcs = this->Controller->GetNumberOfProcesses();
   int myProcId = this->Controller->GetLocalProcessId();
-
-
   int sendMsg[8];
-  unsigned char* buf = 0;
 
   // Loop through the other processes.
   for (int otherProc = 0; otherProc < numProcs; ++otherProc)
