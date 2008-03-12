@@ -128,12 +128,7 @@ void vtkPVUpdateSuppressor::SetEnabled(int enable)
 
 //----------------------------------------------------------------------------
 void vtkPVUpdateSuppressor::ForceUpdate()
-{  
-  if (vtkProcessModule::GetStreamBlock())
-    {
-    return;
-    }
-  
+{    
   // Make sure that output type matches input type
   this->UpdateInformation();
 
@@ -345,8 +340,7 @@ int vtkPVUpdateSuppressor::RequestData(vtkInformation *request,
   vtkDataObject *input = inInfo->Get(vtkDataObject::DATA_OBJECT());
   vtkDataObject *output = outInfo->Get(vtkDataObject::DATA_OBJECT());
 
-  if (!this->Enabled 
-    || outInfo->Get(vtkStreamingDemandDrivenPipeline::UPDATE_NUMBER_OF_PIECES()) > 1)
+  if (!this->Enabled)
     {
     output->ShallowCopy(input);
     return 1;

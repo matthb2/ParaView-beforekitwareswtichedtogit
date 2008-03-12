@@ -532,10 +532,7 @@ void vtkSMRenderViewProxy::BeginStillRender()
   // Interactive renders get called through the PVInteractorStyles
   // which cal ResetCameraClippingRange on the Renderer.
   // We could convert them to call a method on the module directly ...
-  if ( ! vtkProcessModule::GetStreamBlock())
-    {
-    this->GetRenderer()->ResetCameraClippingRange();
-    }
+  this->GetRenderer()->ResetCameraClippingRange();
   renWindow->SetDesiredUpdateRate(0.002);
 
   this->SetUseLOD(false);
