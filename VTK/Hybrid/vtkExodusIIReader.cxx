@@ -6559,8 +6559,8 @@ int vtkExodusIIReader::RequestData(
   // Look for fast-path keys.
   // All keys must be present for the fast-path to work.
   bool haveFastPath = false;
-  vtkIdType oldFastPathObjId;
-  ObjectType oldFastPathObjType;
+  vtkIdType oldFastPathObjId = -1;
+  ObjectType oldFastPathObjType = ELEM_BLOCK;
   const char* oldFastPathIdType = 0;
   if (
     outInfo->Has( vtkStreamingDemandDrivenPipeline::FAST_PATH_OBJECT_TYPE() ) &&
