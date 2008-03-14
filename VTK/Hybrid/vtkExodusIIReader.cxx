@@ -32,7 +32,6 @@
 #include "vtkIntArray.h"
 #include "vtkMath.h"
 #include "vtkMultiBlockDataSet.h"
-#include "vtkMultiProcessController.h"
 #include "vtkObjectFactory.h"
 #include "vtkPointData.h"
 #include "vtkPoints.h"
@@ -42,6 +41,10 @@
 #include "vtkStreamingDemandDrivenPipeline.h"
 #include "vtkUnstructuredGrid.h"
 #include "vtkXMLParser.h"
+
+#ifdef VTK_USE_PARALLEL
+#  include "vtkMultiProcessController.h"
+#endif // VTK_USE_PARALLEL
 
 #include <vtkstd/algorithm>
 #include <vtkstd/vector>
@@ -5191,6 +5194,7 @@ int vtkExodusIIReaderPrivate::RequestInformation()
   return 0;
 }
 
+#ifdef VTK_USE_PARALLEL
 static void BroadcastDoubleVector( vtkMultiProcessController* controller,
   vtkstd::vector<double>& dvec, int rank )
 {
@@ -5612,9 +5616,11 @@ static void BroadcastAssemblyInfoVector( vtkMultiProcessController* controller,
     BroadcastAssemblyInfo( controller, &(*it), rank );
     }
 }
+#endif // VTK_USE_PARALLEL
 
 void vtkExodusIIReaderPrivate::Broadcast( vtkMultiProcessController* controller )
 {
+#ifdef VTK_USE_PARALLEL
   int rank = controller->GetLocalProcessId();
   BroadcastBlockInfoMap( controller, this->BlockInfo, rank );
   BroadcastSetInfoMap( controller, this->SetInfo, rank );
@@ -5632,6 +5638,9 @@ void vtkExodusIIReaderPrivate::Broadcast( vtkMultiProcessController* controller 
   BroadcastDoubleVector( controller, this->Times, rank );
 
   //vtkExodusIIXMLParser* Parser;
+#else // VTK_USE_PARALLEL
+  (void) controller;
+#endif // VTK_USE_PARALLEL
 }
 
 int vtkExodusIIReaderPrivate::RequestData( vtkIdType timeStep, vtkMultiBlockDataSet* output )
@@ -7539,9 +7548,13 @@ void vtkExodusIIReader::UpdateTimeInformation()
 
 void vtkExodusIIReader::Broadcast( vtkMultiProcessController* ctrl )
 {
+#ifdef VTK_USE_PARALLEL
   if ( ctrl )
     {
     this->Metadata->Broadcast( ctrl );
     }
   ctrl->Broadcast( this->TimeStepRange, 2, 0 );
+#else // VTK_USE_PARALLEL
+  (void) ctrl;
+#endif // VTK_USE_PARALLEL
 }
