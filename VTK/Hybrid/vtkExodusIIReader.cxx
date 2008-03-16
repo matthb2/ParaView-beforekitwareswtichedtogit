@@ -4472,8 +4472,18 @@ static void BroadcastString( vtkMultiProcessController* controller, vtkStdString
   unsigned long len = str.size() + 1;
   controller->Broadcast( &len, 1, 0 );
   if ( rank )
-    str.resize( len );
-  controller->Broadcast( &(str[0]), len, 0 );
+    {
+    vtkstd::vector<char> tmp;
+    tmp.reserve( len );
+    controller->Broadcast( &(tmp[0]), len, 0 );
+    str = &tmp[0];
+    }
+  else
+    {
+    const char* start = str.c_str();
+    vtkstd::vector<char> tmp( start, start + len );
+    controller->Broadcast( &tmp[0], len, 0 );
+    }
 }
 
 static void BroadcastStringVector( vtkMultiProcessController* controller, vtkstd::vector<vtkStdString>& svec, int rank )
@@ -6351,10 +6361,10 @@ int vtkExodusIIReader::GetObjectArrayIndex( int objectType, const char* arrayNam
   return -1;
 }
 
-int vtkExodusIIReader::GetTotalNumberOfNodes() { return this->Metadata->GetModelParams()->num_nodes; }
-int vtkExodusIIReader::GetTotalNumberOfEdges() { return this->Metadata->GetModelParams()->num_edge; }
-int vtkExodusIIReader::GetTotalNumberOfFaces() { return this->Metadata->GetModelParams()->num_face; }
-int vtkExodusIIReader::GetTotalNumberOfElements() { return this->Metadata->GetModelParams()->num_elem; }
+vtkIdType vtkExodusIIReader::GetTotalNumberOfNodes() { return this->Metadata->GetModelParams()->num_nodes; }
+vtkIdType vtkExodusIIReader::GetTotalNumberOfEdges() { return this->Metadata->GetModelParams()->num_edge; }
+vtkIdType vtkExodusIIReader::GetTotalNumberOfFaces() { return this->Metadata->GetModelParams()->num_face; }
+vtkIdType vtkExodusIIReader::GetTotalNumberOfElements() { return this->Metadata->GetModelParams()->num_elem; }
 
 // %---------------------------------------------------------------------------
 int vtkExodusIIReader::GetNumberOfPartArrays()
