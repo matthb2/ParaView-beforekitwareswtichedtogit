@@ -4473,7 +4473,7 @@ static void BroadcastString( vtkMultiProcessController* controller, vtkStdString
   controller->Broadcast( &len, 1, 0 );
   if ( rank )
     str.resize( len );
-  controller->Broadcast( &str[0], len, 0 );
+  controller->Broadcast( &(str[0]), len, 0 );
 }
 
 static void BroadcastStringVector( vtkMultiProcessController* controller, vtkstd::vector<vtkStdString>& svec, int rank )
