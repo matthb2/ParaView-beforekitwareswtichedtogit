@@ -5967,7 +5967,7 @@ int vtkExodusIIReader::RequestData(
   // Restore previous fastpath values so we don't respond to old pipeline requests
   if ( haveFastPath )
     {
-    this->Metadata->SetFastPathObjectId( oldFastPathObjId ); 
+    this->Metadata->FastPathObjectType = oldFastPathObjType; 
     this->SetFastPathObjectId( oldFastPathObjId );
     this->SetFastPathIdType( oldFastPathIdType );
     delete [] oldFastPathIdType;
