@@ -737,7 +737,7 @@ void vtkSMSourceProxy::CreateSelectionProxies()
     {
     vtkSmartPointer<vtkSMSourceProxy> esProxy;
     esProxy.TakeReference(vtkSMSourceProxy::SafeDownCast(
-        pxm->NewProxy("filters", "ExtractSelection")));
+        pxm->NewProxy("filters", "PVExtractSelection")));
     if (esProxy)
       {
       esProxy->SetServers(this->Servers);

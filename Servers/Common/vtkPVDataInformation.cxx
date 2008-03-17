@@ -978,6 +978,27 @@ int vtkPVDataInformation::IsDataStructured()
 }
 
 //----------------------------------------------------------------------------
+vtkPVDataInformation* 
+vtkPVDataInformation::GetDataInformationForCompositeIndex(int index)
+{
+  return this->GetDataInformationForCompositeIndex(&index);
+}
+
+//----------------------------------------------------------------------------
+vtkPVDataInformation* 
+vtkPVDataInformation::GetDataInformationForCompositeIndex(int* index)
+{
+  if (*index == 0)
+    {
+    (*index)--;
+    return this;
+    }
+
+  (*index)--;
+  return this->CompositeDataInformation->GetDataInformationForCompositeIndex(index);
+}
+
+//----------------------------------------------------------------------------
 void vtkPVDataInformation::CopyToStream(vtkClientServerStream* css)
 {
   css->Reset();

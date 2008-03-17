@@ -1296,7 +1296,8 @@ bool vtkSMRenderViewProxy::SelectOnSurface(unsigned int x0,
   //   Will returns a surface selection in terms of cells selected on the 
   //   visible props from all representations.
   vtkSelection* surfaceSel = this->SelectVisibleCells(x0, y0, x1, y1, ofPoints);
-  
+  // cout << surfaceSel->GetNumberOfChildren() << endl;
+
   if (!multiple_selections)
     {
     vtkSMRenderViewProxyShrinkSelection(surfaceSel);

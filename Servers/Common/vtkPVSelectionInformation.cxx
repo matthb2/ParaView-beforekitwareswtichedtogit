@@ -14,6 +14,7 @@
 =========================================================================*/
 #include "vtkPVSelectionInformation.h"
 
+#include "vtkAlgorithm.h"
 #include "vtkClientServerStream.h"
 #include "vtkObjectFactory.h"
 #include "vtkPVXMLElement.h"
@@ -59,6 +60,16 @@ void vtkPVSelectionInformation::Initialize()
 void vtkPVSelectionInformation::CopyFromObject(vtkObject* obj)
 {
   this->Initialize();
+  vtkAlgorithm* alg = vtkAlgorithm::SafeDownCast(obj);
+  if (alg)
+    {
+    vtkSelection* output = vtkSelection::SafeDownCast(
+      alg->GetOutputDataObject(0));
+    if (output)
+      {
+      this->Selection->DeepCopy(output);
+      }
+    }
   
   vtkSelection* sel = vtkSelection::SafeDownCast(obj);
   if (sel)

@@ -17,6 +17,7 @@
 #include "vtkClientServerStream.h"
 #include "vtkCollection.h"
 #include "vtkCollectionIterator.h"
+#include "vtkCommand.h"
 #include "vtkObjectFactory.h"
 #include "vtkProcessModule.h"
 #include "vtkPVClassNameInformation.h"
@@ -229,6 +230,7 @@ void vtkSMOutputPort::GatherDataInformation(int doUpdate)
     this->DataInformationValid = true;
     }
   pm->SendCleanupPendingProgress(this->ConnectionID);
+  this->InvokeEvent(vtkCommand::UpdateInformationEvent);
 }
 
 //----------------------------------------------------------------------------

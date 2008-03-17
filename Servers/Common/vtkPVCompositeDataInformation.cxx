@@ -60,6 +60,50 @@ void vtkPVCompositeDataInformation::PrintSelf(ostream& os, vtkIndent indent)
 }
 
 //----------------------------------------------------------------------------
+vtkPVDataInformation* vtkPVCompositeDataInformation::GetDataInformationForCompositeIndex(
+  int *index)
+{
+  if (!this->DataIsComposite)
+    {
+    return 0;
+    }
+
+  if (this->DataIsMultiPiece)
+    {
+    if (*index < this->NumberOfPieces)
+      {
+      *index=-1;
+      return NULL;
+      }
+    (*index -= this->NumberOfPieces);
+    }
+
+  vtkPVCompositeDataInformationInternals::VectorOfDataInformation::iterator iter = 
+    this->Internal->ChildrenInformation.begin();
+  for ( ; iter!= this->Internal->ChildrenInformation.end(); ++iter)
+    {
+    if (iter->GetPointer())
+      {
+      vtkPVDataInformation* info = 
+        iter->GetPointer()->GetDataInformationForCompositeIndex(index);
+      if (*index==-1)
+        {
+        return info;
+        }
+      }
+    else
+      {
+      index--;
+      if (index<0)
+        {
+        return NULL;
+        }
+      }
+    }
+  return NULL;
+}
+
+//----------------------------------------------------------------------------
 void vtkPVCompositeDataInformation::Initialize()
 {
   this->DataIsMultiPiece = 0;
