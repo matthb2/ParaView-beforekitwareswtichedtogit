@@ -70,7 +70,7 @@ vtkPVDataInformation* vtkPVCompositeDataInformation::GetDataInformationForCompos
 
   if (this->DataIsMultiPiece)
     {
-    if (*index < this->NumberOfPieces)
+    if (*index < static_cast<int>(this->NumberOfPieces))
       {
       *index=-1;
       return NULL;
