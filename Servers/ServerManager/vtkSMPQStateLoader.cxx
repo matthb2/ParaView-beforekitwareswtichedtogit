@@ -89,7 +89,7 @@ void vtkSMPQStateLoader::AddPreferredRenderView(vtkSMRenderViewProxy *renderView
     this->PQInternal->PreferredRenderViews.begin();
   vtkstd::list<vtkSmartPointer<vtkSMRenderViewProxy> >::iterator end = 
     this->PQInternal->PreferredRenderViews.end();
-  if(find(begin,end,renderView) == end)
+  if(vtkstd::find(begin,end,renderView) == end)
     {
     this->PQInternal->PreferredRenderViews.push_back(renderView);
     }
