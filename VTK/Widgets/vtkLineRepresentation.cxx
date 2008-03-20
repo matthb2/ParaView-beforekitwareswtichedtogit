@@ -84,6 +84,14 @@ vtkLineRepresentation::vtkLineRepresentation()
   // Set up the initial properties
   this->CreateDefaultProperties();
 
+  // Pass the initial properties to the actors.
+  this->Handle[0]->SetProperty(this->EndPointProperty);
+  this->Point1Representation->SetProperty(this->EndPointProperty);
+  this->Handle[1]->SetProperty(this->EndPointProperty);
+  this->Point2Representation->SetProperty(this->EndPointProperty);
+  this->LineHandleRepresentation->SetProperty(this->EndPointProperty);
+  this->LineActor->SetProperty(this->LineProperty);
+
   // Define the point coordinates
   double bounds[6];
   bounds[0] = -0.5;

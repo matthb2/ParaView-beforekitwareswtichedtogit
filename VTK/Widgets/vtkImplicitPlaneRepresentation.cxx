@@ -157,7 +157,16 @@ vtkImplicitPlaneRepresentation::vtkImplicitPlaneRepresentation()
   
   // Set up the initial properties
   this->CreateDefaultProperties();
-  
+
+  // Pass the initial properties to the actors.
+  this->LineActor->SetProperty(this->NormalProperty);
+  this->ConeActor->SetProperty(this->NormalProperty);
+  this->LineActor2->SetProperty(this->NormalProperty);
+  this->ConeActor2->SetProperty(this->NormalProperty);
+  this->SphereActor->SetProperty(this->NormalProperty);
+  this->CutActor->SetProperty(this->PlaneProperty);
+  this->OutlineActor->SetProperty(this->OutlineProperty);
+
   // The bounding box
   this->BoundingBox = vtkBox::New();
 
