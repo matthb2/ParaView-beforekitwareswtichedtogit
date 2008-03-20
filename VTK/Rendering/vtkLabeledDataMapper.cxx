@@ -477,7 +477,7 @@ void vtkLabeledDataMapper::BuildLabelsInternal(vtkDataSet* input)
       {
       if ( numericData )
         {
-        void *rawData = numericData->GetVoidPointer(i);
+        void *rawData = numericData->GetVoidPointer(i*numComp);
         
         if ( numComp == 1 )
           {
