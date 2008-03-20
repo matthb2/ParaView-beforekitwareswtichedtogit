@@ -236,6 +236,26 @@ void vtkSMPropRepresentationProxy::SetUpdateTime(double time)
 }
 
 //----------------------------------------------------------------------------
+void vtkSMPropRepresentationProxy::SetUseViewUpdateTime(bool use)
+{
+  this->Superclass::SetUseViewUpdateTime(use);
+  if (this->SelectionRepresentation)
+    {
+    this->SelectionRepresentation->SetUseViewUpdateTime(use);
+    }
+}
+
+//----------------------------------------------------------------------------
+void vtkSMPropRepresentationProxy::SetViewUpdateTime(double time)
+{
+  this->Superclass::SetViewUpdateTime(time);
+  if (this->SelectionRepresentation)
+    {
+    this->SelectionRepresentation->SetViewUpdateTime(time);
+    }
+}
+
+//----------------------------------------------------------------------------
 void vtkSMPropRepresentationProxy::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os, indent);

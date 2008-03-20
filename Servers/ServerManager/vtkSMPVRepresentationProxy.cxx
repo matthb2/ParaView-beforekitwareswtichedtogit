@@ -392,7 +392,6 @@ void vtkSMPVRepresentationProxy::SetViewUpdateTime(double time)
   this->CubeAxesRepresentation->SetViewUpdateTime(time);
 }
 
-
 //----------------------------------------------------------------------------
 void vtkSMPVRepresentationProxy::MarkModified(vtkSMProxy* modifiedProxy)
 {
