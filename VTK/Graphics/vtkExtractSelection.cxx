@@ -393,10 +393,10 @@ vtkDataSet* vtkExtractSelection::RequestDataFromBlock(
   return output;
 }
 
-
 //----------------------------------------------------------------------------
 void vtkExtractSelection::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os,indent);
-}
 
+  os << indent << "ShowBounds: " << this->ShowBounds << endl;
+}
