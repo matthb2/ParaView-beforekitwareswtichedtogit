@@ -26,6 +26,7 @@
 #include "vtkProcessModule.h"
 #include "vtkStreamingDemandDrivenPipeline.h"
 
+#include <vtkstd/algorithm>
 #include <vtkstd/map>
 #include <vtkstd/string>
 
