@@ -485,7 +485,7 @@ void vtkPVDataInformation::CopyFromGraph(vtkGraph* data)
   this->NumberOfRows = 0;
 
   this->PointDataInformation->CopyFromFieldData(data->GetVertexData());
-  this->CellDataInformation->CopyFromFieldData(data->GetVertexData());
+  this->CellDataInformation->CopyFromFieldData(data->GetEdgeData());
 }
 
 //----------------------------------------------------------------------------
