@@ -123,7 +123,7 @@ vtkTrivialProducer::ProcessRequest(vtkInformation* request,
       {
       // There is no real source to  change the output data, so we can
       // produce exactly one piece.
-      outputInfo->Set(vtkStreamingDemandDrivenPipeline::MAXIMUM_NUMBER_OF_PIECES(), 1);
+      outputInfo->Set(vtkStreamingDemandDrivenPipeline::MAXIMUM_NUMBER_OF_PIECES(), -1);
       }
     else if(dataInfo->Get(vtkDataObject::DATA_EXTENT_TYPE()) == VTK_3D_EXTENT)
       {
