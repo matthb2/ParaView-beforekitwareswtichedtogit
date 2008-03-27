@@ -782,6 +782,12 @@ int vtkConvertSelection::RequestData(
 }
 
 //----------------------------------------------------------------------------
+void vtkConvertSelection::SetDataObjectConnection(vtkAlgorithmOutput* in)
+{
+  this->SetInputConnection(1, in);
+}
+
+//----------------------------------------------------------------------------
 int vtkConvertSelection::FillInputPortInformation(
   int port, vtkInformation* info)
 {
