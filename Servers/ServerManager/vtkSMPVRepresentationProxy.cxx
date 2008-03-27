@@ -475,6 +475,12 @@ bool vtkSMPVRepresentationProxy::HasVisibleProp3D(vtkProp3D* prop)
 }
 
 //----------------------------------------------------------------------------
+bool vtkSMPVRepresentationProxy::GetBounds(double bounds[6])
+{
+  return this->ActiveRepresentation->GetBounds(bounds);
+}
+
+//----------------------------------------------------------------------------
 void vtkSMPVRepresentationProxy::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os, indent);
