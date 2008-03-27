@@ -444,7 +444,7 @@ void pqLookmarkStateLoader::RegisterProxy(int id, vtkSMProxy* proxy)
     return;
     }
 
-  return this->Superclass::RegisterProxy(id, proxy);
+  this->Superclass::RegisterProxy(id, proxy);
 }
 
 
