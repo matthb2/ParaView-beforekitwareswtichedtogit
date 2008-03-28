@@ -948,6 +948,8 @@ void vtkProperty::PrintSelf(ostream& os, vtkIndent indent)
     {
     os << "(none)" << endl;
     }
+ os << indent << "MaterialName: " << 
+   (this->MaterialName? this->MaterialName:"(none)") << endl;
 
   os << indent << "ShaderProgram: ";
   if (this->ShaderProgram)
