@@ -677,7 +677,7 @@ void vtkSiloReader::SetFileName(char * filename)
 
   vtkstd::string fullName(filename);
   
-  #ifdef WIN32
+  #ifdef _WIN32
   char slashChar[] = "\\";
   #else
   char slashChar[] = "/";
