@@ -20,7 +20,6 @@ vtkCxxRevisionMacro(vtkCoordinate, "$Revision$");
 vtkStandardNewMacro(vtkCoordinate);
 
 vtkCxxSetObjectMacro(vtkCoordinate,ReferenceCoordinate,vtkCoordinate);
-vtkCxxSetObjectMacro(vtkCoordinate,Viewport,vtkViewport);
 
 #define VTK_RINT(x) ((x > 0.0) ? static_cast<int>(x + 0.5) : static_cast<int>(x - 0.5))
 
@@ -44,7 +43,19 @@ vtkCoordinate::~vtkCoordinate()
 {
   // To get rid of references (Reference counting).
   this->SetReferenceCoordinate(NULL);
-  this->SetViewport(NULL);
+}
+
+//----------------------------------------------------------------------------
+// Set the viewport. This is a raw pointer, not a weak pointer or a reference
+// counted object to avoid cycle reference loop between rendering classes
+// and filter classes.
+void vtkCoordinate::SetViewport(vtkViewport *viewport)
+{
+  if(this->Viewport!=viewport)
+    {
+    this->Viewport=viewport;
+    this->Modified();
+    }
 }
 
 //----------------------------------------------------------------------------
