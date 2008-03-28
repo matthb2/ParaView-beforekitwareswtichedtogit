@@ -149,7 +149,7 @@ void vtkXMLShader::ReadCodeFromFile(const char* filepath)
     }
 
   ifstream ifp;
-  ifp.open(filepath);
+  ifp.open(filepath, ios::binary);
   if (!ifp)
     {
     vtkErrorMacro("Failed to open file " << filepath);
