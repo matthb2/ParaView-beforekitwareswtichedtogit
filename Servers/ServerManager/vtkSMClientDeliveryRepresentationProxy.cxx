@@ -183,7 +183,11 @@ void vtkSMClientDeliveryRepresentationProxy::SetReductionType(int type)
   case MULTIBLOCK_MERGE:
     classname = "vtkMultiBlockMergeFilter"; 
     break;
-
+  
+  case TABLE_MERGE:
+    classname = "vtkPVMergeTables";
+    break;
+  
   default:
     vtkErrorMacro("Unknown reduction type: " << type);
     return;
