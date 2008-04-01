@@ -15,6 +15,7 @@
 #include "vtkSMSpreadSheetRepresentationProxy.h"
 
 #include "vtkIndexBasedBlockFilter.h"
+#include "vtkMemberFunctionCommand.h"
 #include "vtkObjectFactory.h"
 #include "vtkPVCompositeDataInformation.h"
 #include "vtkPVDataInformation.h"
@@ -42,6 +43,18 @@ vtkSMSpreadSheetRepresentationProxy::~vtkSMSpreadSheetRepresentationProxy()
 }
 
 //----------------------------------------------------------------------------
+void vtkSMSpreadSheetRepresentationProxy::InvokeStartEvent()
+{
+  this->InvokeEvent(vtkCommand::StartEvent);
+}
+
+//----------------------------------------------------------------------------
+void vtkSMSpreadSheetRepresentationProxy::InvokeEndEvent()
+{
+  this->InvokeEvent(vtkCommand::EndEvent);
+}
+
+//----------------------------------------------------------------------------
 bool vtkSMSpreadSheetRepresentationProxy::BeginCreateVTKObjects()
 {
   if (!this->Superclass::BeginCreateVTKObjects())
@@ -57,8 +70,19 @@ bool vtkSMSpreadSheetRepresentationProxy::BeginCreateVTKObjects()
     vtkErrorMacro("SelectionRepresentation must be defined in the xml configuration.");
     return false;
     }
-  return true;
 
+  // Relay StartEvent|EndEvent fired by the internal selection representation.
+  vtkCommand* adapter = vtkMakeMemberFunctionCommand(*this, 
+    &vtkSMSpreadSheetRepresentationProxy::InvokeStartEvent);
+  this->SelectionRepresentation->AddObserver(vtkCommand::StartEvent, adapter);
+  adapter->Delete();
+
+  adapter = vtkMakeMemberFunctionCommand(*this, 
+    &vtkSMSpreadSheetRepresentationProxy::InvokeEndEvent);
+  this->SelectionRepresentation->AddObserver(vtkCommand::EndEvent, adapter);
+  adapter->Delete();
+
+  return true;
 }
 
 //----------------------------------------------------------------------------
