@@ -123,6 +123,7 @@ bool vtkMySQLDatabase::IsSupported(int feature)
     case VTK_SQL_FEATURE_LAST_INSERT_ID:
     case VTK_SQL_FEATURE_UNICODE:
     case VTK_SQL_FEATURE_TRANSACTIONS:
+    case VTK_SQL_FEATURE_TRIGGERS:
       return true;
       
     default:
