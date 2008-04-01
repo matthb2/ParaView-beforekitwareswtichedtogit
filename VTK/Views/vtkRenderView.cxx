@@ -266,4 +266,5 @@ void vtkRenderView::PrintSelf(ostream& os, vtkIndent indent)
   this->Renderer->PrintSelf(os, indent.GetNextIndent());
   os << indent << "InteractorStyle: " << endl;
   this->InteractorStyle->PrintSelf(os, indent.GetNextIndent());
+  os << indent << "SelectionMode: " << this->SelectionMode << endl;
 }
