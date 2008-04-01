@@ -226,6 +226,7 @@ bool vtkSQLiteDatabase::IsSupported(int feature)
       
     case VTK_SQL_FEATURE_BATCH_OPERATIONS:
     case VTK_SQL_FEATURE_QUERY_SIZE:
+    case VTK_SQL_FEATURE_TRIGGERS:
       return false;
 
     default:
