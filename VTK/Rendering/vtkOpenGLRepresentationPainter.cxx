@@ -98,6 +98,10 @@ void vtkOpenGLRepresentationPainter::RenderInternal(vtkRenderer* renderer,
     glColor4dv(color);
     glPolygonMode(face, GL_LINE);
 
+    // Disable textures when rendering the surface edges.
+    // This ensures that edges are always drawn solid. 
+    glDisable(GL_TEXTURE_2D);
+
     this->Information->Set(vtkPolyDataPainter::DISABLE_SCALAR_COLOR(), 1);
     this->Superclass::RenderInternal(renderer, actor, typeflags);
     this->TimeToDraw += this->DelegatePainter? 
