@@ -176,7 +176,7 @@ int vtkConvertSelection::ConvertToIndexSelection(
   
   if (!insidedness)
     {
-    vtkErrorMacro("Did not find expected vtkInsidedness array.");
+    // Empty selection
     extract->Delete();
     return 0;
     }
