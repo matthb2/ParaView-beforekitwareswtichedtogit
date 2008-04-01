@@ -5745,8 +5745,22 @@ int vtkExodusIIReader::CanReadFile( const char* fname )
   return 1;
 }
 
+#if 0
+void vtkExodusIIReaderPrivate::Modified()
+{
+  cout << "E2RP modified\n"; this->Superclass::Modified();
+}
+
+void vtkExodusIIReader::Modified()
+{
+  cout << "E2R modified\n"; this->Superclass::Modified();
+}
+#endif // 0
+
 unsigned long vtkExodusIIReader::GetMTime()
 {
+  //return this->MTime.GetMTime();
+  /*
   unsigned long mtime1, mtime2;
   unsigned long readerMTime = this->MTime.GetMTime();
   unsigned long privateMTime = this->Metadata->GetMTime();
@@ -5755,6 +5769,10 @@ unsigned long vtkExodusIIReader::GetMTime()
   mtime1 = privateMTime > readerMTime ? privateMTime : readerMTime;
   mtime2 = fileNameMTime > xmlFileNameMTime ? fileNameMTime : xmlFileNameMTime;
   return mtime1 > mtime2 ? mtime1 : mtime2;
+  */
+  unsigned long readerMTime = this->MTime.GetMTime();
+  unsigned long privateMTime = this->Metadata->GetMTime();
+  return privateMTime > readerMTime ? privateMTime : readerMTime;
 }
 
 unsigned long vtkExodusIIReader::GetMetadataMTime()
@@ -5930,7 +5948,7 @@ int vtkExodusIIReader::RequestData(
           }
         }
       this->TimeStep=closestStep;
-      cout << "Requested value: " << requestedTimeSteps[0] << " Step: " << this->TimeStep << endl;
+      //cout << "Requested value: " << requestedTimeSteps[0] << " Step: " << this->TimeStep << endl;
       output->GetInformation()->Set( vtkDataObject::DATA_TIME_STEPS(), steps + this->TimeStep, 1 );
       }
     else
