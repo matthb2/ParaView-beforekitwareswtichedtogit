@@ -80,6 +80,12 @@ bool vtkSMRepresentationProxy::GetBounds(double bounds[6])
     return false;
     }
   info->GetBounds(bounds);
+  
+  if(bounds[1] < bounds[0])
+    {
+    return false;
+    }
+
   return true;
 }
 
