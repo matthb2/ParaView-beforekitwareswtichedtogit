@@ -25,6 +25,12 @@ vtkStandardNewMacro(vtkPVXMLElement);
 #include <vtkstd/vector>
 #include <vtksys/ios/sstream>
 
+#if defined(_WIN32) && !defined(__CYGWIN__)
+# define SNPRINTF _snprintf
+#else
+# define SNPRINTF snprintf
+#endif
+
 struct vtkPVXMLElementInternals
 {
   vtkstd::vector<vtkstd::string> AttributeNames;
@@ -537,7 +543,7 @@ vtkStdString vtkPVXMLElement::Encode(const char* plaintext)
     if (*escape_char)
       {
       char temp[20];
-      snprintf(temp, 20, "&#x%x;", static_cast<int>(*escape_char));
+      SNPRINTF(temp, 20, "&#x%x;", static_cast<int>(*escape_char));
       sanitized += temp;
       }
     else
