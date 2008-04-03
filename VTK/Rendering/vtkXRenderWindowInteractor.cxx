@@ -563,11 +563,10 @@ void vtkXRenderWindowInteractorCallback(Widget vtkNotUsed(w),
         // just getting the expose configure event
         event = &result;
         }
-      int width = (reinterpret_cast<XConfigureEvent *>(event))->width;
-      int height = (reinterpret_cast<XConfigureEvent *>(event))->height;
-      me->SetEventSize(width, height);
-      xp = (reinterpret_cast<XButtonEvent*>(event))->x;
-      yp = (reinterpret_cast<XButtonEvent*>(event))->y;
+      XExposeEvent* exposeEvent = reinterpret_cast<XExposeEvent *>(event);
+      me->SetEventSize(exposeEvent->width, exposeEvent->height);
+      xp = exposeEvent->x;
+      yp = exposeEvent->y;
       yp = me->Size[1] - xp - 1;
       me->SetEventPosition(xp, yp);
       // only render if we are currently accepting events
