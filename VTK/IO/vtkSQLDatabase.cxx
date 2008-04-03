@@ -398,7 +398,7 @@ bool vtkSQLDatabase::EffectSchema( vtkSQLDatabaseSchema* schema, bool dropIfExis
     {
     // Don't execute if the statement is not for this backend
     const char* preBackend = schema->GetPreambleBackendFromHandle( preHandle );
-    if ( ! strcmp( preBackend, VTK_SQL_ALLBACKENDS ) && ! strcmp( preBackend, this->GetClassName() ) )
+    if ( strcmp( preBackend, VTK_SQL_ALLBACKENDS ) && strcmp( preBackend, this->GetClassName() ) )
       {
       continue;
       }
