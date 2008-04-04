@@ -4452,7 +4452,10 @@ static void BroadcastDoubleVector( vtkMultiProcessController* controller,
     {
     dvec.resize( len );
     }
-  controller->Broadcast( &dvec[0], len, 0 );
+  if ( len )
+    {
+    controller->Broadcast( &dvec[0], len, 0 );
+    }
 }
 
 static void BroadcastIntVector( vtkMultiProcessController* controller,
@@ -4464,25 +4467,31 @@ static void BroadcastIntVector( vtkMultiProcessController* controller,
     {
     ivec.resize( len );
     }
-  controller->Broadcast( &ivec[0], len, 0 );
+  if ( len )
+    {
+    controller->Broadcast( &ivec[0], len, 0 );
+    }
 }
 
 static void BroadcastString( vtkMultiProcessController* controller, vtkStdString& str, int rank )
 {
   unsigned long len = str.size() + 1;
   controller->Broadcast( &len, 1, 0 );
-  if ( rank )
+  if ( len )
     {
-    vtkstd::vector<char> tmp;
-    tmp.reserve( len );
-    controller->Broadcast( &(tmp[0]), len, 0 );
-    str = &tmp[0];
-    }
-  else
-    {
-    const char* start = str.c_str();
-    vtkstd::vector<char> tmp( start, start + len );
-    controller->Broadcast( &tmp[0], len, 0 );
+    if ( rank )
+      {
+      vtkstd::vector<char> tmp;
+      tmp.reserve( len );
+      controller->Broadcast( &(tmp[0]), len, 0 );
+      str = &tmp[0];
+      }
+    else
+      {
+      const char* start = str.c_str();
+      vtkstd::vector<char> tmp( start, start + len );
+      controller->Broadcast( &tmp[0], len, 0 );
+      }
     }
 }
 
