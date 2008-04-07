@@ -34,6 +34,7 @@
 #include "vtkMultiBlockDataSet.h"
 #include "vtkMultiProcessController.h"
 #include "vtkObjectFactory.h"
+#include "vtkSmartPointer.h"
 #include "vtkStreamingDemandDrivenPipeline.h"
 #include "vtkUnstructuredGrid.h"
 
@@ -454,7 +455,8 @@ int vtkPExodusIIReader::RequestData(
 
   int totalCells = 0;
   int totalPoints = 0;
-  vtkAppendCompositeDataLeaves* append = vtkAppendCompositeDataLeaves::New();
+  vtkSmartPointer<vtkAppendCompositeDataLeaves> append =
+    vtkSmartPointer<vtkAppendCompositeDataLeaves>::New();
   append->AppendFieldDataOn();
 
   if ( this->ExodusModelMetadata )
@@ -736,7 +738,6 @@ int vtkPExodusIIReader::RequestData(
     }
 
   // I've copied append's output to the 'output' so delete append
-  append->Delete();
   append = NULL;
 
 #if 0 // FIXME: Need multiblock version... or not?
