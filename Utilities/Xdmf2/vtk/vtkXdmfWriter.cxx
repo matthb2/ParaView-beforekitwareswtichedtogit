@@ -1491,4 +1491,3 @@ void vtkXdmfWriterInternal::DetermineCellTypes(vtkPointSet * t, vtkXdmfWriterInt
     }
   cell->Delete();
 }
-
