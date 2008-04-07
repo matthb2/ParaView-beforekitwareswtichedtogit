@@ -93,7 +93,7 @@ vtkStdString vtkSQLiteDatabase::GetColumnSpecification( vtkSQLDatabaseSchema* sc
   switch ( static_cast<vtkSQLDatabaseSchema::DatabaseColumnType>( colType ) )
     {
     case vtkSQLDatabaseSchema::SERIAL:    
-      colTypeStr = "";
+      colTypeStr = "INTEGER NOT NULL";
       break;
     case vtkSQLDatabaseSchema::SMALLINT:  
       colTypeStr = "SMALLINT";

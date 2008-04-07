@@ -71,7 +71,7 @@ vtkStdString vtkSQLDatabase::GetColumnSpecification( vtkSQLDatabaseSchema* schem
   switch ( static_cast<vtkSQLDatabaseSchema::DatabaseColumnType>( colType ) )
     {
     case vtkSQLDatabaseSchema::SERIAL:    
-      colTypeStr = "";
+      colTypeStr = "INTEGER";
       break;
     case vtkSQLDatabaseSchema::SMALLINT:  
       colTypeStr = "INTEGER";
