@@ -1428,7 +1428,8 @@ void vtkXdmfWriter::Indent(ostream& os)
 }
 
 //----------------------------------------------------------------------------
-const char* vtkXdmfWriter::GenerateHDF5ArrayName(const char* gridName, const char* array)
+const char* vtkXdmfWriter::GenerateHDF5ArrayName(const char* gridName, 
+                                                 const char* array)
 {
   if ( !this->HeavyDataSetNameString )
     {
