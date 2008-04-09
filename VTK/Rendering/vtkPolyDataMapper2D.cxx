@@ -17,6 +17,7 @@
 #include "vtkCoordinate.h"
 #include "vtkExecutive.h"
 #include "vtkImagingFactory.h"
+#include "vtkInformation.h"
 #include "vtkLookupTable.h"
 #include "vtkPolyData.h"
 
@@ -338,3 +339,11 @@ void vtkPolyDataMapper2D::SetColorModeToDefault()
 
 void vtkPolyDataMapper2D::SetColorModeToMapScalars() 
 {this->SetColorMode(VTK_COLOR_MODE_MAP_SCALARS);};
+
+//----------------------------------------------------------------------------
+int vtkPolyDataMapper2D::FillInputPortInformation(
+  int vtkNotUsed( port ), vtkInformation* info)
+{
+  info->Set(vtkAlgorithm::INPUT_REQUIRED_DATA_TYPE(), "vtkPolyData");
+  return 1;
+}
