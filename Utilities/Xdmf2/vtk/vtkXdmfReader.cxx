@@ -2506,8 +2506,8 @@ int vtkXdmfReaderInternal::RequestGridData(
 //                   origin[2], origin[1], origin[0]);
 
     }
-    vGrid->SetOrigin(origin[2], origin[1], origin[0]);
-    vGrid->SetDimensions(Dimensions[2], Dimensions[1], Dimensions[0]);
+//    vGrid->SetOrigin(origin[2], origin[1], origin[0]);
+//    vGrid->SetDimensions(Dimensions[2], Dimensions[1], Dimensions[0]);
     stride[2] = readerStride[0];
     stride[1] = readerStride[1];
     stride[0] = readerStride[2];
