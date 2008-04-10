@@ -670,11 +670,6 @@ void vtkGraphLayoutView::ProcessEvents(
     
     selection->Delete();
     }
-  else if(eventId == vtkCommand::SelectionChangedEvent)
-    {
-    this->Update();
-    Superclass::ProcessEvents(caller, eventId, callData);
-    }
   else
     {
     Superclass::ProcessEvents(caller, eventId, callData);
