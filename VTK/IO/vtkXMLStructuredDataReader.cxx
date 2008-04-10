@@ -378,16 +378,29 @@ vtkXMLStructuredDataReader
   int components = array->GetNumberOfComponents();
   
   if((inDimensions[0] == outDimensions[0]) &&
-     (inDimensions[1] == outDimensions[1]))
+     (subDimensions[0] == outDimensions[0]) &&
+     (inDimensions[1] == outDimensions[1]) &&
+     (subDimensions[1] == outDimensions[1])
+    )
     {
-    if(inDimensions[2] == outDimensions[2])
+    if ((inDimensions[2] == outDimensions[2]) &&
+        (subDimensions[2] == outDimensions[2])
+      )
       {
       // Read the whole volume at once.  This fills the array's entire
       // progress range.
       vtkIdType volumeTuples =
         (inDimensions[0]*inDimensions[1]*inDimensions[2]);
-      if(!this->ReadArrayValues(da, 0, array,
-          0, volumeTuples*components))
+
+      vtkIdType sourceTuple =
+        this->GetStartTuple(inExtent, inIncrements,
+                            subExtent[0], subExtent[2], subExtent[4]);
+      vtkIdType destTuple =
+        this->GetStartTuple(outExtent, outIncrements,
+                            subExtent[0], subExtent[2], subExtent[4]);
+
+      if(!this->ReadArrayValues(da, destTuple*components, array,
+          sourceTuple*components, volumeTuples*components))
         {
         return 0;
         }
