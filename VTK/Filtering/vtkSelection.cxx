@@ -428,6 +428,7 @@ void vtkSelection::UnionSelectionList(vtkSelection* other)
   case INDICES:
   case LOCATIONS:
   case THRESHOLDS:
+  case BLOCKS:
       {
       vtkFieldData* fd1 = this->GetFieldData();
       vtkFieldData* fd2 = other->GetFieldData();

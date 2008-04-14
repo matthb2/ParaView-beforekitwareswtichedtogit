@@ -105,6 +105,7 @@ public:
 
 
   SetOfIDs GlobalIDs;
+  SetOfIDs Blocks;
   SetOfIDType IDs;
   SetOfCompositeIDType CompositeIDs;
   SetOfHierarchicalIDType HierarchicalIDs;
@@ -224,6 +225,21 @@ void vtkPVSelectionSource::RemoveAllHierarchicalIDs()
   this->Modified();
 }
 
+//----------------------------------------------------------------------------
+void vtkPVSelectionSource::AddBlock(vtkIdType blockno)
+{
+  this->Mode = BLOCKS;
+  this->Internal->Blocks.insert(blockno);
+  this->Modified();
+}
+
+//----------------------------------------------------------------------------
+void vtkPVSelectionSource::RemoveAllBlocks()
+{
+  this->Mode = BLOCKS;
+  this->Internal->Blocks.clear();
+  this->Modified();
+}
 
 //----------------------------------------------------------------------------
 void vtkPVSelectionSource::AddThreshold(double min, double max)
@@ -463,6 +479,20 @@ int vtkPVSelectionSource::RequestData(vtkInformation* vtkNotUsed(request),
         double z = *iter;
         iter++;
         source->AddLocation(x, y ,z);
+        }
+      source->Update();
+      output->ShallowCopy(source->GetOutput());
+      }
+    break;
+
+  case BLOCKS:
+      {
+      source->SetContentType(vtkSelection::BLOCKS);
+      vtkInternal::SetOfIDs::iterator iter;
+      for (iter = this->Internal->Blocks.begin();
+        iter != this->Internal->Blocks.end(); ++iter)
+        {
+        source->AddBlock(*iter);
         }
       source->Update();
       output->ShallowCopy(source->GetOutput());

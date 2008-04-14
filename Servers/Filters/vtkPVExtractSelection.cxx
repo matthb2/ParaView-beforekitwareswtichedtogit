@@ -131,6 +131,14 @@ int vtkPVExtractSelection::RequestData(
     return 1;
     }
 
+  // If input selection content type is vtkSelection::BLOCKS, then we simply
+  // need to shallow copy the input as the output.
+  if (this->GetContentType(sel) == vtkSelection::BLOCKS)
+    {
+    output->ShallowCopy(sel);
+    return 1;
+    }
+
   vtkSelectionVector oVector;
   if (cdOutput)
     {
@@ -307,6 +315,34 @@ void vtkPVExtractSelection::RequestDataInternal(vtkSelectionVector& outputs,
       }
     output->Delete();
     }
+}
+
+//----------------------------------------------------------------------------
+int vtkPVExtractSelection::GetContentType(vtkSelection* sel)
+{
+  int ctype = -1;
+  if (sel->GetContentType() == vtkSelection::SELECTIONS)
+    {
+    unsigned int numChildren = sel->GetNumberOfChildren();
+    for (unsigned int cc=0; cc < numChildren; cc++)
+      {
+      vtkSelection* child = sel->GetChild(cc);
+      int childCType = this->GetContentType(child);
+      if (ctype == -1)
+        {
+        ctype = childCType;
+        }
+      else if (childCType != ctype)
+        {
+        return 0;
+        }
+      }
+    }
+  else
+    {
+    ctype = sel->GetContentType();
+    }
+  return ctype;
 }
 
 //----------------------------------------------------------------------------
