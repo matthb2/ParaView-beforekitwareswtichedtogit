@@ -3192,6 +3192,7 @@ int vtkLSDynaReader::ReadHeaderInformation( int curAdapt )
       p->AddCellArray( vtkLSDynaReader::SOLID, LS_ARRAYNAME_USERID, 1, 1 );
       }
     p->AddCellArray( vtkLSDynaReader::SOLID, LS_ARRAYNAME_STRESS, 6, 1 );
+    p->AddCellArray( vtkLSDynaReader::SOLID, LS_ARRAYNAME_EPSTRAIN, 1, 1 );
     if ( p->Dict["ISTRN"] )
       {
       p->AddCellArray( vtkLSDynaReader::SOLID, LS_ARRAYNAME_STRAIN, 6, 1 );
