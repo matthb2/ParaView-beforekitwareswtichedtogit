@@ -344,7 +344,7 @@ vtkStdString vtkPostgreSQLDatabase::GetURL()
     if ( this->User )
       {
       url += this->User;
-      if ( this->Password )
+      if ( this->Password && strlen( this->Password ) )
         {
         url += ":";
         url += this->Password;
