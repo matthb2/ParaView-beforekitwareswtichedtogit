@@ -27,6 +27,7 @@
 #include "vtkSeedRepresentation.h"
 #include "vtkWidgetCallbackMapper.h"
 #include "vtkWidgetEvent.h"
+#include <vtkstd/iterator>
 #include <vtkstd/list>
 
 vtkCxxRevisionMacro(vtkSeedWidget, "$Revision$");
@@ -72,7 +73,7 @@ inline void vtkSeedWidget::DeleteSeed(int i)
      return;
      }
   vtkSeedListIterator iter = this->Seeds->begin();
-  advance(iter,i);
+  vtkstd::advance(iter,i);
   if( (*iter)->GetEnabled() )
   {
     (*iter)->SetEnabled(0);
