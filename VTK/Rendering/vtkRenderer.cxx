@@ -1712,6 +1712,8 @@ int vtkRenderer::UpdateGeometryForSelection()
   double origBG[3];
   this->GetBackground(origBG);
   this->SetBackground(0.0,0.0,0.0);
+  bool origGrad = this->GetGradientBackground();
+  this->GradientBackgroundOff();
   this->Clear();
 
   //todo: save off and swap in other renderer/renderwindow settings that
@@ -1792,6 +1794,7 @@ int vtkRenderer::UpdateGeometryForSelection()
 
   //restore original background
   this->SetBackground(origBG);
+  this->SetGradientBackground(origGrad);
 
   return this->NumberOfPropsRendered;
 }
