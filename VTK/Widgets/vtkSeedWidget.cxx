@@ -71,17 +71,17 @@ inline void vtkSeedWidget::DeleteSeed(int i)
      {
      return;
      }
-  vtkSeedListIterator it = this->Seeds->begin();
-  advance(it,i);
-  if( (*it)->GetEnabled() )
+  vtkSeedListIterator iter = this->Seeds->begin();
+  advance(iter,i);
+  if( (*iter)->GetEnabled() )
   {
-    (*it)->SetEnabled(0);
+    (*iter)->SetEnabled(0);
   }
-  (*it)->RemoveObservers(vtkCommand::StartInteractionEvent);
-  (*it)->RemoveObservers(vtkCommand::InteractionEvent);
-  (*it)->RemoveObservers(vtkCommand::EndInteractionEvent);
-  this->Seeds->erase( it );
-  (*it)->Delete();
+  (*iter)->RemoveObservers(vtkCommand::StartInteractionEvent);
+  (*iter)->RemoveObservers(vtkCommand::InteractionEvent);
+  (*iter)->RemoveObservers(vtkCommand::EndInteractionEvent);
+  this->Seeds->erase( iter );
+  (*iter)->Delete();
 }
 
 //----------------------------------------------------------------------
