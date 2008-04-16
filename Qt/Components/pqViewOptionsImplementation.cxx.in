@@ -32,29 +32,55 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 =========================================================================*/
 
-#include "@ARG_CLASS_NAME@Implementation.h"
-#include "@ARG_CLASS_NAME@.h"
+#include "@ARG_VIEW_TYPE@OptionsImplementation.h"
+#include "@ARG_VIEW_TYPE@.h"
 
-@ARG_CLASS_NAME@Implementation::@ARG_CLASS_NAME@Implementation(QObject* p)
-  : QObject(p)
+#if @HAVE_ACTIVE_VIEW_OPTIONS@
+#include "@ARG_ACTIVE_VIEW_OPTIONS@.h"
+#endif
+#if @HAVE_GLOBAL_VIEW_OPTIONS@
+#include "@ARG_GLOBAL_VIEW_OPTIONS@.h"
+#endif
+
+#include "vtkSMProxyManager.h"
+#include "pqDataRepresentation.h"
+#include "pqServer.h"
+
+// configured with CMake
+// requires: ARG_VIEW_TYPE, HAVE_ACTIVE_VIEW_OPTIONS, ARG_ACTIVE_VIEW_OPTIONS,
+//                      HAVE_GLOBAL_VIEW_OPTIONS, ARG_GLOBAL_VIEW_OPTIONS
+
+@ARG_VIEW_TYPE@OptionsImplementation::@ARG_VIEW_TYPE@OptionsImplementation(QObject* o)
+  : QObject(o)
 {
-  this->ActionGroup = new @ARG_CLASS_NAME@(this);
 }
 
-@ARG_CLASS_NAME@Implementation::~@ARG_CLASS_NAME@Implementation()
+QStringList @ARG_VIEW_TYPE@OptionsImplementation::viewTypes() const
 {
+  return QStringList() << "@ARG_VIEW_TYPE@";
 }
 
-QString @ARG_CLASS_NAME@Implementation::groupName()
+pqActiveViewOptions* @ARG_VIEW_TYPE@OptionsImplementation::createActiveViewOptions(
+  const QString& type, QObject* parent)
 {
-  return "@ARG_GROUP_NAME@";
+#if @HAVE_ACTIVE_VIEW_OPTIONS@
+  if(this->viewTypes().contains(type))
+    {
+    return new @ARG_ACTIVE_VIEW_OPTIONS@(parent);
+    }
+#endif
+  return NULL;
 }
 
-
-QActionGroup* @ARG_CLASS_NAME@Implementation::actionGroup()
+pqOptionsContainer* @ARG_VIEW_TYPE@OptionsImplementation::createGlobalViewOptions(
+  const QString& type, QWidget* parent)
 {
-  return this->ActionGroup;
+#if @HAVE_GLOBAL_VIEW_OPTIONS@
+  if(this->viewTypes().contains(type))
+    {
+    return new @ARG_GLOBAL_VIEW_OPTIONS@(parent);
+    }
+#endif
+  return NULL;
 }
-
-
 

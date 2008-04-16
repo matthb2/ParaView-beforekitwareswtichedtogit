@@ -1,5 +1,3 @@
-// Generated file.  Do not edit.
-
 /*=========================================================================
 
    Program: ParaView
@@ -30,32 +28,37 @@ LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
 NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-========================================================================*/
+=========================================================================*/
 
-#include "@ARG_CLASS_NAME@.h"
-#include "@ARG_CLASS_NAME@Implementation.h"
+#ifndef _pqViewOptionsInterface_h
+#define _pqViewOptionsInterface_h
 
-#include <QDockWidget>
-#include <QWidget>
+#include <QtPlugin>
+class pqActiveViewOptions;
+class pqOptionsContainer;
 
-@ARG_CLASS_NAME@Implementation::@CLASS_NAME@Implementation(QObject* p)
-  : QObject(p)
+/// interface class for plugins that create view options pages
+class pqViewOptionsInterface
 {
-  this->MyDock = 0;
-}
+public:
+  /// destructor
+  virtual ~pqViewOptionsInterface() {}
 
-QString @ARG_CLASS_NAME@Implementation::dockArea() const
-{
-  return "@ARG_DOCK_AREA@";
-}
+  /// returns a list of view types that this interface provides options for  
+  virtual QStringList viewTypes() const = 0;
 
-QDockWidget* @ARG_CLASS_NAME@Implementation::dockWindow(QWidget* p)
-{
-  if(!this->MyDock)
-    {
-    this->MyDock = new @ARG_CLASS_NAME@(p);
-    this->MyDock->setObjectName("@ARG_CLASS_NAME@");
-    }
-  return this->MyDock;
-}
+  /// return an options object for the active view.
+  /// this is used when there are options that are specific to an instance of a
+  /// view
+  virtual pqActiveViewOptions* createActiveViewOptions(const QString& type, QObject* parent) = 0;
+  
+  /// return an options object for global view options
+  /// this is used when there are options that apply to all instance of a view
+  virtual pqOptionsContainer* createGlobalViewOptions(const QString& type, QWidget* parent) = 0;
+
+};
+
+Q_DECLARE_INTERFACE(pqViewOptionsInterface, "com.kitware/paraview/viewoptions")
+
+#endif
 

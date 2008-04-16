@@ -32,21 +32,21 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 =========================================================================*/
 
-#ifndef _@CLASS_NAME@Implementation_h
-#define _@CLASS_NAME@Implementation_h
+#ifndef _@ARG_CLASS_NAME@Implementation_h
+#define _@ARG_CLASS_NAME@Implementation_h
 
 #include "pqActionGroupInterface.h"
 #include <QObject>
 
 /// interface class for plugins that create QActionGroups
 /// for adding actions to menus and toolbars
-class @CLASS_NAME@Implementation : public QObject, public pqActionGroupInterface
+class @ARG_CLASS_NAME@Implementation : public QObject, public pqActionGroupInterface
 {
   Q_OBJECT
   Q_INTERFACES(pqActionGroupInterface)
 public:
-  @CLASS_NAME@Implementation(QObject* p);
-  ~@CLASS_NAME@Implementation();
+  @ARG_CLASS_NAME@Implementation(QObject* p);
+  ~@ARG_CLASS_NAME@Implementation();
 
   /// the identifier for this action group
   ///  return "ToolBar/MyTools to put them in a toolbar called MyTools

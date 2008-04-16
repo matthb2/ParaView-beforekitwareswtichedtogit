@@ -30,32 +30,30 @@ LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
 NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-========================================================================*/
+=========================================================================*/
 
-#include "@ARG_CLASS_NAME@.h"
-#include "@ARG_CLASS_NAME@Implementation.h"
+#ifndef _@ARG_VIEW_TYPE@OptionsImplementation_h
+#define _@ARG_VIEW_TYPE@OptionsImplementation_h
 
-#include <QDockWidget>
-#include <QWidget>
+#include <QObject>
+#include "pqViewOptionsInterface.h"
 
-@ARG_CLASS_NAME@Implementation::@CLASS_NAME@Implementation(QObject* p)
-  : QObject(p)
+/// CMake configured implementation of an options interface that
+/// support one view type
+class @ARG_VIEW_TYPE@OptionsImplementation : public QObject, 
+                                  public pqViewOptionsInterface
 {
-  this->MyDock = 0;
-}
+  Q_OBJECT
+  Q_INTERFACES(pqViewOptionsInterface)
+public:
+  
+  @ARG_VIEW_TYPE@OptionsImplementation(QObject* o);
 
-QString @ARG_CLASS_NAME@Implementation::dockArea() const
-{
-  return "@ARG_DOCK_AREA@";
-}
+  QStringList viewTypes() const;
+  pqActiveViewOptions* createActiveViewOptions(const QString& type, QObject* parent);
+  pqOptionsContainer* createGlobalViewOptions(const QString& type, QWidget* parent);
 
-QDockWidget* @ARG_CLASS_NAME@Implementation::dockWindow(QWidget* p)
-{
-  if(!this->MyDock)
-    {
-    this->MyDock = new @ARG_CLASS_NAME@(p);
-    this->MyDock->setObjectName("@ARG_CLASS_NAME@");
-    }
-  return this->MyDock;
-}
+};
+
+#endif
 
