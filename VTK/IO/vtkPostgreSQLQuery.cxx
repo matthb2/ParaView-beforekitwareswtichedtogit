@@ -476,6 +476,32 @@ const char * vtkPostgreSQLQuery::GetLastErrorText()
   return this->Transactor->LastErrorText;
 }
 
+vtkStdString vtkPostgreSQLQuery::EscapeString( vtkStdString s, bool addSurroundingQuotes )
+{
+  vtkStdString retval;
+  if ( addSurroundingQuotes )
+    {
+    retval = "'";
+    }
+
+  vtkPostgreSQLDatabase* db = static_cast<vtkPostgreSQLDatabase*>( this->Database );
+  if ( db->Connection->Work )
+    {
+    retval.append( db->Connection->Work->esc( s ) );
+    }
+  else 
+    {
+    pqxx::transaction<> ework( db->Connection->Connection, "EscapeWork" );
+    retval.append( ework.esc( s ) );
+    }
+
+  if ( addSurroundingQuotes )
+    {
+    retval.append( "'" );
+    }
+  return retval;
+}
+
 // ----------------------------------------------------------------------
 bool vtkPostgreSQLQuery::HasError()
 {

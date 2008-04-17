@@ -439,6 +439,17 @@ vtkStdString vtkMySQLDatabase::GetColumnSpecification( vtkSQLDatabaseSchema* sch
       {
       colSize = VTK_SQL_DEFAULT_COLUMN_SIZE;
       }
+    if ( colType == vtkSQLDatabaseSchema::BLOB )
+      {
+      if ( colSize >= 1<<24 )
+        {
+        colTypeStr = "LONGBLOB";
+        }
+      else if ( colSize >= 1<<16 )
+        {
+        colTypeStr = "MEDIUMBLOB";
+        }
+      }
     
     // At this point, we have either a valid size if required, or a possibly null valid size
     // if not required. Thus, skip sizing in the latter case.
