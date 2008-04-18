@@ -486,14 +486,21 @@ vtkStdString vtkPostgreSQLQuery::EscapeString( vtkStdString s, bool addSurroundi
     }
 
   vtkPostgreSQLDatabase* db = static_cast<vtkPostgreSQLDatabase*>( this->Database );
-  if ( db->Connection->Work )
+  if ( db->Connection )
     {
-    retval.append( db->Connection->Work->esc( s ) );
+    if ( db->Connection->Work )
+      {
+      retval.append( db->Connection->Work->esc( s ) );
+      }
+    else 
+      {
+      pqxx::transaction<> ework( db->Connection->Connection, "EscapeWork" );
+      retval.append( ework.esc( s ) );
+      }
     }
-  else 
+  else
     {
-    pqxx::transaction<> ework( db->Connection->Connection, "EscapeWork" );
-    retval.append( ework.esc( s ) );
+    this->Superclass::EscapeString( s, false );
     }
 
   if ( addSurroundingQuotes )
