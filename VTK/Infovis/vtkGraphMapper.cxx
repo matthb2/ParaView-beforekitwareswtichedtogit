@@ -618,8 +618,11 @@ void vtkGraphMapper::PrintSelf(ostream& os, vtkIndent indent)
     {
     os << indent << "GraphToPoly: (none)\n";
     }
-  os << indent << "VertexPointSize: " << this->VertexPointSize << "\n";
-  os << indent << "EdgeLineWidth: " << this->EdgeLineWidth << "\n";
+  os << indent << "VertexPointSize: " << this->VertexPointSize << endl;
+  os << indent << "EdgeLineWidth: " << this->EdgeLineWidth << endl;
+  os << indent << "VertexGlyphs: " << this->VertexGlyphs << endl;
+  os << indent << "GlyphScaling: " << this->GlyphScaling << endl;
+  os << indent << "ScalingArrayName: " << (this->ScalingArrayName ? "" : "(null)") << endl;
 }
 
 //----------------------------------------------------------------------------
