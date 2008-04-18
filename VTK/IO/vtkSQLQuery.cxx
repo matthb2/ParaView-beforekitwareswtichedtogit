@@ -61,19 +61,19 @@ vtkStdString vtkSQLQuery::EscapeString( vtkStdString s, bool addSurroundingQuote
   vtkStdString d;
   if ( addSurroundingQuotes )
     {
-    d.push_back( '\'' );
+    d += '\'';
     }
 
   for ( vtkStdString::iterator it = s.begin(); it != s.end(); ++ it )
     {
     if ( *it == '\'' )
-      d.push_back( '\'' ); // Single quotes are escaped by repeating them
-    d.push_back( *it );
+      d += '\''; // Single quotes are escaped by repeating them
+    d += *it;
     }
 
   if ( addSurroundingQuotes )
     {
-    d.push_back( '\'' );
+    d += '\'';
     }
   return d;
 }
