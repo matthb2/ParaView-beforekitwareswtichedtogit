@@ -171,6 +171,9 @@ void vtkGraphMapper::SetVertexGlyphs(bool arg)
     this->OutlineGlyph->SetSource(outline);
     outline->Delete();
     this->OutlineGlyph->SetInputConnection(this->GraphToPoly->GetOutputPort());
+    this->OutlineGlyph->SetScaling(1);
+    this->OutlineGlyph->SetInputArrayToProcess(0,0,0,
+             vtkDataObject::FIELD_ASSOCIATION_POINTS, this->ScalingArrayName);
     this->OutlineMapper->SetInputConnection(this->OutlineGlyph->GetOutputPort());
     this->OutlineActor->SetPosition(0, 0, 0.001);
     this->OutlineActor->GetProperty()->SetLineWidth(2);
