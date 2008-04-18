@@ -292,7 +292,7 @@ vtkXdmfReaderGrid*
 //  vtkXdmfReaderGrid* grid = parent->GetChild(gridName);
 //  if ( !grid )
 //    {
-    vtkXdmfReaderGrid* grid = grid = new vtkXdmfReaderGrid; 
+    vtkXdmfReaderGrid* grid = new vtkXdmfReaderGrid; 
     grid->Name = gridName;
     parent->Children.push_back(grid);
 //    }
