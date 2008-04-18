@@ -30,37 +30,47 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 =========================================================================*/
 
-/// \file pqServerManagerModelItem.h
-/// \date 4/14/2006
+/// \file pqActiveTwoDRenderViewOptions.h
+/// \date 7/31/2007
 
-#ifndef _pqServerManagerModelItem_h
-#define _pqServerManagerModelItem_h
+#ifndef _pqActiveTwoDRenderViewOptions_h
+#define _pqActiveTwoDRenderViewOptions_h
 
 
-#include "pqCoreExport.h"
-#include <QObject>
+#include "pqComponentsExport.h"
+#include "pqActiveViewOptions.h"
 
-class vtkEventQtSlotConnect;
-class PQCORE_EXPORT pqServerManagerModelItem : public QObject
+
+/// \class pqActiveTwoDRenderViewOptions
+/// \brief
+///   The pqActiveTwoDRenderViewOptions class is used to dislpay an
+///   options dialog for the render view.
+class PQCOMPONENTS_EXPORT pqActiveTwoDRenderViewOptions :
+    public pqActiveViewOptions
 {
   Q_OBJECT
 
 public:
-  pqServerManagerModelItem(QObject* parent=NULL);
-  virtual ~pqServerManagerModelItem();
+  /// \brief
+  ///   Creates a render view options instance.
+  /// \param parent The parent object.
+  pqActiveTwoDRenderViewOptions(QObject *parent=0);
+  virtual ~pqActiveTwoDRenderViewOptions();
 
-protected:
-  /// All subclasses generally need some vtkEventQtSlotConnect instance to
-  /// connect to VTK events. This provides access to a vtkEventQtSlotConnect
-  /// instance which all subclasses can use for listening to events.
-  vtkEventQtSlotConnect* getConnector();
+  /// \name pqActiveViewOptions Methods
+  //@{
+  virtual void showOptions(pqView *view, const QString &page,
+      QWidget *parent=0);
+  virtual void changeView(pqView *view);
+  virtual void closeOptions();
+  //@}
 
 protected slots:
-  // called when input property on display changes. We must detect if
-  // (and when) the display is connected to a new proxy.
-  virtual void onInputChanged() { };
+  void finishDialog();
+
 private:
-  vtkEventQtSlotConnect* Connector;
+  class pqInternal;
+  pqInternal* Internal;
 };
 
 #endif

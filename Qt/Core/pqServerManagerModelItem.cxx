@@ -36,6 +36,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "pqServerManagerModelItem.h"
 
 // ParaView includes.
+#include "vtkEventQtSlotConnect.h"
 
 // Qt includes.
 
@@ -43,6 +44,28 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 pqServerManagerModelItem::pqServerManagerModelItem(QObject* _parent /*=null*/)
   : QObject(_parent)
 {
+  this->Connector = 0;
+}
+
+//-----------------------------------------------------------------------------
+pqServerManagerModelItem::~pqServerManagerModelItem()
+{
+  if (this->Connector)
+    {
+    this->Connector->Delete();
+    this->Connector = 0;
+    }
+}
+
+//-----------------------------------------------------------------------------
+vtkEventQtSlotConnect* pqServerManagerModelItem::getConnector()
+{
+  if (!this->Connector)
+    {
+    this->Connector = vtkEventQtSlotConnect::New();
+    }
+
+  return this->Connector;
 }
 
 
