@@ -280,7 +280,7 @@ void vtkActor::ReleaseGraphicsResources(vtkWindow *win)
     }
   if (this->BackfaceProperty)
     {
-    this->Property->ReleaseGraphicsResources(renWin);
+    this->BackfaceProperty->ReleaseGraphicsResources(renWin);
     }
 }
 
