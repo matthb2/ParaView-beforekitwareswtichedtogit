@@ -228,11 +228,11 @@ int vtkArrayMap::RequestData(
 
     // Finally, add the array to the appropriate vtkDataSetAttributes
     ods->AddArray(outputArray);
+
+    results->Delete();
     }
 
   outputArray->Delete();
-  results->Delete();
-
 
   return 1;
 }
