@@ -238,9 +238,9 @@ void vtkPrimitivePainter::RenderInternal(vtkRenderer* renderer,
   if ( t )
     {
     tDim = t->GetNumberOfComponents();
-    if (tDim > 2)
+    if (tDim > 3)
       {
-      vtkDebugMacro(<< "Currently only 1d and 2d textures are supported.\n");
+      vtkDebugMacro(<< "Currently only 1d, 2d and 3d texture coordinates are supported.\n");
       t = NULL;
       }
     }
