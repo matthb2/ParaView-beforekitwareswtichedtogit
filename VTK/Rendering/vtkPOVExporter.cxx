@@ -219,7 +219,7 @@ void vtkPOVExporter::WriteData()
     {
     for (anActor->InitPathTraversal(); (apath = anActor->GetNextPath()); ) 
       {
-      aPart = (vtkActor *) apath->GetLastNode()->GetViewProp();
+      aPart = static_cast<vtkActor *>(apath->GetLastNode()->GetViewProp());
       this->WriteActor(aPart);
       }
     }
@@ -344,7 +344,7 @@ void vtkPOVExporter::WriteActor(vtkActor *actor)
     } 
   else 
     {
-    polys = (vtkPolyData *)dataset;
+    polys = static_cast<vtkPolyData *>(dataset);
     }
   
   // write point coordinates

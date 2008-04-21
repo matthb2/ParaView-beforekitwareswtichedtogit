@@ -502,8 +502,10 @@ void vtkConstrained2DLayoutStrategy::ResolveCoincidentVertices()
   // Place the vertices into a giant grid (100xNumVertices)
   // and see if you have any collisions
   vtkBitArray *giantGrid = vtkBitArray::New();
-  vtkIdType xDim = static_cast<int>(sqrt((float)numVertices) * 10);
-  vtkIdType yDim = static_cast<int>(sqrt((float)numVertices) * 10);
+  vtkIdType xDim =
+    static_cast<int>(sqrt(static_cast<double>(numVertices)) * 10);
+  vtkIdType yDim =
+    static_cast<int>(sqrt(static_cast<double>(numVertices)) * 10);
   vtkIdType gridSize = xDim * yDim;
   giantGrid->SetNumberOfValues(gridSize);
   
