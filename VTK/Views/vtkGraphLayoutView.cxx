@@ -508,6 +508,12 @@ void vtkGraphLayoutView::SetIconSize(int *size)
 }
 
 //----------------------------------------------------------------------------
+void vtkGraphLayoutView::SetIconAlignment(int alignment)
+{
+  this->GraphMapper->SetIconAlignment(alignment);
+}
+
+//----------------------------------------------------------------------------
 void vtkGraphLayoutView::SetIconVisibility(bool b)
 {
   this->GraphMapper->SetIconVisibility(b);

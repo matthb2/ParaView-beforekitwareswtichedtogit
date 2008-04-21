@@ -384,6 +384,12 @@ void vtkGraphMapper::SetIconSize(int *size)
 }
 
 //----------------------------------------------------------------------------
+void vtkGraphMapper::SetIconAlignment(int alignment)
+{
+  this->IconGlyph->SetGravity(alignment);
+}
+
+//----------------------------------------------------------------------------
 int *vtkGraphMapper::GetIconSize()
 {
   return this->IconGlyph->GetIconSize();
