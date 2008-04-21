@@ -357,6 +357,18 @@ const char* vtkGraphLayoutView::GetIconArrayName()
 }
 
 //----------------------------------------------------------------------------
+void vtkGraphLayoutView::AddIconType(char *type, int index)
+{
+  this->GraphMapper->AddIconType(type, index);
+}
+
+//----------------------------------------------------------------------------
+void vtkGraphLayoutView::ClearIconTypes()
+{
+  this->GraphMapper->ClearIconTypes();
+}
+
+//----------------------------------------------------------------------------
 int vtkGraphLayoutView::IsLayoutComplete()
 {
   if (this->GraphLayout)
