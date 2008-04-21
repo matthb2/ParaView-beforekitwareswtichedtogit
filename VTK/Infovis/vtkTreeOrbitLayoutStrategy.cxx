@@ -72,7 +72,7 @@ void vtkTreeOrbitLayoutStrategy::OrbitChildren(vtkTree *t,
     }
   
   // Get the total number of children for this node
-  vtkIdType totalChildren = leaf_count->GetValue(parent);
+//  vtkIdType totalChildren = leaf_count->GetValue(parent);
   vtkIdType immediateChildren = t->GetNumberOfChildren(parent);
     
   // Now simply orbit the children around the
