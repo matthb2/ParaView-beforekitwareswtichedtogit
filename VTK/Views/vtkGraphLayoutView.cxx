@@ -840,8 +840,12 @@ void vtkGraphLayoutView::PrintSelf(ostream& os, vtkIndent indent)
   this->ExtractSelectedGraph->PrintSelf(os, indent.GetNextIndent());
   os << indent << "LayoutStrategyName: "
      << (this->LayoutStrategyNameInternal ? this->LayoutStrategyNameInternal : "(null)") << endl;
-  os << indent << "LayoutStrategy: " << endl;
-  this->LayoutStrategy->PrintSelf(os, indent.GetNextIndent());   
+  os << indent << "LayoutStrategy: " 
+     << (this->LayoutStrategy ? "" : "(none)") << endl;
+  if (this->LayoutStrategy)
+    {
+    this->LayoutStrategy->PrintSelf(os, indent.GetNextIndent());   
+    }
   if (this->GetRepresentation())
     {
     os << indent << "VertexLabelActor: " << endl;
