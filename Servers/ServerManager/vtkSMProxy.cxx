@@ -415,6 +415,12 @@ vtkClientServerID vtkSMProxy::GetID()
 }
 
 //---------------------------------------------------------------------------
+vtkObjectBase* vtkSMProxy::GetClientSideObject()
+{
+  return vtkProcessModule::GetProcessModule()->GetObjectFromID(this->GetID());
+}
+
+//---------------------------------------------------------------------------
 const char* vtkSMProxy::GetPropertyName(vtkSMProperty* prop)
 {
   const char* result = 0;
