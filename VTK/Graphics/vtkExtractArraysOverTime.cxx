@@ -198,7 +198,7 @@ void vtkExtractArraysOverTime::vtkInternal::AddTimeStep(
 
   if (data && data->IsA("vtkDataSet"))
     {
-    this->AddTimeStepInternal(0, time, reinterpret_cast<vtkDataSet*>(data));
+    this->AddTimeStepInternal(0, time, static_cast<vtkDataSet*>(data));
     }
   else if (data && data->IsA("vtkCompositeDataSet"))
     {
