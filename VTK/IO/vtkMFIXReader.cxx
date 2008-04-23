@@ -721,7 +721,7 @@ void vtkMFIXReader::GetCellDataRange(int cellComp, int index,
 //----------------------------------------------------------------------------
 void vtkMFIXReader::SetProjectName (const char *infile)
 {
-  int len = strlen(infile);
+  int len = static_cast<int>(strlen(infile));
   strncpy(this->RunName, infile, len-4);
 }
 

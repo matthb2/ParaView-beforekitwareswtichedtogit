@@ -1708,7 +1708,7 @@ void vtkDataWriter::CloseVTKFile(ostream *fp)
       if (this->OutputString &&
           static_cast<unsigned int>(this->OutputStringAllocatedLength) > ostr->str().size())
         {
-        this->OutputStringLength = ostr->str().size();
+        this->OutputStringLength = static_cast<int>(ostr->str().size());
         memcpy(this->OutputString, ostr->str().c_str(), 
           this->OutputStringLength);
         }

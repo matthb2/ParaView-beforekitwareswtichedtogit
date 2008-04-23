@@ -101,7 +101,7 @@ void vtkArrayMap::ClearMap()
 
 int vtkArrayMap::GetMapSize()
 {
-  return this->Map->size();
+  return static_cast<int>(this->Map->size());
 }
 
 int vtkArrayMap::RequestData(

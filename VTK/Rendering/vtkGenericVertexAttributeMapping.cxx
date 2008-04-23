@@ -98,7 +98,7 @@ void vtkGenericVertexAttributeMapping::RemoveAllMappings()
 //----------------------------------------------------------------------------
 unsigned int vtkGenericVertexAttributeMapping::GetNumberOfMappings()
 {
-  return this->Internal->Mappings.size();
+  return static_cast<unsigned int>(this->Internal->Mappings.size());
 }
 
 //----------------------------------------------------------------------------

@@ -149,7 +149,7 @@ unsigned long vtkCameraInterpolator::GetMTime()
 //----------------------------------------------------------------------------
 int vtkCameraInterpolator::GetNumberOfCameras()
 {
-  return this->CameraList->size();
+  return static_cast<int>(this->CameraList->size());
 }
 
 
@@ -191,7 +191,7 @@ void vtkCameraInterpolator::Initialize()
 //----------------------------------------------------------------------------
 void vtkCameraInterpolator::AddCamera(double t, vtkCamera *camera)
 {
-  int size = this->CameraList->size();
+  int size = static_cast<int>(this->CameraList->size());
 
   // Check special cases: t at beginning or end of list
   if ( size <= 0 || t < this->CameraList->front().Time )

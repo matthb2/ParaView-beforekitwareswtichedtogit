@@ -126,7 +126,7 @@ void vtkSeedRepresentation::GetSeedDisplayPosition(unsigned int seedNum, double 
 //----------------------------------------------------------------------
 int vtkSeedRepresentation::GetNumberOfSeeds()
 {
-  return this->Handles->size();
+  return static_cast<int>(this->Handles->size());
 }
 
 //----------------------------------------------------------------------
@@ -174,9 +174,10 @@ int vtkSeedRepresentation::CreateHandle(double e[2])
   pos[1] = e[1];
   pos[2] = 0.0;
 
-  vtkHandleRepresentation *rep = this->GetHandleRepresentation(this->Handles->size());
+  vtkHandleRepresentation *rep = this->GetHandleRepresentation(
+    static_cast<int>(this->Handles->size()));
   rep->SetDisplayPosition(pos);
-  this->ActiveHandle = this->Handles->size() - 1;
+  this->ActiveHandle = static_cast<int>(this->Handles->size()) - 1;
   return this->ActiveHandle;
 }
 

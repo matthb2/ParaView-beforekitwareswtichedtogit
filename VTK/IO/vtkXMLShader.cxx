@@ -265,7 +265,7 @@ const char** vtkXMLShader::GetArgs()
   vtksys::SystemTools::Split(this->RootElement->GetAttribute("args"), args, ' ');
   
   int i;
-  int size = args.size();
+  int size = static_cast<int>(args.size());
   if (size == 0)
     {
     return 0;

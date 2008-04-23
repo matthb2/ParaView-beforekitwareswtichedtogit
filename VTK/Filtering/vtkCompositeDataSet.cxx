@@ -83,7 +83,7 @@ void vtkCompositeDataSet::SetNumberOfChildren(unsigned int num)
 //----------------------------------------------------------------------------
 unsigned int vtkCompositeDataSet::GetNumberOfChildren()
 {
-  return this->Internals->Children.size();
+  return static_cast<unsigned int>(this->Internals->Children.size());
 }
 
 //----------------------------------------------------------------------------

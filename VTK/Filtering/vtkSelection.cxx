@@ -124,7 +124,7 @@ void vtkSelection::SetSelectionList(vtkAbstractArray* arr)
 //----------------------------------------------------------------------------
 unsigned int vtkSelection::GetNumberOfChildren()
 {
-  return this->Internal->Children.size();
+  return static_cast<unsigned int>(this->Internal->Children.size());
 }
 
 //----------------------------------------------------------------------------

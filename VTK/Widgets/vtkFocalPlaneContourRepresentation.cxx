@@ -228,7 +228,7 @@ int vtkFocalPlaneContourRepresentation::UpdateContour()
   
   if ( this->ClosedLoop )
     {
-    this->UpdateLine( this->Internal->Nodes.size()-1, 0);
+    this->UpdateLine( static_cast<int>(this->Internal->Nodes.size())-1, 0);
     }
   this->BuildLines();
   

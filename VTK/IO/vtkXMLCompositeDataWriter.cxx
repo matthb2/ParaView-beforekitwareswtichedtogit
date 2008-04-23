@@ -94,7 +94,7 @@ vtkXMLCompositeDataWriter::~vtkXMLCompositeDataWriter()
 //----------------------------------------------------------------------------
 unsigned int vtkXMLCompositeDataWriter::GetNumberOfDataTypes()
 {
-  return this->Internal->DataTypes.size();
+  return static_cast<unsigned int>(this->Internal->DataTypes.size());
 }
 
 //----------------------------------------------------------------------------
@@ -427,7 +427,7 @@ void vtkXMLCompositeDataWriter::CreateWriters(vtkCompositeDataSet* hdInput)
   iter->VisitOnlyLeavesOn();
   iter->TraverseSubTreeOn();
 
-  unsigned int numDatasets = this->Internal->DataTypes.size();
+  size_t numDatasets = this->Internal->DataTypes.size();
   this->Internal->Writers.resize(numDatasets);
 
   int i = 0;

@@ -114,7 +114,7 @@ int vtkTemporalSphereSource::RequestInformation(
   }
 
   outInfo->Set(vtkStreamingDemandDrivenPipeline::TIME_STEPS(), 
-    &this->TimeStepValues[0], this->TimeStepValues.size());
+    &this->TimeStepValues[0], static_cast<int>(this->TimeStepValues.size()));
   double timeRange[2];
   timeRange[0] = this->TimeStepValues.front();
   timeRange[1] = this->TimeStepValues.back();

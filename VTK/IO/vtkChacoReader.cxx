@@ -829,7 +829,7 @@ int vtkChacoReader::OpenCurrentFile()
 
   if ( this->CurrentGeometryFP == NULL)
     {
-    int len = strlen(this->BaseName);
+    int len = static_cast<int>(strlen(this->BaseName));
     char *buf = new char [len+64];
     sprintf(buf, "%s.coords", this->BaseName);
 

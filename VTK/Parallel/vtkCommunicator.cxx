@@ -966,7 +966,7 @@ int vtkCommunicator::Broadcast(vtkDataArray *data, int srcProcessId)
     name = data->GetName();
     if (name)
       {
-      nameLength = strlen(name)+1;
+      nameLength = static_cast<int>(strlen(name))+1;
       }
     }
 
