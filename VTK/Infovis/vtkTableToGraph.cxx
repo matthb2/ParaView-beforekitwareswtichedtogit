@@ -783,8 +783,8 @@ int vtkTableToGraph::RequestData(
   vtksys_stl::map<vtkIdType, vtksys_stl::vector<vtkIdType> >::iterator out, outEnd;
   out = hiddenOutEdges.begin();
   outEnd = hiddenOutEdges.end();
-  int curHidden = 0;
-  int numHidden = hiddenOutEdges.size();
+  vtkIdType curHidden = 0;
+  vtkIdType numHidden = static_cast<vtkIdType>(hiddenOutEdges.size());
   for (; out != outEnd; ++out)
     {
     vtksys_stl::vector<vtkIdType> outVerts = out->second;
