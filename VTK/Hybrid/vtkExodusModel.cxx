@@ -1262,7 +1262,7 @@ void vtkExodusModel::RemoveBeginningAndTrailingSpaces(char **names, int len)
       continue;
       }
 
-    int newlen = cend - cbegin + 1;
+    size_t newlen = cend - cbegin + 1;
 
     if (newlen < nmlen)
       {
