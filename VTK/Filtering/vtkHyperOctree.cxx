@@ -760,7 +760,7 @@ public:
   virtual int GetNumberOfNodes()
     {
       assert("post: not_empty" && this->Nodes.size()>0);
-      return this->Nodes.size();
+      return static_cast<int>(this->Nodes.size());
     }
   
   //---------------------------------------------------------------------------
@@ -786,7 +786,7 @@ public:
       // the leaf becomes a node and is not anymore a leaf.
       cursor->SetIsLeaf(0); // let the cursor knows about that change.
       size_t nodeIndex=this->Nodes.size();
-      cursor->SetCursor(nodeIndex);
+      cursor->SetCursor(static_cast<int>(nodeIndex));
       this->Nodes.resize(nodeIndex+1);
       this->Nodes[nodeIndex].SetParent(this->LeafParent[leafIndex]);
       this->Nodes[nodeIndex].SetLeafFlags((1<<(1<<D))-1); // trick: all set a 1.
@@ -799,20 +799,20 @@ public:
       unsigned char mask=1;
       mask<<=i;
       parent->SetLeafFlags(parent->GetLeafFlags()^mask);
-      parent->SetChild(i,nodeIndex);
+      parent->SetChild(i,static_cast<int>(nodeIndex));
       
       // The first new child
       this->Nodes[nodeIndex].SetChild(0,leafIndex);
-      this->LeafParent[leafIndex]=nodeIndex;
-        
+      this->LeafParent[leafIndex]=static_cast<int>(nodeIndex);
+
       // The other (c-1) new children.
       size_t nextLeaf=this->LeafParent.size();
       this->LeafParent.resize(nextLeaf+(c-1));
       i=1;
       while(i<c)
         {
-        this->Nodes[nodeIndex].SetChild(i,nextLeaf);
-        this->LeafParent[nextLeaf]=nodeIndex;
+        this->Nodes[nodeIndex].SetChild(i,static_cast<int>(nextLeaf));
+        this->LeafParent[nextLeaf]=static_cast<int>(nodeIndex);
         ++nextLeaf;
         ++i;
         }
@@ -858,7 +858,7 @@ public:
   //---------------------------------------------------------------------------
   int GetLeafParentSize()
     {
-      return this->LeafParent.size();
+      return static_cast<int>(this->LeafParent.size());
     }
   
   //---------------------------------------------------------------------------

@@ -35,6 +35,12 @@ vtkCxxRevisionMacro(vtkJPEGReader, "$Revision$");
 vtkStandardNewMacro(vtkJPEGReader);
 
 
+#if defined ( _MSC_VER )
+#if defined ( _WIN64 )
+#pragma warning ( disable : 4324 ) // structure was padded at end...
+#endif
+#endif
+
 // create an error handler for jpeg that
 // can longjmp out of the jpeg library 
 struct vtk_jpeg_error_mgr 

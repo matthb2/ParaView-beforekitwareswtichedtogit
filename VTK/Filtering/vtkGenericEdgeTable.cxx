@@ -388,7 +388,7 @@ int vtkGenericEdgeTable::CheckEdge(vtkIdType e1, vtkIdType e2, vtkIdType &ptId)
 
   return it->ToSplit;
 #else
-  int vectsize = vect.size();
+  int vectsize = static_cast<int>(vect.size());
   int index;
   for (index=0; index<vectsize; index++) 
     {
@@ -430,7 +430,7 @@ int vtkGenericEdgeTable::IncrementEdgeReferenceCount(vtkIdType e1,
   //Need to check size first
   vtkEdgeTableEdge::VectorEdgeTableType &vect = this->EdgeTable->Vector[pos];
   
-  int vectsize = vect.size();
+  int vectsize = static_cast<int>(vect.size());
   for (index=0; index<vectsize; index++) 
     {
     EdgeEntry &ent = vect[index];
@@ -471,8 +471,8 @@ int vtkGenericEdgeTable::CheckEdgeReferenceCount(vtkIdType e1, vtkIdType e2)
 
   //Need to check size first
   vtkEdgeTableEdge::VectorEdgeTableType &vect = this->EdgeTable->Vector[pos];
-  
-  int vectsize = vect.size();
+
+  int vectsize = static_cast<int>(vect.size());
   for (index=0; index<vectsize; index++) 
     {
     EdgeEntry &ent = vect[index];
@@ -555,7 +555,7 @@ int vtkGenericEdgeTable::CheckPoint(vtkIdType ptId)
   vtkEdgeTablePoints::VectorPointTableType &vect = 
     this->HashPoints->PointVector[pos];
 
-  int vectsize = vect.size();
+  int vectsize = static_cast<int>(vect.size());
   for (index=0; index<vectsize; index++) 
     {
     if( vect[index].PointId == ptId )
@@ -592,8 +592,8 @@ int vtkGenericEdgeTable::CheckPoint(vtkIdType ptId, double point[3],
 
   //Need to check size again
 
-  int vectsize = vect.size();
-  for (index=0; index<vectsize; index++) 
+  int vectsize = static_cast<int>(vect.size());
+  for (index=0; index<vectsize; index++)
     {
     PointEntry &ent = vect[index];
     if( ent.PointId == ptId )

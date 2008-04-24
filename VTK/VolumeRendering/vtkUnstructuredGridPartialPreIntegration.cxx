@@ -264,7 +264,7 @@ inline void vtkPartialPreIntegrationTransferFunction::GetColor(double x,
                                                                double c[4])
 {
   unsigned int i = 1;
-  unsigned int size = this->ControlPoints.size();
+  unsigned int size = static_cast<unsigned int>(this->ControlPoints.size());
   if( !size )
     {
     return;

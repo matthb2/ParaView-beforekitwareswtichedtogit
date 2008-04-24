@@ -555,8 +555,8 @@ int vtkParticleReader::ProduceOutputFromBinaryFileDouble(vtkInformationVector *o
     return 0;
     }
 
-  start = piece * this->NumberOfPoints / numPieces;
-  next = (piece+1) * this->NumberOfPoints / numPieces;
+  start = static_cast<unsigned long>(piece * this->NumberOfPoints / numPieces);
+  next = static_cast<unsigned long>((piece+1) * this->NumberOfPoints / numPieces);
 
   length = next - start;
 
@@ -751,8 +751,8 @@ int vtkParticleReader::ProduceOutputFromBinaryFileFloat(vtkInformationVector *ou
     return 0;
     }
 
-  start = piece * this->NumberOfPoints / numPieces;
-  next = (piece+1) * this->NumberOfPoints / numPieces;
+  start = static_cast<unsigned long>(piece * this->NumberOfPoints / numPieces);
+  next = static_cast<unsigned long>((piece+1) * this->NumberOfPoints / numPieces);
 
   length = next - start;
 

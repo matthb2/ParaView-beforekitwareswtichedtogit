@@ -600,7 +600,7 @@ int vtkMINCImageReader::ReadMINCFileAttributes()
           {
           // Set the NumberOfTimeSteps to the product of all dimensions
           // that are neither spatial dimensions nor vector dimensions.
-          this->NumberOfTimeSteps *= dimlength;
+          this->NumberOfTimeSteps *= static_cast<int>(dimlength);
           }
         }
       }
@@ -704,7 +704,7 @@ int vtkMINCImageReader::ReadMINCFileAttributes()
   char name[128];
   name[0] = '\0';
   int startChar = 0;
-  int endChar = strlen(fileName);
+  int endChar = static_cast<int>(strlen(fileName));
 
   for (startChar = endChar-1; startChar > 0; startChar--)
     {

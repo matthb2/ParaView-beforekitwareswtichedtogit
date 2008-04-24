@@ -189,6 +189,12 @@ extern "C"
   }
 }
 
+#if defined ( _MSC_VER )
+#if defined ( _WIN64 )
+#pragma warning ( disable : 4324 ) // structure was padded at end...
+#endif
+#endif
+
 struct VTK_JPEG_ERROR_MANAGER
 {
   struct jpeg_error_mgr pub;

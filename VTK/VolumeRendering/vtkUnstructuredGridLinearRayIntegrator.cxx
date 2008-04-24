@@ -221,7 +221,7 @@ void vtkLinearRayIntegratorTransferFunction::GetTransferFunction(
   // Now record control points and colors.
   if (this->ControlPoints) delete[] this->ControlPoints;
   if (this->Colors) delete[] this->Colors;
-  this->NumControlPoints = cpset.size();
+  this->NumControlPoints = static_cast<int>(cpset.size());
   this->ControlPoints = new double[this->NumControlPoints];
   this->Colors = new acolor[this->NumControlPoints];
 
@@ -274,7 +274,7 @@ void vtkLinearRayIntegratorTransferFunction::GetTransferFunction(
   // Now record control points and colors.
   if (this->ControlPoints) delete[] this->ControlPoints;
   if (this->Colors) delete[] this->Colors;
-  this->NumControlPoints = cpset.size();
+  this->NumControlPoints = static_cast<int>(cpset.size());
   this->ControlPoints = new double[this->NumControlPoints];
   this->Colors = new acolor[this->NumControlPoints];
 
