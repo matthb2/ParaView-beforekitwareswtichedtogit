@@ -1258,7 +1258,7 @@ void vtkExodusModel::RemoveBeginningAndTrailingSpaces(char **names, int len)
 
     if (cend < cbegin)
       {
-      sprintf(names[i], "null_%d", i);
+      sprintf(names[i], "null_%u", static_cast<unsigned int>(i));
       continue;
       }
 
