@@ -183,7 +183,7 @@ int pqProcessModuleGUIHelper::RunGUIStart(int argc, char** argv,
     // load client plugins
     pqPluginManager* pluginManager =
       pqApplicationCore::instance()->getPluginManager();
-    pluginManager->loadPlugins(NULL);
+    pluginManager->loadExtensions(NULL);
 
     // // Create the default connection.
     // pqServerResource resource = pqServerResource("builtin:");
