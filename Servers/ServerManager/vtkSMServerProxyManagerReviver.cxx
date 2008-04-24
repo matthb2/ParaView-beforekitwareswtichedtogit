@@ -136,11 +136,11 @@ int vtkSMServerProxyManagerReviver::ReviveServerServerManager(
     vtkProcessModuleConnectionManager::GetSelfConnectionID());
   loader->SetReviveProxies(1);
 
-  loader->SetRenderViewXMLName("RenderView");
+  loader->SetViewXMLName("RenderView");
 
 #ifdef VTK_USE_MPI
 # ifdef PARAVIEW_USE_ICE_T
-  loader->SetRenderViewXMLName("IceTCompositeView");
+  loader->SetViewXMLName("IceTCompositeView");
 # endif
 #endif
 
