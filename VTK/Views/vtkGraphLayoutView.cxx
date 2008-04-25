@@ -331,6 +331,31 @@ void vtkGraphLayoutView::ColorEdgesOff()
 }
 
 //----------------------------------------------------------------------------
+void vtkGraphLayoutView::SetScaledGlyphs(bool arg)
+{
+  this->GraphMapper->SetScaledGlyphs(arg);
+  vtkWarningMacro("Setting ScaledGlyphs to " << arg);
+}
+
+//----------------------------------------------------------------------------
+bool vtkGraphLayoutView::GetScaledGlyphs()
+{
+  return this->GraphMapper->GetScaledGlyphs();
+}
+
+//----------------------------------------------------------------------------
+void vtkGraphLayoutView::SetScalingArrayName(const char* name)
+{
+  this->GraphMapper->SetScalingArrayName(name);
+}
+
+//----------------------------------------------------------------------------
+const char* vtkGraphLayoutView::GetScalingArrayName()
+{
+  return this->GraphMapper->GetScalingArrayName();
+}
+
+//----------------------------------------------------------------------------
 void vtkGraphLayoutView::SetSelectionArrayName(const char* name)
 {
   this->SetSelectionArrayNameInternal(name);
