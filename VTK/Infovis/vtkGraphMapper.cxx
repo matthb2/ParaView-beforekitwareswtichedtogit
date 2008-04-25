@@ -46,6 +46,7 @@
 #include "vtkProperty.h"
 #include "vtkRenderer.h"
 #include "vtkTexture.h"
+#include "vtkTexturedActor2D.h"
 #include "vtkTransformCoordinateSystems.h"
 #include "vtkUndirectedGraph.h"
 #include "vtkVertexGlyphFilter.h"
@@ -74,7 +75,7 @@ vtkGraphMapper::vtkGraphMapper()
   this->EdgeActor         = vtkSmartPointer<vtkActor>::New();
   this->VertexActor       = vtkSmartPointer<vtkActor>::New();
   this->OutlineActor      = vtkSmartPointer<vtkActor>::New();
-  this->IconActor         = vtkSmartPointer<vtkActor2D>::New();
+  this->IconActor         = vtkSmartPointer<vtkTexturedActor2D>::New();
   this->VertexLookupTable = vtkSmartPointer<vtkLookupTable>::New();
   this->EdgeLookupTable   = vtkSmartPointer<vtkLookupTable>::New();
   this->VertexColorArrayNameInternal = 0;
