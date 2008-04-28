@@ -2236,7 +2236,9 @@ int vtkExodusIIWriter::WriteNextTimeStep()
   int rc = 0;
 
   int ts = this->CurrentTimeIndex;
-  float tsv = this->TimeValues->GetValue(this->CurrentTimeIndex);
+  float tsv = (this->TimeValues->GetNumberOfTuples() > 0 ? 
+               this->TimeValues->GetValue(this->CurrentTimeIndex):
+               0.0);
 
   if (this->PassDoubles)
     {
