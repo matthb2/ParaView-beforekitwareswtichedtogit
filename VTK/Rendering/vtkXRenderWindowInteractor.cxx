@@ -288,6 +288,11 @@ void vtkXRenderWindowInteractor::Initialize(XtAppContext app)
 // want to have mouse interaction.
 void vtkXRenderWindowInteractor::Initialize()
 {
+  if (this->Initialized)
+    {
+      return;
+    }
+
   vtkXOpenGLRenderWindow *ren;
   int depth;
   Colormap cmap;
