@@ -382,12 +382,10 @@ int vtkConvertSelection::ConvertCompositeDataSet(
       this->OutputType == vtkSelection::FRUSTUM) &&
       this->OutputType != vtkSelection::GLOBALIDS) 
       {
-      if (has_composite_key)
-        {
-        outputChild->GetProperties()->Set(vtkSelection::COMPOSITE_INDEX(), 
-          iter->GetCurrentFlatIndex());
-        }
-      if (has_hieararchical_key)
+      outputChild->GetProperties()->Set(vtkSelection::COMPOSITE_INDEX(),
+        iter->GetCurrentFlatIndex());
+
+      if (has_hieararchical_key && hbIter)
         {
         outputChild->GetProperties()->Set(vtkSelection::HIERARCHICAL_LEVEL(),
           hierarchical_level);
