@@ -54,6 +54,8 @@ vtkArrayMap::vtkArrayMap()
 
 vtkArrayMap::~vtkArrayMap()
 {
+  this->SetInputArrayName(0);
+  this->SetOutputArrayName(0);
   delete this->Map;
 }
 

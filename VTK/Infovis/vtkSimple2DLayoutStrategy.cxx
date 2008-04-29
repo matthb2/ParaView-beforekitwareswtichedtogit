@@ -79,6 +79,11 @@ vtkSimple2DLayoutStrategy::~vtkSimple2DLayoutStrategy()
   this->SetEdgeWeightField(0);
   this->RepulsionArray->Delete();
   this->AttractionArray->Delete();
+  if (this->EdgeArray)
+    {
+    delete [] this->EdgeArray;
+    this->EdgeArray = NULL;
+    }
 }
 
 // ----------------------------------------------------------------------

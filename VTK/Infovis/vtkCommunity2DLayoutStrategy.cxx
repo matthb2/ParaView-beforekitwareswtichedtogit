@@ -89,6 +89,7 @@ vtkCommunity2DLayoutStrategy::vtkCommunity2DLayoutStrategy()
 vtkCommunity2DLayoutStrategy::~vtkCommunity2DLayoutStrategy()
 {
   this->SetEdgeWeightField(0);
+  this->SetCommunityArrayName(0);
 }
 
 
