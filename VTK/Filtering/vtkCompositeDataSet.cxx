@@ -19,14 +19,14 @@
 #include "vtkCompositeDataPipeline.h"
 #include "vtkCompositeDataSetInternals.h"
 #include "vtkDataSet.h"
-#include "vtkInformationDataObjectKey.h"
 #include "vtkInformation.h"
-#include "vtkInformationIntegerKey.h"
+#include "vtkInformationStringKey.h"
 #include "vtkInformationVector.h"
 #include "vtkObjectFactory.h"
 #include "vtkTrivialProducer.h"
 
 vtkCxxRevisionMacro(vtkCompositeDataSet, "$Revision$");
+vtkInformationKeyMacro(vtkCompositeDataSet, NAME, String);
 //----------------------------------------------------------------------------
 vtkCompositeDataSet::vtkCompositeDataSet()
 {

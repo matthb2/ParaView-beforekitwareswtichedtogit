@@ -418,8 +418,8 @@ int vtkExtractSelectedThresholds::ExtractPoints(
     newPts->Allocate(numPts);
     outputUG->SetPoints(newPts);
 
-    outPD->CopyAllocate(inputPD);
     outPD->CopyGlobalIdsOn();
+    outPD->CopyAllocate(inputPD);
 
     originalPointIds = vtkIdTypeArray::New();
     originalPointIds->SetNumberOfComponents(1);

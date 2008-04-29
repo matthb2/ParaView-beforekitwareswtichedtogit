@@ -143,7 +143,12 @@ int vtkExtractSelection::RequestData(
 
       if (subOutput)
         {
-        cdOutput->SetDataSet(iter, subOutput);
+        vtkDataSet* subDS = vtkDataSet::SafeDownCast(subOutput);
+        // purge empty datasets from the output.
+        if (!subDS || subDS->GetNumberOfPoints() > 0)
+          {
+          cdOutput->SetDataSet(iter, subOutput);
+          }
         subOutput->Delete();
         }
       }

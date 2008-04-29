@@ -1997,6 +1997,13 @@ vtkDataSet* vtkEnSightReader::GetDataSetFromBlock(
 }
 
 //----------------------------------------------------------------------------
+void vtkEnSightReader::SetBlockName(vtkMultiBlockDataSet* output,
+  unsigned int blockNo, const char* name)
+{
+  output->GetMetaData(blockNo)->Set(vtkCompositeDataSet::NAME(), name);
+}
+
+//----------------------------------------------------------------------------
 void vtkEnSightReader::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os,indent);
