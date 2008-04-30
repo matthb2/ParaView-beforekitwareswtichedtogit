@@ -166,7 +166,7 @@ int vtkSplineFilter::RequestData(
                                      pd, outPD, genTCoords, newTCoords);
     if ( ! numGenPts )
       {
-      vtkWarningMacro(<< "Could not generate points!");
+      //vtkWarningMacro(<< "Could not generate points!");
       continue; //skip splining 
       }
       
