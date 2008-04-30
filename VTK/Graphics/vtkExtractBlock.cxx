@@ -229,7 +229,8 @@ bool vtkExtractBlock::Prune(vtkMultiBlockDataSet* mblock)
           clone->SetBlock(index, prunedBlock->GetBlock(0));
           if (prunedBlock->HasMetaData(static_cast<unsigned int>(0)))
             {
-            clone->GetMetaData(index)->Copy(prunedBlock->GetMetaData(cc));
+            clone->GetMetaData(index)->Copy(prunedBlock->GetMetaData(
+                static_cast<unsigned int>(0)));
             }
           }
         else
