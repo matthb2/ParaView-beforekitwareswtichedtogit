@@ -493,7 +493,6 @@ int vtkArrayCalculator::RequestData(
     {
     if(psInput)
       {
-      psOutput->SetPoints(resultPoints);
       if(attributeDataType == 0)
         {
         psOutput->CopyStructure(psInput);
@@ -521,6 +520,7 @@ int vtkArrayCalculator::RequestData(
             }
           }
         }
+      psOutput->SetPoints(resultPoints);
       }
     else
       {
