@@ -44,6 +44,20 @@ int vtkStructuredData::GetDataDimension(int dataDescription)
     }
 }
 
+// Returns the data description given the dimensions (eg. VTK_SINGLE_POINT,
+// VTK_X_LINE, VTK_XY_PLANE etc.)
+int vtkStructuredData::GetDataDescription(int dims[3])
+{
+  int tempDims[3];
+  // It is essential that dims != tempDims, then alone will SetDimensions()
+  // return the correct data description.
+  tempDims[0] = dims[0] + 1;
+  tempDims[1] = dims[1] + 1;
+  tempDims[2] = dims[2] + 1;
+
+  return vtkStructuredData::SetDimensions(dims, tempDims);
+}
+
 // Specify the dimensions of a regular, rectangular dataset. The input is
 // the new dimensions (inDim) and the current dimensions (dim). The function
 // returns the dimension of the dataset (0-3D). If the dimensions are
