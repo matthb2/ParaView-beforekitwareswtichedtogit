@@ -488,7 +488,7 @@ int vtkBiQuadraticQuadraticHexahedron::IntersectWithLine(double* p1, double* p2,
           pcoords[0] = pc[0]; pcoords[1] = pc[1]; pcoords[2] = 1.0;
           break;
           default:
-            assert("check: impossible case."); // reaching this line is a bug.
+            assert("check: impossible case." && 0); // reaching this line is a bug.
             break;
           }
         }

@@ -3080,7 +3080,7 @@ int vtkMath::GetAdjustedScalarRange(
         }
       break;
     default:
-      assert("check: impossible case."); // reaching this line is a bug.
+      assert("check: impossible case." && 0); // reaching this line is a bug.
       break;
     }
 
