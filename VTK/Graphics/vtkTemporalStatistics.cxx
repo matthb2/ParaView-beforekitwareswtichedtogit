@@ -90,7 +90,7 @@ inline void vtkTemporalStatisticsAccumulateMinimum(const T *inArray,
 {
   for (vtkIdType i = 0; i < arraySize; i++)
     {
-    outArray[i] = vtkstd::min(inArray[i], outArray[i]);
+    if (outArray[i] > inArray[i]) outArray[i] = inArray[i];
     }
 }
 
@@ -101,7 +101,7 @@ inline void vtkTemporalStatisticsAccumulateMaximum(const T *inArray,
 {
   for (vtkIdType i = 0; i < arraySize; i++)
     {
-    outArray[i] = vtkstd::max(inArray[i], outArray[i]);
+    if (outArray[i] < inArray[i]) outArray[i] = inArray[i];
     }
 }
 
