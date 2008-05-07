@@ -340,7 +340,7 @@ void vtkGraphLayoutView::SetArcEdges(bool b)
 //----------------------------------------------------------------------------
 bool vtkGraphLayoutView::GetArcEdges()
 {
-  this->GraphMapper->GetArcEdges();
+  return this->GraphMapper->GetArcEdges();
 }
 
 //----------------------------------------------------------------------------
