@@ -3829,8 +3829,10 @@ void vtkCTHFragmentConnect::FindNeighbor(
 
   int tmpLevel;
   int recheck = 1;
-  while (recheck)
+  int count = 0;
+  while (recheck && count < 4)
     {
+    count++;
     recheck = 0;
     // Check each axis and direction for the extent leaving the bounds.
     for (int axis = 0; axis < 3; ++axis)
