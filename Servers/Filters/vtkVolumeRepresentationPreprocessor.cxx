@@ -33,6 +33,7 @@ vtkVolumeRepresentationPreprocessor::vtkVolumeRepresentationPreprocessor()
   this->DataSetTriangleFilter = vtkDataSetTriangleFilter::New();
   this->ExtractBlockFilter = vtkExtractBlock::New();
   this->ExtractBlockFilter->SetPruneOutput(1);
+  this->ExtractedBlockIndex = -1;
   this->SetExtractedBlockIndex(0);
   this->SetTetrahedraOnly(0);
 }
