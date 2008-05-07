@@ -50,6 +50,8 @@ vtkStatisticsLinearCorrelation::~vtkStatisticsLinearCorrelation()
 void vtkStatisticsLinearCorrelation::PrintSelf( ostream &os, vtkIndent indent )
 {
   this->Superclass::PrintSelf( os, indent );
+  os << indent << "IdX: " << this->IdX << endl;
+  os << indent << "IdY: " << this->IdY << endl;
 }
 
 // ----------------------------------------------------------------------
