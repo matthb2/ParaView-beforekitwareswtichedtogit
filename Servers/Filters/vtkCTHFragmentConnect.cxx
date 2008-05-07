@@ -4968,7 +4968,7 @@ void vtkCTHFragmentConnect::ResolveAndPartitionFragments()
       ++thisMsg;
       }
     // receive the broadcasted resolved summation arrays.
-    for (int i=0; i<this->nToAverage; ++i)
+    for (int i=0; i<this->nToSum; ++i)
       {
       this->FragmentSums[i]->Delete();
       this->FragmentSums[i]=vtkDoubleArray::New();
