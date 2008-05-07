@@ -331,6 +331,19 @@ void vtkGraphLayoutView::ColorEdgesOff()
 }
 
 //----------------------------------------------------------------------------
+void vtkGraphLayoutView::SetArcEdges(bool b)
+{
+  this->GraphMapper->SetArcEdges(b);
+  this->SelectedGraphMapper->SetArcEdges(b);
+}
+
+//----------------------------------------------------------------------------
+bool vtkGraphLayoutView::GetArcEdges()
+{
+  this->GraphMapper->GetArcEdges();
+}
+
+//----------------------------------------------------------------------------
 void vtkGraphLayoutView::SetScaledGlyphs(bool arg)
 {
   this->GraphMapper->SetScaledGlyphs(arg);
