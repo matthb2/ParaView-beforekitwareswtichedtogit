@@ -20,7 +20,7 @@
 
 #include "vtkToolkits.h"
 
-#include "vtkStatisticsDescriptive.h"
+#include "vtkDescriptiveStatistics.h"
 
 #include "vtkDoubleArray.h"
 #include "vtkIdTypeArray.h"
@@ -30,27 +30,27 @@
 #include "vtkTable.h"
 #include "vtkVariantArray.h"
 
-vtkCxxRevisionMacro(vtkStatisticsDescriptive, "$Revision$");
-vtkStandardNewMacro(vtkStatisticsDescriptive);
+vtkCxxRevisionMacro(vtkDescriptiveStatistics, "$Revision$");
+vtkStandardNewMacro(vtkDescriptiveStatistics);
 
 // ----------------------------------------------------------------------
-vtkStatisticsDescriptive::vtkStatisticsDescriptive()
+vtkDescriptiveStatistics::vtkDescriptiveStatistics()
 {
 }
 
 // ----------------------------------------------------------------------
-vtkStatisticsDescriptive::~vtkStatisticsDescriptive()
+vtkDescriptiveStatistics::~vtkDescriptiveStatistics()
 {
 }
 
 // ----------------------------------------------------------------------
-void vtkStatisticsDescriptive::PrintSelf( ostream &os, vtkIndent indent )
+void vtkDescriptiveStatistics::PrintSelf( ostream &os, vtkIndent indent )
 {
   this->Superclass::PrintSelf( os, indent );
 }
 
 // ----------------------------------------------------------------------
-void vtkStatisticsDescriptive::ExecuteLearn( vtkTable* dataset,
+void vtkDescriptiveStatistics::ExecuteLearn( vtkTable* dataset,
                                              vtkTable* output )
 {
   vtkIdType nCol = dataset->GetNumberOfColumns();
@@ -116,7 +116,7 @@ void vtkStatisticsDescriptive::ExecuteLearn( vtkTable* dataset,
 }
 
 // ----------------------------------------------------------------------
-void vtkStatisticsDescriptive::ExecuteValidate( vtkTable*,
+void vtkDescriptiveStatistics::ExecuteValidate( vtkTable*,
                                                 vtkTable*,
                                                 vtkTable* )
 {
@@ -124,7 +124,7 @@ void vtkStatisticsDescriptive::ExecuteValidate( vtkTable*,
 }
 
 // ----------------------------------------------------------------------
-void vtkStatisticsDescriptive::ExecuteEvince( vtkTable* dataset,
+void vtkDescriptiveStatistics::ExecuteEvince( vtkTable* dataset,
                                               vtkTable* params,
                                               vtkTable* output)
 {
@@ -201,7 +201,7 @@ void vtkStatisticsDescriptive::ExecuteEvince( vtkTable* dataset,
 }
 
 // ----------------------------------------------------------------------
-int vtkStatisticsDescriptive::CalculateFromRawMoments( int n, double* s )
+int vtkDescriptiveStatistics::CalculateFromRawMoments( int n, double* s )
 {
   if ( n < 1 ) 
     {
