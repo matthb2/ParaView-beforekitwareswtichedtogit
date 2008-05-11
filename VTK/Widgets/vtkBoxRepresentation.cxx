@@ -1001,6 +1001,7 @@ void vtkBoxRepresentation::SetInteractionState(int state)
   
   // Depending on state, highlight appropriate parts of representation
   int handle;
+  this->InteractionState = state;
   switch (state)
     {
     case vtkBoxRepresentation::MoveF0:
