@@ -63,6 +63,10 @@ void vtkSMCameraProxy::UpdatePropertyInformation()
   dvp = vtkSMDoubleVectorProperty::SafeDownCast(
     this->GetProperty("CameraClippingRangeInfo"));
   dvp->SetElements(camera->GetClippingRange());
+
+  dvp = vtkSMDoubleVectorProperty::SafeDownCast(
+    this->GetProperty("CameraParallelScaleInfo"));
+  dvp->SetElement(0, camera->GetParallelScale());
 }
 
 //-----------------------------------------------------------------------------
