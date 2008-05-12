@@ -333,6 +333,13 @@ void vtkDescriptiveStatistics::ExecuteEvince( vtkTable* dataset,
   
   for ( vtkstd::set<vtkIdType>::iterator it = this->Internals->Columns.begin(); it != this->Internals->Columns.end(); ++ it )
     {
+    if ( *it < 0 || *it >= nCol )
+      {
+      vtkWarningMacro( "Dataset table does not have a column with index "<<*it<<". Ignoring it." );
+      this->SampleSize = 0;
+      return;
+    }
+
     double nomVal = params->GetValue( 0, *it ).ToDouble();
     double accDev = params->GetValue( 1, *it ).ToDouble();
     double minVal = nomVal - accDev;
