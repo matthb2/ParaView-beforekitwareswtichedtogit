@@ -1538,9 +1538,9 @@ void vtkSpyPlotReader::SetGlobalMinLevelAndSpacing(
       if (sendBuf[0]>recvBuf[j])
         {
         // copy
-        for (int i=0; i<4; ++i)
+        for (int q=0; q<4; ++q)
           {
-          sendBuf[i]=recvBuf[j+i];
+          sendBuf[q]=recvBuf[j+q];
           }
         }
       }
