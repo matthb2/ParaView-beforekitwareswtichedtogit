@@ -200,8 +200,8 @@ void vtkConstrainedPointHandleRepresentation::SetCursorShape(vtkPolyData *shape)
     if ( this->CursorShape )
       {
       this->CursorShape->Register(this);
+      this->Glypher->SetSource(this->CursorShape);
       }
-    this->Glypher->SetSource(this->CursorShape);
     this->Modified();
     }
 }
