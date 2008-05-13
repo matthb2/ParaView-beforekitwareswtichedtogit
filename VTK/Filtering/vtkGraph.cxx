@@ -594,9 +594,10 @@ void vtkGraph::SetEdgePoints(vtkIdType e, vtkIdType npts, double* pts)
     {
     this->EdgePoints = vtkGraphEdgePoints::New();
     }
-  if (this->EdgePoints->Storage.size() < this->Internals->NumberOfEdges)
+  vector< vector<double> >::size_type numEdges = this->Internals->NumberOfEdges;
+  if (this->EdgePoints->Storage.size() < numEdges)
     {
-    this->EdgePoints->Storage.resize(this->Internals->NumberOfEdges);
+    this->EdgePoints->Storage.resize(numEdges);
     }
   this->EdgePoints->Storage[e].clear();
   for (vtkIdType i = 0; i < 3*npts; ++i, ++pts)
@@ -619,9 +620,10 @@ void vtkGraph::GetEdgePoints(vtkIdType e, vtkIdType& npts, double*& pts)
     pts = 0;
     return;
     }
-  if (this->EdgePoints->Storage.size() < this->Internals->NumberOfEdges)
+  vector< vector<double> >::size_type numEdges = this->Internals->NumberOfEdges;
+  if (this->EdgePoints->Storage.size() < numEdges)
     {
-    this->EdgePoints->Storage.resize(this->Internals->NumberOfEdges);
+    this->EdgePoints->Storage.resize(numEdges);
     }
   npts = this->EdgePoints->Storage[e].size() / 3;
   if (npts > 0)
@@ -646,9 +648,10 @@ vtkIdType vtkGraph::GetNumberOfEdgePoints(vtkIdType e)
     {
     return 0;
     }
-  if (this->EdgePoints->Storage.size() < this->Internals->NumberOfEdges)
+  vector< vector<double> >::size_type numEdges = this->Internals->NumberOfEdges;
+  if (this->EdgePoints->Storage.size() < numEdges)
     {
-    this->EdgePoints->Storage.resize(this->Internals->NumberOfEdges);
+    this->EdgePoints->Storage.resize(numEdges);
     }
   return this->EdgePoints->Storage[e].size() / 3;
 }
@@ -666,9 +669,10 @@ double* vtkGraph::GetEdgePoint(vtkIdType e, vtkIdType i)
     vtkErrorMacro("No edge points defined.");
     return 0;
     }
-  if (this->EdgePoints->Storage.size() < this->Internals->NumberOfEdges)
+  vector< vector<double> >::size_type numEdges = this->Internals->NumberOfEdges;
+  if (this->EdgePoints->Storage.size() < numEdges)
     {
-    this->EdgePoints->Storage.resize(this->Internals->NumberOfEdges);
+    this->EdgePoints->Storage.resize(numEdges);
     }
   vtkIdType npts = this->EdgePoints->Storage[e].size() / 3;
   if (i >= npts)
@@ -692,9 +696,10 @@ void vtkGraph::SetEdgePoint(vtkIdType e, vtkIdType i, double x[3])
     vtkErrorMacro("No edge points defined.");
     return;
     }
-  if (this->EdgePoints->Storage.size() < this->Internals->NumberOfEdges)
+  vector< vector<double> >::size_type numEdges = this->Internals->NumberOfEdges;
+  if (this->EdgePoints->Storage.size() < numEdges)
     {
-    this->EdgePoints->Storage.resize(this->Internals->NumberOfEdges);
+    this->EdgePoints->Storage.resize(numEdges);
     }
   vtkIdType npts = this->EdgePoints->Storage[e].size() / 3;
   if (i >= npts)
@@ -721,9 +726,10 @@ void vtkGraph::ClearEdgePoints(vtkIdType e)
     vtkErrorMacro("No edge points defined.");
     return;
     }
-  if (this->EdgePoints->Storage.size() < this->Internals->NumberOfEdges)
+  vector< vector<double> >::size_type numEdges = this->Internals->NumberOfEdges;
+  if (this->EdgePoints->Storage.size() < numEdges)
     {
-    this->EdgePoints->Storage.resize(this->Internals->NumberOfEdges);
+    this->EdgePoints->Storage.resize(numEdges);
     }
   this->EdgePoints->Storage[e].clear();
 }
@@ -741,9 +747,10 @@ void vtkGraph::AddEdgePoint(vtkIdType e, double x[3])
     vtkErrorMacro("No edge points defined.");
     return;
     }
-  if (this->EdgePoints->Storage.size() < this->Internals->NumberOfEdges)
+  vector< vector<double> >::size_type numEdges = this->Internals->NumberOfEdges;
+  if (this->EdgePoints->Storage.size() < numEdges)
     {
-    this->EdgePoints->Storage.resize(this->Internals->NumberOfEdges);
+    this->EdgePoints->Storage.resize(numEdges);
     }
   for (int c = 0; c < 3; ++c)
     {
