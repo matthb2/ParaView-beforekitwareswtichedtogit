@@ -421,8 +421,6 @@ int vtkPVGeometryFilter::RequestCompositeData(vtkInformation*,
       {
       append->Update();
       }
-    append->Update();
-
     output->ShallowCopy(append->GetOutput());
     append->Delete();
     retVal = 1;
