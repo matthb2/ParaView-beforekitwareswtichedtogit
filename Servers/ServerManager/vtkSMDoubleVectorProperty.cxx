@@ -492,7 +492,7 @@ void vtkSMDoubleVectorProperty::Copy(vtkSMProperty* src)
 
   vtkSMDoubleVectorProperty* dsrc = vtkSMDoubleVectorProperty::SafeDownCast(
     src);
-  if (dsrc)
+  if (dsrc && dsrc->Initialized)
     {
     bool modified = false;
     if (this->Internals->Values != dsrc->Internals->Values)

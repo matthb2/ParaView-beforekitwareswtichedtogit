@@ -465,7 +465,7 @@ void vtkSMIntVectorProperty::Copy(vtkSMProperty* src)
 
   vtkSMIntVectorProperty* dsrc = vtkSMIntVectorProperty::SafeDownCast(
     src);
-  if (dsrc)
+  if (dsrc && dsrc->Initialized)
     {
     bool modified = false;
     

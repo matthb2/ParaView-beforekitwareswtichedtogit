@@ -529,7 +529,7 @@ void vtkSMStringVectorProperty::Copy(vtkSMProperty* src)
 
   vtkSMStringVectorProperty* dsrc = vtkSMStringVectorProperty::SafeDownCast(
     src);
-  if (dsrc)
+  if (dsrc && dsrc->Initialized)
     {
     bool modified = false;
     if (this->Internals->Values != dsrc->Internals->Values ||
