@@ -544,10 +544,8 @@ void vtkOpenGLRenderer::DeviceRenderTranslucentPolygonalGeometry()
           }
         else if(isATIFireGLV3300)
           {
-          if(strstr(gl_version, "2.0.6237"))
-            {
+            // so far, 2.0.6237 and 2.0.6672 don't work
             this->DepthPeelingIsSupported = 0;
-            }
           }
         else if(isATIRadeonX1600 || isATIRadeonX1900)
           {
