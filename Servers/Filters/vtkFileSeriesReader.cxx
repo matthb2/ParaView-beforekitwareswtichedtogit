@@ -689,7 +689,7 @@ int vtkFileSeriesReader::ReadMetaDataFile(const char *metafilename,
   // Iterate over all files pointed to by the metafile.
   filesToRead->SetNumberOfTuples(0);
   filesToRead->SetNumberOfComponents(1);
-  while (!metafile.eof())
+  while (metafile.good() && !metafile.eof())
     {
     vtkStdString fname;
     metafile >> fname;
