@@ -137,6 +137,8 @@ vtkSMRenderViewProxy::vtkSMRenderViewProxy()
   this->SetLODResolution(50);
   this->Information->Set(USE_ORDERED_COMPOSITING(), 0);
   this->Information->Set(USE_COMPOSITING(), 0);
+
+  this->LightKitAdded = false;
 }
 
 //-----------------------------------------------------------------------------
@@ -460,6 +462,13 @@ void vtkSMRenderViewProxy::SetUseLight(int enable)
     return;
     }
 
+  if (static_cast<bool>(enable) == this->LightKitAdded)
+    {
+    // nothing to do.
+    return;
+    }
+
+  this->LightKitAdded = static_cast<bool>(enable);
   vtkClientServerStream stream;
   vtkProcessModule* pm = vtkProcessModule::GetProcessModule();
   stream  << vtkClientServerStream::Invoke
