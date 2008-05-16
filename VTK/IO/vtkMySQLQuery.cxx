@@ -455,6 +455,7 @@ vtkStdString vtkMySQLQuery::EscapeString( vtkStdString src, bool addSurroundingQ
     * ( end ++ ) = '\0';
     }
   dst = dstarr;
+  delete [] dstarr;
   return dst;
 }
 
