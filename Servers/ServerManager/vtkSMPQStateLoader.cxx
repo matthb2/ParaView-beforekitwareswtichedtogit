@@ -140,7 +140,7 @@ void vtkSMPQStateLoader::RegisterProxyInternal(const char* group,
 }
 
 //-----------------------------------------------------------------------------
-const char* vtkSMPQStateLoader::GetPreferredViewType (int connectionID, const char *xml_name)
+const char* vtkSMPQStateLoader::GetPreferredViewType (int connectionID, const char *vtkNotUsed(xml_name))
 {
   return vtkSMRenderViewProxy::GetSuggestedRenderViewType(connectionID);
 }
