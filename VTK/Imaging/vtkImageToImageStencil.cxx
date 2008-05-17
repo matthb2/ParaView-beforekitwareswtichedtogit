@@ -113,7 +113,7 @@ void vtkImageToImageStencil::ThresholdBetween(double lower, double upper)
 
 //----------------------------------------------------------------------------
 int vtkImageToImageStencil::RequestData(
-  vtkInformation *request,
+  vtkInformation *,
   vtkInformationVector **inputVector,
   vtkInformationVector *outputVector)
 {
