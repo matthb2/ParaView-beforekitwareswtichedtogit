@@ -176,7 +176,7 @@ void vtkOutputWindow::SetInstance(vtkOutputWindow* instance)
   // preferably this will be NULL
   if (vtkOutputWindow::Instance)
     {
-    vtkOutputWindow::Instance->Delete();;
+    vtkOutputWindow::Instance->Delete();
     }
   vtkOutputWindow::Instance = instance;
   if (!instance)
