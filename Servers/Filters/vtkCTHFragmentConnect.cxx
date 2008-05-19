@@ -681,7 +681,7 @@ void vtkCTHFragmentToProcMap::Clear()
 }
 
 //
-void vtkCTHFragmentToProcMap::vtkCTHFragmentToProcMap::Initialize(
+void vtkCTHFragmentToProcMap::Initialize(
               int nProcs,
               int nFragments)
 {
