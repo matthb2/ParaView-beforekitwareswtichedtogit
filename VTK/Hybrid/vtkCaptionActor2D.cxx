@@ -82,7 +82,7 @@ vtkCaptionActor2D::vtkCaptionActor2D()
   this->TextActor->GetPositionCoordinate()->SetReferenceCoordinate(NULL);
   this->TextActor->GetPosition2Coordinate()->SetCoordinateSystemToDisplay();
   this->TextActor->GetPosition2Coordinate()->SetReferenceCoordinate(NULL);
-  this->TextActor->SetScaledText(1);
+  this->TextActor->SetTextScaleModeToProp();
   this->TextActor->SetTextProperty(this->CaptionTextProperty);
 
   this->BorderPolyData = vtkPolyData::New();

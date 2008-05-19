@@ -2809,7 +2809,7 @@ void vtkImagePlaneWidget::GenerateText()
 {
   sprintf(this->TextBuff,"NA");
   this->TextActor->SetInput(this->TextBuff);
-  this->TextActor->ScaledTextOff();
+  this->TextActor->SetTextScaleModeToNone();
 
   vtkTextProperty* textprop = this->TextActor->GetTextProperty();
   textprop->SetColor(1,1,1);
