@@ -500,13 +500,14 @@ vtkStdString vtkPostgreSQLQuery::EscapeString( vtkStdString s, bool addSurroundi
     }
   else
     {
-    this->Superclass::EscapeString( s, false );
+    retval.append( this->Superclass::EscapeString( s, false ) );
     }
 
   if ( addSurroundingQuotes )
     {
     retval.append( "'" );
     }
+
   return retval;
 }
 
