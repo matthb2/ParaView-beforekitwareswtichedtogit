@@ -59,6 +59,7 @@ using vtksys_ios::ostringstream;
 using vtkstd::vector;
 #include "vtkstd/string"
 using vtkstd::string;
+#include "vtkstd/algorithm"
 // ansi c
 #include <math.h>
 
