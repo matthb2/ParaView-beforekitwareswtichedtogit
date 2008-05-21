@@ -13,9 +13,7 @@
 
 =========================================================================*/
 #include "vtkBoxRepresentation.h"
-#include "vtkPointHandleRepresentation3D.h"
 #include "vtkActor.h"
-#include "vtkLineSource.h"
 #include "vtkSphereSource.h"
 #include "vtkPolyDataMapper.h"
 #include "vtkPolyData.h"
