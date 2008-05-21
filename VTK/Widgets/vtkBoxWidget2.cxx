@@ -14,8 +14,6 @@
 =========================================================================*/
 #include "vtkBoxWidget2.h"
 #include "vtkBoxRepresentation.h"
-#include "vtkPointHandleRepresentation3D.h"
-#include "vtkHandleWidget.h"
 #include "vtkCommand.h"
 #include "vtkCallbackCommand.h"
 #include "vtkRenderWindowInteractor.h"
