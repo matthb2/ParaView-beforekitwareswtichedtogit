@@ -20,6 +20,7 @@
 #include "vtkExtractSelectedIds.h"
 #include "vtkExtractSelectedLocations.h"
 #include "vtkExtractSelectedThresholds.h"
+#include "vtkGraph.h"
 #include "vtkHierarchicalBoxDataIterator.h"
 #include "vtkInformation.h"
 #include "vtkInformationVector.h"
@@ -91,6 +92,12 @@ int vtkExtractSelection::RequestData(
     {
     vtkErrorMacro(<<"No input specified");
     return 0;
+    }
+
+  // If the input is a graph, don't try to handle it
+  if ( vtkGraph::SafeDownCast(input) )
+    {
+    return 1;
     }
 
   if ( ! selInfo )
