@@ -211,7 +211,7 @@ void vtkView::ProcessEvents(vtkObject* caller, unsigned long eventId,
     this->InvokeEvent(vtkCommand::SelectionChangedEvent);
     }
 
-  if (eventId == vtkCommand::ViewProgressEvent)
+  if (eventId == vtkCommand::ProgressEvent)
     {
     vtkstd::map<vtkObject*, vtkstd::string>::iterator iter = 
       this->Internal->RegisteredProgress.find(caller);
