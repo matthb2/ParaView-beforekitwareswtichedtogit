@@ -194,8 +194,8 @@ vtkIdType vtkSMSpreadSheetRepresentationProxy::GetMaximumNumberOfItems()
 {
   vtkPVDataInformation* info =
     this->SelectionOnly?
-    this->GetInputProxy()->GetSelectionOutput(this->OutputPort)->GetDataInformation(0, false):
-    this->GetInputProxy()->GetDataInformation(this->OutputPort, false);
+    this->GetInputProxy()->GetSelectionOutput(this->OutputPort)->GetDataInformation(0):
+    this->GetInputProxy()->GetDataInformation(this->OutputPort);
 
   if (!info)
     {

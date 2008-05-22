@@ -227,14 +227,14 @@ void vtkSMTextSourceRepresentationProxy::Update(vtkSMViewProxy* view)
 }
 
 //----------------------------------------------------------------------------
-void vtkSMTextSourceRepresentationProxy::MarkModified(vtkSMProxy* modifiedProxy)
+void vtkSMTextSourceRepresentationProxy::MarkDirty(vtkSMProxy* modifiedProxy)
 {
   if (modifiedProxy != this)
     {
     this->Dirty = true;
     }
 
-  this->Superclass::MarkModified(modifiedProxy);
+  this->Superclass::MarkDirty(modifiedProxy);
 }
 
 //-----------------------------------------------------------------------------

@@ -92,7 +92,7 @@ void vtkSMRepresentationStrategy::SetViewInformation(vtkInformation* info)
 }
 
 //----------------------------------------------------------------------------
-void vtkSMRepresentationStrategy::MarkModified(vtkSMProxy* modifiedProxy)
+void vtkSMRepresentationStrategy::MarkDirty(vtkSMProxy* modifiedProxy)
 {
   // If properties on the strategy itself are modified, then we are assuming
   // that the pipeline inside the strategy will get affected.
@@ -106,7 +106,7 @@ void vtkSMRepresentationStrategy::MarkModified(vtkSMProxy* modifiedProxy)
   this->InvalidatePipeline();
   this->InvalidateLODPipeline();
   
-  this->Superclass::MarkModified(modifiedProxy);
+  this->Superclass::MarkDirty(modifiedProxy);
 }
 
 //----------------------------------------------------------------------------
@@ -267,6 +267,8 @@ void vtkSMRepresentationStrategy::UpdatePipeline()
 {
   this->DataValid = true;
   this->InformationValid = false;
+  
+  this->PostUpdateData();
 }
 
 //----------------------------------------------------------------------------

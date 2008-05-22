@@ -349,6 +349,8 @@ void vtkSMSimpleParallelStrategy::GatherInformation(vtkPVInformation* info)
 
   // Update the pipeline partially until before the Collect proxy
   this->PreCollectUpdateSuppressor->InvokeCommand("ForceUpdate");
+  // This is called for its side-effects; i.e. to force a PostUpdateData()
+  this->PreCollectUpdateSuppressor->UpdatePipeline();
   pm->GatherInformation(this->ConnectionID,
     vtkProcessModule::DATA_SERVER_ROOT,
     info,
