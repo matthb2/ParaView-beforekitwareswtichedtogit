@@ -132,7 +132,6 @@ void vtkOrderStatistics::ExecuteLearn( vtkTable* dataset,
       row->SetValue( col ++, *it );
 
       vtkstd::vector<double> quantileThresholds;
-      quantileThresholds.reserve( this->NumberOfIntervals );
       double dh = this->SampleSize / static_cast<double>( this->NumberOfIntervals );
       for ( int i = 0; i < this->NumberOfIntervals; ++ i )
         {
