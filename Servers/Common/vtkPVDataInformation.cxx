@@ -536,9 +536,10 @@ void vtkPVDataInformation::CopyFromObject(vtkObject* object)
     return;
     }
 
-  vtkErrorMacro("Could not cast object to a known data set: "
-                << (dobj?dobj->GetClassName():"(null"));
-
+  // Because custom applications may implement their own data
+  // object types, this isn't an error condition - just
+  // display the name of the data object and return quietly.
+  this->SetDataClassName(dobj->GetClassName());
 }
 
 //----------------------------------------------------------------------------
