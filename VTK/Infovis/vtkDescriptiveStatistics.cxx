@@ -20,8 +20,8 @@
 
 #include "vtkToolkits.h"
 
-#include "vtkUnivariateStatisticsAlgorithmPrivate.h"
 #include "vtkDescriptiveStatistics.h"
+#include "vtkUnivariateStatisticsAlgorithmPrivate.h"
 
 #include "vtkDoubleArray.h"
 #include "vtkIdTypeArray.h"

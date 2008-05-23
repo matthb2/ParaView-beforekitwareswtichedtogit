@@ -20,8 +20,8 @@ PURPOSE.  See the above copyright notice for more information.
 
 #include "vtkToolkits.h"
 
-#include "vtkUnivariateStatisticsAlgorithmPrivate.h"
 #include "vtkOrderStatistics.h"
+#include "vtkUnivariateStatisticsAlgorithmPrivate.h"
 
 #include "vtkDoubleArray.h"
 #include "vtkIdTypeArray.h"

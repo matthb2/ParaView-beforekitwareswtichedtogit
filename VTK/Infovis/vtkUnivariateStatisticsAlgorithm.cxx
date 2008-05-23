@@ -18,8 +18,8 @@
   the U.S. Government retains certain rights in this software.
 -------------------------------------------------------------------------*/
 
-#include "vtkUnivariateStatisticsAlgorithmPrivate.h"
 #include "vtkUnivariateStatisticsAlgorithm.h"
+#include "vtkUnivariateStatisticsAlgorithmPrivate.h"
 
 #include "vtkObjectFactory.h"
 
