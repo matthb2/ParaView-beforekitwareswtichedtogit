@@ -419,6 +419,7 @@ void vtkCompositeDataSet::DeepCopy(vtkDataObject* src)
         vtkDataObject* toChild = fromChild->NewInstance();
         toChild->DeepCopy(fromChild);
         this->SetChild(cc, toChild);
+        toChild->Delete();
         if (from->HasChildMetaData(cc))
           {
           vtkInformation* toInfo = this->GetChildMetaData(cc);
