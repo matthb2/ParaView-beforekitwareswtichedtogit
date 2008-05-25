@@ -8500,7 +8500,7 @@ void vtkCTHFragmentConnect::CopyAttributesToOutput1()
       verts[0]=1;
       verts[1]=i;
       verts+=2;
-      } 
+      }
     }
   resolvedFragmentCenters->SetPoints(pts);
   pts->Delete();
