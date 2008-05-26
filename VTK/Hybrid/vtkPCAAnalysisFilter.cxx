@@ -450,6 +450,22 @@ void vtkPCAAnalysisFilter::SetInput(int idx, vtkPointSet *p)
 }
 
 //----------------------------------------------------------------------------
+void vtkPCAAnalysisFilter::SetInput(int idx, vtkDataObject* input)
+{
+  vtkPointSet* p = vtkPointSet::SafeDownCast(input);
+
+  if (p)
+    {
+    this->SetInput(idx, p);
+    }
+  else
+    {
+    vtkErrorMacro(<< this->GetClassName() << " input is a " <<
+      input->GetClassName() << " -- it should be a vtkPointSet");
+    }
+}
+
+//----------------------------------------------------------------------------
 vtkPointSet* vtkPCAAnalysisFilter::GetInput(int idx)
 {
   return vtkPointSet::SafeDownCast(
