@@ -143,7 +143,7 @@ void vtkOrderStatistics::ExecuteLearn( vtkTable* dataset,
       for ( vtkstd::map<double,vtkIdType>::iterator mit = distr.begin();
             mit != distr.end(); ++ mit  )
         {
-        for ( sum += mit->second; sum >= *qit && qit != quantileThresholds.end(); ++ qit )
+        for ( sum += mit->second; qit != quantileThresholds.end() && sum >= *qit; ++ qit )
           {
           if ( sum == *qit
                && this->QuantileDefinition == vtkOrderStatistics::InverseCDFAveragedSteps )
