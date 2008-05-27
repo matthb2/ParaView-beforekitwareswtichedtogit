@@ -462,6 +462,19 @@ void vtkSMProxyProperty::RemoveAllProxies(int modify)
 }
 
 //---------------------------------------------------------------------------
+void vtkSMProxyProperty::SetNumberOfProxies(unsigned int num)
+{
+  if (num != 0)
+    {
+    this->PPInternals->Proxies.resize(num);
+    }
+  else
+    {
+    this->PPInternals->Proxies.clear();
+    }
+}
+
+//---------------------------------------------------------------------------
 unsigned int vtkSMProxyProperty::GetNumberOfProxies()
 {
   return this->PPInternals->Proxies.size();
