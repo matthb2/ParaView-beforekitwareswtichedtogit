@@ -233,6 +233,25 @@ vtkAbstractArray* vtkAbstractArray::CreateArray(int dataType)
   return vtkDoubleArray::New();
 }
 
+//---------------------------------------------------------------------------
+template <typename T>
+vtkVariant vtkAbstractArrayGetVariantValue(T* arr, vtkIdType index)
+{
+  return vtkVariant(arr[index]);
+}
+
+//----------------------------------------------------------------------------
+vtkVariant vtkAbstractArray::GetVariantValue(vtkIdType i)
+{
+  vtkVariant val;
+  switch(this->GetDataType())
+    {
+    vtkExtraExtendedTemplateMacro(val = vtkAbstractArrayGetVariantValue(
+      static_cast<VTK_TT*>(this->GetVoidPointer(0)), i));
+    }
+  return val;
+}
+
 //----------------------------------------------------------------------------
 void vtkAbstractArray::PrintSelf(ostream& os, vtkIndent indent)
 {

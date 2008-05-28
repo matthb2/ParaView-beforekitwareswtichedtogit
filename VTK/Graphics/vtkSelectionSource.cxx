@@ -270,6 +270,7 @@ int vtkSelectionSource::RequestData(
 
   if (
     (this->ContentType == vtkSelection::GLOBALIDS) ||
+    (this->ContentType == vtkSelection::PEDIGREEIDS) ||
     (this->ContentType == vtkSelection::INDICES))
     {    
     oProperties->Set(vtkSelection::CONTENT_TYPE(), 
