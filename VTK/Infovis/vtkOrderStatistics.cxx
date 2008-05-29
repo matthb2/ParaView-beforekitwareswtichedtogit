@@ -287,3 +287,24 @@ void vtkOrderStatistics::ExecuteEvince( vtkTable* dataset,
 
   return;
 }
+
+// ----------------------------------------------------------------------
+void vtkOrderStatistics::SetQuantileDefinition ( vtkIdType qd )
+{
+  switch ( qd )
+    {
+    case vtkOrderStatistics::InverseCDF:
+      break;
+    case vtkOrderStatistics::InverseCDFAveragedSteps:
+      break;
+    default:
+      vtkWarningMacro( "Incorrect type of quantile definition: "
+                       <<qd
+                       <<". Ignoring it." );
+      return;
+    }
+  
+  this->QuantileDefinition =  static_cast<vtkOrderStatistics::QuantileDefinitionType>( qd );
+
+  return;
+}
