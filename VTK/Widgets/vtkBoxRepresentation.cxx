@@ -728,6 +728,7 @@ void vtkBoxRepresentation::PlaceWidget(double bds[6])
 
   this->PositionHandles();
   this->ComputeNormals();
+  this->ValidPick = 1; //since we have set up widget
   this->SizeHandles();
 }
 
