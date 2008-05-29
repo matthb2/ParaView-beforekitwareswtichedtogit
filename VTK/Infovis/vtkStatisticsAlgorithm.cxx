@@ -109,3 +109,9 @@ int vtkStatisticsAlgorithm::FillInputPortInformation( int port, vtkInformation* 
     }
   return 0;
 }
+
+//---------------------------------------------------------------------------
+void vtkStatisticsAlgorithm::SetInputStatistics(vtkAlgorithmOutput* in)
+{
+  this->SetInputConnection( 1, in );
+}
