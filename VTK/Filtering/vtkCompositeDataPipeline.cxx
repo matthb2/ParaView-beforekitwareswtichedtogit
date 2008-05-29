@@ -614,7 +614,7 @@ void vtkCompositeDataPipeline::ExecuteSimpleAlgorithm(
     vtkSmartPointer<vtkInformation> r = 
       vtkSmartPointer<vtkInformation>::New();
 
-    r->Set(FROM_OUTPUT_PORT(), PRODUCER()->GetPort(inInfo));
+    r->Set(FROM_OUTPUT_PORT(), PRODUCER()->GetPort(outInfo));
 
     // The request is forwarded upstream through the pipeline.
     r->Set(vtkExecutive::FORWARD_DIRECTION(), vtkExecutive::RequestUpstream);
