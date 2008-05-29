@@ -115,3 +115,26 @@ void vtkStatisticsAlgorithm::SetInputStatistics(vtkAlgorithmOutput* in)
 {
   this->SetInputConnection( 1, in );
 }
+
+// ----------------------------------------------------------------------
+void vtkStatisticsAlgorithm::SetExecutionMode( vtkIdType em )
+{
+  switch ( em )
+    {
+    case vtkStatisticsAlgorithm::LearnMode:
+      break;
+    case vtkStatisticsAlgorithm::ValidateMode:
+      break;
+    case vtkStatisticsAlgorithm::EvinceMode:
+      break;
+    default:
+      vtkWarningMacro( "Incorrect type of execution mode: "
+                       <<em
+                       <<". Ignoring it." );
+      return;
+    }
+  
+  this->ExecutionMode =  static_cast<vtkStatisticsAlgorithm::ExecutionModeType>( em );
+
+  return;
+}
