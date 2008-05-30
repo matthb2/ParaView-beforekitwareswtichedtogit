@@ -331,6 +331,7 @@ void vtkOrderStatistics::SetQuantileDefinition( vtkIdType qd )
     }
   
   this->QuantileDefinition =  static_cast<vtkOrderStatistics::QuantileDefinitionType>( qd );
+  this->Modified();
 
   return;
 }
