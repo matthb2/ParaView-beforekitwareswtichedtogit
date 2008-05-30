@@ -494,6 +494,12 @@ void vtkPVDataInformation::CopyFromObject(vtkObject* object)
     return;
     }
 
+  if (strcmp(dobj->GetProducerPort()->GetProducer()->GetClassName(), "vtkPVNullSource") == 0)
+    {
+    // Don't gather any data information from the hypothetical null source.
+    return;
+    }
+
   vtkCompositeDataSet* cds = vtkCompositeDataSet::SafeDownCast(dobj);
   if (cds)
     {
