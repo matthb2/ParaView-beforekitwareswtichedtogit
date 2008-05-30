@@ -31,6 +31,7 @@ vtkCxxRevisionMacro(vtkUnivariateStatisticsAlgorithm, "$Revision$");
 vtkUnivariateStatisticsAlgorithm::vtkUnivariateStatisticsAlgorithm()
 {
   this->Internals = new vtkUnivariateStatisticsAlgorithmPrivate;
+  this->Internals->ColumnSelectionUsage = false;
 }
 
 // ----------------------------------------------------------------------
@@ -43,6 +44,12 @@ vtkUnivariateStatisticsAlgorithm::~vtkUnivariateStatisticsAlgorithm()
 void vtkUnivariateStatisticsAlgorithm::PrintSelf( ostream &os, vtkIndent indent )
 {
   this->Superclass::PrintSelf( os, indent );
+}
+
+// ----------------------------------------------------------------------
+void vtkUnivariateStatisticsAlgorithm::UseColumnSelection( bool all )
+{
+  this->Internals->ColumnSelectionUsage = all;
 }
 
 // ----------------------------------------------------------------------
