@@ -24,6 +24,7 @@
 #include "vtkSMIdTypeVectorProperty.h"
 #include "vtkSMIntVectorProperty.h"
 #include "vtkSMProperty.h"
+#include "vtkSMPropertyHelper.h"
 #include "vtkSMRepresentationStrategy.h"
 #include "vtkSMSourceProxy.h"
 
@@ -154,17 +155,21 @@ void vtkSMSpreadSheetRepresentationProxy::Update(vtkSMViewProxy* view)
     // change the pipeline to deliver correct data.
     // Note this is a bit unconvetional, changing the pipeline in Update()
     // so we must be careful.
+
     if (this->SelectionOnly)
       {
       this->Connect(
         this->GetInputProxy()->GetSelectionOutput(this->OutputPort),
         this->UpdateStrategy);
+      vtkSMPropertyHelper(this->BlockFilter, "GenerateOriginalIds").Set(0);
       }
     else
       {
       this->Connect(this->GetInputProxy(),
         this->UpdateStrategy, "Input", this->OutputPort);
+      vtkSMPropertyHelper(this->BlockFilter, "GenerateOriginalIds").Set(0);
       }
+    this->BlockFilter->UpdateVTKObjects();
 
     this->PreviousSelectionOnly = this->SelectionOnly;
     }
