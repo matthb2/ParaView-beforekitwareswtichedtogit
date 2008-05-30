@@ -712,15 +712,17 @@ double *vtkGraphMapper::GetBounds()
     {
     return bounds;
     }
-  else
+  if (!this->Static)
     {
-    if (!this->Static)
-      {
-      this->Update();
-      }
-    graph->GetBounds(this->Bounds);
-    return this->Bounds;
+    this->Update();
+    graph = vtkGraph::SafeDownCast(this->GetExecutive()->GetInputData(0, 0));
     }
+  if (!graph)
+    {
+    return bounds;
+    }
+  graph->GetBounds(this->Bounds);
+  return this->Bounds;
 }
 
 #if 1
