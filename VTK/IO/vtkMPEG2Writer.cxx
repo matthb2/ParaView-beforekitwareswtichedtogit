@@ -512,6 +512,7 @@ void vtkMPEG2WriterInternal::ReadParmFile( )
   fgets(line,254,fd); sscanf(line,"%d",&this->Structure->d0b);
   */
 
+  strcpy(this->Structure->id_string, "vtkMPEG2Writer");
   strcpy(this->Structure->tplorg, "%d");
   strcpy(this->Structure->tplref, "-");
   strcpy(this->Structure->iqname, "-");
@@ -523,6 +524,7 @@ void vtkMPEG2WriterInternal::ReadParmFile( )
   this->Structure->N_val = 21;
   this->Structure->M_val = 3;
   this->Structure->mpeg1 = 0;
+  this->Structure->fieldpic = 0;
   this->Structure->horizontal_size = this->Dim[0];
   this->Structure->vertical_size = this->Dim[1];
   this->Structure->aspectratio = 1;
