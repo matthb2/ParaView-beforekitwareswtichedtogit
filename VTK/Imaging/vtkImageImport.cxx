@@ -85,7 +85,8 @@ vtkImageImport::vtkImageImport()
   this->SetExecutive(exec);
   exec->Delete();
 
-  this->SetScalarArrayName("ImageFile");
+  this->ScalarArrayName=0;
+  this->SetScalarArrayName("");
 }
 
 //----------------------------------------------------------------------------
