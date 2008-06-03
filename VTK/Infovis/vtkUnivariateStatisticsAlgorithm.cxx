@@ -91,7 +91,7 @@ void vtkUnivariateStatisticsAlgorithm::RemoveColumnRange( vtkIdType idxColBegin,
 // ----------------------------------------------------------------------
 void vtkUnivariateStatisticsAlgorithm::SetColumnSelection( vtkIdType nCol )
 {
-  if ( ! this->Internals->ColumnSelectionUsage )
+  if ( this->Internals->ColumnSelectionUsage )
     {
     return;
     }
