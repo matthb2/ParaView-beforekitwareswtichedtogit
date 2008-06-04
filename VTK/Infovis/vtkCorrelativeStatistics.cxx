@@ -83,8 +83,13 @@ void vtkCorrelativeStatistics::ResetColumnPairs()
 }
 
 // ----------------------------------------------------------------------
-void vtkCorrelativeStatistics::AddColumnPair( const char* namColX, const char* namColY )
+void vtkCorrelativeStatistics::AddColumnPair( const char* namColX, const char* namColY, bool reset )
 {
+  if ( reset )
+    {
+    this->Internals->ColumnPairs.clear();
+    }
+
   vtkstd::pair<vtkStdString,vtkStdString> namPair( namColX, namColY );
   this->Internals->ColumnPairs.insert( namPair );
   this->Modified();
