@@ -67,6 +67,8 @@ vtkSMStateLoader::~vtkSMStateLoader()
 //---------------------------------------------------------------------------
 void vtkSMStateLoader::CreatedNewProxy(int id, vtkSMProxy* proxy)
 {
+  // Ensure that the proxy is created before it is registered.
+  proxy->UpdateVTKObjects();
   this->RegisterProxy(id, proxy);
 }
 
