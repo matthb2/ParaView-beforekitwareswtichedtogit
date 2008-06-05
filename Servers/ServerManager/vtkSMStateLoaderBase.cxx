@@ -157,6 +157,8 @@ vtkSMProxy* vtkSMStateLoaderBase::NewProxyFromElement(vtkPVXMLElement* proxyElem
   vtksys_ios::ostringstream stream;
   stream << "Created New Proxy: " << proxy->GetXMLGroup() << " , " << proxy->GetXMLName();
   vtkProcessModule::DebugLog(stream.str().c_str());
+  proxy->UpdateVTKObjects();
+
   // Give subclasses a chance to process the newly created proxy.
   this->CreatedNewProxy(id, proxy);
   return proxy;
