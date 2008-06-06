@@ -285,6 +285,16 @@ void vtkLineRepresentation::SetPoint2DisplayPosition(double x[3])
 }
 
 //----------------------------------------------------------------------
+void vtkLineRepresentation::SetRenderer(vtkRenderer* ren)
+{
+  this->HandleRepresentation->SetRenderer(ren);
+  this->Point1Representation->SetRenderer(ren);
+  this->Point2Representation->SetRenderer(ren);
+  this->LineHandleRepresentation->SetRenderer(ren);
+  this->Superclass::SetRenderer(ren);
+}
+
+//----------------------------------------------------------------------
 void vtkLineRepresentation::StartWidgetInteraction(double e[2])
 {
   // Store the start position
