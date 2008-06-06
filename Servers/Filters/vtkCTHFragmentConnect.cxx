@@ -6971,6 +6971,11 @@ int vtkCTHFragmentConnect::BroadcastIntegratedAttributes(
     {
     for (int procId=0; procId<nProcs; ++procId)
       {
+      // skip me
+      if (procId==sourceProcId)
+        {
+        continue;
+        }
       this->SendIntegratedAttributes(procId);
       }
     }
