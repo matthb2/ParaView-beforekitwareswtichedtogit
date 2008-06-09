@@ -103,7 +103,8 @@ void vtkSphereWidget2::SelectAction(vtkAbstractWidget *w)
 
   // Modifier keys force us into translare mode
   // The SetInteractionState has the side effect of highlighting the widget
-  if ( self->Interactor->GetShiftKey() || self->Interactor->GetControlKey() )
+  if ( interactionState == vtkSphereRepresentation::OnSphere ||
+       self->Interactor->GetShiftKey() || self->Interactor->GetControlKey() )
     {
     reinterpret_cast<vtkSphereRepresentation*>(self->WidgetRep)->
       SetInteractionState(vtkSphereRepresentation::Translating);
