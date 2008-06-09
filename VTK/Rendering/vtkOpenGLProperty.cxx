@@ -170,6 +170,9 @@ void vtkOpenGLProperty::Render(vtkActor *anActor,
     }
   else
     {
+    // still need to set this although we are disabling.  else the ATI X1600
+    // (for example) still manages to stipple under certain conditions.
+    glLineStipple (this->LineStippleRepeatFactor, this->LineStipplePattern);
     glDisable (GL_LINE_STIPPLE);
 #ifdef VTK_USE_GL2PS
     gl2psDisable(GL2PS_LINE_STIPPLE);
