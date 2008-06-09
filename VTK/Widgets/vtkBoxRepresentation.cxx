@@ -616,6 +616,7 @@ void vtkBoxRepresentation::GetPlanes(vtkPlanes *planes)
     
   planes->SetPoints(this->PlanePoints);
   planes->SetNormals(this->PlaneNormals);
+  planes->Modified();
 }
 
 //----------------------------------------------------------------------------
