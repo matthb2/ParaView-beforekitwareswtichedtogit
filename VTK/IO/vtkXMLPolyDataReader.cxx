@@ -41,13 +41,13 @@ vtkXMLPolyDataReader::vtkXMLPolyDataReader()
 
   // TimeStep
   this->VertsTimeStep = -1;
-  this->VertsOffset = (unsigned long)-1;
+  this->VertsOffset = static_cast<unsigned long>(-1);
   this->LinesTimeStep = -1;
-  this->LinesOffset = (unsigned long)-1;
+  this->LinesOffset = static_cast<unsigned long>(-1);
   this->StripsTimeStep = -1;
-  this->StripsOffset = (unsigned long)-1;
+  this->StripsOffset = static_cast<unsigned long>(-1);
   this->PolysTimeStep = -1;
-  this->PolysOffset = (unsigned long)-1;
+  this->PolysOffset = static_cast<unsigned long>(-1);
 }
 
 //----------------------------------------------------------------------------

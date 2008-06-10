@@ -432,7 +432,7 @@ int vtkXMLReader
 }
 
 //----------------------------------------------------------------------------
-int vtkXMLReader::RequestData(vtkInformation *request, 
+int vtkXMLReader::RequestData(vtkInformation *vtkNotUsed(request),
                               vtkInformationVector **vtkNotUsed(inputVector),
                               vtkInformationVector *outputVector)
 {

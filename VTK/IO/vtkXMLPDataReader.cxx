@@ -212,7 +212,8 @@ void vtkXMLPDataReader::SetupOutputInformation(vtkInformation *outInfo)
 
 
 //----------------------------------------------------------------------------
-void vtkXMLPDataReader::CopyOutputInformation(vtkInformation *outInfo, int port)
+void vtkXMLPDataReader::CopyOutputInformation(vtkInformation *outInfo,
+                                              int vtkNotUsed(port))
   {
   vtkInformation *localInfo = this->GetCurrentOutputInformation();
   if ( localInfo->Has(vtkDataObject::POINT_DATA_VECTOR()) )

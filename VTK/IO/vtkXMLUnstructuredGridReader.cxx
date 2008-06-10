@@ -34,7 +34,7 @@ vtkXMLUnstructuredGridReader::vtkXMLUnstructuredGridReader()
   this->CellElements = 0;
   this->NumberOfCells = 0;
   this->CellsTimeStep = -1;
-  this->CellsOffset   = (unsigned long)-1; //almost invalid state
+  this->CellsOffset   = static_cast<unsigned long>(-1); // almost invalid state
 }
 
 //----------------------------------------------------------------------------

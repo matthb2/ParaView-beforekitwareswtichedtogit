@@ -188,7 +188,6 @@ int
 vtkXMLPStructuredDataReader::ReadPrimaryElement(vtkXMLDataElement* ePrimary)
 {
   if(!this->Superclass::ReadPrimaryElement(ePrimary)) { return 0; }
-  vtkDataSet* output = vtkDataSet::SafeDownCast(this->GetCurrentOutput());
 
   // Get the whole extent attribute.
   int extent[6];
