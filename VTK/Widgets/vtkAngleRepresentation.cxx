@@ -196,4 +196,43 @@ void vtkAngleRepresentation::PrintSelf(ostream& os, vtkIndent indent)
   os << indent << "Arc Visibility: " << (this->ArcVisibility ? "On\n" : "Off\n");
   os << indent << "Handle Representation: " << this->HandleRepresentation << "\n";
 
+  os << indent << "Label Format: ";
+  if ( this->LabelFormat )
+    {
+    os << this->LabelFormat << "\n";
+    }
+  else
+    {
+    os << "(none)\n";
+    }
+
+  os << indent << "Point1 Representation: ";
+  if ( this->Point1Representation )
+    {
+    this->Point1Representation->PrintSelf(os,indent.GetNextIndent());
+    }
+  else
+    {
+    os << "(none)\n";
+    }
+
+  os << indent << "Center Representation: ";
+  if ( this->CenterRepresentation )
+    {
+    this->CenterRepresentation->PrintSelf(os,indent.GetNextIndent());
+    }
+  else
+    {
+    os << "(none)\n";
+    }
+
+  os << indent << "Point2 Representation: ";
+  if ( this->Point2Representation )
+    {
+    this->Point2Representation->PrintSelf(os,indent.GetNextIndent());
+    }
+  else
+    {
+    os << "(none)\n";
+    }
 }
