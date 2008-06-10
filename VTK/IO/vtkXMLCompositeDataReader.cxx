@@ -89,18 +89,7 @@ const char* vtkXMLCompositeDataReader::GetDataSetName()
 //----------------------------------------------------------------------------
 void vtkXMLCompositeDataReader::SetupEmptyOutput()
 {
-  vtkExecutive* exec = this->GetExecutive();
-  vtkInformation* info = exec->GetOutputInformation(0);
-
-  vtkDataObject* doOutput = 
-    info->Get(vtkDataObject::DATA_OBJECT());
-  vtkCompositeDataSet* composite = 
-    vtkCompositeDataSet::SafeDownCast(doOutput);
-  if (!composite)
-    {
-    return;
-    }
-  composite->Initialize();
+  this->GetCurrentOutput()->Initialize();
 }
 
 //----------------------------------------------------------------------------
@@ -224,8 +213,7 @@ unsigned int vtkXMLCompositeDataReader::CountLeaves(vtkXMLDataElement* elem)
 //----------------------------------------------------------------------------
 void vtkXMLCompositeDataReader::ReadXMLData()
 {
-  vtkExecutive* exec = this->GetExecutive();
-  vtkInformation* info = exec->GetOutputInformation(0);
+  vtkInformation* info = this->GetCurrentOutputInformation();
 
   unsigned int updatePiece = static_cast<unsigned int>(
     info->Get(vtkStreamingDemandDrivenPipeline::UPDATE_PIECE_NUMBER()));
