@@ -204,6 +204,11 @@ void vtkCorrelativeStatistics::ExecuteLearn( vtkTable* dataset,
     }
 
   this->Internals->EffectColumnBuffer();
+  if ( ! this->Internals->ColumnPairs.size() )
+    {
+    vtkWarningMacro( "No column pairs selected. Doing nothing." );
+    return;
+    }
 
   vtkStringArray* stringCol = vtkStringArray::New();
   stringCol->SetName( "Variable X" );
@@ -429,6 +434,11 @@ void vtkCorrelativeStatistics::ExecuteEvince( vtkTable* dataset,
     }
 
   this->Internals->EffectColumnBuffer();
+  if ( ! this->Internals->ColumnPairs.size() )
+    {
+    vtkWarningMacro( "No column pairs selected. Doing nothing." );
+    return;
+    }
 
   vtkStringArray* stringCol = vtkStringArray::New();
   stringCol->SetName( "Variable X" );
