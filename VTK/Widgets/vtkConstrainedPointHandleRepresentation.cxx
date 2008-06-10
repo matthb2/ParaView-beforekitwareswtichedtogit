@@ -723,9 +723,22 @@ void vtkConstrainedPointHandleRepresentation::PrintSelf(ostream& os, vtkIndent i
   this->SelectedProperty->PrintSelf(os,indent.GetNextIndent());
 
   os << indent << "Oblique Plane: ";
-  this->ObliquePlane->PrintSelf(os,indent.GetNextIndent());
+  if ( this->ObliquePlane )
+    {
+    this->ObliquePlane->PrintSelf(os,indent.GetNextIndent());
+    }
+  else
+    {
+    os << "(none)\n";
+    }
 
   os << indent << "Bounding Planes: ";
-  this->BoundingPlanes->PrintSelf(os,indent.GetNextIndent());
-
+  if ( this->BoundingPlanes )
+    {
+    this->BoundingPlanes->PrintSelf(os,indent.GetNextIndent());
+    }
+  else
+    {
+    os << "(none)\n";
+    }
 }
