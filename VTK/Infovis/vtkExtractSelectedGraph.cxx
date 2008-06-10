@@ -186,10 +186,9 @@ int vtkExtractSelectedGraph::RequestData(
     vtkErrorMacro("Selection list must be of type vtkIdTypeArray.");
     return 0;
     }
-  vtkIdType selectSize = selectArr->GetNumberOfTuples();
 
   // Invert the selection if necessary
-  int inverse = indexSelection->GetProperties()->Get(vtkSelection::INVERSE());
+  int inverse = selection->GetProperties()->Get(vtkSelection::INVERSE());
   vtkSmartPointer<vtkIdTypeArray> inverted = 0;
   if (inverse)
     {
@@ -204,6 +203,7 @@ int vtkExtractSelectedGraph::RequestData(
       }
     selectArr = inverted;
     }
+  vtkIdType selectSize = selectArr->GetNumberOfTuples();
   
   vtkSmartPointer<vtkMutableDirectedGraph> dirBuilder = 
     vtkSmartPointer<vtkMutableDirectedGraph>::New();
