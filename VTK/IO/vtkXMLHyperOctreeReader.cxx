@@ -83,13 +83,25 @@ int vtkXMLHyperOctreeReader::FillOutputPortInformation(int, vtkInformation *info
 //----------------------------------------------------------------------------
 vtkIdType vtkXMLHyperOctreeReader::GetNumberOfPoints() 
 {
-  return vtkDataSet::SafeDownCast(this->GetCurrentOutput())->GetNumberOfPoints();
+  vtkIdType numPts = 0;
+  vtkDataSet* output = vtkDataSet::SafeDownCast(this->GetCurrentOutput());
+  if (output)
+    {
+    numPts = output->GetNumberOfPoints();
+    }
+  return numPts;
 }
 
 //----------------------------------------------------------------------------
 vtkIdType vtkXMLHyperOctreeReader::GetNumberOfCells()
 {
-  return vtkDataSet::SafeDownCast(this->GetCurrentOutput())->GetNumberOfCells();
+  vtkIdType numCells = 0;
+  vtkDataSet* output = vtkDataSet::SafeDownCast(this->GetCurrentOutput());
+  if (output)
+    {
+    numCells = output->GetNumberOfCells();
+    }
+  return numCells;
 }
 
 //----------------------------------------------------------------------------
