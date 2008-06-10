@@ -46,7 +46,7 @@ public:
   vtkStdString BufferedX;
   vtkStdString BufferedY;
   bool MustEffect;
-  vtkCorrelativeStatistics::EffectBufferActionType Action;
+  vtkStatisticsAlgorithm::EffectBufferActionType Action;
 };
 
 vtkCorrelativeStatisticsPrivate::vtkCorrelativeStatisticsPrivate()
