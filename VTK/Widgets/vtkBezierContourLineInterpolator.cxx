@@ -223,5 +223,9 @@ void vtkBezierContourLineInterpolator::GetSpan( int nodeIndex,
 void vtkBezierContourLineInterpolator::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os,indent);  
+
+  os << indent << "Maximum Curve Error: " << this->MaximumCurveError << "\n";
+  os << indent << "Maximum Curve Line Segments: " 
+     << this->MaximumCurveLineSegments << "\n";
 }
 

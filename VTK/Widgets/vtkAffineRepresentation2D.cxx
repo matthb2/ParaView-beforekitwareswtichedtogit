@@ -1065,6 +1065,8 @@ void vtkAffineRepresentation2D::PrintSelf(ostream& os, vtkIndent indent)
   
   os << indent << "Display Text: " << (this->DisplayText ? "On\n" : "Off\n");
   
+  os << indent << "Origin: (" << this->Origin[0] << "," 
+     << this->Origin[1] << "," << this->Origin[2] << ")\n";
   os << indent << "Box Width: " << this->BoxWidth << "\n";
   os << indent << "Circle Width: " << this->CircleWidth << "\n";
   os << indent << "Axes Width: " << this->AxesWidth << "\n";

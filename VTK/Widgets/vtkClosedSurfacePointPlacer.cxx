@@ -365,4 +365,15 @@ void vtkClosedSurfacePointPlacer::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os,indent);
   
+  os << indent << "Bounding Planes:\n";
+  if ( this->BoundingPlanes )
+    {
+    this->BoundingPlanes->PrintSelf(os,indent.GetNextIndent());
+    }
+  else
+    {
+    os << " (none)\n";
+    }
+
+  os << indent << "Minimum Distance: " << this->MinimumDistance << "\n";
 }
