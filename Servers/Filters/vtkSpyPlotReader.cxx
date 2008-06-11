@@ -1582,6 +1582,7 @@ void vtkSpyPlotReader::SetGlobalMinLevelAndSpacing(
           }
         }
       }
+    delete [] recvBuf;
     }
   // proc 0 knows the min level and spacing 
   // share this with everyone else
