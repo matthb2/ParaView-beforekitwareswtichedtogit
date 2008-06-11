@@ -348,7 +348,7 @@ void vtkServerConnection::GatherInformationFromController(vtkSocketController* c
     vtkRemoteConnection::ROOT_INFORMATION_LENGTH_TAG);
   if (length2 <= 0)
     {
-    vtkErrorMacro("Server could failed to gather information.");
+    vtkErrorMacro("Server failed to gather information.");
     return;
     }
   unsigned char* data2 = new unsigned char[length2];
