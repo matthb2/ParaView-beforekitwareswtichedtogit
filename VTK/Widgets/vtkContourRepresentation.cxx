@@ -1121,5 +1121,21 @@ void vtkContourRepresentation::PrintSelf(ostream& os, vtkIndent indent)
   
   os << indent << "Pixel Tolerance: " << this->PixelTolerance <<"\n";
   os << indent << "World Tolerance: " << this->WorldTolerance <<"\n";
+
+  os << indent << "Closed Loop: " << (this->ClosedLoop ? "On\n" : "Off\n");
+  
+  os << indent << "Current Operation: ";
+  if ( this->CurrentOperation == vtkContourRepresentation::Inactive )
+    {
+    os << "Inactive\n";
+    }
+  else
+    {
+    os << "Translate\n";
+    }
+
+  os << indent << "Line Interpolator: " << this->LineInterpolator << "\n";
+  os << indent << "Point Placer: " << this->PointPlacer << "\n";
+  
 }
 
