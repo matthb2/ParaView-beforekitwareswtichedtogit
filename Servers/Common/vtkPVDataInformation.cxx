@@ -259,6 +259,14 @@ void vtkPVDataInformation::CopyFromCompositeDataSet(vtkCompositeDataSet* data)
   this->SetCompositeDataClassName(data->GetClassName());
   this->CompositeDataSetType = data->GetDataObjectType();
 
+  if (this->DataSetType == -1)
+    {
+    // This is a composite dataset with no non-empty leaf node. Set some data
+    // type (Look at BUG #7144).
+    this->SetDataClassName("vtkDataSet");
+    this->DataSetType = VTK_DATA_SET;
+    }
+
 
   // AddInformation should have updated NumberOfDataSets correctly to count
   // number of non-zero datasets. We don't need to fix it here.
