@@ -540,11 +540,11 @@ void vtkGraphMapper::Render(vtkRenderer *ren, vtkActor * vtkNotUsed(act))
     {
     this->EdgeActor->RenderOpaqueGeometry(ren);
     }
-  this->VertexActor->RenderOpaqueGeometry(ren);
   if (this->OutlineActor->GetVisibility())
     {
     this->OutlineActor->RenderOpaqueGeometry(ren);
     }
+  this->VertexActor->RenderOpaqueGeometry(ren);
   if (this->IconActor->GetVisibility())
     {
     this->IconActor->RenderOpaqueGeometry(ren);
