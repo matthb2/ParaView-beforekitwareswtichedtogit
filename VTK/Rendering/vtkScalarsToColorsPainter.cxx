@@ -103,6 +103,8 @@ vtkScalarsToColorsPainter::vtkScalarsToColorsPainter()
 
   this->UsingScalarColoring = 0;
   this->ScalarVisibility = 1;
+
+  this->LastUsedAlpha = -1.0;
 }
 
 //-----------------------------------------------------------------------------
@@ -335,6 +337,7 @@ void vtkScalarsToColorsPainter::PrepareForRendering(vtkRenderer* renderer,
       this->GetPremultiplyColorsWithAlpha(actor),
       vtkPolyData::SafeDownCast(input));
     }
+  this->LastUsedAlpha = actor->GetProperty()->GetOpacity();
   this->Superclass::PrepareForRendering(renderer, actor);
 }
 
@@ -544,8 +547,12 @@ void vtkScalarsToColorsPainter::MapScalars(vtkPolyData* output,
     {
     colors = opfd->GetArray("Color");
     }
-  
-  if (colors && lut->GetAlpha() == alpha)
+ 
+  // The LastUsedAlpha checks ensures that opacity changes are reflected
+  // correctly when this->MapScalars(..) is called when iterating over a
+  // composite dataset.
+  if (colors && lut->GetAlpha() == alpha &&
+    this->LastUsedAlpha == alpha)
     {
     if (this->GetMTime() < colors->GetMTime() &&
       input->GetMTime() < colors->GetMTime() &&
