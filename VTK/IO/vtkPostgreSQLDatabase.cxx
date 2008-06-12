@@ -83,6 +83,7 @@ void vtkPostgreSQLDatabase::PrintSelf(ostream &os, vtkIndent indent)
   os << indent << "DatabaseType: " << (this->DatabaseType ? this->DatabaseType : "NULL") << endl;
   os << indent << "HostName: " << (this->HostName ? this->HostName : "NULL") << endl;
   os << indent << "User: " << (this->User ? this->User : "NULL") << endl;
+  os << indent << "Password: <hidden>" << endl;
   os << indent << "DatabaseName: " << (this->DatabaseName ? this->DatabaseName : "NULL") << endl;
   os << indent << "ServerPort: " << this->ServerPort << endl;
   os << indent << "ConnectOptions: " << (this->ConnectOptions ? this->ConnectOptions : "NULL") << endl;
