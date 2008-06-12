@@ -74,10 +74,10 @@ void vtkSMDoubleVectorProperty::UpdateLastPushedValues()
   this->Internals->UpdateLastPushedValues();
 }
 
-#include "vtkSMProxy.h"
 //---------------------------------------------------------------------------
 void vtkSMDoubleVectorProperty::AppendCommandToStream(
-  vtkSMProxy* p, vtkClientServerStream* str, vtkClientServerID objectId )
+  vtkSMProxy* vtkNotUsed(proxy), vtkClientServerStream* str, 
+  vtkClientServerID objectId )
 {
   if (this->InformationOnly || !this->Initialized)
     {
