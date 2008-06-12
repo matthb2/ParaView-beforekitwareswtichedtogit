@@ -195,4 +195,7 @@ void vtkHandleRepresentation::PrintSelf(ostream& os, vtkIndent indent)
     {
     os << indent << "PointPlacer: (none)\n";
     }
+
+  // this->InteractionState is printed in superclass
+  // this is commented to avoid PrintSelf errors
 }

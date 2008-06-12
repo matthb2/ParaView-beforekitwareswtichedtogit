@@ -38,4 +38,8 @@ vtkPolyDataContourLineInterpolator::~vtkPolyDataContourLineInterpolator()
 void vtkPolyDataContourLineInterpolator::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os,indent);  
+
+  os << indent << "Polys: \n";
+  this->Polys->PrintSelf(os,indent.GetNextIndent());
+
 }
