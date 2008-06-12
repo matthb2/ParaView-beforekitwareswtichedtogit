@@ -69,13 +69,8 @@ void vtkSMClientServerRenderViewProxy::InitializeForMultiView(
 
   otherView->UpdateVTKObjects();
 
-  this->SharedServerRenderSyncManagerID =
-    otherView->SharedServerRenderSyncManagerID.IsNull()?
-    otherView->RenderSyncManager->GetID():
-    otherView->SharedServerRenderSyncManagerID;
-
-  this->SharedRenderWindowID = otherView->SharedRenderWindowID.IsNull()?
-    otherView->RenderWindowProxy->GetID() : otherView->SharedRenderWindowID;
+  this->SharedServerRenderSyncManagerID = otherView->RenderSyncManager->GetID();
+  this->SharedRenderWindowID = otherView->RenderWindowProxy->GetID();
 
   this->Superclass::InitializeForMultiView(view);
 }

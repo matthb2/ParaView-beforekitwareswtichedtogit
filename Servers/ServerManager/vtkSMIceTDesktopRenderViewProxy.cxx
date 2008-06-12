@@ -73,10 +73,7 @@ void vtkSMIceTDesktopRenderViewProxy::InitializeForMultiView(
     return;
     }
 
-  this->SharedServerRenderSyncManagerID =
-    otherView->SharedServerRenderSyncManagerID.IsNull()?
-    otherView->RenderSyncManager->GetID():
-    otherView->SharedServerRenderSyncManagerID;
+  this->SharedServerRenderSyncManagerID = otherView->RenderSyncManager->GetID();
 
   this->Superclass::InitializeForMultiView(view);
 }
