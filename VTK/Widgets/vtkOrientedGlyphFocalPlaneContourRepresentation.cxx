@@ -823,5 +823,32 @@ void vtkOrientedGlyphFocalPlaneContourRepresentation::PrintSelf(
   
   os << indent << "InteractionOffset: (" << this->InteractionOffset[0] 
     << "," << this->InteractionOffset[1] << ")" << endl;
+
+  if ( this->Property )
+    {
+    os << indent << "Property: " << this->Property << "\n";
+    }
+  else
+    {
+    os << indent << "Property: (none)\n";
+    }
+
+  if ( this->ActiveProperty )
+    {
+    os << indent << "Active Property: " << this->ActiveProperty << "\n";
+    }
+  else
+    {
+    os << indent << "Active Property: (none)\n";
+    }
+
+  if ( this->LinesProperty )
+    {
+    os << indent << "Lines Property: " << this->LinesProperty << "\n";
+    }
+  else
+    {
+    os << indent << "Lines Property: (none)\n";
+    }
 }
 
