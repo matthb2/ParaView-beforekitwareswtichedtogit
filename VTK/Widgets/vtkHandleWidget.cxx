@@ -269,4 +269,10 @@ void vtkHandleWidget::PrintSelf(ostream& os, vtkIndent indent)
   //Superclass typedef defined in vtkTypeMacro() found in vtkSetGet.h
   this->Superclass::PrintSelf(os,indent);
 
+  os << indent << "Allow Handle Resize: " 
+     << (this->AllowHandleResize ? "On\n" : "Off\n");
+
+  os << indent << "Enable Axis Constraint: " 
+     << (this->EnableAxisConstraint ? "On\n" : "Off\n");
+  
 }

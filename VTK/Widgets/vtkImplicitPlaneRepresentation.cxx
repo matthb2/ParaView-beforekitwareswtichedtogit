@@ -603,6 +603,35 @@ void vtkImplicitPlaneRepresentation::PrintSelf(ostream& os, vtkIndent indent)
      << (this->ScaleEnabled ? "On" : "Off") << "\n";
   os << indent << "Draw Plane: " << (this->DrawPlane ? "On" : "Off") << "\n";
 
+  os << indent << "Representation State: ";
+  switch ( this->RepresentationState )
+    {
+    case Outside:
+      os << "Outside\n";
+      break;
+    case Moving:
+      os << "Moving\n";
+      break;
+    case MovingOutline:
+      os << "MovingOutline\n";
+      break;
+    case MovingOrigin:
+      os << "MovingOrigin\n";
+      break;
+    case Rotating:
+      os << "Rotating\n";
+      break;
+    case Pushing:
+      os << "Pushing\n";
+      break;
+    case MovingPlane:
+      os << "MovingPlane\n";
+      break;
+    case Scaling:
+      os << "Scaling\n";
+      break;
+    }
+
   // this->InteractionState is printed in superclass
   // this is commented to avoid PrintSelf errors
 }
