@@ -27,6 +27,7 @@
 #include "vtkActor.h"
 #include "vtkGeoAlignedImage.h"
 #include "vtkGeoImageNode.h"
+#include "vtkGeoPatch.h"
 #include "vtkGeoTerrainNode.h"
 #include "vtkGeoTerrain.h"
 
