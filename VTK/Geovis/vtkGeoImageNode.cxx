@@ -175,7 +175,7 @@ void vtkGeoImageNode::CropImageForTile(
 }
 
 //-----------------------------------------------------------------------------
-void vtkGeoImageNode::LoadImage(const char* prefix)
+void vtkGeoImageNode::LoadAnImage(const char* prefix)
 {
   vtkXMLImageDataReader* reader = vtkXMLImageDataReader::New();
   char fn[512];

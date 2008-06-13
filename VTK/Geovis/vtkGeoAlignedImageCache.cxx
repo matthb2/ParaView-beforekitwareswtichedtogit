@@ -195,7 +195,7 @@ vtkGeoImageNode* vtkGeoAlignedImageCache::GetBestImageNode(
       imageNode->CreateChildren();
       for (int i = 0; i < 4; ++i)
         {
-        imageNode->GetChild(i)->LoadImage(
+        imageNode->GetChild(i)->LoadAnImage(
           this->Source->GetTileDatabaseLocation());
         }
       childIdx = id & 3;

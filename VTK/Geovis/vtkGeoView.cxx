@@ -182,7 +182,7 @@ vtkGeoAlignedImageRepresentation* vtkGeoView::AddDefaultImageRepresentation(cons
   VTK_CREATE(vtkGeoAlignedImage, image);
   VTK_CREATE(vtkGeoAlignedImageSource, imageSource);
   
-  imageSource->LoadImage(filename);
+  imageSource->LoadAnImage(filename);
   
   VTK_CREATE(vtkGeoAlignedImageCache, imageCache);
   imageCache->SetSource(imageSource);
