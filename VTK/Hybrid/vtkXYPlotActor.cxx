@@ -1168,7 +1168,10 @@ void vtkXYPlotActor::ComputeDORange(double xrange[2], double yrange[2],
   vtkFieldData *field;
   int doNum, numColumns;
   vtkIdType numTuples, numRows, num, ptId, maxNum;
-  double maxLength=0.0, x, y, xPrev = 0.0;
+  double maxLength=0.0;
+  double x = 0.0;
+  double y = 0.0;
+  double xPrev = 0.0;
   vtkDataArray *array;
   
   // NOTE: FieldData can have non-numeric arrays. However, XY plot can only 
