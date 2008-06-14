@@ -30,6 +30,15 @@
 vtkCxxRevisionMacro(vtk3DSImporter, "$Revision$");
 vtkStandardNewMacro(vtk3DSImporter);
 
+// Silent warning like
+// "dereferencing type-punned pointer will break strict-aliasing rules"
+// This file just has to many of them.
+// This is due to the use of (vtk3DSList **)&root in VTK_LIST_* macros
+// defined in vtk3DS.h
+#ifdef __GNUG__
+#pragma GCC diagnostic ignored "-Wstrict-aliasing"
+#endif
+
 static vtk3DSColour Black = {0.0, 0.0, 0.0};
 static char   obj_name[80] = "";
 static vtk3DSColour fog_colour = {0.0, 0.0, 0.0};
