@@ -58,9 +58,8 @@ inline void vtkSleep(double duration)
 //-----------------------------------------------------------------------------
 VTK_THREAD_RETURN_TYPE vtkGeoTerrainCacheThreadStart( void *arg )
 {
-  int threadId, threadCount;
-  threadId = ((vtkMultiThreader::ThreadInfo *)(arg))->ThreadID;
-  threadCount = ((vtkMultiThreader::ThreadInfo *)(arg))->NumberOfThreads;
+//   int threadId = ((vtkMultiThreader::ThreadInfo *)(arg))->ThreadID;
+//   int threadCount = ((vtkMultiThreader::ThreadInfo *)(arg))->NumberOfThreads;
   
   vtkGeoTerrainCache* self;
   self = (vtkGeoTerrainCache*)
