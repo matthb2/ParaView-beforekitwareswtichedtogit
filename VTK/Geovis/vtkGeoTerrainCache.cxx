@@ -101,6 +101,11 @@ void vtkGeoTerrainCache::PrintSelf(ostream& os, vtkIndent indent)
 //-----------------------------------------------------------------------------
 void vtkGeoTerrainCache::SetTerrainSource(vtkGeoTerrainSource* source)
 {
+  if ( !source )
+    {
+    return;
+    }
+  
   this->TerrainSource = source;
   this->WesternHemisphere = vtkSmartPointer<vtkGeoTerrainNode>::New();
   this->EasternHemisphere = vtkSmartPointer<vtkGeoTerrainNode>::New();
