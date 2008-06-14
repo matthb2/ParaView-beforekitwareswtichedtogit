@@ -167,7 +167,7 @@ void vtkSMSpreadSheetRepresentationProxy::Update(vtkSMViewProxy* view)
       {
       this->Connect(this->GetInputProxy(),
         this->UpdateStrategy, "Input", this->OutputPort);
-      vtkSMPropertyHelper(this->BlockFilter, "GenerateOriginalIds").Set(0);
+      vtkSMPropertyHelper(this->BlockFilter, "GenerateOriginalIds").Set(1);
       }
     this->BlockFilter->UpdateVTKObjects();
 
