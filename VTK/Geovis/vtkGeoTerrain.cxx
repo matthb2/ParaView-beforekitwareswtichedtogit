@@ -82,7 +82,7 @@ void vtkGeoTerrain::FinishEdit()
 //-----------------------------------------------------------------------------
 int vtkGeoTerrain::GetNumberOfNodes()
 {
-  return this->Nodes.size();
+  return static_cast<int>(this->Nodes.size());
 }
 
 //-----------------------------------------------------------------------------
