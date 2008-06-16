@@ -102,13 +102,13 @@ vtkGeoGraphRepresentation::vtkGeoGraphRepresentation()
   //this->LabelHierarchy->SetInputConnection(this->LabelSize->GetOutputPort());
   //this->LabelPlacer->SetInputConnection(this->LabelHierarchy->GetOutputPort());
   //this->LabelMapper->SetInputConnection(this->LabelPlacer->GetOutputPort());
-  this->LabelMaskPoints->SetInputConnection(this->AssignCoordinates->GetOutputPort());
+  this->GraphToPolyData->SetInputConnection(this->AssignCoordinates->GetOutputPort());
+  this->LabelMaskPoints->SetInputConnection(this->GraphToPolyData->GetOutputPort());
   this->LabelTransform->SetInputConnection(this->LabelMaskPoints->GetOutputPort());
   this->LabelSelectVisiblePoints->SetInputConnection(this->LabelTransform->GetOutputPort());
   this->LabelMapper->SetInputConnection(this->LabelSelectVisiblePoints->GetOutputPort());
   this->LabelActor->SetMapper(this->LabelMapper);
 
-  this->GraphToPolyData->SetInputConnection(this->AssignCoordinates->GetOutputPort());
   this->EdgeCenters->SetInputConnection(this->EdgeLayout->GetOutputPort());
   this->EdgeLabelMaskPoints->SetInputConnection(this->EdgeCenters->GetOutputPort());
   this->EdgeLabelTransform->SetInputConnection(this->EdgeLabelMaskPoints->GetOutputPort());
