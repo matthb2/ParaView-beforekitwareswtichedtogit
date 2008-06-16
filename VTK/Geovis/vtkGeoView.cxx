@@ -78,6 +78,9 @@ vtkGeoView::vtkGeoView()
   this->LowResEarthActor->SetScale(0.95); 
   
   this->RenderWindow = 0;
+
+  // Perform frustum selection by default
+  this->SetSelectionModeToFrustum();
 }
 
 //----------------------------------------------------------------------------
