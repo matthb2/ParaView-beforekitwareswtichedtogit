@@ -201,7 +201,7 @@ void vtkGeoGraphRepresentation::SetVertexLabelArrayName(const char* name)
   //  SetInputArrayToProcess(0, 0, 0, vtkDataObject::FIELD_ASSOCIATION_VERTICES, name);
   //this->LabelHierarchy->
   //  SetInputArrayToProcess(2, 0, 0, vtkDataObject::FIELD_ASSOCIATION_VERTICES, name);
-  this->LabelMapper->GetFieldDataName();
+  this->LabelMapper->SetFieldDataName(name);
 }
 
 //----------------------------------------------------------------------------
