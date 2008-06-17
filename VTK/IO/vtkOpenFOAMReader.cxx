@@ -703,7 +703,7 @@ vtkUnstructuredGrid * vtkOpenFOAMReader::MakeInternalMesh()
         for(k = 0; k < (int)this->FacePoints->value[
           this->FacesOfCell->value[i][j].faceIndex].size(); k++)
           {
-          for(l = 0; l < (int)cellPoints.size(); l++);
+          for(l = 0; l < (int)cellPoints.size(); l++)
             {
             if(cellPoints[l] == this->FacePoints->value[
               this->FacesOfCell->value[i][j].faceIndex][k])
@@ -3321,7 +3321,7 @@ vtkUnstructuredGrid * vtkOpenFOAMReader::GetCellZoneMesh(int timeState,
         for(k = 0; k < (int)this->FacePoints->value[
             this->FacesOfCell->value[i][j].faceIndex].size(); k++)
           {
-          for(l = 0; l < (int)cellPoints.size(); l++);
+          for(l = 0; l < (int)cellPoints.size(); l++)
             {
             if(cellPoints[l] == this->FacePoints->value[this->FacesOfCell->
                                 value[cellZone[i]][j].faceIndex][k])
