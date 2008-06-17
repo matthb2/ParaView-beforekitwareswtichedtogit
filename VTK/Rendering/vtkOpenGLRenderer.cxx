@@ -1117,6 +1117,7 @@ void vtkOpenGLRenderer::Clear(void)
     glDisable(GL_LIGHTING);
     glDisable(GL_TEXTURE_1D);
     glDisable(GL_TEXTURE_2D);
+    glShadeModel(GL_SMOOTH); // color interpolation
 
     glMatrixMode(GL_MODELVIEW);
     glPushMatrix();
