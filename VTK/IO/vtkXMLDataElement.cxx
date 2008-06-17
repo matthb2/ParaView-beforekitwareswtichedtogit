@@ -955,8 +955,14 @@ void vtkXMLDataElement::SeekInlineDataPosition(vtkXMLDataParser* parser)
     stream->clear(stream->rdstate() & ~ios::eofbit);
     stream->clear(stream->rdstate() & ~ios::failbit);
     parser->SeekG(this->GetXMLByteIndex());
-    while(stream->get(c) && (c != '>'));
-    while(stream->get(c) && this->IsSpace(c));
+    while(stream->get(c) && (c != '>'))
+      {
+      ;
+      }
+    while(stream->get(c) && this->IsSpace(c))
+      {
+      ;
+      }
     unsigned long pos = parser->TellG();
     this->InlineDataPosition = pos-1;
     }
