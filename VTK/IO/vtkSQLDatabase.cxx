@@ -41,7 +41,7 @@ PURPOSE.  See the above copyright notice for more information.
 #include <vtksys/ios/sstream>
 
 
-class vtkSQLiteDatabase::vtkCallbackVector : 
+class vtkSQLDatabase::vtkCallbackVector : 
   public vtkstd::vector<vtkSQLDatabase::CreateFunction>
 {
 public:
