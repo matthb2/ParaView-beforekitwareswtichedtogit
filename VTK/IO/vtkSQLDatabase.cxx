@@ -397,7 +397,7 @@ vtkSQLDatabase* vtkSQLDatabase::CreateFromURL( const char* URL )
   if ( protocol == "sqlite" )
     {
     db = vtkSQLiteDatabase::New();
-    db->ParseURL(dataglom.c_str());
+    db->ParseURL(URL);
     return db;
     }
     
