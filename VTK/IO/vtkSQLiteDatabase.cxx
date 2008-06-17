@@ -396,6 +396,27 @@ vtkStdString vtkSQLiteDatabase::GetURL()
 }
 
 // ----------------------------------------------------------------------
+bool vtkSQLiteDatabase::ParseURL(const char* URL)
+{
+  vtkstd::string protocol;
+  vtkstd::string dataglom;
+  
+  if ( ! vtksys::SystemTools::ParseURLProtocol( URL, protocol, dataglom))
+    {
+    vtkErrorMacro( "Invalid URL: " << URL );
+    return false;
+    }
+
+  if ( protocol == "sqlite" )
+    {
+    this->SetDatabaseFileName(dataglom.c_str());
+    return true;
+    }
+
+  return false;
+}
+
+// ----------------------------------------------------------------------
 bool vtkSQLiteDatabase::HasError()
 { 
   return (vtk_sqlite3_errcode(this->SQLiteInstance)!=VTK_SQLITE_OK);
