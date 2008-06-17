@@ -49,7 +49,10 @@ static void ReadStringVersion(const char* version, int& major, int& minor)
   const char* end = version + length;
   const char* s;
 
-  for(s=begin; (s != end) && (*s != '.'); ++s);
+  for(s=begin; (s != end) && (*s != '.'); ++s)
+    {
+    ;
+    }
 
   if(s > begin)
     {

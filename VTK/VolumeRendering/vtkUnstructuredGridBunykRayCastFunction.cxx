@@ -131,7 +131,10 @@ void vtkUnstructuredGridBunykRayCastIterator::Initialize(int x, int y)
                         (double *)NULL,
                         (float *)NULL,
                         (float *)NULL,
-                        this->MaxNumberOfIntersections) > 0);
+                        this->MaxNumberOfIntersections) > 0)
+    {
+    ;
+    }
 }
 
 vtkIdType vtkUnstructuredGridBunykRayCastIterator::GetNextIntersections(

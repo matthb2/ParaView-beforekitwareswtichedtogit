@@ -137,7 +137,10 @@ void vtkHeap::CleanAll()
 {
   this->Current = this->First;
   if (!this->Current) { return; }
-  while (this->DeleteAndNext());
+  while (this->DeleteAndNext())
+    {
+    ;
+    }
   this->First = this->Current = this->Last = 0;
   this->Position = 0;
 }
