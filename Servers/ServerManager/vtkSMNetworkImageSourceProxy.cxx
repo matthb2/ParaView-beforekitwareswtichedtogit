@@ -142,6 +142,8 @@ void vtkSMNetworkImageSourceProxy::UpdateImage()
 void vtkSMNetworkImageSourceProxy::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os, indent);
+  os << indent << "FileName: "
+    << (this->FileName? this->FileName : "(none)") << endl;
 }
 
 

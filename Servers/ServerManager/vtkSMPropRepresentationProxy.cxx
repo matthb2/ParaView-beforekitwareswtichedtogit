@@ -259,6 +259,7 @@ void vtkSMPropRepresentationProxy::SetViewUpdateTime(double time)
 void vtkSMPropRepresentationProxy::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os, indent);
+  os << indent << "SelectionVisibility: " << this->SelectionVisibility << endl;
 }
 
 

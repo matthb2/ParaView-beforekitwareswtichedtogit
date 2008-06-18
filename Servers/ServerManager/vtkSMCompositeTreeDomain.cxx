@@ -210,6 +210,7 @@ void vtkSMCompositeTreeDomain::PrintSelf(ostream& os, vtkIndent indent)
     os << "UNKNOWN";
     }
   os << endl;
+  os << indent << "SourcePort: " << this->SourcePort << endl;
 }
 
 

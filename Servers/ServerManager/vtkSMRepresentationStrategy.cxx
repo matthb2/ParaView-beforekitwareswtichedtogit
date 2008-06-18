@@ -373,6 +373,8 @@ void vtkSMRepresentationStrategy::PrintSelf(ostream& os, vtkIndent indent)
   os << indent << "EnableCaching: " << this->EnableCaching << endl;
   os << indent << "KeepLODPipelineUpdated: " 
     << this->KeepLODPipelineUpdated << endl;
+  os << indent << "RepresentedDataInformation: " 
+    << this->RepresentedDataInformation << endl;
 }
 
 

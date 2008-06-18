@@ -94,6 +94,7 @@ void vtkSMTimeKeeperProxy::SetTime(double time)
 void vtkSMTimeKeeperProxy::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os, indent);
+  os << indent << "Time: " << this->Time << endl;
 }
 
 

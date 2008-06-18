@@ -81,9 +81,12 @@ void vtkSMSelectionDeliveryRepresentationProxy::Update(vtkSMViewProxy* view)
 }
 
 //----------------------------------------------------------------------------
-void vtkSMSelectionDeliveryRepresentationProxy::PrintSelf(ostream& os, vtkIndent indent)
+void vtkSMSelectionDeliveryRepresentationProxy::PrintSelf(
+  ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os, indent);
+  os << indent << "SelectionRepresentation: " 
+    << this->SelectionRepresentation << endl;
 }
 
 

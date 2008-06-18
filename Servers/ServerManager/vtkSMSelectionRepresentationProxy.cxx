@@ -335,6 +335,9 @@ void vtkSMSelectionRepresentationProxy::UpdateVisibility()
 void vtkSMSelectionRepresentationProxy::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os, indent);
+  os << indent << "Prop3D: " << this->Prop3D << endl;
+  os << indent << "PointLabelVisibility: " << this->PointLabelVisibility << endl;
+  os << indent << "CellLabelVisibility: " << this->CellLabelVisibility << endl;
 }
 
 

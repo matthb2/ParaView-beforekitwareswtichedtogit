@@ -61,6 +61,7 @@ vtkRenderWindow* vtkSMRenderViewHelper::GetRenderWindow()
 void vtkSMRenderViewHelper::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os, indent);
+  os << indent << "RenderViewProxy: " << this->RenderViewProxy << endl;
 }
 
 

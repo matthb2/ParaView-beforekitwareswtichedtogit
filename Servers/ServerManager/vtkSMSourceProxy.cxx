@@ -838,4 +838,6 @@ void vtkSMSourceProxy::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os, indent);
   os << indent << "DataInformationValid: " << this->DataInformationValid << endl;
+  os << indent << "OutputPortsCreated: " << this->OutputPortsCreated << endl;
+  os << indent << "ProcessSupport: " << this->ProcessSupport << endl;
 }

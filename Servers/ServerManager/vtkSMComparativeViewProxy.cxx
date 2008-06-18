@@ -640,5 +640,8 @@ void vtkSMComparativeViewProxy::PrintSelf(ostream& os, vtkIndent indent)
   os << indent << "Dimensions: " << this->Dimensions[0] 
     << ", " << this->Dimensions[1] << endl;
   os << indent << "Mode: " << this->Mode << endl;
+  os << indent << "TimeRange: " 
+    << this->TimeRange[0] <<", " << this->TimeRange[1] << endl;
+  os << indent << "Spacing: " << this->Spacing << endl;
 }
 

@@ -428,4 +428,5 @@ void vtkSMAnimationSceneProxy::PrintSelf(ostream& os, vtkIndent indent)
   this->Superclass::PrintSelf(os, indent);
   os << indent << "OverrideStillRender: " << this->OverrideStillRender << endl;
   os << indent << "CacheLimit: " << this->CacheLimit << endl;
+  os << indent << "Caching: " << this->Caching << endl;
 }

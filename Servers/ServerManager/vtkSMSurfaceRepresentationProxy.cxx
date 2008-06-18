@@ -540,6 +540,7 @@ void vtkSMSurfaceRepresentationProxy::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os, indent);
   os << indent << "Prop3D: " << this->Prop3D << endl;
+  os << indent << "SuppressLOD: " << this->SuppressLOD << endl;
 }
 
 

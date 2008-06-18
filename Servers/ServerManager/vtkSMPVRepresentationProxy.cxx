@@ -513,6 +513,7 @@ void vtkSMPVRepresentationProxy::PrintSelf(ostream& os, vtkIndent indent)
     os << "(unknown)";
     }
   os << endl;
+  os << indent << "CubeAxesVisibility: " << this->CubeAxesVisibility << endl;
 }
 
 

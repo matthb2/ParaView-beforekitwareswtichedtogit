@@ -349,6 +349,8 @@ int vtkSMCameraLink::LoadState(vtkPVXMLElement* linkElement, vtkSMStateLoader* l
 void vtkSMCameraLink::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os, indent);
+  os << indent << "SynchronizeInteractiveRenders: " 
+    << this->SynchronizeInteractiveRenders << endl;
 }
 
 
