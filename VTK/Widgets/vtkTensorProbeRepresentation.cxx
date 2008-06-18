@@ -215,6 +215,18 @@ void vtkTensorProbeRepresentation::BuildRepresentation()
 }
 
 //----------------------------------------------------------------------
+void vtkTensorProbeRepresentation::GetActors(vtkPropCollection *pc)
+{
+  this->TrajectoryActor->GetActors(pc);
+}
+
+//----------------------------------------------------------------------
+void vtkTensorProbeRepresentation::ReleaseGraphicsResources(vtkWindow *win)
+{
+  this->TrajectoryActor->ReleaseGraphicsResources(win);
+}
+
+//----------------------------------------------------------------------
 void vtkTensorProbeRepresentation::PrintSelf(ostream& os, vtkIndent indent)
 {
   //Superclass typedef defined in vtkTypeMacro() found in vtkSetGet.h

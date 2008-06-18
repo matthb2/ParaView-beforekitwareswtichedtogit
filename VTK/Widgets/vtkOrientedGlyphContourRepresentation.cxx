@@ -617,6 +617,7 @@ void vtkOrientedGlyphContourRepresentation::GetActors(vtkPropCollection *pc)
 {
   this->Actor->GetActors(pc);
   this->ActiveActor->GetActors(pc);
+  this->LinesActor->GetActors(pc);
 }
 
 //----------------------------------------------------------------------
@@ -624,6 +625,7 @@ void vtkOrientedGlyphContourRepresentation::ReleaseGraphicsResources(vtkWindow *
 {
   this->Actor->ReleaseGraphicsResources(win);
   this->ActiveActor->ReleaseGraphicsResources(win);
+  this->LinesActor->ReleaseGraphicsResources(win);
 }
 
 //----------------------------------------------------------------------

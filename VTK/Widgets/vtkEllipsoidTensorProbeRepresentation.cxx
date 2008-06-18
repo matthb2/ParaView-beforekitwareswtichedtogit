@@ -177,6 +177,18 @@ void vtkEllipsoidTensorProbeRepresentation::BuildRepresentation()
 }
 
 //----------------------------------------------------------------------
+void vtkEllipsoidTensorProbeRepresentation::GetActors(vtkPropCollection *pc)
+{
+  this->EllipsoidActor->GetActors(pc);
+}
+
+//----------------------------------------------------------------------
+void vtkEllipsoidTensorProbeRepresentation::ReleaseGraphicsResources(vtkWindow *win)
+{
+  this->EllipsoidActor->ReleaseGraphicsResources(win);
+}
+
+//----------------------------------------------------------------------
 void vtkEllipsoidTensorProbeRepresentation
 ::PrintSelf(ostream& os, vtkIndent indent)
 {

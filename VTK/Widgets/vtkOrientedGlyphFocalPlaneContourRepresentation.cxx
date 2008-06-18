@@ -739,6 +739,7 @@ void vtkOrientedGlyphFocalPlaneContourRepresentation::GetActors2D(vtkPropCollect
 {
   this->Actor->GetActors2D(pc);
   this->ActiveActor->GetActors2D(pc);
+  this->LinesActor->GetActors2D(pc);
 }
 
 //----------------------------------------------------------------------
@@ -746,6 +747,7 @@ void vtkOrientedGlyphFocalPlaneContourRepresentation::ReleaseGraphicsResources(v
 {
   this->Actor->ReleaseGraphicsResources(win);
   this->ActiveActor->ReleaseGraphicsResources(win);
+  this->LinesActor->ReleaseGraphicsResources(win);
 }
 
 //----------------------------------------------------------------------
