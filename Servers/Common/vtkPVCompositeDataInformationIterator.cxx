@@ -117,6 +117,7 @@ void vtkPVCompositeDataInformationIterator::PrintSelf(ostream& os, vtkIndent ind
 {
   this->Superclass::PrintSelf(os, indent);
   os << indent << "DataInformation: " << this->DataInformation << endl;
+  os << indent << "CurrentFlatIndex: " << this->CurrentFlatIndex << endl;
 }
 
 
