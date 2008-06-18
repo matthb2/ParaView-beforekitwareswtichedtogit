@@ -53,6 +53,7 @@ vtkDescriptiveStatistics::~vtkDescriptiveStatistics()
 void vtkDescriptiveStatistics::PrintSelf( ostream &os, vtkIndent indent )
 {
   this->Superclass::PrintSelf( os, indent );
+  os << indent << "MultiplicativeFactor: " << this->MultiplicativeFactor << endl;
 }
 
 // ----------------------------------------------------------------------
