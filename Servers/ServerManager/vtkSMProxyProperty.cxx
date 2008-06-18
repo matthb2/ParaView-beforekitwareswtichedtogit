@@ -393,7 +393,8 @@ unsigned int vtkSMProxyProperty::RemoveProxy(vtkSMProxy* proxy, int modify)
 //---------------------------------------------------------------------------
 int vtkSMProxyProperty::SetProxy(unsigned int idx, vtkSMProxy* proxy)
 {
-  if (proxy == this->PPInternals->Proxies[idx])
+  if (this->PPInternals->Proxies.size() > idx &&
+      proxy == this->PPInternals->Proxies[idx])
     {
     return 1;
     }
