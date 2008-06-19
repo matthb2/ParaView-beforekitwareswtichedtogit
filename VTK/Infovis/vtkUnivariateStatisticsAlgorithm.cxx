@@ -57,6 +57,21 @@ void vtkUnivariateStatisticsAlgorithm::SelectAllColumns( bool all )
 }
 
 // ----------------------------------------------------------------------
+void vtkUnivariateStatisticsAlgorithm::SetColumnStatus( const char* namCol, int status )
+{
+  if( status )
+    {
+    this->Internals->SelectedColumns.insert( namCol );
+    }
+  else
+    {
+    this->Internals->SelectedColumns.erase( namCol );
+    }
+
+  this->Modified();
+}
+
+// ----------------------------------------------------------------------
 void vtkUnivariateStatisticsAlgorithm::ResetColumns()
 {
   this->Internals->SelectedColumns.clear();
