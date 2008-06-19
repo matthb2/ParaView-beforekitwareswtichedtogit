@@ -77,8 +77,6 @@ void vtkOrderStatistics::ExecuteLearn( vtkTable* dataset,
     return;
     }
 
-  this->Internals->EffectColumnBuffer();
-  this->SetColumnSelection( dataset );
   if ( ! this->Internals->SelectedColumns.size() )
     {
     return;
@@ -249,8 +247,6 @@ void vtkOrderStatistics::ExecuteEvince( vtkTable* dataset,
     return;
     }
 
-  this->Internals->EffectColumnBuffer();
-  this->SetColumnSelection( dataset );
   if ( ! this->Internals->SelectedColumns.size() )
     {
     return;
