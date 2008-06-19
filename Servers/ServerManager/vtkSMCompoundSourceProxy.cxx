@@ -274,6 +274,8 @@ int vtkSMCompoundSourceProxy::LoadRevivalState(vtkPVXMLElement* revivalElem,
 int vtkSMCompoundSourceProxy::LoadDefinition(vtkPVXMLElement* proxyElement,
   vtkSMStateLoaderBase* loader)
 {
+  this->ReadCoreXMLAttributes(proxyElement);
+
   // * Iterate over all <Proxy /> sub elements and add subproxies.
   unsigned int i;
   unsigned int numElems = proxyElement->GetNumberOfNestedElements();

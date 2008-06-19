@@ -226,14 +226,6 @@ vtkSMProxy* vtkSMProxyManager::NewProxy(vtkPVXMLElement* pelement,
       vtkSMCompoundProxyDefinitionLoader::New();
     vtkSMCompoundSourceProxy* cproxy = loader->LoadDefinition(pelement);
     loader->Delete();
-    if (cproxy)
-      {
-      // Since this Compound proxy was created using a definition, we set
-      // the XMLName on the CP to denote the name of the definition from
-      // which it was created.
-      cproxy->SetXMLName(proxyname);
-      cproxy->SetXMLGroup(groupname);
-      }
     return cproxy;
     }
 
