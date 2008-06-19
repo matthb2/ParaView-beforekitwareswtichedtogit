@@ -289,8 +289,6 @@ bool vtkSMOutlineRepresentationProxy::GetBounds(double bounds[6])
 
     int i, j, k;
     double origX[3], x[3];
-    double bds[6];
-    bool first = true;
     vtkBoundingBox bbox;
     for (i = 0; i < 2; i++)
       {

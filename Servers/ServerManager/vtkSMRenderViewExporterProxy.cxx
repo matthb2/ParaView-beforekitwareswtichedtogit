@@ -57,7 +57,6 @@ void vtkSMRenderViewExporterProxy::Write()
       }
 
     vtkRenderWindow* renWin = rv->GetRenderWindow();
-    vtkExporter* exporter = vtkExporter::SafeDownCast(this->GetClientSideObject());
     exporter->SetRenderWindow(renWin);
     exporter->Write();
     exporter->SetRenderWindow(0);
