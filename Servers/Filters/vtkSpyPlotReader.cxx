@@ -1472,16 +1472,6 @@ void vtkSpyPlotReader::PrintSelf(ostream& os, vtkIndent indent)
     os << "GlobalController:" << endl;
     this->GlobalController->PrintSelf(os, indent.GetNextIndent());
     }
-  if ( this->GlobalController)
-    {
-    os << "Controller:" << endl;
-    this->GlobalController->PrintSelf(os, indent.GetNextIndent());
-    }
-  if ( this->AttributeController)
-    {
-    os << "Controller:" << endl;
-    this->AttributeController->PrintSelf(os, indent.GetNextIndent());
-    }
 }
 // Get the minimum level that actuall has data and 
 // its grid spacing. If this process has no blocks
