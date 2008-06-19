@@ -27,6 +27,8 @@
 #include "vtkStdString.h"
 #include "vtkVariant.h"
 
+#include <limits.h> // CHAR_BIT
+
 //----------------------------------------------------------------------------
 // class vtkDistributedGraphHelper
 //----------------------------------------------------------------------------
