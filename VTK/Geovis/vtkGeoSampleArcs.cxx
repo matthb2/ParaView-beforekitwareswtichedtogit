@@ -80,8 +80,8 @@ int vtkGeoSampleArcs::RequestData(
   lines->InitTraversal();
   for (vtkIdType i = 0; i < lines->GetNumberOfCells(); i++)
     {
-    vtkIdType npts;
-    vtkIdType* pts;
+      vtkIdType npts=0; // to remove warning
+      vtkIdType* pts=0; // to remove warning
     lines->GetNextCell(npts, pts);
     
     double lastPoint[3];

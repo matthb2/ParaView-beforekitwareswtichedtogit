@@ -850,7 +850,7 @@ int vtkExtractSelectedFrustum::ABoxFrustumIsect(double *bounds, vtkCell *cell)
   */
   vtkCell *face;
   vtkCell *edge;
-  vtkPoints *pts;
+  vtkPoints *pts=0;
   double *vertbuffer;
   int maxedges = 16;
   //be ready to resize if we hit a polygon with many vertices
