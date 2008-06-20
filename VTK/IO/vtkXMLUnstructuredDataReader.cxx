@@ -363,8 +363,10 @@ void vtkXMLUnstructuredDataReader::SetupOutputInformation(vtkInformation *outInf
 //----------------------------------------------------------------------------
 void vtkXMLUnstructuredDataReader::CopyOutputInformation(vtkInformation *outInfo, int port)
 {
+  vtkInformation *localInfo = 
+    this->GetExecutive()->GetOutputInformation( port );
   this->Superclass::CopyOutputInformation(outInfo, port);
-  outInfo->CopyEntry( this->GetCurrentOutputInformation(), 
+  outInfo->CopyEntry(localInfo, 
     vtkStreamingDemandDrivenPipeline::MAXIMUM_NUMBER_OF_PIECES() );
 }
 
