@@ -96,7 +96,8 @@ vtkXMLStructuredDataReader::CopyOutputInformation(vtkInformation* outInfo,
   this->Superclass::CopyOutputInformation(outInfo, port);
 
   // All structured data has a whole extent.
-  vtkInformation* localInfo = this->GetCurrentOutputInformation();
+  vtkInformation *localInfo = 
+    this->GetExecutive()->GetOutputInformation( port );
   if(localInfo->Has(vtkStreamingDemandDrivenPipeline::WHOLE_EXTENT()))
     {
     outInfo->CopyEntry(localInfo,

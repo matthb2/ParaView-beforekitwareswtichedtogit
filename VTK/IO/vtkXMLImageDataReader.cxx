@@ -106,8 +106,8 @@ void vtkXMLImageDataReader::SetupOutputInformation(vtkInformation *outInfo)
 void vtkXMLImageDataReader::CopyOutputInformation(vtkInformation *outInfo, int port)
 {
   this->Superclass::CopyOutputInformation(outInfo, port);
-  vtkInformation *localInfo = this->GetCurrentOutputInformation();
-  
+  vtkInformation *localInfo = 
+    this->GetExecutive()->GetOutputInformation( port );
   if ( localInfo->Has(vtkDataObject::ORIGIN()) )
     {
     outInfo->CopyEntry( localInfo, vtkDataObject::ORIGIN() );
