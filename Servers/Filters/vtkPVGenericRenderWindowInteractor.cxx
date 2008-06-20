@@ -93,8 +93,8 @@ vtkPVGenericRenderWindowInteractor::~vtkPVGenericRenderWindowInteractor()
 }
 
 //----------------------------------------------------------------------------
-void vtkPVGenericRenderWindowInteractor::SetCenterOfRotation(float x,
-  float y, float z)
+void vtkPVGenericRenderWindowInteractor::SetCenterOfRotation(double x,
+  double y, double z)
 {
   if (this->CenterOfRotation[0] != x ||
     this->CenterOfRotation[1] != y ||
