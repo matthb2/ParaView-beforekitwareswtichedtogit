@@ -363,6 +363,7 @@ void vtkGlobeSource::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os,indent);
 
+  os << indent << "CurtainHeight: " << this->CurtainHeight << "\n";
   os << indent << "Longitude Resolution: " << this->LongitudeResolution << "\n";
   os << indent << "Latitude Resolution: " << this->LatitudeResolution << "\n";
   os << indent << "Longitude Start: " << this->StartLongitude << "\n";

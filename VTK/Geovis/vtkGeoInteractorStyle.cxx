@@ -111,6 +111,7 @@ vtkGeoInteractorStyle::~vtkGeoInteractorStyle()
 void vtkGeoInteractorStyle::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os,indent);
+  os << indent << "LockHeading: " << this->GetLockHeading() << endl;
 }
 
 //-----------------------------------------------------------------------------

@@ -101,6 +101,12 @@ vtkGeoAlignedImageSource::~vtkGeoAlignedImageSource()
 void vtkGeoAlignedImageSource::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os,indent);
+  os << indent << "TileDatabaseDepth: " << this->TileDatabaseDepth << endl;
+  os << indent << "TileDatabaseLocation: " 
+     << (this->TileDatabaseLocation ? this->TileDatabaseLocation : "(null)")
+     << endl;
+  os << indent << "UseTileDatabase: " 
+    << (this->UseTileDatabase ? " true" : " false") << endl;
 }
 
 //-----------------------------------------------------------------------------
