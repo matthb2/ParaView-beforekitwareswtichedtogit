@@ -446,7 +446,7 @@ int vtkBridgeCell::EvaluatePosition(double x[3],
       }
     }
 
-  assert("post: valid_result" && result==-1 || result==0 || result==1);
+  assert("post: valid_result" && (result==-1 || result==0 || result==1));
   assert("post: positive_distance" && (!(result!=-1) || (!(closestPoint!=0)||dist2>=0))); // A=>B: !A || B
   return result;
 }
