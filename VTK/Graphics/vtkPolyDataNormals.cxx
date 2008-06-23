@@ -97,7 +97,7 @@ int vtkPolyDataNormals::RequestData(
 
 
   // If there is nothing to do, pass the data through
-  if ( this->ComputePointNormals == 0 && this->ComputeCellNormals == 0 || 
+  if ( (this->ComputePointNormals == 0 && this->ComputeCellNormals == 0) || 
        (numPolys < 1 && numStrips < 1) )
     { //don't do anything! pass data through
     output->CopyStructure(input);

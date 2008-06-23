@@ -150,8 +150,8 @@ int vtkExtractUnstructuredGrid::RequestData(
     {
     for(cellId=0; cellId < numCells; cellId++)
       {
-      if ( this->CellClipping && cellId < this->CellMinimum ||
-      cellId > this->CellMaximum )
+        if ( this->CellClipping && (cellId < this->CellMinimum ||
+                                    cellId > this->CellMaximum) )
         {
         cellVis[cellId] = 0;
         }
