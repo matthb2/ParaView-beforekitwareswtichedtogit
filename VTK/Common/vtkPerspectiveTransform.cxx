@@ -110,7 +110,7 @@ void vtkPerspectiveTransform::SetInput(vtkHomogeneousTransform *input)
 int vtkPerspectiveTransform::CircuitCheck(vtkAbstractTransform *transform)
 {
   if (this->vtkHomogeneousTransform::CircuitCheck(transform) ||
-      this->Input && this->Input->CircuitCheck(transform))
+      (this->Input && this->Input->CircuitCheck(transform)))
     {
     return 1;
     }
