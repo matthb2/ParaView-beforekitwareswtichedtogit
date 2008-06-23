@@ -195,7 +195,6 @@ int pqProcessModuleGUIHelper::preAppExec(int argc, char** argv,
     return 1;
     }
 
-  int status = 1;
   if (this->Implementation->Window)
     {
     this->Implementation->Window->show();
