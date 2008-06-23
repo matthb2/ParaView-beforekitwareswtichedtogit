@@ -78,7 +78,7 @@ int vtkBridgeAttribute::GetCentering()
     {
     result=vtkCellCentered;
     }
-  assert("post: valid_result" && (result==vtkPointCentered) || (result==vtkCellCentered) || (result==vtkBoundaryCentered));
+  assert("post: valid_result" && ((result==vtkPointCentered) || (result==vtkCellCentered) || (result==vtkBoundaryCentered)));
   return result;
 }
 
