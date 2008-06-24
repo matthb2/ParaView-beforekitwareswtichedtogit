@@ -26,7 +26,9 @@
 #include "vtkPNMReader.h"
 #include "vtkSLCReader.h"
 #include "vtkTIFFReader.h"
+#ifdef VTK_USE_METAIO
 #include "vtkMetaImageReader.h"
+#endif
 
 // Destroying the prototype readers requires information keys.
 // Include the manager here to make sure the keys are not destroyed
@@ -155,9 +157,11 @@ void vtkImageReader2Factory::InitializeReaders()
   vtkImageReader2Factory::AvailableReaders->
     AddItem((reader = vtkMINCImageReader::New()));
   reader->Delete();
+#ifdef VTK_USE_METAIO
   vtkImageReader2Factory::AvailableReaders->
     AddItem((reader = vtkMetaImageReader::New()));
   reader->Delete();
+#endif
 }
 
 
