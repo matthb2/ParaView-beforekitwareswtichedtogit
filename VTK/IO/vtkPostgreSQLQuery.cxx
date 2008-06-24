@@ -94,7 +94,7 @@ public:
 
 // ----------------------------------------------------------------------
 
-vtkVariant vtkPostgreSQLQuery::DataValue( int column )
+vtkVariant vtkPostgreSQLQuery::DataValue( vtkIdType column )
 {
   if ( this->IsActive() == false )
     {
