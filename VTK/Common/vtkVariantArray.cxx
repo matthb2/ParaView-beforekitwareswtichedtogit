@@ -843,8 +843,9 @@ void vtkVariantArray::DataElementChanged(vtkIdType id)
       else
         {
         // Insert this change into the set of cached updates
-        this->Lookup->CachedUpdates.insert(
-          vtkstd::make_pair(this->GetValue(id), id));
+        vtkstd::pair<const vtkVariant, vtkIdType> 
+          value(this->GetValue(id), id);
+        this->Lookup->CachedUpdates.insert(value);
         }
     }
 }
