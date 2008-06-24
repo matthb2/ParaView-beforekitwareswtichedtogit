@@ -324,7 +324,7 @@ void vtkOrderStatistics::ExecuteEvince( vtkTable* dataset,
 }
 
 // ----------------------------------------------------------------------
-void vtkOrderStatistics::SetQuantileDefinition( vtkIdType qd )
+void vtkOrderStatistics::SetQuantileDefinition( int qd )
 {
   switch ( qd )
     {

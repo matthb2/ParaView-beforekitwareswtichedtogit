@@ -444,6 +444,7 @@ void vtkDescriptiveStatistics::ExecuteEvince( vtkTable* dataset,
 
     // Compute the deviation of each entry for the column
     this->ComputeDeviations( relativeDeviations, dfunc, nRowD );
+    delete dfunc;
 
     // Add the column to the output
     output->AddColumn( relativeDeviations );

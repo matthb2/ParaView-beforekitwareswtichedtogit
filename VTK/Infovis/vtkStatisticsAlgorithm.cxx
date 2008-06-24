@@ -36,7 +36,7 @@ vtkStatisticsAlgorithm::vtkStatisticsAlgorithm()
   this->SetNumberOfOutputPorts( 1 );
 
   // If not told otherwise, run in Learn mode
-  this->SetExecutionMode( vtkStatisticsAlgorithm::LearnMode );
+  this->ExecutionMode = vtkStatisticsAlgorithm::LearnMode;
 }
 
 // ----------------------------------------------------------------------
