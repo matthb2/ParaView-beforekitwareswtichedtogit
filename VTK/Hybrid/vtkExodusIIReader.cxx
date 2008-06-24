@@ -3982,7 +3982,6 @@ int vtkExodusIIReaderPrivate::UpdateTimeInformation()
   this->Times.clear();
   if ( num_timesteps > 0 )
     {
-    this->Times.reserve( num_timesteps );
     this->Times.resize( num_timesteps );
     VTK_EXO_FUNC( ex_get_all_times( this->Exoid, &this->Times[0] ), "Could not retrieve time values." );
     }
@@ -4026,7 +4025,6 @@ int vtkExodusIIReaderPrivate::RequestInformation()
   this->Times.clear();
   if ( num_timesteps > 0 )
     {
-    this->Times.reserve( num_timesteps );
     this->Times.resize( num_timesteps );
     VTK_EXO_FUNC( ex_get_all_times( this->Exoid, &this->Times[0] ), "Could not retrieve time values." );
     }
@@ -4488,7 +4486,7 @@ static void BroadcastString( vtkMultiProcessController* controller, vtkStdString
     if ( rank )
       {
       vtkstd::vector<char> tmp;
-      tmp.reserve( len );
+      tmp.resize( len );
       controller->Broadcast( &(tmp[0]), len, 0 );
       str = &tmp[0];
       }
