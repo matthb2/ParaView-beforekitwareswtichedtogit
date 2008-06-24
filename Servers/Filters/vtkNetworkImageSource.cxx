@@ -118,6 +118,12 @@ const vtkClientServerStream& vtkNetworkImageSource::GetImageAsString()
 }
 
 //----------------------------------------------------------------------------
+void vtkNetworkImageSource::ClearBuffers()
+{
+  this->Reply->Reset();
+}
+
+//----------------------------------------------------------------------------
 void vtkNetworkImageSource::ReadImageFromString(vtkClientServerStream& css)
 {
   // Get the length of the string in the vtkClientServerStream.
