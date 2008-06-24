@@ -231,7 +231,8 @@ int pqProcessModuleGUIHelper::appExec()
     {
     // Starts the event loop.
     QCoreApplication* app = QApplication::instance();
-    return app->exec();
+    int status = app->exec();
+    return status;
     }
 
   // in case the Window didn't get created for some reason...
