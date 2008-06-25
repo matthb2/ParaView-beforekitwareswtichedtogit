@@ -53,6 +53,7 @@ vtkTable::vtkTable()
   // Use vtkDataSetAttributes instance as the field data.
   vtkDataSetAttributes* dsa = vtkDataSetAttributes::New();
   this->SetFieldData(dsa);
+  dsa->Delete();
 }
 
 //----------------------------------------------------------------------------
