@@ -41,6 +41,9 @@ vtkGeoAlignedImageRepresentation::vtkGeoAlignedImageRepresentation()
   this->Actor = vtkSmartPointer<vtkAssembly>::New();
   this->Terrain = 0;
   this->Image = 0;
+
+  // Turn off selectability.
+  this->SelectableOff();
 }
 
 //-----------------------------------------------------------------------------
