@@ -216,7 +216,7 @@ void vtkOrderStatistics::ExecuteValidate( vtkTable*,
 }
 
 // ----------------------------------------------------------------------
-void vtkOrderStatistics::ExecuteEvince( vtkTable* dataset,
+void vtkOrderStatistics::ExecuteAssess( vtkTable* dataset,
                                         vtkTable* params,
                                         vtkTable* output)
 {

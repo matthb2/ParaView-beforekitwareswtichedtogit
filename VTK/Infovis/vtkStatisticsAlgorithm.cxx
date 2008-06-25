@@ -77,12 +77,12 @@ int vtkStatisticsAlgorithm::RequestData( vtkInformation*,
       vtkWarningMacro( "Incorrect execution mode requested: "<<this->ExecutionMode<<". Doing nothing." );
       return 0;
       }
-    case EvinceMode:
+    case AssessMode:
       {
       // Extract params table
       vtkInformation* paramsInfo = inputVector[1]->GetInformationObject( 0 );
       vtkTable* params = vtkTable::SafeDownCast( paramsInfo->Get(vtkDataObject::DATA_OBJECT() ) );
-      this->ExecuteEvince( dataset, params, output );
+      this->ExecuteAssess( dataset, params, output );
       break;
       }
     default:
@@ -125,7 +125,7 @@ void vtkStatisticsAlgorithm::SetExecutionMode( vtkIdType em )
       break;
     case vtkStatisticsAlgorithm::ValidateMode:
       break;
-    case vtkStatisticsAlgorithm::EvinceMode:
+    case vtkStatisticsAlgorithm::AssessMode:
       break;
     default:
       vtkWarningMacro( "Incorrect type of execution mode: "

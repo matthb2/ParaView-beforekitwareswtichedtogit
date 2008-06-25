@@ -348,7 +348,7 @@ void vtkCorrelativeStatistics::ExecuteValidate( vtkTable*,
 }
 
 // ----------------------------------------------------------------------
-void vtkCorrelativeStatistics::ExecuteEvince( vtkTable* dataset,
+void vtkCorrelativeStatistics::ExecuteAssess( vtkTable* dataset,
                                               vtkTable* params,
                                               vtkTable* output)
 {

@@ -178,7 +178,7 @@ void vtkContingencyStatistics::ExecuteValidate( vtkTable*,
 }
 
 // ----------------------------------------------------------------------
-void vtkContingencyStatistics::ExecuteEvince( vtkTable* dataset,
+void vtkContingencyStatistics::ExecuteAssess( vtkTable* dataset,
                                               vtkTable* params,
                                               vtkTable* output)
 {

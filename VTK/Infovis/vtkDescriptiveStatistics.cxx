@@ -334,7 +334,7 @@ public:
 };
 
 // ----------------------------------------------------------------------
-void vtkDescriptiveStatistics::ExecuteEvince( vtkTable* dataset,
+void vtkDescriptiveStatistics::ExecuteAssess( vtkTable* dataset,
                                               vtkTable* params,
                                               vtkTable* output)
 {
