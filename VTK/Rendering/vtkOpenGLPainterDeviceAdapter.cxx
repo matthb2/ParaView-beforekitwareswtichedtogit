@@ -85,10 +85,6 @@ void vtkOpenGLPainterDeviceAdapter::Initialize(vtkRenderer * ren)
       extensions->LoadExtension("GL_VERSION_1_2");
       extensions->LoadCorePromotedExtension("GL_ARB_multitexture");
       }
-    else
-      {
-      vtkErrorMacro( "Your OpenGL library must support GL_ARB_multitexture." );
-      }
     extensions->Delete();
     }
 }
