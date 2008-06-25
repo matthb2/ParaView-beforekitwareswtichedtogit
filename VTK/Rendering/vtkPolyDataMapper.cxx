@@ -186,6 +186,33 @@ void vtkPolyDataMapper::ShallowCopy(vtkAbstractMapper *mapper)
   this->vtkMapper::ShallowCopy(mapper);
 }
 
+void vtkPolyDataMapper::MapDataArrayToVertexAttribute(
+    const char* vertexAttributeName,
+    const char* dataArrayName, int fieldAssociation, int componentno)
+{
+  vtkErrorMacro("Not impmlemented at this level...");
+}
+
+void vtkPolyDataMapper::MapDataArrayToMultiTextureAttribute(
+    VTKTextureUnit unit,
+    const char* dataArrayName, int fieldAssociation, int componentno)
+{
+  vtkErrorMacro("Not impmlemented at this level...");
+}
+
+
+void vtkPolyDataMapper::RemoveVertexAttributeMapping(const char* vertexAttributeName)
+{
+  vtkErrorMacro("Not impmlemented at this level...");
+}
+
+
+void vtkPolyDataMapper::RemoveAllVertexAttributeMappings()
+{
+  vtkErrorMacro("Not impmlemented at this level...");
+}
+
+
 void vtkPolyDataMapper::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os,indent);
