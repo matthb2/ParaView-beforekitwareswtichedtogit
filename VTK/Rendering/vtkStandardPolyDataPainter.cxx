@@ -469,7 +469,6 @@ void vtkStandardPolyDataPainter::DrawCells(int mode, vtkCellArray *connectivity,
 
         if(textureIndex >= 0)
           {
-          cout << textureIndex << endl;
           device->SendMultiTextureCoords(
             (siComp>=0)? 1: numc,
             a->GetDataType(), 
