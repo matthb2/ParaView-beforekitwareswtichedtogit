@@ -149,7 +149,7 @@ int vtkExtractSelectedGraph::RequestData(
   if (converted->GetContentType() == vtkSelection::SELECTIONS)
     {
     int type = -1;
-    for (int i = 0; i < converted->GetNumberOfChildren(); ++i)
+    for (unsigned int i = 0; i < converted->GetNumberOfChildren(); ++i)
       {
       vtkSelection* child = converted->GetChild(i);
       if (child->GetFieldType() == vtkSelection::VERTEX)
