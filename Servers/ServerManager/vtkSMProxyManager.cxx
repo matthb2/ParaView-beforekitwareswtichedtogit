@@ -226,6 +226,11 @@ vtkSMProxy* vtkSMProxyManager::NewProxy(vtkPVXMLElement* pelement,
       vtkSMCompoundProxyDefinitionLoader::New();
     vtkSMCompoundSourceProxy* cproxy = loader->LoadDefinition(pelement);
     loader->Delete();
+    if (cproxy)
+      {
+      cproxy->SetXMLName(proxyname);
+      cproxy->SetXMLGroup(groupname);
+      }
     return cproxy;
     }
 
