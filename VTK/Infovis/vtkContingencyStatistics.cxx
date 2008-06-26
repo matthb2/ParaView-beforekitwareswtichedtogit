@@ -56,8 +56,8 @@ vtkContingencyStatistics::~vtkContingencyStatistics()
 void vtkContingencyStatistics::PrintSelf( ostream &os, vtkIndent indent )
 {
   this->Superclass::PrintSelf( os, indent );
-  os << indent << "X: " << this->X << endl;
-  os << indent << "Y: " << this->Y << endl;
+  os << indent << "X: " << (this->X ? this->X : "(none)") << endl;
+  os << indent << "Y: " << (this->Y ? this->Y : "(none)") << endl;
  }
 
 // ----------------------------------------------------------------------
