@@ -485,7 +485,7 @@ void vtkPOVExporter::WritePolygons(vtkPolyData *polys, bool scalar_visible)
   // the rest of triangles            
     for (vtkIdType i = 3; i < npts; i++) 
       {    
-      triangle[1] = pts[2];
+      triangle[1] = triangle[2];
       triangle[2] = pts[i];
       fprintf(this->FilePtr, VTKPOV_TRIFMT1,
               triangle[0], triangle[1], triangle[2]);
@@ -522,7 +522,7 @@ void vtkPOVExporter::WritePolygons(vtkPolyData *polys, bool scalar_visible)
       // the rest of triangles            
       for (vtkIdType i = 3; i < npts; i++) 
         {    
-        triangle[1] = pts[2];
+        triangle[1] = triangle[2];
         triangle[2] = pts[i];
         fprintf(this->FilePtr, VTKPOV_TRIFMT1,
                 triangle[0], triangle[1], triangle[2]);
