@@ -62,8 +62,10 @@ vtkSMProperty::vtkSMProperty()
   this->IsInternal = 1;
   this->Documentation = 0;
   this->Repeatable = 0;
-
+  
   this->Hints = 0;
+  this->BlockModifiedEvents = false;
+  this->PendingModifiedEvents = false;
 }
 
 //---------------------------------------------------------------------------
