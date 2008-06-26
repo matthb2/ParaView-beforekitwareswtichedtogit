@@ -101,7 +101,6 @@ void vtkDataRepresentation::Select(
     vtkSelection* converted = this->ConvertSelection(view, selection);
     if (converted)
       {
-      converted->GetProperties()->Set(vtkSelection::SOURCE(), this);
       this->UpdateSelection(converted);
       converted->Delete();
       }
