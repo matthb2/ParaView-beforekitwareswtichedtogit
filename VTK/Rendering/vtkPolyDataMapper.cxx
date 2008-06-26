@@ -197,7 +197,7 @@ void vtkPolyDataMapper::MapDataArrayToVertexAttribute(
 }
 
 void vtkPolyDataMapper::MapDataArrayToMultiTextureAttribute(
-    VTKTextureUnit vtkNotUsed(unit),
+    int vtkNotUsed(unit),
     const char* vtkNotUsed(dataArrayName), 
     int vtkNotUsed(fieldAssociation), 
     int vtkNotUsed(componentno)

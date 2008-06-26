@@ -120,7 +120,7 @@ void vtkPainterPolyDataMapper::MapDataArrayToVertexAttribute(
 
 //---------------------------------------------------------------------------
 void vtkPainterPolyDataMapper::MapDataArrayToMultiTextureAttribute(
-  VTKTextureUnit unit,
+  int unit,
   const char* dataArrayName, 
   int field,
   int componentno)
