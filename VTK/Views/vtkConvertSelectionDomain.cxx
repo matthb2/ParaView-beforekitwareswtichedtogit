@@ -149,9 +149,9 @@ int vtkConvertSelectionDomain::RequestData(
   output->SetContentType(vtkSelection::SELECTIONS);
 
   // Iterate over all input selections
-  for (unsigned int i = 0; i < input->GetNumberOfChildren(); ++i)
+  for (unsigned int c = 0; c < input->GetNumberOfChildren(); ++c)
     {
-    vtkSelection* curInput = input->GetChild(i);
+    vtkSelection* curInput = input->GetChild(c);
     vtkSmartPointer<vtkSelection> curOutput =
       vtkSmartPointer<vtkSelection>::New();
     vtkAbstractArray* inArr = curInput->GetSelectionList();

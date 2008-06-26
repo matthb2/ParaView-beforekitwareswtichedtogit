@@ -182,9 +182,9 @@ int vtkExtractSelectedGraph::RequestData(
         else
           {
           vtkIdType numTuples = curList->GetNumberOfTuples();
-          for (vtkIdType i = 0; i < numTuples; ++i)
+          for (vtkIdType j = 0; j < numTuples; ++j)
             {
-            list->InsertNextValue(curList->GetValue(i));
+            list->InsertNextValue(curList->GetValue(j));
             }
           } // end else
         } // end if (curList)
