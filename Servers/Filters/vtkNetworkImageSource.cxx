@@ -120,7 +120,9 @@ const vtkClientServerStream& vtkNetworkImageSource::GetImageAsString()
 //----------------------------------------------------------------------------
 void vtkNetworkImageSource::ClearBuffers()
 {
-  this->Reply->Reset();
+  this->Buffer->Initialize();
+  delete this->Reply;
+  this->Reply = new vtkClientServerStream();
 }
 
 //----------------------------------------------------------------------------
@@ -132,6 +134,7 @@ void vtkNetworkImageSource::ReadImageFromString(vtkClientServerStream& css)
     {
     abort();
     }
+  this->ClearBuffers();
 
   // Get the string (a .vtk dataset containing a vtkImageData) from the
   // vtkClientServerStream.
