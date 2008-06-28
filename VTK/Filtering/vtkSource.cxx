@@ -705,6 +705,20 @@ void vtkSource::MarkGeneratedOutputs(vtkDataObject*)
     if(this->Outputs[i])
       {
       this->Outputs[i]->DataHasBeenGenerated();
+      // Assume that the algorithm produced the required data unless the
+      // algorithm sets otherwise.
+      vtkInformation* dataInfo = this->Outputs[i]->GetInformation();
+      if (!dataInfo->Has(vtkDataObject::DATA_PIECE_NUMBER()) ||
+          dataInfo->Get(vtkDataObject::DATA_PIECE_NUMBER()) == - 1)
+        {
+        dataInfo->Set(vtkDataObject::DATA_PIECE_NUMBER(), 
+                      this->Outputs[i]->GetUpdatePiece());
+        dataInfo->Set(vtkDataObject::DATA_NUMBER_OF_PIECES(), 
+                      this->Outputs[i]->GetUpdateNumberOfPieces());
+        dataInfo->Set(vtkDataObject::DATA_NUMBER_OF_GHOST_LEVELS(), 
+                      this->Outputs[i]->GetUpdateGhostLevel());
+        }
+
       }
     }
 }
