@@ -2504,9 +2504,9 @@ int vtkCTHFragmentConnectRingBuffer::Pop(vtkCTHFragmentConnectIterator* item)
 vtkCTHFragmentConnect::vtkCTHFragmentConnect()
 {
   this->Controller = vtkMultiProcessController::GetGlobalController();
-  int myProcId=this->Controller->GetLocalProcessId();
 
   #ifdef vtkCTHFragmentConnectDEBUG
+  int myProcId=this->Controller->GetLocalProcessId();
   this->MyPid=WritePidFile(this->Controller->GetCommunicator(),"cthfc.pid");
   cerr << "[" << __LINE__ << "] "
        << myProcId
