@@ -2513,8 +2513,6 @@ vtkCTHFragmentConnect::vtkCTHFragmentConnect()
        << " memory commitment entering vtkCTHFragmentConnect is:"
        << endl
        << GetMemoryUsage(this->MyPid,__LINE__,myProcId);
-  #else
-  this->MyPid=-1;
   #endif
 
   // Pipeline
