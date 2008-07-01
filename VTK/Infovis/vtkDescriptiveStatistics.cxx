@@ -340,8 +340,6 @@ void vtkDescriptiveStatistics::ExecuteAssess( vtkTable* dataset,
                                               vtkTable* params,
                                               vtkTable* output)
 {
-  output->ShallowCopy( dataset );
-
   vtkIdType nColD = dataset->GetNumberOfColumns();
   if ( ! nColD )
     {
