@@ -41,6 +41,11 @@ vtkMutableDirectedGraph::~vtkMutableDirectedGraph()
 }
 
 //----------------------------------------------------------------------------
+vtkIdType vtkMutableDirectedGraph::AddVertex()
+{
+  return this->AddVertex(0);
+}
+//----------------------------------------------------------------------------
 vtkIdType vtkMutableDirectedGraph::AddVertex(vtkVariantArray *propertyArr)
 {
   vtkIdType vertex;
