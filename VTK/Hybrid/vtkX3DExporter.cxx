@@ -106,7 +106,7 @@ void vtkX3DExporter::WriteData()
   vtkLightCollection *lc;
   vtkLight *aLight;
   vtkCamera *cam;
-  vtkstd::stringstream ss;
+  vtksys_ios::ostringstream ss;
 
   // make sure the user specified a FileName or FilePointer
   if (this->FileName == NULL)
