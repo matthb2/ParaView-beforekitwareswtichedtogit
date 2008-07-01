@@ -12,12 +12,24 @@
      PURPOSE.  See the above copyright notice for more information.
 
 =========================================================================*/
-// .NAME vtX3DExporter - configuration for X3D exporter
-// .SECTION Description
+#include "vtkX3DExporterWriter.h"
 
-#ifndef __vtkX3DExporterConfiguration_h
-#define __vtkX3DExporterConfiguration_h
+#include "vtkObjectFactory.h"
 
-#cmakedefine VTK_X3D_USE_JAVA
+vtkCxxRevisionMacro(vtkX3DExporterWriter, "$Revision$");
+//----------------------------------------------------------------------------
+vtkX3DExporterWriter::vtkX3DExporterWriter()
+{
+}
 
-#endif
+//----------------------------------------------------------------------------
+vtkX3DExporterWriter::~vtkX3DExporterWriter()
+{
+}
+
+//----------------------------------------------------------------------------
+void vtkX3DExporterWriter::PrintSelf(ostream& os, vtkIndent indent)
+{
+  this->Superclass::PrintSelf(os, indent);
+}
+
