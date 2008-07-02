@@ -551,6 +551,7 @@ void vtkX3DExporter::PrintSelf(ostream& os, vtkIndent indent)
     }
   os << indent << "Speed: " << this->Speed << "\n";
   os << indent << "Binary: " << this->Binary << "\n";
+  os << indent << "Fastest: " << this->Fastest << endl;
 }
 
 
