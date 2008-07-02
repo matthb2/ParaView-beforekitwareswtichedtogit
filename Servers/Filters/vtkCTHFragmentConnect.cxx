@@ -228,7 +228,7 @@ class vtkCTHFragmentPointAccumulator
         #ifndef NDEBUG
         abort();
         #else
-        throw(vtkstd::bad_alloc);
+        throw vtkstd::bad_alloc();
         #endif
         }
       // mark begin of new
