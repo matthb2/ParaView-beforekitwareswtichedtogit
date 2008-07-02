@@ -264,12 +264,10 @@ void vtkX3DExporterXMLWriter::SetField(int attributeID, float value)
 }
 
 //-----------------------------------------------------------------------------
-void vtkX3DExporterXMLWriter::SetField(int attributeID, double value)
+void vtkX3DExporterXMLWriter::SetField(int attributeID, double vtkNotUsed(value))
 {
   this->OutputStream << " " << x3dAttributeString[attributeID] << "=\"" << "WHY DOUBLE?" << "\"";
   assert(false);
-  // prevent ununsed parameter warning
-  value = 0.0;
 }
 
 //-----------------------------------------------------------------------------
