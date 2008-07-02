@@ -1188,12 +1188,7 @@ int vtkSpyPlotReader::MergeVectors(vtkDataSetAttributes* da,
     }
   if (prefixFlag)
     {
-    const char* newname = n1+1;
-    while (*newname != '\0' && *newname == ' ')
-      {
-      newname++;
-      }
-    newArray->SetName(newname);
+    newArray->SetName(n1+1);
     }
   else
     {
