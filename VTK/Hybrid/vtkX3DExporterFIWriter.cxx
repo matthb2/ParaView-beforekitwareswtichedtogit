@@ -272,7 +272,8 @@ void vtkX3DExporterFIWriter::StartDocument()
   // ITU C.22.3.1: Length is < 65
   this->Writer->PutBit(0); 
   //Writer->PutBits("010110"); // = strlen(external_voc) - 1
-  this->Writer->PutBits(strlen(external_voc) - 1, 6);
+  this->Writer->PutBits(
+    static_cast<unsigned int>(strlen(external_voc) - 1), 6);
   this->Writer->PutBytes(external_voc, strlen(external_voc));
 }
 
