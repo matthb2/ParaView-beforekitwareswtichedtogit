@@ -33,9 +33,9 @@ using namespace vtkX3D;
 /*======================================================================== */
 struct NodeInfo 
 {
-  NodeInfo(int nodeId)
+  NodeInfo(int _nodeId)
     {
-    this->nodeId = nodeId;
+    this->nodeId = _nodeId;
     this->isChecked = false;
     this->attributesTerminated = true;
     }
