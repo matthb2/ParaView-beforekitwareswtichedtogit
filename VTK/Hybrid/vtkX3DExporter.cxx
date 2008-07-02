@@ -106,7 +106,6 @@ void vtkX3DExporter::WriteData()
   vtkLightCollection *lc;
   vtkLight *aLight;
   vtkCamera *cam;
-  vtksys_ios::ostringstream ss;
 
   // make sure the user specified a FileName or FilePointer
   if (this->FileName == NULL)
@@ -177,7 +176,7 @@ void vtkX3DExporter::WriteData()
 
   writer->StartNode(meta);
   writer->SetField(name, "numberofelements");
-  ss.str().clear();
+  vtksys_ios::ostringstream ss;
   ss << ren->GetActors()->GetNumberOfItems();
   writer->SetField(content, ss.str().c_str());
   writer->EndNode();
