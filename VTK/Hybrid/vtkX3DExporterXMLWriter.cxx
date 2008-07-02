@@ -30,9 +30,9 @@ using namespace vtkX3D;
 
 struct XMLInfo {
 
-XMLInfo(int elementId)
+XMLInfo(int _elementId)
 {
-  this->elementId = elementId;
+  this->elementId = _elementId;
   this->endTagWritten = false;
 }
   int elementId;
