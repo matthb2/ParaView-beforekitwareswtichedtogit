@@ -160,7 +160,7 @@ void vtkX3DExporter::WriteData()
 
   writer->StartNode(X3D);
   writer->SetField(profile, "Immersive");
-  writer->SetField(version, "3.0");
+  writer->SetField(vtkX3D::version, "3.0");
 
   writer->StartNode(head);
 
