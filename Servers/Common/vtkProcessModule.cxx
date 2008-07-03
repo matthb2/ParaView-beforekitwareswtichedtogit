@@ -605,6 +605,12 @@ void vtkProcessModule::StopAcceptingConnections(int id)
 }
 
 //-----------------------------------------------------------------------------
+bool vtkProcessModule::IsAcceptingConnections()
+{
+  return this->ConnectionManager->IsAcceptingConnections();
+}
+
+//-----------------------------------------------------------------------------
 vtkIdType vtkProcessModule::ConnectToRemote(const char* servername, int port)
 {
   if (this->DisableNewConnections)
