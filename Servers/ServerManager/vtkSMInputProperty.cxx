@@ -180,8 +180,7 @@ void vtkSMInputProperty::SetProxies(unsigned int numProxies,
   vtkSMProxy* proxies[], unsigned int outputports[])
 {
   this->IPInternals->OutputPorts.clear();
-  this->IPInternals->OutputPorts.resize(numProxies, 0);
-  for (unsigned int cc=0; (outputports != 0) && (cc < numProxies); cc++)
+  for (unsigned int cc=0; cc < numProxies; cc++)
     {
     this->IPInternals->OutputPorts.push_back(outputports[cc]);
     }
