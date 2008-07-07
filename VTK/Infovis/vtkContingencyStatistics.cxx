@@ -161,14 +161,6 @@ void vtkContingencyStatistics::ExecuteLearn( vtkTable* inData,
 }
 
 // ----------------------------------------------------------------------
-void vtkContingencyStatistics::ExecuteValidate( vtkTable*,
-                                                vtkTable*,
-                                                vtkTable* )
-{
-  // Not implemented for this statistical engine
-}
-
-// ----------------------------------------------------------------------
 void vtkContingencyStatistics::ExecuteAssess( vtkTable* inData,
                                               vtkTable* inMeta,
                                               vtkTable* outData,

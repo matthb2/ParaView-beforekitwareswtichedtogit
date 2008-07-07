@@ -233,14 +233,6 @@ void vtkDescriptiveStatistics::ExecuteLearn( vtkTable* inData,
 }
 
 // ----------------------------------------------------------------------
-void vtkDescriptiveStatistics::ExecuteValidate( vtkTable*,
-                                                vtkTable*,
-                                                vtkTable* )
-{
-  // Not implemented for this statistical engine
-}
-
-// ----------------------------------------------------------------------
 class DataArrayDeviantFunctor : public vtkDescriptiveStatistics::DeviantFunctor
 {
 public:

@@ -78,11 +78,6 @@ int vtkStatisticsAlgorithm::RequestData( vtkInformation*,
       this->ExecuteLearn( inData, outMeta );
       break;
       }
-    case ValidateMode:
-      {
-      vtkWarningMacro( "Incorrect execution mode requested: "<<this->ExecutionMode<<". Doing nothing." );
-      return 0;
-      }
     case AssessMode:
       {
       // Extract additional tables
@@ -149,8 +144,6 @@ void vtkStatisticsAlgorithm::SetExecutionMode( vtkIdType em )
   switch ( em )
     {
     case vtkStatisticsAlgorithm::LearnMode:
-      break;
-    case vtkStatisticsAlgorithm::ValidateMode:
       break;
     case vtkStatisticsAlgorithm::AssessMode:
       break;

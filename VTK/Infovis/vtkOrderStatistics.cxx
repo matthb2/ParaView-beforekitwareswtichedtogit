@@ -208,14 +208,6 @@ void vtkOrderStatistics::ExecuteLearn( vtkTable* inData,
 }
 
 // ----------------------------------------------------------------------
-void vtkOrderStatistics::ExecuteValidate( vtkTable*,
-                                          vtkTable*,
-                                          vtkTable* )
-{
-  // Not implemented for this statistical engine
-}
-
-// ----------------------------------------------------------------------
 void vtkOrderStatistics::ExecuteAssess( vtkTable* inData,
                                         vtkTable* inMeta,
                                         vtkTable* outData, 

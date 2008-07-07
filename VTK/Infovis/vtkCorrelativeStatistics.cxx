@@ -260,14 +260,6 @@ void vtkCorrelativeStatistics::ExecuteLearn( vtkTable* inData,
 }
 
 // ----------------------------------------------------------------------
-void vtkCorrelativeStatistics::ExecuteValidate( vtkTable*,
-                                                vtkTable*,
-                                                vtkTable* )
-{
-  // Not implemented for this statistical engine
-}
-
-// ----------------------------------------------------------------------
 void vtkCorrelativeStatistics::ExecuteAssess( vtkTable* inData,
                                               vtkTable* inMeta,
                                               vtkTable* outData,
