@@ -104,7 +104,7 @@ int vtkDijkstraGraphGeodesicPath::RequestData(
 
   vtkPolyData *output = vtkPolyData::SafeDownCast(
     outInfo->Get(vtkDataObject::DATA_OBJECT()));
-  if (!input)
+  if (!output)
     {
     return 0;
     }
@@ -116,6 +116,11 @@ int vtkDijkstraGraphGeodesicPath::RequestData(
   else
     {
     this->Reset();
+    }
+
+  if (this->NumberOfVertices == 0)
+    {
+    return 0;
     }
     
   this->ShortestPath(this->StartVertex, this->EndVertex);
