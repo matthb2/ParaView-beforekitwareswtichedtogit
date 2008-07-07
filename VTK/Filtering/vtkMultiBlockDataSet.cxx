@@ -77,6 +77,12 @@ void vtkMultiBlockDataSet::SetBlock(unsigned int blockno, vtkDataObject* block)
 }
 
 //----------------------------------------------------------------------------
+void vtkMultiBlockDataSet::RemoveBlock(unsigned int blockno)
+{
+  this->Superclass::RemoveChild(blockno);
+}
+
+//----------------------------------------------------------------------------
 void vtkMultiBlockDataSet::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os, indent);
