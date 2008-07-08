@@ -389,6 +389,20 @@ int vtkPVPythonInterpretor::InitializeSubInterpretor(int vtkNotUsed(argc),
 }
 
 //-----------------------------------------------------------------------------
+void vtkPVPythonInterpretor::AddPythonPath(const char* path)
+{
+  if (!this->Internal->Interpretor)
+    {
+    vtkErrorMacro("SubInterpretor not initialized. Call InitializeSubInterpretor().");
+    return;
+    }
+
+  this->MakeCurrent();
+  vtkPythonAppInitPrependPythonPath(path);
+  this->ReleaseControl();
+}
+
+//-----------------------------------------------------------------------------
 int vtkPVPythonInterpretor::PyMain(int argc, char** argv)
 {
   // Set the program name, so that we can ask python to provide us
