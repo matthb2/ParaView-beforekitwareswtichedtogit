@@ -41,7 +41,7 @@
 #define COLOR_TEXTURE_MAP_SIZE 256
 
 //-----------------------------------------------------------------------------
-static inline void vtkMulitplyColorsWithAlpha(vtkDataArray* array)
+static inline void vtkMultiplyColorsWithAlpha(vtkDataArray* array)
 {
   vtkUnsignedCharArray* colors = vtkUnsignedCharArray::SafeDownCast(array);
   if (!colors || colors->GetNumberOfComponents() != 4)
@@ -468,7 +468,7 @@ void vtkScalarsToColorsPainter::UpdateColorTextureMap(double alpha,
       this->LookupTable->MapScalars(tmp, this->ColorMode, 0);
     if (multiply_with_alpha)
       {
-      vtkMulitplyColorsWithAlpha(colors);
+      vtkMultiplyColorsWithAlpha(colors);
       }
 
     this->ColorTextureMap->GetPointData()->SetScalars(colors);
@@ -580,7 +580,7 @@ void vtkScalarsToColorsPainter::MapScalars(vtkPolyData* output,
       colors = scalars->NewInstance();
       colors->DeepCopy(scalars);
       }
-    vtkMulitplyColorsWithAlpha(colors);
+    vtkMultiplyColorsWithAlpha(colors);
     }
   if (cellFlag == 0)
     {
