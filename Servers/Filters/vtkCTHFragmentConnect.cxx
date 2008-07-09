@@ -7136,9 +7136,8 @@ void vtkCTHFragmentConnect::ComputeGeometricAttributes()
       }
     // sort the processes by loading
     Q.InitialHeapify();
-    // 
-    vtkIdType loadingBefore=Q.GetTotalLoading();
     #ifdef vtkCTHFragmentConnectDEBUG
+    vtkIdType loadingBefore=Q.GetTotalLoading();
     cerr << "[" << __LINE__ << "] "
          << controllingProcId
          << " total loading before fragment localization "
