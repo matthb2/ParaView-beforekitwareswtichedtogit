@@ -631,7 +631,8 @@ int vtkContourFilter::ProcessRequest(vtkInformation* request,
       return 1;
       }
     double *range = fInfo->Get(vtkDataObject::FIELD_RANGE());
-    if (range)
+    int numContours = this->ContourValues->GetNumberOfContours();
+    if (range && numContours)
       {
       // compute the priority
       // get the incoming priority if any
@@ -641,7 +642,6 @@ int vtkContourFilter::ProcessRequest(vtkInformation* request,
         inPrior = inInfo->Get(vtkStreamingDemandDrivenPipeline::PRIORITY());
         }
       // do any contours intersect the range?
-      int numContours=this->ContourValues->GetNumberOfContours();
       double *values=this->ContourValues->GetValues();
       double prior = 0;
       int i;

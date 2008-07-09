@@ -1317,3 +1317,17 @@ void vtkAlgorithm::SetProgressText(const char* ptext)
     do { *cp1++ = *cp2++; } while ( --n );
     }
 }
+
+//-------------------------------------------------------------
+double vtkAlgorithm::ComputePriority()
+{
+  vtkStreamingDemandDrivenPipeline *sddp =
+    vtkStreamingDemandDrivenPipeline::SafeDownCast
+      (this->GetExecutive());
+  if (!sddp)
+    {
+    return 1.0;
+    }
+  return sddp->ComputePriority(0);
+}
+
