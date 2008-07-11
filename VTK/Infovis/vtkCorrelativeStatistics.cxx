@@ -263,7 +263,7 @@ void vtkCorrelativeStatistics::ExecuteLearn( vtkTable* inData,
 void vtkCorrelativeStatistics::ExecuteAssess( vtkTable* inData,
                                               vtkTable* inMeta,
                                               vtkTable* outData,
-                                              vtkTable* outMeta )
+                                              vtkTable* vtkNotUsed( outMeta ) )
 {
   vtkIdType nColD = inData->GetNumberOfColumns();
   if ( ! nColD )
@@ -385,8 +385,6 @@ void vtkCorrelativeStatistics::ExecuteAssess( vtkTable* inData,
       continue;
       }
     }
-
-  outMeta->ShallowCopy( inMeta );
 
   return;
 }

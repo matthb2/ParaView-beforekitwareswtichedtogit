@@ -331,7 +331,7 @@ public:
 void vtkDescriptiveStatistics::ExecuteAssess( vtkTable* inData,
                                               vtkTable* inMeta,
                                               vtkTable* outData,
-                                              vtkTable* outMeta )
+                                              vtkTable* vtkNotUsed( outMeta ) )
 {
   vtkIdType nColD = inData->GetNumberOfColumns();
   if ( ! nColD )
@@ -443,7 +443,7 @@ void vtkDescriptiveStatistics::ExecuteAssess( vtkTable* inData,
     relativeDeviations->Delete();
     }
 
-  outMeta->ShallowCopy( inMeta );
+  return;
 }
 
 // ----------------------------------------------------------------------
