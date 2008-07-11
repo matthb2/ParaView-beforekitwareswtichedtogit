@@ -51,12 +51,15 @@ void vtkInformationIdTypeKey::Set(vtkInformation* info, vtkIdType value)
      static_cast<vtkInformationIdTypeValue *>
      (this->GetAsObjectBase(info)))
     {
-    // Replace the existing value.
-    oldv->Value = value;
-    // Since this sets a value without call SetAsObjectBase(),
-    // the info has to be modified here (instead of 
-    // vtkInformation::SetAsObjectBase()
-    info->Modified();
+    if (oldv->Value != value)
+      {
+      // Replace the existing value.
+      oldv->Value = value;
+      // Since this sets a value without call SetAsObjectBase(),
+      // the info has to be modified here (instead of 
+      // vtkInformation::SetAsObjectBase()
+      info->Modified();
+      }
    }
   else
     {

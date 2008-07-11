@@ -14,6 +14,8 @@
 =========================================================================*/
 #include "vtkInformationStringKey.h"
 
+#include "vtkInformation.h"
+
 #include <vtkstd/string>
 
 vtkCxxRevisionMacro(vtkInformationStringKey, "$Revision$");
@@ -47,13 +49,31 @@ public:
 //----------------------------------------------------------------------------
 void vtkInformationStringKey::Set(vtkInformation* info, const char* value)
 {
-  if(value)
+  if (value)
     {
-    vtkInformationStringValue* v = new vtkInformationStringValue;
-    this->ConstructClass("vtkInformationStringValue");
-    v->Value = value;
-    this->SetAsObjectBase(info, v);
-    v->Delete();
+    if(vtkInformationStringValue* oldv =
+       static_cast<vtkInformationStringValue *>
+       (this->GetAsObjectBase(info)))
+      {
+      if (oldv->Value != value)
+        {
+        // Replace the existing value.
+        oldv->Value = value;
+        // Since this sets a value without call SetAsObjectBase(),
+        // the info has to be modified here (instead of 
+        // vtkInformation::SetAsObjectBase()
+        info->Modified();
+        }
+      }
+    else
+      {
+      // Allocate a new value.
+      vtkInformationStringValue* v = new vtkInformationStringValue;
+      this->ConstructClass("vtkInformationStringValue");
+      v->Value = value;
+      this->SetAsObjectBase(info, v);
+      v->Delete();
+      }
     }
   else
     {

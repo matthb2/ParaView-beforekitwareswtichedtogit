@@ -51,12 +51,15 @@ void vtkInformationDoubleKey::Set(vtkInformation* info, double value)
      static_cast<vtkInformationDoubleValue *>(
        this->GetAsObjectBase(info)))
     {
-    // Replace the existing value.
-    oldv->Value = value;
-    // Since this sets a value without call SetAsObjectBase(),
-    // the info has to be modified here (instead of 
-    // vtkInformation::SetAsObjectBase()
-    info->Modified();
+    if (oldv->Value != value)
+      {
+      // Replace the existing value.
+      oldv->Value = value;
+      // Since this sets a value without call SetAsObjectBase(),
+      // the info has to be modified here (instead of 
+      // vtkInformation::SetAsObjectBase()
+      info->Modified();
+      }
     }
   else
     {
