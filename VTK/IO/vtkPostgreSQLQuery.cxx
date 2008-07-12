@@ -424,7 +424,7 @@ vtkStdString vtkPostgreSQLQuery::EscapeString( vtkStdString s, bool addSurroundi
 
   vtkPostgreSQLDatabase* db = static_cast<vtkPostgreSQLDatabase*>( this->Database );
 
-  if (db)
+  if ( db && db->Connection )
     {
     char *escaped = new char[2 * s.size() + 1];
     int error;
