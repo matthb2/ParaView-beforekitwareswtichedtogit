@@ -122,12 +122,11 @@ void vtkPolyDataMapper::Update()
 // (Xmin,Xmax,Ymin,Ymax,Zmin,Zmax).
 double *vtkPolyDataMapper::GetBounds()
 {
-  static double bounds[] = {-1.0,1.0, -1.0,1.0, -1.0,1.0};
-
   // do we have an input
   if ( ! this->GetNumberOfInputConnections(0)) 
     {
-    return bounds;
+      vtkMath::UninitializeBounds(this->Bounds);
+      return this->Bounds;
     }
   else
     {
