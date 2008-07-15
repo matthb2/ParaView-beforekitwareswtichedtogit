@@ -28,12 +28,9 @@ vtkCxxRevisionMacro(vtkGraphInternals, "$Revision$");
 vtkGraphInternals::vtkGraphInternals()
 { 
   this->NumberOfEdges = 0; 
-  this->DistributedHelper = 0; 
 }
 
 //----------------------------------------------------------------------------
 vtkGraphInternals::~vtkGraphInternals()
 {
-  if (this->DistributedHelper)
-    this->DistributedHelper->Delete();
 }

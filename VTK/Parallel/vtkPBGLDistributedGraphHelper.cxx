@@ -119,6 +119,12 @@ void vtkPBGLDistributedGraphHelper::Synchronize()
 }
 
 //----------------------------------------------------------------------------
+vtkDistributedGraphHelper *vtkPBGLDistributedGraphHelper::Clone()
+{
+  return vtkPBGLDistributedGraphHelper::New();
+}
+
+//----------------------------------------------------------------------------
 boost::graph::distributed::mpi_process_group vtkPBGLDistributedGraphHelper::GetProcessGroup()
 {
   return this->Internals->process_group.base();
