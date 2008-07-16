@@ -118,7 +118,7 @@ void vtkMPIController::TriggerRMIInternal(int remoteProcessId,
   vtkMPICommunicator* mpiComm = vtkMPICommunicator::SafeDownCast(
     this->RMICommunicator);
   int use_ssend = mpiComm->GetUseSsend(); 
-  if (vtkMPIController::UseSsendForRMI == 0 && use_ssend == 0)
+  if (vtkMPIController::UseSsendForRMI == 1 && use_ssend == 0)
     {
     mpiComm->SetUseSsend(1);
     }
@@ -126,7 +126,7 @@ void vtkMPIController::TriggerRMIInternal(int remoteProcessId,
   this->Superclass::TriggerRMIInternal(remoteProcessId,
     arg, argLength, rmiTag);
 
-  if (vtkMPIController::UseSsendForRMI == 0 && use_ssend == 0)
+  if (vtkMPIController::UseSsendForRMI == 1 && use_ssend == 0)
     {
     mpiComm->SetUseSsend(0);
     }
