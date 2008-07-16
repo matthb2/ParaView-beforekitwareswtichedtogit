@@ -178,7 +178,7 @@ int pqProcessModuleGUIHelper::RunGUIStart(int argc, char** argv,
     }
 
   // There are several reasons, why appExec() could return non-null (failure).
-  // In any case, the windows etc. that were created ain preAppExec() need to
+  // In any case, the windows etc. that were created in preAppExec() need to
   // cleaned up. Hence it's essential we call postAppExec().
   status = this->appExec();
   int postExecStatus = this->postAppExec();
