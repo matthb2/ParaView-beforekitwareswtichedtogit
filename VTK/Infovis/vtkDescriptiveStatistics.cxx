@@ -146,14 +146,13 @@ void vtkDescriptiveStatistics::ExecuteLearn( vtkTable* inData,
     double mom3 = 0.;
     double mom4 = 0.;
 
-    double val, delta, n, A, B;
-    double inv_n;
+    double n, inv_n, val, delta, A, B;
     for ( vtkIdType r = 0; r < this->SampleSize; ++ r )
       {
-      val  = inData->GetValueByName( r, col ).ToDouble();
-
       n = r + 1.;
       inv_n = 1. / n;
+
+      val = inData->GetValueByName( r, col ).ToDouble();
       delta = val - mean;
 
       A = delta * inv_n; 
