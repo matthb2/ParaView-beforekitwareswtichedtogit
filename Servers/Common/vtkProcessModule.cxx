@@ -46,6 +46,11 @@
 #include "vtkStdString.h"
 #include "vtkStringList.h"
 #include "vtkTimerLog.h"
+#include "vtkToolkits.h" // For VTK_USE_MPI
+
+#ifdef VTK_USE_MPI
+# include "vtkMPIController.h"
+#endif
 
 #include <vtkstd/map>
 #include <vtkstd/new>
@@ -190,6 +195,12 @@ vtkProcessModule::vtkProcessModule()
   // We offset lines/vertices.
   vtkMapper::SetResolveCoincidentTopologyPolygonOffsetFaces(0);
   vtkMapper::SetResolveCoincidentTopologyPolygonOffsetParameters(-1.0, -1.0);
+
+#ifdef VTK_USE_MPI
+  // ParaView uses Ssend for all Trigger RMI calls. This helps in overcoming
+  // bufferring issues with send on some implementations.
+  vtkMPIController::SetUseSsendForRMI(1);
+#endif
 }
 
 //-----------------------------------------------------------------------------
