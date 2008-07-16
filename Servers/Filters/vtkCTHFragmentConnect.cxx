@@ -8766,7 +8766,7 @@ int vtkCTHFragmentConnect::ResolveIntegratedAttributes(
         {
         for (int k=0; k<this->NMassWtdAvgs; ++k)
           {
-          pUnresolved=volumeWtdAvgs[procId][k]->GetPointer(0);
+          pUnresolved=massWtdAvgs[procId][k]->GetPointer(0);
           pResolved=this->FragmentMassWtdAvgs[k]->GetPointer(0);
           int nComps
             = this->FragmentMassWtdAvgs[k]->GetNumberOfComponents();
