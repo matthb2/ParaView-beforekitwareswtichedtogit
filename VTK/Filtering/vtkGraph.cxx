@@ -688,6 +688,25 @@ vtkGraph *vtkGraph::GetData(vtkInformationVector *v, int i)
 //----------------------------------------------------------------------------
 vtkIdType vtkGraph::GetSourceVertex(vtkIdType e)
 {
+  if (vtkDistributedGraphHelper *helper = this->GetDistributedGraphHelper())
+    {
+    int myRank = this->Information->Get(vtkDataObject::DATA_PIECE_NUMBER());
+    if (myRank != helper->GetEdgeOwner(e))
+      {
+        if (e != this->Internals->LastRemoteEdgeId)
+          {
+          helper->FindEdgeSourceAndTarget
+            (e, 
+             &this->Internals->LastRemoteEdgeSource,
+             &this->Internals->LastRemoteEdgeTarget);
+          }
+
+        return this->Internals->LastRemoteEdgeSource;
+      }
+    
+    e = helper->GetEdgeIndex(e);
+    }  
+
   if (e < 0 || e >= this->GetNumberOfEdges())
     {
     vtkErrorMacro("Edge index out of range.");
@@ -703,6 +722,26 @@ vtkIdType vtkGraph::GetSourceVertex(vtkIdType e)
 //----------------------------------------------------------------------------
 vtkIdType vtkGraph::GetTargetVertex(vtkIdType e)
 {
+  if (vtkDistributedGraphHelper *helper = this->GetDistributedGraphHelper())
+    {
+    int myRank = this->Information->Get(vtkDataObject::DATA_PIECE_NUMBER());
+    if (myRank != helper->GetEdgeOwner(e))
+      {
+        if (e != this->Internals->LastRemoteEdgeId)
+          {
+          this->Internals->LastRemoteEdgeId = e;
+          helper->FindEdgeSourceAndTarget
+            (e, 
+             &this->Internals->LastRemoteEdgeSource,
+             &this->Internals->LastRemoteEdgeTarget);
+          }
+
+        return this->Internals->LastRemoteEdgeTarget;
+      }
+    
+    e = helper->GetEdgeIndex(e);
+    }  
+
   if (e < 0 || e >= this->GetNumberOfEdges())
     {
     vtkErrorMacro("Edge index out of range.");

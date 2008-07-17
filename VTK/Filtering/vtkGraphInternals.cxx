@@ -28,6 +28,7 @@ vtkCxxRevisionMacro(vtkGraphInternals, "$Revision$");
 vtkGraphInternals::vtkGraphInternals()
 { 
   this->NumberOfEdges = 0; 
+  this->LastRemoteEdgeId = -1;
 }
 
 //----------------------------------------------------------------------------
