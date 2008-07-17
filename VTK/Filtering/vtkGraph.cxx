@@ -460,12 +460,7 @@ vtkDistributedGraphHelper *vtkGraph::GetDistributedGraphHelper()
 //----------------------------------------------------------------------------
 vtkIdType vtkGraph::FindVertex(const vtkVariant& pedigreeId)
 {
-  vtkAbstractArray *abstract = this->GetVertexData()->GetPedigreeIds();
-  if (abstract == NULL)
-    {
-    return -1;
-    }
-  vtkVariantArray *pedigrees = vtkVariantArray::SafeDownCast(abstract);
+  vtkAbstractArray *pedigrees = this->GetVertexData()->GetPedigreeIds();
   if (pedigrees == NULL)
     {
     return -1;
@@ -1033,16 +1028,10 @@ void vtkGraph::AddVertexInternal(const vtkVariant& pedigreeId,
     }
 
   // Add the pedigree ID of the vertex
-  vtkAbstractArray *abstract = this->GetVertexData()->GetPedigreeIds();
-  if (abstract == NULL)
-    {
-    vtkErrorMacro("Added a vertex with a pedigree ID to a vtkGraph with no pedigree ID array");
-    return;
-    }
-  vtkVariantArray *pedigrees = vtkVariantArray::SafeDownCast(abstract);
+  vtkAbstractArray *pedigrees = this->GetVertexData()->GetPedigreeIds();
   if (pedigrees == NULL)
     {
-    vtkErrorMacro("Pedigree ID array in a vtkGraph is not a vtkVariantArray.");
+    vtkErrorMacro("Added a vertex with a pedigree ID to a vtkGraph with no pedigree ID array");
     return;
     }
 
@@ -1052,7 +1041,7 @@ void vtkGraph::AddVertexInternal(const vtkVariant& pedigreeId,
     index = helper->GetVertexIndex(v);
     }
 
-  pedigrees->InsertValue(index, pedigreeId);
+  pedigrees->InsertVariantValue(index, pedigreeId);
 }
 
 //----------------------------------------------------------------------------
