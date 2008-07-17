@@ -148,7 +148,7 @@ int vtkGroupLeafVertices::RequestData(
   // so we can call InsertNextBlankRow.
   vtkSmartPointer<vtkTable> treeTable = 
     vtkSmartPointer<vtkTable>::New();
-  treeTable->SetFieldData(builder->GetVertexData());
+  treeTable->SetRowData(builder->GetVertexData());
 
   // Copy everything into the new tree, adding group nodes.
   // Make a map of (parent id, group-by string) -> group vertex id.

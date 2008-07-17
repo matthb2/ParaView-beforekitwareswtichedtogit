@@ -58,7 +58,7 @@ vtkCollectGraph::vtkCollectGraph()
   this->SocketController = NULL;
 
   // Default vertex id array.
-  this->SetInputArrayToProcess(0, 0, 0, vtkDataObject::FIELD_ASSOCIATION_NONE, "id");
+  this->SetInputArrayToProcess(0, 0, 0, vtkDataObject::FIELD_ASSOCIATION_VERTICES, "id");
 
   // Controller keeps a reference to this object as well.
   this->Controller = NULL;

@@ -22,7 +22,6 @@
 
 #include <QListView>
 
-#include "vtkTable.h"
 #include "vtkQtTableModelAdapter.h"
 #include "vtkObjectFactory.h"
 

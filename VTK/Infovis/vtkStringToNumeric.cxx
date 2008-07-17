@@ -32,6 +32,7 @@
 #include "vtkObjectFactory.h"
 #include "vtkPointData.h"
 #include "vtkStringArray.h"
+#include "vtkTable.h"
 #include "vtkVariant.h"
 
 vtkCxxRevisionMacro(vtkStringToNumeric, "$Revision$");
@@ -83,6 +84,11 @@ int vtkStringToNumeric::RequestData(
   if (outputGraph && this->ConvertCellData)
     {
     this->ConvertArrays(outputGraph->GetEdgeData());
+    }
+  vtkTable *outputTable = vtkTable::SafeDownCast(output);
+  if (outputTable && this->ConvertPointData)
+    {
+    this->ConvertArrays(outputTable->GetRowData());
     }
   
   return 1;

@@ -107,7 +107,8 @@ const char vtkDataObject
   "vtkDataObject::FIELD_ASSOCIATION_NONE",
   "vtkDataObject::FIELD_ASSOCIATION_POINTS_THEN_CELLS",
   "vtkDataObject::FIELD_ASSOCIATION_VERTICES",
-  "vtkDataObject::FIELD_ASSOCIATION_EDGES"
+  "vtkDataObject::FIELD_ASSOCIATION_EDGES",
+  "vtkDataObject::FIELD_ASSOCIATION_ROWS"
 };
 
 //----------------------------------------------------------------------------

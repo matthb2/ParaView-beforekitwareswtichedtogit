@@ -114,7 +114,7 @@ int vtkTableToTreeFilter::RequestData(
     }
 
   // Copy the table data into the tree vertex data
-  tree->GetVertexData()->PassData(table->GetFieldData());
+  tree->GetVertexData()->PassData(table->GetRowData());
  
   return 1;
 }

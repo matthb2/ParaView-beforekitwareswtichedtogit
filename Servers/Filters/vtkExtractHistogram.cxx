@@ -30,6 +30,7 @@
 #include "vtkRectilinearGrid.h"
 #include "vtkSmartPointer.h"
 #include "vtkStreamingDemandDrivenPipeline.h"
+#include "vtkTable.h"
 
 #include <vtkstd/vector>
 #include <vtkstd/map>
@@ -185,6 +186,9 @@ vtkFieldData* vtkExtractHistogram::GetInputFieldData(vtkDataObject* input)
       break;
     case vtkDataObject::FIELD_ASSOCIATION_EDGES:
       return vtkGraph::SafeDownCast(input)->GetEdgeData();
+      break;
+    case vtkDataObject::FIELD_ASSOCIATION_ROWS:
+      return vtkTable::SafeDownCast(input)->GetRowData();
       break;
     }
   return 0;

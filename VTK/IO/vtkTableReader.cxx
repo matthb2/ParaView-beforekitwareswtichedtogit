@@ -156,6 +156,21 @@ int vtkTableReader::RequestData(
       continue;
       }
 
+    if(!strncmp(this->LowerCase(line), "row_data", 8))
+      {
+      int row_count = 0;
+      if(!this->Read(&row_count))
+        {
+        vtkErrorMacro(<<"Cannot read number of rows!");
+        this->CloseVTKFile();
+        return 1;
+        }
+
+
+      this->ReadRowData(output, row_count);
+      continue;
+      }
+
     vtkErrorMacro(<< "Unrecognized keyword: " << line);
     }
 

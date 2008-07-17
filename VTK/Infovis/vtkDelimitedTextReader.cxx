@@ -288,13 +288,6 @@ int vtkDelimitedTextReader::RequestData(
     dataArray->Delete();
     }
 
-  // Use vtkDataSetAttributes to store the data in the table,
-  // so we get attribute capabilities.
-  vtkSmartPointer<vtkDataSetAttributes> dsa =
-    vtkSmartPointer<vtkDataSetAttributes>::New();
-  dsa->ShallowCopy(table->GetFieldData());
-  table->SetFieldData(dsa);
-
   // Look for pedigree id array.
   vtkAbstractArray* pedIds = table->GetColumnByName("id");
   if (!pedIds)
@@ -307,7 +300,7 @@ int vtkDelimitedTextReader::RequestData(
     }
   if (pedIds)
     {
-    dsa->SetPedigreeIds(pedIds);
+    table->GetRowData()->SetPedigreeIds(pedIds);
     }
  
   return 1;

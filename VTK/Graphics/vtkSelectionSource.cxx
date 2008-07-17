@@ -236,6 +236,9 @@ void vtkSelectionSource::PrintSelf(ostream& os, vtkIndent indent)
     case vtkSelection::EDGE:
       os << "EDGE";
       break;
+    case vtkSelection::ROW:
+      os << "ROW";
+      break;
     default:
       os << "UNKNOWN";
     }

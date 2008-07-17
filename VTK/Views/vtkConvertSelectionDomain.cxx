@@ -123,8 +123,8 @@ int vtkConvertSelectionDomain::RequestData(
     }
   else if (vtkTable::SafeDownCast(data))
     {
-    dsa1 = vtkDataSetAttributes::SafeDownCast(vtkTable::SafeDownCast(data)->GetFieldData());
-    fieldType1 = vtkSelection::FIELD;
+    dsa1 = vtkDataSetAttributes::SafeDownCast(vtkTable::SafeDownCast(data)->GetRowData());
+    fieldType1 = vtkSelection::ROW;
     }
 
   vtksys_stl::set<vtkStdString> domains1;
