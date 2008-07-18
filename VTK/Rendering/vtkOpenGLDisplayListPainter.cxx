@@ -68,14 +68,20 @@ void vtkOpenGLDisplayListPainter::ReleaseList()
 }
 
 //-----------------------------------------------------------------------------
-void vtkOpenGLDisplayListPainter::RenderInternal(vtkRenderer* renderer, vtkActor* actor, 
-  unsigned long typeflags)
+void vtkOpenGLDisplayListPainter::RenderInternal(vtkRenderer *renderer,
+                                                 vtkActor *actor, 
+                                                 unsigned long typeflags,
+                                                 bool forceCompileOnly)
 {
   if (this->ImmediateModeRendering)
     {
     // don't use display lists at all.
     this->ReleaseGraphicsResources(renderer->GetRenderWindow());
-    this->Superclass::RenderInternal(renderer, actor, typeflags);
+    if(!forceCompileOnly)
+      {
+        this->Superclass::RenderInternal(renderer, actor, typeflags,
+                                         forceCompileOnly);
+      }
     return;
     }
 
@@ -94,7 +100,8 @@ void vtkOpenGLDisplayListPainter::RenderInternal(vtkRenderer* renderer, vtkActor
     this->DisplayListId = glGenLists(1);
     glNewList(this->DisplayListId, GL_COMPILE);
     // generate the display list.
-    this->Superclass::RenderInternal(renderer, actor, typeflags);
+    this->Superclass::RenderInternal(renderer, actor, typeflags,
+                                     forceCompileOnly);
     glEndList();
 
     this->BuildTime.Modified();
@@ -102,17 +109,19 @@ void vtkOpenGLDisplayListPainter::RenderInternal(vtkRenderer* renderer, vtkActor
     this->LastUsedTypeFlags = typeflags;
     }
 
-  // Time the actual drawing.
-  this->Timer->StartTimer();
-  // render the display list.
-  // if nothing has changed we use an old display list else
-  // we use the newly generated list.
-  glCallList(this->DisplayListId);
-  // glFinish(); // To compute time correctly, we need to wait 
-  // till OpenGL finishes.
-  this->Timer->StopTimer();
-
-  this->TimeToDraw += this->Timer->GetElapsedTime();
+  if(!forceCompileOnly)
+    {
+      // Time the actual drawing.
+      this->Timer->StartTimer();
+      // render the display list.
+      // if nothing has changed we use an old display list else
+      // we use the newly generated list.
+      glCallList(this->DisplayListId);
+      // glFinish(); // To compute time correctly, we need to wait 
+      // till OpenGL finishes.
+      this->Timer->StopTimer();
+      this->TimeToDraw += this->Timer->GetElapsedTime();
+    }
 }
 
 //-----------------------------------------------------------------------------

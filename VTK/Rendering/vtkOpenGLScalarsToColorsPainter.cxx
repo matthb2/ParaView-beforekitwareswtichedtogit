@@ -81,8 +81,10 @@ int vtkOpenGLScalarsToColorsPainter::GetPremultiplyColorsWithAlpha(
 }
 
 //-----------------------------------------------------------------------------
-void vtkOpenGLScalarsToColorsPainter::RenderInternal(vtkRenderer* renderer, 
-  vtkActor* actor, unsigned long typeflags)
+void vtkOpenGLScalarsToColorsPainter::RenderInternal(vtkRenderer *renderer, 
+                                                     vtkActor *actor,
+                                                     unsigned long typeflags,
+                                                     bool forceCompileOnly)
 {
   vtkProperty* prop = actor->GetProperty();
 
@@ -164,7 +166,7 @@ void vtkOpenGLScalarsToColorsPainter::RenderInternal(vtkRenderer* renderer,
     glBlendFunc(GL_ONE, GL_ONE_MINUS_SRC_ALPHA);
     }
 
-  this->Superclass::RenderInternal(renderer, actor, typeflags);
+  this->Superclass::RenderInternal(renderer, actor, typeflags,forceCompileOnly);
 
   if (pre_multiplied_by_alpha)
     {

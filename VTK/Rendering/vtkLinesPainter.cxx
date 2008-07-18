@@ -72,7 +72,8 @@ vtkLinesPainter::~vtkLinesPainter()
 }
 //-----------------------------------------------------------------------------
 void vtkLinesPainter::RenderInternal(vtkRenderer* renderer, vtkActor* actor, 
-  unsigned long typeflags)
+                                     unsigned long typeflags,
+                                     bool forceCompileOnly)
 {
   if (typeflags == vtkPainter::POLYS)
     {
@@ -82,7 +83,7 @@ void vtkLinesPainter::RenderInternal(vtkRenderer* renderer, vtkActor* actor,
     {
     this->RenderPolys = 0;
     }
-  this->Superclass::RenderInternal(renderer, actor, typeflags);
+  this->Superclass::RenderInternal(renderer, actor, typeflags,forceCompileOnly);
 }
 
 //-----------------------------------------------------------------------------

@@ -49,7 +49,7 @@ vtkPolyDataPainter::~vtkPolyDataPainter()
 
 //-----------------------------------------------------------------------------
 void vtkPolyDataPainter::Render(vtkRenderer* renderer, vtkActor* actor, 
-    unsigned long typeflags)
+                                unsigned long typeflags,bool forceCompileOnly)
 {
   if (!this->GetInputAsPolyData())
     {
@@ -57,7 +57,7 @@ void vtkPolyDataPainter::Render(vtkRenderer* renderer, vtkActor* actor,
     return;
     }
 
-  this->Superclass::Render(renderer, actor, typeflags);
+  this->Superclass::Render(renderer, actor, typeflags,forceCompileOnly);
 }
 
 //-----------------------------------------------------------------------------

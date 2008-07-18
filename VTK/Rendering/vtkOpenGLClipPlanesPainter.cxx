@@ -40,8 +40,10 @@ vtkOpenGLClipPlanesPainter::~vtkOpenGLClipPlanesPainter()
 }
 
 //-----------------------------------------------------------------------------
-void vtkOpenGLClipPlanesPainter::RenderInternal(vtkRenderer* renderer, 
-  vtkActor* actor, unsigned long typeflags)
+void vtkOpenGLClipPlanesPainter::RenderInternal(vtkRenderer *renderer, 
+                                                vtkActor *actor,
+                                                unsigned long typeflags,
+                                                bool forceCompileOnly)
 {
   vtkPlaneCollection *clipPlanes;
   vtkPlane *plane;
@@ -103,7 +105,7 @@ void vtkOpenGLClipPlanesPainter::RenderInternal(vtkRenderer* renderer,
     actorMatrix->Delete();  
     }
 
-  this->Superclass::RenderInternal(renderer, actor, typeflags);
+  this->Superclass::RenderInternal(renderer, actor, typeflags,forceCompileOnly);
 
   for (i = 0; i < numClipPlanes; i++)
     {

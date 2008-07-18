@@ -316,7 +316,7 @@ void vtkPainterPolyDataMapper::RenderPiece(vtkRenderer* ren, vtkActor* act)
       {
       this->Painter->SetInput(input);
       }
-    this->Painter->Render(ren, act, 0xff);
+    this->Painter->Render(ren, act, 0xff,this->ForceCompileOnly);
     this->TimeToDraw = this->Painter->GetTimeToDraw();
     }
 

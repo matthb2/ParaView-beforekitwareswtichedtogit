@@ -58,8 +58,10 @@ vtkOpenGLLightingPainter::~vtkOpenGLLightingPainter()
 }
 
 //-----------------------------------------------------------------------------
-void vtkOpenGLLightingPainter::RenderInternal(vtkRenderer* renderer, vtkActor* actor, 
-  unsigned long typeflags)
+void vtkOpenGLLightingPainter::RenderInternal(vtkRenderer *renderer,
+                                              vtkActor *actor, 
+                                              unsigned long typeflags,
+                                              bool forceCompileOnly)
 {
   vtkPolyData* input = this->GetInputAsPolyData();
   vtkProperty* prop = actor->GetProperty();
@@ -118,7 +120,8 @@ void vtkOpenGLLightingPainter::RenderInternal(vtkRenderer* renderer, vtkActor* a
       static_cast<double>(disabled_cells) / total_cells;
     
     glDisable(GL_LIGHTING);
-    this->Superclass::RenderInternal(renderer, actor, disable_flags);
+    this->Superclass::RenderInternal(renderer, actor, disable_flags,
+                                     forceCompileOnly);
     time_to_draw += this->DelegatePainter? 
       this->DelegatePainter->GetTimeToDraw() : 0;
 
@@ -133,7 +136,8 @@ void vtkOpenGLLightingPainter::RenderInternal(vtkRenderer* renderer, vtkActor* a
       enable_flags);
     this->ProgressScaleFactor = 
       static_cast<double>(enabled_cells) / total_cells;
-    this->Superclass::RenderInternal(renderer, actor, enable_flags);
+    this->Superclass::RenderInternal(renderer, actor, enable_flags,
+                                      forceCompileOnly);
 
     time_to_draw += this->DelegatePainter? 
       this->DelegatePainter->GetTimeToDraw() : 0;
