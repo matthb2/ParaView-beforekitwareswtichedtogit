@@ -497,7 +497,7 @@ void vtkPVDataInformation::CopyFromTable(vtkTable* data)
   this->NumberOfRows = data->GetNumberOfRows();
 
   // Copy Point Data information
-  this->PointDataInformation->CopyFromFieldData(data->GetFieldData());
+  this->PointDataInformation->CopyFromFieldData(data->GetRowData());
 }
 
 //----------------------------------------------------------------------------
