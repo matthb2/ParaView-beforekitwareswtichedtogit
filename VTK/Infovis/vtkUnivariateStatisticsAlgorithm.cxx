@@ -23,6 +23,7 @@
 
 #include "vtkObjectFactory.h"
 #include "vtkStdString.h"
+#include "vtkStringArray.h"
 #include "vtkTable.h"
 #include "vtkVariantArray.h"
 
@@ -180,7 +181,7 @@ void vtkUnivariateStatisticsAlgorithm::ExecuteAssess( vtkTable* inData,
       {
       for ( vtkIdType j = 0; j < nColP; ++ j )
         {
-        row->SetValue( j, inMeta->GetValueByName( i, this->AssessParameters->GetValue( j ).ToString() ) );
+        row->SetValue( j, inMeta->GetValueByName( i, this->AssessParameters->GetValue( j ) ) );
         }
       }
     else
