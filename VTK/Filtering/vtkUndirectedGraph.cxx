@@ -52,6 +52,14 @@ void vtkUndirectedGraph::GetInEdges(vtkIdType v, const vtkInEdgeType *& edges, v
 }
 
 //----------------------------------------------------------------------------
+vtkInEdgeType vtkUndirectedGraph::GetInEdge(vtkIdType v, vtkIdType i)
+{
+  vtkOutEdgeType oe = this->GetOutEdge(v, i);
+  vtkInEdgeType* ie = reinterpret_cast<vtkInEdgeType*>(&oe);
+  return *ie;
+}
+
+//----------------------------------------------------------------------------
 vtkIdType vtkUndirectedGraph::GetInDegree(vtkIdType v)
 {
   return this->GetOutDegree(v);
