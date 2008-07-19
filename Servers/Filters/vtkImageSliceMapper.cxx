@@ -333,7 +333,7 @@ void vtkImageSliceMapper::RenderPiece(vtkRenderer* ren, vtkActor* actor)
       {
       this->Painter->SetInput(input);
       }
-    this->Painter->Render(ren, actor, 0xff,this->ForceCompileOnly);
+    this->Painter->Render(ren, actor, 0xff,this->ForceCompileOnly==1);
     this->TimeToDraw = this->Painter->GetTimeToDraw();
     }
 
