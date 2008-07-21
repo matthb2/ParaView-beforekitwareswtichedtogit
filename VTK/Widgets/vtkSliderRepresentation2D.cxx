@@ -473,7 +473,7 @@ void vtkSliderRepresentation2D::BuildRepresentation()
 }
 
 //----------------------------------------------------------------------
-void vtkSliderRepresentation2D::GetActors(vtkPropCollection *pc)
+void vtkSliderRepresentation2D::GetActors2D(vtkPropCollection *pc)
 {
   pc->AddItem(this->SliderActor);
   pc->AddItem(this->TubeActor);
