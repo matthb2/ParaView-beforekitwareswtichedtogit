@@ -29,6 +29,7 @@
 #include "vtkProbeSelectedLocations.h"
 #include "vtkSelection.h"
 #include "vtkStreamingDemandDrivenPipeline.h"
+#include "vtkTable.h"
 
 vtkCxxRevisionMacro(vtkExtractSelection, "$Revision$");
 vtkStandardNewMacro(vtkExtractSelection);
@@ -95,7 +96,7 @@ int vtkExtractSelection::RequestData(
     }
 
   // If the input is a graph, don't try to handle it
-  if ( vtkGraph::SafeDownCast(input) )
+  if ( vtkGraph::SafeDownCast(input) || vtkTable::SafeDownCast(input) )
     {
     return 1;
     }
