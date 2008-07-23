@@ -69,7 +69,7 @@ vtkSimple2DLayoutStrategy::vtkSimple2DLayoutStrategy()
   this->RestDistance = 0;
   this->Jitter = true;
   this->MaxNumberOfIterations = 200;
-  this->EdgeArray = NULL;
+  this->EdgeArray = 0;
 }
 
 // ----------------------------------------------------------------------
