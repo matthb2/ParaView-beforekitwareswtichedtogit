@@ -553,6 +553,10 @@ void vtkImplicitPlaneWidget::OnLeftButtonDown()
       this->HighlightNormal(1);
       this->State = vtkImplicitPlaneWidget::MovingOrigin;
       }
+    else
+      {
+      return;
+      }
     }
   else
     {
@@ -560,6 +564,10 @@ void vtkImplicitPlaneWidget::OnLeftButtonDown()
       {
       this->HighlightOutline(1);
       this->State = vtkImplicitPlaneWidget::MovingOutline;
+      }
+    else
+      {
+      return;
       }
     }
 
