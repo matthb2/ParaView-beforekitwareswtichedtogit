@@ -109,6 +109,7 @@ vtkMultiPieceDataSet* vtkIndexBasedBlockFilter::GetPieceToProcess(vtkDataObject*
     vtkSmartPointer<vtkCompositeDataIterator> iter;
     iter.TakeReference(cd->NewIterator());
     iter->VisitOnlyLeavesOff();
+    iter->SkipEmptyNodesOff();
 
     vtkHierarchicalBoxDataIterator* hbIter = 
       vtkHierarchicalBoxDataIterator::SafeDownCast(iter);
