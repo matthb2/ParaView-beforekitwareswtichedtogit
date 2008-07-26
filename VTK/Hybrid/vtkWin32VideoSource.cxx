@@ -237,7 +237,7 @@ void vtkWin32VideoSource::Initialize()
     sprintf(this->WndClassName,"VTKVideo %d",i);
     }
     
-  if (i > 32)
+  if (i > 10)
     {
     vtkErrorMacro(<< "Initialize: failed to register VTKVideo class"\
                     << " (" << GetLastError() << ")");
