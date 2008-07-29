@@ -129,6 +129,9 @@ void vtkSMArrayListDomain::Update(vtkSMSourceProxy* sp,
     {
     this->AddArrays(sp, outputport, info->GetPointDataInformation(), iad);
     this->AddArrays(sp, outputport, info->GetCellDataInformation(), iad);
+    this->AddArrays(sp, outputport, info->GetVertexDataInformation(), iad);
+    this->AddArrays(sp, outputport, info->GetEdgeDataInformation(), iad);
+    this->AddArrays(sp, outputport, info->GetRowDataInformation(), iad);
     }
   else if ( iad->GetAttributeType() == vtkSMInputArrayDomain::POINT )
     {
@@ -137,6 +140,18 @@ void vtkSMArrayListDomain::Update(vtkSMSourceProxy* sp,
   else if ( iad->GetAttributeType() == vtkSMInputArrayDomain::CELL )
     {
     this->AddArrays(sp, outputport, info->GetCellDataInformation(), iad);
+    }
+  else if ( iad->GetAttributeType() == vtkSMInputArrayDomain::VERTEX)
+    {
+    this->AddArrays(sp, outputport, info->GetVertexDataInformation(), iad);
+    }
+  else if ( iad->GetAttributeType() == vtkSMInputArrayDomain::EDGE)
+    {
+    this->AddArrays(sp, outputport, info->GetEdgeDataInformation(), iad);
+    }
+  else if ( iad->GetAttributeType() == vtkSMInputArrayDomain::ROW)
+    {
+    this->AddArrays(sp, outputport, info->GetRowDataInformation(), iad);
     }
 
   this->InvokeModified();

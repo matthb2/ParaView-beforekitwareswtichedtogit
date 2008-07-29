@@ -79,6 +79,21 @@ void vtkSMFieldDataDomain::Update(vtkSMSourceProxy* sp,
     this->AddEntry("Cell Data",  vtkDataObject::FIELD_ASSOCIATION_CELLS);
     }
 
+  if (this->CheckForArray(sp, outputport, info->GetVertexDataInformation(), iad))
+    {
+    this->AddEntry("Vertex Data", vtkDataObject::FIELD_ASSOCIATION_VERTICES);
+    }
+
+  if (this->CheckForArray(sp, outputport, info->GetEdgeDataInformation(), iad))
+    {
+    this->AddEntry("Edge Data", vtkDataObject::FIELD_ASSOCIATION_EDGES);
+    }
+
+  if (this->CheckForArray(sp, outputport, info->GetRowDataInformation(), iad))
+    {
+    this->AddEntry("Row Data", vtkDataObject::FIELD_ASSOCIATION_ROWS);
+    }
+
   this->InvokeModified();
 }
 
