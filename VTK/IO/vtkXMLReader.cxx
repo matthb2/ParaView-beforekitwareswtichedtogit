@@ -856,11 +856,14 @@ void vtkXMLReader::DestroyStringArray(int numStrings, char** strings)
 void vtkXMLReader::SetDataArraySelections(vtkXMLDataElement* eDSA,
                                           vtkDataArraySelection* sel)
 {
+  sel->RemoveAllArrays();
+
   if(!eDSA)
     {
     sel->SetArrays(0, 0);
     return;
     }
+
   int numArrays = eDSA->GetNumberOfNestedElements();
   if(!numArrays)
     {
