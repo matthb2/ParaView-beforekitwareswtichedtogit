@@ -266,8 +266,8 @@ int vtkEnSightReader::RequestData(
         if (this->UseFileSets)
           {
           fileSet = this->FileSets->IsId(this->GeometryFileSet);
-          numStepsList = (vtkIdList*)this->FileSetNumberOfSteps->
-            GetItemAsObject(fileSet);
+          numStepsList = static_cast<vtkIdList*>(this->FileSetNumberOfSteps->
+                                                 GetItemAsObject(fileSet));
           
           if (timeStep > numStepsList->GetId(0))
             {
@@ -350,8 +350,8 @@ int vtkEnSightReader::RequestData(
         if (this->UseFileSets)
           {
           fileSet = this->FileSets->IsId(this->MeasuredFileSet);
-          numStepsList = (vtkIdList*)this->FileSetNumberOfSteps->
-            GetItemAsObject(fileSet);
+          numStepsList = static_cast<vtkIdList*>(this->FileSetNumberOfSteps->
+                                                 GetItemAsObject(fileSet));
           
           if (timeStep > numStepsList->GetId(0))
             {
@@ -1299,8 +1299,8 @@ int vtkEnSightReader::ReadVariableFiles(vtkMultiBlockDataSet *output)
         {
         timeStepInFile = timeStep;
         fileSet = this->VariableFileSetIds->GetId(i);
-        numStepsList = (vtkIdList*)this->FileSetNumberOfSteps->
-          GetItemAsObject(this->FileSets->IsId(fileSet));
+        numStepsList = static_cast<vtkIdList*>(this->FileSetNumberOfSteps->
+                               GetItemAsObject(this->FileSets->IsId(fileSet)));
 
         if (timeStep > numStepsList->GetId(0))
           {
@@ -1442,8 +1442,8 @@ int vtkEnSightReader::ReadVariableFiles(vtkMultiBlockDataSet *output)
         {
         timeStepInFile = timeStep;
         fileSet = this->VariableFileSetIds->GetId(i);
-        numStepsList = (vtkIdList*)this->FileSetNumberOfSteps->
-          GetItemAsObject(this->FileSets->IsId(fileSet));
+        numStepsList = static_cast<vtkIdList*>(this->FileSetNumberOfSteps->
+                                               GetItemAsObject(this->FileSets->IsId(fileSet)));
 
         if (timeStep > numStepsList->GetId(0))
           {
