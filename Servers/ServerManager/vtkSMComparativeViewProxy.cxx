@@ -649,7 +649,6 @@ void vtkSMComparativeViewProxy::UpdateFilmStripVisualization(
 
     vtkSMViewProxy* view = this->Internal->Views[view_index];
 
-    double time = this->TimeRange[0] + view_index*increment;
     if (this->GetShowTimeSteps())
       {
       double time = this->TimeRange[0] + view_index*increment;
