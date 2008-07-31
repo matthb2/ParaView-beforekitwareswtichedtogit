@@ -99,6 +99,18 @@ void vtkThresholdTableThresholdRows(iterT* it, vtkTable* input, vtkTable* output
     }
 }
 
+void vtkThresholdTable::ThresholdBetween(vtkVariant lower, vtkVariant upper)
+{
+  if ( this->MinValue != lower || this->MaxValue != upper ||
+       this->Mode != vtkThresholdTable::ACCEPT_BETWEEN)
+    {
+    this->MinValue = lower; 
+    this->MaxValue = upper;
+    this->Mode = vtkThresholdTable::ACCEPT_BETWEEN;
+    this->Modified();
+    }
+}
+  
 int vtkThresholdTable::RequestData(
   vtkInformation*, 
   vtkInformationVector** inputVector, 
