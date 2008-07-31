@@ -28,6 +28,7 @@
 #include "vtkVariant.h"
 
 #include <limits.h> // CHAR_BIT
+#include <assert.h> // assert()
 
 //----------------------------------------------------------------------------
 // class vtkDistributedGraphHelper
@@ -158,7 +159,7 @@ vtkIdType vtkDistributedGraphHelper::MakeDistributedId(int owner, vtkIdType loca
   if (numProcs > 1)
     {
     assert(owner >= 0 && owner < numProcs);
-    return ((vtkIdType)owner << this->indexBits) | local;
+    return (static_cast<vtkIdType>(owner) << this->indexBits) | local;
     }
   
   return local;
@@ -182,8 +183,8 @@ void vtkDistributedGraphHelper::AttachToGraph(vtkGraph *graph)
     }
   if (numProcs == 1)  numProcBits = 1;
   
-  this->signBitMask = (vtkIdType) 1 << ((sizeof(vtkIdType) * CHAR_BIT) - 1);
-  this->highBitShiftMask = (vtkIdType) 1 << numProcBits;
+  this->signBitMask = static_cast<vtkIdType>(1) << ((sizeof(vtkIdType) * CHAR_BIT) - 1);
+  this->highBitShiftMask = static_cast<vtkIdType>(1) << numProcBits;
   this->procBits = numProcBits + 1;
   this->indexBits = (sizeof(vtkIdType) * CHAR_BIT) - (numProcBits + 1);
 }
