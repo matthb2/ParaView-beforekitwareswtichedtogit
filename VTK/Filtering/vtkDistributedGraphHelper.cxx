@@ -157,6 +157,7 @@ vtkIdType vtkDistributedGraphHelper::MakeDistributedId(int owner, vtkIdType loca
 
   if (numProcs > 1)
     {
+    assert(owner >= 0 && owner < numProcs);
     return ((vtkIdType)owner << this->indexBits) | local;
     }
   
