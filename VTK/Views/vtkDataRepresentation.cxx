@@ -102,7 +102,10 @@ void vtkDataRepresentation::Select(
     if (converted)
       {
       this->UpdateSelection(converted);
-      converted->Delete();
+      if (converted != selection)
+        {
+        converted->Delete();
+        }
       }
     }
 }
