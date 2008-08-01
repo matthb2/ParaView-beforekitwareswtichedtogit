@@ -1009,6 +1009,12 @@ int vtkCompositeDataPipeline::NeedToExecuteData(
     {
     return 1;
     }
+  int dataGhostLevel = dataInfo->Get(vtkDataObject::DATA_NUMBER_OF_GHOST_LEVELS());
+  int updateGhostLevel = outInfo->Get(UPDATE_NUMBER_OF_GHOST_LEVELS());
+  if(dataGhostLevel < updateGhostLevel)
+    {
+    return 1;
+    }
   if (dataNumberOfPieces != 1)
     {
     int dataPiece = dataInfo->Get(vtkDataObject::DATA_PIECE_NUMBER());
