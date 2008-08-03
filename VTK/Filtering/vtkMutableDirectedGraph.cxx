@@ -150,10 +150,11 @@ vtkGraphEdge *vtkMutableDirectedGraph::AddGraphEdge(vtkIdType u, vtkIdType v)
 }
 
 //----------------------------------------------------------------------------
-vtkIdType vtkMutableDirectedGraph::AddChild(vtkIdType parent)
+vtkIdType vtkMutableDirectedGraph::AddChild(vtkIdType parent,
+  vtkVariantArray *propertyArr/* = 0*/)
 {
   vtkIdType v = this->AddVertex();
-  this->AddEdge(parent, v);
+  this->AddEdge(parent, v, propertyArr);
   return v;
 }
 
