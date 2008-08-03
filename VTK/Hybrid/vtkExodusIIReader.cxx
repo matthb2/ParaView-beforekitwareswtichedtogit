@@ -3333,6 +3333,7 @@ void vtkExodusIIReader::PrintSelf( ostream& os, vtkIndent indent )
   os << indent << "ExodusModelMetadata: " << (this->ExodusModelMetadata ? "ON" : "OFF" ) << "\n";
   os << indent << "PackExodusModelOntoOutput: " << (this->PackExodusModelOntoOutput ? "ON" : "OFF" ) << "\n";
   os << indent << "ExodusModel: " << this->ExodusModel << "\n";
+  os << indent << "SILUpdateStamp: " << this->SILUpdateStamp << "\n";
   if ( this->Metadata )
     {
     os << indent << "Metadata:\n";

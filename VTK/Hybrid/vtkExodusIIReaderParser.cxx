@@ -414,5 +414,6 @@ vtkstd::string vtkExodusIIReaderParser::GetBlockName(int id)
 void vtkExodusIIReaderParser::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os, indent);
+  os << indent << "SIL: " << this->SIL << endl;
 }
 
