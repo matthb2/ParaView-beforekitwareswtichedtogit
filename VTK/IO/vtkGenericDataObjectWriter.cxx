@@ -163,8 +163,6 @@ void vtkGenericDataObjectWriter::WriteData()
       delete [] this->OutputString;
       }
     this->OutputStringLength = writer->GetOutputStringLength();
-    // should fill something here.
-    this->OutputStringAllocatedLength = this->OutputStringLength;
     this->OutputString = writer->RegisterAndGetOutputString();
     }
   writer->Delete();
