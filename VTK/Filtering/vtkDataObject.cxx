@@ -66,6 +66,7 @@ vtkInformationKeyRestrictedMacro(vtkDataObject, DATA_EXTENT, IntegerPointer, 6);
 vtkInformationKeyRestrictedMacro(vtkDataObject, ORIGIN, DoubleVector, 3);
 vtkInformationKeyRestrictedMacro(vtkDataObject, SPACING, DoubleVector, 3);
 vtkInformationKeyMacro(vtkDataObject, DATA_GEOMETRY_UNMODIFIED, Integer);
+vtkInformationKeyMacro(vtkDataObject, SIL, DataObject);
 
 class vtkDataObjectToSourceFriendship
 {
