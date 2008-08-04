@@ -95,6 +95,7 @@ vtkPBGLRMATGraphSource::PrintSelf(ostream& os, vtkIndent indent)
   os << indent << "Probabilities: " << this->A << ", " << this->B << ", " 
      << this->C << ", " << this->D << endl;
   os << indent << "IncludeEdgeWeights: " << this->IncludeEdgeWeights << endl;
+  os << indent << "AllowSelfLoops: " << this->AllowSelfLoops << endl;
   os << indent << "GeneratePedigreeIds: " << this->GeneratePedigreeIds << endl;
   os << indent << "VertexPedigreeIdArrayName: "
     << (this->VertexPedigreeIdArrayName ? this->VertexPedigreeIdArrayName : "(null)") << endl;
