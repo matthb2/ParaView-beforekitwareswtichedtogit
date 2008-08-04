@@ -246,6 +246,19 @@ int vtkTesting::IsInteractiveModeSpecified()
   return 0;
 }
 
+int vtkTesting::IsFlagSpecified(const char *flag)
+{
+  unsigned int i;
+  for (i = 0; i < this->Args.size(); ++i)
+    {
+    if ( this->Args[i] == flag)
+      {
+      return 1;
+      }
+    }
+  return 0;
+}
+
 int vtkTesting::IsValidImageSpecified()
 {
   unsigned int i;
