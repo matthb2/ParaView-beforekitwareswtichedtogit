@@ -677,6 +677,24 @@ void vtkGraphMapper::PrintSelf(ostream& os, vtkIndent indent)
     os << indent << "GraphToPoly: (none)\n";
     }
 
+  if ( this->VertexLookupTable )
+    {
+    os << indent << "VertexLookupTable: (" << this->VertexLookupTable << ")\n";
+    }
+  else
+    {
+    os << indent << "VertexLookupTable: (none)\n";
+    }
+
+  if ( this->EdgeLookupTable )
+    {
+    os << indent << "EdgeLookupTable: (" << this->EdgeLookupTable << ")\n";
+    }
+  else
+    {
+    os << indent << "EdgeLookupTable: (none)\n";
+    }
+
   os << indent << "VertexPointSize: " << this->VertexPointSize << endl;
   os << indent << "EdgeLineWidth: " << this->EdgeLineWidth << endl;
   os << indent << "ScaledGlyphs: " << this->ScaledGlyphs << endl;
