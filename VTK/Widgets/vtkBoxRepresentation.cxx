@@ -1067,9 +1067,9 @@ void vtkBoxRepresentation::BuildRepresentation()
   // Rebuild only if necessary
   if ( this->GetMTime() > this->BuildTime ||
        (this->Renderer && this->Renderer->GetVTKWindow() &&
-        this->Renderer->GetVTKWindow()->GetMTime() > this->BuildTime) )
+        (this->Renderer->GetVTKWindow()->GetMTime() > this->BuildTime ||
+        this->Renderer->GetActiveCamera()->GetMTime() > this->BuildTime)) )
     {
-
     this->SizeHandles();
     this->BuildTime.Modified();
     }
