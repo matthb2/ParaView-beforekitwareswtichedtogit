@@ -1258,6 +1258,12 @@ void vtkGraph::AddEdgeInternal(vtkIdType u, vtkIdType v, bool directed,
     return;
     }
 
+  if (u >= this->GetNumberOfVertices() || v >= this->GetNumberOfVertices())
+    {
+    vtkErrorMacro(<< "Vertex index out of range");
+    return;
+    }
+
   vtkIdType edgeId = this->Internals->NumberOfEdges;
   this->Internals->NumberOfEdges++;
   this->Internals->Adjacency[u].OutEdges.push_back(vtkOutEdgeType(v, edgeId));
