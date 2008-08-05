@@ -174,6 +174,7 @@ vtkPVSelectionSource::vtkPVSelectionSource()
     {
     this->Frustum[cc] = 0;
     }
+  this->FieldType = vtkSelection::CELL;
 }
 
 //----------------------------------------------------------------------------
