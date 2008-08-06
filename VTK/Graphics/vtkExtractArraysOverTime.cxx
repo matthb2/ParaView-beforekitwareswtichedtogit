@@ -681,12 +681,6 @@ int vtkExtractArraysOverTime::RequestUpdateExtent(
       "GLOBAL");
     this->WaitingForFastPathData = true;
     }
-  else
-    {
-    inInfo1->Remove(vtkStreamingDemandDrivenPipeline::FAST_PATH_OBJECT_ID());
-    inInfo1->Remove(vtkStreamingDemandDrivenPipeline::FAST_PATH_OBJECT_TYPE());
-    inInfo1->Remove(vtkStreamingDemandDrivenPipeline::FAST_PATH_ID_TYPE());
-    }
 
   /* Again, extent related stuff is no longer relevant since we are not
    * producing rectilinear grid as the output, instead it is multiblock.
