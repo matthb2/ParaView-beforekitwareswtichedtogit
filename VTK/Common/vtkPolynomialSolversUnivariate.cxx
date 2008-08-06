@@ -475,10 +475,10 @@ int vtkGetHabichtSequence(double* P, int d, double * SSS, int* degrees, int* off
   int offset = dp1;
 
   // Set the first two elements SSS = {P, P'}.
-  for(int k = 0; k < d; k++)
+  for(int m = 0; m < d; m++)
     {
-    SSS[k] = P[k];
-    SSS[k+offset] = static_cast<double>(d-k)*P[k];
+    SSS[m] = P[m];
+    SSS[m+offset] = static_cast<double>(d-m)*P[m];
     }
   SSS[d] = P[d];
   if( P[0] > 0. )
