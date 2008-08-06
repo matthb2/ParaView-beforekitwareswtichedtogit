@@ -278,8 +278,10 @@ int vtkPrismFilter::RequestGeometryData(
                                         vtkInformationVector *outputVector)
 {
 
-  if(this->GetXAxisVarName()=="none")
+  if( strcmp(this->GetXAxisVarName(), "none") == 0)
+    {
     return 1;
+    }
 
 
 
