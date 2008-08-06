@@ -49,7 +49,7 @@ vtkForceDirectedLayoutStrategy::vtkForceDirectedLayoutStrategy()
   this->CoolDownRate = 10.0;
   this->LayoutComplete = 0;
   this->AutomaticBoundsComputation = false;
-  this->ThreeDimensionalLayout = true;
+  this->ThreeDimensionalLayout = false;
   this->RandomInitialPoints = true;
   this->v = NULL;
   this->e = NULL;
