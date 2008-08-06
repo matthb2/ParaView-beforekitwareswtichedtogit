@@ -1030,6 +1030,11 @@ int vtkCompositeDataPipeline::NeedToExecuteData(
     return 1;
     }
 
+  if (this->NeedToExecuteBasedOnFastPathData(outInfo))
+    {
+    return 1;
+    }
+
   // We do not need to execute.
   return 0;
 }
