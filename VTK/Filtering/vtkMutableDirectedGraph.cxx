@@ -64,9 +64,7 @@ vtkIdType vtkMutableDirectedGraph::AddVertex(const vtkVariant& pedigreeId)
 //----------------------------------------------------------------------------
 vtkEdgeType vtkMutableDirectedGraph::AddEdge(vtkIdType u, vtkIdType v)
 {
-  vtkEdgeType e;
-  this->AddEdge(u, v, 0);
-  return e;
+  return this->AddEdge(u, v, 0);
 }
 
 //----------------------------------------------------------------------------
