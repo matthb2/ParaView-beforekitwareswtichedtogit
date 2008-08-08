@@ -171,7 +171,7 @@ void vtkBalloonRepresentation::StartWidgetInteraction(double e[2])
 
 
 //----------------------------------------------------------------------
-void vtkBalloonRepresentation::EndWidgetInteraction(double* vtkNotUsed(e[2]))
+void vtkBalloonRepresentation::EndWidgetInteraction(double vtkNotUsed(e)[2])
 {
   this->VisibilityOff();
 }

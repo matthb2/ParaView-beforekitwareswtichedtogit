@@ -491,9 +491,9 @@ void vtkAffineRepresentation2D::WidgetInteraction(double eventPos[2])
 }
 
 //----------------------------------------------------------------------
-void vtkAffineRepresentation2D::EndWidgetInteraction(double*)
+void vtkAffineRepresentation2D::EndWidgetInteraction(double vtkNotUsed(eventPos) [2])
 {
-  // Have to play games here because of the "pipelined" nature of the 
+  // Have to play games here because of the "pipelined" nature of the
   // transformations.
   this->GetTransform(this->TempTransform);
   this->TotalTransform->SetMatrix(this->TempTransform->GetMatrix());
