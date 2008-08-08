@@ -683,6 +683,7 @@ int vtkStreamTracer::CheckInputs(vtkInterpolatedVelocityField*& func,
         {
         vtkDebugMacro("One of the input blocks does not contain a "
                       "velocity vector.");
+        iterP->GoToNextItem();
         continue;
         }
       int cellSize = inp->GetMaxCellSize();
