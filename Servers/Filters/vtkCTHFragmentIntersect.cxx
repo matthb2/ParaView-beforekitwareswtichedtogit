@@ -41,7 +41,6 @@
 #include "vtkPointAccumulator.hxx"
 #include "vtkCTHFragmentPieceLoading.h"
 #include "vtkCTHFragmentProcessLoading.h"
-#include "vtkCTHFragmentProcessPriorityQueue.h"
 #include "vtkCTHFragmentProcessRing.h"
 #include "vtkCTHFragmentToProcMap.h"
 #include "vtkCTHFragmentPieceTransaction.h"
