@@ -402,6 +402,7 @@ void vtkOpenGLPolyDataMapper2D::RenderOverlay(vtkViewport* viewport,
   
   // Turn it back on in case we've turned it off
   glDepthMask( GL_TRUE );
+  glDisable( GL_TEXTURE_2D );
 }
   
 //----------------------------------------------------------------------------
