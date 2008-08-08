@@ -29,8 +29,8 @@ vtkAbstractCellLocator::vtkAbstractCellLocator()
 {
   this->CacheCellBounds            = 0;
   this->CellBounds                 = NULL;
-  this->MaxLevel               = 8;
-  this->Level         = 0;
+  this->MaxLevel                   = 8;
+  this->Level                      = 0;
   this->RetainCellLists            = 1;
   this->NumberOfCellsPerNode       = 32;
   this->UseExistingSearchStructure = 0;
