@@ -306,9 +306,9 @@ int vtkPVUpdateSuppressor::RequestDataObject(
 }
 
 //----------------------------------------------------------------------------
-int vtkPVUpdateSuppressor::RequestData(vtkInformation *request,
-                                       vtkInformationVector **inputVector,
-                                       vtkInformationVector *outputVector)
+int vtkPVUpdateSuppressor::RequestData(vtkInformation* vtkNotUsed(reqInfo),
+                                       vtkInformationVector** inputVector,
+                                       vtkInformationVector* youtputVector)
 {
   // RequestData is only called by its executive when 
   // (Enabled==off) and thus acting as a passthrough filter
