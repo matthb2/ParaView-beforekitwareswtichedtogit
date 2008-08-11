@@ -3135,7 +3135,10 @@ int vtkPKdTree::AssignRegionsContiguous()
 
   int floorLogP, ceilLogP;
 
-  for (floorLogP = 0; (nProcesses >> floorLogP) > 0; floorLogP++);
+  for (floorLogP = 0; (nProcesses >> floorLogP) > 0; floorLogP++)
+    {
+    // empty loop.
+    }
   floorLogP--;
 
   int P = 1 << floorLogP;
