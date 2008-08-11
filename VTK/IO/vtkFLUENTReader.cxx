@@ -4245,7 +4245,7 @@ void vtkFLUENTReader::GetSpeciesVariableNames()
 
     vtksys_ios::stringstream tokenizer(variables);
 
-    size_t iterator = 0;
+    int iterator = 0;
 
     while ( !tokenizer.eof() )
       {
