@@ -107,8 +107,7 @@ int vtkTemporalShiftScale::RequestInformation (
       }
     if (this->Periodic)
       {
-        numOutTimes = PeriodicN*this->MaximumNumberOfPeriods;
-        numOutTimes = PeriodicN*this->MaximumNumberOfPeriods;
+        numOutTimes = static_cast<int>(this->PeriodicN*this->MaximumNumberOfPeriods);
       }
     outTimes = new double [numOutTimes];
     int i;
