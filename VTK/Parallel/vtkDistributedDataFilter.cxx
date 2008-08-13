@@ -484,7 +484,7 @@ int vtkDistributedDataFilter::RequestData(
             }
           }
         }
-      for (int kk=0; kk < numProcs; kk++)
+      for (int kk=1; kk < numProcs; kk++)
         {
         this->Controller->Send(&leafTypes[0], numLeaves, kk, 1020203);
         }
