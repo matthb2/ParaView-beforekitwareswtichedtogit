@@ -178,6 +178,11 @@ static void vtkBuildArrayMap(vtkDataSetAttributes* dsa, vtkArrayMap& arrayMap)
       {
       continue;
       }
+    if (array == dsa->GetNormals() || array == dsa->GetTCoords())
+      {
+      // Normals and Tcoords are not filled up with filling partial arrays.
+      continue;
+      }
 
     if (arrayMap.find(array->GetName()) == arrayMap.end())
       {
