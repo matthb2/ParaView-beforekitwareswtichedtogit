@@ -200,7 +200,7 @@ int vtkExtractVOI::RequestInformation(
                                      / static_cast<float>(rate[i])));
 
     outSpacing[i] = spacing[i] * rate[i];
-    outOrigin[i] = voi[2*i]*spacing[i]-mins[i]*outSpacing[i];
+    outOrigin[i] = origin[i] + voi[2*i]*spacing[i]-mins[i]*outSpacing[i];
     }
 
   // Set the whole extent of the output
