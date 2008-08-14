@@ -51,9 +51,9 @@ bool vtkAbstractCellLocator::StoreCellBounds()
   vtkIdType numCells = this->DataSet->GetNumberOfCells();
   this->CellBounds = new double [numCells][6];
   for (vtkIdType j=0; j<numCells; j++) 
-  { 
+    { 
     this->DataSet->GetCellBounds(j, CellBounds[j]);
-  }
+    }
   return true;
 }
 //----------------------------------------------------------------------------
