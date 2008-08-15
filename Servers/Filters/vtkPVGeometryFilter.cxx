@@ -247,20 +247,24 @@ vtkCompositeDataSet* vtkPVGeometryFilter::FillPartialArrays(
     vtkDataSet* ds = vtkDataSet::SafeDownCast(iter->GetCurrentDataObject());
     if (ds)
       {
-      if (activePScalars=="" && ds->GetPointData()->GetScalars())
+      if (activePScalars=="" && ds->GetPointData()->GetScalars() &&
+        ds->GetPointData()->GetScalars()->GetName())
         {
         activePScalars = ds->GetPointData()->GetScalars()->GetName();
         }
-      if (activeCScalars=="" && ds->GetCellData()->GetScalars())
+      if (activeCScalars=="" && ds->GetCellData()->GetScalars() &&
+        ds->GetCellData()->GetScalars()->GetName())
         {
         activeCScalars = ds->GetCellData()->GetScalars()->GetName();
         }
 
-      if (activePVectors=="" && ds->GetPointData()->GetVectors())
+      if (activePVectors=="" && ds->GetPointData()->GetVectors() &&
+        ds->GetPointData()->GetVectors()->GetName())
         {
         activePVectors = ds->GetPointData()->GetVectors()->GetName();
         }
-      if (activeCVectors=="" && ds->GetCellData()->GetVectors())
+      if (activeCVectors=="" && ds->GetCellData()->GetVectors() &&
+        ds->GetCellData()->GetVectors()->GetName())
         {
         activeCVectors = ds->GetCellData()->GetVectors()->GetName();
         }
