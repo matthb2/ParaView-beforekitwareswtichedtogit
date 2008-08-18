@@ -35,6 +35,10 @@
 # endif
 #endif
 
+#if defined(__BORLANDC__)
+#  define fmax(a,b) ( (a) >= (b) ? (a) : (b) )
+#endif
+
 vtkCxxRevisionMacro(vtkPolynomialSolversUnivariate, "$Revision$");
 vtkStandardNewMacro(vtkPolynomialSolversUnivariate);
 
