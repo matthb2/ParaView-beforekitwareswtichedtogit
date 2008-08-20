@@ -65,7 +65,7 @@ vtkGeoAlignedImageRepresentation::vtkGeoAlignedImageRepresentation()
   this->SelectableOff();
 
   this->Threader = vtkSmartPointer<vtkMultiThreader>::New();
-  this->TreeLock = NULL;
+  this->TreeLock = 0;
 }
 
 //-----------------------------------------------------------------------------
