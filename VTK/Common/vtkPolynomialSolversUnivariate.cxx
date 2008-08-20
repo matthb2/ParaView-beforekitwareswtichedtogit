@@ -35,7 +35,7 @@
 # endif
 #endif
 
-#if defined(_MSC_VER) || defined(__BORLANDC__)
+#if defined(_MSC_VER) || defined(__BORLANDC__) || defined (__SUNPRO_C)
 # define fmax(a,b) ( (a) >= (b) ? (a) : (b) )
 #endif
 
