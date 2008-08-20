@@ -345,6 +345,9 @@ void vtkSMRenderViewProxy::EndCreateVTKObjects()
   // Set the helper for interaction.
   this->Interactor->SetPVRenderView(this->RenderViewHelper);
 
+  // Mark 2D renderer as non-interactive, since it's a slave to the 3D renderer.
+  this->Renderer2D->SetInteractive(0);
+
   if (pvoptions->GetUseStereoRendering())
     {
     SetIntVectorProperty(this->RenderWindowProxy, "StereoCapableWindow", 1);
