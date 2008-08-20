@@ -28,7 +28,7 @@ vtkTimeToTextConvertor::vtkTimeToTextConvertor()
 {
   this->Format = 0;
   this->Shift  = 0.0;
-  this->Scale  = 1.1;
+  this->Scale  = 1.0;
   this->SetFormat("Time: %f");
 }
 
