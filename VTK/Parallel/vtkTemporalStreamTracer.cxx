@@ -70,7 +70,7 @@ using namespace vtkTemporalStreamTracerNamespace;
 //----------------------------------------------------------------------------
 vtkCxxRevisionMacro(vtkTemporalStreamTracer, "$Revision$");
 //----------------------------------------------------------------------------
-#define JB_DEBUG__
+//#define JB_DEBUG__
 #if defined JB_DEBUG__
   #ifdef WIN32
       #define OUTPUTTEXT(a) vtkOutputWindowDisplayText(a);
