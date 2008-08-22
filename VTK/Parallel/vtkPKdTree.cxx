@@ -3306,7 +3306,7 @@ int vtkPKdTree::GetCellArrayGlobalRange(const char *n, float range[2])
 int vtkPKdTree::GetPointArrayGlobalRange(const char *n, double range[2])
 {
   int first = 1;
-  double tmp[2];
+  double tmp[2]={0, 0};
   int start = 0;
 
   while (1)
