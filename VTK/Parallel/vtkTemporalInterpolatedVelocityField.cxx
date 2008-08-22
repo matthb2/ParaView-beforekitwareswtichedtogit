@@ -21,7 +21,7 @@
 #include "vtkObjectFactory.h"
 #include "vtkPointData.h"
 #include "vtkCachingInterpolatedVelocityField.h"
-#include "vtkModifiedBSPTree.h"
+#include "vtkAbstractCellLocator.h"
 
 #include <vtkstd/vector>
 //---------------------------------------------------------------------------
