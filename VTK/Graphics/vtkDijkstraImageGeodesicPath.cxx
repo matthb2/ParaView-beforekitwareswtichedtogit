@@ -45,6 +45,10 @@ vtkDijkstraImageGeodesicPath::~vtkDijkstraImageGeodesicPath()
 //----------------------------------------------------------------------------
 void vtkDijkstraImageGeodesicPath::SetCostImage( vtkImageData *image )
 {
+  if ( !image ) 
+    {
+    return;
+    }
   bool dimension2D = false;
   image->UpdateInformation();
   int* dimensions = image->GetDimensions();
