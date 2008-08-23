@@ -239,4 +239,5 @@ void vtkDijkstraImageGeodesicPath::PrintSelf(ostream& os, vtkIndent indent)
     {
     os << "Off\n";
     }
+  os << indent << "CostImage: " << this->GetCostImage();
 }
