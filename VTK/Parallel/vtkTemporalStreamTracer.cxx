@@ -50,7 +50,7 @@ PURPOSE.  See the above copyright notice for more information.
 #ifdef WIN32
   #undef JB_H5PART_PARTICLE_OUTPUT
 #else
-  #define JB_H5PART_PARTICLE_OUTPUT
+//  #define JB_H5PART_PARTICLE_OUTPUT
 #endif
 
 #ifdef JB_H5PART_PARTICLE_OUTPUT
