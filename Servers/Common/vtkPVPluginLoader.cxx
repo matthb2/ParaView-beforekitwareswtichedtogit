@@ -83,11 +83,19 @@ vtkPVPluginLoader::~vtkPVPluginLoader()
     this->ServerManagerXML->Delete();
     }
 
-  this->SetFileName(0);
+  if(this->Error)
+    {
+    delete [] this->Error;
+    }
   
   if(this->SearchPaths)
     {
     delete [] this->SearchPaths;
+    }
+  
+  if(this->FileName)
+    {
+    delete [] this->FileName;
     }
 }
 
