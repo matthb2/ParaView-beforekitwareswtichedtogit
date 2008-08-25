@@ -216,8 +216,13 @@ void vtkDataReader::SetInputString(const char *in, int len)
 
   if (in && len>0)
     {
-    this->InputString = new char[len];
+    // Add a NULL terminator so that GetInputString
+    // callers (from wrapped languages) get a valid
+    // C string in *ALL* cases...
+    //
+    this->InputString = new char[len+1];
     memcpy(this->InputString,in,len);
+    this->InputString[len] = 0;
     this->InputStringLength = len;
     }
    else
