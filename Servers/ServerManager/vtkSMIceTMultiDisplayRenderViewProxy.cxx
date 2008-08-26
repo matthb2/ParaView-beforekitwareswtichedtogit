@@ -135,7 +135,7 @@ void vtkSMIceTMultiDisplayRenderViewProxy::BeginInteractiveRender()
 
 //-----------------------------------------------------------------------------
 bool vtkSMIceTMultiDisplayRenderViewProxy::GetCompositingDecision(
-    unsigned long totalMemory, int stillRender)
+    unsigned long totalMemory, int vtkNotUsed(stillRender))
 {
   if (!this->RemoteRenderAvailable)
     {
