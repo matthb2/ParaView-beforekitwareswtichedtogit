@@ -129,5 +129,7 @@ int vtkDijkstraImageContourLineInterpolator::InterpolateLine(
 void vtkDijkstraImageContourLineInterpolator::PrintSelf(
                               ostream& os, vtkIndent indent)
 {
-  this->Superclass::PrintSelf(os,indent);  
+  this->Superclass::PrintSelf(os,indent);
+  os << indent << "DijkstraImageGeodesicPath: " << this->DijkstraImageGeodesicPath << endl;
+  os << indent << "CostImage: " << this->GetCostImage() << endl;
 }
