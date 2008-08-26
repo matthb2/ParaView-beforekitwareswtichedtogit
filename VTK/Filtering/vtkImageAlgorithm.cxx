@@ -250,7 +250,7 @@ void vtkImageAlgorithm::CopyAttributeData(vtkImageData *input,
     {
     output->GetPointData()->CopyAllOn();
     output->GetCellData()->CopyAllOn();
-    if (inArray->GetName())
+    if (inArray && inArray->GetName())
       {
       output->GetPointData()->CopyFieldOff(inArray->GetName());
       }
