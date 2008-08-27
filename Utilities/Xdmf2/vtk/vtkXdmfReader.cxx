@@ -274,7 +274,7 @@ public:
   // For converting arrays from XDMF to VTK format
   vtkXdmfDataArray *ArrayConverter;
 
-  int UpdatePiece;
+  unsigned int UpdatePiece;
   unsigned int UpdateNumPieces;
 
 };
