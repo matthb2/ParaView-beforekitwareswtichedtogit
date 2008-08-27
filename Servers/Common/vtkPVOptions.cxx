@@ -102,7 +102,9 @@ vtkPVOptions::~vtkPVOptions()
 void vtkPVOptions::Initialize()
 {
   this->AddArgument("--data", 0, &this->ParaViewDataName,
-                    "Load the specified data.", 
+                    "Load the specified data. "
+                    "To specify file series replace the numeral with a '.' eg. "
+                    "my0.vtk, my1.vtk...myN.vtk becomes my..vtk",
                     vtkPVOptions::PVCLIENT|vtkPVOptions::PARAVIEW);
   /*
   this->AddBooleanArgument("--client-render-server", "-crs", &this->ClientRenderServer,
