@@ -2795,6 +2795,13 @@ vtkExodusIIReaderPrivate::BlockInfoType* vtkExodusIIReaderPrivate::GetBlockFromF
 //-----------------------------------------------------------------------------
 vtkIdType vtkExodusIIReaderPrivate::GetSqueezePointId( BlockSetInfoType* bsinfop, int i )
 {
+  if (i<0)
+    {
+    vtkGenericWarningMacro("Invalid point id: " << i 
+      << ". Data file may be incorrect.");
+    i = 0;
+    }
+
   vtkIdType x;
   vtkstd::map<vtkIdType,vtkIdType>::iterator it = bsinfop->PointMap.find( i );
   if ( it == bsinfop->PointMap.end() )
