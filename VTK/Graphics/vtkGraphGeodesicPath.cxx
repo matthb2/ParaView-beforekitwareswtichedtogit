@@ -24,6 +24,8 @@ vtkCxxRevisionMacro(vtkGraphGeodesicPath, "$Revision$");
 //-----------------------------------------------------------------------------
 vtkGraphGeodesicPath::vtkGraphGeodesicPath()
 {
+  this->StartVertex = 0;
+  this->EndVertex   = 0;
 }
 
 //-----------------------------------------------------------------------------
