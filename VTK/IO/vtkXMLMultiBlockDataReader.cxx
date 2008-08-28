@@ -185,6 +185,7 @@ void vtkXMLMultiBlockDataReader::ReadComposite(vtkXMLDataElement* element,
       vtkMultiPieceDataSet* childDS = vtkMultiPieceDataSet::New();;
       this->ReadComposite(childXML, childDS, filePath, dataSetIndex);
       mblock->SetBlock(index, childDS);
+      childDS->Delete();
       }
     else
       {
