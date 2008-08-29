@@ -1865,8 +1865,7 @@ vtkSMRepresentationProxy* vtkSMRenderViewProxy::CreateDefaultRepresentation(
 }
 
 //-----------------------------------------------------------------------------
-const char* vtkSMRenderViewProxy::GetSuggestedRenderViewType(
-  vtkIdType connectionID)
+const char* vtkSMRenderViewProxy::GetSuggestedViewType(vtkIdType connectionID)
 {
   vtkProcessModule* pm = vtkProcessModule::GetProcessModule();
 
