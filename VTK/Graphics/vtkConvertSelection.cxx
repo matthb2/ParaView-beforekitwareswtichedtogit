@@ -44,6 +44,7 @@
 #include "vtkVariantArray.h"
 
 #include <vtkstd/algorithm>
+#include <vtkstd/iterator>
 #include <vtkstd/map>
 #include <vtkstd/set>
 #include <vtkstd/vector>
