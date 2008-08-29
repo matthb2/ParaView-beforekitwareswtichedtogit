@@ -46,7 +46,7 @@ vtkVariant vtkGetValue(T* arr, vtkIdType index)
 }
 
 //---------------------------------------------------------------------------
-vtkVariant vtkGetVariantValue(vtkAbstractArray* arr, vtkIdType i)
+static vtkVariant vtkGetVariantValue(vtkAbstractArray* arr, vtkIdType i)
 {
   vtkVariant val;
   switch(arr->GetDataType())
