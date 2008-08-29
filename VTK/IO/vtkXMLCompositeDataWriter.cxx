@@ -147,7 +147,7 @@ void vtkXMLCompositeDataWriter::SetWriteMetaFile(int flag)
 int vtkXMLCompositeDataWriter::RequestUpdateExtent(
   vtkInformation* vtkNotUsed(request),
   vtkInformationVector** inputVector,
-  vtkInformationVector* outputVector)
+  vtkInformationVector* vtkNotUsed(outputVector))
 {
   vtkInformation* inInfo = inputVector[0]->GetInformationObject(0);
   inInfo->Set(
