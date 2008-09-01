@@ -296,6 +296,7 @@ double *vtkPKdTree::VolumeBounds()
   if (number_of_datasets == 0)
     {
     VTKERROR("NumberOfDatasets = 0, cannot determine volume bounds.");
+    delete []volBounds;
     return NULL;
     }
 
@@ -333,6 +334,7 @@ double *vtkPKdTree::VolumeBounds()
   if ((aLittle /= 100.0) <= 0.0)
     {
      VTKERROR("VolumeBounds - degenerate volume");
+     delete []volBounds;
      return NULL;
     }
 
