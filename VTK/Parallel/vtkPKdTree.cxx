@@ -290,9 +290,7 @@ double *vtkPKdTree::VolumeBounds()
   // Get the spatial bounds of the whole volume
   
   double *volBounds = new double [6];
-  double localMin[3], localMax[3],
-         globalMin[3] = {0, 0, 0},
-         globalMax[3] = {0, 0, 0};
+  double localMin[3], localMax[3], globalMin[3], globalMax[3];
 
   int number_of_datasets = this->GetNumberOfDataSets();
   if (number_of_datasets == 0)
