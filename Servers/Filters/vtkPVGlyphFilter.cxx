@@ -440,7 +440,7 @@ int vtkPVGlyphFilter::RequestCompositeData(vtkInformation* request,
         }
       else
         {
-        this->BlockNextPoint=this->BlockSampleStride;
+        this->BlockNextPoint=0;
         }
 
       // We have set all ofthe parameters that will be used in 
