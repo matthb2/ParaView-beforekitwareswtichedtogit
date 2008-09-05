@@ -38,6 +38,8 @@ vtkRowQuery::~vtkRowQuery()
 void vtkRowQuery::PrintSelf(ostream &os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os, indent);
+  os << indent << "CaseSensitiveFieldNames: " 
+    << this->CaseSensitiveFieldNames << endl;
 }
 
 int vtkRowQuery::GetFieldIndex(char* name)
