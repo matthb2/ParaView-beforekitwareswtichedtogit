@@ -16,23 +16,24 @@
 
 #include "vtkAMRBox.h"
 #include "vtkCompositeDataPipeline.h"
-#include "vtkDataSet.h"
 #include "vtkCompositeDataSet.h"
+#include "vtkDataArraySelection.h"
+#include "vtkDataSet.h"
+#include "vtkHierarchicalBoxDataSet.h"
 #include "vtkInformation.h"
 #include "vtkInformationVector.h"
 #include "vtkInstantiator.h"
+#include "vtkMultiBlockDataSet.h"
 #include "vtkObjectFactory.h"
 #include "vtkSmartPointer.h"
+#include "vtkTemporalDataSet.h"
+#include "vtkUniformGrid.h"
 #include "vtkXMLDataElement.h"
 #include "vtkXMLImageDataReader.h"
 #include "vtkXMLPolyDataReader.h"
 #include "vtkXMLRectilinearGridReader.h"
 #include "vtkXMLStructuredGridReader.h"
 #include "vtkXMLUnstructuredGridReader.h"
-#include "vtkHierarchicalBoxDataSet.h"
-#include "vtkMultiBlockDataSet.h"
-#include "vtkTemporalDataSet.h"
-#include "vtkUniformGrid.h"
 
 #include <vtkstd/map>
 #include <vtkstd/string>
@@ -325,6 +326,10 @@ vtkDataSet* vtkXMLCompositeDataReader::ReadDataset(vtkXMLDataElement* xmlElem,
     return 0;
     }
   reader->SetFileName(fileName.c_str());
+  // initialize array selection so we don't have any residual array selections
+  // from previous use of the reader.
+  reader->GetPointDataArraySelection()->RemoveAllArrays();
+  reader->GetCellDataArraySelection()->RemoveAllArrays();
   reader->Update();
   vtkDataSet* output = reader->GetOutputAsDataSet();
   if (!output)
