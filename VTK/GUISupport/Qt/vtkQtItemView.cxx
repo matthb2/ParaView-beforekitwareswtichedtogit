@@ -153,7 +153,7 @@ QItemSelectionModel* vtkQtItemView::GetSelectionModel()
 }
 
 //----------------------------------------------------------------------------
-void vtkQtItemView::AddInputConnection(
+void vtkQtItemView::AddInputConnection( int vtkNotUsed(port), int vtkNotUsed(index),
   vtkAlgorithmOutput* conn, vtkAlgorithmOutput* vtkNotUsed(selectionConn))
 {
   // Make sure I have a view and a model
@@ -180,7 +180,7 @@ void vtkQtItemView::AddInputConnection(
 }
 
 //----------------------------------------------------------------------------
-void vtkQtItemView::RemoveInputConnection(
+void vtkQtItemView::RemoveInputConnection(int vtkNotUsed(port), int vtkNotUsed(index),
   vtkAlgorithmOutput* conn, vtkAlgorithmOutput* vtkNotUsed(selectionConn))
 {
   // Make sure I have a view and a model
