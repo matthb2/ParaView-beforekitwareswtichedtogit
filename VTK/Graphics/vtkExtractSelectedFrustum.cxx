@@ -410,6 +410,7 @@ int vtkExtractSelectedFrustum::RequestData(
     outputUG->Allocate(numCells/4); //allocate storage for geometry/topology
     newPts->Allocate(numPts/4,numPts);
     outputPD->SetCopyGlobalIds(1);
+    outputPD->CopyFieldOff("vtkOriginalPointIds");
     outputPD->CopyAllocate(pd);
 
     if ((this->FieldType == vtkSelection::CELL)
@@ -420,6 +421,7 @@ int vtkExtractSelectedFrustum::RequestData(
       )
       {
       outputCD->SetCopyGlobalIds(1);
+      outputCD->CopyFieldOff("vtkOriginalCellIds");
       outputCD->CopyAllocate(cd);
 
       originalCellIds = vtkIdTypeArray::New();
