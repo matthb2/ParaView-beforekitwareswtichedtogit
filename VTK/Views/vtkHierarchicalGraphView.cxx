@@ -83,6 +83,7 @@ vtkHierarchicalGraphView::vtkHierarchicalGraphView()
   this->TreeStrategy           = vtkSmartPointer<vtkTreeLayoutStrategy>::New();
   this->CosmicTreeStrategy     = vtkSmartPointer<vtkCosmicTreeLayoutStrategy>::New();
   this->CircularStrategy       = vtkSmartPointer<vtkCircularLayoutStrategy>::New();
+  this->PassThroughStrategy    = vtkSmartPointer<vtkPassThroughLayoutStrategy>::New();
   this->VertexDegree           = vtkSmartPointer<vtkVertexDegree>::New();
   this->EdgeCenters            = vtkSmartPointer<vtkEdgeCenters>::New();
   this->TreeAggregation        = vtkSmartPointer<vtkTreeFieldAggregator>::New();
@@ -201,7 +202,7 @@ vtkHierarchicalGraphView::vtkHierarchicalGraphView()
   // GraphLayout                                +
   //    |                                       +
   // VertexDegree --------------------------- ExtractSelectedTree
-  //    |                                       |                             |
+  //    |                                       |
   //    +--------------------- TreeMapper   SelectedTreeMapper
   //    |                          |            |
   //    | GraphRepresentation**  TreeActor    SelectedTreeActor
