@@ -1408,7 +1408,7 @@ void vtkWin32OpenGLRenderWindow::CleanUpOffScreenRendering(void)
     }
 }
 
-void vtkWin32OpenGLRenderWindow::ResumecreenRendering(void)
+void vtkWin32OpenGLRenderWindow::ResumeScreenRendering(void)
 {
   // release OpenGL graphics resources before switch back to on-screen. 
   this->MakeCurrent();
