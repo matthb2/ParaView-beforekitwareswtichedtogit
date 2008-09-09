@@ -668,6 +668,7 @@ void vtkHierarchicalGraphView::SetupRenderWindow(vtkRenderWindow* win)
 {
   this->Superclass::SetupRenderWindow(win);
   win->GetInteractor()->SetInteractorStyle(this->InteractorStyle);
+  this->Renderer->ResetCamera();
 }
 
 //----------------------------------------------------------------------------
