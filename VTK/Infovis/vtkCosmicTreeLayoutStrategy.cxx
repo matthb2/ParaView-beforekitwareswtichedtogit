@@ -1,6 +1,5 @@
 #include "vtkCosmicTreeLayoutStrategy.h"
 
-#include "vtkBoostBreadthFirstSearchTree.h"
 #include "vtkObjectFactory.h"
 #include "vtkDataSetAttributes.h"
 #include "vtkDoubleArray.h"
@@ -15,6 +14,10 @@
 #include <vtkstd/algorithm>
 
 #include <math.h>
+
+#ifdef VTK_USE_BOOST
+# include "vtkBoostBreadthFirstSearchTree.h"
+#endif
 
 // Define to print debug showing convergence (or lack thereof) of loop to find enclosing radius, Re
 #undef VTK_COSMIC_DBG
