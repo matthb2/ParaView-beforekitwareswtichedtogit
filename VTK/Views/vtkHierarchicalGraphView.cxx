@@ -1076,6 +1076,8 @@ void vtkHierarchicalGraphView::PrintSelf(ostream& os, vtkIndent indent)
   this->Coordinate->PrintSelf(os, indent.GetNextIndent());
   os << indent << "HierarchicalGraphLayout: " << endl;
   this->GraphLayout->PrintSelf(os, indent.GetNextIndent());
+  os << indent << "LayoutStrategy: " << endl;
+  this->LayoutStrategy->PrintSelf(os, indent.GetNextIndent());
   os << indent << "TreeStrategy: " << endl;
   this->TreeStrategy->PrintSelf(os, indent.GetNextIndent());
   os << indent << "CosmicTreeStrategy: " << endl;
