@@ -1408,8 +1408,12 @@ void vtkWin32OpenGLRenderWindow::CleanUpOffScreenRendering(void)
     }
 }
 
-void vtkWin32OpenGLRenderWindow::ResumeScreenRendering(void)
-{  
+void vtkWin32OpenGLRenderWindow::ResumecreenRendering(void)
+{
+  // release OpenGL graphics resources before switch back to on-screen. 
+  this->MakeCurrent();
+  this->CleanUpRenderers();
+
   this->Mapped = this->ScreenMapped;
   this->Size[0] = this->ScreenWindowSize[0];
   this->Size[1] = this->ScreenWindowSize[1];
