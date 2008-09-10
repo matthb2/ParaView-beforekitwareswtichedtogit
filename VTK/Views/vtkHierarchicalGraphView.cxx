@@ -113,6 +113,8 @@ vtkHierarchicalGraphView::vtkHierarchicalGraphView()
   this->SelectedGraphMapper    = vtkSmartPointer<vtkPolyDataMapper>::New();
   this->SelectedGraphActor     = vtkSmartPointer<vtkActor>::New();
   
+  vtkGraphLayoutStrategy *nothing = 0;
+  this->SetLayoutStrategy(nothing);
   this->LayoutStrategyNameInternal = 0;
   this->IconArrayNameInternal = 0;
 
