@@ -37,7 +37,7 @@
 #include "vtkPythagoreanQuadruples.h"
 #include "vtkSmartPointer.h"
 
-#include <Utilities/octree/octree>
+#include <octree/octree>
 #include <vtkstd/deque>
 #include <vtkstd/set>
 #include <vtkstd/vector>
