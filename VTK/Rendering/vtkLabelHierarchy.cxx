@@ -37,7 +37,7 @@
 #include "vtkPythagoreanQuadruples.h"
 #include "vtkSmartPointer.h"
 
-#include <octree/octree>
+#include <Utilities/octree/octree>
 #include <vtkstd/deque>
 #include <vtkstd/set>
 #include <vtkstd/vector>
@@ -110,13 +110,13 @@ public:
     double TotalArea;
   };
 
-  typedef octree<vtkLabelHierarchy::implementation::LabelSet> HierarchyType;
-  typedef octree<vtkLabelHierarchy::implementation::LabelSet>::cursor HierarchyCursor;
-  typedef octree<vtkLabelHierarchy::implementation::LabelSet>::iterator HierarchyIterator;
+  typedef octree<LabelSet> HierarchyType;
+  typedef octree<LabelSet>::cursor HierarchyCursor;
+  typedef octree<LabelSet>::iterator HierarchyIterator;
 
   // Description:
   // Computes the depth of the generated hierarchy.
-  virtual void ComputeActualDepth();
+  void ComputeActualDepth();
 
   // Description:
   // Routines called by ComputeHierarchy()
