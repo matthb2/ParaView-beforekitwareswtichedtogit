@@ -528,7 +528,7 @@ int vtkSmoothPolyDataFilter::RequestData(
     this->SmoothPoints = new vtkSmoothPoints;
     vtkSmoothPoint *sPtr;
     cellLocator = vtkCellLocator::New();
-    w = new double[input->GetMaxCellSize()];
+    w = new double[source->GetMaxCellSize()];
     
     cellLocator->SetDataSet(source);
     cellLocator->BuildLocator();
