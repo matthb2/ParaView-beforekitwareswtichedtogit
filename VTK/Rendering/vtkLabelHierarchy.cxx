@@ -136,6 +136,8 @@ public:
   vtkTimeStamp HierarchyTime;
   int ActualDepth;
   vtkLabelHierarchy* Self;
+
+  friend struct PriorityComparator;
 };
 
 //----------------------------------------------------------------------------
