@@ -282,13 +282,30 @@ vtkStringArray* vtkMySQLDatabase::GetRecord(const char *table)
 
 bool vtkMySQLDatabase::HasError()
 { 
-  return (mysql_errno(this->Private->Connection)!=0);
+  if (this->Private->Connection)
+    {
+    return (mysql_errno(this->Private->Connection)!=0);
+    }
+  else
+    {
+    return (mysql_errno(& this->Private->NullConnection)!=0);
+    }
 }
 
 const char* vtkMySQLDatabase::GetLastErrorText()
 {
-  return this->Private->Connection ?
-    mysql_error( this->Private->Connection ) : 0;
+  if (this->Private->Connection)
+    {
+    return mysql_error( this->Private->Connection );
+    }
+  else if (this->HasError())
+    {
+    return mysql_error( & this->Private->NullConnection );
+    }
+  else
+    {
+    return 0;
+    }
 }
 
 // ----------------------------------------------------------------------
