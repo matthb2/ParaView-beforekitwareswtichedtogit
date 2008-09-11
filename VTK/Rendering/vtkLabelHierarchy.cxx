@@ -89,7 +89,7 @@ public:
       }
     bool operator () ( const vtkIdType& a, const vtkIdType& b )
       {
-      return this->Hierarchy->Implementation->ComparePriorities( a, b );
+      return this->Hierarchy->GetImplementation()->ComparePriorities( a, b );
       }
   };
 
@@ -110,9 +110,9 @@ public:
     double TotalArea;
   };
 
-  typedef octree<LabelSet> HierarchyType;
-  typedef octree<LabelSet>::cursor HierarchyCursor;
-  typedef octree<LabelSet>::iterator HierarchyIterator;
+  typedef octree<vtkLabelHierarchy::implementation::LabelSet> HierarchyType;
+  typedef octree<vtkLabelHierarchy::implementation::LabelSet>::cursor HierarchyCursor;
+  typedef octree<vtkLabelHierarchy::implementation::LabelSet>::iterator HierarchyIterator;
 
   // Description:
   // Computes the depth of the generated hierarchy.
@@ -136,8 +136,6 @@ public:
   vtkTimeStamp HierarchyTime;
   int ActualDepth;
   vtkLabelHierarchy* Self;
-
-  friend struct PriorityComparator;
 };
 
 //----------------------------------------------------------------------------
