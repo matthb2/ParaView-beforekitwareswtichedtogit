@@ -3163,7 +3163,7 @@ int vtkDataReader::DecodeString(char *resname, const char* name)
     cc ++;
     }
   strncpy(resname, str.str().c_str(), reslen+1);
-  resname[reslen+1] = 0;
+  resname[reslen] = 0;
   return static_cast<int>(reslen);
 }
 
