@@ -50,6 +50,12 @@ vtkLabelHierarchyIterator::~vtkLabelHierarchyIterator()
     }
 }
 
+void vtkLabelPlacer::PrintSelf( ostream& os, vtkIndent indent )
+{
+  this->Superclass::PrintSelf( os, indent );
+  os << indent << "Hierarchy: " << this->Hierarchy << "\n";
+}
+
 void vtkLabelHierarchyIterator::GetPoint( double x[3] )
 {
   this->Hierarchy->GetPoints()->GetPoint( this->GetLabelId(), x );
