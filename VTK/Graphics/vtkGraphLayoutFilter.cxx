@@ -164,7 +164,7 @@ int vtkGraphLayoutFilter::RequestData(
                      (this->GraphBounds[5]-this->GraphBounds[4])*
                      (this->GraphBounds[5]-this->GraphBounds[4]) );
   // The optimal distance between vertices.
-  double k = pow((double)volume/numPts,0.33333);
+  double k = pow(volume/numPts,0.33333);
 
   // Begin iterations.
   double norm;
