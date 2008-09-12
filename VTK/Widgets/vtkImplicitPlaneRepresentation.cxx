@@ -710,7 +710,7 @@ void vtkImplicitPlaneRepresentation::Rotate(double X, double Y,
     }
   int *size = this->Renderer->GetSize();
   double l2 = (X-this->LastEventPosition[0])*(X-this->LastEventPosition[0]) + (Y-this->LastEventPosition[1])*(Y-this->LastEventPosition[1]);
-  theta = 360.0 * sqrt(l2/((double)size[0]*size[0]+size[1]*size[1]));
+  theta = 360.0 * sqrt(l2/(size[0]*size[0]+size[1]*size[1]));
 
   //Manipulate the transform to reflect the rotation
   this->Transform->Identity();
