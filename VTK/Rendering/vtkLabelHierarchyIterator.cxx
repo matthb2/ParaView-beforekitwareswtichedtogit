@@ -50,7 +50,7 @@ vtkLabelHierarchyIterator::~vtkLabelHierarchyIterator()
     }
 }
 
-void vtkLabelPlacer::PrintSelf( ostream& os, vtkIndent indent )
+void vtkLabelHierarchyIterator::PrintSelf( ostream& os, vtkIndent indent )
 {
   this->Superclass::PrintSelf( os, indent );
   os << indent << "Hierarchy: " << this->Hierarchy << "\n";
