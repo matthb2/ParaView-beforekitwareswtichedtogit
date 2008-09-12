@@ -85,6 +85,56 @@ void vtkCollection::AddItem(vtkObject *a)
   this->NumberOfItems++;
 }
 
+// Insert an object into the list. There must be at least one
+// entry pre-existing.
+void vtkCollection::InsertItem(int i, vtkObject *a)
+{
+  if( i >= this->NumberOfItems || !this->Top )
+    {
+    return;
+    }
+
+  vtkCollectionElement *elem;
+
+  elem = new vtkCollectionElement;
+  vtkCollectionElement *curr = this->Top;
+
+  if( i < 0 )
+    {
+    this->Top = elem;
+    elem->Next = curr;
+    }
+  else
+    {
+    vtkCollectionElement *next = curr->Next;
+
+    int j = 0;
+    while( j != i )
+      {
+      curr = next;
+      next = curr->Next;
+      j++;
+      }
+
+    curr->Next = elem;
+    if( curr == this->Bottom )
+      {
+      this->Bottom = elem;
+      }
+    else
+      {
+      elem->Next = next;
+      }
+    }
+
+  a->Register(this);
+  elem->Item = a;
+
+  this->Modified();
+
+  this->NumberOfItems++;
+}
+
 // Remove an object from the list. Removes the first object found, not
 // all occurrences. If no object found, list is unaffected.  See warning
 // in description of RemoveItem(int).
