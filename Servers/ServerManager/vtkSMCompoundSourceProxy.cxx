@@ -164,6 +164,10 @@ void vtkSMCompoundSourceProxy::CreateVTKObjects()
         }
       }
     this->SetOutputPort(index, iter->ExposedName.c_str(), 0, 0);
+
+    // This sets up the dependency chain correctly.
+    subProxy->AddConsumer(0, this);
+    this->AddProducer(0, subProxy);
     index++;
     }
 }
