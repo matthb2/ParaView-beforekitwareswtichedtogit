@@ -6586,7 +6586,15 @@ int vtkCTHFragmentConnect::PrepareToCollectGeometricAttributes(
     }
   // ids
   ids.resize(nProcs,static_cast<int *>(0));
-  ids[myProcId]=&this->ResolvedFragmentIds[this->MaterialId][0];
+  if (this->ResolvedFragmentIds[this->MaterialId].size()!=0)
+    {
+    ids[myProcId]=&(this->ResolvedFragmentIds[this->MaterialId][0]);
+    }
+  else
+    {
+    ids[myProcId]=0;
+    }
+  
   // note, this could be a problem if we need to update ResolvedFragmentIds
   // but we don't need to since after the gather we have everything which
   // is just sequential 0-nFragmentsResolvedFragments. Also we do need to 
