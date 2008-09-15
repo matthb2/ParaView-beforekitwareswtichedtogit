@@ -193,7 +193,7 @@ void vtkSeedWidget::AddPointAction(vtkAbstractWidget *w)
     vtkHandleWidget *currentHandle = self->CreateHandleWidget(self,rep);
     rep->SetSeedDisplayPosition(currentHandleNumber,e);
     currentHandle->SetEnabled(1);
-    self->InvokeEvent(vtkCommand::PlacePointEvent,(void*)&(currentHandleNumber));
+    self->InvokeEvent(vtkCommand::PlacePointEvent,&(currentHandleNumber));
     self->InvokeEvent(vtkCommand::InteractionEvent,NULL);
     }
 

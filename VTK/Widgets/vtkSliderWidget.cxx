@@ -226,7 +226,7 @@ void vtkSliderWidget::AnimateSlider(int selectionState)
     for (int i=0; i < this->NumberOfAnimationSteps; i++)
       {
       value = originalValue + 
-        ((double)(i+1)/this->NumberOfAnimationSteps)*(targetValue-originalValue);
+        (static_cast<double>(i+1)/this->NumberOfAnimationSteps)*(targetValue-originalValue);
       sliderRep->SetValue(value);
       sliderRep->BuildRepresentation();
       this->InvokeEvent(vtkCommand::InteractionEvent,NULL);

@@ -22,7 +22,7 @@ vtkStandardNewMacro(vtkImageReader2Collection);
 
 void vtkImageReader2Collection::AddItem(vtkImageReader2 *f) 
 {
-  this->vtkCollection::AddItem((vtkObject *)f);
+  this->vtkCollection::AddItem(f);
 }
 
 vtkImageReader2 *vtkImageReader2Collection::GetNextItem() 

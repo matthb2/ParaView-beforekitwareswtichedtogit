@@ -477,7 +477,7 @@ int vtkLineWidget::HighlightHandle(vtkProp *prop)
     }
 
   // set the current handle
-  this->CurrentHandle = (vtkActor *)prop;
+  this->CurrentHandle = static_cast<vtkActor *>(prop);
 
   // find the current handle
   if ( this->CurrentHandle )
