@@ -140,7 +140,7 @@ public:
       {
       for ( int ty = ty0; ty <= ty1; ++ ty )
         {
-        ScreenTile& tile( this->Tiles[tx][ty] );
+        ScreenTile tile( this->Tiles[tx][ty] );
         // Do this check here for speed, even though we repeat w/ small mod below.
         if ( ! tile.IsSpotOpen( opacity, r ) ) 
           return false;
