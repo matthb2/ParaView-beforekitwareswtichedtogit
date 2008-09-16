@@ -1307,7 +1307,7 @@ void vtkLabelHierarchy::implementation::FillHierarchyRoot( LabelSet& anchors )
   #else
     for ( LabelSet::iterator it = anchors.begin(); it != endRootAnchors; ++ it )
       {
-      this->Hierarchy->root()->value().insert( it );
+      this->Hierarchy->root()->value().insert( *it );
       }
   #endif
   anchors.erase( anchors.begin(), endRootAnchors );
