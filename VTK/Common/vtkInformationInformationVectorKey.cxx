@@ -52,12 +52,6 @@ vtkInformationInformationVectorKey::Get(vtkInformation* info)
 }
 
 //----------------------------------------------------------------------------
-int vtkInformationInformationVectorKey::Has(vtkInformation* info)
-{
-  return this->GetAsObjectBase(info)?1:0;
-}
-
-//----------------------------------------------------------------------------
 void vtkInformationInformationVectorKey::ShallowCopy(vtkInformation* from,
                                               vtkInformation* to)
 {

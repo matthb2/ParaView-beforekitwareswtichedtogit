@@ -95,6 +95,12 @@ vtkObjectBase* vtkInformationKey::GetAsObjectBase(vtkInformation* info)
 }
 
 //----------------------------------------------------------------------------
+int vtkInformationKey::Has(vtkInformation* info)
+{
+  return this->GetAsObjectBase(info)?1:0;
+}
+
+//----------------------------------------------------------------------------
 void vtkInformationKey::Remove(vtkInformation* info)
 {
   this->SetAsObjectBase(info, 0);

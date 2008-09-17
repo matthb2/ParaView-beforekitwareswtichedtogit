@@ -50,12 +50,6 @@ vtkDataObject* vtkInformationDataObjectKey::Get(vtkInformation* info)
 }
 
 //----------------------------------------------------------------------------
-int vtkInformationDataObjectKey::Has(vtkInformation* info)
-{
-  return this->GetAsObjectBase(info)?1:0;
-}
-
-//----------------------------------------------------------------------------
 void vtkInformationDataObjectKey::ShallowCopy(vtkInformation* from,
                                               vtkInformation* to)
 {

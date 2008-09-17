@@ -115,12 +115,6 @@ int vtkInformationIntegerPointerKey::Length(vtkInformation* info)
 }
 
 //----------------------------------------------------------------------------
-int vtkInformationIntegerPointerKey::Has(vtkInformation* info)
-{
-  return this->GetAsObjectBase(info)?1:0;
-}
-
-//----------------------------------------------------------------------------
 void vtkInformationIntegerPointerKey::ShallowCopy(vtkInformation* from,
                                                   vtkInformation* to)
 {

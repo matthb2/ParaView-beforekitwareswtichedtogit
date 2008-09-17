@@ -228,12 +228,6 @@ int vtkInformationExecutivePortVectorKey::Length(vtkInformation* info)
 }
 
 //----------------------------------------------------------------------------
-int vtkInformationExecutivePortVectorKey::Has(vtkInformation* info)
-{
-  return this->GetAsObjectBase(info)?1:0;
-}
-
-//----------------------------------------------------------------------------
 void vtkInformationExecutivePortVectorKey::ShallowCopy(vtkInformation* from,
                                                 vtkInformation* to)
 {

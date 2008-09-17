@@ -82,12 +82,6 @@ double vtkInformationDoubleKey::Get(vtkInformation* info)
 }
 
 //----------------------------------------------------------------------------
-int vtkInformationDoubleKey::Has(vtkInformation* info)
-{
-  return this->GetAsObjectBase(info)?1:0;
-}
-
-//----------------------------------------------------------------------------
 void vtkInformationDoubleKey::ShallowCopy(vtkInformation* from, vtkInformation* to)
 {
   if (this->Has(from))

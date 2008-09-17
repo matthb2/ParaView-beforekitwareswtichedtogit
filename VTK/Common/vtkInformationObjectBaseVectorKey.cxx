@@ -268,12 +268,6 @@ void vtkInformationObjectBaseVectorKey::Clear(vtkInformation* info)
 }
 
 //----------------------------------------------------------------------------
-int vtkInformationObjectBaseVectorKey::Has(vtkInformation* info)
-{
-  return this->GetAsObjectBase(info)?1:0;
-}
-
-//----------------------------------------------------------------------------
 void vtkInformationObjectBaseVectorKey::ShallowCopy(
         vtkInformation* source,
         vtkInformation* dest)

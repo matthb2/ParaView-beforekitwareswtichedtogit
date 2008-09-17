@@ -127,12 +127,6 @@ int vtkInformationStringVectorKey::Length(vtkInformation* info)
 }
 
 //----------------------------------------------------------------------------
-int vtkInformationStringVectorKey::Has(vtkInformation* info)
-{
-  return this->GetAsObjectBase(info)?1:0;
-}
-
-//----------------------------------------------------------------------------
 void vtkInformationStringVectorKey::ShallowCopy(vtkInformation* from,
                                                 vtkInformation* to)
 {

@@ -83,12 +83,6 @@ unsigned long vtkInformationUnsignedLongKey::Get(vtkInformation* info)
 }
 
 //----------------------------------------------------------------------------
-int vtkInformationUnsignedLongKey::Has(vtkInformation* info)
-{
-  return this->GetAsObjectBase(info)?1:0;
-}
-
-//----------------------------------------------------------------------------
 void vtkInformationUnsignedLongKey::ShallowCopy(vtkInformation* from,
                                          vtkInformation* to)
 {

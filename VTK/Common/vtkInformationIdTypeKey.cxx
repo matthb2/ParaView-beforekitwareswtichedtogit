@@ -82,12 +82,6 @@ vtkIdType vtkInformationIdTypeKey::Get(vtkInformation* info)
 }
 
 //----------------------------------------------------------------------------
-int vtkInformationIdTypeKey::Has(vtkInformation* info)
-{
-  return this->GetAsObjectBase(info)?1:0;
-}
-
-//----------------------------------------------------------------------------
 void vtkInformationIdTypeKey::ShallowCopy(vtkInformation* from, vtkInformation* to)
 {
   if (this->Has(from))

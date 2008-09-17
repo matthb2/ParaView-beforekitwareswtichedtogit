@@ -82,12 +82,6 @@ int vtkInformationIntegerKey::Get(vtkInformation* info)
 }
 
 //----------------------------------------------------------------------------
-int vtkInformationIntegerKey::Has(vtkInformation* info)
-{
-  return this->GetAsObjectBase(info)?1:0;
-}
-
-//----------------------------------------------------------------------------
 void vtkInformationIntegerKey::ShallowCopy(vtkInformation* from, vtkInformation* to)
 {
   if (this->Has(from))

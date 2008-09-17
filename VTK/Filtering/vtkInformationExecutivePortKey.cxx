@@ -121,12 +121,6 @@ int vtkInformationExecutivePortKey::GetPort(vtkInformation* info)
 }
 
 //----------------------------------------------------------------------------
-int vtkInformationExecutivePortKey::Has(vtkInformation* info)
-{
-  return this->GetAsObjectBase(info)?1:0;
-}
-
-//----------------------------------------------------------------------------
 void vtkInformationExecutivePortKey::ShallowCopy(vtkInformation* from,
                                           vtkInformation* to)
 {

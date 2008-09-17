@@ -90,12 +90,6 @@ const char* vtkInformationStringKey::Get(vtkInformation* info)
 }
 
 //----------------------------------------------------------------------------
-int vtkInformationStringKey::Has(vtkInformation* info)
-{
-  return this->GetAsObjectBase(info)?1:0;
-}
-
-//----------------------------------------------------------------------------
 void vtkInformationStringKey::ShallowCopy(vtkInformation* from, vtkInformation* to)
 {
   this->Set(to, this->Get(from));
