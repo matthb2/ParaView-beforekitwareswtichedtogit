@@ -634,10 +634,6 @@ public:
   virtual vtkIdType GetLabelId();
   void BoxNode();
 
-protected:
-  vtkLabelHierarchyFullSortIterator();
-  virtual ~vtkLabelHierarchyFullSortIterator();
-
   // Give internal class access to this protected type.
   typedef vtkLabelHierarchy::implementation::HierarchyType::octree_node_pointer NodePointer;
 
@@ -662,6 +658,10 @@ protected:
       return a.DistanceToCamera < b.DistanceToCamera;
       }
   };
+
+protected:
+  vtkLabelHierarchyFullSortIterator();
+  virtual ~vtkLabelHierarchyFullSortIterator();
 
   vtkstd::set<vtkHierarchyNode, vtkHierarchyNodeSorter> NodeSet;
   vtkstd::set<vtkHierarchyNode, vtkHierarchyNodeSorter>::iterator NodeIterator;
