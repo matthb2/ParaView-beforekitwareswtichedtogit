@@ -963,12 +963,13 @@ void vtkSocketCommunicator::Barrier()
 }
 
 //-----------------------------------------------------------------------------
-int vtkSocketCommunicator::BroadcastVoidArray(void *, vtkIdType, int,
-                                              int)
+int vtkSocketCommunicator::BroadcastVoidArray(
+  void *data, vtkIdType length, int type, int root)
 {
-  vtkErrorMacro("Collective operations not supported on sockets.");
-  return 0;
+  return this->Superclass::BroadcastVoidArray(data, length, type, root);
 }
+
+//-----------------------------------------------------------------------------
 int vtkSocketCommunicator::GatherVoidArray(const void *, void *,
                                            vtkIdType, int, int)
 {
