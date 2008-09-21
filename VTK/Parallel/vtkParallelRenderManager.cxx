@@ -1834,7 +1834,7 @@ static void ComputeVisiblePropBoundsRMI(void *arg,
   int remoteArgLength, int)
 {
   assert(remoteArgLength == sizeof(int));
-  int *iarg = reinterpret_cast<int*>(arg);
+  int *iarg = reinterpret_cast<int*>(remoteArg);
 
   vtkParallelRenderManager *self = (vtkParallelRenderManager *)arg;
   self->ComputeVisiblePropBoundsRMI(*iarg);
