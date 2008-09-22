@@ -1,4 +1,4 @@
-/*=========================================================================
+nn/*=========================================================================
 
   Program:   Visualization Toolkit
   Module:    $RCSfile$
@@ -21,6 +21,7 @@
 #include <vtkstd/algorithm>
 #include <vtkstd/iterator>
 #include <math.h>
+#include "vtkCriticalSection.h"
 
 vtkCxxRevisionMacro(vtkColorTransferFunction, "$Revision$");
 vtkStandardNewMacro(vtkColorTransferFunction);
