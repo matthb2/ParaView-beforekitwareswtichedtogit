@@ -725,7 +725,7 @@ void vtkPVGeometryFilter::DataSetExecute(
     }
   else
     {
-    if (doCommunicate)
+    if (this->Controller && doCommunicate)
       {
       double tmp[6];
       this->Controller->Reduce(bds, tmp, 6, &operation, 0);
