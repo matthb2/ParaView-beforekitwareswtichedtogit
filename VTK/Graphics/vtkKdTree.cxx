@@ -2280,7 +2280,8 @@ int vtkKdTree::_FindClosestPointInRegion(int regionId,
 
   float *candidate = this->LocatorPoints + (idx * 3);
 
-  for (int i=0; i < this->RegionList[regionId]->GetNumberOfPoints(); i++)
+  int numPoints = this->RegionList[regionId]->GetNumberOfPoints();
+  for (int i=0; i < numPoints; i++)
     {
     double dx = (x - candidate[0]) * (x - candidate[0]);
 
