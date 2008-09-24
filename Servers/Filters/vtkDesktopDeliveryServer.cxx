@@ -523,7 +523,7 @@ bool vtkDesktopDeliveryServer::SquirtOptions::Restore(vtkMultiProcessStream& str
 {
   int tag;
   stream >> tag;
-  if (!tag != vtkDesktopDeliveryServer::SQUIRT_OPTIONS_TAG)
+  if (tag != vtkDesktopDeliveryServer::SQUIRT_OPTIONS_TAG)
     {
     return false;
     }

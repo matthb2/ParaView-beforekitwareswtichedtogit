@@ -1517,8 +1517,6 @@ int vtkCommunicator::Broadcast(vtkMultiProcessStream& stream, int srcProcessId)
       }
     return 1;
     }
-
-  return 0;
 }
 
 //----------------------------------------------------------------------------
