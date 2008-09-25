@@ -987,9 +987,11 @@ int vtkTriangle::PointInTriangle(double x[3], double p1[3], double p2[3],
   vtkMath::Cross (x2, v21, n2);
   vtkMath::Cross (x3, v32, n3);
 
-  //  Check whether normals go in same direction
-  //
-  if ( (vtkMath::Dot(n1,n2) >= 0.0) && (vtkMath::Dot(n2,n3) >= 0.0) )
+  //  Check whether ALL the three normals go in same direction
+  // 
+  if ( (vtkMath::Dot(n1,n2) >= 0.0) && 
+       (vtkMath::Dot(n2,n3) >= 0.0) && 
+       (vtkMath::Dot(n1,n3) >= 0.0) )
     {
     return 1;
     }
