@@ -43,8 +43,19 @@ vtkAssignCoordinates::vtkAssignCoordinates()
 
 vtkAssignCoordinates::~vtkAssignCoordinates()
 {
+  if(this->XCoordArrayName!=0)
+    {
+    delete[] this->XCoordArrayName;
+    }
+  if(this->YCoordArrayName!=0)
+    {
+    delete[] this->YCoordArrayName;
+    }
+  if(this->ZCoordArrayName!=0)
+    {
+    delete[] this->ZCoordArrayName;
+    }
 }
-
 
 int vtkAssignCoordinates::RequestData(vtkInformation *vtkNotUsed(request),
                             vtkInformationVector **inputVector,
