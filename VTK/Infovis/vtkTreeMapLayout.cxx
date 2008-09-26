@@ -61,12 +61,12 @@ int vtkTreeMapLayout::RequestData(
 {
   if (this->LayoutStrategy == NULL)
     {
-    vtkErrorMacro(<< "Layout strategy must me non-null.");
+    vtkErrorMacro(<< "Layout strategy must be non-null.");
     return 0;
     }
   if (this->RectanglesFieldName == NULL)
     {
-    vtkErrorMacro(<< "Rectangles field name must me non-null.");
+    vtkErrorMacro(<< "Rectangles field name must be non-null.");
     return 0;
     }
   // get the info objects
