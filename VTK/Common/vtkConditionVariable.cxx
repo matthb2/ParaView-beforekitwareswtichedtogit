@@ -1,8 +1,11 @@
 #include "vtkConditionVariable.h"
 
 #include "vtkObjectFactory.h"
+#ifdef VTK_USE_WIN32_THREADS
+# include "vtkWindows.h"
+#endif
 
-#include <sys/errno.h>
+#include <errno.h>
 
 vtkStandardNewMacro(vtkConditionVariable);
 vtkCxxRevisionMacro(vtkConditionVariable,"$Revision$");
