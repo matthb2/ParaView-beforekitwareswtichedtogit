@@ -122,7 +122,7 @@ int pthread_cond_wait( pthread_cond_t* cv, vtkMutexType* external_mutex )
     {
     // Always regain the external mutex since that's the guarantee we
     // give to our callers. 
-    WaitForSingleObject( *external_mutex );
+    WaitForSingleObject( *external_mutex, INFINITE );
     }
   return 0;
 }
