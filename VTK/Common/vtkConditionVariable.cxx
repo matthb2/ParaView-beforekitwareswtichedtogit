@@ -225,7 +225,7 @@ int pthread_cond_wait( pthread_cond_t* cv, vtkMutexType* externalMutex )
   int tmpNotify = cv->NotifyCount;
 
   LeaveCriticalSection( &cv->WaitingThreadCountCritSec );
-  ReleaseMutex( externalMutex );
+  ReleaseMutex( *externalMutex );
 
   while ( 1 )
     {
@@ -245,7 +245,7 @@ int pthread_cond_wait( pthread_cond_t* cv, vtkMutexType* externalMutex )
       break;
     }
 
-  WaitForSingleObject( externalMutex, INFINITE );
+  WaitForSingleObject( *externalMutex, INFINITE );
   EnterCriticalSection( &cv->WaitingThreadCountCritSec );
   -- cv->WaitingThreadCount;
   -- cv->ReleaseCount;
