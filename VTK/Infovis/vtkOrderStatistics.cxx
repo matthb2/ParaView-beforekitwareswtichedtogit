@@ -191,7 +191,7 @@ void vtkOrderStatistics::ExecuteLearn( vtkTable* inData,
 }
 
 // ----------------------------------------------------------------------
-void vtkOrderStatistics::ExecuteDerive( vtkTable* inMeta )
+void vtkOrderStatistics::ExecuteDerive( vtkTable* vtkNotUsed( inMeta ) )
 {
 }
 

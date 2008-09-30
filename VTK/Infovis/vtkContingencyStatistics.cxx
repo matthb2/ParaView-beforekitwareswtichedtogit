@@ -153,7 +153,7 @@ void vtkContingencyStatistics::ExecuteLearn( vtkTable* inData,
 }
 
 // ----------------------------------------------------------------------
-void vtkContingencyStatistics::ExecuteDerive( vtkTable* inMeta )
+void vtkContingencyStatistics::ExecuteDerive( vtkTable* vtkNotUsed( inMeta ) )
 {
 }
 

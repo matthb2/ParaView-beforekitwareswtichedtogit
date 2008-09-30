@@ -250,7 +250,7 @@ void vtkCorrelativeStatistics::ExecuteLearn( vtkTable* inData,
 }
 
 // ----------------------------------------------------------------------
-void vtkCorrelativeStatistics::ExecuteDerive( vtkTable* inMeta )
+void vtkCorrelativeStatistics::ExecuteDerive( vtkTable* vtkNotUsed( inMeta ) )
 {
 }
 
