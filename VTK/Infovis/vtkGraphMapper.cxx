@@ -152,6 +152,10 @@ vtkGraphMapper::~vtkGraphMapper()
   this->VertexLookupTable = 0;
   this->EdgeLookupTable->Delete();
   this->EdgeLookupTable = 0;
+  if(this->ScalingArrayName!=0)
+    {
+    delete[] this->ScalingArrayName;
+    }
 }
 
 //----------------------------------------------------------------------------
