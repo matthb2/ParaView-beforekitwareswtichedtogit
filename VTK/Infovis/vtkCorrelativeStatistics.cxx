@@ -60,21 +60,14 @@ void vtkCorrelativeStatistics::PrintSelf( ostream &os, vtkIndent indent )
 void vtkCorrelativeStatistics::ExecuteLearn( vtkTable* inData,
                                              vtkTable* outMeta )
 {
-  vtkIdType nCol = inData->GetNumberOfColumns();
-  if ( ! nCol )
-    {
-    this->SampleSize = 0;
-    return;
-    }
-
-  this->SampleSize = inData->GetNumberOfRows();
   if ( ! this->SampleSize )
     {
     return;
     }
 
-  if ( ! this->Internals->ColumnPairs.size() )
+  if ( ! inData->GetNumberOfColumns() )
     {
+    this->SampleSize = 0;
     return;
     }
 
@@ -254,6 +247,11 @@ void vtkCorrelativeStatistics::ExecuteLearn( vtkTable* inData,
     }
     
   return;
+}
+
+// ----------------------------------------------------------------------
+void vtkCorrelativeStatistics::ExecuteDerive( vtkTable* inMeta )
+{
 }
 
 // ----------------------------------------------------------------------
