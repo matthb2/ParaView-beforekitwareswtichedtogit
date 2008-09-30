@@ -118,7 +118,14 @@ int vtkGeoTreeNode::CreateChildren()
   //if (childLevel > ((sizeof(unsigned long)*8) - 1) / 2)
   if (childLevel > 15)
     {
-    vtkErrorMacro("Level too high to be encoded in node id.");
+    // this particular message gets printed too much and clutters the console...
+    static bool msg_printed = false;
+    if (!msg_printed) 
+      {
+      vtkErrorMacro("Level too high to be encoded in node id. (this warning only emitted once)");
+      msg_printed = true;
+      }
+      
     return VTK_ERROR;
     }
   

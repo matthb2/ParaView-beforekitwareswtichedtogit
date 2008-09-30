@@ -27,6 +27,7 @@ vtkStandardNewMacro(vtkGeoTerrainSource);
 //----------------------------------------------------------------------------
 vtkGeoTerrainSource::vtkGeoTerrainSource() 
 {
+  this->Origin[0] = this->Origin[1] = this->Origin[2] = 0.0;
 }
 
 //-----------------------------------------------------------------------------
