@@ -19,49 +19,44 @@
 
 =========================================================================*/
 
-#ifndef __vtkArrayData_h
-#define __vtkArrayData_h
+#ifndef __vtkNormalizeMatrixVectors_h
+#define __vtkNormalizeMatrixVectors_h
 
-#include "vtkArray.h"
-#include "vtkDataObject.h"
+#include "vtkArrayDataAlgorithm.h"
+#include "vtkSetGet.h"
 
-class vtkArray;
-class vtkInformation;
-class vtkInformationVector;
-
-// .NAME vtkArrayData - Pipeline data object that acts as a container
-// for a single vtkArray
+// .NAME vtkNormalizeMatrixVectors - given a sparse input matrix, produces
+// a sparse output matrix with each vector normalized to unit length.
 
 // .SECTION Thanks
 // Developed by Timothy M. Shead (tshead@sandia.gov) at Sandia National Laboratories.
 
-class VTK_FILTERING_EXPORT vtkArrayData : public vtkDataObject
+class VTK_INFOVIS_EXPORT vtkNormalizeMatrixVectors : public vtkArrayDataAlgorithm
 {
 public:
-  static vtkArrayData* New();
-  vtkTypeRevisionMacro(vtkArrayData, vtkDataObject);
-  void PrintSelf(ostream &os, vtkIndent indent);
-
-  static vtkArrayData* GetData(vtkInformation* info);
-  static vtkArrayData* GetData(vtkInformationVector* v, int i = 0);
+  static vtkNormalizeMatrixVectors* New();
+  vtkTypeRevisionMacro(vtkNormalizeMatrixVectors, vtkArrayDataAlgorithm);
+  void PrintSelf(ostream& os, vtkIndent indent);
 
   // Description:
-  // Sets the vtkArray instance contained by this object
-  vtkSetObjectMacro(Array, vtkArray);
-  
-  // Description:
-  // Returns the vtkArray instance (if any) contained by this object
-  vtkGetObjectMacro(Array, vtkArray);
+  // Controls whether to normalize row-vectors or column-vectors.  0 = rows, 1 = columns.
+  vtkGetMacro(VectorDimension, int);
+  vtkSetMacro(VectorDimension, int);
 
 protected:
-  vtkArrayData();
-  ~vtkArrayData();
+  vtkNormalizeMatrixVectors();
+  ~vtkNormalizeMatrixVectors();
 
-  vtkArray* Array;
+  int RequestData(
+    vtkInformation*, 
+    vtkInformationVector**, 
+    vtkInformationVector*);
+
+  int VectorDimension;
 
 private:
-  vtkArrayData(const vtkArrayData&); // Not implemented
-  void operator=(const vtkArrayData&); // Not implemented
+  vtkNormalizeMatrixVectors(const vtkNormalizeMatrixVectors&); // Not implemented
+  void operator=(const vtkNormalizeMatrixVectors&);   // Not implemented
 };
 
 #endif
