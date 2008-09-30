@@ -262,9 +262,6 @@ void vtkDescriptiveStatistics::ExecuteDerive( vtkTable* inMeta )
   for ( int i = 0; i < nRow; ++ i )
     {
     vtkStdString colName = inMeta->GetValueByName( i, "Variable" ).ToString();
-    double minVal = inMeta->GetValueByName( i, "Minimum" ).ToDouble();
-    double maxVal = inMeta->GetValueByName( i, "Maximum" ).ToDouble();
-    double mean = inMeta->GetValueByName( i, "Mean" ).ToDouble();
     double mom2 = inMeta->GetValueByName( i, "M2" ).ToDouble();
     double mom3 = inMeta->GetValueByName( i, "M3" ).ToDouble();
     double mom4 = inMeta->GetValueByName( i, "M4" ).ToDouble();
