@@ -239,8 +239,6 @@ int pthread_cond_wait( pthread_cond_t* cv, vtkMutexType* externalMutex )
     int waitDone =
       ( cv->ReleaseCount > 0 ) &&
       ( cv->WaitingThreadCount != tmpNotify );
-    cout << ( waitDone ? "x" : "." );
-    cout.flush();
     LeaveCriticalSection( &cv->WaitingThreadCountCritSec );
 
     if ( waitDone )
