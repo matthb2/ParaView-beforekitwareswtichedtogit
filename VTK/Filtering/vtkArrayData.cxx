@@ -43,7 +43,8 @@ vtkArrayData::~vtkArrayData()
 
 void vtkArrayData::PrintSelf(ostream &os, vtkIndent indent)
 {
-  Superclass::PrintSelf(os, indent);
+  this->Superclass::PrintSelf(os, indent);
+
   os << indent << "Array: " << (this->Array ? "" : "(none)") << endl;
   if(this->Array)
     {
