@@ -187,6 +187,8 @@ int vtkChacoGraphReader::RequestData(
         }
       }
     }
+  delete[] edgeArr;
+  delete[] vertArr;
 
   // Clean up
   fin.close();
