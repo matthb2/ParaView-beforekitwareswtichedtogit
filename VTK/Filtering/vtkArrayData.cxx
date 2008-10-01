@@ -27,6 +27,7 @@
 
 vtkCxxRevisionMacro(vtkArrayData, "$Revision$");
 vtkStandardNewMacro(vtkArrayData);
+vtkCxxSetObjectMacro(vtkArrayData, Array, vtkArray);
 
 vtkArrayData::vtkArrayData() :
   Array(0)
