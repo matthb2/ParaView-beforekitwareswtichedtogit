@@ -93,6 +93,8 @@ int vtkQuadraturePointsGenerator::RequestData(
         vtkInformationVector **input,
         vtkInformationVector *output)
 {
+  (void *)req; // fixes compiler warning.
+
   vtkDataObject *tmpDataObj;
   // Get the input.
   tmpDataObj

@@ -147,6 +147,8 @@ int vtkQuadratureSchemeDictionaryGenerator::RequestData(
         vtkInformationVector **input,
         vtkInformationVector *output)
 {
+  (void *)req; // fixes compiler warning.
+
   vtkDataObject *tmpDataObj;
   // Get the inputs
   tmpDataObj
