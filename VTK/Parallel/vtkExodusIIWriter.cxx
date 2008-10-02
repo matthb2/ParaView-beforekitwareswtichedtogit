@@ -87,9 +87,14 @@ vtkExodusIIWriter::vtkExodusIIWriter ()
 vtkExodusIIWriter::~vtkExodusIIWriter ()
 {
   this->SetModelMetadata(0); // kill the reference if its there
+
   if (this->FileName)
     {
     delete [] this->FileName;
+    }
+  if (this->BlockIdArrayName)
+    {
+    delete [] this->BlockIdArrayName;
     }
   if (this->TimeValues)
     {
