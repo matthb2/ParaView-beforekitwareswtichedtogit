@@ -89,12 +89,10 @@ int vtkQuadraturePointsGenerator::FillOutputPortInformation(
 
 //-----------------------------------------------------------------------------
 int vtkQuadraturePointsGenerator::RequestData(
-        vtkInformation *req,
+        vtkInformation *,
         vtkInformationVector **input,
         vtkInformationVector *output)
 {
-  (void *)req; // fixes compiler warning.
-
   vtkDataObject *tmpDataObj;
   // Get the input.
   tmpDataObj
