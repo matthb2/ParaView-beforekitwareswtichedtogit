@@ -68,7 +68,7 @@ int pthread_cond_wait( vtkConditionType* cv, vtkMutexType* lock )
 #ifdef VTK_USE_WIN32_THREADS
 typedef int pthread_condattr_t;
 
-#  if 0
+#  if 1
 int pthread_cond_init( pthread_cond_t* cv, const pthread_condattr_t* )
 {
   cv->WaitingThreadCount = 0;
@@ -182,7 +182,7 @@ int pthread_cond_destroy( pthread_cond_t* cv )
 {
   DeleteCriticalSection( &cv->WaitingThreadCountCritSec );
   CloseHandle( cv->Semaphore );
-  CloseHandle( cv->Event );
+  //CloseHandle( cv->Event );
   if ( cv->WaitingThreadCount > 0 && ! cv->DoneWaiting )
     {
     return EBUSY;
