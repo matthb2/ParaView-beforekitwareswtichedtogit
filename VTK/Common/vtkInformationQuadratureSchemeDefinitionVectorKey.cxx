@@ -270,7 +270,7 @@ int vtkInformationQuadratureSchemeDefinitionVectorKey::SaveState(
   // If it doesn't exist or it's empty then we do nothing.
   int dictSize;
   if( base==NULL ||
-      (dictSize=base->GetVector().size())==0)
+      (dictSize=static_cast<int>(base->GetVector().size()))==0)
     {
     vtkGenericWarningMacro("Attempting to save an empty or non-existant key/value.");
     return 0;
