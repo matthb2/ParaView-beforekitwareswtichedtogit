@@ -144,7 +144,7 @@ const char *vtkTesting::GetDataRoot()
   string dr=vtkTestingGetArgOrEnvOrDefault(
                 "-D",this->Args,"VTK_DATA_ROOT",VTK_DATA_ROOT);
 #else
-  string *dr=vtkTestingGetArgOrEnvOrDefault(
+  string dr=vtkTestingGetArgOrEnvOrDefault(
                 "-D",this->Args, "VTK_DATA_ROOT","../../../../VTKData");
 #endif
   this->SetDataRoot(dr.c_str());
