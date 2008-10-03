@@ -179,6 +179,36 @@ NewStrategyInternal(int dataType)
 
 
 //-----------------------------------------------------------------------------
+void vtkSMIceTMultiDisplayRenderViewProxy::SetGUISize(int x, int y)
+{
+  this->Superclass::SetGUISize(x, y);
+
+  // Set the GUI size on the client-server render sync manager. The manager will
+  // then use the provided information to set the server-side view size (and
+  // more importantly the positions).
+  vtkProcessModule* pm = vtkProcessModule::GetProcessModule();
+  vtkClientServerStream stream;
+  stream  << vtkClientServerStream::Invoke 
+          << this->RenderSyncManager->GetID()
+          << "SetGUISize" << x << y
+          << vtkClientServerStream::End;
+  pm->SendStream(this->ConnectionID, vtkProcessModule::CLIENT, stream);
+}
+
+//-----------------------------------------------------------------------------
+void vtkSMIceTMultiDisplayRenderViewProxy::SetViewPosition(int x, int y)
+{
+  this->Superclass::SetViewPosition(x, y);
+  vtkProcessModule* pm = vtkProcessModule::GetProcessModule();
+  vtkClientServerStream stream;
+  stream  << vtkClientServerStream::Invoke 
+          << this->RenderSyncManager->GetID()
+          << "SetWindowPosition" << x << y
+          << vtkClientServerStream::End;
+  pm->SendStream(this->ConnectionID, vtkProcessModule::CLIENT, stream);
+}
+
+//-----------------------------------------------------------------------------
 void vtkSMIceTMultiDisplayRenderViewProxy::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os, indent);
