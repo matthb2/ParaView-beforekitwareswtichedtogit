@@ -38,14 +38,6 @@
 #include "vtkWedge.h"
 #include "vtkIdTypeArray.h"
 
-// Helper structure for hashing faces.
-struct vtkFastGeomQuadStruct
-{
-  struct vtkFastGeomQuadStruct *Next;
-  vtkIdType SourceId;
-  int numPts;
-  vtkIdType ptArray[4]; // actually a variable length array.  MUST be last
-};
 
 static int sizeofFastQuad(int numPts)
 {
