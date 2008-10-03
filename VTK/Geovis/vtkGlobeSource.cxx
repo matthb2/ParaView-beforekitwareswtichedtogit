@@ -376,7 +376,9 @@ void vtkGlobeSource::PrintSelf(ostream& os, vtkIndent indent)
   os << indent << "Longitude End: " << this->EndLongitude << "\n";
   os << indent << "Latitude End: " << this->EndLatitude << "\n";
   os << indent << "Radius: " << this->Radius << "\n";
-  os << indent << "Origin: " << this->Origin << "\n";
+  os << indent << "Origin: " << this->Origin[0] << ","
+                             << this->Origin[1] << ","
+                             << this->Origin[2] << "\n";
   os << indent 
      << "Quadrilateral Tessellation: " 
      << this->QuadrilateralTessellation << "\n";
