@@ -902,4 +902,5 @@ void vtkTesting::PrintSelf(ostream& os, vtkIndent indent)
   os << indent << "DataRoot: " << this->GetDataRoot() << endl;
   os << indent << "Temp Directory: " << this->GetTempDirectory() << endl;
   os << indent << "BorderOffset: " << this->GetBorderOffset() << endl;
+  os << indent << "Verbose: " << this->GetVerbose() << endl; 
 }
