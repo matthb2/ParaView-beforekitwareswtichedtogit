@@ -62,7 +62,7 @@ void vtkFactoredArrayData::PrintSelf(ostream &os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os, indent);
 
-  for(vtkIdType i = 0; i != this->Implementation->Arrays.size(); ++i)
+  for(unsigned int i = 0; i != this->Implementation->Arrays.size(); ++i)
     {
     os << indent << "Array: " << this->Implementation->Arrays[i] << endl;
     this->Implementation->Arrays[i]->PrintSelf(os, indent.GetNextIndent());
@@ -99,7 +99,7 @@ void vtkFactoredArrayData::AddArray(vtkArray* array)
 
 void vtkFactoredArrayData::ClearArrays()
 {
-  for(vtkIdType i = 0; i != this->Implementation->Arrays.size(); ++i)
+  for(unsigned int i = 0; i != this->Implementation->Arrays.size(); ++i)
     this->Implementation->Arrays[i]->Delete();
 
   this->Implementation->Arrays.clear();
