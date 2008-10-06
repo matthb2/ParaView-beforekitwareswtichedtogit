@@ -212,6 +212,8 @@ void vtkCorrelativeStatistics::ExecuteDerive( vtkTable* inMeta )
     stringCol->Delete();
     }
 
+  double* doubleVals = new double[numDoubles]; // slope y/x, int. y/x, slope x/y, int. x/y, r
+
   for ( int i = 0; i < nRow; ++ i )
     {
     vtkStdString c1 = inMeta->GetValueByName( i, "Variable X" ).ToString();
@@ -281,6 +283,8 @@ void vtkCorrelativeStatistics::ExecuteDerive( vtkTable* inMeta )
       inMeta->SetValueByName( i, doubleNames[j], doubleVals[j] );
       }
     }
+
+  delete [] doubleVals;
 }
 
 // ----------------------------------------------------------------------
