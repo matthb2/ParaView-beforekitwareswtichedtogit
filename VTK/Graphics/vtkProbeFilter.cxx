@@ -246,6 +246,23 @@ void vtkProbeFilter::ProbeEmptyPoints(vtkDataSet *input,
   tol2 = source->GetLength();
   tol2 = tol2 ? tol2*tol2 / 1000.0 : 0.001;
 
+  // the actual sampling rate needs to be considered for a
+  // more appropriate / accurate selection of the tolerance.
+  // Otherwise the tolerance simply determined above might be
+  // so large as to cause incorrect cell location
+  double bounds[6];
+  source->GetBounds(bounds);
+  double minRes = 10000000000.0;
+  double axisRes[3];
+  for ( int  i = 0;  i < 3;  i ++ )
+    {
+    axisRes[i] = ( bounds[i * 2 + 1] - bounds[i * 2] ) / numPts;
+    if ( (axisRes[i] > 0.0) && (axisRes[i] < minRes) )
+      minRes = axisRes[i];
+    }
+  double minRes2 = minRes * minRes;
+  tol2 = tol2 > minRes2 ? minRes2 : tol2;
+
   // Loop over all input points, interpolating source data
   //
   int abort=0;
