@@ -62,9 +62,9 @@ void vtkSMNetworkImageSourceProxy::SetSourceProcess(int proc)
 }
 
 //----------------------------------------------------------------------------
-void vtkSMNetworkImageSourceProxy::UpdateVTKObjects()
+void vtkSMNetworkImageSourceProxy::UpdateVTKObjects(vtkClientServerStream& stream)
 {
-  this->Superclass::UpdateVTKObjects();
+  this->Superclass::UpdateVTKObjects(stream);
   if (this->UpdateNeeded && !this->ForceNoUpdates)
     {
     this->UpdateImage();

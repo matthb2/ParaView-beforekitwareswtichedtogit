@@ -31,9 +31,9 @@ vtkSMPVLookupTableProxy::~vtkSMPVLookupTableProxy()
 }
 
 //-----------------------------------------------------------------------------
-void vtkSMPVLookupTableProxy::UpdateVTKObjects()
+void vtkSMPVLookupTableProxy::UpdateVTKObjects(vtkClientServerStream& stream)
 {
-  this->Superclass::UpdateVTKObjects();
+  this->Superclass::UpdateVTKObjects(stream);
   this->InvokeCommand("Build");
 }
 
