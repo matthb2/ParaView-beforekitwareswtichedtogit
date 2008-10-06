@@ -323,6 +323,7 @@ vtkUnsignedCharArray *vtkMapper::MapScalars(double alpha)
          (vtkUnsignedCharArray::SafeDownCast(scalars)) == 0 )
       { // Texture color option.
       this->MapScalarsToTexture(scalars, alpha);
+      this->LookupTable->SetRange(orig_range_min, orig_range_max);
       return 0;
       }
     }
@@ -351,6 +352,7 @@ vtkUnsignedCharArray *vtkMapper::MapScalars(double alpha)
           this->GetInput()->GetMTime() < this->Colors->GetMTime() &&
           this->LookupTable->GetMTime() < this->Colors->GetMTime())
         {
+        this->LookupTable->SetRange(orig_range_min, orig_range_max);
         return this->Colors;
         }
       }

@@ -571,6 +571,7 @@ void vtkScalarsToColorsPainter::MapScalars(vtkDataSet* output,
       lut->GetMTime() < colors->GetMTime())
       {
       // using old colors.
+      lut->SetRange(orig_range_min, orig_range_max);
       return;
       }
     }
