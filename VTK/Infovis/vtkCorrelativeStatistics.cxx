@@ -238,7 +238,6 @@ void vtkCorrelativeStatistics::ExecuteDerive( vtkTable* inMeta )
       covXY = mXY * inv_nm1;
       }
     
-    double doubleVals[numDoubles];
     vtkStdString status = "valid";
 
     double d = varX * varY - covXY * covXY;
