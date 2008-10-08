@@ -88,6 +88,10 @@ vtkFast2DLayoutStrategy::vtkFast2DLayoutStrategy()
 vtkFast2DLayoutStrategy::~vtkFast2DLayoutStrategy()
 {
   this->SetEdgeWeightField(0);
+  if(this->EdgeArray!=0)
+    {
+    delete[] this->EdgeArray;
+    }
 }
 
 
