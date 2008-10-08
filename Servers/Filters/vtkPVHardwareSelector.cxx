@@ -26,7 +26,7 @@ vtkPVHardwareSelector::vtkPVHardwareSelector()
   this->NumberOfProcesses = 1;
   this->NumberOfIDs = 0;
   vtkProcessModule* pm = vtkProcessModule::GetProcessModule();
-  if (pm->GetNumberOfLocalPartitions() > 1)
+  if (pm && pm->GetNumberOfLocalPartitions() > 1)
     {
     this->ProcessID = pm->GetPartitionId();
     }
