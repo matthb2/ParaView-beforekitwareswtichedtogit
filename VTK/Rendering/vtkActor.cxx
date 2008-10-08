@@ -528,3 +528,13 @@ int vtkActor::GetNumberOfParts()
 #endif
 
 
+//----------------------------------------------------------------------------
+bool vtkActor::GetSupportsSelection()
+{
+  if (this->Mapper)
+    {
+    return this->Mapper->GetSupportsSelection();
+    }
+
+  return false;
+}
