@@ -179,7 +179,8 @@ bool vtkHardwareSelector::PassRequired(int pass)
       return (this->MaxAttributeId >= 0xffffff);
 
   case ID_HIGH16:
-      return (this->MaxAttributeId >= 0xffffffffffff);
+      int upper = (0xffffff & (this->MaxAttributeId >> 24));
+      return (upper > 0);
     }
   return true;
 }
