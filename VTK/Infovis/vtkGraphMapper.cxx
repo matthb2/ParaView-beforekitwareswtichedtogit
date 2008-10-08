@@ -615,6 +615,7 @@ void vtkGraphMapper::ApplyViewTheme(vtkViewTheme* theme)
 {
   this->VertexActor->GetProperty()->SetColor(theme->GetPointColor());
   this->VertexActor->GetProperty()->SetOpacity(theme->GetPointOpacity());
+  this->SetVertexPointSize(theme->GetPointSize());
   this->OutlineActor->GetProperty()->SetColor(theme->GetOutlineColor());
   this->OutlineActor->GetProperty()->SetOpacity(theme->GetPointOpacity());
   this->VertexLookupTable->SetHueRange(theme->GetPointHueRange()); 
@@ -625,6 +626,7 @@ void vtkGraphMapper::ApplyViewTheme(vtkViewTheme* theme)
 
   this->EdgeActor->GetProperty()->SetColor(theme->GetCellColor());
   this->EdgeActor->GetProperty()->SetOpacity(theme->GetCellOpacity());
+  this->SetEdgeLineWidth(theme->GetLineWidth());
   this->EdgeLookupTable->SetHueRange(theme->GetCellHueRange()); 
   this->EdgeLookupTable->SetSaturationRange(theme->GetCellSaturationRange()); 
   this->EdgeLookupTable->SetValueRange(theme->GetCellValueRange()); 
