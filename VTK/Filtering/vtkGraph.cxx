@@ -1193,8 +1193,6 @@ void vtkGraph::AddVertexInternal(vtkVariantArray *propertyArr,
           vtkAbstractArray* arr = vertexData->GetAbstractArray(iprop);
           arr->InsertVariantValue(index, propertyArr->GetValue(iprop));
           }
-        vtkAbstractArray *peds2 = this->GetVertexData()->GetPedigreeIds();
-        
       }  // end if (peds)
     //----------------------------------------------------------------
     else   // We have propArr, but not pedIds - just add the propArr
