@@ -55,7 +55,7 @@ bool vtkPVHardwareSelector::PassRequired(int pass)
 }
 
 //----------------------------------------------------------------------------
-int vtkPVHardwareSelector::GetPropID(int idx, vtkProp* prop)
+int vtkPVHardwareSelector::GetPropID(int vtkNotUsed(idx), vtkProp* prop)
 {
   vtkClientServerID csId = 
     vtkProcessModule::GetProcessModule()->GetIDFromObject(prop);

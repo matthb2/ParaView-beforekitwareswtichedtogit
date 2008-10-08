@@ -57,9 +57,9 @@ vtkHardwareSelectionPolyDataPainter::~vtkHardwareSelectionPolyDataPainter()
 //-----------------------------------------------------------------------------
 void vtkHardwareSelectionPolyDataPainter::RenderInternal(
   vtkRenderer* renderer,
-  vtkActor* actor, 
+  vtkActor* vtkNotUsed(actor),
   unsigned long typeflags,
-  bool forceCompileOnly)
+  bool vtkNotUsed(forceCompileOnly))
 {
   if (typeflags == 0)
     {
