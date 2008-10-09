@@ -397,7 +397,7 @@ void vtkContingencyStatistics::ExecuteAssess( vtkTable* inData,
         pxy = yit->second;
         pdfYcondX[x][y] = pxy / pdfX[x];
         pdfXcondY[x][y] = pxy / pdfY[y];
-        
+
         HXY -= pxy * log( pxy );
         HYcondX -= pxy * log( pdfYcondX[x][y] );
         HXcondY -= pxy * log( pdfXcondY[x][y] );
