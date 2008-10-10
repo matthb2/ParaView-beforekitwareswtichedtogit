@@ -429,4 +429,5 @@ void vtkPainterPolyDataMapper::PrintSelf(ostream& os, vtkIndent indent)
     {
     os << indent << "(none)" << endl;
     }
+  os << indent << "SelectionPainter: " << this->SelectionPainter << endl;
 }

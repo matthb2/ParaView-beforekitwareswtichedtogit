@@ -1366,6 +1366,7 @@ void vtkRenderer::PrintSelf(ostream& os, vtkIndent indent)
     {
       os << "null" << endl;
     }
+  os << indent << "Selector: " << this->Selector << endl;
 }
 
 int vtkRenderer::VisibleActorCount()
