@@ -32,7 +32,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #include "Config.h"
 #include "ProcessModuleGUIHelper.h"
-//#include "ConfiguredPlugins.h"
+#include "ConfiguredPlugins.h"
 
 #include <QApplication>
 #include <QTimer>
@@ -77,13 +77,12 @@ QWidget* ProcessModuleGUIHelper::CreateMainWindow()
   QWidget* w = new MainWindow();
   QTimer::singleShot(3500, this->Splash, SLOT(close()));
 
-/*
   for(vtkIdType i = 0; ConfiguredPlugins[i]; ++i)
     {
     cerr << "Loading Configured Plugin: " << QApplication::applicationDirPath().toAscii().data() << "/" << ConfiguredPlugins[i] << endl;
     pqApplicationCore::instance()->getPluginManager()->loadExtension(0, QApplication::applicationDirPath() + "/" + ConfiguredPlugins[i]); 
     }
-*/  
+
   return w;
 }
 
