@@ -18,6 +18,7 @@
 #include "vtkPolyData.h"
 #include "vtkPVGeometryFilter.h"
 #include "vtkPVUpdateSuppressor.h"
+#include "vtkPVCacheKeeper.h"
 
 vtkStandardNewMacro(vtkPVGeometryInformation);
 vtkCxxRevisionMacro(vtkPVGeometryInformation, "$Revision$");
@@ -52,6 +53,13 @@ void vtkPVGeometryInformation::CopyFromObject(vtkObject* object)
   if (us)
     {
     this->Superclass::CopyFromObject(us->GetOutput());
+    return;
+    }
+
+  vtkPVCacheKeeper* ckp = vtkPVCacheKeeper::SafeDownCast(object);
+  if (ckp)
+    {
+    this->Superclass::CopyFromObject(ckp->GetOutput());
     return;
     }
 
