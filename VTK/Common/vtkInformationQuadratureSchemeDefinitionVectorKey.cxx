@@ -89,11 +89,6 @@ void vtkInformationQuadratureSchemeDefinitionVectorKey::Append(
   //
   vtkInformationQuadratureSchemeDefinitionVectorValue* base=this->GetQuadratureSchemeDefinitionVector(info);
   //
-  if (aValue!=NULL)
-    {
-    aValue->Register(base);
-    }
-  //
   base->GetVector().push_back(aValue);
 }
 
