@@ -71,7 +71,8 @@ int vtkGlyphSource2D::RequestData(
   vtkUnsignedCharArray *colors = vtkUnsignedCharArray::New();
   colors->SetNumberOfComponents(3);
   colors->Allocate(2,2);
-  
+  colors->SetName("Colors");
+
   this->ConvertColor();
 
   //Special options
