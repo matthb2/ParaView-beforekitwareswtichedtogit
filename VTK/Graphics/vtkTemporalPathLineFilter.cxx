@@ -235,7 +235,7 @@ void vtkTemporalPathLineFilter::IncrementTrail(
     double distx = vtkstd::fabs(lastcoord[0]-coord[0]);
     double disty = vtkstd::fabs(lastcoord[1]-coord[1]);
     double distz = vtkstd::fabs(lastcoord[2]-coord[2]);
-//    double dist  = vtkstd::sqrt(dist);
+    dist  = vtkstd::sqrt(dist);
     //
     if (distx>this->MaxStepDistance[0] ||
         disty>this->MaxStepDistance[1] ||
