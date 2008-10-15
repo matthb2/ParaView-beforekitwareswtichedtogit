@@ -149,7 +149,7 @@ bool vtkMySQLDatabase::Open( const char* password )
     mysql_real_connect( &this->Private->NullConnection, 
                         this->GetHostName(),
                         this->GetUser(),
-                        password, 
+                        ( password && strlen( password ) ? password : this->Password ), 
                         this->GetDatabaseName(),
                         this->GetServerPort(),
                         0, 0);
