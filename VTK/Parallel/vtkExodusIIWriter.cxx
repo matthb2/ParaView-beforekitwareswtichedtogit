@@ -121,9 +121,13 @@ void vtkExodusIIWriter::PrintSelf (ostream& os, vtkIndent indent)
   os << indent << "WriteOutGlobalElementIdArray " << this->WriteOutGlobalElementIdArray << endl;
   os << indent << "WriteAllTimeSteps " << this->WriteAllTimeSteps << endl;
   os << indent << "BlockIdArrayName " << this->BlockIdArrayName << endl;
-  os << indent << "ModelMetadata " << endl;
-  this->ModelMetadata->PrintSelf (os, indent.GetNextIndent ());
+  os << indent << "ModelMetadata " << (this->ModelMetadata ? "" : "(none)") << endl;
+  if (this->ModelMetadata) 
+    {
+    this->ModelMetadata->PrintSelf (os, indent.GetNextIndent ());
+    }
 }
+
 
 //----------------------------------------------------------------------------
 int vtkExodusIIWriter::ProcessRequest (
