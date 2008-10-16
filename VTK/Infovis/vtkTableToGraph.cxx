@@ -854,6 +854,17 @@ int vtkTableToGraph::RequestData(
     ++curHidden;
     }
 
+  // Add pedigree ids to the edges of the graph.
+  vtkIdType numEdges = builder->GetNumberOfEdges();
+  vtkSmartPointer<vtkIdTypeArray> edgeIds = vtkSmartPointer<vtkIdTypeArray>::New();
+  edgeIds->SetNumberOfTuples(numEdges);
+  edgeIds->SetName("edge");
+  for (vtkIdType i = 0; i < numEdges; ++i)
+    {
+    edgeIds->SetValue(i, i);
+    }
+  builder->GetEdgeData()->SetPedigreeIds(edgeIds);
+
   // Copy structure into output graph.
   vtkInformation* outputInfo = outputVector->GetInformationObject(0);
   vtkGraph* output = vtkGraph::SafeDownCast(
