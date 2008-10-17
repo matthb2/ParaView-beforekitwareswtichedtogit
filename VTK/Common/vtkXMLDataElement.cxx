@@ -359,6 +359,13 @@ void vtkXMLDataElement::PrintCharacterData(ostream &os, vtkIndent indent)
 }
 
 //----------------------------------------------------------------------------
+void vtkXMLDataElement::PrintXML(const char* fname)
+{
+  ofstream of(fname);
+  this->PrintXML(of, vtkIndent());
+}
+
+//----------------------------------------------------------------------------
 void vtkXMLDataElement::PrintXML(ostream& os, vtkIndent indent)
 {
   vtkIndent nextIndent=indent.GetNextIndent();
