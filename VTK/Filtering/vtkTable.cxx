@@ -110,7 +110,7 @@ void vtkTable::Dump( unsigned int colWidth )
     else
       {
       cout << str;
-      for ( unsigned int i = str.length(); i < colWidth; ++ i )
+      for ( unsigned int i = static_cast<unsigned int>(str.length()); i < colWidth; ++ i )
         {
         cout << " ";
         }
@@ -134,7 +134,7 @@ void vtkTable::Dump( unsigned int colWidth )
       else
         {
         cout << str;
-        for ( unsigned int i = str.length(); i < colWidth; ++ i )
+        for ( unsigned int i = static_cast<unsigned int>(str.length()); i < colWidth; ++ i )
           {
           cout << " ";
           }
