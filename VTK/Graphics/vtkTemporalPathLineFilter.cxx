@@ -419,7 +419,7 @@ int vtkTemporalPathLineFilter::RequestData(
   this->ParticlePolyLines   = vtkSmartPointer<vtkCellArray>::New();
   this->PointId             = vtkSmartPointer<vtkFloatArray>::New();
   //
-  int size = this->Internals->Trails.size();
+  size_t size = this->Internals->Trails.size();
   this->ParticleCoordinates->Allocate(size*this->MaxTrackLength);
   this->ParticlePolyLines->Allocate(2*size*this->MaxTrackLength);
   this->PointScalars->Allocate(size*this->MaxTrackLength);
@@ -445,7 +445,7 @@ int vtkTemporalPathLineFilter::RequestData(
           float *scalar = &tp->Scalars[index];
           this->PointScalars->InsertNextTuple(scalar);
         }
-        this->PointId->InsertNextTuple1((double)(tp->Id));
+        this->PointId->InsertNextTuple1(static_cast<double>(tp->Id));
       }
       this->ParticlePolyLines->InsertNextCell(tp->length,&TempIds[0]);
     }
