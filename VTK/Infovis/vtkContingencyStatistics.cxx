@@ -460,3 +460,10 @@ void vtkContingencyStatistics::ExecuteAssess( vtkTable* inData,
 
   return;
 }
+
+// ----------------------------------------------------------------------
+void vtkContingencyStatistics::SelectAssessFunctor( vtkAbstractArray* vtkNotUsed(arr),
+                                                    vtkVariantArray* vtkNotUsed(row),
+                                                    AssessFunctor*& vtkNotUsed(dfunc) )
+{
+}
