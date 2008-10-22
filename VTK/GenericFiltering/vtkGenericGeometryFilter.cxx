@@ -252,7 +252,13 @@ int vtkGenericGeometryFilter::RequestData(
     {
     attribute=attributes->GetAttribute(i);
     attributeType=attribute->GetType();
-    if(attribute->GetCentering()==vtkPointCentered)
+    int centering = attribute->GetCentering();
+    if ( centering != vtkPointCentered && centering != vtkCellCentered )
+      { // skip boundary-centered attributes.
+      continue;
+      }
+
+    if ( centering == vtkPointCentered )
       {
       dsAttributes = outputPD;
       
