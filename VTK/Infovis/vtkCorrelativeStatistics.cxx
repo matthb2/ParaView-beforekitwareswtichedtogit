@@ -421,7 +421,7 @@ void vtkCorrelativeStatistics::ExecuteAssess( vtkTable* inData,
 }
 
 // ----------------------------------------------------------------------
-void vtkCorrelativeStatistics::SelectAssessFunctor( vtkAbstractArray* vtkNotUsed(arr),
+void vtkCorrelativeStatistics::SelectAssessFunctor( vtkTable* vtkNotUsed(arr),
                                                     vtkVariantArray* vtkNotUsed(row),
                                                     AssessFunctor*& vtkNotUsed(dfunc) )
 {
