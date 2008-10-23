@@ -294,7 +294,7 @@ void vtkDescriptiveStatistics::ExecuteDerive( vtkTable* inMeta )
 }
 
 // ----------------------------------------------------------------------
-class TableColumnDeviantFunctor : public vtkDescriptiveStatistics::AssessFunctor
+class TableColumnDeviantFunctor : public vtkStatisticsAlgorithm::AssessFunctor
 {
 public:
   vtkTable* Data;
