@@ -1074,7 +1074,8 @@ vtkImageData* vtkSMRenderViewProxy::CaptureWindow(int magnification)
         }
       }
 
-    if (invalid_image)
+    if (invalid_image && 
+      vtkProcessModule::GetProcessModule()->GetNumberOfLocalPartitions() == 1)
       {
       // free up current image.
       capture->Delete();

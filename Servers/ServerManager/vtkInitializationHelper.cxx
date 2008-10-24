@@ -153,3 +153,9 @@ void vtkInitializationHelperInit(vtkProcessModule* pm)
   vtkPVFiltersCS_Initialize(pm->GetInterpreter());
   vtkXdmfCS_Initialize(pm->GetInterpreter());
 }
+
+//----------------------------------------------------------------------------
+void vtkInitializationHelper::InitializeInterpretor(vtkProcessModule* pm)
+{
+  ::vtkInitializationHelperInit(pm);
+}

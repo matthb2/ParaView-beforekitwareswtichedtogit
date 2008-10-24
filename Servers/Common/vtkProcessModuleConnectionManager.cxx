@@ -21,6 +21,7 @@
 #include "vtkCommand.h"
 #include "vtkConnectionIterator.h"
 #include "vtkMPISelfConnection.h"
+#include "vtkPMPISelfConnection.h"
 #include "vtkObjectFactory.h"
 #include "vtkProcessModule.h"
 #include "vtkProcessModuleConnection.h"
@@ -121,18 +122,10 @@ int vtkProcessModuleConnectionManager::Initialize(int argc, char** argv,
   dummy->Initialize();
   dummy->Delete();
 
+  vtkProcessModule* pm = vtkProcessModule::GetProcessModule();
   // Create and initialize the self connection. This would also initialize
   // the MPIController, if any.
-  vtkSelfConnection* sc = 0;
-  if (this->ClientMode || !vtkProcessModule::GetProcessModule()->GetUseMPI())
-    {
-    // No MPI needed in on a pure Client.
-    sc = vtkSelfConnection::New();
-    }
-  else
-    {
-    sc = vtkMPISelfConnection::New();
-    }
+  vtkSelfConnection* sc = pm->GetOptions()->NewSelfConnection();
   this->SetConnection(vtkProcessModuleConnectionManager::GetSelfConnectionID(),
     sc);
   sc->Delete();

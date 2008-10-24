@@ -333,19 +333,15 @@ int vtkProcessModule::Start(int argc, char** argv)
     }
 
 
-  if (myId != 0)
+  if (myId == 0)
     {
-    // Satellite node. The control reaches here on a satellite node only on 
-    // exit.
-    return 0;
-    }
-
-  // Should only be called on root nodes.
-  int ret = this->InitializeConnections();
-  if (!ret)
-    {
-    // Failed.
-    return 1;
+    // Should only be called on root nodes.
+    int ret = this->InitializeConnections();
+    if (!ret)
+      {
+      // Failed.
+      return 1;
+      }
     }
 
   if (this->Options->GetClientMode() || 
@@ -417,7 +413,9 @@ int vtkProcessModule::StartClient(int argc, char** argv)
 
   // if the PM supports multiple connections, its the responsibility of the GUI
   // to connect to the server.
-  return this->GUIHelper->RunGUIStart(argc, argv, 1, 0);
+  return this->GUIHelper->RunGUIStart(argc, argv,
+    vtkMultiProcessController::GetGlobalController()->GetNumberOfProcesses(),
+    vtkMultiProcessController::GetGlobalController()->GetLocalProcessId());
 }
 
 //-----------------------------------------------------------------------------
