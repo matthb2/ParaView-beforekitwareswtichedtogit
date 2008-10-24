@@ -682,8 +682,12 @@ LRESULT vtkWin32OpenGLRenderWindow::MessageProc(HWND hWnd, UINT message,
     case WM_ERASEBKGND:
       return TRUE;
     case WM_SETCURSOR:
-      this->SetCurrentCursor(this->GetCurrentCursor());
-      return TRUE;
+      if (HTCLIENT == LOWORD(lParam))
+        {
+        this->SetCurrentCursor(this->GetCurrentCursor());
+        return TRUE;
+        }
+      break;
     default:
       this->InvokeEvent(vtkCommand::RenderWindowMessageEvent, &message);
       break;
