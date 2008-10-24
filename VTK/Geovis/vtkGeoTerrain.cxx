@@ -282,7 +282,7 @@ void vtkGeoTerrain::Request(vtkGeoCamera* camera)
     { // The request thread is idle.
     this->Camera = camera;
     this->WaitForRequestMutex1->Unlock();
-    vtkSleep(0.01);
+    vtkSleep(0.0001);
     this->WaitForRequestMutex1->Lock();
     }
   this->TreeMutex->Unlock();
@@ -503,6 +503,10 @@ int vtkGeoTerrain::EvaluateNode(vtkGeoTerrainNode* node, vtkGeoCamera* cam)
   
   // Size of the sphere in view area units (0 -> 1)
   sphereViewSize = cam->GetNodeCoverage(node);
+  
+  // Save the coverage in the node to further filter actors that get into the
+  // assembly.
+  node->SetCoverage(sphereViewSize);
   
   // Arbitrary tresholds
   if (sphereViewSize > 0.2)
