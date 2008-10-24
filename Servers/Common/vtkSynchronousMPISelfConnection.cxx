@@ -48,8 +48,8 @@ int vtkSynchronousMPISelfConnection::InitializeSatellite(
 }
 
 //----------------------------------------------------------------------------
-void vtkSynchronousMPISelfConnection::SendStreamToServerNodeInternal(int remoteId,
-  vtkClientServerStream& stream)
+void vtkSynchronousMPISelfConnection::SendStreamToServerNodeInternal(
+  int vtkNotUsed(remoteId), vtkClientServerStream& stream)
 {
   // Every processes all streams locally.
   // Logic being as follows:
