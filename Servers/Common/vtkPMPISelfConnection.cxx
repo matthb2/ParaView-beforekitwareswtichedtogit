@@ -38,7 +38,8 @@ void vtkPMPISelfConnection::Finalize()
 }
 
 //----------------------------------------------------------------------------
-int vtkPMPISelfConnection::InitializeSatellite(int argc, char** argv)
+int vtkPMPISelfConnection::InitializeSatellite(
+  int vtkNotUsed(argc), char** vtkNotUsed(argv))
 {
   this->RegisterSatelliteRMIs();
 
