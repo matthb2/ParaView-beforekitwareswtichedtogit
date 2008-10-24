@@ -17,8 +17,8 @@
 #include "vtkMultiProcessStream.h"
 #include "vtkObjectFactory.h"
 #include "vtkParallelRenderManager.h"
-#include "vtkPMPISelfConnection.h"
 #include "vtkProcessModule.h"
+#include "vtkSynchronousMPISelfConnection.h"
 
 #include <vtksys/CommandLineArguments.hxx>
 #include <vtksys/SystemTools.hxx>
@@ -96,7 +96,7 @@ vtkSelfConnection* vtkPVPythonOptions::NewSelfConnection()
   if (this->EnableSynchronousScripting &&
     vtkProcessModule::GetProcessModule()->GetUseMPI())
     {
-    return vtkPMPISelfConnection::New();
+    return vtkSynchronousMPISelfConnection::New();
     }
 
   return this->Superclass::NewSelfConnection();
