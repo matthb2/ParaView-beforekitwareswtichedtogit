@@ -21,7 +21,7 @@
 #include "vtkCommand.h"
 #include "vtkConnectionIterator.h"
 #include "vtkMPISelfConnection.h"
-#include "vtkPMPISelfConnection.h"
+#include "vtkMPISelfConnection.h"
 #include "vtkObjectFactory.h"
 #include "vtkProcessModule.h"
 #include "vtkProcessModuleConnection.h"
