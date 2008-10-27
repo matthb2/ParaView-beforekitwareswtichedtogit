@@ -50,6 +50,7 @@ vtkGeoTerrainNode::vtkGeoTerrainNode()
   this->ProjectionBounds[3] = 0.0;
   this->GraticuleLevel = 0;
   this->Error = 0.0;
+  this->Coverage = 0.0;
 }
 
 //-----------------------------------------------------------------------------
