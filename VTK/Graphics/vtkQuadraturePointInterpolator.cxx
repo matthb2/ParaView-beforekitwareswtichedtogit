@@ -213,6 +213,8 @@ int vtkQuadraturePointInterpolator::InterpolateFields(
         break;
         }
       }
+
+    delete [] dict;
     }
 
   return 1;

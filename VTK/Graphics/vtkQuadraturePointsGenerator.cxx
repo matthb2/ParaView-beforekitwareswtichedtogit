@@ -268,6 +268,8 @@ int vtkQuadraturePointsGenerator::Generate(
       }
     }
 
+  delete [] dict;
+
   // Add the interpolated quadrature points to the output
   vtkPoints *p=vtkPoints::New();
   p->SetDataTypeToDouble();
