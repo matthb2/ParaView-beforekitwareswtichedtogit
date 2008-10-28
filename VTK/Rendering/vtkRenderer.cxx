@@ -174,6 +174,10 @@ vtkRenderer::~vtkRenderer()
     }
 #endif
 
+  if(this->Delegate!=0)
+    {
+    this->Delegate->UnRegister(this);
+    }
 }
 
 // return the correct type of Renderer 
