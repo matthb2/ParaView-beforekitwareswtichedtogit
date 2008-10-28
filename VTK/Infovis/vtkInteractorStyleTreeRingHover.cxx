@@ -63,7 +63,6 @@ vtkInteractorStyleTreeRingHover::vtkInteractorStyleTreeRingHover()
   this->Layout = NULL;
   this->LabelField = 0;
   this->CurrentSelectedId = -1;
-  this->Layout = NULL;
 
   this->SelectionData = vtkPolyData::New();
   vtkPolyDataMapper *selMap = vtkPolyDataMapper::New();
