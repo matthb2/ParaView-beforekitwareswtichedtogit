@@ -151,10 +151,12 @@ vtkHierarchicalTreeRingView::vtkHierarchicalTreeRingView()
   this->SetEdgeLabelArrayName("id");
   this->EdgeLabelVisibilityOff();
   this->ColorEdgesOff();
-  
+
   // Misc variables
-  this->BundlingStrength = .5;
-  
+  this->BundlingStrength = .5;  
+  this->InteriorLogSpacing = 1.;
+  this->TreeRingPointLayout->SetLogSpacingValue( this->InteriorLogSpacing );
+
   // Apply default theme
   vtkViewTheme* theme = vtkViewTheme::New();
   this->ApplyViewTheme(theme);
@@ -885,4 +887,12 @@ vtkHierarchicalTreeRingView::SetBundlingStrength(double strength)
 {
   this->HBundle->SetBundlingStrength(strength);
   this->SelectedGraphHBundle->SetBundlingStrength(strength);
+}
+
+// ----------------------------------------------------------------------
+void
+vtkHierarchicalTreeRingView::SetInteriorLogSpacingFactor(double value)
+{
+  this->InteriorLogSpacing = value;
+  this->TreeRingPointLayout->SetLogSpacingValue(value);
 }
