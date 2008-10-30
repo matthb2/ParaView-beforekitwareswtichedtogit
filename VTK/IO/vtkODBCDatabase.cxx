@@ -203,7 +203,7 @@ vtkODBCDatabase::vtkODBCDatabase()
   this->DataSourceName = NULL;
   this->DatabaseName = NULL;
 
-  this->Port = -1; // use whatever the driver defaults to
+  this->ServerPort = -1; // use whatever the driver defaults to
 }
 
 // ----------------------------------------------------------------------
@@ -668,7 +668,7 @@ vtkODBCDatabase::ParseURL(const char *URL)
   if ( protocol == "odbc" )
     {
     this->SetUserName(username.c_str());
-    this->SetPort(atoi(dataport.c_str()));
+    this->SetServerPort(atoi(dataport.c_str()));
     this->SetDatabaseName(database.c_str());
     this->SetDataSourceName(dsname.c_str());
     return true;
