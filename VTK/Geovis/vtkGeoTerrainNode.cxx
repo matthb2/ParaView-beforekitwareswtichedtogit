@@ -93,6 +93,7 @@ void vtkGeoTerrainNode::PrintSelf(ostream& os, vtkIndent indent)
     << this->ProjectionBounds[3] << "\n";
   os << indent << "GraticuleLevel: " << this->GraticuleLevel << endl;
   os << indent << "Error: " << this->Error << endl;
+  os << indent << "Coverage: " << this->Coverage << endl;
 }
 
 //-----------------------------------------------------------------------------
