@@ -151,7 +151,7 @@ void vtkTreeRingExistingLayoutStrategy::Layout(vtkTree *inputTree,
   points->SetNumberOfPoints(levelTree->GetNumberOfVertices());
   for( i = 0; i < levelTree->GetNumberOfVertices(); i++ )
   {
-    if( i == 0 )
+    if( i == rootId )
     {
       points->SetPoint( i, 0, 0, 0 );
       continue;
