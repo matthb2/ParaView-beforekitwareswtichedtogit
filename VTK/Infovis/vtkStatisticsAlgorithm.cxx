@@ -41,14 +41,17 @@ vtkStatisticsAlgorithm::vtkStatisticsAlgorithm()
   this->Derive = true;
   this->Validate = false;
   this->Assess = false;
-  this->AssessmentName = 0;
+  this->AssessNames = vtkStringArray::New();
   this->AssessParameters = 0;
 }
 
 // ----------------------------------------------------------------------
 vtkStatisticsAlgorithm::~vtkStatisticsAlgorithm()
 {
-  this->SetAssessmentName( 0 );
+  if ( this->AssessNames )
+    {
+    this->AssessNames->Delete();
+    }
 }
 
 // ----------------------------------------------------------------------
@@ -60,13 +63,13 @@ void vtkStatisticsAlgorithm::PrintSelf( ostream &os, vtkIndent indent )
   os << indent << "Derive: " << this->Derive << endl;
   os << indent << "Validate: " << this->Validate << endl;
   os << indent << "Assess: " << this->Assess << endl;
-  if (this->AssessmentName)
+  if ( this->AssessParameters )
     {
-    os << indent << "AssessmentName: " << this->AssessmentName << endl;
+    this->AssessParameters->PrintSelf( os, indent.GetNextIndent() );
     }
-  else
+  if ( this->AssessNames )
     {
-    os << indent << "AssessmentName: (null)" << endl;
+    this->AssessNames->PrintSelf( os, indent.GetNextIndent() );
     }
 }
 
