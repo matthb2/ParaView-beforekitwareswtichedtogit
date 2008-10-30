@@ -170,4 +170,6 @@ void vtkTreeRingPointLayout::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os, indent);
   os << indent << "SectorsFieldName: " << (this->SectorsFieldName ? this->SectorsFieldName : "(none)") << endl;
+  os << indent << "LogSpacingValue: " << this->LogSpacingValue << endl;
+  os << indent << "ExteriorRadius: " << this->ExteriorRadius << endl;
 }
