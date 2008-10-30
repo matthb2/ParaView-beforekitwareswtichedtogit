@@ -67,7 +67,7 @@ unsigned int vtkTimestepsAnimationPlayer::GetNumberOfTimeSteps()
 }
 
 //-----------------------------------------------------------------------------
-void vtkTimestepsAnimationPlayer::StartLoop(double , double)
+void vtkTimestepsAnimationPlayer::StartLoop(double , double, double)
 {
   this->Count = 0;
 }
