@@ -138,7 +138,7 @@ void vtkOrderStatistics::ExecuteLearn( vtkTable* inData,
       continue;
       }
 
-    bool isNum = inData->GetColumnByName( col )->IsNumeric();
+    int isNum = inData->GetColumnByName( col )->IsNumeric();
 
     vtkstd::map<vtkVariant,vtkIdType> distr;
     for ( vtkIdType r = 0; r < this->SampleSize; ++ r )
