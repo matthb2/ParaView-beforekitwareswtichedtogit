@@ -150,17 +150,16 @@ void vtkUnivariateStatisticsAlgorithm::ExecuteAssess( vtkTable* inData,
 
     // Create the outData columns
     int nv = this->AssessNames->GetNumberOfValues();
-    vtkVariantArray* assessValues;
-    vtksys_ios::ostringstream assessColName;
     vtkStdString* names = new vtkStdString[nv];
     for ( int v = 0; v < nv; ++ v )
       {
+      vtksys_ios::ostringstream assessColName;
       assessColName << this->AssessNames->GetValue( v )
                     << "("
                     << varName
                     << ")";
 
-      assessValues = vtkVariantArray::New();
+      vtkVariantArray* assessValues = vtkVariantArray::New();
       names[v] = assessColName.str().c_str(); // Storing names to be able to use SetValueByName which is faster than SetValue
       assessValues->SetName( names[v] );
       assessValues->SetNumberOfTuples( nRowD );
