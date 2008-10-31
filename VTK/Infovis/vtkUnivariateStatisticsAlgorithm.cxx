@@ -62,7 +62,7 @@ void vtkUnivariateStatisticsAlgorithm::ResetColumns()
 // ----------------------------------------------------------------------
 void vtkUnivariateStatisticsAlgorithm::AddColumn( const char* namCol )
 {
- this->Internals->Selection.insert( namCol );
+  this->Internals->Selection.insert( namCol );
 
   this->Modified();
 }
@@ -70,7 +70,7 @@ void vtkUnivariateStatisticsAlgorithm::AddColumn( const char* namCol )
 // ----------------------------------------------------------------------
 void vtkUnivariateStatisticsAlgorithm::RemoveColumn( const char* namCol )
 {
- this->Internals->Selection.erase( namCol );
+  this->Internals->Selection.erase( namCol );
 
   this->Modified();
 }
