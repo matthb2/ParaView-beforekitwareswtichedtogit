@@ -12,7 +12,7 @@
      PURPOSE.  See the above copyright notice for more information.
 
 =========================================================================*/
-//#include "vtkStreamingDemandDrivenPipeline.h"
+#include "vtkStreamingDemandDrivenPipeline.h"
 
 #include "vtkAlgorithm.h"
 #include "vtkAlgorithmOutput.h"
