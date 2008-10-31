@@ -35,7 +35,7 @@ vtkRealtimeAnimationPlayer::~vtkRealtimeAnimationPlayer()
 }
 
 //----------------------------------------------------------------------------
-void vtkRealtimeAnimationPlayer::StartLoop(double start, double end, double curtime)
+void vtkRealtimeAnimationPlayer::StartLoop(double start, double end, double vtkNotUsed(curtime))
 {
   this->StartTime = start;
   this->Factor = (end - start)/this->Duration;
