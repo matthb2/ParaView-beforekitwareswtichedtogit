@@ -736,7 +736,7 @@ void vtkGraphMapper::PrintSelf(ostream& os, vtkIndent indent)
   os << indent << "ScaledGlyphs: " << this->ScaledGlyphs << endl;
   os << indent << "ScalingArrayName: " << (this->ScalingArrayName ? "" : "(null)") << endl;
   os << indent << "EnableEdgesByArray: " << this->EnableEdgesByArray << endl;
-  os << indent << "EnableVerticesByArray: " << this->EnableEdgesByArray << endl;
+  os << indent << "EnableVerticesByArray: " << this->EnableVerticesByArray << endl;
   os << indent << "EnabledEdgesArrayName: " << (this->EnabledEdgesArrayName ? "" : "(null)") << endl;
   os << indent << "EnabledVerticesArrayName: " << (this->EnabledVerticesArrayName ? "" : "(null)") << endl;
 

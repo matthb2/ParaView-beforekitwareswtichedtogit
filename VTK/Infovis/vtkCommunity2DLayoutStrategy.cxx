@@ -624,4 +624,6 @@ void vtkCommunity2DLayoutStrategy::PrintSelf(ostream& os, vtkIndent indent)
   os << indent << "RestDistance: " << this->RestDistance << endl;
   os << indent << "EdgeWeightField: " << (this->EdgeWeightField ? this->EdgeWeightField : "(none)") << endl;
   os << indent << "CommunityArrayName: " << (this->CommunityArrayName ? this->CommunityArrayName : "(none)") << endl;
+  os << indent << "CommunityStrength: " << this->CommunityStrength << endl;
+
 }
