@@ -34,6 +34,7 @@
 #include "vtkStreamingDemandDrivenPipeline.h"
 #include "vtkUnsignedCharArray.h"
 #include "vtkUnstructuredGrid.h"
+#include "vtkStreamingDemandDrivenPipeline.h"
 
 #include <math.h>
 
@@ -71,6 +72,8 @@ vtkClipDataSet::vtkClipDataSet(vtkImplicitFunction *cf)
     &vtkClipDataSet::InternalProgressCallbackFunction);
   this->InternalProgressObserver->SetClientData(this);
 
+  this->GetInformation()->Set(vtkAlgorithm::PRESERVES_RANGES(), 1);
+  this->GetInformation()->Set(vtkAlgorithm::PRESERVES_BOUNDS(), 1);
 }
 
 //----------------------------------------------------------------------------
