@@ -34,6 +34,7 @@
 #include "vtkRenderer.h"
 #include "vtkRendererCollection.h"
 #include "vtkRenderWindow.h"
+#include "vtkRenderWindowInteractor.h"
 #include "vtkSmartPointer.h"
 #include "vtkViewTheme.h"
 #define VTK_CREATE(type,name) \
@@ -228,6 +229,20 @@ void vtkGeoView::ApplyViewTheme(vtkViewTheme* theme)
 vtkGeoInteractorStyle* vtkGeoView::GetGeoInteractorStyle()
 {
   return vtkGeoInteractorStyle::SafeDownCast(this->GetInteractorStyle());
+}
+
+//----------------------------------------------------------------------------
+void vtkGeoView::SetGeoInteractorStyle(vtkGeoInteractorStyle* style)
+{
+  this->SetInteractorStyle(style);
+  style->SetCurrentRenderer(this->Renderer);
+  style->ResetCamera();
+  style->Delete();
+
+  // Set the camera
+  vtkGeoCamera* cam = style->GetGeoCamera();
+  this->Renderer->SetActiveCamera(cam->GetVTKCamera());
+  this->RenderWindow->GetInteractor()->SetInteractorStyle(style);
 }
 
 //----------------------------------------------------------------------------
