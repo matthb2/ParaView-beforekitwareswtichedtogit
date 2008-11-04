@@ -34,7 +34,7 @@ vtkCxxRevisionMacro(vtkStatisticsAlgorithm, "$Revision$");
 vtkStatisticsAlgorithm::vtkStatisticsAlgorithm()
 {
   this->SetNumberOfInputPorts( 2 );
-  this->SetNumberOfOutputPorts( 3 );
+  this->SetNumberOfOutputPorts( 2 );
 
   // If not told otherwise, only run Learn option
   this->Learn = true;
