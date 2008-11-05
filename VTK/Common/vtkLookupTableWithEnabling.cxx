@@ -22,6 +22,8 @@
 vtkCxxRevisionMacro(vtkLookupTableWithEnabling, "$Revision$");
 vtkStandardNewMacro(vtkLookupTableWithEnabling);
 
+vtkCxxSetObjectMacro(vtkLookupTableWithEnabling,EnabledArray,vtkDataArray);
+
 // Construct with range=(0,1); and hsv ranges set up for rainbow color table 
 // (from red to blue).
 vtkLookupTableWithEnabling::vtkLookupTableWithEnabling(int sze, int ext) : 
