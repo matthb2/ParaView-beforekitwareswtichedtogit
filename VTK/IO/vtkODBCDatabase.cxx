@@ -215,7 +215,10 @@ vtkODBCDatabase::~vtkODBCDatabase()
     {
     this->Close();
     }
-
+  if ( this->DatabaseType )
+    {
+    this->SetDatabaseType(0);
+    }
   this->SetLastErrorText(NULL);
   this->SetUserName(NULL);
   this->SetHostName(NULL);
