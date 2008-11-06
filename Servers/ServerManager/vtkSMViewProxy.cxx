@@ -155,6 +155,8 @@ vtkSMViewProxy::vtkSMViewProxy()
   this->Information->Set(CACHE_TIME(), this->CacheTime);
 
   this->InRender = false;
+
+  this->NewStrategyHelper = NULL;
 }
 
 //----------------------------------------------------------------------------

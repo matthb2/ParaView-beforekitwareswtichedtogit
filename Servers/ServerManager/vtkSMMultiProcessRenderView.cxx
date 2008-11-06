@@ -40,6 +40,13 @@ vtkSMMultiProcessRenderView::~vtkSMMultiProcessRenderView()
 vtkSMRepresentationStrategy* vtkSMMultiProcessRenderView::NewStrategyInternal(
   int dataType)
 {
+  if (this->NewStrategyHelper)
+    {
+    return this->NewStrategyHelper->NewStrategyInternal(dataType);
+    }
+
+  
+ 
   vtkSMProxyManager* pxm = vtkSMObject::GetProxyManager();
   vtkSMRepresentationStrategy* strategy = 0;
 
