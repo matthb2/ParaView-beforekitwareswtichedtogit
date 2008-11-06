@@ -307,6 +307,12 @@ const char* vtkHierarchicalTreeRingView::GetVertexLabelArrayName()
 }
 
 //----------------------------------------------------------------------------
+void vtkHierarchicalTreeRingView::SetLabelPriorityArrayName(const char* name)
+{
+  this->TreeRingLabelMapper->SetPriorityArrayName(name);
+}
+
+//----------------------------------------------------------------------------
 void vtkHierarchicalTreeRingView::SetEdgeLabelArrayName(const char* name)
 {
   this->EdgeLabelMapper->SetFieldDataName(name);
