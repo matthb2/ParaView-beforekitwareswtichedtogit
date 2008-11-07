@@ -264,9 +264,7 @@ void vtkGeoTerrain::AddActors(
       mapper->SetInput(cur->GetModel());
       mapper->ScalarVisibilityOff();
       actor->SetMapper(mapper);
-      //actor->SetPosition(0.0, 0.0, -0.1);
       actor->SetPosition(-this->Origin[0], -this->Origin[1], -this->Origin[2] - 0.1);
-      //actor->SetOrigin(this->Origin);
       visibleActors++;
 
       if (textureNode1)
