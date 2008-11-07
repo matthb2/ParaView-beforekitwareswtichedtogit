@@ -214,6 +214,11 @@ int vtkExodusIIWriter::RequestData (
   vtkInformationVector** inputVector,
   vtkInformationVector* vtkNotUsed(outputVector))
 {
+  if (!this->FileName)
+    {
+    return 1;
+    }
+
   vtkInformation* inInfo = inputVector[0]->GetInformationObject (0);
   this->OriginalInput = vtkDataObject::SafeDownCast (
     inInfo->Get(vtkDataObject::DATA_OBJECT ()));
@@ -954,7 +959,7 @@ int vtkExodusIIWriter::ConstructVariableInfoMaps ()
       if (name == 0)
         {
         vtkErrorMacro ("Array in input has Null name, cannot proceed");
-        return 0;
+        continue;
         }
       vtkstd::string upper (name);
       this->StringUppercase(upper);
@@ -1001,7 +1006,7 @@ int vtkExodusIIWriter::ConstructVariableInfoMaps ()
       if (name == 0)
         {
         vtkErrorMacro ("Array in input has Null name, cannot proceed");
-        return 0;
+        continue;
         }
       vtkstd::string upper (name);
       this->StringUppercase(upper);
