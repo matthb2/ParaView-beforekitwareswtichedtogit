@@ -63,7 +63,7 @@ public:
     this->ViewLink = vtkSmartPointer<vtkSMProxyLink>::New();
     this->ViewCameraLink = vtkSmartPointer<vtkSMCameraLink>::New();
     this->ViewCameraLink->SynchronizeInteractiveRendersOff();
-    }
+   }
 
   unsigned int ActiveIndexX;
   unsigned int ActiveIndexY;
