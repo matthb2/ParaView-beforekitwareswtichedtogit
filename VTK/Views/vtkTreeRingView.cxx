@@ -381,6 +381,14 @@ double vtkTreeRingView::GetSectorShrinkPercentage()
   return this->TreeRingToPolyData->GetShrinkPercentage();
 }
 
+void vtkTreeRingView::SetRootAngles( double start, double end )
+{
+  this->TreeRingDefaultLayout->SetRootStartAngle( start );
+  this->TreeRingDefaultLayout->SetRootEndAngle( end );
+  this->TreeRingReversedLayout->SetRootStartAngle( start );
+  this->TreeRingReversedLayout->SetRootEndAngle( end );
+}
+
 //----------------------------------------------------------------------------
 void vtkTreeRingView::PrintSelf(ostream& os, vtkIndent indent)
 {
