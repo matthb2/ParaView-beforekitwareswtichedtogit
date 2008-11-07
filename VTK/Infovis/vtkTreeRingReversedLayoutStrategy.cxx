@@ -89,7 +89,7 @@ void vtkTreeRingReversedLayoutStrategy::Layout(vtkTree *inputTree,
   
       // Get the root vertex and set it to 0,1,0,1
   vtkIdType rootId = levelTree->GetRoot();
-  float coords[] = {outer_radius-this->RingThickness, outer_radius, 0., 360.};
+  float coords[] = {outer_radius-this->RingThickness, outer_radius, this->RootStartAngle, this->RootEndAngle};
   coordsArray->SetTuple(rootId, coords);
 
     // Now layout the children vertices

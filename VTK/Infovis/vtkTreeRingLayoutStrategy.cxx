@@ -26,6 +26,8 @@ vtkTreeRingLayoutStrategy::vtkTreeRingLayoutStrategy()
 {
   this->InteriorRadius = 6.0;
   this->RingThickness = 1.0;
+  this->RootStartAngle = 0.;
+  this->RootEndAngle = 360.;
 }
 
 vtkTreeRingLayoutStrategy::~vtkTreeRingLayoutStrategy()
@@ -37,6 +39,8 @@ void vtkTreeRingLayoutStrategy::PrintSelf(ostream& os, vtkIndent indent)
   this->Superclass::PrintSelf(os,indent);
  os << "InteriorRadius: " << this->InteriorRadius << endl;
  os << "RingThickness: " << this->RingThickness << endl;
+ os << "RootStartAngle: " << this->RootStartAngle << endl;
+ os << "RootEndAngle: " << this->RootEndAngle << endl;
 }
 
 
