@@ -3309,7 +3309,7 @@ int TestTessellator( int argc, char* argv[] )
     ri->AddObserver( vtkCommand::UserEvent, ss );
     }
 
-  at->SetPrivateData( (void*) ug );
+  at->SetPrivateData(ug);
   at->SetSubdivisionAlgorithm( tt );
   at->SetEmbeddingDimension( -1, 3 );
   at->SetEdgeCallback( TessellatorEdgeProcessorFunction );
