@@ -164,7 +164,7 @@ void vtkGeoTerrain::AddActors(
   vtkSmartPointer<vtkExtractSelectedFrustum> extractor =
     vtkSmartPointer<vtkExtractSelectedFrustum>::New();
   extractor->SetFrustum(frustum);
-  
+
   double llbounds[4];
   while (!s.empty())
     {

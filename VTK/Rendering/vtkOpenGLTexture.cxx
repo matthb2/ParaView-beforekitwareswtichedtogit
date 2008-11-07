@@ -52,7 +52,7 @@ vtkOpenGLTexture::~vtkOpenGLTexture()
 }
 
 //-----------------------------------------------------------------------------
-void vtkOpenGLTexture::Initialize(vtkRenderer * ren)
+void vtkOpenGLTexture::Initialize(vtkRenderer * vtkNotUsed(ren))
 {
 }
 

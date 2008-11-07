@@ -381,7 +381,7 @@ void vtkGLSLShaderProgram::Render(vtkActor *actor, vtkRenderer *renderer)
     }
 }
 //-----------------------------------------------------------------------------
-void vtkGLSLShaderProgram::PostRender(vtkActor* actor, vtkRenderer*)
+void vtkGLSLShaderProgram::PostRender(vtkActor*, vtkRenderer*)
 {
   if (!this->GetGLExtensionsLoaded())
     {
