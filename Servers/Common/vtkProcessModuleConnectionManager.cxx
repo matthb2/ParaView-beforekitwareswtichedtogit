@@ -172,7 +172,10 @@ GetConnectionFromID(vtkIdType connectionID)
   iter->Begin();
   if (iter->IsAtEnd())
     {
-    vtkErrorMacro("Invalid connection ID: " << connectionID);
+    if (connectionID != GetNullConnectionID())
+      {
+      vtkErrorMacro("Invalid connection ID: " << connectionID);
+      }
     iter->Delete();
     return NULL;
     }
