@@ -67,6 +67,15 @@ vtkGeoProjectionSource::~vtkGeoProjectionSource()
   this->SetTransform(0);
 }
 
+void vtkGeoProjectionSource::PrintSelf( ostream& os, vtkIndent indent )
+{
+  this->Superclass::PrintSelf( os, indent );
+  os << indent << "Projection: " << this->Projection << "\n";
+  os << indent << "Transform: " << this->Transform << "\n";
+  os << indent << "TransformLock: " << this->TransformLock << "\n";
+  os << indent << "MinCellsPerNode: " << this->MinCellsPerNode << "\n";
+}
+
 //----------------------------------------------------------------------------
 void vtkGeoProjectionSource::RefineAndComputeError(vtkGeoTerrainNode* node)
 {

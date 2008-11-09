@@ -339,7 +339,11 @@ void vtkGeoTerrain::AddActors(
 //----------------------------------------------------------------------------
 void vtkGeoTerrain::PrintSelf(ostream & os, vtkIndent indent)
 {
-  this->PrintTree(os, indent, this->Root);
+  this->Superclass::PrintSelf( os, indent );
+  os << indent << "GeoSource: " << this->GeoSource << "\n";
+  os << indent << "Origin: (" << this->Origin[0] << ", "
+     << this->Origin[1] << ", " << this->Origin[2] << ")\n";
+  this->PrintTree(os, indent, this->Root); // Root
 }
 
 //----------------------------------------------------------------------------

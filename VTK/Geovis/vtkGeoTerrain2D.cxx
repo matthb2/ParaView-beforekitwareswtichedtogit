@@ -343,6 +343,10 @@ void vtkGeoTerrain2D::AddActors(
 //----------------------------------------------------------------------------
 void vtkGeoTerrain2D::PrintSelf(ostream & os, vtkIndent indent)
 {
+  this->Superclass::PrintSelf( os, indent );
+  os << indent << "GeoSource: " << this->GeoSource << "\n";
+  os << indent << "LocationTolerance: " << this->LocationTolerance << "\n";
+  os << indent << "TextureTolerance: " << this->TextureTolerance << "\n";
   this->PrintTree(os, indent, this->Root);
 }
 

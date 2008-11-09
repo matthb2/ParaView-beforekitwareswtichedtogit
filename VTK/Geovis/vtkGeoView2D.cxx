@@ -55,6 +55,13 @@ vtkGeoView2D::~vtkGeoView2D()
     }
 }
 
+void vtkGeoView2D::PrintSelf( ostream& os, vtkIndent indent )
+{
+  this->Superclass::PrintSelf( os, indent );
+  os << indent << "Assembly: " << this->Assembly << "\n";
+  os << indent << "Surface: " << this->Surface << "\n";
+}
+
 void vtkGeoView2D::ApplyViewTheme(vtkViewTheme* theme)
 {
   this->Renderer->SetBackground(theme->GetBackgroundColor());
