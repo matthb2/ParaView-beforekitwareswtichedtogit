@@ -258,5 +258,10 @@ void vtkGeoView::SetGeoInteractorStyle(vtkGeoInteractorStyle* style)
 void vtkGeoView::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os,indent);
+  os << "Terrain: " << (this->Terrain ? "" : "(none)") << endl;
+  if (this->Terrain)
+    {
+    this->Terrain->PrintSelf(os, indent.GetNextIndent());
+    }
 }
 
