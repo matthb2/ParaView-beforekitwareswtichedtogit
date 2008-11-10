@@ -85,7 +85,7 @@ void vtkStatisticsAlgorithm::SetAssessParameter( vtkIdType id, vtkStdString name
 } 
 
 // ----------------------------------------------------------------------
-vtkStdString vtkStatisticsAlgorithm::SetAssessParameter( vtkIdType id )
+vtkStdString vtkStatisticsAlgorithm::GetAssessParameter( vtkIdType id )
 {
   if ( id >= 0 && id < this->AssessParameters->GetNumberOfValues() )
     {
