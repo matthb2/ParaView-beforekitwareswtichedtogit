@@ -72,6 +72,24 @@ void vtkSMPSWriterProxy::CreateVTKObjects()
            << this->GetFileNameMethod()
            << vtkClientServerStream::End;
     }
+
+  if (this->GetSubProxy("PreGatherHelper"))
+    {
+    stream << vtkClientServerStream::Invoke
+           << this->GetID()
+           << "SetPreGatherHelper"
+           << this->GetSubProxy("PreGatherHelper")->GetID()
+           << vtkClientServerStream::End;
+    }
+
+  if (this->GetSubProxy("PostGatherHelper"))
+    {
+    stream << vtkClientServerStream::Invoke
+           << this->GetID()
+           << "SetPostGatherHelper"
+           << this->GetSubProxy("PostGatherHelper")->GetID()
+           << vtkClientServerStream::End;
+    }
   pm->SendStream(this->ConnectionID, this->Servers, stream);
 }
 

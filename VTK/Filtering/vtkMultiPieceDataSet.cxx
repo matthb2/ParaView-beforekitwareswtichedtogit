@@ -61,12 +61,24 @@ unsigned int vtkMultiPieceDataSet::GetNumberOfPieces()
 //----------------------------------------------------------------------------
 vtkDataSet* vtkMultiPieceDataSet::GetPiece(unsigned int blockno)
 {
-  return vtkDataSet::SafeDownCast(this->Superclass::GetChild(blockno));
+  return vtkDataSet::SafeDownCast(this->GetPieceAsDataObject(blockno));
 }
 
 //----------------------------------------------------------------------------
-void vtkMultiPieceDataSet::SetPiece(unsigned int blockno, vtkDataSet* block)
+vtkDataObject* vtkMultiPieceDataSet::GetPieceAsDataObject(unsigned int blockno)
 {
+  return this->Superclass::GetChild(blockno);
+}
+
+//----------------------------------------------------------------------------
+void vtkMultiPieceDataSet::SetPiece(unsigned int blockno, vtkDataObject* block)
+{
+  if (block && block->IsA("vtkCompositeDataSet"))
+    {
+    vtkErrorMacro("Piece cannot be a vtkCompositeDataSet.");
+    return;
+    }
+
   this->Superclass::SetChild(blockno, block);
 }
 

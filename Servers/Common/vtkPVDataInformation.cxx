@@ -156,6 +156,34 @@ void vtkPVDataInformation::PrintSelf(ostream& os, vtkIndent indent)
 }
 
 //----------------------------------------------------------------------------
+vtkPVDataSetAttributesInformation*
+vtkPVDataInformation::GetAttributeInformation(int fieldAssociation)
+{
+  switch (fieldAssociation)
+    {
+  case vtkDataObject::FIELD_ASSOCIATION_POINTS:
+    return this->PointDataInformation;
+
+  case vtkDataObject::FIELD_ASSOCIATION_CELLS:
+    return this->CellDataInformation;
+
+  case vtkDataObject::FIELD_ASSOCIATION_VERTICES:
+    return this->VertexDataInformation;
+
+  case vtkDataObject::FIELD_ASSOCIATION_EDGES:
+    return this->EdgeDataInformation;
+
+  case vtkDataObject::FIELD_ASSOCIATION_ROWS:
+    return this->RowDataInformation;
+
+  case vtkDataObject::FIELD_ASSOCIATION_NONE:
+    return this->FieldDataInformation;
+    }
+
+  return 0;
+}
+
+//----------------------------------------------------------------------------
 void vtkPVDataInformation::Initialize()
 {
   this->DataSetType = -1;

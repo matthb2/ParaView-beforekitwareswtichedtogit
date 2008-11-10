@@ -85,6 +85,16 @@ int vtkMultiBlockDataGroupFilter::RequestData(
       }
     }
 
+  if (output->GetNumberOfBlocks() == 1 &&
+    output->GetBlock(0) && output->GetBlock(0)->IsA("vtkMultiBlockDataSet"))
+    {
+    vtkMultiBlockDataSet* block = vtkMultiBlockDataSet::SafeDownCast(
+      output->GetBlock(0));
+    block->Register(this);
+    output->ShallowCopy(block);
+    block->UnRegister(this);
+    }
+
   return 1;
 }
 

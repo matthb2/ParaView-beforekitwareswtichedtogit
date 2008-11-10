@@ -19,6 +19,8 @@
 #include "vtkPVArrayInformation.h"
 #include "vtkPVDataInformation.h"
 #include "vtkPVDataSetAttributesInformation.h"
+#include "vtkPVXMLElement.h"
+#include "vtkSmartPointer.h"
 #include "vtkSMDomainIterator.h"
 #include "vtkSMInputArrayDomain.h"
 #include "vtkSMInputProperty.h"
@@ -30,6 +32,7 @@ vtkCxxRevisionMacro(vtkSMFieldDataDomain, "$Revision$");
 //---------------------------------------------------------------------------
 vtkSMFieldDataDomain::vtkSMFieldDataDomain()
 {
+  this->EnableFieldDataSelection = false;
 }
 
 //---------------------------------------------------------------------------
@@ -47,7 +50,7 @@ int vtkSMFieldDataDomain::CheckForArray(
   int num = info->GetNumberOfArrays();
   for (int idx = 0; idx < num; ++idx)
     {
-    if ( iad->IsFieldValid(sp, outputport, info->GetArrayInformation(idx), 1) )
+    if (iad == 0 || iad->IsFieldValid(sp, outputport, info->GetArrayInformation(idx), 1) )
       {
       return 1;
       }
@@ -94,6 +97,11 @@ void vtkSMFieldDataDomain::Update(vtkSMSourceProxy* sp,
     this->AddEntry("Row Data", vtkDataObject::FIELD_ASSOCIATION_ROWS);
     }
 
+  if (this->EnableFieldDataSelection)
+    {
+    this->AddEntry("Field Data", vtkDataObject::FIELD_ASSOCIATION_NONE);
+    }
+
   this->InvokeModified();
 }
 
@@ -102,7 +110,8 @@ void vtkSMFieldDataDomain::Update(vtkSMProxyProperty* pp,
                                   vtkSMSourceProxy* sp,
                                   int outputport)
 {
-  vtkSMDomainIterator* di = pp->NewDomainIterator();
+  vtkSmartPointer<vtkSMDomainIterator> di;
+  di.TakeReference(pp->NewDomainIterator());
   di->Begin();
   while (!di->IsAtEnd())
     {
@@ -111,11 +120,13 @@ void vtkSMFieldDataDomain::Update(vtkSMProxyProperty* pp,
     if (iad)
       {
       this->Update(sp, iad, outputport);
-      break;
+      return;
       }
     di->Next();
     }
-  di->Delete();
+
+  // No vtkSMInputArrayDomain present.
+  this->Update(sp, NULL, outputport);
 }
 
 //---------------------------------------------------------------------------
@@ -160,6 +171,23 @@ void vtkSMFieldDataDomain::Update(vtkSMProperty*)
       return;
       }
     }
+}
+
+//---------------------------------------------------------------------------
+int vtkSMFieldDataDomain::ReadXMLAttributes(
+  vtkSMProperty* prop, vtkPVXMLElement* element)
+{
+  if (!this->Superclass::ReadXMLAttributes(prop, element))
+    {
+    return 0;
+    }
+
+  int enable_field_data=0;
+  if (element->GetScalarAttribute("enable_field_data", &enable_field_data))
+    {
+    this->EnableFieldDataSelection = (enable_field_data!=0)? true : false;
+    }
+  return 1;
 }
 
 //---------------------------------------------------------------------------
