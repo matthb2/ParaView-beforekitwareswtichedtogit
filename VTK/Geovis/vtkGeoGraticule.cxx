@@ -201,7 +201,7 @@ void vtkGeoGraticule::GenerateGraticule( vtkPolyData* output, double latbds[2], 
 
   double lat;
   double lng;
-  vtkIdType m;
+  vtkIdType m = 0;
   vtkIdType n = -1;
   vtkIdType p = 0;
   for ( lat = latbds[0]; lat <= latbds[1]; lat += latTicIncrement, ++ p )
