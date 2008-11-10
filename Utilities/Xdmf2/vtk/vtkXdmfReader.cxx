@@ -2126,7 +2126,7 @@ int vtkXdmfReaderInternal::RequestGridData(
     //continue;
     }
   
-    cout << "RequestGridData Node " << this->Reader->GetController()->GetLocalProcessId() << " Reading data for " << xdmfGrid->GetName() << endl;
+    // cout << "RequestGridData Node " << this->Reader->GetController()->GetLocalProcessId() << " Reading data for " << xdmfGrid->GetName() << endl;
   vtkDebugWithObjectMacro(this->Reader, 
                           "Reading Heavy Data for " << xdmfGrid->GetName());
 #ifndef XDMF_NO_MPI
