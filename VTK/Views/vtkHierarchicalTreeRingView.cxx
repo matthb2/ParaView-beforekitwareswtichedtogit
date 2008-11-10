@@ -372,6 +372,12 @@ void vtkHierarchicalTreeRingView::EdgeLabelVisibilityOff()
   this->EdgeLabelActor->SetVisibility(false);
 }
 
+void vtkHierarchicalTreeRingView::SetRootAngles( double start, double end )
+{
+  this->TreeRingLayoutStrategy->SetRootStartAngle( start );
+  this->TreeRingLayoutStrategy->SetRootEndAngle( end );
+}
+
 //----------------------------------------------------------------------------
 void vtkHierarchicalTreeRingView::SetVertexColorArrayName(const char* name)
 {
@@ -902,4 +908,11 @@ vtkHierarchicalTreeRingView::SetInteriorLogSpacingFactor(double value)
 {
   this->InteriorLogSpacing = value;
   this->TreeRingPointLayout->SetLogSpacingValue(value);
+}
+
+// ----------------------------------------------------------------------
+void
+vtkHierarchicalTreeRingView::SetSectorShrinkFactor(double value)
+{
+  this->TreeRingMapper->SetShrinkPercentage(value);
 }
