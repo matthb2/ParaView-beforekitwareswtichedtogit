@@ -93,7 +93,7 @@ int vtkSelfConnection::Initialize(int argc, char** argv, int *partitionId)
   *partitionId = this->GetPartitionId();
   // Nothing to do here, really.
   // Just return success.
-  return 0;
+  return this->Superclass::Initialize(argc, argv, partitionId);
 }
 
 //-----------------------------------------------------------------------------
