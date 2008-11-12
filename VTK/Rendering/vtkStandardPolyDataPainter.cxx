@@ -278,7 +278,6 @@ void vtkStandardPolyDataPainter::DrawCells(int mode, vtkCellArray *connectivity,
 
   vtkPainterDeviceAdapter* device = renderer->GetRenderWindow()->
     GetPainterDeviceAdapter();
-  device->Initialize(renderer);
 
   vtkCellData* cellData = pd->GetCellData();
   vtkPointData* pointData = pd->GetPointData();
