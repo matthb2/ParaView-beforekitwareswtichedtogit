@@ -327,7 +327,7 @@ int vtkQuadraturePointStatistics::ComputeStatistics(
       }
     }
   results->GetFieldData()->Initialize();
-  return columns.size();
+  return static_cast<int>(columns.size());
 }
 
 //-----------------------------------------------------------------------------
