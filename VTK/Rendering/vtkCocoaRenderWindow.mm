@@ -180,6 +180,21 @@ void vtkCocoaRenderWindow::MakeCurrent()
     }
 }
 
+// ----------------------------------------------------------------------------
+// Description:
+// Tells if this window is the current OpenGL context for the calling thread.
+bool vtkCocoaRenderWindow::IsCurrent()
+{
+  bool result=false;
+  if(this->GetContextId()!=0)
+    {
+    result=static_cast<NSOpenGLContext *>(this->GetContextId())==
+      [NSOpenGLContext currentContext];
+    }
+  return result;
+}
+
+
 //----------------------------------------------------------------------------
 void vtkCocoaRenderWindow::UpdateContext()
 {

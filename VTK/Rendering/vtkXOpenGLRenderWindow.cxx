@@ -1352,6 +1352,48 @@ void vtkXOpenGLRenderWindow::MakeCurrent()
         }
 }
 
+// ----------------------------------------------------------------------------
+// Description:
+// Tells if this window is the current OpenGL context for the calling thread.
+bool vtkXOpenGLRenderWindow::IsCurrent()
+{
+  bool result=false;
+#ifdef VTK_OPENGL_HAS_OSMESA
+  if(this->OffScreenRendering && this->Internal->OffScreenContextId)
+    {
+    result=this->Internal->OffScreenContextId==OSMesaGetCurrentContext();
+    }
+  else
+    {
+#endif
+#ifdef VTK_IMPLEMENT_MESA_CXX
+    if(this->OffScreenRendering && this->Internal->PbufferContextId)
+      {
+      result=this->Internal->PbufferContextId==glXGetCurrentContext();
+      }
+    else
+      {
+#endif
+      if(this->OffScreenRendering && this->Internal->PixmapContextId)
+        {
+        result=this->Internal->PixmapContextId==glXGetCurrentContext();
+        }
+      else
+        {
+        if(this->Internal->ContextId)
+          {
+          result=this->Internal->ContextId==glXGetCurrentContext();
+          }
+        }
+#ifdef VTK_IMPLEMENT_MESA_CXX
+      }
+#endif
+#ifdef VTK_OPENGL_HAS_OSMESA
+    }
+#endif
+  return result;
+}
+
 void vtkXOpenGLRenderWindow::SetForceMakeCurrent()
 {
   this->ForceMakeCurrent = 1;

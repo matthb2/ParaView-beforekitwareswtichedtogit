@@ -387,6 +387,24 @@ void vtkCarbonRenderWindow::MakeCurrent()
     }
 }
 
+// ----------------------------------------------------------------------------
+// Description:
+// Tells if this window is the current OpenGL context for the calling thread.
+bool vtkCarbonRenderWindow::IsCurrent()
+{
+  bool result;
+  
+  if(this->OffScreenRendering && this->Internal->OffScreenContextId)
+    {
+    result=this->Internal->OffScreenContextId==aglGetCurrentContext();
+    }
+  else
+    {
+    result=this->ContextId==aglGetCurrentContext();
+    }
+  return result;
+}
+
 // --------------------------------------------------------------------------
 void vtkCarbonRenderWindow::SetForceMakeCurrent()
 {

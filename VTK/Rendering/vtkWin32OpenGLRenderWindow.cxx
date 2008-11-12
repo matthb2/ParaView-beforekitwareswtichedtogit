@@ -200,7 +200,7 @@ int vtkWin32OpenGLRenderWindow::GetEventPending()
   return 0;
 }
 
-
+// ----------------------------------------------------------------------------
 void vtkWin32OpenGLRenderWindow::MakeCurrent()
 {
   // Try to avoid doing anything (for performance).
@@ -250,7 +250,15 @@ void vtkWin32OpenGLRenderWindow::MakeCurrent()
     }
 }
 
+// ----------------------------------------------------------------------------
+// Description:
+// Tells if this window is the current OpenGL context for the calling thread.
+bool vtkWin32OpenGLRenderWindow::IsCurrent()
+{
+  return this->ContextId==wglGetCurrentContext();
+}
 
+// ----------------------------------------------------------------------------
 void vtkWin32OpenGLRenderWindow::SetSize(int x, int y)
 {
   static int resizing = 0;
