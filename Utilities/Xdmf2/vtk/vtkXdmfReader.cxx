@@ -3080,6 +3080,8 @@ int vtkXdmfReaderInternal::RequestGridData(
   nameArray->Delete();
   */
 
+  // Release Duplicate Big Data 
+  grid->XMGrid->Release();
   return 1;
 }
 //----------------------------------------------------------------------------
