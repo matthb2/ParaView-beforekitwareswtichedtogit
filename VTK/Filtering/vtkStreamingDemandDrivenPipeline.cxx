@@ -134,7 +134,7 @@ int vtkStreamingDemandDrivenPipeline
     // If we need to execute, propagate the update extent.
     int result = 1;
     int N2E = this->NeedToExecuteData(outputPort,inInfoVec,outInfoVec);
-    if (!N2E && outputPort>-1 && this->GetNumberOfInputPorts())
+    if (!N2E && outputPort>-1 && this->GetNumberOfInputPorts() && inInfoVec[0]->GetNumberOfInformationObjects () > 0)
       {
       vtkInformation* outInfo = outInfoVec->GetInformationObject(outputPort);
       vtkInformation* inInfo = inInfoVec[0]->GetInformationObject(0);
