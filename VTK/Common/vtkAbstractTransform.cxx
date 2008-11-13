@@ -556,7 +556,7 @@ void vtkTransformConcatenation::Rotate(double angle,
     }
 
   // convert to radians
-  angle = angle*vtkMath::DoubleDegreesToRadians();
+  angle = vtkMath::RadiansFromDegrees( angle );
 
   // make a normalized quaternion
   double w = cos(0.5*angle);

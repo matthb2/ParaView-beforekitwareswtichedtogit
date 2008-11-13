@@ -329,7 +329,7 @@ void vtkPerspectiveTransform::Frustum(double xmin, double xmax,
 void vtkPerspectiveTransform::Perspective(double angle, double aspect,
                                           double znear, double zfar)
 {
-  double ymax =  tan(angle*vtkMath::DoubleDegreesToRadians()/2)*znear;
+  double ymax =  tan( vtkMath::RadiansFromDegrees( angle ) / 2 ) * znear;
   double ymin = -ymax; 
 
   double xmax =  ymax*aspect;
