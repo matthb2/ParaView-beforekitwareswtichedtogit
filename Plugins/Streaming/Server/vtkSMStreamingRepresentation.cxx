@@ -92,7 +92,7 @@ bool vtkSMStreamingRepresentation::EndCreateVTKObjects()
   vtkSMStreamingRepresentationSetInt(this->PieceBoundsRepresentation, "MakeOutlineOfInput", 1);
   vtkSMStreamingRepresentationSetInt(this->PieceBoundsRepresentation, "UseOutline", 1);
   
-  this->Superclass::EndCreateVTKObjects();
+  return this->Superclass::EndCreateVTKObjects();
 }
 
 //----------------------------------------------------------------------------

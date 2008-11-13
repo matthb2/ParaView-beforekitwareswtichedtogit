@@ -25,7 +25,7 @@
 #include "vtkByteSwap.h"
 #include "vtkExtentTranslator.h"
 
-#include <iostream.h>
+#include <iostream>
 #include <fstream>
 #include <time.h>
 #include <sstream>
