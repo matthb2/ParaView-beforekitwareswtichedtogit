@@ -350,8 +350,8 @@ void vtkLabelHierarchyFrustumIterator::Next()
     int lvlMax = 1 << this->Level;
     double sz = this->Hierarchy->Implementation->Hierarchy->root()->size() / 2.;
     double eye[3];
-    //double vaMax = atan( vtkMath::Pi()/2. - 0.2 * this->Camera->GetViewAngle() * vtkMath::DoubleDegreesToRadians() );
-    double vaMin = atan( vtkMath::Pi()/2. - 2.0 * this->Camera->GetViewAngle() * vtkMath::DoubleDegreesToRadians() );
+    //double vaMax = atan( vtkMath::Pi()/2. - 0.2 * vtkMath::RadiansFromDegrees(t his->Camera->GetViewAngle() ) );
+    double vaMin = atan( vtkMath::Pi()/2. - 2.0 * vtkMath::RadiansFromDegrees( this->Camera->GetViewAngle() ) );
     this->Camera->GetPosition( eye );
     while ( ! gotNode )
       {

@@ -78,15 +78,15 @@ vtkLight::~vtkLight()
 
 void vtkLight::SetDirectionAngle(double elevation, double azimuth)
 {
-  elevation *= vtkMath::DegreesToRadians();
-  azimuth   *= vtkMath::DegreesToRadians();
+  elevation = vtkMath::RadiansFromDegrees( elevation );
+  azimuth   = vtkMath::RadiansFromDegrees( azimuth );
 
-  this->SetPosition(cos(elevation)*sin(azimuth), 
-                    sin(elevation), 
-                    cos(elevation)*cos(azimuth));
+  this->SetPosition( cos( elevation ) * sin( azimuth ), 
+                     sin( elevation ), 
+                     cos( elevation ) * cos( azimuth ) );
 
-  this->SetFocalPoint(0.0, 0.0, 0.0);
-  this->SetPositional(0);
+  this->SetFocalPoint( 0.0, 0.0, 0.0 );
+  this->SetPositional( 0 );
 }
 
 

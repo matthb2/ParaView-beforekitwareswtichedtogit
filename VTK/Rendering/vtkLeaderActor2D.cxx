@@ -539,7 +539,7 @@ void vtkLeaderActor2D::BuildCurvedLeader(double p1[3], double p2[3], double ray[
     }
   
   // Now insert lines. Only those not clipped by the string are added.
-  this->Angle = (theta1-theta2)*vtkMath::RadiansToDegrees();
+  this->Angle = vtkMath::DegreesFromRadians( theta1 - theta2);
   if ( this->AutoLabel || (this->Label != NULL && this->Label[0] != 0) )
     {
     int stringSize[2];
