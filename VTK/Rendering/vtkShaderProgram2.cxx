@@ -24,6 +24,7 @@
 #include "vtkgl.h"
 
 #include <vtkstd/vector>
+#include <vtksys/ios/sstream>
 #include <assert.h>
 
 vtkStandardNewMacro(vtkShaderProgram2);
@@ -202,7 +203,9 @@ bool vtkShaderProgram2::DisplayListUnderCreationInCompileMode()
       {
       if(value!=GL_COMPILE_AND_EXECUTE)
         {
-        vtkErrorMacro(<< "Unexpected display list creation mode:" << hex << value << dec );
+        vtksys_ios::ostringstream ost;
+        ost << "Unexpected display list creation mode:" << hex << value << dec;
+        vtkErrorMacro(<< ost.str().c_str());
         }
       }
     }
