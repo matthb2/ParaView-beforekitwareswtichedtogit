@@ -158,7 +158,7 @@ void vtkShader2::SetContext(vtkOpenGLRenderWindow *context)
         {
         vtkOpenGLExtensionManager *e=this->Context->GetExtensionManager();
         this->SupportGeometryShader=
-          e->ExtensionSupported("GL_EXT_geometry_shader4");
+          e->ExtensionSupported("GL_EXT_geometry_shader4")==1;
         if(this->SupportGeometryShader)
           {
           e->LoadExtension("GL_EXT_geometry_shader4");
