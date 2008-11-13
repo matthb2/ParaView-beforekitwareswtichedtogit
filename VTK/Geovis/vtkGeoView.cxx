@@ -245,7 +245,6 @@ void vtkGeoView::SetGeoInteractorStyle(vtkGeoInteractorStyle* style)
     this->SetInteractorStyle(style);
     style->SetCurrentRenderer(this->Renderer);
     style->ResetCamera();
-    style->Delete();
 
     // Set the camera
     vtkGeoCamera* cam = style->GetGeoCamera();
