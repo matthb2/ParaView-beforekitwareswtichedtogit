@@ -130,3 +130,9 @@ bool vtkGeoFileTerrainSource::ReadModel(int level, int id, vtkGeoTerrainNode* no
   return true;
 }
 
+//-----------------------------------------------------------------------------
+void vtkGeoFileTerrainSource::PrintSelf(ostream& os, vtkIndent indent)
+{
+  this->Superclass::PrintSelf(os, indent);
+  os << indent << "Path: " << (this->Path ? this->Path : "(none)") << endl;
+}

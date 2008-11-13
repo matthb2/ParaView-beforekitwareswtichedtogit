@@ -184,3 +184,9 @@ bool vtkGeoFileImageSource::ReadImage(int level, int id, vtkGeoImageNode* node)
   return true;
 }
 
+//-----------------------------------------------------------------------------
+void vtkGeoFileImageSource::PrintSelf(ostream& os, vtkIndent indent)
+{
+  this->Superclass::PrintSelf(os, indent);
+  os << indent << "Path: " << (this->Path ? this->Path : "(none)") << endl;
+}
