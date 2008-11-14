@@ -92,7 +92,7 @@ int vtkUniformGrid::Initialize(const vtkAMRBox *def)
   double x0[3];
   def->GetBoxOrigin(x0);
 
-  this->SetDimensions(nPoints);
+  this->SetDimensions(nPoints[0],nPoints[1],nPoints[2]);
   this->SetSpacing(const_cast<double *>(def->GetGridSpacing()));
   this->SetOrigin(x0);
 

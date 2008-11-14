@@ -712,7 +712,8 @@ void vtkTemporalFractal::AddDataSet(vtkDataObject* output,
   vtkMultiBlockDataSet* mbs = vtkMultiBlockDataSet::SafeDownCast(output);
   if (hbds)
     {
-    vtkAMRBox box(extents);
+    vtkIdType ext[6]={extents[0],extents[1],extents[2],extents[3],extents[4],extents[5]};
+    vtkAMRBox box(ext);
     unsigned int index = hbds->GetNumberOfDataSets(level);
     hbds->SetDataSet(level, index, box, vtkUniformGrid::SafeDownCast(dataSet));
     }
