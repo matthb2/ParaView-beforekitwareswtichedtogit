@@ -109,10 +109,16 @@ void vtkBivariateStatisticsAlgorithm::SetColumnStatus( const char* namCol, int s
 
 // ----------------------------------------------------------------------
 void vtkBivariateStatisticsAlgorithm::ExecuteAssess( vtkTable* inData,
-                                                     vtkTable* inMeta,
+                                                     vtkDataObject* inMetaDO,
                                                      vtkTable* outData,
-                                                     vtkTable* vtkNotUsed( outMeta ) )
+                                                     vtkDataObject* vtkNotUsed( outMeta ) )
 {
+  vtkTable* inMeta = vtkTable::SafeDownCast( inMetaDO );
+  if ( ! inMeta )
+    {
+    return;
+    }
+
   if ( ! inData->GetNumberOfColumns() )
     {
     return;

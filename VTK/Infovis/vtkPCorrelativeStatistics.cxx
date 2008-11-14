@@ -49,8 +49,14 @@ void vtkPCorrelativeStatistics::PrintSelf(ostream& os, vtkIndent indent)
 
 // ----------------------------------------------------------------------
 void vtkPCorrelativeStatistics::ExecuteLearn( vtkTable* inData,
-                                              vtkTable* outMeta )
+                                              vtkDataObject* outMetaDO )
 {
+  vtkTable* outMeta = vtkTable::SafeDownCast( outMetaDO ); 
+  if ( ! outMeta ) 
+    { 
+    return; 
+    } 
+
   // First calculate correlative statistics on local data set
   this->Superclass::ExecuteLearn( inData, outMeta );
 
