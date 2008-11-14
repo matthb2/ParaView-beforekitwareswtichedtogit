@@ -87,12 +87,12 @@ int vtkUniformGrid::Initialize(const vtkAMRBox *def)
 
   this->Initialize();
 
-  vtkIdType nPoints[3];
+  int nPoints[3];
   def->GetNumberOfNodes(nPoints);
   double x0[3];
   def->GetBoxOrigin(x0);
 
-  this->SetDimensions(nPoints[0],nPoints[1],nPoints[2]);
+  this->SetDimensions(nPoints);
   this->SetSpacing(const_cast<double *>(def->GetGridSpacing()));
   this->SetOrigin(x0);
 

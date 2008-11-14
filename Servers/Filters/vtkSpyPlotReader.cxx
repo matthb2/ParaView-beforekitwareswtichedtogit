@@ -1817,8 +1817,7 @@ int vtkSpyPlotReader::PrepareAMRData(vtkHierarchicalBoxDataSet *hb,
                            << bds[3] << "," << bds[4] << "," << bds[5] << "]\n";
   cerr << "}\n"*/;
 
-  vtkIdType ext[6]={realExtents[0],realExtents[1],realExtents[2],realExtents[3],realExtents[4],realExtents[5]};
-  vtkAMRBox box(ext);
+  vtkAMRBox box(realExtents);
 
   vtkUniformGrid* ug = vtkUniformGrid::New();
   hb->SetDataSet(*level, hb->GetNumberOfDataSets(*level), box, ug);
