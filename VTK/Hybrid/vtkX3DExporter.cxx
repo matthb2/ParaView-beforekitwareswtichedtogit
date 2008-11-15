@@ -194,7 +194,7 @@ void vtkX3DExporter::WriteData()
   // Start write the Camera
   cam = ren->GetActiveCamera();
   writer->StartNode(Viewpoint);
-  writer->SetField(fieldOfView,static_cast<float>(cam->GetViewAngle()*vtkMath::DoubleDegreesToRadians()));
+  writer->SetField( fieldOfView,static_cast<float>( vtkMath::RadiansFromDegrees( cam->GetViewAngle() ) ) );
   writer->SetField(position, SFVEC3F, cam->GetPosition());
   writer->SetField(description, "Default View");
   writer->SetField(orientation, SFROTATION, cam->GetOrientationWXYZ());
