@@ -179,7 +179,7 @@ int vtkStatisticsAlgorithm::FillOutputPortInformation( int port, vtkInformation*
 {
   if ( port >= 0 )
     {
-    info->Set(vtkDataObject::DATA_TYPE_NAME(), "vtkTable" );
+    info->Set( vtkDataObject::DATA_TYPE_NAME(), "vtkTable" );
     return 1;
     }
 
