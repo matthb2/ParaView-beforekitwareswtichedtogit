@@ -179,9 +179,9 @@ void vtkGeoTransform::InternalTransformPoints( double* x, vtkIdType numPts, int 
     double* coord = x;
     for ( vtkIdType i = 0; i < numPts; ++ i )
       {
-      for ( int j = 0; j < 2; ++ j, ++coord )
+      for ( int j = 0; j < 2; ++ j, ++ coord )
         {
-        *coord *= vtkMath::DoubleDegreesToRadians();
+        *coord = vtkMath::RadiansFromDegrees( *coord );
         }
       coord += delta;
       }
@@ -202,9 +202,9 @@ void vtkGeoTransform::InternalTransformPoints( double* x, vtkIdType numPts, int 
     double* coord = x;
     for ( vtkIdType i = 0; i < numPts; ++ i )
       {
-      for ( int j = 0; j < 2; ++ j, ++coord )
+      for ( int j = 0; j < 2; ++ j, ++ coord )
         {
-        *coord *= vtkMath::DoubleRadiansToDegrees();
+        *coord = vtkMath::DegreesFromRadians( *coord );
         }
       coord += delta;
       }
