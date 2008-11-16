@@ -359,8 +359,8 @@ int vtkGlyph2D::RequestData(
         }
       if (this->Orient && (vMag > 0.0))
         {
-        theta = atan2(v[1],v[0])/vtkMath::DegreesToRadians();
-        trans->RotateWXYZ(theta, 0.0, 0.0, 1.0);
+        theta = vtkMath::DegreesFromRadians( atan2( v[1], v[0] ) );
+        trans->RotateWXYZ( theta, 0.0, 0.0, 1.0 );
         }
       }
     

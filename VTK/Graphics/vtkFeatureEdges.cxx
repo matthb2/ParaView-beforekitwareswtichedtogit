@@ -200,7 +200,7 @@ int vtkFeatureEdges::RequestData(
       polyNormals->InsertTuple(cellId,n);
       }
 
-    cosAngle = cos (vtkMath::DegreesToRadians() * this->FeatureAngle);
+    cosAngle = cos( vtkMath::RadiansFromDegrees( this->FeatureAngle ) );
     }
 
   neighbors = vtkIdList::New();

@@ -114,9 +114,8 @@ int vtkWindowedSincPolyDataFilter::RequestData(
     return 1;
     }
 
-  CosFeatureAngle = 
-    cos((double) vtkMath::DegreesToRadians() * this->FeatureAngle);
-  CosEdgeAngle = cos((double) vtkMath::DegreesToRadians() * this->EdgeAngle);
+  CosFeatureAngle = cos( vtkMath::RadiansFromDegrees( this->FeatureAngle) );
+  CosEdgeAngle    = cos( vtkMath::RadiansFromDegrees( this->EdgeAngle) );
 
   vtkDebugMacro(<<"Smoothing " << numPts << " vertices, " << numCells 
                << " cells with:\n"

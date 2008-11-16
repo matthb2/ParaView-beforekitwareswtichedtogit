@@ -1496,7 +1496,7 @@ void vtkQuadricClustering::FindFeaturePoints(vtkCellArray *edges,
   double featureEdges[2][3];
   double point1[3], point2[3];
   vtkIdType *cellPointIds;
-  double radAngle = vtkMath::DegreesToRadians() * this->FeaturePointsAngle;
+  double radAngle = vtkMath::RadiansFromDegrees( this->FeaturePointsAngle );
   
   this->FeaturePoints->Allocate(numPts);
   

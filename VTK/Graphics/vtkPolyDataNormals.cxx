@@ -339,8 +339,7 @@ int vtkPolyDataNormals::RequestData(
     //  edges found, split mesh creating new nodes.  Update polygon 
     // connectivity.
     //
-    this->CosAngle = cos ((double) 
-                          vtkMath::DegreesToRadians() * this->FeatureAngle);
+      this->CosAngle = cos( vtkMath::RadiansFromDegrees( this->FeatureAngle) );
     //  Splitting will create new points.  We have to create index array 
     // to map new points into old points.
     //

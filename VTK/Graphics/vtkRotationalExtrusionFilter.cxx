@@ -140,7 +140,7 @@ int vtkRotationalExtrusionFilter::RequestData(
   // loop assumes rotation around z-axis
   radIncr = this->DeltaRadius / this->Resolution;
   transIncr = this->Translation / this->Resolution;
-  angleIncr = this->Angle / this->Resolution * vtkMath::DegreesToRadians();
+  angleIncr = vtkMath::RadiansFromDegrees( this->Angle ) / this->Resolution;
   for ( i = 1; i <= this->Resolution; i++ )
     {
     this->UpdateProgress(0.1 + 0.5*(i-1)/this->Resolution);

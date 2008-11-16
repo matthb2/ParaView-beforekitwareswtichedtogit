@@ -206,7 +206,7 @@ void vtkPlaneSource::SetNormal(double N[3])
   else
     {
     vtkMath::Cross(this->Normal,n,rotVector);
-    theta = acos((double)dp) / vtkMath::DoubleDegreesToRadians();
+    theta = vtkMath::DegreesFromRadians( acos( dp ) );
     }
 
   // create rotation matrix
