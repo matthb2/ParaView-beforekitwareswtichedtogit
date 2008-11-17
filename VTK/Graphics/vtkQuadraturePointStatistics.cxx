@@ -285,9 +285,8 @@ int vtkQuadraturePointStatistics::ComputeStatistics(
       }
 
     // Process arrays, by the number of components they
-    // have, because we want to name stuff like V_X,V_Y,V_Z
-    // If there are more than three components we'll have to do
-    // something else.
+    // have, because we want to name stuff like |V|,V_X,V_Y,V_Z
+    // for vectors.
     int nComps=interpolated->GetNumberOfComponents();
     switch (nComps)
       {

@@ -1108,14 +1108,3 @@ void vtkXMLDataParser::UpdateProgress(float progress)
   double dProgress=progress;
   this->InvokeEvent(vtkCommand::ProgressEvent, &dProgress);
 }
-
-//----------------------------------------------------------------------------
-void vtkXMLDataParser::CharacterDataHandler( 
-  const char* data, int length )
-{  
-  unsigned int numOpen = this->NumberOfOpenElements;
-  if(numOpen > 0)
-    {
-    this->OpenElements[numOpen-1]->AddCharacterData(data, length);
-    }
-}
