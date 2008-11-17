@@ -20,7 +20,7 @@
 #include "vtkOpenGLExtensionManager.h"
 #include "vtkRenderWindow.h"
 #include "vtkOpenGLRenderWindow.h"
-#include "vtkGL.h"
+#include "vtkgl.h"
 
 vtkCxxRevisionMacro(vtkOpenGLHardwareSupport, "$Revision$");
 vtkStandardNewMacro(vtkOpenGLHardwareSupport);
