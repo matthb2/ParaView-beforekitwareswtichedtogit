@@ -152,7 +152,7 @@ vtkSMProxy* vtkSMSelectionHelper::NewSelectionSourceFromSelectionInternal(
   vtkSelection* selection,
   vtkSMProxy* selSource /*=NULL*/)
 {
-  if (!selection)
+  if (!selection || !selection->GetSelectionList())
     {
     return selSource;
     }
