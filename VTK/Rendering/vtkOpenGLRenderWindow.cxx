@@ -21,6 +21,7 @@
 #include "vtkOpenGLActor.h"
 #include "vtkOpenGLCamera.h"
 #include "vtkOpenGLExtensionManager.h"
+#include "vtkOpenGLHardwareSupport.h"
 #include "vtkOpenGLLight.h"
 #include "vtkOpenGLPolyDataMapper.h"
 #include "vtkOpenGLProperty.h"
@@ -34,6 +35,7 @@ vtkCxxRevisionMacro(vtkOpenGLRenderWindow, "$Revision$");
 #endif
 
 vtkCxxSetObjectMacro(vtkOpenGLRenderWindow, ExtensionManager, vtkOpenGLExtensionManager);
+vtkCxxSetObjectMacro(vtkOpenGLRenderWindow, HardwareSupport, vtkOpenGLHardwareSupport);
 
 #define MAX_LIGHTS 8
 
@@ -53,7 +55,8 @@ int vtkOpenGLRenderWindow::GetGlobalMaximumNumberOfMultiSamples()
 
 vtkOpenGLRenderWindow::vtkOpenGLRenderWindow()
 {
-  this->ExtensionManager = 0;
+  this->ExtensionManager = NULL;
+  this->HardwareSupport = NULL;
   this->MultiSamples = vtkOpenGLRenderWindowGlobalMaximumNumberOfMultiSamples;
   this->TextureResourceIds = vtkIdList::New();
   if ( this->WindowName ) 
@@ -81,7 +84,12 @@ vtkOpenGLRenderWindow::~vtkOpenGLRenderWindow()
     {
     this->ExtensionManager->SetRenderWindow(0);
     }
+  if (this->HardwareSupport)
+    {
+    this->HardwareSupport->SetExtensionManager(0);
+    }
   this->SetExtensionManager(0);
+  this->SetHardwareSupport(0);
 }
 
 // ----------------------------------------------------------------------------
@@ -1898,4 +1906,23 @@ vtkOpenGLExtensionManager* vtkOpenGLRenderWindow::GetExtensionManager()
     mgr->Delete();
     }
   return this->ExtensionManager;
+}
+
+// ----------------------------------------------------------------------------
+// Description:
+// Returns the Hardware Support class. A new one will be created if one hasn't
+// already been set up.
+vtkOpenGLHardwareSupport* vtkOpenGLRenderWindow::GetHardwareSupport()
+{
+  if (!this->HardwareSupport)
+    {
+    vtkOpenGLHardwareSupport* hardware = vtkOpenGLHardwareSupport::New();
+    
+    // This does not form a reference loop since vtkOpenGLHardwareSupport does
+    // not keep a reference to the render window.
+    hardware->SetExtensionManager(this->GetExtensionManager());
+    this->SetHardwareSupport(hardware);
+    hardware->Delete();
+    }
+  return this->HardwareSupport;
 }
