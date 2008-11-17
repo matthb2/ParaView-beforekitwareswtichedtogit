@@ -572,7 +572,7 @@ void vtkSMRenderViewProxy::PerformRender()
   if ( this->MeasurePolygonsPerSecond )
     {
     this->RenderTimer->StartTimer();
-    }
+    } 
 
   this->GetRenderer()->ResetCameraClippingRange();
 
