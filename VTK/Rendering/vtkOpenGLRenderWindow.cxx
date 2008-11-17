@@ -87,6 +87,7 @@ vtkOpenGLRenderWindow::~vtkOpenGLRenderWindow()
   if (this->HardwareSupport)
     {
     this->HardwareSupport->SetExtensionManager(0);
+    //this->HardwareSupport->Delete();
     }
   this->SetExtensionManager(0);
   this->SetHardwareSupport(0);

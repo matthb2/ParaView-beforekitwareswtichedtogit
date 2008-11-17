@@ -111,6 +111,7 @@ bool vtkOpenGLHardwareSupport::GetSupportsMultiTexturing()
 //-----------------------------------------------------------------------------
 void vtkOpenGLHardwareSupport::PrintSelf(ostream& os, vtkIndent indent)
 {
+  os << indent << this->ExtensionManager << endl;
   this->Superclass::PrintSelf(os,indent);
 }
 
