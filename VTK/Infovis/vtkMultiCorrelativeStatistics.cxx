@@ -159,10 +159,9 @@ void vtkMultiCorrelativeStatistics::ExecuteLearn(
   for ( i = 0; i < n; ++ i )
     {
     // First fetch column values
-    for ( vtkIdType j = 0; j < m; ++ j, ++ x )
+    for ( vtkIdType j = 0; j < m; ++ j )
       {
       v[j] = colPtrs[j]->GetTuple(i)[0];
-      //cout << colPtrs[j]->GetName() << ": " << v[j] << " j=" << j << "\n";
       }
     // Update column products. Equation 3.12 from the SAND report.
     x = rv + m;
