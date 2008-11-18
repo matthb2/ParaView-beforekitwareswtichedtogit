@@ -20,7 +20,7 @@
 #include "vtkSMViewProxy.h"
 #include "vtkTable.h"
 #include "vtkVariant.h"
-
+#include "vtkSMPropertyHelper.h"
 #include <vtkstd/string>
 
 vtkStandardNewMacro(vtkSMTextSourceRepresentationProxy);
@@ -89,6 +89,15 @@ bool vtkSMTextSourceRepresentationProxy::EndCreateVTKObjects()
   // We want to deliver the text from the 1st node alone.
   this->SetReductionType(FIRST_NODE_ONLY);
   return true;
+}
+
+//----------------------------------------------------------------------------
+void vtkSMTextSourceRepresentationProxy::SetVisibility(int visible)
+{
+  this->CreateVTKObjects();
+  vtkSMPropertyHelper(this->TextWidgetProxy, "Enabled").Set(visible);
+  vtkSMPropertyHelper(this->TextWidgetProxy, "Visibility").Set(visible);
+  this->TextWidgetProxy->UpdateVTKObjects();
 }
 
 //----------------------------------------------------------------------------

@@ -197,6 +197,19 @@ void vtkSMNewWidgetRepresentationProxy::UpdateEnabled()
 {
   if (this->Internal->ViewProxy && this->Widget)
     {
+    // Ensure that correct current renderer otherwise the widget may locate the
+    // wrong renderer.
+    if (this->Enabled)
+      {
+      if (this->GetSubProxy("Prop"))
+        {
+        this->Widget->SetCurrentRenderer(this->Internal->ViewProxy->GetRenderer());
+        }
+      else if (this->GetSubProxy("Prop2D"))
+        {
+        this->Widget->SetCurrentRenderer(this->Internal->ViewProxy->GetRenderer2D());
+        }
+      }
     this->Widget->SetEnabled(this->Enabled);
     }
 }
