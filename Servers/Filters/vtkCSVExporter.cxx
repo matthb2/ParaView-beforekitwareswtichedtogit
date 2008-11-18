@@ -110,7 +110,17 @@ void vtkCSVExporter::WriteData(vtkFieldData* data)
           (*this->FileStream) << this->FieldDelimiter;
           }
         vtkVariant value = array->GetVariantValue(tuple*numComps + comp);
-        (*this->FileStream) <<   value.ToString().c_str();
+
+        // to avoid weird characters in the output, cast char /
+        // signed char / unsigned char variables to integers
+        value =   ( value.IsChar() ||
+                    value.IsSignedChar() ||
+                    value.IsUnsignedChar()
+                  )
+                ? vtkVariant( value.ToInt() )
+                : value;
+
+        (*this->FileStream) << value.ToString().c_str();
         first = false;
         }
       }
