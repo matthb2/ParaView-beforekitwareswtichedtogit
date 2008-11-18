@@ -81,7 +81,7 @@ void vtkDijkstraImageGeodesicPath::SetInput( vtkDataObject *input )
 
   image->UpdateInformation();
   int* dimensions = image->GetDimensions();
-  int u[2];
+  int u[3];
   int n = 0;
   for ( int i = 0; i < 3; ++i )
     {
