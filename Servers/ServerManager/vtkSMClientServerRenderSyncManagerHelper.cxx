@@ -145,8 +145,7 @@ void vtkSMClientServerRenderSyncManagerHelper::InitializeRenderSyncManager(
   // communicate. So, set that up.
   stream  << vtkClientServerStream::Invoke 
           << pm->GetProcessModuleID()
-          << "GetRenderServerSocketController"
-          << pm->GetConnectionClientServerID(cid)
+          << "GetActiveRenderServerSocketController"
           << vtkClientServerStream::End;
   stream  << vtkClientServerStream::Invoke 
           << rsmProxy->GetID()

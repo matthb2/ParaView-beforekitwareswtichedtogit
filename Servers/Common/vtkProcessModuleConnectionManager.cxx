@@ -504,19 +504,6 @@ int vtkProcessModuleConnectionManager::IsServerConnection(
 }
 
 //-----------------------------------------------------------------------------
-vtkClientServerID vtkProcessModuleConnectionManager::
-GetConnectionClientServerID(vtkIdType id)
-{
-  vtkProcessModuleConnection* conn = this->GetConnectionFromID(id);
-  if (!conn)
-    {
-    vtkClientServerID nullid;
-    return nullid;
-    }
-  return conn->GetSelfID();
-}
-
-//-----------------------------------------------------------------------------
 vtkIdType vtkProcessModuleConnectionManager::GetConnectionID(
   vtkProcessModuleConnection* conn)
 {
