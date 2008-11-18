@@ -1928,11 +1928,6 @@ void vtkXOpenGLRenderWindow::SetOffScreenRendering(int i)
     {
     this->Internal->ScreenDoubleBuffer = this->DoubleBuffer;
     this->DoubleBuffer = 0;
-    if(this->Mapped)
-      {
-      this->DestroyWindow();
-      }
-
     // delay initialization until Render
     }
   else
