@@ -222,8 +222,8 @@ void vtkGraphTransferDataToTree::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os,indent);
   os << indent << "DirectMapping: " << this->DirectMapping << endl;
-//  os << indent << "DefaultValue: " << this->DefaultValue.ToString() << endl;
-  os << indent << "SourceArrayName: " << this->SourceArrayName << endl;
-  os << indent << "TargetArrayName: " << this->TargetArrayName << endl;
+  os << indent << "DefaultValue: " << this->DefaultValue.ToString() << endl;
+  os << indent << "SourceArrayName: " << (this->SourceArrayName ? this->SourceArrayName : "(none)") << endl;
+  os << indent << "TargetArrayName: " << (this->TargetArrayName ? this->TargetArrayName : "(none)") << endl;
 }
 
