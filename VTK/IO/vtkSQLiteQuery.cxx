@@ -146,7 +146,7 @@ bool vtkSQLiteQuery::Execute()
     {
     vtk_sqlite3_bind_blob(
       this->Statement,
-      i+1,
+      static_cast<int>(i+1),
       this->Implementation->BlobData[i],
       this->Implementation->BlobSize[i],
       VTK_SQLITE_STATIC);
