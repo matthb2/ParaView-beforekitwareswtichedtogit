@@ -400,7 +400,7 @@ bool vtkCarbonRenderWindow::IsCurrent()
     }
   else
     {
-    result=this->ContextId==aglGetCurrentContext();
+    result=this->ContextId!=0 && this->ContextId==aglGetCurrentContext();
     }
   return result;
 }

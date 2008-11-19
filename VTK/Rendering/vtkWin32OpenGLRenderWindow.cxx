@@ -255,7 +255,7 @@ void vtkWin32OpenGLRenderWindow::MakeCurrent()
 // Tells if this window is the current OpenGL context for the calling thread.
 bool vtkWin32OpenGLRenderWindow::IsCurrent()
 {
-  return this->ContextId==wglGetCurrentContext();
+  return this->ContextId!=0 && this->ContextId==wglGetCurrentContext();
 }
 
 // ----------------------------------------------------------------------------
