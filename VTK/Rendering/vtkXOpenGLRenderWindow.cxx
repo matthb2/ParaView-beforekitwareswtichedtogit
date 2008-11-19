@@ -936,9 +936,9 @@ void vtkXOpenGLRenderWindow::CreateOffScreenWindow(int width, int height)
           XFree(v);
           }
         }
+      this->Mapped = 0;
       } // if not hardware offscreen
     }
-  this->Mapped = 0;
   this->Size[0] = width;
   this->Size[1] = height;
   
