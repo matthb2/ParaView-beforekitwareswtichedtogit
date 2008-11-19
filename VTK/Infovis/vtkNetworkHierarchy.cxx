@@ -212,9 +212,9 @@ int vtkNetworkHierarchy::RequestData(
   int currentSubnet1 = -1; 
   int currentSubnet2 = -1;
   int subnets[4]; 
-  vtkIdType currentParent0;
-  vtkIdType currentParent1;
-  vtkIdType currentParent2;
+  vtkIdType currentParent0 = 0;
+  vtkIdType currentParent1 = 0;
+  vtkIdType currentParent2 = 0;
   vtkIdType treeIndex;
   vtkIdType leafIndex;
   for (I = SubnetMap.begin(); I != SubnetMap.end(); ++I)
