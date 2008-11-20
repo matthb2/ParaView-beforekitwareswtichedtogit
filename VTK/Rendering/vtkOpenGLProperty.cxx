@@ -42,8 +42,9 @@ vtkCxxRevisionMacro(vtkOpenGLProperty, "$Revision$");
 vtkStandardNewMacro(vtkOpenGLProperty);
 #endif
 
-extern const char *vtkOpenGLProperty_fs;
-
+extern const char *vtkOpenGLPropertyDefaultMain_vs;
+extern const char *vtkOpenGLPropertyDefaultMain_fs;
+extern const char *vtkOpenGLPropertyDefaultPropFunc_fs;
 
 vtkOpenGLProperty::vtkOpenGLProperty()
 {
@@ -79,7 +80,7 @@ void vtkOpenGLProperty::Render(vtkActor *anActor,
       {
       this->Shader=vtkShader2::New();
       this->Shader->SetType(VTK_SHADER_TYPE_FRAGMENT);
-      this->Shader->SetSourceCode(vtkOpenGLProperty_fs);
+      this->Shader->SetSourceCode(vtkOpenGLPropertyDefaultPropFunc_fs);
       vtkUniformVariables *v=this->Shader->GetUniformVariables();
       int value;
       value=0;
