@@ -180,6 +180,7 @@ bool vtkGeoFileImageSource::ReadImage(int level, int id, vtkGeoImageNode* node)
   texture->SetTransform(texTrans);
   texture->RepeatOff();
   texture->InterpolateOn();
+  texture->EdgeClampOn();
   node->SetTexture(texture);
   return true;
 }
