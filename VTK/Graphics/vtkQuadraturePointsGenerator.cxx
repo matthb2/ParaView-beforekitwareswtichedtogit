@@ -304,5 +304,6 @@ void vtkQuadraturePointsGenerator::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os,indent);
 
-  os << indent << "SourceArrayName:" << this->SourceArrayName << endl;
+  os << indent << "SourceArrayName:" 
+     << (this->SourceArrayName?this->SourceArrayName:"\"\"") << endl;
 }
