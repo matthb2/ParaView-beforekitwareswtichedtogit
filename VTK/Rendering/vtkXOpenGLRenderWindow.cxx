@@ -936,9 +936,9 @@ void vtkXOpenGLRenderWindow::CreateOffScreenWindow(int width, int height)
           XFree(v);
           }
         }
-      this->Mapped = 0;
       } // if not hardware offscreen
     }
+  this->Mapped = 0;
   this->Size[0] = width;
   this->Size[1] = height;
   
@@ -1928,6 +1928,11 @@ void vtkXOpenGLRenderWindow::SetOffScreenRendering(int i)
     {
     this->Internal->ScreenDoubleBuffer = this->DoubleBuffer;
     this->DoubleBuffer = 0;
+    if(this->Mapped)
+      {
+      this->DestroyWindow();
+      }
+
     // delay initialization until Render
     }
   else
