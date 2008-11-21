@@ -173,7 +173,8 @@ void vtkMPIMoveData::DetermineClientDataServerController()
   if (this->Server != vtkMPIMoveData::RENDER_SERVER)
     {
     vtkProcessModule* pm = vtkProcessModule::GetProcessModule();
-    this->ClientDataServerSocketController = pm->GetActiveSocketController();
+    this->ClientDataServerSocketController =
+      pm? pm->GetActiveSocketController() : 0;
     }
 }
 
