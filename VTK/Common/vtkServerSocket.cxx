@@ -94,6 +94,7 @@ vtkClientSocket* vtkServerSocket::WaitForConnection(unsigned long msec /*=0*/)
   // Create a new vtkClientSocket and return it.
   vtkClientSocket* cs = vtkClientSocket::New();
   cs->SocketDescriptor = clientsock;
+  cs->SetConnectingSide(false);
   return cs;
 }
 

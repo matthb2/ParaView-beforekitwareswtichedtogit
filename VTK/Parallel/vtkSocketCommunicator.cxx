@@ -311,6 +311,25 @@ int vtkSocketCommunicator::ReceiveVoidArray(void *data, vtkIdType length,
 }
 
 //----------------------------------------------------------------------------
+int vtkSocketCommunicator::Handshake()
+{
+  if (!this->Socket)
+    {
+    vtkErrorMacro("No socket set. Cannot perform handshake.");
+    return 0;
+    }
+
+  if (this->Socket->GetConnectingSide())
+    {
+    this->ClientSideHandshake();
+    }
+  else
+    {
+    this->ServerSideHandshake();
+    }
+}
+
+//----------------------------------------------------------------------------
 int vtkSocketCommunicator::ServerSideHandshake()
 {
   this->IsServer = 1;
