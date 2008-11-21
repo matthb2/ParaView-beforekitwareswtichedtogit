@@ -156,7 +156,7 @@ int vtkMeshQuality::RequestData(
   this->CellNormals = in->GetCellData()->GetNormals();
 
   if ( this->CellNormals  )
-    v_set_tri_normal_func(static_cast<ComputeNormal>(vtkMeshQuality::GetCurrentTriangleNormal));
+    v_set_tri_normal_func(reinterpret_cast<ComputeNormal>(vtkMeshQuality::GetCurrentTriangleNormal));
   else
     v_set_tri_normal_func( 0 );
 
