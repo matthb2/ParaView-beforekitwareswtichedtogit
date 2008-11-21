@@ -145,7 +145,10 @@ public:
       {
       if (this != &rhs)
         {
-        vtkstd::multiset<vtkIdType,PriorityComparator>::operator=(rhs);
+        #if ! ( defined(_MSC_VER) && (_MSC_VER < 1300) )
+          {
+          vtkstd::multiset<vtkIdType,PriorityComparator>::operator=(rhs);
+          }
         this->TotalArea = rhs.TotalArea;
         }
       return *this;
