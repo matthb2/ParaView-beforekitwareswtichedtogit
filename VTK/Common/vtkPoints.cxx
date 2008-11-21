@@ -182,6 +182,10 @@ void vtkPoints::SetData(vtkDataArray *data)
     this->Data->UnRegister(this);
     this->Data = data;
     this->Data->Register(this);
+    if (!this->Data->GetName())
+      {
+      this->Data->SetName("Points");
+      }
     this->Modified();
     }
 }
