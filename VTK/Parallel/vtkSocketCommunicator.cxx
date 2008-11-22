@@ -321,11 +321,11 @@ int vtkSocketCommunicator::Handshake()
 
   if (this->Socket->GetConnectingSide())
     {
-    this->ClientSideHandshake();
+    return this->ClientSideHandshake();
     }
   else
     {
-    this->ServerSideHandshake();
+    return this->ServerSideHandshake();
     }
 }
 
