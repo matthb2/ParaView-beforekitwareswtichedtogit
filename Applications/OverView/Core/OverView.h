@@ -29,30 +29,31 @@ NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 =========================================================================*/
+#ifndef OVERVIEW_H
+#define OVERVIEW_H
 
-#ifndef _pqGraphLayoutStrategyInterface_h
-#define _pqGraphLayoutStrategyInterface_h
-
-#include <QtPlugin>
 #include <QStringList>
 
-class vtkGraphLayoutStrategy;
-
-/// interface class for plugins that create view modules
-class pqGraphLayoutStrategyInterface
+class OverView
 {
 public:
-  /// destructor
-  virtual ~pqGraphLayoutStrategyInterface() {}
-  
-  /// Return a list of layout strategies supported by this interface
-  virtual QStringList graphLayoutStrategies() const = 0;
+  static int main(int argc, char* argv[],
+    const QStringList& ConfiguredPlugins,
+    const QString& BrandedApplicationTitle,
+    const QString& BrandedSplashTextColor,
+    const QString& BrandedVersion,
+    const QString& BrandedFullVersion,
+    const QString& GeoTilePath,
+    const bool InstallerSupport
+    );
 
-  virtual vtkGraphLayoutStrategy* getGraphLayoutStrategy(const QString& layoutStrategy) = 0;
-
+  static const QString GetBrandedApplicationTitle();
+  static const QString GetBrandedSplashTextColor();
+  static const QString GetBrandedVersion();
+  static const QString GetBrandedFullVersion();
+  static const QString GetGeoTilePath();
+  static const bool GetInstallerSupport();
 };
 
-Q_DECLARE_INTERFACE(pqGraphLayoutStrategyInterface, "com.kitware/paraview/graphLayoutStrategy")
-
-#endif
+#endif // !OVERVIEW_H
 

@@ -30,27 +30,27 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 =========================================================================*/
 
-#ifndef _pqMultiInputView_h
-#define _pqMultiInputView_h
+#ifndef _pqSingleInputView_h
+#define _pqSingleInputView_h
 
-#include "OverViewUtilityExport.h"
+#include "OverViewCoreExport.h"
 
 #include "pqView.h"
 
 /// Convenience view class that enforces "single input" behavior
-class OVERVIEW_UTILITY_EXPORT pqMultiInputView : public pqView
+class OVERVIEW_CORE_EXPORT pqSingleInputView : public pqView
 {
   Q_OBJECT
 
 public:
-  pqMultiInputView(
+  pqSingleInputView(
     const QString& viewtypemodule, 
     const QString& group, 
     const QString& name, 
     vtkSMViewProxy* viewmodule, 
     pqServer* server, 
     QObject* p);
-  ~pqMultiInputView();
+  ~pqSingleInputView();
 
   /// Provide a do-nothing implementation for this method.
   bool saveImage(int, int, const QString& );
@@ -60,18 +60,24 @@ public:
     { return this->pqView::captureImage(asize); }
 
 protected:
+  pqRepresentation* visibleRepresentation();
+
+protected slots:
+  /// Implement this to perform the actual rendering.
+  /// Subclass should not override pqView::render(). This is the method to
+  /// override to update the internal VTK views.
+  virtual void renderInternal() {};
 
 private slots:
   void onRepresentationAdded(pqRepresentation*);
-  void onRepresentationVisibilityChanged(bool visible);
+  void onRepresentationVisibilityChanged(pqRepresentation*, bool);
   void onRepresentationUpdated();
   void onRepresentationRemoved(pqRepresentation*);
-  void onStateLoaded();
 
   /// Implement this in derived classes to display the given representation
   virtual void showRepresentation(pqRepresentation*) = 0;
-  /// Implement this in derived classes to update the display because the representation has changed
-  virtual void updateRepresentation(pqRepresentation*) = 0;
+  /// \deprecated
+  virtual void updateRepresentation(pqRepresentation*);
   /// Implement this in derived classes to hide the given representation
   virtual void hideRepresentation(pqRepresentation*) = 0;
 
@@ -80,5 +86,5 @@ private:
   implementation* const Implementation;
 };
 
-#endif // _pqMultiInputView_h
+#endif // _pqSingleInputView_h
 

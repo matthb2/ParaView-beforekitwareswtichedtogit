@@ -30,35 +30,55 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 =========================================================================*/
 
-#ifndef _AboutDialog_h
-#define _AboutDialog_h
+#ifndef _GlobalGraphViewOptions_h
+#define _GlobalGraphViewOptions_h
 
-#include <QDialog>
+#include "OverViewCoreExport.h"
 
-namespace Ui { class AboutDialog; }
+#include "pqOptionsContainer.h"
 
-class pqServer;
-class QTreeWidget;
-/// Provides an about dialog
-class AboutDialog :
-  public QDialog
+/// options container for pages of render view options
+class OVERVIEW_CORE_EXPORT GlobalGraphViewOptions : public pqOptionsContainer
 {
   Q_OBJECT
 
 public:
-  AboutDialog(QWidget* Parent);
+  GlobalGraphViewOptions(QWidget *parent=0);
+  virtual ~GlobalGraphViewOptions();
+
+  // set the current page
+  virtual void setPage(const QString &page);
+  // return a list of strings for pages we have
+  virtual QStringList getPageList();
+
+  // apply the changes
+  virtual void applyChanges();
+  // reset the changes
+  virtual void resetChanges();
+
+  // tell pqOptionsDialog that we want an apply button
+  virtual bool isApplyUsed() const { return true; }
+
+
+  struct ManipulatorType
+    {
+    int Mouse;
+    int Shift;
+    int Control;
+    QByteArray Name;
+    };
+
+protected:
+  void init();
+
+private slots:
+  void resetDefaultCameraManipulators();
 
 private:
-  ~AboutDialog();
-  AboutDialog(const AboutDialog&);
-  AboutDialog& operator=(const AboutDialog&);
+  class pqInternal;
+  pqInternal* Internal;
 
-  void AddClientInformation();
-  void AddServerInformation();
-  void AddServerInformation(pqServer* server, QTreeWidget* tree);
-  
-  Ui::AboutDialog* const Ui;
+  static ManipulatorType DefaultManipulatorTypes[9];
 };
 
-#endif // !_AboutDialog_h
-
+#endif

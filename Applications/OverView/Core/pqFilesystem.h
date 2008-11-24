@@ -30,20 +30,25 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 =========================================================================*/
 
-#ifndef _ApplicationOptionsDialog_h
-#define _ApplicationOptionsDialog_h
 
-#include "pqOptionsDialog.h"
+#ifndef pqFilesystem_h
+#define pqFilesystem_h
 
-/// dialog class that allows editing of application wide settings
-class ApplicationOptionsDialog : public pqOptionsDialog
+#include "OverViewCoreExport.h"
+
+#include <QDir>
+
+/// Provides convenient access to common filesystem locations
+class OVERVIEW_CORE_EXPORT pqFilesystem
 {
-  Q_OBJECT
-
 public:
-  ApplicationOptionsDialog(QWidget *parent=0);
-  ~ApplicationOptionsDialog();
-
+  /// Returns the top-level install directory
+  static const QDir installDirectory();
+  /// Returns the bin directory (where the binary is located)
+  static const QDir binDirectory();
+  /// Returns the share directory
+  static const QDir shareDirectory();
 };
 
-#endif
+#endif // !pqFilesystem_h
+

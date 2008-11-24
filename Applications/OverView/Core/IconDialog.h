@@ -29,77 +29,39 @@ NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 =========================================================================*/
+#ifndef __IconDialog_h
+#define __IconDialog_h
 
-#ifndef _MainWindow_h
-#define _MainWindow_h
+#include "OverViewCoreExport.h"
 
-#include <QMainWindow>
-#include <QVariant>
-#include <vtkIOStream.h>
+#include <pqDialog.h>
+#include <pqRepresentation.h>
 
-class pqGenericViewModule;
-class pqPipelineSource;
-class pqRepresentation;
-class pqView;
-
-/// Provides the main window for the ParaView application
-class MainWindow :
-  public QMainWindow
+class OVERVIEW_CORE_EXPORT IconDialog : public pqDialog
 {
   Q_OBJECT
-
+  
 public:
-  MainWindow();
-  ~MainWindow();
-
-  bool compareView(const QString& ReferenceImage, double Threshold, ostream& Output, const QString& TempDirectory);
+  IconDialog(pqRepresentation *rep, QWidget* parent = 0);
+  ~IconDialog();
 
 public slots:
-  QVariant findToolBarActionsNotInMenus();
+
+  void onIconSizeChanged();
+  void onApplyIconSize();
+  void updateDisplay();
+  void readIconSheetFromFile(const QString &file);
+
+protected:
+
+  virtual void acceptInternal();
   
-private slots:
-  void onUndoLabel(const QString&);
-  void onRedoLabel(const QString&);
-
-  void onCameraUndoLabel(const QString&);
-  void onCameraRedoLabel(const QString&);
-
-  void onPreAccept();
-  void onPostAccept();
-  void endWaitCursor();
-
-  void onHelpAbout();
-  void onHelpHelp();
-
-  void onSelectionShortcut();
-  void onQuickLaunchShortcut();
-
-  void assistantError(const QString& err);
-
-  void onShowCenterAxisChanged(bool);
-
-  void setTimeRanges(double, double);
-
-  void onPlaying(bool);
-
-  void onAddCameraLink();
-  
-  void onDeleteAll();
-
-  void onSelectionModeChanged(int mode);
-
-  void onEditSettings();
-
-  void onSourceAdded(pqPipelineSource*);
-  void onSourceRemoved(pqPipelineSource*);
-
-  void onActiveViewChanged(pqView*);
-  void onRepresentationVisibilityChanged(pqRepresentation*,bool);
+  void initializeDisplay();
 
 private:
+
   class pqImplementation;
   pqImplementation* const Implementation;
 };
 
-#endif // !_MainWindow_h
-
+#endif

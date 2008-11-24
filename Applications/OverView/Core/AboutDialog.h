@@ -30,25 +30,37 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 =========================================================================*/
 
+#ifndef _AboutDialog_h
+#define _AboutDialog_h
 
-#ifndef pqFilesystem_h
-#define pqFilesystem_h
+#include "OverViewCoreExport.h"
 
-#include "OverViewUtilityExport.h"
+#include <QDialog>
 
-#include <QDir>
+namespace Ui { class AboutDialog; }
 
-/// Provides convenient access to common filesystem locations
-class OVERVIEW_UTILITY_EXPORT pqFilesystem
+class pqServer;
+class QTreeWidget;
+/// Provides an about dialog
+class OVERVIEW_CORE_EXPORT AboutDialog :
+  public QDialog
 {
+  Q_OBJECT
+
 public:
-  /// Returns the top-level install directory
-  static const QDir installDirectory();
-  /// Returns the bin directory (where the binary is located)
-  static const QDir binDirectory();
-  /// Returns the share directory
-  static const QDir shareDirectory();
+  AboutDialog(QWidget* Parent);
+
+private:
+  ~AboutDialog();
+  AboutDialog(const AboutDialog&);
+  AboutDialog& operator=(const AboutDialog&);
+
+  void AddClientInformation();
+  void AddServerInformation();
+  void AddServerInformation(pqServer* server, QTreeWidget* tree);
+  
+  Ui::AboutDialog* const Ui;
 };
 
-#endif // !pqFilesystem_h
+#endif // !_AboutDialog_h
 

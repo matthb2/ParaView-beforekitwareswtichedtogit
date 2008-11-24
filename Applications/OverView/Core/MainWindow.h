@@ -29,39 +29,79 @@ NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 =========================================================================*/
-#ifndef __IconDialog_h
-#define __IconDialog_h
 
-#include "OverViewUtilityExport.h"
+#ifndef _MainWindow_h
+#define _MainWindow_h
 
-#include <pqDialog.h>
-#include <pqRepresentation.h>
+#include "OverViewCoreExport.h"
 
-class OVERVIEW_UTILITY_EXPORT IconDialog : public pqDialog
+#include <QMainWindow>
+#include <QVariant>
+#include <vtkIOStream.h>
+
+class pqGenericViewModule;
+class pqPipelineSource;
+class pqRepresentation;
+class pqView;
+
+/// Provides the main window for the ParaView application
+class OVERVIEW_CORE_EXPORT MainWindow :
+  public QMainWindow
 {
   Q_OBJECT
-  
+
 public:
-  IconDialog(pqRepresentation *rep, QWidget* parent = 0);
-  ~IconDialog();
+  MainWindow();
+  ~MainWindow();
+
+  bool compareView(const QString& ReferenceImage, double Threshold, ostream& Output, const QString& TempDirectory);
 
 public slots:
-
-  void onIconSizeChanged();
-  void onApplyIconSize();
-  void updateDisplay();
-  void readIconSheetFromFile(const QString &file);
-
-protected:
-
-  virtual void acceptInternal();
+  QVariant findToolBarActionsNotInMenus();
   
-  void initializeDisplay();
+private slots:
+  void onUndoLabel(const QString&);
+  void onRedoLabel(const QString&);
+
+  void onCameraUndoLabel(const QString&);
+  void onCameraRedoLabel(const QString&);
+
+  void onPreAccept();
+  void onPostAccept();
+  void endWaitCursor();
+
+  void onHelpAbout();
+  void onHelpHelp();
+
+  void onSelectionShortcut();
+  void onQuickLaunchShortcut();
+
+  void assistantError(const QString& err);
+
+  void onShowCenterAxisChanged(bool);
+
+  void setTimeRanges(double, double);
+
+  void onPlaying(bool);
+
+  void onAddCameraLink();
+  
+  void onDeleteAll();
+
+  void onSelectionModeChanged(int mode);
+
+  void onEditSettings();
+
+  void onSourceAdded(pqPipelineSource*);
+  void onSourceRemoved(pqPipelineSource*);
+
+  void onActiveViewChanged(pqView*);
+  void onRepresentationVisibilityChanged(pqRepresentation*,bool);
 
 private:
-
   class pqImplementation;
   pqImplementation* const Implementation;
 };
 
-#endif
+#endif // !_MainWindow_h
+

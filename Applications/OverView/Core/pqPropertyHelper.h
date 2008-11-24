@@ -30,53 +30,28 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 =========================================================================*/
 
-#ifndef _GlobalGraphViewOptions_h
-#define _GlobalGraphViewOptions_h
+#ifndef pqPropertyHelper_h
+#define pqPropertyHelper_h
 
-#include "pqOptionsContainer.h"
+#include "OverViewCoreExport.h"
+#include <vtkSMPropertyHelper.h>
 
-/// options container for pages of render view options
-class GlobalGraphViewOptions : public pqOptionsContainer
+#include <QStringList>
+
+/// Helper object to simplify working with properties
+class OVERVIEW_CORE_EXPORT pqPropertyHelper :
+  public vtkSMPropertyHelper
 {
-  Q_OBJECT
-
 public:
-  GlobalGraphViewOptions(QWidget *parent=0);
-  virtual ~GlobalGraphViewOptions();
+  pqPropertyHelper(vtkSMProxy* proxy, const char* name);
 
-  // set the current page
-  virtual void setPage(const QString &page);
-  // return a list of strings for pages we have
-  virtual QStringList getPageList();
+  void Set(const QString& value);
+  void Set(unsigned int index, const QString& value);
+  void Set(const QStringList& value);
 
-  // apply the changes
-  virtual void applyChanges();
-  // reset the changes
-  virtual void resetChanges();
-
-  // tell pqOptionsDialog that we want an apply button
-  virtual bool isApplyUsed() const { return true; }
-
-
-  struct ManipulatorType
-    {
-    int Mouse;
-    int Shift;
-    int Control;
-    QByteArray Name;
-    };
-
-protected:
-  void init();
-
-private slots:
-  void resetDefaultCameraManipulators();
-
-private:
-  class pqInternal;
-  pqInternal* Internal;
-
-  static ManipulatorType DefaultManipulatorTypes[9];
+  const QString GetAsString(unsigned int index = 0);
+  const QStringList GetAsStringList();
 };
 
-#endif
+#endif // !pqPropertyHelper_h
+

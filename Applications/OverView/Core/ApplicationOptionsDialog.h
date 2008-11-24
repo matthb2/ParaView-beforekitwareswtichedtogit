@@ -30,41 +30,22 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 =========================================================================*/
 
-#include <QApplication>
-#include <QDir>
-#include "Config.h"
-#include "pqComponentsInit.h"
-#include "pqMain.h"
-#include "ProcessModuleGUIHelper.h"
-#include "vtkSmartPointer.h"
+#ifndef _ApplicationOptionsDialog_h
+#define _ApplicationOptionsDialog_h
 
-#ifdef Q_WS_X11
-#include <QPlastiqueStyle>
-#endif
+#include "OverViewCoreExport.h"
 
-int main(int argc, char* argv[])
+#include "pqOptionsDialog.h"
+
+/// dialog class that allows editing of application wide settings
+class OVERVIEW_CORE_EXPORT ApplicationOptionsDialog : public pqOptionsDialog
 {
-  QApplication app(argc, argv);
+  Q_OBJECT
 
-#ifdef Q_WS_X11
+public:
+  ApplicationOptionsDialog(QWidget *parent=0);
+  ~ApplicationOptionsDialog();
 
-  // Using motif style gives us test failures (and its ugly).
-  // Using cleanlooks style gives us errors when using valgrind (Trolltech's bug #179200)
-  // let's just use plastique for now
-  QApplication::setStyle(new QPlastiqueStyle);
+};
 
 #endif
-
-  pqComponentsInit();
-
-  // If building an installer, look in a special location
-  // for Qt plugins.
-#ifdef OVERVIEW_INSTALLER_SUPPORT
-  QDir plugin_directory(QApplication::applicationDirPath());
-  plugin_directory.cd("qtplugins");
-  QApplication::setLibraryPaths(QStringList(plugin_directory.absolutePath()));
-#endif
-
-  return pqMain::Run(app, vtkSmartPointer<ProcessModuleGUIHelper>::New());
-}
-
