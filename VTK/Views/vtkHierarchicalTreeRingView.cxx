@@ -410,8 +410,8 @@ void vtkHierarchicalTreeRingView::SetEdgeColorArrayName(const char* name)
 {   
   // Try to find the range the user-specified color array.
   double range[2];
-  vtkDataArray* arr = 0; 
-  arr = this->Spline->GetOutput()->GetCellData()->GetArray(name);
+  this->Spline->Update();
+  vtkDataArray* arr = this->Spline->GetOutput()->GetCellData()->GetArray(name);
   if (arr)
     {
     this->GraphEdgeMapper->SetScalarModeToUseCellFieldData();
