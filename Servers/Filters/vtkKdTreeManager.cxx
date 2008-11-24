@@ -131,12 +131,17 @@ void vtkKdTreeManager::Update()
     return;
     }
 
-  for (int cc=0; cc < 1; cc++)
-    {
   this->KdTree->RemoveAllDataSets();
   for (dsIter = outputs.begin(); dsIter != outputs.end(); ++dsIter)
     {
     this->AddDataSetToKdTree(*dsIter);
+    }
+
+  static bool initialized = false;
+  if (!initialized)
+    {
+    this->KdTree->BuildLocator();
+    initialized = true;
     }
 
   if (this->StructuredProducer)
@@ -158,8 +163,6 @@ void vtkKdTreeManager::Update()
     }
 
   this->KdTree->BuildLocator();
-   }
-  // this->KdTree->PrintTree();
   this->UpdateTime.Modified();
 }
 
