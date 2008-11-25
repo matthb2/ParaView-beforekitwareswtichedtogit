@@ -443,7 +443,8 @@ void vtkScalarsToColorsPainter::UpdateColorTextureMap(double alpha,
   if (this->ColorTextureMap == 0 || 
     this->GetMTime() > this->ColorTextureMap->GetMTime() ||
     this->LookupTable->GetMTime() > this->ColorTextureMap->GetMTime() ||
-    this->LookupTable->GetAlpha() != alpha)
+    this->LookupTable->GetAlpha() != alpha ||
+    this->LastUsedAlpha != alpha)
     {
     this->LookupTable->SetAlpha(alpha);
     this->ColorTextureMap = 0;
