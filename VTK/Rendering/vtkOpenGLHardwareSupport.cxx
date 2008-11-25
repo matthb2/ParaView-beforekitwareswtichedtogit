@@ -108,7 +108,7 @@ int vtkOpenGLHardwareSupport::GetNumberOfTextureUnits()
       else
         {
         supports_shaders=
-          this->ExtensionManager->ExtensionSupported("GL_ARB_vertex_shader");
+          this->ExtensionManager->ExtensionSupported("GL_ARB_vertex_shader")==1;
         if(supports_shaders)
           {
           this->ExtensionManager->LoadCorePromotedExtension(
