@@ -103,7 +103,7 @@ vtkIcicleView::vtkIcicleView()
   this->LabelMapper->GetLabelTextProperty()->SetVerticalJustificationToCentered();
   this->LabelMapper->GetLabelTextProperty()->SetFontSize(12);
   this->LabelMapper->GetLabelTextProperty()->SetItalic(0);
-  this->LabelMapper->GetLabelTextProperty()->SetLineOffset(-10);
+  this->LabelMapper->GetLabelTextProperty()->SetLineOffset(0);
   this->LabelMapper->SetPriorityArrayName("leaf_count");
   this->LabelActor->PickableOff();
 

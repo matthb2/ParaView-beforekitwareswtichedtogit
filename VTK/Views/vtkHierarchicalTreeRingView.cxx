@@ -148,7 +148,7 @@ vtkHierarchicalTreeRingView::vtkHierarchicalTreeRingView()
   this->TreeRingLabelMapper->GetLabelTextProperty()->SetVerticalJustificationToCentered();
   this->TreeRingLabelMapper->GetLabelTextProperty()->SetFontSize(12);
   this->TreeRingLabelMapper->GetLabelTextProperty()->SetItalic(0);
-  this->TreeRingLabelMapper->GetLabelTextProperty()->SetLineOffset(-10);
+  this->TreeRingLabelMapper->GetLabelTextProperty()->SetLineOffset(0);
 //  this->TreeRingLabelMapper->SetPriorityArrayName("leaf_count");
   this->TreeRingLabelMapper->SetPriorityArrayName("GraphVertexDegree");
   this->TreeRingLabelActor->PickableOff();
