@@ -2746,6 +2746,8 @@ int vtkExodusIIWriter::WriteNextTimeStep()
     return 0;
     }
 
+  buffer->Delete ();
+
   // GLOBAL VARIABLES
 /*
   int nGlobalVariables = mmd->GetNumberOfGlobalVariables();
