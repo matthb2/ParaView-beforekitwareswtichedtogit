@@ -1104,8 +1104,12 @@ void vtkLabelHierarchy::ComputeHierarchy( vtkPoints* coincidentPts, vtkIdTypeArr
     this->Implementation->DropAnchor( *it ); // Ha!!!
     }
 
-  coincidenceMap;
-  coincidentPts;
+  if(coincidenceMap)
+    {
+    }
+  if(coincidentPts)
+    {
+    }
 
   this->Implementation->HierarchyTime.Modified();
 
