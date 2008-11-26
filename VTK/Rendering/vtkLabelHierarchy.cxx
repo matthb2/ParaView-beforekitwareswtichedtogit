@@ -1144,43 +1144,47 @@ void vtkLabelHierarchy::ComputeHierarchy( vtkPoints* coincidentPts, vtkIdTypeArr
     this->Implementation->DropAnchor( *it ); // Ha!!!
     }
 
-  //coincidenceMap->SetNumberOfTuples( this->Points->GetNumberOfPoints() );
-  //coincidenceMap->FillComponent( 0, -1 );
-  //int cc = 0;
-  //int setCount = 0;
+  if( coincidentPts != NULL && coincidenceMap != NULL )
+    {
 
-  //double point[3];
-  //vtkstd::vector<vtkstd::pair<double,double> > offsets;
+    coincidenceMap->SetNumberOfTuples( this->Points->GetNumberOfPoints() );
+    coincidenceMap->FillComponent( 0, -1 );
+    int cc = 0;
+    int setCount = 0;
+
+    double point[3];
+    vtkstd::vector<vtkstd::pair<double,double> > offsets;
 
 
-  //// vtkstd::map<Coord,vtkstd::pair<int,vtkstd::set<vtkIdType> > > coordMap;
+    // vtkstd::map<Coord,vtkstd::pair<int,vtkstd::set<vtkIdType> > > coordMap;
 
-  //implementation::MapCoordIter mapIter = this->Implementation->coordMap.begin();
-  //for( ; mapIter != this->Implementation->coordMap.end(); ++mapIter )
-  //  {
-  //  if( (*mapIter).second.second.size() > 1 )
-  //    {
-  //    point[0] = (*mapIter).first.coord[0];
-  //    point[1] = (*mapIter).first.coord[1];
-  //    point[2] = (*mapIter).first.coord[2];
+    implementation::MapCoordIter mapIter = this->Implementation->coordMap.begin();
+    for( ; mapIter != this->Implementation->coordMap.end(); ++mapIter )
+      {
+      if( (*mapIter).second.second.size() > 1 )
+        {
+        point[0] = (*mapIter).first.coord[0];
+        point[1] = (*mapIter).first.coord[1];
+        point[2] = (*mapIter).first.coord[2];
 
-  //    coincidentPts->InsertNextPoint( point );
-  //    
-  //    vtkSpiralkVertices( (*mapIter).second.second.size(), offsets );
-  //    vtkstd::set<vtkIdType>::iterator setIter = (*mapIter).second.second.begin();
-  //    setCount = 0;
-  //    for( ; setIter != (*mapIter).second.second.end(); ++setIter )
-  //      {
-  //      this->Points->SetPoint( (*setIter),
-  //                              point[0] + offsets[setCount].first,
-  //                              point[1] + offsets[setCount].second,
-  //                              point[2] );
-  //      coincidenceMap->SetValue( setCount, cc );
-  //      ++setCount;
-  //      }
-  //    ++cc;
-  //    }
-  //  }
+        coincidentPts->InsertNextPoint( point );
+
+        vtkSpiralkVertices( (*mapIter).second.second.size(), offsets );
+        vtkstd::set<vtkIdType>::iterator setIter = (*mapIter).second.second.begin();
+        setCount = 0;
+        for( ; setIter != (*mapIter).second.second.end(); ++setIter )
+          {
+          this->Points->SetPoint( (*setIter),
+            point[0] + offsets[setCount].first,
+            point[1] + offsets[setCount].second,
+            point[2] );
+          coincidenceMap->SetValue( setCount, cc );
+          ++setCount;
+          }
+        ++cc;
+        }
+      }
+    }
 
   // cleanup coordMap
 
