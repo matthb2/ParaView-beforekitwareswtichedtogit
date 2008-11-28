@@ -272,11 +272,14 @@ int vtkSMSourceProxy::ReadXMLAttributes(vtkSMProxyManager* pm,
 // TODO this should update information properties.
 void vtkSMSourceProxy::UpdatePipeline()
 {
-  int i;
+  if (!this->NeedsUpdate)
+    {
+    return;
+    }
 
   this->CreateOutputPorts(); 
   int num = this->GetNumberOfOutputPorts();
-  for (i=0; i < num; ++i)
+  for (int i=0; i < num; ++i)
     {
     this->GetOutputPort(i)->UpdatePipeline();
     }

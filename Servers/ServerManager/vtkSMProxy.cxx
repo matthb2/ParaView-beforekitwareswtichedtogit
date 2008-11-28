@@ -1718,9 +1718,6 @@ void vtkSMProxy::PostUpdateData()
   unsigned int numProducers = this->GetNumberOfProducers();
   for (unsigned int i=0; i<numProducers; i++)
     {
-    if (this->GetVTKClassName() && this->GetProducerProxy(i)->GetVTKClassName())
-      {
-      }
     if (this->GetProducerProxy(i)->NeedsUpdate)
       {
       this->GetProducerProxy(i)->PostUpdateData();
