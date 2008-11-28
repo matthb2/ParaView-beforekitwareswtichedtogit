@@ -2026,7 +2026,7 @@ int vtkXdmfReaderInternal::RequestGridData(
                 hasUpdateExtent = grid->GetInformation()->Has(vtkStreamingDemandDrivenPipeline::UPDATE_EXTENT());
                 childhasUpdateExtent = (*it)->GetInformation()->Has(vtkStreamingDemandDrivenPipeline::UPDATE_EXTENT());
                 if( hasUpdateExtent && (!childhasUpdateExtent)){
-                    cout << "Copying Update Extents" << endl;
+                    // cout << "Copying Update Extents" << endl;
                         (*it)->GetInformation()->CopyEntry(grid->GetInformation(), 
                             vtkStreamingDemandDrivenPipeline::UPDATE_EXTENT());
                         (*it)->GetInformation()->CopyEntry(grid->GetInformation(), 
