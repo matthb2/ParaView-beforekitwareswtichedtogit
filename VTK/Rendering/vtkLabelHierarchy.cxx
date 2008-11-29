@@ -1565,7 +1565,7 @@ void vtkLabelHierarchy::implementation::DropAnchor( vtkIdType anchor )
   if(mapIter == this->coordMap.end())
     {
     vtkstd::pair<int, vtkstd::set<vtkIdType> > Pair;
-    Pair.first = curs.level();
+    Pair.first = static_cast<int>(curs.level());
     Pair.second.insert(anchor);
     this->coordMap[coord] = Pair;
     }
