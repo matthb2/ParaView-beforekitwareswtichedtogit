@@ -44,7 +44,7 @@ vtkStandardNewMacro(vtkCorrelativeStatistics);
 vtkCorrelativeStatistics::vtkCorrelativeStatistics()
 {
   this->AssessNames->SetNumberOfValues( 1 );
-  this->AssessNames->SetValue( 0, "Squared Mahalanobis" );
+  this->AssessNames->SetValue( 0, "d^2" );
 
   this->AssessParameters = vtkStringArray::New();
   this->AssessParameters->SetNumberOfValues( 5 );
