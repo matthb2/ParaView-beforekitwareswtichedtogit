@@ -56,7 +56,7 @@ void vtkInformationIterator::GoToFirstItem()
     return;
     }
 
-  while(!keys[this->Index] && this->Index < tableSize)
+  while(this->Index < tableSize && !keys[this->Index])
     {
     this->Index++;
     }
