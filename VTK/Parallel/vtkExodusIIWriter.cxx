@@ -2398,7 +2398,7 @@ int vtkExodusIIWriter::BlockVariableTruthValue(int blockIdx, int varIdx)
 {
   int tt=0;
   int nvars = this->NumberOfScalarElementArrays;
-  size_t nblocks = this->BlockInfoMap.size ();
+  int nblocks = static_cast<int>(this->BlockInfoMap.size ());
 
   if ( (blockIdx >= 0) && (blockIdx < nblocks) &&
        (varIdx >= 0) && (varIdx < nvars))
