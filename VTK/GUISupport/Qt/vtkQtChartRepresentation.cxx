@@ -46,6 +46,7 @@
 #include "vtkQtListView.h"
 #include "vtkQtTreeView.h"
 #include "vtkSelectionLink.h"
+#include "vtkSelectionNode.h"
 #include "vtkSmartPointer.h"
 #include "vtkTable.h"
 #include "vtkQtTableModelAdapter.h"
@@ -209,8 +210,10 @@ vtkQtChartRepresentation::QtSelectedSeriesChanged(const vtkQtChartSeriesSelectio
     }
 
   VTK_CREATE(vtkSelection, sel);
-  sel->SetSelectionList(ids);
-  sel->SetContentType(vtkSelection::INDICES);
+  VTK_CREATE(vtkSelectionNode, node);
+  node->SetSelectionList(ids);
+  node->SetContentType(vtkSelectionNode::INDICES);
+  sel->AddNode(node);
   this->Select(0, sel);
 }
 

@@ -27,6 +27,7 @@
 #include "vtkDataRepresentation.h"
 #include "vtkObjectFactory.h"
 #include "vtkSelection.h"
+#include "vtkSelectionNode.h"
 #include "vtkStringArray.h"
 #include "vtkViewTheme.h"
 #include "vtkSmartPointer.h"
@@ -86,7 +87,7 @@ vtkView::vtkView()
   this->Observer = vtkView::Command::New();
   this->Observer->SetTarget(this);
   this->SelectionArrayNames = vtkStringArray::New();
-  this->SelectionType = vtkSelection::INDICES;
+  this->SelectionType = vtkSelectionNode::INDICES;
   
   // Apply default theme
   vtkViewTheme* theme = vtkViewTheme::New();

@@ -23,6 +23,7 @@
 #include "vtkMultiBlockDataSet.h"
 #include "vtkObjectFactory.h"
 #include "vtkSelection.h"
+#include "vtkSelectionNode.h"
 #include "vtkSmartPointer.h"
 #include "vtkTable.h"
 
@@ -37,9 +38,13 @@ vtkSelectionLink::vtkSelectionLink()
   
   // Start with an empty index selection
   this->Selection = vtkSelection::New();
-  this->Selection->SetContentType(vtkSelection::INDICES);
-  vtkSmartPointer<vtkIdTypeArray> ids = vtkSmartPointer<vtkIdTypeArray>::New();
-  this->Selection->SetSelectionList(ids);
+  vtkSmartPointer<vtkSelectionNode> node =
+    vtkSmartPointer<vtkSelectionNode>::New();
+  node->SetContentType(vtkSelectionNode::INDICES);
+  vtkSmartPointer<vtkIdTypeArray> ids =
+    vtkSmartPointer<vtkIdTypeArray>::New();
+  node->SetSelectionList(ids);
+  this->Selection->AddNode(node);
 }
 
 //----------------------------------------------------------------------------

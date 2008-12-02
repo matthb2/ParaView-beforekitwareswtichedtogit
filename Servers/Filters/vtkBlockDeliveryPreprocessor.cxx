@@ -23,6 +23,7 @@
 #include "vtkMultiBlockDataSet.h"
 #include "vtkObjectFactory.h"
 #include "vtkSelection.h"
+#include "vtkSelectionNode.h"
 #include "vtkSmartPointer.h"
 #include "vtkTable.h"
 
@@ -138,13 +139,13 @@ int vtkBlockDeliveryPreprocessor::RequestData(vtkInformation*,
     {
     vtkInformation* metaData = output->GetMetaData(iter);
     metaData->Set(
-      vtkSelection::COMPOSITE_INDEX(), iter->GetCurrentFlatIndex());
+      vtkSelectionNode::COMPOSITE_INDEX(), iter->GetCurrentFlatIndex());
     if (hbIter)
       {
       metaData->Set(
-        vtkSelection::HIERARCHICAL_LEVEL(), hbIter->GetCurrentLevel());
+        vtkSelectionNode::HIERARCHICAL_LEVEL(), hbIter->GetCurrentLevel());
       metaData->Set(
-        vtkSelection::HIERARCHICAL_INDEX(), hbIter->GetCurrentIndex());
+        vtkSelectionNode::HIERARCHICAL_INDEX(), hbIter->GetCurrentIndex());
       }
 
     }
