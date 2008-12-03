@@ -1120,6 +1120,9 @@ void vtkLabelHierarchy::ComputeHierarchy( vtkPoints* coincidentPts, vtkIdTypeArr
     delete this->Implementation->Hierarchy;
     }
 
+  //coincidentPts = this->CoincidentPts;
+  //coincidenceMap = this->CoincidenceMap;
+
   double bounds[6];
   double center[3];
   double maxDim = -1.;
@@ -1155,9 +1158,6 @@ void vtkLabelHierarchy::ComputeHierarchy( vtkPoints* coincidentPts, vtkIdTypeArr
     double point[3];
     vtkstd::vector<vtkstd::pair<double,double> > offsets;
 
-
-    // vtkstd::map<Coord,vtkstd::pair<int,vtkstd::set<vtkIdType> > > coordMap;
-
     implementation::MapCoordIter mapIter = this->Implementation->coordMap.begin();
     for( ; mapIter != this->Implementation->coordMap.end(); ++mapIter )
       {
@@ -1175,8 +1175,8 @@ void vtkLabelHierarchy::ComputeHierarchy( vtkPoints* coincidentPts, vtkIdTypeArr
         for( ; setIter != (*mapIter).second.second.end(); ++setIter )
           {
           this->Points->SetPoint( (*setIter),
-            point[0] + offsets[setCount].first,
-            point[1] + offsets[setCount].second,
+            point[0] * offsets[setCount].first,
+            point[1] * offsets[setCount].second,
             point[2] );
           coincidenceMap->SetValue( setCount, cc );
           ++setCount;
