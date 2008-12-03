@@ -1325,11 +1325,11 @@ int vtkExodusIIWriter::CreateBlockVariableMetadata (vtkModelMetadata *em)
       index ++;
       }
 
-    flattenedNames = vtkExodusIIWriter::FlattenOutVariableNames(
+      flattenedNames = vtkExodusIIWriter::FlattenOutVariableNames(
                     this->NumberOfScalarNodeArrays, this->NodeVariableMap);
 
-    em->SetNodeVariableInfo(this->NumberOfScalarNodeArrays, flattenedNames,
-          narrays, nms, numComponents, scalarOutOffset);
+      em->SetNodeVariableInfo(this->NumberOfScalarNodeArrays, flattenedNames,
+          static_cast<int>(narrays), nms, numComponents, scalarOutOffset);
     }
   return 1;
 }
