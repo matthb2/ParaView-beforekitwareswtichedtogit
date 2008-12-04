@@ -235,7 +235,7 @@ int vtkPointSetToLabelHierarchy::RequestData(
   ouData->GetPointData()->AddArray( type );
   ouData->GetPointData()->AddArray( iconIndex );
   ouData->GetPointData()->AddArray( labelString );
-  ouData->ComputeHierarchy( NULL, NULL );
+  ouData->ComputeHierarchy();
 
   return 1;
 }
