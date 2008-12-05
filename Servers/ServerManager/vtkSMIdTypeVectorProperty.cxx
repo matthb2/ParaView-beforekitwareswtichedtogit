@@ -359,7 +359,7 @@ int vtkSMIdTypeVectorProperty::ReadXMLAttributes(vtkSMProxy* parent,
 
 //---------------------------------------------------------------------------
 int vtkSMIdTypeVectorProperty::LoadState(vtkPVXMLElement* element,
-  vtkSMStateLoaderBase* loader, int loadLastPushedValues/*=0*/)
+  vtkSMProxyLocator* loader, int loadLastPushedValues/*=0*/)
 {
   int prevImUpdate = this->ImmediateUpdate;
 

@@ -17,7 +17,7 @@
 #include "vtkObjectFactory.h"
 #include "vtkPVXMLElement.h"
 #include "vtkSMSourceProxy.h"
-#include "vtkSMStateLoaderBase.h"
+#include "vtkSMProxyLocator.h"
 
 vtkStandardNewMacro(vtkSMUpdateInformationUndoElement);
 vtkCxxRevisionMacro(vtkSMUpdateInformationUndoElement, "$Revision$");
@@ -67,9 +67,9 @@ int vtkSMUpdateInformationUndoElement::Redo()
   int proxy_id;
   this->XMLElement->GetScalarAttribute("id", &proxy_id);
 
-  vtkSMStateLoaderBase* stateLoader = this->GetStateLoader();
+  vtkSMProxyLocator* locator = this->GetProxyLocator();
 
-  vtkSMProxy* proxy = stateLoader->NewProxy(proxy_id);
+  vtkSMProxy* proxy = locator->LocateProxy(proxy_id);
   if (proxy)
     {
     // When undo-redoing, UpdateVTKObjects() doesn't get called
@@ -81,7 +81,6 @@ int vtkSMUpdateInformationUndoElement::Redo()
       sp->UpdatePipelineInformation();
       }
     proxy->UpdatePropertyInformation();
-    proxy->Delete();
     }
   return 1;
 }

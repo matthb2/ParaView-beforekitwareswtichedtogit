@@ -467,7 +467,7 @@ int vtkSMProperty::ReadXMLAttributes(vtkSMProxy* proxy,
 
 //---------------------------------------------------------------------------
 int vtkSMProperty::LoadState(vtkPVXMLElement* propertyElement, 
-  vtkSMStateLoaderBase* loader, int vtkNotUsed(loadLastPushedValues))
+  vtkSMProxyLocator* loader, int vtkNotUsed(loadLastPushedValues))
 {
   // Process the domains.
   unsigned int numElems = propertyElement->GetNumberOfNestedElements();

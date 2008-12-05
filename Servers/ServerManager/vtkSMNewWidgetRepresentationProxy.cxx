@@ -216,7 +216,7 @@ void vtkSMNewWidgetRepresentationProxy::UpdateEnabled()
 
 //-----------------------------------------------------------------------------
 int vtkSMNewWidgetRepresentationProxy::LoadState(vtkPVXMLElement* proxyElement, 
-                          vtkSMStateLoaderBase* loader)
+                          vtkSMProxyLocator* loader)
 {
   this->StateLoaded = true;
   return this->Superclass::LoadState(proxyElement, loader);

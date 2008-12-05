@@ -107,10 +107,9 @@ vtkPVXMLElement* vtkSMOutputPort::SaveRevivalState(vtkPVXMLElement* root)
 }
 
 //----------------------------------------------------------------------------
-int vtkSMOutputPort::LoadRevivalState(vtkPVXMLElement* revivalElem, 
-  vtkSMStateLoaderBase* loader)
+int vtkSMOutputPort::LoadRevivalState(vtkPVXMLElement* revivalElem)
 {
-  if (!this->Superclass::LoadRevivalState(revivalElem, loader))
+  if (!this->Superclass::LoadRevivalState(revivalElem))
     {
     return 0;
     }

@@ -646,10 +646,9 @@ vtkPVXMLElement* vtkSMSourceProxy::SaveRevivalState(vtkPVXMLElement* root)
 }
 
 //---------------------------------------------------------------------------
-int vtkSMSourceProxy::LoadRevivalState(vtkPVXMLElement* revivalElem,
-  vtkSMStateLoaderBase* loader)
+int vtkSMSourceProxy::LoadRevivalState(vtkPVXMLElement* revivalElem)
 {
-  if (!this->Superclass::LoadRevivalState(revivalElem, loader))
+  if (!this->Superclass::LoadRevivalState(revivalElem))
     {
     return 0;
     }
@@ -664,7 +663,7 @@ int vtkSMSourceProxy::LoadRevivalState(vtkPVXMLElement* revivalElem,
       vtkSmartPointer<vtkSMOutputPort> opPort = vtkSmartPointer<vtkSMOutputPort>::New();
       opPort->SetConnectionID(this->ConnectionID);
       opPort->SetServers(this->Servers);
-      if (opPort->LoadRevivalState(curElement->GetNestedElement(0), loader))
+      if (opPort->LoadRevivalState(curElement->GetNestedElement(0)))
         {
         this->PInternals->EnsureOutputPortsSize(index+1);
         this->PInternals->OutputPorts[index].Port = opPort;

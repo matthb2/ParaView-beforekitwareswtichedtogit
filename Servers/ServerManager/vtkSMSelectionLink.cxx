@@ -67,9 +67,9 @@ void vtkSMSelectionLink::SaveState(const char* linkname, vtkPVXMLElement* parent
 
 //----------------------------------------------------------------------------
 int vtkSMSelectionLink::LoadState(vtkPVXMLElement* linkElement,
-  vtkSMStateLoader* loader)
+  vtkSMProxyLocator* locator)
 {
-  return this->PropertyLink->LoadState(linkElement, loader);
+  return this->PropertyLink->LoadState(linkElement, locator);
 }
 
 //----------------------------------------------------------------------------

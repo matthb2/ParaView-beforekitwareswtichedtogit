@@ -414,7 +414,7 @@ const char* vtkSMStringVectorProperty::GetDefaultValue(int idx)
 
 //---------------------------------------------------------------------------
 int vtkSMStringVectorProperty::LoadState(vtkPVXMLElement* element,
-  vtkSMStateLoaderBase* loader, int loadLastPushedValues/*=0*/)
+  vtkSMProxyLocator* loader, int loadLastPushedValues/*=0*/)
 {
   int prevImUpdate = this->ImmediateUpdate;
 

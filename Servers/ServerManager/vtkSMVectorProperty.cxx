@@ -36,7 +36,7 @@ vtkSMVectorProperty::~vtkSMVectorProperty()
 
 //---------------------------------------------------------------------------
 int vtkSMVectorProperty::LoadState(vtkPVXMLElement* element,
-  vtkSMStateLoaderBase* loader, int loadLastPushedValues/*=0*/)
+  vtkSMProxyLocator* loader, int loadLastPushedValues/*=0*/)
 {
   this->Superclass::LoadState(element, loader, loadLastPushedValues);
 

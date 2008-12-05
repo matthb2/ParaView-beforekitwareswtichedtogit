@@ -80,7 +80,7 @@ int pqCloseViewUndoElement::Undo()
       << "MULTIVIEW_MANAGER must be registered with application core.");
     return 0;
     }
-  manager->loadState(state, this->StateLoader);
+  manager->loadState(state, this->GetProxyLocator());
   return 1;
 }
 
