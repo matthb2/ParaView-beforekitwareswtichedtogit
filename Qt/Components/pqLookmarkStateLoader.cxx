@@ -291,13 +291,6 @@ vtkSMProxy* pqLookmarkStateLoader::NewProxy(int id, vtkSMProxyLocator* locator)
   
   if (strcmp(proxyElement->GetName(), "Proxy") == 0)
     {
-    const char* group = proxyElement->GetAttribute("group");
-    const char* type = proxyElement->GetAttribute("type");
-    if (!type || !group)
-      {
-      vtkErrorMacro("Could not create proxy from element.");
-      return 0;
-      }
     if(strcmp(group,"sources")==0)
       {
       this->Internal->CurrentSourceID = id;
