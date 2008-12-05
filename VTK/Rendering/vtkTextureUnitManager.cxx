@@ -124,7 +124,7 @@ int vtkTextureUnitManager::Allocate()
   int result;
   if(found)
     {
-    result=i-1;
+    result=static_cast<int>(i-1);
     this->TextureUnits[result]=true;
     }
   else
