@@ -144,7 +144,7 @@ int vtkPOpenFOAMReader::RequestInformation(vtkInformation *request,
       || this->Superclass::Refresh)
     {
     // retain selection status when just refreshing a case
-    if (*this->Superclass::FileNameOld != this->Superclass::FileName)
+    if (*this->Superclass::FileNameOld != "" && *this->Superclass::FileNameOld != this->Superclass::FileName)
       {
       // clear selections
       this->Superclass::CellDataArraySelection->RemoveAllArrays();
