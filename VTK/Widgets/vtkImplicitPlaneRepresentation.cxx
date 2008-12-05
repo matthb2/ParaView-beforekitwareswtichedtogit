@@ -447,6 +447,19 @@ double *vtkImplicitPlaneRepresentation::GetBounds()
 }
 
 //----------------------------------------------------------------------------
+void vtkImplicitPlaneRepresentation::GetActors(vtkPropCollection *pc)
+{
+  this->OutlineActor->GetActors(pc);
+  this->CutActor->GetActors(pc);
+  this->EdgesActor->GetActors(pc);
+  this->ConeActor->GetActors(pc);
+  this->LineActor->GetActors(pc);
+  this->ConeActor2->GetActors(pc);
+  this->LineActor2->GetActors(pc);
+  this->SphereActor->GetActors(pc);
+}
+
+//----------------------------------------------------------------------------
 void vtkImplicitPlaneRepresentation::ReleaseGraphicsResources(vtkWindow *w)
 {
   this->OutlineActor->ReleaseGraphicsResources(w);

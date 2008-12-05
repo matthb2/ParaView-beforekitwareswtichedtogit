@@ -248,8 +248,7 @@ int vtkBalloonWidget::SubclassHoverAction()
   double e[2];
   e[0] = static_cast<double>(this->Interactor->GetEventPosition()[0]);
   e[1] = static_cast<double>(this->Interactor->GetEventPosition()[1]);
-  vtkRenderer *ren = 
-    this->Interactor->GetRenderWindow()->GetRenderers()->GetFirstRenderer();
+  vtkRenderer *ren = this->CurrentRenderer;
   if ( this->CurrentProp )
     {
     this->CurrentProp->UnRegister(this);

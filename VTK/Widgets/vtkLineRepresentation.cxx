@@ -786,6 +786,15 @@ int vtkLineRepresentation::InBounds(double x[3])
   return 1;
 }
 
+//----------------------------------------------------------------------
+void vtkLineRepresentation::GetActors(vtkPropCollection *pc)
+{
+  this->LineActor->GetActors(pc);
+  this->Handle[0]->GetActors(pc);
+  this->Handle[1]->GetActors(pc);
+  this->TextActor->GetActors(pc);
+}
+
 //----------------------------------------------------------------------------
 void vtkLineRepresentation::ReleaseGraphicsResources(vtkWindow *w)
 {
