@@ -523,7 +523,6 @@ void vtkLabeledDataMapper::BuildLabelsInternal(vtkDataSet* input)
         if (this->LabelFormat == NULL)
           {
           ResultString = stringData->GetValue(i);
-          cout << "ResulString: " << ResultString << endl;
           }
         else // the user specified a label format
           {

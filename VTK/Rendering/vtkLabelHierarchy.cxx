@@ -1064,7 +1064,6 @@ void vtkSpiralkVertices(vtkIdType num, vtkstd::vector<vtkstd::pair<double,double
     double x = t*cos(2*pi*t);
     double y = t*sin(2*pi*t);
     offsets.push_back(vtkstd::pair<double,double>(x, y));
-    cout << "Offsets: " << x << " " << y << endl;
     }
 }
 
