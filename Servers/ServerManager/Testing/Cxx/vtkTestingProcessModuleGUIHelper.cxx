@@ -161,9 +161,7 @@ int vtkTestingProcessModuleGUIHelper::RunGUIStart(int , char **,
     }
   parser->Parse(str_buffer.c_str(), str_buffer.length());
 
-  vtkSMStateLoader *loader = vtkSMStateLoader::New();
-  loader->LoadState(parser->GetRootElement());
-  loader->Delete();
+  vtkSMProxyManager::GetProxyManager()->LoadState(parser->GetRootElement());
   parser->Delete();
 
   vtkSMProxyManager* pxm = vtkSMProxyManager::GetProxyManager();
