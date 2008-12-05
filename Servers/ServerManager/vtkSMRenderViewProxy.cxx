@@ -577,8 +577,18 @@ void vtkSMRenderViewProxy::PerformRender()
 
   this->GetRenderer()->ResetCameraClippingRange();
 
-  vtkRenderWindow *renWindow = this->GetRenderWindow(); 
-  renWindow->Render();
+  vtkClientServerStream stream;
+  stream << vtkClientServerStream::Invoke
+         << this->RenderWindowProxy->GetID()
+         << "Render"
+         << vtkClientServerStream::End;
+  vtkProcessModule::GetProcessModule()->SendStream(
+    this->ConnectionID,
+    vtkProcessModule::CLIENT,
+    stream);
+
+  //vtkRenderWindow *renWindow = this->GetRenderWindow(); 
+  //renWindow->Render();
 
   if ( this->MeasurePolygonsPerSecond )
     {
