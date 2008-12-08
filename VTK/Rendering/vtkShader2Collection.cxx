@@ -125,6 +125,78 @@ void vtkShader2Collection::RemoveCollection(vtkShader2Collection *other)
       }
     }
 }
+// ----------------------------------------------------------------------------
+// Description:
+// Tells if at least one of the shaders is a vertex shader.
+// If yes, it means the vertex processing of the fixed-pipeline is bypassed.
+// If no, it means the vertex processing of the fixed-pipeline is used.
+bool vtkShader2Collection::HasVertexShaders()
+{
+  bool result=false;
+  
+  this->InitTraversal();
+  vtkShader2 *s=this->GetNextShader();
+  while(!result && s!=0)
+    {
+    result=s->GetType()==VTK_SHADER_TYPE_VERTEX;
+    s=this->GetNextShader();
+    }
+  
+  return result;
+}
+
+// ----------------------------------------------------------------------------
+// Description:
+// Tells if at least one of the shaders is a fragment shader.
+// If yes, it means the fragment processing of the fixed-pipeline is
+// bypassed.
+// If no, it means the fragment processing of the fixed-pipeline is used.
+bool vtkShader2Collection::HasFragmentShaders()
+{
+  bool result=false;
+  
+  this->InitTraversal();
+  vtkShader2 *s=this->GetNextShader();
+  while(!result && s!=0)
+    {
+    result=s->GetType()==VTK_SHADER_TYPE_FRAGMENT;
+    s=this->GetNextShader();
+    }
+  
+  return result;
+}
+
+// ----------------------------------------------------------------------------
+// Description:
+// Tells if at least one of the shaders is a geometry shader.
+bool vtkShader2Collection::HasGeometryShaders()
+{
+  bool result=false;
+  
+  this->InitTraversal();
+  vtkShader2 *s=this->GetNextShader();
+  while(!result && s!=0)
+    {
+    result=s->GetType()==VTK_SHADER_TYPE_GEOMETRY;
+    s=this->GetNextShader();
+    }
+  
+  return result;
+}
+
+// ----------------------------------------------------------------------------
+// Description:
+// Release OpenGL resources (shader id of each item).
+void vtkShader2Collection::ReleaseGraphicsResources()
+{
+  this->InitTraversal();
+  vtkShader2 *s=this->GetNextShader();
+  while(s!=0)
+    {
+    s->ReleaseGraphicsResources();
+    s=this->GetNextShader();
+    }
+}
 
 // ----------------------------------------------------------------------------
 void vtkShader2Collection::PrintSelf(ostream& os, vtkIndent indent)
