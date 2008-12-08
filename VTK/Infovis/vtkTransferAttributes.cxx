@@ -18,7 +18,6 @@
   the U.S. Government retains certain rights in this software.
 -------------------------------------------------------------------------*/
 #include "vtkTransferAttributes.h"
-
 #include "vtkDataObject.h"
 #include "vtkCellArray.h"
 #include "vtkCellData.h"
