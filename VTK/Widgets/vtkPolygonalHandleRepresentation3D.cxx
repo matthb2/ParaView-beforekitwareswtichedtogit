@@ -502,8 +502,6 @@ void vtkPolygonalHandleRepresentation3D::Highlight(int highlight)
 void vtkPolygonalHandleRepresentation3D::CreateDefaultProperties()
 {
   this->Property = vtkProperty::New();
-  this->Property->SetAmbient(1.0);
-  this->Property->SetAmbientColor(1.0,1.0,1.0);
   this->Property->SetLineWidth(0.5);
 
   this->SelectedProperty = vtkProperty::New();
