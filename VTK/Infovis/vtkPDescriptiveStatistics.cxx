@@ -51,7 +51,7 @@ void vtkPDescriptiveStatistics::PrintSelf(ostream& os, vtkIndent indent)
 void vtkPDescriptiveStatistics::ExecuteLearn( vtkTable* inData,
                                               vtkDataObject* outMetaDO )
 {
-  vtkTable* outMeta = vtkTable::SafeDownCast( outMetaDO ); 
+  vtkTable* outMeta = vtkTable::SafeDownCast( outMetaDO );
   if ( ! outMeta ) 
     { 
     return; 

@@ -80,7 +80,7 @@ void vtkDescriptiveStatistics::SetDeviationParameter( const char* name )
 void vtkDescriptiveStatistics::ExecuteLearn( vtkTable* inData,
                                              vtkDataObject* outMetaDO )
 {
-  vtkTable* outMeta = vtkTable::SafeDownCast( outMetaDO ); 
+  vtkTable* outMeta = vtkTable::SafeDownCast( outMetaDO );
   if ( ! outMeta ) 
     { 
     return; 
