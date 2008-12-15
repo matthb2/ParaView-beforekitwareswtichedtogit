@@ -250,10 +250,10 @@ int vtkEnSightGoldBinaryReader::ReadGeometryFile(const char* fileName, int timeS
     nameline[79] = '\0'; // Ensure NULL character at end of part name
     char *name = strdup(nameline);
 
-    if (strncmp(line, "interface", 9) == 0)
-      {
-      return 1; // ignore it and move on
-      }
+    // fix to bug #0008237
+    // The original "return 1" operation upon "strncmp(line, "interface", 9) == 0"
+    // was removed here as 'interface' is NOT a keyword of an EnSight Gold file.
+    
     this->ReadLine(line);
     
     if (strncmp(line, "block", 5) == 0)
