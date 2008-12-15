@@ -36,6 +36,7 @@
 vtkCxxRevisionMacro(vtkMySQLDatabase, "$Revision$");
 vtkStandardNewMacro(vtkMySQLDatabase);
 
+
 // ----------------------------------------------------------------------
 vtkMySQLDatabase::vtkMySQLDatabase() :
   Private(new vtkMySQLDatabasePrivate())
