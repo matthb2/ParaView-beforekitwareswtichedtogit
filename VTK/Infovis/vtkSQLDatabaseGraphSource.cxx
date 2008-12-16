@@ -21,6 +21,7 @@
 
 #include "vtkDataSetAttributes.h"
 #include "vtkDirectedGraph.h"
+#include "vtkUndirectedGraph.h"
 #include "vtkEventForwarderCommand.h"
 #include "vtkExecutive.h"
 #include "vtkIdTypeArray.h"
@@ -233,6 +234,8 @@ void vtkSQLDatabaseGraphSource::ClearLinkEdges()
   this->Modified();
 }
 
+
+//---------------------------------------------------------------------------
 int vtkSQLDatabaseGraphSource::RequestDataObject(
   vtkInformation*, 
   vtkInformationVector**, 
