@@ -225,5 +225,9 @@ bool vtkSQLQuery::BindParameter(int index, vtkVariant data)
     case VTK_OBJECT:
       vtkErrorMacro(<<"Variants of type VTK_OBJECT cannot be inserted into a database.");
       return false;
+    default:
+      vtkErrorMacro(<<"Variants of type "
+                    << data.GetType() << " are not currently supported by BindParameter.");
+      return false;
     }
 }
