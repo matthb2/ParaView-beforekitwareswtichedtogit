@@ -42,13 +42,13 @@ vtkStandardNewMacro(vtkDescriptiveStatistics);
 vtkDescriptiveStatistics::vtkDescriptiveStatistics()
 {
   this->AssessNames->SetNumberOfValues( 1 );
-  this->AssessNames->SetValue( 0, "d" ); // relative deviation, i.e., Mahlanobis distance in 1D
+  this->AssessNames->SetValue( 0, "d" ); // relative deviation, i.e., when unsigned, 1D Mahlanobis distance
 
   this->AssessParameters = vtkStringArray::New();
   this->AssessParameters->SetNumberOfValues( 2 );
   this->AssessParameters->SetValue( 0, "Mean" );
   this->AssessParameters->SetValue( 1, "Standard Deviation" );
-  this->SignedDeviations = 1;
+  this->SignedDeviations = 0; // By default, use unsigned deviation (1D Mahlanobis distance)
 }
 
 // ----------------------------------------------------------------------
