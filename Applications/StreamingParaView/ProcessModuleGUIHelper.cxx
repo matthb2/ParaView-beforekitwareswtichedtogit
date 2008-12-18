@@ -82,7 +82,7 @@ int ProcessModuleGUIHelper::preAppExec(int argc, char** argv,
   if (pxm)
     {
     vtkSMProxy* prototype =
-      pxm->GetPrototypeProxy("helpers", "StreamingHelper");
+      pxm->GetPrototypeProxy("helpers", "StreamingOptions");
     if (!prototype)
       {
       vtkErrorMacro("Tried and failed to create a streaming module. "
