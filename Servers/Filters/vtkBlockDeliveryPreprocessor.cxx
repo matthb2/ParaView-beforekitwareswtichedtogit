@@ -90,7 +90,8 @@ int vtkBlockDeliveryPreprocessor::RequestData(vtkInformation*,
   vtkInformationVector** inputVector,
   vtkInformationVector* outputVector)
 {
-  cout << "vtkBlockDeliveryPreprocessor::CompositeDataSetIndex: " << this->CompositeDataSetIndex << endl;
+  //cout << "vtkBlockDeliveryPreprocessor::CompositeDataSetIndex: " 
+  // << this->CompositeDataSetIndex << endl;
   vtkDataObject* inputDO = vtkDataObject::GetData(inputVector[0], 0);
   vtkDataObject* outputDO = vtkDataObject::GetData(outputVector, 0);
 
