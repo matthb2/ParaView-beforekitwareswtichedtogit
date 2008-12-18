@@ -103,8 +103,9 @@ int vtkTrivialProducer::FillInputPortInformation(int, vtkInformation*)
 }
 
 //----------------------------------------------------------------------------
-int vtkTrivialProducer::FillOutputPortInformation(int, vtkInformation*)
+int vtkTrivialProducer::FillOutputPortInformation(int, vtkInformation* info)
 {
+  info->Set(vtkDataObject::DATA_TYPE_NAME(), "vtkDataObject");
   return 1;
 }
 
