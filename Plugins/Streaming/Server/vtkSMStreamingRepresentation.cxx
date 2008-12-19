@@ -328,7 +328,7 @@ bool vtkSMStreamingRepresentation::AddToView(vtkSMViewProxy* view)
     return false;
     }
 
-  this->PieceBoundsRepresentation->AddToView(streamView->GetRootView());
+  //this->PieceBoundsRepresentation->AddToView(streamView->GetRootView());
 
   //this tells renderview to let view create strategy
   vtkSMRenderViewProxy* renderView = streamView->GetRootView();
