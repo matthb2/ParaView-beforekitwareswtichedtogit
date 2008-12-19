@@ -53,7 +53,7 @@ int vtkTableToPolyData::FillInputPortInformation(
 }
 
 //----------------------------------------------------------------------------
-int vtkTableToPolyData::RequestData(vtkInformation* request,
+int vtkTableToPolyData::RequestData(vtkInformation* vtkNotUsed(request),
   vtkInformationVector** inputVector, vtkInformationVector* outputVector)
 {
   vtkTable* input = vtkTable::GetData(inputVector[0], 0);
