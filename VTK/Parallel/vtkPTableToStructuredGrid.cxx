@@ -173,5 +173,6 @@ int vtkPTableToStructuredGrid::RequestData(vtkInformation* request,
 void vtkPTableToStructuredGrid::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os, indent);
+  os << indent << "Controller: " << this->Controller << endl;
 }
 
