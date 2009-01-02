@@ -1479,7 +1479,7 @@ void vtkWin32OpenGLRenderWindow::SetCursorPosition(int x, int y)
     {
     SetCursorPos(point.x, point.y);
     }
-};
+}
 
 //----------------------------------------------------------------------------
 void vtkWin32OpenGLRenderWindow::SetCurrentCursor(int shape)
