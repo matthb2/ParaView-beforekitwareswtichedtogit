@@ -1012,6 +1012,20 @@ void vtkCocoaRenderWindow::SetCocoaManager(void *manager)
     }
   this->CocoaManager = manager;
 }
+
+//----------------------------------------------------------------------------
+void vtkCocoaRenderWindow::SetWindowInfo(char *info)
+{
+  // The paramater is an ASCII string of a decimal number representing
+  // a pointer to the window. Convert it back to a pointer.
+  ptrdiff_t tmp = 0;
+  if (info)
+    {
+    (void)sscanf(info, "%tu", &tmp);
+    }
+
+  this->SetDisplayId (reinterpret_cast<void *>(tmp));
+}
   
 //----------------------------------------------------------------------------
 void *vtkCocoaRenderWindow::GetCocoaManager()
