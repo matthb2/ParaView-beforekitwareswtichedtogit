@@ -576,6 +576,12 @@ double* vtkPolygonalHandleRepresentation3D::GetBounds()
   return this->Actor ? this->Actor->GetBounds() : NULL;
 }
 
+//-----------------------------------------------------------------------------
+vtkAbstractTransform* vtkPolygonalHandleRepresentation3D::GetTransform()
+{
+  return this->HandleTransform;
+}
+
 //----------------------------------------------------------------------
 void vtkPolygonalHandleRepresentation3D::PrintSelf(ostream& os, vtkIndent indent)
 {
