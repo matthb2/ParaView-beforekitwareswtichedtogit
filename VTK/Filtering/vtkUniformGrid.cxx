@@ -15,7 +15,6 @@
 #include "vtkUniformGrid.h"
 
 #include "vtkAMRBox.h"
-#include "vtkAMRBoxUtilities.hxx"
 #include "vtkCellData.h"
 #include "vtkDataArray.h"
 #include "vtkEmptyCell.h"
