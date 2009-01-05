@@ -93,7 +93,7 @@ void vtkInformationIntegerVectorKey::Set(vtkInformation* info, int* value,
       // Since this sets a value without call SetAsObjectBase(),
       // the info has to be modified here (instead of 
       // vtkInformation::SetAsObjectBase()
-      info->Modified();
+      info->Modified(this);
       }
     else
       {
