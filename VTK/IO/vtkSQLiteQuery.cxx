@@ -809,3 +809,9 @@ bool vtkSQLiteQuery::ClearParameterBindings()
   return true;
 }
     
+// ----------------------------------------------------------------------
+
+bool vtkSQLiteQuery::BindParameter(int index, vtkVariant value)
+{
+  return this->Superclass::BindParameter(index, value);
+}
