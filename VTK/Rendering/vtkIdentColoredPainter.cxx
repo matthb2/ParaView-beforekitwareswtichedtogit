@@ -13,6 +13,11 @@
 
 =========================================================================*/
 
+// to remove warning about deprecated method
+// vtkPainterDeviceAdapter::MakeVertexEmphasisWithStencilCheck
+// as class vtkIdentColoredPainter is deprecated
+#define VTK_LEGACY_SILENT
+
 #include "vtkIdentColoredPainter.h"
 
 #include "vtkActor.h"
