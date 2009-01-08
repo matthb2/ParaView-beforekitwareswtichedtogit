@@ -695,6 +695,7 @@ void vtkPolygonalHandleRepresentation3D::PrintSelf(ostream& os, vtkIndent indent
     {
     os << indent << "Selected Property: (none)\n";
     }
+  os << indent << "LabelVisibility: " << this->LabelVisibility << endl;
   os << indent << "Actor: " << this->Actor << "\n";
   this->Actor->PrintSelf(os,indent.GetNextIndent());
   os << indent << "Mapper: " << this->Mapper << "\n";
