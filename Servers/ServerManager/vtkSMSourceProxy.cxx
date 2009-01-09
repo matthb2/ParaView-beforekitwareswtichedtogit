@@ -468,6 +468,7 @@ void vtkSMSourceProxy::CreateOutputPortsInternal(vtkSMProxy* op)
     opPort->SetServers(this->Servers);
     opPort->InitializeWithIDs(portID, producerID, execID);
     opPort->SetPortIndex(j);
+    opPort->SetSourceProxy(this);
     this->PInternals->OutputPorts[j].Port = opPort;
     opPort->Delete();
     }
@@ -501,6 +502,10 @@ void vtkSMSourceProxy::SetOutputPort(unsigned int index, const char* name,
   this->PInternals->OutputPorts[index].Name = name;
   this->PInternals->OutputPorts[index].Port = port;
   this->PInternals->OutputPorts[index].Documentation = doc;
+  if (port)
+    {
+    port->SetSourceProxy(this);
+    }
 }
 
 //----------------------------------------------------------------------------
