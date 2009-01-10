@@ -781,7 +781,7 @@ protected:
   vtkLabelHierarchy::Implementation::HierarchyCursor2 Cursor;
   vtkstd::vector<int> Path;
   vtkstd::vector<vtkstd::vector<int> > Order; // visibility sorted order of children at each level of the tree.
-  int BucketSize[2]; // size of label placer buckets in pixels
+  float BucketSize[2]; // size of label placer buckets in pixels
   double SizeLimit; // square of smallest allowable distance-normalized octree node size.
 
   bool AtEnd;
@@ -1113,7 +1113,7 @@ protected:
   vtkLabelHierarchy::Implementation::HierarchyCursor3 Cursor;
   vtkstd::vector<int> Path;
   vtkstd::vector<vtkstd::vector<int> > Order; // visibility sorted order of children at each level of the tree.
-  int BucketSize[2]; // size of label placer buckets in pixels
+  float BucketSize[2]; // size of label placer buckets in pixels
   double SizeLimit; // square of smallest allowable distance-normalized octree node size.
 
   bool AtEnd;
