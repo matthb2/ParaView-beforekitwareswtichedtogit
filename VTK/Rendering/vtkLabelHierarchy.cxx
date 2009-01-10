@@ -847,14 +847,14 @@ void vtkLabelHierarchyQuadtreeIterator::Prepare(
     if ( cam->GetUseHorizontalViewAngle() )
       {
       double vs = ren->GetSize()[0];
-      vsr = vs / this->BucketSize[0];
+      vsr = this->BucketSize[0] ? ( vs / this->BucketSize[0] ) : VTK_DOUBLE_MAX;
       }
     else
       {
       double vs = ren->GetSize()[1];
-      vsr = vs / this->BucketSize[1];
+      vsr = this->BucketSize[1] ? ( vs / this->BucketSize[1] ) : VTK_DOUBLE_MAX;
       }
-    double fac = 0.1 * tva / vsr;
+    double fac = vsr ? ( 0.1 * tva / vsr ) : 0.;
     //cout << "SizeLimit  va: " << va << " tva: " << tva << " vsr: " << vsr << " fac: " << fac << " slim: " << fac * fac << "\n";
     this->SizeLimit = fac * fac;
     }
