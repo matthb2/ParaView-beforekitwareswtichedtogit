@@ -586,6 +586,11 @@ void vtkPolygonalHandleRepresentation3D::ShallowCopy(vtkProp *prop)
     {
     this->SetProperty(rep->GetProperty());
     this->SetSelectedProperty(rep->GetSelectedProperty());
+    this->Actor->SetProperty(this->Property);
+
+    // copy the handle shape
+    this->HandleTransformFilter->SetInput(
+        rep->HandleTransformFilter->GetInput());
     }
   this->Superclass::ShallowCopy(prop);
 }
