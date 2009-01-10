@@ -1435,6 +1435,7 @@ void vtkLabelHierarchy::PrintSelf( ostream& os, vtkIndent indent )
   os << indent << "HierarchyTime: " << this->Impl->HierarchyTime << "\n";
   os << indent << "Priorities: " << this->Priorities << "\n";
   os << indent << "CoincidentPoints: " << this->CoincidentPoints << "\n";
+  os << indent << "CenterPts: " << this->CenterPts << "\n";
 }
 
 void vtkLabelHierarchy::SetPoints( vtkPoints* src )
