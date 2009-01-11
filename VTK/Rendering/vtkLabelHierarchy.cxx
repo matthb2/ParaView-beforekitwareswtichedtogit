@@ -1609,6 +1609,7 @@ void vtkLabelHierarchy::ComputeHierarchy()
 
 // FIXME: Currently this is unused but we might like to collect statistics
 //        on the actual distribution of label anchors...
+#if 0
 void vtkLabelHierarchy::Implementation::ComputeActualDepth()
 {
   // Find the number of levels in the hierarchy
@@ -1647,6 +1648,7 @@ void vtkLabelHierarchy::Implementation::ComputeActualDepth()
   vtkDebugWithObjectMacro( this->Husk, "num nodes " << numNodes );
   vtkDebugWithObjectMacro( this->Husk, "avg leaf depth " << static_cast<double>(totalLeafDepth) / numLeaf );
 }
+#endif // 0
 
 vtkLabelHierarchyIterator* vtkLabelHierarchy::NewIterator(
   int type,
