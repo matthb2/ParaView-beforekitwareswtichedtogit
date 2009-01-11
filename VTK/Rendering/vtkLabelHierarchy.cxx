@@ -1520,7 +1520,7 @@ void vtkLabelHierarchy::ComputeHierarchy()
   double bounds[6];
   double center[3];
   double maxDim = -1.;
-  double delta;
+  double delta = 0.; // MSVC brain damage requires this initialization.
   this->Points->GetBounds( bounds );
   for ( int i = 0; i < 3; ++ i )
     {
