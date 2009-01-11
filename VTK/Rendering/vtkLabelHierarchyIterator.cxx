@@ -163,6 +163,9 @@ void vtkLabelHierarchyIterator::BoxAllNodes( vtkPolyData* boxes )
     {
     vtkLabelHierarchy::Implementation::HierarchyIterator2 iter;
     double ctr[3];
+#ifdef Z2
+#  undef Z2
+#endif // see if this fixes AIX
     double hz = this->Hierarchy->GetImplementation()->Z2;
     for (
       iter = this->Hierarchy->GetImplementation()->Hierarchy2->begin( true );
