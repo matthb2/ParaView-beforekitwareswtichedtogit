@@ -133,6 +133,7 @@ void vtkAreaLayout::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os, indent);
   os << indent << "AreaArrayName: " << (this->AreaArrayName ? this->AreaArrayName : "(none)") << endl;
+  os << indent << "EdgeRoutingPoints: " << this->EdgeRoutingPoints << endl;
   os << indent << "LayoutStrategy: " << (this->LayoutStrategy ? "" : "(none)") << endl;
   if (this->LayoutStrategy)
     {
