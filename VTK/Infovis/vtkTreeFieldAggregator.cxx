@@ -76,7 +76,6 @@ int vtkTreeFieldAggregator::RequestData(
   // Check for the existance of the field to be aggregated
   if (!output->GetVertexData()->HasArray(this->Field))
     {
-    //vtkWarningMacro(<< "The field " << this->Field << " was NOT found! Setting LeafVertexUnitSize = true");
     this->LeafVertexUnitSize = true;
     }
     
