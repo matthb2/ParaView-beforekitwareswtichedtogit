@@ -132,7 +132,7 @@ void vtkQtChartTableRepresentation::QtModelChanged()
 
 //----------------------------------------------------------------------------
 void vtkQtChartTableRepresentation::
-QtSelectedSeriesChanged(const vtkQtChartSeriesSelection &list)
+QtSelectedSeriesChanged(const vtkQtChartSeriesSelection& vtkNotUsed(list))
 {
 
 }
