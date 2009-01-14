@@ -1037,12 +1037,15 @@ struct vtkDistNodeStruct
   vtkIdType NodeNum;
 };
 
+extern "C"
+{
 static int vtkCompareDist( const void* av, const void* bv )
 {
   const struct vtkDistNodeStruct* a = reinterpret_cast<const struct vtkDistNodeStruct*>( av );
   const struct vtkDistNodeStruct* b = reinterpret_cast<const struct vtkDistNodeStruct*>( bv );
   return a->Distance < b->Distance ? -1 : ( a->Distance > b->Distance ? 1 : 0 );
 }
+} // extern "C"
 
 void vtkLabelHierarchyQuadtreeIterator::ReorderChildrenForView( int* order )
 {
