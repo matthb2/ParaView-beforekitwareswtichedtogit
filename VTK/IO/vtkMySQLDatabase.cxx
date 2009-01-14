@@ -70,6 +70,7 @@ vtkMySQLDatabase::~vtkMySQLDatabase()
   this->SetUser( 0 );
   this->SetDatabaseName( 0 );
   this->SetConnectOptions( 0 );
+  this->SetPassword( 0 );
 
   this->Tables->UnRegister(this);
 
