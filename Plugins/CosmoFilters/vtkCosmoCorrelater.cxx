@@ -70,7 +70,7 @@ ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "vtkMath.h"
 
 #include <vtkstd/string>
-#include <algorithm>
+#include <vtkstd/algorithm>
 
 vtkCxxRevisionMacro(vtkCosmoCorrelater, "$Revision$");
 vtkStandardNewMacro(vtkCosmoCorrelater);
