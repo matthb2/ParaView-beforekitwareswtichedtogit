@@ -59,27 +59,6 @@ void vtkQtLineChartView::Update()
 }
 
 //----------------------------------------------------------------------------
-void vtkQtLineChartView::UpdateLegend()
-{
-  // Update the legend model
-  // TODO - instead of handling this here and reseting the whole legend
-  // model, update the legend model whenever the series model is modified.
-  vtkQtChartSeriesLayer* chartLayer = this->GetChartLayer();
-  vtkQtChartLegendModel* legendModel = this->GetLegendModel();
-
-  legendModel->startModifyingData();
-  legendModel->removeAllEntries();
-  unsigned int nSeries = this->GetChartSeriesModel()->getNumberOfSeries();
-  for (unsigned int i = 0; i < nSeries; ++i)
-    {
-    QString seriesName = this->GetChartSeriesModel()->getSeriesName(i).toString();
-    QPixmap seriesIcon = chartLayer->getSeriesIcon(i);
-    legendModel->addEntry(seriesIcon, seriesName);
-    }
-  legendModel->finishModifyingData();
-}
-
-//----------------------------------------------------------------------------
 void vtkQtLineChartView::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os,indent);
