@@ -65,6 +65,10 @@ public:
 
   ~vtkODBCQueryInternals()
     {
+      if (this->Statement != NULL)
+        {
+        SQLFreeHandle(SQL_HANDLE_STMT, this->Statement);
+        }
       this->CurrentRow->Delete();
       this->ColumnNames->Delete();
       this->ColumnIsSigned->Delete();
