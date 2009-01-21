@@ -125,11 +125,8 @@ vtkGeoGraphRepresentation::vtkGeoGraphRepresentation()
   tp->SetLineOffset(-10);
   this->LabelHierarchy->SetMaximumDepth(3);
   this->LabelHierarchy->
-    SetInputArrayToProcess(0, 0, 0, vtkDataObject::FIELD_ASSOCIATION_VERTICES, "Priority");
-  this->LabelHierarchy->
     SetInputArrayToProcess(1, 0, 0, vtkDataObject::FIELD_ASSOCIATION_VERTICES, "LabelSize");
-  this->LabelHierarchy->
-    SetInputArrayToProcess(2, 0, 0, vtkDataObject::FIELD_ASSOCIATION_VERTICES, "Label");
+  this->SetVertexLabelArrayName("Label");
   // Turn off labels on the other side of the world
   this->LabelPlacer->PositionsAsNormalsOn();
   this->LabelMapper->SetFieldDataName("LabelText");

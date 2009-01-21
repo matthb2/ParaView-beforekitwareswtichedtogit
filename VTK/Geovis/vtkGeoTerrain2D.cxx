@@ -22,6 +22,7 @@
 
 #include "vtkCamera.h"
 #include "vtkGeoTerrainNode.h"
+#include "vtkGeoSource.h"
 #include "vtkObjectFactory.h"
 #include "vtkRenderer.h"
 
@@ -98,5 +99,11 @@ void vtkGeoTerrain2D::PrintSelf(ostream & os, vtkIndent indent)
   this->Superclass::PrintSelf( os, indent );
   os << indent << "LocationTolerance: " << this->LocationTolerance << "\n";
   os << indent << "TextureTolerance: " << this->TextureTolerance << "\n";
+}
+
+//----------------------------------------------------------------------------
+vtkAbstractTransform* vtkGeoTerrain2D::GetTransform()
+{ 
+  return this->GeoSource->GetTransform(); 
 }
 
