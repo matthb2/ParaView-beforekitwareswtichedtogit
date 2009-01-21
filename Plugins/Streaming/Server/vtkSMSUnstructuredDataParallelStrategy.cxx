@@ -135,6 +135,8 @@ void vtkSMSUnstructuredDataParallelStrategy::CreateLODPipeline(vtkSMSourceProxy*
 void vtkSMSUnstructuredDataParallelStrategy::SetPassNumber(int val, int force)
 {
   int nPasses = vtkStreamingOptions::GetStreamedPasses();
+  //cerr << "SUDPS(" << this << ") SetPassNumber " << val << "/" << nPasses << " " << (force?"FORCE":"LAZY") << endl;
+
   vtkSMIntVectorProperty* ivp;
   
   ivp = vtkSMIntVectorProperty::SafeDownCast(
