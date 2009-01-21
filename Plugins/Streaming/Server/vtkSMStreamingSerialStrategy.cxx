@@ -88,9 +88,9 @@ void vtkSMStreamingSerialStrategy::CreatePipeline(vtkSMSourceProxy* input, int o
 //----------------------------------------------------------------------------
 void vtkSMStreamingSerialStrategy::CreateLODPipeline(vtkSMSourceProxy* input, int outputport)
 {
-  this->Connect(input, this->ViewSorter);
+  this->Connect(input, this->ViewSorter, "Input", outputport);
   this->Connect(this->ViewSorter, this->PieceCache);
-  this->Superclass::CreateLODPipeline(this->PieceCache, outputport);
+  this->Superclass::CreateLODPipeline(this->PieceCache, 0);
   //input->ViewSorter->PieceCache->LODDec->USLOD
 }
 
