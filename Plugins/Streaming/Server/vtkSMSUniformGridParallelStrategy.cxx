@@ -88,12 +88,6 @@ void vtkSMSUniformGridParallelStrategy::CreatePipeline(vtkSMSourceProxy* input, 
   this->Superclass::CreatePipeline(this->PieceCache, outputport);
   //input->ViewSorter->PieceCache->Collect->US
 
-  vtkSMProxyProperty *pp = vtkSMProxyProperty::SafeDownCast(
-    this->UpdateSuppressor->GetProperty("SetMPIMoveData"));
-  if (pp)
-    {
-    //pp->AddProxy(this->Collect);
-    }
 }
 
 //----------------------------------------------------------------------------
