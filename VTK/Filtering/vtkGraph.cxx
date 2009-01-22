@@ -1169,7 +1169,7 @@ void vtkGraph::AddVertexInternal(vtkVariantArray *propertyArr,
         }
 
       vtkIdType existingVertex = this->FindVertex(pedigreeId);
-      if (existingVertex != -1)
+      if (existingVertex != -1 && existingVertex < this->GetNumberOfVertices())
         {
         vtkIdType idx = existingVertex;
         if (helper)
@@ -1256,7 +1256,7 @@ void vtkGraph::AddVertexInternal(const vtkVariant& pedigreeId,
     }
 
   vtkIdType existingVertex = this->FindVertex(pedigreeId);
-  if (existingVertex != -1)
+  if (existingVertex != -1 && existingVertex < this->GetNumberOfVertices())
     {
     // We found this vertex; nothing more to do.
     if (vertex)
