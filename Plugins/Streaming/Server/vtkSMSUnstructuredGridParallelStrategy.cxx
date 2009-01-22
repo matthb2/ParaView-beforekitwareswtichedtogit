@@ -161,7 +161,6 @@ int vtkSMSUnstructuredGridParallelStrategy::ComputePriorities()
 
   //put diagnostic settings transfer here in case info not gathered yet
   int cacheLimit = vtkStreamingOptions::GetPieceCacheLimit();
-  int useCulling = vtkStreamingOptions::GetUsePrioritization();
   ivp = vtkSMIntVectorProperty::SafeDownCast(
     this->PieceCache->GetProperty("SetCacheSize"));
   ivp->SetElement(0, cacheLimit);
@@ -333,7 +332,6 @@ void vtkSMSUnstructuredGridParallelStrategy::GatherInformation(vtkPVInformation*
   
   //put diagnostic setting transfer here because this happens early
   int cacheLimit = vtkStreamingOptions::GetPieceCacheLimit();
-  //int useCulling = vtkStreamingOptions::GetUsePrioritization();
   ivp = vtkSMIntVectorProperty::SafeDownCast(
     this->PieceCache->GetProperty("SetCacheSize"));
   ivp->SetElement(0, cacheLimit);

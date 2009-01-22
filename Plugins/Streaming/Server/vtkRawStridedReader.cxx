@@ -721,8 +721,6 @@ int vtkRawStridedReader::RequestData(
     }
   outData->Initialize();
 
-  vtkInformation *dInfo = outData->GetInformation();
-
   //prepping to produce real data and thus allocate real amounts of space
   int *uext = outInfo->Get(vtkStreamingDemandDrivenPipeline::UPDATE_EXTENT());
   outData->SetExtent(uext);
