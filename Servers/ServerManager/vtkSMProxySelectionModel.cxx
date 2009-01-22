@@ -83,7 +83,7 @@ void vtkSMProxySelectionModel::SetCurrentProxy(vtkSMProxy*  proxy,  int  command
 //-----------------------------------------------------------------------------
 bool vtkSMProxySelectionModel::IsSelected(vtkSMProxy*  proxy)
 {
-  return this->Selection->IsItemPresent(proxy);
+  return this->Selection->IsItemPresent(proxy) != 0;
 }
 
 //-----------------------------------------------------------------------------
