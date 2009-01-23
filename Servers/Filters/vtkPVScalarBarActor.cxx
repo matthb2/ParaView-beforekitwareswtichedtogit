@@ -146,7 +146,7 @@ int vtkPVScalarBarActor::RenderOpaqueGeometry(vtkViewport *viewport)
   
   if (!this->LookupTable)
     {
-    vtkWarningMacro(<<"Need a mapper to render a scalar bar");
+    vtkWarningMacro(<<"Need a lookup table to render a scalar bar");
     return 0;
     }
 
