@@ -253,7 +253,11 @@ int vtkMergeCells::MergeDataSet(vtkDataSet *set)
     newCellId = this->AddNewCellsDataSet(set, idMap);
     }
 
-  if (idMap) delete [] idMap;
+  if (idMap) 
+    {
+    delete [] idMap;
+    idMap = 0;
+    }
 
   this->NumberOfPoints = nextPt;
   this->NumberOfCells = newCellId;
