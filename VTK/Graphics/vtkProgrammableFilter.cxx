@@ -222,4 +222,12 @@ int vtkProgrammableFilter::FillInputPortInformation(int vtkNotUsed(port), vtkInf
   return 1;  
 }
 
+void vtkProgrammableFilter::PrintSelf(ostream& os, vtkIndent indent)
+{
+  this->Superclass::PrintSelf(os, indent);
+
+  os << indent << "CopyArrays: " << this->CopyArrays << endl;
+}
+
+
 
