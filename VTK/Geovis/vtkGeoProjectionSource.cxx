@@ -413,6 +413,10 @@ void vtkGeoProjectionSource::SetProjection(int projection)
 //----------------------------------------------------------------------------
 vtkAbstractTransform* vtkGeoProjectionSource::GetTransform()
 {
-  return this->TransformFilter->GetTransform();
+  if(this->TransformFilter)
+    {
+    return this->TransformFilter->GetTransform();
+    }
+  return NULL;
 }
 
