@@ -618,4 +618,5 @@ void vtkGeoGraphRepresentation2D::PrintSelf(ostream& os, vtkIndent indent)
     os << indent << "SelectionActor:" << endl;
     this->SelectionActor->PrintSelf(os, indent.GetNextIndent());
     }
+  os << indent << "UseLabelHierarchy: " << (this->UseLabelHierarchy ? "On" : "Off") << endl;
 }
