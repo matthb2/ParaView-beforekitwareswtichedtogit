@@ -22,14 +22,16 @@
 #pragma warning(disable:4127)
 #endif
 
-#include "vtkQtLineChart.h"
 #include "vtkQtLineChartView.h"
-#include "vtkQtChartLegendModel.h"
-#include "vtkQtChartSeriesOptions.h"
-#include "vtkQtChartSeriesModelCollection.h"
-#include "vtkObjectFactory.h"
 
-#include <QPen>
+#include "vtkQtChartArea.h"
+#include "vtkQtChartMouseSelection.h"
+#include "vtkQtChartSeriesModelCollection.h"
+#include "vtkQtChartSeriesSelectionHandler.h"
+#include "vtkQtChartWidget.h"
+#include "vtkQtLineChart.h"
+
+#include "vtkObjectFactory.h"
 
 //----------------------------------------------------------------------------
 vtkCxxRevisionMacro(vtkQtLineChartView, "$Revision$");
@@ -38,24 +40,49 @@ vtkStandardNewMacro(vtkQtLineChartView);
 //----------------------------------------------------------------------------
 vtkQtLineChartView::vtkQtLineChartView()
 {
-  // Set the chart layer to a line chart layer.
-  // Note, after this call the ownership of the chart layer
-  // is transferred to the chart widget's vtkQtChartArea.
-  vtkQtChartSeriesLayer* lineChartLayer = new vtkQtLineChart;
-  this->SetChartLayer(lineChartLayer);
-  this->Initialize();
+  // Get the chart widget from the base class.
+  vtkQtChartWidget* chart = this->GetChartWidget();
+  vtkQtChartArea* area = chart->getChartArea();
+
+  // Create the line chart and model. Add the line chart on top of the
+  // axis layer.
+  this->LineChart = new vtkQtLineChart();
+  this->LineModel = new vtkQtChartSeriesModelCollection(this->LineChart);
+  this->LineChart->setModel(this->LineModel);
+  area->addLayer(this->LineChart);
+
+  // TEMP
+  this->SetupDefaultInteractor();
 }
 
 //----------------------------------------------------------------------------
 vtkQtLineChartView::~vtkQtLineChartView()
 {
-
 }
 
 //----------------------------------------------------------------------------
 void vtkQtLineChartView::Update()
 {
   this->Superclass::Update();
+}
+
+//----------------------------------------------------------------------------
+void vtkQtLineChartView::AddChartSelectionHandlers(
+  vtkQtChartMouseSelection* selector)
+{
+  vtkQtChartSeriesSelectionHandler *handler =
+      new vtkQtChartSeriesSelectionHandler(selector);
+  handler->setModeNames("Line Chart - Series", "Line Chart - Points");
+  handler->setMousePressModifiers(Qt::ControlModifier, Qt::ControlModifier);
+  handler->setLayer(this->LineChart);
+  selector->addHandler(handler);
+  selector->setSelectionMode("Line Chart - Series");
+}
+
+//----------------------------------------------------------------------------
+vtkQtChartSeriesModelCollection* vtkQtLineChartView::GetChartSeriesModel()
+{
+  return this->LineModel;
 }
 
 //----------------------------------------------------------------------------
