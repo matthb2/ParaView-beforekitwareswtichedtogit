@@ -104,6 +104,10 @@ void vtkGeoTerrain2D::PrintSelf(ostream & os, vtkIndent indent)
 //----------------------------------------------------------------------------
 vtkAbstractTransform* vtkGeoTerrain2D::GetTransform()
 { 
-  return this->GeoSource->GetTransform(); 
+  if(this->GeoSource != NULL)
+    {
+    return this->GeoSource->GetTransform(); 
+    }
+  return NULL;
 }
 
