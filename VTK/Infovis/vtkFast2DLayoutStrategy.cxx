@@ -463,6 +463,9 @@ void vtkFast2DLayoutStrategy::Layout()
     // I'm done
     this->LayoutComplete = 1;
     }
+
+  // Mark points as modified
+  this->Graph->GetPoints()->Modified();
 }
 
 void vtkFast2DLayoutStrategy::ResolveCoincidentVertices()

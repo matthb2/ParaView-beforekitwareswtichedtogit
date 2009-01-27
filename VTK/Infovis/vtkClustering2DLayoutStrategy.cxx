@@ -513,6 +513,9 @@ void vtkClustering2DLayoutStrategy::Layout()
     // I'm done
     this->LayoutComplete = 1;
     }
+
+  // Mark points as modified
+  this->Graph->GetPoints()->Modified();
 }
 
 void vtkClustering2DLayoutStrategy::ResolveCoincidentVertices()

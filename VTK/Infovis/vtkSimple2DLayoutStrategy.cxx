@@ -346,6 +346,9 @@ void vtkSimple2DLayoutStrategy::Layout()
     // I'm done
     this->LayoutComplete = 1;
     }
+
+  // Mark the points as modified
+  this->Graph->GetPoints()->Modified();
 }
 
 void vtkSimple2DLayoutStrategy::PrintSelf(ostream& os, vtkIndent indent)

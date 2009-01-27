@@ -477,6 +477,9 @@ void vtkConstrained2DLayoutStrategy::Layout()
     // I'm done
     this->LayoutComplete = 1;
     }
+
+  // Mark points as modified
+  this->Graph->GetPoints()->Modified();
 }
 
 void vtkConstrained2DLayoutStrategy::ResolveCoincidentVertices()
