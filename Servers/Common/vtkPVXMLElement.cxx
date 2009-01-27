@@ -111,6 +111,22 @@ void vtkPVXMLElement::AddAttribute(const char* attrName, double attrValue)
 }
 
 //----------------------------------------------------------------------------
+void vtkPVXMLElement::AddAttribute(const char* attrName, double attrValue,
+  int precision)
+{
+  if (precision <= 0)
+    {
+    this->AddAttribute(attrName, attrValue);
+    }
+  else
+    {
+    vtksys_ios::ostringstream valueStr;
+    valueStr << setprecision(precision) << attrValue << ends;
+    this->AddAttribute(attrName, valueStr.str().c_str());
+    }
+}
+
+//----------------------------------------------------------------------------
 void vtkPVXMLElement::AddAttribute(const char* attrName,
                                    const char* attrValue)
 {
