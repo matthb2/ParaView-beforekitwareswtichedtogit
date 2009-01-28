@@ -70,3 +70,9 @@ vtkRenderPass *vtkRenderPassCollection::GetLastRenderPass()
     return static_cast<vtkRenderPass *>(this->Bottom->Item);
     }
 }
+
+// ----------------------------------------------------------------------------
+void vtkRenderPassCollection::PrintSelf(ostream& os, vtkIndent indent)
+{
+  this->Superclass::PrintSelf(os,indent);
+}
