@@ -894,12 +894,13 @@ void vtkFrameBufferObject::RenderQuad(int minX,
 #endif
 }
 
-// ------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------
 void vtkFrameBufferObject::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os, indent);
 
-  os << indent << "LastSize : " << this->LastSize[0] << this->LastSize[1] <<endl;
+  os << indent << "LastSize : " << this->LastSize[0] << this->LastSize[1]
+     << endl;
   os << indent << "DepthBufferNeeded:";
   if(this->DepthBufferNeeded)
     {
