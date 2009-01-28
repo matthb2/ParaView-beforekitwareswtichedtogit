@@ -490,7 +490,7 @@ bool vtkPixelBufferObject::Download3D(
 
   if (this->Size < dims[0]*dims[1]*dims[2]*numcomps)
     {
-    vtkErrorMacro("Size to small.");
+    vtkErrorMacro("Size too small.");
     return false;
     }
 
