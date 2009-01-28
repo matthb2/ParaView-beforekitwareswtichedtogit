@@ -323,10 +323,10 @@ void vtkDepthPeelingPass::Render(const vtkRenderState *s)
       if(!stop || l>0) // stop && l==0 <=> no translucent geometry
         {
         vtkgl::GetQueryObjectuiv(queryId,vtkgl::QUERY_RESULT,&nbPixels);
+        ++l;
         if(!stop)
           {
           stop=(nbPixels<=threshold) || (nbPixels==previousNbPixels);
-          ++l;
           if(!stop && !infiniteLoop)
             {
             stop=l>=this->MaximumNumberOfPeels;
@@ -335,7 +335,7 @@ void vtkDepthPeelingPass::Render(const vtkRenderState *s)
         }
       }
     
-    if(l>0) // some higher layer, we allocated some tex unit in RenderPeel()
+    if(l>1) // some higher layer, we allocated some tex unit in RenderPeel()
       {
       vtkTextureUnitManager *m=
         this->Prog->GetContext()->GetTextureUnitManager();
