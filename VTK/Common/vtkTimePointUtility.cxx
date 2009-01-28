@@ -227,7 +227,7 @@ vtkTypeUInt64 vtkTimePointUtility::ISO8601ToTimePoint(const char* cstr, bool* ok
         }
       else if (c == 10)
         {
-        if (str.at(c) != 'T')
+        if (str.at(c) != 'T' && str.at(c) != ' ')
           {
           formatValid = false;
           break;
