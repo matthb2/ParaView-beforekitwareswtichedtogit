@@ -41,7 +41,7 @@ vtkStandardNewMacro(vtkCirculationFeatures);
 //-----------------------------------------------------------------------------
 vtkCirculationFeatures::vtkCirculationFeatures()
 {
-  this->SetInputArray(vtkDataSetAttributes::SCALARS);
+  this->SetInputCirculation(vtkDataSetAttributes::SCALARS);
 }
 
 vtkCirculationFeatures::~vtkCirculationFeatures()
@@ -54,13 +54,13 @@ void vtkCirculationFeatures::PrintSelf(ostream &os, vtkIndent indent)
 }
 
 //-----------------------------------------------------------------------------
-void vtkCirculationFeatures::SetInputArray(const char *name)
+void vtkCirculationFeatures::SetInputCirculation(const char *name)
 {
   this->SetInputArrayToProcess(0, 0, 0, vtkDataObject::FIELD_ASSOCIATION_CELLS,
                                name);
 }
 
-void vtkCirculationFeatures::SetInputArray(int fieldAttributeType)
+void vtkCirculationFeatures::SetInputCirculation(int fieldAttributeType)
 {
   this->SetInputArrayToProcess(0, 0, 0, vtkDataObject::FIELD_ASSOCIATION_CELLS,
                                fieldAttributeType);
@@ -103,7 +103,7 @@ int vtkCirculationFeatures::RequestData(vtkInformation *vtkNotUsed(request),
     // Convert scalars to vectors.
     VTK_CREATE(vtkFluxVectors, fluxVectors);
     fluxVectors->SetInput(inputCopy);
-    fluxVectors->SetInputArray(circulation->GetName());
+    fluxVectors->SetInputFlux(circulation->GetName());
     fluxVectors->Update();
     inputCopy = fluxVectors->GetOutput();
     circulation = inputCopy->GetCellData()->GetArray(circulation->GetName());
