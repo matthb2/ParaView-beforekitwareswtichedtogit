@@ -150,11 +150,11 @@ bool vtkTextureUnitManager::IsAllocated(int textureUnitId)
 // ----------------------------------------------------------------------------
 // Description:
 // Release a texture unit.
-// \pre valid_id: textureUnitId>=0 || textureUnitId<this->GetNumberOfTextureUnits()
+// \pre valid_id: textureUnitId>=0 && textureUnitId<this->GetNumberOfTextureUnits()
 // \pre allocated_id: this->IsAllocated(textureUnitId)
 void vtkTextureUnitManager::Free(int textureUnitId)
 {
-  assert("pre: valid_textureUnitId" && (textureUnitId>=0 || textureUnitId<this->GetNumberOfTextureUnits()));
+  assert("pre: valid_textureUnitId" && (textureUnitId>=0 && textureUnitId<this->GetNumberOfTextureUnits()));
   assert("pre: allocated_textureUnitId" && this->IsAllocated(textureUnitId));
   
   this->TextureUnits[textureUnitId]=false;
