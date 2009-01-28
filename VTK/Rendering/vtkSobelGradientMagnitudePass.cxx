@@ -120,7 +120,7 @@ void vtkSobelGradientMagnitudePass::Render(const vtkRenderState *s)
   
   if(this->DelegatePass!=0)
     {
-    int savedDrawBuffer;
+    GLint savedDrawBuffer;
     glGetIntegerv(GL_DRAW_BUFFER,&savedDrawBuffer);
     
     // 1. Create a new render state with an FBO.
