@@ -50,9 +50,6 @@ vtkQtLineChartView::vtkQtLineChartView()
   this->LineModel = new vtkQtChartSeriesModelCollection(this->LineChart);
   this->LineChart->setModel(this->LineModel);
   area->addLayer(this->LineChart);
-
-  // TEMP
-  this->SetupDefaultInteractor();
 }
 
 //----------------------------------------------------------------------------

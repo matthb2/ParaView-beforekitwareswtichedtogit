@@ -44,9 +44,6 @@ vtkQtBarChartView::vtkQtBarChartView()
   this->BarModel = new vtkQtChartSeriesModelCollection(this->BarChart);
   this->BarChart->setModel(this->BarModel);
   area->insertLayer(area->getAxisLayerIndex(), this->BarChart);
-
-  // TEMP
-  this->SetupDefaultInteractor();
 }
 
 //----------------------------------------------------------------------------
