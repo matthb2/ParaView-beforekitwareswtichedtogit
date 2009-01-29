@@ -70,8 +70,8 @@ bool vtkPixelBufferObject::IsSupported(vtkRenderWindow* win)
 //----------------------------------------------------------------------------
 bool vtkPixelBufferObject::LoadRequiredExtensions(vtkOpenGLExtensionManager* mgr)
 {
-  bool gl15=mgr->ExtensionSupported("GL_VERSION_1_5");
-  bool gl21=mgr->ExtensionSupported("GL_VERSION_2_1");
+  bool gl15=mgr->ExtensionSupported("GL_VERSION_1_5")==1;
+  bool gl21=mgr->ExtensionSupported("GL_VERSION_2_1")==1;
   
   bool vbo=gl15 || mgr->ExtensionSupported("GL_ARB_vertex_buffer_object");
   

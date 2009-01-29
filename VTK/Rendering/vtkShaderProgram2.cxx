@@ -133,8 +133,8 @@ bool vtkShaderProgram2::LoadExtensions(vtkOpenGLRenderWindow *context)
   
   vtkOpenGLExtensionManager *e=context->GetExtensionManager();
   
-  bool gl13=e->ExtensionSupported("GL_VERSION_1_3");
-  bool gl20=e->ExtensionSupported("GL_VERSION_2_0");
+  bool gl13=e->ExtensionSupported("GL_VERSION_1_3")==1;
+  bool gl20=e->ExtensionSupported("GL_VERSION_2_0")==1;
   
   bool multiTexture=gl13 || e->ExtensionSupported("GL_ARB_multitexture");
   bool glsl=gl20 || (e->ExtensionSupported("GL_ARB_shading_language_100") &&
