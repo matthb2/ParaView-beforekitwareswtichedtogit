@@ -68,7 +68,7 @@ vtkSeedWidget::vtkSeedWidget()
 //----------------------------------------------------------------------
 void vtkSeedWidget::DeleteSeed(int i)
 {
-   if( this->Seeds->size() <= i )
+   if( this->Seeds->size() <= static_cast< size_t >(i) )
      {
      return;
      }
@@ -97,7 +97,7 @@ vtkSeedWidget::~vtkSeedWidget()
 //----------------------------------------------------------------------
 vtkHandleWidget * vtkSeedWidget::GetSeed(int i)
 {
- if( this->Seeds->size() <= i )
+ if( this->Seeds->size() <= static_cast< size_t >(i) )
    {
    return NULL;
    }

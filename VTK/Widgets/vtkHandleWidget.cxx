@@ -274,5 +274,6 @@ void vtkHandleWidget::PrintSelf(ostream& os, vtkIndent indent)
 
   os << indent << "Enable Axis Constraint: " 
      << (this->EnableAxisConstraint ? "On\n" : "Off\n");
-  
+
+  os << indent << "WidgetState: " << this->WidgetState << endl;  
 }
