@@ -51,6 +51,7 @@
 #include "vtkObjectFactory.h"
 #include "vtkPassThroughLayoutStrategy.h"
 #include "vtkPassThroughEdgeStrategy.h"
+#include "vtkPerturbCoincidentVertices.h"
 #include "vtkPointData.h"
 #include "vtkPolyDataMapper.h"
 #include "vtkProperty.h"
@@ -91,6 +92,7 @@ vtkGraphLayoutView::vtkGraphLayoutView()
   this->EdgeLayout             = vtkSmartPointer<vtkEdgeLayout>::New();
   this->ArcParallelStrategy    = vtkSmartPointer<vtkArcParallelEdgeStrategy>::New();
   this->PassThroughEdgeStrategy = vtkSmartPointer<vtkPassThroughEdgeStrategy>::New();
+  this->PerturbCoincidentVertices = vtkSmartPointer<vtkPerturbCoincidentVertices>::New();
   this->VertexDegree           = vtkSmartPointer<vtkVertexDegree>::New();
   this->EdgeCenters            = vtkSmartPointer<vtkEdgeCenters>::New();
   this->GraphMapper            = vtkSmartPointer<vtkGraphMapper>::New();
@@ -176,7 +178,8 @@ vtkGraphLayoutView::vtkGraphLayoutView()
   this->EdgeLayout->SetInputConnection(this->GraphLayout->GetOutputPort());
   this->VertexDegree->SetInputConnection(this->EdgeLayout->GetOutputPort());
   
-  this->GraphMapper->SetInputConnection(this->VertexDegree->GetOutputPort());
+  this->PerturbCoincidentVertices->SetInputConnection(this->VertexDegree->GetOutputPort());
+  this->GraphMapper->SetInputConnection(this->PerturbCoincidentVertices->GetOutputPort());
   this->GraphActor->SetMapper(this->GraphMapper);
   this->VertexLabelMapper->SetInputConnection(this->VertexDegree->GetOutputPort());
   this->VertexLabelActor->SetMapper(this->VertexLabelMapper);
