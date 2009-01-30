@@ -178,8 +178,9 @@ vtkGraphLayoutView::vtkGraphLayoutView()
   this->EdgeLayout->SetInputConnection(this->GraphLayout->GetOutputPort());
   this->VertexDegree->SetInputConnection(this->EdgeLayout->GetOutputPort());
   
-  this->PerturbCoincidentVertices->SetInputConnection(this->VertexDegree->GetOutputPort());
-  this->GraphMapper->SetInputConnection(this->PerturbCoincidentVertices->GetOutputPort());
+  //this->PerturbCoincidentVertices->SetInputConnection(this->VertexDegree->GetOutputPort());
+  //this->GraphMapper->SetInputConnection(this->PerturbCoincidentVertices->GetOutputPort());
+  this->GraphMapper->SetInputConnection(this->VertexDegree->GetOutputPort());
   this->GraphActor->SetMapper(this->GraphMapper);
   this->VertexLabelMapper->SetInputConnection(this->VertexDegree->GetOutputPort());
   this->VertexLabelActor->SetMapper(this->VertexLabelMapper);
