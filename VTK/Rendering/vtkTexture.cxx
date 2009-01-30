@@ -49,6 +49,8 @@ vtkTexture::vtkTexture()
 
   this->BlendingMode = VTK_TEXTURE_BLENDING_MODE_NONE;
 
+  this->RestrictPowerOf2ImageSmaller = 0;
+
   // By default select active point scalars.
   this->SetInputArrayToProcess(0,0,0,
     vtkDataObject::FIELD_ASSOCIATION_POINTS_THEN_CELLS,
