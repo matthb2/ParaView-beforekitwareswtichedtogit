@@ -59,7 +59,18 @@ public:
   ///   Constructs an options container.
   /// \param parent The parent widget.
   pqOptionsContainer(QWidget *parent=0);
-  virtual ~pqOptionsContainer() {}
+  virtual ~pqOptionsContainer();
+
+  /// \brief
+  ///   Gets the page path prefix.
+  /// \return
+  ///   The page path prefix.
+  const QString &getPagePrefix() const;
+
+  /// \brief
+  ///   Sets the page path prefix.
+  /// \param prefix The new page path prefix.
+  void setPagePrefix(const QString &prefix);
 
   /// \brief
   ///   Sets the currently displayed page.
@@ -70,6 +81,9 @@ public:
   ///   Gets the list of available pages in the container.
   /// \param pages Used to return the list of available pages.
   virtual QStringList getPageList() = 0;
+
+private:
+  QString *Prefix; ///< Stores the page prefix.
 };
 
 #endif

@@ -30,31 +30,53 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 =========================================================================*/
 
-/// \file pqOptionsContainer.cxx
-/// \date 7/20/2007
+#ifndef _pqBarChartOptionsEditor_h
+#define _pqBarChartOptionsEditor_h
 
-#include "pqOptionsContainer.h"
+#include "pqComponentsExport.h"
+#include "pqOptionsPage.h"
+#include "vtkQtBarChartOptions.h" // needed for enum
+
+class pqBarChartOptionsEditorForm;
+class QString;
 
 
-pqOptionsContainer::pqOptionsContainer(QWidget *widgetParent)
-  : pqOptionsPage(widgetParent)
+class PQCOMPONENTS_EXPORT pqBarChartOptionsEditor : public pqOptionsPage
 {
-  this->Prefix = new QString();
-}
+  Q_OBJECT
 
-pqOptionsContainer::~pqOptionsContainer()
-{
-  delete this->Prefix;
-}
+public:
+  /// \brief
+  ///   Constructs a bar chart options page.
+  /// \param parent The parent widget.
+  pqBarChartOptionsEditor(QWidget *parent=0);
+  virtual ~pqBarChartOptionsEditor();
 
-const QString &pqOptionsContainer::getPagePrefix() const
-{
-  return *this->Prefix;
-}
+  void getHelpFormat(QString &format) const;
+  void setHelpFormat(const QString &format);
 
-void pqOptionsContainer::setPagePrefix(const QString &prefix)
-{
-  *this->Prefix = prefix;
-}
+  vtkQtBarChartOptions::OutlineStyle getOutlineStyle() const;
+  void setOutlineStyle(vtkQtBarChartOptions::OutlineStyle outline);
 
+  float getBarGroupFraction() const;
+  void setBarGroupFraction(float fraction);
 
+  float getBarWidthFraction() const;
+  void setBarWidthFraction(float fraction);
+
+signals:
+  void helpFormatChanged(const QString &format);
+  void outlineStyleChanged(vtkQtBarChartOptions::OutlineStyle outline);
+  void barGroupFractionChanged(float fraction);
+  void barWidthFractionChanged(float fraction);
+
+private slots:
+  void convertOutlineStyle(int index);
+  void convertGroupFraction(double fraction);
+  void convertWidthFraction(double fraction);
+
+private:
+  pqBarChartOptionsEditorForm *Form; ///< Stores the UI data.
+};
+
+#endif
