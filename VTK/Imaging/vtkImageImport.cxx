@@ -86,7 +86,7 @@ vtkImageImport::vtkImageImport()
   exec->Delete();
 
   this->ScalarArrayName=0;
-  this->SetScalarArrayName("");
+  this->SetScalarArrayName("scalars");
 }
 
 //----------------------------------------------------------------------------
