@@ -55,6 +55,18 @@ vtkContourWidget::vtkContourWidget()
                                           vtkEvent::NoModifier, 127, 1, "Delete",
                                           vtkWidgetEvent::Delete,
                                           this, vtkContourWidget::DeleteAction);
+  this->CallbackMapper->SetCallbackMethod(vtkCommand::MiddleButtonPressEvent,
+                                          vtkWidgetEvent::Translate,
+                                          this, vtkContourWidget::TranslateContourAction);
+  this->CallbackMapper->SetCallbackMethod(vtkCommand::MiddleButtonReleaseEvent,
+                                          vtkWidgetEvent::EndTranslate,
+                                          this, vtkContourWidget::EndSelectAction);
+  this->CallbackMapper->SetCallbackMethod(vtkCommand::RightButtonPressEvent,
+                                          vtkWidgetEvent::Scale,
+                                          this, vtkContourWidget::ScaleContourAction);
+  this->CallbackMapper->SetCallbackMethod(vtkCommand::RightButtonReleaseEvent,
+                                          vtkWidgetEvent::EndScale,
+                                          this, vtkContourWidget::EndSelectAction);
   
   this->CreateDefaultRepresentation();
   
