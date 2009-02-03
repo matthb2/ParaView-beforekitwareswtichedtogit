@@ -186,7 +186,7 @@ void vtkPythonCalculator::Exec(const char* expression,
       }
     }
     
-  size_t pos = orgscript.rfind("\n");
+  //size_t pos = orgscript.rfind("\n");
     
   // Construct a script that defines a function
   vtkstd::string fscript;
