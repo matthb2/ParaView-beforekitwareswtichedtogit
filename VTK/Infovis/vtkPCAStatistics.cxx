@@ -280,9 +280,11 @@ int vtkPCAStatistics::FillInputPortInformation( int port, vtkInformation* info )
   return this->Superclass::FillInputPortInformation( port, info );
 }
 
-static void vtkPCAStatisticsNormalizeSpec(
-                                          vtkVariantArray* normData, ap::real_2d_array& cov,
-                                          vtkTable* normSpec, vtkTable* reqModel, bool triangle )
+static void vtkPCAStatisticsNormalizeSpec( vtkVariantArray* normData, 
+                                           ap::real_2d_array& cov,
+                                           vtkTable* normSpec, 
+                                           vtkTable* reqModel, 
+                                           bool triangle )
 {
   vtkIdType i, j;
   vtkIdType m = reqModel->GetNumberOfColumns() - 2;
@@ -395,8 +397,8 @@ static void vtkPCAStatisticsNormalizeSpec(
     }
 }
 
-static void vtkPCAStatisticsNormalizeVariance(
-                                              vtkVariantArray* normData, ap::real_2d_array& cov )
+static void vtkPCAStatisticsNormalizeVariance( vtkVariantArray* normData, 
+                                               ap::real_2d_array& cov )
 {
   vtkIdType i, j;
   vtkIdType m = cov.gethighbound( 0 ) - cov.getlowbound( 0 ) + 1;
@@ -558,8 +560,10 @@ void vtkPCAStatistics::ExecuteDerive( vtkDataObject* inMetaDO )
     }
 }
 
-void vtkPCAStatistics::ExecuteAssess(
-                                     vtkTable* inData, vtkDataObject* inMetaDO, vtkTable* outData, vtkDataObject* vtkNotUsed(outMetaDO) )
+void vtkPCAStatistics::ExecuteAssess( vtkTable* inData, 
+                                      vtkDataObject* inMetaDO, 
+                                      vtkTable* outData, 
+                                      vtkDataObject* vtkNotUsed(outMetaDO) )
 {
   vtkMultiBlockDataSet* inMeta = vtkMultiBlockDataSet::SafeDownCast( inMetaDO );
   if ( ! inMeta || ! outData )
