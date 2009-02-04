@@ -471,6 +471,15 @@ void vtkOpenGLProperty::Render(vtkActor *anActor,
 #endif // VTK_USE_GL2PS
     }
 
+  if(this->Lighting) // fixed-pipeline
+    {
+    glEnable(GL_LIGHTING);
+    }
+  else
+    {
+    glDisable(GL_LIGHTING);
+    }
+  
   // render any textures.
   vtkIdType numTextures = this->GetNumberOfTextures();
   if (numTextures > 0)
