@@ -210,16 +210,19 @@ void vtkStatisticsAlgorithm::SetColumnStatus( const char* namCol, int status )
   this->Internals->SetBufferColumnStatus( namCol, status );
 }
 
+//---------------------------------------------------------------------------
 void vtkStatisticsAlgorithm::ResetAllColumnStates()
 {
   this->Internals->ResetBuffer();
 }
 
+//---------------------------------------------------------------------------
 int vtkStatisticsAlgorithm::RequestSelectedColumns()
 {
   return this->Internals->AddBufferToRequests();
 }
 
+//---------------------------------------------------------------------------
 void vtkStatisticsAlgorithm::ResetRequests()
 {
   this->Internals->ResetRequests();
