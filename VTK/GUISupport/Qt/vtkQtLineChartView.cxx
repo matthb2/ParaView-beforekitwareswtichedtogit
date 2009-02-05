@@ -25,11 +25,13 @@
 #include "vtkQtLineChartView.h"
 
 #include "vtkQtChartArea.h"
+#include "vtkQtChartHelpFormatter.h"
 #include "vtkQtChartMouseSelection.h"
 #include "vtkQtChartSeriesModelCollection.h"
 #include "vtkQtChartSeriesSelectionHandler.h"
 #include "vtkQtChartWidget.h"
 #include "vtkQtLineChart.h"
+#include "vtkQtLineChartOptions.h"
 
 #include "vtkObjectFactory.h"
 
@@ -61,6 +63,12 @@ vtkQtLineChartView::~vtkQtLineChartView()
 void vtkQtLineChartView::Update()
 {
   this->Superclass::Update();
+}
+
+//----------------------------------------------------------------------------
+void vtkQtLineChartView::SetHelpFormat(const char* format)
+{
+  this->LineChart->getOptions()->getHelpFormat()->setFormat(QString(format));
 }
 
 //----------------------------------------------------------------------------
