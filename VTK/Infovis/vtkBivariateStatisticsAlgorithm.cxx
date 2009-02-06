@@ -214,6 +214,7 @@ void vtkBivariateStatisticsAlgorithm::ExecuteAssess( vtkTable* inData,
                        << ","
                        << varNameY.c_str()
                        << "). Ignoring it." );
+      delete [] names;
       continue;
       }
     else
