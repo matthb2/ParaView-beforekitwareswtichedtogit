@@ -1393,7 +1393,7 @@ void vtkQuadricClustering::EndAppendVertexGeometry(vtkPolyData *input,
       {
       if (tmp)
         {
-        delete tmp;
+        delete[] tmp;
         }
       tmp = new vtkIdType[numPts];
       tmpLength = numPts;
