@@ -87,6 +87,14 @@ void vtkSMIntVectorProperty::AppendCommandToStream(
       << objectId << this->CleanCommand
       << vtkClientServerStream::End;
     }
+
+  if (this->SetNumberCommand)
+    {
+    *str << vtkClientServerStream::Invoke 
+         << objectId << this->SetNumberCommand 
+         << this->GetNumberOfElements() / this->NumberOfElementsPerCommand
+         << vtkClientServerStream::End;
+    }
   
   if (!this->RepeatCommand)
     {
