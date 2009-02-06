@@ -554,14 +554,17 @@ int vtkXMLDataParser::ReadBlock(unsigned int block, unsigned char* buffer)
 {
   OffsetType uncompressedSize = this->FindBlockSize(block);
   unsigned int compressedSize = this->BlockCompressedSizes[block];
-  unsigned char* readBuffer = new unsigned char[compressedSize];
 
   if(!this->DataStream->Seek(this->BlockStartOffsets[block]))
     {
     return 0;
     }
+  
+  unsigned char* readBuffer = new unsigned char[compressedSize];
+  
   if(this->DataStream->Read(readBuffer, compressedSize) < compressedSize)
     {
+    delete [] readBuffer;
     return 0;
     }
 
@@ -570,7 +573,7 @@ int vtkXMLDataParser::ReadBlock(unsigned int block, unsigned char* buffer)
                                  buffer, uncompressedSize);
 
   delete [] readBuffer;
-  return (result > 0)? 1:0;
+  return result > 0;
 }
 
 //----------------------------------------------------------------------------
