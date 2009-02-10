@@ -134,6 +134,7 @@ int vtkTransformFilter::RequestData(
       newCellVectors = vtkFloatArray::New();
       newCellVectors->SetNumberOfComponents(3);
       newCellVectors->Allocate(3*numCells);
+      newCellVectors->SetName( inCellVectors->GetName() );
       lt->TransformVectors(inCellVectors,newCellVectors);
       }
     if ( inCellNormals ) 
@@ -141,6 +142,7 @@ int vtkTransformFilter::RequestData(
       newCellNormals = vtkFloatArray::New();
       newCellNormals->SetNumberOfComponents(3);
       newCellNormals->Allocate(3*numCells);
+      newCellNormals->SetName( inCellNormals->GetName() );
       lt->TransformNormals(inCellNormals,newCellNormals);
       }
     }
