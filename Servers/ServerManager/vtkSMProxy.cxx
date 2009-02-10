@@ -1624,13 +1624,13 @@ void vtkSMProxy::AddConsumer(vtkSMProperty* property, vtkSMProxy* proxy)
 }
 
 //---------------------------------------------------------------------------
-void vtkSMProxy::RemoveConsumer(vtkSMProperty* property, vtkSMProxy* proxy)
+void vtkSMProxy::RemoveConsumer(vtkSMProperty* property, vtkSMProxy*)
 {
   vtkstd::vector<vtkSMProxyInternals::ConnectionInfo>::iterator i = 
     this->Internals->Consumers.begin();
   for(; i != this->Internals->Consumers.end(); i++)
     {
-    if ( i->Property == property && i->Proxy == proxy )
+    if ( i->Property == property )
       {
       this->Internals->Consumers.erase(i);
       break;

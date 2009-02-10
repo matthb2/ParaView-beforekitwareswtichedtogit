@@ -519,7 +519,8 @@ int vtkSMProxyProperty::ReadXMLAttributes(vtkSMProxy* parent,
   int retVal = element->GetScalarAttribute("repeat_command", &repeat_command);
   if(retVal) 
     { 
-    this->SetRepeatCommand(repeat_command); 
+    this->SetRepeatCommand(repeat_command);
+    this->Repeatable = repeat_command;
     }
 
   const char* remove_command = element->GetAttribute("remove_command");

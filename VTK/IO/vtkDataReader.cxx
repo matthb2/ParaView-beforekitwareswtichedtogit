@@ -1378,7 +1378,8 @@ int vtkReadASCIIData(vtkDataReader *self, T *data, int numTuples, int numComp)
       {
       if ( !self->Read(data++) )
         {
-        vtkGenericWarningMacro(<<"Error reading ascii data!");
+        vtkGenericWarningMacro(<<"Error reading ascii data. Possible mismatch of "
+          "datasize with declaration.");
         return 0;
         }
       }
