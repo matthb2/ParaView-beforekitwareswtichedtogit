@@ -394,7 +394,8 @@ void vtkPVProgressHandler::CleanupSatellites()
     if (this->Internals->AsyncRequestValid)
       {
       this->Internals->AsyncRequestValid = false;
-      if (!this->Internals->ForceAsyncRequestReceived)
+      if (!this->Internals->ForceAsyncRequestReceived &&
+        !this->Internals->AsyncRequest.Test())
         {
         this->Internals->AsyncRequest.Cancel();
         }
