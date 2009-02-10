@@ -148,6 +148,21 @@ vtkSMDomain* vtkSMProperty::GetDomain(const char* name)
 }
 
 //---------------------------------------------------------------------------
+vtkSMDomain* vtkSMProperty::FindDomain(const char* classname)
+{
+  vtkSmartPointer<vtkSMDomainIterator> iter;
+  iter.TakeReference(this->NewDomainIterator());
+  for (iter->Begin(); !iter->IsAtEnd(); iter->Next())
+    {
+    if (iter->GetDomain()->IsA(classname))
+      {
+      return iter->GetDomain();
+      }
+    }
+  return 0;
+}
+
+//---------------------------------------------------------------------------
 unsigned int vtkSMProperty::GetNumberOfDomains()
 {
   return this->PInternals->Domains.size();
