@@ -198,7 +198,8 @@ vtkLabelPlacer::vtkLabelPlacer()
   this->Buckets = 0;
   this->PositionsAsNormals = false;
   //this->IteratorType = vtkLabelHierarchy::DEPTH_FIRST;
-  this->IteratorType = vtkLabelHierarchy::FULL_SORT;
+  //this->IteratorType = vtkLabelHierarchy::FULL_SORT;
+  this->IteratorType = vtkLabelHierarchy::QUEUE;
 
   this->LastRendererSize[0] = 0;
   this->LastRendererSize[1] = 0;
