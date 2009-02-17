@@ -148,6 +148,8 @@ void vtkProp::PrintSelf(ostream& os, vtkIndent indent)
     {
     os << "none." << endl;
     }
+  
+  os << indent << "useBounds: " << this->UseBounds <<endl;
 }
 
 
