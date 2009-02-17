@@ -249,7 +249,7 @@ double *vtkPropAssembly::GetBounds()
   for ( this->Parts->InitTraversal(pit); 
         (part=this->Parts->GetNextProp(pit)); )
     {
-    if ( part->GetVisibility() )
+    if ( part->GetVisibility() && part->GetUseBounds() )
       {
       bounds = part->GetBounds();
       

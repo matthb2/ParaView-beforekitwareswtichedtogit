@@ -353,7 +353,7 @@ void vtkVolumeRayCastMapper::Render( vtkRenderer *ren, vtkVolume *vol )
   // because that turns off stereo rendering!!!
   this->PerspectiveTransform->Identity();
   this->PerspectiveTransform->Concatenate(
-    cam->GetPerspectiveTransformMatrix(aspect[0]/aspect[1],0.0, 1.0 ));
+    cam->GetProjectionTransformMatrix(aspect[0]/aspect[1],0.0, 1.0 ));
   this->PerspectiveTransform->Concatenate(cam->GetViewTransformMatrix());
   this->PerspectiveMatrix->DeepCopy(this->PerspectiveTransform->GetMatrix());
 

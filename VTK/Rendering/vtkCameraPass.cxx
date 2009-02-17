@@ -190,7 +190,7 @@ void vtkCameraPass::Render(const vtkRenderState *s)
   glMatrixMode( GL_PROJECTION);
   if(usize && vsize)
     {
-    matrix->DeepCopy(camera->GetPerspectiveTransformMatrix(
+    matrix->DeepCopy(camera->GetProjectionTransformMatrix(
                        aspectModification*usize/vsize, -1,1));
     matrix->Transpose();
     }

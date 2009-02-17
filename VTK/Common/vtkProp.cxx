@@ -33,6 +33,8 @@ vtkProp::vtkProp()
   this->Pickable   = 1;
   this->Dragable   = 1;
   
+  this->UseBounds=true;
+  
   this->AllocatedRenderTime = 10.0;
   this->EstimatedRenderTime = 0.0;
   this->RenderTimeMultiplier = 1.0;

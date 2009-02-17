@@ -685,7 +685,7 @@ GetMinimumBoundsDepth( vtkRenderer *ren, vtkVolume   *vol )
   vtkCamera *cam = ren->GetActiveCamera();
   perspectiveTransform->Identity();
   perspectiveTransform->Concatenate(
-    cam->GetPerspectiveTransformMatrix(aspect[0]/aspect[1], 0.0, 1.0 ));
+    cam->GetProjectionTransformMatrix(aspect[0]/aspect[1], 0.0, 1.0 ));
   perspectiveTransform->Concatenate(cam->GetViewTransformMatrix());
   perspectiveMatrix->DeepCopy(perspectiveTransform->GetMatrix());
   

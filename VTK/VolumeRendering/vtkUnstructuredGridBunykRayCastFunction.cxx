@@ -467,8 +467,8 @@ void vtkUnstructuredGridBunykRayCastFunction::TransformPoints()
   vtkCamera *cam = ren->GetActiveCamera();
   perspectiveTransform->Identity();
   perspectiveTransform->
-    Concatenate(cam->GetPerspectiveTransformMatrix(aspect[0]/
-                                                   aspect[1], 0.0, 1.0 ));
+    Concatenate(cam->GetProjectionTransformMatrix(aspect[0]/
+                                                  aspect[1], 0.0, 1.0 ));
   perspectiveTransform->Concatenate(cam->GetViewTransformMatrix());
   perspectiveTransform->Concatenate(vol->GetMatrix());
   perspectiveMatrix->DeepCopy(perspectiveTransform->GetMatrix());
