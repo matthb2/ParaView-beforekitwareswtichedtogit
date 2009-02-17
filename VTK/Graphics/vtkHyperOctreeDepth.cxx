@@ -122,6 +122,6 @@ int vtkHyperOctreeDepth::FillInputPortInformation(int, vtkInformation *info)
 //----------------------------------------------------------------------------
 int vtkHyperOctreeDepth::FillOutputPortInformation(int, vtkInformation *info)
 {
-  info->Set(vtkAlgorithm::INPUT_REQUIRED_DATA_TYPE(), "vtkHyperOctree");
+  info->Set(vtkDataObject::DATA_TYPE_NAME(), "vtkHyperOctree");
   return 1;
 }

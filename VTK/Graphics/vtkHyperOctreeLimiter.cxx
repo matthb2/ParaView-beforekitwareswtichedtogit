@@ -425,7 +425,7 @@ int vtkHyperOctreeLimiter::FillInputPortInformation(int, vtkInformation *info)
 //----------------------------------------------------------------------------
 int vtkHyperOctreeLimiter::FillOutputPortInformation(int, vtkInformation *info)
 {
-  info->Set(vtkAlgorithm::INPUT_REQUIRED_DATA_TYPE(), "vtkHyperOctree");
+  info->Set(vtkDataObject::DATA_TYPE_NAME(), "vtkHyperOctree");
   return 1;
 }
 
