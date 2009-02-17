@@ -57,7 +57,8 @@ bool vtkPExtractHistogram::InitializeBinExtents(
   vtkDoubleArray* bin_extents,
   double& min, double& max)
 {
-  if (!this->Controller || this->Controller->GetNumberOfProcesses() <= 1)
+  if (!this->Controller || this->Controller->GetNumberOfProcesses() <= 1 ||
+    this->UseCustomBinRanges)
     {
     // Nothing extra to do for single process.
     return this->Superclass::InitializeBinExtents(inputVector, 
