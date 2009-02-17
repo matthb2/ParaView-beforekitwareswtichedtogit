@@ -33,7 +33,8 @@
 #include <assert.h> // assert()
 
 
-vtkInformationKeyMacro(vtkDistributedGraphHelper, DISTRIBUTEDIDS, Integer);
+vtkInformationKeyMacro(vtkDistributedGraphHelper, DISTRIBUTEDVERTEXIDS, Integer);
+vtkInformationKeyMacro(vtkDistributedGraphHelper, DISTRIBUTEDEDGEIDS, Integer);
 
 //----------------------------------------------------------------------------
 // class vtkDistributedGraphHelper

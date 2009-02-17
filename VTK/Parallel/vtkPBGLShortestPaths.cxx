@@ -424,7 +424,7 @@ int vtkPBGLShortestPaths::RequestData(
   // to recalculate the values when collecting to 1 node.
   // This might also be used for repartitioning as well.
   PredecessorArray->GetInformation()->Set(
-        vtkDistributedGraphHelper::DISTRIBUTEDIDS(), 1);
+        vtkDistributedGraphHelper::DISTRIBUTEDVERTEXIDS(), 1);
 
   // Add output arrays to the output
   output->GetVertexData()->AddArray(PredecessorArray);
