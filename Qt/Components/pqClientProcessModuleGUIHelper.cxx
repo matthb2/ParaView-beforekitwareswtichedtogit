@@ -47,8 +47,8 @@ vtkCxxRevisionMacro(pqClientProcessModuleGUIHelper, "$Revision$");
 //-----------------------------------------------------------------------------
 pqClientProcessModuleGUIHelper::pqClientProcessModuleGUIHelper()
 {
-  QPixmap pix(":/pqWidget/Icons/PVSplashScreen.png");
-  this->Splash = new QSplashScreen(pix);
+  QPixmap pix(":/pqWidgets/Icons/PVSplashScreen.png");
+  this->Splash = new QSplashScreen(pix, Qt::SplashScreen|Qt::WindowStaysOnTopHint);
   this->Splash->setMask(pix.createMaskFromColor(QColor(Qt::transparent)));
   this->Splash->setAttribute(Qt::WA_DeleteOnClose);
   this->Splash->show();
