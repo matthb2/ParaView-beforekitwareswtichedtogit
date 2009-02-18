@@ -4774,7 +4774,11 @@ void vtkExodusIIReaderPrivate::Reset()
   this->TimeStep = 0;
   memset( (void*)&this->ModelParameters, 0, sizeof(this->ModelParameters) );
   this->FastPathObjectId = -1;
-  this->FileId = 0;
+
+  // Don't clear file id since it's not part of meta-data that's read from the
+  // file, it's set externally (by vtkPExodusIIReader).
+  // Refer to BUG #7633.
+  //this->FileId = 0;
 
   this->Modified();
 }
