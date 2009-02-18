@@ -132,6 +132,12 @@ void vtkSMSILInformationHelper::UpdateArrayList(vtkSMStringVectorProperty* svp)
   svp->SetNumberOfElementsPerCommand(1);
   svp->SetNumberOfElements(0);
 
+  if (!this->SIL)
+    {
+    // no SIL. Most probably reader is no ready yet.
+    return;
+    }
+
   vtkSmartPointer<vtkSMSILModel> model = vtkSmartPointer<vtkSMSILModel>::New();
   model->Initialize(this->SIL);
 
