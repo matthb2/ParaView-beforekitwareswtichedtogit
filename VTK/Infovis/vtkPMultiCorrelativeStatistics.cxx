@@ -100,7 +100,7 @@ void vtkPMultiCorrelativeStatistics::GatherStatistics( vtkMultiProcessController
   vtkCommunicator* com = curController->GetCommunicator();
   
   // (All) gather all sample sizes
-  int n_l = sparseCov->GetValueByName( 0, "Entries" ).ToInt(); // Sample Size
+  int n_l = sparseCov->GetValueByName( 0, "Entries" ).ToInt(); // Cardinality
   int* n_g = new int[np];
   com->AllGather( &n_l, n_g, 1 ); 
   
