@@ -724,6 +724,20 @@ int vtkSocketCommunicator::ReceiveTagged(void* data, int wordSize,
       {
       vtkSwap4(reinterpret_cast<char*>(&length));
       }
+    else if (this->SwapBytesInReceivedData == vtkSocketCommunicator::SwapNotSet)
+      {
+      // Clearly, we still haven;t determined our endianness. In  that case, the
+      // only legal communication should be vtkSocketController::ENDIAN_TAG.
+      // However, I am not flagging an error since applications may used socket
+      // communicator without the handshake part (where it's assumed that the
+      // application takes over the handshaking). So if the message is for
+      // endianness check, then we simply adjust the length.
+      if (tag == vtkSocketController::ENDIAN_TAG)
+        {
+        // ignore the length the we received, just set it to what we want.
+        length = numWords* wordSize;
+        }
+      }
     if(recvTag != tag)
       {
       // There's a tag mismatch, call the error handler. If the error handler
