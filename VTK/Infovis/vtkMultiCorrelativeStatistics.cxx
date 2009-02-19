@@ -282,7 +282,7 @@ void vtkMultiCorrelativeStatistics::ExecuteLearn( vtkTable* inData,
   vtkIdType m = static_cast<vtkIdType>( allColumns.size() );
   vtkstd::set<vtkstd::pair<vtkStdString,vtkDataArray*> >::iterator acIt;
   vtkStdString empty;
-  ocol1->InsertNextValue( "Sample Size" );
+  ocol1->InsertNextValue( "Cardinality" );
   ocol2->InsertNextValue( empty );
   for ( acIt = allColumns.begin(); acIt != allColumns.end(); ++ acIt )
     {
