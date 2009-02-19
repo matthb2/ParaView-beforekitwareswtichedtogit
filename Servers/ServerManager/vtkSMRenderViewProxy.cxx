@@ -1529,6 +1529,12 @@ bool vtkSMRenderViewProxy::SelectFrustum(unsigned int x0,
       {
       continue;
       }
+    if (repr->GetProperty("Pickable") &&
+      vtkSMPropertyHelper(repr, "Pickable").GetAsInt() == 0)
+      {
+      // skip non-pickable representations.
+      continue;
+      }
     vtkPVDataInformation* datainfo = repr->GetRepresentedDataInformation(true);
     if (!datainfo)
       {
