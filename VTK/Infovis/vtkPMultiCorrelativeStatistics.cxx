@@ -75,7 +75,6 @@ void vtkPMultiCorrelativeStatistics::ExecuteLearn( vtkTable* inData,
 
   // Set global statistics
   int ns = sparseCov->GetValueByName( 0, "Entries" ).ToInt();
-  this->SampleSize = ns;
 }
 
 // ----------------------------------------------------------------------
