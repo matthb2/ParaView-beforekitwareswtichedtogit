@@ -325,7 +325,6 @@ int vtkPBGLShortestPaths::RequestData(
       }
     }
 
-
   // Create the predecessor array
   vtkIdTypeArray* PredecessorArray = vtkIdTypeArray::New();
   if (this->PredecessorArrayName)
