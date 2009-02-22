@@ -1375,9 +1375,13 @@ void vtkParallelRenderManager::MagnifyImageLinear(
   // For speed, we only magnify by powers of 2.  Round up to the nearest
   // power of 2 to ensure that the reduced image is large enough.
   int powOf2;
-  for (powOf2 = 1; powOf2 < xmag; powOf2 <<= 1);
+  for (powOf2 = 1; powOf2 < xmag; powOf2 <<= 1)
+    {
+    }
   xmag = powOf2;
-  for (powOf2 = 1; powOf2 < ymag; powOf2 <<= 1);
+  for (powOf2 = 1; powOf2 < ymag; powOf2 <<= 1)
+    {
+    }
   ymag = powOf2;
 
   unsigned char *srcline = reducedImage->GetPointer(
