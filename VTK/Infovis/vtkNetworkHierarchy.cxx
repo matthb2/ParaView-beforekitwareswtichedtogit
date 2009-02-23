@@ -52,12 +52,13 @@ vtkStandardNewMacro(vtkNetworkHierarchy);
 
 vtkNetworkHierarchy::vtkNetworkHierarchy()
 {
-  IPArrayName = 0;
+  this->IPArrayName = 0;
   this->SetIPArrayName("ip");
 }
 
 vtkNetworkHierarchy::~vtkNetworkHierarchy()
 {
+  this->SetIPArrayName(0);
 }
 
 void vtkNetworkHierarchy::PrintSelf(ostream& os, vtkIndent indent)
