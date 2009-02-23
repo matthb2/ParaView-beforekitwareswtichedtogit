@@ -119,9 +119,7 @@ vtkLineRepresentation::vtkLineRepresentation()
   
   // This needs to be initialized before PlaceWidget is called.
   this->InitializedDisplayPosition = 0;
-
-  // Initial creation of the widget, serves to initialize it
-  this->PlaceWidget(bounds);
+  
   this->ClampToBounds = 0;
 
   // The bounding box
@@ -129,6 +127,11 @@ vtkLineRepresentation::vtkLineRepresentation()
 
   this->RepresentationState = vtkLineRepresentation::Outside;
   this->AnnotationTextScaleInitialized = false;
+  
+  // Initial creation of the widget, serves to initialize it.
+  // Call PlaceWidget() LAST in the constructor, as this method depends on ivar
+  // values.
+  this->PlaceWidget(bounds);
 }
 
 //----------------------------------------------------------------------------
