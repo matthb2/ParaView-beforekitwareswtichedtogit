@@ -71,6 +71,8 @@ vtkTransferAttributes::vtkTransferAttributes()
   this->DefaultValue = 1;
   this->SourceArrayName = 0;
   this->TargetArrayName = 0;
+  this->SourceFieldType=vtkDataObject::FIELD_ASSOCIATION_POINTS;
+  this->TargetFieldType=vtkDataObject::FIELD_ASSOCIATION_POINTS;
 }
 
 vtkTransferAttributes::~vtkTransferAttributes()
