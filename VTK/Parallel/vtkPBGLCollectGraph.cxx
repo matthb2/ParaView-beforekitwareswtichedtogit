@@ -37,7 +37,9 @@
 #include "vtkPBGLGraphAdapter.h"
 #include "vtkSmartPointer.h"
 #include "vtkStringArray.h"
+#include "vtkSystemIncludes.h"
 #include "vtkUndirectedGraph.h"
+#include "vtkVariant.h"
 #include "vtkVariantBoostSerialization.h"
 
 #include <boost/mpi/collectives/all_gather.hpp>
