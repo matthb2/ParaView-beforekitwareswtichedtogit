@@ -66,7 +66,8 @@ static int my_getline(istream& stream, vtkStdString &output, int& line_count);
 // Returns true if the line is entirely whitespace, false otherwise.
 static bool isspace(vtkStdString s)
 {
-  for (unsigned int i = 0; i < s.length(); ++i)
+  vtkStdString::size_type i;
+  for (i = 0; i < s.length(); ++i)
     {
     if (!isspace(s[i]))
       {
