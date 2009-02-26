@@ -95,13 +95,13 @@ vtkSMUndoStackBuilder::vtkSMUndoStackBuilder()
     pxm->AddObserver(vtkCommand::UnRegisterEvent, this->Observer, 100);
     pxm->AddObserver(vtkCommand::PropertyModifiedEvent, this->Observer, 100);
     pxm->AddObserver(vtkCommand::UpdateInformationEvent, this->Observer, 100);
-    }
 
-  // Add existing global properties managers.
-  for (unsigned int cc=0; cc < pxm->GetNumberOfGlobalPropertiesManagers(); cc++)
-    {
-    this->OnRegisterGlobalPropertiesManager(
-      pxm->GetGlobalPropertiesManager(cc));
+    // Add existing global properties managers.
+    for (unsigned int cc=0; cc < pxm->GetNumberOfGlobalPropertiesManagers(); cc++)
+      {
+      this->OnRegisterGlobalPropertiesManager(
+        pxm->GetGlobalPropertiesManager(cc));
+      }
     }
 }
 
