@@ -213,7 +213,9 @@ void vtkCameraPass::Render(const vtkRenderState *s)
   // adjust the mode first
   glMatrixMode(GL_MODELVIEW);
   glPushMatrix();
-
+  
+  glLoadIdentity();
+  
   matrix->DeepCopy(camera->GetViewTransformMatrix());
   matrix->Transpose();
   
