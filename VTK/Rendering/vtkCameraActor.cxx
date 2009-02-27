@@ -100,7 +100,7 @@ double *vtkCameraActor::GetBounds()
   this->UpdateViewProps();
   if(this->FrustumActor!=0 && this->FrustumActor->GetUseBounds())
     {
-    return this->FrustumActor->GetBounds();
+    this->FrustumActor->GetBounds(this->Bounds);
     }
   return this->Bounds;
 }
