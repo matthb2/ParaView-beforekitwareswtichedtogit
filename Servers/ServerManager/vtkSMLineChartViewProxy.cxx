@@ -26,6 +26,27 @@ vtkCxxRevisionMacro(vtkSMLineChartViewProxy, "$Revision$");
 //----------------------------------------------------------------------------
 vtkSMLineChartViewProxy::vtkSMLineChartViewProxy()
 {
+  this->ChartView = 0;
+}
+
+//----------------------------------------------------------------------------
+vtkSMLineChartViewProxy::~vtkSMLineChartViewProxy()
+{
+  if (this->ChartView)
+    {
+    this->ChartView->Delete();
+    this->ChartView = 0;
+    }
+}
+
+//----------------------------------------------------------------------------
+void vtkSMLineChartViewProxy::CreateVTKObjects()
+{
+  if (this->ObjectsCreated)
+    {
+    return;
+    }
+
   this->ChartView = vtkQtLineChartView::New();
 
   // Set up the paraview style interactor.
@@ -36,13 +57,8 @@ vtkSMLineChartViewProxy::vtkSMLineChartViewProxy()
 
   // Set default color scheme to blues
   this->ChartView->SetColorSchemeToBlues();
-}
-
-//----------------------------------------------------------------------------
-vtkSMLineChartViewProxy::~vtkSMLineChartViewProxy()
-{
-  this->ChartView->Delete();
-  this->ChartView = 0;
+  
+  this->Superclass::CreateVTKObjects();
 }
 
 //----------------------------------------------------------------------------
