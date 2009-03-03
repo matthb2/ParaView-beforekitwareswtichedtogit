@@ -215,3 +215,39 @@ void vtkGeoTreeNode::SetStatus(NodeStatus status)
 {
   this->Status = status;
 }
+
+void vtkGeoTreeNode::ShallowCopy(vtkGeoTreeNode *src)
+{
+  this->Level = src->Level;
+  this->Id = src->Id;
+  this->LongitudeRange[0] = src->LongitudeRange[0];
+  this->LongitudeRange[1] = src->LongitudeRange[1];
+  this->LatitudeRange[0] = src->LatitudeRange[0];
+  this->LatitudeRange[1] = src->LatitudeRange[1];
+
+  this->Children[0] = src->Children[0];
+  this->Children[1] = src->Children[1];
+  this->Children[2] = src->Children[2];
+  this->Children[3] = src->Children[3];
+
+  this->Status = src->Status;
+  this->Parent = src->Parent;
+}
+
+void vtkGeoTreeNode::DeepCopy(vtkGeoTreeNode *src)
+{
+  this->Level = src->Level;
+  this->Id = src->Id;
+  this->LongitudeRange[0] = src->LongitudeRange[0];
+  this->LongitudeRange[1] = src->LongitudeRange[1];
+  this->LatitudeRange[0] = src->LatitudeRange[0];
+  this->LatitudeRange[1] = src->LatitudeRange[1];
+
+  this->Children[0] = src->Children[0];
+  this->Children[1] = src->Children[1];
+  this->Children[2] = src->Children[2];
+  this->Children[3] = src->Children[3];
+
+  this->Status = src->Status;
+  this->Parent = src->Parent;
+}

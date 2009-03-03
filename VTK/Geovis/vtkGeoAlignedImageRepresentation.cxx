@@ -83,7 +83,10 @@ vtkGeoAlignedImageRepresentationFind(vtkGeoSource* source, vtkGeoImageNode* p, d
         else if(p->GetStatus() == vtkGeoTreeNode::NONE)
           {
           p->SetStatus(vtkGeoTreeNode::PROCESSING);
-          source->RequestChildren(p);
+          vtkGeoImageNode * temp = vtkGeoImageNode::New();
+          temp->DeepCopy(p);
+          source->RequestChildren(temp);
+          //source->RequestChildren(p);
           }
         }
       }
