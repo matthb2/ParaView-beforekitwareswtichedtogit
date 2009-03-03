@@ -117,6 +117,13 @@ void vtkActor::GetActors(vtkPropCollection *ac)
 // should be called from the render methods only
 int vtkActor::GetIsOpaque()
 {
+  // make sure we have a property
+  if(!this->Property)
+    {
+    // force creation of a property
+    this->GetProperty();
+    }
+  
   int result=this->Property->GetOpacity() >= 1.0;
   
   if(result)
