@@ -85,8 +85,10 @@ int ProcessModuleGUIHelper::preAppExec(int argc, char** argv,
       pxm->GetPrototypeProxy("helpers", "StreamingOptions");
     if (!prototype)
       {
-      vtkErrorMacro("Tried and failed to create a streaming module. "
+      /*
+      vtkWarningMacro("Tried and failed to create a streaming module. "
         << "Make sure the streaming plugin can be found by ParaView.");
+      */
       }
     }  
 
