@@ -138,6 +138,12 @@ void vtkSMGlobalPropertiesManager::RemoveGlobalPropertyLink(
 void vtkSMGlobalPropertiesManager::SetGlobalPropertyLink(
   const char* globalPropertyName, vtkSMProxy* proxy, const char* propname)
 {
+  if (!globalPropertyName || !proxy || !propname ||
+    !proxy->GetProperty(propname))
+    {
+    return;
+    }
+
   const char* oldGlobalName = this->GetGlobalPropertyName(proxy, propname);
   if (oldGlobalName)
     {
