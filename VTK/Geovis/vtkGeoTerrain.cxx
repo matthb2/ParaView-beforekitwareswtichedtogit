@@ -280,7 +280,6 @@ void vtkGeoTerrain::AddActors(
         cur->SetStatus(vtkGeoTreeNode::PROCESSING);
         vtkGeoTerrainNode * temp = vtkGeoTerrainNode::New();
         temp->DeepCopy(cur);
-        //this->GeoSource->RequestChildren(cur);
         this->GeoSource->RequestChildren(temp);
         }
       }
