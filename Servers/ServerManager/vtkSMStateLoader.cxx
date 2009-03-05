@@ -106,15 +106,12 @@ vtkSMProxy* vtkSMStateLoader::CreateProxy(
 //---------------------------------------------------------------------------
 void vtkSMStateLoader::CreatedNewProxy(int id, vtkSMProxy* proxy)
 {
-  if (!this->ProxyLocator->GetReviveProxies())
+  // Ensure that the proxy is created before it is registered, unless we are
+  // reviving the server-side server manager, which needs special handling.
+  proxy->UpdateVTKObjects();
+  if (proxy->IsA("vtkSMSourceProxy"))
     {
-    // Ensure that the proxy is created before it is registered, unless we are
-    // reviving the server-side server manager, which needs special handling.
-    proxy->UpdateVTKObjects();
-    if (proxy->IsA("vtkSMSourceProxy"))
-      {
-      vtkSMSourceProxy::SafeDownCast(proxy)->UpdatePipelineInformation();
-      }
+    vtkSMSourceProxy::SafeDownCast(proxy)->UpdatePipelineInformation();
     }
   this->RegisterProxy(id, proxy);
 }
