@@ -512,6 +512,8 @@ int vtkFileSeriesReader::RequestInformation(
 
   // Run RequestInformation on the reader for the first file.  Use that info to
   // determine if the inputs have time information
+  outInfo->Remove(vtkStreamingDemandDrivenPipeline::TIME_STEPS());
+  outInfo->Remove(vtkStreamingDemandDrivenPipeline::TIME_RANGE());
   this->RequestInformationForInput(0, request, outputVector);
 
   // Does the reader have time?
@@ -616,7 +618,7 @@ int vtkFileSeriesReader::RequestInformationForInput(
                                              vtkInformation *request,
                                              vtkInformationVector *outputVector)
 {
-  if (index != this->LastRequestInformationIndex)
+  if ((index != this->LastRequestInformationIndex) || (outputVector != NULL))
     {
     this->SetReaderFileName(this->GetFileName(index));
     this->LastRequestInformationIndex = index;
