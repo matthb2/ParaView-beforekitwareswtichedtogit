@@ -318,7 +318,7 @@ int vtkSMStateLoader::HandleGlobalPropertiesManagers(vtkPVXMLElement* element)
       pxm->SetGlobalPropertiesManager(mgrname, mgr);
       mgr->Delete();
       }
-    if (!mgr->LoadState(currentElement, this->ProxyLocator))
+    if (!mgr->LoadLinkState(currentElement, this->ProxyLocator))
       {
       return 0;
       }

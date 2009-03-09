@@ -1586,7 +1586,7 @@ void vtkSMProxyManager::SaveGlobalPropertiesManagers(vtkPVXMLElement* root)
   for (iter = this->Internals->GlobalPropertiesManagers.begin();
     iter != this->Internals->GlobalPropertiesManagers.end(); ++iter)
     {
-    vtkPVXMLElement* elem = iter->second->SaveState(root);
+    vtkPVXMLElement* elem = iter->second->SaveLinkState(root);
     if (elem)
       {
       elem->AddAttribute("name", iter->first.c_str());
