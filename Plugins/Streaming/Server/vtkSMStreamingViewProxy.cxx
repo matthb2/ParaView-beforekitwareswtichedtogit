@@ -461,12 +461,10 @@ void vtkSMStreamingViewProxy::PrepareRenderPass()
     //cls
     if (firstpass) //workaround a crash that shows up on some mac's
       {
+      renWin->Render();
       firstpass = false;
       }
-    else
-      {
-      ren->Clear(); 
-      }    
+    ren->Clear(); 
     //don't cls on following render passes
     renWin->EraseOff();
     ren->EraseOff();
