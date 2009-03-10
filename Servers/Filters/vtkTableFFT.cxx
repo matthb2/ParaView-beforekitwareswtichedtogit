@@ -33,7 +33,7 @@
 #define VTK_CREATE(type, name) \
   vtkSmartPointer<type> name = vtkSmartPointer<type>::New()
 
-#include <strings.h>
+#include <string.h>
 
 //=============================================================================
 vtkCxxRevisionMacro(vtkTableFFT, "$Revision$");
