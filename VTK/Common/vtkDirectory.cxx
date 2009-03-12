@@ -214,7 +214,7 @@ const char* vtkDirectory::GetFile(int index)
 }
 
 
-int vtkDirectory::GetNumberOfFiles()
+vtkIdType vtkDirectory::GetNumberOfFiles()
 {
   return this->Files->GetNumberOfValues();
 }
