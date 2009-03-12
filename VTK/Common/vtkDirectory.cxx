@@ -202,7 +202,7 @@ int vtkDirectory::MakeDirectory(const char* dir)
 }
 
 
-const char* vtkDirectory::GetFile(int index)
+const char* vtkDirectory::GetFile(vtkIdType index)
 {
   if(index >= this->Files->GetNumberOfValues() || index < 0)
     {
