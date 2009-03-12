@@ -81,6 +81,7 @@ vtkClustering2DLayoutStrategy::vtkClustering2DLayoutStrategy()
   this->SetEdgeWeightField("weight");
   this->RestDistance = 0;
   this->EdgeArray = NULL;
+  this->CuttingThreshold=0;
 }
 
 // ----------------------------------------------------------------------
