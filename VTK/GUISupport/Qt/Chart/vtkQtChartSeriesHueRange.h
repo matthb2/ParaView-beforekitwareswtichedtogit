@@ -18,44 +18,39 @@
   the U.S. Government retains certain rights in this software.
 -------------------------------------------------------------------------*/
 
-/// \file vtkQtBarChartSeriesOptions.cxx
-/// \date February 22, 2008
+/// \file vtkQtChartSeriesHueRange.h
+/// \date February 26, 2009
 
-#ifdef _MSC_VER
-// Disable warnings that Qt headers give.
-#pragma warning(disable:4127)
+#ifndef _vtkQtChartSeriesHueRange_h
+#define _vtkQtChartSeriesHueRange_h
+
+#include "vtkQtChartExport.h"
+#include "vtkQtChartSeriesColors.h"
+
+class vtkQtChartSeriesHueRangeInternal;
+class QColor;
+
+
+class VTKQTCHART_EXPORT vtkQtChartSeriesHueRange :
+    public vtkQtChartSeriesColors
+{
+public:
+  vtkQtChartSeriesHueRange(QObject *parent=0);
+  virtual ~vtkQtChartSeriesHueRange();
+
+  virtual void getBrush(int series, int index, QBrush &brush) const;
+
+  int getNumberOfRanges() const;
+  void addRange(const QColor &color1, const QColor &color2);
+  void removeRange(int index);
+  void removeAllRanges();
+
+private:
+  vtkQtChartSeriesHueRangeInternal *Internal;
+
+private:
+  vtkQtChartSeriesHueRange(const vtkQtChartSeriesHueRange &);
+  vtkQtChartSeriesHueRange &operator=(const vtkQtChartSeriesHueRange &);
+};
+
 #endif
-
-#include "vtkQtBarChartSeriesOptions.h"
-
-#include "vtkQtChartStyleGenerator.h"
-#include <QBrush>
-
-
-vtkQtBarChartSeriesOptions::vtkQtBarChartSeriesOptions(QObject *parentObject)
-  : vtkQtChartSeriesOptions(parentObject)
-{
-  this->MultiColored = false;
-  this->setBrush(QBrush(Qt::red));
-}
-
-void vtkQtBarChartSeriesOptions::setStyle(int style,
-    vtkQtChartStyleGenerator *generator)
-{
-  vtkQtChartSeriesOptions::setStyle(style, generator);
-  if(generator)
-    {
-    this->setBrush(generator->getSeriesBrush(style));
-    }
-}
-
-void vtkQtBarChartSeriesOptions::setMultiColored(bool multiColored)
-{
-  if(this->MultiColored != multiColored)
-    {
-    this->MultiColored = multiColored;
-    emit this->multiColoredChanged(multiColored);
-    }
-}
-
-

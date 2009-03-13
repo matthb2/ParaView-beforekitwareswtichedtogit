@@ -18,44 +18,38 @@
   the U.S. Government retains certain rights in this software.
 -------------------------------------------------------------------------*/
 
-/// \file vtkQtBarChartSeriesOptions.cxx
-/// \date February 22, 2008
+/// \file vtkQtChartSeriesColors.h
+/// \date February 25, 2009
 
-#ifdef _MSC_VER
-// Disable warnings that Qt headers give.
-#pragma warning(disable:4127)
+#ifndef _vtkQtChartSeriesColors_h
+#define _vtkQtChartSeriesColors_h
+
+#include "vtkQtChartExport.h"
+#include <QObject>
+
+class QBrush;
+class vtkQtChartSeriesModel;
+
+
+class VTKQTCHART_EXPORT vtkQtChartSeriesColors : public QObject
+{
+  Q_OBJECT
+
+public:
+  vtkQtChartSeriesColors(QObject *parent=0);
+  virtual ~vtkQtChartSeriesColors() {}
+
+  vtkQtChartSeriesModel *getModel() const {return this->Model;}
+  virtual void setModel(vtkQtChartSeriesModel *model) {this->Model = model;}
+
+  virtual void getBrush(int series, int index, QBrush &brush) const = 0;
+
+private:
+  vtkQtChartSeriesModel *Model;
+
+private:
+  vtkQtChartSeriesColors(const vtkQtChartSeriesColors &);
+  vtkQtChartSeriesColors &operator=(const vtkQtChartSeriesColors &);
+};
+
 #endif
-
-#include "vtkQtBarChartSeriesOptions.h"
-
-#include "vtkQtChartStyleGenerator.h"
-#include <QBrush>
-
-
-vtkQtBarChartSeriesOptions::vtkQtBarChartSeriesOptions(QObject *parentObject)
-  : vtkQtChartSeriesOptions(parentObject)
-{
-  this->MultiColored = false;
-  this->setBrush(QBrush(Qt::red));
-}
-
-void vtkQtBarChartSeriesOptions::setStyle(int style,
-    vtkQtChartStyleGenerator *generator)
-{
-  vtkQtChartSeriesOptions::setStyle(style, generator);
-  if(generator)
-    {
-    this->setBrush(generator->getSeriesBrush(style));
-    }
-}
-
-void vtkQtBarChartSeriesOptions::setMultiColored(bool multiColored)
-{
-  if(this->MultiColored != multiColored)
-    {
-    this->MultiColored = multiColored;
-    emit this->multiColoredChanged(multiColored);
-    }
-}
-
-
