@@ -41,6 +41,7 @@ vtkStandardNewMacro(vtkGraphLayout);
 vtkGraphLayout::vtkGraphLayout()
 {
   this->LayoutStrategy = 0;
+  this->StrategyChanged=false;
   this->LastInput = NULL;
   this->LastInputMTime = 0;
   this->InternalGraph = NULL;
