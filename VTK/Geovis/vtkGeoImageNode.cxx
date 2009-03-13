@@ -260,3 +260,15 @@ void vtkGeoImageNode::DeepCopy(vtkGeoTreeNode *src)
   this->Superclass::DeepCopy(src);
 }
 
+//-----------------------------------------------------------------------------
+bool vtkGeoImageNode::HasData()
+{
+  return (this->Image != 0);
+}
+
+//-----------------------------------------------------------------------------
+void vtkGeoImageNode::DeleteData()
+{
+  this->Image = 0;
+  this->Texture = 0;
+}

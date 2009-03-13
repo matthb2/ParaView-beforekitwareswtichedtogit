@@ -292,3 +292,15 @@ void vtkGeoTerrainNode::DeepCopy(vtkGeoTreeNode *src)
 
   this->Superclass::DeepCopy(src);
 }
+
+//-----------------------------------------------------------------------------
+bool vtkGeoTerrainNode::HasData()
+{
+  return (this->Model != 0);
+}
+
+//-----------------------------------------------------------------------------
+void vtkGeoTerrainNode::DeleteData()
+{
+  this->Model = 0;
+}
