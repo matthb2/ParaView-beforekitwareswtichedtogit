@@ -70,7 +70,7 @@ void vtkSMBarChartViewProxy::CreateVTKObjects()
 //----------------------------------------------------------------------------
 vtkQtChartWidget* vtkSMBarChartViewProxy::GetChartWidget()
 {
-  return this->ChartView->GetChartWidget();
+  return qobject_cast<vtkQtChartWidget*>(this->ChartView->GetWidget());
 }
 
 //----------------------------------------------------------------------------

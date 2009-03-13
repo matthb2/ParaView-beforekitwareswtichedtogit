@@ -17,40 +17,34 @@
   Under the terms of Contract DE-AC04-94AL85000 with Sandia Corporation,
   the U.S. Government retains certain rights in this software.
 -------------------------------------------------------------------------*/
-// .NAME vtkQtTreeView - A VTK view based on a Qt tree view.
+// .NAME vtkQtColumnView - A VTK view based on a Qt column view.
 //
 // .SECTION Description
-// vtkQtTreeView is a VTK view using an underlying QTreeView. 
+// vtkQtColumnView is a VTK view using an underlying QColumnView. 
 //
 // .SECTION Thanks
 // Thanks to Brian Wylie from Sandia National Laboratories for implementing
 // this class
 
-#ifndef __vtkQtTreeView_h
-#define __vtkQtTreeView_h
+#ifndef __vtkQtColumnView_h
+#define __vtkQtColumnView_h
 
 #include "QVTKWin32Header.h"
 #include "vtkQtView.h"
-
 #include <QPointer>
 #include "vtkQtAbstractModelAdapter.h"
 
 class QItemSelection;
-class QModelIndex;
-class QTreeView;
+class QColumnView;
 class vtkQtTreeModelAdapter;
 
-class QVTK_EXPORT vtkQtTreeView : public vtkQtView
+class QVTK_EXPORT vtkQtColumnView : public vtkQtView
 {
 Q_OBJECT
 
-signals:
-  void expanded(const QModelIndex&);
-  void collapsed(const QModelIndex&);
-
 public:
-  static vtkQtTreeView *New();
-  vtkTypeRevisionMacro(vtkQtTreeView, vtkQtView);
+  static vtkQtColumnView *New();
+  vtkTypeRevisionMacro(vtkQtColumnView, vtkQtView);
   void PrintSelf(ostream& os, vtkIndent indent);
   
   // Description:
@@ -65,15 +59,13 @@ public:
   // vtkDataObject to a QAbstractItemModel.
   vtkQtAbstractModelAdapter* GetItemModelAdapter();
 
-  void ExpandAll();
-
   // Description:
   // Updates the view.
   virtual void Update();
 
 protected:
-  vtkQtTreeView();
-  ~vtkQtTreeView();
+  vtkQtColumnView();
+  ~vtkQtColumnView();
 
   // Description:
   // Connects the algorithm output to the internal pipeline.
@@ -88,20 +80,19 @@ protected:
     vtkAlgorithmOutput* conn,
     vtkAlgorithmOutput* selectionConn);
 
-  // Description:
-  // We need to keep track of whether were in selection mode
-  bool Selecting;
-  
-  QPointer<QTreeView> TreeView;
-  vtkQtTreeModelAdapter* TreeAdapter;
-
 private slots:
   void slotSelectionChanged(const QItemSelection&,const QItemSelection&);
 
 private:
-  vtkQtTreeView(const vtkQtTreeView&);  // Not implemented.
-  void operator=(const vtkQtTreeView&);  // Not implemented.
+  vtkQtColumnView(const vtkQtColumnView&);  // Not implemented.
+  void operator=(const vtkQtColumnView&);  // Not implemented.
   
+  // Description:
+  // We need to keep track of whether were in selection mode
+  bool Selecting;
+  
+  QPointer<QColumnView> ColumnView;
+  vtkQtTreeModelAdapter* TreeAdapter;
 };
 
 #endif
