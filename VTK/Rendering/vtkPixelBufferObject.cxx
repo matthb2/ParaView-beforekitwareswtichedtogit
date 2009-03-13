@@ -36,6 +36,8 @@ vtkPixelBufferObject::vtkPixelBufferObject()
   this->Handle = 0;
   this->Context = 0;
   this->BufferTarget = 0;
+  this->Size=0;
+  this->Type=VTK_UNSIGNED_CHAR;
 }
 
 //----------------------------------------------------------------------------
