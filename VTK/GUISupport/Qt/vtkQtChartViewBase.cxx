@@ -563,8 +563,10 @@ void vtkQtChartViewBase::Render()
 void vtkQtChartViewBase::SetupDefaultInteractor()
 {
   vtkQtChartMouseSelection *selector =
-      vtkQtChartInteractorSetup::createDefault(this->GetChartArea());
+    vtkQtChartInteractorSetup::createDefault(this->GetChartArea());
   this->AddChartSelectionHandlers(selector);
+  vtkQtChartInteractorSetup::setupDefaultKeys(
+    this->GetChartArea()->getInteractor());
 }
 
 //----------------------------------------------------------------------------
