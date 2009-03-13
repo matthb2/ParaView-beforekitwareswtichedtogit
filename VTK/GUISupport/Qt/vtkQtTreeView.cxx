@@ -85,12 +85,6 @@ vtkQtAbstractModelAdapter* vtkQtTreeView::GetItemModelAdapter()
 }
 
 //----------------------------------------------------------------------------
-void vtkQtTreeView::ExpandAll()
-{
-  this->TreeView->expandAll();
-}
-
-//----------------------------------------------------------------------------
 void vtkQtTreeView::AddInputConnection( int vtkNotUsed(port), int vtkNotUsed(index),
   vtkAlgorithmOutput* conn, vtkAlgorithmOutput* vtkNotUsed(selectionConn))
 {
