@@ -53,6 +53,16 @@ vtkPolygonalHandleRepresentation3D::vtkPolygonalHandleRepresentation3D()
 
   this->Offset[0] = this->Offset[1] = this->Offset[2] = 0.0;
 
+  // initialized because it is used in PrintSelf
+  this->LastPickPosition[0]=0.0;
+  this->LastPickPosition[1]=0.0;
+  this->LastPickPosition[2]=0.0;
+  
+  // initialized because it is used in PrintSelf
+  this->LastEventPosition[0]=0.0;
+  this->LastEventPosition[1]=0.0;
+  this->LastEventPosition[2]=0.0;
+  
   this->Mapper = vtkPolyDataMapper::New();
   this->Mapper->ScalarVisibilityOff();
   this->Mapper->SetInput(this->HandleTransformFilter->GetOutput());
