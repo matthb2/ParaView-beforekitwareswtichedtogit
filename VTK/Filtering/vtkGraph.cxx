@@ -1256,6 +1256,14 @@ void vtkGraph::AddVertexInternal(const vtkVariant& pedigreeId,
     }
 
   vtkIdType existingVertex = this->FindVertex(pedigreeId);
+
+  // If we're on a distributed graph, FindVertex may return a distributedID
+  // even for a local vertex, so first we make sure we have the local-ID
+  // before doing the range-check.
+  if(helper)
+    {
+    existingVertex = helper->GetVertexIndex(existingVertex);
+    }
   if (existingVertex != -1 && existingVertex < this->GetNumberOfVertices())
     {
     // We found this vertex; nothing more to do.
