@@ -119,13 +119,13 @@ void vtkBivariateStatisticsAlgorithm::ExecuteAssess( vtkTable* inData,
     return;
     }
 
-  if ( ! inData->GetNumberOfColumns() )
+  if ( ! inData || inData->GetNumberOfColumns() <= 0 )
     {
     return;
     }
 
   vtkIdType nRowD = inData->GetNumberOfRows();
-  if ( ! nRowD )
+  if ( nRowD <= 0 )
     {
     return;
     }
@@ -149,12 +149,6 @@ void vtkBivariateStatisticsAlgorithm::ExecuteAssess( vtkTable* inData,
     {
     return;
     }
-
-  if ( ! this->Internals->Selection.size() )
-    {
-    return;
-    }
-
 
   // Loop over pairs of columns of interest
   for ( vtkstd::set<vtkstd::pair<vtkStdString,vtkStdString> >::iterator it = this->Internals->Selection.begin(); 
