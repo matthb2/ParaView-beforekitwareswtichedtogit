@@ -79,7 +79,7 @@ void vtkPMultiCorrelativeStatistics::GatherStatistics( vtkMultiProcessController
                                                        vtkTable* sparseCov )
 {
   vtkIdType nRow = sparseCov->GetNumberOfRows();
-  if ( ! nRow )
+  if ( nRow <= 0 )
     {
     // No statistics were calculated.
     return;
