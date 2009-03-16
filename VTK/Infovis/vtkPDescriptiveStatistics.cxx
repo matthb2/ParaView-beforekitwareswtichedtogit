@@ -78,7 +78,7 @@ void vtkPDescriptiveStatistics::ExecuteLearn( vtkTable* inData,
   vtkCommunicator* com = this->Controller->GetCommunicator();
   
   // (All) gather all sample sizes
-  int n_l = this->SampleSize;
+  int n_l = outMeta->GetValueByName( 0, "Cardinality" ).ToInt(); // Cardinality
   int* n_g = new int[np];
   com->AllGather( &n_l, n_g, 1 ); 
   
@@ -156,7 +156,7 @@ void vtkPDescriptiveStatistics::ExecuteLearn( vtkTable* inData,
     outMeta->SetValueByName( r, "M4", mom4 );
 
     // Set global statistics
-    this->SampleSize = ns;
+    outMeta->SetValueByName( r, "Cardinality", ns );
 
     // Clean-up
     delete [] M_g;
