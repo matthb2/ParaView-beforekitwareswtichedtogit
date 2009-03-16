@@ -142,7 +142,7 @@ int vtkStatisticsAlgorithm::RequestData( vtkInformation*,
 
     if ( ! inMeta )
       {
-      vtkWarningMacro( "No model available. Doing nothing." );
+      vtkErrorMacro( "No model available AND no Learn phase requested. Cannot proceed with statistics algorithm." );
       return 1;
       }
 
