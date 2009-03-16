@@ -24,7 +24,7 @@
 #include "vtkUnivariateStatisticsAlgorithmPrivate.h"
 
 #include "vtkDoubleArray.h"
-#include "vtkIDTypeArray.h"
+#include "vtkIdTypeArray.h"
 #include "vtkInformation.h"
 #include "vtkInformationVector.h"
 #include "vtkObjectFactory.h"
