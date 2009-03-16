@@ -67,7 +67,7 @@ vtkQtLabelSurface::vtkQtLabelSurface()
   this->FieldDataArray = 0;
   this->FieldDataName = NULL;
   
-  this->TextRotationArrayName = "TextRotation";
+  this->SetTextRotationArrayName( "TextRotation" );
   
   this->NumberOfLabels = 0;
   this->NumberOfLabelsAllocated = 0;
@@ -102,7 +102,7 @@ vtkQtLabelSurface::~vtkQtLabelSurface()
   this->SetLabelTextProperty(NULL);
   this->SetFieldDataName(NULL);  
   
-  this->TextRotationArrayName = 0;
+  this->SetTextRotationArrayName(0);
 }
 
 //----------------------------------------------------------------------------
