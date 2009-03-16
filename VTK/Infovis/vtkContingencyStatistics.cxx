@@ -402,7 +402,7 @@ void vtkContingencyStatistics::ExecuteDerive( vtkDataObject* inMetaDO )
 
   // Data set cardinality: unknown yet, pick the cardinality of the first pair and make sure all other pairs
   // have the same cardinality.
-  vtkIdType n = cardinality.at( 0 );
+  vtkIdType n = cardinality[0];
   for ( vtkstd::map<vtkIdType,vtkIdType>::iterator iit = cardinality.begin();
         iit != cardinality.end(); ++ iit )
     {
