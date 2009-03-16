@@ -168,11 +168,9 @@ int vtkQtLabelSurface::RequestInformation (
     }
   
   int *size = this->Renderer->GetRenderWindow()->GetSize();
-  double w = size[0]-1;
-  double h = size[1]-1;
-  
-  this->DataExtent[1] = w;
-  this->DataExtent[3] = h;
+
+  this->DataExtent[1] = size[0]-1;
+  this->DataExtent[3] = size[1]-1;
   outInfo->Set(vtkStreamingDemandDrivenPipeline::WHOLE_EXTENT(),
                this->DataExtent,6);
   return 1;
