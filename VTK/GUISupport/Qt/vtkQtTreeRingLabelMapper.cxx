@@ -73,7 +73,8 @@ vtkQtTreeRingLabelMapper::vtkQtTreeRingLabelMapper()
   this->FieldDataArray = 0;
   this->FieldDataName = NULL;
   
-  this->SetTextRotationArrayName( "TextRotation" );
+  this->TextRotationArrayName = 0;
+  this->SetTextRotationArrayName("TextRotation");
   this->SetSectorsArrayName("area");
   
   this->LabelTextProperty = vtkTextProperty::New();
