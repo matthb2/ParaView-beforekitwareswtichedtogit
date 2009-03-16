@@ -814,7 +814,7 @@ void vtkContingencyStatistics::SelectAssessFunctor( vtkTable* outData,
 
   // Loop over parameters table until the requested variables are found 
   vtkStdString x, y;
-  vtkIdType key, c;
+  vtkIdType key;
   for ( int r = 1; r < nRowCont; ++ r ) // Skip first row which contains data set cardinality
     {
     // Find the pair of variables to which the key corresponds
