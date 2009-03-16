@@ -167,4 +167,5 @@ void vtkGeoTreeNodeCache::PrintSelf(ostream & os, vtkIndent indent)
   this->Superclass::PrintSelf( os, indent );
   os << indent << "CacheMinimumLimit: " << this->CacheMinimumLimit << endl;
   os << indent << "CacheMaximumLimit: " << this->CacheMaximumLimit << endl;
+  os << indent << "Size: " << this->Size << endl;
 }
