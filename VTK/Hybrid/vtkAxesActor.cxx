@@ -748,15 +748,15 @@ void vtkAxesActor::UpdateProps()
 
     double newpos[3];
     double* pos = this->XAxisLabel->GetAttachmentPoint();
-    transform->TransformVector( pos, newpos );
+    transform->TransformPoint( pos, newpos );
     this->XAxisLabel->SetAttachmentPoint( newpos );
 
     pos = this->YAxisLabel->GetAttachmentPoint();
-    transform->TransformVector( pos, newpos );
+    transform->TransformPoint( pos, newpos );
     this->YAxisLabel->SetAttachmentPoint( newpos );
 
     pos = this->ZAxisLabel->GetAttachmentPoint();
-    transform->TransformVector( pos, newpos );
+    transform->TransformPoint( pos, newpos );
     this->ZAxisLabel->SetAttachmentPoint( newpos );
     }
     
