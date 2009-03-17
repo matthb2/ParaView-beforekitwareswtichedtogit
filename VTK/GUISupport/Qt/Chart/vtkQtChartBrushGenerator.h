@@ -18,58 +18,47 @@
   the U.S. Government retains certain rights in this software.
 -------------------------------------------------------------------------*/
 
-/// \file vtkQtChartPenBrushGenerator.h
-/// \date September 22, 2008
+/// \file vtkQtChartBrushGenerator.h
+/// \date March 17, 2009
 
-#ifndef _vtkQtChartPenBrushGenerator_h
-#define _vtkQtChartPenBrushGenerator_h
+#ifndef _vtkQtChartBrushGenerator_h
+#define _vtkQtChartBrushGenerator_h
+
 
 #include "vtkQtChartExport.h"
-#include "vtkQtChartStyleGenerator.h"
+#include "vtkQtChartStyleBrush.h"
 
+class vtkQtChartBrushGeneratorInternal;
 class vtkQtChartColors;
-class vtkQtChartPenBrushGeneratorInternal;
 
 
-/// \class vtkQtChartPenBrushGenerator
+/// \class vtkQtChartBrushGenerator
 /// \brief
-///   The vtkQtChartPenBrushGenerator class generates series drawing
-///   options using pen and brush lists.
-class VTKQTCHART_EXPORT vtkQtChartPenBrushGenerator :
-  public vtkQtChartStyleGenerator
+///   The vtkQtChartBrushGenerator class generates series brush
+///   options using a list of brushes.
+class VTKQTCHART_EXPORT vtkQtChartBrushGenerator : public vtkQtChartStyleBrush
 {
   Q_OBJECT
 
 public:
   /// \brief
-  ///   Creates a pen/brush generator.
+  ///   Creates a brush generator.
   /// \param parent The parent object.
-  vtkQtChartPenBrushGenerator(QObject *parent=0);
-  virtual ~vtkQtChartPenBrushGenerator();
+  vtkQtChartBrushGenerator(QObject *parent=0);
+  virtual ~vtkQtChartBrushGenerator();
 
-  /// \name vtkQtChartStyleGenerator Methods
+  /// \name vtkQtChartStyleBrush Methods
   //@{
   /// \brief
-  ///   Gets the brush for the specified series index.
+  ///   Gets the brush for the specified series style index.
   ///
   /// If the index is greater than the internal brush list, the index
   /// will be wrapped to repeat the brushes.
   ///
-  /// \param index The series index.
+  /// \param index The series style index.
   /// \return
-  ///   The brush for the specified series index.
-  virtual QBrush getSeriesBrush(int index) const;
-
-  /// \brief
-  ///   Gets the pen for the specified series index.
-  ///
-  /// If the index is greater than the internal pen list, the index
-  /// will be wrapped to repeat the pens.
-  ///
-  /// \param index The series index.
-  /// \return
-  ///   The pen for the specified series index.
-  virtual QPen getSeriesPen(int index) const;
+  ///   The brush for the specified series style index.
+  virtual QBrush getStyleBrush(int index) const;
   //@}
 
   /// \name Brush Methods
@@ -126,63 +115,12 @@ public:
   void removeBrush(int index);
   //@}
 
-  /// \name Pen Methods
-  //@{
-  /// \brief
-  ///   Gets the number of pens (stroke styles) in the list.
-  /// \return
-  ///   The number of pens (stroke styles) in the list.
-  int getNumberOfPens() const;
-
-  /// \brief
-  ///   Gets a stroke style from the list.
-  ///
-  /// The index must be in the range [0, getNumberOfPens()-1]. If it
-  /// is not, an error message will be printed and an empty QPen will
-  /// be returned.
-  ///
-  /// \param index The index of the pen.
-  /// \return
-  ///   The stroke style for the given index.
-  QPen getPen(int index) const;
-
-  /// \brief
-  ///   Sets the stroke style for the given index.
-  ///
-  /// This method will do nothing if the index is out of range.
-  ///
-  /// \param index The pen list index.
-  /// \param pen The new stroke style.
-  void setPen(int index, const QPen &pen);
-
-  /// Clears the list of pens (stroke styles).
-  void clearPens();
-
-  /// \brief
-  ///   Adds the color list to the pen list.
-  /// \param colors The list of colors to add.
-  void addPens(const vtkQtChartColors &colors);
-
-  /// \brief
-  ///   Adds a pen to the list of stroke styles.
-  /// \param pen The stroke style to add.
-  void addPen(const QPen &pen);
-
-  /// \brief
-  ///   Inserts a pen into the list of stroke styles.
-  /// \param index Where to insert the pen.
-  /// \param pen The stroke style to insert.
-  void insertPen(int index, const QPen &pen);
-
-  /// \brief
-  ///   Removes the pen at the given index.
-  /// \param index The index of the pen to remove.
-  void removePen(int index);
-  //@}
+private:
+  vtkQtChartBrushGeneratorInternal *Internal; ///< Stores the brush list.
 
 private:
-  /// Stores the pen and brush lists.
-  vtkQtChartPenBrushGeneratorInternal *Internal;
+  vtkQtChartBrushGenerator(const vtkQtChartBrushGenerator &);
+  vtkQtChartBrushGenerator &operator=(const vtkQtChartBrushGenerator &);
 };
 
 #endif

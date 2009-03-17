@@ -26,9 +26,7 @@
 #include "vtkQtChartSeriesSelection.h"
 #include "vtkQtChartSeriesSelectionModel.h"
 #include "vtkQtChartStyleManager.h"
-#include "vtkQtChartStyleGenerator.h"
 #include "vtkQtChartColorStyleGenerator.h"
-#include "vtkQtChartPenBrushGenerator.h"
 
 #include "vtkAlgorithmOutput.h"
 #include "vtkCommand.h"
@@ -289,6 +287,8 @@ void vtkQtChartRepresentation::Update()
       }
     }
 */
+
+  /*
   // Update the color scheme
   if(this->ChartLayer->getChartArea())
     {
@@ -328,7 +328,7 @@ void vtkQtChartRepresentation::Update()
         options->setStyle(i, manager->getGenerator());
         }
       }
-    }
+    }*/
   //converted->Delete();
 
 }

@@ -18,24 +18,34 @@
   the U.S. Government retains certain rights in this software.
 -------------------------------------------------------------------------*/
 
-/// \file vtkQtStackedChartSeriesOptions.cxx
-/// \date February 27, 2008
+/// \file vtkQtChartColorGenerator.cxx
+/// \date March 16, 2009
 
 #ifdef _MSC_VER
 // Disable warnings that Qt headers give.
 #pragma warning(disable:4127)
 #endif
 
-#include "vtkQtStackedChartSeriesOptions.h"
+#include "vtkQtChartColorGenerator.h"
 
-#include <QBrush>
+#include "vtkQtChartColors.h"
 
 
-vtkQtStackedChartSeriesOptions::vtkQtStackedChartSeriesOptions(
-    QObject *parentObject)
-  : vtkQtChartSeriesOptions(parentObject)
+vtkQtChartColorGenerator::vtkQtChartColorGenerator(QObject *parentObject)
+  : vtkQtChartStyleBrush(parentObject)
 {
-  this->setBrush(Qt::red);
+  this->Colors = 0;
+}
+
+QBrush vtkQtChartColorGenerator::getStyleBrush(int index) const
+{
+  if(index >= 0 && this->Colors && this->Colors->getNumberOfColors() > 0)
+    {
+    index = index % this->Colors->getNumberOfColors();
+    return QBrush(this->Colors->getColor(index));
+    }
+
+  return QBrush();
 }
 
 

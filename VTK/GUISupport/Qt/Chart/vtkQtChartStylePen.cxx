@@ -18,24 +18,20 @@
   the U.S. Government retains certain rights in this software.
 -------------------------------------------------------------------------*/
 
-/// \file vtkQtStackedChartSeriesOptions.cxx
-/// \date February 27, 2008
+/// \file vtkQtChartStylePen.cxx
+/// \date March 16, 2009
 
 #ifdef _MSC_VER
 // Disable warnings that Qt headers give.
 #pragma warning(disable:4127)
 #endif
 
-#include "vtkQtStackedChartSeriesOptions.h"
-
-#include <QBrush>
+#include "vtkQtChartStylePen.h"
 
 
-vtkQtStackedChartSeriesOptions::vtkQtStackedChartSeriesOptions(
-    QObject *parentObject)
-  : vtkQtChartSeriesOptions(parentObject)
+vtkQtChartStylePen::vtkQtChartStylePen(QObject *parentObject)
+  : QObject(parentObject)
 {
-  this->setBrush(Qt::red);
 }
 
 

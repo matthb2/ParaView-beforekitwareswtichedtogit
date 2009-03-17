@@ -18,20 +18,31 @@
   the U.S. Government retains certain rights in this software.
 -------------------------------------------------------------------------*/
 
-/// \file vtkQtChartStyleGenerator.cxx
-/// \date February 15, 2008
+/// \file vtkQtChartStylePen.h
+/// \date March 16, 2009
 
-#ifdef _MSC_VER
-// Disable warnings that Qt headers give.
-#pragma warning(disable:4127)
-#endif
-
-#include "vtkQtChartStyleGenerator.h"
+#ifndef _vtkQtChartStylePen_h
+#define _vtkQtChartStylePen_h
 
 
-vtkQtChartStyleGenerator::vtkQtChartStyleGenerator(QObject *parentObject)
-  : QObject(parentObject)
+#include "vtkQtChartExport.h"
+#include <QObject>
+#include <QPen> // needed for return type
+
+
+class VTKQTCHART_EXPORT vtkQtChartStylePen : public QObject
 {
-}
+  Q_OBJECT
 
+public:
+  vtkQtChartStylePen(QObject *parent=0);
+  virtual ~vtkQtChartStylePen() {}
 
+  virtual QPen getStylePen(int index) const = 0;
+
+private:
+  vtkQtChartStylePen(const vtkQtChartStylePen &);
+  vtkQtChartStylePen &operator=(const vtkQtChartStylePen &);
+};
+
+#endif

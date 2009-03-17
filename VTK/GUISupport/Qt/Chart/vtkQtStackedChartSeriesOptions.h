@@ -43,17 +43,6 @@ public:
   /// \param parent The parent object.
   vtkQtStackedChartSeriesOptions(QObject *parent=0);
   virtual ~vtkQtStackedChartSeriesOptions() {}
-
-  /// \brief
-  ///   Sets the style generator index for the series.
-  ///
-  /// This method uses the style generator to assign the initial
-  /// brush and pen for the series. The pen is based on the brush
-  /// color.
-  ///
-  /// \param style The style index for the generator.
-  /// \param generator The style generator to use.
-  virtual void setStyle(int style, vtkQtChartStyleGenerator *generator);
 };
 
 #endif
