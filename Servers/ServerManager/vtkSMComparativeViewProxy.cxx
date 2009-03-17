@@ -155,6 +155,8 @@ bool vtkSMComparativeViewProxy::BeginCreateVTKObjects()
   this->Internal->ViewLink->AddException("CameraViewUp");
   this->Internal->ViewLink->AddException("CameraClippingRangeInfo");
   this->Internal->ViewLink->AddException("CameraClippingRange");
+  this->Internal->ViewLink->AddException("CameraViewAngleInfo");
+  this->Internal->ViewLink->AddException("CameraViewAngle");
 
   this->AnimationSceneX  = vtkSMAnimationSceneProxy::SafeDownCast(
     this->GetSubProxy("AnimationSceneX"));

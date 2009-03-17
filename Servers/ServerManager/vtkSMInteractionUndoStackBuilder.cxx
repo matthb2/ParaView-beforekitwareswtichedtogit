@@ -130,6 +130,7 @@ void vtkSMInteractionUndoStackBuilder::StartInteraction()
   this->PropertyModified("CameraPosition");
   this->PropertyModified("CameraFocalPoint");
   this->PropertyModified("CameraViewUp");
+  this->PropertyModified("CameraViewAngle");
   this->PropertyModified("CameraClippingRange");
   this->PropertyModified("CenterOfRotation");
 }
@@ -149,6 +150,7 @@ void vtkSMInteractionUndoStackBuilder::EndInteraction()
   this->PropertyModified("CameraPosition");
   this->PropertyModified("CameraFocalPoint");
   this->PropertyModified("CameraViewUp");
+  this->PropertyModified("CameraViewAngle");
   this->PropertyModified("CameraClippingRange");
   this->PropertyModified("CenterOfRotation");
 

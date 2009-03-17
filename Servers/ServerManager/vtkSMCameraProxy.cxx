@@ -67,6 +67,10 @@ void vtkSMCameraProxy::UpdatePropertyInformation()
   dvp = vtkSMDoubleVectorProperty::SafeDownCast(
     this->GetProperty("CameraParallelScaleInfo"));
   dvp->SetElement(0, camera->GetParallelScale());
+
+  dvp = vtkSMDoubleVectorProperty::SafeDownCast(
+    this->GetProperty("CameraViewAngleInfo"));
+  dvp->SetElement(0, camera->GetViewAngle());
 }
 
 //-----------------------------------------------------------------------------

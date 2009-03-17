@@ -123,6 +123,7 @@ const char* vtkSMCameraLink::vtkInternals::LinkedPropertyNames[] =
 {
   /* from */  /* to */
   "CameraPositionInfo", "CameraPosition",
+  "CameraViewAngleInfo", "CameraViewAngle",
   "CameraFocalPointInfo", "CameraFocalPoint",
   "CameraViewUpInfo", "CameraViewUp",
   "CenterOfRotation", "CenterOfRotation",

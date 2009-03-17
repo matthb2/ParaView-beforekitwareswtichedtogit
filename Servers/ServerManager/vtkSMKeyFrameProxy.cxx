@@ -13,9 +13,10 @@
 
 =========================================================================*/
 #include "vtkSMKeyFrameProxy.h"
-#include "vtkSMAnimationCueProxy.h"
+
 #include "vtkObjectFactory.h"
-#include "vtkClientServerID.h"
+#include "vtkProcessModule.h"
+#include "vtkSMAnimationCueProxy.h"
 
 #include <vtkstd/vector>
 //----------------------------------------------------------------------------
@@ -35,6 +36,7 @@ vtkSMKeyFrameProxy::vtkSMKeyFrameProxy()
 {
   this->KeyTime = -1.0;
   this->Internals = new vtkSMKeyFrameProxyInternals;
+  this->SetServers(vtkProcessModule::CLIENT);
 }
 
 //----------------------------------------------------------------------------
