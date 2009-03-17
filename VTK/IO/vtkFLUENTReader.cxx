@@ -181,6 +181,8 @@ vtkFLUENTReader::vtkFLUENTReader()
   this->FluentCaseFile = new ifstream;
   this->FluentDataFile = new ifstream;
 
+  this->NumberOfCells=0;
+  
   this->CellDataArraySelection = vtkDataArraySelection::New();
   this->SetDataByteOrderToLittleEndian();
 }
