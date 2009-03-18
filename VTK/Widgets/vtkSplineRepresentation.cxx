@@ -1225,4 +1225,5 @@ void vtkSplineRepresentation::PrintSelf(ostream& os, vtkIndent indent)
   os << indent << "Number Of Handles: " << this->NumberOfHandles << "\n";
   os << indent << "Closed: "
      << (this->Closed ? "On" : "Off") << "\n";
+  os << indent << "InteractionState: " << this->InteractionState << endl;
 }
