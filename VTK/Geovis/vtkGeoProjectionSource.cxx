@@ -91,6 +91,7 @@ vtkCxxSetObjectMacro(vtkGeoProjectionSource, Transform, vtkAbstractTransform);
 //----------------------------------------------------------------------------
 vtkGeoProjectionSource::vtkGeoProjectionSource()
 {
+  this->Projection=0;
   this->Transform = 0;
   this->MinCellsPerNode = 20;
 
