@@ -111,7 +111,8 @@ void vtkNetCDFReader::PrintSelf(ostream &os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os, indent);
 
-  os << indent << "FileName: " << this->FileName << endl;
+  os << indent << "FileName: "
+     << (this->FileName ? this->FileName : "(NULL)") << endl;
 
   os << indent << "VariableArraySelection:" << endl;
   this->VariableArraySelection->PrintSelf(os, indent.GetNextIndent());
