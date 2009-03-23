@@ -197,7 +197,8 @@ bool vtkSMTwoDRenderViewProxy::BeginCreateVTKObjects()
 //----------------------------------------------------------------------------
 const char* vtkSMTwoDRenderViewProxy::GetSuggestedViewType(vtkIdType connectionID)
 {
-  vtkSMViewProxy* rootView = vtkSMViewProxy::SafeDownCast(this->GetSubProxy("RootView"));
+  vtkSMViewProxy* rootView =
+    vtkSMViewProxy::SafeDownCast(this->GetSubProxy("RenderView"));
   if (rootView)
     {
     vtksys_ios::ostringstream stream;
