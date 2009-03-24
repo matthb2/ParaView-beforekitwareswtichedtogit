@@ -132,6 +132,10 @@ void vtkQtTableView::AddInputConnection( int vtkNotUsed(port), int vtkNotUsed(in
   // Now set the Qt Adapters (qt models) on the views
   this->TableView->update();
   this->TableView->resizeColumnToContents(0);
+  if (this->TableView->columnWidth(0) < 100)
+    {
+    this->TableView->setColumnWidth(0,100);
+    }
 
 }
 
