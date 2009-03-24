@@ -105,6 +105,12 @@ void vtkQtTreeView::SetAlternatingRowColors(bool state)
 }
 
 //----------------------------------------------------------------------------
+void vtkQtTreeView::HideColumn(int i) 
+{
+  this->TreeView->hideColumn(i);
+}
+
+//----------------------------------------------------------------------------
 void vtkQtTreeView::AddInputConnection( int vtkNotUsed(port), int vtkNotUsed(index),
   vtkAlgorithmOutput* conn, vtkAlgorithmOutput* vtkNotUsed(selectionConn))
 {
