@@ -20,6 +20,7 @@
 
 #include "vtkQtTreeView.h"
 
+#include <QHeaderView>
 #include <QItemSelection>
 #include <QTreeView>
 
@@ -81,6 +82,20 @@ vtkQtTreeView::~vtkQtTreeView()
 QWidget* vtkQtTreeView::GetWidget()
 {
   return this->TreeView;
+}
+
+
+//----------------------------------------------------------------------------
+void vtkQtTreeView::SetShowHeaders(bool state)
+{
+  if (state)
+    {
+    this->TreeView->header()->show();
+    }
+  else
+    {
+    this->TreeView->header()->hide();
+    }
 }
 
 //----------------------------------------------------------------------------

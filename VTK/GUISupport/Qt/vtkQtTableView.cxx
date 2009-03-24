@@ -20,6 +20,7 @@
 
 #include "vtkQtTableView.h"
 
+#include <QHeaderView>
 #include <QItemSelection>
 #include <QTableView>
 
@@ -74,6 +75,32 @@ vtkQtTableView::~vtkQtTableView()
 QWidget* vtkQtTableView::GetWidget()
 {
   return this->TableView;
+}
+
+//----------------------------------------------------------------------------
+void vtkQtTableView::SetShowVerticalHeaders(bool state)
+{
+  if (state)
+    {
+    this->TableView->verticalHeader()->show();
+    }
+  else
+    {
+    this->TableView->verticalHeader()->hide();
+    }
+}
+
+//----------------------------------------------------------------------------
+void vtkQtTableView::SetShowHorizontalHeaders(bool state)
+{
+  if (state)
+    {
+    this->TableView->horizontalHeader()->show();
+    }
+  else
+    {
+    this->TableView->horizontalHeader()->hide();
+    }
 }
 
 //----------------------------------------------------------------------------
