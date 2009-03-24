@@ -19,6 +19,7 @@ PURPOSE.  See the above copyright notice for more information.
 -------------------------------------------------------------------------*/
 
 #include "vtkToolkits.h"
+#include "vtkInformationObjectBaseKey.h"
 #include "vtkSQLDatabase.h"
 #include "vtkSQLQuery.h"
 
@@ -82,6 +83,8 @@ public:
 static vtkSQLDatabaseCleanup vtkCleanupSQLDatabaseGlobal;
 
 vtkCxxRevisionMacro(vtkSQLDatabase, "$Revision$");
+vtkInformationKeyMacro(vtkSQLDatabase, DATABASE, ObjectBase);
+
 // ----------------------------------------------------------------------
 vtkSQLDatabase::vtkSQLDatabase()
 {
