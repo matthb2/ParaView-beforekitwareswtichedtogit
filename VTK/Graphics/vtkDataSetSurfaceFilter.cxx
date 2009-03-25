@@ -1413,7 +1413,7 @@ void vtkDataSetSurfaceFilter::InsertQuadInHash(vtkIdType a, vtkIdType b,
                                                vtkIdType c, vtkIdType d, 
                                                vtkIdType sourceId)
 {
-  int tmp;
+  vtkIdType tmp;
   vtkFastGeomQuad *quad, **end;
 
   // Reorder to get smallest id in a.
@@ -1480,7 +1480,7 @@ void vtkDataSetSurfaceFilter::InsertQuadInHash(vtkIdType a, vtkIdType b,
 void vtkDataSetSurfaceFilter::InsertTriInHash(vtkIdType a, vtkIdType b,
                                               vtkIdType c, vtkIdType sourceId)
 {
-  int tmp;
+  vtkIdType tmp;
   vtkFastGeomQuad *quad, **end;
 
   // Reorder to get smallest id in a.
@@ -1631,7 +1631,7 @@ void vtkDataSetSurfaceFilter::InsertPolygonInHash(vtkIdType* ids,
 }
 
 //----------------------------------------------------------------------------
-void vtkDataSetSurfaceFilter::InitFastGeomQuadAllocation(int numberOfCells)
+void vtkDataSetSurfaceFilter::InitFastGeomQuadAllocation(vtkIdType numberOfCells)
 {
   int idx;
 
