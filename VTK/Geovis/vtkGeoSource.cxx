@@ -137,6 +137,7 @@ void vtkGeoSource::ShutDown()
       this->Threader->TerminateThread(*iter);
       }
     this->Implementation->ThreadIds.clear();
+    this->Implementation->OutputMap.clear();
     }
   this->Initialized = false;
 }
