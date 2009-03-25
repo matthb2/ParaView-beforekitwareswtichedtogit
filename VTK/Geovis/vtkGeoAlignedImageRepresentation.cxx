@@ -89,10 +89,10 @@ vtkGeoAlignedImageRepresentationFind(vtkGeoSource* source, vtkGeoImageNode* p, d
               }
             }
           p->SetStatus(vtkGeoTreeNode::NONE);
-          if (coll)
-            {
-            coll->Delete();
-            }
+          }
+        if (coll)
+          {
+          coll->Delete();
           }
         else if(p->GetStatus() == vtkGeoTreeNode::NONE)
           {
