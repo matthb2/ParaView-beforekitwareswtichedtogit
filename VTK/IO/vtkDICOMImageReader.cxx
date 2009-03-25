@@ -197,7 +197,7 @@ void vtkDICOMImageReader::ExecuteInformation()
          iter != this->DICOMFileNames->end();
          iter++)
       {
-      char* fn = (char*) (*iter).c_str();
+      const char* fn = iter->c_str();
       vtkDebugMacro( << "Trying : " << fn);
 
       bool couldOpen = this->Parser->OpenFile(fn);
