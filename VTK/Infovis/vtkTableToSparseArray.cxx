@@ -170,7 +170,8 @@ int vtkTableToSparseArray::RequestData(
   array->ResizeToContents();
 
   vtkArrayData* const output = vtkArrayData::GetData(outputVector);
-  output->SetArray(array);
+  output->ClearArrays();
+  output->AddArray(array);
   array->Delete();
 
   return 1;

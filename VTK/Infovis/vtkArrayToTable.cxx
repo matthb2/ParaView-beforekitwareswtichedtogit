@@ -143,9 +143,10 @@ int vtkArrayToTable::RequestData(
   try
     {
     vtkArrayData* const input_array_data = vtkArrayData::GetData(inputVector[0]);
-    vtkArray* const input_array = input_array_data->GetArray();
-    if(!input_array)
-      throw vtkstd::runtime_error("vtkArrayToTable missing input array.");
+    if(input_array_data->GetNumberOfArrays() != 1)
+      throw vtkstd::runtime_error("vtkArrayToTable requires a vtkArrayData containing exactly one array.");
+    
+    vtkArray* const input_array = input_array_data->GetArray(0);
     if(input_array->GetDimensions() > 2)
       throw vtkstd::runtime_error("vtkArrayToTable input array must have 1 or 2 dimensions.");
     
