@@ -79,9 +79,9 @@ void vtkSMStreamingSerialStrategy::CreatePipeline(vtkSMSourceProxy* input, int o
     cacher->GetProperty("CachingEnabled"));
   ivp->SetElement(0, 0);
 
-  this->Connect(input, this->ViewSorter);
+  this->Connect(input, this->ViewSorter, "Input", outputport);
   this->Connect(this->ViewSorter, this->PieceCache);
-  this->Superclass::CreatePipeline(this->PieceCache, outputport);
+  this->Superclass::CreatePipeline(this->PieceCache, 0);
   //input->ViewSorter->PieceCache->US
 }
 
