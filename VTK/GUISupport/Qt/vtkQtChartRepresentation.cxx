@@ -110,16 +110,9 @@ vtkQtChartRepresentation::~vtkQtChartRepresentation()
 //----------------------------------------------------------------------------
 
 void 
-vtkQtChartRepresentation::SetInputConnection(vtkAlgorithmOutput* conn)
+vtkQtChartRepresentation::SetupInputConnections()
 {
-  this->Superclass::SetInputConnection(conn);
-
-  if (!conn)
-    {
-    return;
-    }
-
-  //this->QtModelChanged();
+  this->Superclass::SetupInputConnections();
 
   // We still need to set the series colors on the chart layer (if
   // there is one) since the superclass knows nothing about that part.

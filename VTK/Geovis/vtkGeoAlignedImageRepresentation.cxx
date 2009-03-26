@@ -138,6 +138,7 @@ vtkGeoAlignedImageRepresentation::vtkGeoAlignedImageRepresentation()
   this->GeoSource = 0;
   this->Root = vtkGeoImageNode::New();
   this->Cache = vtkGeoTreeNodeCache::New();
+  this->SetNumberOfInputPorts(0);
 }
 
 //----------------------------------------------------------------------------
