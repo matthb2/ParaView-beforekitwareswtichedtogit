@@ -43,10 +43,6 @@ class vtkDataRepresentationInput : public vtkObject
 public:
   static vtkDataRepresentationInput* New();
   vtkTypeRevisionMacro(vtkDataRepresentationInput, vtkObject);
-  void PrintSelf(ostream& os, vtkIndent indent)
-    {
-    this->Superclass::PrintSelf(os, indent);
-    }
 
   vtkDataRepresentationInput()
     {
