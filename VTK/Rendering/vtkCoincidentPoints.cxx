@@ -112,6 +112,12 @@ vtkCoincidentPoints::~vtkCoincidentPoints()
   delete this->Implementation;
 }
 
+void vtkCoincidentPoints::Clear()
+{
+ this->Implementation->CoordMap.clear();
+ this->Implementation->CoincidenceMap.clear();
+}
+
 void vtkCoincidentPoints::PrintSelf( ostream& os, vtkIndent indent )
 {
   this->Superclass::PrintSelf( os, indent );
