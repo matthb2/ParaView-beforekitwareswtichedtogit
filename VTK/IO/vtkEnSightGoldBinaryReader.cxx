@@ -3785,6 +3785,9 @@ int vtkEnSightGoldBinaryReader::ReadLine(char result[80])
     vtkDebugMacro("Read failed");
     return 0;
     }
+  // fix to the memory leakage problem detected by Valgrind
+  result[79] = '\0';
+   
   // if the first 4 bytes is the length, then this data is no doubt
   // a fortran data write!, copy the last 76 into the beginning
   int c;
