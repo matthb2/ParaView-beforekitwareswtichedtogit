@@ -404,7 +404,7 @@ void vtkOpenGLProperty::Render(vtkActor *anActor,
       this->CurrentShaderProgram2->Use();
       if(!this->CurrentShaderProgram2->IsValid())
         {
-        vtkErrorMacro(<<this->CurrentShaderProgram2->GetLastValidateLog());
+        vtkErrorMacro(<< "Using the current shader program is invalid with the current OpenGL state. Validation log=" << this->CurrentShaderProgram2->GetLastValidateLog());
         }
       }
     }
