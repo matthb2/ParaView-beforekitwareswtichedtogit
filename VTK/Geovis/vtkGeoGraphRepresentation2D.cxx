@@ -106,14 +106,14 @@ vtkGeoGraphRepresentation2D::vtkGeoGraphRepresentation2D()
     this->ExtractSelection->GetOutputPort());
   this->SelectionActor->SetMapper(this->SelectionMapper);
 
-  this->LabelSize->SetInputConnection(this->AssignCoordinates->GetOutputPort());
+  this->LabelSize->SetInputConnection(this->PerturbCoincidentVertices->GetOutputPort());
   this->LabelHierarchy->SetInputConnection(this->LabelSize->GetOutputPort());
   this->LabelPlacer->SetInputConnection(this->LabelHierarchy->GetOutputPort());
   this->LabelMapper->SetInputConnection(this->LabelPlacer->GetOutputPort());
   this->LabelActor->SetMapper(this->LabelMapper);
 
   this->DynamicLabelMapper->SetInputConnection(
-    this->AssignCoordinates->GetOutputPort());
+    this->PerturbCoincidentVertices->GetOutputPort());
   this->DynamicLabelActor->SetMapper(this->DynamicLabelMapper);
 
   this->EdgeCenters->SetInputConnection(this->EdgeLayout->GetOutputPort());
@@ -172,7 +172,7 @@ vtkGeoGraphRepresentation2D::vtkGeoGraphRepresentation2D()
   this->SelectionActor->GetProperty()->SetColor(1, 0, 1);
   this->SelectionActor->GetProperty()->SetRepresentationToWireframe();
   this->SelectionActor->PickableOff();
-  this->UseLabelHierarchy = true;
+  this->UseLabelHierarchy = false;
 }
 
 //----------------------------------------------------------------------------
