@@ -277,6 +277,11 @@ void vtkSMPVRepresentationProxy::SetBackfaceRepresentation(int repr)
     this->Modified();
     }
 
+  if (!this->BackfaceSurfaceRepresentation)
+    {
+    return;
+    }
+
   if (!this->ActiveRepresentationIsSurface())
     {
     // Not rendering surfaces.
