@@ -47,10 +47,6 @@
 vtkCxxRevisionMacro(vtkAbstractArray, "$Revision$");
 
 //----------------------------------------------------------------------------
-// vtkAbstractArray::SetInformation(vtkInformation *info)
-vtkCxxSetObjectMacro(vtkAbstractArray,Information,vtkInformation);
-
-//----------------------------------------------------------------------------
 // Construct object with sane defaults.
 vtkAbstractArray::vtkAbstractArray(vtkIdType vtkNotUsed(numComp))
 {
@@ -66,6 +62,25 @@ vtkAbstractArray::~vtkAbstractArray()
 {
   this->SetName(NULL);
   this->SetInformation(NULL);
+}
+
+//----------------------------------------------------------------------------
+void vtkAbstractArray::SetInformation(vtkInformation *args)
+{
+  // Same as in vtkCxxSetObjectMacro, but no Modified() so that
+  // this doesn't cause extra pipeline updates.
+  vtkDebugMacro(<< this->GetClassName() << " (" << this
+      << "): setting Information to " << args );
+  if (this->Information != args)
+    {
+    vtkInformation* tempSGMacroVar = this->Information;
+    this->Information = args;
+    if (this->Information != NULL) { this->Information->Register(this); }
+    if (tempSGMacroVar != NULL)
+      {
+      tempSGMacroVar->UnRegister(this);
+      }
+    }
 }
 
 //----------------------------------------------------------------------------
