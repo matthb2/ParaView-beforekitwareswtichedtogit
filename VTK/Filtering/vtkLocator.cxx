@@ -21,13 +21,12 @@ vtkCxxRevisionMacro(vtkLocator, "$Revision$");
 
 vtkCxxSetObjectMacro(vtkLocator,DataSet,vtkDataSet);
 
-// Construct with automatic computation of divisions, averaging
-// 25 points per bucket.
 vtkLocator::vtkLocator()
 {
   this->DataSet = NULL;
   this->Tolerance = 0.001;
   this->Automatic = 1;
+  this->MaxLevel = 8;
 }
 
 vtkLocator::~vtkLocator()
