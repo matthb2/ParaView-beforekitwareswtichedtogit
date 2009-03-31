@@ -338,7 +338,7 @@ void vtkSMProperty::CreatePrettyLabel(const char* xmlname)
 }
 
 //---------------------------------------------------------------------------
-int vtkSMProperty::ReadXMLAttributes(vtkSMProxy* proxy,
+int vtkSMProperty::ReadXMLAttributes(vtkSMProxy* vtkNotUsed(proxy),
                                      vtkPVXMLElement* element)
 {
   const char* xmlname = element->GetAttribute("name");

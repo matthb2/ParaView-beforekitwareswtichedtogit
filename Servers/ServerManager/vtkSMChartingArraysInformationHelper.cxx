@@ -33,8 +33,8 @@ vtkSMChartingArraysInformationHelper::~vtkSMChartingArraysInformationHelper()
 
 //----------------------------------------------------------------------------
 void vtkSMChartingArraysInformationHelper::UpdateProperty(
-  vtkIdType connectionId,
-  int serverIds, vtkClientServerID objectId,
+  vtkIdType vtkNotUsed(connectionId),
+  int vtkNotUsed(serverIds), vtkClientServerID vtkNotUsed(objectId),
   vtkSMProperty* prop)
 {
   vtkSMChartTableRepresentationProxy* cr =
