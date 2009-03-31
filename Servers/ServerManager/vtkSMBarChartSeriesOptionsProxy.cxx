@@ -12,43 +12,31 @@
      PURPOSE.  See the above copyright notice for more information.
 
 =========================================================================*/
-#include "vtkSMLineChartViewProxy.h"
+#include "vtkSMBarChartSeriesOptionsProxy.h"
 
 #include "vtkObjectFactory.h"
-#include "vtkQtLineChartView.h"
+#include "vtkQtBarChartSeriesOptions.h"
 
-vtkStandardNewMacro(vtkSMLineChartViewProxy);
-vtkCxxRevisionMacro(vtkSMLineChartViewProxy, "$Revision$");
+vtkStandardNewMacro(vtkSMBarChartSeriesOptionsProxy);
+vtkCxxRevisionMacro(vtkSMBarChartSeriesOptionsProxy, "$Revision$");
 //----------------------------------------------------------------------------
-vtkSMLineChartViewProxy::vtkSMLineChartViewProxy()
+vtkSMBarChartSeriesOptionsProxy::vtkSMBarChartSeriesOptionsProxy()
 {
 }
 
 //----------------------------------------------------------------------------
-vtkSMLineChartViewProxy::~vtkSMLineChartViewProxy()
+vtkSMBarChartSeriesOptionsProxy::~vtkSMBarChartSeriesOptionsProxy()
 {
 }
 
 //----------------------------------------------------------------------------
-vtkQtChartViewBase* vtkSMLineChartViewProxy::NewChartView()
+vtkQtChartSeriesOptions* vtkSMBarChartSeriesOptionsProxy::NewOptions()
 {
-  return vtkQtLineChartView::New();
+  return new vtkQtBarChartSeriesOptions();
 }
 
 //----------------------------------------------------------------------------
-vtkQtLineChartView* vtkSMLineChartViewProxy::GetLineChartView()
-{
-  return vtkQtLineChartView::SafeDownCast(this->ChartView);
-}
-
-//----------------------------------------------------------------------------
-void vtkSMLineChartViewProxy::SetHelpFormat(const char* format)
-{
-  this->GetLineChartView()->SetHelpFormat(format);
-}
-
-//----------------------------------------------------------------------------
-void vtkSMLineChartViewProxy::PrintSelf(ostream& os, vtkIndent indent)
+void vtkSMBarChartSeriesOptionsProxy::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os, indent);
 }

@@ -28,6 +28,7 @@
 #include "vtkQtChartHelpFormatter.h"
 #include "vtkQtChartMouseSelection.h"
 #include "vtkQtChartSeriesModelCollection.h"
+#include "vtkQtChartSeriesOptionsModelCollection.h"
 #include "vtkQtChartSeriesSelectionHandler.h"
 #include "vtkQtChartWidget.h"
 #include "vtkQtLineChart.h"
@@ -51,6 +52,7 @@ vtkQtLineChartView::vtkQtLineChartView()
   this->LineChart = new vtkQtLineChart();
   this->LineModel = new vtkQtChartSeriesModelCollection(this->LineChart);
   this->LineChart->setModel(this->LineModel);
+  this->LineChart->setOptionsModel(this->GetChartOptionsModel());
   area->addLayer(this->LineChart);
 }
 
@@ -94,6 +96,12 @@ vtkQtChartSeriesModelCollection* vtkQtLineChartView::GetChartSeriesModel()
 vtkQtChartSeriesOptions* vtkQtLineChartView::GetChartSeriesOptions(int idx)
 {
   return this->LineChart->getSeriesOptions(idx);
+}
+
+//----------------------------------------------------------------------------
+vtkQtChartSeriesLayer* vtkQtLineChartView::GetChartSeriesLayer()
+{
+  return this->LineChart;
 }
 
 //----------------------------------------------------------------------------
