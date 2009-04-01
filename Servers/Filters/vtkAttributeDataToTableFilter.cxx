@@ -72,6 +72,15 @@ int vtkAttributeDataToTableFilter::RequestData(
     {
     vtkTable* output = vtkTable::GetData(outputVector);
     output->GetRowData()->ShallowCopy(fieldData);
+
+    // Clear any attribute markings from the output. This resolves the problem
+    // that GlobalNodeIds were not showing up in spreadsheet view.
+    for (int cc=vtkDataSetAttributes::SCALARS;
+      cc < vtkDataSetAttributes::NUM_ATTRIBUTES;
+      cc++)
+      {
+      output->GetRowData()->SetActiveAttribute(-1, cc);
+      }
     if (this->AddMetaData)
       {
       this->Decorate(output, input);
