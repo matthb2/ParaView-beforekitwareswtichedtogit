@@ -110,6 +110,18 @@ void vtkQtTableView::SetAlternatingRowColors(bool state)
 }
 
 //----------------------------------------------------------------------------
+void vtkQtTableView::SetSplitMultiComponentColumns(bool value)
+{
+  this->TableAdapter->SetSplitMultiComponentColumns(value);
+}
+
+//----------------------------------------------------------------------------
+bool vtkQtTableView::GetSplitMultiComponentColumns()
+{
+  return this->TableAdapter->GetSplitMultiComponentColumns();
+}
+
+//----------------------------------------------------------------------------
 void vtkQtTableView::AddInputConnection( int vtkNotUsed(port), int vtkNotUsed(index),
   vtkAlgorithmOutput* conn, vtkAlgorithmOutput* vtkNotUsed(selectionConn))
 {
