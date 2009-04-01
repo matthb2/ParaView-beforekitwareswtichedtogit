@@ -44,6 +44,11 @@ vtkStatisticsAlgorithm::vtkStatisticsAlgorithm()
   this->Assess = false;
   this->AssessNames = vtkStringArray::New();
   this->AssessParameters = 0;
+
+  // Keep valgrind happy: initialize this iVar, but with an invalid value
+  // for the number of variables is unknown at this point
+  this->NumberOfVariables = -1;
+
   this->Internals = new vtkStatisticsAlgorithmPrivate;
 }
 
