@@ -290,6 +290,7 @@ void vtkExtractHistogram::BinAnArray(vtkDataArray *data_array,
     int index = static_cast<int>((value - min) / bin_delta);
     // If the value is equal to max, include it in the last bin.
     index = ( index == this->BinCount ? index - 1 : index );
+    index = ( index < 0  ? 0 : index );
     bin_values->SetValue(index, bin_values->GetValue(index)+1);
     
     if (this->CalculateAverages)
