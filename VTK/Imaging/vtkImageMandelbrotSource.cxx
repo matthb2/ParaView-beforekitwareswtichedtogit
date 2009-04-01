@@ -405,7 +405,8 @@ int vtkImageMandelbrotSource::RequestData(
       {
       if (!(count%target))
         {
-        this->UpdateProgress(count/(50.0*target));
+        this->UpdateProgress(static_cast<double>(count)/
+                             (50.0*static_cast<double>(target)));
         }
       count++;
       p[a1] = static_cast<double>(origin[a1]) +
