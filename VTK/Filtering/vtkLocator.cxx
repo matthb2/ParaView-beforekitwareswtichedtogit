@@ -27,6 +27,7 @@ vtkLocator::vtkLocator()
   this->Tolerance = 0.001;
   this->Automatic = 1;
   this->MaxLevel = 8;
+  this->Level = 8;
 }
 
 vtkLocator::~vtkLocator()
