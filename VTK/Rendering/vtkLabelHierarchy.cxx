@@ -1315,16 +1315,16 @@ bool vtkLabelHierarchyOctreeQueueIterator::IsAtEnd()
 
 vtkIdType vtkLabelHierarchyOctreeQueueIterator::GetLabelId()
 {
-  vtkIdType id;
+  vtkIdType myId;
   if ( this->LastPlacedIndex >= 0 )
     {
-    id = this->LastPlaced->GetValue( this->LastPlacedIndex );
+    myId = this->LastPlaced->GetValue( this->LastPlacedIndex );
     }
   else
     {
-    id = *this->LabelIterator;
+    myId = *this->LabelIterator;
     }
-  return id;
+  return myId;
 }
 
 void vtkLabelHierarchyOctreeQueueIterator::GetNodeGeometry( double center[3], double& sz )
