@@ -211,7 +211,7 @@ float * vtkSelectVisiblePoints::Initialize(bool getZbuff)
     {
     for (int i=0; i<4; i++)
       {
-      this->InternalSelection[i] = this->InternalSelection[i];
+      this->InternalSelection[i] = this->Selection[i];
       }
     }
   else
