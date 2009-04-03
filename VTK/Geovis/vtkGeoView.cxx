@@ -164,6 +164,7 @@ bool vtkGeoView::GetLockHeading()
 // Prepares the view for rendering.
 void vtkGeoView::PrepareForRendering()
 {
+  this->Superclass::PrepareForRendering();
   vtkSmartPointer<vtkCollection> imageReps =
     vtkSmartPointer<vtkCollection>::New();
   for (int i = 0; i < this->GetNumberOfRepresentations(); i++)

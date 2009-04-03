@@ -879,6 +879,8 @@ void vtkRenderer::ComputeVisiblePropBounds( double allBounds[6] )
   double      *bounds;
   int        nothingVisible=1;
 
+  this->InvokeEvent(vtkCommand::ComputeVisiblePropBoundsEvent, this);
+
   allBounds[0] = allBounds[2] = allBounds[4] = VTK_DOUBLE_MAX;
   allBounds[1] = allBounds[3] = allBounds[5] = -VTK_DOUBLE_MAX;
   

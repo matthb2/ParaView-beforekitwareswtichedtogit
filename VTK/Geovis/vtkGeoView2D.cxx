@@ -72,6 +72,7 @@ void vtkGeoView2D::ApplyViewTheme(vtkViewTheme* theme)
 
 void vtkGeoView2D::PrepareForRendering()
 {
+  this->Superclass::PrepareForRendering();
   if (!this->Surface)
     {
     return;
