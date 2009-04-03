@@ -23,9 +23,7 @@
 #include "vtkCommand.h"
 #include "vtkObjectFactory.h"
 #include "vtkView.h"
-#include "vtkRenderer.h"
 #include "vtkRenderView.h"
-#include "vtkRenderWindow.h"
 
 #include <vtksys/stl/vector>
 
@@ -43,11 +41,7 @@ public:
       vtkRenderView* rv = vtkRenderView::SafeDownCast(this->Views[i]);
       if (rv)
         {
-        vtkRenderWindow* win = rv->GetRenderer()->GetRenderWindow();
-        if (win)
-          {
-          win->Render();
-          }
+        rv->Render();
         }
       else
         {

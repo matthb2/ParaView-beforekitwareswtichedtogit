@@ -256,6 +256,16 @@ void vtkRenderView::PrepareForRendering()
 }
 
 //----------------------------------------------------------------------------
+void vtkRenderView::Render()
+{
+  if (this->Renderer->GetRenderWindow())
+    {
+    this->Renderer->ResetCameraClippingRange();
+    this->Renderer->GetRenderWindow()->Render();
+    }
+}
+
+//----------------------------------------------------------------------------
 void vtkRenderView::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os,indent);
