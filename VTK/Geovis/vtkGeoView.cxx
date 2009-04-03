@@ -201,6 +201,7 @@ vtkGeoAlignedImageRepresentation* vtkGeoView::AddDefaultImageRepresentation(vtkI
   // Add default terrain
   vtkSmartPointer<vtkGeoGlobeSource> terrainSource =
     vtkSmartPointer<vtkGeoGlobeSource>::New();
+  terrainSource->Initialize();
   vtkSmartPointer<vtkGeoTerrain> terrain =
     vtkSmartPointer<vtkGeoTerrain>::New();
   terrain->SetSource(terrainSource);
@@ -210,6 +211,7 @@ vtkGeoAlignedImageRepresentation* vtkGeoView::AddDefaultImageRepresentation(vtkI
   vtkSmartPointer<vtkGeoAlignedImageSource> imageSource =
     vtkSmartPointer<vtkGeoAlignedImageSource>::New();
   imageSource->SetImage(image);
+  imageSource->Initialize();
   vtkSmartPointer<vtkGeoAlignedImageRepresentation> rep =
     vtkSmartPointer<vtkGeoAlignedImageRepresentation>::New();
   rep->SetSource(imageSource);

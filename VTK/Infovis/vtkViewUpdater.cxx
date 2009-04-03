@@ -23,9 +23,11 @@
 #include "vtkCommand.h"
 #include "vtkObjectFactory.h"
 #include "vtkView.h"
+#include "vtkRenderer.h"
+#include "vtkRenderView.h"
+#include "vtkRenderWindow.h"
 
 #include <vtksys/stl/vector>
-
 
 vtkCxxRevisionMacro(vtkViewUpdater, "$Revision$");
 vtkStandardNewMacro(vtkViewUpdater);
@@ -38,7 +40,19 @@ public:
   {
     for (unsigned int i = 0; i < this->Views.size(); ++i)
       {
-      this->Views[i]->Update();
+      vtkRenderView* rv = vtkRenderView::SafeDownCast(this->Views[i]);
+      if (rv)
+        {
+        vtkRenderWindow* win = rv->GetRenderer()->GetRenderWindow();
+        if (win)
+          {
+          win->Render();
+          }
+        }
+      else
+        {
+        this->Views[i]->Update();
+        }
       }
   }
 
