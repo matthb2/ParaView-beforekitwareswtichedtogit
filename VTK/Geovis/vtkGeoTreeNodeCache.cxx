@@ -84,7 +84,6 @@ void vtkGeoTreeNodeCache::SendToFront(vtkGeoTreeNode* node)
 //----------------------------------------------------------------------------
 void vtkGeoTreeNodeCache::TrimToCacheMinimum()
 {
-  cerr << "Trimming cache ... " << endl;
   while (this->Size > this->CacheMinimumLimit)
     {
     vtkGeoTreeNode* node = this->Oldest;
@@ -122,7 +121,6 @@ void vtkGeoTreeNodeCache::DeleteDataFromSiblings(vtkGeoTreeNode* node)
     }
   if (canDeleteSiblings)
     {
-    cerr << "Actually deleting data." << endl;
     for (int c = 0; c < 4; ++c)
       {
       vtkGeoTreeNode* child = parent->GetChildTreeNode(c);
