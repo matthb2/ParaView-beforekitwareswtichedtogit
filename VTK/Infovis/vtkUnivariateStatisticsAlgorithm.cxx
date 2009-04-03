@@ -50,6 +50,7 @@ vtkUnivariateStatisticsAlgorithm::~vtkUnivariateStatisticsAlgorithm()
 void vtkUnivariateStatisticsAlgorithm::PrintSelf( ostream &os, vtkIndent indent )
 {
   this->Superclass::PrintSelf( os, indent );
+  os << indent << "NumberOfVariables: " << this->NumberOfVariables << endl;
 }
 
 // ----------------------------------------------------------------------

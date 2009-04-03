@@ -50,6 +50,7 @@ vtkBivariateStatisticsAlgorithm::~vtkBivariateStatisticsAlgorithm()
 void vtkBivariateStatisticsAlgorithm::PrintSelf( ostream &os, vtkIndent indent )
 {
   this->Superclass::PrintSelf( os, indent );
+  os << indent << "NumberOfVariables: " << this->NumberOfVariables << endl;
 }
 
 // ----------------------------------------------------------------------
