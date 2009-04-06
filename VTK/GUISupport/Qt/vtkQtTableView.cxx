@@ -22,7 +22,6 @@
 
 #include <QHeaderView>
 #include <QItemSelection>
-#include <QSortFilterProxyModel>
 #include <QTableView>
 
 #include "vtkAbstractArray.h"
