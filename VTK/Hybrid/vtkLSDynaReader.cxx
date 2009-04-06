@@ -1163,6 +1163,7 @@ public:
     {
     this->FileIsValid = 0;
     this->Dimensionality=0;
+    this->NumberOfNodes=0;
     this->FileSizeFactor = 7;
     this->MaxFileLength = this->FileSizeFactor*512*512*8;
 
