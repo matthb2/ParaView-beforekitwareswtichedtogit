@@ -183,7 +183,7 @@ void vtkLightActor::UpdateViewProps()
 {
   if(this->Light==0)
     {
-    vtkErrorMacro(<< "no light.");
+    vtkDebugMacro(<< "no light.");
     return;
     }
   double angle=this->Light->GetConeAngle();

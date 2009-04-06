@@ -132,7 +132,7 @@ void vtkCameraActor::UpdateViewProps()
 {
   if(this->Camera==0)
     {
-    vtkErrorMacro(<< "no camera to represent.");
+    vtkDebugMacro(<< "no camera to represent.");
     return;
     }
  
