@@ -22,6 +22,7 @@
 
 #include <QHeaderView>
 #include <QItemSelection>
+#include <QSortFilterProxyModel>
 #include <QTableView>
 
 #include "vtkAbstractArray.h"
@@ -43,7 +44,6 @@
 #include "vtkSelectionNode.h"
 #include "vtkSmartPointer.h"
 #include "vtkTable.h"
-#include "QSortFilterProxyModel.h"
 
 vtkCxxRevisionMacro(vtkQtTableView, "$Revision$");
 vtkStandardNewMacro(vtkQtTableView);
