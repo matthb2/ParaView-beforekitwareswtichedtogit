@@ -26,6 +26,7 @@ vtkStandardNewMacro(vtkPassThrough);
 //----------------------------------------------------------------------------
 vtkPassThrough::vtkPassThrough()
 {
+  this->DeepCopyInput = 0;
 }
 
 //----------------------------------------------------------------------------
@@ -37,6 +38,8 @@ vtkPassThrough::~vtkPassThrough()
 void vtkPassThrough::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os, indent);
+  os << indent << "DeepCopyInput: " 
+     << (this->DeepCopyInput ? "on" : "off") << endl;
 }
 
 //----------------------------------------------------------------------------
@@ -49,6 +52,14 @@ int vtkPassThrough::RequestData(
   vtkInformation* outInfo = outputVector->GetInformationObject(0);
   vtkDataObject* input = inInfo->Get(vtkDataObject::DATA_OBJECT());
   vtkDataObject* output = outInfo->Get(vtkDataObject::DATA_OBJECT());
-  output->ShallowCopy(input);
+  if(this->DeepCopyInput)
+    {
+    output->DeepCopy(input);
+    }
+  else
+    {
+    output->ShallowCopy(input);
+    }
+
   return 1;
 }
