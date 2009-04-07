@@ -148,6 +148,8 @@ void vtkDelimitedTextReader::PrintSelf(ostream& os, vtkIndent indent)
     << this->GeneratePedigreeIds << endl;
   os << indent << "PedigreeIdArrayName: " 
     << this->PedigreeIdArrayName << endl;
+  os << indent << "OutputPedigreeIds: "
+    << (this->OutputPedigreeIds? "true" : "false") << endl;
 }
 
 // ----------------------------------------------------------------------
