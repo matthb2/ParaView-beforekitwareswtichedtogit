@@ -220,7 +220,6 @@ void vtkQtTableView::SetVTKSelection()
   // See if the selection has changed in any way
   vtkDataRepresentation* rep = this->GetRepresentation();
   vtkAlgorithm* alg = rep->GetInputConnection()->GetProducer();
-  vtkDataObject *input = alg->GetOutputDataObject(0);  
   vtkDataObject *d = this->TableAdapter->GetVTKDataObject();
   vtkSelection* s = rep->GetSelectionLink()->GetSelection();
   //vtkSelection *s = vtkSelection::SafeDownCast(
