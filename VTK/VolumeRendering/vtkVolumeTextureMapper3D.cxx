@@ -665,6 +665,9 @@ vtkVolumeTextureMapper3D::vtkVolumeTextureMapper3D()
   this->VolumeSize                    = 0;
   this->VolumeComponents              = 0;
   this->VolumeSpacing[0] = this->VolumeSpacing[1] = this->VolumeSpacing[2] = 0;
+  this->VolumeDimensions[0]=0;
+  this->VolumeDimensions[1]=0;
+  this->VolumeDimensions[2]=0;
   
   this->SampleDistance                = 1.0;
   this->ActualSampleDistance          = 1.0;
