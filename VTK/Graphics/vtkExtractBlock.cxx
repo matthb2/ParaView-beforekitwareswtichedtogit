@@ -88,9 +88,7 @@ void vtkExtractBlock::CopySubTree(vtkCompositeDataIterator* loc,
       output->GetDataSet(loc));
     vtkCompositeDataIterator* iter = cinput->NewIterator();
     iter->VisitOnlyLeavesOff();
-    for (iter->InitTraversal();
-      !iter->IsDoneWithTraversal() && this->ActiveIndices->size() > 0;
-      iter->GoToNextItem())
+    for (iter->InitTraversal(); !iter->IsDoneWithTraversal(); iter->GoToNextItem())
       {
       vtkDataObject* curNode = iter->GetCurrentDataObject();
       vtkDataObject* clone = curNode->NewInstance();
@@ -129,7 +127,9 @@ int vtkExtractBlock::RequestData(
   vtkCompositeDataIterator* iter = input->NewIterator();
   iter->VisitOnlyLeavesOff();
 
-  for (iter->InitTraversal(); !iter->IsDoneWithTraversal(); iter->GoToNextItem())
+  for (iter->InitTraversal();
+    !iter->IsDoneWithTraversal() && this->ActiveIndices->size()>0;
+    iter->GoToNextItem())
     {
     if (this->ActiveIndices->find(iter->GetCurrentFlatIndex()) !=
       this->ActiveIndices->end())
