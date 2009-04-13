@@ -2595,10 +2595,6 @@ void vtkUnstructuredGridVolumeZSweepMapper::PrintSelf(ostream& os,
   // We add here the internal variable we don't want to display:
   // this->ImageViewportSize this->ImageOrigin this->ImageInUseSize
   
-  os << indent << "ImageOrigin="<<ImageOrigin[0]<<", "<<ImageOrigin[1]<<"\n";
-  os << indent << "ImageInUseSize="<<ImageInUseSize[0]<<", "<<ImageInUseSize[1]<<"\n";
-  os << indent << "ImageMemorySize="<<ImageMemorySize[0]<<", "<<ImageMemorySize[1]<<"\n";
-  
   if (this->RayIntegrator)
     {
     os << indent << "RayIntegrator: "
