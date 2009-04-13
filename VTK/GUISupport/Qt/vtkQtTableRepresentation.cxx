@@ -105,6 +105,13 @@ vtkQtTableRepresentation::SetKeyColumn(const char *col)
 }
 
 // ----------------------------------------------------------------------
+
+char* vtkQtTableRepresentation::GetKeyColumn()
+{
+  return this->GetKeyColumnInternal();
+}
+
+// ----------------------------------------------------------------------
 void vtkQtTableRepresentation::UpdateTable()
 {
   this->ResetModel();
