@@ -18,7 +18,7 @@
 #include "vtkQtChartInteractorSetup.h"
 #include "vtkQtChartMouseSelection.h"
 #include "vtkQtChartWidget.h"
-#include "vtkQtChartViewBase.h"
+#include "vtkQtChartView.h"
 #include "vtkSMChartOptionsProxy.h"
 
 vtkCxxRevisionMacro(vtkSMChartViewProxy, "$Revision$");
@@ -70,7 +70,7 @@ vtkQtChartWidget* vtkSMChartViewProxy::GetChartWidget()
 }
 
 //----------------------------------------------------------------------------
-vtkQtChartViewBase* vtkSMChartViewProxy::GetChartView()
+vtkQtChartView* vtkSMChartViewProxy::GetChartView()
 {
   return this->ChartView;
 }

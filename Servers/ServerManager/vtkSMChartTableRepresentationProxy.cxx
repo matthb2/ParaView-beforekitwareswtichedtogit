@@ -17,8 +17,8 @@
 #include "vtkDataObject.h"
 #include "vtkObjectFactory.h"
 #include "vtkQtChartNamedSeriesOptionsModel.h"
-#include "vtkQtChartTableRepresentation.h"
-#include "vtkQtChartViewBase.h"
+#include "vtkQtChartRepresentation.h"
+#include "vtkQtChartView.h"
 #include "vtkSMChartNamedOptionsModelProxy.h"
 #include "vtkSMChartViewProxy.h"
 
@@ -27,7 +27,7 @@ vtkCxxRevisionMacro(vtkSMChartTableRepresentationProxy, "$Revision$");
 //----------------------------------------------------------------------------
 vtkSMChartTableRepresentationProxy::vtkSMChartTableRepresentationProxy()
 {
-  this->VTKRepresentation = vtkQtChartTableRepresentation::New();
+  this->VTKRepresentation = vtkQtChartRepresentation::New();
   this->Visibility = 0;
 
   this->UseIndexForXAxis = true;

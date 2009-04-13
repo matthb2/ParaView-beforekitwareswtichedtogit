@@ -17,7 +17,7 @@
 #include "vtkObjectFactory.h"
 #include "vtkQtChartNamedSeriesOptionsModel.h"
 #include "vtkQtChartSeriesOptions.h"
-#include "vtkQtChartTableRepresentation.h"
+#include "vtkQtChartRepresentation.h"
 #include "vtkQtChartTableSeriesModel.h"
 #include "vtkStringList.h"
 #include "vtkSMStringVectorProperty.h"
@@ -59,7 +59,7 @@ vtkSMChartNamedOptionsModelProxy::~vtkSMChartNamedOptionsModelProxy()
 
 //----------------------------------------------------------------------------
 void vtkSMChartNamedOptionsModelProxy::CreateObjects(
-  vtkQtChartTableRepresentation* repr)
+  vtkQtChartRepresentation* repr)
 {
   this->Internals->OptionsModel = new vtkQtChartNamedSeriesOptionsModel(
     repr->GetSeriesModel(), 0);

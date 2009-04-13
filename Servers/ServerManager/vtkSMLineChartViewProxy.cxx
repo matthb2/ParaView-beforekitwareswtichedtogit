@@ -30,7 +30,7 @@ vtkSMLineChartViewProxy::~vtkSMLineChartViewProxy()
 }
 
 //----------------------------------------------------------------------------
-vtkQtChartViewBase* vtkSMLineChartViewProxy::NewChartView()
+vtkQtChartView* vtkSMLineChartViewProxy::NewChartView()
 {
   return vtkQtLineChartView::New();
 }
