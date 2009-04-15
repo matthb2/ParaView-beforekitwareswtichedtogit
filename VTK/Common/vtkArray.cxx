@@ -24,6 +24,8 @@
 #include "vtkSparseArray.h"
 #include <vtkVariant.h>
 
+#include <vtkstd/algorithm>
+
 //
 // Standard functions
 //
