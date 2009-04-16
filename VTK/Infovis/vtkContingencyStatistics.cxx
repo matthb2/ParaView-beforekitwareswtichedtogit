@@ -216,7 +216,6 @@ void vtkContingencyStatistics::ExecuteLearn( vtkTable* inData,
 
     summaryTab->InsertNextRow( row2 );
 
-
     vtkAbstractArray* valsX = inData->GetColumnByName( colX );
     vtkAbstractArray* valsY = inData->GetColumnByName( colY );
 
