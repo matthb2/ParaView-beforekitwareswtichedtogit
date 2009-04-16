@@ -151,7 +151,7 @@ static pascal OSStatus myWinEvtHndlr(EventHandlerCallRef,
       if(view_for_mouse != ren->GetWindowId())
         return eventNotHandledErr;
 
-      GetEventParameter(event, kEventParamMouseLocation, typeHIPoint,
+      GetEventParameter(event, kEventParamWindowMouseLocation, typeHIPoint,
                         NULL, sizeof(HIPoint), NULL, &mouseLoc);
       
       HIViewConvertPoint(&mouseLoc, root_window, ren->GetWindowId());
