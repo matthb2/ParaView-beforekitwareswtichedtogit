@@ -202,7 +202,7 @@ void vtkPContingencyStatistics::ExecuteLearn( vtkTable* inData,
     }
   
   // Clean up
-  if ( myRank == reduceProc );
+  if ( myRank == reduceProc )
     {
     delete [] xyPacked_g;
     delete [] kcValues_g;
