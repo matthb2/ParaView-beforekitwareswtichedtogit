@@ -65,7 +65,7 @@ void PackValues( const vtkstd::vector<vtkStdString>& values,
        it != values.end(); ++ it )
     {
     buffer.append( *it );
-    buffer.push_back( 0 );
+//    buffer.push_back( 0 );
     }
 }
 
