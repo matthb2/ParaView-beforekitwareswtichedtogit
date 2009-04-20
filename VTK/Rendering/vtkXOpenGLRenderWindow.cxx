@@ -24,8 +24,10 @@
 #include "vtkXRenderWindowInteractor.h"
 
 #include "vtkOpenGL.h"
-// To prevent glx.h to include glxext.h provided by the system
-#define GLX_GLXEXT_LEGACY
+
+// define GLX_GLXEXT_LEGACY to prevent glx.h to include glxext.h provided by
+// the system
+//#define GLX_GLXEXT_LEGACY
 #include "GL/glx.h"
 
 #include "vtkgl.h"
