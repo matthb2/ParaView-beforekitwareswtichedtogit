@@ -293,6 +293,10 @@ int vtkPBGLGraphSQLReaderRequestData(
 #endif
   helper->Synchronize();
 
+  // Call a second synchronize to pick up anything that was possibly sent
+  // in a trigger after the previous synchronize.
+  helper->Synchronize();
+
   // Copy into output graph
   if (!output->CheckedShallowCopy(builder))
     {
