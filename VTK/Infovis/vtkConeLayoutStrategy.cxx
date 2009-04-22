@@ -288,5 +288,8 @@ void vtkConeLayoutStrategy::Layout()
 void vtkConeLayoutStrategy::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os,indent);
+  os << indent << "Spacing: " << this->Spacing << endl;
+  os << indent << "Compactness: " << this->Compactness << endl;
+  os << indent << "Compression: " << this->Compression << endl;
 }
 
