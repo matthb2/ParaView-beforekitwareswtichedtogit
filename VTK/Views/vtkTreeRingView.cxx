@@ -25,6 +25,12 @@
 #include "vtkStackedTreeLayoutStrategy.h"
 #include "vtkTreeRingToPolyData.h"
 
+#ifdef VTK_USE_QT
+#include "vtkTexturedActor2D.h"
+#include "vtkAreaLayout.h"
+#include "vtkQtTreeRingLabelMapper.h"
+#endif
+
 vtkCxxRevisionMacro(vtkTreeRingView, "$Revision$");
 vtkStandardNewMacro(vtkTreeRingView);
 //----------------------------------------------------------------------------
@@ -37,6 +43,23 @@ vtkTreeRingView::~vtkTreeRingView()
 {
 }
 
+//----------------------------------------------------------------------------
+void vtkTreeRingView::UseFittedLabeling()
+{
+#ifdef VTK_USE_QT
+  this->AreaLabelActor = vtkSmartPointer<vtkTexturedActor2D>::New();
+  this->AreaLabelActor->PickableOff();
+  
+  vtkSmartPointer<vtkQtTreeRingLabelMapper> mapper = 
+    vtkSmartPointer<vtkQtTreeRingLabelMapper>::New();
+  mapper->SetRenderer( this->Renderer );
+  this->SetAreaLabelMapper(mapper);
+  
+  this->AreaLabelMapper->SetInputConnection(this->AreaLayout->GetOutputPort());
+  this->AreaLabelActor->SetMapper(this->AreaLabelMapper);
+#endif
+}
+  
 //----------------------------------------------------------------------------
 void vtkTreeRingView::SetRootAngles(double start, double end)
 {
