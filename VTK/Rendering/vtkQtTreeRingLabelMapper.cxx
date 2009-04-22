@@ -549,6 +549,16 @@ void vtkQtTreeRingLabelMapper::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os, indent);
   os << indent << "WindowSize: " << this->WindowSize[0] << "w x" << this->WindowSize[1] << "h\n";
+  if (this->LabelTextProperty)
+    {
+    os << indent << "Label Text Property:\n";
+    this->LabelTextProperty->PrintSelf(os,indent.GetNextIndent());
+    }
+  else
+    {
+    os << indent << "Label Text Property: (none)\n";
+    } 
+  os << indent << "TextRotationArrayName: " << (this->TextRotationArrayName ? this->TextRotationArrayName : "(none)") << endl;
 }
 
 void vtkQtTreeRingLabelMapper::GetVertexLabel(

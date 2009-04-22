@@ -537,6 +537,7 @@ void vtkQtLabelSurface::PrintSelf(ostream& os, vtkIndent indent)
 
   os << indent << "Field Data Array: " << this->FieldDataArray << "\n";
   os << indent << "Field Data Name: " << (this->FieldDataName ? this->FieldDataName : "Null") << "\n";
+  os << indent << "TextRotationArrayName: " << (this->TextRotationArrayName ? this->TextRotationArrayName : "(none)") << endl;
 }
 
 // ----------------------------------------------------------------------
