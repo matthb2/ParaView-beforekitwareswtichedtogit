@@ -3,12 +3,6 @@
 Program:   Visualization Toolkit
 Module:    $RCSfile$
 
--------------------------------------------------------------------------
-Copyright 2008 Sandia Corporation.
-Under the terms of Contract DE-AC04-94AL85000 with Sandia Corporation,
-the U.S. Government retains certain rights in this software.
--------------------------------------------------------------------------
-
 Copyright (c) Ken Martin, Will Schroeder, Bill Lorensen
 All rights reserved.
 See Copyright.txt or http://www.kitware.com/Copyright.htm for details.
@@ -18,6 +12,12 @@ the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR
 PURPOSE.  See the above copyright notice for more information.
 
 =========================================================================*/
+
+/*-------------------------------------------------------------------------
+Copyright 2008 Sandia Corporation.
+Under the terms of Contract DE-AC04-94AL85000 with Sandia Corporation,
+the U.S. Government retains certain rights in this software.
+-------------------------------------------------------------------------*/
 
 #include "vtkConeLayoutStrategy.h"
 
