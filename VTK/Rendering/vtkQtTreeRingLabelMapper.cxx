@@ -623,16 +623,19 @@ void vtkQtTreeRingLabelMapper::GetVertexLabel(
 unsigned long vtkQtTreeRingLabelMapper::GetMTime()
 {
   unsigned long filterMTime = this->MTime.GetMTime();
-  vtkRenderWindow* rw = this->Renderer->GetRenderWindow();
-  if ( rw )
+  if( this->Renderer )
     {
-    unsigned long renWindMTime = rw->GetMTime();
-    if ( renWindMTime > filterMTime )
+    vtkRenderWindow* rw = this->Renderer->GetRenderWindow();
+    if ( rw )
       {
-      int* rwSize = rw->GetSize();
-      if ( rwSize[0] != this->WindowSize[0] || rwSize[1] != this->WindowSize[1] )
+      unsigned long renWindMTime = rw->GetMTime();
+      if ( renWindMTime > filterMTime )
         {
-        return renWindMTime;
+        int* rwSize = rw->GetSize();
+        if ( rwSize[0] != this->WindowSize[0] || rwSize[1] != this->WindowSize[1] )
+          {
+          return renWindMTime;
+          }
         }
       }
     }
