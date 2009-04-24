@@ -133,7 +133,7 @@ private:
 
 
 //-------------------------------------------------------------------------
-static int vtkTclEventProc(XtPointer clientData, XEvent *event)
+extern "C" int vtkTclEventProc(XtPointer clientData, XEvent *event)
 {
   Boolean ctd;
   vtkXOpenGLRenderWindow *rw;
