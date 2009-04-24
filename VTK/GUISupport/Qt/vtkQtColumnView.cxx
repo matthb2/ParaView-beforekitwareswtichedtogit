@@ -80,7 +80,7 @@ void vtkQtColumnView::SetAlternatingRowColors(bool state)
 }
 
 //----------------------------------------------------------------------------
-void vtkQtColumnView::AddInputConnection( int vtkNotUsed(port), int vtkNotUsed(index),
+void vtkQtColumnView::AddInputConnection(
   vtkAlgorithmOutput* conn, vtkAlgorithmOutput* vtkNotUsed(selectionConn))
 {
   // Get a handle to the input data object. Note: For now
@@ -105,7 +105,7 @@ void vtkQtColumnView::AddInputConnection( int vtkNotUsed(port), int vtkNotUsed(i
 }
 
 //----------------------------------------------------------------------------
-void vtkQtColumnView::RemoveInputConnection(int vtkNotUsed(port), int vtkNotUsed(index),
+void vtkQtColumnView::RemoveInputConnection(
   vtkAlgorithmOutput* conn, vtkAlgorithmOutput* vtkNotUsed(selectionConn))
 {
   // Remove VTK data from the adapter

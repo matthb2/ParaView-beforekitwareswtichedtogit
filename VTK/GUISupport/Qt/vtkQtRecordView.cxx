@@ -74,7 +74,6 @@ void vtkQtRecordView::SetFieldType(int type)
 
 //----------------------------------------------------------------------------
 void vtkQtRecordView::AddInputConnection( 
-  int vtkNotUsed(port), int vtkNotUsed(index),
   vtkAlgorithmOutput* conn, 
   vtkAlgorithmOutput* vtkNotUsed(selectionConn))
 {  
@@ -83,7 +82,6 @@ void vtkQtRecordView::AddInputConnection(
 
 //----------------------------------------------------------------------------
 void vtkQtRecordView::RemoveInputConnection(
-  int vtkNotUsed(port), int vtkNotUsed(index),
   vtkAlgorithmOutput* conn, 
   vtkAlgorithmOutput* vtkNotUsed(selectionConn))
 {  
