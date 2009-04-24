@@ -21,6 +21,7 @@
 
 #include "vtkAnnotation.h"
 #include "vtkInformation.h"
+#include "vtkInformationDoubleKey.h"
 #include "vtkInformationDoubleVectorKey.h"
 #include "vtkInformationStringKey.h"
 #include "vtkInformationVector.h"
@@ -34,7 +35,8 @@ vtkStandardNewMacro(vtkAnnotation);
 vtkCxxSetObjectMacro(vtkAnnotation, Selection, vtkSelection);
 
 vtkInformationKeyMacro(vtkAnnotation, LABEL, String);
-vtkInformationKeyRestrictedMacro(vtkAnnotation, COLOR, DoubleVector, 2);
+vtkInformationKeyRestrictedMacro(vtkAnnotation, COLOR, DoubleVector, 3);
+vtkInformationKeyMacro(vtkAnnotation, OPACITY, Double);
 
 vtkAnnotation::vtkAnnotation()
 {
