@@ -30,6 +30,7 @@
 #include "vtkMath.h"
 #include "vtkObjectFactory.h"
 #include "vtkPointData.h"
+#include "vtkPoints.h"
 #include "vtkSmartPointer.h"
 #include "vtkTree.h"
 #include "vtkTreeDFSIterator.h"
@@ -82,6 +83,10 @@ void vtkSliceAndDiceLayoutStrategy::Layout(
       {
       coords[0] = 0; coords[1] = 1; coords[2] = 0; coords[3] = 1;
       coordsArray->SetTuple(vertex, coords);
+      inputTree->GetPoints()->SetPoint(vertex,
+        (coords[0] + coords[1])/2.0,
+        (coords[2] + coords[3])/2.0,
+        0.0);
       }
     double doubleCoords[4];
     coordsArray->GetTuple(vertex, doubleCoords);
@@ -145,6 +150,10 @@ void vtkSliceAndDiceLayoutStrategy::Layout(
         coords[3] = parentMaxY - oldDelta;     // minY
         }
       coordsArray->SetTuple(child, coords);
+      inputTree->GetPoints()->SetPoint(child,
+        (coords[0] + coords[1])/2.0,
+        (coords[2] + coords[3])/2.0,
+        0.0);
       }
     }
 }

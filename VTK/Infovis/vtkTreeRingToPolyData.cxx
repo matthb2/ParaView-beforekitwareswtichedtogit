@@ -21,6 +21,7 @@
 
 #include "vtkCellArray.h"
 #include "vtkCellData.h"
+#include "vtkCommand.h"
 #include "vtkFloatArray.h"
 #include "vtkMath.h"
 #include "vtkIdTypeArray.h"
@@ -82,6 +83,8 @@ int vtkTreeRingToPolyData::RequestData(
   
   int i;
   vtkIdType rootId = inputTree->GetRoot();
+  double progress = 0.0;
+  this->InvokeEvent(vtkCommand::ProgressEvent, &progress);
   for( i = 0; i < inputTree->GetNumberOfVertices(); i++)
     {
     // Grab coords from the input
@@ -146,6 +149,8 @@ int vtkTreeRingToPolyData::RequestData(
     strip->SetInput(sector->GetOutput());
     
     append->AddInput(strip->GetOutput());
+    progress = static_cast<double>(i) / inputTree->GetNumberOfVertices() * 0.8;
+    this->InvokeEvent(vtkCommand::ProgressEvent, &progress);
     }
   
   append->Update();

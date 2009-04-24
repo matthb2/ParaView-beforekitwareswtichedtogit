@@ -61,6 +61,7 @@ void vtkSquarifyLayoutStrategy::Layout(
   vtkIdType rootId = inputTree->GetRoot();
   float coords[] = {0,1,0,1};
   coordsArray->SetTuple(rootId, coords);
+  inputTree->GetPoints()->SetPoint(rootId, 0.5, 0.5, 0.0);
 
   // Now layout the children vertices
   this->AddBorder(coords);

@@ -328,7 +328,7 @@ void vtkLabeledTreeMapDataMapper::RenderOpaqueGeometry(vtkViewport *viewport,
     return;
     }
 
-  vtkTextProperty *tprop = this->LabelTextProperty;
+  vtkTextProperty *tprop = this->GetLabelTextProperty();
   if (!tprop)
     {
     vtkErrorMacro(<<"Need text property to render labels");

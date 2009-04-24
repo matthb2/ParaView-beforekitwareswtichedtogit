@@ -1204,6 +1204,21 @@ void vtkLabelHierarchyOctreeQueueIterator::Begin( vtkIdTypeArray* lastPlaced )
   this->LastPlaced = lastPlaced;
   this->LastPlacedIndex = ( lastPlaced && lastPlaced->GetNumberOfTuples() > 0 )? 0 : -1; // don't try to traverse what's not there
 
+  // Skip over invalid label indices
+  if ( this->LastPlacedIndex >= 0 )
+    {
+    vtkIdType numLabels = this->Hierarchy->GetPointData()->GetAbstractArray( "Type" )->GetNumberOfTuples();
+    while ( this->LastPlacedIndex < this->LastPlaced->GetNumberOfTuples() &&
+            this->LastPlaced->GetValue( this->LastPlacedIndex ) >= numLabels )
+      {
+      ++ this->LastPlacedIndex;
+      }
+    if ( this->LastPlacedIndex >= this->LastPlaced->GetNumberOfTuples() )
+      {
+      this->LastPlacedIndex = -1;
+      }
+    }
+
   this->Node = this->Hierarchy->GetImplementation()->Hierarchy3->root();
   if ( &(this->Node->value()) )
     {
@@ -1266,6 +1281,15 @@ void vtkLabelHierarchyOctreeQueueIterator::Next()
   if ( this->LastPlacedIndex >= 0 )
     {
     ++ this->LastPlacedIndex;
+
+    // Skip over invalid label indices
+    vtkIdType numLabels = this->Hierarchy->GetPointData()->GetAbstractArray( "Type" )->GetNumberOfTuples();
+    while ( this->LastPlacedIndex < this->LastPlaced->GetNumberOfTuples() &&
+            this->LastPlaced->GetValue( this->LastPlacedIndex ) >= numLabels )
+      {
+      ++ this->LastPlacedIndex;
+      }
+
     if ( this->LastPlacedIndex < this->LastPlaced->GetNumberOfTuples() )
       {
       return; // Done
