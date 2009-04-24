@@ -86,7 +86,7 @@ void vtkInitializationHelper::Initialize(const char* executable)
     vtkGenericWarningMacro("Python module already initialize. Skipping.");
     return;
     }
-  vtkPVMain::SetInitializeMPI(0); // don't use MPI even when available.
+  vtkPVMain::SetUseMPI(0); // don't use MPI even when available.
   PVMain = vtkPVMain::New();
   Options = vtkPVOptions::New();
   Options->SetProcessType(vtkPVOptions::PVCLIENT);
