@@ -368,7 +368,7 @@ void vtkApplyColors::ProcessColorArray(
   vtkScalarsToColors* lut,
   vtkAbstractArray* arr,
   unsigned char color[4],
-  bool scale)
+  bool scaleToArray)
 {
   if (lut && arr)
     {
@@ -377,7 +377,7 @@ void vtkApplyColors::ProcessColorArray(
     double* rng = lut->GetRange();
     double minVal = rng[0];
     double maxVal = rng[1];
-    if (scale)
+    if (scaleToArray)
       {
       minVal = VTK_DOUBLE_MAX;
       maxVal = VTK_DOUBLE_MIN;
