@@ -25,7 +25,6 @@
 #include "vtkEdgeListIterator.h"
 #include "vtkFloatArray.h"
 #include "vtkGeoMath.h"
-#include "vtkGlobeSource.h"
 #include "vtkGraph.h"
 #include "vtkMath.h"
 #include "vtkInformation.h"
