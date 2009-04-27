@@ -3,12 +3,12 @@
    Program: ParaView
    Module:    $RCSfile$
 
-   Copyright (c) 2005-2008 Sandia Corporation, Kitware Inc.
+   Copyright (c) 2005,2006 Sandia Corporation, Kitware Inc.
    All rights reserved.
 
    ParaView is a free software; you can redistribute it and/or modify it
    under the terms of the ParaView license version 1.2. 
-
+   
    See License_v1.2.txt for the full ParaView license.
    A copy of this license can be obtained by contacting
    Kitware Inc.
@@ -29,17 +29,29 @@ NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 ========================================================================*/
+#ifndef __pqComparativeLineChartView_h 
+#define __pqComparativeLineChartView_h
 
-#include "pqCoreInit.h"
-#include <QObject>
-#include <QtPlugin>
+#include "pqComparativeChartView.h"
 
-void pqCoreInit()
+/// pqComparativeChartView subclass for comparative line chart.
+class PQCORE_EXPORT pqComparativeLineChartView : public pqComparativeChartView
 {
-#ifndef PARAVIEW_BUILD_SHARED_LIBS
-  Q_INIT_RESOURCE(pqCore);
-  Q_INIT_RESOURCE(QtWidgets);
-  Q_IMPORT_PLUGIN(QtWidgets);
+  Q_OBJECT
+  typedef pqComparativeChartView Superclass;
+public:
+    pqComparativeLineChartView(const QString& group, const QString& name, 
+    vtkSMComparativeViewProxy* view, pqServer* server, QObject* parent=NULL);
+  ~pqComparativeLineChartView();
+
+  static QString comparativeLineChartViewType() { return "ComparativeXYPlotView"; }
+  static QString comparativeLineChartViewTypeName() { return "XY Plot View (Comparative)"; }
+
+private:
+  pqComparativeLineChartView(const pqComparativeLineChartView&); // Not implemented.
+  void operator=(const pqComparativeLineChartView&); // Not implemented.
+};
+
 #endif
-}
+
 

@@ -3,12 +3,12 @@
    Program: ParaView
    Module:    $RCSfile$
 
-   Copyright (c) 2005-2008 Sandia Corporation, Kitware Inc.
+   Copyright (c) 2005,2006 Sandia Corporation, Kitware Inc.
    All rights reserved.
 
    ParaView is a free software; you can redistribute it and/or modify it
    under the terms of the ParaView license version 1.2. 
-
+   
    See License_v1.2.txt for the full ParaView license.
    A copy of this license can be obtained by contacting
    Kitware Inc.
@@ -29,17 +29,29 @@ NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 ========================================================================*/
+#ifndef __pqComparativeBarChartView_h 
+#define __pqComparativeBarChartView_h
 
-#include "pqCoreInit.h"
-#include <QObject>
-#include <QtPlugin>
+#include "pqComparativeChartView.h"
 
-void pqCoreInit()
+/// pqComparativeChartView subclass for comparative bar chart.
+class PQCORE_EXPORT pqComparativeBarChartView : public pqComparativeChartView
 {
-#ifndef PARAVIEW_BUILD_SHARED_LIBS
-  Q_INIT_RESOURCE(pqCore);
-  Q_INIT_RESOURCE(QtWidgets);
-  Q_IMPORT_PLUGIN(QtWidgets);
+  Q_OBJECT
+  typedef pqComparativeChartView Superclass;
+public:
+  pqComparativeBarChartView(const QString& group, const QString& name, 
+    vtkSMComparativeViewProxy* view, pqServer* server, QObject* parent=NULL);
+  ~pqComparativeBarChartView();
+
+  static QString comparativeBarChartViewType() { return "ComparativeBarChartView"; }
+  static QString comparativeBarChartViewTypeName() { return "Bar Chart View (Comparative)"; }
+
+private:
+  pqComparativeBarChartView(const pqComparativeBarChartView&); // Not implemented.
+  void operator=(const pqComparativeBarChartView&); // Not implemented.
+};
+
 #endif
-}
+
 

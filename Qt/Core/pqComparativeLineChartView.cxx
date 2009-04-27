@@ -3,7 +3,7 @@
    Program: ParaView
    Module:    $RCSfile$
 
-   Copyright (c) 2005-2008 Sandia Corporation, Kitware Inc.
+   Copyright (c) 2005,2006 Sandia Corporation, Kitware Inc.
    All rights reserved.
 
    ParaView is a free software; you can redistribute it and/or modify it
@@ -28,52 +28,21 @@ LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
 NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-=========================================================================*/
+========================================================================*/
+#include "pqComparativeLineChartView.h"
 
-/// \file pqPlotViewHistogram.h
-/// \date 7/13/2007
-
-#ifndef _pqPlotViewHistogram_h
-#define _pqPlotViewHistogram_h
-
-
-#include "pqCoreExport.h"
-#include <QObject>
-
-class pqBarChartRepresentation;
-class pqChartArea;
-class pqHistogramChart;
-class pqPlotViewHistogramInternal;
-class pqRepresentation;
-
-
-class PQCORE_EXPORT pqPlotViewHistogram : public QObject
+//-----------------------------------------------------------------------------
+pqComparativeLineChartView::pqComparativeLineChartView(
+  const QString& group, const QString& name, 
+  vtkSMComparativeViewProxy* view, pqServer* server, QObject* parentObject)
+: Superclass(comparativeLineChartViewType(),
+  group, name, view, server, parentObject)
 {
-  Q_OBJECT
+}
 
-public:
-  pqPlotViewHistogram(QObject *parent=0);
-  virtual ~pqPlotViewHistogram();
+//-----------------------------------------------------------------------------
+pqComparativeLineChartView::~pqComparativeLineChartView()
+{
+}
 
-  void initialize(pqChartArea *chartArea);
 
-  pqHistogramChart *getChartLayer() const;
-
-  pqBarChartRepresentation *getCurrentRepresentation() const;
-  void setCurrentRepresentation(pqBarChartRepresentation *display);
-
-  void update(bool force=false);
-  bool isUpdateNeeded();
-
-  void addRepresentation(pqBarChartRepresentation *histogram);
-  void removeRepresentation(pqBarChartRepresentation *histogram);
-  void removeAllRepresentations();
-
-private slots:
-  void updateVisibility(pqRepresentation* display);
-
-private:
-  pqPlotViewHistogramInternal *Internal;
-};
-
-#endif

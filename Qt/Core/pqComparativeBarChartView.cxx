@@ -3,7 +3,7 @@
    Program: ParaView
    Module:    $RCSfile$
 
-   Copyright (c) 2005-2008 Sandia Corporation, Kitware Inc.
+   Copyright (c) 2005,2006 Sandia Corporation, Kitware Inc.
    All rights reserved.
 
    ParaView is a free software; you can redistribute it and/or modify it
@@ -29,17 +29,27 @@ NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 ========================================================================*/
+#include "pqComparativeBarChartView.h"
 
-#include "pqCoreInit.h"
-#include <QObject>
-#include <QtPlugin>
+// Server Manager Includes.
 
-void pqCoreInit()
+// Qt Includes.
+
+// ParaView Includes.
+
+//-----------------------------------------------------------------------------
+pqComparativeBarChartView::pqComparativeBarChartView(
+  const QString& group, const QString& name, 
+  vtkSMComparativeViewProxy* view, pqServer* server, QObject* parentObject)
+: Superclass(comparativeBarChartViewType(),
+  group, name, view, server, parentObject)
+
 {
-#ifndef PARAVIEW_BUILD_SHARED_LIBS
-  Q_INIT_RESOURCE(pqCore);
-  Q_INIT_RESOURCE(QtWidgets);
-  Q_IMPORT_PLUGIN(QtWidgets);
-#endif
 }
+
+//-----------------------------------------------------------------------------
+pqComparativeBarChartView::~pqComparativeBarChartView()
+{
+}
+
 

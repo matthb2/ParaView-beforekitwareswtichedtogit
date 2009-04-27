@@ -45,8 +45,8 @@ class PQCORE_EXPORT pqBarChartView : public pqChartView
   typedef pqChartView Superclass;
 
 public:
-  static QString barChartViewType() { return "BarChartView2"; }
-  static QString barChartViewTypeName() { return "Bar Chart View 2"; }
+  static QString barChartViewType() { return "BarChartView"; }
+  static QString barChartViewTypeName() { return "Bar Chart View"; }
 
 public:
   pqBarChartView(const QString& group,
