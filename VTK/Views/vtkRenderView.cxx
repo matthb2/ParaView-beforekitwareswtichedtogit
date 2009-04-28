@@ -353,8 +353,8 @@ void vtkRenderView::RemoveIcons(vtkAlgorithmOutput* conn)
 void vtkRenderView::ProcessEvents(
   vtkObject* caller, unsigned long eventId, void* callData)
 {
-  if (caller == this->Renderer && eventId == vtkCommand::StartEvent ||
-      eventId == vtkCommand::ComputeVisiblePropBoundsEvent)
+  if (caller == this->Renderer && (eventId == vtkCommand::StartEvent ||
+      eventId == vtkCommand::ComputeVisiblePropBoundsEvent))
     {
     this->PrepareForRendering();
     }

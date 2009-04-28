@@ -213,8 +213,8 @@ int vtkApplyColors::RequestData(
       vtkSmartPointer<vtkIdTypeArray>::New();
     vtkSmartPointer<vtkIdTypeArray> list2 =
       vtkSmartPointer<vtkIdTypeArray>::New();
-    unsigned char annColor[4];
-    unsigned char prev[4];
+    unsigned char annColor[4] = {0, 0, 0, 0};
+    unsigned char prev[4] = {0, 0, 0, 0};
     unsigned int numLayers = layers->GetNumberOfLayers();
     for (unsigned int layer = 0; layer < numLayers; ++layer)
       {
