@@ -69,7 +69,6 @@ vtkHierarchicalGraphPipeline::vtkHierarchicalGraphPipeline()
   this->Mapper->SetInputConnection(this->GraphToPoly->GetOutputPort());
   this->Actor->SetMapper(this->Mapper);
 
-  this->ApplyColors->SetUseCellLookupTable(true);
   this->Mapper->SetScalarModeToUseCellFieldData();
   this->Mapper->SelectColorArray("vtkApplyColors color");
   this->Mapper->ScalarVisibilityOn();
