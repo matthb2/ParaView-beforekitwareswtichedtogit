@@ -208,8 +208,11 @@ void vtkRenderedSurfaceRepresentation::PrintSelf(ostream& os, vtkIndent indent)
   this->SelectionGeometryFilter->PrintSelf(os, indent.GetNextIndent());
   os << indent << "SelectionMapper:" << endl;
   this->SelectionMapper->PrintSelf(os, indent.GetNextIndent());
-  os << indent << "Actor:" << endl;
-  this->Actor->PrintSelf(os, indent.GetNextIndent());
-  os << indent << "SelectionActor:" << endl;
-  this->SelectionActor->PrintSelf(os, indent.GetNextIndent());
+  if (this->GeometryFilter->GetNumberOfInputConnections(0) > 0)
+    {
+    os << indent << "Actor:" << endl;
+    this->Actor->PrintSelf(os, indent.GetNextIndent());
+    os << indent << "SelectionActor:" << endl;
+    this->SelectionActor->PrintSelf(os, indent.GetNextIndent());
+    }
 }

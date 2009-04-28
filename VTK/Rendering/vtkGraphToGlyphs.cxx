@@ -171,4 +171,7 @@ int vtkGraphToGlyphs::RequestData(
 void vtkGraphToGlyphs::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os,indent);
+  os << indent << "Filled: " << this->Filled << endl;
+  os << indent << "ScreenSize: " << this->ScreenSize << endl;
+  os << indent << "GlyphType: " << this->GlyphType << endl;
 }

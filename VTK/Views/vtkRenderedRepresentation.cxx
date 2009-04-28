@@ -38,4 +38,5 @@ vtkRenderedRepresentation::~vtkRenderedRepresentation()
 void vtkRenderedRepresentation::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os, indent);
+  os << indent << "LabelRenderMode: " << this->LabelRenderMode << endl;
 }

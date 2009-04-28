@@ -41,6 +41,7 @@ vtkGeoSphereTransform::~vtkGeoSphereTransform()
 
 void vtkGeoSphereTransform::PrintSelf( ostream& os, vtkIndent indent )
 {
+  this->Superclass::PrintSelf(os, indent);
   os << indent << "ToRectangular: " << this->ToRectangular << endl;
 }
 
