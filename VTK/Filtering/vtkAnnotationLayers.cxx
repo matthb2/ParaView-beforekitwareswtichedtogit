@@ -52,7 +52,7 @@ vtkAnnotationLayers::~vtkAnnotationLayers()
 
 unsigned int vtkAnnotationLayers::GetNumberOfLayers()
 {
-  return this->Implementation->Layers.size();
+  return static_cast<unsigned int>(this->Implementation->Layers.size());
 }
 
 unsigned int vtkAnnotationLayers::GetNumberOfAnnotations(
@@ -63,7 +63,7 @@ unsigned int vtkAnnotationLayers::GetNumberOfAnnotations(
     vtkErrorMacro("Index out of bounds");
     return 0;
     }
-  return this->Implementation->Layers[layer].size();
+  return static_cast<unsigned int>(this->Implementation->Layers[layer].size());
 }
 
 vtkAnnotation* vtkAnnotationLayers::GetAnnotation(
