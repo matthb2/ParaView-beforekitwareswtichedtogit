@@ -1317,7 +1317,7 @@ int vtkSpyPlotReader::CanReadFile(const char* fname)
   char magic[8];
   if ( !spis.ReadString(magic, 8) )
     {
-    vtkErrorMacro( "Cannot read magic" );
+    vtkDebugMacro( "Cannot read magic" );
     return 0;
     }
   if ( strncmp(magic, "spydata", 7) != 0 &&
