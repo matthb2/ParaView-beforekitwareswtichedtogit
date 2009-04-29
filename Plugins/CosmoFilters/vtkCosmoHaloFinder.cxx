@@ -83,6 +83,7 @@ ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #include <vtksys/ios/fstream>
 #include <vtkstd/string>
+#include <vtkstd/algorithm>
 
 #define numDataDims 3
 #define dataX 0
