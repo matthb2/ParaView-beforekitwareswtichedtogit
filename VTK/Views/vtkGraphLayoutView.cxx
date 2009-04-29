@@ -118,6 +118,18 @@ bool vtkGraphLayoutView::GetVertexLabelVisibility()
 }
 
 //----------------------------------------------------------------------------
+void vtkGraphLayoutView::SetEdgeVisibility(bool vis)
+{
+  this->GetGraphRepresentation()->SetEdgeVisibility(vis);
+}
+
+//----------------------------------------------------------------------------
+bool vtkGraphLayoutView::GetEdgeVisibility()
+{
+  return this->GetGraphRepresentation()->GetEdgeVisibility();
+}
+
+//----------------------------------------------------------------------------
 void vtkGraphLayoutView::SetEdgeLabelVisibility(bool vis)
 {
   this->GetGraphRepresentation()->SetEdgeLabelVisibility(vis);
