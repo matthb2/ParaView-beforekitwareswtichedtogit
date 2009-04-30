@@ -151,7 +151,6 @@ bool vtkQtChartRepresentation::AddToView(vtkView* view)
     }
 
   // Add the our series model to the chart view's model collection.
-  this->Internal->OptionsModel->setChartSeriesLayer(chart->GetChartSeriesLayer());
   optionsCollection->addSeriesOptionsModel(this->Internal->OptionsModel);
   modelCollection->addSeriesModel(this->GetSeriesModel());
   return true;
@@ -188,7 +187,6 @@ bool vtkQtChartRepresentation::RemoveFromView(vtkView* view)
   // Remove the our series model from the chart view's model collection.
   modelCollection->removeSeriesModel(this->GetSeriesModel());
   optionsCollection->removeSeriesOptionsModel(this->Internal->OptionsModel);
-  this->Internal->OptionsModel->setChartSeriesLayer(0);
   return true;
 }
 
