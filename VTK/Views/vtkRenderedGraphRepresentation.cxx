@@ -1204,8 +1204,8 @@ void vtkRenderedGraphRepresentation::ApplyViewTheme(vtkViewTheme* theme)
   this->VertexGlyph->SetScreenSize(baseSize);
   this->VertexActor->GetProperty()->SetPointSize(baseSize);
   this->OutlineGlyph->SetScreenSize(baseSize + 2);
-  this->OutlineActor->GetProperty()->SetPointSize(baseSize + 2*lineWidth);
-  this->OutlineActor->GetProperty()->SetLineWidth(lineWidth);
+  this->OutlineActor->GetProperty()->SetPointSize(baseSize + 2);
+  this->OutlineActor->GetProperty()->SetLineWidth(1);
   this->EdgeActor->GetProperty()->SetLineWidth(lineWidth);
 
   this->OutlineActor->GetProperty()->SetColor(theme->GetOutlineColor());
