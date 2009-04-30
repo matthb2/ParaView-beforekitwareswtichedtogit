@@ -145,7 +145,7 @@ void vtkQtTableRepresentation::UpdateTable()
   // adapter that we can push into the QListView.  Before we hand that
   // off, though, we'll need to come up with colors for
   // each series.
-  int keyColumnIndex = -1;
+  //int keyColumnIndex = -1;
   int firstDataColumnIndex = -1;
   int lastDataColumnIndex = -1;
   //if (this->KeyColumnInternal != NULL)
