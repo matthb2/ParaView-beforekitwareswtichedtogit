@@ -110,7 +110,7 @@ vtkGeoLineRepresentation::~vtkGeoLineRepresentation()
 }
 
 //----------------------------------------------------------------------------
-void vtkGeoLineRepresentation::SetupInputConnections()
+void vtkGeoLineRepresentation::PrepareInputConnections()
 {
   this->GeometryFilter->SetInput(this->GetInput());
   this->ExtractSelection->SetInput(this->GetInput());

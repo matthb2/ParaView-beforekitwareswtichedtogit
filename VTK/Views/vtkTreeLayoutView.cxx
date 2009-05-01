@@ -396,7 +396,7 @@ void vtkTreeLayoutView::SetupRenderWindow(vtkRenderWindow *win)
   win->GetInteractor()->SetInteractorStyle(this->InteractorStyle);
 }
 
-// These should go into AddToView, RemoveFromView, SetupInputConnections
+// These should go into AddToView, RemoveFromView, PrepareInputConnections
 //----------------------------------------------------------------------------
 void vtkTreeLayoutView::AddInputConnection(
   vtkAlgorithmOutput *conn, vtkAlgorithmOutput *selectionConn)

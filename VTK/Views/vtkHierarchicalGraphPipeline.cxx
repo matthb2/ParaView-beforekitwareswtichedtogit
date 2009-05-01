@@ -166,7 +166,7 @@ bool vtkHierarchicalGraphPipeline::GetVisibility()
   return this->Actor->GetVisibility() ? true : false;
 }
 
-void vtkHierarchicalGraphPipeline::SetupInputConnections(
+void vtkHierarchicalGraphPipeline::PrepareInputConnections(
   vtkAlgorithmOutput* graphConn,
   vtkAlgorithmOutput* treeConn,
   vtkAlgorithmOutput* annConn,

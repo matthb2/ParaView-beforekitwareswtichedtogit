@@ -81,7 +81,7 @@ vtkQtTableRepresentation::~vtkQtTableRepresentation()
 // ----------------------------------------------------------------------
 
 void
-vtkQtTableRepresentation::SetupInputConnections()
+vtkQtTableRepresentation::PrepareInputConnections()
 {
   this->UpdateTable();
 }

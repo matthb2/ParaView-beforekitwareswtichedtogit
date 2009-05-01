@@ -81,7 +81,7 @@ vtkSurfaceRepresentation::~vtkSurfaceRepresentation()
 }
 
 //----------------------------------------------------------------------------
-void vtkSurfaceRepresentation::SetupInputConnections()
+void vtkSurfaceRepresentation::PrepareInputConnections()
 {
   this->ExtractSelection->SetInputConnection(1, this->GetSelectionConnection());
   this->GeometryFilter->SetInput(this->GetInput());

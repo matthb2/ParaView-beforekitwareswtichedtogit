@@ -229,7 +229,7 @@ int vtkDataRepresentation::RequestData(
         }
       }
     }
-  this->SetupInputConnections();
+  this->PrepareInputConnections();
   return 1;
 }
 
