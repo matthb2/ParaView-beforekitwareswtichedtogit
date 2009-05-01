@@ -327,6 +327,11 @@ void vtkLabeledDataMapper::BuildLabelsInternal(vtkDataSet* input)
   vtkDataArray *numericData = NULL;
   vtkStringArray *stringData = NULL;
 
+  if (input->GetNumberOfPoints() == 0)
+    {
+    return;
+    }
+
   vtkPointData *pd = input->GetPointData();
   // figure out what to label, and if we can label it
   pointIdLabels = 0;
