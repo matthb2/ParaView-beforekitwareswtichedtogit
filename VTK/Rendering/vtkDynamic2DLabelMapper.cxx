@@ -69,6 +69,7 @@ vtkDynamic2DLabelMapper::vtkDynamic2DLabelMapper()
   this->ReversePriority = false;
   this->LabelHeightPadding = 50;
   this->LabelWidthPadding = 10;
+  this->ReferenceScale = 1.0;
 
   // Set new default property
   vtkTextProperty* prop = vtkTextProperty::New();
