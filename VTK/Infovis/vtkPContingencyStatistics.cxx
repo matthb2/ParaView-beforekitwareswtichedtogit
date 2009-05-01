@@ -36,6 +36,9 @@
 #include <vtkstd/set>
 #include <vtkstd/vector>
 
+// For debugging purposes, output message sizes
+#define DEBUG_PARALLEL_CONTINGENCY_STATISTICS 1
+
 vtkStandardNewMacro(vtkPContingencyStatistics);
 vtkCxxRevisionMacro(vtkPContingencyStatistics, "$Revision$");
 vtkCxxSetObjectMacro(vtkPContingencyStatistics, Controller, vtkMultiProcessController);
@@ -360,6 +363,14 @@ bool vtkPContingencyStatistics::Reduce( char* xyPacked_g,
                                         vtkIdType& kcSizeTotal,
                                         vtkstd::vector<vtkIdType>& kcValues_l )
 {
+#if DEBUG_PARALLEL_CONTINGENCY_STATISTICS
+  cout << "## Reduction step, character string size: "
+       << xySizeTotal
+       << ", integer array size: "
+       << kcSizeTotal
+       << "\n";
+#endif //DEBUG_PARALLEL_CONTINGENCY_STATISTICS
+
   // First, unpack the packet of strings
   vtkstd::vector<vtkStdString> xyValues_g; 
   UnpackValues( vtkStdString ( xyPacked_g, xySizeTotal ), xyValues_g );
