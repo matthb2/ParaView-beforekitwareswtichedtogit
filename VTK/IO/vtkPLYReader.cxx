@@ -285,6 +285,17 @@ int vtkPLYReader::RequestData(
   return 1;
 }
 
+int vtkPLYReader::CanReadFile(const char *filename)
+{
+  FILE *fd = fopen(filename, "rb");
+  if (!fd) return 0;
+
+  char line[16];
+  fgets(line, 16, fd);
+  fclose(fd);
+  return (strncmp(line, "ply", 3) == 0);
+}
+
 void vtkPLYReader::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os,indent);

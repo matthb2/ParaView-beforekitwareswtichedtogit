@@ -587,6 +587,26 @@ int vtkPPhastaReader::RequestInformation(vtkInformation*,
   return 1;
 }
 
+//-----------------------------------------------------------------------------
+int vtkPPhastaReader::CanReadFile(const char *filename)
+{
+  vtkSmartPointer<vtkPVXMLParser> parser
+    = vtkSmartPointer<vtkPVXMLParser>::New();
+  parser->SuppressErrorMessagesOn();
+  parser->SetFileName(filename);
+
+  // Make sure we can parse the XML metafile.
+  if (!parser->Parse()) return 0;
+
+  // Make sure the XML file has a root element and it is of the right tag.
+  vtkPVXMLElement *rootElement = parser->GetRootElement();
+  if (!rootElement) return 0;
+  if (strcmp(rootElement->GetName(), "PhastaMetaFile") != 0) return 0;
+
+  // The file clearly is supposed to be a Phasta file.
+  return 1;
+}
+
 //----------------------------------------------------------------------------
 void vtkPPhastaReader::PrintSelf(ostream& os, vtkIndent indent)
 {

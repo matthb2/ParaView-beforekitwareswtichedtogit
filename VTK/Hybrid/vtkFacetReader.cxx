@@ -96,6 +96,35 @@ vtkFacetReader::~vtkFacetReader()
     }
 }
 
+//-----------------------------------------------------------------------------
+int vtkFacetReader::CanReadFile(const char *filename)
+{
+  struct stat fs;
+  if (stat(filename, &fs))
+    {
+    // Specified filename not found
+    return 0;
+    }
+
+  ifstream ifs(filename, ios::in);
+  if (!ifs)
+    {
+    // Specified filename not found
+    return 0;
+    }
+
+  vtkstd::string line;
+  // Read first row
+  if (!GetLineFromStream(ifs, line))
+    {
+    // Cannot read file comment
+    return 0;
+    }
+
+  // File starts with FACET FILE
+  return (line.find("FACET FILE") == 0);
+}
+
 //----------------------------------------------------------------------------
 int vtkFacetReader::RequestData(
   vtkInformation *vtkNotUsed(request),

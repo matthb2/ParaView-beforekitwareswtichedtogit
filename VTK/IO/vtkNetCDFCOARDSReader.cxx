@@ -174,6 +174,24 @@ void vtkNetCDFCOARDSReader::PrintSelf(ostream &os, vtkIndent indent)
 }
 
 //-----------------------------------------------------------------------------
+int vtkNetCDFCOARDSReader::CanReadFile(const char *filename)
+{
+  // We really just read basic arrays from netCDF files.  If the netCDF library
+  // says we can read it, then we can read it.
+  int ncFD;
+  int errorcode = nc_open(filename, NC_NOWRITE, &ncFD);
+  if (errorcode == NC_NOERR)
+    {
+    nc_close(ncFD);
+    return 1;
+    }
+  else
+    {
+    return 0;
+    }
+}
+
+//-----------------------------------------------------------------------------
 int vtkNetCDFCOARDSReader::RequestDataObject(
                                  vtkInformation *vtkNotUsed(request),
                                  vtkInformationVector **vtkNotUsed(inputVector),
