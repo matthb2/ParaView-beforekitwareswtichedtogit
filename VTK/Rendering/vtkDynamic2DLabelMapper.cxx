@@ -668,14 +668,15 @@ void vtkDynamic2DLabelMapper::RenderOverlay(vtkViewport *viewport,
     scale = this->GetCurrentScale(viewport) / this->ReferenceScale;
     }
 
-  vtkTimerLog* timer = vtkTimerLog::New();
-  timer->StartTimer();
-
   if ( ! input )
     {
     vtkErrorMacro(<<"Need input data to render labels (1)");
     return;
     }
+  
+  vtkTimerLog* timer = vtkTimerLog::New();
+  timer->StartTimer();
+  
   for (i=0; i<this->NumberOfLabels && i<numPts; i++)
     {
     if (dsInput)
