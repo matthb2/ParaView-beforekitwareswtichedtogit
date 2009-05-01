@@ -79,11 +79,6 @@ vtkQtChartSeriesOptions* vtkSMChartNamedOptionsModelProxy::GetOptions(
 {
   vtkQtChartSeriesOptions* options =
     this->Internals->OptionsModel->getOptions(name);
-  if (!options)
-    {
-    options = new vtkQtChartSeriesOptions(this->Internals->OptionsModel);
-    this->Internals->OptionsModel->addOptions(name, options);
-    }
   return options;
 }
 
