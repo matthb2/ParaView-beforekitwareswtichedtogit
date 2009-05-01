@@ -36,7 +36,7 @@ vtkAppendArcLength::~vtkAppendArcLength()
 }
 
 //----------------------------------------------------------------------------
-int vtkAppendArcLength::RequestData(vtkInformation* request,
+int vtkAppendArcLength::RequestData(vtkInformation*,
   vtkInformationVector** inputVector, vtkInformationVector* outputVector)
 {
   vtkPolyData* input = vtkPolyData::GetData(inputVector[0], 0);
