@@ -38,6 +38,8 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "pqServerManagerModel.h"
 #include "pqView.h"
 
+#include <QWidget>
+
 vtkStandardNewMacro(pqAnimationSceneImageWriter);
 vtkCxxRevisionMacro(pqAnimationSceneImageWriter, "$Revision$");
 //-----------------------------------------------------------------------------
@@ -58,7 +60,11 @@ vtkImageData* pqAnimationSceneImageWriter::CaptureViewImage(
   pqServerManagerModel* smmodel = core->getServerManagerModel();
 
   pqView* pq_view = smmodel->findItem<pqView*>(view);
-  return (pq_view? pq_view->captureImage(magnification) : NULL);
+  if (pq_view && pq_view->getWidget()->isVisible())
+    {
+    return pq_view->captureImage(magnification);
+    }
+  return 0;
 }
 
 //-----------------------------------------------------------------------------
