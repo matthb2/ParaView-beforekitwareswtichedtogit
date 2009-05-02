@@ -319,6 +319,7 @@ int vtkXGMLReader::RequestData(
           }
         else if (property_table[i].Data->GetDataType() == VTK_DOUBLE)
           {
+          d = 0;
           if (tok.Type == vtkXGMLReaderToken::DOUBLE)
             d = tok.DoubleValue;
           else if (tok.Type == vtkXGMLReaderToken::INT)
