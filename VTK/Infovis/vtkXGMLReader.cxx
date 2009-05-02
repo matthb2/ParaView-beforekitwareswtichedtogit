@@ -187,7 +187,7 @@ int vtkXGMLReader::RequestData(
   vtkStdString name;
   int kind;
   int i;
-  vtkIdType id, src, dst;
+  vtkIdType dst, id = 0, src = 0;
   double d;
   vtkIdTypeArray *edgeIds, *nodeIds;
   
