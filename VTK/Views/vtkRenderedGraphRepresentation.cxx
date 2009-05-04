@@ -1062,6 +1062,7 @@ vtkSelection* vtkRenderedGraphRepresentation::ConvertSelection(
         {
         vertexNode->ShallowCopy(node);
         edgeNode->ShallowCopy(node);
+        foundEdgeNode = true;
         }
       else if (prop == this->VertexActor.GetPointer())
         {
