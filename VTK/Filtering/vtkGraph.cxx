@@ -35,6 +35,7 @@
 #include "vtkObjectFactory.h"
 #include "vtkOutEdgeIterator.h"
 #include "vtkPoints.h"
+#include "vtkSmartPointer.h"
 #include "vtkVertexListIterator.h"
 #include "vtkVariantArray.h"
 #include "vtkStringArray.h"
@@ -1135,6 +1136,30 @@ void vtkGraph::DeepCopyEdgePoints(vtkGraph* g)
     this->SetEdgePoints(0);
     }
 }
+
+//----------------------------------------------------------------------------
+void vtkGraph::GetInducedEdges(vtkIdTypeArray *verts, vtkIdTypeArray *edges)
+{
+  edges->Initialize();
+  if (this->GetDistributedGraphHelper())
+    {
+    vtkErrorMacro("Cannot get induced edges on a distributed graph.");
+    return;
+    }
+  vtkSmartPointer<vtkEdgeListIterator> edgeIter =
+    vtkSmartPointer<vtkEdgeListIterator>::New();
+  this->GetEdges(edgeIter);
+  while (edgeIter->HasNext())
+    {
+    vtkEdgeType e = edgeIter->Next();
+    if (verts->LookupValue(e.Source) >= 0 &&
+        verts->LookupValue(e.Target) >= 0)
+      {
+      edges->InsertNextValue(e.Id);
+      }
+    }
+}
+
 //----------------------------------------------------------------------------
 void vtkGraph::AddVertexInternal(vtkVariantArray *propertyArr,
                                  vtkIdType *vertex)
