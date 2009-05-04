@@ -96,6 +96,20 @@ void vtkAnnotation::DeepCopy(vtkDataObject* other)
   this->SetSelection(sel);
 }
 
+unsigned long vtkAnnotation::GetMTime()
+{
+  unsigned long mtime = this->Superclass::GetMTime();
+  if (this->Selection)
+    {
+    unsigned long stime = this->Selection->GetMTime();
+    if (stime > mtime)
+      {
+      mtime = stime;
+      }
+    }
+  return mtime;
+}
+
 vtkAnnotation* vtkAnnotation::GetData(vtkInformation* info)
 {
   return info ? vtkAnnotation::SafeDownCast(info->Get(DATA_OBJECT())) : 0;

@@ -161,6 +161,29 @@ int vtkSelectionLink::FillOutputPortInformation(int port, vtkInformation* info)
 }
 
 //----------------------------------------------------------------------------
+unsigned long vtkSelectionLink::GetMTime()
+{
+  unsigned long mtime = this->Superclass::GetMTime();
+  if (this->Selection)
+    {
+    unsigned long stime = this->Selection->GetMTime();
+    if (stime > mtime)
+      {
+      mtime = stime;
+      }
+    }
+  if (this->DomainMaps)
+    {
+    unsigned long dtime = this->DomainMaps->GetMTime();
+    if (dtime > mtime)
+      {
+      mtime = dtime;
+      }
+    }
+  return mtime;
+}
+
+//----------------------------------------------------------------------------
 void vtkSelectionLink::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os,indent);
