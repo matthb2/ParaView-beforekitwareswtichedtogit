@@ -107,9 +107,10 @@ QWidget* ProcessModuleGUIHelper::CreateMainWindow()
     {
     QString plugin = QApplication::applicationDirPath() + "/" + OverView::GetBrandedApplicationTitle() + "-startup/" + this->ConfiguredPlugins[i];
 
-    // We have created a sophisticated custom 'symlink' capability on Windoze, to facilitate running brands out of the build directory ...
 #ifdef WIN32
-    QFile symlink(plugin + ".symlink");
+    // We have created a sophisticated new linking capability on Windoze, one so powerful and subtle that I've decided to name it in my own honor.
+    // We use this to facilitate running brands out of the build directory.
+    QFile symlink(plugin + ".timlink");
     if(symlink.exists())
       {
       symlink.open(QIODevice::ReadOnly);
