@@ -48,9 +48,12 @@
 #include "vtkVertexListIterator.h"
 
 #include <boost/graph/distributed/delta_stepping_shortest_paths.hpp>
-#include <boost/parallel/algorithm.hpp>
-#include <boost/property_map.hpp>
-#include <boost/vector_property_map.hpp>
+#include <boost/graph/parallel/algorithm.hpp>
+#include <boost/property_map/property_map.hpp>
+#include <boost/property_map/vector_property_map.hpp>
+//#include <boost/parallel/algorithm.hpp>
+//#include <boost/property_map.hpp>
+//#include <boost/vector_property_map.hpp>
 
 #include <vtksys/stl/utility> // for pair
 
