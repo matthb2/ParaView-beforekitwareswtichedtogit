@@ -191,6 +191,16 @@ void vtkAnnotationLayers::PrintSelf(ostream& os, vtkIndent indent)
       os << "(none)\n";
       }
     }
+  os << indent << "CurrentAnnotation: ";
+  if (this->CurrentAnnotation)
+    {
+    os << "\n";
+    this->CurrentAnnotation->PrintSelf(os, indent.GetNextIndent());
+    }
+  else
+    {
+    os << "(none)\n";
+    }
 }
 
 vtkAnnotationLayers* vtkAnnotationLayers::GetData(vtkInformation* info)
