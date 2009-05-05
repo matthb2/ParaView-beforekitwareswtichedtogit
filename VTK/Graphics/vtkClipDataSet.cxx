@@ -327,7 +327,9 @@ int vtkClipDataSet::RequestData(
         }
       cellScalars->Delete();
       newPoints->Delete();
-      vtkErrorMacro(<<"Cannot clip without clip function or input scalars");
+      // When processing composite datasets with partial arrays, this warning is
+      // not applicable, hence disabling it.
+      // vtkErrorMacro(<<"Cannot clip without clip function or input scalars");
       return 1;
       }
     }
