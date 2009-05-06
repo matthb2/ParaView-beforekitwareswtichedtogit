@@ -30,81 +30,42 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 =========================================================================*/
 
-#ifndef _MainWindow_h
-#define _MainWindow_h
+#ifndef _AnnotationManagerPanel_h
+#define _AnnotationManagerPanel_h
 
 #include "OverViewCoreExport.h"
+#include <QWidget>
 
-#include <QDockWidget>
-#include <QMainWindow>
-#include <QVariant>
-#include <vtkIOStream.h>
+class vtkAnnotationLayers;
 
-class pqGenericViewModule;
-class pqPipelineSource;
-class pqRepresentation;
-class pqView;
-
-/// Provides the main window for the ParaView application
-class OVERVIEW_CORE_EXPORT MainWindow :
-  public QMainWindow
+/// AnnotationManagerPanel is a panel that shows shows the active annotations.
+/// It makes is possible for the user to view/change the active annotation.
+class OVERVIEW_CORE_EXPORT AnnotationManagerPanel :
+  public QWidget
 {
   Q_OBJECT
-
+  
 public:
-  MainWindow();
-  ~MainWindow();
-
-  bool compareView(const QString& ReferenceImage, double Threshold, ostream& Output, const QString& TempDirectory);
-
-  void setupAnnotationManager(QDockWidget* parent);
+  AnnotationManagerPanel(QWidget* parent);
+  ~AnnotationManagerPanel();
 
 public slots:
-  QVariant findToolBarActionsNotInMenus();
-  
-private slots:
-  void onUndoLabel(const QString&);
-  void onRedoLabel(const QString&);
+  /// Update the enabled state of the panel depending upon the current state of
+  /// application.
+  void updateEnabledState();
+  void createAnnotationFromCurrentSelection();
+  void annotationChanged(vtkAnnotationLayers* a);
 
-  void onCameraUndoLabel(const QString&);
-  void onCameraRedoLabel(const QString&);
-
-  void onPreAccept();
-  void onPostAccept();
-  void endWaitCursor();
-
-  void onHelpAbout();
-  void onHelpHelp();
-
-  void onSelectionShortcut();
-  void onQuickLaunchShortcut();
-
-  void assistantError(const QString& err);
-
-  void onShowCenterAxisChanged(bool);
-
-  void setTimeRanges(double, double);
-
-  void onPlaying(bool);
-
-  void onAddCameraLink();
-  
-  void onDeleteAll();
-
-  void onSelectionModeChanged(int mode);
-
-  void onEditSettings();
-
-  void onSourceAdded(pqPipelineSource*);
-  void onSourceRemoved(pqPipelineSource*);
-
-  void onActiveViewChanged(pqView*);
-  void onRepresentationVisibilityChanged(pqRepresentation*,bool);
+protected:
+  /// Sets up the GUI by created default signal/slot bindings etc.
+  void setupGUI();
 
 private:
-  class pqImplementation;
+  struct pqImplementation;
   pqImplementation* const Implementation;
+
+  class command;
+  command* const Command;
 };
 
-#endif // !_MainWindow_h
-
+#endif
