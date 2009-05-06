@@ -250,6 +250,15 @@ vtkIdType vtkTable::InsertNextBlankRow()
         data->InsertNextValue(vtkVariant());
         }
       }
+    else if (vtkUnicodeStringArray::SafeDownCast(arr))
+      {
+//      vtkErrorMacro(<< "vtkUnicodeStringArray is not supported for InsertNextBlankRow");
+      vtkUnicodeStringArray* data = vtkUnicodeStringArray::SafeDownCast(arr);
+      for (int j = 0; j < comps; j++)
+        {
+        data->InsertNextValue(vtkUnicodeString::from_utf8(""));
+        }
+      }
     else
       {
       vtkErrorMacro(<< "Unsupported array type for InsertNextBlankRow");
