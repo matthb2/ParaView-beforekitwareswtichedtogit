@@ -664,7 +664,7 @@ int vtkGenericEnSightReader::ReadNextDataLine(char result[256])
       {
       size_t len = strlen( result );
       unsigned int i = 0;
-      while( i < len && isspace( result[i] ) )
+      while( i < len && (static_cast<unsigned int>(result[i]) <= 255) && isspace(result[i]) )
         {
         ++i;
         }
