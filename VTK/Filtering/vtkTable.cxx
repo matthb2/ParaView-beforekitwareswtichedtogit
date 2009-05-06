@@ -252,7 +252,6 @@ vtkIdType vtkTable::InsertNextBlankRow()
       }
     else if (vtkUnicodeStringArray::SafeDownCast(arr))
       {
-//      vtkErrorMacro(<< "vtkUnicodeStringArray is not supported for InsertNextBlankRow");
       vtkUnicodeStringArray* data = vtkUnicodeStringArray::SafeDownCast(arr);
       for (int j = 0; j < comps; j++)
         {
