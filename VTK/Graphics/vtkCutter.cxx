@@ -94,12 +94,6 @@ unsigned long vtkCutter::GetMTime()
     mTime = ( time > mTime ? time : mTime );
     }
 
-  if ( this->Locator != NULL )
-    {
-    time = this->Locator->GetMTime();
-    mTime = ( time > mTime ? time : mTime );
-    }
-
   return mTime;
 }
 
