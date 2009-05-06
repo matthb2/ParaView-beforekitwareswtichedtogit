@@ -35,6 +35,8 @@
 #include "vtkVariantArray.h"
 #include "vtkVertexListIterator.h"
 
+#include <boost/graph/use_mpi.hpp>   // must precede all pbgl includes
+
 vtkCxxRevisionMacro(vtkPBGLCollapseGraph, "$Revision$");
 vtkStandardNewMacro(vtkPBGLCollapseGraph);
 

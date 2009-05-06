@@ -275,6 +275,16 @@ vtkPBGLDistributedGraphHelper::~vtkPBGLDistributedGraphHelper()
 
 
 //----------------------------------------------------------------------------
+void vtkPBGLDistributedGraphHelper::PrintSelf(ostream& os, vtkIndent indent)
+{
+  this->Superclass::PrintSelf(os, indent);
+
+  os << indent << "vtkPBGLDistributedGraphHelper" << endl;
+}
+
+
+
+//----------------------------------------------------------------------------
 void vtkPBGLDistributedGraphHelper::Synchronize()
 {
   synchronize(this->Internals->process_group);

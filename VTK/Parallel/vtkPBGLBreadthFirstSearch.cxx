@@ -46,15 +46,13 @@
 #include "vtkStringArray.h"
 #include "vtkUndirectedGraph.h"
 
+#include <boost/graph/use_mpi.hpp>   // must precede all pbgl includes
 #include <boost/graph/breadth_first_search.hpp>
 #include <boost/graph/distributed/breadth_first_search.hpp>
 #include <boost/graph/parallel/algorithm.hpp>
-//#include <boost/parallel/algorithm.hpp>
 #include <boost/graph/visitors.hpp>
 #include <boost/property_map/property_map.hpp>
-//#include <boost/property_map.hpp>
 #include <boost/property_map/vector_property_map.hpp>
-//#include <boost/vector_property_map.hpp>
 #include <boost/pending/queue.hpp>
 
 #include <vtksys/stl/utility> // for pair
