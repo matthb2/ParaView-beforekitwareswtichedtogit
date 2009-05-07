@@ -78,6 +78,8 @@ vtkQtChartView* vtkSMChartViewProxy::GetChartView()
 //----------------------------------------------------------------------------
 void vtkSMChartViewProxy::PerformRender()
 {
+  vtkSMChartOptionsProxy::SafeDownCast(
+    this->GetSubProxy("ChartOptions"))->PrepareForRender(this);
   this->ChartView->Update();
   this->ChartView->Render();
 }
