@@ -264,7 +264,8 @@ void vtkBorderWidget::EndSelectAction(vtkAbstractWidget *w)
   vtkBorderWidget *self = reinterpret_cast<vtkBorderWidget*>(w);
 
   if ( self->SubclassEndSelectAction() ||
-       self->WidgetRep->GetInteractionState() == vtkBorderRepresentation::Outside )
+       self->WidgetRep->GetInteractionState() == vtkBorderRepresentation::Outside ||
+        self->WidgetState != vtkBorderWidget::Selected)
     {
     return;
     }
