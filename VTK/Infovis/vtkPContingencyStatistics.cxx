@@ -302,11 +302,11 @@ void vtkPContingencyStatistics::ExecuteLearn( vtkTable* inData,
   // Reduction step: have process reduceProc perform the reduction of the global contingency table
   if ( myRank == reduceProc )
     {
-    if ( this->Reduce( xyPacked_g,
-                       xySizeTotal,
+    if ( this->Reduce( xySizeTotal,
+                       xyPacked_g,
                        xyPacked_l,
-                       kcValues_g,
                        kcSizeTotal,
+                       kcValues_g,
                        kcValues_l ) )
       {
       return;
@@ -455,11 +455,11 @@ bool vtkPContingencyStatistics::Pack( vtkTable* contingencyTab,
 }
 
 // ----------------------------------------------------------------------
-bool vtkPContingencyStatistics::Reduce( char* xyPacked_g,
-                                        vtkIdType& xySizeTotal,
+bool vtkPContingencyStatistics::Reduce( vtkIdType& xySizeTotal,
+                                        char* xyPacked_g,
                                         vtkStdString& xyPacked_l,
-                                        vtkIdType*  kcValues_g,
                                         vtkIdType& kcSizeTotal,
+                                        vtkIdType*  kcValues_g,
                                         vtkstd::vector<vtkIdType>& kcValues_l )
 {
 #if DEBUG_PARALLEL_CONTINGENCY_STATISTICS
