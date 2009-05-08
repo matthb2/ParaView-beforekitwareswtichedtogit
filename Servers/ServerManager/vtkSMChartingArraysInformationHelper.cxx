@@ -16,7 +16,7 @@
 
 #include "vtkObjectFactory.h"
 
-#include "vtkSMChartTableRepresentationProxy.h"
+#include "vtkSMChartRepresentationProxy.h"
 #include "vtkSMStringVectorProperty.h"
 
 vtkStandardNewMacro(vtkSMChartingArraysInformationHelper);
@@ -37,8 +37,8 @@ void vtkSMChartingArraysInformationHelper::UpdateProperty(
   int vtkNotUsed(serverIds), vtkClientServerID vtkNotUsed(objectId),
   vtkSMProperty* prop)
 {
-  vtkSMChartTableRepresentationProxy* cr =
-    vtkSMChartTableRepresentationProxy::SafeDownCast(
+  vtkSMChartRepresentationProxy* cr =
+    vtkSMChartRepresentationProxy::SafeDownCast(
       prop->GetParent());
   if (!cr)
     {
