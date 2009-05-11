@@ -859,8 +859,8 @@ void vtkLabelHierarchyQuadtreeIterator::Prepare(
     }
   else
     { // Compute threshold for quadtree nodes too small to visit using perspective projection
-    double va = vtkMath::RadiansFromDegrees( cam->GetViewAngle() );
-    double tva = 2. * tan( va / 2. );
+    //double va = vtkMath::RadiansFromDegrees( cam->GetViewAngle() );
+    //double tva = 2. * tan( va / 2. );
     double vsr;
     if ( cam->GetUseHorizontalViewAngle() )
       {
@@ -872,7 +872,7 @@ void vtkLabelHierarchyQuadtreeIterator::Prepare(
       double vs = ren->GetSize()[1];
       vsr = this->BucketSize[1] ? ( vs / this->BucketSize[1] ) : VTK_DOUBLE_MAX;
       }
-    double fac = vsr ? ( 0.1 * tva / vsr ) : 0.;
+    //double fac = vsr ? ( 0.1 * tva / vsr ) : 0.;
     //cout << "SizeLimit  va: " << va << " tva: " << tva << " vsr: " << vsr << " fac: " << fac << " slim: " << fac * fac << "\n";
     //this->SizeLimit = fac * fac;
     }
@@ -1180,8 +1180,8 @@ void vtkLabelHierarchyOctreeQueueIterator::Prepare(
     }
   else
     { // Compute threshold for quadtree nodes too small to visit using perspective projection
-    double va = vtkMath::RadiansFromDegrees( cam->GetViewAngle() );
-    double tva = 2. * tan( va / 2. );
+    //double va = vtkMath::RadiansFromDegrees( cam->GetViewAngle() );
+    //double tva = 2. * tan( va / 2. );
     double vsr;
     if ( cam->GetUseHorizontalViewAngle() )
       {
@@ -1193,7 +1193,7 @@ void vtkLabelHierarchyOctreeQueueIterator::Prepare(
       double vs = ren->GetSize()[1];
       vsr = this->BucketSize[1] ? ( vs / this->BucketSize[1] ) : VTK_DOUBLE_MAX;
       }
-    double fac = vsr ? ( 0.1 * tva / vsr ) : 0.;
+    //double fac = vsr ? ( 0.1 * tva / vsr ) : 0.;
     //cout << "SizeLimit  va: " << va << " tva: " << tva << " vsr: " << vsr << " fac: " << fac << " slim: " << fac * fac << "\n";
     //this->SizeLimit = fac * fac;
     }
@@ -1545,8 +1545,8 @@ void vtkLabelHierarchy3DepthFirstIterator::Prepare(
     }
   else
     { // Compute threshold for quadtree nodes too small to visit using perspective projection
-    double va = vtkMath::RadiansFromDegrees( cam->GetViewAngle() );
-    double tva = 2. * tan( va / 2. );
+    //double va = vtkMath::RadiansFromDegrees( cam->GetViewAngle() );
+    //double tva = 2. * tan( va / 2. );
     double vsr;
     if ( cam->GetUseHorizontalViewAngle() )
       {
@@ -1558,7 +1558,7 @@ void vtkLabelHierarchy3DepthFirstIterator::Prepare(
       double vs = ren->GetSize()[1];
       vsr = vs / this->BucketSize[1];
       }
-    double fac = 0.1 * tva / vsr;
+    //double fac = 0.1 * tva / vsr;
     //cout << "SizeLimit  va: " << va << " tva: " << tva << " vsr: " << vsr << " fac: " << fac << " slim: " << fac * fac << "\n";
     //this->SizeLimit = fac * fac;
     }
