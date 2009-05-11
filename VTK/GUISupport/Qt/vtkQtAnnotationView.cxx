@@ -96,7 +96,7 @@ QWidget* vtkQtAnnotationView::GetWidget()
 }
 
 //----------------------------------------------------------------------------
-void vtkQtAnnotationView::slotQtSelectionChanged(const QItemSelection& s1, 
+void vtkQtAnnotationView::slotQtSelectionChanged(const QItemSelection& vtkNotUsed(s1), 
   const QItemSelection& vtkNotUsed(s2))
 {   
   vtkDataObject* data = this->Adapter->GetVTKDataObject();
