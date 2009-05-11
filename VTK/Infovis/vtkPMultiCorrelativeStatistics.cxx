@@ -94,7 +94,11 @@ void vtkPMultiCorrelativeStatistics::GatherStatistics( vtkMultiProcessController
 
   // Now get ready for parallel calculations
   vtkCommunicator* com = curController->GetCommunicator();
-  
+  if ( ! com )
+    {
+    vtkErrorMacro("No parallel communicator.");
+    }
+
   // (All) gather all sample sizes
   int n_l = sparseCov->GetValueByName( 0, "Entries" ).ToInt(); // Cardinality
   int* n_g = new int[np];
