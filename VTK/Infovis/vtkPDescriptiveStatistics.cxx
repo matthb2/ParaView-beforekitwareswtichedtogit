@@ -76,7 +76,11 @@ void vtkPDescriptiveStatistics::ExecuteLearn( vtkTable* inData,
 
   // Now get ready for parallel calculations
   vtkCommunicator* com = this->Controller->GetCommunicator();
-  
+  if ( ! com )
+    {
+    vtkErrorMacro("No parallel communicator.");
+    }
+
   // (All) gather all sample sizes
   int n_l = outMeta->GetValueByName( 0, "Cardinality" ).ToInt(); // Cardinality
   int* n_g = new int[np];
