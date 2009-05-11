@@ -855,7 +855,7 @@ void vtkLabelHierarchyQuadtreeIterator::Prepare(
   if ( cam->GetParallelProjection() )
     { // Compute threshold for quadtree nodes too small to visit using parallel projection
     //cout << "SizeLimit ParallelProj ps: " << cam->GetParallelScale() << "\n";
-    this->SizeLimit = 0.0001 * cam->GetParallelScale(); // FIXME: Should be set using cam->ParallelScale and pixel size
+    //this->SizeLimit = 0.0001 * cam->GetParallelScale(); // FIXME: Should be set using cam->ParallelScale and pixel size
     }
   else
     { // Compute threshold for quadtree nodes too small to visit using perspective projection
@@ -874,7 +874,7 @@ void vtkLabelHierarchyQuadtreeIterator::Prepare(
       }
     double fac = vsr ? ( 0.1 * tva / vsr ) : 0.;
     //cout << "SizeLimit  va: " << va << " tva: " << tva << " vsr: " << vsr << " fac: " << fac << " slim: " << fac * fac << "\n";
-    this->SizeLimit = fac * fac;
+    //this->SizeLimit = fac * fac;
     }
 }
 
@@ -1176,7 +1176,7 @@ void vtkLabelHierarchyOctreeQueueIterator::Prepare(
   if ( cam->GetParallelProjection() )
     { // Compute threshold for quadtree nodes too small to visit using parallel projection
     //cout << "SizeLimit ParallelProj ps: " << cam->GetParallelScale() << "\n";
-    this->SizeLimit = 0.0001 * cam->GetParallelScale(); // FIXME: Should be set using cam->ParallelScale and pixel size
+    //this->SizeLimit = 0.0001 * cam->GetParallelScale(); // FIXME: Should be set using cam->ParallelScale and pixel size
     }
   else
     { // Compute threshold for quadtree nodes too small to visit using perspective projection
@@ -1195,7 +1195,7 @@ void vtkLabelHierarchyOctreeQueueIterator::Prepare(
       }
     double fac = vsr ? ( 0.1 * tva / vsr ) : 0.;
     //cout << "SizeLimit  va: " << va << " tva: " << tva << " vsr: " << vsr << " fac: " << fac << " slim: " << fac * fac << "\n";
-    this->SizeLimit = fac * fac;
+    //this->SizeLimit = fac * fac;
     }
 }
 
@@ -1541,7 +1541,7 @@ void vtkLabelHierarchy3DepthFirstIterator::Prepare(
   if ( cam->GetParallelProjection() )
     { // Compute threshold for quadtree nodes too small to visit using parallel projection
     //cout << "SizeLimit ParallelProj ps: " << cam->GetParallelScale() << "\n";
-    this->SizeLimit = 0.0001; // FIXME: Should be set using cam->ParallelScale
+    //this->SizeLimit = 0.0001; // FIXME: Should be set using cam->ParallelScale
     }
   else
     { // Compute threshold for quadtree nodes too small to visit using perspective projection
@@ -1560,7 +1560,7 @@ void vtkLabelHierarchy3DepthFirstIterator::Prepare(
       }
     double fac = 0.1 * tva / vsr;
     //cout << "SizeLimit  va: " << va << " tva: " << tva << " vsr: " << vsr << " fac: " << fac << " slim: " << fac * fac << "\n";
-    this->SizeLimit = fac * fac;
+    //this->SizeLimit = fac * fac;
     }
 }
 
