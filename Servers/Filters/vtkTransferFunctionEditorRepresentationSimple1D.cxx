@@ -499,6 +499,7 @@ unsigned int vtkTransferFunctionEditorRepresentationSimple1D::CreateHandle(
   pointRep->SetProperty(property);
   pointRep->SetSelectedProperty(property);
   pointRep->SetScalar(scalar);
+  pointRep->SetAddCircleAroundSphere(1);
   property->Delete();
 
   rep->SetDisplayPosition(displayPos);
