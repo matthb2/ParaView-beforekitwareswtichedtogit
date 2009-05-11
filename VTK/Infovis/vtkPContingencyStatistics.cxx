@@ -211,6 +211,11 @@ void vtkPContingencyStatistics::ExecuteLearn( vtkTable* inData,
 
   // Get ready for parallel calculations
   vtkCommunicator* com = this->Controller->GetCommunicator();
+  if ( ! com )
+    {
+    vtkErrorMacro("No parallel communicator.");
+    }
+
   vtkIdType myRank = com->GetLocalProcessId();
 
   // Packing step: concatenate all (x,y) pairs in a single string and all (k,c) pairs in single vector

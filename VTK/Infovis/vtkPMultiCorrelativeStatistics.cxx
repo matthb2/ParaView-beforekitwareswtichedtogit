@@ -96,7 +96,9 @@ void vtkPMultiCorrelativeStatistics::GatherStatistics( vtkMultiProcessController
   vtkCommunicator* com = curController->GetCommunicator();
   if ( ! com )
     {
-    vtkErrorMacro("No parallel communicator.");
+    vtkGenericWarningMacro("No parallel communicator.");
+
+    return;
     }
 
   // (All) gather all sample sizes
