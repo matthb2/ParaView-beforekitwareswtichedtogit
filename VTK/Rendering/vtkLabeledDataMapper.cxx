@@ -725,6 +725,8 @@ void vtkLabeledDataMapper::PrintSelf(ostream& os, vtkIndent indent)
     {
     this->Transform->PrintSelf(os,indent.GetNextIndent());
     }
+
+  os << indent << "CoordinateSystem: " << this->CoordinateSystem << endl;
 }
 
 // ----------------------------------------------------------------------
