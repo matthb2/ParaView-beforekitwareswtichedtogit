@@ -881,7 +881,7 @@ void vtkContingencyStatistics::SelectAssessFunctor( vtkTable* outData,
     for ( int p = 0; p < np; ++ p )
       {
       v = para[p]->GetValue( r );
-      pdf[p][x][y] += v;
+      pdf[p][x][y] = v;
 
       if ( ! p )
         {
