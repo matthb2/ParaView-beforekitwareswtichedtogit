@@ -324,6 +324,11 @@ void vtkSMChartOptionsProxy::UpdateAxisRanges()
           relayout_needed = true;
           axis->setBestFitRange(this->AxisRanges[cc][0], this->AxisRanges[cc][1]);
           }
+        axis->setBestFitGenerated(true);
+        }
+      else
+        {
+        axis->setBestFitGenerated(false);
         }
       }
     if (relayout_needed)
