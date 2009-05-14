@@ -102,7 +102,7 @@ void vtkUnicodeStringArray::InsertTuple(vtkIdType i, vtkIdType j, vtkAbstractArr
     return;
     }
 
-  if(this->Implementation->Storage.size() <= i)
+  if(static_cast<vtkIdType>(this->Implementation->Storage.size()) <= i)
     this->Implementation->Storage.resize(i + 1);
 
   this->Implementation->Storage[i] = array->Implementation->Storage[j];
