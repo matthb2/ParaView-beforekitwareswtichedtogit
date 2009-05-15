@@ -175,8 +175,7 @@ void vtkExtractTemporalFieldData::CopyDataToOutput(vtkDataSet *input,
       {
       vtkDataArray *outPointArray = vtkDataArray::CreateDataArray(inFieldArray->GetDataType());
       //outPointArray->DeepCopy(inFieldArray);
-
-      outPointArray->SetNumberOfComponents(1);
+      outPointArray->SetNumberOfComponents(inFieldArray->GetNumberOfComponents());
       outPointArray->SetNumberOfTuples(this->NumberOfTimeSteps);
       for(vtkIdType i=0; i<inFieldArray->GetNumberOfComponents(); i++)
         {
