@@ -188,9 +188,15 @@ void vtkQtTreeView::SetVTKSelection()
     return;
     }
 
+  // Check to see we actually have data
+  vtkDataObject *d = this->TreeAdapter->GetVTKDataObject();
+  if (!d) 
+    {
+    return;
+    }
+
   // See if the selection has changed in any way
   vtkDataRepresentation* rep = this->GetRepresentation();
-  vtkDataObject *d = this->TreeAdapter->GetVTKDataObject();
   vtkSelection* s = rep->GetSelectionLink()->GetSelection();
   if (s->GetMTime() != this->CurrentSelectionMTime)
     {
