@@ -53,7 +53,7 @@ vtkContingencyStatistics::vtkContingencyStatistics()
   this->AssessNames->SetValue( 2, "Px|y" );
   this->AssessNames->SetValue( 3, "PMI" );
 
-  this->CalculatePointwiseInformation = false;
+  this->CalculatePointwiseInformation = true;
 
   this->AssessParameters = vtkStringArray::New();
   if (  this->CalculatePointwiseInformation )
