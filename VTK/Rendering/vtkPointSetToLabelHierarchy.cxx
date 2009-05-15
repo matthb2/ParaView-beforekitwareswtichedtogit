@@ -290,7 +290,7 @@ int vtkPointSetToLabelHierarchy::RequestData(
   ouData->ComputeHierarchy();
 
   timer->StopTimer();
-  cout << "StartupTime: " << timer->GetElapsedTime() << endl;
+  vtkDebugMacro("StartupTime: " << timer->GetElapsedTime() << endl);
 
   return 1;
 }
