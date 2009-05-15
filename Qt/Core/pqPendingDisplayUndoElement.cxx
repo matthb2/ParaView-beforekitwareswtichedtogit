@@ -89,7 +89,6 @@ int pqPendingDisplayUndoElement::InternalUndoRedo(bool undo)
     }
 
   vtkSMProxyLocator* locator = this->GetProxyLocator();
-  locator->SetConnectionID(this->GetConnectionID());
   vtkSMProxy* proxy = locator->LocateProxy(id);
 
   if (!proxy)
