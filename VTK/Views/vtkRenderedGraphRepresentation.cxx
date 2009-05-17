@@ -1271,7 +1271,7 @@ void vtkRenderedGraphRepresentation::ComputeSelectedGraphBounds(double bounds[6]
   bool hasEdges = false;
   vtkSmartPointer<vtkIdTypeArray> vertexList = vtkSmartPointer<vtkIdTypeArray>::New();
   bool hasVertices = false;
-  for( unsigned int m = 0; m < static_cast<vtkIdType>(converted->GetNumberOfNodes()); ++m)
+  for( unsigned int m = 0; m < converted->GetNumberOfNodes(); ++m)
     {
     vtkSelectionNode* node = converted->GetNode(m);
     vtkIdTypeArray* list = 0;
