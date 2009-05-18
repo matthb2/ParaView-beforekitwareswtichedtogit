@@ -292,6 +292,11 @@ void vtkUnicodeStringArray::InsertNextUTF8Value(const char* value)
   this->InsertNextValue(vtkUnicodeString::from_utf8(value));
 }
 
+void vtkUnicodeStringArray::SetUTF8Value(vtkIdType i, const char* value)
+{
+  this->SetValue(i, vtkUnicodeString::from_utf8(value));
+}
+
 const char* vtkUnicodeStringArray::GetUTF8Value(vtkIdType i)
 {
   return this->Implementation->Storage[i].utf8_str();
