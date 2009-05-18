@@ -401,6 +401,21 @@ void vtkCenteredSliderRepresentation::Highlight(int highlight)
 //----------------------------------------------------------------------
 void vtkCenteredSliderRepresentation::BuildRepresentation()
 {
+  if ( this->GetMTime() <= this->BuildTime && 
+       (!this->Renderer || !this->Renderer->GetVTKWindow() ||
+        this->Renderer->GetVTKWindow()->GetMTime() <= this->BuildTime) )
+    {
+    return;
+    }
+
+  int *size = this->Renderer->GetSize();
+  if (0 == size[0] || 0 == size[1])
+    {
+    // Renderer has no size yet: wait until the next
+    // BuildRepresentation...
+    return;
+    }
+
   this->XForm->Identity();
   
   // scale and position and rotate the polydata

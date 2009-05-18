@@ -387,13 +387,6 @@ bool vtkGraphLayoutView::GetIconVisibility()
 }
 
 //----------------------------------------------------------------------------
-void vtkGraphLayoutView::SetupRenderWindow(vtkRenderWindow* win)
-{
-  this->Superclass::SetupRenderWindow(win);
-  this->GetGraphRepresentation()->SetupRenderWindow(win);
-}
-
-//----------------------------------------------------------------------------
 void vtkGraphLayoutView::SetVertexLabelFontSize(const int size)
 {
   this->GetGraphRepresentation()->GetVertexLabelTextProperty()->SetFontSize(size);

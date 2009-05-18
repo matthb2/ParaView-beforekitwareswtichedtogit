@@ -197,6 +197,14 @@ void vtkGeoTerrain::AddActors(
   vtkAssembly* assembly,
   vtkCollection* imageReps)
 {
+  // This method requires that the render window graphics context
+  // has been created.
+  ren->GetRenderWindow()->MakeCurrent();
+  if (!ren->GetRenderWindow()->IsCurrent())
+    {
+    return;
+    }
+
   this->InitializeNodeAnalysis(ren);
 
   // See if we have multiTexturing
@@ -338,9 +346,11 @@ void vtkGeoTerrain::AddActors(
           {
           sameTexture = (
               !textureNode1 ||
+              actor->GetProperty()->GetNumberOfTextures() < 1 ||
               actor->GetProperty()->GetTexture(vtkProperty::VTK_TEXTURE_UNIT_0) == textureNode1->GetTexture()
             ) && (
               !textureNode2 ||
+              actor->GetProperty()->GetNumberOfTextures() < 2 ||
               actor->GetProperty()->GetTexture(vtkProperty::VTK_TEXTURE_UNIT_1) == textureNode2->GetTexture()
             );
           }

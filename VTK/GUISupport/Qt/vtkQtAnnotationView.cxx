@@ -41,7 +41,6 @@
 #include "vtkObjectFactory.h"
 #include "vtkQtAnnotationLayersModelAdapter.h"
 #include "vtkSelection.h"
-#include "vtkSelectionLink.h"
 #include "vtkSelectionNode.h"
 #include "vtkSmartPointer.h"
 #include "vtkTable.h"

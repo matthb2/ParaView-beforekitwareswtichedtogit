@@ -470,6 +470,13 @@ int vtkLabelPlacer::RequestData(
     return 1;
     }
 
+  // If the renderer size is zero, silently place no labels.
+  int* renSize = this->Renderer->GetSize();
+  if ( renSize[0] == 0 || renSize[1] == 0 )
+    {
+    return 1;
+    }
+
   if ( ! ouData0 || ! ouData1 )
     {
     vtkErrorMacro( "No output data." );

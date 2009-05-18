@@ -259,13 +259,6 @@ vtkAreaLayoutStrategy* vtkTreeAreaView::GetLayoutStrategy()
 }
 
 //----------------------------------------------------------------------------
-void vtkTreeAreaView::SetupRenderWindow(vtkRenderWindow* win)
-{
-  this->Superclass::SetupRenderWindow(win);
-  this->GetTreeAreaRepresentation()->SetupRenderWindow(win);
-}
-
-//----------------------------------------------------------------------------
 void vtkTreeAreaView::SetAreaLabelFontSize(const int size)
 {
   this->GetTreeAreaRepresentation()->GetAreaLabelTextProperty()->SetFontSize(size);

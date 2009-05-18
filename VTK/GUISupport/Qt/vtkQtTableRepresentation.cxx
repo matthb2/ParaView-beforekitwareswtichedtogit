@@ -80,10 +80,13 @@ vtkQtTableRepresentation::~vtkQtTableRepresentation()
 
 // ----------------------------------------------------------------------
 
-void
-vtkQtTableRepresentation::PrepareInputConnections()
+int
+vtkQtTableRepresentation::RequestData(vtkInformation*,
+                                      vtkInformationVector**,
+                                      vtkInformationVector*)
 {
   this->UpdateTable();
+  return 1;
 }
 
 // ----------------------------------------------------------------------
