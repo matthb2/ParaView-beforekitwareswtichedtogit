@@ -2026,7 +2026,8 @@ vtkDataArray* vtkExodusIIReaderPrivate::GetCacheOrRead( vtkExodusIICacheKey key 
       for ( c = 0; c < ainfop->Components; ++c )
         {
         vtkIdType N = arr->GetNumberOfTuples();
-        tmpVal[c].resize( N );
+        tmpVal[c].resize( N+1 ); // + 1 to avoid errors when N == 0.
+                                 // BUG #8746.
         if ( ex_get_var( exoid, key.Time + 1, static_cast<ex_entity_type>( key.ObjectType ),
             ainfop->OriginalIndices[c], oinfop->Id, arr->GetNumberOfTuples(),
             &tmpVal[c][0] ) < 0)
