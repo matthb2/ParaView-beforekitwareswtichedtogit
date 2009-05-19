@@ -239,7 +239,7 @@ void vtkClustering2DLayoutStrategy::Initialize()
   // Get the weight array
   vtkDataArray* weightArray = NULL;
   double weight, maxWeight = 1;
-  if (this->EdgeWeightField != NULL)
+  if (this->WeightEdges && this->EdgeWeightField != NULL)
     {
     weightArray = vtkDataArray::SafeDownCast(this->Graph->GetEdgeData()->GetAbstractArray(this->EdgeWeightField));
     if (weightArray != NULL)
