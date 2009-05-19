@@ -58,7 +58,7 @@ vtkQuadraturePointsGenerator::~vtkQuadraturePointsGenerator()
 }
 
 //-----------------------------------------------------------------------------
-int vtkQuadraturePointsGenerator::FillInputPortInformation(int port,
+int vtkQuadraturePointsGenerator::FillInputPortInformation(int vtkNotUsed(port),
     vtkInformation *info)
 {
   info->Set(vtkAlgorithm::INPUT_REQUIRED_DATA_TYPE(), "vtkUnstructuredGrid");
