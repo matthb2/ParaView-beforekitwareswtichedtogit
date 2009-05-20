@@ -35,6 +35,7 @@
 #include "vtkVariantArray.h"
 
 #include <vtkstd/map>
+#include <vtkstd/vector>
 
 #include <vtksys/ios/sstream>
 
@@ -797,10 +798,11 @@ void vtkContingencyStatistics::SelectAssessFunctor( vtkTable* outData,
   vtkStringArray* valy = vtkStringArray::SafeDownCast( contingencyTab->GetColumnByName( "y" ) );
 
   int np = this->AssessParameters->GetNumberOfValues();
-  vtkDoubleArray* para[3];
+  vtkstd::vector<vtkDoubleArray *> para;
   for ( int p = 0; p < np; ++ p )
     {
-    para[p] = vtkDoubleArray::SafeDownCast( contingencyTab->GetColumnByName( this->AssessParameters->GetValue( p ) ) );
+    para.push_back(
+      vtkDoubleArray::SafeDownCast( contingencyTab->GetColumnByName( this->AssessParameters->GetValue( p ) ) ) );
     if ( ! para[p] )
       {
       dfunc = 0;
