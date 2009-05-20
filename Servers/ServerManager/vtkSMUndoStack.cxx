@@ -112,7 +112,6 @@ public:
   //begin vistrails
   vtkUndoSet* getLastUndoSet()
   {
-    int status=0;
     vtkPVXMLElement* state;
     if (this->State)
       {
