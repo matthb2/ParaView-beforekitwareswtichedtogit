@@ -111,7 +111,7 @@ int vtkQuadraturePointsGenerator::GenerateField(vtkUnstructuredGrid *usgIn,
       new vtkQuadratureSchemeDefinition *[dictSize];
   key->GetRange(info, dict, 0, 0, dictSize);
 
-  int nVerts = pdOut->GetNumberOfPoints();
+  vtkIdType nVerts = pdOut->GetNumberOfPoints();
 
   vtkIdType cellId;
   vtkIdType ncell = usgIn->GetNumberOfCells();
