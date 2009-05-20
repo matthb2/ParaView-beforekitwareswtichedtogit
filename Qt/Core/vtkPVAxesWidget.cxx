@@ -198,6 +198,7 @@ void vtkPVAxesWidget::SetEnabled(int enabling)
       if (this->ParentRenderer->GetRenderWindow())
         {
         this->ParentRenderer->GetRenderWindow()->RemoveRenderer(this->Renderer);
+        this->AxesActor->ReleaseGraphicsResources(this->ParentRenderer->GetRenderWindow());
         }
       if (this->StartEventObserverId != 0)
         {
