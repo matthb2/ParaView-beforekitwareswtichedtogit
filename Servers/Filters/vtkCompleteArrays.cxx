@@ -94,6 +94,10 @@ int vtkCompleteArrays::RequestData(
 
   myProcId = this->Controller->GetLocalProcessId();
   numProcs = this->Controller->GetNumberOfProcesses();
+  if (numProcs <= 1)
+    {
+    return 1;
+    }
 
   if (myProcId == 0)
     {
