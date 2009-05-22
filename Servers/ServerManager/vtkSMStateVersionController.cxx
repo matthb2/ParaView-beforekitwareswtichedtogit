@@ -749,6 +749,21 @@ bool vtkSMStateVersionController::Process_3_4_to_3_6(vtkPVXMLElement* root)
       }
     }
 
+    {
+    // If "ExodusReader" is present, we give up since legacy exodus is no longer
+    // supported.
+    const char* attrs[] = {"type", "ExodusReader", 0};
+    bool found = false;
+    this->Select(root, "Proxy", attrs, &::ElementFound, &found);
+    if (found)
+      {
+      vtkErrorMacro("Your state file uses a \"ExodusReader\"."
+        " ExodusReader was replaced by ExodusIIReader in 3.6."
+        " We are unable to support legacy exodus state files.");
+      return false;
+      }
+    }
+
   return true;
 }
 
