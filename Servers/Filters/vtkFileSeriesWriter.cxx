@@ -144,7 +144,7 @@ int vtkFileSeriesWriter::RequestUpdateExtent(
 int vtkFileSeriesWriter::RequestData(
   vtkInformation* request,
   vtkInformationVector** inputVector,
-  vtkInformationVector* outputVector)
+  vtkInformationVector* vtkNotUsed(outputVector))
 {
   // this->Writer has already written out the file, just manage the looping for
   // timesteps.
