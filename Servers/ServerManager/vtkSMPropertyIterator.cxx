@@ -168,6 +168,25 @@ const char* vtkSMPropertyIterator::GetKey()
 }
 
 //---------------------------------------------------------------------------
+const char* vtkSMPropertyIterator::GetPropertyLabel()
+{
+  // Self property
+  if (this->Internals->PropertyIterator != 
+      this->Proxy->Internals->Properties.end())
+    {
+    return this->GetProperty()->GetXMLLabel();
+    }
+
+  // Property of a sub-proxy
+  if (this->TraverseSubProxies)
+    {
+    return this->GetKey();
+    }
+
+  return 0;
+}
+
+//---------------------------------------------------------------------------
 vtkSMProperty* vtkSMPropertyIterator::GetProperty()
 {
   if (!this->Proxy)
