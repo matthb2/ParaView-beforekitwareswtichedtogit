@@ -323,6 +323,24 @@ void vtkCarbonRenderWindow::DestroyWindow()
     aglDestroyContext(this->ContextId);
     this->ContextId = NULL;
     }
+  
+  // remove event filters if we have them
+  if(this->RegionEventHandler)
+    {
+    RemoveEventHandler(this->RegionEventHandler);
+    DisposeEventHandlerUPP(this->RegionEventHandlerUPP);
+    this->RegionEventHandler = 0;
+    this->RegionEventHandlerUPP = 0;
+    }
+
+  if (this->RootWindow && this->OwnWindow)
+    {
+    DisposeWindow(this->RootWindow);
+    this->RootWindow = 0;
+    this->WindowId = 0;
+    }
+
+  this->Mapped = 0;
 }
 
 //--------------------------------------------------------------------------
@@ -836,19 +854,6 @@ void vtkCarbonRenderWindow::Finalize(void)
 
   this->DestroyWindow();
 
-  // remove event filters if we have them
-  if(this->RegionEventHandler)
-    {
-    RemoveEventHandler(this->RegionEventHandler);
-    DisposeEventHandlerUPP(this->RegionEventHandlerUPP);
-    this->RegionEventHandler = 0;
-    this->RegionEventHandlerUPP = 0;
-    }
-
-  if (this->RootWindow && this->OwnWindow)
-    {
-    DisposeWindow(this->RootWindow);
-    }
 }
 
 //-----------------------------------------------------------------------------
