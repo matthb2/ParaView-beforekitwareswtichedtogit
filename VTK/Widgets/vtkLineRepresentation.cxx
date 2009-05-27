@@ -551,11 +551,6 @@ int vtkLineRepresentation::ComputeInteractionState(int X, int Y, int vtkNotUsed(
     this->GetPoint1WorldPosition(pos1);
     this->GetPoint2WorldPosition(pos2);
 
-    // Consider the two infinite lines :
-    //   L1: pos1 to pos2
-    //   L2: camera_position to focal_point
-    // The line handle will lie on the closest point on L1.
-
     this->LinePicker->Pick(X,Y,0.0,this->Renderer);
     this->LinePicker->GetPickPosition(closest);
     this->LineHandleRepresentation->SetWorldPosition(closest);
