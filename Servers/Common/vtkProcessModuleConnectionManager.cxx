@@ -290,7 +290,7 @@ vtkIdType vtkProcessModuleConnectionManager::OpenConnection(
       vtkErrorMacro(<< "Connect timeout.");
       break;
       }
-    vtkWarningMacro(<< "Connect failed.  Retrying for "
+    vtkWarningMacro(<< "Connect failed.  Retrying for HI!!"
                     << (60.0 - timer->GetElapsedTime()) << " more seconds.");
     vtksys::SystemTools::Delay(1000);
     }

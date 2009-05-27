@@ -413,11 +413,11 @@ IF (WIN32)
   ENDIF (NOT BORLAND)
 ENDIF (WIN32)
 
-IF(NOT HAVE_SOCKETS)
-  # Tell vtkSocket.cxx that there are no sockets on this platform.
-  SET_SOURCE_FILES_PROPERTIES(vtkSocket.cxx PROPERTIES
-    COMPILE_FLAGS -DVTK_SOCKET_FAKE_API)
-ENDIF(NOT HAVE_SOCKETS)
+#IF(NOT HAVE_SOCKETS)
+#  # Tell vtkSocket.cxx that there are no sockets on this platform.
+#  SET_SOURCE_FILES_PROPERTIES(vtkSocket.cxx PROPERTIES
+#    COMPILE_FLAGS -DVTK_SOCKET_FAKE_API)
+#ENDIF(NOT HAVE_SOCKETS)
 
 #-----------------------------------------------------------------------------
 # Include CMake code common to all kits.

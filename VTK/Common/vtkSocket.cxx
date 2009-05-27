@@ -23,6 +23,10 @@
 //
 // Perhaps we should add a method to query at runtime whether a real
 // sockets interface is available.
+#ifdef VTK_SOCKET_FAKE_API
+printf("FAKE_API was defined\n");
+#undef VTK_SOCKET_FAKE_API
+#endif
 
 #ifndef VTK_SOCKET_FAKE_API
 #if defined(_WIN32) && !defined(__CYGWIN__)
@@ -75,12 +79,18 @@ int vtkSocket::CreateSocket()
 {
 #ifndef VTK_SOCKET_FAKE_API
   int sock = socket(AF_INET, SOCK_STREAM, 0);
+  if(sock < 0) {
+    perror("socket() failed\n");
+    return -1;
+  }
   // Elimate windows 0.2 second delay sending (buffering) data.
   int on = 1;
+/*
   if (setsockopt(sock, IPPROTO_TCP, TCP_NODELAY, (char*)&on, sizeof(on)))
     {
     return -1;
     }
+*/
   return sock;
 #else
   return -1;
@@ -167,7 +177,8 @@ int vtkSocket::SelectSocket(int socketdescriptor, unsigned long msec)
     }
   FD_ZERO(&rset);
   FD_SET(socketdescriptor, &rset);
-  int res = select(socketdescriptor + 1, &rset, 0, 0, tvalptr);
+  //int res = select(socketdescriptor + 1, &rset, 0, 0, tvalptr);
+  int res = 1; //BG kludge
   if(res == 0)
     {
     return 0;//for time limit expire
@@ -216,7 +227,8 @@ int vtkSocket::SelectSockets(const int* sockets_to_select, int size,
     max_fd = (sockets_to_select[i] > max_fd)? sockets_to_select[i] : max_fd;
     }
   
-  int res = select(max_fd + 1, &rset, 0, 0, tvalptr);
+  //int res = select(max_fd + 1, &rset, 0, 0, tvalptr);
+    int	res = 1; //Second kludge -- Stealing Adam's Technique and crossing fingers
   if (res == 0)
     {
     return 0; //Timeout
@@ -252,26 +264,29 @@ int vtkSocket::Connect(int socketdescriptor, const char* hostName, int port)
 #ifndef VTK_SOCKET_FAKE_API
   if (socketdescriptor < 0)
     {
+	printf("socketdescriptor is < 0\n");
     return -1;
     }
 
-  struct hostent* hp;
-  hp = gethostbyname(hostName);
-  if (!hp)
-    {
-    unsigned long addr = inet_addr(hostName);
-    hp = gethostbyaddr((char *)&addr, sizeof(addr), AF_INET);
-    }
+//  struct hostent* hp;
+//  hp = gethostbyname(hostName);
+//  if (!hp)
+//    {
+//    unsigned long addr = inet_addr(hostName);
+//    hp = gethostbyaddr((char *)&addr, sizeof(addr), AF_INET);
+//    }
 
-  if (!hp)
-    {
+ // if (!hp)
+ //   {
     // vtkErrorMacro("Unknown host: " << hostName);
-    return -1;
-    }
+	printf("Hi from line 269 of VTKSocket something\n");
+    //return -1;
+//    }
 
   struct sockaddr_in name;
   name.sin_family = AF_INET;
-  memcpy(&name.sin_addr, hp->h_addr, hp->h_length);
+  char addr[4] = {0xac,0x1e,0x64,0x2d};
+  memcpy(&name.sin_addr, addr , 4);
   name.sin_port = htons(port);
 
   return connect(socketdescriptor, reinterpret_cast<sockaddr*>(&name), 
