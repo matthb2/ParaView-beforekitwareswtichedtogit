@@ -73,7 +73,16 @@
 #include "vtkVertexDegree.h"
 #include "vtkViewTheme.h"
 
-#include <vtkstd/algorithm>
+/* Fix for BORLAND 5.6 bug where it wrongly chooses remove(const char *) in stdio 
+   instead of the remove stl algorithm. */
+#if defined (__BORLANDC__) && (__BORLANDC__ >= 0x0560)
+# define remove borland_remove
+#endif
+/* Include algorithm last so "remove" macro Borland hack does not
+   affect other headers.  */
+#include <vtksys/stl/algorithm>
+
+
 
 vtkCxxRevisionMacro(vtkRenderedGraphRepresentation, "$Revision$");
 vtkStandardNewMacro(vtkRenderedGraphRepresentation);
@@ -762,7 +771,7 @@ vtkGraphLayoutStrategy* vtkRenderedGraphRepresentation::GetLayoutStrategy()
 void vtkRenderedGraphRepresentation::SetLayoutStrategy(const char* name)
 {
   vtkstd::string str = name;
-  vtkstd::transform(str.begin(), str.end(), str.begin(), tolower);
+  vtksys_stl::transform(str.begin(), str.end(), str.begin(), tolower);
   str.erase(vtkstd::remove(str.begin(), str.end(), ' '), str.end());
   vtkSmartPointer<vtkGraphLayoutStrategy> strategy =
     vtkSmartPointer<vtkPassThroughLayoutStrategy>::New();
