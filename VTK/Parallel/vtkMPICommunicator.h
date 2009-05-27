@@ -133,6 +133,7 @@ public:
   virtual void Barrier();
   virtual int BroadcastVoidArray(void *data, vtkIdType length, int type,
                                  int srcProcessId);
+  virtual int Iprobe(int source,int tag, int* flag);
   virtual int GatherVoidArray(const void *sendBuffer, void *recvBuffer,
                               vtkIdType length, int type, int destProcessId);
   virtual int GatherVVoidArray(const void *sendBuffer, void *recvBuffer,

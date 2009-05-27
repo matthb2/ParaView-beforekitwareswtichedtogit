@@ -901,7 +901,11 @@ void vtkCommunicator::Barrier()
     }
   this->Broadcast(&junk, 1, 0);
 }
-
+int vtkCommunicator::Iprobe(int source,int tag, int* flag)
+{
+	printf("probe being called as a vtkCommunicator\n");
+	return(-1);
+}
 //-----------------------------------------------------------------------------
 int vtkCommunicator::BroadcastVoidArray(void *data, vtkIdType length,
                                                   int type, int srcProcessId)

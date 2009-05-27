@@ -755,6 +755,7 @@ public:
   // implementation.
   virtual int BroadcastVoidArray(void *data, vtkIdType length, int type,
                                  int srcProcessId);
+  virtual int Iprobe(int,int,int*);
   virtual int GatherVoidArray(const void *sendBuffer, void *recvBuffer,
                               vtkIdType length, int type, int destProcessId);
   virtual int GatherVVoidArray(const void *sendBuffer, void *recvBuffer,

@@ -994,7 +994,13 @@ void vtkMPICommunicator::Barrier()
 {
   CheckForMPIError(MPI_Barrier(*this->MPIComm->Handle));
 }
-
+//-----------------------------------------------------------------------------
+int vtkMPICommunicator::Iprobe(int source, int tag, int* flag)
+{
+	MPI_Status status;
+	int ret = CheckForMPIError(MPI_Iprobe(source,tag,*this->MPIComm->Handle,flag,&status));
+	return(ret);
+}
 //----------------------------------------------------------------------------
 int vtkMPICommunicator::BroadcastVoidArray(void *data, vtkIdType length,
                                            int type, int root)

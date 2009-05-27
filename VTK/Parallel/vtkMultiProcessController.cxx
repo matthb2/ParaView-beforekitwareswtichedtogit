@@ -336,17 +336,7 @@ void vtkMultiProcessController::TriggerRMIOnAllChildren(
   void *arg, int argLength, int rmiTag)
 {
   int myid = this->GetLocalProcessId();
-  int childid = 2 * myid + 1; 
-  int numProcs = this->GetNumberOfProcesses();
-  if (numProcs > childid)
-    {
-    this->TriggerRMIInternal(childid, arg, argLength, rmiTag, true);
-    }
-  childid++;
-  if (numProcs > childid)
-    {
-    this->TriggerRMIInternal(childid, arg, argLength, rmiTag, true);
-    }
+    this->TriggerRMIInternal(-1, arg, argLength, rmiTag, true);
 }
 
 //----------------------------------------------------------------------------
@@ -368,10 +358,14 @@ void vtkMultiProcessController::TriggerRMI(int remoteProcessId,
 void vtkMultiProcessController::TriggerRMIInternal(int remoteProcessId, 
     void* arg, int argLength, int rmiTag, bool propagate)
 {
-  int triggerMessage[128];
+  int addressedMessage[129];
+  int* triggerMessage = &(addressedMessage[1]);
   triggerMessage[0] = rmiTag;
   triggerMessage[1] = argLength;
   
+  addressedMessage[0] = remoteProcessId; //include address in message
+					//and process rest of function as was
+
   // It is important for the remote process to know what process invoked it.
   // Multiple processes might try to invoke the method at the same time.
   // The remote method will know where to get additional args.
@@ -387,27 +381,32 @@ void vtkMultiProcessController::TriggerRMIInternal(int remoteProcessId,
   // single Send(), rather than two. This helps speed up communication
   // significantly, since sending multiple small messages is generally slower
   // than sending a single large message.
-  if (argLength >= 0 && static_cast<unsigned int>(argLength) < sizeof(int)*(128-4))
-    {
-    if (argLength > 0)
-      {
-      memcpy(&triggerMessage[4], arg, argLength);
-      }
-    int num_bytes = static_cast<int>(4*sizeof(int)) + argLength;
-    this->RMICommunicator->Send(reinterpret_cast<unsigned char*>(triggerMessage),
-      num_bytes, remoteProcessId, RMI_TAG);
-    }
-  else
-    {
+ // if (argLength >= 0 && static_cast<unsigned int>(argLength) < sizeof(int)*(128-4))
+//    {  //FIXME:: Figure out how to deal with this later
+//    if (argLength > 0)
+ //     {
+//      memcpy(&triggerMessage[4], arg, argLength);
+//      }
+//    int num_bytes = static_cast<int>(4*sizeof(int)) + argLength;
+//    num_bytes += sizeof(int); //for address
+//    this->RMICommunicator->Send(reinterpret_cast<unsigned char*>(addressedMessage),
+//      num_bytes, 0, RMI_TAG);
+//    }
+//  else
+//    {
+	printf("node %d is sending to node 1\n",this->GetLocalProcessId());
+printf("addressed message 0x%x%x%x%x%x, triggerMessage 0x%x%x%x%x%x%x\n",addressedMessage[0],addressedMessage[1],addressedMessage[2],addressedMessage[3],addressedMessage[4],triggerMessage[0],triggerMessage[1],triggerMessage[2],triggerMessage[3],triggerMessage[4]);
+
     this->RMICommunicator->Send(
-      reinterpret_cast<unsigned char*>(triggerMessage), 
-      static_cast<int>(4*sizeof(int)), remoteProcessId, RMI_TAG);
+      reinterpret_cast<unsigned char*>(addressedMessage), 
+      static_cast<int>(4*sizeof(int)) + sizeof(int), 1, RMI_TAG);
     if (argLength > 0)
       {
-      this->RMICommunicator->Send((char*)arg, argLength, remoteProcessId,  
+      this->RMICommunicator->Send((char*)arg, argLength, 1,  
         RMI_ARG_TAG);
       }
-    }
+        printf("node %d done sending\n",this->GetLocalProcessId());
+//    }
 }
 
 //----------------------------------------------------------------------------
@@ -437,77 +436,65 @@ int vtkMultiProcessController::ProcessRMIs()
 //----------------------------------------------------------------------------
 int vtkMultiProcessController::ProcessRMIs(int reportErrors, int dont_loop)
 {
-  int triggerMessage[128];
+  int  addressedMessage[129];
+  int* triggerMessage = &(addressedMessage[1]);
   unsigned char *arg = NULL;
+  int flag;
   int error = RMI_NO_ERROR;
-  
+printf("ProcessRMIs on %d\n",this->GetLocalProcessId());
   do 
     {
-    if (!this->RMICommunicator->Receive(
-        reinterpret_cast<unsigned char*>(triggerMessage), 
-        static_cast<vtkIdType>(128*sizeof(int)), ANY_SOURCE, RMI_TAG) ||
-      this->RMICommunicator->GetCount() < static_cast<int>(4*sizeof(int)))
-      {
-      if (reportErrors)
-        {
-        vtkErrorMacro("Could not receive RMI trigger message.");
-        }
-      error = RMI_TAG_ERROR;
+ if(this->GetLocalProcessId() == 1) {
+    this->RMICommunicator->Iprobe(1,RMI_TAG,&flag);
+    if(flag) 
+    {
+	    printf("Rank 1 about to recv\n"); 
+	    if (!this->RMICommunicator->Receive(
+	        reinterpret_cast<unsigned char*>(addressedMessage), 
+	        static_cast<vtkIdType>(129*sizeof(int)), ANY_SOURCE, RMI_TAG) ||
+	      this->RMICommunicator->GetCount() < static_cast<int>(4*sizeof(int)))
+	      {
+	      if (reportErrors)
+	        {
+	        vtkErrorMacro("Could not receive RMI trigger message.");
+	        }
+	      error = RMI_TAG_ERROR;
+	    printf("recv done\n");
+     } //FIXME remove break? 
+     else {
+	printf("Should have recieved something, but didn't \n");
+	}
       break;
-      }
+      
+} else {goto process_rmi_loop;}
+//fixme else recieve broadcast
 #ifdef VTK_WORDS_BIGENDIAN
     // Header is sent in little-endian form. We need to convert it to  big
     // endian.
     vtkByteSwap::SwapLERange(triggerMessage, 4);
 #endif
-
-    if (triggerMessage[1] > 0)
-      {
-      arg = new unsigned char[triggerMessage[1]];
-      // If the message length is small enough, the TriggerRMIInternal() call
-      // packs the message data inline. So depending on the message length we
-      // use the inline data or make a second receive to fetch the data.
-      if (static_cast<unsigned int>(triggerMessage[1]) < sizeof(int)*(128-4))
-        {
-        int num_bytes = static_cast<int>(4 *sizeof(int)) + triggerMessage[1];
-        if (this->RMICommunicator->GetCount() != num_bytes)
-          {
-          if (reportErrors)
-            {
-            vtkErrorMacro("Could not receive the RMI argument in its entirety.");
-            }
-          error= RMI_ARG_ERROR;
-          break;
-          }
-        memcpy(arg, &triggerMessage[4], triggerMessage[1]);
-        }
-      else
-        {
-        if (!this->RMICommunicator->Receive((char*)(arg), triggerMessage[1], 
-            triggerMessage[2], RMI_ARG_TAG) ||
-          this->RMICommunicator->GetCount() != triggerMessage[1])
-          {
-          if (reportErrors)
-            {
-            vtkErrorMacro("Could not receive RMI argument.");
-            }
-          error = RMI_ARG_ERROR;
-          break;
-          }
-        }
-      }
-    if (triggerMessage[3] == 1 && this->GetNumberOfProcesses() > 3)//propagate==true
-      {
-      this->TriggerRMIOnAllChildren(arg, triggerMessage[1], triggerMessage[0]);
-      }
-    this->ProcessRMI(triggerMessage[2], arg, triggerMessage[1], 
+    	if(addressedMessage[0] != this->GetLocalProcessId())
+    		this->RMICommunicator->Broadcast(reinterpret_cast<unsigned char*>(addressedMessage),129*sizeof(int),1); 
+  } //fixme indentation -- close for if(rank==0)
+  else { //possibly shouldn't use else for performance?? causing deadlock? //may7 now pointless
+   this->RMICommunicator->Broadcast(reinterpret_cast<unsigned char*>(addressedMessage),129*sizeof(int),1);
+       }
+   if(addressedMessage[0] == this->GetLocalProcessId() || addressedMessage[0] <0) {
+   triggerMessage = &(addressedMessage[1]);
+   this->ProcessRMI(triggerMessage[2], arg, triggerMessage[1], 
       triggerMessage[0]);
     if (arg)
       {
       delete [] arg;
       arg = NULL;
       }
-
+    }
+    else
+    {
+	continue;
+    }
+   printf("processrmis: addressed message 0x%x%x%x%x%x, triggerMessage 0x%x%x%x%x%x%x\n",addressedMessage[0],addressedMessage[1],addressedMessage[2],addressedMessage[3],addressedMessage[4],triggerMessage[0],triggerMessage[1],triggerMessage[2],triggerMessage[3],triggerMessage[4]);
+process_rmi_loop:
     // check for break
     if (this->BreakFlag)
       {
