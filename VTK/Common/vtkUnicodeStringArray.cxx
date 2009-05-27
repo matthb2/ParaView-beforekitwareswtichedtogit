@@ -243,6 +243,11 @@ vtkArrayIterator* vtkUnicodeStringArray::NewIterator()
   return 0;
 }
 
+vtkVariant vtkUnicodeStringArray::GetVariantValue(vtkIdType idx)
+{
+  return this->GetValue(idx);
+}
+
 vtkIdType vtkUnicodeStringArray::LookupValue(vtkVariant)
 {
   vtkErrorMacro("Not implemented.");
