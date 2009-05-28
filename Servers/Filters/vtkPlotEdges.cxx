@@ -321,7 +321,7 @@ void Segment::ComputeDirection(vtkIdType pointIndex,
   //cerr<< "DIR: direction:" << direction[0] << "," << direction[1] << "," << direction[2] << endl;
 }
 
-void Segment::AddPoint(vtkIdType cellId, vtkIdType pointId)
+void Segment::AddPoint(vtkIdType vtkNotUsed(cellId), vtkIdType pointId)
 {
   if (this->StartId == -1)
     {
