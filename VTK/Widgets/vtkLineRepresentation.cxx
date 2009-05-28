@@ -768,6 +768,15 @@ void vtkLineRepresentation::HighlightLine(int highlight)
 }
 
 //----------------------------------------------------------------------------
+void vtkLineRepresentation::SetLineColor(double r, double g, double b)
+{
+  if(this->GetLineProperty())
+    {
+    this->GetLineProperty()->SetColor(r, g, b);
+    }
+}  
+
+//----------------------------------------------------------------------------
 void vtkLineRepresentation::ClampPosition(double x[3])
 {
   for (int i=0; i<3; i++)
