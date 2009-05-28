@@ -75,7 +75,7 @@
 
 /* Fix for BORLAND 5.6 bug where it wrongly chooses remove(const char *) in stdio 
    instead of the remove stl algorithm. */
-#if defined (__BORLANDC__) && (__BORLANDC__ = 0x0560)
+#if defined (__BORLANDC__) && (__BORLANDC__ == 0x0560)
 # define remove borland_remove
 #endif
 /* Include algorithm last so "remove" macro Borland hack does not
