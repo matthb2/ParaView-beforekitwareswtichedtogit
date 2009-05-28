@@ -669,7 +669,7 @@ void vtkPlotEdges::Process(vtkPolyData* input,
   vtkCollection* nodes = vtkCollection::New();
 
   this->ExtractSegments(inputPolyData, segments, nodes);
-  this->ConnectSegmentsWithNodes(inputPolyData, segments, nodes);
+  this->ConnectSegmentsWithNodes(segments, nodes);
   this->SaveToMultiBlockDataSet(segments, outputMultiBlock);
 
   segments->Delete();
