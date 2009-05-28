@@ -293,6 +293,13 @@ void vtkFast2DLayoutStrategy::Layout()
     this->LayoutComplete = 1;
     return;
     }
+
+  // If there are zero or one vertex, we are done
+  if (this->Graph->GetNumberOfVertices() <= 1)
+    {
+    this->LayoutComplete = 1;
+    return;
+    }
     
   // Set my graph as input into the graph to polydata
   this->GraphToPoly->SetInput(this->Graph);
