@@ -1135,12 +1135,7 @@ void vtkPlotEdges::SaveToMultiBlockDataSet(vtkCollection* segments,
     pts->SetDataType(polyData->GetPoints()->GetDataType());
 
     vtkSmartPointer<vtkIdList> cells = vtkSmartPointer<vtkIdList>::New();
-
-    pd->SetLines(ca);
-    pd->SetPoints(pts);
-    pd->InsertNextCell(VTK_POLY_LINE, cells);
-
-
+   
     vtkPointData* srcPointData = polyData->GetPointData();
     vtkAbstractArray *data, *newData;
     int numArray = srcPointData->GetNumberOfArrays();
@@ -1148,6 +1143,7 @@ void vtkPlotEdges::SaveToMultiBlockDataSet(vtkCollection* segments,
       {
       data = srcPointData->GetAbstractArray(i);
       newData = data->NewInstance(); //instantiate same type of object
+      newData->SetNumberOfComponents(data->GetNumberOfComponents());
       newData->SetName(data->GetName());
       if (data->HasInformation())
         {
@@ -1156,7 +1152,8 @@ void vtkPlotEdges::SaveToMultiBlockDataSet(vtkCollection* segments,
       pd->GetPointData()->AddArray(newData);
       newData->Delete();
       }
-   
+
+  
     vtkIdType pointId;
     vtkIdType numCells = segment->GetPointIdList()->GetNumberOfIds();
     for (vtkIdType i = 0; i < numCells; ++i)
@@ -1170,14 +1167,19 @@ void vtkPlotEdges::SaveToMultiBlockDataSet(vtkCollection* segments,
           ->InsertNextTuple(pointId, srcPointData->GetArray(j));
         }
       }
-    
-      vtkDataArray* arcLength = segment->GetArcLengths();
-      pd->GetPointData()->AddArray(arcLength);
-      if (pd->GetPointData()->GetArray("arc_length"))
-        {
-        arcLength->SetName("PlotEdges arc_length");
-        }
 
+    pd->SetLines(ca);
+    pd->SetPoints(pts);
+    pd->InsertNextCell(VTK_POLY_LINE, cells);
+
+    vtkDataArray* arcLength = segment->GetArcLengths();
+    if (pd->GetPointData()->HasArray("arc_length"))
+      {
+      arcLength->SetName("PlotEdges arc_length");
+      }
+    pd->GetPointData()->AddArray(arcLength);
+
+    
     /*
       cerr << "Add PolyLine of " << 
       segment->GetPointIdList()->GetNumberOfIds() << " points" << endl;
