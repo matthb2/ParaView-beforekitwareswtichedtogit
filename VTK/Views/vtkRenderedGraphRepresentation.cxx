@@ -81,6 +81,7 @@
 /* Include algorithm last so "remove" macro Borland hack does not
    affect other headers.  */
 #include <vtksys/stl/algorithm>
+#include <ctype.h>
 
 
 
