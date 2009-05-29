@@ -764,6 +764,13 @@ bool vtkSMStateVersionController::Process_3_4_to_3_6(vtkPVXMLElement* root)
       }
     }
 
+    {
+    // Convert "Programmable Filter" to "ProgrammableFilter".
+    const char* attrs[] = {"type", "Programmable Filter", 0};
+    const char* newAttrs[] = {"type", "ProgrammableFilter", 0};
+    this->SelectAndSetAttributes(root, "Proxy", attrs, newAttrs);
+    }
+
   return true;
 }
 
