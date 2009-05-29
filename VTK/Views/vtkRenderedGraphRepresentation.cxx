@@ -73,6 +73,8 @@
 #include "vtkVertexDegree.h"
 #include "vtkViewTheme.h"
 
+#include <ctype.h> // So borland 5.6 can find tolower
+
 /* Fix for BORLAND 5.6 bug where it wrongly chooses remove(const char *) in stdio 
    instead of the remove stl algorithm. */
 #if defined (__BORLANDC__) && (__BORLANDC__ == 0x0560)
@@ -81,7 +83,7 @@
 /* Include algorithm last so "remove" macro Borland hack does not
    affect other headers.  */
 #include <vtksys/stl/algorithm>
-#include <ctype.h>
+
 
 
 
