@@ -69,7 +69,7 @@ vtkVariant vtkGroupLeafVerticesGetVariant(vtkAbstractArray* arr, vtkIdType i)
   vtkVariant val;
   switch(arr->GetDataType())
     {
-    vtkExtendedTemplateMacro(val = vtkGroupLeafVerticesGetValue(
+    vtkSuperExtraExtendedTemplateMacro(val = vtkGroupLeafVerticesGetValue(
       static_cast<VTK_TT*>(arr->GetVoidPointer(0)), i));
     }
   return val;
