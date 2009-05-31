@@ -246,7 +246,7 @@ void vtkQtTreeView::Update()
     
     // Refresh the view
     this->TreeView->update();  
-    this->TreeView->expandAll();
+    //this->TreeView->expandAll();
     this->TreeView->resizeColumnToContents(0);
     this->SetShowRootNode(false);
 
