@@ -23,6 +23,7 @@
 #include "vtkProcessGroup.h"
 #include "vtkSubCommunicator.h"
 #include "vtkToolkits.h"
+#include "vtkProcess.h"
 
 #ifdef VTK_USE_MPI
 #include "vtkMPIController.h"
@@ -71,7 +72,15 @@ void vtkMultiProcessControllerBreakRMI(void *localArg,
   controller->SetBreakFlag(1);
 }
 
-
+// ----------------------------------------------------------------------------
+// Single method used when launching a single process.
+static void vtkMultiProcessControllerRun(vtkMultiProcessController *c,
+                                         void *arg)
+{
+  vtkProcess *p=reinterpret_cast<vtkProcess *>(arg);
+  p->SetController(c);
+  p->Execute();
+}
 
 //----------------------------------------------------------------------------
 vtkMultiProcessController::vtkMultiProcessController()
@@ -222,6 +231,12 @@ void vtkMultiProcessController::SetSingleMethod( vtkProcessFunctionType f,
 {
   this->SingleMethod = f;
   this->SingleData   = data;
+}
+
+// ----------------------------------------------------------------------------
+void vtkMultiProcessController::SetSingleProcessObject(vtkProcess *p)
+{
+  this->SetSingleMethod(vtkMultiProcessControllerRun,p);
 }
 
 //----------------------------------------------------------------------------
