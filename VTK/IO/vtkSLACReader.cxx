@@ -322,13 +322,11 @@ void vtkSLACReader::RemoveAllModeFileNames()
 unsigned int vtkSLACReader::GetNumberOfModeFileNames()
 {
   return this->ModeFileNames.size();
-  this->Modified();
 }
 
 const char *vtkSLACReader::GetModeFileName(unsigned int idx)
 {
   return this->ModeFileNames[idx].c_str();
-  this->Modified();
 }
 
 //-----------------------------------------------------------------------------
