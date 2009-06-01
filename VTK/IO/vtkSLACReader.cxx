@@ -591,7 +591,7 @@ int vtkSLACReader::RequestData(vtkInformation *vtkNotUsed(request),
 
     this->UpdateProgress(0.875);
 
-    if (!this->InterpolateMidpointData(output, this->MidpointIdCache));
+    if (!this->InterpolateMidpointData(output, this->MidpointIdCache)) return 0;
     }
 
   // Push points to output.
