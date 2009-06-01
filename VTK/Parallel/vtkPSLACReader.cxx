@@ -837,9 +837,9 @@ int vtkPSLACReader::ReadFieldData(int modeFD, vtkMultiBlockDataSet *output)
 
 //-----------------------------------------------------------------------------
 int vtkPSLACReader::ReadMidpointCoordinates (
-                                       int meshFD, 
-                                       vtkMultiBlockDataSet *vtkNotUsed(output),
-                                       vtkMidpointCoordinateMap &map)
+                                   int meshFD, 
+                                   vtkMultiBlockDataSet *vtkNotUsed(output),
+                                   vtkSLACReader::vtkMidpointCoordinateMap &map)
 {
   // Get the number of midpoints.
   int midpointsVar;
@@ -999,7 +999,7 @@ int vtkPSLACReader::ReadMidpointCoordinates (
 
 //-----------------------------------------------------------------------------
 int vtkPSLACReader::ReadMidpointData(int meshFD, vtkMultiBlockDataSet *output,
-                                     vtkMidpointIdMap &map)
+                                     vtkSLACReader::vtkMidpointIdMap &map)
 {
   int result = this->Superclass::ReadMidpointData(meshFD, output, map); 
   if (result != 1)
