@@ -110,6 +110,14 @@ void vtkCompositeZPass::PrintSelf(ostream& os, vtkIndent indent)
 }
 
 // ----------------------------------------------------------------------------
+bool vtkCompositeZPass::IsSupported(vtkOpenGLRenderWindow *context)
+{
+  return vtkFrameBufferObject::IsSupported(context)
+    && vtkTextureObject::IsSupported(context)
+    && vtkShaderProgram2::IsSupported(context);
+}
+
+// ----------------------------------------------------------------------------
 // Description:
 // Perform rendering according to a render state \p s.
 // \pre s_exists: s!=0
