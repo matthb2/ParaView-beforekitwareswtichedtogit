@@ -830,6 +830,11 @@ void vtkSMProxyManager::RegisterProxy(const char* groupname,
                                       const char* name, 
                                       vtkSMProxy* proxy)
 {
+  if (!proxy)
+    {
+    return;
+    }
+
   vtkSMProxyManagerProxyListType &proxy_list =
     this->Internals->RegisteredProxyMap[groupname][name];
   if (proxy_list.Contains(proxy))
