@@ -583,6 +583,8 @@ void vtkCompositeRGBAPass::CreateProgram(vtkOpenGLRenderWindow *context)
 void vtkCompositeRGBAPass::ReleaseGraphicsResources(vtkWindow *w)
 {
   assert("pre: w_exists" && w!=0);
+
+  (void)w;
   
   if(this->PBO!=0)
     {

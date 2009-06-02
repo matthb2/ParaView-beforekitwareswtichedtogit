@@ -758,6 +758,8 @@ void vtkCompositeZPass::ReleaseGraphicsResources(vtkWindow *w)
 {
   assert("pre: w_exists" && w!=0);
   
+  (void)w;
+  
   if(this->PBO!=0)
     {
     this->PBO->Delete();
