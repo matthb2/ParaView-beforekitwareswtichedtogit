@@ -145,6 +145,7 @@ void vtkCompositeZPass::Render(const vtkRenderState *s)
   if(!supported)
     {
     vtkErrorMacro("FBOs are not supported by the context. Cannot perform z-compositing.");
+    return;
     }
   if(supported)
     {
@@ -152,6 +153,7 @@ void vtkCompositeZPass::Render(const vtkRenderState *s)
     if(!supported)
       {
       vtkErrorMacro("Texture Objects are not supported by the context. Cannot perform z-compositing.");
+      return;
       }
     }
   
@@ -163,6 +165,7 @@ void vtkCompositeZPass::Render(const vtkRenderState *s)
     if(!supported)
       {
       vtkErrorMacro("GLSL is not supported by the context. Cannot perform z-compositing.");
+      return;
       }
     }
   
