@@ -91,6 +91,7 @@ void vtkAnnotationLink::SetCurrentSelection(vtkSelection* sel)
   if (this->AnnotationLayers)
     {
     this->AnnotationLayers->SetCurrentSelection(sel);
+    this->InvokeEvent(vtkCommand::AnnotationChangedEvent, 0);
     }
 }
 
