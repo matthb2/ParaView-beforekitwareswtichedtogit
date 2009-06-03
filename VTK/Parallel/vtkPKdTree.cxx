@@ -36,6 +36,7 @@
 
 #include <vtkstd/queue>
 #include <vtkstd/algorithm>
+#include <assert.h>
 
 // Timing data ---------------------------------------------
 
@@ -3431,6 +3432,8 @@ int vtkPKdTree::DepthOrderAllProcesses(double *dop, vtkIntArray *orderedList)
 int vtkPKdTree::ViewOrderAllProcessesInDirection(const double dop[3],
                                                  vtkIntArray *orderedList)
 {
+  assert("pre: orderedList_exists" && orderedList!=0);
+  
   vtkIntArray *regionList = vtkIntArray::New();
   
   this->ViewOrderAllRegionsInDirection(dop, regionList);
@@ -3461,6 +3464,8 @@ int vtkPKdTree::ViewOrderAllProcessesInDirection(const double dop[3],
 int vtkPKdTree::ViewOrderAllProcessesFromPosition(const double pos[3],
                                                   vtkIntArray *orderedList)
 {
+  assert("pre: orderedList_exists" && orderedList!=0);
+  
   vtkIntArray *regionList = vtkIntArray::New();
   
   this->ViewOrderAllRegionsFromPosition(pos, regionList);
