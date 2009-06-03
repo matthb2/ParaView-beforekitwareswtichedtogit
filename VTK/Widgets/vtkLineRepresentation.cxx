@@ -15,6 +15,7 @@
 #include "vtkLineRepresentation.h"
 #include "vtkPointHandleRepresentation3D.h"
 #include "vtkActor.h"
+#include "vtkCamera.h"
 #include "vtkLineSource.h"
 #include "vtkSphereSource.h"
 #include "vtkPolyDataMapper.h"
@@ -665,7 +666,8 @@ void vtkLineRepresentation::BuildRepresentation()
        this->Point2Representation->GetMTime() > this->BuildTime ||
        this->LineHandleRepresentation->GetMTime() > this->BuildTime ||
        (this->Renderer && this->Renderer->GetVTKWindow() &&
-        this->Renderer->GetVTKWindow()->GetMTime() > this->BuildTime) )
+        (this->Renderer->GetVTKWindow()->GetMTime() > this->BuildTime ||
+        this->Renderer->GetActiveCamera()->GetMTime() > this->BuildTime)) )
     {
     if ( ! this->InitializedDisplayPosition && this->Renderer )
       {
