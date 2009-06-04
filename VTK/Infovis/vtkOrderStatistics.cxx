@@ -65,6 +65,7 @@ void vtkOrderStatistics::PrintSelf( ostream &os, vtkIndent indent )
 
 // ----------------------------------------------------------------------
 void vtkOrderStatistics::ExecuteLearn( vtkTable* inData,
+                                       vtkTable* inParameters,
                                        vtkDataObject* outMetaDO )
 {
   vtkTable* outMeta = vtkTable::SafeDownCast( outMetaDO ); 
