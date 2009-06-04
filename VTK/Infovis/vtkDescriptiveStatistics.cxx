@@ -79,7 +79,7 @@ void vtkDescriptiveStatistics::SetDeviationParameter( const char* name )
 
 // ----------------------------------------------------------------------
 void vtkDescriptiveStatistics::ExecuteLearn( vtkTable* inData,
-                                             vtkTable* inParameters,
+                                             vtkTable* vtkNotUsed( inParameters ),
                                              vtkDataObject* outMetaDO )
 {
   vtkTable* outMeta = vtkTable::SafeDownCast( outMetaDO );
@@ -105,11 +105,6 @@ void vtkDescriptiveStatistics::ExecuteLearn( vtkTable* inData,
     return;
     }
   
- if( inParameters )
-    {
-    vtkWarningMacro("Input Learn parameters are currently ignored.");
-    }
- 
   vtkStringArray* stringCol = vtkStringArray::New();
   stringCol->SetName( "Variable" );
   outMeta->AddColumn( stringCol );

@@ -65,7 +65,7 @@ void vtkOrderStatistics::PrintSelf( ostream &os, vtkIndent indent )
 
 // ----------------------------------------------------------------------
 void vtkOrderStatistics::ExecuteLearn( vtkTable* inData,
-                                       vtkTable* inParameters,
+                                       vtkTable* vtkNotUsed( inParameters ),
                                        vtkDataObject* outMetaDO )
 {
   vtkTable* outMeta = vtkTable::SafeDownCast( outMetaDO ); 
@@ -90,11 +90,6 @@ void vtkOrderStatistics::ExecuteLearn( vtkTable* inData,
     return;
     }
   
-  if( inParameters )
-    {
-    vtkWarningMacro("Input Learn parameters are currently ignored.");
-    }
-
   vtkStringArray* stringCol = vtkStringArray::New();
   stringCol->SetName( "Variable" );
   outMeta->AddColumn( stringCol );
