@@ -183,6 +183,11 @@ void vtkMultiCorrelativeStatistics::ExecuteLearn( vtkTable* inData,
     return;
     }
 
+  if( inParameters )
+    {
+    vtkWarningMacro("Input Learn parameters are currently ignored.");
+    }
+
   vtkstd::set<vtkstd::set<vtkStdString> >::iterator reqIt;
   vtkstd::set<vtkStdString>::iterator colIt;
   vtkstd::set<vtkstd::pair<vtkStdString,vtkDataArray*> > allColumns;

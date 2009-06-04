@@ -127,6 +127,11 @@ void vtkContingencyStatistics::ExecuteLearn( vtkTable* inData,
     return;
     }
 
+  if( inParameters )
+    {
+    vtkWarningMacro("Input Learn parameters are currently ignored.");
+    }
+
   // Summary table: assigns a unique key to each (variable X,variable Y) pair
   vtkTable* summaryTab = vtkTable::New();
 

@@ -89,6 +89,11 @@ void vtkOrderStatistics::ExecuteLearn( vtkTable* inData,
     {
     return;
     }
+  
+  if( inParameters )
+    {
+    vtkWarningMacro("Input Learn parameters are currently ignored.");
+    }
 
   vtkStringArray* stringCol = vtkStringArray::New();
   stringCol->SetName( "Variable" );

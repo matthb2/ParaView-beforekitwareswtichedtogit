@@ -89,6 +89,11 @@ void vtkCorrelativeStatistics::ExecuteLearn( vtkTable* inData,
     return;
     }
 
+  if ( inParameters )
+    {
+    vtkWarningMacro("Input Learn parameters are currently ignored.");
+    }
+
   vtkIdTypeArray* idTypeCol = vtkIdTypeArray::New();
   idTypeCol->SetName( "Cardinality" );
   outMeta->AddColumn( idTypeCol );
