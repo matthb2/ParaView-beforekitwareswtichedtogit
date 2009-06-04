@@ -1116,6 +1116,7 @@ bool vtkTextureObject::Allocate1D(unsigned int width, int numComps,
   glTexImage1D(this->Target, 0, static_cast<GLint>(internalFormat),
                static_cast<GLsizei>(width),0, format, type,0);
   this->UnBind();
+  return true;
 }
 
 // ----------------------------------------------------------------------------
@@ -1155,6 +1156,7 @@ bool vtkTextureObject::Allocate2D(unsigned int width,unsigned int height,
                static_cast<GLsizei>(width), static_cast<GLsizei>(height),
                0, format, type,0);
   this->UnBind();
+  return true;
 }
   
 // ----------------------------------------------------------------------------
@@ -1194,6 +1196,7 @@ bool vtkTextureObject::Allocate3D(unsigned int width,unsigned int height,
                     static_cast<GLsizei>(width), static_cast<GLsizei>(height),
                     static_cast<GLsizei>(depth), 0, format, type,0);
   this->UnBind();
+  return true;
 }
 
 //----------------------------------------------------------------------------
