@@ -371,6 +371,16 @@ void vtkInterpolatedVelocityField::PrintSelf(ostream& os, vtkIndent indent)
     {
     os << "off." << endl;
     }
+    
+  os << indent << "NormalizeVector: ";
+  if ( this->NormalizeVector )
+    {
+    os << "on." << endl;
+    }
+  else
+    {
+    os << "off." << endl;
+    }
 
   os << indent << "VectorsSelection: " 
      << (this->VectorsSelection?this->VectorsSelection:"(none)") << endl;
