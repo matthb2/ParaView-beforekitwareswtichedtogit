@@ -788,7 +788,14 @@ vtkPVClientServerIdCollectionInformation* vtkSMRenderViewProxy
 //-----------------------------------------------------------------------------
 void vtkSMRenderViewProxy::ResetCamera()
 {
-  this->UpdateAllRepresentations();
+  // Dont' call UpdateAllRepresentations() explicitly, since
+  // UpdateAllRepresentations() results in delivering the data to rendering
+  // nodes as well. All we want is for the pipeline to be updated until enough
+  // information about the bounds can be known. That's already done by
+  // vtkSMRepresentationProxy::GetBounds(). So we don't need to call update on
+  // representations explicitly here.
+  // This fixes BUG #9055.
+  // this->UpdateAllRepresentations();
 
   double bds[6];
   this->ComputeVisiblePropBounds(bds);
