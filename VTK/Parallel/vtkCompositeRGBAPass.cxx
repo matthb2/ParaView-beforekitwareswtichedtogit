@@ -58,8 +58,6 @@ vtkCxxRevisionMacro(vtkCompositeRGBAPass, "$Revision$");
 vtkStandardNewMacro(vtkCompositeRGBAPass);
 vtkCxxSetObjectMacro(vtkCompositeRGBAPass,Controller,vtkMultiProcessController);
 vtkCxxSetObjectMacro(vtkCompositeRGBAPass,Kdtree,vtkPKdTree);
-extern const char *vtkCompositeRGBAPassShader_fs;
-
 
 // ----------------------------------------------------------------------------
 vtkCompositeRGBAPass::vtkCompositeRGBAPass()
