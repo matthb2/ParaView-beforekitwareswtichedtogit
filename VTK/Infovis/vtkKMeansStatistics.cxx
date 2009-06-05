@@ -56,7 +56,9 @@ void vtkKMeansStatistics::PrintSelf( ostream& os, vtkIndent indent )
                << "\"\n";
   os << indent << "MaxNumIterations: " << this->MaxNumIterations << endl;
   os << indent << "Tolerance: " << this->Tolerance << endl;
+  os << indent << "DistanceFunctor: " << this->DistanceFunctor << endl;
 }
+
 
 // ----------------------------------------------------------------------
 int vtkKMeansStatistics::FillOutputPortInformation( int port, vtkInformation* info )
