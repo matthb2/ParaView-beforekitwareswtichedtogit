@@ -440,6 +440,8 @@ vtkSLACReader::vtkSLACReader()
 vtkSLACReader::~vtkSLACReader()
 {
   this->SetMeshFileName(NULL);
+
+  delete this->Internal;
 }
 
 void vtkSLACReader::PrintSelf(ostream &os, vtkIndent indent)
