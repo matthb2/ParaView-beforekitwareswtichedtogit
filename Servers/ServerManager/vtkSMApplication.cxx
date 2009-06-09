@@ -72,7 +72,7 @@ void vtkSMApplication::AddConfigurationFile(const char* fname, const char* dir)
 //---------------------------------------------------------------------------
 unsigned int vtkSMApplication::GetNumberOfConfigurationFiles()
 {
-  return this->Internals->Files.size();
+  return static_cast<unsigned int>(this->Internals->Files.size());
 }
 
 //---------------------------------------------------------------------------
