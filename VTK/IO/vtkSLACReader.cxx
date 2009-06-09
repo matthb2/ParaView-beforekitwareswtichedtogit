@@ -1018,8 +1018,8 @@ vtkSmartPointer<vtkDataArray> vtkSLACReader::ReadPointDataArray(int ncFD,
   if (vtkType < 1) return 0;
   vtkSmartPointer<vtkDataArray> dataArray;
   dataArray.TakeReference(vtkDataArray::CreateDataArray(vtkType));
-  dataArray->SetNumberOfComponents(static_cast<vtkIdType>(numComponents));
-  dataArray->SetNumberOfTuples(numCoords);
+  dataArray->SetNumberOfComponents(static_cast<int>(numComponents));
+  dataArray->SetNumberOfTuples(static_cast<vtkIdType>(numCoords));
 
   // Read the data from the file.
   size_t start[2], count[2];
