@@ -335,8 +335,6 @@ void vtkQtTreeRingLabelMapper::LabelTree(
     double x[3];
     x[0] = textPosDC[0];
     x[1] = textPosDC[1];
-    x[2] = textPosDC[2];
-    
     
     //Now, create the layout for the actual label...
     QString textString, testString;
