@@ -275,7 +275,7 @@ void vtkSLACReader::MidpointCoordinateMap::AddMidpoint(
                                             const EdgeEndpoints &edge,
                                             const MidpointCoordinates &midpoint)
 {
-  this->Internal->Map.insert(vtkstd::make_pair(edge, midpoint));
+  this->Internal->Map[edge] = midpoint;
 }
 
 void vtkSLACReader::MidpointCoordinateMap::RemoveMidpoint(
@@ -335,7 +335,7 @@ vtkSLACReader::MidpointIdMap::~MidpointIdMap()
 void vtkSLACReader::MidpointIdMap::AddMidpoint(const EdgeEndpoints &edge,
                                                vtkIdType midpoint)
 {
-  this->Internal->Map.insert(vtkstd::make_pair(edge, midpoint));
+  this->Internal->Map[edge] = midpoint;
 }
 
 void vtkSLACReader::MidpointIdMap::RemoveMidpoint(const EdgeEndpoints &edge)
