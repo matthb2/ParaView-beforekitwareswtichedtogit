@@ -46,9 +46,6 @@
 class vtkAttributeClustering2DLayoutStrategy::Internals
 {
 public:
-  vtkAttributeClustering2DLayoutStrategy::Internals() 
-    {
-    }
 
   // An edge consists of two vertices joined together.
   // This struct acts as a "pointer" to those two vertices.
