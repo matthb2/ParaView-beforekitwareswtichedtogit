@@ -223,7 +223,7 @@ void vtkSelection::Union(vtkSelectionNode* node)
     {
     vtkSmartPointer<vtkSelectionNode> clone =
       vtkSmartPointer<vtkSelectionNode>::New();
-    clone->ShallowCopy(node);
+    clone->DeepCopy(node);
     this->AddNode(clone);
     }
 }
