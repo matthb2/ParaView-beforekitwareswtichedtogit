@@ -411,6 +411,8 @@ int vtkIntegrateAttributes::RequestData(vtkInformation*,
     vtkFieldList cdList(1);
     pdList.InitializeFieldList(dsInput->GetPointData());
     cdList.InitializeFieldList(dsInput->GetCellData());
+    this->AllocateAttributes(pdList, output->GetPointData());
+    this->AllocateAttributes(cdList, output->GetCellData());
     this->ExecuteBlock(dsInput, output, 0, pdList, cdList);
     }
   else
