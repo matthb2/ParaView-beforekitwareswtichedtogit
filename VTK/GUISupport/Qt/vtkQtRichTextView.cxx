@@ -164,8 +164,6 @@ void vtkQtRichTextView::Update()
   else
     {
     // Figure-out which row of the table we're going to display (if any) ...
-    vtkIdType row = 0;
-    bool row_valid = false;
     if(vtkSelection* const selection = representation->GetAnnotationLink()->GetCurrentSelection())
       {
       if(vtkSelectionNode* const selection_node = selection->GetNumberOfNodes() ? selection->GetNode(0) : 0)
