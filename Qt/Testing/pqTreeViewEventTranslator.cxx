@@ -29,67 +29,67 @@ NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 ========================================================================*/
-#include "pqTreeWidgetEventPlayer.h"
+#include "pqTreeViewEventTranslator.h"
 
-
-#include <QTreeWidget>
-#include <QDebug>
+#include <QTreeView>
+#include <QEvent>
 
 //-----------------------------------------------------------------------------
-pqTreeWidgetEventPlayer::pqTreeWidgetEventPlayer(QObject* parentObject)
+pqTreeViewEventTranslator::pqTreeViewEventTranslator(QObject* parentObject)
   : Superclass(parentObject)
 {
 }
 
 //-----------------------------------------------------------------------------
-pqTreeWidgetEventPlayer::~pqTreeWidgetEventPlayer()
+pqTreeViewEventTranslator::~pqTreeViewEventTranslator()
 {
 }
 
 //-----------------------------------------------------------------------------
-bool pqTreeWidgetEventPlayer::playEvent(
-  QObject* object, const QString& command, 
-  const QString& arguments, bool& error)
+bool pqTreeViewEventTranslator::translateEvent(
+  QObject* object, QEvent* tr_event, bool& /*error*/)
 {
-  QTreeWidget* treeWidget = qobject_cast<QTreeWidget*>(object);
-  if (!treeWidget)
+  QTreeView* treeWidget = qobject_cast<QTreeView*>(object);
+  if(!treeWidget)
+    {
+    // mouse events go to the viewport widget
+    treeWidget = qobject_cast<QTreeView*>(object->parent());
+    }
+  if(!treeWidget)
     {
     return false;
     }
-  
-  QRegExp regExp("^([\\d\\.]+),(\\d+),(\\d+)$");
-  if (command == "setTreeItemCheckState" && regExp.indexIn(arguments) != -1)
+
+  if (tr_event->type() == QEvent::FocusIn)
     {
-    QString str_index = regExp.cap(1);
-    int column = regExp.cap(2).toInt();
-    int check_state = regExp.cap(3).toInt();
-    
-    QStringList indices = str_index.split(".",QString::SkipEmptyParts);
-    QTreeWidgetItem* cur_item = NULL;
-    foreach (QString cur_index, indices)
-      {
-      int index = cur_index.toInt();
-      if (!cur_item)
-        {
-        cur_item = treeWidget->topLevelItem(index);
-        }
-      else
-        {
-        cur_item = cur_item->child(index);
-        }
-      if (!cur_item)
-        {
-        error=true;
-        qCritical() << "ERROR: Tree widget must have changed. "
-          << "Indices recorded in the test are no longer valid. Cannot playback.";
-        return true;
-        }
-      }
-    cur_item->setCheckState(column, static_cast<Qt::CheckState>(check_state));
-    return true;
+    QObject::disconnect(treeWidget, 0, this, 0);
+    QObject::connect(treeWidget, SIGNAL(clicked(const QModelIndex&)),
+      this, SLOT(onItemChanged(const QModelIndex&)));
     }
-  return false;
+  return true;
 }
 
+//-----------------------------------------------------------------------------
+void pqTreeViewEventTranslator::onItemChanged(
+  const QModelIndex& index)
+{
+  QTreeView* treeWidget = qobject_cast<QTreeView*>(this->sender()); 
 
+  QModelIndex curIndex = index;
+  QString str_index;
+  while (curIndex.isValid())
+    {
+    str_index.prepend(QString("%1.%2.").arg(curIndex.row()).arg(curIndex.column()));
+    curIndex = curIndex.parent();
+    }
 
+  // remove the last ".".
+  str_index.chop(1);
+  if ( (index.model()->flags(index) & Qt::ItemIsUserCheckable) != 0)
+    {
+    // record the check state change if the item is user-checkable.
+    emit this->recordEvent( treeWidget, "setCheckState",
+      QString("%1,%3").arg(str_index).arg(
+        index.model()->data(index,Qt::CheckStateRole).toInt()));
+    }
+}
