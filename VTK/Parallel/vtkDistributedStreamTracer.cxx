@@ -347,7 +347,7 @@ int vtkDistributedStreamTracer::ProcessTask(double seed[3],
 
   double tmpseed[3];
   memcpy(tmpseed, lastPoint, 3*sizeof(double));
-  this->SimpleIntegrate(tmpseed, lastPoint, this->LastUsedTimeStep, func);
+  this->SimpleIntegrate(tmpseed, lastPoint, this->LastUsedStepSize, func);
   func->Delete();
 
   this->SetIntegrator(ivp);
