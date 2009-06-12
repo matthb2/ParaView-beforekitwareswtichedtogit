@@ -62,7 +62,7 @@ void vtkOpenGLTexture::Initialize(vtkRenderer * vtkNotUsed(ren))
 // Release the graphics resources used by this texture.  
 void vtkOpenGLTexture::ReleaseGraphicsResources(vtkWindow *renWin)
 {
-  if (this->Index && renWin)
+  if (this->Index && renWin && renWin->GetMapped())
     {
     static_cast<vtkRenderWindow *>(renWin)->MakeCurrent();
 #ifdef GL_VERSION_1_1

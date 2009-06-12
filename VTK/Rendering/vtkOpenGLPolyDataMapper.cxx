@@ -87,12 +87,12 @@ vtkOpenGLPolyDataMapper::~vtkOpenGLPolyDataMapper()
 // the display list if any.
 void vtkOpenGLPolyDataMapper::ReleaseGraphicsResources(vtkWindow *win)
 {
-  if (this->ListId && win)
+  if (this->ListId && win && win->GetMapped())
     {
     win->MakeCurrent();
     glDeleteLists(this->ListId,1);
-    this->ListId = 0;
     }
+  this->ListId = 0;
   this->LastWindow = NULL; 
   // We may not want to do this here.
   if (this->InternalColorTexture)

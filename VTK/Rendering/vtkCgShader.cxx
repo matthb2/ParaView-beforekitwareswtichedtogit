@@ -171,13 +171,16 @@ vtkCgShader::~vtkCgShader()
 }
 
 //-----------------------------------------------------------------------------
-void vtkCgShader::ReleaseGraphicsResources(vtkWindow*)
+void vtkCgShader::ReleaseGraphicsResources(vtkWindow* window)
 {
-  if (cgIsContext(this->Internals->Context))
+  if (window &&
+    window->GetMapped() &&
+    cgIsContext(this->Internals->Context))
     {
     // This will also destroy any programs contained in the context.
     cgDestroyContext(this->Internals->Context);
     }
+  this->Internals->Context = 0;
 }
 
 //-----------------------------------------------------------------------------
