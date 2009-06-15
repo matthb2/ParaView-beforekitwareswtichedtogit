@@ -159,6 +159,11 @@ vtkIdType vtkAreaLayout::FindVertex(float pnt[2])
     return -1;
     }
 
+  if( otree->GetNumberOfVertices() == 0)
+    {
+    return -1;
+    }
+
   return this->LayoutStrategy->FindVertex(otree, array, pnt);
 }
 
