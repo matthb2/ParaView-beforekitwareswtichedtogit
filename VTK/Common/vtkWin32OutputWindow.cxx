@@ -53,7 +53,8 @@ vtkWin32OutputWindow::vtkWin32OutputWindow()
 {
   // Default to sending output to stderr/cerr when running a dashboard:
   //
-  if(getenv("DART_TEST_FROM_DART"))
+  if(getenv("DART_TEST_FROM_DART") ||
+    getenv("DASHBOARD_TEST_FROM_CTEST"))
     {
     this->SendToStdErr = true;
     }
