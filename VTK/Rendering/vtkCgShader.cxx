@@ -33,6 +33,7 @@
 #include "vtkOpenGLTexture.h"
 #include "vtkProperty.h"
 #include "vtkRenderer.h"
+#include "vtkWindow.h"
 #include "vtkXMLDataElement.h"
 #include "vtkXMLShader.h"
 
