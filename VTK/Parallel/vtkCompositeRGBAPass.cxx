@@ -126,6 +126,13 @@ void vtkCompositeRGBAPass::PrintSelf(ostream& os, vtkIndent indent)
 }
 
 // ----------------------------------------------------------------------------
+bool vtkCompositeRGBAPass::IsSupported(vtkOpenGLRenderWindow *context)
+{
+  return vtkFrameBufferObject::IsSupported(context)
+    && vtkTextureObject::IsSupported(context);
+}
+
+// ----------------------------------------------------------------------------
 // Description:
 // Perform rendering according to a render state \p s.
 // \pre s_exists: s!=0

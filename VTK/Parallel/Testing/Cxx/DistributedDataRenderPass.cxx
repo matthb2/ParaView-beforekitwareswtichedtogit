@@ -51,6 +51,7 @@
 #include "vtkCompositeRGBAPass.h"
 #include "vtkClearZPass.h"
 #include "vtkImageRenderManager.h"
+#include "vtkOpenGLRenderWindow.h"
 
 /*
 ** This test only builds if MPI is in use
@@ -296,9 +297,16 @@ void MyProcess::Execute()
     camera->SetParallelScale(16);
 
     renWin->Render();
-
-    this->ReturnValue=vtkRegressionTester::Test(this->Argc,this->Argv,renWin,
-                                                10);
+    if(compositeRGBAPass->IsSupported(
+         static_cast<vtkOpenGLRenderWindow *>(renWin)))
+      {
+      this->ReturnValue=vtkRegressionTester::Test(this->Argc,this->Argv,renWin,
+                                                  10);
+      }
+    else
+      {
+      this->ReturnValue=vtkTesting::PASSED; // not supported.
+      }
     
     if(this->ReturnValue==vtkRegressionTester::DO_INTERACTOR)
       {
@@ -335,9 +343,16 @@ void MyProcess::Execute()
       camera->SetParallelScale(16);
   
       renWin->Render();
-  
-      this->ReturnValue=vtkRegressionTester::Test(this->Argc,this->Argv,renWin,
-                                                  10);
+      if(compositeRGBAPass->IsSupported(
+           static_cast<vtkOpenGLRenderWindow *>(renWin)))
+        {
+        this->ReturnValue=vtkRegressionTester::Test(this->Argc,this->Argv,
+                                                    renWin,10);
+        }
+      else
+        {
+        this->ReturnValue=vtkTesting::PASSED; // not supported.
+        }
   
       for (i=1; i < numProcs; i++)
         {
