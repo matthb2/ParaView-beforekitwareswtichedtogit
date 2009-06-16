@@ -75,6 +75,7 @@
 
 #include "vtkLightActor.h"
 #include "vtkProcess.h"
+#include "vtkTreeCompositer.h"
 
 // Defined in TestLightActor.cxx
 // For each spotlight, add a light frustum wireframe representation and a cone
@@ -119,6 +120,10 @@ void MyProcess::Execute()
   int me=this->Controller->GetLocalProcessId();
  
   vtkCompositeRenderManager *prm = vtkCompositeRenderManager::New();
+  
+  vtkTreeCompositer *compositer=vtkTreeCompositer::New();
+  prm->SetCompositer(compositer);
+  compositer->Delete();
   
   vtkRenderWindowInteractor *iren=0;
   
