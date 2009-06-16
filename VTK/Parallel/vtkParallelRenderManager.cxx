@@ -2118,7 +2118,7 @@ bool vtkParallelRenderManager::RendererInfo::Restore(
          >> value
          >> this->ParallelScale;
   
-  this->GradientBackground=value;
+  this->GradientBackground=value==1;
   return true;
 }
 
