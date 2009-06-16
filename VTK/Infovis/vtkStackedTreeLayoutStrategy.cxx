@@ -473,6 +473,10 @@ vtkIdType vtkStackedTreeLayoutStrategy::FindVertex(
     {
     float blimits[4];
     vtkIdType vertex = otree->GetRoot();
+    if(vertex < 0)
+      {
+      return vertex;
+      }
     vtkFloatArray *boundsInfo = vtkFloatArray::SafeDownCast(array);
 
     // Now try to find the vertex that contains the point
@@ -521,6 +525,10 @@ vtkIdType vtkStackedTreeLayoutStrategy::FindVertex(
 
     float blimits[4];
     vtkIdType vertex = otree->GetRoot();
+    if(vertex < 0)
+      {
+      return vertex;
+      }
     vtkFloatArray *boundsInfo = vtkFloatArray::SafeDownCast(array);
 
     // Now try to find the vertex that contains the point
