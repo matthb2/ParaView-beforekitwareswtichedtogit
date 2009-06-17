@@ -26,8 +26,8 @@ public:
   // over the composite dataset.
   class vtkIterator
     {
-    vtkSmartPointer<vtkDataObject> DataObject;
-    vtkSmartPointer<vtkCompositeDataSet> CompositeDataSet;
+    vtkDataObject* DataObject;
+    vtkCompositeDataSet* CompositeDataSet;
 
     vtkCompositeDataSetInternals::Iterator Iter;
     vtkCompositeDataSetInternals::ReverseIterator ReverseIter;
