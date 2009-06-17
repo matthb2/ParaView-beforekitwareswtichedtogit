@@ -618,7 +618,12 @@ void vtkParallelRenderManager::StartRender()
         }
       }
 
+    bool hasActiveCamera=ren->HasActiveCamera();
     vtkCamera *cam = ren->GetActiveCamera();
+    if(!hasActiveCamera)
+      {
+      this->ResetCamera(ren);
+      }
     cam->GetPosition(renInfo.CameraPosition);
     cam->GetFocalPoint(renInfo.CameraFocalPoint);
     cam->GetViewUp(renInfo.CameraViewUp);

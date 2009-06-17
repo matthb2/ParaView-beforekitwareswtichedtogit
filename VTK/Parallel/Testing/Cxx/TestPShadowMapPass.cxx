@@ -375,7 +375,6 @@ void MyProcess::Execute()
     
     if(retVal==vtkRegressionTester::DO_INTERACTOR)
       {
-      renWin->Render();
       iren->Start();
       }
     prm->StopServices(); // tells satellites to stop listening.
