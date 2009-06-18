@@ -122,10 +122,13 @@ protected:
     if(event == vtkCommand::ProgressEvent)
     {
       double num = Reader->GetNumberOfFileNames();
-      if(num == 0)
+      if (num <= 1)
+        {
         num = Reader->GetNumberOfFiles();
+        }
       double* progress = static_cast<double*>(callData);
       double newProgress = *progress/num + Index/num;
+      cout << newProgress << endl;
       Reader->UpdateProgress(newProgress);
     }
   }
