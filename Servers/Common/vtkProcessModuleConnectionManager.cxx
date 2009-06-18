@@ -774,7 +774,7 @@ void vtkProcessModuleConnectionManager::DropConnection(
 //-----------------------------------------------------------------------------
 unsigned int vtkProcessModuleConnectionManager::GetNumberOfConnections()
 {
-  return this->Internals->IDToConnectionMap.size();
+  return static_cast<unsigned int>(this->Internals->IDToConnectionMap.size());
 }
 
 //-----------------------------------------------------------------------------

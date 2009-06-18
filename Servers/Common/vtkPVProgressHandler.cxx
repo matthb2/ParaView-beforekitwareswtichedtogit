@@ -509,7 +509,7 @@ void vtkPVProgressHandler::SendProgressToClient()
       char buffer[1026];
       buffer[0] = static_cast<int>(progress*100.0);
       SNPRINTF(buffer+1, 1024, "%s", text.c_str());
-      int len = strlen(buffer+1) + 2;
+      int len = static_cast<int>(strlen(buffer+1)) + 2;
       rc->GetSocketController()->Send(buffer, len, 1,
         vtkProcessModule::PROGRESS_EVENT_TAG);
       }
