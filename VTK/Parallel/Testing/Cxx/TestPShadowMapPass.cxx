@@ -366,10 +366,10 @@ void MyProcess::Execute()
       {
       cout<<"depth peeling was not used (alpha blending instead)"<<endl;
       }
-    renderer->ResetCamera();
     vtkCamera *camera=renderer->GetActiveCamera();
     camera->Azimuth(40.0);
     camera->Elevation(10.0);
+    renderer->ResetCamera();
     
     retVal=vtkTesting::Test(this->Argc, this->Argv, renWin, 10);
     
