@@ -124,6 +124,13 @@ void vtkQtTreeView::HideColumn(int i)
   this->TreeView->hideColumn(i);
 }
 
+
+//----------------------------------------------------------------------------
+void vtkQtTreeView::SetItemDelegate(QStyledItemDelegate* delegate) 
+{
+  this->TreeView->setItemDelegate(delegate);
+}
+
 //----------------------------------------------------------------------------
 void vtkQtTreeView::AddInputConnection(
   vtkAlgorithmOutput* vtkNotUsed(conn), vtkAlgorithmOutput* vtkNotUsed(selectionConn))
