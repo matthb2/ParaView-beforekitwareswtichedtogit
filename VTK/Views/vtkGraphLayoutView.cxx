@@ -262,6 +262,18 @@ int vtkGraphLayoutView::GetEnableVerticesByArray()
 }
 
 //----------------------------------------------------------------------------
+void vtkGraphLayoutView::SetGlyphType(int type)
+{
+  this->GetGraphRepresentation()->SetGlyphType(type);
+}
+
+//----------------------------------------------------------------------------
+int vtkGraphLayoutView::GetGlyphType()
+{
+  return this->GetGraphRepresentation()->GetGlyphType();
+}
+
+//----------------------------------------------------------------------------
 void vtkGraphLayoutView::SetScaledGlyphs(bool arg)
 {
   this->GetGraphRepresentation()->SetScaling(arg);
