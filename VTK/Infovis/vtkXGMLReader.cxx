@@ -415,6 +415,8 @@ int vtkXGMLReader::RequestData(
   
   // .. followed by end-of-file.
   vtkXGMLReaderNextToken(fin, tok);
+  // do an extra read
+  vtkXGMLReaderNextToken(fin, tok);
   assert(tok.Type == vtkXGMLReaderToken::END_OF_FILE);
   
   // Clean up
