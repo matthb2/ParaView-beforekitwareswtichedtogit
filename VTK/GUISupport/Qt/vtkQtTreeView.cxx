@@ -126,7 +126,7 @@ void vtkQtTreeView::HideColumn(int i)
 
 
 //----------------------------------------------------------------------------
-void vtkQtTreeView::SetItemDelegate(QStyledItemDelegate* delegate) 
+void vtkQtTreeView::SetItemDelegate(QAbstractItemDelegate* delegate) 
 {
   this->TreeView->setItemDelegate(delegate);
 }
