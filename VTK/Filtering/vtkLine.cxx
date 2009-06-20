@@ -50,7 +50,7 @@ int vtkLine::EvaluatePosition(double x[3], double* closestPoint,
   double a1[3], a2[3];
 
   subId = 0;
-  pcoords[1] = pcoords[2] = 0.0;
+  pcoords[0] = pcoords[1] = pcoords[2] = 0.0;
 
   this->Points->GetPoint(0, a1);
   this->Points->GetPoint(1, a2);
