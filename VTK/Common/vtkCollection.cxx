@@ -169,6 +169,12 @@ void vtkCollection::RemoveAllItems()
 {
   vtkCollectionElement *elem;
 
+  // Don't modify if collection is empty
+  if(this->NumberOfItems == 0)
+    {
+    return;
+    }
+
   while (this->NumberOfItems )
     {
     elem = this->Top;
