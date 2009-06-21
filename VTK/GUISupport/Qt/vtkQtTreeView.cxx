@@ -56,6 +56,13 @@ vtkQtTreeView::vtkQtTreeView()
   this->Selecting = false;
   this->CurrentSelectionMTime = 0;
 
+  // Drag/Drop parameters - defaults to off
+  this->TreeView->setDragEnabled(false);
+  this->TreeView->setDragDropMode(QAbstractItemView::DragOnly);
+  this->TreeView->setDragDropOverwriteMode(false);
+  this->TreeView->setAcceptDrops(false);
+  this->TreeView->setDropIndicatorShown(false);
+
   QObject::connect(this->TreeView, 
     SIGNAL(expanded(const QModelIndex&)), 
     this, SIGNAL(expanded(const QModelIndex&)));
@@ -103,6 +110,12 @@ void vtkQtTreeView::SetShowHeaders(bool state)
 void vtkQtTreeView::SetAlternatingRowColors(bool state)
 {
   this->TreeView->setAlternatingRowColors(state);
+}
+
+//----------------------------------------------------------------------------
+void vtkQtTreeView::SetEnableDragDrop(bool state)
+{
+  this->TreeView->setDragEnabled(state);
 }
 
 //----------------------------------------------------------------------------
