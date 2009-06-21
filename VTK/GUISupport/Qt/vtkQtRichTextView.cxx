@@ -76,11 +76,11 @@ public:
 /////////////////////////////////////////////////////////////////////////////
 // vtkQtRichTextView
 
-vtkQtRichTextView::vtkQtRichTextView() :
-  Internal(new Implementation()),
-  ProxyPort(0),
-  ProxyURL(0)
+vtkQtRichTextView::vtkQtRichTextView()
 {
+  this->ProxyPort = 0;
+  this->ProxyURL = NULL;
+  this->Internal = new Implementation();
   this->Internal->DataObjectToTable = vtkSmartPointer<vtkDataObjectToTable>::New();
   this->Internal->DataObjectToTable->SetFieldType(ROW_DATA);
 
