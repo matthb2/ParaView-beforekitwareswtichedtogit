@@ -101,7 +101,7 @@ vtkSMPythonTraceObserver::~vtkSMPythonTraceObserver()
 }
 
 //-----------------------------------------------------------------------------
-void vtkSMPythonTraceObserver::ExecuteEvent(vtkObject* caller, 
+void vtkSMPythonTraceObserver::ExecuteEvent(vtkObject* vtkNotUsed(caller), 
   unsigned long eventid, void* data)
 {
   switch (eventid)
