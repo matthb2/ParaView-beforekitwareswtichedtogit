@@ -64,6 +64,7 @@ vtkCompositeZPass::vtkCompositeZPass()
   this->Controller=0;
   this->PBO=0;
   this->ZTexture=0;
+  this->Program=0;
   this->RawZBuffer=0;
   this->RawZBufferSize=0;
 }
