@@ -81,7 +81,7 @@ vtkHierarchicalGraphPipeline::vtkHierarchicalGraphPipeline()
   this->LabelMapper->SetInputConnection(this->EdgeCenters->GetOutputPort());
   this->LabelMapper->SetLabelTextProperty(this->TextProperty);
   this->LabelActor->SetMapper(this->LabelMapper);
-  //this->LabelActor->VisibilityOff();
+  this->LabelActor->VisibilityOff();
 
   this->Mapper->SetScalarModeToUseCellFieldData();
   this->Mapper->SelectColorArray("vtkApplyColors color");
