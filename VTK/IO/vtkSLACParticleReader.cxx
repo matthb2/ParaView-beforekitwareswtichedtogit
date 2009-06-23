@@ -45,8 +45,6 @@
 
 #include <netcdf.h>
 
-using namespace vtkstd;
-
 //=============================================================================
 #define CALL_NETCDF(call)                       \
   { \
