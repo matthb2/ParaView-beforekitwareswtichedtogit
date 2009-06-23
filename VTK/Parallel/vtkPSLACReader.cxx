@@ -514,6 +514,19 @@ int vtkPSLACReader::ReadTetrahedronExteriorArray(int meshFD,
 }
 
 //-----------------------------------------------------------------------------
+int vtkPSLACReader::CheckTetrahedraWinding(int meshFD)
+{
+  // Check the file only on the first process and broadcast the result.
+  int winding;
+  if (this->Controller->GetLocalProcessId() == 0)
+    {
+    winding = this->Superclass::CheckTetrahedraWinding(meshFD);
+    }
+  this->Controller->Broadcast(&winding, 1, 0);
+  return winding;
+}
+
+//-----------------------------------------------------------------------------
 int vtkPSLACReader::ReadConnectivity(int meshFD, vtkMultiBlockDataSet *output)
 {
   //---------------------------------
