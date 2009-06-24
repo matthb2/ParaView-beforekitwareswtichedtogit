@@ -658,8 +658,17 @@ void vtkViewport::ComputeAspect()
     upperRight[0]--;
     upperRight[1]--;
 
-    aspect[0] = static_cast<double>(upperRight[0]-lowerLeft[0]+1)/
-      static_cast<double>(upperRight[1]-lowerLeft[1]+1)*this->PixelAspect[0];
+    if((upperRight[0]-lowerLeft[0]+1)!=0 && (upperRight[1]-lowerLeft[1]+1)!=0)
+      {
+      aspect[0] = static_cast<double>(upperRight[0]-lowerLeft[0]+1)/
+        static_cast<double>(upperRight[1]-lowerLeft[1]+1)*this->PixelAspect[0];
+      }
+    else
+      {
+      // it happens if the vtkWindow is attached to the vtkViewport but
+      // the vtkWindow is not initialized yet, so size[0]==0 and size[1]==0
+      aspect[0]=this->PixelAspect[0];
+      }
     aspect[1] = 1.0*this->PixelAspect[1];
 
     this->SetAspect(aspect);
