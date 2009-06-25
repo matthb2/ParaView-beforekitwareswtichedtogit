@@ -733,7 +733,7 @@ void vtkRenderView::SetLabelPlacementAndRenderMode( int placement_mode, int rend
 #ifdef VTK_USE_QT
 //FIXME - Qt label rendering doesn't have a dynamic2D label mapper; so,
 //  use freetype dynamic labeling with an error...
-        vtkErrorMacro("Qt-based label rendering is not available with dynamic 2D label placement.  Using freetype-based label rendering.\n");
+        vtkWarningMacro("Qt-based label rendering is not available with dynamic 2D label placement.  Using label placer.\n");
         this->QtLabelPlacer->SetOutputCoordinateSystem( vtkLabelPlacer::DISPLAY );
         this->LabelActor->SetMapper(this->QtLabelMapper);
         this->QtLabelMapper->SetInputConnection(this->QtLabelPlacer->GetOutputPort(0));
