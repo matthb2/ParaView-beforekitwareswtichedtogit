@@ -131,10 +131,6 @@ void vtkPKMeansStatistics::UpdateClusterCenters( vtkTable* newClusterElements,
   totalError->SetNumberOfTuples( numRows );
   totalError->SetNumberOfComponents( 1 );
   com->AllReduce( error, totalError, vtkCommunicator::SUM_OP );
-  for(unsigned int i=0; i < 4; i++)
-    {
-    cout << "UpdateClusterCenters::" << com->GetLocalProcessId() << "::" << i << " = " << error->GetValue( i ) << ", " << totalError->GetValue( i ) << endl;
-    }
 
   for( vtkIdType runID = 0; runID < startRunID->GetNumberOfTuples(); runID++ )
     {
