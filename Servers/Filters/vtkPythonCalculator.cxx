@@ -232,7 +232,9 @@ void vtkPythonCalculator::Exec(const char* expression,
       fscript += "']\n";
       }
     }
-  fscript += "  points = inputs[0].Points\n";
+  fscript += "  try:\n";
+  fscript += "    points = inputs[0].Points\n";
+  fscript += "  except: pass\n";
   
   if (expression && strlen(expression) > 0)  
     {
@@ -288,10 +290,10 @@ void vtkPythonCalculator::Exec(const char* expression,
   for (int i=0; i<numinps; i++)
     {
     runscript += 
-      "inputs.append(dataset_adapter.DataSet(myarg.GetInputDataObject(0, index)))\n";
+      "inputs.append(dataset_adapter.WrapDataObject(myarg.GetInputDataObject(0, index)))\n";
     runscript += "index += 1\n";
     }
-  runscript += "output = dataset_adapter.DataSet(myarg.GetOutputDataObject(0))\n";
+  runscript += "output = dataset_adapter.WrapDataObject(myarg.GetOutputDataObject(0))\n";
   if (this->ArrayAssociation == vtkDataObject::FIELD_ASSOCIATION_POINTS)
     {
     runscript +=  "fd = output.PointData\n";
