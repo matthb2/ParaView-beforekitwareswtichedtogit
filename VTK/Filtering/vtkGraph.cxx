@@ -1520,6 +1520,36 @@ void vtkGraph::ForceOwnership()
 }
 
 //----------------------------------------------------------------------------
+vtkFieldData* vtkGraph::GetAttributesAsFieldData(int type)
+{
+  switch(type)
+    {
+    case VERTEX:
+      return this->GetVertexData();
+      break;
+    case EDGE:
+      return this->GetEdgeData();
+      break;
+    }
+  return this->Superclass::GetAttributesAsFieldData(type);
+}
+
+//----------------------------------------------------------------------------
+vtkIdType vtkGraph::GetNumberOfElements(int type)
+{
+  switch (type)
+    {
+    case VERTEX:
+      return this->GetNumberOfVertices();
+      break;
+    case EDGE:
+      return this->GetNumberOfEdges();
+      break;
+    }
+  return this->Superclass::GetNumberOfElements(type);;
+}
+
+//----------------------------------------------------------------------------
 void vtkGraph::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os,indent);

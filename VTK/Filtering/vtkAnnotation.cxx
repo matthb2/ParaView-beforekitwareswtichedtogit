@@ -39,6 +39,7 @@ vtkCxxSetObjectMacro(vtkAnnotation, Selection, vtkSelection);
 vtkInformationKeyMacro(vtkAnnotation, LABEL, String);
 vtkInformationKeyRestrictedMacro(vtkAnnotation, COLOR, DoubleVector, 3);
 vtkInformationKeyMacro(vtkAnnotation, OPACITY, Double);
+vtkInformationKeyMacro(vtkAnnotation, ICON_INDEX, Integer);
 vtkInformationKeyMacro(vtkAnnotation, ENABLE, Integer);
 vtkInformationKeyMacro(vtkAnnotation, HIDE, Integer);
 vtkInformationKeyMacro(vtkAnnotation, DATA, DataObject);
