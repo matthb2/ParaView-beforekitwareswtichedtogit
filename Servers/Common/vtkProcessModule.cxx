@@ -900,6 +900,7 @@ void vtkProcessModule::Finalize()
     this->ConnectionManager->Finalize();
     }
   this->FinalizeInterpreter();
+  this->InvokeEvent(vtkCommand::ExitEvent);
 }
 
 //-----------------------------------------------------------------------------

@@ -153,14 +153,13 @@ void vtkProcessModuleConnectionManager::Finalize()
   // Close open server sockets.
   this->StopAcceptingAllConnections();
 
-  vtkConnectionIterator* iter = this->NewIterator();
-  for (iter->Begin(); !iter->IsAtEnd(); iter->Next())
+  while (!this->Internals->IDToConnectionMap.empty())
     {
-    vtkProcessModuleConnection* conn = iter->GetCurrentConnection();
+    vtkProcessModuleConnection* conn =
+      this->Internals->IDToConnectionMap.begin()->second;
     conn->Finalize();
+    this->DropConnection(conn);
     }
-  iter->Delete();
-
 }
 
 //-----------------------------------------------------------------------------
