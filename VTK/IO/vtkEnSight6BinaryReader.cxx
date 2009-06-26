@@ -859,10 +859,11 @@ int vtkEnSight6BinaryReader::ReadMeasuredGeometryFile(
    }
   else
     {
+    vtkIdType id = pointIds[i];
     for (i = 0; i < this->NumberOfMeasuredPoints; i++)
       {
       points->InsertNextPoint(coords[3*i], coords[3*i+1], coords[3*i+2]);
-      pd->InsertNextCell(VTK_VERTEX, 1, (vtkIdType*)&pointIds[i]);
+      pd->InsertNextCell(VTK_VERTEX, 1, &id);
       }
     }
 
