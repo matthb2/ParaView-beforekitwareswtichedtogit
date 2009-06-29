@@ -440,6 +440,11 @@ double *vtkProp3D::GetCenter()
 // Get the length of the diagonal of the bounding box.
 double vtkProp3D::GetLength()
 {
+  if(!vtkMath::AreBoundsInitialized(this->Bounds))
+    {
+    return 0.0;
+    }
+
   double diff, l=0.0;
   int i;
 
