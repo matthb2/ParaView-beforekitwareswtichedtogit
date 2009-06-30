@@ -164,11 +164,13 @@ void vtkPythonCalculator::Exec(const char* expression,
     const char* aname = fd->GetArray(i)->GetName();
     if (aname)
       {
-      fscript += "  try:\n";
-      fscript += "    ";
+      fscript += "  import paraview\n";
+      fscript += "  name = paraview.make_name_valid(\"";
       fscript += aname;
-      fscript += " = ";
-      fscript += " inputs[0].";
+      fscript += "\")\n";
+      fscript += "  if name:\n";
+      fscript += "    try:\n";
+      fscript += "      exec \"%s = inputs[0].";
       if (this->ArrayAssociation == vtkDataObject::FIELD_ASSOCIATION_POINTS)
         {
         fscript += "PointData['";
@@ -178,8 +180,8 @@ void vtkPythonCalculator::Exec(const char* expression,
         fscript += "CellData['";
         }
       fscript += aname;
-      fscript += "']\n";
-      fscript += "  except: pass\n";
+      fscript += "']\" % (name)\n";
+      fscript += "    except: pass\n";
       fscript += "  arrays['";
       fscript += aname;
       fscript += "'] = inputs[0].";
