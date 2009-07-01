@@ -635,7 +635,7 @@ void vtkLabeledDataMapper::BuildLabelsInternal(vtkDataSet* input)
           {
           SNPRINTF(TempString, 1023, LiveFormatString, 
                    stringData->GetValue(i).c_str());
-            ResultString = TempString;
+          ResultString = TempString;
           } // done printing strings with label format
         } // done printing strings
       } // done creating string 
