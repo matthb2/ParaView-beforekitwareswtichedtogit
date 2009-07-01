@@ -484,8 +484,8 @@ void vtkVisItDatabaseBridge::DistributeBlocks(
 
 //-----------------------------------------------------------------------------
 int vtkVisItDatabaseBridge::RequestData(
-        vtkInformation */*req*/,
-        vtkInformationVector **/*input*/,
+        vtkInformation * /*req*/,
+        vtkInformationVector ** /*input*/,
         vtkInformationVector *output)
 {
   #if defined vtkVisItDatabaseBridgeDEBUG
