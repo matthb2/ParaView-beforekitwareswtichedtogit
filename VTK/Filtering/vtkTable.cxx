@@ -216,7 +216,7 @@ void vtkTable::SetRow(vtkIdType row, vtkVariantArray *values)
 }
 
 //----------------------------------------------------------------------------
-vtkIdType vtkTable::InsertNextBlankRow()
+vtkIdType vtkTable::InsertNextBlankRow(double default_num_val)
 {
   vtkIdType ncol = this->GetNumberOfColumns();
   for (vtkIdType i = 0; i < ncol; i++)
@@ -229,7 +229,7 @@ vtkIdType vtkTable::InsertNextBlankRow()
       double* tuple = new double[comps];
       for (int j = 0; j < comps; j++)
         {
-        tuple[j] = 0;
+        tuple[j] = default_num_val;
         }
       data->InsertNextTuple(tuple);
       delete[] tuple;

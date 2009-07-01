@@ -194,7 +194,7 @@ int vtkGroupLeafVertices::RequestData(
         else
           {
           group_vertex = builder->AddVertex();
-          treeTable->InsertNextBlankRow();
+          treeTable->InsertNextBlankRow(-1);
           vtkEdgeType group_e = builder->AddEdge(v, group_vertex);
           builderEdgeData->CopyData(inputEdgeData, tree_e.Id, group_e.Id);
           group_vertices[vtksys_stl::make_pair(v, groupVal)] = group_vertex;
