@@ -162,6 +162,7 @@ int vtkExtractSelectedRows::RequestData(
     return 0;
     }
 
+  output->GetRowData()->CopyStructure(input->GetRowData());
   for (unsigned int i = 0; i < converted->GetNumberOfNodes(); ++i)
     {
     vtkSelectionNode* node = converted->GetNode(i);
