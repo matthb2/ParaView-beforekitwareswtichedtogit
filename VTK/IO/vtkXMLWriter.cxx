@@ -278,6 +278,32 @@ vtkXMLWriter::~vtkXMLWriter()
 }
 
 //----------------------------------------------------------------------------
+void vtkXMLWriter::SetCompressorType(int compressorType)
+{
+  if (compressorType == NONE)
+    {
+    if (this->Compressor)
+      {
+      this->Compressor->Delete();
+      this->Compressor = 0;
+      this->Modified();
+      }
+    return;
+    }
+
+  if (compressorType == ZLIB)
+    {
+    if (!this->Compressor || !this->Compressor->IsTypeOf("vtkZLibDataCompressor"))
+      {
+      this->Compressor->Delete();
+      this->Compressor = vtkZLibDataCompressor::New();
+      this->Modified();
+      }
+    return;
+    }
+}
+
+//----------------------------------------------------------------------------
 void vtkXMLWriter::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os, indent);
