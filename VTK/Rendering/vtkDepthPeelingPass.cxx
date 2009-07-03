@@ -174,9 +174,21 @@ void vtkDepthPeelingPass::Render(const vtkRenderState *s)
   // Depth peeling.
   vtkRenderer *r=s->GetRenderer();
   
-  // get the viewport dimensions
-  r->GetTiledSizeAndOrigin(&this->ViewportWidth,&this->ViewportHeight,
-                           &this->ViewportX,&this->ViewportY);
+  if(s->GetFrameBuffer()==0)
+    {
+    // get the viewport dimensions
+    r->GetTiledSizeAndOrigin(&this->ViewportWidth,&this->ViewportHeight,
+                             &this->ViewportX,&this->ViewportY);
+    }
+  else
+    {
+    int size[2];
+    s->GetWindowSize(size);
+    this->ViewportWidth=size[0];
+    this->ViewportHeight=size[1];
+    this->ViewportX=0;
+    this->ViewportY=0;
+    }
     
   // get z bits
   GLint depthBits;
