@@ -139,6 +139,13 @@ bool vtkOrderStatistics::SetParameter( const char* parameter,
     return true;
     }
 
+  if ( ! strcmp( parameter, "QuantileDefinition" ) )
+    {
+    this->SetQuantileDefinition( value.ToInt() );
+
+    return true;
+    }
+
   return false;
 }
 
