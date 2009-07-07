@@ -99,7 +99,7 @@ vtkXMLPMultiBlockDataWriter::~vtkXMLPMultiBlockDataWriter()
 void vtkXMLPMultiBlockDataWriter::SetWriteMetaFile(int flag)
 {
   this->Modified();
-  if(this->Controller->GetLocalProcessId() == 0)
+  if(this->Controller == NULL || this->Controller->GetLocalProcessId() == 0)
     {
     if(this->WriteMetaFile != flag)
       {
