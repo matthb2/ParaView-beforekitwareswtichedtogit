@@ -269,10 +269,10 @@ int vtkXMLPMultiBlockDataWriter::ParallelWriteNonCompositeData(
     }
   if(dObj)
     {
-    vtkStdString FileName = this->CreatePieceFileName(
+    vtkStdString fName = this->CreatePieceFileName(
       CurrentFileIndex, MyProcId, PieceProcessList[MyProcId]);
     return this->Superclass::WriteNonCompositeData(
-      dObj, NULL, CurrentFileIndex, FileName.c_str());
+      dObj, NULL, CurrentFileIndex, fName.c_str());
     }
   return 0;
 }
