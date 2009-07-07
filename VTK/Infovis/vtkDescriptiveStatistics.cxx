@@ -78,6 +78,56 @@ void vtkDescriptiveStatistics::SetDeviationParameter( const char* name )
 }
 
 // ----------------------------------------------------------------------
+bool vtkDescriptiveStatistics::SetParameter( const char* parameter,
+                                             int vtkNotUsed( index ),
+                                             vtkVariant value )
+{
+  if ( ! strcmp( parameter, "Learn" ) )
+    {
+    if ( value.ToInt() )
+      {
+      SetLearn( true );
+      }
+    else
+      {
+      SetLearn( false );
+      }
+
+    return true;
+    }
+
+  if ( ! strcmp( parameter, "Derive" ) )
+    {
+    if ( value.ToInt() )
+      {
+      SetDerive( true );
+      }
+    else
+      {
+      SetDerive( false );
+      }
+
+    return true;
+    }
+
+  if ( ! strcmp( parameter, "Assess" ) )
+    {
+    if ( value.ToInt() )
+      {
+      SetAssess( true );
+      }
+    else
+      {
+      SetAssess( false );
+      }
+
+    return true;
+    }
+
+  return false;
+}
+
+// ----------------------------------------------------------------------
 void vtkDescriptiveStatistics::ExecuteLearn( vtkTable* inData,
                                              vtkTable* vtkNotUsed( inParameters ),
                                              vtkDataObject* outMetaDO )
