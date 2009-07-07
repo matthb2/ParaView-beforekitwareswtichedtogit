@@ -132,6 +132,13 @@ bool vtkOrderStatistics::SetParameter( const char* parameter,
     return true;
     }
 
+  if ( ! strcmp( parameter, "NumberOfIntervals" ) )
+    {
+    this->SetNumberOfIntervals( value.ToInt() );
+
+    return true;
+    }
+
   return false;
 }
 
@@ -352,7 +359,7 @@ public:
       }
 
     result->SetNumberOfValues( 1 );
-    result->SetValue( 0, q - 1 ); // -1 offset needed because value #0 in parameter row is the variable name
+    result->SetValue( 0, q - 1 ); 
   }
 };
 
