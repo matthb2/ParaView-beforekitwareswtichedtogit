@@ -129,10 +129,9 @@ void vtkXMLPMultiBlockDataWriter::PrintSelf(ostream& os, vtkIndent indent)
 }
 
 //----------------------------------------------------------------------------
-void vtkXMLPMultiBlockDataWriter::FillDataTypes(vtkCompositeDataSet* hdInput,
-                                                bool SkipEmptyNodes)
+void vtkXMLPMultiBlockDataWriter::FillDataTypes(vtkCompositeDataSet* hdInput)
 {
-  this->Superclass::FillDataTypes(hdInput, false);
+  this->Superclass::FillDataTypes(hdInput);
 
   if (!this->Controller)
     {

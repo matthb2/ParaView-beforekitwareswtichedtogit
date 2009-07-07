@@ -74,7 +74,8 @@ void vtkXMLPHierarchicalBoxDataWriter::SetWriteMetaFile(int flag)
 }
 
 //----------------------------------------------------------------------------
-void vtkXMLPHierarchicalBoxDataWriter::FillDataTypes(vtkCompositeDataSet* hdInput)
+void vtkXMLPHierarchicalBoxDataWriter::FillDataTypes(
+  vtkCompositeDataSet* hdInput)
 {
   this->Superclass::FillDataTypes(hdInput);
 
