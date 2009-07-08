@@ -97,6 +97,14 @@ vtkStdString vtkStatisticsAlgorithm::GetAssessParameter( vtkIdType id )
 } 
 
 // ----------------------------------------------------------------------
+bool vtkStatisticsAlgorithm::SetParameter( const char* parameter,
+                                           int index,
+                                           vtkVariant value )
+{ 
+  return false;
+}
+
+// ----------------------------------------------------------------------
 int vtkStatisticsAlgorithm::RequestData( vtkInformation*,
                                          vtkInformationVector** inputVector,
                                          vtkInformationVector* outputVector )

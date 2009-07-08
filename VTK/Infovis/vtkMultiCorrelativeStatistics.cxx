@@ -43,56 +43,6 @@ void vtkMultiCorrelativeStatistics::PrintSelf( ostream& os, vtkIndent indent )
 }
 
 // ----------------------------------------------------------------------
-bool vtkMultiCorrelativeStatistics::SetParameter( const char* parameter,
-                                                  int vtkNotUsed( index ),
-                                                  vtkVariant value )
-{
-  if ( ! strcmp( parameter, "Learn" ) )
-    {
-    if ( value.ToInt() )
-      {
-      SetLearn( true );
-      }
-    else
-      {
-      SetLearn( false );
-      }
-
-    return true;
-    }
-
-  if ( ! strcmp( parameter, "Derive" ) )
-    {
-    if ( value.ToInt() )
-      {
-      SetDerive( true );
-      }
-    else
-      {
-      SetDerive( false );
-      }
-
-    return true;
-    }
-
-  if ( ! strcmp( parameter, "Assess" ) )
-    {
-    if ( value.ToInt() )
-      {
-      SetAssess( true );
-      }
-    else
-      {
-      SetAssess( false );
-      }
-
-    return true;
-    }
-
-  return false;
-}
-
-// ----------------------------------------------------------------------
 void vtkMultiCorrelativeInvertCholesky( vtkstd::vector<double*>& chol, vtkstd::vector<double>& inv )
 {
   vtkIdType m = static_cast<vtkIdType>( chol.size() );
