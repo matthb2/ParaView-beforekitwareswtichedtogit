@@ -240,18 +240,9 @@ void vtkHierarchicalGraphPipeline::ApplyViewTheme(vtkViewTheme* theme)
   this->ApplyColors->SetDefaultCellOpacity(theme->GetCellOpacity());
   this->ApplyColors->SetSelectedCellColor(theme->GetSelectedCellColor());
   this->ApplyColors->SetSelectedCellOpacity(theme->GetSelectedCellOpacity());
-  vtkScalarsToColors* oldLut = this->ApplyColors->GetCellLookupTable();
-  if (!theme->LookupMatchesCellTheme(oldLut))
-    {
-    vtkSmartPointer<vtkLookupTable> lut =
-      vtkSmartPointer<vtkLookupTable>::New();
-    lut->SetHueRange(theme->GetCellHueRange());
-    lut->SetSaturationRange(theme->GetCellSaturationRange());
-    lut->SetValueRange(theme->GetCellValueRange());
-    lut->SetAlphaRange(theme->GetCellAlphaRange());
-    lut->Build();
-    this->ApplyColors->SetCellLookupTable(lut);
-    }
+
+  this->ApplyColors->SetCellLookupTable(theme->GetCellLookupTable());
+
   this->TextProperty->SetColor(theme->GetEdgeLabelColor());
   this->Actor->GetProperty()->SetLineWidth(theme->GetLineWidth());
 }
