@@ -39,6 +39,9 @@
 #include "vtkTransform.h"
 #include "vtkHardwareSelectionPolyDataPainter.h"
 #include "vtkInformationIntegerKey.h"
+#include "vtkDataSet.h"
+#include "vtkPointSet.h"
+#include "vtkPolyData.h"
 
 #include "vtkgl.h"
 #include "vtkCompositeDataSet.h"
