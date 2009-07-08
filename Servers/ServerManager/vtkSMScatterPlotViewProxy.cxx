@@ -172,7 +172,7 @@ vtkSMRepresentationProxy* vtkSMScatterPlotViewProxy::CreateDefaultRepresentation
 
 
 //----------------------------------------------------------------------------
-const char* vtkSMScatterPlotViewProxy::GetSuggestedViewType(vtkIdType connectionID)
+const char* vtkSMScatterPlotViewProxy::GetSuggestedViewType(vtkIdType vtkNotUsed(connectionID))
 {
   /*
   vtkSMViewProxy* rootView =

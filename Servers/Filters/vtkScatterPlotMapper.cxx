@@ -132,26 +132,6 @@ vtkScatterPlotMapper::~vtkScatterPlotMapper()
   //this->PainterInformation = 0;
 }
 
-void vtkScatterPlotMapper::SetInputConnection(int port, vtkAlgorithmOutput* input)
-{
-  this->Superclass::SetInputConnection(port, input);
-  //cout << " prout " << port << " " << input << endl;
-  //this->SetArrayByPointCoord(vtkScatterPlotMapper::X_COORDS, 0);
-  //this->SetArrayByPointCoord(vtkScatterPlotMapper::Y_COORDS, 1);
-  //this->ThreeDMode = true;
-  //this->SetArrayByPointCoord(vtkScatterPlotMapper::Z_COORDS, 2);
-  //this->Colorize = true;
-  //this->SetArrayByFieldName(vtkScatterPlotMapper::COLOR, "V", 0);
-  //this->GlyphMode=1;
-
-
-
-//  this->SetArrayByFieldName(vtkScatterPlotMapper::X_COORDS, "Points", 0);
-//  this->SetArrayByFieldName(vtkScatterPlotMapper::Y_COORDS, "Points", 1);
-//  this->SetArrayByFieldName(vtkScatterPlotMapper::COLOR, "Points", 2);
-
-}
-
 void vtkScatterPlotMapper::SetArrayByFieldIndex(ArrayIndex idx, int fieldIndex, 
                                                 int component, int connection)
 {
@@ -1070,7 +1050,6 @@ double *vtkScatterPlotMapper::GetBounds()
 
   vtkBoundingBox bbox; // empty
 
-  int index = indexRange[0];
   for(int index = indexRange[0]; index <= indexRange[1]; ++index )
     {
     vtkPolyData *source = this->GetGlyphSource(index);
@@ -1665,7 +1644,7 @@ void vtkScatterPlotMapper::RenderGlyphs(vtkRenderer *ren, vtkActor *actor)
  }
 
 void vtkScatterPlotMapper::InitGlyphMappers(vtkRenderer* ren, vtkActor* actor, 
-                                            bool createDisplayList)
+                                            bool vtkNotUsed(createDisplayList))
 {
   // Create a default source, if no source is specified.
   if (this->GetGlyphSource(0) == 0)
