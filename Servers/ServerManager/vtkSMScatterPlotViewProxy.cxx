@@ -54,6 +54,14 @@ vtkSMScatterPlotViewProxy::~vtkSMScatterPlotViewProxy()
 }
 
 //----------------------------------------------------------------------------
+void vtkSMScatterPlotViewProxy::PrintSelf(ostream& os, vtkIndent indent)
+{
+  this->Superclass::PrintSelf(os, indent);
+  os << indent << "LegendScaleActor: " << this->LegendScaleActor << endl;
+}
+
+
+//----------------------------------------------------------------------------
 bool vtkSMScatterPlotViewProxy::BeginCreateVTKObjects()
 {
   bool res = this->Superclass::BeginCreateVTKObjects();
