@@ -1230,7 +1230,7 @@ void vtkScatterPlotMapper::RenderPoints(vtkRenderer *ren, vtkActor *actor)
   // COLOR COLOR COLOR COLOR COLOR COLOR COLOR COLOR COLOR COLOR COLOR 
   //   COLOR COLOR COLOR COLOR COLOR COLOR COLOR COLOR COLOR COLOR COLOR 
   //      COLOR COLOR COLOR COLOR COLOR COLOR COLOR COLOR COLOR COLOR COLOR 
-  vtkUnsignedCharArray* colors = this->Colorize? this->GetColors(): NULL;
+  vtkUnsignedCharArray* colors = this->Colorize? this->GetColors() : NULL;
 
   bool multiplyWithAlpha = 
     this->ScalarsToColorsPainter->GetPremultiplyColorsWithAlpha(actor)==1;
@@ -1387,7 +1387,7 @@ void vtkScatterPlotMapper::RenderGlyphs(vtkRenderer *ren, vtkActor *actor)
   // COLOR COLOR COLOR COLOR COLOR COLOR COLOR COLOR COLOR COLOR COLOR 
   //   COLOR COLOR COLOR COLOR COLOR COLOR COLOR COLOR COLOR COLOR COLOR 
   //      COLOR COLOR COLOR COLOR COLOR COLOR COLOR COLOR COLOR COLOR COLOR 
-  vtkUnsignedCharArray* colors = this->GetColors();
+  vtkUnsignedCharArray* colors = this->Colorize? this->GetColors() : NULL;
 
   vtkTransform *trans = vtkTransform::New();
 
