@@ -485,7 +485,7 @@ int vtkCommunicator::ReceiveMultiBlockDataSet(
     {
     int dataType = 0;
     returnCode = returnCode && this->Receive(&dataType, 1, remoteHandle, tag);
-    if (dataType)
+    if (dataType != -1) // 0 is a valid data type :).
       {
       vtkDataObject* dObj = vtkDataObjectTypes::NewDataObject(dataType);
       returnCode = returnCode && this->Receive(dObj, remoteHandle, tag);
@@ -507,9 +507,9 @@ int vtkCommunicator::ReceiveTemporalDataSet(
   returnCode = this->Receive(&numblocks, 1, remoteHandle, tag);
   for (int cc=0; (cc < numblocks) && returnCode; cc++)
     {
-    int dataType = 0;
+    int dataType = -1;
     returnCode = returnCode && this->Receive(&dataType, 1, remoteHandle, tag);
-    if (dataType)
+    if (dataType != -1) // 0 is a valid data type :).
       {
       vtkDataObject* dObj = vtkDataObjectTypes::NewDataObject(dataType);
       returnCode = returnCode && this->Receive(dObj, remoteHandle, tag);
