@@ -240,6 +240,7 @@ void vtkSMScatterPlotRepresentationProxy::SetColorAttributeType(int type)
     }
   this->Mapper->UpdateVTKObjects();
   //this->LODMapper->UpdateVTKObjects();
+  //this->UpdateShadingParameters();
 }
 
 //-----------------------------------------------------------------------------
