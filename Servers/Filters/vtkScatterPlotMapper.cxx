@@ -1394,7 +1394,7 @@ void vtkScatterPlotMapper::RenderGlyphs(vtkRenderer *ren, vtkActor *actor)
   double camRot[4];
   cam->GetViewTransformObject()->GetOrientationWXYZ(camRot);
   vtkTransform* camTrans = vtkTransform::New();
-  camTrans->RotateWXYZ(camRot[0], camRot[1], camrot[2], camRot[3]);
+  camTrans->RotateWXYZ(camRot[0], camRot[1], camRot[2], camRot[3]);
   camTrans->Inverse();
 
   vtkTransform *trans = vtkTransform::New();
