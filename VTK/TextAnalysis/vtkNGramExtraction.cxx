@@ -27,8 +27,6 @@
 #include <vtkTable.h>
 #include <vtkNGramExtraction.h>
 
-#include <boost/tokenizer.hpp>
-
 #include <vtksys/ios/sstream>
 #include <vtksys/stl/stdexcept>
 
