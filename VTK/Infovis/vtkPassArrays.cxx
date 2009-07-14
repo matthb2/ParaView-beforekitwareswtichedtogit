@@ -94,7 +94,7 @@ int vtkPassArrays::RequestData(
     {
     if (this->UseFieldTypes)
       {
-      for (int i = 0; i < this->Implementation->FieldTypes.size(); ++i)
+      for (vtksys_stl::vector<int>::size_type i = 0; i < this->Implementation->FieldTypes.size(); ++i)
         {
         vtkFieldData* outData = output->GetAttributesAsFieldData(
           this->Implementation->FieldTypes[i]);
@@ -106,7 +106,7 @@ int vtkPassArrays::RequestData(
       }
     else
       {
-      for (int i = 0; i < this->Implementation->Arrays.size(); ++i)
+      for (Internals::ArraysType::size_type i = 0; i < this->Implementation->Arrays.size(); ++i)
         {
         vtkFieldData* outData = output->GetAttributesAsFieldData(
           this->Implementation->Arrays[i].first);
