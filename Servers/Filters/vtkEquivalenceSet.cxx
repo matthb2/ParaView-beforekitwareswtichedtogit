@@ -14,6 +14,7 @@
 =========================================================================*/
 #include "vtkEquivalenceSet.h"
 #include "vtkObjectFactory.h"
+#include "vtkIntArray.h"
 
 
 vtkCxxRevisionMacro(vtkEquivalenceSet, "$Revision$");
@@ -148,6 +149,32 @@ void vtkEquivalenceSet::AddEquivalence(int id1, int id2)
     this->EquateInternal(this->GetReference(id2), id1);
     }
 }
+
+
+//----------------------------------------------------------------------------
+int vtkEquivalenceSet::GetNumberOfMembers() 
+{ 
+  return this->EquivalenceArray->GetNumberOfTuples();
+}
+
+//----------------------------------------------------------------------------
+int* vtkEquivalenceSet::GetPointer() 
+{
+  return this->EquivalenceArray->GetPointer(0);
+}
+
+//----------------------------------------------------------------------------
+void vtkEquivalenceSet::Squeeze()
+{
+  this->EquivalenceArray->Squeeze();
+}
+
+//----------------------------------------------------------------------------
+vtkIdType vtkEquivalenceSet::Capacity()
+{
+  return this->EquivalenceArray->Capacity(); 
+}
+
 
 //----------------------------------------------------------------------------
 // id1 must be less than or equal to id2.
