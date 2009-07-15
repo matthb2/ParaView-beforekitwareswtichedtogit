@@ -234,11 +234,11 @@ bool vtkPCAStatistics::SetParameter( const char* parameter,
     {
     if ( value.ToInt() )
       {
-      SetLearn( true );
+      SetLearnOption( true );
       }
     else
       {
-      SetLearn( false );
+      SetLearnOption( false );
       }
 
     return true;
@@ -248,11 +248,11 @@ bool vtkPCAStatistics::SetParameter( const char* parameter,
     {
     if ( value.ToInt() )
       {
-      SetDerive( true );
+      SetDeriveOption( true );
       }
     else
       {
-      SetDerive( false );
+      SetDeriveOption( false );
       }
 
     return true;
@@ -262,11 +262,11 @@ bool vtkPCAStatistics::SetParameter( const char* parameter,
     {
     if ( value.ToInt() )
       {
-      SetAssess( true );
+      SetAssessOption( true );
       }
     else
       {
-      SetAssess( false );
+      SetAssessOption( false );
       }
 
     return true;

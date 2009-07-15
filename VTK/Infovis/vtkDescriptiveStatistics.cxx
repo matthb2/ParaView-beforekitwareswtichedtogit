@@ -68,13 +68,13 @@ void vtkDescriptiveStatistics::PrintSelf( ostream &os, vtkIndent indent )
 // ----------------------------------------------------------------------
 void vtkDescriptiveStatistics::SetNominalParameter( const char* name ) 
 { 
-  this->SetAssessParameter( 0, name ); 
+  this->SetAssessOptionParameter( 0, name ); 
 }
 
 // ----------------------------------------------------------------------
 void vtkDescriptiveStatistics::SetDeviationParameter( const char* name ) 
 { 
-  this->SetAssessParameter( 1, name ); 
+  this->SetAssessOptionParameter( 1, name ); 
 }
 
 // ----------------------------------------------------------------------
