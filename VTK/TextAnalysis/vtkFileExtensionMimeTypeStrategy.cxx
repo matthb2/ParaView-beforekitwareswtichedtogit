@@ -55,7 +55,7 @@ void vtkFileExtensionMimeTypeStrategy::PrintSelf(ostream& os, vtkIndent indent)
   this->Superclass::PrintSelf(os, indent);
 }
 
-vtkStdString vtkFileExtensionMimeTypeStrategy::Lookup(const vtkStdString& uri)
+vtkStdString vtkFileExtensionMimeTypeStrategy::Lookup(const vtkStdString& uri, const vtkTypeUInt8* begin, const vtkTypeUInt8* end)
 {
   vtkStdString mime_type;
 
