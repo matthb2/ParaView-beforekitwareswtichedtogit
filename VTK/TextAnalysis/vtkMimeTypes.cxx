@@ -23,6 +23,7 @@
 #include <vtkObjectFactory.h>
 #include <vtkSmartPointer.h>
 
+#include <vtkstd/algorithm>
 #include <vtkstd/vector>
 
 ////////////////////////////////////////////////////////////////
