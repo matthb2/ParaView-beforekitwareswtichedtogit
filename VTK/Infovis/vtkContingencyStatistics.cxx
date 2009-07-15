@@ -116,17 +116,6 @@ void vtkContingencyStatistics::ExecuteLearn( vtkTable* inData,
     return;
     }
 
-  vtkIdType n = inData->GetNumberOfRows();
-  if ( n <= 0 )
-    {
-    return;
-    }
-
-  if ( inData->GetNumberOfColumns() <= 0 )
-    {
-    return;
-    }
-
   // Summary table: assigns a unique key to each (variable X,variable Y) pair
   vtkTable* summaryTab = vtkTable::New();
 
@@ -139,9 +128,6 @@ void vtkContingencyStatistics::ExecuteLearn( vtkTable* inData,
   stringCol->SetName( "Variable Y" );
   summaryTab->AddColumn( stringCol );
   stringCol->Delete();
-
-  vtkVariantArray* row2 = vtkVariantArray::New();
-  row2->SetNumberOfValues( 2 );
 
   // The actual contingency table, indexed by the key of the summary
   vtkTable* contingencyTab = vtkTable::New();
@@ -166,6 +152,22 @@ void vtkContingencyStatistics::ExecuteLearn( vtkTable* inData,
   contingencyTab->AddColumn( idTypeCol );
   idTypeCol->Delete();
 
+  vtkIdType n = inData->GetNumberOfRows();
+  if ( n <= 0 )
+    {
+    return;
+    }
+
+  if ( inData->GetNumberOfColumns() <= 0 )
+    {
+    return;
+    }
+
+  // Row to be used to insert into summary and table
+  vtkVariantArray* row2 = vtkVariantArray::New();
+  row2->SetNumberOfValues( 2 );
+
+  // Row to be used to insert into contingency table
   vtkVariantArray* row4 = vtkVariantArray::New();
   row4->SetNumberOfValues( 4 );
 
