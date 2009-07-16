@@ -73,6 +73,12 @@ void vtkTextExtraction::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os, indent);
   os << indent << "OutputArray: " << (this->OutputArray ? this->OutputArray : "(none)") << endl;
+
+  for(unsigned int i = 0; i != this->Internal->Strategies.size(); ++i)
+    {
+    os << indent << "Strategy: " << endl;
+    this->Internal->Strategies[i]->PrintSelf(os, indent.GetNextIndent());
+    }
 }
 
 void vtkTextExtraction::ClearStrategies()
