@@ -65,7 +65,6 @@ vtkContingencyStatistics::vtkContingencyStatistics()
 // ----------------------------------------------------------------------
 vtkContingencyStatistics::~vtkContingencyStatistics()
 {
-  this->AssessParameters->Delete();
 }
 
 // ----------------------------------------------------------------------

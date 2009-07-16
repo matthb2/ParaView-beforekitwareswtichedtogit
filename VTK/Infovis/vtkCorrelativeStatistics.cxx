@@ -58,7 +58,6 @@ vtkCorrelativeStatistics::vtkCorrelativeStatistics()
 // ----------------------------------------------------------------------
 vtkCorrelativeStatistics::~vtkCorrelativeStatistics()
 {
-  this->AssessParameters->Delete();
 }
 
 // ----------------------------------------------------------------------

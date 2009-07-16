@@ -55,7 +55,6 @@ vtkDescriptiveStatistics::vtkDescriptiveStatistics()
 // ----------------------------------------------------------------------
 vtkDescriptiveStatistics::~vtkDescriptiveStatistics()
 {
-  this->AssessParameters->Delete();
 }
 
 // ----------------------------------------------------------------------
