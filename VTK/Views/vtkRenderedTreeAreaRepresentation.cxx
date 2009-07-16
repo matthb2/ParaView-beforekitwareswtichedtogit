@@ -819,7 +819,7 @@ int vtkRenderedTreeAreaRepresentation::RequestData(
     p->PrepareInputConnections(
       this->GetInternalOutputPort(1, static_cast<int>(i)),
       this->AreaLayout->GetOutputPort(1),
-      this->GetInternalAnnotationOutputPort());
+      this->GetInternalAnnotationOutputPort(1, static_cast<int>(i)));
     }
   return 1;
 }
