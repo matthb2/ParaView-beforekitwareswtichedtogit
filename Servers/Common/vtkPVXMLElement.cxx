@@ -230,8 +230,8 @@ void vtkPVXMLElement::AddCharacterData(const char* data, int length)
 //----------------------------------------------------------------------------
 const char* vtkPVXMLElement::GetAttribute(const char* name)
 {
-  unsigned int numAttributes = this->Internal->AttributeNames.size();
-  unsigned int i;
+  size_t numAttributes = this->Internal->AttributeNames.size();
+  size_t i;
   for(i=0; i < numAttributes; ++i)
     {
     if(strcmp(this->Internal->AttributeNames[i].c_str(), name) == 0)
@@ -258,8 +258,8 @@ void vtkPVXMLElement::PrintXML()
 void vtkPVXMLElement::PrintXML(ostream& os, vtkIndent indent)
 {
   os << indent << "<" << (this->Name?this->Name:"NoName");
-  unsigned int numAttributes = this->Internal->AttributeNames.size();
-  unsigned int i;
+  size_t numAttributes = this->Internal->AttributeNames.size();
+  size_t i;
   for(i=0;i < numAttributes; ++i)
     {
     const char* aName = this->Internal->AttributeNames[i].c_str();
