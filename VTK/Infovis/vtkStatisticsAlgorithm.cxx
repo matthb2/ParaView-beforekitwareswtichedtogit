@@ -30,6 +30,7 @@
 #include "vtkTable.h"
 
 vtkCxxRevisionMacro(vtkStatisticsAlgorithm, "$Revision$");
+vtkCxxSetObjectMacro(vtkStatisticsAlgorithm,AssessNames,vtkStringArray);
 
 // ----------------------------------------------------------------------
 vtkStatisticsAlgorithm::vtkStatisticsAlgorithm()
@@ -50,10 +51,7 @@ vtkStatisticsAlgorithm::vtkStatisticsAlgorithm()
 // ----------------------------------------------------------------------
 vtkStatisticsAlgorithm::~vtkStatisticsAlgorithm()
 {
-  if ( this->AssessNames )
-    {
-    this->AssessNames->Delete();
-    }
+  this->SetAssessNames( 0 );
   delete this->Internals;
 }
 
