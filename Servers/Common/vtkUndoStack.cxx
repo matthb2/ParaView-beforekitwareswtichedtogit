@@ -78,7 +78,8 @@ const char* vtkUndoStack::GetUndoSetLabel(unsigned int position)
     {
     return NULL;
     }
-  position = (this->Internal->UndoStack.size() - position) -1;
+  position = (static_cast<unsigned int>(
+      this->Internal->UndoStack.size()) - position) -1;
   return this->Internal->UndoStack[position].Label.c_str();
 }
 
