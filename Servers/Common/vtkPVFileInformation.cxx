@@ -170,7 +170,7 @@ static bool getNetworkSubdirs(const vtkstd::string& path,
     RESOURCEDISPLAYTYPE_SHARE
     };
 
-  int tokenIndex = pathtokens.size()-1;
+  int tokenIndex = static_cast<int>(pathtokens.size())-1;
 
   if(tokenIndex >= MaxTokens)
     return false;
