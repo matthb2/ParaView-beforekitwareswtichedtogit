@@ -230,48 +230,6 @@ bool vtkPCAStatistics::SetParameter( const char* parameter,
                                      int vtkNotUsed( index ),
                                      vtkVariant value )
 {
-  if ( ! strcmp( parameter, "Learn" ) )
-    {
-    if ( value.ToInt() )
-      {
-      SetLearnOption( true );
-      }
-    else
-      {
-      SetLearnOption( false );
-      }
-
-    return true;
-    }
-
-  if ( ! strcmp( parameter, "Derive" ) )
-    {
-    if ( value.ToInt() )
-      {
-      SetDeriveOption( true );
-      }
-    else
-      {
-      SetDeriveOption( false );
-      }
-
-    return true;
-    }
-
-  if ( ! strcmp( parameter, "Assess" ) )
-    {
-    if ( value.ToInt() )
-      {
-      SetAssessOption( true );
-      }
-    else
-      {
-      SetAssessOption( false );
-      }
-
-    return true;
-    }
-
   if ( ! strcmp( parameter, "NormalizationScheme" ) )
     {
     this->SetNormalizationScheme( value.ToInt() );
