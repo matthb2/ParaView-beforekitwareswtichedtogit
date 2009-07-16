@@ -328,7 +328,8 @@ void vtkPVServerInformation::SetNumberOfMachines(unsigned int num)
 //----------------------------------------------------------------------------
 unsigned int vtkPVServerInformation::GetNumberOfMachines() const
 {
-  return this->MachinesInternals->MachineInformationVector.size();
+  return static_cast<unsigned int>(
+    this->MachinesInternals->MachineInformationVector.size());
 }
 
 //----------------------------------------------------------------------------

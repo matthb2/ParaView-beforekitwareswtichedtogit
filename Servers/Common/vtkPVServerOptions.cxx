@@ -114,7 +114,8 @@ int vtkPVServerOptions::ParseExtraXMLTag(const char* name, const char** atts)
 //----------------------------------------------------------------------------
 unsigned int vtkPVServerOptions::GetNumberOfMachines()
 {
-  return this->Internals->MachineInformationVector.size();
+  return static_cast<unsigned int>(
+    this->Internals->MachineInformationVector.size());
 }
 
 //----------------------------------------------------------------------------

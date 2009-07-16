@@ -474,7 +474,8 @@ vtkPVDataSetAttributesInformation
     size_t length;
     this->GetArrayInformation(idx)->CopyToStream(&acss);
     acss.GetData(&data, &length);
-    *css << vtkClientServerStream::InsertArray(data, length);
+    *css << vtkClientServerStream::InsertArray(data,
+      static_cast<int>(length));
     acss.Reset();
     }
 

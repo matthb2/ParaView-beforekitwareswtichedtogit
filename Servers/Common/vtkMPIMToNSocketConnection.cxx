@@ -121,7 +121,7 @@ void vtkMPIMToNSocketConnection::LoadMachinesFile()
     {
     if(fgets(machinename, 1024, file) != 0)
       {
-      int pos = strlen(machinename)-1;
+      int pos = static_cast<int>(strlen(machinename))-1;
       if(machinename[pos] == '\n')
         {
         machinename[pos] = 0;
