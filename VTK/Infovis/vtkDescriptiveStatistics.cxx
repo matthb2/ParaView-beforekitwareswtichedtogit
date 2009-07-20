@@ -321,6 +321,8 @@ void vtkDescriptiveStatistics::Aggregate( vtkDataObjectCollection* inMetaColl,
       M2 += M2_c 
         + prod_n * delta * delta_sur_n;
 
+      mean += n_c * delta_sur_n;
+
       outMeta->SetValueByName( r, "Cardinality", n );
       outMeta->SetValueByName( r, "Mean", mean );
       outMeta->SetValueByName( r, "M2", M2 );
