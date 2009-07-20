@@ -298,7 +298,7 @@ void vtkDescriptiveStatistics::Aggregate( vtkDataObjectCollection* inMetaColl,
 
       if ( max_c > max )
         {
-        outMeta->SetValueByName( r, "Minimum", max_c );
+        outMeta->SetValueByName( r, "Maximum", max_c );
         }
 
       double delta = mean_c - mean;
