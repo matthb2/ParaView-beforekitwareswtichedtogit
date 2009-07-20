@@ -105,7 +105,7 @@ int vtkContingencyStatistics::FillOutputPortInformation( int port, vtkInformatio
 }
 
 // ----------------------------------------------------------------------
-void vtkContingencyStatistics::ExecuteLearn( vtkTable* inData,
+void vtkContingencyStatistics::Learn( vtkTable* inData,
                                              vtkTable* vtkNotUsed( inParameters ),
                                              vtkDataObject* outMetaDO )
 {
@@ -257,7 +257,7 @@ void vtkContingencyStatistics::ExecuteLearn( vtkTable* inData,
 }
 
 // ----------------------------------------------------------------------
-void vtkContingencyStatistics::ExecuteDerive( vtkDataObject* inMetaDO )
+void vtkContingencyStatistics::Derive( vtkDataObject* inMetaDO )
 {
   vtkMultiBlockDataSet* inMeta = vtkMultiBlockDataSet::SafeDownCast( inMetaDO );
   if ( ! inMeta || inMeta->GetNumberOfBlocks() < 2 )
@@ -602,7 +602,7 @@ public:
 };
 
 // ----------------------------------------------------------------------
-void vtkContingencyStatistics::ExecuteAssess( vtkTable* inData,
+void vtkContingencyStatistics::Assess( vtkTable* inData,
                                               vtkDataObject* inMetaDO,
                                               vtkTable* outData,
                                               vtkDataObject* vtkNotUsed( outMeta ) )

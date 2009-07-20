@@ -478,7 +478,7 @@ static void vtkPCAStatisticsNormalizeVariance( vtkVariantArray* normData,
 }
 
 // ----------------------------------------------------------------------
-void vtkPCAStatistics::ExecuteDerive( vtkDataObject* inMetaDO )
+void vtkPCAStatistics::Derive( vtkDataObject* inMetaDO )
 {
   vtkMultiBlockDataSet* inMeta = vtkMultiBlockDataSet::SafeDownCast( inMetaDO );
   if ( ! inMeta )
@@ -491,7 +491,7 @@ void vtkPCAStatistics::ExecuteDerive( vtkDataObject* inMetaDO )
     }
 
   // Use the parent class to compute a covariance matrix for each request.
-  this->Superclass::ExecuteDerive( inMeta );
+  this->Superclass::Derive( inMeta );
 
   // Now that we have the covariance matrices, compute the SVD of each.
   vtkIdType nb = static_cast<vtkIdType>( inMeta->GetNumberOfBlocks() );
@@ -617,7 +617,7 @@ void vtkPCAStatistics::ExecuteDerive( vtkDataObject* inMetaDO )
 }
 
 // ----------------------------------------------------------------------
-void vtkPCAStatistics::ExecuteAssess( vtkTable* inData, 
+void vtkPCAStatistics::Assess( vtkTable* inData, 
                                       vtkDataObject* inMetaDO, 
                                       vtkTable* outData, 
                                       vtkDataObject* vtkNotUsed(outMetaDO) )

@@ -93,7 +93,7 @@ void vtkUnivariateStatisticsAlgorithm::SetColumnStatus( const char* namCol, int 
 }
 
 // ----------------------------------------------------------------------
-void vtkUnivariateStatisticsAlgorithm::ExecuteAssess( vtkTable* inData,
+void vtkUnivariateStatisticsAlgorithm::Assess( vtkTable* inData,
                                                       vtkDataObject* inMetaDO,
                                                       vtkTable* outData,
                                                       vtkDataObject* vtkNotUsed( outMeta ) )

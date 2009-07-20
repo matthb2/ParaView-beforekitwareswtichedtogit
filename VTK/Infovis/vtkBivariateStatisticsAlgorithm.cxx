@@ -110,7 +110,7 @@ void vtkBivariateStatisticsAlgorithm::SetColumnStatus( const char* namCol, int s
 }
 
 // ----------------------------------------------------------------------
-void vtkBivariateStatisticsAlgorithm::ExecuteAssess( vtkTable* inData,
+void vtkBivariateStatisticsAlgorithm::Assess( vtkTable* inData,
                                                      vtkDataObject* inMetaDO,
                                                      vtkTable* outData,
                                                      vtkDataObject* vtkNotUsed( outMeta ) )
