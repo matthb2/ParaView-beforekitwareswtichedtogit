@@ -81,11 +81,17 @@ void vtkPExtractArraysOverTime::PostExecute(
       this->AddRemoteData(remoteOutput, output);
       remoteOutput->Delete();
       }
+    int num_blocks = static_cast<int>(output->GetNumberOfBlocks());
+    this->Controller->Broadcast(&num_blocks, 1, 0);
     }
   else
     {
     this->Controller->Send(output, 0, EXCHANGE_DATA);
     output->Initialize();
+    int num_blocks = 0;
+    // ensures that all processes have the same structure.
+    this->Controller->Broadcast(&num_blocks, 1, 0);
+    output->SetNumberOfBlocks(static_cast<unsigned int>(num_blocks));
     }
 }
 
