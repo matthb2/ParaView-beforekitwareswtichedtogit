@@ -213,6 +213,34 @@ void vtkDescriptiveStatistics::Learn( vtkTable* inData,
 }
 
 // ----------------------------------------------------------------------
+void vtkDescriptiveStatistics::LearnAggregate( vtkDataObjectCollection* inMetaColl,
+                                               vtkDataObject* outMetaDO )
+{
+  vtkTable* outMeta = vtkTable::SafeDownCast( outMetaDO );
+  if ( ! outMeta ) 
+    { 
+    return; 
+    } 
+
+  // Get hold of the first model (data object) in the collection
+  vtkCollectionSimpleIterator it;
+  inMetaColl->InitTraversal( it );
+  vtkDataObject *inMetaDO = inMetaColl->GetNextDataObject( it );
+
+  // Verify that the model is indeed table
+  vtkTable* inMeta = vtkTable::SafeDownCast( inMetaDO );
+  if ( ! inMeta ) 
+    { 
+    return; 
+    }
+
+  // Use this first model to initialize the aggregated one
+  outMeta->DeepCopy( inMeta );
+
+  return;
+}
+
+// ----------------------------------------------------------------------
 void vtkDescriptiveStatistics::Derive( vtkDataObject* inMetaDO )
 {
   vtkTable* inMeta = vtkTable::SafeDownCast( inMetaDO ); 
