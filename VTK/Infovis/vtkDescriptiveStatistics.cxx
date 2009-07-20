@@ -245,7 +245,7 @@ void vtkDescriptiveStatistics::Aggregate( vtkDataObjectCollection* inMetaColl,
   outMeta->DeepCopy( inMeta );
 
   // Now, loop over all remaining models and update aggregated each time
-  while ( inMetaDO = inMetaColl->GetNextDataObject( it ) )
+  while ( ( inMetaDO = inMetaColl->GetNextDataObject( it ) ) )
     {
     // Verify that the model is indeed contained in a table
     inMeta = vtkTable::SafeDownCast( inMetaDO );
