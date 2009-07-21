@@ -51,10 +51,9 @@ void vtkPMultiCorrelativeStatistics::PrintSelf(ostream& os, vtkIndent indent)
 }
 
 // ----------------------------------------------------------------------
-
 void vtkPMultiCorrelativeStatistics::Learn( vtkTable* inData,
-                                                   vtkTable* inParameters,
-                                                   vtkDataObject* outMetaDO )
+                                            vtkTable* inParameters,
+                                            vtkDataObject* outMetaDO )
 {
   vtkMultiBlockDataSet* outMeta = vtkMultiBlockDataSet::SafeDownCast( outMetaDO );
   if ( ! outMeta )
