@@ -36,8 +36,9 @@
 #include "vtkClipPlanesPainter.h"
 #include "vtkPointsPainter.h"
 #include "vtkStandardPolyDataPainter.h"
-#include "vtkCoincidentTopologyResolutionPainter.h"
+#include "vtkPointSpriteCoincidentTopologyResolutionPainter.h"
 #include "vtkDepthSortPainter.h"
+#include "vtkMapper.h"
 
 vtkCxxRevisionMacro(vtkPointSpriteDefaultPainter, "$Revision$")
 vtkStandardNewMacro(vtkPointSpriteDefaultPainter)
@@ -53,6 +54,11 @@ vtkPointSpriteDefaultPainter::vtkPointSpriteDefaultPainter()
   vtkTwoScalarsToColorsPainter* twoScalarsToColorsPainter = vtkTwoScalarsToColorsPainter::New();
   this->SetScalarsToColorsPainter(twoScalarsToColorsPainter);
   twoScalarsToColorsPainter->Delete();
+
+  // create a vtkPointSpriteCoincidentTopologyResolutionPainter instead of the usual vtkOpenGLCoincidentTopologyResolutionPainter
+  vtkPointSpriteCoincidentTopologyResolutionPainter* topologyPainter = vtkPointSpriteCoincidentTopologyResolutionPainter::New();
+  this->SetCoincidentTopologyResolutionPainter(topologyPainter);
+  topologyPainter->Delete();
 }
 
 vtkPointSpriteDefaultPainter::~vtkPointSpriteDefaultPainter()
