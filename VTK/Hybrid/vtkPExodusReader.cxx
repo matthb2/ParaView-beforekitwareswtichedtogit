@@ -44,7 +44,7 @@
 #include "vtkCommand.h"
 
 #include "netcdf.h"
-#include "exodusII.h"
+#include "vtkExodusII.h"
 #include <sys/stat.h>
 #include <ctype.h>
 #include <vtkstd/vector>

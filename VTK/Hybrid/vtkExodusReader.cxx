@@ -39,7 +39,7 @@
 
 #include <sys/stat.h>
 #include <ctype.h>
-#include <exodusII.h>
+#include "vtkExodusII.h"
 
 #include <vtkstd/algorithm>
 #include <vtkstd/string>

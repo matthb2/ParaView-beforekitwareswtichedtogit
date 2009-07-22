@@ -61,7 +61,7 @@
 
 #include "vtksys/RegularExpression.hxx"
 
-#include "exodusII.h"
+#include "vtkExodusII.h"
 #include <stdio.h>
 #include <stdlib.h> /* for free() */
 #include <string.h> /* for memset() */
