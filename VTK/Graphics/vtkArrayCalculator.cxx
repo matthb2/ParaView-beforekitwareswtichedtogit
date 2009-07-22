@@ -380,6 +380,10 @@ int vtkArrayCalculator::RequestData(
       }
     }
 
+  if (!strlen(this->Function))
+    {
+    return 1;
+    }
   if (this->FunctionParser->IsScalarResult())
     {
     resultType = 0;
