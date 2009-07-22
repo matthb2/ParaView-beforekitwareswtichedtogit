@@ -111,6 +111,7 @@ vtkBoostBreadthFirstSearch::~vtkBoostBreadthFirstSearch()
 {
   this->SetInputArrayName(0);
   this->SetOutputArrayName(0);
+  this->SetOutputSelectionType(0);
 }
 
 void vtkBoostBreadthFirstSearch::SetOriginSelection(vtkSelection* s)
