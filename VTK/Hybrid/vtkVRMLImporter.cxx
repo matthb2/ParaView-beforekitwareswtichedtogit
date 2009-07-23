@@ -4,7 +4,7 @@
 #  undef __VTK_SYSTEM_INCLUDES__INSIDE
 #endif
 
-#if defined (__digital__) && defined (__unix__) || defined(__IBMCPP__)
+#if defined (__digital__) && defined (__unix__) || defined(__IBMCPP__) || defined(__sun)
 #define HAVE_ALLOCA_H 1
 #endif
 
