@@ -17,6 +17,7 @@
 
 #include "vtkAbstractArray.h"
 #include "vtkCommand.h"
+#include "vtkDataSetAttributes.h"
 #include "vtkObjectFactory.h"
 #include "vtkStringArray.h"
 #include "vtkTable.h"
@@ -130,6 +131,10 @@ int vtkBoostSplitTableField::RequestData(
     new_column->SetName(column->GetName());
     new_column->SetNumberOfComponents(column->GetNumberOfComponents());
     output->AddColumn(new_column);
+    if(input->GetRowData()->GetPedigreeIds() == column)
+      {
+      output->GetRowData()->SetPedigreeIds(new_column);
+      }
     new_column->Delete();
     }
 
