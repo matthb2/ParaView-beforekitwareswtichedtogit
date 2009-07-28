@@ -297,16 +297,13 @@ void vtkXRenderWindowTclInteractor::Start()
     return;
     }
 
-  unsigned long ExitTag = this->AddObserver(vtkCommand::ExitEvent, this->BreakXtLoopCallback);
   this->BreakLoopFlag = 0;
   do
     {
     Tk_DoOneEvent(0);
     }
   while (this->BreakLoopFlag == 0);
-  this->RemoveObserver(ExitTag);
 }
-
 
 //-------------------------------------------------------------------------
 int vtkXRenderWindowTclInteractor::InternalCreateTimer(int timerId,
