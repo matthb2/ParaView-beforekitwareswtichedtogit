@@ -39,7 +39,6 @@ public:
     {
     if (this->Target)
       {
-      this->Target->InvokeEvent(event, data);
       if (event == vtkCommand::StartInteractionEvent)
         {
         this->Target->SetInteractiveRenderEnabled(1);
