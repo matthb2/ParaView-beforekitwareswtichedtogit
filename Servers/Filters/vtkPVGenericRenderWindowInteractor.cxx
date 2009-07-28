@@ -35,7 +35,8 @@ public:
     this->Target = target;
     }
 
-  virtual void Execute(vtkObject* vtkNotUsed(caller), unsigned long event, void* data)
+  virtual void Execute(vtkObject* vtkNotUsed(caller), unsigned long event, void*
+    vtkNotUsed(data))
     {
     if (this->Target)
       {
