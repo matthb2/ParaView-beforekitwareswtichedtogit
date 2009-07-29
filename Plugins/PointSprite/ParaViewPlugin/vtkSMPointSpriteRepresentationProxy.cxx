@@ -50,7 +50,6 @@
 #include "vtkSMIntVectorProperty.h"
 #include "vtkSMDoubleVectorProperty.h"
 
-#include <string>
 using vtkstd::string;
 
 vtkStandardNewMacro(vtkSMPointSpriteRepresentationProxy)
