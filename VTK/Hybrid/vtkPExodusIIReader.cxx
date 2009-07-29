@@ -128,7 +128,6 @@ protected:
         }
       double* progress = static_cast<double*>(callData);
       double newProgress = *progress/num + Index/num;
-      cout << newProgress << endl;
       Reader->UpdateProgress(newProgress);
     }
   }
