@@ -308,9 +308,8 @@ static int polynomialEucliDivOppositeR(
 
 inline double vtkNormalizePolyCoeff( double d, double* div = 0 )
 {
-  static const double high = 18446744073709551616.; // 2**64
-  //const static double high = pow(2., 64);
-  if ( fabs( d ) < 1e300 && d == d )
+  static const double high = 18446744073709551616.; // 2^64
+  if ( fabs( d ) < 1e300 )
     {
     while ( fabs( d ) > 1e30 )
       {
@@ -321,7 +320,7 @@ inline double vtkNormalizePolyCoeff( double d, double* div = 0 )
         }
       }
     }
-  if ( fabs( d ) > 1e-300 && d == d )
+  if ( fabs( d ) > 1e-300 )
     {
     while(fabs( d ) < 1e-30)
       {
