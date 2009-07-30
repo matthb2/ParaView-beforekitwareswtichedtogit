@@ -1047,7 +1047,7 @@ int vtkExodusIIReaderPrivate::AssembleOutputProceduralArrays(
       }
     }
 
-  if ( this->GenerateGlobalElementIdArray )
+  if ( this->GenerateGlobalElementIdArray && ! OBJTYPE_IS_SET( otyp ) )
     {
     // This retrieves the first new-style map, or if that is not present,
     // the solitary old-style map (which always exists but may be
