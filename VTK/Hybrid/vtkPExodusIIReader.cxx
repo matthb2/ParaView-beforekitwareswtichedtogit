@@ -733,8 +733,8 @@ int vtkPExodusIIReader::RequestData(
       if (inFieldArray && inFieldArray->GetName())
         {
         vtkStdString fieldName = inFieldArray->GetName();
-        vtkStdString::size_type idx = fieldName.find("OverTime",0);
-        if (idx != vtkStdString::npos)
+        
+        if (fieldName.find("OverTime",0) != vtkStdString::npos)
           {
           ofd->AddArray(inFieldArray);
           }
