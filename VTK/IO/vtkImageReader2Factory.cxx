@@ -14,6 +14,7 @@
 =========================================================================*/
 #include "vtkImageReader2Factory.h"
 
+#include "vtkToolkits.h" // VTK_USE_METAIO
 #include "vtkBMPReader.h"
 #include "vtkGESignaReader.h"
 #include "vtkImageReader2.h"
