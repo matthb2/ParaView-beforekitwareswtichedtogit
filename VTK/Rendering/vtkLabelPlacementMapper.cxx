@@ -460,6 +460,7 @@ vtkLabelPlacementMapper::vtkLabelPlacementMapper()
   this->UseUnicodeStrings = false;
   this->PlaceAllLabels = false;
   this->OutputTraversedBounds = false;
+  this->GeneratePerturbedLabelSpokes = false;
   this->Style = FILLED;
   this->Shape = NONE;
   this->Margin = 5;
@@ -792,6 +793,9 @@ void vtkLabelPlacementMapper::RenderOverlay(vtkViewport *viewport,
           {
           this->RenderStrategy->RenderLabel( x, tprop, inIter->GetLabel() );
           }
+
+        // TODO: 1. Perturb coincident points.
+        //       2. Use GeneratePerturbedLabelSpokes to possibly render perturbed points.
         }
       else
         { // label is an icon
@@ -849,6 +853,7 @@ void vtkLabelPlacementMapper::PrintSelf( ostream& os, vtkIndent indent )
   os << indent << "RenderStrategy: " << this->RenderStrategy << "\n";
   os << indent << "PlaceAllLabels: " << (this->PlaceAllLabels ? "ON" : "OFF" ) << "\n";
   os << indent << "OutputTraversedBounds: " << (this->OutputTraversedBounds ? "ON" : "OFF" ) << "\n";
+  os << indent << "GeneratePerturbedLabelSpokes: " << (this->GeneratePerturbedLabelSpokes ? "ON" : "OFF" ) << "\n";
   os << indent << "UseDepthBuffer: "
     << (this->UseDepthBuffer ? "ON" : "OFF" ) << "\n";
   os << indent << "Style: " << this->Style << "\n";
