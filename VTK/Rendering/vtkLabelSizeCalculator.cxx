@@ -5,11 +5,12 @@
 #include "vtkDataSet.h"
 #include "vtkDataSetAttributes.h"
 #include "vtkFieldData.h"
+#include "vtkFreeTypeUtilities.h"
 #include "vtkGraph.h"
 #include "vtkInformation.h"
 #include "vtkInformationVector.h"
 #include "vtkIntArray.h"
-#include "vtkFreeTypeUtilities.h"
+#include "vtkLabelHierarchy.h"
 #include "vtkObjectFactory.h"
 #include "vtkPointData.h"
 #include "vtkPointSet.h"
@@ -173,6 +174,11 @@ int vtkLabelSizeCalculator::RequestData(
       {
       outFD = dsOutput->GetCellData();
       outFD->AddArray( lsz );
+      }
+    vtkLabelHierarchy* hierarchyOutput = vtkLabelHierarchy::SafeDownCast( output );
+    if ( hierarchyOutput )
+      {
+      hierarchyOutput->SetSizes( lsz );
       }
     }
   else if ( graphInput )

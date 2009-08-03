@@ -40,7 +40,6 @@ vtkStandardNewMacro(vtkGraphLayoutView);
 vtkGraphLayoutView::vtkGraphLayoutView()
 {
   this->SetInteractionModeTo2D();
-  this->SetLabelPlacementModeToDynamic2D();
   this->SetSelectionModeToFrustum();
   this->ReuseSingleRepresentationOn();
 }

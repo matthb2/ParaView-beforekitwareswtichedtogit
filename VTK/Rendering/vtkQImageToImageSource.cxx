@@ -120,7 +120,7 @@ int vtkQImageToImageSource::RequestData( vtkInformation *vtkNotUsed(request),
       }
     }
 
-  array->SetVoidArray( data, 4*width*height, 1 );
+  array->SetVoidArray( data, 4*width*height, 0 );
   return 1;
 }
 

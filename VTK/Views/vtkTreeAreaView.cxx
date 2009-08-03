@@ -40,7 +40,6 @@ vtkStandardNewMacro(vtkTreeAreaView);
 vtkTreeAreaView::vtkTreeAreaView()
 {
   this->SetInteractionModeTo2D();
-  this->SetLabelPlacementModeToDynamic2D();
   this->ReuseSingleRepresentationOn();
 }
 

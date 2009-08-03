@@ -24,7 +24,6 @@
 #include "vtkExecutive.h"
 #include "vtkImageData.h"
 #include "vtkLabelHierarchy.h"
-#include "vtkLabelPlacer.h"
 #include "vtkObjectFactory.h"
 #include "vtkQtLabelSizeCalculator.h"
 #include "vtkQtLabelSurface.h"
