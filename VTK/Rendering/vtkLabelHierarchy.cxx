@@ -713,7 +713,12 @@ bool vtkLabelHierarchyFullSortIterator::IsAtEnd()
 
 vtkIdType vtkLabelHierarchyFullSortIterator::GetLabelId()
 {
-  return *this->LabelIterator;
+  if (!(this->IsAtEnd()))
+    {
+    return *this->LabelIterator;
+    }
+  else
+    return 0;
 }
 
 void vtkLabelHierarchyFullSortIterator::GetNodeGeometry( double center[3], double& sz )
@@ -974,7 +979,12 @@ bool vtkLabelHierarchyQuadtreeIterator::IsAtEnd()
 
 vtkIdType vtkLabelHierarchyQuadtreeIterator::GetLabelId()
 {
-  return *this->LabelIterator;
+  if (!(this->IsAtEnd()))
+    {
+    return *this->LabelIterator;
+    }
+  else
+    return 0;
 }
 
 void vtkLabelHierarchyQuadtreeIterator::GetNodeGeometry( double center[3], double& sz )
@@ -1346,7 +1356,12 @@ vtkIdType vtkLabelHierarchyOctreeQueueIterator::GetLabelId()
     }
   else
     {
-    myId = *this->LabelIterator;
+    if (!(this->IsAtEnd()))
+      {
+      myId = *this->LabelIterator;
+      }
+    else
+      myId = 0;
     }
   return myId;
 }
@@ -1692,7 +1707,12 @@ bool vtkLabelHierarchy3DepthFirstIterator::IsAtEnd()
 
 vtkIdType vtkLabelHierarchy3DepthFirstIterator::GetLabelId()
 {
-  return *this->LabelIterator;
+  if (!(this->IsAtEnd()))
+    {
+    return *this->LabelIterator;
+    }
+  else
+    return 0;
 }
 
 void vtkLabelHierarchy3DepthFirstIterator::GetNodeGeometry( double center[3], double& sz )

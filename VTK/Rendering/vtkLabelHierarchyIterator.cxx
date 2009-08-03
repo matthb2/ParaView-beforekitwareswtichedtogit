@@ -110,6 +110,10 @@ int vtkLabelHierarchyIterator::GetType()
     {
     return -1;
     }
+  if (labelTypeIArr->GetNumberOfTuples()==0)
+    {
+    return -1;
+    }
   vtkIdType lid = this->GetLabelId();
   return labelTypeIArr->GetValue( lid );
 }
