@@ -683,7 +683,7 @@ void vtkScatterPlotMapper::InitGlyphMappers(vtkRenderer* ren, vtkActor* actor,
   vtkDataArray* glyphSourceArray = 
     this->GetArray(vtkScatterPlotMapper::GLYPH_SOURCE);
 
-  int numberOfGlyphSources = glyphSourceArray ? 
+  size_t numberOfGlyphSources = glyphSourceArray ? 
     this->GetNumberOfInputConnections(GLYPHS_PORT): 1;
 
   for (size_t cc = 0; cc < numberOfGlyphSources ; cc++)
