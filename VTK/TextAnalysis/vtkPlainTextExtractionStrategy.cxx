@@ -43,6 +43,7 @@ void vtkPlainTextExtractionStrategy::PrintSelf(ostream& os, vtkIndent indent)
 
 bool vtkPlainTextExtractionStrategy::Extract(
   const vtkIdType document,
+  const vtkStdString& uri,
   const vtkStdString& mime_type,
   const vtkTypeUInt8* content_begin,
   const vtkTypeUInt8* content_end,
