@@ -901,7 +901,7 @@ void vtkOpenGLPainterDeviceAdapter::MakeVertexEmphasis(bool mode)
     glGetFloatv(GL_DEPTH_RANGE, nf);
     this->RangeNear = nf[0];
     this->RangeFar = nf[1];
-    glDepthRange(0.0, nf[1]*0.98);
+    glDepthRange(0.0, nf[1]*0.999999);
     glDepthMask(GL_FALSE); //prevent verts from interfering with each other
     }
   else
