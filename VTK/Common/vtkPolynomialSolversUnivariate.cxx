@@ -312,6 +312,7 @@ inline double vtkNormalizePolyCoeff( double d, double* div = 0 )
 {
   static const double high = 18446744073709551616.; // 2^64
   static const double reallyBig = 1.e300;
+  static const double reallyBigInv = 1 / reallyBig;
   static const double notThatBig = 1.e30;
   static const double notThatBigInv = 1.e-30;
 
@@ -326,7 +327,7 @@ inline double vtkNormalizePolyCoeff( double d, double* div = 0 )
         }
       }
     }
-  if ( fabs( d ) > reallyBig )
+  if ( fabs( d ) > reallyBigInv )
     {
     while(fabs( d ) < notThatBigInv )
       {
