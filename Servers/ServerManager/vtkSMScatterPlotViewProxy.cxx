@@ -280,7 +280,7 @@ bool vtkSMScatterPlotViewProxy::BeginCreateVTKObjects()
 void vtkSMScatterPlotViewProxy::EndCreateVTKObjects()
 {
   this->Superclass::EndCreateVTKObjects();
-  this->RenderView->AddPropToRenderer(this->CubeAxesActor);
+  //this->RenderView->AddPropToRenderer(this->CubeAxesActor);
   this->RenderView->AddPropToRenderer2D(this->LegendScaleActor);
 
 
