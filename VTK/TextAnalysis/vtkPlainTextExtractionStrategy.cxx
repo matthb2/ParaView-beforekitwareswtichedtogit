@@ -20,6 +20,7 @@
 
 #include <vtkIdTypeArray.h>
 #include <vtkObjectFactory.h>
+#include <vtkMimeTypes.h>
 #include <vtkPlainTextExtractionStrategy.h>
 #include <vtkStringArray.h>
 #include <vtkUnicodeStringArray.h>
@@ -52,7 +53,14 @@ bool vtkPlainTextExtractionStrategy::Extract(
   vtkStringArray* tag_type)
 {
   // Determine whether we can handle this content or not ...
-  if(0 != mime_type.find("text/"))
+  bool supported = false;
+  if(vtkMimeTypes::Match("text/*", mime_type))
+    supported = true;
+  else if(vtkMimeTypes::Match("application/x-latex", mime_type))
+    supported = true;
+  else if(vtkMimeTypes::Match("application/x-tex", mime_type))
+    supported = true;
+  if(!supported)
     return false;
 
   // Extract text from the content ...
