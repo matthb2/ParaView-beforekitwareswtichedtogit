@@ -39,6 +39,7 @@
 #include "vtkPolygon.h"
 #include "vtkOrderedTriangulator.h"
 #include "vtkHyperOctreeClipCutPointsGrabber.h"
+#include "vtkIncrementalPointLocator.h"
 
 #include <math.h>
 #include <assert.h>
@@ -1048,7 +1049,7 @@ void vtkClipHyperOctree::ClipNode(vtkHyperOctreeCursor *cursor,
         
         // just pass the tetra or polygon to the output without clipping
         // TODO
-        vtkPointLocator *locator;
+        vtkIncrementalPointLocator *locator;
         if(allIn)
           {
           i=0;
@@ -1514,7 +1515,7 @@ void vtkClipHyperOctree::ClipNode(vtkHyperOctreeCursor *cursor,
 //----------------------------------------------------------------------------
 // Specify a spatial locator for merging points. By default, 
 // an instance of vtkMergePoints is used.
-void vtkClipHyperOctree::SetLocator(vtkPointLocator *locator)
+void vtkClipHyperOctree::SetLocator(vtkIncrementalPointLocator *locator)
 {
   if ( this->Locator == locator)
     {

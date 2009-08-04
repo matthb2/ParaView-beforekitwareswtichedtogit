@@ -20,7 +20,7 @@
 #include "vtkMath.h"
 #include "vtkObjectFactory.h"
 #include "vtkPointData.h"
-#include "vtkPointLocator.h"
+#include "vtkIncrementalPointLocator.h"
 #include "vtkQuad.h"
 #include "vtkTriangle.h"
 #include "vtkUnstructuredGrid.h"
@@ -334,7 +334,7 @@ static TRIANGLE_CASES triCases[] = {
 
 //----------------------------------------------------------------------------
 void vtkPyramid::Contour(double value, vtkDataArray *cellScalars, 
-                         vtkPointLocator *locator,
+                         vtkIncrementalPointLocator *locator,
                          vtkCellArray *verts, 
                          vtkCellArray *lines, 
                          vtkCellArray *polys,

@@ -22,7 +22,7 @@
 #include "vtkMath.h"
 #include "vtkPlane.h"
 #include "vtkPointData.h"
-#include "vtkPointLocator.h"
+#include "vtkIncrementalPointLocator.h"
 #include "vtkPoints.h"
 
 vtkCxxRevisionMacro(vtkQuad, "$Revision$");
@@ -408,7 +408,7 @@ int *vtkQuad::GetEdgeArray(int edgeId)
 
 //----------------------------------------------------------------------------
 void vtkQuad::Contour(double value, vtkDataArray *cellScalars, 
-                      vtkPointLocator *locator, 
+                      vtkIncrementalPointLocator *locator,
                       vtkCellArray *verts, 
                       vtkCellArray *lines, 
                       vtkCellArray *vtkNotUsed(polys), 
@@ -801,7 +801,7 @@ static QUAD_CASES quadCasesComplement[] = {
 // Clip this quad using scalar value provided. Like contouring, except
 // that it cuts the quad to produce other quads and/or triangles.
 void vtkQuad::Clip(double value, vtkDataArray *cellScalars, 
-                   vtkPointLocator *locator, vtkCellArray *polys,
+                   vtkIncrementalPointLocator *locator, vtkCellArray *polys,
                    vtkPointData *inPd, vtkPointData *outPd,
                    vtkCellData *inCd, vtkIdType cellId, vtkCellData *outCd,
                    int insideOut)

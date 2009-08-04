@@ -43,6 +43,7 @@
 #include "vtkQuadraticLinearWedge.h"
 #include "vtkBiQuadraticQuadraticWedge.h"
 #include "vtkBiQuadraticQuadraticHexahedron.h"
+#include "vtkIncrementalPointLocator.h"
 
 
 #include <vtkstd/vector>
@@ -1412,7 +1413,7 @@ int vtkUnstructuredGridGeometryFilter::RequestData(
 //-----------------------------------------------------------------------------
 // Specify a spatial locator for merging points. By
 // default an instance of vtkMergePoints is used.
-void vtkUnstructuredGridGeometryFilter::SetLocator(vtkPointLocator *locator)
+void vtkUnstructuredGridGeometryFilter::SetLocator(vtkIncrementalPointLocator *locator)
 {
   if ( this->Locator == locator ) 
     {

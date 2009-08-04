@@ -28,6 +28,7 @@
 #include "vtkCellArray.h"
 #include "vtkCellData.h"
 #include "vtkPointData.h"
+#include "vtkIncrementalPointLocator.h"
 
 vtkCxxRevisionMacro(vtkFeatureEdges, "$Revision$");
 vtkStandardNewMacro(vtkFeatureEdges);
@@ -373,7 +374,7 @@ void vtkFeatureEdges::CreateDefaultLocator()
 
 // Specify a spatial locator for merging points. By
 // default an instance of vtkMergePoints is used.
-void vtkFeatureEdges::SetLocator(vtkPointLocator *locator)
+void vtkFeatureEdges::SetLocator(vtkIncrementalPointLocator *locator)
 {
   if ( this->Locator == locator ) 
     {

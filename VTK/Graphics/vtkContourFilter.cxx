@@ -40,6 +40,7 @@
 #include "vtkTimerLog.h"
 #include "vtkUniformGrid.h"
 #include "vtkUnstructuredGrid.h"
+#include "vtkIncrementalPointLocator.h"
 
 #include <math.h>
 
@@ -373,6 +374,11 @@ int vtkContourFilter::RequestData(
 
     cgrid = vtkContourGrid::New();
     cgrid->SetInput(input);
+    if ( this->Locator )
+      {
+      cgrid->SetLocator( this->Locator );
+      }
+      
     for (i = 0; i < numContours; i++)
       {
       cgrid->SetValue(i, values[i]);
@@ -569,7 +575,7 @@ int vtkContourFilter::RequestData(
 
 // Specify a spatial locator for merging points. By default, 
 // an instance of vtkMergePoints is used.
-void vtkContourFilter::SetLocator(vtkPointLocator *locator)
+void vtkContourFilter::SetLocator(vtkIncrementalPointLocator *locator)
 {
   if ( this->Locator == locator ) 
     {

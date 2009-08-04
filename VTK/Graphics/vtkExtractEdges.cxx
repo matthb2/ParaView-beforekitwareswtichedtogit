@@ -25,6 +25,7 @@
 #include "vtkObjectFactory.h"
 #include "vtkPointData.h"
 #include "vtkPolyData.h"
+#include "vtkIncrementalPointLocator.h"
 
 vtkCxxRevisionMacro(vtkExtractEdges, "$Revision$");
 vtkStandardNewMacro(vtkExtractEdges);
@@ -207,7 +208,7 @@ int vtkExtractEdges::RequestData(
 
 // Specify a spatial locator for merging points. By
 // default an instance of vtkMergePoints is used.
-void vtkExtractEdges::SetLocator(vtkPointLocator *locator)
+void vtkExtractEdges::SetLocator(vtkIncrementalPointLocator *locator)
 {
   if ( this->Locator == locator ) 
     {

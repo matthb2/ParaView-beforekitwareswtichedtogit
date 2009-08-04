@@ -23,6 +23,7 @@
 #include "vtkPointData.h"
 #include "vtkPolyData.h"
 #include "vtkStreamingDemandDrivenPipeline.h"
+#include "vtkIncrementalPointLocator.h"
 
 vtkCxxRevisionMacro(vtkCleanPolyData, "$Revision$");
 vtkStandardNewMacro(vtkCleanPolyData);
@@ -30,7 +31,7 @@ vtkStandardNewMacro(vtkCleanPolyData);
 //---------------------------------------------------------------------------
 // Specify a spatial locator for speeding the search process. By
 // default an instance of vtkPointLocator is used.
-vtkCxxSetObjectMacro(vtkCleanPolyData,Locator,vtkPointLocator);
+vtkCxxSetObjectMacro(vtkCleanPolyData,Locator,vtkIncrementalPointLocator);
 
 //---------------------------------------------------------------------------
 // Construct object with initial Tolerance of 0.0

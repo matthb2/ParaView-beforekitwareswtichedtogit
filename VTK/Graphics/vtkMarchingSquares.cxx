@@ -33,6 +33,7 @@
 #include "vtkUnsignedIntArray.h"
 #include "vtkUnsignedLongArray.h"
 #include "vtkUnsignedShortArray.h"
+#include "vtkIncrementalPointLocator.h"
 
 #include <math.h>
 
@@ -103,7 +104,7 @@ template <class T>
 void vtkContourImage(T *scalars, vtkDataArray *newScalars, int roi[6], int dir[3],
                      int start[2], int end[2], int offset[3], double ar[3], 
                      double origin[3], double *values, int numValues, 
-                     vtkPointLocator *p, vtkCellArray *lines)
+                     vtkIncrementalPointLocator *p, vtkCellArray *lines)
 {
   int i, j;
   vtkIdType ptIds[2];
@@ -437,7 +438,7 @@ int vtkMarchingSquares::RequestData(
 // Description:
 // Specify a spatial locator for merging points. By default, 
 // an instance of vtkMergePoints is used.
-void vtkMarchingSquares::SetLocator(vtkPointLocator *locator)
+void vtkMarchingSquares::SetLocator(vtkIncrementalPointLocator *locator)
 {
   if ( this->Locator == locator)
     {

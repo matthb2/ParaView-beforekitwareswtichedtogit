@@ -17,7 +17,6 @@
 #include "vtkCellArray.h"
 #include "vtkMath.h"
 #include "vtkObjectFactory.h"
-#include "vtkPointLocator.h"
 #include "vtkPoints.h"
 
 vtkCxxRevisionMacro(vtkEmptyCell, "$Revision$");
@@ -53,7 +52,7 @@ int vtkEmptyCell::CellBoundary(int vtkNotUsed(subId),
 //----------------------------------------------------------------------------
 void vtkEmptyCell::Contour(double vtkNotUsed(value),
                            vtkDataArray *vtkNotUsed(cellScalars),
-                           vtkPointLocator *vtkNotUsed(locator),
+                           vtkIncrementalPointLocator *vtkNotUsed(locator),
                            vtkCellArray *vtkNotUsed(verts),
                            vtkCellArray *vtkNotUsed(lines),
                            vtkCellArray *vtkNotUsed(polys),
@@ -102,7 +101,7 @@ void vtkEmptyCell::Derivatives(int vtkNotUsed(subId),
 //----------------------------------------------------------------------------
 void vtkEmptyCell::Clip(double vtkNotUsed(value),
                         vtkDataArray *vtkNotUsed(cellScalars),
-                        vtkPointLocator *vtkNotUsed(locator),
+                        vtkIncrementalPointLocator *vtkNotUsed(locator),
                         vtkCellArray *vtkNotUsed(verts),
                         vtkPointData *vtkNotUsed(inPD),
                         vtkPointData *vtkNotUsed(outPD),

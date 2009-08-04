@@ -24,6 +24,7 @@
 #include "vtkPointData.h"
 #include "vtkPolyData.h"
 #include "vtkShortArray.h"
+#include "vtkIncrementalPointLocator.h"
 
 vtkCxxRevisionMacro(vtkUGFacetReader, "$Revision$");
 vtkStandardNewMacro(vtkUGFacetReader);
@@ -340,7 +341,7 @@ short vtkUGFacetReader::GetPartColorIndex(int partId)
 
 // Specify a spatial locator for merging points. By
 // default an instance of vtkMergePoints is used.
-void vtkUGFacetReader::SetLocator(vtkPointLocator *locator)
+void vtkUGFacetReader::SetLocator(vtkIncrementalPointLocator *locator)
 {
   if ( this->Locator == locator ) 
     {

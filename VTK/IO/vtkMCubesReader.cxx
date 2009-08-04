@@ -23,6 +23,7 @@
 #include "vtkObjectFactory.h"
 #include "vtkPointData.h"
 #include "vtkPolyData.h"
+#include "vtkIncrementalPointLocator.h"
 
 #include <sys/types.h>
 #include <sys/stat.h>
@@ -286,7 +287,7 @@ int vtkMCubesReader::RequestData(
 
 // Specify a spatial locator for merging points. By default, 
 // an instance of vtkMergePoints is used.
-void vtkMCubesReader::SetLocator(vtkPointLocator *locator)
+void vtkMCubesReader::SetLocator(vtkIncrementalPointLocator *locator)
 {
   if ( this->Locator == locator ) 
     {

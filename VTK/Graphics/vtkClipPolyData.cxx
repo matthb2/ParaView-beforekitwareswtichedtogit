@@ -28,6 +28,7 @@
 #include "vtkPointData.h"
 #include "vtkPolyData.h"
 #include "vtkTriangle.h"
+#include "vtkIncrementalPointLocator.h"
 
 #include <math.h>
 
@@ -365,7 +366,7 @@ int vtkClipPolyData::RequestData(
 //----------------------------------------------------------------------------
 // Specify a spatial locator for merging points. By default, 
 // an instance of vtkMergePoints is used.
-void vtkClipPolyData::SetLocator(vtkPointLocator *locator)
+void vtkClipPolyData::SetLocator(vtkIncrementalPointLocator *locator)
 {
   if ( this->Locator == locator)
     {

@@ -43,6 +43,7 @@
 #include <assert.h>
 #include <vtkstd/set>
 #include "vtkBitArray.h"
+#include "vtkIncrementalPointLocator.h"
 
 #include "vtkHyperOctreePointsGrabber.h"
 
@@ -1234,7 +1235,7 @@ double vtkHyperOctreeContourFilter::ComputePointValue(int ptIndices[3])
 //----------------------------------------------------------------------------
 // Specify a spatial locator for merging points. By default, 
 // an instance of vtkMergePoints is used.
-void vtkHyperOctreeContourFilter::SetLocator(vtkPointLocator *locator)
+void vtkHyperOctreeContourFilter::SetLocator(vtkIncrementalPointLocator *locator)
 {
   if ( this->Locator == locator)
     {
