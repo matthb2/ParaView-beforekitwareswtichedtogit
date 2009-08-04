@@ -89,6 +89,7 @@ vtkIncrementalOctreeNode::~vtkIncrementalOctreeNode()
 {
   if ( this->Parent )
     {
+    this->Parent->UnRegister( this );
     this->Parent = NULL;
     }
 
