@@ -213,7 +213,7 @@ int vtkIncrementalOctreePointLocator::GetNumberOfPoints()
 }
 
 //----------------------------------------------------------------------------
-void vtkIncrementalOctreePointLocator::GetBounds( double bounds[6] )
+void vtkIncrementalOctreePointLocator::GetBounds( double * bounds )
 { 
   if ( this->OctreeRootNode )
     {
