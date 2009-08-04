@@ -71,6 +71,13 @@ vtkTexturePainter::~vtkTexturePainter()
 }
 
 //----------------------------------------------------------------------------
+void vtkTexturePainter::ReleaseGraphicsResources (vtkWindow *win)
+{
+  this->Texture->ReleaseGraphicsResources(win);
+  this->Superclass::ReleaseGraphicsResources(win);
+}
+
+//----------------------------------------------------------------------------
 void vtkTexturePainter::ProcessInformation(vtkInformation* information)
 {
   if (information->Has(SLICE()))

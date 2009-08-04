@@ -97,6 +97,13 @@ void vtkImageSliceMapper::SetPainter(vtkPainter* p)
 }
 
 //----------------------------------------------------------------------------
+void vtkImageSliceMapper::ReleaseGraphicsResources (vtkWindow *win)
+{
+  this->Painter->ReleaseGraphicsResources(win);
+  this->Superclass::ReleaseGraphicsResources(win);
+}
+
+//----------------------------------------------------------------------------
 void vtkImageSliceMapper::Render(vtkRenderer* ren, vtkActor* act)
 {
   if (this->Static)
