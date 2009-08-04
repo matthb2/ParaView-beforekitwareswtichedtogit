@@ -41,6 +41,7 @@
 #include <boost/algorithm/string/replace.hpp>
 #include <boost/algorithm/string/trim.hpp>
 
+#include <vtksys/ios/fstream>
 #include <vtksys/ios/sstream>
 
 class vtkDocumentReader::Implementation
@@ -143,7 +144,7 @@ int vtkDocumentReader::RequestData(
       const vtkIdType document = this->Internal->ID[i];
       const vtkStdString uri = Implementation::PathToURI(file);
 
-      ifstream file_stream(file.c_str());
+      ifstream file_stream(file.c_str(), ios::in | ios::binary);
       vtkstd::stringstream contents;
       contents << file_stream.rdbuf();
 
