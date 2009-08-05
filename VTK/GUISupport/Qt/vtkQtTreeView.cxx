@@ -214,6 +214,14 @@ void vtkQtTreeView::HideColumn(int i)
   this->TreeView->hideColumn(i);
 }
 
+//----------------------------------------------------------------------------
+void vtkQtTreeView::HideAllButFirstColumn()
+{
+  for(int j=1; j<this->TreeAdapter->columnCount(); ++j)
+    {
+    this->TreeView->hideColumn(j);
+    }
+}
 
 void vtkQtTreeView::AddRepresentationInternal(vtkDataRepresentation* rep)
 {    
