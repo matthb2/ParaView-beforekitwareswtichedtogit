@@ -26,7 +26,6 @@ vtkCxxRevisionMacro(vtkModifiedBSPTree, "$Revision$");
 vtkStandardNewMacro(vtkModifiedBSPTree);
 //----------------------------------------------------------------------------
 //
-using namespace std;
 //
 enum { POS_X, NEG_X, POS_Y, NEG_Y, POS_Z, NEG_Z };
 //
