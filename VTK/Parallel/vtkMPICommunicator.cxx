@@ -318,8 +318,11 @@ int vtkMPICommunicatorAllReduceData(const void *sendBuffer, void *recvBuffer,
 //-----------------------------------------------------------------------------
 // Method for converting an MPI operation to a
 // vtkMultiProcessController::Operation.
+// MPIAPI is defined in the microsoft mpi.h which just defines
+// the __stdcall decoration. It should be empty on any other 
+// platform
 static vtkCommunicator::Operation *CurrentOperation;
-extern "C" void vtkMPICommunicatorUserFunction(void *invec, void *inoutvec,
+extern "C" void MPIAPI vtkMPICommunicatorUserFunction(void *invec, void *inoutvec,
                                                int *len, MPI_Datatype *datatype)
 {
   int vtkType = vtkMPICommunicatorGetVTKType(*datatype);
