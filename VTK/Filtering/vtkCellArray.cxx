@@ -48,6 +48,14 @@ vtkCellArray::~vtkCellArray()
   this->Ia->Delete();
 }
 
+//----------------------------------------------------------------------------
+void vtkCellArray::Initialize() 
+{
+  this->Ia->Initialize();
+  this->NumberOfCells = 0;
+  this->InsertLocation = 0;
+  this->TraversalLocation = 0;
+}
 
 //----------------------------------------------------------------------------
 // Returns the size of the largest cell. The size is the number of points
