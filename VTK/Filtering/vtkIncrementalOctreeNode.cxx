@@ -22,6 +22,8 @@
 vtkCxxRevisionMacro( vtkIncrementalOctreeNode, "$Revision$" );
 vtkStandardNewMacro( vtkIncrementalOctreeNode );
 
+vtkCxxSetObjectMacro( vtkIncrementalOctreeNode, Parent, vtkIncrementalOctreeNode );
+
 // ---------------------------------------------------------------------------
 // ----------------------------- Helper functions ----------------------------
 // ---------------------------------------------------------------------------
