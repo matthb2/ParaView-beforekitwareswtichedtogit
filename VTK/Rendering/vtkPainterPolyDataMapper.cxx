@@ -402,7 +402,13 @@ double* vtkPainterPolyDataMapper::GetBounds()
     vtkPainter *painter = this->GetPainter();
 
     if (painter)
-      {
+      {  
+      // Update Painter information if obsolete.
+      if (this->PainterUpdateTime < this->GetMTime())
+        {
+        this->UpdatePainterInformation();
+        this->PainterUpdateTime.Modified();
+        }
       painter->UpdateBounds(this->Bounds);
       }
 
