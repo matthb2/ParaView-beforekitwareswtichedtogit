@@ -76,6 +76,59 @@ void vtkStatisticsAlgorithm::PrintSelf( ostream &os, vtkIndent indent )
   os << indent << "Internals: " << this->Internals << endl;
 }
 
+//---------------------------------------------------------------------------
+void vtkStatisticsAlgorithm::SetColumnStatus( const char* namCol, int status )
+{
+  this->Internals->SetBufferColumnStatus( namCol, status );
+}
+
+//---------------------------------------------------------------------------
+void vtkStatisticsAlgorithm::ResetAllColumnStates()
+{
+  this->Internals->ResetBuffer();
+}
+
+//---------------------------------------------------------------------------
+int vtkStatisticsAlgorithm::RequestSelectedColumns()
+{
+  return this->Internals->AddBufferToRequests();
+}
+
+//---------------------------------------------------------------------------
+void vtkStatisticsAlgorithm::ResetRequests()
+{
+  this->Internals->ResetRequests();
+}
+
+//---------------------------------------------------------------------------
+vtkIdType vtkStatisticsAlgorithm::GetNumberOfRequests()
+{
+  return this->Internals->GetNumberOfRequests();
+}
+
+//---------------------------------------------------------------------------
+vtkIdType vtkStatisticsAlgorithm::GetNumberOfColumnsForRequest( vtkIdType request )
+{
+  return this->Internals->GetNumberOfColumnsForRequest( request );
+}
+
+//---------------------------------------------------------------------------
+const char* vtkStatisticsAlgorithm::GetColumnForRequest( vtkIdType r, vtkIdType c )
+{
+  static vtkStdString columnName;
+  if ( this->Internals->GetColumnForRequest( r, c, columnName ) )
+    {
+    return columnName.c_str();
+    }
+  return 0;
+}
+
+//---------------------------------------------------------------------------
+int vtkStatisticsAlgorithm::GetColumnForRequest( vtkIdType r, vtkIdType c, vtkStdString& columnName )
+{
+  return this->Internals->GetColumnForRequest( r, c, columnName ) ? 1 : 0;
+}
+
 // ----------------------------------------------------------------------
 void vtkStatisticsAlgorithm::SetAssessOptionParameter( vtkIdType id, vtkStdString name )
 {
@@ -209,51 +262,3 @@ int vtkStatisticsAlgorithm::FillOutputPortInformation( int port, vtkInformation*
   return 0;
 }
 
-//---------------------------------------------------------------------------
-void vtkStatisticsAlgorithm::SetColumnStatus( const char* namCol, int status )
-{
-  this->Internals->SetBufferColumnStatus( namCol, status );
-}
-
-//---------------------------------------------------------------------------
-void vtkStatisticsAlgorithm::ResetAllColumnStates()
-{
-  this->Internals->ResetBuffer();
-}
-
-//---------------------------------------------------------------------------
-int vtkStatisticsAlgorithm::RequestSelectedColumns()
-{
-  return this->Internals->AddBufferToRequests();
-}
-
-//---------------------------------------------------------------------------
-void vtkStatisticsAlgorithm::ResetRequests()
-{
-  this->Internals->ResetRequests();
-}
-
-vtkIdType vtkStatisticsAlgorithm::GetNumberOfRequests()
-{
-  return this->Internals->GetNumberOfRequests();
-}
-
-vtkIdType vtkStatisticsAlgorithm::GetNumberOfColumnsForRequest( vtkIdType request )
-{
-  return this->Internals->GetNumberOfColumnsForRequest( request );
-}
-
-const char* vtkStatisticsAlgorithm::GetColumnForRequest( vtkIdType r, vtkIdType c )
-{
-  static vtkStdString columnName;
-  if ( this->Internals->GetColumnForRequest( r, c, columnName ) )
-    {
-    return columnName.c_str();
-    }
-  return 0;
-}
-
-int vtkStatisticsAlgorithm::GetColumnForRequest( vtkIdType r, vtkIdType c, vtkStdString& columnName )
-{
-  return this->Internals->GetColumnForRequest( r, c, columnName ) ? 1 : 0;
-}
