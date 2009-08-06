@@ -739,7 +739,8 @@ void vtkScatterPlotMapper::InitGlyphMappers(vtkRenderer* ren, vtkActor* actor,
     // s can be null.
     //if (glyphMappers->Mappers[cc]==0)
     vtkPainterPolyDataMapper* polyDataMapper = 
-      vtkPainterPolyDataMapper::SafeDownCast(glyphMappers->GetItemAsObject(cc));
+      vtkPainterPolyDataMapper::SafeDownCast(
+        glyphMappers->GetItemAsObject(static_cast<int>(cc)));
     if ( polyDataMapper == NULL)
       {
       //glyphMappers->Mappers[cc] = vtkPainterPolyDataMapper::New();

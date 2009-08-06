@@ -853,7 +853,7 @@ void vtkScatterPlotPainter::ReleaseGraphicsResources(vtkWindow *window)
     {
     vtkPainterPolyDataMapper* mapper = 
       vtkPainterPolyDataMapper::SafeDownCast(
-        this->SourceGlyphMappers->GetItemAsObject(i));
+        this->SourceGlyphMappers->GetItemAsObject(static_cast<int>(i)));
     if(mapper)
       {
       mapper->ReleaseGraphicsResources(window);
