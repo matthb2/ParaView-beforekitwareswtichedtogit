@@ -182,13 +182,14 @@ void vtkQtLabelRenderStrategy::StartFrame()
       this->Implementation->Image->height() != height)
     {
     delete this->Implementation->Image;
-    this->Implementation->Image = new QImage(width, height, QImage::Format_ARGB32);
+    this->Implementation->Image = new QImage(width, height, QImage::Format_ARGB32_Premultiplied);
     this->QImageToImage->SetQImage(this->Implementation->Image);
     this->PlaneSource->SetPoint1(width, 0, 0);
     this->PlaneSource->SetPoint2(0, height, 0);
     }
 
   this->Implementation->Painter = new QPainter(this->Implementation->Image);
+  this->Implementation->Painter->setRenderHint(QPainter::TextAntialiasing);
 
   this->Implementation->Image->fill(qRgba(0,0,0,0));
   this->QImageToImage->Modified();
