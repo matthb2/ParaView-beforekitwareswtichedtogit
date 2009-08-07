@@ -512,7 +512,7 @@ int vtkGridConnectivity::FillInputPortInformation(
 // Returns 1/true if the input has all of the needed arrays.
 int vtkGridConnectivity::CheckInput(vtkUnstructuredGrid* input)
 {
-  vtkDataArray* a = input->GetPointData()->GetGlobalIds();
+  //vtkDataArray* a = input->GetPointData()->GetGlobalIds();
   vtkIdTypeArray* gloablPtIds = vtkIdTypeArray::SafeDownCast(
                        input->GetPointData()->GetArray("GlobalNodeId"));
 
