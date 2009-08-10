@@ -212,7 +212,7 @@ vtkSMRepresentationProxy* vtkSMScatterPlotViewProxy::CreateDefaultRepresentation
     }
 
   // Currently only images can be shown 
-  vtkErrorMacro("This view only supports surface representation.");
+  vtkErrorMacro("This view only supports dataset representation.");
   return 0;
 }
 
