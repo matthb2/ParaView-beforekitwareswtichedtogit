@@ -286,6 +286,42 @@ void vtkPVPluginLoader::SetFileName(const char* file)
 }
 
 //-----------------------------------------------------------------------------
+const char* vtkPVPluginLoader::GetFileName()
+{
+  return this->GetPluginInfo()->GetFileName();
+}
+
+//-----------------------------------------------------------------------------
+const char* vtkPVPluginLoader::GetPluginName()
+{
+  return this->GetPluginInfo()->GetPluginName();
+}
+
+//-----------------------------------------------------------------------------
+const char* vtkPVPluginLoader::GetPluginVersion()
+{
+  return this->GetPluginInfo()->GetPluginVersion();
+}
+
+//-----------------------------------------------------------------------------
+int vtkPVPluginLoader::GetLoaded()
+{
+  return this->GetPluginInfo()->GetLoaded();
+}
+
+//-----------------------------------------------------------------------------
+const char* vtkPVPluginLoader::GetError()
+{
+  return this->GetPluginInfo()->GetError();
+}
+
+//-----------------------------------------------------------------------------
+const char* vtkPVPluginLoader::GetSearchPaths()
+{
+  return this->GetPluginInfo()->GetSearchPaths();
+}
+
+//-----------------------------------------------------------------------------
 void vtkPVPluginLoader::PrintSelf(ostream& os, vtkIndent indent)
 {
   vtkIndent i2 = indent.GetNextIndent();
