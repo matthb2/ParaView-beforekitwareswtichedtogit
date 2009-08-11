@@ -42,6 +42,7 @@ vtkCxxSetObjectMacro(vtkActor,Property,vtkProperty);
 // Needed when we don't use the vtkStandardNewMacro.
 vtkInstantiatorNewMacro(vtkActor);
 
+
 // Creates an actor with the following defaults: origin(0,0,0) 
 // position=(0,0,0) scale=(1,1,1) visibility=1 pickable=1 dragable=1
 // orientation=(0,0,0). No user defined matrix and no texture map.
