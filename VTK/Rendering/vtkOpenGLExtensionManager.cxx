@@ -483,8 +483,11 @@ void vtkOpenGLExtensionManager::ReadOpenGLExtensions()
 
   const char *version =
     reinterpret_cast<const char *>(glGetString(GL_VERSION));
-  int driverMajor, driverMinor;
+  int driverMajor = 0, driverMinor = 0;
+  if (version)
+    {
   sscanf(version, "%d.%d", &driverMajor, &driverMinor);
+    }
 
   version_extensions = vtkgl::GLVersionExtensionsString();
   endpos = 0;
