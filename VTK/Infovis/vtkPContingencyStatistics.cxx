@@ -19,7 +19,6 @@
 #include "vtkToolkits.h"
 
 #include "vtkPContingencyStatistics.h"
-#include "vtkBivariateStatisticsAlgorithmPrivate.h"
 
 #include "vtkCommunicator.h"
 #include "vtkIdTypeArray.h"
