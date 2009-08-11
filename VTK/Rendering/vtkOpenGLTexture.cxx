@@ -542,7 +542,7 @@ void vtkOpenGLTexture::Load(vtkRenderer *ren)
 }
 
 // ----------------------------------------------------------------------------
-void vtkOpenGLTexture::PostRender(vtkRenderer *ren)
+void vtkOpenGLTexture::PostRender(vtkRenderer *vtkNotUsed(ren))
 {
   if (this->GetInput() && this->PremultipliedAlpha)
     {
