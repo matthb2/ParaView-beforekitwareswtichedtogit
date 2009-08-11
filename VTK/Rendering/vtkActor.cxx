@@ -192,6 +192,10 @@ int vtkActor::RenderOpaqueGeometry(vtkViewport *vp)
       }
     this->Render(ren,this->Mapper);
     this->Property->PostRender(this, ren);
+    if (this->Texture)
+      {
+      this->Texture->PostRender(ren);
+      }
     this->EstimatedRenderTime += this->Mapper->GetTimeToDraw();
     renderedSomething = 1;
     }

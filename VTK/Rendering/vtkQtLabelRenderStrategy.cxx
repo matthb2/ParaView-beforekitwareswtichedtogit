@@ -79,6 +79,7 @@ vtkQtLabelRenderStrategy::vtkQtLabelRenderStrategy()
 
   this->Mapper->SetInputConnection(this->TextureMapToPlane->GetOutputPort());
   this->Texture->SetInputConnection(this->QImageToImage->GetOutputPort());
+  this->Texture->PremultipliedAlphaOn();
   this->Actor->SetTexture(this->Texture);
   this->Actor->SetMapper(this->Mapper);
 }
