@@ -20,6 +20,7 @@
 
 #include "vtkTreeAreaView.h"
 
+#include "vtkActor2D.h"
 #include "vtkAlgorithmOutput.h"
 #include "vtkCamera.h"
 #include "vtkDirectedGraph.h"
@@ -30,6 +31,7 @@
 #include "vtkRenderWindow.h"
 #include "vtkRenderWindowInteractor.h"
 #include "vtkSelection.h"
+#include "vtkSmartPointer.h"
 #include "vtkTextProperty.h"
 #include "vtkTree.h"
 #include "vtkAreaLayoutStrategy.h"
@@ -348,6 +350,18 @@ void vtkTreeAreaView::SetBundlingStrength(double p)
 double vtkTreeAreaView::GetBundlingStrength()
 {
   return this->GetTreeAreaRepresentation()->GetGraphBundlingStrength();
+}
+
+//----------------------------------------------------------------------------
+void vtkTreeAreaView::SetEdgeScalarBarVisibility(bool b)
+{
+  this->GetTreeAreaRepresentation()->SetEdgeScalarBarVisibility(b);
+}
+
+//----------------------------------------------------------------------------
+bool vtkTreeAreaView::GetEdgeScalarBarVisibility()
+{
+  return this->GetTreeAreaRepresentation()->GetEdgeScalarBarVisibility();
 }
 
 //----------------------------------------------------------------------------
