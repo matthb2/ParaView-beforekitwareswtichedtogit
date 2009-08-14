@@ -57,7 +57,8 @@ vtkPassArrays::~vtkPassArrays()
 
 void vtkPassArrays::AddArray(int fieldType, const char* name)
 {
-  this->Implementation->Arrays.push_back(vtksys_stl::make_pair(fieldType, name));
+  vtkStdString n=name;
+  this->Implementation->Arrays.push_back(vtksys_stl::make_pair(fieldType,n));
 }
 
 void vtkPassArrays::ClearArrays()
