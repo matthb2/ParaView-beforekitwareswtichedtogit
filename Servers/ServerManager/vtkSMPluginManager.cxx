@@ -100,6 +100,12 @@ vtkPVPluginInformation* vtkSMPluginManager::LoadPlugin(const char* filename)
     {
     this->ProcessPluginInfo(loader);
     }
+  else if(!localInfo->GetError())
+    {
+    vtkstd::string loadError = filename;
+    loadError.append(", is not a Paraview server manager plugin!");
+    localInfo->SetError(loadError.c_str());
+    }
     
   this->UpdatePluginMap(serverURI, localInfo);   
   this->InvokeEvent(vtkSMPluginManager::LoadPluginInvoked, localInfo);
@@ -147,6 +153,12 @@ vtkPVPluginInformation* vtkSMPluginManager::LoadPlugin(
     if(localInfo->GetLoaded())
       {
       this->ProcessPluginInfo(pxy);
+      }
+    else if(!localInfo->GetError())
+      {
+      vtkstd::string loadError = filename;
+      loadError.append(", is not a Paraview server manager plugin!");
+      localInfo->SetError(loadError.c_str());
       }
     this->UpdatePluginMap(serverURI, localInfo);
     pxy->UnRegister(NULL);
