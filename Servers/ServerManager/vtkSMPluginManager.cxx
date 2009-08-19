@@ -74,7 +74,7 @@ vtkSMPluginManager::~vtkSMPluginManager()
 }
 
 //-----------------------------------------------------------------------------
-vtkPVPluginInformation* vtkSMPluginManager::LoadPlugin(const char* filename)
+vtkPVPluginInformation* vtkSMPluginManager::LoadLocalPlugin(const char* filename)
 {
   if(!filename || !(*filename))
     {
