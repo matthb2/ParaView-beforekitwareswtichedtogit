@@ -64,6 +64,16 @@ void vtkPVPluginInformation::ClearInfo()
 }
 
 //----------------------------------------------------------------------------
+void vtkPVPluginInformation::AddInformation(vtkPVInformation *info)
+{
+  if(!info)
+    {
+    return;
+    }
+  this->DeepCopy(vtkPVPluginInformation::SafeDownCast(info));
+}
+
+//----------------------------------------------------------------------------
 void vtkPVPluginInformation::DeepCopy(vtkPVPluginInformation *info)
 {
   if(!info)
