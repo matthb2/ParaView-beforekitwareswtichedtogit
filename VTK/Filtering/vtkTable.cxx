@@ -180,6 +180,15 @@ vtkIdType vtkTable::GetNumberOfRows()
 }
 
 //----------------------------------------------------------------------------
+void vtkTable::SetNumberOfRows( vtkIdType n )
+{
+  if( this->RowData )
+    {
+      this->RowData->SetNumberOfTuples( n );
+    }
+}
+
+//----------------------------------------------------------------------------
 vtkVariantArray* vtkTable::GetRow(vtkIdType row)
 {
   vtkIdType ncol = this->GetNumberOfColumns();
