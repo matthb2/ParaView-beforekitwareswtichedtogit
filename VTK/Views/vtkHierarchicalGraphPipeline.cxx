@@ -243,7 +243,7 @@ void vtkHierarchicalGraphPipeline::ApplyViewTheme(vtkViewTheme* theme)
 
   this->ApplyColors->SetCellLookupTable(theme->GetCellLookupTable());
 
-  this->TextProperty->SetColor(theme->GetEdgeLabelColor());
+  this->TextProperty->ShallowCopy(theme->GetCellTextProperty());
   this->Actor->GetProperty()->SetLineWidth(theme->GetLineWidth());
 }
 
