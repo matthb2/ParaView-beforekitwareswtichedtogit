@@ -838,6 +838,16 @@ int vtkOrientedGlyphContourRepresentation::HasTranslucentPolygonalGeometry()
   return result;
 }
 
+//----------------------------------------------------------------------------
+void vtkOrientedGlyphContourRepresentation::SetLineColor(
+  double r, double g, double b)
+{
+  if(this->GetLinesProperty())
+    {
+    this->GetLinesProperty()->SetColor(r, g, b);
+    }
+}
+    
 //-----------------------------------------------------------------------------
 void vtkOrientedGlyphContourRepresentation::PrintSelf(ostream& os,
                                                       vtkIndent indent)
