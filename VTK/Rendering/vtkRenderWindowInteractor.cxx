@@ -108,6 +108,8 @@ vtkRenderWindowInteractor::vtkRenderWindowInteractor()
   this->TimerDuration = 10;
   this->ObserverMediator = 0;
   this->HandleEventLoop = false;
+  
+  this->UseTDx=false; // 3DConnexion device.
 }
 
 //----------------------------------------------------------------------
