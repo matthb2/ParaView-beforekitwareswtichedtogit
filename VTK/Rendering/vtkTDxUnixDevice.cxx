@@ -223,4 +223,7 @@ void vtkTDxUnixDevice::SetSensitivity(double sensitivity)
 void vtkTDxUnixDevice::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os,indent);
+  
+  os << indent << "RotationScale: " << this->RotationScale << endl;
+  os << indent << "TranslationScale: " << this->TranslationScale << endl;
 }
