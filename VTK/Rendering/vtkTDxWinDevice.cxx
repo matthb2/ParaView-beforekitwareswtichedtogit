@@ -28,6 +28,7 @@ vtkCxxRevisionMacro(vtkTDxWinDevice,"$Revision$");
 vtkStandardNewMacro(vtkTDxWinDevice);
 
 #include "atlbase.h" // for CComPtr<> (a smart pointer)
+#include <Objbase.h> // for CoInitializeEx
 
 // for ISensor and IKeyboard
 #import "progid:TDxInput.Device.1" no_namespace
