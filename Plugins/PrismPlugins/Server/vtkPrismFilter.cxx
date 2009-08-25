@@ -381,7 +381,7 @@ int vtkPrismFilter::RequestGeometryData(
             outPD->CopyAllocate( inPD,numCells );
 
             int abort=0;
-            double funcArgs[3]  = { 0.0, 0.0, 0.0 };
+            //double funcArgs[3]  = { 0.0, 0.0, 0.0 };
             double newPt[3] = {0.0, 0.0, 0.0};
             vtkIdType progressInterval=numCells/20 + 1;
             polydata->Allocate( numCells ); 
