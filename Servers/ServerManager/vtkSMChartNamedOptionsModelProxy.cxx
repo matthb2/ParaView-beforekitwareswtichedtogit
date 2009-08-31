@@ -237,6 +237,9 @@ void vtkSMChartNamedOptionsModelProxy::SetPenColor(
   QPen pen = options->getPen();
   pen.setColor(QColor::fromRgbF(r, g, b));
   options->setPen(pen);
+  // BUG #9305. When pen color is changed, we set the same color to be the
+  // fill-color as well.
+  this->SetBrushColor(name, r, g, b);
 }
 
 //----------------------------------------------------------------------------
