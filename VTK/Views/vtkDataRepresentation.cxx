@@ -237,14 +237,14 @@ vtkAlgorithmOutput* vtkDataRepresentation::GetInternalSelectionOutputPort(
 
 //----------------------------------------------------------------------------
 void vtkDataRepresentation::Select(
-  vtkView* view, vtkSelection* selection)
+  vtkView* view, vtkSelection* selection, bool extend)
 {
   if (this->Selectable)
     {
     vtkSelection* converted = this->ConvertSelection(view, selection);
     if (converted)
       {
-      this->UpdateSelection(converted);
+      this->UpdateSelection(converted, extend);
       if (converted != selection)
         {
         converted->Delete();
@@ -261,8 +261,12 @@ vtkSelection* vtkDataRepresentation::ConvertSelection(
 }
 
 //----------------------------------------------------------------------------
-void vtkDataRepresentation::UpdateSelection(vtkSelection* selection)
+void vtkDataRepresentation::UpdateSelection(vtkSelection* selection, bool extend)
 {
+  if (extend)
+    {
+    selection->Union(this->AnnotationLinkInternal->GetCurrentSelection());
+    }
   this->AnnotationLinkInternal->SetCurrentSelection(selection);
   this->InvokeEvent(vtkCommand::SelectionChangedEvent, reinterpret_cast<void*>(selection));
 }
