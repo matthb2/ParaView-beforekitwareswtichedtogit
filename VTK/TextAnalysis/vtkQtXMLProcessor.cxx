@@ -223,6 +223,9 @@ public:
         if(value.IsInt())
           return value.ToInt();
 
+        if(value.IsNumeric())
+          return value.ToDouble();
+
         if(value.IsString())
           return value.ToString().c_str();
 
