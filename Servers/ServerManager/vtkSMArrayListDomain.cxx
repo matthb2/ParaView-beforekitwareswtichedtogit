@@ -84,7 +84,7 @@ void vtkSMArrayListDomain::AddArrays(vtkSMSourceProxy* sp,
   for (int idx = 0; idx < num; ++idx)
     {
     vtkPVArrayInformation* arrayInfo = info->GetArrayInformation(idx);
-    if ( iad->IsFieldValid(sp, outputport, info->GetArrayInformation(idx)) )
+    if ( iad->IsFieldValid(sp, outputport, info->GetArrayInformation(idx), 1) )
       {
       this->ALDInternals->PartialMap[arrayInfo->GetName()] = arrayInfo->GetIsPartial();
       int nAcceptedTypes=this->ALDInternals->DataTypes.size();
