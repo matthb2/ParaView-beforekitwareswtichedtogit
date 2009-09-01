@@ -226,6 +226,7 @@ void vtkSMAnimationCueProxy::ExecuteEvent(vtkObject* obj, unsigned long event,
   if (manip && event == vtkCommand::ModifiedEvent)
     {
     this->Modified();
+    this->MarkConsumersAsDirty(this);
     }
 }
 
@@ -329,6 +330,16 @@ void vtkSMAnimationCueProxy::CloneCopy(vtkSMAnimationCueProxy* src)
       vtkSMProxy::COPY_PROXY_PROPERTY_VALUES_BY_CLONING);
     }
   this->MarkAllPropertiesAsModified();
+}
+
+//----------------------------------------------------------------------------
+void vtkSMAnimationCueProxy::MarkConsumersAsDirty(vtkSMProxy* modifiedProxy)
+{
+  this->Superclass::MarkConsumersAsDirty(modifiedProxy);
+  if (this->AnimatedProxy)
+    {
+    this->AnimatedProxy->MarkDirty(modifiedProxy);
+    }
 }
 
 //----------------------------------------------------------------------------
