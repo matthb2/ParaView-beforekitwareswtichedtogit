@@ -56,6 +56,12 @@ vtkTreeLayoutStrategy::~vtkTreeLayoutStrategy()
 // Tree layout method
 void vtkTreeLayoutStrategy::Layout()
 {
+  // Do I have a graph to lay out?  Does it have any vertices?
+  if (this->Graph == NULL || this->Graph->GetNumberOfVertices() <= 0)
+  {
+    return;
+  }
+    
   vtkTree* tree = vtkTree::SafeDownCast(this->Graph);
   if (tree == NULL)
     {
