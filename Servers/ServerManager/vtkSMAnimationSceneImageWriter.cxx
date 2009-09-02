@@ -57,7 +57,7 @@ vtkSMAnimationSceneImageWriter::vtkSMAnimationSceneImageWriter()
 {
   this->Magnification = 1;
   this->ErrorCode = 0;
-  this->Quality = 1;
+  this->Quality = 2; // 0 = low, 1 = medium, 2 = high
   this->ActualSize[0] = this->ActualSize[1] = 0;
 
   this->MovieWriter = 0;
