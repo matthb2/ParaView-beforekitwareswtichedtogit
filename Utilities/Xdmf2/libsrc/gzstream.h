@@ -36,7 +36,11 @@
 // standard C++ with new header file names and std:: namespace
 #include <iostream>
 #include <fstream>
+#ifdef XDMF_USE_VTK_ZLIB
+#include "vtkzlib/zlib.h"
+#else
 #include <zlib.h>
+#endif
 
 #ifdef GZSTREAM_NAMESPACE
 namespace GZSTREAM_NAMESPACE {
