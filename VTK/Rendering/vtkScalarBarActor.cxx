@@ -670,6 +670,11 @@ void vtkScalarBarActor::PrintSelf(ostream& os, vtkIndent indent)
     {
     os << indent << "TextPosition: SucceedScalarBar\n";
     }
+
+  os << indent << "MaximumWidthInPixels: " 
+     << this->MaximumWidthInPixels << endl;
+  os << indent << "MaximumHeightInPixels: " 
+     << this->MaximumHeightInPixels << endl;
 }
 
 //----------------------------------------------------------------------------
