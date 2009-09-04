@@ -776,8 +776,8 @@ int vtkRenderWindow::CheckAbortStatus()
 {
   if (!this->InAbortCheck)
     {
-    // Only check for abort at most one every second.
-    if (vtkTimerLog::GetUniversalTime() - this->AbortCheckTime > 1.0)
+    // Only check for abort at most 5 times per second.
+    if (vtkTimerLog::GetUniversalTime() - this->AbortCheckTime > 0.2)
       {
       this->InAbortCheck = 1;
       this->InvokeEvent(vtkCommand::AbortCheckEvent,NULL);
