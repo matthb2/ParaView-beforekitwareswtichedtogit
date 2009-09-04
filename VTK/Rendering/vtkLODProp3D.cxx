@@ -281,8 +281,7 @@ double vtkLODProp3D::GetLODEstimatedRenderTime( int id )
 
 double vtkLODProp3D::GetLODIndexEstimatedRenderTime( int index )
 {
-  if ( this->SelectedLODIndex < 0 ||
-       this->SelectedLODIndex >= this->NumberOfEntries )
+  if ( index < 0 || index >= this->NumberOfEntries )
     {
     return 0;
     }  
