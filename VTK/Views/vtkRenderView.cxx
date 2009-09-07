@@ -526,7 +526,7 @@ void vtkRenderView::UpdateHoverWidgetState()
   this->RenderWindow->MakeCurrent();
   if (this->RenderWindow->IsCurrent())
     {
-    if (!this->Interacting && static_cast<bool>(this->HoverWidget->GetEnabled()) != this->DisplayHoverText)
+    if (!this->Interacting && (this->HoverWidget->GetEnabled() ? true : false) != this->DisplayHoverText)
       {
       this->HoverWidget->SetEnabled(this->DisplayHoverText);
       }
