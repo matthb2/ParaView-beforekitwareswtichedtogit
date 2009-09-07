@@ -60,6 +60,7 @@ vtkHierarchicalGraphPipeline::vtkHierarchicalGraphPipeline()
 
   this->ColorArrayNameInternal = 0;
   this->LabelArrayNameInternal = 0;
+  this->HoverArrayName = 0;
 
   /*
   <graphviz>
@@ -101,6 +102,7 @@ vtkHierarchicalGraphPipeline::~vtkHierarchicalGraphPipeline()
 {
   this->SetColorArrayNameInternal(0);
   this->SetLabelArrayNameInternal(0);
+  this->SetHoverArrayName(0);
   this->ApplyColors->Delete();
   this->Bundle->Delete();
   this->GraphToPoly->Delete();

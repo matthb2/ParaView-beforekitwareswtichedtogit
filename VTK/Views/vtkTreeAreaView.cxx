@@ -43,6 +43,7 @@ vtkTreeAreaView::vtkTreeAreaView()
 {
   this->SetInteractionModeTo2D();
   this->ReuseSingleRepresentationOn();
+  this->RenderOnMouseMoveOn();
 }
 
 //----------------------------------------------------------------------------
