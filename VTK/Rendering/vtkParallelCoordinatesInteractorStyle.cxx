@@ -390,6 +390,10 @@ void vtkParallelCoordinatesInteractorStyle::PrintSelf(ostream& os, vtkIndent ind
   os << indent << "Cursor Start Position: ("
      << this->CursorStartPosition[0] << ", "
      << this->CursorStartPosition[1] << ")" << endl;
+
+  os << indent << "Cursor Last Position: ("
+     << this->CursorLastPosition[0] << ", "
+     << this->CursorLastPosition[1] << ")" << endl;
 }
 void vtkParallelCoordinatesInteractorStyle::GetCursorStartPosition(vtkViewport *viewport, double pos[2])
 {
