@@ -515,7 +515,6 @@ void vtkRenderView::ResetCameraClippingRange()
 void vtkRenderView::SetDisplayHoverText(bool b)
 {
   this->Balloon->SetVisibility(b);
-  this->HoverWidget->SetEnabled(b);
   this->DisplayHoverText = b;
 }
 
