@@ -204,6 +204,7 @@ void vtkInteractorStyleSwitch::SetCurrentStyle()
   if (this->CurrentStyle)
     {
     this->CurrentStyle->SetInteractor(this->Interactor);
+    this->CurrentStyle->SetTDxStyle(this->TDxStyle);
     }
 }
 
