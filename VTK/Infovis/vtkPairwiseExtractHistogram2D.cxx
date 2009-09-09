@@ -77,6 +77,9 @@ vtkPairwiseExtractHistogram2D::~vtkPairwiseExtractHistogram2D()
 void vtkPairwiseExtractHistogram2D::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os,indent);
+  os << "NumberOfBins: " << this->NumberOfBins[0] << ", " << this->NumberOfBins[1] << endl;
+  os << "CustomColumnRangeIndex: " << this->CustomColumnRangeIndex << endl;
+  os << "ScalarType: " << this->ScalarType << endl;
 }
 //------------------------------------------------------------------------------
 void vtkPairwiseExtractHistogram2D::Learn(vtkTable *inData, 

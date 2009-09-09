@@ -56,6 +56,7 @@ vtkPComputeHistogram2DOutliers::~vtkPComputeHistogram2DOutliers()
 void vtkPComputeHistogram2DOutliers::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os,indent);
+  os << indent << "Controller: " << this->Controller << endl;
 }
 //------------------------------------------------------------------------------
 int vtkPComputeHistogram2DOutliers::RequestData(

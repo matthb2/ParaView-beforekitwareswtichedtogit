@@ -60,6 +60,7 @@ vtkPPairwiseExtractHistogram2D::~vtkPPairwiseExtractHistogram2D()
 void vtkPPairwiseExtractHistogram2D::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os,indent);
+  os << indent << "Controller: " << this->Controller << endl;
 }
 
 vtkExtractHistogram2D* vtkPPairwiseExtractHistogram2D::NewHistogramFilter()

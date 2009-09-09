@@ -58,6 +58,11 @@ vtkBivariateLinearTableThreshold::~vtkBivariateLinearTableThreshold()
 void vtkBivariateLinearTableThreshold::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os,indent);
+  os << "ColumnRanges: " << this->ColumnRanges[0] << " " << this->ColumnRanges[1] << endl;
+  os << "UseNormalizedDistance: " << this->UseNormalizedDistance << endl;
+  os << "Inclusive: " << this->Inclusive << endl;
+  os << "DistanceThreshold: " << this->DistanceThreshold << endl;
+  os << "LinearThresholdType: " << this->LinearThresholdType << endl;
 }
 
 void vtkBivariateLinearTableThreshold::Initialize()

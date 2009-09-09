@@ -253,6 +253,7 @@ void vtkSCurveSpline::DeepCopy(vtkSpline *s)
 void vtkSCurveSpline::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os,indent);
+  os << "NodeWeight: " << this->NodeWeight << endl;
 }
 
 

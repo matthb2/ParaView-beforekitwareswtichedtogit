@@ -49,6 +49,7 @@ vtkPBivariateLinearTableThreshold::~vtkPBivariateLinearTableThreshold()
 void vtkPBivariateLinearTableThreshold::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os,indent);
+  os << indent << "Controller: " << this->Controller << endl;
 }
 
 int vtkPBivariateLinearTableThreshold::RequestData(vtkInformation* request ,

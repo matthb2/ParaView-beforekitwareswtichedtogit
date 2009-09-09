@@ -218,6 +218,7 @@ int vtkComputeHistogram2DOutliers::FillOutputPortInformation(int port,
 void vtkComputeHistogram2DOutliers::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os,indent);
+  os << "PreferredNumberOfOutliers: " << this->PreferredNumberOfOutliers << endl;
 }
 //------------------------------------------------------------------------------
 // Tries to find the right number of outliers.  Not the smartest thing
