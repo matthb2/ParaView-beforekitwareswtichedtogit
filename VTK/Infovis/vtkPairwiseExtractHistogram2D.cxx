@@ -387,6 +387,9 @@ int vtkPairwiseExtractHistogram2D::GetMaximumBinCount(int idx)
 //------------------------------------------------------------------------------
 int vtkPairwiseExtractHistogram2D::GetMaximumBinCount()
 {
+  if( !this->GetInputDataObject(0,0) )
+    return -1;
+
   if (this->BuildTime < this->GetMTime() || 
       this->BuildTime < this->GetInputDataObject(0,0)->GetMTime())
     this->Update();
