@@ -855,6 +855,16 @@ void vtkInteractorStyle::PrintSelf(ostream& os, vtkIndent indent)
   os << indent << "MouseWheelMotionFactor: " << this->MouseWheelMotionFactor << endl;
 
   os << indent << "Timer Duration: " << this->TimerDuration << endl;
+  
+  os << indent << "TDxStyle: ";
+  if(this->TDxStyle==0)
+    {
+    os << "(none)" << endl;
+    }
+  else
+    {
+    this->TDxStyle->PrintSelf(os,indent.GetNextIndent());
+    }
 }
 
 // ----------------------------------------------------------------------------
