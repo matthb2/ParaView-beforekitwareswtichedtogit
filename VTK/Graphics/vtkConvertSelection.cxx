@@ -231,7 +231,7 @@ int vtkConvertSelection::ConvertToBlockSelection(
   vtkstd::set<unsigned int> indices;
   for (unsigned int n = 0; n < input->GetNumberOfNodes(); ++n)
     {
-    vtkSelectionNode* inputNode = input->GetNode(n);
+    vtkSmartPointer<vtkSelectionNode> inputNode = input->GetNode(n);
     if (inputNode->GetContentType() == vtkSelectionNode::GLOBALIDS)
       {
       // global id selection does not have COMPOSITE_INDEX() key, so we convert
