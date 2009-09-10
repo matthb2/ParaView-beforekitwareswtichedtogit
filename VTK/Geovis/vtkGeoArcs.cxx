@@ -178,4 +178,3 @@ void vtkGeoArcs::PrintSelf(ostream& os, vtkIndent indent)
   os << indent << "ExplodeFactor: " << this->ExplodeFactor << endl;
   os << indent << "NumberOfSubdivisions: " << this->NumberOfSubdivisions << endl;
 }
-
