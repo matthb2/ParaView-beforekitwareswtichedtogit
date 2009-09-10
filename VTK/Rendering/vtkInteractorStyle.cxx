@@ -250,11 +250,11 @@ void vtkInteractorStyle::SetInteractor(vtkRenderWindowInteractor *i)
     i->AddObserver(vtkCommand::TDxMotionEvent, 
                    this->EventCallbackCommand, 
                    this->Priority);
-
+    
     i->AddObserver(vtkCommand::TDxButtonPressEvent, 
                    this->EventCallbackCommand, 
                    this->Priority);
-
+    
     i->AddObserver(vtkCommand::TDxButtonReleaseEvent, 
                    this->EventCallbackCommand, 
                    this->Priority);
@@ -1110,4 +1110,3 @@ void vtkInteractorStyle::ProcessEvents(vtkObject* vtkNotUsed(object),
       break;
     }
 }
-
