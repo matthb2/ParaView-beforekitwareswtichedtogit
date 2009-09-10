@@ -903,7 +903,8 @@ void vtkPVGeometryFilter::ImageDataExecute(vtkImageData *input,
   // Otherwise, let OutlineSource do all the work
   //
   
-  if (output->GetUpdatePiece() == 0 || !doCommunicate)
+  if (ext[1] >= ext[0] && ext[3] >= ext[2] && ext[5] >= ext[4] &&
+    (output->GetUpdatePiece() == 0 || !doCommunicate))
     {
     spacing = input->GetSpacing();
     origin = input->GetOrigin();
