@@ -128,6 +128,32 @@ unsigned long int vtkCameraActor::GetMTime()
 }
 
 // ----------------------------------------------------------------------------
+// Description:
+// Get property of the internal actor.
+vtkProperty *vtkCameraActor::GetProperty()
+{
+  if(this->FrustumActor==0)
+    {
+    this->FrustumActor=vtkActor::New();
+    }
+  
+  return this->FrustumActor->GetProperty();
+}
+  
+// ----------------------------------------------------------------------------
+// Description:
+// Set property of the internal actor.
+void vtkCameraActor::SetProperty(vtkProperty *p)
+{
+  if(this->FrustumActor==0)
+    {
+    this->FrustumActor=vtkActor::New();
+    }
+  
+  this->FrustumActor->SetProperty(p);
+}
+
+// ----------------------------------------------------------------------------
 void vtkCameraActor::UpdateViewProps()
 {
   if(this->Camera==0)
