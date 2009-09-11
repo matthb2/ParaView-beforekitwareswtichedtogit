@@ -2078,7 +2078,7 @@ void *vtkImageData::GetArrayPointerForExtent(vtkDataArray* array,
 void *vtkImageData::GetArrayPointer(vtkDataArray* array, int coordinate[3])
 {
   vtkIdType incs[3];
-  int idx;
+  vtkIdType idx;
 
   if (array == NULL)
     {
