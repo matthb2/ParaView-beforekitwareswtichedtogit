@@ -77,6 +77,7 @@ void vtkTreeLayoutStrategy::Layout()
     if (tree->GetNumberOfVertices() != this->Graph->GetNumberOfVertices())
       {
       vtkErrorMacro("Tree layout only works on connected graphs");
+      tree->Delete();
       return;
       }
 #else

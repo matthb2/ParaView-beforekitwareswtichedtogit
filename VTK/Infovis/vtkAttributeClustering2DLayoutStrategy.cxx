@@ -324,7 +324,7 @@ void vtkAttributeClustering2DLayoutStrategy::Initialize()
 // Simple graph layout method
 void vtkAttributeClustering2DLayoutStrategy::Layout()
 {
-  // Do I have a graph to layout
+  // Do I have a graph to layout?
   if (this->Graph == NULL)
     {
     vtkErrorMacro("Graph Layout called with Graph==NULL, call SetGraph(g) first");
@@ -332,6 +332,13 @@ void vtkAttributeClustering2DLayoutStrategy::Layout()
     return;
     }
     
+  // Is the layout already considered complete?
+  if (this->IsLayoutComplete())
+  {
+      vtkErrorMacro("Graph Layout already considered complete");
+      return;
+  }
+
   // Set my graph as input into the density grid
   this->DensityGrid->SetInput(this->Graph);
   
