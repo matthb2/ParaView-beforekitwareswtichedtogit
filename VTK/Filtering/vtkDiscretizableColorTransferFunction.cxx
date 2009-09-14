@@ -12,17 +12,17 @@
      PURPOSE.  See the above copyright notice for more information.
 
 =========================================================================*/
-#include "vtkPVLookupTable.h"
+#include "vtkDiscretizableColorTransferFunction.h"
 
 #include "vtkObjectFactory.h"
 #include "vtkLookupTable.h"
 
 #include <vtkstd/vector>
 
-vtkStandardNewMacro(vtkPVLookupTable);
-vtkCxxRevisionMacro(vtkPVLookupTable, "$Revision$");
+vtkStandardNewMacro(vtkDiscretizableColorTransferFunction);
+vtkCxxRevisionMacro(vtkDiscretizableColorTransferFunction, "$Revision$");
 //-----------------------------------------------------------------------------
-vtkPVLookupTable::vtkPVLookupTable()
+vtkDiscretizableColorTransferFunction::vtkDiscretizableColorTransferFunction()
 {
   this->LookupTable = vtkLookupTable::New();
 
@@ -34,20 +34,20 @@ vtkPVLookupTable::vtkPVLookupTable()
 }
 
 //-----------------------------------------------------------------------------
-vtkPVLookupTable::~vtkPVLookupTable()
+vtkDiscretizableColorTransferFunction::~vtkDiscretizableColorTransferFunction()
 {
   this->LookupTable->Delete();
   delete [] this->Data;
 }
 
 //-----------------------------------------------------------------------------
-struct vtkPVLookupTableNode
+struct vtkDiscretizableColorTransferFunctionNode
 {
   double Value[6];
 };
 
 //-----------------------------------------------------------------------------
-void vtkPVLookupTable::SetUseLogScale(int useLogScale)
+void vtkDiscretizableColorTransferFunction::SetUseLogScale(int useLogScale)
 {
   if(this->UseLogScale != useLogScale)
     {
@@ -68,7 +68,7 @@ void vtkPVLookupTable::SetUseLogScale(int useLogScale)
 }
 
 //-----------------------------------------------------------------------------
-void vtkPVLookupTable::SetNumberOfValues(vtkIdType number)
+void vtkDiscretizableColorTransferFunction::SetNumberOfValues(vtkIdType number)
 {
   this->NumberOfValues = number;
   this->LookupTable->SetNumberOfTableValues(number);
@@ -76,7 +76,7 @@ void vtkPVLookupTable::SetNumberOfValues(vtkIdType number)
 }
 
 //-----------------------------------------------------------------------------
-void vtkPVLookupTable::Build()
+void vtkDiscretizableColorTransferFunction::Build()
 {
   this->Superclass::Build();
 
@@ -124,14 +124,14 @@ void vtkPVLookupTable::Build()
 }
 
 //-----------------------------------------------------------------------------
-void vtkPVLookupTable::SetAlpha(double alpha)
+void vtkDiscretizableColorTransferFunction::SetAlpha(double alpha)
 {
   this->LookupTable->SetAlpha(alpha);
   this->Superclass::SetAlpha(alpha);
 }
 
 //-----------------------------------------------------------------------------
-unsigned char* vtkPVLookupTable::MapValue(double v)
+unsigned char* vtkDiscretizableColorTransferFunction::MapValue(double v)
 {
   this->Build();
   if (this->Discretize)
@@ -143,7 +143,7 @@ unsigned char* vtkPVLookupTable::MapValue(double v)
 }
 
 //-----------------------------------------------------------------------------
-void vtkPVLookupTable::GetColor(double v, double rgb[3])
+void vtkDiscretizableColorTransferFunction::GetColor(double v, double rgb[3])
 {
   this->Build();
   if (this->Discretize)
@@ -156,7 +156,7 @@ void vtkPVLookupTable::GetColor(double v, double rgb[3])
 }
 
 //-----------------------------------------------------------------------------
-vtkUnsignedCharArray* vtkPVLookupTable::MapScalars(vtkDataArray *scalars, 
+vtkUnsignedCharArray* vtkDiscretizableColorTransferFunction::MapScalars(vtkDataArray *scalars, 
   int colorMode, int component)
 {
   this->Build();
@@ -169,7 +169,7 @@ vtkUnsignedCharArray* vtkPVLookupTable::MapScalars(vtkDataArray *scalars,
 }
 
 //-----------------------------------------------------------------------------
-double* vtkPVLookupTable::GetRGBPoints()
+double* vtkDiscretizableColorTransferFunction::GetRGBPoints()
 {
   delete [] this->Data;
   this->Data = 0;
@@ -192,7 +192,7 @@ double* vtkPVLookupTable::GetRGBPoints()
 }
 
 //-----------------------------------------------------------------------------
-void vtkPVLookupTable::PrintSelf(ostream& os, vtkIndent indent)
+void vtkDiscretizableColorTransferFunction::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os, indent);
   os << indent << "Discretize: " << this->Discretize << endl;

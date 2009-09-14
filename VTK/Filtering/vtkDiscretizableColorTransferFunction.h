@@ -12,7 +12,7 @@
      PURPOSE.  See the above copyright notice for more information.
 
 =========================================================================*/
-// .NAME vtkPVLookupTable - a combination of vtkColorTransferFunction and
+// .NAME vtkDiscretizableColorTransferFunction - a combination of vtkColorTransferFunction and
 // vtkLookupTable.
 // .SECTION Description
 // This is a cross between a vtkColorTransferFunction and a vtkLookupTable
@@ -21,19 +21,19 @@
 // in the ColorTransferFunction to ensure that the discrete and non-discrete
 // version match up.
 
-#ifndef __vtkPVLookupTable_h
-#define __vtkPVLookupTable_h
+#ifndef __vtkDiscretizableColorTransferFunction_h
+#define __vtkDiscretizableColorTransferFunction_h
 
 #include "vtkColorTransferFunction.h"
 
 class vtkLookupTable;
 class vtkColorTransferFunction;
 
-class VTK_EXPORT vtkPVLookupTable : public vtkColorTransferFunction
+class VTK_FILTERING_EXPORT vtkDiscretizableColorTransferFunction : public vtkColorTransferFunction
 {
 public:
-  static vtkPVLookupTable* New();
-  vtkTypeRevisionMacro(vtkPVLookupTable, vtkColorTransferFunction);
+  static vtkDiscretizableColorTransferFunction* New();
+  vtkTypeRevisionMacro(vtkDiscretizableColorTransferFunction, vtkColorTransferFunction);
   void PrintSelf(ostream& os, vtkIndent indent);
   
   // Description:
@@ -107,8 +107,8 @@ public:
     { return this->UseLogScale; }
 
 protected:
-  vtkPVLookupTable();
-  ~vtkPVLookupTable();
+  vtkDiscretizableColorTransferFunction();
+  ~vtkDiscretizableColorTransferFunction();
 
   int Discretize;
   int UseLogScale;
@@ -118,8 +118,8 @@ protected:
 
   vtkTimeStamp BuildTime;
 private:
-  vtkPVLookupTable(const vtkPVLookupTable&); // Not implemented.
-  void operator=(const vtkPVLookupTable&); // Not implemented.
+  vtkDiscretizableColorTransferFunction(const vtkDiscretizableColorTransferFunction&); // Not implemented.
+  void operator=(const vtkDiscretizableColorTransferFunction&); // Not implemented.
 
   // Pointer used by GetRGBPoints().
   double* Data;
