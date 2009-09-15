@@ -832,6 +832,7 @@ double vtkPrismFilter::GetSESAMEContourValue(int i)
     return this->Internal->Reader->GetContourValue(i);
 }
 
+
 double* vtkPrismFilter::GetSESAMEContourValues()
 {
     return this->Internal->Reader->GetContourValues();

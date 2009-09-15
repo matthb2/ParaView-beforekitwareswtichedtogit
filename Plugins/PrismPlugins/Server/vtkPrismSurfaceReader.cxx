@@ -1046,7 +1046,6 @@ int vtkPrismSurfaceReader::RequestData(
 
             this->Internal->ContourFilter->SetInputArrayToProcess(
                 0,0,0,vtkDataObject::FIELD_ASSOCIATION_POINTS,cArray->GetName());
-            this->Internal->ContourFilter->GenerateValues(this->Internal->NumberOfContours,cArray->GetRange());
             this->Internal->ContourFilter->Update();
             contourOutput->ShallowCopy(this->Internal->ContourFilter->GetOutput());
 
