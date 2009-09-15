@@ -14,16 +14,17 @@
 =========================================================================*/
 #include "vtkSMScatterPlotViewProxy.h"
 
+#include "vtkEventForwarderCommand.h"
 #include "vtkObjectFactory.h"
 #include "vtkProcessModule.h"
 #include "vtkPVServerInformation.h"
+#include "vtkSmartPointer.h"
 #include "vtkSMInputProperty.h"
 #include "vtkSMIntVectorProperty.h"
 #include "vtkSMProxyManager.h"
 #include "vtkSMRenderViewProxy.h"
 #include "vtkSMRepresentationProxy.h"
 #include "vtkSMSourceProxy.h"
-#include "vtkEventForwarderCommand.h"
 
 #include <vtksys/ios/sstream>
 #include "vtkClientServerStream.h"
@@ -164,6 +165,19 @@ vtkSMRepresentationProxy* vtkSMScatterPlotViewProxy::CreateDefaultRepresentation
   if (sproxy)
     {
     sproxy->UpdatePipeline(this->GetViewUpdateTime());
+    }
+
+  // if the user gave a default representation, use it.
+  if (this->DefaultRepresentationName)
+    {
+    vtkSmartPointer<vtkSMProxy> p;
+    p.TakeReference(pxm->NewProxy("representations", this->DefaultRepresentationName));
+    vtkSMRepresentationProxy* repr = vtkSMRepresentationProxy::SafeDownCast(p);
+    if (repr)
+      {
+      repr->Register(this);
+      return repr;
+      }
     }
 
   // Choose which type of representation proxy to create.
