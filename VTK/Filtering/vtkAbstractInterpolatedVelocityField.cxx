@@ -260,8 +260,7 @@ bool vtkAbstractInterpolatedVelocityField::InterpolatePoint
 }
 
 //----------------------------------------------------------------------------
-void vtkAbstractInterpolatedVelocityField::PrintSelf
-  ( ostream & os, vtkIndent indent )
+void vtkAbstractInterpolatedVelocityField::PrintSelf( ostream & os, vtkIndent indent )
 {
   this->Superclass::PrintSelf( os, indent );
   
