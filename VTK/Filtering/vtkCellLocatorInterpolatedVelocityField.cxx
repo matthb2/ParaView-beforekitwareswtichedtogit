@@ -281,8 +281,7 @@ void vtkCellLocatorInterpolatedVelocityField::CopyParameters
 }
 
 //----------------------------------------------------------------------------
-void vtkCellLocatorInterpolatedVelocityField::PrintSelf
-  ( ostream & os, vtkIndent indent )
+void vtkCellLocatorInterpolatedVelocityField::PrintSelf( ostream & os, vtkIndent indent )
 {
   this->Superclass::PrintSelf( os, indent );
  
