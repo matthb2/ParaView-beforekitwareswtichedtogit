@@ -294,7 +294,7 @@ int vtkXdmfWriter2::RequestUpdateExtent(
 int vtkXdmfWriter2::RequestData(
   vtkInformation* request,
   vtkInformationVector** inputVector,
-  vtkInformationVector* outputVector)
+  vtkInformationVector* vtkNotUsed(outputVector))
 {
   if (this->CurrentTimeIndex == 0 && this->WriteAllTimeSteps)
     {
