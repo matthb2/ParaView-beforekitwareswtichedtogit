@@ -230,9 +230,9 @@ void vtkCellLocatorInterpolatedVelocityField::AddDataSet( vtkDataSet * dataset )
     return;
     }
 
-  // accept and register the dataset
+  // insert the dataset
   this->DataSets->push_back( dataset );
-  dataset->Register( this );
+  //dataset->Register( this );
   
   // We need to attach a valid vtkAbstractCellLocator to any vtkPointSet for
   // robust cell location as vtkPointSet::FindCell() may incur failures. For 
