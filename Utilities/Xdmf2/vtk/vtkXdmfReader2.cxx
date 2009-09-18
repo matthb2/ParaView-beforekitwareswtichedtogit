@@ -506,6 +506,36 @@ const char* vtkXdmfReader2::GetCellArrayName(int index)
 }
 
 //----------------------------------------------------------------------------
+int vtkXdmfReader2::GetNumberOfSets()
+{
+  return
+    this->XdmfDocument->GetActiveDomain()->GetSetsSelection()->
+    GetNumberOfArrays();
+}
+
+//----------------------------------------------------------------------------
+void vtkXdmfReader2::SetSetStatus(const char* arrayname, int status)
+{
+  this->XdmfDocument->GetActiveDomain()->GetSetsSelection()->
+    SetArrayStatus(arrayname, status != 0);
+  this->Modified();
+}
+
+//----------------------------------------------------------------------------
+int vtkXdmfReader2::GetSetStatus(const char* arrayname)
+{
+  return this->XdmfDocument->GetActiveDomain()->GetSetsSelection()->
+    GetArraySetting(arrayname);
+}
+
+//----------------------------------------------------------------------------
+const char* vtkXdmfReader2::GetSetName(int index)
+{
+  return this->XdmfDocument->GetActiveDomain()->GetSetsSelection()->
+    GetArrayName(index);
+}
+
+//----------------------------------------------------------------------------
 void vtkXdmfReader2::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os, indent);
