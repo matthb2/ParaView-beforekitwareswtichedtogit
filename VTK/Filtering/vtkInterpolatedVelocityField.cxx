@@ -30,8 +30,8 @@ void vtkInterpolatedVelocityField::AddDataSet( vtkDataSet * dataset )
     return;
     }
 
+  // insert the dataset (do NOT register the dataset to 'this')
   this->DataSets->push_back( dataset );
-  //dataset->Register( this );
 
   int size = dataset->GetMaxCellSize();
   if ( size > this->WeightsSize )
