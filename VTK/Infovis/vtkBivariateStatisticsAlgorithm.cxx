@@ -54,12 +54,16 @@ void vtkBivariateStatisticsAlgorithm::PrintSelf( ostream &os, vtkIndent indent )
 // ----------------------------------------------------------------------
 void vtkBivariateStatisticsAlgorithm::AddColumnPair( const char* namColX, const char* namColY )
 {
-  this->Internals->ResetBuffer();
-  this->SetColumnStatus( namColX, true );
-  this->SetColumnStatus( namColY, true );
-  this->RequestSelectedColumns();
-  
-  this->Modified();
+  if ( this->Internals->AddColumnPairToRequests( namColX, namColY ) )
+    {
+    this->Modified();
+    }
+}
+
+// ----------------------------------------------------------------------
+int vtkBivariateStatisticsAlgorithm::RequestSelectedColumns()
+{
+  return this->Internals->AddBufferEntryPairsToRequests();
 }
 
 // ----------------------------------------------------------------------
