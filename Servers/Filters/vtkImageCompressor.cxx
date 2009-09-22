@@ -32,8 +32,8 @@ vtkCxxSetObjectMacro(vtkImageCompressor, Input, vtkUnsignedCharArray);
 //-----------------------------------------------------------------------------
 vtkImageCompressor::vtkImageCompressor()
     :
-  Input(0),
   Output(0),
+  Input(0),
   LossLessMode(0),
   Configuration(0)
 {
