@@ -960,6 +960,13 @@ void vtkOrientedGlyphContourRepresentation::SetShowSelectedNodes(
     }  
 }
 
+//----------------------------------------------------------------------
+double* vtkOrientedGlyphContourRepresentation::GetBounds()
+{
+  return this->Lines->GetPoints() ? 
+         this->Lines->GetPoints()->GetBounds() : NULL;
+}
+
 //-----------------------------------------------------------------------------
 void vtkOrientedGlyphContourRepresentation::CreateSelectedNodesRepresentation()
 {
