@@ -35,8 +35,8 @@
 #include <vtkstd/set>
 #include <vtkstd/vector>
 
-// For debugging purposes, output message sizes
-#define DEBUG_PARALLEL_CONTINGENCY_STATISTICS 1
+// For debugging purposes, output message sizes and intermediate timings
+#define DEBUG_PARALLEL_CONTINGENCY_STATISTICS 0
 
 #if DEBUG_PARALLEL_CONTINGENCY_STATISTICS
 #include "vtkTimerLog.h"
