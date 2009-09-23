@@ -422,8 +422,7 @@ int vtkZlibImageCompressor::Compress()
   this->Conditioner->PreProcess(this->Input,inImage,inImageComps,inImageSize,freeInImage);
 
   // Compress
-  size_t outImageSize=
-    static_cast<size_t>(1.001*inImageSize+17);
+  uLongf outImageSize= static_cast<uLongf>(1.001*inImageSize+17);
     // zlib requires 100.1% + 16, 1 byte for strip alpha
   unsigned char *outImage=static_cast<unsigned char *>(malloc(outImageSize));
   outImage[0]=inImageComps;
