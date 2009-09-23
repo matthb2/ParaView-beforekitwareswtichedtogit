@@ -461,7 +461,9 @@ int vtkZlibImageCompressor::Decompress()
   const vtkIdType compImSize=this->Input->GetNumberOfTuples()-1;
 
   // decompress.
-  size_t decompImSize=this->Output->GetNumberOfComponents()*this->Output->GetNumberOfTuples();
+  uLongf decompImSize =
+    static_cast<uLongf>(
+      this->Output->GetNumberOfComponents()*this->Output->GetNumberOfTuples());
   unsigned char *decompIm=this->Output->GetPointer(0);
   uncompress(
     (Bytef*)decompIm,
