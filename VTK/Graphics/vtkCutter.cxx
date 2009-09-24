@@ -63,6 +63,9 @@ vtkCutter::vtkCutter(vtkImplicitFunction *cf)
   this->SynchronizedTemplatesCutter3D = vtkSynchronizedTemplatesCutter3D::New();
   this->GridSynchronizedTemplates = vtkGridSynchronizedTemplates3D::New();
   this->RectilinearSynchronizedTemplates = vtkRectilinearSynchronizedTemplates::New();
+
+  this->GetInformation()->Set(vtkAlgorithm::PRESERVES_RANGES(), 1);
+  this->GetInformation()->Set(vtkAlgorithm::PRESERVES_BOUNDS(), 1);
 }
 
 //----------------------------------------------------------------------------
