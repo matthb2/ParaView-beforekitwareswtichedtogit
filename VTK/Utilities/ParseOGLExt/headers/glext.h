@@ -31,7 +31,7 @@ extern "C" {
 /* Header file version number, required by OpenGL ABI for Linux */
 /* glext.h last updated $Date$ */
 /* Current version at http://www.opengl.org/registry/ */
-#define GL_GLEXT_VERSION 55
+#define GL_GLEXT_VERSION 56
 
 /* Function declaration macros - to move into glplatform.h */
 
@@ -4236,7 +4236,7 @@ extern "C" {
 #define GL_LUMINANCE16_SNORM              0x9019
 #define GL_LUMINANCE16_ALPHA16_SNORM      0x901A
 #define GL_INTENSITY16_SNORM              0x901B
-/* reuse GL_R_SNORM */
+/* reuse GL_RED_SNORM */
 /* reuse GL_RG_SNORM */
 /* reuse GL_RGB_SNORM */
 /* reuse GL_RGBA_SNORM */
