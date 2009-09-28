@@ -1813,6 +1813,7 @@ vtkCxxSetObjectMacro(vtkLabelHierarchy,Labels,vtkAbstractArray);
 vtkCxxSetObjectMacro(vtkLabelHierarchy,IconIndices,vtkIntArray);
 vtkCxxSetObjectMacro(vtkLabelHierarchy,Orientations,vtkDataArray);
 vtkCxxSetObjectMacro(vtkLabelHierarchy,Sizes,vtkDataArray);
+vtkCxxSetObjectMacro(vtkLabelHierarchy,BoundedSizes,vtkDataArray);
 vtkCxxSetObjectMacro(vtkLabelHierarchy,TextProperty,vtkTextProperty);
 vtkLabelHierarchy::vtkLabelHierarchy()
 {
@@ -1823,6 +1824,7 @@ vtkLabelHierarchy::vtkLabelHierarchy()
   this->IconIndices = 0;
   this->Orientations = 0;
   this->Sizes = 0;
+  this->BoundedSizes = 0;
   this->TargetLabelCount = 16;
   this->MaximumDepth = 5;
   this->TextProperty = vtkTextProperty::New();
@@ -1854,6 +1856,10 @@ vtkLabelHierarchy::~vtkLabelHierarchy()
     {
     this->Sizes->Delete();
     }
+  if ( this->BoundedSizes )
+    {
+    this->BoundedSizes->Delete();
+    }
   if ( this->TextProperty )
     {
     this->TextProperty->Delete();
@@ -1877,6 +1883,7 @@ void vtkLabelHierarchy::PrintSelf( ostream& os, vtkIndent indent )
   os << indent << "IconIndices: " << this->IconIndices << "\n";
   os << indent << "Orientations: " << this->Orientations << "\n";
   os << indent << "Sizes: " << this->Sizes << "\n";
+  os << indent << "BoundedSizes: " << this->BoundedSizes << "\n";
   os << indent << "CoincidentPoints: " << this->CoincidentPoints << "\n";
   os << indent << "CenterPts: " << this->CenterPts << "\n";
   os << indent << "TextProperty: " << this->TextProperty << "\n";

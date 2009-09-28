@@ -160,6 +160,25 @@ double vtkLabelHierarchyIterator::GetOrientation()
   return arr->GetTuple1(this->GetLabelId());
 }
 
+void vtkLabelHierarchyIterator::GetBoundedSize( double sz[2] )
+{
+  if ( ! this->GetHierarchy() )
+    {
+    sz[0] = sz[1] = 0.;
+    return;
+    }
+  vtkDataArray* boundedSizeArr = this->GetHierarchy()->GetBoundedSizes();
+  if ( ! boundedSizeArr )
+    {
+    sz[0] = sz[1] = 0.;
+    return;
+    }
+  vtkIdType lid = this->GetLabelId();
+  double* ls = boundedSizeArr->GetTuple( lid );
+  sz[0] = ls[0];
+  sz[1] = ls[1];
+}
+
 void vtkLabelHierarchyIterator::BoxNode()
 {
   if ( ! this->TraversedBounds || this->IsAtEnd() )
