@@ -360,7 +360,7 @@ int vtkXdmfReader2::RequestData(vtkInformation *, vtkInformationVector **,
 
   this->LastTimeIndex = this->ChooseTimeStep(outInfo);
 
-  vtkXdmfHeavyData dataReader(this->XdmfDocument->GetActiveDomain());
+  vtkXdmfHeavyData dataReader(this->XdmfDocument->GetActiveDomain(), this);
   dataReader.Piece = updatePiece;
   dataReader.NumberOfPieces = updateNumPieces;
   dataReader.GhostLevels = ghost_levels;
