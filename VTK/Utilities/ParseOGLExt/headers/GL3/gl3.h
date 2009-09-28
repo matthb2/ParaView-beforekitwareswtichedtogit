@@ -38,7 +38,7 @@ extern "C" {
  *
  * gl3.h last updated on $Date$
  *
- * RELEASE NOTES
+ * RELEASE NOTES - 2009/09/11
  *
  * gl3.h should be placed under a directory 'GL3' and included as
  * '<GL3/gl3.h>'.
