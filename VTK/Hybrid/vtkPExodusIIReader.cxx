@@ -576,6 +576,8 @@ int vtkPExodusIIReader::RequestData(
     this->ReaderList[reader_idx]->SetGenerateObjectIdCellArray( this->GetGenerateObjectIdCellArray() );
     this->ReaderList[reader_idx]->SetGenerateGlobalElementIdArray( this->GetGenerateGlobalElementIdArray() );
     this->ReaderList[reader_idx]->SetGenerateGlobalNodeIdArray( this->GetGenerateGlobalNodeIdArray() );
+    this->ReaderList[reader_idx]->SetGenerateImplicitElementIdArray( this->GetGenerateImplicitElementIdArray() );
+    this->ReaderList[reader_idx]->SetGenerateImplicitNodeIdArray( this->GetGenerateImplicitNodeIdArray() );
     this->ReaderList[reader_idx]->SetGenerateFileIdArray( this->GetGenerateFileIdArray() );
     this->ReaderList[reader_idx]->SetFileId( fileId );
     this->ReaderList[reader_idx]->SetApplyDisplacements( this->GetApplyDisplacements() );
