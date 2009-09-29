@@ -761,6 +761,8 @@ void vtkFileSeriesReader::UpdateMetaData()
       {
       this->AddFileName(dataFiles->GetValue(i).c_str());
       }
+
+    this->MetaFileReadTime.Modified();
     }
 }
 
