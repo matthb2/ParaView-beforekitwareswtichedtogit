@@ -2297,7 +2297,7 @@ vtkDataArray* vtkExodusIIReaderPrivate::GetCacheOrRead( vtkExodusIICacheKey key 
       {
 #ifdef VTK_USE_64BIT_IDS
         vtkstd::vector<int> tmpMap( src->GetNumberOfTuples() );
-        if ( ex_get_id_map( exoid, reinterpret_cast<ex_entity_type>( vtkExodusIIReader::NODE_MAP ), &tmpMap[0] ) < 0 )
+        if ( ex_get_id_map( exoid, static_cast<ex_entity_type>( vtkExodusIIReader::NODE_MAP ), &tmpMap[0] ) < 0 )
           {
           vtkErrorMacro( "Could not read node num map for global implicit id" );
           src->Delete();
