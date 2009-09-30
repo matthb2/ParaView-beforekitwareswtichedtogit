@@ -46,6 +46,11 @@ vtkTextProperty::vtkTextProperty()
   this->Orientation = 0.0;
 }
 
+vtkTextProperty::~vtkTextProperty()
+{
+  this->SetFontFamilyAsString(NULL);
+}
+
 //----------------------------------------------------------------------------
 void vtkTextProperty::ShallowCopy(vtkTextProperty *tprop)
 {
