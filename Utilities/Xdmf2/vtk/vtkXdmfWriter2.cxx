@@ -778,10 +778,10 @@ void vtkXdmfWriter2::WriteAtomicDataSet(vtkDataObject *dobj, XdmfGrid *grid)
     double tmp = orig[2];
     orig[2] = orig[0];
     orig[0] = tmp;
+    id->GetSpacing(spacing);
     tmp = spacing[2];
     spacing[2] = spacing[0];
     spacing[0] = tmp;
-    id->GetSpacing(spacing);
     geo->SetOrigin(orig);
     geo->SetDxDyDz(spacing);
     }
