@@ -379,7 +379,7 @@ vtkCompositeDataSet* vtkPVGeometryFilter::FillPartialArrays(
 
 //----------------------------------------------------------------------------
 int vtkPVGeometryFilter::RequestInformation(
-  vtkInformation*, vtkInformationVector** inVectors, vtkInformationVector* outputVector)
+  vtkInformation*, vtkInformationVector** vtkNotUsed(inVectors), vtkInformationVector* outputVector)
 {
   vtkInformation* outInfo = outputVector->GetInformationObject(0);
 
