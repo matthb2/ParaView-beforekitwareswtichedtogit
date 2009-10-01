@@ -389,7 +389,8 @@ int vtkH5PartReader::RequestInformation(
         }
       }
     outInfo->Set(vtkStreamingDemandDrivenPipeline::TIME_STEPS(),
-      &this->TimeStepValues[0], this->TimeStepValues.size());
+      &this->TimeStepValues[0],
+      static_cast<int>(this->TimeStepValues.size()));
     double timeRange[2];
     timeRange[0] = this->TimeStepValues.front();
     timeRange[1] = this->TimeStepValues.back();
@@ -675,7 +676,7 @@ int vtkH5PartReader::RequestData(
     vtkstd::vector<vtkstd::string> &arraylist = (*it).second;
     const char *array_name = arraylist[0].c_str();
     vtkstd::string rootname = this->NameOfVectorComponent(array_name);
-    int Nc = arraylist.size();
+    int Nc = static_cast<int>(arraylist.size());
     //
     vtkSmartPointer<vtkDataArray> dataarray = NULL;
     hid_t datatype = H5PartGetNativeDatasetType(H5FileId,array_name);
