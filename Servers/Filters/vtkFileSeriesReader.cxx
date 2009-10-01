@@ -177,8 +177,15 @@ int vtkFileSeriesReaderTimeRanges::GetAggregateTimeInfo(vtkInformation *outInfo)
       }
     }
 
-  outInfo->Set(vtkStreamingDemandDrivenPipeline::TIME_STEPS(),
+  if (timeSteps.size() > 0)
+    {
+    outInfo->Set(vtkStreamingDemandDrivenPipeline::TIME_STEPS(),
                &timeSteps[0], static_cast<int>(timeSteps.size()));
+    }
+  else
+    {
+    outInfo->Remove(vtkStreamingDemandDrivenPipeline::TIME_STEPS());
+    }
   return 1;
 }
 
