@@ -225,7 +225,8 @@ int vtkSpyPlotReader::UpdateSpyDataFile(vtkInformation* request,
   // See if this is part of a series
   vtkstd::string extension = 
     vtksys::SystemTools::GetFilenameLastExtension(this->FileName);
-  int currentNum, esize, isASeries=0;
+  int currentNum, isASeries=0;
+  size_t esize;
   esize = extension.size();
   if (esize > 0 )
     {
@@ -234,7 +235,7 @@ int vtkSpyPlotReader::UpdateSpyDataFile(vtkInformation* request,
     // from the check
     const char *a = extension.c_str();
     char *ep;
-    int b = 0;
+    size_t b = 0;
     if (a[0] == '.')
       {
       b = 1;
@@ -1159,7 +1160,7 @@ int vtkSpyPlotReader::MergeVectors(vtkDataSetAttributes* da,
     return 0;
     }
   const char *n1, *n2, *n3;
-  int e1, e2, e3;
+  size_t e1, e2, e3;
   n1 = a1->GetName();
   n2 = a2->GetName();
   n3 = a3->GetName();
@@ -1260,7 +1261,7 @@ int vtkSpyPlotReader::MergeVectors(vtkDataSetAttributes* da,
     return 0;
     }
   const char *n1, *n2;
-  int e1, e2;
+  size_t e1, e2;
   n1 = a1->GetName();
   n2 = a2->GetName();
   if (n1 == 0 || n2 == 0)
