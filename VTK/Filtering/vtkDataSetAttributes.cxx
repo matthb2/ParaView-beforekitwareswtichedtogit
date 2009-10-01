@@ -31,6 +31,8 @@
 #include "vtkObjectFactory.h"
 #include "vtkInformation.h"
 
+#include <vtkstd/vector>
+
 vtkCxxRevisionMacro(vtkDataSetAttributes, "$Revision$");
 vtkStandardNewMacro(vtkDataSetAttributes);
 
