@@ -213,8 +213,8 @@ int vtkCubeAxesActor2D::RenderOpaqueGeometry(vtkViewport *viewport)
   double slope = 0.0, minSlope, num, den;
   double pts[8][3], d2, d2Min, min;
   int i, idx = 0;
-  int xIdx, yIdx = 0, zIdx = 0, zIdx2, renderedSomething=0;
-  int xAxes = 0, yAxes, zAxes;
+  int xIdx = 0, yIdx = 0, zIdx = 0, zIdx2 = 0, renderedSomething=0;
+  int xAxes = 0, yAxes = 0, zAxes = 0;
 
   // Initialization
   if ( !this->Camera )
