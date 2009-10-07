@@ -1297,8 +1297,15 @@ int vtkParallelCoordinatesRepresentation::PlaceSelection(vtkPolyData* polyData,
 //------------------------------------------------------------------------------
 void vtkParallelCoordinatesRepresentation::SetPlotTitle(const char* title)
 {
-  if (title)
+  if (title && title[0] != '\0')
+    {
+    this->PlotTitleActor->SetVisibility(1);
     this->PlotTitleActor->SetInput(title);
+    }
+  else
+    {
+    this->PlotTitleActor->SetVisibility(0);
+    }
 }
 
 //------------------------------------------------------------------------------
