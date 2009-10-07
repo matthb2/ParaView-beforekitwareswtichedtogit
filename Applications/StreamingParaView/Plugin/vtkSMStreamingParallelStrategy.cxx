@@ -12,7 +12,7 @@
      PURPOSE.  See the above copyright notice for more information.
 
 =========================================================================*/
-#include "vtkSMSUnstructuredDataParallelStrategy.h"
+#include "vtkSMStreamingParallelStrategy.h"
 #include "vtkStreamingOptions.h"
 
 #include "vtkClientServerStream.h"
@@ -28,44 +28,31 @@
 #include "vtkSMProxyProperty.h"
 #include "vtkSMSourceProxy.h"
 
-vtkStandardNewMacro(vtkSMSUnstructuredDataParallelStrategy);
-vtkCxxRevisionMacro(vtkSMSUnstructuredDataParallelStrategy, "$Revision$");
+vtkStandardNewMacro(vtkSMStreamingParallelStrategy);
+vtkCxxRevisionMacro(vtkSMStreamingParallelStrategy, "$Revision$");
+
 //----------------------------------------------------------------------------
-vtkSMSUnstructuredDataParallelStrategy::vtkSMSUnstructuredDataParallelStrategy()
+vtkSMStreamingParallelStrategy::vtkSMStreamingParallelStrategy()
+{
+  this->EnableCaching = false; //don't try to use animation caching
+  this->SetEnableLOD(false); //don't try to have LOD while interacting either
+}
+
+//----------------------------------------------------------------------------
+vtkSMStreamingParallelStrategy::~vtkSMStreamingParallelStrategy()
 {
 }
 
 //----------------------------------------------------------------------------
-vtkSMSUnstructuredDataParallelStrategy::~vtkSMSUnstructuredDataParallelStrategy()
-{
-}
-
-//----------------------------------------------------------------------------
-void vtkSMSUnstructuredDataParallelStrategy::PrintSelf(ostream& os, vtkIndent indent)
+void vtkSMStreamingParallelStrategy::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os, indent);
 }
 
 //----------------------------------------------------------------------------
-#define ReplaceSubProxy(orig, name) \
-{\
-  vtkTypeUInt32 servers = orig->GetServers(); \
-  orig = vtkSMSourceProxy::SafeDownCast(this->GetSubProxy(name));\
-  orig->SetServers(servers);\
-}
-
-//----------------------------------------------------------------------------
-void vtkSMSUnstructuredDataParallelStrategy::BeginCreateVTKObjects()
+void vtkSMStreamingParallelStrategy::BeginCreateVTKObjects()
 {
   this->Superclass::BeginCreateVTKObjects();
-
-  //replace all of UpdateSuppressorProxies with StreamingUpdateSuppressorProxies
-  ReplaceSubProxy(this->UpdateSuppressor, "StreamingUpdateSuppressor");
-  ReplaceSubProxy(this->UpdateSuppressorLOD, "StreamingUpdateSuppressorLOD");
-  ReplaceSubProxy(this->PostCollectUpdateSuppressor, "StreamingPostCollectUpdateSuppressor");
-  ReplaceSubProxy(this->PostCollectUpdateSuppressorLOD, "StreamingPostCollectUpdateSuppressorLOD");
-  ReplaceSubProxy(this->PostDistributorSuppressor, "StreamingPostDistributorSuppressor");
-  ReplaceSubProxy(this->PostDistributorSuppressorLOD, "StreamingPostDistributorSuppressorLOD");
 
   //Get hold of the caching filter proxy
   this->PieceCache = 
@@ -80,12 +67,14 @@ void vtkSMSUnstructuredDataParallelStrategy::BeginCreateVTKObjects()
 }
 
 //----------------------------------------------------------------------------
-void vtkSMSUnstructuredDataParallelStrategy::CreatePipeline(vtkSMSourceProxy* input, int outputport)
+void vtkSMStreamingParallelStrategy::CreatePipeline(vtkSMSourceProxy* input, int outputport)
 {
+  vtkSMIntVectorProperty *ivp;
+
   //turn off caching for animation it will interfere with streaming
   vtkSMSourceProxy *cacher =
     vtkSMSourceProxy::SafeDownCast(this->GetSubProxy("CacheKeeper"));
-  vtkSMIntVectorProperty *ivp = vtkSMIntVectorProperty::SafeDownCast(
+  ivp = vtkSMIntVectorProperty::SafeDownCast(
     cacher->GetProperty("CachingEnabled"));
   ivp->SetElement(0, 0);
 
@@ -94,29 +83,22 @@ void vtkSMSUnstructuredDataParallelStrategy::CreatePipeline(vtkSMSourceProxy* in
   this->Superclass::CreatePipeline(this->PieceCache, 0);
   //input->VS->PC->US->Collect->PostCollectUS->Distr->pdUS
 
-  //use streams instead of a proxy property here 
-  //so that proxyproperty dependencies are not invoked 
-  //otherwise they end up with an artificial loop
   vtkProcessModule *pm = vtkProcessModule::GetProcessModule();
-  vtkClientServerStream stream;
-  stream << vtkClientServerStream::Invoke
-         << this->PostDistributorSuppressor->GetID()
-         << "SetMPIMoveData" 
-         << this->Collect->GetID()
-         << vtkClientServerStream::End;
-  pm->SendStream(this->GetConnectionID(),
-                 vtkProcessModule::CLIENT_AND_SERVERS,
-                 stream);
-
-  stream.Reset();
-  stream << vtkClientServerStream::Invoke
-         << this->PostCollectUpdateSuppressor->GetID()
-         << "SetMPIMoveData" 
-         << this->Collect->GetID()
-         << vtkClientServerStream::End;
-  pm->SendStream(this->GetConnectionID(),
-                 vtkProcessModule::CLIENT_AND_SERVERS,
-                 stream);
+  if (pm->GetNumberOfPartitions(this->GetConnectionID())>1)
+    {
+    //use streams instead of a proxy property here 
+    //so that proxyproperty dependencies are not invoked 
+    //otherwise they end up with an artificial loop
+    vtkClientServerStream stream;
+    stream << vtkClientServerStream::Invoke
+           << this->PostDistributorSuppressor->GetID()
+           << "SetMPIMoveData" 
+           << this->Collect->GetID()
+           << vtkClientServerStream::End;
+    pm->SendStream(this->GetConnectionID(),
+                   vtkProcessModule::CLIENT_AND_SERVERS,
+                   stream);
+    }
 
   // Do not supress any updates in the intermediate US's between
   // data and display. We need them to get piece selection back.
@@ -131,24 +113,12 @@ void vtkSMSUnstructuredDataParallelStrategy::CreatePipeline(vtkSMSourceProxy* in
 }
 
 //----------------------------------------------------------------------------
-void vtkSMSUnstructuredDataParallelStrategy::CreateLODPipeline(vtkSMSourceProxy* input, int outputport)
-{
-  this->Connect(input, this->ViewSorter, "Input", outputport);
-  this->Connect(this->ViewSorter, this->PieceCache);
-  this->Superclass::CreateLODPipeline(this->PieceCache, 0);
-  //input->VS->PC->LODDec->CollectLOD->PostCollectUSLOD->DistrLOD
-  //                     |                              \>USLOD
-  //                     \>USLOD
-}
-
-//----------------------------------------------------------------------------
-void vtkSMSUnstructuredDataParallelStrategy::SetPassNumber(int val, int force)
+void vtkSMStreamingParallelStrategy::SetPassNumber(int val, int force)
 {
   int nPasses = vtkStreamingOptions::GetStreamedPasses();
-  //cerr << "SUDPS(" << this << ") SetPassNumber " << val << "/" << nPasses << " " << (force?"FORCE":"LAZY") << endl;
+  cerr << "SPS(" << this << ") SetPassNumber " << val << "/" << nPasses << " " << (force?"FORCE":"LAZY") << endl;
 
   vtkSMIntVectorProperty* ivp;
-  
   ivp = vtkSMIntVectorProperty::SafeDownCast(
     this->PostDistributorSuppressor->GetProperty("PassNumber"));
   ivp->SetElement(0, val);
@@ -164,7 +134,7 @@ void vtkSMSUnstructuredDataParallelStrategy::SetPassNumber(int val, int force)
 }
 
 //----------------------------------------------------------------------------
-int vtkSMSUnstructuredDataParallelStrategy::ComputePriorities()
+int vtkSMStreamingParallelStrategy::ComputePriorities()
 {
   int nPasses = vtkStreamingOptions::GetStreamedPasses();
   int ret = nPasses;
@@ -185,6 +155,7 @@ int vtkSMSUnstructuredDataParallelStrategy::ComputePriorities()
   this->UpdateSuppressor->UpdateVTKObjects();
 
   //ask it to compute the priorities
+  cerr << "CALLING CP" << endl;
   vtkSMProperty* cp = 
     this->UpdateSuppressor->GetProperty("ComputePriorities");
   vtkSMIntVectorProperty* rp = vtkSMIntVectorProperty::SafeDownCast(
@@ -197,14 +168,18 @@ int vtkSMSUnstructuredDataParallelStrategy::ComputePriorities()
 
   //now that we've computed the priority and piece ordering, share that
   //with the other UpdateSuppressors to keep them all in synch.
-  vtkSMSourceProxy *pdUS = this->PostDistributorSuppressor;
   vtkSMSourceProxy *pcUS = this->PostCollectUpdateSuppressor;
+  vtkSMSourceProxy *pdUS = this->PostDistributorSuppressor;
 
-  vtkProcessModule *pm = vtkProcessModule::GetProcessModule();
 
   vtkClientServerStream stream;
-  this->CopyPieceList(&stream, this->UpdateSuppressor, pdUS);
   this->CopyPieceList(&stream, this->UpdateSuppressor, pcUS);
+  this->CopyPieceList(&stream, this->UpdateSuppressor, pdUS);
+
+  vtkProcessModule *pm = vtkProcessModule::GetProcessModule();
+  pm->SendStream(this->GetConnectionID(),
+                 vtkProcessModule::SERVERS,
+                 stream);
 
   //now gather list from server to client
   vtkClientServerStream s2c;
@@ -220,14 +195,13 @@ int vtkSMSUnstructuredDataParallelStrategy::ComputePriorities()
   this->UpdateSuppressor->UpdatePropertyInformation(dvp);
   int np = dvp->GetNumberOfElements();
   double *elems = dvp->GetElements();
-/*
-  cerr << "UDPS(" << this << ") Obtained list " << np << ":";
+  cerr << "SPS(" << this << ") Obtained list " << np << ":";
   for (int i = 0; i < np; i++)
     {
     cerr << elems[i] << " ";
     }
   cerr << endl;
-*/
+
   vtkClientServerStream s3c;
   s3c << vtkClientServerStream::Invoke
       << this->PostDistributorSuppressor->GetID()
@@ -238,26 +212,11 @@ int vtkSMSUnstructuredDataParallelStrategy::ComputePriorities()
                  vtkProcessModule::CLIENT,
                  s3c);  
 
-  //now copy to the LOD pipeline
-  vtkSMSourceProxy *pcUSLOD = this->PostCollectUpdateSuppressorLOD;
-  vtkSMSourceProxy *pdUSLOD = this->PostDistributorSuppressorLOD;
-  vtkSMSourceProxy *uSLOD = this->UpdateSuppressorLOD;
-  //False means don't do a shallow copy. 
-  //Relic from when cached dataobjects were in the piecelist. Might be 
-  //removable now.
-  this->CopyPieceList(&stream, this->UpdateSuppressor, pcUSLOD);
-  this->CopyPieceList(&stream, pcUSLOD, pdUSLOD);
-  this->CopyPieceList(&stream, pcUSLOD, uSLOD);
-
-  pm->SendStream(this->GetConnectionID(),
-                 vtkProcessModule::SERVERS,
-                 stream);
-
   return ret;
 }
 
 //----------------------------------------------------------------------------
-void vtkSMSUnstructuredDataParallelStrategy::ClearStreamCache()
+void vtkSMStreamingParallelStrategy::ClearStreamCache()
 {
   vtkSMProperty *cc = this->PieceCache->GetProperty("EmptyCache");
   cc->Modified();
@@ -265,7 +224,7 @@ void vtkSMSUnstructuredDataParallelStrategy::ClearStreamCache()
 }
 
 //-----------------------------------------------------------------------------
-void vtkSMSUnstructuredDataParallelStrategy::CopyPieceList(
+void vtkSMStreamingParallelStrategy::CopyPieceList(
   vtkClientServerStream *stream,
   vtkSMSourceProxy *src, vtkSMSourceProxy *dest)
 {
@@ -285,11 +244,11 @@ void vtkSMSUnstructuredDataParallelStrategy::CopyPieceList(
 }
 
 //----------------------------------------------------------------------------
-void vtkSMSUnstructuredDataParallelStrategy::SharePieceList(
+void vtkSMStreamingParallelStrategy::SharePieceList(
    vtkSMRepresentationStrategy *destination)
 {
-  vtkSMSUnstructuredDataParallelStrategy *dest = 
-    vtkSMSUnstructuredDataParallelStrategy::SafeDownCast(destination);
+  vtkSMStreamingParallelStrategy *dest = 
+    vtkSMStreamingParallelStrategy::SafeDownCast(destination);
 
   vtkProcessModule *pm = vtkProcessModule::GetProcessModule();
 
@@ -336,7 +295,7 @@ void vtkSMSUnstructuredDataParallelStrategy::SharePieceList(
 }
 
 //----------------------------------------------------------------------------
-void vtkSMSUnstructuredDataParallelStrategy::GatherInformation(vtkPVInformation* info)
+void vtkSMStreamingParallelStrategy::GatherInformation(vtkPVInformation* info)
 {
   //gather information in multiple passes so as never to request
   //everything at once.
@@ -383,36 +342,7 @@ void vtkSMSUnstructuredDataParallelStrategy::GatherInformation(vtkPVInformation*
 }
 
 //----------------------------------------------------------------------------
-void vtkSMSUnstructuredDataParallelStrategy::GatherLODInformation(vtkPVInformation* info)
-{
-  //gather information in multiple passes so as never to request
-  //everything at once.
-  int nPasses = vtkStreamingOptions::GetStreamedPasses();
-
-  for (int i = 0; i < 1; i++)
-    {
-    vtkPVInformation *sinfo = 
-      vtkPVInformation::SafeDownCast(info->NewInstance());
-    vtkSMIntVectorProperty* ivp = vtkSMIntVectorProperty::SafeDownCast(
-      this->UpdateSuppressorLOD->GetProperty("PieceNumber"));
-    ivp->SetElement(0, i);
-    ivp->SetElement(1, nPasses);
-
-    this->UpdateSuppressorLOD->UpdateVTKObjects();
-    this->UpdateSuppressorLOD->InvokeCommand("ForceUpdate");
-
-    vtkProcessModule* pm = vtkProcessModule::GetProcessModule();
-    pm->GatherInformation(this->ConnectionID,
-                          vtkProcessModule::DATA_SERVER_ROOT,
-                          sinfo,
-                          this->UpdateSuppressorLOD->GetID());
-    info->AddInformation(sinfo);
-    sinfo->Delete();
-    }
-}
-
-//----------------------------------------------------------------------------
-void vtkSMSUnstructuredDataParallelStrategy::InvalidatePipeline()
+void vtkSMStreamingParallelStrategy::InvalidatePipeline()
 {
   // Cache is cleaned up whenever something changes and caching is not currently
   // enabled.
@@ -424,7 +354,7 @@ void vtkSMSUnstructuredDataParallelStrategy::InvalidatePipeline()
 }
 
 //----------------------------------------------------------------------------
-void vtkSMSUnstructuredDataParallelStrategy::SetViewState(double *camera, double *frustum)
+void vtkSMStreamingParallelStrategy::SetViewState(double *camera, double *frustum)
 {
   if (!camera || !frustum)
     {
@@ -442,7 +372,7 @@ void vtkSMSUnstructuredDataParallelStrategy::SetViewState(double *camera, double
 }
 
 //----------------------------------------------------------------------------
-void vtkSMSUnstructuredDataParallelStrategy::UpdatePipeline()
+void vtkSMStreamingParallelStrategy::UpdatePipeline()
 {
   //I have inlined the code that normally happens in the parent classes.
   //Each parent class checks locally if data is valid and if not calls 
@@ -502,24 +432,6 @@ void vtkSMSUnstructuredDataParallelStrategy::UpdatePipeline()
               this->ConnectionID, this->Collect->GetServers(), stream);
       
       this->PostCollectUpdateSuppressor->InvokeCommand("ForceUpdate");
-
-#if 0
-//ORIGINAL - BUSTED
-      // This is called for its side-effects; i.e. to force a PostUpdateData()
-      this->PostCollectUpdateSuppressor->UpdatePipeline();
-#endif
-
-#if 0
-//HACK1 - OK
-      this->PostCollectUpdateSuppressor->InvokeCommand("MarkMoveDataModified");
-      this->PostCollectUpdateSuppressor->UpdatePipeline();
-      this->PostCollectUpdateSuppressor->InvokeCommand("MarkMoveDataModified");
-#endif
-
-#if 1
-//HACK2 - also OK, but faster
-      //this->PostCollectUpdateSuppressor->UpdatePipeline();
-#endif
 
       this->CollectedDataValid = true;      
       }
