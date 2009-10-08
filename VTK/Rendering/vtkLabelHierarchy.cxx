@@ -1315,7 +1315,10 @@ void vtkLabelHierarchyOctreeQueueIterator::Next()
     }
 
   //const int maxNumChildren = ( 1 << 2 );
-  ++ this->LabelIterator;
+  if ( this->LabelIterator != this->Node->value().end() )
+    {
+    ++ this->LabelIterator;
+    }
   if ( this->LabelIterator == this->Node->value().end() )
     {
     this->BoxNode();
