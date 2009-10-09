@@ -152,7 +152,7 @@ double vtkGridSampler2::SuggestSampling(int axis)
 
   // the last index to check for splits
   vtkIdType stop = 
-    (vtkIdType)round(height * degree * (1.0 - this->RequestedResolution));
+    (vtkIdType)(height * degree * (1.0 - this->RequestedResolution) + 0.5);
 
   stop = stop > this->SplitPath->GetNumberOfTuples() ? 
     this->SplitPath->GetNumberOfTuples() : stop;

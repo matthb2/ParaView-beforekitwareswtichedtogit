@@ -210,6 +210,7 @@ double vtkGridSampler1::SuggestSampling(int axis)
   //cerr << " STRIDE =" << *stride << endl;
 
   //NOTE: a table would be much faster
+  return ret;
 }
 
 //------------------------------------------------------------------------------

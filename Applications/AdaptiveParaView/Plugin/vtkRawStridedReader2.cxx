@@ -383,7 +383,7 @@ void vtkRawStridedReader2::SetupFile() {
 
   // figure out the index
   vtkIdType stop = 
-    (vtkIdType)round(height * (1.0 - this->Resolution));
+    (vtkIdType)(height * (1.0 - this->Resolution)+0.5);
   
   // try to set up the file
   // there may be a better way of detecting this in VTK, yes?
