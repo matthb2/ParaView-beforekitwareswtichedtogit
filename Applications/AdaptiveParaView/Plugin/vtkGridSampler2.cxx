@@ -18,6 +18,7 @@
 #include "vtkIntArray.h"
 #include "vtkAdaptiveOptions.h"
 
+#include <math.h>
 vtkCxxRevisionMacro(vtkGridSampler2, "$Revision$");
 vtkStandardNewMacro(vtkGridSampler2);
 
@@ -141,7 +142,7 @@ double vtkGridSampler2::SuggestSampling(int axis)
   // in the pipeline as far as I can tell
   // also need to specify the branching factor (degree) as well
   int height = vtkAdaptiveOptions::GetHeight();
-  int degree = vtkAdaptiveOptions::GetDegree();  // 2^degree
+  int degree = (int)log2((double)vtkAdaptiveOptions::GetDegree());  // 2^degree
   int rate = vtkAdaptiveOptions::GetRate();  // should be able to specify the sampling rate
 
   if(this->RequestedResolution >= 1.0 || height <= 0) {
