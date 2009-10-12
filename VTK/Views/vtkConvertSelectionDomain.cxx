@@ -64,6 +64,10 @@ void vtkConvertSelectionDomainFindDomains(
     {
     vtkStringArray* domainArr = vtkStringArray::SafeDownCast(
       dsa->GetAbstractArray("domain"));
+    if (!domainArr)
+      {
+      return; // Do nothing if the array isn't a string array
+      }
     vtkIdType numTuples = domainArr->GetNumberOfTuples();
     for (vtkIdType i = 0; i < numTuples; ++i)
       {
