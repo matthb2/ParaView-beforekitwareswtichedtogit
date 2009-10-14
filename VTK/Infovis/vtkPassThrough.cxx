@@ -63,3 +63,14 @@ int vtkPassThrough::RequestData(
 
   return 1;
 }
+
+//----------------------------------------------------------------------------
+int vtkPassThrough::FillInputPortInformation(int port, vtkInformation* info)
+{
+    if (port == 0)
+    {
+        info->Set(vtkAlgorithm::INPUT_IS_OPTIONAL(), 1);
+        return 1;
+    }
+    return 0;
+}
