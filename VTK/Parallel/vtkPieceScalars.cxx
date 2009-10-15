@@ -123,7 +123,7 @@ vtkFloatArray *vtkPieceScalars::MakeRandomScalars(int piece, vtkIdType num)
   float randomValue;
   
   vtkMath::RandomSeed(piece);
-  randomValue = vtkMath::Random();
+  randomValue = static_cast<float>(vtkMath::Random());
   
   pieceColors = vtkFloatArray::New();
   pieceColors->SetNumberOfTuples(num);
