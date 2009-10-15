@@ -28,25 +28,6 @@ vtkRandomSequence::~vtkRandomSequence()
 }
 
 // ----------------------------------------------------------------------------
-double vtkRandomSequence::GetRangeValue(double rangeMin,
-                                        double rangeMax)
-{
-  double result;
-  if(rangeMin==rangeMax)
-    {
-    result=rangeMin;
-    }
-  else
-    {
-    result=rangeMin+this->GetValue()*(rangeMax-rangeMin);
-    }
-  assert("post: valid_result" &&
-         ((rangeMin<=rangeMax && result>=rangeMin && result<=rangeMax)
-          || (rangeMax<=rangeMin && result>=rangeMax && result<=rangeMin)));
-  return result;
-}
-
-// ----------------------------------------------------------------------------
 void vtkRandomSequence::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os, indent);
