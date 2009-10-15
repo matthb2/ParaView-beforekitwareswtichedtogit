@@ -38,7 +38,6 @@ vtkBoxMuellerRandomSequence::~vtkBoxMuellerRandomSequence()
 // ----------------------------------------------------------------------------
 double vtkBoxMuellerRandomSequence::GetValue()
 {
-  assert("post: unit_range" && this->Value>=-1.0 && this->Value<=1.0);
   return this->Value;
 }
 
