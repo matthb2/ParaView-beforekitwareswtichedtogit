@@ -124,14 +124,6 @@ inline bool vtkMathIsNan(double x)
 #endif // !VTK_HAS_ISNAN && VTK_NON_FINITE_CAUSES_EXCEPTIONS
 
 //
-// some constants we need
-//
-#define VTK_K_A 16807
-#define VTK_K_M 2147483647              /* Mersenne prime 2^31 -1 */
-#define VTK_K_Q 127773                  /* VTK_K_M div VTK_K_A */
-#define VTK_K_R 2836                    /* VTK_K_M mod VTK_K_A */
-
-//
 // Some useful macros and functions
 //
 #define VTK_SIGN(x)              (( (x) < 0 )?( -1 ):( 1 ))
