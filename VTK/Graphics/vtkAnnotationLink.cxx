@@ -122,6 +122,7 @@ void vtkAnnotationLink::SetAnnotationLayers(vtkAnnotationLayers* layers)
       tmp->UnRegister(this);
       }
     this->Modified();
+    this->InvokeEvent(vtkCommand::AnnotationChangedEvent);
     }
 }
 
