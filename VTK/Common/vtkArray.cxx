@@ -167,6 +167,11 @@ void vtkArray::Resize(const vtkArrayExtents& extents)
   this->InternalResize(extents);
 }
 
+vtkIdType vtkArray::GetExtent(vtkIdType dimension)
+{
+  return this->GetExtents()[dimension];
+}
+
 vtkIdType vtkArray::GetDimensions()
 {
   return this->GetExtents().GetDimensions();
