@@ -1956,3 +1956,12 @@ vtkTextureUnitManager *vtkOpenGLRenderWindow::GetTextureUnitManager()
     }
   return this->TextureUnitManager;
 }
+
+// ----------------------------------------------------------------------------
+// Description:
+// Block the thread until the actual rendering is finished().
+// Useful for measurement only.
+void vtkOpenGLRenderWindow::WaitForCompletion()
+{
+  glFinish();
+}
