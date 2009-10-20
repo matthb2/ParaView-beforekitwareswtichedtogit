@@ -298,6 +298,12 @@ int vtkXdmfWriter2::RequestData(
   vtkInformationVector** inputVector,
   vtkInformationVector* vtkNotUsed(outputVector))
 {
+  if (!this->Domain)
+    {
+    //call Write instead of this directly. That does setup first, then calls this.
+    return 1;
+    }
+
   if (this->CurrentTimeIndex == 0 && 
       this->WriteAllTimeSteps &&
       this->NumberOfTimeSteps > 1)
