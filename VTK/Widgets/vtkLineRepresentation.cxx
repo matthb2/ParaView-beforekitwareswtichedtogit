@@ -902,6 +902,12 @@ double * vtkLineRepresentation::GetDistanceAnnotationScale()
 }
 
 //----------------------------------------------------------------------------
+vtkProperty * vtkLineRepresentation::GetDistanceAnnotationProperty()
+{
+  return this->TextActor->GetProperty();
+}
+
+//----------------------------------------------------------------------------
 void vtkLineRepresentation::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os,indent);
