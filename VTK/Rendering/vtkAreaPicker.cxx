@@ -116,8 +116,6 @@ int vtkAreaPicker::AreaPick(double x0, double y0, double x1, double y1,
   this->SelectionPoint[1] = (this->Y0+this->Y1)*0.5;
   this->SelectionPoint[2] = 0.0;
 
-  this->InvokeEvent(vtkCommand::StartPickEvent,NULL);
-
   if ( this->Renderer == NULL )
     {
     vtkErrorMacro(<<"Must specify renderer!");
