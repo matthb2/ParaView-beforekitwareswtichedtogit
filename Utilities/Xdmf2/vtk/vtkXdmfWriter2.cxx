@@ -945,7 +945,7 @@ void vtkXdmfWriter2::ConvertVToXArray(vtkDataArray *vda,
   if (nc != 1)
     {
     lDims[rank]=nc;
-    rank++;
+    lRank+=1;
     }
 
   switch (vda->GetDataType())
