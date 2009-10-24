@@ -994,7 +994,7 @@ void vtkXdmfWriter2::ConvertVToXArray(vtkDataArray *vda,
 
   //TODO: if we can make xdmf write out immediately, then wouldn't have to keep around
   //arrays when working with temporal data
-  if (false)//(allocStrategy==0 && !this->TopTemporalGrid) || allocStrategy==1)
+  if ((allocStrategy==0 && !this->TopTemporalGrid) || allocStrategy==1)
     {
     //Do not let xdmf allocate its own buffer. xdmf just borrows vtk's and doesn't double mem size.
     xda->SetAllowAllocate(0); 
