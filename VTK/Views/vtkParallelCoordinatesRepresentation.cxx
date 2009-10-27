@@ -1740,7 +1740,7 @@ void vtkParallelCoordinatesRepresentation::UpdateSelectionActors()
       }
     }
 
-  for (int i=numNodes; i<this->I->SelectionData.size(); i++)
+  for (int i=numNodes; i<(int)this->I->SelectionData.size(); i++)
     {
     this->RemovePropOnNextRender(this->I->SelectionActors[i]);
     this->I->SelectionData.pop_back();
