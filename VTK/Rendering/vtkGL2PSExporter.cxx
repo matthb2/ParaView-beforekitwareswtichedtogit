@@ -25,7 +25,7 @@
 #include "vtkVolumeCollection.h"
 #include "vtkVolume.h"
 #include "vtkIntArray.h"
-#include "gl2ps.h"
+#include "vtk_gl2ps.h"
 
 
 void _SavePropVisibility(vtkRendererCollection *renCol,

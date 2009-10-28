@@ -25,7 +25,7 @@
 #include "vtkTexture.h"
 
 #ifdef VTK_USE_GL2PS
-#include "gl2ps.h"
+#include "vtk_gl2ps.h"
 #include "vtkGL2PSExporter.h"
 #endif // VTK_USE_GL2PS
 

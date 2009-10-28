@@ -30,7 +30,7 @@
 #include "FTFont.h"
 
 #ifdef VTK_USE_GL2PS
-#include "gl2ps.h"
+#include "vtk_gl2ps.h"
 #endif // VTK_USE_GL2PS
 
 
