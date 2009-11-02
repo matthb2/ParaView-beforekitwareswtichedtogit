@@ -55,8 +55,8 @@ vtkStandardNewMacro( vtkTecplotReader );
 class vtkTecplotReaderInternal
 {
 public:
-  vtkTecplotReaderInternal()  { this->Init(); }
-  ~vtkTecplotReaderInternal() { this->Init(); }
+  //vtkTecplotReaderInternal()  { this->Init(); }
+  //~vtkTecplotReaderInternal() { this->Init(); }
   
   int     XIdInList;
   int     YIdInList;
@@ -460,7 +460,7 @@ const char * vtkTecplotReader::GetDataTitle()
 // ----------------------------------------------------------------------------
 int   vtkTecplotReader::GetNumberOfBlocks()
 {
-  return this->ZoneNames.size();
+  return int( this->ZoneNames.size() );
 }
 
 // ----------------------------------------------------------------------------
@@ -576,7 +576,7 @@ void vtkTecplotReader::PrintSelf( ostream & os, vtkIndent indent )
   this->Superclass::PrintSelf( os, indent );
   
   os << indent << "FileName: "           << this->FileName           << endl;
-  os << indent << "Internal: "           << this->Internal           << endl;
+  //os << indent << "Internal: "           << this->Internal           << endl;
   //os << indent << "DataTitle: "          << this->DataTitle          << endl;
   //os << indent << "Size of CellBased: "  << this->CellBased.size()   << endl;
   //os << indent << "Size of ZoneNames: "  << this->ZoneNames.size()   << endl;
