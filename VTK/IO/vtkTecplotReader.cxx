@@ -244,6 +244,11 @@ public:
    
     return retval;
   }
+  
+private:
+
+  vtkTecplotReaderInternal( const vtkTecplotReaderInternal & );  // Not implemented.
+  void operator = ( const vtkTecplotReaderInternal & );          // Not implemented.
 };
 // ==========================================================================//
 
