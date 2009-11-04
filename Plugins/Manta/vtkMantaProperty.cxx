@@ -61,6 +61,7 @@ ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 // .NAME vtkMantaProperty - 
 // .SECTION Description
 //
+
 #include "vtkManta.h"
 #include "vtkMantaRenderer.h"
 #include "vtkMantaProperty.h"
@@ -76,6 +77,7 @@ ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <Model/Materials/MetalMaterial.h>
 #include <Model/Materials/OrenNayar.h>
 #include <Model/Materials/Dielectric.h>
+#include <Core/Color/RGBColor.h>
 
 #include <Model/Textures/Constant.h>
 
@@ -91,10 +93,10 @@ void vtkMantaProperty::CreateMantaProperty()
   double * specular = this->GetSpecularColor();
 
   this->diffuseTexture  = new Manta::Constant<Manta::Color>
-    (  Manta::Color( Manta::RGB( diffuse[0],  diffuse[1],  diffuse[2]  ) )  );
+    (  Manta::Color( Manta::RGBColor( diffuse[0],  diffuse[1],  diffuse[2]  ) )  );
 
   this->specularTexture = new Manta::Constant<Manta::Color>
-    (  Manta::Color( Manta::RGB( specular[0], specular[1], specular[2] ) )  );
+    (  Manta::Color( Manta::RGBColor( specular[0], specular[1], specular[2] ) )  );
 
   diffuse  = NULL;
   specular = NULL;
