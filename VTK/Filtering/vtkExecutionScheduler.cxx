@@ -49,10 +49,15 @@ vtkStandardNewMacro(vtkExecutionScheduler);
 vtkInformationKeyMacro(vtkExecutionScheduler, TASK_PRIORITY, Integer);
 
 //----------------------------------------------------------------------------
-static vtkExecutionScheduler *globalScheduler = vtkExecutionScheduler::New();
+static vtkExecutionScheduler *globalScheduler = NULL;
+
 //----------------------------------------------------------------------------
 vtkExecutionScheduler* vtkExecutionScheduler::GetGlobalScheduler()
 {
+  if (!globalScheduler)
+    {
+    globalScheduler = vtkExecutionScheduler::New();
+    }
   return globalScheduler;
 }
 
