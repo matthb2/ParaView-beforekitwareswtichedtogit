@@ -90,11 +90,6 @@ typedef vtkstd::vector<vtkExecutive*>                       vtkExecutiveVector;
 class vtkExecutionScheduler::implementation
 {
 public:
-  implementation(vtkExecutionScheduler *owner)
-  {
-    this->Scheduler = owner;
-  }
-
   // The containing object
   vtkExecutionScheduler*  Scheduler;
 
@@ -185,7 +180,7 @@ vtkExecutionScheduler* vtkExecutionScheduler::GetGlobalScheduler()
 void * vtkExecutionScheduler_ScheduleThread(void *data);
 //----------------------------------------------------------------------------
 vtkExecutionScheduler::vtkExecutionScheduler()
-  : Implementation(new implementation(this))
+  : Implementation(new implementation)
 {
   this->Resources = vtkComputingResources::New();
   this->Resources->ObtainMaximumResources();
@@ -195,6 +190,7 @@ vtkExecutionScheduler::vtkExecutionScheduler()
   this->ScheduleThreader = vtkMultiThreader::New();
   this->ScheduleThreader->SetNumberOfThreads(1);
   this->ScheduleThreadId = -1;
+  this->Implementation->Scheduler = this;
   this->Implementation->CurrentPriority = 0;
 }
 
