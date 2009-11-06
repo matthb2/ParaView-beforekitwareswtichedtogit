@@ -185,8 +185,8 @@ vtkExecutionScheduler* vtkExecutionScheduler::GetGlobalScheduler()
 void * vtkExecutionScheduler_ScheduleThread(void *data);
 //----------------------------------------------------------------------------
 vtkExecutionScheduler::vtkExecutionScheduler()
+  : Implementation(new implementation(this))
 {
-  this->Implementation->CurrentPriority = 0;
   this->Resources = vtkComputingResources::New();
   this->Resources->ObtainMaximumResources();
   this->ResourceMessager = vtkThreadMessager::New();
@@ -195,7 +195,7 @@ vtkExecutionScheduler::vtkExecutionScheduler()
   this->ScheduleThreader = vtkMultiThreader::New();
   this->ScheduleThreader->SetNumberOfThreads(1);
   this->ScheduleThreadId = -1;
-  this->Implementation = new implementation(this);
+  this->Implementation->CurrentPriority = 0;
 }
 
 //----------------------------------------------------------------------------
