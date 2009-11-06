@@ -353,6 +353,36 @@ void vtkOpenGLPolyDataMapper2D::RenderOverlay(vtkViewport* viewport,
     glEnd();
     }
 
+  aPrim = input->GetStrips();
+  for (aPrim->InitTraversal(); aPrim->GetNextCell(npts,pts); cellNum++)
+    {
+    glBegin(GL_TRIANGLE_STRIP);
+    for (j = 0; j < npts; j++)
+      {
+      if (c)
+        {
+        if (cellScalars)
+          {
+          rgba = c->GetPointer(4*cellNum);
+          }
+        else
+          {
+          rgba = c->GetPointer(4*pts[j]);
+          }
+        glColor4ubv(rgba);
+        }
+      if (t)
+        {
+        glTexCoord2dv(t->GetTuple(pts[j]));
+        }  
+      // this is done to work around an OpenGL bug, otherwise we could just
+      // call glVertex2dv
+      dptr = p->GetPoint(pts[j]);
+      glVertex3d(dptr[0],dptr[1],0);
+      }
+    glEnd();
+    }
+
   aPrim = input->GetPolys();
   for (aPrim->InitTraversal(); aPrim->GetNextCell(npts,pts); cellNum++)
     {

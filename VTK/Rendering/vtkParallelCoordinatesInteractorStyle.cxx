@@ -51,7 +51,6 @@ vtkParallelCoordinatesInteractorStyle::vtkParallelCoordinatesInteractorStyle()
 vtkParallelCoordinatesInteractorStyle::~vtkParallelCoordinatesInteractorStyle() 
 {
 }
-
 //----------------------------------------------------------------------------
 void vtkParallelCoordinatesInteractorStyle::OnMouseMove() 
 {       
