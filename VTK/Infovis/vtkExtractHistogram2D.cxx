@@ -179,7 +179,6 @@ void vtkExtractHistogram2D::Learn(vtkTable *vtkNotUsed(inData),
   vtkIdType bin1,bin2,idx;
   double v1,v2,ct;
   double bwi[2] = {1.0/binWidth[0],1.0/binWidth[1]};
-  bool masked = false;
 
   bool useRowMask = this->RowMask && 
     this->RowMask->GetNumberOfTuples() == col1->GetNumberOfTuples();
