@@ -59,7 +59,7 @@ vtkDataSetGradient::~vtkDataSetGradient()
 // {
 // }
 
-int vtkDataSetGradient::RequestData(vtkInformation *request,
+int vtkDataSetGradient::RequestData(vtkInformation * vtkNotUsed(request),
              vtkInformationVector **inputVector,
              vtkInformationVector *outputVector)
 {
