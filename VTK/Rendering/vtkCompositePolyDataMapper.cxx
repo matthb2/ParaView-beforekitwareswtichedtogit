@@ -135,7 +135,7 @@ void vtkCompositePolyDataMapper::BuildPolyDataMapper()
         {
         if ( !warnOnce )
           {
-          vtkErrorMacro("All data in the hierachical dataset must be polydata.");
+          vtkErrorMacro("All data in the hierarchical dataset must be polydata.");
           warnOnce = 1;
           }
         }

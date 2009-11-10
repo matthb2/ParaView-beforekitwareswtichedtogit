@@ -76,7 +76,7 @@ int vtkMergeDataObjectFilter::RequestData(
     dataObjectInfo = inputVector[1]->GetInformationObject(0);
     }
   
-  // get the input and ouptut
+  // get the input and output
   vtkDataSet *input = vtkDataSet::SafeDownCast(
     inInfo->Get(vtkDataObject::DATA_OBJECT()));
   vtkDataSet *output = vtkDataSet::SafeDownCast(

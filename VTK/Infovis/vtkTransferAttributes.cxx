@@ -112,7 +112,7 @@ int vtkTransferAttributes::RequestData(
   
   output->ShallowCopy(targetInput);
   
-  // get the input and ouptut
+  // get the input and output
   int item_count_source = 0;
   vtkDataSetAttributes* dsa_source = 0;
   if (vtkDataSet::SafeDownCast(sourceInput) && 

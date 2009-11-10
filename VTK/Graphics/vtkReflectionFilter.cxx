@@ -55,7 +55,7 @@ void vtkReflectionFilter::FlipVector(double tuple[3], int mirrorDir[3])
 //---------------------------------------------------------------------------
 int vtkReflectionFilter::ComputeBounds(vtkDataObject* input, double bounds[6])
 {
-  // get the input and ouptut
+  // get the input and output
   vtkDataSet *inputDS = vtkDataSet::SafeDownCast(input);;
   vtkCompositeDataSet* inputCD = vtkCompositeDataSet::SafeDownCast(input);
 
@@ -98,7 +98,7 @@ int vtkReflectionFilter::RequestData(
   vtkInformationVector **inputVector,
   vtkInformationVector *outputVector)
 {
-  // get the input and ouptut
+  // get the input and output
   vtkDataSet *inputDS = vtkDataSet::GetData(inputVector[0], 0);
   vtkUnstructuredGrid *outputUG = vtkUnstructuredGrid::GetData(outputVector, 0);
 
