@@ -147,7 +147,14 @@ void vtkJavaScriptDataWriter::WriteTable(vtkTable* table, ostream *stream_ptr)
     }
 
   // Header stuff
-  (*stream_ptr) << "var " << this->VariableName << " = [\n";
+  if ( this->VariableName )
+    {
+    (*stream_ptr) << "var " << this->VariableName << " = [\n";
+    }
+  else
+    {
+    (*stream_ptr) << "[";
+    }
 
   // For each row
   for ( vtkIdType r = 0; r < numRows; ++ r )
@@ -180,7 +187,7 @@ void vtkJavaScriptDataWriter::WriteTable(vtkTable* table, ostream *stream_ptr)
     }
 
   // Footer
-  (*stream_ptr) << "];\n";
+  (*stream_ptr) << ( this->VariableName ? "];\n" : "]" );
 }
 
 //-----------------------------------------------------------------------------
