@@ -107,6 +107,7 @@ void vtkExtractHistogram2D::PrintSelf(ostream& os, vtkIndent indent)
   os << indent << "SwapColumns: " << this->SwapColumns << endl;
   os << indent << "NumberOfBins: " << this->NumberOfBins[0] << ", " << this->NumberOfBins[1] << endl;
   os << indent << "CustomHistogramExtents: " << this->CustomHistogramExtents[0] << ", " << this->CustomHistogramExtents[1] << ", " << this->CustomHistogramExtents[2] << ", " << this->CustomHistogramExtents[3] << endl;
+  os << indent << "RowMask: " << this->RowMask << endl;
 }
 //------------------------------------------------------------------------------
 void vtkExtractHistogram2D::Learn(vtkTable *vtkNotUsed(inData), 
