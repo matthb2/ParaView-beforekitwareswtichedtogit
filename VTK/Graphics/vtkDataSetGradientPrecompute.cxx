@@ -29,6 +29,7 @@
 #include "vtkCell.h"
 #include "vtkCell3D.h"
 #include "vtkFieldData.h"
+#include "vtkObjectFactory.h"
 
 vtkCxxRevisionMacro(vtkDataSetGradientPrecompute, "$Revision$");
 vtkStandardNewMacro(vtkDataSetGradientPrecompute);
