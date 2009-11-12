@@ -95,7 +95,7 @@ int vtkCellDataToPointData::RequestData(
 
     input->GetPointCells(ptId, cellIds);
     numCells = cellIds->GetNumberOfIds();
-    if ( numCells > 0 )
+    if ( numCells > 0 && numCells < VTK_MAX_CELLS_PER_POINT )
       {
       weight = 1.0 / numCells;
       for (cellId=0; cellId < numCells; cellId++)
