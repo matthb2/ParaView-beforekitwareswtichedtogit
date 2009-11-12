@@ -356,8 +356,8 @@ void vtkCosmoReader::ReadFile(vtkUnstructuredGrid *output)
                     "Might truncate data.");
       tag = vtkLongArray::New();
       }
-    }
 #endif
+    }
   else
     {
 #if defined(_WIN32) && !defined(__CYGWIN__)
