@@ -359,10 +359,10 @@ void vtkCosmoReader::ReadFile(vtkUnstructuredGrid *output)
     }
 #endif
   else
+    {
 #if defined(_WIN32) && !defined(__CYGWIN__)
     tag = vtkIntArray::New();
 #else
-    {
     if(sizeof(int) == sizeof(int32_t)) 
       {
       tag = vtkIntArray::New();
