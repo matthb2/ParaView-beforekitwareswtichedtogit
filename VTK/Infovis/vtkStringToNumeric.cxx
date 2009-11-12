@@ -125,14 +125,14 @@ void vtkStringToNumeric::ConvertArrays(vtkFieldData* fieldData)
 
     // Set up the output array
     vtkDoubleArray* doubleArray = vtkDoubleArray::New();
-    doubleArray->SetNumberOfValues(numComps*numTuples);
     doubleArray->SetNumberOfComponents(numComps);
+    doubleArray->SetNumberOfTuples(numTuples);
     doubleArray->SetName(arrayName);
   
     // Set up the output array
     vtkIntArray* intArray = vtkIntArray::New();
-    intArray->SetNumberOfValues(numComps*numTuples);
     intArray->SetNumberOfComponents(numComps);
+    intArray->SetNumberOfTuples(numTuples);
     intArray->SetName(arrayName);
   
     // Convert the strings to time point values
