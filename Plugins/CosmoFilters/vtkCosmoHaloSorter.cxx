@@ -261,4 +261,6 @@ int vtkCosmoHaloSorter::RequestData(
 /****************************************************************************/
 void vtkCosmoHaloSorter::PrintSelf(ostream& os, vtkIndent indent)
 {
+  this->Superclass::PrintSelf(os,indent);
+  os << indent << "Descending: " << (this->Descending?"ON":"OFF") << "\n";
 }
