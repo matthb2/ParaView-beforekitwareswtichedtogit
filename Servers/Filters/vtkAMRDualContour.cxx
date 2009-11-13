@@ -458,8 +458,6 @@ void vtkAMRDualContour::ProcessDualCell(
   double k, v0, v1;
   triCases =  vtkMarchingCubesTriangleCases::GetCases();
   int *dims = block->Image->GetDimensions();
-  int yInc = dims[0]-1; // -1 for point to cell
-  int zInc = yInc * (dims[1]-1);
 
   // Compute the spacing fro this level and one lower level;
   const double *tmp = this->Helper->GetRootSpacing();
