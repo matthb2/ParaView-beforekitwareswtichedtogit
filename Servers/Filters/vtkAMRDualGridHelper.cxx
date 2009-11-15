@@ -181,6 +181,11 @@ void vtkAMRDualGridHelperLevel::CreateBlockFaces(
 {
   // avoid a warning.
   int temp = x+y+z+block->Level;
+  if (temp < 1)
+    {
+    return;
+    }
+  
   /*
   vtkAMRDualGridHelperBlock* neighborBlock;
   if (block == 0)
