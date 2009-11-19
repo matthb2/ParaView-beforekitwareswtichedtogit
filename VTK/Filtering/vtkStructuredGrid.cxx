@@ -16,7 +16,6 @@
 
 #include "vtkCellData.h"
 #include "vtkEmptyCell.h"
-#include "vtkExtentTranslator.h"
 #include "vtkGenericCell.h"
 #include "vtkHexahedron.h"
 #include "vtkInformation.h"

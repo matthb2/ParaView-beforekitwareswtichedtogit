@@ -15,7 +15,6 @@
 #include "vtkRectilinearGrid.h"
 
 #include "vtkCellData.h"
-#include "vtkExtentTranslator.h"
 #include "vtkDoubleArray.h"
 #include "vtkGenericCell.h"
 #include "vtkInformation.h"
