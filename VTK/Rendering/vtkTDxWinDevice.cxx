@@ -264,7 +264,9 @@ void vtkTDxWinDevice::Initialize()
         }
       else
         {
-          vtkWarningMacro( << "CoCreateInstance failed. hresult=0x" << hex << hr << dec << HresultCodeToString(hr));
+        // CoCreateInstance Failed.
+        // It means there is no driver installed.
+        // Just return silently: don't display warning message.
         }
       this->Initialized=status;
     }
