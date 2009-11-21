@@ -787,7 +787,6 @@ vtkCell *vtkImageData::FindAndGetCell(double x[3],
   dims[0] = extent[1] - extent[0] + 1;
   dims[1] = extent[3] - extent[2] + 1;
   dims[2] = extent[5] - extent[4] + 1;
-  vtkIdType d01 = dims[0]*dims[1];
 
   if ( this->ComputeStructuredCoordinates(x, loc, pcoords) == 0 )
     {
