@@ -275,6 +275,30 @@ void vtkCommandOptions::AddArgument(const char* longarg, const char* shortarg, c
 }
 
 //----------------------------------------------------------------------------
+void vtkCommandOptions::AddCallback(const char* longarg, const char* shortarg,
+  vtkCommandOptions::CallbackType callback, void* call_data, const char* help,
+  int type)
+{
+  if(type & XMLONLY)
+    {
+    vtkErrorMacro("Callback arguments cannot be processed through XML.");
+    return;
+    }
+
+  if (type & this->ProcessType || type == vtkCommandOptions::EVERYBODY)
+    {
+    typedef vtksys::CommandLineArguments argT;
+    this->Internals->CMD.AddCallback(longarg, argT::EQUAL_ARGUMENT,
+      callback, call_data, help);
+    if ( shortarg )
+      {
+      this->Internals->CMD.AddCallback(shortarg, argT::EQUAL_ARGUMENT,
+        callback, call_data, longarg);
+      }
+    }
+}
+
+//----------------------------------------------------------------------------
 int vtkCommandOptions::UnknownArgumentHandler(const char* argument, void* call_data)
 {
   vtkCommandOptions* self = static_cast<vtkCommandOptions*>(call_data);
