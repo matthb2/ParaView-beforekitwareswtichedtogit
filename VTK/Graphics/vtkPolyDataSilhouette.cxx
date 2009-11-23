@@ -449,4 +449,9 @@ void vtkPolyDataSilhouette::PrintSelf(ostream& os, vtkIndent indent)
      os << "Specified Origin: (" << this->Origin[0] << ", " << this->Origin[1] << ", " << this->Origin[2] << ")\n";
   }
   
+  os << indent << "PieceInvariant: " << this->PieceInvariant << "\n";
+  os << indent << "FeatureAngle: " << this->FeatureAngle << "\n";
+  os << indent << "EnableFeatureAngle: " << this->EnableFeatureAngle << "\n";
+  os << indent << "BorderEdges: " << this->BorderEdges << "\n";
 }
+
