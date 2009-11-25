@@ -267,7 +267,7 @@ double vtkVolumePicker::IntersectActorWithLine(const double p1[3],
                                                const double p2[3],
                                                double t1, double t2,
                                                double tol, 
-                                               vtkActor *actor, 
+                                               vtkActor *vtkNotUsed(actor), 
                                                vtkMapper *mapper)
 {
   // This code was taken from CellPicker with almost no modification.
