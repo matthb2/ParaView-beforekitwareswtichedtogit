@@ -52,7 +52,7 @@
 #include "XdmfRoot.h"
 #include "XdmfTime.h"
 #include "XdmfTopology.h"
-
+#include <vector>
 #include <vtkstd/map>
 #include <vtkstd/algorithm>
 #include <stdio.h>
