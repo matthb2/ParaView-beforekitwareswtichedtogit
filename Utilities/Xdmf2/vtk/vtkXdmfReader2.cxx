@@ -296,7 +296,7 @@ int vtkXdmfReader2::RequestInformation(vtkInformation *, vtkInformationVector **
       spacing[1] *= this->Stride[1];
       spacing[2] *= this->Stride[2];
       outInfo->Set(vtkDataObject::ORIGIN(), origin, 3);
-      outInfo->Set(vtkDataObject::SPACING(), origin, 3);
+      outInfo->Set(vtkDataObject::SPACING(), spacing, 3);
       }
     }
 
