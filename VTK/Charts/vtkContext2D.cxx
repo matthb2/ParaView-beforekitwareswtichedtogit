@@ -286,6 +286,44 @@ void vtkContext2D::DrawEllipse(float x, float y, float rx, float ry)
   this->Device->DrawPoly(&p[0], iterations + 1);
 }
 
+#ifdef VTK_WORKAROUND_WINDOWS_MANGLE
+# undef DrawText
+// Define possible mangled names.
+void vtkContext2D::DrawTextA(vtkPoints2D *point, const vtkStdString &string)
+{
+  this->DrawText(point, string);
+}
+void vtkContext2D::DrawTextA(int x, int y, const vtkStdString &string)
+{
+  this->DrawText(x, y, string);
+}
+void vtkContext2D::DrawTextA(vtkPoints2D *point, const char *string)
+{
+  this->DrawText(point, string);
+}
+void vtkContext2D::DrawTextA(int x, int y, const char *string)
+{
+  this->DrawText(x, y, string);
+}
+
+void vtkContext2D::DrawTextW(vtkPoints2D *point, const vtkStdString &string)
+{
+  this->DrawText(point, string);
+}
+void vtkContext2D::DrawTextW(int x, int y, const vtkStdString &string)
+{
+  this->DrawText(x, y, string);
+}
+void vtkContext2D::DrawTextW(vtkPoints2D *point, const char *string)
+{
+  this->DrawText(point, string);
+}
+void vtkContext2D::DrawTextW(int x, int y, const char *string)
+{
+  this->DrawText(x, y, string);
+}
+#endif
+
 //-----------------------------------------------------------------------------
 void vtkContext2D::DrawText(vtkPoints2D *point, const vtkStdString &string)
 {
