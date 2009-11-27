@@ -60,7 +60,7 @@ vtkContextActor::~vtkContextActor()
 }
 
 //----------------------------------------------------------------------------
-void vtkContextActor::ReleaseGraphicsResources(vtkWindow *win)
+void vtkContextActor::ReleaseGraphicsResources(vtkWindow *)
 {
 }
 

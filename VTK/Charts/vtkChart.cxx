@@ -72,7 +72,7 @@ vtkChart::~vtkChart()
 }
 
 //-----------------------------------------------------------------------------
-vtkPlot * vtkChart::AddPlot(Type type)
+vtkPlot * vtkChart::AddPlot(Type)
 {
   return NULL;
 }
@@ -91,7 +91,7 @@ void vtkChart::AddInteractorStyle(vtkInteractorStyle *interactor)
 
 //-----------------------------------------------------------------------------
 void vtkChart::ProcessEvents(vtkObject* caller, unsigned long eventId,
-                             void* callData)
+                             void*)
 {
   cout << "ProcessEvents called! " << caller->GetClassName() << "\t"
       << vtkCommand::GetStringFromEventId(eventId)
