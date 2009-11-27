@@ -100,6 +100,8 @@ bool vtkImageItem::Paint(vtkContext2D *painter)
     // We have a function pointer - do something...
     ;
     }
+
+  return true;
 }
 
 //-----------------------------------------------------------------------------
