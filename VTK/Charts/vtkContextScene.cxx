@@ -158,6 +158,10 @@ vtkContextItem * vtkContextScene::GetItem(int index)
     {
     return this->Storage->items[index];
     }
+  else
+    {
+    return NULL;
+    }
 }
 
 //-----------------------------------------------------------------------------
