@@ -265,7 +265,6 @@ vtkPlot * vtkChartXY::AddPlot(vtkChart::Type type)
     default:
       return NULL;
     }
-  return NULL;
 }
 
 //-----------------------------------------------------------------------------
