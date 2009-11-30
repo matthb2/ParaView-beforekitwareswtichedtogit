@@ -689,6 +689,8 @@ int vtkXMLWriter::StartFile()
     os << "<?xml version=\"1.0\"?>\n";
     }
 
+  os.imbue(vtkstd::locale::classic());
+  
   // Open the document-level element.  This will contain the rest of
   // the elements.
   os << "<VTKFile";
