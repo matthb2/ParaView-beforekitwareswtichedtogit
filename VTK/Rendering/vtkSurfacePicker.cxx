@@ -47,7 +47,7 @@ vtkSurfacePicker::vtkSurfacePicker()
   this->Gradients->SetNumberOfTuples(8);
  
   this->Tolerance = 1e-6;
-  this->VolumeOpacityIsovalue = 0.01;
+  this->VolumeOpacityIsovalue = 0.05;
   this->PickClippingPlanes = 0;
 
   this->ClippingPlaneId = -1;
@@ -552,8 +552,9 @@ double vtkSurfacePicker::IntersectVolumeWithLine(const double p1[3],
           {
           // Set inc to +1 or -1
           int inc = (1 - 2*(x2[k] < x1[k]));
-          double ttry = (xi[k] + inc - x1[k])/(x2[k] - x1[k]);
-          if (ttry < t)
+          int lastIdx = int(floor(x1[k]*(1.0 - lastT) + x2[k]*lastT)); 
+          double ttry = (lastIdx + inc - x1[k])/(x2[k] - x1[k]);
+          if (ttry > lastT && ttry < t)
             {
             t = ttry;
             }
