@@ -53,6 +53,9 @@
 #include <ctype.h> // isalnum is defined here for some versions of Borland
 #endif
 
+#include <locale> // C++ locale
+
+
 //*****************************************************************************
 // Friend class to enable access for  template functions to the protected
 // writer methods.
@@ -642,6 +645,8 @@ int vtkXMLWriter::WriteInternal()
     return 0;
     }
 
+  (*this->Stream).imbue(vtkstd::locale::classic());
+  
   // Tell the subclass to write the data.
   int result = this->WriteData();
 
