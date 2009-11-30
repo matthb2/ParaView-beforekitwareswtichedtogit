@@ -91,7 +91,6 @@ bool vtkBlockItem::Hit(const vtkContextMouseEvent &mouse)
     {
     return false;
     }
-  return false;
 }
 
 //-----------------------------------------------------------------------------
