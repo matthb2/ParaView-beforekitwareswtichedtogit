@@ -11,17 +11,18 @@ vtkStandardNewMacro(vtkKMeansDistanceFunctor);
 vtkCxxRevisionMacro(vtkKMeansDistanceFunctor,"$Revision$");
 
 // ----------------------------------------------------------------------
+vtkKMeansDistanceFunctor::vtkKMeansDistanceFunctor()
+{
+  this->EmptyTuple = vtkVariantArray::New();
+}
+
+// ----------------------------------------------------------------------
 vtkKMeansDistanceFunctor::~vtkKMeansDistanceFunctor()
 {
   this->EmptyTuple->Delete();
 }
 
 // ----------------------------------------------------------------------
-vtkKMeansDistanceFunctor::vtkKMeansDistanceFunctor()
-{
-  this->EmptyTuple = vtkVariantArray::New();
-}
-
 void vtkKMeansDistanceFunctor::PrintSelf( ostream& os, vtkIndent indent )
 {
   this->Superclass::PrintSelf( os, indent );
@@ -133,7 +134,7 @@ void vtkKMeansDistanceFunctor::DeallocateElementArray( void* array )
 }
 
 // ----------------------------------------------------------------------
-vtkAbstractArray* vtkKMeansDistanceFunctor::GetNewVTKArray( )
+vtkAbstractArray* vtkKMeansDistanceFunctor::CreateCoordinateArray( )
 {
   return vtkDoubleArray::New();
 }
