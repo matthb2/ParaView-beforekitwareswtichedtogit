@@ -247,7 +247,8 @@ void vtkOpenGLContextDevice2D::DrawText(float *point, vtkTextProperty *prop,
     this->TextRenderer->StartFrame();
     }
 
-  int p[] = { point[0], point[1] };
+  int p[] = { static_cast<int>(point[0]),
+              static_cast<int>(point[1]) };
   this->TextRenderer->RenderLabel(&p[0], prop, string);
 }
 

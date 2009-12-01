@@ -174,8 +174,8 @@ bool vtkChartXY::Paint(vtkContext2D *painter)
   painter->GetDevice()->SetClipping(&clip[0]);
 
   // Now iterate through the plots
-  int n = this->ChartPrivate->plots.size();
-  for (int i = 0; i < n; ++i)
+  size_t n = this->ChartPrivate->plots.size();
+  for (size_t i = 0; i < n; ++i)
     {
     this->ChartPrivate->plots[i]->SetSelection(idArray);
     this->ChartPrivate->plots[i]->Paint(painter);
