@@ -49,6 +49,7 @@ The destrcutor
 */
 vtkDataSetGradient::~vtkDataSetGradient()
 {
+   this->SetResultArrayName( 0 );
 }
 
 void vtkDataSetGradient::PrintSelf(ostream& os, vtkIndent indent)

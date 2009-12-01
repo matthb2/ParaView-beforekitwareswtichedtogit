@@ -62,7 +62,8 @@ vtkAddMembershipArray::vtkAddMembershipArray()
 //---------------------------------------------------------------------------
 vtkAddMembershipArray::~vtkAddMembershipArray()
 {
-  this->SetOutputArrayName(0);
+  this->SetOutputArrayName( 0 );
+  this->SetInputArrayName( 0 );
 }
 
 //---------------------------------------------------------------------------
