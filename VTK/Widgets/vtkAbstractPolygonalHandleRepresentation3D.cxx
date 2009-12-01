@@ -606,6 +606,9 @@ void vtkAbstractPolygonalHandleRepresentation3D::ShallowCopy(vtkProp *prop)
     // copy the handle shape
     this->HandleTransformFilter->SetInput(
         rep->HandleTransformFilter->GetInput());
+
+    this->LabelVisibility = rep->LabelVisibility;
+    this->SetLabelText( rep->GetLabelText() );
     }
   this->Superclass::ShallowCopy(prop);
 }
@@ -679,6 +682,12 @@ vtkAbstractTransform* vtkAbstractPolygonalHandleRepresentation3D::GetTransform()
 void vtkAbstractPolygonalHandleRepresentation3D::SetLabelText( const char *s )
 {
   this->LabelTextInput->SetText(s);
+}
+
+//----------------------------------------------------------------------
+char * vtkAbstractPolygonalHandleRepresentation3D::GetLabelText()
+{
+  return this->LabelTextInput->GetText();
 }
 
 //----------------------------------------------------------------------
