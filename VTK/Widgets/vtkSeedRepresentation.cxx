@@ -67,7 +67,8 @@ vtkSeedRepresentation::~vtkSeedRepresentation()
 }
 
 //----------------------------------------------------------------------
-vtkHandleRepresentation *vtkSeedRepresentation::GetHandleRepresentation(unsigned int num)
+vtkHandleRepresentation *vtkSeedRepresentation
+::GetHandleRepresentation(unsigned int num)
 {
   if ( num < this->Handles->size() )
     {
