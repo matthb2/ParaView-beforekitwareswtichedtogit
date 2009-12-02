@@ -314,7 +314,7 @@ void vtkOpenGLFreeTypeTextMapper::RenderOverlay(vtkViewport* viewport,
   glLoadIdentity();
 
   // Store the state of the attributes we are about to change
-  bool lightingEnabled = glIsEnabled(GL_LIGHTING);
+  GLboolean lightingEnabled = glIsEnabled(GL_LIGHTING);
   GLint depthFunc;
   glGetIntegerv(GL_DEPTH_FUNC, &depthFunc);
   glDisable(GL_LIGHTING);
