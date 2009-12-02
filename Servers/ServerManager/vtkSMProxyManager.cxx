@@ -818,7 +818,7 @@ void vtkSMProxyManager::UnRegisterProxy(vtkSMProxy* proxy)
   for (; it != this->Internals->RegisteredProxyMap.end(); it++)
     {
     vtkSMProxyManagerProxyMapType::iterator it2;
-    for (it->second.begin(); it2 != it->second.end(); ++it2)
+    for (it2 = it->second.begin(); it2 != it->second.end(); ++it2)
       {
       if (it2->second.Contains(proxy))
         {
