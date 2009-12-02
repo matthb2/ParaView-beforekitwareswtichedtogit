@@ -39,7 +39,12 @@ vtkStandardNewMacro(vtkContext2D);
 //-----------------------------------------------------------------------------
 bool vtkContext2D::Begin(vtkContextDevice2D *device)
 {
-  if (this->Device)
+  if (this->Device == device)
+    {
+    //Handle the case where the same device is set multiple times
+    return true;
+    }
+  else if (this->Device)
     {
     this->Device->Delete();
     }

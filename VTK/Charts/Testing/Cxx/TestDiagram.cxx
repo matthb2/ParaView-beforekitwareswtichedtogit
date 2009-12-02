@@ -25,6 +25,7 @@
 #include "vtkPen.h"
 #include "vtkBrush.h"
 #include "vtkTextProperty.h"
+#include "vtkOpenGLContextDevice2D.h"
 
 #include "vtkRegressionTestImage.h"
 
@@ -54,6 +55,10 @@ int TestDiagram( int argc, char * argv [] )
   renderWindow->SetSize(800, 600);
   renderWindow->AddRenderer(renderer);
   renderer->AddActor(actor);
+
+  // Force the use of the freetype based rendering strategy
+  vtkOpenGLContextDevice2D::SafeDownCast(actor->GetContext()->GetDevice())
+      ->SetStringRendererToFreeType();
 
   VTK_CREATE(vtkRenderWindowInteractor, interactor);
   interactor->SetRenderWindow(renderWindow);
