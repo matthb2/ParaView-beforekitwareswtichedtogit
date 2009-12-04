@@ -45,7 +45,7 @@ public:
     if (this->Target)
       {
       vtkInteractorStyle *style = vtkInteractorStyle::SafeDownCast(caller);
-      vtkRenderWindowInteractor *interactor;
+      vtkRenderWindowInteractor *interactor = NULL;
       if (style)
         {
         interactor = vtkRenderWindowInteractor::SafeDownCast(style->GetInteractor());
