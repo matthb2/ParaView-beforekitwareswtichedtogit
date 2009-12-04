@@ -157,6 +157,9 @@ void vtkOpenGLVolumeTextureMapper3D::Render(vtkRenderer *ren, vtkVolume *vol)
   glPushMatrix();
   glMultMatrixd(matrix->Element[0]);
 
+  // If an actor turned on culling, it must be turned off here
+  glDisable (GL_CULL_FACE);
+
   glColor4f( 1.0, 1.0, 1.0, 1.0 );
 
   // Turn lighting off - the polygon textures already have illumination
