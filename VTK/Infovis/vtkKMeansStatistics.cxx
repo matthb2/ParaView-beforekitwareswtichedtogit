@@ -414,6 +414,8 @@ void vtkKMeansStatistics::Learn( vtkTable* inData,
           (*this->DistanceFunctor)( minDistance,
             curClusterElements->GetRow( j ),
             dataElements->GetRow( observation ) );
+          curDistance = minDistance;
+          ++ j;
           for( /* no init */; j < runEndIdx; j++ )
             {
             (*this->DistanceFunctor)( curDistance,
