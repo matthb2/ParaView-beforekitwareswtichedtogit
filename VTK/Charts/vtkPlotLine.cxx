@@ -45,7 +45,12 @@ vtkPlotLine::vtkPlotLine()
 //-----------------------------------------------------------------------------
 vtkPlotLine::~vtkPlotLine()
 {
-  delete this->Label;
+  this->SetLabel(NULL);
+  if (this->Points)
+    {
+    this->Points->Delete();
+    this->Points = NULL;
+    }
 }
 
 //-----------------------------------------------------------------------------
