@@ -34,16 +34,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 =========================================================================*/
 
 #include <QApplication>
-#include <QBitmap>
-#include <QDir>
-#include <QSplashScreen>
-#include <QtDebug>
-
-#include "@BPC_PVMAIN_WINDOW_INCLUDE@"
-#include "pqPVApplicationCore.h"
-#include "pqViewManager.h"
-#include "pqBrandPluginsLoader.h"
-#include "pqOptions.h"
+#include "pq@BPC_NAME@Initializer.h"
 
 #ifdef Q_WS_X11
 #include <QPlastiqueStyle>
@@ -64,73 +55,12 @@ int main(int argc, char* argv[])
   QApplication::setOrganizationName("@BPC_ORGANIZATION@");
 
   QApplication qtapp(argc, argv);
-  pqPVApplicationCore pvapp(argc, argv);
-  if (pvapp.getOptions()->GetHelpSelected() ||
-    pvapp.getOptions()->GetUnknownArgument() ||
-    pvapp.getOptions()->GetErrorMessage() ||
-    pvapp.getOptions()->GetTellVersion())
+  pq@BPC_NAME@Initializer pvInitializer;
+  if (!pvInitializer.Initialize(argc, argv))
     {
     return 1;
     }
 
-#ifndef PARAVIEW_BUILD_SHARED_LIBS
-  Q_INIT_RESOURCE(@BPC_NAME@_generated);
-  Q_INIT_RESOURCE(@BPC_NAME@_configuration);
-  Q_INIT_RESOURCE(@BPC_NAME@_help);
-#endif  
-
-  // Create and show the splash screen as the main window is being created.
-  QPixmap pixmap("@BPC_SPLASH_RESOURCE@");
-  QSplashScreen splash(pixmap);
-  splash.setMask(pixmap.createMaskFromColor(QColor(Qt::transparent)));
-  splash.show();
-
-  // Not sure why this is needed. Andy added this ages ago with comment saying
-  // needed for Mac apps. Need to check that it's indeed still required.
-  QDir dir(QApplication::applicationDirPath());
-  dir.cdUp();
-  dir.cd("Plugins");
-  QApplication::addLibraryPath(dir.absolutePath());
-
-
-  // Create main window.
-  @BPC_PVMAIN_WINDOW@ mainWindow;
-
-  // Load required application plugins.
-  QString plugin_string = "@BPC_REQUIRED_PLUGINS@";
-  QStringList plugin_list = plugin_string.split(';',QString::SkipEmptyParts);
-  pqBrandPluginsLoader loader;
-  if (loader.loadPlugins(plugin_list) == false)
-    {
-    qCritical() << "Failed to load required plugins for this application";
-    return 1;
-    }
-
-  // Load optional plugins.
-  plugin_string = "@BPC_OPTIONAL_PLUGINS@";
-  plugin_list = plugin_string.split(';',QString::SkipEmptyParts);
-  loader.loadPlugins(plugin_list, true); //quietly skip not-found plugins.
-
-
-#if @BPC_HAS_GUI_CONFIGURATION_XMLS@
-  // Load configuration xmls after all components have been instantiated.
-  // This configuration part is something that needs to be cleaned up, I haven't
-  // given this too much thought.
-  QDir dir2(":/@BPC_NAME@/Configuration");
-  QStringList files = dir2.entryList(QDir::Files);
-  foreach (QString file, files)
-    {
-    pvapp.loadConfiguration(QString(":/@BPC_NAME@/Configuration/") + file);
-    }
-#endif
-  mainWindow.setWindowTitle("@BPC_TITLE@");
-  
-  // give GUI components time to update before the mainwindow is shown
-  qtapp.processEvents();
-  mainWindow.show();
-
-  qtapp.processEvents();
-  splash.finish(&mainWindow);
   return qtapp.exec();
 }
 // ***************** DO NOT EDIT ***********************************
