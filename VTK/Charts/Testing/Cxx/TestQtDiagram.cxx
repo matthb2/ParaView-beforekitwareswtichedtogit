@@ -66,8 +66,10 @@ int TestQtDiagram( int argc, char * argv [] )
     return 1;
     }
 
+  // Set up the interactor, turn off antialiasing for the tests.
   VTK_CREATE(vtkRenderWindowInteractor, interactor);
   interactor->SetRenderWindow(renderWindow);
+  renderWindow->SetMultiSamples(0);
   renderWindow->Render();
 
   int retVal = vtkRegressionTestImage(renderWindow);

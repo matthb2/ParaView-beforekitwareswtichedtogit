@@ -62,6 +62,7 @@ int TestDiagram( int argc, char * argv [] )
 
   VTK_CREATE(vtkRenderWindowInteractor, interactor);
   interactor->SetRenderWindow(renderWindow);
+  renderWindow->SetMultiSamples(0);
   renderWindow->Render();
 
   int retVal = vtkRegressionTestImage(renderWindow);
