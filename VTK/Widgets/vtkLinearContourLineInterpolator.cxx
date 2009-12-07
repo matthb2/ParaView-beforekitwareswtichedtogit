@@ -36,3 +36,9 @@ int vtkLinearContourLineInterpolator::InterpolateLine( vtkRenderer *vtkNotUsed(r
   return 1;
 }
 
+//----------------------------------------------------------------------
+void vtkLinearContourLineInterpolator::PrintSelf(ostream& os, vtkIndent indent)
+{
+  this->Superclass::PrintSelf(os,indent);
+}
+
