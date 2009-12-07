@@ -673,8 +673,6 @@ int vtkAMRDualContour::RequestData(
   vtkInformation *inInfo = inputVector[0]->GetInformationObject(0);
   vtkHierarchicalBoxDataSet *hbdsInput=vtkHierarchicalBoxDataSet::SafeDownCast(
     inInfo->Get(vtkDataObject::DATA_OBJECT()));
-  vtkObject *tmp= inInfo->Get(vtkDataObject::DATA_OBJECT());
-
 
   // Get the outputs
   // 0
