@@ -30,8 +30,8 @@ vtkLinearContourLineInterpolator::~vtkLinearContourLineInterpolator()
 
 //----------------------------------------------------------------------
 int vtkLinearContourLineInterpolator::InterpolateLine( vtkRenderer *vtkNotUsed(ren),
-                                                       vtkContourRepresentation *rep,
-                                                       int idx1, int idx2 )
+                                                       vtkContourRepresentation *vtkNotUsed(rep),
+                                                       int vtkNotUsed(idx1), int vtkNotUsed(idx2) )
 {
   return 1;
 }
