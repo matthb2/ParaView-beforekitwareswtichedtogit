@@ -60,6 +60,12 @@ vtkCxxSetObjectMacro(vtkChart, AnnotationLink, vtkAnnotationLink);
 //-----------------------------------------------------------------------------
 vtkChart::vtkChart()
 {
+  int i=0;
+  while(i<6)
+    {
+    this->Geometry[i]=0;
+    ++i;
+    }
   this->Observer = vtkChart::Command::New();
   this->Observer->SetTarget(this);
   this->AnnotationLink = NULL;
