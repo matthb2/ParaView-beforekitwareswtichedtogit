@@ -1197,7 +1197,7 @@ void vtkCarbonRenderWindow::HideCursor()
     return;
     }
   this->CursorHidden = 1;
-  HideCursor();
+  CGDisplayHideCursor(CGMainDisplayID());
 }
 
 //----------------------------------------------------------------------------
@@ -1208,7 +1208,7 @@ void vtkCarbonRenderWindow::ShowCursor()
     return;
     }
   this->CursorHidden = 0;
-  ShowCursor();
+  CGDisplayShowCursor(CGMainDisplayID());
 }
 
 OSStatus vtkCarbonRenderWindow::RegionEventProcessor(EventHandlerCallRef, 
