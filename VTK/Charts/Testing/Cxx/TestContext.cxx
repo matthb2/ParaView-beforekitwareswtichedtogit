@@ -84,7 +84,9 @@ bool ContextTest::Paint(vtkContext2D *painter)
   // Draw some individual lines of different thicknesses.
   for (int i = 0; i < 10; ++i)
     {
-    painter->GetPen()->SetColor(255, float(i)*25, 0);
+    painter->GetPen()->SetColor(255,
+                                static_cast<unsigned char>(float(i)*25.0),
+                                0);
     painter->GetPen()->SetWidth(1.0 + float(i));
     painter->DrawLine(10, 50 + float(i)*10, 60, 50 + float(i)*10);
     }
@@ -113,7 +115,9 @@ bool ContextTest::Paint(vtkContext2D *painter)
   // Draw some individual lines of different thicknesses.
   for (int i = 0; i < 10; ++i)
     {
-    painter->GetPen()->SetColor(0, float(i)*25, 255);
+    painter->GetPen()->SetColor(0,
+                                static_cast<unsigned char>(float(i)*25.0),
+                                255);
     painter->GetPen()->SetWidth(1.0 + float(i));
     painter->DrawPoint(75, 50 + float(i)*10);
     }
