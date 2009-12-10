@@ -942,11 +942,11 @@ void vtkContingencyStatistics::Test( vtkTable* inData,
 
     // Now search for relevant marginal counts
     Counts ek[2];
-    int foundIndex = -1;
     int foundCount = 0;
     for ( unsigned int b = 2; b < inMeta->GetNumberOfBlocks()  && foundCount < 2; ++ b )
       {
       const char* name = inMeta->GetMetaData( static_cast<unsigned>( b ) )->Get( vtkCompositeDataSet::NAME() );
+      int foundIndex = -1;
       if ( ! strcmp( name, varNameX ) )
         {
         // Found the marginal count of X
