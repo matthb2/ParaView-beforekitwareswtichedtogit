@@ -1023,7 +1023,7 @@ void vtkContingencyStatistics::Test( vtkTable* inData,
       } // xit
     
     // Degrees of freedom
-    unsigned int d = ( ek[0].size() - 1 ) * ( ek[1].size() - 1 );
+    vtkIdType d = ( ek[0].size() - 1 ) * ( ek[1].size() - 1 );
 
     // Insert test values
     row->SetValue( 0, d );     // degrees of freedom
