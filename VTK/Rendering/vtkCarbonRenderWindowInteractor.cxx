@@ -229,6 +229,10 @@ static pascal OSStatus myWinEvtHndlr(EventHandlerCallRef,
             keySym = "Alt_L";
             keyPress = oldAltDown = altDown;
             }
+          else
+            {
+            break;
+            }
 
           me->SetKeyEventInformation(oldControlDown, oldShiftDown,
                                      charCode, 1, keySym);
