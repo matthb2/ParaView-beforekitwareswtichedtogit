@@ -72,7 +72,7 @@ int TestQtDiagram( int argc, char * argv [] )
   renderWindow->SetMultiSamples(0);
   renderWindow->Render();
 
-  int retVal = vtkRegressionTestImage(renderWindow);
+  int retVal = vtkRegressionTestImageThreshold(renderWindow, 15);
   if( retVal == vtkRegressionTester::DO_INTERACTOR)
     {
     interactor->Start();
