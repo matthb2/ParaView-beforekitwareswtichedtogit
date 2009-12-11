@@ -479,6 +479,21 @@ void vtkSphereHandleRepresentation::ShallowCopy(vtkProp *prop)
 }
 
 //----------------------------------------------------------------------
+void vtkSphereHandleRepresentation::DeepCopy(vtkProp *prop)
+{
+  vtkSphereHandleRepresentation *rep = 
+    vtkSphereHandleRepresentation::SafeDownCast(prop);
+  if ( rep )
+    {
+    this->SetTranslationMode(rep->GetTranslationMode());
+    this->Property->DeepCopy(rep->GetProperty());
+    this->SelectedProperty->DeepCopy(rep->GetSelectedProperty());
+    this->SetHotSpotSize(rep->GetHotSpotSize());
+    }
+  this->Superclass::DeepCopy(prop);
+}
+
+//----------------------------------------------------------------------
 void vtkSphereHandleRepresentation::GetActors(vtkPropCollection *pc)
 {
   this->Actor->GetActors(pc);

@@ -348,6 +348,21 @@ void vtkPointHandleRepresentation2D::ShallowCopy(vtkProp *prop)
 }
 
 //----------------------------------------------------------------------
+void vtkPointHandleRepresentation2D::DeepCopy(vtkProp *prop)
+{
+  vtkPointHandleRepresentation2D *rep = 
+    vtkPointHandleRepresentation2D::SafeDownCast(prop);
+  if ( rep )
+    {
+    this->SetCursorShape(rep->GetCursorShape());
+    this->Property->DeepCopy(rep->GetProperty());
+    this->SelectedProperty->DeepCopy(rep->GetSelectedProperty());
+    this->Actor->SetProperty(this->Property);
+    }
+  this->Superclass::DeepCopy(prop);
+}
+
+//----------------------------------------------------------------------
 void vtkPointHandleRepresentation2D::GetActors2D(vtkPropCollection *pc)
 {
   this->Actor->GetActors2D(pc);

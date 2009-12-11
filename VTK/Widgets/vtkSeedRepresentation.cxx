@@ -79,7 +79,7 @@ vtkHandleRepresentation *vtkSeedRepresentation
   else //create one
     {
     vtkHandleRepresentation *rep = this->HandleRepresentation->NewInstance();
-    rep->ShallowCopy(this->HandleRepresentation);
+    rep->DeepCopy(this->HandleRepresentation);
     this->Handles->push_back( rep );
     return rep;
     }

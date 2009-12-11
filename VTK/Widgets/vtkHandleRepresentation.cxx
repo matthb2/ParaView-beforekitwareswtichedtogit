@@ -139,6 +139,19 @@ void vtkHandleRepresentation::SetRenderer(vtkRenderer *ren)
 }
 
 //----------------------------------------------------------------------
+void vtkHandleRepresentation::DeepCopy(vtkProp *prop)
+{
+  vtkHandleRepresentation *rep = vtkHandleRepresentation::SafeDownCast(prop);
+  if ( rep )
+    {
+    this->SetTolerance(rep->GetTolerance());
+    this->SetActiveRepresentation(rep->GetActiveRepresentation());
+    this->SetConstrained(rep->GetConstrained());
+    }
+  this->Superclass::ShallowCopy(prop);
+}
+
+//----------------------------------------------------------------------
 void vtkHandleRepresentation::ShallowCopy(vtkProp *prop)
 {
   vtkHandleRepresentation *rep = vtkHandleRepresentation::SafeDownCast(prop);
