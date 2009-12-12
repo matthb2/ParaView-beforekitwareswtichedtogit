@@ -618,9 +618,8 @@ void vtkPCAStatistics::Derive( vtkDataObject* inMetaDO )
 
 // ----------------------------------------------------------------------
 void vtkPCAStatistics::Assess( vtkTable* inData, 
-                                      vtkDataObject* inMetaDO, 
-                                      vtkTable* outData, 
-                                      vtkDataObject* vtkNotUsed(outMetaDO) )
+                               vtkDataObject* inMetaDO, 
+                               vtkTable* outData )
 {
   vtkMultiBlockDataSet* inMeta = vtkMultiBlockDataSet::SafeDownCast( inMetaDO );
   if ( ! inMeta || ! outData )

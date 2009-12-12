@@ -69,8 +69,7 @@ int vtkBivariateStatisticsAlgorithm::RequestSelectedColumns()
 // ----------------------------------------------------------------------
 void vtkBivariateStatisticsAlgorithm::Assess( vtkTable* inData,
                                               vtkDataObject* inMetaDO,
-                                              vtkTable* outData,
-                                              vtkDataObject* vtkNotUsed( outMeta ) )
+                                              vtkTable* outData )
 {
   vtkTable* inMeta = vtkTable::SafeDownCast( inMetaDO );
   if ( ! inMeta )

@@ -284,8 +284,8 @@ void vtkKMeansStatistics::UpdateClusterCenters( vtkTable* newClusterElements,
 
 // ----------------------------------------------------------------------
 void vtkKMeansStatistics::Learn( vtkTable* inData, 
-                                        vtkTable* inParameters,
-                                        vtkDataObject* outMetaDO )
+                                 vtkTable* inParameters,
+                                 vtkDataObject* outMetaDO )
 {
   vtkMultiBlockDataSet* outMeta = vtkMultiBlockDataSet::SafeDownCast( outMetaDO );
   if ( !outMeta )
@@ -613,9 +613,8 @@ void vtkKMeansStatistics::Derive( vtkDataObject* outMetaDO )
 
 // ----------------------------------------------------------------------
 void vtkKMeansStatistics::Assess( vtkTable* inData, 
-                                         vtkDataObject* inMetaDO, 
-                                         vtkTable* outData, 
-                                         vtkDataObject* vtkNotUsed(outMetaDO) )
+                                  vtkDataObject* inMetaDO, 
+                                  vtkTable* outData )
 {
   vtkMultiBlockDataSet* inMeta = vtkMultiBlockDataSet::SafeDownCast( inMetaDO );
   if ( ! inMeta || ! outData )

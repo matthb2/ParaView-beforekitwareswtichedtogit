@@ -615,8 +615,7 @@ public:
 // ----------------------------------------------------------------------
 void vtkContingencyStatistics::Assess( vtkTable* inData,
                                        vtkDataObject* inMetaDO,
-                                       vtkTable* outData,
-                                       vtkDataObject* vtkNotUsed( outMeta ) )
+                                       vtkTable* outData )
 {
   if ( ! inData || inData->GetNumberOfColumns() <= 0 )
     {
