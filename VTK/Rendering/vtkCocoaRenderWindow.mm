@@ -616,13 +616,12 @@ void vtkCocoaRenderWindow::CreateAWindow()
       if (x + width > parentWidth) { width = parentWidth - x; }
       if (y + height > parentWidth) { height = parentHeight - y; }
 
+      // Don't use vtkCocoaGLView, let superview control events
       NSRect glRect = NSMakeRect(x, y, width, height);
-      vtkCocoaGLView *glView =
-        [[[vtkCocoaGLView alloc] initWithFrame:glRect] autorelease];
+      NSView *glView = [[[NSView alloc] initWithFrame:glRect] autorelease];
       [parent addSubview:glView]; 
       this->SetWindowId(glView);
       this->ViewCreated = 1;
-      [glView setVTKRenderWindow:this];
       }
     else
       {
