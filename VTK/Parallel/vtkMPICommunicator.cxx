@@ -593,12 +593,6 @@ int vtkMPICommunicator::InitializeNumberOfProcesses()
     delete[] msg;
     return 0;
     }
-
-  if (this->MaximumNumberOfProcesses > vtkMultiProcessController::MAX_PROCESSES)
-    {
-    vtkWarningMacro("Maximum of " << vtkMultiProcessController::MAX_PROCESSES);
-    this->MaximumNumberOfProcesses = vtkMultiProcessController::MAX_PROCESSES;
-    }
   
   this->NumberOfProcesses = this->MaximumNumberOfProcesses;
   
