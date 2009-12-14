@@ -108,9 +108,43 @@ vtkPCosmoReader::~vtkPCosmoReader()
 }
 
 //----------------------------------------------------------------------------
+void vtkPCosmoReader::SetController(vtkMultiProcessController *c)
+{
+  if(this->Controller == c)
+    {
+    return;
+    }
+
+  this->Modified();
+
+  if(this->Controller != 0)
+    {
+    this->Controller->UnRegister(this);
+    this->Controller = 0;
+    }
+
+  if(c == 0)
+    {
+    return;
+    }
+
+  this->Controller = c;
+  c->Register(this);
+}
+
+//----------------------------------------------------------------------------
 void vtkPCosmoReader::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os,indent);
+
+  if (this->Controller)
+    {
+    os << indent << "Controller: " << this->Controller << endl;
+    }
+  else
+    {
+    os << indent << "Controller: (null)\n";
+    }
 }
 
 //----------------------------------------------------------------------------
