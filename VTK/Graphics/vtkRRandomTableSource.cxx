@@ -338,7 +338,7 @@ void vtkRRandomTableSource::SetStatisticalDistributionForColumn(int StatDist,
                                                                 double param1,
                                                                 double param2,
                                                                 double param3,
-                                                                char* ColumnName,
+                                                                const char* ColumnName,
                                                                 int column_index)
 {
 
@@ -356,7 +356,7 @@ void vtkRRandomTableSource::SetStatisticalDistributionForColumn(vtkRRandomTableS
                                                                 double param1,
                                                                 double param2,
                                                                 double param3,
-                                                                char* ColumnName,
+                                                                const char* ColumnName,
                                                                 int column_index)
 {
 
