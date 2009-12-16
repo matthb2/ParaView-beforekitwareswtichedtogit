@@ -113,7 +113,7 @@ vtkCosmoHaloFinder::~vtkCosmoHaloFinder()
 }
 
 /****************************************************************************/
-int vtkCosmoHaloFinder::RequestData(vtkInformation* request,
+int vtkCosmoHaloFinder::RequestData(vtkInformation* vtkNotUsed(request),
                                     vtkInformationVector** inputVector,
                                     vtkInformationVector* outputVector)
 {
