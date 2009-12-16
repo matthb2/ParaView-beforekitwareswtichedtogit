@@ -182,13 +182,14 @@ int vtkCosmoHaloFinder::RequestData(vtkInformation* request,
     }
 
   this->Reorder(0, this->npart, DATA_X);
-  delete [] this->v;
 
   this->seq = new int[this->npart];
   for (int i=0; i<this->npart; i++)
     {
     this->seq[i] = this->v[i].id;
     }
+
+  delete [] this->v;
 
   this->lb = new float*[NUM_DATA_DIMS];
   this->ub = new float*[NUM_DATA_DIMS];
@@ -255,7 +256,7 @@ int vtkCosmoHaloFinder::RequestData(vtkInformation* request,
   vtkIntArray* hID = vtkIntArray::New();
   hID->SetName("hID");
   hID->SetNumberOfComponents(1);
-  hID->SetNumberOfTuples(npart);
+  hID->SetNumberOfTuples(this->npart);
 
   vtkIntArray* haloSize = vtkIntArray::New();
   haloSize->SetName("haloSize");
