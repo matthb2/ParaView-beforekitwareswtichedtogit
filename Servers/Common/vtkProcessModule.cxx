@@ -646,6 +646,19 @@ void vtkProcessModule::Disconnect(vtkIdType id)
 }
 
 //-----------------------------------------------------------------------------
+void vtkProcessModule::AddManagedSocket(vtkSocket* soc,
+  vtkProcessModuleConnection* conn)
+{
+  this->ConnectionManager->AddManagedSocket(soc, conn);
+}
+
+//-----------------------------------------------------------------------------
+void vtkProcessModule::RemoveManagedSocket(vtkSocket* soc)
+{
+  this->ConnectionManager->RemoveManagedSocket(soc);
+}
+
+//-----------------------------------------------------------------------------
 int vtkProcessModule::ConnectToRemote()
 {
   const char* message = "client";
