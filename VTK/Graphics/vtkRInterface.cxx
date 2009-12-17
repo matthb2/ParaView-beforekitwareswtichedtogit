@@ -36,6 +36,7 @@ vtkStandardNewMacro(vtkRInterface);
 #include "Rdefines.h"
 
 #ifndef WIN32
+#define CSTACK_DEFNS
 #define R_INTERFACE_PTRS
 #include "Rinterface.h"
 #endif
