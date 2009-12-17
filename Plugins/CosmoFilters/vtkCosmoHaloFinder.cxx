@@ -310,9 +310,11 @@ void vtkCosmoHaloFinder::Reorder(int first, int last,
   // base case
   if (len <= 1)
     {
-    double progress = .5 * (double)last / (double)this->npart;
-    if (int(100 * progress) % 1 == 0)
+    int chunksize = this->npart / 50;
+
+    if (last % chunksize == 0)
       {
+      double progress = .5 * (double)last / (double)this->npart;
       this->UpdateProgress(progress);
       }
 
@@ -428,9 +430,10 @@ void vtkCosmoHaloFinder::MyFOF(int first, int last, int dataFlag)
   // base case
   if (len == 1)
     {
-    double progress = .5 * (double)last / (double)this->npart + .5;
-    if (int(100 * progress) % 1 == 0)
+    int chunksize = this->npart / 50;
+    if (last % chunksize == 0)
       {
+      double progress = .5 * (double)last / (double)this->npart + .5;
       this->UpdateProgress(progress);
       }
 
