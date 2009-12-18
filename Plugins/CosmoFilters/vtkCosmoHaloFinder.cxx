@@ -76,12 +76,6 @@ ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "vtkObjectFactory.h"
 #include "vtkStreamingDemandDrivenPipeline.h"
 
-#include "vtkTimerLog.h"
-#include "vtkMath.h"
-#include "vtkDirectory.h"
-#include "vtkXMLUnstructuredGridWriter.h"
-
-#include "vtksys/ios/fstream"
 #include "vtkstd/algorithm"
 
 #define NUM_DATA_DIMS 3
