@@ -13,7 +13,6 @@
 
 =========================================================================*/
 
-
 #include "vtkAreaPicker.h"
 #include "vtkObjectFactory.h"
 #include "vtkMapper.h"
