@@ -22,7 +22,7 @@
 //creates and returns success.
 
 #include "vtkXdmfWriter2.h"
-
+#include <unistd.h>
 #include "vtkCellData.h"
 #include "vtkDataObject.h"
 #include "vtkDataObjectGenerator.h"
