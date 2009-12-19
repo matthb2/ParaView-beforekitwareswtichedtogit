@@ -284,6 +284,7 @@ vtkRRandomTableSource::~vtkRRandomTableSource()
 {
 
   this->impl->col_list.clear();
+  this->impl->ri->Delete();
   delete this->impl;
 
 }

@@ -93,6 +93,7 @@ ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 class vtkDataArraySelection;
 class vtkStdString;
 class vtkMultiProcessController;
+class vtkDistributedDataFilter;
 
 class VTK_PARALLEL_EXPORT vtkPCosmoReader : public vtkCosmoReader
 {
@@ -110,6 +111,24 @@ public:
   vtkGetObjectMacro(Controller, vtkMultiProcessController);
   virtual void SetController(vtkMultiProcessController*);
 
+  // Description:
+  // If set, it processors will take turns doing
+  // full reads, in processor order,
+  // otherwise they read simultaneously
+  // Default is on (take turns reading).
+  vtkGetMacro(TakeTurns, int);
+  vtkSetMacro(TakeTurns, int);
+
+  // Description:
+  // Sets the number of processors that will actually read the file.
+  // Use D3 to redistribute the points.  Values < 1 will use all
+  // processors.  Values > number of processors will be clamped
+  // to the number of processors.  Default is 0 (use all processors).
+  // Could run out of memory if the file is large
+  // and read processors is too small.
+  vtkGetMacro(ReadProcessors, int);
+  vtkSetMacro(ReadProcessors, int);
+
 protected:
   vtkPCosmoReader();
   ~vtkPCosmoReader();
@@ -120,6 +139,9 @@ protected:
     (vtkInformation *, vtkInformationVector **, vtkInformationVector *);
 
   vtkMultiProcessController* Controller; // Interprocess communication
+
+  int TakeTurns;
+  int ReadProcessors;
 
 private:
   vtkPCosmoReader(const vtkPCosmoReader&);  // Not implemented.

@@ -58,95 +58,118 @@ OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
 ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 =========================================================================*/
-// .NAME vtkCosmoHaloFinder - find halos within a cosmology data file
-// .SECTION Description
-// vtkCosmoHaloFinder is a filter object that operates on the unstructured 
-// grid of all particles and assigns each particle a halo id.
-//
-// .SECTION Note
-// This finder implements a recursive algorithm.
-// Linked lists are used for halos.
-// Merge is done recursively.
-// Each interval has its bounding box calculated in Reorder().
-// Non-power-of-two case can be handled.
 
+#include "vtkPCosmoHaloFinder.h"
 
-#ifndef __vtkCosmoHaloFinder_h
-#define __vtkCosmoHaloFinder_h
+#include "vtkCellType.h"
+#include "vtkDataSet.h"
+#include "vtkFloatArray.h"
+#include "vtkPointData.h"
+#include "vtkSortDataArray.h"
+#include "vtkUnstructuredGrid.h"
 
-#include "vtkUnstructuredGridAlgorithm.h"
+#include "vtkIntArray.h"
+#include "vtkLongArray.h"
 
-struct ValueIdPair
+#include "vtkInformation.h"
+#include "vtkInformationVector.h"
+#include "vtkObjectFactory.h"
+#include "vtkStreamingDemandDrivenPipeline.h"
+#include "vtkMultiProcessController.h"
+#include "vtkSmartPointer.h"
+#include "vtkDummyController.h"
+
+#include "vtkstd/algorithm"
+
+vtkCxxRevisionMacro(vtkPCosmoHaloFinder, "$Revision$");
+vtkStandardNewMacro(vtkPCosmoHaloFinder);
+
+/****************************************************************************/
+vtkPCosmoHaloFinder::vtkPCosmoHaloFinder()
 {
-  float value;
-  int id;
-};
+  this->Controller = 0;
+  this->SetController(vtkMultiProcessController::GetGlobalController());
+  if(!this->Controller)
+    {
+      this->SetController(vtkSmartPointer<vtkDummyController>::New());
+    }
+}
 
-typedef struct ValueIdPair ValueIdPair;
-
-class VTK_EXPORT vtkCosmoHaloFinder : public vtkUnstructuredGridAlgorithm
+/****************************************************************************/
+vtkPCosmoHaloFinder::~vtkPCosmoHaloFinder()
 {
- public:
-  // Description:
-  static vtkCosmoHaloFinder *New();
+  this->SetController(0);
+}
 
-  vtkTypeRevisionMacro(vtkCosmoHaloFinder,vtkUnstructuredGridAlgorithm);
-  void PrintSelf(ostream& os, vtkIndent indent);
+/****************************************************************************/
 
-  // Minimal number of particles needed before a group is called a halo.
-  vtkSetMacro(pmin,int);
-  vtkGetMacro(pmin,int);
+void vtkPCosmoHaloFinder::PrintSelf(ostream& os, vtkIndent indent)
+{
+  this->Superclass::PrintSelf(os,indent);
 
-  // Linking length measured in units of interparticle spacing is dimensionless.
-  vtkSetMacro(bb,double);
-  vtkGetMacro(bb,double);
 
-  // Physical length of the box.
-  vtkSetMacro(rL,double);
-  vtkGetMacro(rL,double);
+  if (this->Controller)
+    {
+    os << indent << "Controller: " << this->Controller << endl;
+    }
+  else
+    {
+    os << indent << "Controller: (null)\n";
+    }
+}
 
-  // If the box is periodic on the boundaries.
-  vtkSetMacro(Periodic,bool);
-  vtkGetMacro(Periodic,bool);
+//----------------------------------------------------------------------------
+void vtkPCosmoHaloFinder::SetController(vtkMultiProcessController *c)
+{
+  if(this->Controller == c)
+    {
+    return;
+    }
 
- protected:
-  vtkCosmoHaloFinder();
-  ~vtkCosmoHaloFinder();
+  this->Modified();
 
-  virtual int RequestData(vtkInformation*, vtkInformationVector**, vtkInformationVector*);
+  if(this->Controller != 0)
+    {
+    this->Controller->UnRegister(this);
+    this->Controller = 0;
+    }
 
-  // np.in
-  int np;
-  double rL;
-  double bb;
-  int pmin;
-  bool Periodic;
+  if(c == 0)
+    {
+    return;
+    }
 
-  // internal state
-  int npart;
+  this->Controller = c;
+  c->Register(this);
+}
 
-  int *halo;
-  int *nextp;
+//----------------------------------------------------------------------------
+int vtkPCosmoHaloFinder::RequestInformation(
+  vtkInformation* request,
+  vtkInformationVector** inputVector,
+  vtkInformationVector* outputVector)
+{
+  // check for controller
+  if(!this->Controller) 
+    {
+    vtkErrorMacro(<< "Unable to work without a Controller.");
+    return 0;
+    }
+  
+  return this->Superclass::RequestInformation
+    (request, inputVector, outputVector);
+}
 
-  ValueIdPair *v;
-  int *seq;
+//----------------------------------------------------------------------------
+int vtkPCosmoHaloFinder::RequestData(
+  vtkInformation* request,
+  vtkInformationVector** inputVector,
+  vtkInformationVector* outputVector)
+{
+  //int rank = this->Controller->GetLocalProcessId();
+  //int size = this->Controller->GetNumberOfProcesses();
 
-  int *ht;
+  return this->Superclass::RequestData
+    (request, inputVector, outputVector);
+}
 
-  float **data;
-
-  float **lb;
-  float **ub;
-
-  void Reorder(int, int, int);
-  void ComputeLU(int, int);
-  void MyFOF(int, int, int);
-  void Merge(int, int, int, int, int);
-
- private:
-  vtkCosmoHaloFinder(const vtkCosmoHaloFinder&);  // Not implemented.
-  void operator=(const vtkCosmoHaloFinder&);  // Not implemented.
-
-};
-
-#endif //  __vtkCosmoHaloFinder_h

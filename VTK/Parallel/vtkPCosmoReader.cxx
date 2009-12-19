@@ -81,10 +81,6 @@ ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "vtkStreamingDemandDrivenPipeline.h"
 #include "vtkCommunicator.h"
 
-#ifdef VTK_TYPE_USE_LONG_LONG
-#include "vtkLongLongArray.h"
-#endif
-
 vtkCxxRevisionMacro(vtkPCosmoReader, "$Revision$");
 vtkStandardNewMacro(vtkPCosmoReader);
 
@@ -99,6 +95,8 @@ vtkPCosmoReader::vtkPCosmoReader()
     {
       this->SetController(vtkSmartPointer<vtkDummyController>::New());
     }
+
+  this->TakeTurns = 0;
 }
 
 //----------------------------------------------------------------------------
@@ -224,6 +222,9 @@ int vtkPCosmoReader::RequestData(
   vtkInformationVector **vtkNotUsed(inputVector),
   vtkInformationVector *outputVector)
 {
+  int rank = this->Controller->GetLocalProcessId();
+  int size = this->Controller->GetNumberOfProcesses();
+
   // get the info object
   vtkInformation *outInfo = outputVector->GetInformationObject(0);
                                                                                 
@@ -232,7 +233,7 @@ int vtkPCosmoReader::RequestData(
     outInfo->Get(vtkDataObject::DATA_OBJECT()));
                                                                                 
   vtkDebugMacro( << "Reading Cosmo file");
-                                                                                
+                              
   // check that the piece number is correct
   int updatePiece = 0;
   int updateTotal = 1;
@@ -253,9 +254,25 @@ int vtkPCosmoReader::RequestData(
       vtkErrorMacro(<< "Piece number does not match process number.");
       return 0;
     }
-                                         
+
   // Read the file into the output unstructured grid
-  this->ReadFile(output);
+  if(this->TakeTurns)
+    {
+    for(int i = 0; i < size; i = i + 1) 
+      {
+      if(i == rank) 
+        {
+        this->ReadFile(output);
+        }
+
+      // wait for everyone to sync
+      this->Controller->Barrier();
+      }
+    }
+  else 
+    {
+    this->ReadFile(output);
+    }
 
   return 1;
 }
@@ -268,9 +285,11 @@ void vtkPCosmoReader::ComputeDefaultRange()
   int rank = this->Controller->GetLocalProcessId();
   int size = this->Controller->GetNumberOfProcesses();
 
-  size_t fileLength;
+  int readproc = this->ReadProcessors;
+  readproc = readproc < 1 ? size : (readproc > size ? size : readproc);
 
-  // just have rank 0 read it
+  // just have rank 0 read the length
+  size_t fileLength;
   if(rank == 0) 
     {
       this->FileStream->seekg(0L, ios::end);
@@ -295,6 +314,16 @@ void vtkPCosmoReader::ComputeDefaultRange()
   this->NumberOfNodes = fileLength / (BYTES_PER_DATA_MINUS_TAG + tagBytes);
 
   // figure out the range on this processor
-  this->PositionRange[0] = this->NumberOfNodes * rank / size;
-  this->PositionRange[1] = this->NumberOfNodes * (rank + 1) / size - 1;
+  if(rank < readproc) 
+    {
+    this->PositionRange[0] = rank * this->NumberOfNodes / readproc;
+    this->PositionRange[1] = (rank + 1) * this->NumberOfNodes / readproc - 1;
+    }
+  else 
+    {
+    // read nothing
+    this->PositionRange[0] = 1;
+    this->PositionRange[1] = 0;
+    }
 }
+

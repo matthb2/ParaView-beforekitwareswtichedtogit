@@ -28,6 +28,7 @@
 }
 
 //----------------------------------------------------------------------------
+// Overridden (from NSView).
 // designated initializer
 - (id)initWithFrame:(NSRect)frameRect
 {
@@ -43,7 +44,8 @@
     if ([NSThread isMultiThreaded] == NO)
       {
       [NSThread detachNewThreadSelector:@selector(emptyMethod:)
-        toTarget:self withObject:nil];
+							   toTarget:self
+						     withObject:nil];
       }
     }
   return self;
@@ -74,8 +76,8 @@
     }
 }
 
-
 //----------------------------------------------------------------------------
+// Overridden (from NSView).
 - (void)drawRect:(NSRect)theRect
 {
   (void)theRect;
@@ -87,6 +89,39 @@
 }
 
 //----------------------------------------------------------------------------
+- (void)clearTrackingRect
+{
+  // remove any tracking rect we have
+  if (rolloverTrackingRectTag > 0)
+    {
+    [self removeTrackingRect:rolloverTrackingRectTag];
+    rolloverTrackingRectTag=0;
+    }
+}
+
+//----------------------------------------------------------------------------
+- (void)resetTrackingRect
+{
+  //clear out the old tracking rect
+  [self clearTrackingRect];
+
+  //create a new tracking rect
+  rolloverTrackingRectTag = [self addTrackingRect:[self visibleRect]
+                                            owner:self
+                                         userData:NULL
+                                     assumeInside:NO];
+}
+
+//----------------------------------------------------------------------------
+// Overridden (from NSView).
+- (void)resetCursorRects
+{
+  [super resetCursorRects];
+  [self resetTrackingRect];
+}
+
+//----------------------------------------------------------------------------
+// Overridden (from NSResponder).
 - (BOOL)acceptsFirstResponder
 {
   return YES;
@@ -132,6 +167,7 @@ static const char *vtkMacKeyCodeToKeySymTable[128] = {
 };
 
 //----------------------------------------------------------------------------
+// Overridden (from NSResponder).
 - (void)keyDown:(NSEvent *)theEvent
 {
   vtkCocoaRenderWindowInteractor *interactor = [self getInteractor];
@@ -173,9 +209,9 @@ static const char *vtkMacKeyCodeToKeySymTable[128] = {
   // This pointer is only valid for the duration of the current autorelease
   // context!
   const char* keyedChars = [[theEvent characters] UTF8String];
-  // Since vtk only supports ascii, we just blindly pass the first element
-  // of the above string, hoping it's ascii.
-  char charCode = keyedChars[0];
+  // Since vtk only supports ASCII, we just blindly use the first element
+  // of the above string, hoping it's ASCII.
+  unsigned char charCode = (unsigned char)keyedChars[0];
   // Get the virtual key code and convert it to a keysym as best we can.
   unsigned short macKeyCode = [theEvent keyCode];
   const char *keySym = 0;
@@ -183,9 +219,9 @@ static const char *vtkMacKeyCodeToKeySymTable[128] = {
     {
     keySym = vtkMacKeyCodeToKeySymTable[macKeyCode];
     }
-  if (keySym == 0 && (unsigned char)charCode < 128)
+  if (keySym == 0 && charCode < 128)
     {
-    keySym = vtkMacCharCodeToKeySymTable[(unsigned char)charCode];
+    keySym = vtkMacCharCodeToKeySymTable[charCode];
     }
   if (keySym == 0)
     {
@@ -208,6 +244,7 @@ static const char *vtkMacKeyCodeToKeySymTable[128] = {
 }
 
 //----------------------------------------------------------------------------
+// Overridden (from NSResponder).
 - (void)keyUp:(NSEvent *)theEvent
 {
   vtkCocoaRenderWindowInteractor *interactor = [self getInteractor];
@@ -249,9 +286,9 @@ static const char *vtkMacKeyCodeToKeySymTable[128] = {
   // This pointer is only valid for the duration of the current autorelease
   // context!
   const char* keyedChars = [[theEvent characters] UTF8String];
-  // Since vtk only supports ascii, we just blindly pass the first element
-  // of the above string, hoping it's ascii.
-  char charCode = keyedChars[0];
+  // Since vtk only supports ASCII, we just blindly use the first element
+  // of the above string, hoping it's ASCII.
+  unsigned char charCode = (unsigned char)keyedChars[0];
   // Get the virtual key code and convert it to a keysym as best we can.
   unsigned short macKeyCode = [theEvent keyCode];
   const char *keySym = 0;
@@ -259,9 +296,9 @@ static const char *vtkMacKeyCodeToKeySymTable[128] = {
     {
     keySym = vtkMacKeyCodeToKeySymTable[macKeyCode];
     }
-  if (keySym == 0 && (unsigned char)charCode < 128)
+  if (keySym == 0 && charCode < 128)
     {
-    keySym = vtkMacCharCodeToKeySymTable[(unsigned char)charCode];
+    keySym = vtkMacCharCodeToKeySymTable[charCode];
     }
   if (keySym == 0)
     {
@@ -280,6 +317,7 @@ static const char *vtkMacKeyCodeToKeySymTable[128] = {
 }
 
 //----------------------------------------------------------------------------
+// Overridden (from NSResponder).
 - (void)flagsChanged:(NSEvent *)theEvent
 {
   vtkCocoaRenderWindowInteractor *interactor = [self getInteractor];
@@ -362,6 +400,7 @@ static const char *vtkMacKeyCodeToKeySymTable[128] = {
 }
 
 //----------------------------------------------------------------------------
+// Overridden (from NSResponder).
 - (void)mouseMoved:(NSEvent *)theEvent
 {
   // Note: this method will only be called if this view's NSWindow
@@ -370,25 +409,39 @@ static const char *vtkMacKeyCodeToKeySymTable[128] = {
   
   vtkCocoaRenderWindowInteractor *interactor = [self getInteractor];
   if (!interactor)
+    {
     return;
-  
-  vtkCocoaRenderWindow* renWin = vtkCocoaRenderWindow::SafeDownCast([self getVTKRenderWindow]);
+    }
+
+  vtkCocoaRenderWindow* renWin =
+    vtkCocoaRenderWindow::SafeDownCast([self getVTKRenderWindow]);
+
   if (!renWin)
+    {
     return;
-  
+    }
+
   // Retrieve the scaling factor.
   double factor = renWin->GetScaleFactor();
   
-  // Get the location of the mouse event relative to this NSView's bottom left corner
-  // Since this is a mouseevent, we can use locationInWindow
-  NSPoint mouseLoc = [self convertPoint:[theEvent locationInWindow] fromView:nil];
+  // Get the location of the mouse event relative to this NSView's bottom
+  // left corner. Since this is a mouseevent, we can use locationInWindow.
+  NSPoint mouseLoc =
+    [self convertPoint:[theEvent locationInWindow] fromView:nil];
+  
+  // Ignore motion outside the view in order to mimic other interactors
+  if (!NSPointInRect(mouseLoc, [self visibleRect]))
+    {
+    return;
+    }
   
   int shiftDown = ([theEvent modifierFlags] & NSShiftKeyMask) ? 1 : 0;
   int controlDown = ([theEvent modifierFlags] & NSControlKeyMask) ? 1 : 0;
   int altDown = ([theEvent modifierFlags] &
                   (NSCommandKeyMask | NSAlternateKeyMask)) ? 1 : 0;
 
-  // The mouse location is in points, we must convert to pixels using the scaling factor.
+  // The mouse location is in points, we must convert to pixels using the
+  // scaling factor.
   interactor->SetEventInformation((int)round(mouseLoc.x * factor),
                                   (int)round(mouseLoc.y * factor),
                                   controlDown, shiftDown);
@@ -397,28 +450,122 @@ static const char *vtkMacKeyCodeToKeySymTable[128] = {
 }
 
 //----------------------------------------------------------------------------
+// Overridden (from NSResponder).
+- (void)mouseEntered:(NSEvent *)theEvent
+{
+  // Note: the mouseEntered/mouseExited events depend on the maintenance of
+  // the Tracking Rect, which is handled by the resetTrackingRect,
+  // clearTrackingRect and resetCursorRects methods above.
+  
+  vtkCocoaRenderWindowInteractor *interactor = [self getInteractor];
+  if (!interactor)
+    {
+    return;
+    }
+
+  vtkCocoaRenderWindow* renWin =
+    vtkCocoaRenderWindow::SafeDownCast([self getVTKRenderWindow]);
+
+  if (!renWin)
+    {
+    return;
+    }
+
+  // Retrieve the scaling factor.
+  double factor = renWin->GetScaleFactor();
+
+  // Get the location of the mouse event relative to this NSView's bottom
+  // left corner. Since this is a mouseevent, we can use locationInWindow.
+  NSPoint mouseLoc =
+    [self convertPoint:[theEvent locationInWindow] fromView:nil];
+
+  int shiftDown = ([theEvent modifierFlags] & NSShiftKeyMask) ? 1 : 0;
+  int controlDown = ([theEvent modifierFlags] & NSControlKeyMask) ? 1 : 0;
+  int altDown = ([theEvent modifierFlags] &
+                 (NSCommandKeyMask | NSAlternateKeyMask)) ? 1 : 0;
+
+  // The mouse location is in points, we must convert to pixels using the
+  // scaling factor.
+  interactor->SetEventInformation((int)round(mouseLoc.x * factor),
+                                  (int)round(mouseLoc.y * factor),
+                                  controlDown, shiftDown);
+  interactor->SetAltKey(altDown);
+  interactor->InvokeEvent(vtkCommand::EnterEvent, NULL);
+}
+
+//----------------------------------------------------------------------------
+// Overridden (from NSResponder).
+- (void)mouseExited:(NSEvent *)theEvent
+{
+  vtkCocoaRenderWindowInteractor *interactor = [self getInteractor];
+  if (!interactor)
+    {
+    return;
+    }
+
+  vtkCocoaRenderWindow* renWin =
+    vtkCocoaRenderWindow::SafeDownCast([self getVTKRenderWindow]);
+
+  if (!renWin)
+    {
+    return;
+    }
+
+  // Retrieve the scaling factor.
+  double factor = renWin->GetScaleFactor();
+
+  // Get the location of the mouse event relative to this NSView's bottom
+  // left corner. Since this is a mouseevent, we can use locationInWindow.
+  NSPoint mouseLoc =
+    [self convertPoint:[theEvent locationInWindow] fromView:nil];
+
+  int shiftDown = ([theEvent modifierFlags] & NSShiftKeyMask) ? 1 : 0;
+  int controlDown = ([theEvent modifierFlags] & NSControlKeyMask) ? 1 : 0;
+  int altDown = ([theEvent modifierFlags] &
+                 (NSCommandKeyMask | NSAlternateKeyMask)) ? 1 : 0;
+
+  // The mouse location is in points, we must convert to pixels using the
+  // scaling factor.
+  interactor->SetEventInformation((int)round(mouseLoc.x * factor),
+                                  (int)round(mouseLoc.y * factor),
+                                  controlDown, shiftDown);
+  interactor->SetAltKey(altDown);
+  interactor->InvokeEvent(vtkCommand::LeaveEvent, NULL);
+}
+
+//----------------------------------------------------------------------------
+// Overridden (from NSResponder).
 - (void)scrollWheel:(NSEvent *)theEvent
 {
   vtkCocoaRenderWindowInteractor *interactor = [self getInteractor];
   if (!interactor)
+    {
     return;
-  
-  vtkCocoaRenderWindow* renWin = vtkCocoaRenderWindow::SafeDownCast([self getVTKRenderWindow]);
+    }
+
+  vtkCocoaRenderWindow* renWin =
+    vtkCocoaRenderWindow::SafeDownCast([self getVTKRenderWindow]);
+
   if (!renWin)
+    {
     return;
+    }
   
   // Retrieve the scaling factor.
   double factor = renWin->GetScaleFactor();
   
-  // Get the location of the mouse event relative to this NSView's bottom left corner
-  // Since this is a mouseevent, we can use locationInWindow
-  NSPoint mouseLoc = [self convertPoint:[theEvent locationInWindow] fromView:nil];
+  // Get the location of the mouse event relative to this NSView's bottom
+  // left corner. Since this is a mouseevent, we can use locationInWindow.
+  NSPoint mouseLoc =
+    [self convertPoint:[theEvent locationInWindow] fromView:nil];
+
   int shiftDown = ([theEvent modifierFlags] & NSShiftKeyMask) ? 1 : 0;
   int controlDown = ([theEvent modifierFlags] & NSControlKeyMask) ? 1 : 0;
   int altDown = ([theEvent modifierFlags] &
                   (NSCommandKeyMask | NSAlternateKeyMask)) ? 1 : 0;
 
-  // The mouse location is in points, we must convert to pixels using the scaling factor.
+  // The mouse location is in points, we must convert to pixels using the
+  // scaling factor.
   interactor->SetEventInformation((int)round(mouseLoc.x * factor),
                                   (int)round(mouseLoc.y * factor),
                                   controlDown, shiftDown);
@@ -434,33 +581,41 @@ static const char *vtkMacKeyCodeToKeySymTable[128] = {
     }
 }
 
-
 //----------------------------------------------------------------------------
+// Overridden (from NSResponder).
 - (void)mouseDown:(NSEvent *)theEvent
 {
   vtkCocoaRenderWindowInteractor *interactor = [self getInteractor];
   if (!interactor)
+    {
     return;
-  
-  vtkCocoaRenderWindow* renWin = vtkCocoaRenderWindow::SafeDownCast([self getVTKRenderWindow]);
+    }
+
+  vtkCocoaRenderWindow* renWin =
+    vtkCocoaRenderWindow::SafeDownCast([self getVTKRenderWindow]);
+
   if (!renWin)
+    {
     return;
-  
+    }
+
   // Retrieve the scaling factor.
   double factor = renWin->GetScaleFactor();
   
   BOOL keepOn = YES;
 
-  // Get the location of the mouse event relative to this NSView's bottom left corner
-  // Since this is a mouseevent, we can use locationInWindow
-  NSPoint mouseLoc = [self convertPoint:[theEvent locationInWindow] fromView:nil];
+  // Get the location of the mouse event relative to this NSView's bottom
+  // left corner. Since this is a mouseevent, we can use locationInWindow.
+  NSPoint mouseLoc =
+    [self convertPoint:[theEvent locationInWindow] fromView:nil];
   
   int shiftDown = ([theEvent modifierFlags] & NSShiftKeyMask) ? 1 : 0;
   int controlDown = ([theEvent modifierFlags] & NSControlKeyMask) ? 1 : 0;
   int altDown = ([theEvent modifierFlags] &
                   (NSCommandKeyMask | NSAlternateKeyMask)) ? 1 : 0;
 
-  // The mouse location is in points, we must convert to pixels using the scaling factor.
+  // The mouse location is in points, we must convert to pixels using the
+  // scaling factor.
   interactor->SetEventInformation((int)round(mouseLoc.x * factor),
                                   (int)round(mouseLoc.y * factor),
                                   controlDown, shiftDown);
@@ -471,16 +626,17 @@ static const char *vtkMacKeyCodeToKeySymTable[128] = {
   NSDate*  infinity = [NSDate distantFuture];
   do
     {
-    theEvent = 
-      [NSApp nextEventMatchingMask: NSLeftMouseUpMask | NSLeftMouseDraggedMask
-      untilDate: infinity
-      inMode: NSEventTrackingRunLoopMode
-      dequeue: YES];
+    theEvent = [NSApp nextEventMatchingMask: NSLeftMouseUpMask |
+                                             NSLeftMouseDraggedMask
+                      untilDate: infinity
+                      inMode: NSEventTrackingRunLoopMode
+                      dequeue: YES];
     if (theEvent)
       {
       mouseLoc = [self convertPoint:[theEvent locationInWindow] fromView:nil];
       
-      // The mouse location is in points, we must convert to pixels using the scaling factor.
+      // The mouse location is in points, we must convert to pixels using the
+      // scaling factor.
       interactor->SetEventInformation((int)round(mouseLoc.x * factor),
                                       (int)round(mouseLoc.y * factor),
                                       controlDown, shiftDown);
@@ -507,31 +663,40 @@ static const char *vtkMacKeyCodeToKeySymTable[128] = {
 }
 
 //----------------------------------------------------------------------------
+// Overridden (from NSResponder).
 - (void)rightMouseDown:(NSEvent *)theEvent
 {
   vtkCocoaRenderWindowInteractor *interactor = [self getInteractor];
   if (!interactor)
+    {
     return;
-  
-  vtkCocoaRenderWindow* renWin = vtkCocoaRenderWindow::SafeDownCast([self getVTKRenderWindow]);
+    }
+
+  vtkCocoaRenderWindow* renWin =
+    vtkCocoaRenderWindow::SafeDownCast([self getVTKRenderWindow]);
+
   if (!renWin)
+    {
     return;
-  
+    }
+
   // Retrieve the scaling factor.
   double factor = renWin->GetScaleFactor();
   
   BOOL keepOn = YES;
 
-  // Get the location of the mouse event relative to this NSView's bottom left corner
-  // Since this is a mouseevent, we can use locationInWindow
-  NSPoint mouseLoc = [self convertPoint:[theEvent locationInWindow] fromView:nil];
+  // Get the location of the mouse event relative to this NSView's bottom
+  // left corner. Since this is a mouseevent, we can use locationInWindow.
+  NSPoint mouseLoc =
+    [self convertPoint:[theEvent locationInWindow] fromView:nil];
   
   int shiftDown = ([theEvent modifierFlags] & NSShiftKeyMask) ? 1 : 0;
   int controlDown = ([theEvent modifierFlags] & NSControlKeyMask) ? 1 : 0;
   int altDown = ([theEvent modifierFlags] &
                   (NSCommandKeyMask | NSAlternateKeyMask)) ? 1 : 0;
 
-  // The mouse location is in points, we must convert to pixels using the scaling factor.
+  // The mouse location is in points, we must convert to pixels using the
+  // scaling factor.
   interactor->SetEventInformation((int)round(mouseLoc.x * factor),
                                   (int)round(mouseLoc.y * factor),
                                   controlDown, shiftDown);
@@ -542,16 +707,17 @@ static const char *vtkMacKeyCodeToKeySymTable[128] = {
   NSDate*  infinity = [NSDate distantFuture];
   do
     {
-    theEvent = 
-      [NSApp nextEventMatchingMask: NSRightMouseUpMask | NSRightMouseDraggedMask
-      untilDate: infinity
-      inMode: NSEventTrackingRunLoopMode
-      dequeue: YES];
+    theEvent = [NSApp nextEventMatchingMask: NSRightMouseUpMask |
+                                             NSRightMouseDraggedMask
+                      untilDate: infinity
+                      inMode: NSEventTrackingRunLoopMode
+                      dequeue: YES];
     if (theEvent)
       {
       mouseLoc = [self convertPoint:[theEvent locationInWindow] fromView:nil];
 
-      // The mouse location is in points, we must convert to pixels using the scaling factor.
+      // The mouse location is in points, we must convert to pixels using the
+      // scaling factor.
       interactor->SetEventInformation((int)round(mouseLoc.x * factor),
                                       (int)round(mouseLoc.y * factor),
                                       controlDown, shiftDown);
@@ -578,31 +744,40 @@ static const char *vtkMacKeyCodeToKeySymTable[128] = {
 }
 
 //----------------------------------------------------------------------------
+// Overridden (from NSResponder).
 - (void)otherMouseDown:(NSEvent *)theEvent
 {
   vtkCocoaRenderWindowInteractor *interactor = [self getInteractor];
   if (!interactor)
+    {
     return;
+    }
   
-  vtkCocoaRenderWindow* renWin = vtkCocoaRenderWindow::SafeDownCast([self getVTKRenderWindow]);
+  vtkCocoaRenderWindow* renWin =
+    vtkCocoaRenderWindow::SafeDownCast([self getVTKRenderWindow]);
+
   if (!renWin)
+    {
     return;
-  
+    }
+
   // Retrieve the scaling factor.
   double factor = renWin->GetScaleFactor();
   
   BOOL keepOn = YES;
 
-  // Get the location of the mouse event relative to this NSView's bottom left corner
-  // Since this is a mouseevent, we can use locationInWindow
-  NSPoint mouseLoc = [self convertPoint:[theEvent locationInWindow] fromView:nil];
+  // Get the location of the mouse event relative to this NSView's bottom
+  // left corner. Since this is a mouseevent, we can use locationInWindow.
+  NSPoint mouseLoc =
+    [self convertPoint:[theEvent locationInWindow] fromView:nil];
   
   int shiftDown = ([theEvent modifierFlags] & NSShiftKeyMask) ? 1 : 0;
   int controlDown = ([theEvent modifierFlags] & NSControlKeyMask) ? 1 : 0;
   int altDown = ([theEvent modifierFlags] &
                   (NSCommandKeyMask | NSAlternateKeyMask)) ? 1 : 0;
 
-  // The mouse location is in points, we must convert to pixels using the scaling factor.
+  // The mouse location is in points, we must convert to pixels using the
+  // scaling factor.
   interactor->SetEventInformation((int)round(mouseLoc.x * factor),
                                   (int)round(mouseLoc.y * factor),
                                   controlDown, shiftDown);
@@ -613,16 +788,17 @@ static const char *vtkMacKeyCodeToKeySymTable[128] = {
   NSDate*  infinity = [NSDate distantFuture];
   do
     {
-    theEvent = 
-      [NSApp nextEventMatchingMask: NSOtherMouseUpMask | NSOtherMouseDraggedMask
-      untilDate: infinity
-      inMode: NSEventTrackingRunLoopMode
-      dequeue: YES];
+    theEvent = [NSApp nextEventMatchingMask: NSOtherMouseUpMask |
+                                             NSOtherMouseDraggedMask
+                      untilDate: infinity
+                      inMode: NSEventTrackingRunLoopMode
+                      dequeue: YES];
     if (theEvent)
       {
       mouseLoc = [self convertPoint:[theEvent locationInWindow] fromView:nil];
 
-      // The mouse location is in points, we must convert to pixels using the scaling factor.
+      // The mouse location is in points, we must convert to pixels using the
+      // scaling factor.
       interactor->SetEventInformation((int)round(mouseLoc.x * factor),
                                       (int)round(mouseLoc.y * factor),
                                       controlDown, shiftDown);

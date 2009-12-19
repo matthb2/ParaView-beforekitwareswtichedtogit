@@ -94,6 +94,32 @@ public:
   // callbacks. They allow for the Style to invoke them.
   virtual void ExitCallback();
 
+  // Description:
+  // This method is for internal use only.  Track the Carbon mouse deltas 
+  // Carbon events that don't provide mouse position directly.
+  void GetLastMouseDelta(int delta[2]) {
+    delta[0] = this->LastMouseDelta[0]; delta[1] = this->LastMouseDelta[1]; };
+  void SetLastMouseDelta(int deltaX, int deltaY) {
+    this->LastMouseDelta[0] = deltaX; this->LastMouseDelta[1] = deltaY; };
+
+  // Description:
+  // This method is for internal use only.  This is a state variable used for
+  // Enter/Leave events.  If the mouse is dragged outside of the window,
+  // MouseInsideWindow will remain set until the mouse button is released
+  // outside of the window.
+  void SetMouseInsideWindow(int val) {
+     this->MouseInsideWindow = val; };
+  int GetMouseInsideWindow() {
+     return this->MouseInsideWindow; };
+
+  // Description:
+  // This method is for internal use only.  This is a state variable used for
+  // Enter/Leave events.  It keeps track of whether a mouse button is down.
+  void SetMouseButtonDown(int val) {
+     this->MouseButtonDown = val; };
+  int GetMouseButtonDown() {
+     return this->MouseButtonDown; };
+
 protected:
   vtkCarbonRenderWindowInteractor();
   ~vtkCarbonRenderWindowInteractor();
@@ -101,6 +127,12 @@ protected:
   EventHandlerUPP   ViewProcUPP;
   EventHandlerUPP   WindowProcUPP;
   int               InstallMessageProc;
+
+  // For generating event info that Carbon doesn't
+  int   LastMouseDelta[2];
+  int   LeaveCheckId;
+  int   MouseInsideWindow;
+  int   MouseButtonDown;
 
   //BTX
   // Description:

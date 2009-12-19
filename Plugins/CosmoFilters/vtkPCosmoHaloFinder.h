@@ -58,9 +58,9 @@ OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
 ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 =========================================================================*/
-// .NAME vtkCosmoHaloFinder - find halos within a cosmology data file
+// .NAME vtkPCosmoHaloFinder - find halos within a cosmology data file
 // .SECTION Description
-// vtkCosmoHaloFinder is a filter object that operates on the unstructured 
+// vtkPCosmoHaloFinder is a filter object that operates on the unstructured 
 // grid of all particles and assigns each particle a halo id.
 //
 // .SECTION Note
@@ -71,82 +71,42 @@ ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 // Non-power-of-two case can be handled.
 
 
-#ifndef __vtkCosmoHaloFinder_h
-#define __vtkCosmoHaloFinder_h
+#ifndef __vtkPCosmoHaloFinder_h
+#define __vtkPCosmoHaloFinder_h
 
-#include "vtkUnstructuredGridAlgorithm.h"
+#include "vtkCosmoHaloFinder.h"
 
-struct ValueIdPair
-{
-  float value;
-  int id;
-};
+class vtkMultiProcessController;
 
-typedef struct ValueIdPair ValueIdPair;
-
-class VTK_EXPORT vtkCosmoHaloFinder : public vtkUnstructuredGridAlgorithm
+class VTK_PARALLEL_EXPORT vtkPCosmoHaloFinder : public vtkCosmoHaloFinder
 {
  public:
   // Description:
-  static vtkCosmoHaloFinder *New();
+  static vtkPCosmoHaloFinder *New();
 
-  vtkTypeRevisionMacro(vtkCosmoHaloFinder,vtkUnstructuredGridAlgorithm);
+  vtkTypeRevisionMacro(vtkPCosmoHaloFinder,vtkCosmoHaloFinder);
   void PrintSelf(ostream& os, vtkIndent indent);
 
-  // Minimal number of particles needed before a group is called a halo.
-  vtkSetMacro(pmin,int);
-  vtkGetMacro(pmin,int);
-
-  // Linking length measured in units of interparticle spacing is dimensionless.
-  vtkSetMacro(bb,double);
-  vtkGetMacro(bb,double);
-
-  // Physical length of the box.
-  vtkSetMacro(rL,double);
-  vtkGetMacro(rL,double);
-
-  // If the box is periodic on the boundaries.
-  vtkSetMacro(Periodic,bool);
-  vtkGetMacro(Periodic,bool);
+  vtkGetObjectMacro(Controller, vtkMultiProcessController);
+  virtual void SetController(vtkMultiProcessController*);
 
  protected:
-  vtkCosmoHaloFinder();
-  ~vtkCosmoHaloFinder();
+  vtkPCosmoHaloFinder();
+  ~vtkPCosmoHaloFinder();
 
-  virtual int RequestData(vtkInformation*, vtkInformationVector**, vtkInformationVector*);
+  virtual int RequestInformation(vtkInformation*,
+                                 vtkInformationVector**,
+                                 vtkInformationVector*);
 
-  // np.in
-  int np;
-  double rL;
-  double bb;
-  int pmin;
-  bool Periodic;
+  virtual int RequestData(vtkInformation*, 
+                          vtkInformationVector**, vtkInformationVector*);
 
-  // internal state
-  int npart;
-
-  int *halo;
-  int *nextp;
-
-  ValueIdPair *v;
-  int *seq;
-
-  int *ht;
-
-  float **data;
-
-  float **lb;
-  float **ub;
-
-  void Reorder(int, int, int);
-  void ComputeLU(int, int);
-  void MyFOF(int, int, int);
-  void Merge(int, int, int, int, int);
+  vtkMultiProcessController* Controller;
 
  private:
-  vtkCosmoHaloFinder(const vtkCosmoHaloFinder&);  // Not implemented.
-  void operator=(const vtkCosmoHaloFinder&);  // Not implemented.
+  vtkPCosmoHaloFinder(const vtkPCosmoHaloFinder&);  // Not implemented.
+  void operator=(const vtkPCosmoHaloFinder&);  // Not implemented.
 
 };
 
-#endif //  __vtkCosmoHaloFinder_h
+#endif //  __vtkPCosmoHaloFinder_h

@@ -37,7 +37,7 @@ vtkCxxSetObjectMacro(vtkStatisticsAlgorithm,AssessNames,vtkStringArray);
 vtkStatisticsAlgorithm::vtkStatisticsAlgorithm()
 {
   this->SetNumberOfInputPorts( 3 );
-  this->SetNumberOfOutputPorts( 2 );
+  this->SetNumberOfOutputPorts( 3 );
 
   // If not told otherwise, only run Learn option
   this->LearnOption = true;
