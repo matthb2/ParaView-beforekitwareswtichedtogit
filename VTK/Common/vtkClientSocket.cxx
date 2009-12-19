@@ -32,6 +32,7 @@ vtkClientSocket::~vtkClientSocket()
 //-----------------------------------------------------------------------------
 int vtkClientSocket::ConnectToServer(const char* hostName, int port)
 {
+	printf("./VTK/Common/vtkClientSocket.cxx:: port is %d\n",port);
   if (this->SocketDescriptor != -1)
     {
     vtkWarningMacro("Client connection already exists. Closing it.");
