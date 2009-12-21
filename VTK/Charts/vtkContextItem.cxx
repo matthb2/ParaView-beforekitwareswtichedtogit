@@ -100,6 +100,12 @@ bool vtkContextItem::MouseButtonReleaseEvent(const vtkContextMouseEvent &)
 }
 
 //-----------------------------------------------------------------------------
+bool vtkContextItem::MouseWheelEvent(const vtkContextMouseEvent &, int)
+{
+  return false;
+}
+
+//-----------------------------------------------------------------------------
 void vtkContextItem::Translate(float dx, float dy)
 {
   if (!this->Transform)
