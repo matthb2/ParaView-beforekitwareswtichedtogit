@@ -785,7 +785,7 @@ void vtkContingencyStatistics::Test( vtkTable* inData,
     }
 
   vtkMultiBlockDataSet* inMeta = vtkMultiBlockDataSet::SafeDownCast( inMetaDO );
-  if ( ! inMeta || inMeta->GetNumberOfBlocks() < 4 ) // We need at least 2 marginal PDFs in addition to con
+  if ( ! inMeta || inMeta->GetNumberOfBlocks() < 4 ) // We need at least 2 marginal PDFs in addition to the contingency table
     {
     return;
     }
