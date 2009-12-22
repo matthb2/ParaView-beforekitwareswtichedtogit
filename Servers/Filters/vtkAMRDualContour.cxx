@@ -602,6 +602,7 @@ void vtkAMRDualContourEdgeLocator::ShareBlockLocatorWithNeighbor(
 vtkAMRDualContour::vtkAMRDualContour()
 {
   this->IsoValue = 100.0;
+  this->SkipGhostCopy = 0;
   
   this->EnableDegenerateCells = 1;
   this->EnableCapping = 1;
@@ -719,6 +720,7 @@ int vtkAMRDualContour::RequestData(
   this->Helper = vtkAMRDualGridHelper::New();
   this->Helper->SetEnableDegenerateCells(this->EnableDegenerateCells);
   this->Helper->SetEnableMultiProcessCommunication(this->EnableMultiProcessCommunication);
+  this->Helper->SetSkipGhostCopy(this->SkipGhostCopy);
   this->Helper->Initialize(hbdsInput, arrayNameToProcess);
 
   vtkPolyData* mesh = vtkPolyData::New();
