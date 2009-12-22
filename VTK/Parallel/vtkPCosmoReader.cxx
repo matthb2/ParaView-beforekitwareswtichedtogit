@@ -143,6 +143,8 @@ void vtkPCosmoReader::PrintSelf(ostream& os, vtkIndent indent)
     {
     os << indent << "Controller: (null)\n";
     }
+  os << indent << "TakeTurns: " << this->TakeTurns << endl;
+  os << indent << "ReadProcessors: " << this->ReadProcessors << endl;
 }
 
 //----------------------------------------------------------------------------
