@@ -475,7 +475,7 @@ void vtkCarbonRenderWindowInteractor::Initialize()
 
 //--------------------------------------------------------------------------
 // A timer for checking when mouse leaves window
-pascal void vtkCarbonLeaveCheck(EventLoopTimerRef platformTimerId,
+pascal void vtkCarbonLeaveCheck(EventLoopTimerRef vtkNotUsed(platformTimerId),
                                 void *userData)
 {
   if (NULL != userData)
