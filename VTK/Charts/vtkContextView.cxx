@@ -70,7 +70,6 @@ vtkContextView::~vtkContextView()
   // The scene is owned by the context actor
   if (this->Scene)
     {
-    this->Scene->SetWindow(NULL);
     this->Scene->Delete();
     this->Scene = NULL;
     }
