@@ -65,7 +65,6 @@ bool vtkAxis::Paint(vtkContext2D *painter)
   // Draw the axis title if there is one
   if (this->Title)
     {
-    cout << "Drawing the title: " << *this->Title << endl;
     int x = 0;
     int y = 0;
     prop->SetFontSize(this->TitleSize);
