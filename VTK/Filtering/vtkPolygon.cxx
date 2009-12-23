@@ -28,6 +28,7 @@
 #include "vtkBox.h"
 #include "vtkMergePoints.h"
 #include "vtkIncrementalPointLocator.h"
+#include "vtkSmartPointer.h"
 
 vtkCxxRevisionMacro(vtkPolygon, "$Revision$");
 vtkStandardNewMacro(vtkPolygon);
@@ -56,6 +57,14 @@ vtkPolygon::~vtkPolygon()
   this->Quad->Delete();
   this->TriScalars->Delete();
   this->Line->Delete();
+}
+
+//----------------------------------------------------------------------------
+double vtkPolygon::ComputeArea()
+{
+  double normal[3]; //not used, but required for the following ComputeArea call
+  return vtkPolygon::ComputeArea(this->GetPoints(), this->GetNumberOfPoints(), this->GetPointIds()->GetPointer(0), normal);
+
 }
 
 #define VTK_POLYGON_FAILURE -1
