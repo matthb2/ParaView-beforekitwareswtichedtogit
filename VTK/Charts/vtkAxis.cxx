@@ -155,6 +155,9 @@ int vtkAxis::CalculateNiceMinMax(float &/*min*/, float &/*max*/)
     }
   int order = static_cast<int>(log10(range));
   cout << "Order of the range = " << order << endl;
+
+
+  return order;
 }
 
 //-----------------------------------------------------------------------------
