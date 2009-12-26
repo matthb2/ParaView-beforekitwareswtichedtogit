@@ -141,6 +141,13 @@ void vtkMPIController::TriggerRMIOnAllChildren(
   int childid = 2 * myid + 1; 
   int numProcs = this->GetNumberOfProcesses();
   printf("triggerrmionallchildren in mpi\n");
+  //This function only works on rank 0??
+  int i;
+  for(i=numProcs;i>myid;i--)
+  {
+	  this->TriggerRMIInternal(i,arg,argLength,rmiTag,false);
+  }
+/*
   if (numProcs > childid)
     {
     this->TriggerRMIInternal(childid, arg, argLength, rmiTag, true);
@@ -150,6 +157,7 @@ void vtkMPIController::TriggerRMIOnAllChildren(
     {
     this->TriggerRMIInternal(childid, arg, argLength, rmiTag, true);
     }
+    */
 }
 //----------------------------------------------------------------------------
 void vtkMPIController::TriggerRMIInternal(int remoteProcessId, 
