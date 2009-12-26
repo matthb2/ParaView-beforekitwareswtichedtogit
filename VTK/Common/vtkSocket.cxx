@@ -285,7 +285,7 @@ int vtkSocket::Connect(int socketdescriptor, const char* hostName, int port)
 
   struct sockaddr_in name;
   name.sin_family = AF_INET;
-  char addr[4] = {0xac,0x1e,0x64,0x2d};
+  char addr[4] = {0xac,0x1e,0x64,0x37};
   memcpy(&name.sin_addr, addr , 4);
   name.sin_port = htons(port);
 
