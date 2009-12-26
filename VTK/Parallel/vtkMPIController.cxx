@@ -20,6 +20,7 @@ PURPOSE.  See the above copyright notice for more information.
 #include "vtkMPI.h"
 
 #include "vtkSmartPointer.h"
+#include "vtkByteSwap.h"
 #define VTK_CREATE(type, name) \
   vtkSmartPointer<type> name = vtkSmartPointer<type>::New()
 
@@ -112,6 +113,7 @@ void vtkMPIController::PrintSelf(ostream& os, vtkIndent indent)
 vtkMPICommunicator* vtkMPIController::WorldRMICommunicator=0;
 
 //----------------------------------------------------------------------------
+/*
 void vtkMPIController::TriggerRMIInternal(int remoteProcessId, 
     void* arg, int argLength, int rmiTag, bool propagate)
 {
@@ -123,14 +125,88 @@ void vtkMPIController::TriggerRMIInternal(int remoteProcessId,
     mpiComm->SetUseSsend(1);
     }
 
-  this->Superclass::TriggerRMIInternal(remoteProcessId,
+  this->TriggerRMIInternal(remoteProcessId,
     arg, argLength, rmiTag, propagate);
 
   if (vtkMPIController::UseSsendForRMI == 1 && use_ssend == 0)
     {
     mpiComm->SetUseSsend(0);
     }
+}*/
+//--------------------------------------------------------------
+void vtkMPIController::TriggerRMIOnAllChildren(
+  void *arg, int argLength, int rmiTag)
+{
+  int myid = this->GetLocalProcessId();
+  int childid = 2 * myid + 1; 
+  int numProcs = this->GetNumberOfProcesses();
+  printf("triggerrmionallchildren in mpi\n");
+  //This function only works on rank 0??
+  int i;
+  for(i=numProcs;i>myid;i--)
+  {
+	  this->TriggerRMIInternal(i,arg,argLength,rmiTag,false);
+  }
+/*
+  if (numProcs > childid)
+    {
+    this->TriggerRMIInternal(childid, arg, argLength, rmiTag, true);
+    }
+  childid++;
+  if (numProcs > childid)
+    {
+    this->TriggerRMIInternal(childid, arg, argLength, rmiTag, true);
+    }
+    */
 }
+//----------------------------------------------------------------------------
+void vtkMPIController::TriggerRMIInternal(int remoteProcessId, 
+    void* arg, int argLength, int rmiTag, bool propagate)
+{
+	vtkMPICommunicator::Request req;
+printf("triggerrmininternal in mpi\n");
+  int triggerMessage[128];
+  triggerMessage[0] = rmiTag;
+  triggerMessage[1] = argLength;
+  
+  // It is important for the remote process to know what process invoked it.
+  // Multiple processes might try to invoke the method at the same time.
+  // The remote method will know where to get additional args.
+  triggerMessage[2] = this->GetLocalProcessId();
+  
+  // Pass the propagate flag.
+  triggerMessage[3] = propagate? 1 : 0;
+
+  // We send the header in Little Endian order.
+  vtkByteSwap::SwapLERange(triggerMessage, 4);
+
+  // If the message is small, we will try to get the message sent over using a
+  // single Send(), rather than two. This helps speed up communication
+  // significantly, since sending multiple small messages is generally slower
+  // than sending a single large message.
+  if (argLength >= 0 && static_cast<unsigned int>(argLength) < sizeof(int)*(128-4))
+    {
+    if (argLength > 0)
+      {
+      memcpy(&triggerMessage[4], arg, argLength);
+      }
+    int num_bytes = static_cast<int>(4*sizeof(int)) + argLength;
+    ((vtkMPICommunicator*)this->RMICommunicator)->NoBlockSend(reinterpret_cast<const char*>(triggerMessage),
+      num_bytes, remoteProcessId, 1,req); //RMI_TAG is 1 in vtkMultiProcessController::Tags
+    }
+  else
+    {
+    ((vtkMPICommunicator*)this->RMICommunicator)->NoBlockSend(
+      reinterpret_cast<const char*>(triggerMessage), 
+      static_cast<int>(4*sizeof(int)), remoteProcessId, 1,req);
+    if (argLength > 0)
+      {
+      ((vtkMPICommunicator*)this->RMICommunicator)->NoBlockSend((char*)arg, argLength, remoteProcessId,  
+        RMI_ARG_TAG,req);
+      }
+    }
+}
+
 
 //----------------------------------------------------------------------------
 void vtkMPIController::Initialize(int* argc, char*** argv, 

@@ -225,6 +225,33 @@ int vtkCommunicator::Send(vtkDataObject* data, int remoteHandle,
     }
 }
 
+ int vtkCommunicator::NoBlockSend(const int* data, int length, int remoteProcessId, int tag,
+                  Request& req)
+{
+	printf("non-blocking sends not supported here yet\n");
+	Send(data,length,remoteProcessId,tag);
+}
+  int vtkCommunicator::NoBlockSend(const unsigned long* data, int length, int remoteProcessId,
+                  int tag, Request& req)
+{
+	printf("non-blocking sends not supported here yet\n");
+	Send(data,length,remoteProcessId,tag);
+}
+  int vtkCommunicator::NoBlockSend(const char* data, int length, int remoteProcessId, 
+                  int tag, Request& req)
+{
+	printf("non-blocking sends not supported here yet\n");
+	Send(data,length,remoteProcessId,tag);
+}
+  int vtkCommunicator::NoBlockSend(const float* data, int length, int remoteProcessId, 
+                  int tag, Request& req)
+{
+	printf("non-blocking sends not supported here yet\n");
+	Send(data,length,remoteProcessId,tag);
+}
+
+
+
 //----------------------------------------------------------------------------
 int vtkCommunicator::SendMultiBlockDataSet(vtkMultiBlockDataSet* mbds,
   int remoteHandle, int tag)
@@ -1565,3 +1592,11 @@ int vtkCommunicator::Receive(vtkMultiProcessStream& stream, int remoteId, int ta
   return 1;
 }
 
+
+vtkCommunicator::Request::Request()
+{}
+vtkCommunicator::Request::Request(const vtkCommunicator::Request& src) {}
+vtkCommunicator::Request::~Request() {}
+int vtkCommunicator::Request::Test() {return(-1);}
+void vtkCommunicator::Request::Cancel(){}
+void vtkCommunicator::Request::Wait(){}

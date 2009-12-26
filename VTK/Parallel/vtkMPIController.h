@@ -45,6 +45,7 @@
 // which take arguments defined in  vtkMPICommunicator.h by
 // reference.
 #include "vtkMPICommunicator.h" // Needed for direct access to communicator
+#include "vtkObject.h"
 
 class VTK_PARALLEL_EXPORT vtkMPIController : public vtkMultiProcessController
 {
@@ -197,6 +198,14 @@ protected:
   // instead of Send.
   virtual void TriggerRMIInternal(int remoteProcessId, 
     void* arg, int argLength, int rmiTag, bool propagate);
+  // Description:
+  // This is a convenicence method to trigger an RMI call on all the "children"
+  // of the current node. The children of the current node can be determined by
+  // drawing a binary tree starting at node 0 and then assigned nodes ids
+  // incrementally in a breadth-first fashion from left to right. This is
+  // designed to be used when trigger an RMI call on all satellites from the
+  // root node.
+  void TriggerRMIOnAllChildren(void *arg, int argLength, int tag);
 
   // MPI communicator created when Initialize() called.
   // This is a copy of MPI_COMM_WORLD but uses a new
