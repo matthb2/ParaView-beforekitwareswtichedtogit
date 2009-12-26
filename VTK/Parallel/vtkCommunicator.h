@@ -41,11 +41,27 @@ class vtkMultiBlockDataSet;
 class vtkMultiProcessStream;
 class vtkTemporalDataSet;
 
+
+
+
 class VTK_PARALLEL_EXPORT vtkCommunicator : public vtkObject
 {
 
 public:
-
+//BTX
+  class VTK_PARALLEL_EXPORT Request
+  {
+  public:
+    Request();
+    Request( const Request& );
+    ~Request();
+    Request& operator = ( const Request& );
+    int Test();
+    void Cancel();
+    void Wait();
+    int* Req;
+  };
+//ETX
   vtkTypeRevisionMacro(vtkCommunicator, vtkObject);
   void PrintSelf(ostream& os, vtkIndent indent);
 
@@ -126,6 +142,22 @@ public:
   // Tag eliminates ambiguity
   // and is used to match sends to receives.
   int Send(vtkDataArray* data, int remoteHandle, int tag);
+
+    // Description:
+  // This method sends data to another process (non-blocking).  
+  // Tag eliminates ambiguity when multiple sends or receives 
+  // exist in the same process. The last argument,
+  // vtkMPICommunicator::Request& req can later be used (with
+  // req.Test() ) to test the success of the message.
+  virtual int NoBlockSend(const int* data, int length, int remoteProcessId, int tag,
+                  Request& req);
+  virtual int NoBlockSend(const unsigned long* data, int length, int remoteProcessId,
+                  int tag, Request& req);
+  virtual int NoBlockSend(const char* data, int length, int remoteProcessId, 
+                  int tag, Request& req);
+  virtual int NoBlockSend(const float* data, int length, int remoteProcessId, 
+                  int tag, Request& req);
+
 
   // Description:
   // Subclasses have to supply this method to send various arrays of data.
