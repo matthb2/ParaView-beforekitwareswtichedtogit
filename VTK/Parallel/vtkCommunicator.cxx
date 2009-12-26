@@ -228,21 +228,25 @@ int vtkCommunicator::Send(vtkDataObject* data, int remoteHandle,
  int vtkCommunicator::NoBlockSend(const int* data, int length, int remoteProcessId, int tag,
                   Request& req)
 {
+	printf("non-blocking sends not supported here yet\n");
 	Send(data,length,remoteProcessId,tag);
 }
   int vtkCommunicator::NoBlockSend(const unsigned long* data, int length, int remoteProcessId,
                   int tag, Request& req)
 {
+	printf("non-blocking sends not supported here yet\n");
 	Send(data,length,remoteProcessId,tag);
 }
   int vtkCommunicator::NoBlockSend(const char* data, int length, int remoteProcessId, 
                   int tag, Request& req)
 {
+	printf("non-blocking sends not supported here yet\n");
 	Send(data,length,remoteProcessId,tag);
 }
   int vtkCommunicator::NoBlockSend(const float* data, int length, int remoteProcessId, 
                   int tag, Request& req)
 {
+	printf("non-blocking sends not supported here yet\n");
 	Send(data,length,remoteProcessId,tag);
 }
 
