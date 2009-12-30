@@ -17,6 +17,7 @@
 #include "vtkSmartPointer.h"
 
 vtkCxxRevisionMacro(vtkTestingObjectFactory, "$Revision$");
+vtkStandardNewMacro(vtkTestingObjectFactory);
 
 VTK_CREATE_CREATE_FUNCTION(vtkTestingInteractor);
 
