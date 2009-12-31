@@ -143,7 +143,7 @@ void vtkCaptionRepresentation::BuildRepresentation()
 
     if(!this->Moving && this->CaptionActor2D 
         && this->CaptionActor2D->GetCaption()
-        && (   !this->CaptionActor2D->GetTextActor()->GetTextScaleMode()
+        && (this->CaptionActor2D->GetTextActor()->GetTextScaleMode()
             == vtkTextActor::TEXT_SCALE_MODE_NONE ))
       {
       // Create a dummy text mapper for getting font sizes
