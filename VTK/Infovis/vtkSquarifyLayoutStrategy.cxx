@@ -47,7 +47,7 @@ void vtkSquarifyLayoutStrategy::Layout(
     vtkDataArray* coordsArray,
     vtkDataArray* sizeArray)
 {
-  if (!inputTree)
+  if (!inputTree || inputTree->GetNumberOfVertices() == 0)
     {
     return;
     }
