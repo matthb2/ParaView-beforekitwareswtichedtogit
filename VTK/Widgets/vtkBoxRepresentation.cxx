@@ -12,6 +12,7 @@
      PURPOSE.  See the above copyright notice for more information.
 
 =========================================================================*/
+
 #include "vtkBoxRepresentation.h"
 #include "vtkActor.h"
 #include "vtkSphereSource.h"
