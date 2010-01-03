@@ -162,13 +162,14 @@ void vtkGaussianBlurPass::Render(const vtkRenderState *s)
         }
       
       this->Supported=supported;
-      if(!supported)
-        {
-        this->DelegatePass->Render(s);
-        this->NumberOfRenderedProps+=
-          this->DelegatePass->GetNumberOfRenderedProps();
-        return;
-        }
+      }
+    
+    if(!this->Supported)
+      {
+      this->DelegatePass->Render(s);
+      this->NumberOfRenderedProps+=
+        this->DelegatePass->GetNumberOfRenderedProps();
+      return;
       }
     
     GLint savedDrawBuffer;
