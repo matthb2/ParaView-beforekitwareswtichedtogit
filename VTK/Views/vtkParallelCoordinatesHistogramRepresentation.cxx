@@ -319,7 +319,7 @@ int vtkParallelCoordinatesHistogramRepresentation::PlaceHistogramLineQuads(vtkPo
 
   // for each histogram, draw a quad for each bin.
   vtkIdType ptId=0;
-  vtkIdType quadId=0;
+//  vtkIdType quadId=0;
   for (int pos=0; pos<this->NumberOfAxes-1; pos++)
     {
     int dims[3] = {0,0,0};
@@ -401,7 +401,7 @@ int vtkParallelCoordinatesHistogramRepresentation::PlaceHistogramCurveQuads(vtkP
   this->BuildDefaultSCurve(defSplineValues,this->CurveResolution);
 
   vtkIdType ptId=0;
-  vtkIdType stripId = 0;
+  //vtkIdType stripId = 0;
   for (int pos=0; pos<this->NumberOfAxes-1; pos++)
     {
     int dims[3] = {0,0,0};
