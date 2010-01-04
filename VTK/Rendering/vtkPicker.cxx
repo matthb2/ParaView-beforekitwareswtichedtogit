@@ -476,6 +476,7 @@ void vtkPicker::Initialize()
   this->MapperPosition[2] = 0.0;
 
   this->Mapper = NULL;
+  this->DataSet = NULL;
   this->GlobalTMin = VTK_DOUBLE_MAX;
 }
 
