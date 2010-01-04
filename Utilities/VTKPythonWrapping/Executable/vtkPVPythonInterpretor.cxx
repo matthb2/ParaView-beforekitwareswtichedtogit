@@ -425,8 +425,14 @@ void vtkPVPythonInterpretor::AddPythonPath(const char* path)
     }
 
   this->MakeCurrent();
-  vtkPythonAppInitPrependPythonPath(path);
+  this->AddPythonPathInternal(path);
   this->ReleaseControl();
+}
+
+//-----------------------------------------------------------------------------
+void vtkPVPythonInterpretor::AddPythonPathInternal(const char* path)
+{
+  vtkPythonAppInitPrependPythonPath(path);
 }
 
 //-----------------------------------------------------------------------------
