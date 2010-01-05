@@ -74,7 +74,6 @@ int vtkExtractPiece::RequestDataObject(
       {
       vtkDataObject* outData = input->NewInstance();
       outData->SetPipelineInformation(outInfo);
-      outInfo->Set(vtkDataObject::DATA_EXTENT_TYPE(), outData->GetExtentType());
       outInfo->Set(vtkDataObject::DATA_OBJECT(), outData);
       outData->Delete();
       }

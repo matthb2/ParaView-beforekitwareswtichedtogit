@@ -341,7 +341,6 @@ int vtkDataObjectGenerator::RequestDataObject(vtkInformation *,
   if (outData)
     {
     outData->SetPipelineInformation(outInfo);
-    outInfo->Set(vtkDataObject::DATA_EXTENT_TYPE(), outData->GetExtentType());
     outInfo->Set(vtkDataObject::DATA_OBJECT(), outData);
     outData->Delete();
     }

@@ -193,8 +193,6 @@ int vtkPointSetAlgorithm::RequestDataObject(
         output = input->NewInstance();
         output->SetPipelineInformation(info);
         output->Delete();
-        this->GetOutputPortInformation(i)->Set(
-          vtkDataObject::DATA_EXTENT_TYPE(), output->GetExtentType());
         }
       }
     return 1;

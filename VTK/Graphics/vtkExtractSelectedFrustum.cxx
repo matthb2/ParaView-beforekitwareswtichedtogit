@@ -196,8 +196,6 @@ int vtkExtractSelectedFrustum::RequestDataObject(
       vtkUnstructuredGrid* newOutput = vtkUnstructuredGrid::New();
       newOutput->SetPipelineInformation(info);
       newOutput->Delete();
-      this->GetOutputPortInformation(0)->Set(
-        vtkDataObject::DATA_EXTENT_TYPE(), newOutput->GetExtentType());
       }
     }
 

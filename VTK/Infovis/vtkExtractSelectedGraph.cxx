@@ -134,8 +134,6 @@ int vtkExtractSelectedGraph::RequestDataObject(
         }
       output->SetPipelineInformation(info);
       output->Delete();
-      this->GetOutputPortInformation(0)->Set(
-        vtkDataObject::DATA_EXTENT_TYPE(), output->GetExtentType());
       }
     return 1;
     }

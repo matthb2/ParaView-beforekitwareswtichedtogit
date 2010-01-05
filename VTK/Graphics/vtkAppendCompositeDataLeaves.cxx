@@ -91,9 +91,6 @@ int vtkAppendCompositeDataLeaves::RequestDataObject(
 
   if ( input )
     {
-    this->GetOutputPortInformation( 0 )->Set(
-      vtkDataObject::DATA_EXTENT_TYPE(), input->GetExtentType() );
-
     // for each output
     for ( int i = 0; i < this->GetNumberOfOutputPorts(); ++ i )
       {

@@ -200,8 +200,6 @@ int vtkPDataSetReader::RequestDataObject(
     }
   
   newOutput->SetPipelineInformation(info);
-  this->GetOutputPortInformation(0)->Set(
-    vtkDataObject::DATA_EXTENT_TYPE(), newOutput->GetExtentType());
   newOutput->Delete();
 
   return 1;
