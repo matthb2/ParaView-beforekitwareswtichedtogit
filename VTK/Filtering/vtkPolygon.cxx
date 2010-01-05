@@ -62,8 +62,12 @@ vtkPolygon::~vtkPolygon()
 //----------------------------------------------------------------------------
 double vtkPolygon::ComputeArea()
 {
-  double normal[3]; //not used, but required for the following ComputeArea call
-  return vtkPolygon::ComputeArea(this->GetPoints(), this->GetNumberOfPoints(), this->GetPointIds()->GetPointer(0), normal);
+  double normal[3]; //not used, but required for the 
+                    //following ComputeArea call
+  return vtkPolygon::ComputeArea(this->GetPoints(), 
+                                 this->GetNumberOfPoints(), 
+                                 this->GetPointIds()->GetPointer(0), 
+                                 normal);
 
 }
 
