@@ -84,15 +84,15 @@ public:
     EscapeDelimiter(escape.begin(), escape.end()),
     HaveHeaders(have_headers),
     UnicodeArrayOutput(unicode_array_output),
+    WhiteSpaceOnlyString(true),
     OutputTable(output_table),
     CurrentRecordIndex(0),
     CurrentFieldIndex(0),
     RecordAdjacent(true),
-    WithinString(0),
     MergeConsDelims(merg_cons_delimiters),
-    WhiteSpaceOnlyString(true),
     ProcessEscapeSequence(false),
-    UseStringDelimiter(use_string_delimeter)
+    UseStringDelimiter(use_string_delimeter),
+    WithinString(0)
   {
   }
 
