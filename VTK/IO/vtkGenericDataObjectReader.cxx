@@ -153,10 +153,8 @@ int vtkGenericDataObjectReader::RequestDataObject(
         return 0;
       }
     
-    this->GetExecutive()->SetOutputData(0, output);
+    output->SetPipelineInformation(info);
     output->Delete();
-    this->GetOutputPortInformation(0)->Set(
-      vtkDataObject::DATA_EXTENT_TYPE(), output->GetExtentType());
     }
 
   return 1;
