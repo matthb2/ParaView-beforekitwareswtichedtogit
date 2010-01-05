@@ -294,7 +294,7 @@ int vtkAreaPicker::PickProps(vtkRenderer *renderer)
             {
             if ( ! this->Prop3Ds->IsItemPresent(prop) )
               {
-              this->Prop3Ds->AddItem(imageActor);
+              this->Prop3Ds->AddItem(static_cast<vtkProp3D *>(prop));
               //cerr << "picked an imageactor" << endl;
               if (dist < mindist) //new nearest, remember it
                 {
