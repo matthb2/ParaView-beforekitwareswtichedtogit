@@ -1,4 +1,3 @@
-
 // -*- c++ -*-
 /*=========================================================================
 
@@ -20,46 +19,22 @@
   the U.S. Government retains certain rights in this software.
 -------------------------------------------------------------------------*/
 
-#ifndef __pqGlobalPlotter_h
-#define __pqGlobalPlotter_h
+#ifndef __pqResizingScrollArea_H
+#define __pqResizingScrollArea_H
 
-#include "pqPlotter.h"
+#include <QScrollArea>
 
-class pqGlobalPlotter : public pqPlotter
+//
+// This class provides a scroll area that can resize (to a point) as widgets are
+// added to the contents 
+//
+
+class pqResizingScrollArea : public QScrollArea
 {
-  Q_OBJECT;
-
 public:
+  pqResizingScrollArea(QWidget *parent = 0);
 
-  pqGlobalPlotter();
-
-  virtual ~pqGlobalPlotter()
-  {
-  }
-
-  virtual QStringList getTheVars(vtkSMProxy * meshReaderProxy);
-
-  virtual vtkSMProperty * getSMVariableProperty(vtkSMProxy *meshReaderProxy);
-
-  virtual vtkPVDataSetAttributesInformation * getDataSetAttributesInformation(vtkPVDataInformation * pvDataInfo);
-
-  virtual bool amIAbleToSelectByNumber();
-
-  virtual pqPipelineSource * getPlotFilter();
-
-  virtual void setVarsStatus(vtkSMProxy * meshReaderProxy, bool flag);
-
-  virtual void setVarsActive(vtkSMProxy * meshReaderProxy, QString varName, bool activeFlag);
-
-  virtual QString getFilterName();
-
-  virtual QString getPlotterTextEditObjectName();
-
-protected:
-
-  class pqInternal;
-  pqInternal * Internal;
-
+  QSize sizeHint() const;
 };
 
-#endif // __pqGlobalPlotter_h
+#endif //__pqResizingScrollArea_H

@@ -1,4 +1,3 @@
-
 // -*- c++ -*-
 /*=========================================================================
 
@@ -20,46 +19,17 @@
   the U.S. Government retains certain rights in this software.
 -------------------------------------------------------------------------*/
 
-#ifndef __pqGlobalPlotter_h
-#define __pqGlobalPlotter_h
 
-#include "pqPlotter.h"
+#ifndef __warningState_h
+#define __warningState_h
 
-class pqGlobalPlotter : public pqPlotter
-{
-  Q_OBJECT;
+#if defined(DISABLE_NOISY_COMPILE_WARNINGS)
+// disables certain "noisy" compile warnings (e.g. Qt creates a plethora of 4127 and 4512)
+// if DISABLE_NOISY_COMPILE_WARNINGS is defined
+#if defined(_WIN32)
+#pragma warning ( disable : 4127 ) //warning C4127: conditional expression is constant
+#pragma warning ( disable : 4512 ) //warning C4512: assignment operator could not be generated
+#endif
+#endif
 
-public:
-
-  pqGlobalPlotter();
-
-  virtual ~pqGlobalPlotter()
-  {
-  }
-
-  virtual QStringList getTheVars(vtkSMProxy * meshReaderProxy);
-
-  virtual vtkSMProperty * getSMVariableProperty(vtkSMProxy *meshReaderProxy);
-
-  virtual vtkPVDataSetAttributesInformation * getDataSetAttributesInformation(vtkPVDataInformation * pvDataInfo);
-
-  virtual bool amIAbleToSelectByNumber();
-
-  virtual pqPipelineSource * getPlotFilter();
-
-  virtual void setVarsStatus(vtkSMProxy * meshReaderProxy, bool flag);
-
-  virtual void setVarsActive(vtkSMProxy * meshReaderProxy, QString varName, bool activeFlag);
-
-  virtual QString getFilterName();
-
-  virtual QString getPlotterTextEditObjectName();
-
-protected:
-
-  class pqInternal;
-  pqInternal * Internal;
-
-};
-
-#endif // __pqGlobalPlotter_h
+#endif //__warningState_h
