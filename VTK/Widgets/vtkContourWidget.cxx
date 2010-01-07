@@ -634,5 +634,5 @@ void vtkContourWidget::PrintSelf(ostream& os, vtkIndent indent)
   os << indent << "WidgetState: " << this->WidgetState << endl;
   os << indent << "CurrentHandle: " << this->CurrentHandle << endl;
   os << indent << "AllowNodePicking: " << this->AllowNodePicking << endl;
-  
+  os << indent << "FollowCursor: " << (this->FollowCursor ? "On" : "Off") << endl;
 }

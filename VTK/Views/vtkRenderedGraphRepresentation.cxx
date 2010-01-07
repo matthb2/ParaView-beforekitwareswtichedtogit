@@ -1434,4 +1434,8 @@ void vtkRenderedGraphRepresentation::PrintSelf(ostream& os, vtkIndent indent)
      << (this->VertexHoverArrayName ? this->VertexHoverArrayName : "(none)") << endl;
   os << indent << "EdgeHoverArrayName: "
      << (this->EdgeHoverArrayName ? this->EdgeHoverArrayName : "(none)") << endl;
+  os << indent << "HideVertexLabelsOnInteraction: "
+     << (this->HideVertexLabelsOnInteraction ? "On" : "Off") << endl;
+  os << indent << "HideEdgeLabelsOnInteraction: "
+     << (this->HideEdgeLabelsOnInteraction ? "On" : "Off") << endl;
 }
