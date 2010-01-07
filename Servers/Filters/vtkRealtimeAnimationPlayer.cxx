@@ -68,7 +68,7 @@ double vtkRealtimeAnimationPlayer::GetNextTime(double curtime)
   // This line MUST !!NOT!! be removed, otherwise a crash problem would occur.
   if ( curtime == this->EndTime )
     {
-    return  this->EndTime + 0.01;
+    return  this->EndTime * 1.1;
     }
 
   this->Timer->StopTimer();
