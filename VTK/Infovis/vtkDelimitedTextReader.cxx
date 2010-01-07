@@ -447,7 +447,7 @@ vtkDelimitedTextReader::vtkDelimitedTextReader() :
   this->UnicodeOutputArrays = false;
   this->FieldDelimiterCharacters = 0;
   this->SetFieldDelimiterCharacters(",");
-  this->SetStringDelimiter('"');
+  this->StringDelimiter='"';
   this->UseStringDelimiter = true;
   this->DetectNumericColumns = false;
 }
@@ -457,6 +457,7 @@ vtkDelimitedTextReader::~vtkDelimitedTextReader()
   this->SetPedigreeIdArrayName(0);
   this->SetUnicodeCharacterSet(0);
   this->SetFileName(0);
+  this->SetFieldDelimiterCharacters(0);
 }
 
 void vtkDelimitedTextReader::PrintSelf(ostream& os, vtkIndent indent)
