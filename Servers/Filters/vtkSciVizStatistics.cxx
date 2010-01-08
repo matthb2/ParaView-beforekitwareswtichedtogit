@@ -365,6 +365,7 @@ int vtkSciVizStatistics::RequestData(
         {
         ouModelCur = this->CreateModelDataType();
         ouModelIter->GetDataSet()->SetDataSet( ouModelIter, ouModelCur );
+        ouModelCur->Delete();
         }
       stat = this->RequestData(
         ouDataIter->GetCurrentDataObject(),
