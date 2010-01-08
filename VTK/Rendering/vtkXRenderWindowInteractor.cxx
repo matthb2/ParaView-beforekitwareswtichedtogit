@@ -426,7 +426,7 @@ void vtkXRenderWindowInteractor::Initialize()
     {
     vtkTDxUnixDevice *d=this->Internal->GetDevice();
     d->SetDisplayId(this->DisplayId);
-    d->SetWindowId(this->WindowId);
+    d->SetWindowId(static_cast<vtkTDxUnixDeviceWindow>(this->WindowId));
     d->SetInteractor(this);
     d->Initialize();
     if(!d->GetInitialized())
