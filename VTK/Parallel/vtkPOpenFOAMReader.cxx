@@ -75,6 +75,7 @@ void vtkPOpenFOAMReader::PrintSelf(ostream &os, vtkIndent indent)
       << endl;
   os << indent << "Number of Processes: " << this->NumProcesses << endl;
   os << indent << "Process Id: " << this->ProcessId << endl;
+  os << indent << "Controller: " << this->Controller << endl;
 }
 
 //-----------------------------------------------------------------------------
