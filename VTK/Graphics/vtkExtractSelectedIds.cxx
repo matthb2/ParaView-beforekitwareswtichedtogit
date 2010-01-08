@@ -48,6 +48,20 @@ vtkExtractSelectedIds::~vtkExtractSelectedIds()
 }
 
 //----------------------------------------------------------------------------
+int vtkExtractSelectedIds::FillInputPortInformation(
+  int port, vtkInformation* info)
+{
+  this->Superclass::FillInputPortInformation(port, info);
+  if (port==0)
+    {
+    // this filter can only work with datasets.
+    info->Remove(vtkAlgorithm::INPUT_REQUIRED_DATA_TYPE()); 
+    info->Set(vtkAlgorithm::INPUT_REQUIRED_DATA_TYPE(), "vtkDataSet"); 
+    }
+  return 1;
+}
+
+//----------------------------------------------------------------------------
 int vtkExtractSelectedIds::RequestData(
   vtkInformation *vtkNotUsed(request),
   vtkInformationVector **inputVector,
