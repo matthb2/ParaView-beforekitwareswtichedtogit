@@ -49,6 +49,20 @@ vtkArrayNorm::~vtkArrayNorm()
 {
 }
 
+void vtkArrayNorm::SetWindow(const vtkArrayRange& window)
+{
+  if(window == this->Window)
+    return;
+
+  this->Window = window;
+  this->Modified();
+}
+
+vtkArrayRange vtkArrayNorm::GetWindow()
+{
+  return this->Window;
+}
+
 void vtkArrayNorm::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os, indent);
