@@ -551,6 +551,18 @@ public:
   VTK_TEMPLATE_SPECIALIZE double To<double>() const;
 #endif
 
+  // workaround for SunOS-CC5.6-dbg
+  int vtkFoamToken::ToInt() const
+  {
+    return this->Int;
+  }
+
+  // workaround for SunOS-CC5.6-dbg
+  float vtkFoamToken::ToFloat() const
+  {
+    return this->Type == LABEL ? this->Int : this->Double;
+  }
+
   const vtkStdString ToString() const
   {
     return *this->String;
@@ -3430,7 +3442,7 @@ void vtkFoamEntry::Read(vtkFoamIOobject& io)
           if (lastValue.Dictionary().GetType() == vtkFoamToken::LABEL)
             {
             const int asize = secondLastValue.To<int>();
-            const int value = lastValue.Dictionary().GetToken().To<int>();
+            const int value = lastValue.Dictionary().GetToken().ToInt();
             // delete last two values
             delete this->Superclass::back();
             this->Superclass::pop_back();
@@ -3443,7 +3455,7 @@ void vtkFoamEntry::Read(vtkFoamIOobject& io)
           else if (lastValue.Dictionary().GetType() == vtkFoamToken::SCALAR)
             {
             const int asize = secondLastValue.To<int>();
-            const float value = lastValue.Dictionary().GetToken().To<float>();
+            const float value = lastValue.Dictionary().GetToken().ToFloat();
             // delete last two values
             delete this->Superclass::back();
             this->Superclass::pop_back();
