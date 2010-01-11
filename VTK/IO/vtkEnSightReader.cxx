@@ -363,7 +363,10 @@ int vtkEnSightReader::RequestData(
     // set the forward time step shifting mode
     // for accelerated data loading (bug #9289)
     if (    (  strcmp( prevFileName, fileName ) == 0  )
-         && (  timeStepInFile >  this->PreviousTimeStepInFile )
+         && (  timeStepInFile >  this->PreviousTimeStepInFile  )
+         && (  numStepsList   != NULL  ) // in case each time step of the time-
+                                         // varying geometry is stored in a
+                                         // single file (bug #10117)
          && (  timeStepInFile <= numStepsList->GetId( fileNum - 1 )  )
        )
       {
