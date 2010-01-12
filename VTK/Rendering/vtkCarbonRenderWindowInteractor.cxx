@@ -24,6 +24,10 @@
 #include "vtkInteractorStyle.h"
 #include "vtkObjectFactory.h"
 
+#ifdef VTK_USE_TDX
+#include "vtkTDxMacDevice.h"
+#endif
+
 vtkCxxRevisionMacro(vtkCarbonRenderWindowInteractor, "$Revision$");
 vtkStandardNewMacro(vtkCarbonRenderWindowInteractor);
 
@@ -418,12 +422,19 @@ vtkCarbonRenderWindowInteractor::vtkCarbonRenderWindowInteractor()
   this->LeaveCheckId       = 0;
   this->LastMouseDelta[0]  = 0;
   this->LastMouseDelta[1]  = 0;
+  
+#ifdef VTK_USE_TDX
+  this->Device=vtkTDxMacDevice::New();
+#endif
 }
 
 //--------------------------------------------------------------------------
 vtkCarbonRenderWindowInteractor::~vtkCarbonRenderWindowInteractor()
 {
   this->Enabled = 0;
+#ifdef VTK_USE_TDX
+  this->Device->Delete();
+#endif
 }
 
 //--------------------------------------------------------------------------
@@ -574,6 +585,14 @@ void vtkCarbonRenderWindowInteractor::Enable()
                           (EventLoopTimerRef *)&this->LeaveCheckId);
     }
 
+#ifdef VTK_USE_TDX
+  if(this->UseTDx)
+    {
+    this->Device->SetInteractor(this);
+    this->Device->Initialize();
+    }
+#endif
+  
   this->Enabled = 1;
   this->Modified();
 }
@@ -585,6 +604,14 @@ void vtkCarbonRenderWindowInteractor::Disable()
     {
     return;
     }
+  
+#ifdef VTK_USE_TDX
+  if(this->Device->GetInitialized())
+    {
+    this->Device->Close();
+    }
+#endif
+  
   if (this->LeaveCheckId)
     {
     RemoveEventLoopTimer((EventLoopTimerRef)this->LeaveCheckId);
