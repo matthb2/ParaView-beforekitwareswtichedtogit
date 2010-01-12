@@ -552,13 +552,13 @@ public:
 #endif
 
   // workaround for SunOS-CC5.6-dbg
-  int vtkFoamToken::ToInt() const
+  int ToInt() const
   {
     return this->Int;
   }
 
   // workaround for SunOS-CC5.6-dbg
-  float vtkFoamToken::ToFloat() const
+  float ToFloat() const
   {
     return this->Type == LABEL ? this->Int : this->Double;
   }
