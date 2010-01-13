@@ -265,7 +265,7 @@ int vtkCommunicator::SendTemporalDataSet(vtkTemporalDataSet* mbds,
     if (block)
       {
       // Now, send the actual block data.
-      remoteHandle = returnCode && this->Send(block, remoteHandle, tag);
+      returnCode = returnCode && this->Send(block, remoteHandle, tag);
       }
     }
 
