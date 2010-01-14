@@ -149,6 +149,12 @@ void vtkQtTableView::SetEnableDragDrop(bool state)
 }
 
 //----------------------------------------------------------------------------
+void vtkQtTableView::SetSortingEnabled(bool state)
+{
+  this->TableView->setSortingEnabled(state);
+}
+
+//----------------------------------------------------------------------------
 void vtkQtTableView::SetFieldType(int type)
 {
   this->DataObjectToTable->SetFieldType(type);
