@@ -550,7 +550,7 @@ void MyProcess::Execute()
     iren->Delete();
 
     cerr << "processes " << processes << endl;
-    cerr << "threads " << threads << endl;
+    cerr << "threads " << (useGL?1:threads) << endl;
     cerr << "screensize " << screensize << endl;
     cerr << "triangles " << triangles << endl;
     cerr << "render_with " << (useGL?"GL":"Manta") << endl;
