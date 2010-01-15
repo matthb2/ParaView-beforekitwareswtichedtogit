@@ -120,7 +120,7 @@ public:
         }
       pp->RemoveAllUncheckedProxies();
       pp->AddUncheckedInputConnection(source, port);
-      bool status = pp->IsInDomains();
+      bool status = pp->IsInDomains() != 0;
       pp->RemoveAllUncheckedProxies();
       return status;
       }
