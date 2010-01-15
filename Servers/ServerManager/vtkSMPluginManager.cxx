@@ -330,7 +330,6 @@ void vtkSMPluginManager::RemovePlugin(
 
       if(found)
         {
-        (*infoIt)->Delete();
         it->second.erase(infoIt);
         }
       }
