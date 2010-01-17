@@ -52,5 +52,5 @@ void vtkTestingInteractor::Start()
   testing->AddArgument(valid.c_str());
 
   // Regression test the image
-  vtkTestingInteractor::TestReturnStatus = testing->RegressionTest(15);
+  vtkTestingInteractor::TestReturnStatus = testing->RegressionTest(40);
 }
