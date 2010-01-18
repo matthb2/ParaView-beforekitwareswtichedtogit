@@ -1364,8 +1364,8 @@ void vtkProcessModule::SetLocalProgress(const char* filter, int progress)
 {
   if (!this->GUIHelper)
     {
-    vtkErrorMacro("GUIHelper must be set for SetLocalProgress " << filter
-      << " " << progress);
+    //vtkErrorMacro("GUIHelper must be set for SetLocalProgress " << filter
+    //  << " " << progress);
     return;
     }
   this->LastProgress = progress;
