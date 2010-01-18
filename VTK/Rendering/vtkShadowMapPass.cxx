@@ -111,7 +111,7 @@ void  PointNearFar(double *v, double *pt, double* dir, double& near, double &far
 // compute the min/max of the projection of a box in a given direction.
 void BoxNearFar(double *bb, double *pt, double *dir, double& near, double &far)
 {
-  double v[3], diff[3], dot;
+  double v[3];
   v[0] = bb[0]; v[1] = bb[2]; v[2] = bb[4];
   PointNearFar(v, pt, dir, near, far, false);
 
