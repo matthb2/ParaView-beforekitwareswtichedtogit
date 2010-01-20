@@ -480,7 +480,7 @@ void vtkContourWidget::MoveAction(vtkAbstractWidget *w)
               (Y - displayPos[1]) * (Y - displayPos[1]) < pixelTolerance2 
              && numNodes > 2 );
 
-        if (mustCloseLoop != static_cast< bool >(rep->GetClosedLoop()))
+        if (mustCloseLoop != (rep->GetClosedLoop()==1))
           {
           if (rep->GetClosedLoop())
             {
