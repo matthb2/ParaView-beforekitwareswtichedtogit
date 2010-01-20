@@ -137,6 +137,9 @@ vtkRenderedGraphRepresentation::vtkRenderedGraphRepresentation()
   this->LayoutStrategyName = 0;
   this->EdgeLayoutStrategyName = 0;
 
+  this->HideVertexLabelsOnInteraction = false;
+  this->HideEdgeLabelsOnInteraction = false;
+
   /*
    <graphviz>
    digraph {
