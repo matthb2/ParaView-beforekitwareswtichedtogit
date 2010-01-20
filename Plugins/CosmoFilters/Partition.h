@@ -1,22 +1,5 @@
 /*=========================================================================
-
-  Program:   Visualization Toolkit
-  Module:    $RCSfile$
-
-  Copyright (c) Ken Martin, Will Schroeder, Bill Lorensen
-  All rights reserved.
-  See Copyright.txt or http://www.kitware.com/Copyright.htm for details.
-
-     This software is distributed WITHOUT ANY WARRANTY; without even
-     the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR
-     PURPOSE.  See the above copyright notice for more information.
-
-=========================================================================*/
-/*=========================================================================
-
-  Program:   VTK/ParaView Los Alamos National Laboratory Modules (PVLANL)
-  Module:    $RCSfile$
-
+                                                                                
 Copyright (c) 2007, Los Alamos National Security, LLC
 
 All rights reserved.
@@ -56,83 +39,70 @@ OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
 WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR 
 OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF 
 ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-
+                                                                                
 =========================================================================*/
-// .NAME vtkCosmoCorrelater - find halos within a cosmology data file
+
+// .NAME Partition - Partition MPI processors into cartesian grid
+//
 // .SECTION Description
-// vtkCosmoCorrelater is a filter object that operates on two unstructured 
-// grids created with two vtkCosmoReaderHPAR reads for two particle files.
-// It assigns the halotag of all particles in the second file based on the
-// halotag assignment of the first file. 
-//
-// .NOTE
-// follows the majority rule in the halotag assignement.
-//
+// Partition allows MPI to divide the number of processors it is given and
+// to set the position of this processor within the Cartesian grid.  Using
+// that information with wraparound, all neighbors of a processor are
+// also computed.  This class is static and will be shared by all classes
+// within the infrastructure.
 
-#ifndef __vtkCosmoCorrelater_h
-#define __vtkCosmoCorrelater_h
+#ifndef Partition_h
+#define Partition_h
 
-#include "vtkUnstructuredGridAlgorithm.h"
-#include <vtkstd/string>
+#include "Definition.h"
 
-class VTK_EXPORT vtkCosmoCorrelater : public vtkUnstructuredGridAlgorithm
-{
- public:
-  // Description:
-  static vtkCosmoCorrelater *New();
+#ifdef USE_VTK_COSMO
+#include "vtkMPI.h"
+#include "vtkstd/string"
+#include "vtkstd/vector"
 
-  vtkTypeRevisionMacro(vtkCosmoCorrelater,vtkUnstructuredGridAlgorithm);
-  void PrintSelf(ostream& os, vtkIndent indent);
+using namespace vtkstd;
+#else
+#include <mpi.h>
+#include <string>
+#include <vector>
 
-  vtkSetMacro(np,int);
-  vtkGetMacro(np,int);
+using namespace std;
+#endif
 
-  vtkSetMacro(bb,float);
-  vtkGetMacro(bb,float);
+class Partition {
+public:
+  Partition();
+  ~Partition();
 
-  vtkSetMacro(rL,float);
-  vtkGetMacro(rL,float);
+  // Control MPI and the Cartesian topology
+  //static void initialize(int& argc, char** argv);
+  static void initialize();
+  static void finalize();
 
-  vtkSetMacro(Periodic,bool);
-  vtkGetMacro(Periodic,bool);
+  // Set the processor numbers of neighbors in all directions
+  static void setNeighbors();
 
-  void SetFieldName(const char* field_name);
+  static MPI::Cartcomm& getComm()       { return cartComm; }
 
-  void SetQueryConnection(vtkAlgorithmOutput *algOutput);
- protected:
-  // input 
-  int np;
-  float bb;
-  float rL;
-  bool Periodic;
+  static int  getMyProc()               { return myProc; }
+  static int  getNumProc()              { return numProc; }
 
-  vtkCosmoCorrelater();
-  ~vtkCosmoCorrelater();
+  static void getDecompSize(int size[]);
+  static void getMyPosition(int pos[]);
+  static void getNeighbors(int neigh[]);
 
-  virtual int RequestData(vtkInformation *, vtkInformationVector **, vtkInformationVector *);
+  static int  getNeighbor(int xpos, int ypos, int zpos);
 
- private:
+private:
+  static int myProc;                    // My processor number
+  static int numProc;                   // Total number of processors
 
-  vtkCosmoCorrelater(const vtkCosmoCorrelater&);  // Not implemented.
-  void operator=(const vtkCosmoCorrelater&);  // Not implemented.
+  static MPI::Cartcomm cartComm;        // Cartesian communicator
+  static int decompSize[DIMENSION];     // Number of processors in each dim
+  static int myPosition[DIMENSION];     // My index in cartesian communicator
 
-  // 3d-tree
-  int *seq;
-  long long *v;
-  float **data;
-  float *mediantest;
-  void Reorder(long long *, long long *, int);
-
-  // range search
-  float *range;
-  int nmap;
-  void RangeSearch(int, int, int, float *);
-
-  //BTX
-  class vtkInternal;
-  vtkInternal* Internal;
-  //ETX
-
+  static int neighbor[NUM_OF_NEIGHBORS];// Neighbor processor ids
 };
 
-#endif //  __vtkCosmoCorrelater_h
+#endif

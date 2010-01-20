@@ -17,11 +17,11 @@
   Program:   VTK/ParaView Los Alamos National Laboratory Modules (PVLANL)
   Module:    $RCSfile$
 
-Copyright (c) 2007, Los Alamos National Security, LLC
+Copyright (c) 2009 Los Alamos National Security, LLC
 
 All rights reserved.
 
-Copyright 2007. Los Alamos National Security, LLC. 
+Copyright 2009. Los Alamos National Security, LLC. 
 This software was produced under U.S. Government contract DE-AC52-06NA25396 
 for Los Alamos National Laboratory (LANL), which is operated by 
 Los Alamos National Security, LLC for the U.S. Department of Energy. 
@@ -58,47 +58,89 @@ OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
 ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 =========================================================================*/
-#ifndef _vtkCosmoHaloClassFilter_h
-#define _vtkCosmoHaloClassFilter_h
+// .NAME vtkPCosmoReader - Read a binary cosmology data file
+//
+// .SECTION Description
+// vtkPCosmoReader creates a vtkUnstructuredGrid from a binary cosmology file.
+// The file contains fields for:
+//     x_position, x_velocity (float)
+//     y_position, y_velocity (float)
+//     z-position, z_velocity (float)
+//     mass (float)
+//     identification tag (integer)
+//
+// If the file contains particle information x,y,z is the location of the
+// particle in simulation space with a velocity vector and a mass which
+// will be the same for all particles.
+//
+
+#ifndef __vtkPCosmoReader_h
+#define __vtkPCosmoReader_h
 
 #include "vtkUnstructuredGridAlgorithm.h"
 
-class vtkIntArray;
-class vtkInformationIntegerKey;
+class vtkMultiProcessController;
+class vtkMPIController;
+class vtkStdString;
 
-class VTK_EXPORT vtkCosmoHaloClassFilter : public vtkUnstructuredGridAlgorithm
+class VTK_PARALLEL_EXPORT vtkPCosmoReader : public vtkUnstructuredGridAlgorithm
 {
- public:
-  static vtkCosmoHaloClassFilter *New();
-  vtkTypeRevisionMacro(vtkCosmoHaloClassFilter, vtkUnstructuredGridAlgorithm);
+public:
+  static vtkPCosmoReader *New();
+  vtkTypeRevisionMacro(vtkPCosmoReader, vtkUnstructuredGridAlgorithm);
   void PrintSelf(ostream& os, vtkIndent indent);
 
-  void SetNumberOfBounds(int number);
-  void SetBoundValue(int i, double value);
+  // Description:
+  // Specify the name of the cosmology particle binary file to read
+  vtkSetStringMacro(FileName);
+  vtkGetStringMacro(FileName);
 
-  // the key to store the number of classes in the output information
-  static vtkInformationIntegerKey* OUTPUT_NUMBER_OF_CLASSES();
+  // Description:
+  // Specify the physical box dimensions size (rL) (default 91)
+  vtkSetMacro(RL, float);
+  vtkGetMacro(RL, float);
 
- protected:
-  vtkCosmoHaloClassFilter();
-  ~vtkCosmoHaloClassFilter();
+  // Description:
+  // Specify the ghost cell spacing (edge boundary of box) (default .06)
+  vtkSetMacro(Overlap, float);
+  vtkGetMacro(Overlap, float);
 
-  virtual int RequestData(vtkInformation* request,
-                          vtkInformationVector** inputVector,
-                          vtkInformationVector* outputVector);
+  // Description:
+  // Set the read mode (0 = one-to-one, 1 = default, round-robin)
+  vtkSetMacro(ReadMode, int);
+  vtkGetMacro(ReadMode, int);
 
-  virtual int RequestInformation(vtkInformation* request,
-                                 vtkInformationVector** inputVector,
-                                 vtkInformationVector* outputVector);
+  // Description:
+  // Set the filetype to Gadget or Cosmo read mode (0 = Gadget, 1 = default, Cosmo)
+  vtkSetMacro(CosmoFormat, int);
+  vtkGetMacro(CosmoFormat, int);
 
-  int NumberOfBounds;
- private:
-  vtkCosmoHaloClassFilter(const vtkCosmoHaloClassFilter&);//Not implemented
-  void operator=(const vtkCosmoHaloClassFilter&);//Not implemented
+  // Description:
+  // Set the communicator object for interprocess communication
+  virtual vtkMultiProcessController* GetController();
+  virtual void SetController(vtkMultiProcessController*);
 
-  // bound values between different classes
-  vtkIntArray* bounds;
+protected:
+  vtkPCosmoReader();
+  ~vtkPCosmoReader();
+ 
+  virtual int RequestInformation
+    (vtkInformation *, vtkInformationVector **, vtkInformationVector *);
+  virtual int RequestData
+    (vtkInformation *, vtkInformationVector **, vtkInformationVector *);
+
+  vtkMPIController* Controller; // Interprocess communication
+
+  char* FileName; // Name of binary particle file
+  float RL; // The physical box dimensions (rL)
+  float Overlap; // The ghost cell boundary space
+  int ReadMode; // The reading mode
+  int CosmoFormat;
+
+private:
+  vtkPCosmoReader(const vtkPCosmoReader&);  // Not implemented.
+  void operator=(const vtkPCosmoReader&);  // Not implemented.
 };
 
-
 #endif
+

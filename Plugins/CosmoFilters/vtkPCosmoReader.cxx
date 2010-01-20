@@ -60,35 +60,41 @@ ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 =========================================================================*/
 
 #include "vtkPCosmoReader.h"
-#include "vtkDataArraySelection.h"
-#include "vtkErrorCode.h"
 #include "vtkUnstructuredGrid.h"
 #include "vtkInformation.h"
 #include "vtkInformationVector.h"
 #include "vtkObjectFactory.h"
-#include "vtkFieldData.h"
-#include "vtkPointData.h"
-#include "vtkByteSwap.h"
-#include "vtkFloatArray.h"
-#include "vtkIntArray.h"
-#include "vtkLongArray.h"
-#include "vtkDataArray.h"
-#include "vtkConfigure.h"
-#include "vtkStdString.h"
 #include "vtkMultiProcessController.h"
+#include "vtkMPIController.h"
 #include "vtkSmartPointer.h"
 #include "vtkDummyController.h"
 #include "vtkStreamingDemandDrivenPipeline.h"
-#include "vtkCommunicator.h"
+#include "vtkFloatArray.h"
+#include "vtkPoints.h"
+#include "vtkUnsignedCharArray.h"
+#include "vtkIntArray.h"
+#include "vtkPointData.h"
+#include "vtkDataObject.h"
+#include "vtkStdString.h"
+
+#include "vtkstd/vector"
+
+using namespace vtkstd;
+
+// RRU stuff
+#include "Definition.h"
+#include "Partition.h"
+#include "ParticleExchange.h"
+#include "ParticleDistribute.h"
 
 vtkCxxRevisionMacro(vtkPCosmoReader, "$Revision$");
 vtkStandardNewMacro(vtkPCosmoReader);
 
-using namespace cosmo;
-
 //----------------------------------------------------------------------------
 vtkPCosmoReader::vtkPCosmoReader()
 {
+  this->SetNumberOfInputPorts(0);
+
   this->Controller = 0;
   this->SetController(vtkMultiProcessController::GetGlobalController());
   if(!this->Controller)
@@ -96,12 +102,21 @@ vtkPCosmoReader::vtkPCosmoReader()
       this->SetController(vtkSmartPointer<vtkDummyController>::New());
     }
 
-  this->TakeTurns = 0;
+  this->FileName = 0;
+  this->RL = 91;
+  this->Overlap = .06;
+  this->ReadMode = 1;
+  this->CosmoFormat = 1;
 }
 
 //----------------------------------------------------------------------------
 vtkPCosmoReader::~vtkPCosmoReader()
 {
+  if (this->FileName)
+    {
+    delete [] this->FileName;
+    }
+
   this->SetController(0);
 }
 
@@ -126,8 +141,19 @@ void vtkPCosmoReader::SetController(vtkMultiProcessController *c)
     return;
     }
 
-  this->Controller = c;
+  if(!c->IsA("vtkMPIController"))
+    {
+    vtkErrorMacro(<< "Controller is not a vtkMPIController: " << c->GetClassName());
+    return;
+    }
+
+  this->Controller = (vtkMPIController*)c;
   c->Register(this);
+}
+
+vtkMultiProcessController* vtkPCosmoReader::GetController()
+{
+  return (vtkMultiProcessController*)this->Controller;
 }
 
 //----------------------------------------------------------------------------
@@ -143,8 +169,12 @@ void vtkPCosmoReader::PrintSelf(ostream& os, vtkIndent indent)
     {
     os << indent << "Controller: (null)\n";
     }
-  os << indent << "TakeTurns: " << this->TakeTurns << endl;
-  os << indent << "ReadProcessors: " << this->ReadProcessors << endl;
+
+  os << indent << "FileName: " << this->FileName << endl;
+  os << indent << "rL: " << this->RL << endl;
+  os << indent << "Overlap: " << this->Overlap << endl;
+  os << indent << "ReadMode: " << this->ReadMode << endl;
+  os << indent << "CosmoFormat: " << this->CosmoFormat << endl;
 }
 
 //----------------------------------------------------------------------------
@@ -156,64 +186,18 @@ int vtkPCosmoReader::RequestInformation(
   // check for controller
   if(!this->Controller) 
     {
-    vtkErrorMacro(<< "Unable to work without a Controller.");
+    vtkErrorMacro(<< "Unable to work without a vtkMPIController.");
     return 0;
     }
-
-  // All verify that file exists
-  if ( !this->FileName )
-    {
-    vtkErrorMacro(<< "No filename specified");
-    return 0;
-    }
-
-#if defined(_WIN32) && !defined(__CYGWIN__)
-    this->FileStream = new ifstream(this->FileName, ios::in | ios::binary);
-#else
-    this->FileStream = new ifstream(this->FileName, ios::in);
-#endif
-
-  // All verify can the file be opened
-  if (this->FileStream->fail())
-    {
-    this->SetErrorCode(vtkErrorCode::FileNotFoundError);
-    delete this->FileStream;
-    this->FileStream = NULL;
-    vtkErrorMacro(<< "Specified filename not found");
-    return 0;
-    }
-                                                   
-  // Calculates the number of particles based on record size
-  this->ComputeDefaultRange();
-
-  // Fields associated with each particle point: velocity, mass, tag
-  this->NumberOfVariables = NUMBER_OF_VAR;
-
-  this->VariableName[0] = "velocity";
-  this->ComponentNumber[0] = DIMENSION; // x, y, z velocities
-
-  this->VariableName[1] = "mass";
-  this->ComponentNumber[1] = 1;         // mass of particle
-
-  this->VariableName[2] = "tag";
-  this->ComponentNumber[2] = 1;         // tag id of particle
-                                                                                
-  // Add scalar arrays for each field to both points and cells
-  for (int i = 0; i < this->NumberOfVariables; i++)
-    this->PointDataArraySelection->AddArray(this->VariableName[i].c_str());
 
   // set the pieces as the number of processes
   outputVector->GetInformationObject(0)->Set
     (vtkStreamingDemandDrivenPipeline::MAXIMUM_NUMBER_OF_PIECES(),
      this->Controller->GetNumberOfProcesses());
 
-  // debug information
-  vtkDebugMacro( << "RequestInformation: NumberOfNodes = "
-                 << this->NumberOfNodes  << endl);
-  vtkDebugMacro( << "end of RequestInformation\n");
-
-  delete this->FileStream;
-  this->FileStream = 0;
+  // set the ghost levels
+  outputVector->GetInformationObject(0)->Set
+    (vtkDataObject::DATA_NUMBER_OF_GHOST_LEVELS(), 1);
 
   return 1;
 }
@@ -224,9 +208,6 @@ int vtkPCosmoReader::RequestData(
   vtkInformationVector **vtkNotUsed(inputVector),
   vtkInformationVector *outputVector)
 {
-  int rank = this->Controller->GetLocalProcessId();
-  int size = this->Controller->GetNumberOfProcesses();
-
   // get the info object
   vtkInformation *outInfo = outputVector->GetInformationObject(0);
                                                                                 
@@ -234,8 +215,6 @@ int vtkPCosmoReader::RequestData(
   vtkUnstructuredGrid *output = vtkUnstructuredGrid::SafeDownCast(
     outInfo->Get(vtkDataObject::DATA_OBJECT()));
                                                                                 
-  vtkDebugMacro( << "Reading Cosmo file");
-                              
   // check that the piece number is correct
   int updatePiece = 0;
   int updateTotal = 1;
@@ -257,75 +236,144 @@ int vtkPCosmoReader::RequestData(
       return 0;
     }
 
-  // Read the file into the output unstructured grid
-  if(this->TakeTurns)
-    {
-    for(int i = 0; i < size; i = i + 1) 
-      {
-      if(i == rank) 
-        {
-        this->ReadFile(output);
-        }
+  // RRU code
+  // Initialize the partitioner which uses MPI Cartesian Topology
+  float deadSize = this->RL * this->Overlap;
+  Partition::initialize();
 
-      // wait for everyone to sync
-      this->Controller->Barrier();
-      }
-    }
-  else 
+  // Construct the particle distributor, exchanger and halo finder
+  ParticleDistribute distribute;
+  ParticleExchange exchange;
+
+  // Initialize classes for reading, exchanging and calculating
+  if(this->CosmoFormat)
     {
-    this->ReadFile(output);
+    distribute.setParameters(this->FileName, this->RL, "RECORD");
+    }
+  else
+    {
+    distribute.setParameters(this->FileName, this->RL, "BLOCK");
+    }
+  exchange.setParameters(this->RL, deadSize);
+
+  distribute.initialize();
+  exchange.initialize();
+
+  // Read alive particles only from files
+  // In ROUND_ROBIN all files are read and particles are passed round robin
+  // to every other processor so that every processor chooses its own
+  // In ONE_TO_ONE every processor reads its own processor in the topology
+  // which has already been populated with the correct alive particles
+  vector<POSVEL_T>* xx = new vector<POSVEL_T>;
+  vector<POSVEL_T>* yy = new vector<POSVEL_T>;
+  vector<POSVEL_T>* zz = new vector<POSVEL_T>;
+  vector<POSVEL_T>* vx = new vector<POSVEL_T>;
+  vector<POSVEL_T>* vy = new vector<POSVEL_T>;
+  vector<POSVEL_T>* vz = new vector<POSVEL_T>;
+  vector<ID_T>* tag = new vector<ID_T>;
+  vector<STATUS_T>* status = new vector<STATUS_T>;
+
+  distribute.setParticles(xx,yy,zz,vx,vy,vz,tag);
+  if(this->ReadMode)
+    {
+    distribute.readParticlesRoundRobin();
+    }
+  else
+    {
+    distribute.readParticlesOneToOne();  
     }
 
+  // Create the mask and potential vectors which will be filled in elsewhere
+  int numberOfParticles = xx->size();
+  vector<POTENTIAL_T>* potential = new vector<POTENTIAL_T>(numberOfParticles);
+  vector<MASK_T>* mask = new vector<MASK_T>(numberOfParticles);
+
+  // Exchange particles adds dead particles to all the vectors
+  exchange.setParticles(xx, yy, zz, vx, vy, vz, potential, tag, mask, status);
+  exchange.exchangeParticles();
+
+  // create VTK structures
+  numberOfParticles = xx->size();
+  potential->clear();
+  mask->clear();
+
+  vtkPoints* points = vtkPoints::New();
+  points->SetDataTypeToFloat();
+  vtkFloatArray* vel = vtkFloatArray::New();
+  vel->SetName("velocity");
+  vel->SetNumberOfComponents(DIMENSION);
+  vtkIntArray* uid = vtkIntArray::New();
+  uid->SetName("tag");
+  vtkIntArray* owner = vtkIntArray::New();
+  owner->SetName("ghost");
+  vtkUnsignedCharArray* ghost = vtkUnsignedCharArray::New();
+  ghost->SetName("vtkGhostLevels");
+
+  output->Allocate(numberOfParticles);
+  output->SetPoints(points);
+  output->GetPointData()->AddArray(vel);
+  output->GetPointData()->AddArray(uid);
+  output->GetPointData()->AddArray(owner);
+  output->GetPointData()->AddArray(ghost);
+
+  // put it into the correct VTK structure
+  for(vtkIdType i = 0; i < numberOfParticles; i = i + 1) 
+    {
+    float pt[DIMENSION];
+    
+    // insert point and cell
+    pt[0] = xx->back();
+    xx->pop_back();
+    pt[1] = yy->back();
+    yy->pop_back();
+    pt[2] = zz->back();
+    zz->pop_back();
+
+    vtkIdType pid = points->InsertNextPoint(pt);
+    output->InsertNextCell(1, 1, &pid);
+
+    // insert velocity
+    pt[0] = vx->back();
+    vx->pop_back();
+    pt[1] = vy->back();
+    vy->pop_back();
+    pt[2] = vz->back();
+    vz->pop_back();
+
+    vel->InsertNextTuple(pt);
+
+    // insert tag
+    int particle = tag->back();
+    tag->pop_back();
+
+    uid->InsertNextValue(particle);
+
+    // insert ghost status
+    int neighbor = status->back();
+    unsigned char level = neighbor < 0 ? 0 : 1;
+    status->pop_back();
+
+    owner->InsertNextValue(neighbor);
+    ghost->InsertNextValue(level);
+    }  
+
+  // cleanup
+  points->Delete();
+  vel->Delete();
+  uid->Delete();
+  owner->Delete();
+  ghost->Delete();
+
+  delete xx;
+  delete yy;
+  delete zz;
+  delete vx;
+  delete vy;
+  delete vz;
+  delete tag;
+  delete status;
+  delete potential;
+  delete mask;
+  
   return 1;
 }
-
-//----------------------------------------------------------------------------
-// Sets the range of particle indices based on length of file
-void vtkPCosmoReader::ComputeDefaultRange()
-{
-  // figure out how to partition it
-  int rank = this->Controller->GetLocalProcessId();
-  int size = this->Controller->GetNumberOfProcesses();
-
-  int readproc = this->ReadProcessors;
-  readproc = readproc < 1 ? size : (readproc > size ? size : readproc);
-
-  // just have rank 0 read the length
-  size_t fileLength;
-  if(rank == 0) 
-    {
-      this->FileStream->seekg(0L, ios::end);
-      fileLength = this->FileStream->tellg();
-    }
-
-  // communicate the length to everyone
-  Controller->Broadcast((char*)&fileLength, sizeof(size_t), 0);
-  
-  size_t tagBytes;
-  if(this->TagSize)
-    {
-    tagBytes = sizeof(vtkTypeInt64);
-    }
-  else 
-    {
-    tagBytes = sizeof(vtkTypeInt32);
-    }
-
-  // Divide by number of components per record (x,xv,y,yv,z,zv,mass,tag)
-  // Divide by 4 for single precision float
-  this->NumberOfNodes = fileLength / (BYTES_PER_DATA_MINUS_TAG + tagBytes);
-
-  // figure out the range on this processor
-  if(rank < readproc) 
-    {
-    this->PositionRange[0] = rank * this->NumberOfNodes / readproc;
-    this->PositionRange[1] = (rank + 1) * this->NumberOfNodes / readproc - 1;
-    }
-  else 
-    {
-    // read nothing
-    this->PositionRange[0] = 1;
-    this->PositionRange[1] = 0;
-    }
-}
-

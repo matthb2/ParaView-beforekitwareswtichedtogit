@@ -1,22 +1,5 @@
 /*=========================================================================
-
-  Program:   Visualization Toolkit
-  Module:    $RCSfile$
-
-  Copyright (c) Ken Martin, Will Schroeder, Bill Lorensen
-  All rights reserved.
-  See Copyright.txt or http://www.kitware.com/Copyright.htm for details.
-
-     This software is distributed WITHOUT ANY WARRANTY; without even
-     the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR
-     PURPOSE.  See the above copyright notice for more information.
-
-=========================================================================*/
-/*=========================================================================
-
-  Program:   VTK/ParaView Los Alamos National Laboratory Modules (PVLANL)
-  Module:    $RCSfile$
-
+                                                                                
 Copyright (c) 2007, Los Alamos National Security, LLC
 
 All rights reserved.
@@ -56,56 +39,73 @@ OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
 WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR 
 OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF 
 ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-
+                                                                                
 =========================================================================*/
-#ifndef _vtkCosmoHaloCountFilter_h
-#define _vtkCosmoHaloCountFilter_h
 
-#include "vtkRectilinearGridAlgorithm.h"
-class vtkStringArray;
+// .NAME Message - create, send and receive MPI messages
+//
+// .SECTION Description
+// Message class packs and unpacks data into an MPI buffer
 
-class VTK_EXPORT vtkCosmoHaloCountFilter : public vtkRectilinearGridAlgorithm
-{
- public:
-  static vtkCosmoHaloCountFilter *New();
-  vtkTypeRevisionMacro(vtkCosmoHaloCountFilter, vtkRectilinearGridAlgorithm);
-  void PrintSelf(ostream& os, vtkIndent indent);
+#ifndef MESSAGE_H
+#define MESSAGE_H
 
- protected:
-  vtkCosmoHaloCountFilter();
-  ~vtkCosmoHaloCountFilter();
+#ifdef USE_VTK_COSMO
+#include "vtkMPI.h"
+#else
+#include <mpi.h>
+#endif
 
-  virtual int ProcessRequest(vtkInformation* request,
-                             vtkInformationVector** inputVector,
-                             vtkInformationVector* outputVector);
+#include "Definition.h"
 
-  virtual int RequestInformation(vtkInformation* request,
-                                 vtkInformationVector** inputVector,
-                                 vtkInformationVector* outputVector);
+class Message {
+public:
+  Message(int size = BUF_SZ);
 
-  virtual int RequestData(vtkInformation* request,
-                          vtkInformationVector** inputVector,
-                          vtkInformationVector* outputVector);
+   ~Message();
 
-  virtual int RequestUpdateExtent(vtkInformation*,
-                                  vtkInformationVector**,
-                                  vtkInformationVector*);
+  // Put values into the MPI buffer
+  void putValue(int* data, int count = 1);
+  void putValue(unsigned short* data, int count = 1);
+  void putValue(long int* data, int count = 1);
+  void putValue(long long* data, int count = 1);
+  void putValue(float* data, int count = 1);
+  void putValue(double* data, int count = 1);
+  void putValue(char* data, int count = 1);
 
-  virtual int FillInputPortInformation(int port, vtkInformation* info);
-  virtual int FillOutputPortInformation(int port, vtkInformation* info);
+  // Get values from the MPI buffer
+  void getValue(int* data, int count = 1);
+  void getValue(unsigned short* data, int count = 1);
+  void getValue(long int* data, int count = 1);
+  void getValue(long long* data, int count = 1);
+  void getValue(float* data, int count = 1);
+  void getValue(double* data, int count = 1);
+  void getValue(char* data, int count = 1);
 
-  int AllocateOutputData(vtkInformation* inInfo, vtkInformation* outInfo);
+#ifdef USE_VTK_COSMO // MPI_Pack seems to be broken on Snow Leopard
+  void manualPack(char* data, int count, size_t size);
+  void manualUnpack(char* data, int count, size_t size);
+#endif
 
-  int CurrentTimeIndex;
-  int NumberOfTimeSteps;
-  int NumberOfClasses;
+  // Send nonblocking
+  void send(
+        int mach,                       // Where to send message
+        int tag = 0                     // Identifying tag
+  );
 
-  // names of arrays that store halo counts of different classes
-  vtkStringArray* nameArray;
+  // Receive blocking
+  void receive(
+        int mach = MPI_ANY_SOURCE,      // From where to receive
+        int tag = 0                     // Identifying tag
+  );
 
- private:
-  vtkCosmoHaloCountFilter(const vtkCosmoHaloCountFilter&);//Not implemented
-  void operator=(const vtkCosmoHaloCountFilter&);//Not implemented
+  // Reset the buffer for another set of data
+  void reset();
+
+private:
+  char* buffer;         // Buffer to pack
+  int   bufSize;        // Size of buffer
+  int   bufPos;         // Position in buffer
 };
 
 #endif
