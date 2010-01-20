@@ -676,6 +676,8 @@ int vtkRCalculatorFilter::RequestData(vtkInformation *vtkNotUsed(request),
         return(1);
         }
 
+      cArray->SetName(VectorIterator->VTKArrName.c_str());
+
       adout->AddArray(cArray);
       }
     }
