@@ -23,6 +23,9 @@
 
 #include "vtkQtInitialization.h"
 #include <QWidget>
+#include <QApplication>
+
+static vtkQtInitialization* Initializer = NULL;
 
 vtkCxxRevisionMacro(vtkSMChartViewProxy, "$Revision$");
 //----------------------------------------------------------------------------
@@ -30,7 +33,13 @@ vtkSMChartViewProxy::vtkSMChartViewProxy()
 {
   this->ChartView = 0;
 
-  vtkQtInitialization::New()->Delete();
+  if (!QApplication::instance())
+    {
+    // We're letting this leak since we don't know when is a good time to clean
+    // this application up since there could be qt components in use after the
+    // view has been destroyed.
+    Initializer = vtkQtInitialization::New();
+    }
 }
 
 //----------------------------------------------------------------------------
