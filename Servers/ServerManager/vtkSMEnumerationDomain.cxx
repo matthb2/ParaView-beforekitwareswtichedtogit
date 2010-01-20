@@ -70,6 +70,17 @@ const char* vtkSMEnumerationDomain::GetEntryText(unsigned int idx)
 }
 
 //---------------------------------------------------------------------------
+const char* vtkSMEnumerationDomain::GetEntryTextForValue(int value)
+{
+  unsigned int idx;
+  if (!this->IsInDomain(value, idx))
+    {
+    return NULL;
+    }
+  return this->GetEntryText(idx);
+}
+
+//---------------------------------------------------------------------------
 int vtkSMEnumerationDomain::HasEntryText(const char* text)
 {
   int valid;
