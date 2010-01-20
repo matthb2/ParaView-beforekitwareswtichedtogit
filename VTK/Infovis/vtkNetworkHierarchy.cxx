@@ -196,8 +196,9 @@ int vtkNetworkHierarchy::RequestData(
   // Add root
   vtkIdType rootID = builder->AddVertex();
   treeTable->InsertNextBlankRow();
-    //Don't label the root node...
-//  treeTable->SetValueByName(rootID, this->IPArrayName, vtkVariant("Internet"));
+
+  // Don't label the root node...
+  // treeTable->SetValueByName(rootID, this->IPArrayName, vtkVariant("Internet"));
   treeTable->SetValueByName(rootID, this->IPArrayName, vtkVariant(""));
   if (pedIDArr)
     {

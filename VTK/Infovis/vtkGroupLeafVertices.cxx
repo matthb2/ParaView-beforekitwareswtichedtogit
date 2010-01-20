@@ -211,7 +211,7 @@ int vtkGroupLeafVertices::RequestData(
           }
         }
       }
-    else if(vtkStringArray::SafeDownCast(pedigreeIdArr))
+    else if(vtkStringArray::SafeDownCast(pedigreeIdArr)||vtkVariantArray::SafeDownCast(pedigreeIdArr))
       {
       for(vtkIdType i=0; i<groupIds->GetNumberOfIds(); ++i)
         {
