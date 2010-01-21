@@ -90,6 +90,9 @@ void vtkOpenGLVolumeTextureMapper2D::Render(vtkRenderer *ren, vtkVolume *vol)
   glPushMatrix();
   glMultMatrixd(matrix->Element[0]);
 
+  // Make sure that culling is turned off
+  glDisable( GL_CULL_FACE );
+
   // Turn lighting off - the polygon textures already have illumination
   glDisable( GL_LIGHTING );
 
