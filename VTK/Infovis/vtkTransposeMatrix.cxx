@@ -59,7 +59,8 @@ int vtkTransposeMatrix::RequestData(
     return 0;
     }
 
-  if(vtkSparseArray<double>* const input_array = vtkSparseArray<double>::SafeDownCast(input->GetArray(0)))
+  if(vtkSparseArray<double>* const input_array = vtkSparseArray<double>::SafeDownCast(
+      input->GetArray(static_cast<vtkIdType>(0))))
     {
     if(input_array->GetDimensions() != 2)
       {
@@ -89,7 +90,8 @@ int vtkTransposeMatrix::RequestData(
     }
   else
     {
-    vtkDenseArray<double>* const input_array2=vtkDenseArray<double>::SafeDownCast(input->GetArray(0));
+    vtkDenseArray<double>* const input_array2=vtkDenseArray<double>::SafeDownCast(
+      input->GetArray(static_cast<vtkIdType>(0)));
     if(input_array2!=0)
       {
       if(input_array2->GetDimensions() != 2)

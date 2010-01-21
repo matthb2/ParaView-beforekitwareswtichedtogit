@@ -96,7 +96,8 @@ int vtkAdjacencyMatrixToEdgeTable::RequestData(
     return 0;
     }
   
-  vtkDenseArray<double>* const input_array = vtkDenseArray<double>::SafeDownCast(input->GetArray(0));
+  vtkDenseArray<double>* const input_array = vtkDenseArray<double>::SafeDownCast(
+    input->GetArray(static_cast<vtkIdType>(0)));
   if(!input_array)
     {
     vtkErrorMacro(<< this->GetClassName() << " requires an input vtkDenseArray<double>.");
