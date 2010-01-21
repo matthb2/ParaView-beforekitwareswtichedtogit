@@ -549,6 +549,8 @@ void vtkNetCDFCFReader::PrintSelf(ostream &os, vtkIndent indent)
   this->Superclass::PrintSelf(os, indent);
 
   os << indent << "SphericalCoordinates: " << this->SphericalCoordinates <<endl;
+  os << indent << "VerticalScale: " << this->VerticalScale <<endl;
+  os << indent << "VerticalBias: " << this->VerticalBias <<endl;
 }
 
 //-----------------------------------------------------------------------------
