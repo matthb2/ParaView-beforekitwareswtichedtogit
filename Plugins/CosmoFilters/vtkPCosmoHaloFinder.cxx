@@ -269,11 +269,12 @@ int vtkPCosmoHaloFinder::RequestData(
   // shallow total point input to output
   output->ShallowCopy(input);
 
-  // initialize the communicator
+  // RRU code
+  // Initialize the partitioner which uses MPI Cartesian Topology
+  float deadSize = this->RL * this->Overlap;
   Partition::initialize();
 
   // create the halo finder
-  float deadSize = this->RL * this->Overlap;
   CosmoHaloFinderP haloFinder;
 
   haloFinder.setParameters
