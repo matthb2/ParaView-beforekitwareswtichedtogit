@@ -141,7 +141,7 @@ vtkArray* vtkArrayData::GetArray(vtkIdType index)
   return this->Implementation->Arrays[static_cast<size_t>(index)];
 }
 
-vtkArray* vtkArrayData::GetArray(const char *name)
+vtkArray* vtkArrayData::GetArrayByName(const char *name)
 {
   if(!name || name[0]=='\0')
     {
