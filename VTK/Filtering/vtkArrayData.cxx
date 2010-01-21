@@ -143,7 +143,7 @@ vtkArray* vtkArrayData::GetArray(vtkIdType index)
 
 vtkArray* vtkArrayData::GetArray(const char *name)
 {
-  if(!name || name=="")
+  if(!name || name[0]=='\0')
     {
     vtkErrorMacro(<< "No name passed into routine.");
     return 0;
