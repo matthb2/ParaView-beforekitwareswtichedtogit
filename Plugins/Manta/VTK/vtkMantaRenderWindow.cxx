@@ -277,10 +277,10 @@ void vtkMantaRenderWindow::CopyResultFrame(void)
       mantaRenderer->GetMantaEngine()->getResolution(0, mStereo, mXres, mYres);
 
       //cerr << "Manta layer: " << ren->GetLayer() << endl;
-      const uint32 *srcRGB  = reinterpret_cast<uint32 *>(mantaRenderer->GetColorBuffer());
-      const float  *srcZ    = mantaRenderer->GetDepthBuffer();
-      uint32 *dstRGB        = this->ColorBuffer + renWinSize[0] * renderPos[1] + renderPos[0];
-      float  *dstZ          = this->DepthBuffer + renWinSize[0] * renderPos[1] + renderPos[0];
+      const uint32 *srcRGB = reinterpret_cast<uint32 *>(mantaRenderer->GetColorBuffer());
+      const float *srcZ = mantaRenderer->GetDepthBuffer();
+      uint32 *dstRGB = this->ColorBuffer + renWinSize[0] * renderPos[1] + renderPos[0];
+      float *dstZ = this->DepthBuffer + renWinSize[0] * renderPos[1] + renderPos[0];
 
       //cout << "diff: " << (renWinSize[0] - renderSize[0]) << endl;
 
