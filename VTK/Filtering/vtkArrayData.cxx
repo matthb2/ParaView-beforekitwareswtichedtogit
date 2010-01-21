@@ -141,6 +141,27 @@ vtkArray* vtkArrayData::GetArray(vtkIdType index)
   return this->Implementation->Arrays[static_cast<size_t>(index)];
 }
 
+vtkArray* vtkArrayData::GetArray(const char *name)
+{
+  if(!name || name=="")
+    {
+    vtkErrorMacro(<< "No name passed into routine.");
+    return 0;
+    }
+    
+  vtkArray *temp = 0;
+  for (vtkIdType ctr=0; ctr<this->GetNumberOfArrays(); ctr++)
+    {
+    temp = this->GetArray(ctr);
+    if (temp && !strcmp(name, temp->GetName()))
+      {
+      break;
+      }
+    temp = 0;
+    }
+  return temp;
+}
+
 void vtkArrayData::ShallowCopy(vtkDataObject* other)
 {
   if(vtkArrayData* const array_data = vtkArrayData::SafeDownCast(other))
