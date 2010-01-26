@@ -510,8 +510,8 @@ int vtkDistributedDataFilter::RequestData(
         continue;
         }
 
-      ds = vtkDataSet::SafeDownCast(
-        vtkDataObjectTypes::NewDataObject(leafTypes[cc]));
+      ds.TakeReference(vtkDataSet::SafeDownCast(
+        vtkDataObjectTypes::NewDataObject(leafTypes[cc])));
       }
     vtkSmartPointer<vtkUnstructuredGrid> ug =
       vtkSmartPointer<vtkUnstructuredGrid>::New();
