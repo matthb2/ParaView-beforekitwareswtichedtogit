@@ -63,7 +63,7 @@ int vtkCPTestDriver::Run()
     if(processor->RequestDataDescription(dataDescription))
       {
       int builtNewGrid = 0;
-      dataDescription->GetInputDescription("input")->SetGrid(
+      dataDescription->GetInputDescriptionByName("input")->SetGrid(
         this->GridBuilder->GetGrid(i, this->GetTime(i), builtNewGrid));
       // now call the coprocessing library
       processor->CoProcess(dataDescription);

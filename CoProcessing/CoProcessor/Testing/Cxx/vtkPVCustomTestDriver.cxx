@@ -103,14 +103,14 @@ int vtkPVCustomTestDriver::Run()
     if(this->Processor->RequestDataDescription(dataDescription))
       {
       unsigned int numberOfFields =
-        dataDescription->GetInputDescription("input")->GetNumberOfFields();
+        dataDescription->GetInputDescriptionByName("input")->GetNumberOfFields();
       if(!numberOfFields)
         {
         cout << "No fields for coprocessing.\n";
         }      
       int builtNewGrid = 0;
       vtkDataObject* grid = gridBuilder->GetGrid(i, this->GetTime(i), builtNewGrid);
-      dataDescription->GetInputDescription("input")->SetGrid(grid);
+      dataDescription->GetInputDescriptionByName("input")->SetGrid(grid);
       this->Processor->CoProcess(dataDescription);
       }
     dataDescription->Delete();
