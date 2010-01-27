@@ -57,6 +57,8 @@ void vtkBoostLogWeighting::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os, indent);
   os << indent << "Base: " << this->Base << endl;
+  os << indent << "EmitProgress: " 
+     << (this->EmitProgress ? "on" : "off") << endl;
 }
 
 int vtkBoostLogWeighting::RequestData(
