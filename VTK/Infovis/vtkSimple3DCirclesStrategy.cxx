@@ -557,8 +557,6 @@ void vtkSimple3DCirclesStrategy::BuildPointOrder( vtkDirectedGraph * input, vtkS
   int layer = 0;
   vtkIdType ID = 0;
 
-  int max_id = order->GetMaxId();
-
   mark->SetNumberOfValues( input->GetNumberOfVertices() );
   for ( vtkIdType i = 0; i <= mark->GetMaxId(); ++i )
     mark->SetValue(i,0);
