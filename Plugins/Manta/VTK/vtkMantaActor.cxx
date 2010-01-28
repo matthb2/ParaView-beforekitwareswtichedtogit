@@ -80,7 +80,7 @@ vtkCxxRevisionMacro(vtkMantaActor, "$Revision$");
 vtkStandardNewMacro(vtkMantaActor);
 
 //----------------------------------------------------------------------------
-vtkMantaActor::vtkMantaActor() : Group(0), MantaAS(0), Renderer(0),
+vtkMantaActor::vtkMantaActor() : Group(0), MantaAS(0), Renderer(0)
 {
   cerr << "CREATE MANTA ACTOR " << this << endl;
 }
