@@ -60,6 +60,7 @@ vtkInteractorEventRecorder::~vtkInteractorEventRecorder()
 
   if ( this->InputStream )
     {
+    this->InputStream->clear();
     delete this->InputStream;
     this->InputStream = NULL;
     }
