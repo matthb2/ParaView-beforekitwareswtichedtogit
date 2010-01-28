@@ -61,6 +61,7 @@ ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #include "vtkManta.h"
 #include "vtkMantaCamera.h"
+#include "vtkMantaManager.h"
 #include "vtkMantaRenderer.h"
 
 #include "vtkObjectFactory.h"
@@ -77,12 +78,17 @@ vtkMantaCamera::vtkMantaCamera() : MantaCamera (0)
 {
   //TODO: Observe my own modified event, and call OrientCamera then
   cerr << "CREATE MANTA CAMERA " << this << endl;
+  this->MantaManager = NULL;
 }
 
 //----------------------------------------------------------------------------
 vtkMantaCamera::~vtkMantaCamera()
 {
   cerr << "DESTROY MANTA CAMERA " << this << endl;
+  if (this->MantaManager)
+    {
+    this->MantaManager->Delete();
+    }
 }
 
 //----------------------------------------------------------------------------
