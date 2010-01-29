@@ -28,7 +28,7 @@ public:
     this->UseViewOrdering = true;
     this->PieceCacheLimit = 16;
     this->Height = 4;
-    this->Degree = 2;
+    this->Degree = 8;
     this->Rate = 2;
     this->MaxSplits = -1;
     this->ShowOn = vtkAdaptiveOptions::REFINE;
