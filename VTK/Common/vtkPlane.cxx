@@ -91,7 +91,6 @@ void vtkPlane::GeneralizedProjectPoint(double x[3], double origin[3],
     }
 }
 
-
 // Evaluate plane equation for point x[3].
 double vtkPlane::EvaluateFunction(double x[3])
 {
