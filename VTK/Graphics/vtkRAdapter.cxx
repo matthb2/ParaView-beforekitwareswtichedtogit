@@ -156,14 +156,14 @@ vtkArray* vtkRAdapter::RToVTKArray(SEXP variable)
   dims = getAttrib(variable, R_DimSymbol); 
   ndim = length(dims);
 
-  if (!isMatrix(variable)&&isVector(variable))
+  if (!isMatrix(variable)&&!isArray(variable)&&isVector(variable))
     {
     ndim = 1;
     }
 
   extents.SetDimensions(ndim);
 
-  if (isMatrix(variable))
+  if (isMatrix(variable)||isArray(variable))
     {
     for(i=0;i< ndim;i++)
       {
