@@ -12,6 +12,7 @@
      PURPOSE.  See the above copyright notice for more information.
 
 =========================================================================*/
+#include "vtkPolyDataReader.h"
 #include "vtkLegacyPolyDataReader.h"
 
 #include "vtkObjectFactory.h"
