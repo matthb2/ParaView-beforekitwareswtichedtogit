@@ -77,14 +77,14 @@ vtkStandardNewMacro(vtkMantaCamera);
 vtkMantaCamera::vtkMantaCamera() : MantaCamera (0) 
 {
   //TODO: Observe my own modified event, and call OrientCamera then
-  cerr << "CREATE MANTA CAMERA " << this << endl;
+  cerr << "MC(" << this << ") CREATE" << endl;
   this->MantaManager = NULL;
 }
 
 //----------------------------------------------------------------------------
 vtkMantaCamera::~vtkMantaCamera()
 {
-  cerr << "DESTROY MANTA CAMERA " << this << endl;
+  cerr << "MC(" << this << ") DESTROY" << endl;
   if (this->MantaManager)
     {
     this->MantaManager->Delete();
@@ -94,6 +94,7 @@ vtkMantaCamera::~vtkMantaCamera()
 //----------------------------------------------------------------------------
 void vtkMantaCamera::OrientMantaCamera(vtkRenderer *ren)
 {
+//  cerr << "MC(" << this << ") ORIENT" << endl;
   vtkMantaRenderer * mantaRenderer = vtkMantaRenderer::SafeDownCast(ren);
   if (!mantaRenderer)
     {
