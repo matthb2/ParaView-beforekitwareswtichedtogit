@@ -96,6 +96,11 @@ void vtkSimple3DCirclesStrategy::PrintSelf( ostream &os, vtkIndent indent )
     os << indent << "Auto height : ON" << endl;
   else
     os << indent << "Auto height : OFF" << endl;
+  if ( this->ForceToUseUniversalStartPointsFinder )
+    os << indent << "Force To Use Universal Start Points Finder : ON" << endl;
+  else
+    os << indent << "Force To Use Universal Start Points Finder : OFF" << endl;
+
   os << indent << "Minimum degree for autoheight : " << this->MinimumRadian << " rad [" << vtkMath::DegreesFromRadians( this->MinimumRadian ) << " deg]" << endl;
   if ( this->MarkedStartVertices == 0 )
     os << indent << "Registered MarkedStartPoints : (none)" << endl;
