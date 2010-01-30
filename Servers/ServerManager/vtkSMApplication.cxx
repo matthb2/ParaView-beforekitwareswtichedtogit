@@ -119,11 +119,19 @@ void vtkSMApplication::ParseConfigurationFiles()
 }
 
 //---------------------------------------------------------------------------
-void vtkSMApplication::Initialize()
+void vtkSMApplication::EnsureQApplicationIsInitialized()
 {
 #ifdef VTK_USE_QVTK
-  this->QtInitializer  = vtkQtInitialization::New();
+  if (!this->QtInitializer)
+    {
+    this->QtInitializer  = vtkQtInitialization::New();
+    }
 #endif
+}
+
+//---------------------------------------------------------------------------
+void vtkSMApplication::Initialize()
+{
 
   vtkPVServerManager_Initialize(
     vtkProcessModule::GetProcessModule()->GetInterpreter());
