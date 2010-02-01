@@ -615,7 +615,8 @@ void vtkDescriptiveStatistics::Test( vtkTable* inData,
     testCol->Delete();
     }
 
-    testCol->SetName( "P" );
+  // The test column name can only be set after the column has been obtained from R
+  testCol->SetName( "P" );
 
   // Clean up
   nameCol->Delete();
