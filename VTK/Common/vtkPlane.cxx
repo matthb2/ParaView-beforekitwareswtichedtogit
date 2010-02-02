@@ -31,6 +31,11 @@ vtkPlane::vtkPlane()
   this->Origin[2] = 0.0;
 }
 
+double vtkPlane::DistanceToPlane(double x[3])
+{
+  return this->DistanceToPlane(x, this->GetNormal(), this->GetOrigin());
+}
+
 void vtkPlane::ProjectPoint(double x[3], double origin[3], 
                             double normal[3], double xproj[3])
 {
@@ -45,6 +50,11 @@ void vtkPlane::ProjectPoint(double x[3], double origin[3],
   xproj[0] = x[0] - t * normal[0];
   xproj[1] = x[1] - t * normal[1];
   xproj[2] = x[2] - t * normal[2];
+}
+
+void vtkPlane::ProjectPoint(double x[3], double xproj[3])
+{
+  this->ProjectPoint(x, this->GetOrigin(), this->GetNormal(), xproj);
 }
 
 void vtkPlane::Push(double distance)
@@ -89,6 +99,11 @@ void vtkPlane::GeneralizedProjectPoint(double x[3], double origin[3],
     xproj[1] = x[1];
     xproj[2] = x[2];
     }
+}
+
+void vtkPlane::GeneralizedProjectPoint(double x[3], double xproj[3])
+{
+  this->GeneralizedProjectPoint(x, this->GetOrigin(), this->GetNormal(), xproj);
 }
 
 // Evaluate plane equation for point x[3].
@@ -175,6 +190,11 @@ int vtkPlane::IntersectWithLine(double p1[3], double p2[3], double n[3],
     {
     return 0;
     }
+}
+
+int vtkPlane::IntersectWithLine(double p1[3], double p2[3], double& t, double x[3])
+{
+  return this->IntersectWithLine(p1, p2, this->GetNormal(), this->GetOrigin(), t, x);
 }
 
 void vtkPlane::PrintSelf(ostream& os, vtkIndent indent)
