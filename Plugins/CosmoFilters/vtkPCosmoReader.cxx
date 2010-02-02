@@ -275,7 +275,7 @@ int vtkPCosmoReader::RequestData(
     }
 
   // Create the mask and potential vectors which will be filled in elsewhere
-  int numberOfParticles = xx->size();
+  int numberOfParticles = (int)xx->size();
   vector<POTENTIAL_T>* potential = new vector<POTENTIAL_T>(numberOfParticles);
   vector<MASK_T>* mask = new vector<MASK_T>(numberOfParticles);
 
@@ -284,7 +284,7 @@ int vtkPCosmoReader::RequestData(
   exchange.exchangeParticles();
 
   // create VTK structures
-  numberOfParticles = xx->size();
+  numberOfParticles = (int)xx->size();
   potential->clear();
   mask->clear();
 
