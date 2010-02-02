@@ -453,7 +453,7 @@ int vtkPCosmoHaloFinder::RequestData(
     partTag->FillComponent(0, -1);
     
     partPotential = vtkFloatArray::New();
-    partPotential->SetName("potential");
+    partPotential->SetName("halo_mass");
     partPotential->SetNumberOfValues(numberOfLocalPoints);
     partPotential->FillComponent(0, 0);
     
@@ -481,7 +481,7 @@ int vtkPCosmoHaloFinder::RequestData(
   haloTag->SetNumberOfValues(pminHalos);
 
   vtkFloatArray* haloPotential = vtkFloatArray::New();
-  haloPotential->SetName("potential");
+  haloPotential->SetName("halo_mass");
   haloPotential->SetNumberOfValues(pminHalos);
 
   vtkFloatArray* haloVelocity = vtkFloatArray::New();
