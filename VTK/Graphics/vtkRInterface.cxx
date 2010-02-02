@@ -20,6 +20,11 @@
 
 #include "vtkRInterface.h"
 
+#undef HAVE_UINTPTR_T
+#ifdef HAVE_VTK_UINTPTR_T
+#define HAVE_UINTPTR_T HAVE_VTK_UINTPTR_T
+#endif
+
 #include "vtkInformation.h"
 #include "vtkInformationVector.h"
 #include "vtkObjectFactory.h"
