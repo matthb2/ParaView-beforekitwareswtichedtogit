@@ -183,6 +183,10 @@ int vtkPCosmoReader::RequestInformation(
     (vtkStreamingDemandDrivenPipeline::MAXIMUM_NUMBER_OF_PIECES(),
      this->Controller->GetNumberOfProcesses());
 
+  outputVector->GetInformationObject(0)->Set
+    (vtkDataObject::DATA_NUMBER_OF_PIECES(),
+     this->Controller->GetNumberOfProcesses());
+
   // set the ghost levels
   outputVector->GetInformationObject(0)->Set
     (vtkDataObject::DATA_NUMBER_OF_GHOST_LEVELS(), 1);
