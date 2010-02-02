@@ -678,14 +678,8 @@ void vtkMapperCreateColorTextureCoordinates(T* input, float* output,
           magnitude, table_range, range);
         }
       output[i] = k * (magnitude - range[0]);
-      if (output[i] > 1.0)
-        {
-        output[i] = 1.0;
-        }
-      if (output[i] < 0.0)
-        {
-        output[i] = 0.0;
-        }
+      output[i] = output[i] > 1.0f ? 1.0f : 
+        (output[i] < 0.0f ? 0.0f : output[i]);
       }
     }  
   else
@@ -700,14 +694,8 @@ void vtkMapperCreateColorTextureCoordinates(T* input, float* output,
           input_value, table_range, range);
         }
       output[i] = k * (input_value - range[0]);
-      if (output[i] > 1.0)
-        {
-        output[i] = 1.0;
-        }
-      if (output[i] < 0.0)
-        {
-        output[i] = 0.0;
-        }
+      output[i] = output[i] > 1.0f ? 1.0f : 
+        (output[i] < 0.0f ? 0.0f : output[i]);
       input = input + numComps;
       }      
     }
