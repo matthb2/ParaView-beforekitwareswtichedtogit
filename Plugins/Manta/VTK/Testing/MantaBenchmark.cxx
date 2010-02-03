@@ -199,7 +199,7 @@ void MyProcess::Execute()
       {
       changeCamera = false;
       }
-    if (!strcmp(this->Argv[i], "-noData"))
+    if (!strcmp(this->Argv[i], "-noChanges"))
       {
       changeData = false;
       }
