@@ -28,7 +28,6 @@ vtkCxxRevisionMacro(vtkSMXYChartRepresentationProxy, "$Revision$");
 //----------------------------------------------------------------------------
 vtkSMXYChartRepresentationProxy::vtkSMXYChartRepresentationProxy()
 {
-  //this->VTKRepresentation = vtkQtChartRepresentation::New();
   this->Visibility = 1;
 
   this->UseIndexForXAxis = true;
@@ -39,7 +38,6 @@ vtkSMXYChartRepresentationProxy::vtkSMXYChartRepresentationProxy()
 vtkSMXYChartRepresentationProxy::~vtkSMXYChartRepresentationProxy()
 {
   this->SetXSeriesName(0);
-  //this->VTKRepresentation->Delete();
 }
 
 //----------------------------------------------------------------------------
@@ -159,15 +157,29 @@ void vtkSMXYChartRepresentationProxy::Update(vtkSMViewProxy* view)
 //----------------------------------------------------------------------------
 int vtkSMXYChartRepresentationProxy::GetNumberOfSeries()
 {
-//  return this->VTKRepresentation->GetNumberOfSeries();
-  return 0;
+  vtkTable *table = vtkTable::SafeDownCast(this->GetOutput());
+  if (table)
+    {
+    return table->GetNumberOfColumns();
+    }
+  else
+    {
+    return 0;
+    }
 }
 
 //----------------------------------------------------------------------------
-const char* vtkSMXYChartRepresentationProxy::GetSeriesName(int)
+const char* vtkSMXYChartRepresentationProxy::GetSeriesName(int col)
 {
-//  return this->VTKRepresentation->GetSeriesName(series);
-  return NULL;
+  vtkTable *table = vtkTable::SafeDownCast(this->GetOutput());
+  if (table)
+    {
+    return table->GetColumnName(col);
+    }
+  else
+    {
+    return NULL;
+    }
 }
 
 //----------------------------------------------------------------------------
