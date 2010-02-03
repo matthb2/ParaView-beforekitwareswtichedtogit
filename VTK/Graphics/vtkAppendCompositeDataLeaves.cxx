@@ -135,6 +135,13 @@ int vtkAppendCompositeDataLeaves::RequestData(
 
   vtkCompositeDataSet* anInput = vtkCompositeDataSet::SafeDownCast(
     this->GetInput( 0 ) );
+
+  if (numInputs == 1)
+    {
+    output->ShallowCopy(anInput);
+    return 1;
+    }
+
   output->CopyStructure( anInput );
 
   vtkDebugMacro(<<"Appending data together");
