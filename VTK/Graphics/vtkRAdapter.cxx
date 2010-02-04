@@ -105,7 +105,7 @@ vtkDataArray* vtkRAdapter::RToVTKDataArray(SEXP variable)
         }
       }
 
-    delete(data);
+    delete [] data;
     return(result);
     }
   else
