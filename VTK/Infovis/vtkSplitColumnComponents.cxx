@@ -95,7 +95,7 @@ int vtkSplitColumnComponents::RequestData(
         // Now copy the components into their new columns
         switch(col->GetDataType())
           {
-          vtkTemplateMacro(
+          vtkExtraExtendedTemplateMacro(
               CopyArrayData(static_cast<VTK_TT*>(col->GetVoidPointer(0)),
                             static_cast<VTK_TT*>(newCol->GetVoidPointer(0)),
                             components, j, colSize));
