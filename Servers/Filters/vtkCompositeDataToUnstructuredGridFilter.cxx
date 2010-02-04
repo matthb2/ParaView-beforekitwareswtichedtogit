@@ -130,7 +130,7 @@ void vtkCompositeDataToUnstructuredGridFilter::AddDataSet(
   vtkDataSet* ds, vtkAppendFilter* appender)
 {
   vtkDataSet* clone = ds->NewInstance();
-  clone->ShallowCopy(clone);
+  clone->ShallowCopy(ds);
   appender->AddInput(clone);
   clone->Delete();
 }
