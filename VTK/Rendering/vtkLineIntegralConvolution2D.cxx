@@ -898,5 +898,6 @@ void vtkLineIntegralConvolution2D::PrintSelf( ostream & os, vtkIndent indent )
                                        << this->ComponentIds[1]  << "\n";
   os << indent << "GridSpacings: "     << this->GridSpacings[0]  << ", "
                                        << this->GridSpacings[1]  << "\n";
+  os << indent << "LICForSurface: "    << this->LICForSurface    << "\n";
   os << indent << "TransformVectors: " << this->TransformVectors << "\n";
 }

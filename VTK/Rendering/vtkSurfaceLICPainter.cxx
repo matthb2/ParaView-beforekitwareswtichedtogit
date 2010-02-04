@@ -794,9 +794,13 @@ bool vtkSurfaceLICPainter::PrepareOutput()
 }
 
 //----------------------------------------------------------------------------
-void vtkSurfaceLICPainter::PrintSelf(ostream& os, vtkIndent indent)
+void vtkSurfaceLICPainter::PrintSelf( ostream & os, vtkIndent indent )
 {
-  this->Superclass::PrintSelf(os, indent);
-  os << indent << "Enable: " << this->Enable << endl;
-  os << indent << "LICIntensity: " << this->LICIntensity << endl;
+  this->Superclass::PrintSelf( os, indent );
+  
+  os << indent << "Enable: "        << this->Enable        << endl;
+  os << indent << "StepSize: "      << this->StepSize      << endl;
+  os << indent << "EnhancedLIC: "   << this->EnhancedLIC   << endl;
+  os << indent << "LICIntensity: "  << this->LICIntensity  << endl;
+  os << indent << "NumberOfSteps: " << this->NumberOfSteps << endl;
 }
