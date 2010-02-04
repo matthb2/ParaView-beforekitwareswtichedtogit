@@ -908,7 +908,7 @@ void vtkXRenderWindowInteractorCallback(Widget vtkNotUsed(w),
       //  << endl;
       if( static_cast<Atom>(event->xclient.data.l[0]) == me->KillAtom )
         {
-        me->InvokeEvent(vtkCommand::ExitEvent, NULL);
+        me->ExitCallback();
         }
 #ifdef VTK_USE_TDX
       else
