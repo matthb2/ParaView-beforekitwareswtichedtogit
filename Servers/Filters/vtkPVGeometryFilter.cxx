@@ -563,8 +563,6 @@ int vtkPVGeometryFilter::RequestCompositeData(vtkInformation*,
       for (blocksIter = blocks.begin(); blocksIter != blocks.end();
         ++blocksIter)
         {
-        assert((*blocksIter)->GetReferenceCount() == 1);
-        // this assert ensure that we've avoided crazy garbage collection issues.
         (*blocksIter)->FastDelete();
         }
       vtkTimerLog::MarkEndEvent("Append Blocks");
@@ -653,8 +651,6 @@ int vtkPVGeometryFilter::ExecuteCompositeDataSet(
     
     vtkPolyData* tmpOut = vtkPolyData::New();
     this->ExecuteBlock(block, tmpOut, 0);
-    // this assert ensure that we've avoided crazy garbage collection issues.
-    assert(tmpOut->GetReferenceCount() == 1);
 
     if (hdIter)
       {
