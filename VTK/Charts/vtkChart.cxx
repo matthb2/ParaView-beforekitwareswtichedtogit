@@ -85,6 +85,23 @@ vtkPlot * vtkChart::AddPlot(Type)
 }
 
 //-----------------------------------------------------------------------------
+bool vtkChart::RemovePlot(vtkIdType)
+{
+  return false;
+}
+
+//-----------------------------------------------------------------------------
+void vtkChart::ClearPlots()
+{
+}
+
+//-----------------------------------------------------------------------------
+vtkPlot* vtkChart::GetPlot(vtkIdType)
+{
+  return NULL;
+}
+
+//-----------------------------------------------------------------------------
 vtkIdType vtkChart::GetNumberPlots()
 {
   return 0;

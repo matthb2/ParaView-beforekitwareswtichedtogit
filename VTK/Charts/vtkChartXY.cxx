@@ -360,6 +360,44 @@ vtkPlot * vtkChartXY::AddPlot(vtkChart::Type type)
 }
 
 //-----------------------------------------------------------------------------
+bool vtkChartXY::RemovePlot(vtkIdType index)
+{
+  if (this->ChartPrivate->plots.size() > index)
+    {
+    this->ChartPrivate->plots[index]->Delete();
+    this->ChartPrivate->plots.erase(this->ChartPrivate->plots.begin()+index);
+    return true;
+    }
+  else
+    {
+    return false;
+    }
+}
+
+//-----------------------------------------------------------------------------
+void vtkChartXY::ClearPlots()
+{
+  for (unsigned int i = 0; i < this->ChartPrivate->plots.size(); ++i)
+    {
+    this->ChartPrivate->plots[i]->Delete();
+    }
+  this->ChartPrivate->plots.clear();
+}
+
+//-----------------------------------------------------------------------------
+vtkPlot* vtkChartXY::GetPlot(vtkIdType index)
+{
+  if (this->ChartPrivate->plots.size() > index)
+    {
+    return this->ChartPrivate->plots[index];
+    }
+  else
+    {
+    return NULL;
+    }
+}
+
+//-----------------------------------------------------------------------------
 vtkIdType vtkChartXY::GetNumberPlots()
 {
   return this->ChartPrivate->plots.size();
