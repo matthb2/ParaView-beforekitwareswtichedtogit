@@ -723,8 +723,11 @@ int vtkStructuredGridLIC2D::RequestData(
 //----------------------------------------------------------------------------
 void vtkStructuredGridLIC2D::PrintSelf( ostream & os, vtkIndent indent )
 {
-  this->Superclass::PrintSelf(os, indent);
+  this->Superclass::PrintSelf( os, indent );
   
+  os << indent << "Steps: "         << this->Steps          << "\n";
+  os << indent << "StepSize: "      << this->StepSize       << "\n";
+  os << indent << "Magnification: " << this->Magnification  << "\n";
   os << indent << "OpenGLExtensionsSupported: " 
                << this->OpenGLExtensionsSupported << "\n";
 }
