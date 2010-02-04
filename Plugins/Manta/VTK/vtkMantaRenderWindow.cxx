@@ -219,10 +219,11 @@ void vtkMantaRenderWindow::InternalSetSize( int width, int height )
         
         //Wait for manta to: receive the above transaction (after end of current frame),
         //render with that, and for the old sized images to drain from the pipeline
-        mantaRenderer->GetSyncDisplay()->waitOnFrameReady();
         mantaRenderer->GetSyncDisplay()->doneRendering();
         mantaRenderer->GetSyncDisplay()->waitOnFrameReady();
         mantaRenderer->GetSyncDisplay()->doneRendering();
+        mantaRenderer->GetSyncDisplay()->waitOnFrameReady();
+
         //next wait (inside vtkMantaRenderer) is guaranteed to get the right size,
         //but not before then (first wait above might happen before transaction handled)
         }

@@ -87,6 +87,8 @@ vtkMantaCamera::~vtkMantaCamera()
   //cerr << "MC(" << this << ") DESTROY" << endl;
   if (this->MantaManager)
     {
+    //cerr << "MC(" << this << ") DESTROY " << this->MantaManager << " "
+    //     << this->MantaManager->GetReferenceCount() << endl;
     this->MantaManager->Delete();
     }
 }

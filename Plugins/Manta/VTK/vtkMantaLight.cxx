@@ -93,6 +93,8 @@ vtkMantaLight::~vtkMantaLight()
   delete this->MantaLight;
   if (this->MantaManager)
     {
+    //cerr << "ML(" << this << ") DESTROY " << this->MantaManager << " " 
+    //     << this->MantaManager->GetReferenceCount() << endl;
     this->MantaManager->Delete();
     }
 }
@@ -165,8 +167,13 @@ void vtkMantaLight::CreateMantaLight(vtkRenderer *ren)
       Manta::Color(Manta::RGBColor(color[0],color[1],color[2])));
     }
   mantaRenderer->GetMantaLightSet()->add(this->MantaLight);
-  this->MantaManager = mantaRenderer->GetMantaManager();
-  this->MantaManager->Register(this);
+  if (!this->MantaManager)
+    {
+    this->MantaManager = mantaRenderer->GetMantaManager();
+    //cerr << "ML(" << this << ") REGISTER " << this->MantaManager << " " 
+    //     << this->MantaManager->GetReferenceCount() << endl;
+    this->MantaManager->Register(this);
+    }
 }
 
 //------------------------------------------------------------------------------

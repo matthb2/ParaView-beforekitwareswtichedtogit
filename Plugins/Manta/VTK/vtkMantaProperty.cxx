@@ -142,9 +142,10 @@ vtkMantaProperty::vtkMantaProperty()
 //----------------------------------------------------------------------------
 vtkMantaProperty::~vtkMantaProperty()
 {
-  //cerr << "MP(" << this << ") DESTROY" << endl;
   if (this->MantaManager)
     {
+    //cerr << "MP(" << this << ") DESTROY " << this->MantaManager << " " 
+    //     << this->MantaManager->GetReferenceCount() << endl;   
     this->MantaManager->Delete();
     }
   delete[] this->MaterialType;
@@ -193,6 +194,8 @@ void vtkMantaProperty::Render( vtkActor *vtkNotUsed(anActor),
   if (!this->MantaManager)
     {
     this->MantaManager = mantaRenderer->GetMantaManager();
+    //cerr << "MP(" << this << ") REGISTER " << this->MantaManager << " " 
+    //     << this->MantaManager->GetReferenceCount() << endl;
     this->MantaManager->Register(this);
     }
 
