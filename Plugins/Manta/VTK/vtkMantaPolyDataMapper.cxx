@@ -809,5 +809,4 @@ void vtkMantaPolyDataMapper::Draw(vtkRenderer *renderer, vtkActor *actor)
     delete group;
     //cerr << "NOTHING TO SEE" << endl;
     }
-  mantaActor->Modified();
 }

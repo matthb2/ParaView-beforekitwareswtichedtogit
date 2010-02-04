@@ -67,8 +67,11 @@ vtkMantaManager::~vtkMantaManager()
     {
     v = this->MantaEngine->numWorkers();
     //cerr << "MX(" << this << ") SYNC " << i++ << " " << v << endl;
-    this->SyncDisplay->waitOnFrameReady();
-    this->SyncDisplay->doneRendering();
+    if (this->SyncDisplay)
+      {
+      this->SyncDisplay->waitOnFrameReady();
+      this->SyncDisplay->doneRendering();
+      }
     this->MantaEngine->changeNumWorkers(0);
     }
 
