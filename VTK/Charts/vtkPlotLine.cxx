@@ -184,9 +184,8 @@ bool vtkPlotLine::UpdateTableCache(vtkTable *table)
           CopyToPointsSwitch(this->Points,
                              static_cast<VTK_TT*>(x->GetVoidPointer(0)),
                              y, x->GetSize()));
-      this->BuildTime.Modified();
-      break;
     }
+  this->BuildTime.Modified();
   return true;
 }
 
