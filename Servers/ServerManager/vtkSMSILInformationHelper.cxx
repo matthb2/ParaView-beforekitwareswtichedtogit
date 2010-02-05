@@ -142,7 +142,7 @@ void vtkSMSILInformationHelper::UpdateArrayList(vtkSMStringVectorProperty* svp)
   model->Initialize(this->SIL);
 
   vtkIdType subTreeVertexId = this->Subtree?
-    model->FindVertex(this->Subtree, 0) : 0;
+    model->FindVertex(this->Subtree) : 0;
 
   if (subTreeVertexId == -1)
     {
