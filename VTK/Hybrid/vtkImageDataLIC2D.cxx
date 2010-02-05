@@ -74,7 +74,7 @@ int vtkImageDataLIC2D::SetContext( vtkRenderWindow * context )
 {
   if ( this->Context == context )
     {
-    return 1;
+    return this->OpenGLExtensionsSupported;
     }
 
   if ( this->Context && this->OwnWindow )
