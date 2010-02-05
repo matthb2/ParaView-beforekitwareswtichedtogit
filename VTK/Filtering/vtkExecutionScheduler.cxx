@@ -239,7 +239,7 @@ public:
   vtkObject* Target;
 };
 
-void vtkExecutionScheduler::SchedulePropagate(vtkExecutiveCollection *execs, vtkInformation *info)
+void vtkExecutionScheduler::SchedulePropagate(vtkExecutiveCollection *execs, vtkInformation* vtkNotUsed(info))
 {
   execs->InitTraversal();
   vtkExecutiveSet    visited;
