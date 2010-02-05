@@ -54,7 +54,7 @@ vtkSMEnumerationDomain::~vtkSMEnumerationDomain()
 //---------------------------------------------------------------------------
 unsigned int vtkSMEnumerationDomain::GetNumberOfEntries()
 {
-  return this->EInternals->Entries.size();
+  return static_cast<unsigned int>(this->EInternals->Entries.size());
 }
 
 //---------------------------------------------------------------------------

@@ -229,7 +229,7 @@ int vtkSpyPlotReader::UpdateSpyDataFile(vtkInformation* request,
   // See if this is part of a series
   vtkstd::string extension = 
     vtksys::SystemTools::GetFilenameLastExtension(this->FileName);
-  int currentNum, isASeries=0;
+  int currentNum=0, isASeries=0;
   size_t esize;
   esize = extension.size();
   if (esize > 0 )
