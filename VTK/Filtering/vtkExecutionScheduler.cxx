@@ -32,7 +32,6 @@
 #include "vtkAlgorithm.h"
 #include "vtkCommand.h"
 #include "vtkComputingResources.h"
-#include "vtkDataRepresentation.h"
 #include "vtkExecutiveCollection.h"
 #include "vtkInformation.h"
 #include "vtkInformationVector.h"
@@ -253,9 +252,9 @@ void vtkExecutionScheduler::SchedulePropagate(vtkExecutiveCollection *execs, vtk
        vi!=graph.end(); vi++)
     {
     (*vi)->Update();
-#if 0
-    vtkDataRepresentation *rep =vtkDataRepresentation::SafeDownCast((*vi)->GetAlgorithm());
-    if (rep)
+#if 1
+    vtkAlgorithm *rep =(*vi)->GetAlgorithm();
+    if (rep->IsA("vtkDataRepresentation"))
       {
       vtkViewCommand *cmd = (vtkViewCommand*)rep->GetCommand(2);
       if (cmd)
