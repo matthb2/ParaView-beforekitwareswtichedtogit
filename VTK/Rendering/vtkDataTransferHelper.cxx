@@ -577,9 +577,9 @@ void vtkDataTransferHelper::PrintSelf( ostream & os, vtkIndent indent )
 {
   this->Superclass::PrintSelf( os, indent );
   
-  os << indent << "Array: "               << this->Array   << endl;
-  os << indent << "Texture: "             << this->Texture << endl;
-  os << indent << "MinTextureDimension: " << this->Texture << endl;
+  os << indent << "Array: "               << this->Array               << endl;
+  os << indent << "Texture: "             << this->Texture             << endl;
+  os << indent << "MinTextureDimension: " << this->MinTextureDimension << endl;
   os << indent << "CPUExtent: ("     << this->CPUExtent[0] << ", "
                                      << this->CPUExtent[1] << ", "
                                      << this->CPUExtent[2] << ", "
