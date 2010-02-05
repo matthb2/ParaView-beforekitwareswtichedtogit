@@ -43,7 +43,6 @@
 #include "vtkObjectFactory.h"
 #include "vtkThreadedStreamingPipeline.h"
 #include "vtkThreadMessager.h"
-#include "vtkView.h"
 
 #include <vtkstd/set>
 #include <vtksys/hash_map.hxx>
@@ -252,7 +251,7 @@ void vtkExecutionScheduler::SchedulePropagate(vtkExecutiveCollection *execs, vtk
        vi!=graph.end(); vi++)
     {
     (*vi)->Update();
-#if 1
+#if 0
     vtkAlgorithm *rep =(*vi)->GetAlgorithm();
     if (rep->IsA("vtkDataRepresentation"))
       {
