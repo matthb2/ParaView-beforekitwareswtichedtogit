@@ -236,7 +236,7 @@ void vtkExecutionScheduler::PrintSelf(ostream &os, vtkIndent indent)
 class vtkViewCommand : public vtkCommand
 {
 public:
-  vtkObjectBase* Target;
+  vtkObject* Target;
 };
 
 void vtkExecutionScheduler::SchedulePropagate(vtkExecutiveCollection *execs, vtkInformation *info)
