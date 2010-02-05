@@ -228,7 +228,8 @@ void vtkMultiCorrelativeStatistics::Aggregate( vtkDataObjectCollection* inMetaCo
 
     // Iterate over all model rows
     int inN, outN;
-    double muFactor, covFactor;
+    double muFactor = 0.;
+    double covFactor = 0.;
     vtkstd::vector<double> inMu, outMu;
     int j = 0;
     int k = 0;
