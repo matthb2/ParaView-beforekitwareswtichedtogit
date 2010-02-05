@@ -1398,7 +1398,8 @@ void vtkSpyPlotReader::SetMergeXYZComponents(int merge)
   this->Modified();
 }
 //-----------------------------------------------------------------------------
-void vtkSpyPlotReader::PrintBlockList(vtkHierarchicalBoxDataSet *hbds, int myProcId)
+void vtkSpyPlotReader::PrintBlockList(vtkHierarchicalBoxDataSet *hbds, int
+  vtkNotUsed(myProcId))
 {
   unsigned int numberOfLevels=hbds->GetNumberOfLevels();
   unsigned int level;
