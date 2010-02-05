@@ -224,9 +224,7 @@ void vtkThreadedStreamingPipeline::Push(vtkExecutiveCollection *execs, vtkInform
     info->Set(vtkThreadedStreamingPipeline::AUTO_PROPAGATE(), 1);
     }
   vtkExecutionScheduler::GetGlobalScheduler()->Schedule(execs, info);
-  fprintf(stderr, "OK 2 %d\n", execs->GetNumberOfItems());
   vtkExecutionScheduler::GetGlobalScheduler()->WaitUntilReleased(execs);
-  fprintf(stderr, "OK 3\n");
 }
 
 //----------------------------------------------------------------------------
@@ -277,17 +275,10 @@ void vtkThreadedStreamingPipeline::Push(vtkInformation *info)
     {
     execs->AddItem(*ti);
     }
-  if (AutoPropagatePush) 
-    {
-    vtkExecutionScheduler::GetGlobalScheduler()->SchedulePropagate(execs, info);
-    }
-  else
-    {
-    vtkExecutionScheduler::GetGlobalScheduler()->Schedule(execs, info);
-    vtkExecutionScheduler::GetGlobalScheduler()->ReleaseResources(this);
-    vtkExecutionScheduler::GetGlobalScheduler()->WaitUntilReleased(execs);
-    vtkExecutionScheduler::GetGlobalScheduler()->ReacquireResources(this);
-    }
+  vtkExecutionScheduler::GetGlobalScheduler()->Schedule(execs, info);
+  vtkExecutionScheduler::GetGlobalScheduler()->ReleaseResources(this);
+  vtkExecutionScheduler::GetGlobalScheduler()->WaitUntilReleased(execs);
+  vtkExecutionScheduler::GetGlobalScheduler()->ReacquireResources(this);
   execs->Delete();
 }
 

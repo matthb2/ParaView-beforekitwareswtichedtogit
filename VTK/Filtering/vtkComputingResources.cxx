@@ -248,7 +248,6 @@ void vtkComputingResources::Deploy(vtkThreadedStreamingPipeline *exec,
         (*i).second->HasResource()) 
       {
       (*i).second->AllocateFor(exec);
-      fprintf(stderr, "UPDATE %s\n", exec->GetAlgorithm()->GetClassName());
       exec->Update();
 //       exec->ForceUpdateData((*i).first, info);
       }
