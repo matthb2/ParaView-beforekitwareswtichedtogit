@@ -29,6 +29,8 @@
 
 #include "vtkRegressionTestImage.h"
 
+#include <QApplication>
+
 #define VTK_CREATE(type, name) \
   vtkSmartPointer<type> name = vtkSmartPointer<type>::New()
 
@@ -45,6 +47,10 @@ public:
 //----------------------------------------------------------------------------
 int TestQtDiagram( int argc, char * argv [] )
 {
+  // Set up a QApplication instance to see if heart needs a QApplication
+  // to render fonts correctly
+  QApplication app(argc, argv);
+
   // Set up a 2D chart actor, APIDiagram object andn add them to the renderer
   VTK_CREATE(vtkContextActor, actor);
   VTK_CREATE(APIDiagram2, diagram);
