@@ -110,7 +110,7 @@ int vtkCleanUnstructuredGrid::RequestData(
   output->SetPoints(newPts);
   newPts->Delete();
 
-  // New copy the cells.
+  // Now copy the cells.
   vtkIdList *cellPoints = vtkIdList::New();
   num = input->GetNumberOfCells();
   output->Allocate(num);
