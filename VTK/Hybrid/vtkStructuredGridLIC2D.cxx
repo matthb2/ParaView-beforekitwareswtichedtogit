@@ -692,7 +692,6 @@ int vtkStructuredGridLIC2D::RequestData(
   vtkLineIntegralConvolution2D *internal=vtkLineIntegralConvolution2D::New();
   if (  !internal->IsSupported( this->Context )  )
     {
-    pgm->GetShaders()->RemoveAllItems();
     pgm->ReleaseGraphicsResources();
     
     pgm->Delete();
@@ -744,7 +743,6 @@ int vtkStructuredGridLIC2D::RequestData(
   
   if (  !internal->Execute()  )
     {
-    pgm->GetShaders()->RemoveAllItems();
     pgm->ReleaseGraphicsResources();
     
     pgm->Delete();
