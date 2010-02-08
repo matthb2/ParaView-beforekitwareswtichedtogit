@@ -693,6 +693,7 @@ int vtkStructuredGridLIC2D::RequestData(
   if (  !internal->IsSupported( this->Context )  )
     {
     pgm->GetShaders()->RemoveAllItems();
+    pgm->ReleaseGraphicsResources();
     
     pgm->Delete();
     mgr->Delete();
@@ -744,6 +745,7 @@ int vtkStructuredGridLIC2D::RequestData(
   if (  !internal->Execute()  )
     {
     pgm->GetShaders()->RemoveAllItems();
+    pgm->ReleaseGraphicsResources();
     
     pgm->Delete();
     mgr->Delete();
