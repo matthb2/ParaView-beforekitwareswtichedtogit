@@ -247,6 +247,21 @@ int vtkSMFieldDataDomain::ReadXMLAttributes(
     this->DisableUpdateDomainEntries = (disable_update_domain_entries!=0)? true : false;
     }
 
+  if (this->DisableUpdateDomainEntries)
+    {
+    // this is a traditional enumeration. Fill it up with values.
+    this->AddEntry("Point Data", vtkDataObject::FIELD_ASSOCIATION_POINTS);
+    this->AddEntry("Cell Data",  vtkDataObject::FIELD_ASSOCIATION_CELLS);
+    this->AddEntry("Vertex Data", vtkDataObject::FIELD_ASSOCIATION_VERTICES);
+    this->AddEntry("Edge Data", vtkDataObject::FIELD_ASSOCIATION_EDGES);
+    this->AddEntry("Row Data", vtkDataObject::FIELD_ASSOCIATION_ROWS);
+    if (this->EnableFieldDataSelection)
+      {
+      this->AddEntry("Field Data", vtkDataObject::FIELD_ASSOCIATION_NONE);
+      }
+    this->DefaultValue = vtkDataObject::FIELD_ASSOCIATION_POINTS;
+    }
+
   return 1;
 }
 
