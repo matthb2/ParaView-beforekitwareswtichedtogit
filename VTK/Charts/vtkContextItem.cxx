@@ -34,6 +34,7 @@ vtkContextItem::vtkContextItem()
 {
   this->Transform = NULL;//vtkTransform2D::New();
   this->Scene = NULL;
+  this->Visible = true;
   this->Opacity = 1.0;
 }
 
