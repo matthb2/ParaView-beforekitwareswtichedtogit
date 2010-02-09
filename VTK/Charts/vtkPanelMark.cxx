@@ -64,7 +64,7 @@ void vtkPanelMark::Update()
     {    
     numChildren = data.GetNumberOfChildren();
     }
-  for (size_t j = 0; j < numMarks; ++j)
+  for (vtkIdType j = 0; j < numMarks; ++j)
     {
     for (vtkIdType i = 0; i < numChildren; ++i)
       {
