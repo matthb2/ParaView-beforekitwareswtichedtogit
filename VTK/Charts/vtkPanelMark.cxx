@@ -55,7 +55,7 @@ void vtkPanelMark::Update()
   this->Right.Update(this);
   this->Top.Update(this);
   this->Bottom.Update(this);  
-  int numMarks = this->Marks.size();
+  int numMarks = static_cast<int>(this->Marks.size());
   
   // Create only a single instance if no real data is set on panel. 
   vtkIdType numChildren = 1; 
