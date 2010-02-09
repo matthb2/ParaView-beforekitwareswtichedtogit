@@ -146,6 +146,7 @@ vtkDataArray* vtkRAdapter::RToVTKDataArray(SEXP variable)
 
     delete [] data;
     this->vdac->AddItem(result);
+    result->Delete();
     return(result);
     }
   else
@@ -229,6 +230,7 @@ vtkArray* vtkRAdapter::RToVTKArray(SEXP variable)
     }
 
   this->vad->AddArray(da);
+  da->Delete();
   return(da);
 
 }
@@ -431,6 +433,7 @@ vtkTable* vtkRAdapter::RToVTKTable(SEXP variable)
     }
 
   this->vdoc->AddItem(result);
+  result->Delete();
   return(result);
 
 }
