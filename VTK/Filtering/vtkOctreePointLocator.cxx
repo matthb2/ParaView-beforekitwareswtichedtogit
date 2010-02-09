@@ -1299,19 +1299,16 @@ void vtkOctreePointLocator::PrintSelf(ostream& os, vtkIndent indent)
 { 
   this->Superclass::PrintSelf(os,indent);
 
-  os << indent << "NumberOfRegions: " << this->NumberOfLeafNodes << endl;
-
+  os << indent << "MaximumPointsPerRegion: " << 
+    this->MaximumPointsPerRegion << endl;
+  os << indent << "NumberOfLeafNodes: " << this->NumberOfLeafNodes << endl;
   os << indent << "Top: " << this->Top << endl;
   os << indent << "LeafNodeList: " << this->LeafNodeList << endl;
-
   os << indent << "LocatorPoints: " << this->LocatorPoints << endl;
   os << indent << "NumberOfLocatorPoints: " 
      << this->NumberOfLocatorPoints << endl;
-
   os << indent << "LocatorIds: " << this->LocatorIds << endl;
-
   os << indent << "FudgeFactor: " << this->FudgeFactor << endl;
   os << indent << "MaxWidth: " << this->MaxWidth << endl;
-
   os << indent << "CreateCubicOctants: " << this->CreateCubicOctants << endl;
 }
