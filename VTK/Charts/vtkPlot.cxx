@@ -62,6 +62,23 @@ void vtkPlot::SetColor(unsigned char r, unsigned char g, unsigned char b,
 }
 
 //-----------------------------------------------------------------------------
+void vtkPlot::SetColor(double r, double g, double b)
+{
+  this->Color[0] = static_cast<unsigned char>(r*255.0);
+  this->Color[1] = static_cast<unsigned char>(g*255.0);
+  this->Color[2] = static_cast<unsigned char>(b*255.0);
+}
+
+//-----------------------------------------------------------------------------
+void vtkPlot::GetColor(double rgb[3])
+{
+  for (int i = 0; i < 3; ++i)
+    {
+    rgb[i] = double(this->Color[0]) / 255.0;
+    }
+}
+
+//-----------------------------------------------------------------------------
 void vtkPlot::SetInput(vtkTable *table)
 {
   this->Data->SetInput(table);
