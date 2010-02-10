@@ -300,6 +300,7 @@ void vtkMantaProperty::CreateMantaProperty()
                             static_cast<int> ( this->GetSpecularPower() ),
                             new Manta::Constant<Manta::ColorComponent>
                             ( this->Reflectance ) );
+        cerr << "PHONG WITH R=" << this->Reflectance << endl;
         }
       else
         if ( strcmp( this->MaterialType, "transparent" ) == 0 )
