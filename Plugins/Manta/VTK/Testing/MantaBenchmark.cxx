@@ -279,7 +279,7 @@ void MyProcess::Execute()
   else
     {
     mRenderer = vtkMantaRenderer::New();
-    mRenderer->ChangeNumberOfWorkers(threads);
+    mRenderer->SetNumberOfWorkers(threads);
     renderer = mRenderer;
     }
 
