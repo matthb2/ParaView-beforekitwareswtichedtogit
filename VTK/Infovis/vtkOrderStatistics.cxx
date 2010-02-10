@@ -109,8 +109,8 @@ bool vtkOrderStatistics::SetParameter( const char* parameter,
 
 // ----------------------------------------------------------------------
 void vtkOrderStatistics::Learn( vtkTable* inData,
-                                       vtkTable* vtkNotUsed( inParameters ),
-                                       vtkDataObject* outMetaDO )
+                                vtkTable* vtkNotUsed( inParameters ),
+                                vtkDataObject* outMetaDO )
 {
   vtkTable* outMeta = vtkTable::SafeDownCast( outMetaDO ); 
   if ( ! outMeta ) 
