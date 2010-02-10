@@ -157,6 +157,15 @@ void vtkAxis::AutoScale()
 }
 
 //-----------------------------------------------------------------------------
+void vtkAxis::RecalculateTickSpacing()
+{
+  // Calculate the min and max, set the number of ticks and the tick spacing,
+  // discard the min and max in this case. TODO: Refactor the function called.
+  float min, max;
+  this->TickInterval = this->CalculateNiceMinMax(min, max);
+}
+
+//-----------------------------------------------------------------------------
 float vtkAxis::CalculateNiceMinMax(float &min, float &max)
 {
   // First get the order of the range of the numbers

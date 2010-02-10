@@ -582,6 +582,8 @@ bool vtkChartXY::MouseWheelEvent(const vtkContextMouseEvent &, int delta)
   this->YAxis->SetMaximum(ymax);
 
   this->RecalculatePlotTransform();
+  this->XAxis->RecalculateTickSpacing();
+  this->YAxis->RecalculateTickSpacing();
 
   // Mark the scene as dirty
   this->Scene->SetDirty(true);
