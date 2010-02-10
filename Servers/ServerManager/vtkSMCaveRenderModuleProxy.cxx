@@ -239,6 +239,7 @@ void vtkSMCaveRenderModuleProxy::ConfigureFromServerInformation()
                        serverInfo->GetLowerRight(idx),
                        serverInfo->GetUpperLeft(idx));
     }
+    
 }
 
 //-----------------------------------------------------------------------------
