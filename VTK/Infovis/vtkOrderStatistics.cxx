@@ -310,7 +310,8 @@ public:
                             vtkIdType id )
   {
     vtkVariant x = this->Data->GetVariantValue( id );
-    if ( x < this->Quantiles->GetValue( 1 ) ) // Value #0 is the variable name
+
+    if ( x < this->Quantiles->GetValue( 2 ) ) // Value #0 is the variable name and #1 is the cardinality
       {
       // x is smaller than lower bound
       result->SetNumberOfValues( 1 );
@@ -320,14 +321,14 @@ public:
       }
 
     vtkIdType n = this->Quantiles->GetNumberOfValues() + 2;
-    vtkIdType q = 2;
+    vtkIdType q = 3;
     while ( q < n && x > this->Quantiles->GetValue( q ) )
       {
       ++ q;
       }
 
     result->SetNumberOfValues( 1 );
-    result->SetValue( 0, q - 1 ); 
+    result->SetValue( 0, q - 2 ); 
   }
 };
 
