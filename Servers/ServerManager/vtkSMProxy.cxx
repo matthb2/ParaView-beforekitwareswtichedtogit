@@ -2299,6 +2299,12 @@ vtkPVXMLElement* vtkSMProxy::SaveState(vtkPVXMLElement* root)
 
   while (!iter->IsAtEnd())
     {
+    if (!iter->GetProperty())
+      {
+      vtkWarningMacro("Missing property with name: " << iter->GetKey()
+        << " on " << this->GetXMLName());
+      continue;
+      }
     if (!iter->GetProperty()->GetIsInternal())
       {
       vtksys_ios::ostringstream propID;
