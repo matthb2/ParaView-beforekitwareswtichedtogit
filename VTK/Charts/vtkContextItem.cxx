@@ -27,7 +27,7 @@
 
 //-----------------------------------------------------------------------------
 vtkCxxRevisionMacro(vtkContextItem, "$Revision$");
-vtkCxxSetObjectMacro(vtkContextItem, Transform, vtkTransform2D)
+vtkCxxSetObjectMacro(vtkContextItem, Transform, vtkTransform2D);
 
 //-----------------------------------------------------------------------------
 vtkContextItem::vtkContextItem()
@@ -47,6 +47,11 @@ vtkContextItem::~vtkContextItem()
     this->Transform = NULL;
     }
   this->SetScene(NULL);
+}
+
+//-----------------------------------------------------------------------------
+void vtkContextItem::Update()
+{
 }
 
 //-----------------------------------------------------------------------------
