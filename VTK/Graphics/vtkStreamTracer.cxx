@@ -133,6 +133,18 @@ int vtkStreamTracer::GetIntegratorType()
   return UNKNOWN;
 }
 
+void vtkStreamTracer::SetInterpolatorTypeToDataSetPointLocator()
+{
+  this->SetInterpolatorType
+    (  static_cast<int> ( INTERPOLATOR_WITH_DATASET_POINT_LOCATOR )  );
+}
+  
+void vtkStreamTracer::SetInterpolatorTypeToCellLocator()
+{
+  this->SetInterpolatorType
+    (  static_cast<int> ( INTERPOLATOR_WITH_CELL_LOCATOR )  );
+}
+
 void vtkStreamTracer::SetInterpolatorType( int interpType )
 {
   if ( interpType == INTERPOLATOR_WITH_CELL_LOCATOR )
