@@ -56,10 +56,14 @@ bool vtkContext2D::Begin(vtkContextDevice2D *device)
 //-----------------------------------------------------------------------------
 bool vtkContext2D::End()
 {
-  this->Device->End();
-  this->Device->Delete();
-  this->Device = NULL;
-  this->Modified();
+  if (this->Device)
+    {
+    this->Device->End();
+    this->Device->Delete();
+    this->Device = NULL;
+    this->Modified();
+    return true;
+    }
   return true;
 }
 
