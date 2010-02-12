@@ -222,7 +222,7 @@ void vtkSMContextNamedOptionsProxy::UpdatePropertyInformationInternal(
           }
         else
           {
-          new_values->AddString("1");
+          new_values->AddString("0");
           }
         }
       else
