@@ -253,6 +253,22 @@ void vtkOpenGLContextDevice2D::DrawString(float *point, vtkTextProperty *prop,
 }
 
 //-----------------------------------------------------------------------------
+void vtkOpenGLContextDevice2D::ComputeStringBounds(const vtkStdString &string,
+                                                   vtkTextProperty *prop,
+                                                   float bounds[4])
+{
+  double b[4];
+  this->TextRenderer->ComputeLabelBounds(prop, string, b);
+
+  // Go from the format used in the label render strategy (x1, x2, y1, y2)
+  // to the format specified by this function (x, y, w, h).
+  bounds[0] = static_cast<float>(b[0]);
+  bounds[1] = static_cast<float>(b[2]);
+  bounds[2] = static_cast<float>(b[1] - b[0]);
+  bounds[3] = static_cast<float>(b[3] - b[2]);
+}
+
+//-----------------------------------------------------------------------------
 void vtkOpenGLContextDevice2D::DrawImage(float *p, int, vtkImageData *image)
 {
   vtkTexture *tex =vtkTexture::New();

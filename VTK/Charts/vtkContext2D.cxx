@@ -313,6 +313,34 @@ void vtkContext2D::DrawString(float x, float y, const char *string)
 }
 
 //-----------------------------------------------------------------------------
+void vtkContext2D::ComputeStringBounds(const vtkStdString &string,
+                                       vtkPoints2D *bounds)
+{
+  bounds->SetNumberOfPoints(2);
+  float *f = vtkFloatArray::SafeDownCast(bounds->GetData())->GetPointer(0);
+  this->ComputeStringBounds(string, f);
+}
+
+//-----------------------------------------------------------------------------
+void vtkContext2D::ComputeStringBounds(const vtkStdString &string,
+                                       float bounds[4])
+{
+  if (!this->Device)
+    {
+    vtkErrorMacro(<< "Attempted to paint with no active vtkContextDevice2D.");
+    return;
+    }
+  this->Device->ComputeStringBounds(string, this->TextProp, bounds);
+}
+
+//-----------------------------------------------------------------------------
+void vtkContext2D::ComputeStringBounds(const char *string, float bounds[4])
+{
+  vtkStdString str = string;
+  this->ComputeStringBounds(str, bounds);
+}
+
+//-----------------------------------------------------------------------------
 void vtkContext2D::DrawImage(float x, float y, vtkImageData *image)
 {
   float p[] = { x, y };
