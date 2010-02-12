@@ -356,7 +356,7 @@ unsigned int vtkContext2D::AddPointSprite(vtkImageData *image)
 //-----------------------------------------------------------------------------
 void vtkContext2D::ApplyPen(vtkPen *pen)
 {
-
+  this->Pen->DeepCopy(pen);
 }
 
 //-----------------------------------------------------------------------------

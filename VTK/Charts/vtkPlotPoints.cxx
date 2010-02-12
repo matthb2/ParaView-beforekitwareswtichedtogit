@@ -93,9 +93,7 @@ bool vtkPlotPoints::Paint(vtkContext2D *painter)
   // Now to plot the points
   if (this->Points)
     {
-    painter->GetPen()->SetColor(this->Pen->GetColor());
-    painter->GetPen()->SetOpacity(this->Pen->GetOpacity());
-    painter->GetPen()->SetWidth(this->Pen->GetWidth());
+    painter->ApplyPen(this->Pen);
     painter->DrawPoints(this->Points);
     }
 

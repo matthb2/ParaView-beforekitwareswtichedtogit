@@ -144,6 +144,14 @@ unsigned char vtkPen::GetOpacity()
 }
 
 //-----------------------------------------------------------------------------
+void vtkPen::DeepCopy(vtkPen *pen)
+{
+  *(this->PenColor) = *(pen->PenColor);
+  this->Width = pen->Width;
+  this->LineType = pen->LineType;
+}
+
+//-----------------------------------------------------------------------------
 void vtkPen::PrintSelf(ostream &os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os, indent);
