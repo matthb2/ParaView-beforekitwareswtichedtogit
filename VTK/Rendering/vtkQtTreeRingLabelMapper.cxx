@@ -64,12 +64,6 @@ vtkCxxSetObjectMacro(vtkQtTreeRingLabelMapper,LabelTextProperty,vtkTextProperty)
 
 vtkQtTreeRingLabelMapper::vtkQtTreeRingLabelMapper()
 {
-  if(!QApplication::instance())
-    {
-    int argc = 0;
-    new QApplication(argc, 0);
-    }
-  
   this->Input = NULL;
   this->Renderer = NULL;
   
@@ -157,6 +151,12 @@ void vtkQtTreeRingLabelMapper::RenderOverlay(vtkViewport *viewport,
 void vtkQtTreeRingLabelMapper::RenderOpaqueGeometry(vtkViewport *viewport, 
                                                     vtkActor2D *actor)
 {
+  if(!QApplication::instance())
+    {
+    vtkErrorMacro("This class requires a QApplication instance.");
+    return;
+    }
+  
   vtkTextProperty *tprop = this->LabelTextProperty;
   if (!tprop)
     {
