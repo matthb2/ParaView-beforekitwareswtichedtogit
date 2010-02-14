@@ -49,6 +49,12 @@ void vtkImageToStructuredPoints::PrintSelf(ostream& os, vtkIndent indent)
 }
 
 //----------------------------------------------------------------------------
+vtkStructuredPoints* vtkImageToStructuredPoints::GetStructuredPointsOutput()
+{
+  return vtkStructuredPoints::SafeDownCast(this->GetOutputDataObject(0));
+}
+
+//----------------------------------------------------------------------------
 void vtkImageToStructuredPoints::SetVectorInput(vtkImageData *input)
 {
   this->SetInput(1, input);
