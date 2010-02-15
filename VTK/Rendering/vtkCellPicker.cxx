@@ -978,7 +978,7 @@ double vtkCellPicker::IntersectImageActorWithLine(const double p1[3],
 
 double vtkCellPicker::IntersectProp3DWithLine(const double *, const double *,
                                               double, double, double,
-                                              vtkProp3D *prop, 
+                                              vtkProp3D *, 
                                               vtkAbstractMapper3D *)
 {
   return VTK_DOUBLE_MAX;
