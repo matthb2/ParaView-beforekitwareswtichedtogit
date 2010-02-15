@@ -55,6 +55,7 @@ vtkDescriptiveStatistics::vtkDescriptiveStatistics()
   this->AssessParameters->SetNumberOfValues( 2 );
   this->AssessParameters->SetValue( 0, "Mean" );
   this->AssessParameters->SetValue( 1, "Standard Deviation" );
+  this->UnbiasedVariance = 1; // By default, use unbiased estimator of the variance (divided by cardinality-1)
   this->SignedDeviations = 0; // By default, use unsigned deviation (1D Mahlanobis distance)
 }
 
@@ -67,6 +68,7 @@ vtkDescriptiveStatistics::~vtkDescriptiveStatistics()
 void vtkDescriptiveStatistics::PrintSelf( ostream &os, vtkIndent indent )
 {
   this->Superclass::PrintSelf( os, indent );
+  os << indent << "UnbiasedVariance: " << this->UnbiasedVariance << "\n";
   os << indent << "SignedDeviations: " << this->SignedDeviations << "\n";
 }
 
