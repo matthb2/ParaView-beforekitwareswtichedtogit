@@ -186,3 +186,10 @@ void vtkSMXYChartRepresentationProxy::SetXAxisSeriesName(const char* name)
   this->OptionsProxy->SetXSeriesName(name);
   this->Modified();
 }
+
+//----------------------------------------------------------------------------
+void vtkSMXYChartRepresentationProxy::SetUseIndexForXAxis(bool useIndex)
+{
+  this->OptionsProxy->SetUseIndexForXAxis(useIndex);
+  this->Modified();
+}
