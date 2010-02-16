@@ -102,7 +102,7 @@ vtkPCosmoHaloFinder::vtkPCosmoHaloFinder()
   this->BB = .2;
   this->PMin = 10;
   this->ParticleMass = 1;
-  this->CatalogAveragePosition = 0;
+  this->CatalogAveragePosition = 1;
   this->CopyHaloDataToParticles = 1;
 }
 
