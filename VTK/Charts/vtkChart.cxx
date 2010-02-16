@@ -70,6 +70,12 @@ vtkIdType vtkChart::GetNumberPlots()
 }
 
 //-----------------------------------------------------------------------------
+void vtkChart::RecalculateBounds()
+{
+  return;
+}
+
+//-----------------------------------------------------------------------------
 void vtkChart::SetBottomBorder(int border)
 {
   this->Point1[1] = border >= 0 ? border : 0;

@@ -416,6 +416,15 @@ vtkIdType vtkChartXY::GetNumberPlots()
 }
 
 //-----------------------------------------------------------------------------
+void vtkChartXY::RecalculateBounds()
+{
+  // Ensure that the bounds are recalculated
+  this->PlotTransformValid = false;
+  // Mark the scene as dirty
+  this->Scene->SetDirty(true);
+}
+
+//-----------------------------------------------------------------------------
 bool vtkChartXY::Hit(const vtkContextMouseEvent &mouse)
 {
   if (mouse.ScreenPos[0] > this->Point1[0] &&
