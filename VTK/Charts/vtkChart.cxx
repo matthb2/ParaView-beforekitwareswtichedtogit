@@ -70,6 +70,12 @@ vtkIdType vtkChart::GetNumberPlots()
 }
 
 //-----------------------------------------------------------------------------
+vtkAxis* vtkChart::GetAxis(int)
+{
+  return NULL;
+}
+
+//-----------------------------------------------------------------------------
 void vtkChart::RecalculateBounds()
 {
   return;

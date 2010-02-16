@@ -416,6 +416,23 @@ vtkIdType vtkChartXY::GetNumberPlots()
 }
 
 //-----------------------------------------------------------------------------
+vtkAxis* vtkChartXY::GetAxis(int axisIndex)
+{
+  if (axisIndex == 0)
+    {
+    return this->XAxis;
+    }
+  else if (axisIndex == 1)
+    {
+    return this->YAxis;
+    }
+  else
+    {
+    return NULL;
+    }
+}
+
+//-----------------------------------------------------------------------------
 void vtkChartXY::RecalculateBounds()
 {
   // Ensure that the bounds are recalculated
