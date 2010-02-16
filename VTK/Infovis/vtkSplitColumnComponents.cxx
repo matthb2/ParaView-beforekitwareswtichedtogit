@@ -60,12 +60,13 @@ void CalculateMagnitude(T* source, T* destination, int components,
 {
   for (unsigned int i = 0; i < length; ++i)
     {
-    T tmp = 0.0;
+    double tmp = 0.0;
     for (int j = 0; j < components; ++j)
       {
-      tmp += source[i*components + j] * source[i*components + j];
+      tmp += static_cast<double>(source[i*components + j]
+                                 * source[i*components + j]);
       }
-    destination[i] = sqrt(tmp);
+    destination[i] = static_cast<T>(sqrt(tmp));
     }
 }
 
