@@ -28,7 +28,7 @@ vtkStandardNewMacro(vtkBarMark);
 //-----------------------------------------------------------------------------
 vtkBarMark::vtkBarMark()
 {
-  this->SetFillColor(vtkMarkUtil::DefaultSeriesColor);
+  this->SetFillColor(vtkMarkUtil::DefaultSeriesColorFromParent);
   this->SetLineWidth(1);
   this->SetLineColor(vtkColor(0.0, 0.0, 0.0, 1.0));
 }

@@ -28,7 +28,7 @@ vtkStandardNewMacro(vtkLineMark);
 //-----------------------------------------------------------------------------
 vtkLineMark::vtkLineMark()
 {
-  this->SetLineColor(vtkMarkUtil::DefaultSeriesColor);
+  this->SetLineColor(vtkMarkUtil::DefaultSeriesColorFromParent);
   this->SetLineWidth(2);
 }
 

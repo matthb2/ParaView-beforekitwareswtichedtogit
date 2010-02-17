@@ -57,6 +57,9 @@ void vtkWedgeMark::AddWedgeDefault()
   // 1. fill style is a categorial color
   this->Fields->Set(vtkWedgeMark::FILL_STYLE(),"categorial");
   // 2. no stroke
+  
+  this->SetLineColor(vtkMarkUtil::DefaultSeriesColorFromIndex);
+  this->SetFillColor(vtkMarkUtil::DefaultSeriesColorFromIndex);
 }
 
 // ----------------------------------------------------------------------------
