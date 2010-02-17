@@ -16,7 +16,7 @@
 #include "vtkPen.h"
 
 #include "vtkObjectFactory.h"
-#include "vtkVector.h"
+#include "vtkColor.h"
 
 //-----------------------------------------------------------------------------
 vtkCxxRevisionMacro(vtkPen, "$Revision$");
