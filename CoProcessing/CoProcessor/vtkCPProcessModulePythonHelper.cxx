@@ -22,6 +22,9 @@
 #include "vtkSMApplication.h"
 #include "vtkSMProperty.h"
 
+#define EXCLUDE_LOAD_ALL_FUNCTION
+#include "cppythonmodules.h"
+
 #include <vtkstd/string>
 using namespace vtkstd;
 
@@ -72,6 +75,9 @@ int vtkCPProcessModulePythonHelper::RunGUIStart(
 
   this->SMApplication->Initialize();
   vtkSMProperty::SetCheckDomains(0);
+
+  // Do static initialization of python libraries
+  cppythonmodules_h_LoadAllPythonModules();
 
   // Initialize the sub-interpreter because that is where RunSimpleString
   // works.
