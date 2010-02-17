@@ -77,7 +77,6 @@ void vtkCompositer::CompositeBuffer(vtkDataArray *pBuf, vtkFloatArray *zBuf,
 }
 
 //-------------------------------------------------------------------------
-
 void vtkCompositer::ResizeFloatArray(vtkFloatArray* fa, int numComp,
                                      vtkIdType size)
 {
