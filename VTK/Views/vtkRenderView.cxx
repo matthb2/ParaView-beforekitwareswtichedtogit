@@ -359,6 +359,16 @@ void vtkRenderView::ProcessEvents(
     vtkDebugMacro("selection changed causing a render event");
     this->Render();
     }
+  else if (vtkDataRepresentation::SafeDownCast(caller) &&
+           eventId == vtkCommand::UpdateEvent)
+    {
+    // UpdateEvent is called from push pipeline executions from
+    // vtkExecutionScheduler. We want to automatically render the view
+    // when one of our representations is updated.
+    vtkDebugMacro("push pipeline causing a render event");
+    this->ResetCamera();
+    this->Render();
+    }
   else if (caller == this->GetInteractorStyle() &&
            eventId == vtkCommand::SelectionChangedEvent)
     {

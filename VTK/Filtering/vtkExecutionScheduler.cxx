@@ -231,12 +231,6 @@ void vtkExecutionScheduler::PrintSelf(ostream &os, vtkIndent indent)
 }
 
 //----------------------------------------------------------------------------
-class vtkViewCommand : public vtkCommand
-{
-public:
-  vtkObject* Target;
-};
-
 void vtkExecutionScheduler::SchedulePropagate(vtkExecutiveCollection *execs, vtkInformation* vtkNotUsed(info))
 {
   execs->InitTraversal();
@@ -254,11 +248,7 @@ void vtkExecutionScheduler::SchedulePropagate(vtkExecutiveCollection *execs, vtk
     vtkAlgorithm *rep =(*vi)->GetAlgorithm();
     if (rep->IsA("vtkDataRepresentation"))
       {
-      vtkViewCommand *cmd = (vtkViewCommand*)rep->GetCommand(2);
-      if (cmd)
-        {
-          cmd->Target->InvokeEvent(vtkCommand::UpdateEvent, NULL);
-        }    
+      rep->InvokeEvent(vtkCommand::UpdateEvent, NULL);
       }
     }
 }
