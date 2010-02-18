@@ -21,6 +21,8 @@
 #include <assert.h>
 
 #include <X11/Xlib.h> // Display structure, XOpenDisplay(), XScreenCount()
+
+#include "vtkToolkits.h"
 #ifdef VTK_USE_NVCONTROL
 #include "NVCtrlLib.h" // needs NVCtrl.h (NV_CTRL_VIDEO_RAM, XNVCTRLQueryAttribute() )
 #endif
