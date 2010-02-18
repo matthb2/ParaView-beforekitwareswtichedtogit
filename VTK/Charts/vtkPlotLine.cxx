@@ -44,7 +44,6 @@ vtkPlotLine::vtkPlotLine()
 //-----------------------------------------------------------------------------
 vtkPlotLine::~vtkPlotLine()
 {
-  this->SetLabel(NULL);
   if (this->Points)
     {
     this->Points->Delete();
@@ -229,7 +228,6 @@ bool vtkPlotLine::UpdateTableCache(vtkTable *table)
                              y, x->GetSize()));
       }
     }
-  this->SetLabel(y->GetName());
   this->BuildTime.Modified();
   return true;
 }
