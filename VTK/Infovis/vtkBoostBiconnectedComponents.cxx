@@ -32,7 +32,6 @@
 #include "vtkGraph.h"
 #include "vtkBoostGraphAdapter.h"
 #include <boost/graph/biconnected_components.hpp>
-#include <boost/vector_property_map.hpp>
 #include <boost/version.hpp>
 #include <vtksys/stl/vector>
 #include <vtksys/stl/utility>

@@ -36,7 +36,6 @@
 
 #include <boost/graph/adjacency_list.hpp>
 #include <boost/graph/betweenness_centrality.hpp>
-#include <boost/vector_property_map.hpp>
 
 using namespace boost;
 

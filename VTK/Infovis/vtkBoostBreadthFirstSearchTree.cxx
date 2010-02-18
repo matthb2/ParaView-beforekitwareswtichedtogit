@@ -39,7 +39,6 @@
 #include "vtkTree.h"
 
 #include <boost/graph/breadth_first_search.hpp>
-#include <boost/vector_property_map.hpp>
 #include <boost/pending/queue.hpp>
 
 using namespace boost;

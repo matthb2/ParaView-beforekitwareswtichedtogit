@@ -33,7 +33,6 @@
 
 #include "vtkBoostGraphAdapter.h"
 #include <boost/graph/strong_components.hpp>
-#include <boost/vector_property_map.hpp>
 
 using namespace boost;
 

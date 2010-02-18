@@ -46,8 +46,6 @@
 
 #include <boost/graph/visitors.hpp>
 #include <boost/graph/breadth_first_search.hpp>
-#include <boost/property_map.hpp>
-#include <boost/vector_property_map.hpp>
 #include <boost/pending/queue.hpp>
 
 #include <vtksys/stl/utility> // for pair
