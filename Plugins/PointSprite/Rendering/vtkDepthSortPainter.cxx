@@ -284,8 +284,10 @@ int vtkDepthSortPainter::IsTextureSemiTranslucent(vtkTexture* tex)
       return 1;
       }
     }
+/*
   this->CachedIsTextureSemiTranslucent = -1;
   return -1;
+*/
 }
 
 int vtkDepthSortPainter::IsColorSemiTranslucent(vtkUnsignedCharArray* color)
