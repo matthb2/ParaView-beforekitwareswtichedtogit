@@ -55,7 +55,7 @@ vtkPlot::~vtkPlot()
 }
 
 //-----------------------------------------------------------------------------
-bool vtkPlot::PaintLegend(vtkContext2D *painter, float rect[4])
+bool vtkPlot::PaintLegend(vtkContext2D*, float*)
 {
   return false;
 }
