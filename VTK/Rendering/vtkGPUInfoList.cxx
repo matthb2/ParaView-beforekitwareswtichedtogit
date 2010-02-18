@@ -49,7 +49,12 @@ bool vtkGPUInfoList::IsProbed()
 // \pre probed: IsProbed()
 int vtkGPUInfoList::GetNumberOfGPUs()
 {
-  assert("pre: probed" && this->IsProbed());
+  if ( !this->IsProbed() )
+    {
+    vtkErrorMacro("You must first call the Probe method");
+    return 0;
+    }
+  
   return static_cast<int>(this->Array->v.size());
 }
   
