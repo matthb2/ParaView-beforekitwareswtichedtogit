@@ -123,9 +123,6 @@ vtkImageData* vtkSMContextViewProxy::CaptureWindow(int magnification)
     }
   capture->SetExtent(extents);
 
-  cout << "Capture image called: " << extents[0] << " " << extents[1] << endl;
-  capture->Print(cout);
-
   return capture;
 }
 
