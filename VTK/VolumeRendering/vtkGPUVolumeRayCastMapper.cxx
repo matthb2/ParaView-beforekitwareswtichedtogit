@@ -513,6 +513,17 @@ void vtkGPUVolumeRayCastMapper::PrintSelf(ostream& os, vtkIndent indent)
   this->Superclass::PrintSelf(os,indent);
   
   os << indent << "AutoAdjustSampleDistances: " << this->AutoAdjustSampleDistances << endl;
+  os << indent << "MinimumImageSampleDistance: " << this->MinimumImageSampleDistance << endl;
+  os << indent << "MaximumImageSampleDistance: " << this->MaximumImageSampleDistance << endl;
+  os << indent << "ImageSampleDistance: " << this->ImageSampleDistance << endl;
+  os << indent << "SampleDistance: " << this->SampleDistance << endl;
+  os << indent << "FinalColorWindow: " << this->FinalColorWindow << endl;
+  os << indent << "FinalColorLevel: " << this->FinalColorLevel << endl;
+  os << indent << "MaskInput: " << this->MaskInput << endl;
+  os << indent << "MaskBlendFactor: " << this->MaskBlendFactor << endl;
+  os << indent << "MaxMemoryInBytes: " << this->MaxMemoryInBytes << endl;
+  os << indent << "MaxMemoryFraction: " << this->MaxMemoryFraction << endl;
+  
 }
 
 // ----------------------------------------------------------------------------
