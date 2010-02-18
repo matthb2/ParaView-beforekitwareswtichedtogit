@@ -568,5 +568,8 @@ int vtkDensifyPolyData::FillInputPortInformation(
 void vtkDensifyPolyData::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os,indent);
+  
+  os << indent << "Number of Subdivisions: " 
+     << this->NumberOfSubdivisions << endl;  
 }
 

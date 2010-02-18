@@ -522,4 +522,6 @@ int vtkClipConvexPolyData::HasDegeneracies( vtkPlane *plane )
 void vtkClipConvexPolyData::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os,indent);
+  
+  os << indent << "Planes: " << this->Planes << endl;
 }

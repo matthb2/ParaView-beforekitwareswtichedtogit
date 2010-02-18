@@ -687,5 +687,15 @@ void vtkTessellatedBoxSource::PrintSelf(ostream& os, vtkIndent indent)
     {
     os << "false";
     }
+  
+  os << indent << "Quads: ";
+  if(this->Quads)
+    {
+    os << "true";
+    }
+  else
+    {
+    os << "false";
+    }
   os << endl;
 }
