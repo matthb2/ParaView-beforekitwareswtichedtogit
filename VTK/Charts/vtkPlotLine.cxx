@@ -229,6 +229,7 @@ bool vtkPlotLine::UpdateTableCache(vtkTable *table)
                              y, x->GetSize()));
       }
     }
+  this->SetLabel(y->GetName());
   this->BuildTime.Modified();
   return true;
 }
