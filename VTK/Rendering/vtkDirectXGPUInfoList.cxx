@@ -15,7 +15,6 @@
 
 #include "vtkDirectXGPUInfoList.h"
 
-#include <vtkstd/vector>
 #include "vtkGPUInfoListArray.h"
 
 #include "vtkObjectFactory.h"

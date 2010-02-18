@@ -15,7 +15,6 @@
 
 #include "vtkDummyGPUInfoList.h"
 
-#include <vtkstd/vector>
 #include "vtkGPUInfoListArray.h"
 
 #include "vtkObjectFactory.h"
