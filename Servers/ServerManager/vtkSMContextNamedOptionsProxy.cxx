@@ -181,13 +181,8 @@ void vtkSMContextNamedOptionsProxy::InitializePlotMap()
     if (this->Internals->Table->GetNumberOfColumns() > 1 &&
         this->Internals->Chart)
       {
-      vtkPlot *plot = this->Internals->Chart->AddPlot(vtkChart::LINE);
-      plot->SetUseIndexForXSeries(this->Internals->UseIndexForXAxis);
-      plot->SetInput(this->Internals->Table, vtkIdType(0), vtkIdType(0));
-      this->Internals->PlotMap[this->Internals->Table->GetColumnName(0)] =
-          plot;
-      this->Internals->Chart->GetAxis(0)->SetTitle("Index");
-      this->SetXSeriesName(this->Internals->Table->GetColumnName(0));
+      this->SetUseIndexForXAxis(true);
+      this->SetVisibility(this->Internals->Table->GetColumnName(0), 1);
       }
     }
 }
