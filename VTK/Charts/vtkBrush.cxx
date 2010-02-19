@@ -26,10 +26,7 @@ vtkStandardNewMacro(vtkBrush);
 //-----------------------------------------------------------------------------
 vtkBrush::vtkBrush()
 {
-  this->Color[0] = 0;
-  this->Color[1] = 0;
-  this->Color[2] = 0;
-  this->Color[3] = 255;
+  this->Color = this->BrushColor.GetData();
 }
 
 //-----------------------------------------------------------------------------
@@ -116,6 +113,16 @@ void vtkBrush::GetColor(unsigned char color[4])
     {
     color[i] = this->Color[i];
     }
+}
+
+//-----------------------------------------------------------------------------
+void vtkBrush::DeepCopy(vtkBrush *brush)
+{
+  if (!brush)
+    {
+    return;
+    }
+  this->BrushColor = brush->BrushColor;
 }
 
 //-----------------------------------------------------------------------------
