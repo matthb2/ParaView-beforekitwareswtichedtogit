@@ -42,7 +42,7 @@ vtkChart::~vtkChart()
 }
 
 //-----------------------------------------------------------------------------
-vtkPlot * vtkChart::AddPlot(Type)
+vtkPlot * vtkChart::AddPlot(int)
 {
   return NULL;
 }
