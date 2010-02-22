@@ -24,6 +24,7 @@
 #include "vtkPoints2D.h"
 
 #include "vtkPlot.h"
+#include "vtkPlotBar.h"
 #include "vtkPlotLine.h"
 #include "vtkPlotPoints.h"
 
@@ -365,6 +366,13 @@ vtkPlot * vtkChartXY::AddPlot(int type)
       vtkPlotPoints *points = vtkPlotPoints::New();
       this->ChartPrivate->plots.push_back(points);
       plot = points;
+      break;
+      }
+    case BAR:
+      {
+      vtkPlotBar *bar = vtkPlotBar::New();
+      this->ChartPrivate->plots.push_back(bar);
+      plot = bar;
       break;
       }
     default:

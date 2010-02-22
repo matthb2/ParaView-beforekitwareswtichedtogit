@@ -80,6 +80,11 @@ void vtkPlot::SetColor(double r, double g, double b)
   this->Pen->SetColorF(r, g, b);
 }
 
+//-----------------------------------------------------------------------------
+void vtkPlot::GetColor(double rgb[3])
+{
+  this->Pen->GetColorF(rgb);
+}
 
 //-----------------------------------------------------------------------------
 void vtkPlot::SetWidth(float width)
@@ -110,12 +115,6 @@ const char* vtkPlot::GetLabel()
     {
     return NULL;
     }
-}
-
-//-----------------------------------------------------------------------------
-void vtkPlot::GetColor(double rgb[3])
-{
-  this->Pen->GetColorF(rgb);
 }
 
 //-----------------------------------------------------------------------------
