@@ -79,6 +79,12 @@ void vtkSMContextNamedOptionsProxy::SetChartType(int type)
 }
 
 //----------------------------------------------------------------------------
+int vtkSMContextNamedOptionsProxy::GetChartType()
+{
+  return this->Internals->ChartType;
+}
+
+//----------------------------------------------------------------------------
 void vtkSMContextNamedOptionsProxy::SetChart(vtkChart* chart)
 {
   if (this->Internals->Chart == chart)
