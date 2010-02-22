@@ -450,6 +450,18 @@ void vtkContext2D::SetTransform(vtkTransform2D *transform)
 }
 
 //-----------------------------------------------------------------------------
+void vtkContext2D::PushMatrix()
+{
+  this->Device->PushMatrix();
+}
+
+//-----------------------------------------------------------------------------
+void vtkContext2D::PopMatrix()
+{
+  this->Device->PopMatrix();
+}
+
+//-----------------------------------------------------------------------------
 inline void vtkContext2D::ApplyPen()
 {
   this->Device->SetColor4(this->Pen->GetColor());
