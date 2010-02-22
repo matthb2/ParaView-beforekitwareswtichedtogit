@@ -26,6 +26,7 @@
 * http://www.llnl.gov/visit/copyright.html.
 *
 *****************************************************************************/
+#define H5_USE_16_API
 
 #include "vtkFlashReader.h"
 
