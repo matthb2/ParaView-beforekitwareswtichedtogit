@@ -45,6 +45,7 @@ vtkInformationKeyMacro(vtkSelectionNode,CONTAINING_CELLS,Integer);
 vtkInformationKeyMacro(vtkSelectionNode,PIXEL_COUNT,Integer);
 vtkInformationKeyMacro(vtkSelectionNode,INVERSE,Integer);
 vtkInformationKeyMacro(vtkSelectionNode,INDEXED_VERTICES,Integer);
+vtkInformationKeyMacro(vtkSelectionNode,COMPONENT_NUMBER,Integer);
 
 //----------------------------------------------------------------------------
 vtkSelectionNode::vtkSelectionNode()
