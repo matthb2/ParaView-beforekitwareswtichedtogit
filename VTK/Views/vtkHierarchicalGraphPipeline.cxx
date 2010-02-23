@@ -199,6 +199,16 @@ bool vtkHierarchicalGraphPipeline::GetVisibility()
   return this->Actor->GetVisibility() ? true : false;
 }
 
+void vtkHierarchicalGraphPipeline::SetSplineType(int type)
+{
+  this->Spline->SetSplineType(type);
+}
+
+int vtkHierarchicalGraphPipeline::GetSplineType()
+{
+  return this->Spline->GetSplineType();
+}
+
 void vtkHierarchicalGraphPipeline::PrepareInputConnections(
   vtkAlgorithmOutput* graphConn,
   vtkAlgorithmOutput* treeConn,

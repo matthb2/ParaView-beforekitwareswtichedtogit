@@ -311,6 +311,23 @@ double vtkRenderedTreeAreaRepresentation::GetGraphBundlingStrength(int idx)
   return 0.0;
 }
 
+void vtkRenderedTreeAreaRepresentation::SetGraphSplineType(int type, int idx)
+{
+  if (this->ValidIndex(idx))
+    {
+    this->Implementation->Graphs[idx]->SetSplineType(type);
+    }
+}
+
+int vtkRenderedTreeAreaRepresentation::GetGraphSplineType(int idx)
+{
+  if (this->ValidIndex(idx))
+    {
+    return this->Implementation->Graphs[idx]->GetSplineType();
+    }
+  return 0;
+}
+
 void vtkRenderedTreeAreaRepresentation::SetEdgeScalarBarVisibility(bool b)
 {
   this->EdgeScalarBar->GetScalarBarActor()->SetVisibility(b);
