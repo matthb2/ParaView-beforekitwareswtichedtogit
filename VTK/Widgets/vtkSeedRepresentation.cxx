@@ -196,6 +196,28 @@ void vtkSeedRepresentation::RemoveLastHandle()
 }
 
 //----------------------------------------------------------------------
+void vtkSeedRepresentation::RemoveHandle( int n )
+{
+  // Remove nth handle
+  
+  if (n == this->ActiveHandle)
+    {
+    this->RemoveActiveHandle();
+    return;
+    }
+
+  if ( this->Handles->size() <= n )
+    {
+    return;
+    }
+
+  vtkHandleListIterator iter = this->Handles->begin();
+  vtkstd::advance( iter, n );
+  this->Handles->erase( iter );
+  ( *iter )->Delete();
+}
+
+//----------------------------------------------------------------------
 void vtkSeedRepresentation::RemoveActiveHandle()
 {
   if ( this->Handles->size() < 1 )
