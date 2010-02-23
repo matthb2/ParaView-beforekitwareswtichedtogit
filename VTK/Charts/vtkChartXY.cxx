@@ -235,8 +235,8 @@ void vtkChartXY::RenderPlots(vtkContext2D *painter)
   painter->GetDevice()->SetClipping(&clip[0]);
 
   // Push the matrix and use the transform we just calculated
-  painter->GetDevice()->PushMatrix();
-  painter->GetDevice()->SetMatrix(this->PlotTransform->GetMatrix());
+  painter->PushMatrix();
+  painter->SetTransform(this->PlotTransform);
 
   // Now iterate through the plots
   size_t n = this->ChartPrivate->plots.size();
@@ -248,7 +248,7 @@ void vtkChartXY::RenderPlots(vtkContext2D *painter)
 
   // Stop clipping of the plot area and reset back to screen coordinates
   painter->GetDevice()->DisableClipping();
-  painter->GetDevice()->PopMatrix();
+  painter->PopMatrix();
 }
 
 //-----------------------------------------------------------------------------
