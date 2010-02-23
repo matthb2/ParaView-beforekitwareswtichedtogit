@@ -119,6 +119,74 @@ vtkGraphEdge* vtkMutableGraphHelper::AddGraphEdge(vtkIdType u, vtkIdType v)
 }
 
 //----------------------------------------------------------------------------
+void vtkMutableGraphHelper::RemoveVertex(vtkIdType v)
+{
+  if (!this->InternalGraph)
+    {
+    return;
+    }
+  if (this->DirectedGraph)
+    {
+    return this->DirectedGraph->RemoveVertex(v);
+    }
+  else
+    {
+    return this->UndirectedGraph->RemoveVertex(v);
+    }
+}
+
+//----------------------------------------------------------------------------
+void vtkMutableGraphHelper::RemoveVertices(vtkIdTypeArray* verts)
+{
+  if (!this->InternalGraph)
+    {
+    return;
+    }
+  if (this->DirectedGraph)
+    {
+    return this->DirectedGraph->RemoveVertices(verts);
+    }
+  else
+    {
+    return this->UndirectedGraph->RemoveVertices(verts);
+    }
+}
+
+//----------------------------------------------------------------------------
+void vtkMutableGraphHelper::RemoveEdge(vtkIdType e)
+{
+  if (!this->InternalGraph)
+    {
+    return;
+    }
+  if (this->DirectedGraph)
+    {
+    return this->DirectedGraph->RemoveEdge(e);
+    }
+  else
+    {
+    return this->UndirectedGraph->RemoveEdge(e);
+    }
+}
+
+//----------------------------------------------------------------------------
+void vtkMutableGraphHelper::RemoveEdges(vtkIdTypeArray* edges)
+{
+  if (!this->InternalGraph)
+    {
+    return;
+    }
+  if (this->DirectedGraph)
+    {
+    return this->DirectedGraph->RemoveEdges(edges);
+    }
+  else
+    {
+    return this->UndirectedGraph->RemoveEdges(edges);
+    }
+}
+
+//----------------------------------------------------------------------------
 void vtkMutableGraphHelper::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os,indent);

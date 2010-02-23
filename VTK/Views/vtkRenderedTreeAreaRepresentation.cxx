@@ -955,6 +955,12 @@ void vtkRenderedTreeAreaRepresentation::PrepareForRendering(vtkRenderView* view)
 #endif
 #endif
 
+  // Make sure all the graphs are registered.
+  for (size_t i = 0; i < this->Implementation->Graphs.size(); ++i)
+    {
+    this->Implementation->Graphs[i]->RegisterProgress(view);
+    }
+
   this->Superclass::PrepareForRendering(view);
 }
 

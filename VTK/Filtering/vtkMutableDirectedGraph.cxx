@@ -210,6 +210,30 @@ vtkIdType vtkMutableDirectedGraph::AddChild(vtkIdType parent,
 }
 
 //----------------------------------------------------------------------------
+void vtkMutableDirectedGraph::RemoveVertex(vtkIdType v)
+{
+  this->RemoveVertexInternal(v, true);
+}
+
+//----------------------------------------------------------------------------
+void vtkMutableDirectedGraph::RemoveEdge(vtkIdType e)
+{
+  this->RemoveEdgeInternal(e, true);
+}
+
+//----------------------------------------------------------------------------
+void vtkMutableDirectedGraph::RemoveVertices(vtkIdTypeArray* arr)
+{
+  this->RemoveVerticesInternal(arr, true);
+}
+
+//----------------------------------------------------------------------------
+void vtkMutableDirectedGraph::RemoveEdges(vtkIdTypeArray* arr)
+{
+  this->RemoveEdgesInternal(arr, true);
+}
+
+//----------------------------------------------------------------------------
 void vtkMutableDirectedGraph::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os,indent);

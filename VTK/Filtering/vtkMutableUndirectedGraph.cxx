@@ -208,6 +208,30 @@ vtkGraphEdge *vtkMutableUndirectedGraph::AddGraphEdge(vtkIdType u, vtkIdType v)
 }
 
 //----------------------------------------------------------------------------
+void vtkMutableUndirectedGraph::RemoveVertex(vtkIdType v)
+{
+  this->RemoveVertexInternal(v, false);
+}
+
+//----------------------------------------------------------------------------
+void vtkMutableUndirectedGraph::RemoveEdge(vtkIdType e)
+{
+  this->RemoveEdgeInternal(e, false);
+}
+
+//----------------------------------------------------------------------------
+void vtkMutableUndirectedGraph::RemoveVertices(vtkIdTypeArray* arr)
+{
+  this->RemoveVerticesInternal(arr, false);
+}
+
+//----------------------------------------------------------------------------
+void vtkMutableUndirectedGraph::RemoveEdges(vtkIdTypeArray* arr)
+{
+  this->RemoveEdgesInternal(arr, false);
+}
+
+//----------------------------------------------------------------------------
 void vtkMutableUndirectedGraph::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os,indent);
