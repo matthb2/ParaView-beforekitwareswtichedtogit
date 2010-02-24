@@ -164,23 +164,23 @@ int pqOptions::AddTestScript(const char* script)
 //-----------------------------------------------------------------------------
 int pqOptions::SetLastTestBaseline(const char* image)
 {
-  if (this->TestScripts.size() > 0)
+  if (this->TestScripts.size() == 0)
     {
-    this->TestScripts.last().TestBaseline = image;
-    return 1;
+    this->AddTestScript("-not-specified");
     }
-  return 0;
+  this->TestScripts.last().TestBaseline = image;
+  return 1;
 }
 
 //-----------------------------------------------------------------------------
 int pqOptions::SetLastTestImageThreshold(int threshold)
 {
-  if (this->TestScripts.size() > 0)
+  if (this->TestScripts.size() == 0)
     {
-    this->TestScripts.last().ImageThreshold = threshold;
-    return 1;
+    this->AddTestScript("-not-specified");
     }
-  return 0;
+  this->TestScripts.last().ImageThreshold = threshold;
+  return 1;
 }
 
 //-----------------------------------------------------------------------------
