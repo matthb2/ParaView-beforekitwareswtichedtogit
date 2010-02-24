@@ -5199,8 +5199,11 @@ void vtkOpenGLGPUVolumeRayCastMapper::GPURender(vtkRenderer *ren,
   // RenderBlock method.
   
   this->PreRender(ren,vol,bounds,range,numberOfScalarComponents,1);
-  this->RenderBlock(ren,vol,0);
-  this->PostRender(ren,numberOfScalarComponents);
+  if(this->LoadExtensionsSucceeded)
+    {
+    this->RenderBlock(ren,vol,0);
+    this->PostRender(ren,numberOfScalarComponents);
+    }
   
   // Let's just make sure no OpenGL errors occurred during this render
   this->PrintError("End GPU Render");
