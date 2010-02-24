@@ -1526,7 +1526,7 @@ void vtkDataSetAttributes::InternalCopyAllocate(
         if ( (this->GetFlag(list.Fields[i]) != 0) &&
              !(this->DoCopyAllOff && (this->GetFlag(list.Fields[i]) != 1)) )
           {
-          list.FieldIndices[i] = this->AddArray(newDA);
+          list.FieldIndices[i] = this->AddArray(newAA);
           }
         else
           {
