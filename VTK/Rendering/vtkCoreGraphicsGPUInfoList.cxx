@@ -12,14 +12,13 @@
      PURPOSE.  See the above copyright notice for more information.
 
 =========================================================================*/
-#import "vtkCoreGraphicsGPUInfoList.h"
+#include "vtkCoreGraphicsGPUInfoList.h"
 
 #include "vtkGPUInfoListArray.h"
 #include "vtkObjectFactory.h"
 #include <assert.h>
 
-//#import "CGDirectDisplay.h" // for CGGetActiveDisplayList()
-#import <ApplicationServices/ApplicationServices.h>
+#include <ApplicationServices/ApplicationServices.h>
 
 vtkCxxRevisionMacro(vtkCoreGraphicsGPUInfoList, "$Revision$");
 vtkStandardNewMacro(vtkCoreGraphicsGPUInfoList);
