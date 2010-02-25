@@ -274,7 +274,7 @@ int vtkGPUVolumeRayCastMapper::ValidateRender(vtkRenderer *ren,
   clone->SetExtent(extents);
 
   this->SetTransformedInput(clone);
-  clone = NULL;
+  clone->Delete();
 
   if ( goodSoFar && !this->TransformedInput )
     {
