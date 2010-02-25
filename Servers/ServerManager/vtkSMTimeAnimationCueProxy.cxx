@@ -51,6 +51,7 @@ void vtkSMTimeAnimationCueProxy::TickInternal(void* info)
       {
       proxy->UpdateVTKObjects();
       }
+    this->InvokeEvent(vtkCommand::AnimationCueTickEvent, info);
     }
   else
     {
