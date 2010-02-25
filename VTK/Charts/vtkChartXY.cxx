@@ -412,7 +412,7 @@ vtkPlot * vtkChartXY::AddPlot(int type)
   // return is added at the end.
   vtkPlot *plot = NULL;
   vtkColor3ub color = this->ChartPrivate->Colors->GetColorRepeating(
-      this->ChartPrivate->plots.size());
+      static_cast<int>(this->ChartPrivate->plots.size()));
   switch (type)
     {
     case LINE:

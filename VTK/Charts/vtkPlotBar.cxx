@@ -234,7 +234,7 @@ bool vtkPlotBar::UpdateTableCache(vtkTable *table)
     vtkErrorMacro(<< "No Y column is set (index 1).");
     return false;
     }
-  else if (x->GetSize() != y->GetSize() && !this->UseIndexForXSeries)
+  else if (!this->UseIndexForXSeries && x->GetSize() != y->GetSize())
     {
     vtkErrorMacro("The x and y columns must have the same number of elements.");
     return false;
