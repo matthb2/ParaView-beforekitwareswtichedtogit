@@ -14,6 +14,7 @@
 =========================================================================*/
 #include "vtkSMTimeAnimationCueProxy.h"
 
+#include "vtkCommand.h"
 #include "vtkObjectFactory.h"
 #include "vtkSMDomain.h"
 #include "vtkSMProperty.h"
