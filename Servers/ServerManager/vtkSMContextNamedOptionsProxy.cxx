@@ -151,7 +151,6 @@ void vtkSMContextNamedOptionsProxy::SetXSeriesName(const char* name)
   this->Modified();
 }
 
-
 //----------------------------------------------------------------------------
 void vtkSMContextNamedOptionsProxy::SetUseIndexForXAxis(bool useIndex)
 {
