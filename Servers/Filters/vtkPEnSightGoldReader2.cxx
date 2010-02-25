@@ -3257,7 +3257,7 @@ int vtkPEnSightGoldReader2::InjectCoordinatesAtEnd(vtkUnstructuredGrid* output, 
 {
   int fakeLineRead;
   char fakeLine[256];
-  ios_base::iostate state;
+  ios::iostate state;
 
   state = this->IS->rdstate();
   if( this->IS->fail() || this->IS->eof() )
