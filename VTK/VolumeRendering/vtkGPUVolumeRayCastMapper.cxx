@@ -95,6 +95,7 @@ vtkGPUVolumeRayCastMapper::vtkGPUVolumeRayCastMapper()
 vtkGPUVolumeRayCastMapper::~vtkGPUVolumeRayCastMapper()
 {
   this->SetMaskInput(NULL);
+  this->SetTransformedInput(NULL);
 }
 
 // ----------------------------------------------------------------------------
