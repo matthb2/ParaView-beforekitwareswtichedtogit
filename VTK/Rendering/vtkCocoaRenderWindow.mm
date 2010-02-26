@@ -139,6 +139,13 @@ void vtkCocoaRenderWindow::DestroyWindow()
     this->SetPixelFormat(NULL);
   }
 
+  if (this->WindowCreated)
+    {
+    NSWindow* win = (NSWindow*)this->GetRootWindow();
+    [win close];
+    this->WindowCreated = 0;
+    }
+
   this->SetWindowId(NULL);
   this->SetParentId(NULL);
   this->SetRootWindow(NULL);
