@@ -312,7 +312,7 @@ bool vtkGeoView::HasMesa()
       }
     }
 
-  return static_cast<bool>(this->UsingMesaDrivers);
+  return (this->UsingMesaDrivers == 1);
 }
 
 //----------------------------------------------------------------------------
