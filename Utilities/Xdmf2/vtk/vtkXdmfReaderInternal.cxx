@@ -12,7 +12,7 @@
      PURPOSE.  See the above copyright notice for more information.
 
 =========================================================================*/
-#include "vtkXdmfReader2Internal.h"
+#include "vtkXdmfReaderInternal.h"
 
 #include "vtkDataArray.h"
 #include "vtkSmartPointer.h"
