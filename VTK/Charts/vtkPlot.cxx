@@ -15,6 +15,7 @@
 
 #include "vtkPlot.h"
 
+#include "vtkAxis.h"
 #include "vtkPen.h"
 #include "vtkBrush.h"
 #include "vtkTable.h"
@@ -27,6 +28,8 @@
 
 vtkCxxRevisionMacro(vtkPlot, "$Revision$");
 vtkCxxSetObjectMacro(vtkPlot, Selection, vtkIdTypeArray);
+vtkCxxSetObjectMacro(vtkPlot, XAxis, vtkAxis);
+vtkCxxSetObjectMacro(vtkPlot, YAxis, vtkAxis);
 
 //-----------------------------------------------------------------------------
 vtkPlot::vtkPlot()
@@ -38,6 +41,8 @@ vtkPlot::vtkPlot()
   this->UseIndexForXSeries = false;
   this->Data = vtkContextMapper2D::New();
   this->Selection = NULL;
+  this->XAxis = NULL;
+  this->YAxis = NULL;
 }
 
 //-----------------------------------------------------------------------------
