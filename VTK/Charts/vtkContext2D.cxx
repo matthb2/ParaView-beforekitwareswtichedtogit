@@ -336,6 +336,50 @@ void vtkContext2D::DrawEllipticArc(float x, float y, float rX, float rY,
 }
 
 //-----------------------------------------------------------------------------
+void vtkContext2D::DrawStringRect(vtkPoints2D *rect, const vtkStdString &string)
+{
+  // Draw the text at the appropriate point inside the rect for the alignment
+  // specified. This is a convenience when an area of the screen should have
+  // text drawn that is aligned to the entire area.
+  if (rect->GetNumberOfPoints() < 2)
+    {
+    return;
+    }
+
+  float x = 0.0;
+  float y = 0.0;
+  float *f = vtkFloatArray::SafeDownCast(rect->GetData())->GetPointer(0);
+
+  if (this->TextProp->GetJustification() == VTK_TEXT_LEFT)
+    {
+    x = f[0];
+    }
+  else if (this->TextProp->GetJustification() == VTK_TEXT_CENTERED)
+    {
+    x = f[0] + 0.5*f[2];
+    }
+  else
+    {
+    x = f[0] + f[2];
+    }
+
+  if (this->TextProp->GetVerticalJustification() == VTK_TEXT_BOTTOM)
+    {
+    y = f[1];
+    }
+  else if (this->TextProp->GetVerticalJustification() == VTK_TEXT_CENTERED)
+    {
+    y = f[1] + 0.5*f[3];
+    }
+  else
+    {
+    y = f[1] + f[3];
+    }
+
+  this->DrawString(x, y, string);
+}
+
+//-----------------------------------------------------------------------------
 void vtkContext2D::DrawString(vtkPoints2D *point, const vtkStdString &string)
 {
   float *f = vtkFloatArray::SafeDownCast(point->GetData())->GetPointer(0);
