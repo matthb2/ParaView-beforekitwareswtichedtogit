@@ -102,7 +102,7 @@ void vtkAxis::Update()
     char string[20];
     if (this->LogScale)
       {
-      sprintf(string, "%#6.3g", pow(10.0, tick));
+      sprintf(string, "%#6.3g", pow(double(10.0), double(tick)));
       }
     else
       {
