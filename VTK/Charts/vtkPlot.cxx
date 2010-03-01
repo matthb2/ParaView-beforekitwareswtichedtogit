@@ -64,6 +64,8 @@ vtkPlot::~vtkPlot()
     this->Data = NULL;
     }
   this->SetLabel(NULL);
+  this->SetXAxis(NULL);
+  this->SetYAxis(NULL);
 }
 
 //-----------------------------------------------------------------------------
