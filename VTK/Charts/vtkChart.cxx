@@ -33,12 +33,14 @@ vtkChart::vtkChart()
   this->Point2[0] = 0;
   this->Point2[1] = 0;
   this->ShowLegend = false;
+  this->Title = NULL;
   this->AnnotationLink = NULL;
 }
 
 //-----------------------------------------------------------------------------
 vtkChart::~vtkChart()
 {
+  this->SetTitle(NULL);
 }
 
 //-----------------------------------------------------------------------------
