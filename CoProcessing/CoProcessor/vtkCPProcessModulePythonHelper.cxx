@@ -12,6 +12,7 @@
      PURPOSE.  See the above copyright notice for more information.
 
 =========================================================================*/
+#include "vtkPython.h" // include Python.h before other headers
 #include "vtkCPProcessModulePythonHelper.h"
 
 #include "CPSystemInformation.h"
