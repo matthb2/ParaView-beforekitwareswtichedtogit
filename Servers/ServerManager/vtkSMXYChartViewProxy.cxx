@@ -107,7 +107,7 @@ void vtkSMXYChartViewProxy::SetGridVisibility(int index, bool visible)
 {
   if (this->Chart)
     {
-    //this->ChartView->SetGridVisibility(index, visible);
+    this->Chart->GetAxis(index)->SetGridVisible(visible);
     }
 }
 
