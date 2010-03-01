@@ -6953,7 +6953,7 @@ void vtkOpenGLGPUVolumeRayCastMapper::GetLightingStatus()
       cout<<"GL_BACK";
       break;
     default:
-      cout<<"unknown value="<<ivalue<<endl;
+      cout<<"unknown value="<<ivalue[0]<<endl;
       break;
     }
 
@@ -6977,7 +6977,7 @@ void vtkOpenGLGPUVolumeRayCastMapper::GetLightingStatus()
       cout<<"GL_SPECULAR";
       break;
     default:
-      cout<<"unknown value="<<ivalue<<endl;
+      cout<<"unknown value="<<ivalue[0]<<endl;
       break;
     }
 
