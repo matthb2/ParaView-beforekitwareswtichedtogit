@@ -2325,7 +2325,6 @@ vtkIdType vtkPEnSightReader2::GetLocalTotalNumberOfCellIds(int index)
 {
   int i;
   vtkIdType numCellIds = 0;
-  vtkIdType j = 0;
 
   if(index < 0 || ( (this->UnstructuredPartIds->IsId(index) == -1) && (this->StructuredPartIds->IsId(index) == -1) ))
     {
