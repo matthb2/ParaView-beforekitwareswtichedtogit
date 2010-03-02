@@ -296,12 +296,13 @@ void vtkXMLWriter::SetCompressorType(int compressorType)
 
   if (compressorType == ZLIB)
     {
-    if (!this->Compressor || !this->Compressor->IsTypeOf("vtkZLibDataCompressor"))
+    if (this->Compressor && !this->Compressor->IsTypeOf("vtkZLibDataCompressor"))
       {
       this->Compressor->Delete();
-      this->Compressor = vtkZLibDataCompressor::New();
-      this->Modified();
       }
+
+    this->Compressor = vtkZLibDataCompressor::New();
+    this->Modified();
     return;
     }
 }
