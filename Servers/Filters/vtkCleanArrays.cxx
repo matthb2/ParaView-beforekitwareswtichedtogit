@@ -26,6 +26,7 @@
 #include <vtkstd/algorithm>
 #include <vtkstd/set>
 #include <vtkstd/string>
+#include <vtkstd/iterator>
 
 vtkStandardNewMacro(vtkCleanArrays);
 vtkCxxRevisionMacro(vtkCleanArrays, "$Revision$");

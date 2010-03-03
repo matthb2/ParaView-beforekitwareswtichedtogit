@@ -27,6 +27,7 @@
 #include <vtksys/SystemTools.hxx>
 #include <vtkstd/set>
 #include <vtkstd/algorithm>
+#include <vtkstd/iterator>
 
 //-----------------------------------------------------------------------------
 class vtkPVOpenGLExtensionsInformationInternal

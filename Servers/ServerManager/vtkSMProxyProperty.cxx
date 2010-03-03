@@ -28,6 +28,7 @@
 #include <vtkstd/map>
 #include <vtkstd/set>
 #include <vtkstd/vector>
+#include <vtkstd/iterator>
 
 #include "vtkStdString.h"
 
