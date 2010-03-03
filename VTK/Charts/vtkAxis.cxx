@@ -62,6 +62,7 @@ vtkAxis::vtkAxis()
   this->LabelsVisible = true;
   this->Precision = 2;
   this->Notation = 2; // Fixed - do the right thing...
+  this->Behavior = 0;
   this->Pen = vtkPen::New();
   this->Pen->SetColor(0, 0, 0);
   this->Pen->SetWidth(1.0);
