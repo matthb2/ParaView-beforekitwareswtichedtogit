@@ -423,7 +423,9 @@ vtkClientServerID vtkSMProxy::GetID()
 //---------------------------------------------------------------------------
 vtkObjectBase* vtkSMProxy::GetClientSideObject()
 {
-  return vtkProcessModule::GetProcessModule()->GetObjectFromID(this->GetID());
+  return vtkProcessModule::GetProcessModule()->GetObjectFromID(
+    this->GetID(), true); // the second argument means that no error
+                          // will be printed if the ID is invalid.
 }
 
 //---------------------------------------------------------------------------

@@ -832,9 +832,10 @@ vtkClientServerID vtkProcessModule::NewStreamObject(
 }
 
 //-----------------------------------------------------------------------------
-vtkObjectBase* vtkProcessModule::GetObjectFromID(vtkClientServerID id)
+vtkObjectBase* vtkProcessModule::GetObjectFromID(vtkClientServerID id,
+  bool silent)
 {
-  return this->Interpreter->GetObjectFromID(id);
+  return this->Interpreter->GetObjectFromID(id, silent);
 }
 //-----------------------------------------------------------------------------
 vtkClientServerID vtkProcessModule::GetIDFromObject(vtkObjectBase *obj)
