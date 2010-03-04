@@ -85,7 +85,7 @@ vtkXMLPMultiBlockDataWriter::vtkXMLPMultiBlockDataWriter()
   this->Internal = new vtkInternal();
   this->Controller = 0;
   this->SetController(vtkMultiProcessController::GetGlobalController());
-  this->vtkXMLPMultiBlockDataWriter::SetWriteMetaFile(1);
+  this->SetWriteMetaFile(1);
 }
 
 //----------------------------------------------------------------------------
