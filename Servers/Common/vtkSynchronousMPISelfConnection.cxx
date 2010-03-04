@@ -17,6 +17,7 @@
 #include "vtkObjectFactory.h"
 #include "vtkMultiProcessController.h"
 #include "vtkPVInformation.h"
+#include "vtkPVProgressHandler.h"
 #include "vtkClientServerStream.h"
 
 vtkStandardNewMacro(vtkSynchronousMPISelfConnection);
@@ -35,6 +36,15 @@ vtkSynchronousMPISelfConnection::~vtkSynchronousMPISelfConnection()
 void vtkSynchronousMPISelfConnection::Finalize()
 {
   this->vtkSelfConnection::Finalize();
+}
+
+//-----------------------------------------------------------------------------
+int vtkSynchronousMPISelfConnection::Initialize(
+  int argc, char** argv, int *partitionId)
+{
+  int retVal = this->Superclass::Initialize(argc, argv, partitionId);
+  this->ProgressHandler->SetConnection(0);
+  return retVal;
 }
 
 //----------------------------------------------------------------------------
