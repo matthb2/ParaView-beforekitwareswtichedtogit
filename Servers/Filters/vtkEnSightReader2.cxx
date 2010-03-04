@@ -1319,7 +1319,7 @@ int vtkEnSightReader2::ReadCaseFile()
   char line[256];
   char subLine[256];
   int stringRead;
-  int i, filenameNum;
+  int i;
   int ret;
   vtkDebugMacro("In vtkEnSightReader2::ReadCaseFile");
 

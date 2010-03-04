@@ -3763,8 +3763,8 @@ int vtkPEnSightGoldBinaryReader2::CreateStructuredGridOutput(
   int newDimensions[3];
   int splitDimension;
   int splitDimensionBeginIndex;
-  vtkUnsignedCharArray *pointGhostArray;
-  vtkUnsignedCharArray *cellGhostArray;
+  vtkUnsignedCharArray *pointGhostArray = NULL;
+  vtkUnsignedCharArray *cellGhostArray = NULL;
   if( this->GhostLevels == 0 )
     {
     this->PrepareStructuredDimensionsForDistribution(partId, dimensions, newDimensions, &splitDimension, &splitDimensionBeginIndex, 0, NULL, NULL);
@@ -3925,8 +3925,8 @@ int vtkPEnSightGoldBinaryReader2::CreateRectilinearGridOutput(
   int newDimensions[3];
   int splitDimension;
   int splitDimensionBeginIndex;
-  vtkUnsignedCharArray *pointGhostArray;
-  vtkUnsignedCharArray *cellGhostArray;
+  vtkUnsignedCharArray *pointGhostArray = NULL;
+  vtkUnsignedCharArray *cellGhostArray = NULL;
   if( this->GhostLevels == 0 )
     {
     this->PrepareStructuredDimensionsForDistribution(partId, dimensions, newDimensions, &splitDimension, &splitDimensionBeginIndex, 0, NULL, NULL);
@@ -4052,8 +4052,8 @@ int vtkPEnSightGoldBinaryReader2::CreateImageDataOutput(
   int newDimensions[3];
   int splitDimension;
   int splitDimensionBeginIndex;
-  vtkUnsignedCharArray *pointGhostArray;
-  vtkUnsignedCharArray *cellGhostArray;
+  vtkUnsignedCharArray *pointGhostArray = NULL;
+  vtkUnsignedCharArray *cellGhostArray = NULL;
   if( this->GhostLevels == 0 )
     {
     this->PrepareStructuredDimensionsForDistribution(partId, dimensions, newDimensions, &splitDimension, &splitDimensionBeginIndex, 0, NULL, NULL);
