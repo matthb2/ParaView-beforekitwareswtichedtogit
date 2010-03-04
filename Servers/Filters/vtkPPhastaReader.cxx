@@ -158,6 +158,7 @@ int vtkPPhastaReader::RequestData(vtkInformation*,
     outInfo->Get(vtkDataObject::DATA_OBJECT()));
   output->SetNumberOfBlocks(1);
   vtkMultiPieceDataSet* MultiPieceDataSet = vtkMultiPieceDataSet::New();
+  MultiPieceDataSet->SetNumberOfPieces(numPieces);
   output->SetBlock(0, MultiPieceDataSet);
   MultiPieceDataSet->Delete();
 
@@ -312,7 +313,7 @@ int vtkPPhastaReader::RequestData(vtkInformation*,
     vtkSmartPointer<vtkUnstructuredGrid> copy = 
       vtkSmartPointer<vtkUnstructuredGrid>::New();
     copy->ShallowCopy(this->Reader->GetOutput());
-    MultiPieceDataSet->SetPiece(MultiPieceDataSet->GetNumberOfPieces(),copy);
+    MultiPieceDataSet->SetPiece(loadingPiece, copy);
     }
   
   delete [] geom_name;
