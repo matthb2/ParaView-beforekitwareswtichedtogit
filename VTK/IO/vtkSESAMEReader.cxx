@@ -133,7 +133,7 @@ static const vtkSESAMETableDef TableDefs[] =
 static int TableIndex(int tableId)
 {
   // check that we got a valid table id
-  for(unsigned int i=0; i<sizeof(TableDefs); i++)
+  for(unsigned int i=0; i<sizeof(TableDefs)/sizeof(vtkSESAMETableDef); i++)
     {
     if(tableId == TableDefs[i].TableId)
       {
@@ -192,6 +192,7 @@ void vtkSESAMEReader::SetFileName(const char* file)
   // clean out possible data from last file
   this->Internal->ClearTables();
   this->CloseFile();
+  this->Modified();
 }
 
 const char* vtkSESAMEReader::GetFileName()
