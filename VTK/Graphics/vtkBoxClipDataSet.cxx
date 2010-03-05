@@ -1075,6 +1075,7 @@ void vtkBoxClipDataSet::CellGrid(vtkIdType typeobj, vtkIdType npts,
 
     case VTK_TRIANGLE: // 5
     case VTK_QUADRATIC_TRIANGLE:
+    case VTK_BIQUADRATIC_TRIANGLE:
       newCellArray->InsertNextCell(ptstriangle, triPassThrough);
       break;
 

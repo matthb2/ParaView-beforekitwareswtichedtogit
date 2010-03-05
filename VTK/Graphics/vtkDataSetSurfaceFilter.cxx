@@ -1099,6 +1099,7 @@ int vtkDataSetSurfaceFilter::UnstructuredGridExecute(vtkDataSet *dataSetInput,
              cellType == VTK_TRIANGLE || cellType == VTK_POLYGON ||
              cellType == VTK_TRIANGLE_STRIP ||
              cellType == VTK_QUADRATIC_TRIANGLE ||
+             cellType == VTK_BIQUADRATIC_TRIANGLE ||
              cellType == VTK_QUADRATIC_QUAD ||
              cellType == VTK_QUADRATIC_LINEAR_QUAD ||
              cellType == VTK_BIQUADRATIC_QUAD )
@@ -1257,6 +1258,7 @@ int vtkDataSetSurfaceFilter::UnstructuredGridExecute(vtkDataSet *dataSetInput,
         }
       }
     else if ( cellType == VTK_QUADRATIC_TRIANGLE
+           || cellType == VTK_BIQUADRATIC_TRIANGLE
            || cellType == VTK_QUADRATIC_QUAD
            || cellType == VTK_BIQUADRATIC_QUAD
            || cellType == VTK_QUADRATIC_LINEAR_QUAD)
