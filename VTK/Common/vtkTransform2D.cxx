@@ -27,10 +27,6 @@ vtkTransform2D::vtkTransform2D()
 {
   this->Matrix = vtkMatrix3x3::New();
   this->InverseMatrix = vtkMatrix3x3::New();
-
-  // initialize the legacy 'Point' info
-  this->Point[0] = this->Point[1] = this->Point[2] = 0.0;
-  this->DoublePoint[0] = this->DoublePoint[1] = this->DoublePoint[2] = 0.0;
 }
 
 //----------------------------------------------------------------------------
