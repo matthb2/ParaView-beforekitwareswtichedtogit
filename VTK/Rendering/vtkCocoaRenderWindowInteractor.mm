@@ -220,7 +220,7 @@ static vtkEarlyCocoaSetup * gEarlyCocoaSetup = new vtkEarlyCocoaSetup();
       // the run loop if the window closes.
       NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
       [nc addObserver:self selector:@selector(windowWillClose:) 
-                               name:@"NSWindowWillCloseNotification" 
+                               name:NSWindowWillCloseNotification 
                              object:win];
       }
     }
@@ -249,7 +249,7 @@ static vtkEarlyCocoaSetup * gEarlyCocoaSetup = new vtkEarlyCocoaSetup();
   (void)aNotification;
   
   NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
-  [nc removeObserver:self];
+  [nc removeObserver:self name:NSWindowWillCloseNotification object:nil];
   
   if (renWin)
     {
