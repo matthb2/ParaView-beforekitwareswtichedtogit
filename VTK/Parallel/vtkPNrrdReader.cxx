@@ -542,7 +542,7 @@ int vtkPNrrdReader::ReadHeader(vtkCharArray *headerBuffer)
     }
 
   // Record the dimensions.
-  this->FileDimensionality = dimSizes.size();
+  this->FileDimensionality = static_cast<int>(dimSizes.size());
   for (unsigned int i = 0; i < 3; i++)
     {
     this->DataExtent[i*2+0] = 0;
