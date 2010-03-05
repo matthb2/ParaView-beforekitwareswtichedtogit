@@ -75,6 +75,13 @@ bool vtkPlot::PaintLegend(vtkContext2D*, float*)
 }
 
 //-----------------------------------------------------------------------------
+bool vtkPlot::GetNearestPoint(const vtkVector2f&, const vtkVector2f&,
+                              vtkVector2f*)
+{
+  return false;
+}
+
+//-----------------------------------------------------------------------------
 void vtkPlot::SetColor(unsigned char r, unsigned char g, unsigned char b,
                        unsigned char a)
 {
