@@ -324,3 +324,19 @@ vtkMPIController *vtkMPIController::CreateSubController(vtkProcessGroup *group)
   controller->SetCommunicator(subcomm);
   return controller;
 }
+
+//-----------------------------------------------------------------------------
+vtkMPIController *vtkMPIController::PartitionController(int localColor,
+                                                        int localKey)
+{
+  VTK_CREATE(vtkMPICommunicator, subcomm);
+
+  if (!subcomm->SplitInitialize(this->Communicator, localColor, localKey))
+    {
+    return NULL;
+    }
+
+  vtkMPIController *controller = vtkMPIController::New();
+  controller->SetCommunicator(subcomm);
+  return controller;
+}
