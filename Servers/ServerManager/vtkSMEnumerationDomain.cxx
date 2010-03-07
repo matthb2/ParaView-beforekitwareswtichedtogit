@@ -60,12 +60,22 @@ unsigned int vtkSMEnumerationDomain::GetNumberOfEntries()
 //---------------------------------------------------------------------------
 int vtkSMEnumerationDomain::GetEntryValue(unsigned int idx)
 {
+  if (idx >= static_cast<unsigned int>(this->EInternals->Entries.size()))
+    {
+    vtkErrorMacro("Invalid idx: " << idx);
+    return 0;
+    }
   return this->EInternals->Entries[idx].Value;
 }
 
 //---------------------------------------------------------------------------
 const char* vtkSMEnumerationDomain::GetEntryText(unsigned int idx)
 {
+  if (idx >= static_cast<unsigned int>(this->EInternals->Entries.size()))
+    {
+    vtkErrorMacro("Invalid idx: " << idx);
+    return NULL;
+    }
   return this->EInternals->Entries[idx].Text.c_str();
 }
 
