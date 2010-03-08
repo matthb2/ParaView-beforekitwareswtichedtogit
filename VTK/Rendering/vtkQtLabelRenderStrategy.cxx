@@ -157,6 +157,13 @@ vtkQtLabelRenderStrategy::~vtkQtLabelRenderStrategy()
   this->Actor->Delete();
 }
 
+void vtkQtLabelRenderStrategy::ReleaseGraphicsResources(vtkWindow *window)
+{
+  this->Texture->ReleaseGraphicsResources(window);
+  this->Mapper->ReleaseGraphicsResources(window);
+  this->Actor->ReleaseGraphicsResources(window);
+}
+
 //double start_frame_time = 0;
 //int start_frame_iter = 0;
 //----------------------------------------------------------------------------

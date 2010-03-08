@@ -43,6 +43,11 @@ vtkFreeTypeLabelRenderStrategy::~vtkFreeTypeLabelRenderStrategy()
   this->Actor->Delete();
 }
 
+void vtkFreeTypeLabelRenderStrategy::ReleaseGraphicsResources(vtkWindow *window)
+{
+  this->Actor->ReleaseGraphicsResources(window);
+}
+
 //double compute_bounds_time1 = 0;
 //int compute_bounds_iter1 = 0;
 //----------------------------------------------------------------------------
