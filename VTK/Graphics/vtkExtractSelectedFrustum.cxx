@@ -266,7 +266,7 @@ int vtkExtractSelectedFrustum::RequestData(
   vtkUnstructuredGrid *outputUG = vtkUnstructuredGrid::SafeDownCast(
     outInfo->Get(vtkDataObject::DATA_OBJECT()));
 
-  if (this->ShowBounds)
+  if (this->ShowBounds && !this->PreserveTopology)
     {
     //for debugging, shows rough outline of the selection frustum
     //only valid if CreateFrustum was called
