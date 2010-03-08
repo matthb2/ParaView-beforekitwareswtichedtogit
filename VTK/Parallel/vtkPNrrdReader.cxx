@@ -579,13 +579,8 @@ int vtkPNrrdReader::ReadHeader(vtkCharArray *headerBuffer)
         = vtksys::SystemTools::CollapseFullPath(relativePath.c_str(),
                                                 parentDir.c_str());
       this->DataFiles->SetValue(i, fullPath);
-      vtkWarningMacro(<< "Loading data file: " <<fullPath.c_str());
       }
     }
-
-  vtkstd::stringstream message;
-  this->Print(message);
-  vtkWarningMacro(<< message.str().c_str());
 
   return 1;
 }
