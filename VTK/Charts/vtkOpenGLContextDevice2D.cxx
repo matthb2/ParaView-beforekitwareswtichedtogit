@@ -639,6 +639,16 @@ bool vtkOpenGLContextDevice2D::SetStringRendererToQt()
   return false;
 }
 
+//----------------------------------------------------------------------------
+void vtkOpenGLContextDevice2D::ReleaseGraphicsResources(vtkWindow *window)
+{
+  this->TextRenderer->ReleaseGraphicsResources(window);
+  if (this->Storage->texture)
+    {
+    this->Storage->texture->ReleaseGraphicsResources(window);
+    }
+}
+
 //-----------------------------------------------------------------------------
 bool vtkOpenGLContextDevice2D::LoadExtensions(vtkOpenGLExtensionManager *m)
 {
