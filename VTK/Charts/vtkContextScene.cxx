@@ -390,8 +390,8 @@ void vtkContextScene::ButtonReleaseEvent(int button, int x, int y)
         event);
     this->Storage->items[this->Storage->itemMousePressCurrent]->MouseButtonReleaseEvent(event);
     this->Storage->itemMousePressCurrent = -1;
-    event.Button = -1;
     }
+  this->Storage->Event.Button = -1;
 }
 
 void vtkContextScene::MouseWheelEvent(int delta, int x, int y)
