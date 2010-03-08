@@ -152,6 +152,7 @@ vtkPVGeometryFilter::vtkPVGeometryFilter ()
   this->PassThroughPointIds = 1;
   this->ForceUseStrips = 0;
   this->StripModFirstPass = 1;
+  this->MakeOutlineOfInput = 0;
 
   this->GetInformation()->Set(vtkAlgorithm::PRESERVES_RANGES(), 1);
   this->GetInformation()->Set(vtkAlgorithm::PRESERVES_BOUNDS(), 1);  
