@@ -16,7 +16,7 @@
 
 #include "vtkClientServerStream.h"
 #include "vtkObjectFactory.h"
-#include "vtkPVServerManagerInstantiator.h"
+#include "vtkInstantiator.h"
 #include "vtkPVXMLElement.h"
 #include "vtkSmartPointer.h"
 #include "vtkSMDocumentation.h"
