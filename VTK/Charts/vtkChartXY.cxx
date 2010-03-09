@@ -219,6 +219,11 @@ bool vtkChartXY::Paint(vtkContext2D *painter)
     recalculateTransform = true;
     }
 
+  if (this->ChartPrivate->plots[0]->GetData()->GetInput()->GetMTime() > this->MTime)
+    {
+    this->RecalculateBounds();
+    }
+
   // Recalculate the plot transform, min and max values if necessary
   if (!this->PlotTransformValid)
     {
@@ -474,6 +479,7 @@ void vtkChartXY::RecalculatePlotBounds()
     yAxis->SetMaximum(ymax);
     yAxis->AutoScale();
     }
+  this->Modified();
 }
 
 //-----------------------------------------------------------------------------
