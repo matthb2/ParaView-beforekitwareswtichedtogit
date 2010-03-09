@@ -213,8 +213,9 @@ void vtkSeedRepresentation::RemoveHandle( int n )
 
   vtkHandleListIterator iter = this->Handles->begin();
   vtkstd::advance( iter, n );
+  vtkHandleRepresentation *hr = *iter;
   this->Handles->erase( iter );
-  ( *iter )->Delete();
+  hr->Delete();
 }
 
 //----------------------------------------------------------------------
