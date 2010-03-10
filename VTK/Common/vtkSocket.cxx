@@ -24,6 +24,10 @@
 // Perhaps we should add a method to query at runtime whether a real
 // sockets interface is available.
 
+#ifdef __blrts__ //BlueGene/L
+#undef VTK_SOCKET_FAKE_API
+#endif
+
 #ifndef VTK_SOCKET_FAKE_API
 #if defined(_WIN32) && !defined(__CYGWIN__)
   #define VTK_WINDOWS_FULL
@@ -77,10 +81,14 @@ int vtkSocket::CreateSocket()
   int sock = socket(AF_INET, SOCK_STREAM, 0);
   // Elimate windows 0.2 second delay sending (buffering) data.
   int on = 1;
+#ifdef __blrts__
+  //BG/L tuning here? setsockopt() isn't supported
+#else
   if (setsockopt(sock, IPPROTO_TCP, TCP_NODELAY, (char*)&on, sizeof(on)))
     {
     return -1;
     }
+#endif
   return sock;
 #else
   return -1;
@@ -167,7 +175,11 @@ int vtkSocket::SelectSocket(int socketdescriptor, unsigned long msec)
     }
   FD_ZERO(&rset);
   FD_SET(socketdescriptor, &rset);
+#ifdef __blrts__
+  int res=1; //no select on BG/L, so poll
+#else
   int res = select(socketdescriptor + 1, &rset, 0, 0, tvalptr);
+#endif
   if(res == 0)
     {
     return 0;//for time limit expire
@@ -215,8 +227,11 @@ int vtkSocket::SelectSockets(const int* sockets_to_select, int size,
     FD_SET(sockets_to_select[i],&rset);
     max_fd = (sockets_to_select[i] > max_fd)? sockets_to_select[i] : max_fd;
     }
-  
+#ifdef __blrts__
+  int res = 1; //no select on BG/L
+#else
   int res = select(max_fd + 1, &rset, 0, 0, tvalptr);
+#endif
   if (res == 0)
     {
     return 0; //Timeout
@@ -254,7 +269,13 @@ int vtkSocket::Connect(int socketdescriptor, const char* hostName, int port)
     {
     return -1;
     }
-
+#ifdef __blrts__
+  //BG/L doesn't support DNS so we need an IP address
+  char addr[4];
+  sscanf(hostName,"%d.%d.%d.%d",&(addr[0]),&(addr[1]),&(addr[2]),&(addr[3]));
+  name.sin_family = AF_INET;
+  memcpy(&name.sin_addr,addr,4);
+#else
   struct hostent* hp;
   hp = gethostbyname(hostName);
   if (!hp)
@@ -268,10 +289,10 @@ int vtkSocket::Connect(int socketdescriptor, const char* hostName, int port)
     // vtkErrorMacro("Unknown host: " << hostName);
     return -1;
     }
-
   struct sockaddr_in name;
   name.sin_family = AF_INET;
   memcpy(&name.sin_addr, hp->h_addr, hp->h_length);
+#endif
   name.sin_port = htons(port);
 
   return connect(socketdescriptor, reinterpret_cast<sockaddr*>(&name), 
