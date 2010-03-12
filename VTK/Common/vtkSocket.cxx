@@ -275,8 +275,9 @@ int vtkSocket::Connect(int socketdescriptor, const char* hostName, int port)
     }
 #ifdef __blrts__
   //BG/L doesn't support DNS so we need an IP address
-  char addr[4];
-  sscanf(hostName,"%d.%d.%d.%d",&(addr[0]),&(addr[1]),&(addr[2]),&(addr[3]));
+  unsigned char addr[4];
+  sscanf(hostName,"%hhd.%hhd.%hhd.%hhd",
+		&(addr[0]),&(addr[1]),&(addr[2]),&(addr[3]));
   struct sockaddr_in name;
   name.sin_family = AF_INET;
   memcpy(&name.sin_addr,addr,4);
